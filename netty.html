@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="netty"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-08-13 19:43:17 CST"/>
+<meta name="generated" content="2013-08-16 09:16:29 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -97,19 +97,20 @@
 <ul>
 <li><a href="netty.html#sec-1">1 netty</a>
 <ul>
-<li><a href="netty.html#sec-1-1">1.1 concept</a>
+<li><a href="netty.html#sec-1-1">1.1 architecture</a></li>
+<li><a href="netty.html#sec-1-2">1.2 concept</a>
 <ul>
-<li><a href="netty.html#sec-1-1-1">1.1.1 Channel</a></li>
-<li><a href="netty.html#sec-1-1-2">1.1.2 ChannelHandler</a></li>
-<li><a href="netty.html#sec-1-1-3">1.1.3 ChannelPipeline</a></li>
-<li><a href="netty.html#sec-1-1-4">1.1.4 ChannelEvent</a></li>
-<li><a href="netty.html#sec-1-1-5">1.1.5 ChannelBuffer</a></li>
+<li><a href="netty.html#sec-1-2-1">1.2.1 Channel</a></li>
+<li><a href="netty.html#sec-1-2-2">1.2.2 ChannelHandler</a></li>
+<li><a href="netty.html#sec-1-2-3">1.2.3 ChannelPipeline</a></li>
+<li><a href="netty.html#sec-1-2-4">1.2.4 ChannelEvent</a></li>
+<li><a href="netty.html#sec-1-2-5">1.2.5 ChannelBuffer</a></li>
 </ul>
 </li>
-<li><a href="netty.html#sec-1-2">1.2 使用问题</a>
+<li><a href="netty.html#sec-1-3">1.3 使用问题</a>
 <ul>
-<li><a href="netty.html#sec-1-2-1">1.2.1 boss/worker executor</a></li>
-<li><a href="netty.html#sec-1-2-2">1.2.2 accept connection exception</a></li>
+<li><a href="netty.html#sec-1-3-1">1.3.1 boss/worker executor</a></li>
+<li><a href="netty.html#sec-1-3-2">1.3.2 accept connection exception</a></li>
 </ul>
 </li>
 </ul>
@@ -134,15 +135,25 @@
 </div>
 
 <div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> concept</h3>
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> architecture</h3>
 <div class="outline-text-3" id="text-1-1">
+
+<p><img src="images/netty-components.png"  alt="./images/netty-components.png" />
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> concept</h3>
+<div class="outline-text-3" id="text-1-2">
 
 
 </div>
 
-<div id="outline-container-1-1-1" class="outline-4">
-<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> Channel</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> Channel</h4>
+<div class="outline-text-4" id="text-1-2-1">
 
 <p>可以认为是一个connection，这个connection上面有socket fd可以所以进行读写。
 </p>
@@ -150,9 +161,9 @@
 
 </div>
 
-<div id="outline-container-1-1-2" class="outline-4">
-<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> ChannelHandler</h4>
-<div class="outline-text-4" id="text-1-1-2">
+<div id="outline-container-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> ChannelHandler</h4>
+<div class="outline-text-4" id="text-1-2-2">
 
 <p>在这个connection上面的处理逻辑对象。总的来说有下面两种类型的handler
 </p><ul>
@@ -177,9 +188,9 @@
 
 </div>
 
-<div id="outline-container-1-1-3" class="outline-4">
-<h4 id="sec-1-1-3"><span class="section-number-4">1.1.3</span> ChannelPipeline</h4>
-<div class="outline-text-4" id="text-1-1-3">
+<div id="outline-container-1-2-3" class="outline-4">
+<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> ChannelPipeline</h4>
+<div class="outline-text-4" id="text-1-2-3">
 
 <p>1 Channel  + N ChannelHandler，连接和这个连接上所有的处理逻辑对象。
 所有的Handler组成为了链表，不管是upstream还是downstream都会流过所有的handler.netty框架会判断这个handler是否需要处理某个事件
@@ -188,9 +199,9 @@
 
 </div>
 
-<div id="outline-container-1-1-4" class="outline-4">
-<h4 id="sec-1-1-4"><span class="section-number-4">1.1.4</span> ChannelEvent</h4>
-<div class="outline-text-4" id="text-1-1-4">
+<div id="outline-container-1-2-4" class="outline-4">
+<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> ChannelEvent</h4>
+<div class="outline-text-4" id="text-1-2-4">
 
 <p>连接上所有触发的事件，可以是但是不仅限于下面几种类型
 </p><ul>
@@ -209,9 +220,9 @@
 
 </div>
 
-<div id="outline-container-1-1-5" class="outline-4">
-<h4 id="sec-1-1-5"><span class="section-number-4">1.1.5</span> ChannelBuffer</h4>
-<div class="outline-text-4" id="text-1-1-5">
+<div id="outline-container-1-2-5" class="outline-4">
+<h4 id="sec-1-2-5"><span class="section-number-4">1.2.5</span> ChannelBuffer</h4>
+<div class="outline-text-4" id="text-1-2-5">
 
 <p>这个和Channel倒是没有太大关系，比较偏向buffer的管理，主要针对网络通信这种read/write交互场景进行优化。
 </p>
@@ -220,16 +231,16 @@
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 使用问题</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> 使用问题</h3>
+<div class="outline-text-3" id="text-1-3">
 
 
 </div>
 
-<div id="outline-container-1-2-1" class="outline-4">
-<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> boss/worker executor</h4>
-<div class="outline-text-4" id="text-1-2-1">
+<div id="outline-container-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> boss/worker executor</h4>
+<div class="outline-text-4" id="text-1-3-1">
 
 <p>NioServerSocketChannelFactory构造函数需要指定boss/worker两个executor，有必要解释一下这两个对象的含义。
 </p>
@@ -269,9 +280,9 @@ worker的数量如果没有指定的话，with 2 * the number of available proce
 
 </div>
 
-<div id="outline-container-1-2-2" class="outline-4">
-<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> accept connection exception</h4>
-<div class="outline-text-4" id="text-1-2-2">
+<div id="outline-container-1-3-2" class="outline-4">
+<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> accept connection exception</h4>
+<div class="outline-text-4" id="text-1-3-2">
 
 
 
