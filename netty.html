@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="netty"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-08-16 10:13:20 CST"/>
+<meta name="generated" content="2013-08-16 16:58:34 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -103,11 +103,12 @@
 <li><a href="netty.html#sec-1-2-1">1.2.1 Channel</a></li>
 <li><a href="netty.html#sec-1-2-2">1.2.2 ChannelFactory</a></li>
 <li><a href="netty.html#sec-1-2-3">1.2.3 ChannelHandler</a></li>
-<li><a href="netty.html#sec-1-2-4">1.2.4 ChannelPipeline</a></li>
-<li><a href="netty.html#sec-1-2-5">1.2.5 ChannelPipelineFactory</a></li>
-<li><a href="netty.html#sec-1-2-6">1.2.6 ChannelEvent</a></li>
-<li><a href="netty.html#sec-1-2-7">1.2.7 ChannelBuffer</a></li>
-<li><a href="netty.html#sec-1-2-8">1.2.8 ChannelGroup</a></li>
+<li><a href="netty.html#sec-1-2-4">1.2.4 ChannelHandlerContext</a></li>
+<li><a href="netty.html#sec-1-2-5">1.2.5 ChannelPipeline</a></li>
+<li><a href="netty.html#sec-1-2-6">1.2.6 ChannelPipelineFactory</a></li>
+<li><a href="netty.html#sec-1-2-7">1.2.7 ChannelEvent</a></li>
+<li><a href="netty.html#sec-1-2-8">1.2.8 ChannelBuffer</a></li>
+<li><a href="netty.html#sec-1-2-9">1.2.9 ChannelGroup</a></li>
 </ul>
 </li>
 <li><a href="netty.html#sec-1-3">1.3 使用问题</a>
@@ -130,6 +131,8 @@
 <li>Netty: Home (Main.WebHome) <a href="https://netty.io/">https://netty.io/</a>
 </li>
 <li>The Netty Project 3.x User Guide <a href="http://static.netty.io/3.5/guide/">http://static.netty.io/3.5/guide/</a>
+</li>
+<li>All documentation pages <a href="http://netty.io/wiki/all-documents.html">http://netty.io/wiki/all-documents.html</a>
 </li>
 </ul>
 
@@ -202,21 +205,34 @@
 </div>
 
 <div id="outline-container-1-2-4" class="outline-4">
-<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> ChannelPipeline</h4>
+<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> ChannelHandlerContext</h4>
 <div class="outline-text-4" id="text-1-2-4">
 
-<p>1 Channel  + N ChannelHandler，连接和这个连接上所有的处理逻辑对象。
+<p>这个ChannelHandler对应的context. 实际上是这个context是包含了handler. context内部有prev,next字段能够将pipeline里面的context组成链表。 
 </p>
 <p>
-所有的Handler组成为了链表，不管是upstream还是downstream都会流过所有的handler.netty框架会判断这个handler是否需要处理某个事件
+实际上pipeline是将context组织成为链表结构，如果需要senndUpStream或者是sendDownStream的话，得到对应的context，从中取出handler，然后决定是否需要处理。 
 </p>
 </div>
 
 </div>
 
 <div id="outline-container-1-2-5" class="outline-4">
-<h4 id="sec-1-2-5"><span class="section-number-4">1.2.5</span> ChannelPipelineFactory</h4>
+<h4 id="sec-1-2-5"><span class="section-number-4">1.2.5</span> ChannelPipeline</h4>
 <div class="outline-text-4" id="text-1-2-5">
+
+<p>1 Channel  + N ChannelHandler，连接和这个连接上所有的处理逻辑对象。
+</p>
+<p>
+所有的Handler组成为了链表，不管是upstream还是downstream都会流过所有的handler.netty框架会判断这个handler是否需要处理某个事件。
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-2-6" class="outline-4">
+<h4 id="sec-1-2-6"><span class="section-number-4">1.2.6</span> ChannelPipelineFactory</h4>
+<div class="outline-text-4" id="text-1-2-6">
 
 <p>创建ChannelPipeline，主要是说明需要在这个Channel上面绑定哪些ChannelHandler.
 </p>
@@ -224,9 +240,9 @@
 
 </div>
 
-<div id="outline-container-1-2-6" class="outline-4">
-<h4 id="sec-1-2-6"><span class="section-number-4">1.2.6</span> ChannelEvent</h4>
-<div class="outline-text-4" id="text-1-2-6">
+<div id="outline-container-1-2-7" class="outline-4">
+<h4 id="sec-1-2-7"><span class="section-number-4">1.2.7</span> ChannelEvent</h4>
+<div class="outline-text-4" id="text-1-2-7">
 
 <p>连接上所有触发的事件，可以是但是不仅限于下面几种类型
 </p><ul>
@@ -248,9 +264,9 @@
 
 </div>
 
-<div id="outline-container-1-2-7" class="outline-4">
-<h4 id="sec-1-2-7"><span class="section-number-4">1.2.7</span> ChannelBuffer</h4>
-<div class="outline-text-4" id="text-1-2-7">
+<div id="outline-container-1-2-8" class="outline-4">
+<h4 id="sec-1-2-8"><span class="section-number-4">1.2.8</span> ChannelBuffer</h4>
+<div class="outline-text-4" id="text-1-2-8">
 
 <p>这个和Channel倒是没有太大关系，比较偏向buffer的管理，主要针对网络通信这种read/write交互场景进行优化。
 </p>
@@ -258,9 +274,9 @@
 
 </div>
 
-<div id="outline-container-1-2-8" class="outline-4">
-<h4 id="sec-1-2-8"><span class="section-number-4">1.2.8</span> ChannelGroup</h4>
-<div class="outline-text-4" id="text-1-2-8">
+<div id="outline-container-1-2-9" class="outline-4">
+<h4 id="sec-1-2-9"><span class="section-number-4">1.2.9</span> ChannelGroup</h4>
+<div class="outline-text-4" id="text-1-2-9">
 
 <p>线程安全的Channel集合，如果Channel关闭的话那么会自动从group里面移除，能够对Channel进行批量操作。 
 </p>
