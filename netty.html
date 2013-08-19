@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="netty"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-08-16 16:58:34 CST"/>
+<meta name="generated" content="2013-08-19 20:18:02 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -115,6 +115,7 @@
 <ul>
 <li><a href="netty.html#sec-1-3-1">1.3.1 boss/worker executor</a></li>
 <li><a href="netty.html#sec-1-3-2">1.3.2 accept connection exception</a></li>
+<li><a href="netty.html#sec-1-3-3">1.3.3 control timeout</a></li>
 </ul>
 </li>
 </ul>
@@ -162,6 +163,9 @@
 <div class="outline-text-4" id="text-1-2-1">
 
 <p>可以认为是一个connection，这个connection上面有socket fd可以所以进行读写。
+</p>
+<p>
+<b>TODO(dirlt):只能够控制是否可读而不能够控制是否可写，事实上socket永远是可写的。所以需要非常注意的就是，一旦如果在非IO线程发起写操作的话，那么在IO线程随时都会有writeComplete等事件发生，这点对于顺序的控制至关重要。</b>
 </p>
 </div>
 
@@ -414,7 +418,94 @@ Got this error - Syahreza Pahlevi Ginting
 </p>
 <p>
 <b>NOTE（dirlt）：之后我调整了file limits之后便没有遇到这个问题了，所以可能确实和文件句柄数目限制有关</b>
-</p></div>
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-3-3" class="outline-4">
+<h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> control timeout</h4>
+<div class="outline-text-4" id="text-1-3-3">
+
+<p>网络上并没有太多如何关于netty读写超时信息的控制。下面是一篇相对来说比较有启发性的回答：
+</p><ul>
+<li>Setting socket timeout on netty channel - Stack Overflow : <a href="http://stackoverflow.com/questions/3726696/setting-socket-timeout-on-netty-channel">http://stackoverflow.com/questions/3726696/setting-socket-timeout-on-netty-channel</a>
+</li>
+</ul>
+
+<p>但是这种方式在现实中意义却不大。分析ReadTimeoutHandler代码实现会发现， <b>我们没有办法将超时计算reset, 也没有办法将超时计算停止。而且一旦完成一次timeout计算之后，又会和触发下一轮的timeout计算。</b> 对于WriteTimeoutHandler也是如此。
+</p>
+<p>
+事实上我们是可以通过使用ReadTimeoutHandler/WriteTimeoutHandler来完成读写超时控制的，只不过不能够像在SO回答的那样写在PipelineFactory里面，而必须动态创建，而Pipeline和ChannelHandlerContext的设计为这种方法提供了可能。
+</p>
+<p>
+以ReadTimeoutHandler为例
+</p><ul>
+<li>在发起读之前，我们可以通过channel.setReadable(false)来关闭读取
+</li>
+<li>如果需要发起读的话，假设我们处理逻辑的ChannelHandlerContext为ctx
+<ul>
+<li>首先在ctx之前创建一个ReadTimeoutHandler ctx.getPipeline().addBefore(ctx.getName(),"rto", new ReadTimeoutHandler(timer, 10));
+</li>
+<li>然后允许channel读数据 channel.setReadable(true)
+</li>
+</ul>
+
+</li>
+<li>如果10s之内没有数据的话，那么会触发一个ReadTimeoutException, 这样我们可以做后续处理。 <b>NOTE(dirlt):这个ReadTimeoutException是timer内部线程触发的，但是无须担心多线程问题，因为timer会将这个Exception事件交给IO线程来触发</b>
+</li>
+</ul>
+
+
+
+
+<pre class="src src-Java">private void fireReadTimedOut(final ChannelHandlerContext ctx) throws Exception {
+            ctx.getPipeline().execute(new Runnable() {
+
+                public void run() {
+                    try {
+                        readTimedOut(ctx);
+                    } catch (Throwable t) {
+                        fireExceptionCaught(ctx, t);
+                    }
+                }
+            });
+        }
+
+@Override
+    public ChannelFuture execute(ChannelPipeline pipeline, final Runnable task) {
+        Channel ch = pipeline.getChannel();
+        if (ch instanceof AbstractNioChannel&lt;?&gt;) {
+            AbstractNioChannel&lt;?&gt; channel = (AbstractNioChannel&lt;?&gt;) ch;
+            ChannelRunnableWrapper wrapper = new ChannelRunnableWrapper(pipeline.getChannel(), task);
+            channel.worker.executeInIoThread(wrapper);
+            return wrapper;
+        }
+        return super.execute(pipeline, task);
+    }
+</pre>
+
+<ul>
+<li>如果在10s内有数据被处理的话，那么就会调用messageReceived回调，在回调里面我们可以删除这个handler ctx.getPipeline().remove("rto"); 这样便不会触发ReadTimeoutException
+</li>
+</ul>
+
+
+
+<p>
+对WriteTimeoutHandler同理，因为我们不能够setWritable，所以必须在write之前就安装好handler
+</p><ul>
+<li>ctx.getPipeline().addBefore(ctx.getName(),"wto",new WriteTimeoutHandler(timer,10));
+</li>
+<li>ctx.getChannel.write()
+</li>
+<li>如果在10s内没有写完的话，那么就会触发一个WriteTimeoutException
+</li>
+<li>如果在10s内写完的话，那么就会触发writeComplete回调，在回调里面我们可以删除这个handler ctx.getPipeline().remove("wto");
+</li>
+</ul>
+
+</div>
 </div>
 </div>
 </div>
