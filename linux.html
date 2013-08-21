@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="linux"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-08-20 21:44:53 CST"/>
+<meta name="generated" content="2013-08-21 14:22:22 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -3648,60 +3648,68 @@ httperf有几种不同的workload方式：
 通常我们请求一个页面里面都会嵌入很多objects包括js或者是css等。我们一次浏览称为session,而session里面会有很多请求。
 这些请求通常是，首先等待第一个请求处理完成(浏览器解析页面)，然后同时发起其他请求。
 </p>
+
+
+
+<pre class="example">httperf --num-calls=10 --num-conns=100 --http-version=1.1 --method=GET --rate=10 --timeout=2.0 --server=dp5 --
+port=12347 --uri="/tell?reqid=3&amp;account=dirlt&amp;timeout=1000&amp;reqtype=geographic&amp;imei=123"   
+</pre>
+
+
 <p>
-下面是每个参数含义
+常用选项
 </p><ul>
-<li>&ndash;add-header=S 在http里面添加header. 比如&ndash;add-header="Referer: foo\nAuth: Secret\n".允许使用转义字符。
+<li>&ndash;add-header=S 在http里面添加header.比如&ndash;add-header="Referer: foo\nAuth: Secret\n".允许使用转义字符。
 </li>
-<li>&ndash;burst-length=N 每个burst包含N个calls.
+<li>&ndash;burst-length=N 每个burst包含N个calls. 这个参数的意思在不同的workload下面含义不同。
 </li>
 <li>&ndash;no-host-hdr 在header不带上Host字段
 </li>
-<li>&ndash;client=I/N 指定我们模拟实际有N个clients而我们作为第I个clients情况。因为一些参数会根据clients的特征不同生成不同的workload.如果是单机情况的话那么就是0/1
+<li>&ndash;client=I/N 指定我们模拟实际有N个clients而我们作为第I个clients情况。因为一些参数(&ndash;wset)会根据clients的特征不同生成不同的workload.如果是单机情况的话那么就是0/1
 </li>
 <li>&ndash;close-with-reset 不通过正常关闭流程而是直接RST分节
 </li>
-<li>&mdash;debug=N 调试级别
+<li>-d/&ndash;debug=N 调试级别
 </li>
 <li>&ndash;failure-status=N 如果http coder=N的话那么就认为失败
 </li>
-<li>&ndash;help
+<li>-h/&ndash;help 帮助信息
 </li>
 <li>&ndash;hog 尽可能使用更多的TCP端口。在压力测试下通常开启
 </li>
-<li>&ndash;http-version=S 指定http协议版本
+<li>&ndash;http-version=S 指定http协议版本(1.0/1.1)
 </li>
-<li>&ndash;max-conections=N 在一个session上最多建立N个连接。(session?)
+<li>&ndash;max-conections=N SO模式下有效。在一个session上最多建立N个连接，配合&ndash;wsess和&ndash;wsesslog使用
 </li>
-<li>&ndash;max-piped-calls=N 在一个连接上最多发起N个pipelined calls.(非阻塞上write多次然后read多次)
+<li>&ndash;max-piped-calls=N SO模式下有效。在一个连接上最多发起N个pipelined calls.(非阻塞上write多次然后read多次) 配合&ndash;wsess和&ndash;wsesslog使用
 </li>
-<li>&ndash;method=S 指定http请求方法
+<li>&ndash;method=S 指定http请求方法，GET, HEAD, PUT, POST
 </li>
-<li>&ndash;num-calls=N RO模式下有效。每个connection上发起N次calls.如果如果burst-length=B的话那么，一次发起B个pipelined calls.总共发起N/B个bursts.
+<li>&ndash;num-calls=N RO模式下有效。每个connection上发起N次calls.如果指定burst-length=B的话那么，一次发起B个pipelined calls.总共发起N/B个bursts.
 </li>
 <li>&ndash;num-conns=N RO模式下有效。指定创建多少个链接。对于一个测试来说的话，必须等待到N个connections完成或者是失败。失败定义是在连接上没有任何活动超过&ndash;timeout或者是&ndash;think-timeout.
 </li>
-<li>&ndash;period=[D]T1[,T2] 各个连接或者是session之间创建的时间间隔，包括固定间隔，泊松分布以及一致分布。&ndash;rate只是&ndash;period的简化用法，作为固定间隔使用。
+<li>&ndash;period=[D]T1[,T2] 各个连接或者是session之间创建的时间间隔，包括固定间隔，泊松分布以及一致分布。&ndash;rate只是&ndash;period的简化用法，作为固定间隔使用。默认的话是创建链接，除非使用选项&ndash;wsess或者是&ndash;wsesslog
 </li>
-<li>&ndash;port=N webserver服务端口
+<li>&ndash;port=N webserver服务端口，默认是80
 </li>
 <li>&ndash;print-reply[=[header|body]] 打印响应
 </li>
 <li>&ndash;print-request[=[header|body]] 打印请求
 </li>
-<li>&ndash;rate=X 每秒创建多少个链接或者是session.在每秒内链接或者是session都是均匀创建。如果==0的话表示所有连接/session都是顺序创建(等待前面一个链接/session完成之后才创建下一个).
+<li>&ndash;rate=X 每次创建多少个链接或者是session，内部都是均匀创建的。如果==0的话表示所有连接/session都是顺序创建(等待前面一个链接/session完成之后才创建下一个). 默认的话是创建链接，除非使用选项&ndash;wsess或者是&ndash;wsesslog
 </li>
-<li>&ndash;recv-buffer=N 接收缓冲区大小
+<li>&ndash;recv-buffer=N 接收缓冲区大小，默认是16KB
 </li>
-<li>&ndash;retry-on-failure 失败的话会继续重试
+<li>&ndash;retry-on-failure 失败的话会继续重试。这个选项只是下SO工作方式下适用。
 </li>
-<li>&ndash;send-buffer=N 发送缓冲区大小
+<li>&ndash;send-buffer=N 发送缓冲区大小，默认是4KB
 </li>
-<li>&ndash;server=S webserver服务地址
+<li>&ndash;server=S webserver服务地址，默认是localhost
 </li>
-<li>&ndash;server=name=S 设置header的Host字段
+<li>&ndash;server=name=S 设置header的Host字段，默认是httperf
 </li>
-<li>&ndash;session-cookie ???
+<li>&ndash;session-cookie SO模式下有效。请求服务器如果返回cookie的话，那么这个session上面后续连接都会带上相同的cookie. 如果server下次返回不同的cookie的话，那么原来的cookie会覆盖并且打印debug信息。也就是说后续请求带上的第二个cookie而不是第一个cookie.
 </li>
 <li>&ndash;ssl 使用SSL进行通信
 </li>
@@ -3709,30 +3717,28 @@ httperf有几种不同的workload方式：
 </li>
 <li>&ndash;ssl-no-reuse SSL相关 TODO(dirlt):
 </li>
-<li>&ndash;think-timeout=X 这个主要是为了解决动态页面。如果是静态页面可以直接=0.这个超时主要是为了考虑动态页面生成时间。
+<li>&ndash;think-timeout=X 这个超时时间会叠加到&ndash;timeout选项指定的超时时间上。选项主要是为了解决动态页面。如果是静态页面可以直接=0.
 </li>
-<li>&ndash;timeout=X 超时时间。默认无限。
+<li>&ndash;timeout=X 超时时间，单位是second，可以为浮点数。超时时间包括连接建立和读写时间。如果超时的话那么关闭连接或者是session，client-timeo+=1
 </li>
-<li>&ndash;uri=S 请求URI.比如&ndash;uri=/foreground/all_stars
+<li>&ndash;uri=S 请求URI.比如&ndash;uri=/foreground/all_stars 可以通过&ndash;wset来以这个参数内容为前缀拼接出uri.
 </li>
-<li>&ndash;verbose
+<li>-V/&ndash;verbose
 </li>
-<li>&ndash;wlog=B,F 允许从文件中读取访问的URI.其中B表示是否读取，F表示要读取的文件。
+<li>&ndash;wlog=B,F 允许从文件中读取访问的URI.其中B表示是否重复读取，F表示要读取的文件。
 </li>
 <li>&ndash;wsess=N1,N2,X 是用session模式测试。发起N1个session，一个session内部会调用N2次calls.calls被聚合称为burst.各个burst之间等待X秒(这里称为user-think time.还是很贴切的。这个就好比用户浏览一次页面之后，看一段时间，然后访问下一个页面).通过burst-length来控制一次burst中间存在多少个calls.工作场景是首先发起一个calls,然后将其余calls发送。定义session成功或者是失败，是要求任意一个calls不能超过超时时间。
 </li>
-<li>&ndash;wsesslog=N,X,F 类似于&ndash;wess选项，但是关于请求以及各种参数可以从文件读取。N表示发起多少个session,X表示user-think time.F就是提供其他内容的文件。
+<li>&ndash;wsesslog=N,X,F 类似于&ndash;wess选项，但是关于请求以及各种参数可以从文件读取。N表示发起多少个session,X表示user-think time.F就是提供其他内容的文件。这个选项和&ndash;wlog非常类似。
 </li>
-<li>&ndash;wset=N,X 生成URI用来访问。其中X=0.25的话表示每次生成的URI都会访问4次。N表示生成多少个页面。假设N=100的话，那么从[0,100]，对于每个数字补齐到N-1的数字位，比如9就是09.然后根据每个数字分隔形成0/9.如果URI为x作为前缀，那么就是x/0/9.html.
+<li>&ndash;wset=N,X 生成URI用来访问。其中X表示多少概率会访问新的URI，比如X=0.25的话表示每次生成的URI平均都会访问4次。N表示生成多少个页面。假设N=100的话，那么从[0,100]，对于每个数字补齐到N-1的数字位，比如9就是09.然后根据每个数字分隔形成0/9.如果URI为x作为前缀，那么就是x/0/9.html.
 </li>
 </ul>
 
-
-<p>
-NOTE(dirlt):不过httperf采用select模型，导致最大连接数存在上限。
+<p>NOTE(dirlt):不过httperf采用select模型，导致最大连接数存在上限。
 </p>
 <p>
-然后来看看具体结果
+结果分析
 </p>
 
 
@@ -4028,6 +4034,16 @@ TODO(dirlt):后续可能需要学习如何使用autobench分布式测试，因�
 <li>-v &ndash;verbose
 </li>
 <li>-z &ndash;compress
+</li>
+</ul>
+
+
+<p>
+常用命令：
+</p><ul>
+<li>同步目录 rsync -avrz <i>dir</i> user@host:/dir/ <b>NOTE(dirlt):注意目录后面需要加上/</b>
+</li>
+<li>同步文件 rysnc -vz /dir/file1 user@host:/dir/file
 </li>
 </ul>
 
