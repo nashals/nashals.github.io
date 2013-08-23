@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="computational-advertising"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-08-13 19:44:11 CST"/>
+<meta name="generated" content="2013-08-23 15:38:07 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -178,7 +178,45 @@
 <li><a href="computational-advertising.html#sec-1-7-6">1.7.6 搜索引擎营销</a></li>
 </ul>
 </li>
-<li><a href="computational-advertising.html#sec-1-8">1.8 广告交易市场</a></li>
+<li><a href="computational-advertising.html#sec-1-8">1.8 广告交易市场</a>
+<ul>
+<li><a href="computational-advertising.html#sec-1-8-1">1.8.1 广告交易平台</a>
+<ul>
+<li><a href="computational-advertising.html#sec-1-8-1-1">1.8.1.1 实时竞价</a></li>
+<li><a href="computational-advertising.html#sec-1-8-1-2">1.8.1.2 Cookie Mapping</a></li>
+<li><a href="computational-advertising.html#sec-1-8-1-3">1.8.1.3 询价优化</a></li>
+</ul>
+</li>
+<li><a href="computational-advertising.html#sec-1-8-2">1.8.2 需求方平台</a>
+<ul>
+<li><a href="computational-advertising.html#sec-1-8-2-1">1.8.2.1 重定向</a></li>
+</ul>
+</li>
+<li><a href="computational-advertising.html#sec-1-8-3">1.8.3 广告程序交易谱系</a></li>
+<li><a href="computational-advertising.html#sec-1-8-4">1.8.4 供给方平台</a></li>
+</ul>
+</li>
+<li><a href="computational-advertising.html#sec-1-9">1.9 广告相关技术</a>
+<ul>
+<li><a href="computational-advertising.html#sec-1-9-1">1.9.1 创意优化</a></li>
+<li><a href="computational-advertising.html#sec-1-9-2">1.9.2 流量保护和效果监测</a>
+<ul>
+<li><a href="computational-advertising.html#sec-1-9-2-1">1.9.2.1 爬虫流量去除</a></li>
+<li><a href="computational-advertising.html#sec-1-9-2-2">1.9.2.2 反作弊</a></li>
+<li><a href="computational-advertising.html#sec-1-9-2-3">1.9.2.3 效果监测</a></li>
+<li><a href="computational-advertising.html#sec-1-9-2-4">1.9.2.4 广告安全</a></li>
+</ul>
+</li>
+<li><a href="computational-advertising.html#sec-1-9-3">1.9.3 隐私保护和数据安全</a>
+<ul>
+<li><a href="computational-advertising.html#sec-1-9-3-1">1.9.3.1 用户身份标识</a></li>
+<li><a href="computational-advertising.html#sec-1-9-3-2">1.9.3.2 去匿名化技术及应用</a></li>
+<li><a href="computational-advertising.html#sec-1-9-3-3">1.9.3.3 RTB中的数据安全问题</a></li>
+</ul>
+</li>
+<li><a href="computational-advertising.html#sec-1-9-4">1.9.4 SoLoMo时代的广告</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -1399,6 +1437,411 @@ CPT售卖还有一种变形的形式,即按照轮播售卖。
 <h3 id="sec-1-8"><span class="section-number-3">1.8</span> 广告交易市场</h3>
 <div class="outline-text-3" id="text-1-8">
 
+<p>提供广告主自行选择流量和在每次展示上独立定价的功能。这样的功能，必然要求竞价这一过程在每次展示时实时进行，也就是实时竞价(Real Time Bidding, RTB)。RTB的产生，使得广告市场向着透明的比价平台的方向发展，这样的平台就是广告交易平台(Ad Exchange)，其主要特征即是用RTB的方式实时得到广告候选，并按照其出价简单完成投放决策。与广告交易平台对应的采买方，我们称为需求方平台(Demand Side Platform, DSP)。由于实时竞价的功能需求，广告交易市场解决供给方和需求方用户身份对应的问题，这需要用到cookie-mapping的技术。 
+</p>
+<p>
+从需求方来看，定制化的用户划分能力使得广告主可以象优化自己的推荐系统那样优化广告购买，唯一的区别是这个推荐系统是放在站外的。 <b>出价需求的存在和广告主预算范围内的套利，要求DSP具备点击率预测、点击价值估计、流量预测、站外推荐等多方面的运算能力。</b> 除了站外推荐，广告市场新的发展趋势是根据广告主提供的种子用户，利用海量的媒体数据为广告主找到行为相似的潜在用户。
+</p>
+<p>
+在需求方的利益得到了充分的保证以后，媒体的变现手段也发生了相应的变化。到现在为止，媒体至少有四中常用的广告变现选择：
+</p><ul>
+<li>担保式投送的合约售卖方式、
+</li>
+<li>自营广告网络、
+</li>
+<li>托管给其他广告网络、
+</li>
+<li>通过RTB变现。
+</li>
+</ul>
+
+
+<p>
+当在线广告市场进入到这个阶段以后，程序交易(Programmatic Trade)的方式已经成为举足轻重的力量，它使得整个在线广告市场越来越向着数据驱动、计算导向的方式前进。
+</p>
+
+</div>
+
+<div id="outline-container-1-8-1" class="outline-4">
+<h4 id="sec-1-8-1"><span class="section-number-4">1.8.1</span> 广告交易平台</h4>
+<div class="outline-text-4" id="text-1-8-1">
+
+<p>Ad Exchange的骨干架构：
+</p><ul>
+<li>当用户访问媒体页面，
+</li>
+<li>将广告请求发到Ad Exchange后，
+</li>
+<li>Ad Exchange向各个DSP发起询价并完成决策，
+</li>
+<li>然后将胜出的DSP返回给媒体页面进行广告投放。
+</li>
+</ul>
+
+<p>从核心概念上看，Ad Exchange既不需要自己的广告索引，也不需要eCPM估计，因而可以用非常简单清晰的架构实现。但是这仅仅是概念，实际产品中，为了支持广告主在不需要定制化用户划分时更方便的图形界面采买，也需要广告索引；而为了实现询价优化(后文有具体介绍)，一定的的eCPM估计也是不可少的。 <b>NOTE（dirlt）：如果DSP数量众多并且不进行过滤的话，那么在请求上很可能超时</b>
+</p>
+
+</div>
+
+<div id="outline-container-1-8-1-1" class="outline-5">
+<h5 id="sec-1-8-1-1"><span class="section-number-5">1.8.1.1</span> 实时竞价</h5>
+<div class="outline-text-5" id="text-1-8-1-1">
+
+<p>实时竞价的的整个接口可以分成两部分：线下进行的将供给方与需求方用户ID对应起来的cookie-mapping过程，和线上广告请求到来时的竞价和投放过程，如下图所示。 
+</p>
+<p>
+<img src="images/rtb-flow.png"  alt="./images/rtb-flow.png" />
+</p>
+<p>
+身份对应(Cookie Mapping): 在RTB应用中，Cookie Mapping一般是由DSP在广告主网站上发起， <b>这样做的原因是一般情况下DSP负责的是加工广告主定制受众标签，因而不需要对所有用户都建立对应关系。</b> 这一过程又可以细分为：
+</p><ol>
+<li>从广告主网站向DSP服务器发起cookie mapping请求，
+</li>
+<li>DSP与Ad Exchange服务器之间通信完成cookie mapping
+</li>
+</ol>
+
+
+<p>
+广告请求(Ad Call): RTB的广告请求部分可以分为三个步骤。
+</p><ol>
+<li>当用户接触到媒体网站的广告位时，前端向Ad Exchange发起广告请求；
+</li>
+<li>Ad Exchange向各DSP传送URL和本域名cookie，发起询价请求。 <b>TODO（dirlt）：这个cookie是媒体网站的cookie?</b>
+</li>
+<li>DSP根据预先做好的cookie mapping查出对应的已方cookie，决策是否参与竞价，如果参与，则返回自己的出价出价。在等待一个固定的时间片后，Ad Exchange选出出价最高的DSP返回给媒体网站；
+</li>
+<li>媒体网站从胜出的DSP拿到广告创意并展示。
+</li>
+</ol>
+
+<p>其中3，4两步可以合并为一步，即DSP同时返回出价和广告创意地址，由Ad Exchange返回给媒体。这样做的好处是减少了一次服务器往返，用户看到的广告延迟也会减少，缺点是Ad Exchange可以获得DSP某个广告商的相关受众，因而存在信息泄露风险，不太符合Ad Exchange中立市场的地位。
+</p>
+<p>
+实际竞价的交易方式，虽然给予了广告主最大的流量选择空间，也对系统提出了更高的要求，并且带来了下面的一些实际的问题：
+</p><ol>
+<li>每次展示都有Ad Exchange服务器与多个DSP服务器的参与，这使得服务器与带宽成本大大增加；
+</li>
+<li>在询价过程中，Ad Exchange要等待一个约定好的时间片(一般情况下为100ms)，这使得用户看到的广告延迟增加，对CTR有负面影响；
+</li>
+<li>原理上DSP可以以极低的出价参与竞价，这样虽不能获得流量，却可以低成本得到在媒体网站上的用户行为数据，这里存在着潜在的信息泄露风险。
+</li>
+</ol>
+
+
+<p>
+RTB的接口有两个对接方：在Ad Exchange方实现的部分，我们称为RTBD(RTB for Demand)；在DSP方实现的部分，我们称为RTBS(RTB for Supply)。
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-8-1-2" class="outline-5">
+<h5 id="sec-1-8-1-2"><span class="section-number-5">1.8.1.2</span> Cookie Mapping</h5>
+<div class="outline-text-5" id="text-1-8-1-2">
+
+<p><b>NOTE(dirlt):感觉这个部分不能够过于想多，理解大致思想即可。因为事实上没有办法知道DMP，DSP，以及广告主之间是什么关系，具体问题具体分析</b>
+</p>
+<p>
+Cookie mapping的情况虽然比较复杂，我们可以重点关注三个问题：由谁发起？在哪里发起？谁保存映射表？最典型的情景有两种：一是涉及到两个域名，即在一个域名的服务上向另一个域名发动的cookie mapping；二是涉及到三个域名，即在一个第三方域名页面上发动的其他两个域名间的cookie mapping。
+</p>
+<p>
+<img src="images/cookie-mapping-2.png"  alt="./images/cookie-mapping-2.png" />
+</p>
+<p>
+涉及到两个域名的cookie mapping，典型的例子是媒体与DMP之间的身份对应问题。如上图所示，这一过程有5个步骤：
+</p><ol>
+<li>用户到达媒体页面；
+</li>
+<li>向媒体的cookie mapping 服务请求一段负责此功能的JS代码；
+</li>
+<li>媒体的cookie mapping服务返回该段JS 代码；
+</li>
+<li>该JS代码判断需要mapping的话，向DMP发起cookie mapping请求，并传送两个参数：DMP的标识，以及媒体方的cookie；
+</li>
+<li>DMP返回一个1×1的beacon，并记录下媒体方cookie与己方cookie的对应关系。
+</li>
+</ol>
+
+
+<p>
+<img src="images/cookie-mapping-3.png"  alt="./images/cookie-mapping-3.png" />
+</p>
+<p>
+涉及到三个域名的cookie mapping，典型的例子是DSP与Ad Exchange之间的身份对应问题。如上图所示，这一过程有6个步骤：
+</p><ol>
+<li>用户访问广告主页面时；
+</li>
+<li>选择性加载一个DSP域名下的iframe；
+</li>
+<li>DSP判断需要mapping的话，返回包括多个beacon的动态html，此处多个beacon的目的是为了同时与多个Ad Exchange交换cookie；
+</li>
+<li>通过其中的某个beacon，向对应的Ad Exchange发送cookie-mapping请求，并带有Ad Exchange标识、DSP标识和DSP cookie三个参数；
+</li>
+<li>Ad Exchange通过302重定向向DSP返回Ad Exchange 标识以及其域名下的cookie；
+</li>
+<li>DSP返回一个1×1的beacon，并记录下Ad Exchange方cookie与己方cookie的对应关系。
+</li>
+</ol>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-8-1-3" class="outline-5">
+<h5 id="sec-1-8-1-3"><span class="section-number-5">1.8.1.3</span> 询价优化</h5>
+<div class="outline-text-5" id="text-1-8-1-3">
+
+<p>Ad Echange需要解决的一个关键问题，就是如何在带宽或服务成本的约束下，优化整体市场的eCPM水平。要考虑带宽或服务成本的约束，显然就需要对每次展示中询价的DSP数目做精简，因此，这个问题也称为询价优化(Call Out Optimization)。
+</p>
+<p>
+考虑到DSP方有相当一部分是按照广告主定制标签来采买流量，因此，这种DSP一般来说只会在自己感兴趣的人群，也就是cookie-mapping映射过的用户群上出价。显然，Ad Exchange是可以先验地知道这一用户群的，因此，对这类DSP中的某个，如果当前Ad Call到达的用户cookie如果没有与其映射过，那么就不需要向该DSP询价。一般来说，这样的规则可以显著降低带宽需求。不过，也有很多的DSP并不是仅仅在广告主用户集合上出价，或者当这样做仍然不能满足带宽成本的要求时，就需要进一步的优化了。
+</p>
+<p>
+<b>NOTE(dirlt):这点和后面是配合上的，DSP可以在广告主网站上部署DSP域名代码，对用户行为进行离线分析和加工。标记用户主要是DSP域名的cookie. 如果Ad Exchange如果映射到DSP域名cookie不存在的话，那么可能不就需要向这个DSP做询价</b> 
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-8-2" class="outline-4">
+<h4 id="sec-1-8-2"><span class="section-number-4">1.8.2</span> 需求方平台</h4>
+<div class="outline-text-4" id="text-1-8-2">
+
+<p>DSP的系统广告投放的决策流程为：DSP服务器通过RTBS接口拿到广告请求，然后经过与广告网络类似的决策步骤，包括检索和eCPM排序，找到价值最高的广告，并将报价返回给Ad Exchange。与广告网络相比，DSP的广告决策过程有一些难点：一是在eCPM估计时，除了估计CTR，还要估计点击价值，并且由于出价的要求，这一估计要尽可能准确；二是由于DSP是完全面向广告主的产品，广告主量的需求也需要满足，因此还要考虑在线分配的策略。
+</p>
+<p>
+DSP与其它广告产品的相比，多了定制化用户划分功能，即图中的Customized Audience Segmentation部分。这部分通常的方式是在广告主网站上布DSP域名的代码，收集到用户行为并进行离线加工分析，再将加工出的标签用于广告投放。
+</p>
+
+</div>
+
+<div id="outline-container-1-8-2-1" class="outline-5">
+<h5 id="sec-1-8-2-1"><span class="section-number-5">1.8.2.1</span> 重定向</h5>
+<div class="outline-text-5" id="text-1-8-2-1">
+
+<p>重定向(Retargeting)是广告中最早产生，也最广泛使用的一种定制化标签。重定向的概念很简单，即把那些曾经对广告主服务发生明确兴趣的用户找出来，再次向他们投放该广告主的广告。在不同的广告类型上，重定向主要有两种的目的：用于品牌广告。当用户已经选择过某品牌的服务或产品后，如果在比较高质量的媒体上看到该品牌的广告，他会进一步肯定自己决策的正确性，从而对该品牌的认知度也大大加强。这种用途下，应当以宣传品牌而不是具体产品为主要诉求。用于效果广告。当用户曾经考虑过某种产品，但没有完成最终转化，通过在线广告将他找回，点击率和转化率都会明显高于平均水平。如果用户已经选择了该产品，那么可以利用推荐技术为他推送相关的产品广告。
+</p>
+<p>
+重定向可以从信息来源和使用信息的精细程度上区分为下面三种类型：
+</p><ul>
+<li>网站重定向(Site Retargeting)，即将在一段时间内到达过广告主网站的用户群作为重定向集合。在媒体上采买这种重定向流量时，能够得到的量有两个主要影响因素，一是广告主网站本身的独立访客量水平，二是这些访客与媒体的重合程度。前一个因素没有办法通过广告手段扩大，而后一个因素则要求尽可能多地通过各种渠道采买重定向流量。
+<ul>
+<li>要进行网站重定向，需要一个接口将访问广告主网站的用户集合传送给DSP。
+</li>
+<li>这个接口也有两种主流的实现方式
+<ul>
+<li>第一种是直接在广告主的网站上布设DSP域名的JS代码或者外链图片(也可以是不可见的beacon)，这样DSP就可以直接收集到访客的记录，再自行加工分析即可；
+</li>
+<li>第二种方式，是用线下数据接口的方式，定期将广告主或者其委托的DMP收集到的访客集合批处理式地传送给DSP。当然，前提是DSP与广告主或其DMP之间建立起了cookie-mapping的机制。
+</li>
+<li>前者能够实时地获取访客信息，但是需要一段时间的数据积累才能覆盖广告主用户集合的大部分，而且在多个DSP同时服务于一家广告主时需要加多段跟踪代码，有降低页面响应速度的风险；
+</li>
+<li>后者虽然可以迅速得到访客集合，并且避免了页面因多组跟踪代码而变得太重，却在数据更新时有一定的延迟，并且对广告主方的技术要求较高(跟DMP对接时例外)。
+</li>
+</ul>
+
+</li>
+</ul>
+
+</li>
+<li>个性化重定向(Personalized Retargeting)。对重定向流量进行深入加工，按照品类和购买阶段等因素进行创意上的深度个性化，就是个性化重定向。具体来说，个性化重定向可以在两个方面做深入挖掘：
+<ul>
+<li>一是对于处于不同购买阶段的用户，采用合适的创意推动他尽快完成转化行为，这里的购买阶段，包括浏览、搜索、加入购物车等；
+</li>
+<li>二是对于已经有过一些购买记录的用户，使用推荐技术向其展示相关的商品以提升二次购买率。
+</li>
+<li>从这两层意义上看，这一方法与推荐有非常多的共通之处：以广告产品的视角看，我们称之为个性化重定向；而从推荐产品的视角看，则可以认为是一种站外推荐(Off-site Recommendation)，换句话说，是将原来广告主网站上的推荐模块搬到了站外。
+</li>
+<li><b>TODO(dirlt):感觉和网站重定向差别不是很大，而且注意这里的推荐系统是在DSP或者是站外而不是广告主网站完成的。</b>
+</li>
+<li><b>TODO(dirlt):如果广告主真的有自己的广告系统或者是推荐系统的话，感觉这个东西真的不太可能做在DSP这个外部系统里面</b>
+</li>
+</ul>
+
+</li>
+<li>搜索重定向(Search Retargeting)，即将搜索过跟广告主直接相关的关键词的用户群作为重定向集合。这样的方式也可以获得很精准的用户群，其绝对量也要高于网站重定向，不过对于非主要搜索引擎提供上来说，依靠搜索重定向能覆盖的人群比例未必会高于网站重定向。
+</li>
+</ul>
+
+
+<p>
+个性化重定向其核心支持技术，主要有以下几个关键：
+</p><ul>
+<li>一、动态创意。个性化重定向的核心，是在某个用户到来时，实时决定给他展示什么商品，以及用什么方式展示。以及用什么方式展示。由于广告主的商品数量往往相当大，因此显然不可能为所有的商品预先准备好创意，而如果考虑到同时推荐若干商品的组合关系，就更加不能采用静态的创意方式。
+</li>
+<li>二、推荐技术。由于可以把个性化重定向因而看作是站外推荐，显然推荐技术也是必要的。不过与站内推荐相比，这样的推荐还是有一些不同之处： <b>首先站内商品页上的推荐主要根据上下文信息来进行，而站外推荐则是根据用户信息来进行</b> ；另外， <b>站内推荐由于是发生在某个特定的购买环节上的，因而往往不需要根据用户的购买阶段来调整创意，而站外推荐这么做则有非常大的必要。</b>
+</li>
+<li>三、广告主商品库存实时接口。对于站外的商品推荐，如果用户在点击某单品到达广告主网站时，发现该商品已经售完或下架，或者是价格与创意上的宣传不符，会对该广告主的品牌形象有较严重的伤害。为了尽可能避免这种情况的发生，个性化重定向的技术提供者往往需要统一提供一个准实时的商品库接口，使得广告主可以比较简单地将自己的库存和价格信息及时地同步过来。
+</li>
+</ul>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-8-3" class="outline-4">
+<h4 id="sec-1-8-3"><span class="section-number-4">1.8.3</span> 广告程序交易谱系</h4>
+<div class="outline-text-4" id="text-1-8-3">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-8-4" class="outline-4">
+<h4 id="sec-1-8-4"><span class="section-number-4">1.8.4</span> 供给方平台</h4>
+<div class="outline-text-4" id="text-1-8-4">
+
+<p>对于媒体而言，无需把全部流量的变现都押在一种交易方式上：既可以通过直接销售来高溢价地售卖品牌广告，也可以灵活地综合使用各种程序交易方式以追求更高的eCPM。媒体的统一变现平台需要这样的逻辑：
+</p><ol>
+<li>当广告请求到达时，首先检查优质销售方式有无需求，包括CPT和GD的合约，如有需求，按照优先级即在线分配的方案完成投放；
+</li>
+<li>如果没有优质销售合约，则从自运营广告主库中中找出eCPM较高的，并估算可供调用的若干Network的期望eCPM，在这两者之间找到较高的，以此为低价通过RTBD接口再向接入的各DSP实时询价。
+</li>
+</ol>
+
+<p>可以看出，在这样的逻辑中，广告请求导师是被分配到自运营广告库，还是其他Network，或者是DSP，是根据他们的收益在线动态决定的，这样的方案称为动态分配(Dynamic Allocation)。这样的统一接入各种广告需求以优化媒体广告变现能力的技术，我们称为收益管理(Yield Management)，对应的产品形态，就叫做供给方平台(Supply Side Platform, SSP)。
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-9" class="outline-3">
+<h3 id="sec-1-9"><span class="section-number-3">1.9</span> 广告相关技术</h3>
+<div class="outline-text-3" id="text-1-9">
+
+<ul>
+<li>前面谈到的广告效果优化思路，基本上集中在受众定向的角度，而在实际的在线广告中，还有一项对广告效果影响巨大的技术，那就是 <b>创意优化</b> 。创意优化与受众优化性质有所不同，因为创意的改变实际上也改变了广告要表达的诉求。如何在基本的宣传诉求相对稳定的前提下，结合受众定向对创意做调整，这是广告系统不能不考虑的重要问题。
+</li>
+<li>与广告效果的度量相关，有两个问题需要介绍，一是如何在流量中去除那些恶意的和非主动的流量，这部分我们称为 <b>流量保护</b> 。二是需求方站在自己的利益角度对广告效果的核实性度量，这称为 <b>广告监测</b> 。
+</li>
+<li>受众定向和程序交易广告的另一个重要影响，是用户的行为数据存在在不同的广告产品之家按泄露的可能。因此， <b>隐私保护</b> 技术与其对立面，即去匿名化技术，从正面或者负面的角度，都与在线广告有着密切的联系。
+</li>
+<li>随着社交(Social)、本地(Local)、移动(Mobile)等因素在互联网业务中快速的发展，所谓“SoLoMo”的趋势也越来越显著。在这些新趋势下的广告系统，虽然业务逻辑的本质没有根本变化，但也带来了一些崭新的产品形态和技术挑战。
+</li>
+</ul>
+
+
+
+</div>
+
+<div id="outline-container-1-9-1" class="outline-4">
+<h4 id="sec-1-9-1"><span class="section-number-4">1.9.1</span> 创意优化</h4>
+<div class="outline-text-4" id="text-1-9-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-9-2" class="outline-4">
+<h4 id="sec-1-9-2"><span class="section-number-4">1.9.2</span> 流量保护和效果监测</h4>
+<div class="outline-text-4" id="text-1-9-2">
+
+
+</div>
+
+<div id="outline-container-1-9-2-1" class="outline-5">
+<h5 id="sec-1-9-2-1"><span class="section-number-5">1.9.2.1</span> 爬虫流量去除</h5>
+<div class="outline-text-5" id="text-1-9-2-1">
+
+<p>爬虫流量的去除比较简单，比较规范的搜索引擎会在抓取页面时做声明，而其他一些不做声明的爬虫，也比较容易线下收集其IP，于是用一个黑名单来去除这部分流量即可。对爬虫流量的过滤，最好在广告服务前端的http服务中直接配置实现，即对于已知的爬虫带来的页面请求，服务器直接返回空，而不做任何广告检索和排序的逻辑，这样对服务器压力的减轻有一定帮助。
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-9-2-2" class="outline-5">
+<h5 id="sec-1-9-2-2"><span class="section-number-5">1.9.2.2</span> 反作弊</h5>
+<div class="outline-text-5" id="text-1-9-2-2">
+
+<p>我们知道，广告活动是广告主、媒体与用户之间三方交互的行为，因此广告中的作弊行为主要有两种情况：
+</p><ul>
+<li>一、媒体作弊。媒体是广告活动的主要受益者，因而作弊的动力也最强。展示的作弊相对来说比较困难，因为必然涉及到非正常地触发一些虚假的用户访问。这种作弊的花样繁多，既有将广告展示和点击代码放在非约定位置上或非用户自然行为产生的流量上的方式，也有通过将广告位与内容靠得很近甚至相互重叠来骗取点击的方式。
+</li>
+<li>二、广告主竞争对手作弊。某些广告主的竞争对手，会通过技术手段大量消耗该广告主的预算，达到降低其广告效果的非正常竞争目的。与媒体作弊不同，广告主的竞争对手很难通过控制广告位置或复制代码的方式来作弊，而是通过多次重复点击广告的形式来作弊。
+</li>
+</ul>
+
+
+<p>
+针对不同的作弊方式，也有不同的反作弊思路。单一IP或cookie在大量展示或点击的作弊方式是最容易去除的，只需要一定时间段内的展示或点击设定合理的上限，并进而发现那些显著超过上限的IP或cookie加入黑名单即可。对于更复杂的，通过控制多台电脑来产生假点击的作弊方式，点击热点图是一项很有用的反作弊技术：正常的用户点击，在创意上的位置分布往往呈现与创意关键区域相关的比较自然的分布；而及其产生的用户点击，其分布要么过于均匀，要么过于
+集中，很容易与自然点击分布相区别。
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-9-2-3" class="outline-5">
+<h5 id="sec-1-9-2-3"><span class="section-number-5">1.9.2.3</span> 效果监测</h5>
+<div class="outline-text-5" id="text-1-9-2-3">
+
+<p>委托某家第三方监测公司对实际发生的展示或点击数目进行核对，以确保自己的利益。 
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-9-2-4" class="outline-5">
+<h5 id="sec-1-9-2-4"><span class="section-number-5">1.9.2.4</span> 广告安全</h5>
+<div class="outline-text-5" id="text-1-9-2-4">
+
+<p>为了服务于广告主，将流量监测、作弊监测和品牌保护等一系列任务都一站式地完成，从而保证广告投放过程对于广告主的安全性，市场上产生了广告安全相关的技术公司。
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-9-3" class="outline-4">
+<h4 id="sec-1-9-3"><span class="section-number-4">1.9.3</span> 隐私保护和数据安全</h4>
+<div class="outline-text-4" id="text-1-9-3">
+
+
+</div>
+
+<div id="outline-container-1-9-3-1" class="outline-5">
+<h5 id="sec-1-9-3-1"><span class="section-number-5">1.9.3.1</span> 用户身份标识</h5>
+<div class="outline-text-5" id="text-1-9-3-1">
+
+<p>cookie,account,imei etc&hellip;
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-9-3-2" class="outline-5">
+<h5 id="sec-1-9-3-2"><span class="section-number-5">1.9.3.2</span> 去匿名化技术及应用</h5>
+<div class="outline-text-5" id="text-1-9-3-2">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-9-3-3" class="outline-5">
+<h5 id="sec-1-9-3-3"><span class="section-number-5">1.9.3.3</span> RTB中的数据安全问题</h5>
+<div class="outline-text-5" id="text-1-9-3-3">
+
+<p>我们先来看看供给方的数据安全性问题。由于在RTB过程中，Adx需要向参与竞价的DSP广播每次展示的URL和cookie，使得DSP理论上存在规模化监听媒体用户行为的可能。假设有某个恶意的DSP，对于能够参与竞价的所有广告请求，都以很低的价格参与竞价，目的不在于赢得流量，而在于收集媒体上的用户行为，这就产生了媒体数据的安全问题，我们将其称为供给方数据安全(Supply Data Security)。供给方的数据安全问题尽管在RTB中确实存在，但是并不是想象中那样严重。我们可以回顾一下询价优化技术：由于带宽的限制，实际上在每次询价时，Adx应该尽可能只向那些最可能赢得竞价的DSP发送询价请求，而那些以恶意收集数据为目的的DSP，在理想情况下应该被挡在大部分的询价以外。
+</p>
+<p>
+再来看看需求方的数据安全性问题。为了表达更加清楚，假设有两个化妆品电商广告主A和B，两者都通过DSP进行个性化重定向广告采买，那么他们分别利用RTB的方式接触到了自己的顾客集合。需要注意的是，这里的顾客集合实际上是广告主的私有数据，也是特别具有商业价值的数据，然而，DSP、Adx 和媒体都可能在RTB过程中得到这些顾客集合。如果Adx希望制造更加激烈的竞价环境，获得更高的利润，那么它实际上可以将这两个广告主的顾客集合合并在一起，并生产一个相应的用户标签吸引双方来对此标签竞价。这种做法的实质，是在竞争对手之间倒卖顾客集合，并且可以通过比较模糊的标签名字(比如为上面两个化妆品广告主的顾客集合打上“年轻女性”的标签)非常隐蔽地操作。 <b>NOTE（dirlt）：事实上这种情况下Adx并不是中立的，并且DSP可以使用查询DMP来进行二次过滤，DMP很可能是自己的内部系统</b>
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-9-4" class="outline-4">
+<h4 id="sec-1-9-4"><span class="section-number-4">1.9.4</span> SoLoMo时代的广告</h4>
+<div class="outline-text-4" id="text-1-9-4">
+
+
+</div>
 </div>
 </div>
 </div>
