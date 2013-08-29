@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="hdfs"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-08-13 19:43:55 CST"/>
+<meta name="generated" content="2013-08-29 16:20:58 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -180,6 +180,7 @@
 <li><a href="hdfs.html#sec-1-4-1">1.4.1 Under the Hood: Hadoop Distributed Filesystem reliability with Namenode and Avatarnode | Facebook</a></li>
 <li><a href="hdfs.html#sec-1-4-2">1.4.2 HA Namenode for HDFS with Hadoop 1.0 – Part 1 | Hortonworks</a></li>
 <li><a href="hdfs.html#sec-1-4-3">1.4.3 Why not RAID-0? It’s about Time and Snowflakes | Hortonworks</a></li>
+<li><a href="hdfs.html#sec-1-4-4">1.4.4 Hadoop I/O: Sequence, Map, Set, Array, BloomMap Files | Apache Hadoop for the Enterprise | Cloudera</a></li>
 </ul>
 </li>
 <li><a href="hdfs.html#sec-1-5">1.5 日志分析</a>
@@ -1324,6 +1325,66 @@ fb数据仓库故障有41%是源于HDFS，而如果有reliable namenode解决方
 </ul>
 
 
+</div>
+
+</div>
+
+<div id="outline-container-1-4-4" class="outline-4">
+<h4 id="sec-1-4-4"><span class="section-number-4">1.4.4</span> Hadoop I/O: Sequence, Map, Set, Array, BloomMap Files | Apache Hadoop for the Enterprise | Cloudera</h4>
+<div class="outline-text-4" id="text-1-4-4">
+
+<p><a href="http://blog.cloudera.com/blog/2011/01/hadoop-io-sequence-map-set-array-bloommap-files/">http://blog.cloudera.com/blog/2011/01/hadoop-io-sequence-map-set-array-bloommap-files/</a>
+</p>
+<p>
+SequenceFile存储格式如下
+<img src="images/hdfs-sequence-file-format.png"  alt="./images/hdfs-sequence-file-format.png" />
+</p>
+<p>
+内部有三种可选的存储格式：
+</p><ol>
+<li>“Uncompressed” format
+</li>
+<li>“Record Compressed” format
+</li>
+<li>“Block-Compressed” format
+</li>
+</ol>
+
+
+<p>
+然后使用哪种格式以及元信息是在Header里面标记的
+<img src="images/hdfs-sequence-file-header.png"  alt="./images/hdfs-sequence-file-header.png" />
+</p>
+<p>
+其中metadata部分可以存储这个文件的一些元信息，存储格式也非常简单。key和value只是允许Text格式，并且在创建的时候就需要指定
+<img src="images/hdfs-sequence-file-metadata.png"  alt="./images/hdfs-sequence-file-metadata.png" />
+</p>
+<p>
+至于里面的record/block存储格式如下
+<img src="images/hdfs-sequence-file-record.png"  alt="./images/hdfs-sequence-file-record.png" /> <img src="images/hdfs-sequence-file-block.png"  alt="./images/hdfs-sequence-file-block.png" />
+至于Compress算法，这个在Header里面的Compress Codec Class Name里面就指定了。
+</p>
+
+<hr/>
+
+<p>
+Hadoop SequenceFile is the base data structure for the other types of files, like MapFile, SetFile, ArrayFile and BloomMapFile.
+</p>
+<p>
+<img src="images/hdfs-mapfile-index-data-bloom.png"  alt="./images/hdfs-mapfile-index-data-bloom.png" />
+</p>
+<p>
+MapFile是由两个SequenceFile组成，一个是index文件，一个是data文件。data文件里面的key是顺序存储的，index文件是data中key的部分索引. index的key和data的key相同，而value是这个record在data文件中的偏移，至于这个索引间隔可以通过setIndexInterval来设置。操作的时候会将index全部都读取到内存，然后在index里面所二分查找，然后在data文件里面做顺序查找。 <b>NOTE(dirlt):如果data文件要压缩的话，那么这个边界必须和index对应</b>
+</p>
+<p>
+SetFile是基于MapFile完成的，只不过value = NullWritable
+</p>
+<p>
+ArrayFile也是基于MapFile完成的，只不过key = LongWriatble，然后每次写入都会+1
+</p>
+<p>
+BloomMapFile扩展了MapFile添加了一个bloom文件，存储的是DynamicBloomFilter序列化内容。在判断key是否在MapFile之前，先走BloomFilter.
+</p>
 </div>
 </div>
 

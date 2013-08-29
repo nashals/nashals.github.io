@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="linux"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-08-29 12:21:22 CST"/>
+<meta name="generated" content="2013-08-29 17:31:48 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -4402,17 +4402,19 @@ packet reception
 </p><ul>
 <li>linux里面使用sk_buff数据结构来描述packet.
 </li>
-<li>NIC检测到packet到达，分配sk_buffer数据结构，调用DMA Engine将packet放到sk_buff数据结构里面并且加入rx_ring这个ring_buffer里面
+<li>NIC检测到packet到达，从Kernel Memory(sk_buffs)分配sk_buff数据结构，调用DMA Engine将packet放到sk_buff数据结构里面 <b>NOTE（dirlt）：NIC检测有packet到达和有packet发送，都不是触发而是主动poll的方式来完成的</b>
 </li>
-<li>如果rx_ring满了的话那么将packet直接丢弃， <b>如果被上层处理的话直接引用而不会存在任何copy</b>
+<li>将sk_buff并且加入rx_ring这个ring_buffer里面。如果rx_ring满了的话那么将packet丢弃。
 </li>
-<li>当DMA Engine完成处理之后NIC通过中断通知kernel进行处理。
+<li>当DMA Engine完成处理之后， <b>NIC通过向CPU发起中断</b> 通知kernel进行处理。
 </li>
-<li>kernel将这个packet传递给IP层进行处理，IP层发现如果是tcp packet的话那么放到socket backlog里面。如果满了那么丢弃。
+<li>kernel将这个packet传递给IP层进行处理。IP层需要将信息组装成为ip packet。如果ip packet是tcp的话那么放到socket backlog里面。如果socket backlog满了的话那么将ip packet丢弃。 <b>copy packet data to ip buffer to form ip packet</b>
 </li>
-<li>tcp layer从socket backlog里面取出tcp packet， <b>copy到tcp recv buffer</b>
+<li><b>NOTE(dirlt):这个步骤完成之后IP layer就可以释放sk_buffer结构</b>
 </li>
-<li>tcp recv buffer交给application layer处理， <b>这里还存在一次copy</b>
+<li>tcp layer从socket backlog里面取出tcp packet， <b>copy ip packet tcp recv buffer to form tcp packet</b>
+</li>
+<li>tcp recv buffer交给application layer处理， <b>copy tcp recv buffer to app buffer to form app packet</b>
 </li>
 </ul>
 
@@ -4436,18 +4438,15 @@ packet transmission
 <p>
 整个流程大致如下：
 </p><ul>
-<li>application layer将数据copy到tcp layer的tcp send buffer里面，如果空间不够的话那么就会出现阻塞。
+<li>application layer将数据copy到tcp send buffer里面，如果空间不够的话那么就会出现阻塞。 <b>copy app buffer to tcp send buffer as app packet</b>
 </li>
-<li>tcp layer等发送数据准备好或者是需要确认ACK的时候，将对应的packet推送到IP layer
+<li>tcp layer等待tcp send buffer存在数据或者是需要做ack的时候，组装ip packet推送到IP layer <b>copy tcp send buffer to ip send buffer as tcp packet</b>
 </li>
-<li>然后ip layer将packet推送到qdisc（output queue）里面 <b>NOTE（dirlt）：然后这里应该定期有一个任务从queue里面取出放到ring buffer里面）</b>
-<ul>
-<li>如果qdisc队列满的话那么就会出现阻塞，反馈到tcp layer.
+<li>IP layer从kernel memory申请sk_buffer，将ip data包装成为packet data，然后塞到qdisc(txqueuelen控制队列长度）里面。如果队列满的话那么就会出现阻塞，反馈到tcp layer阻塞。 <b>copy ip send buffer to packet data as ip packet</b>
 </li>
-</ul>
-
+<li>NIC driver如果检测到qdisc有数据的话，那么会将packet data从qdisc放置到ring buffer里面，然后调用NIC DMA Engine将packet发送出去 <b>TODO（dirlt）：可能理解有误</b>
 </li>
-<li>driver如果检测到ring buffer里面存在packet的话，那么就会调用NIC DMA Engine将packet发送出去 <b>NOTE（dirlt）：感觉这个部分还是有点模糊！</b>
+<li>发送完成之后NIC向CPU发起中断释放packet data内存到Kernel Memory
 </li>
 </ul>
 
@@ -4459,6 +4458,27 @@ packet transmission
 </li>
 </ul>
 
+
+<p>
+<b>NOTE(dirlt):在wangyx的帮助下这个配置在ifconfig下面找到了</b>
+</p>
+
+
+<pre class="example">➜  ~  ifconfig
+eth0      Link encap:Ethernet  HWaddr 12:31:40:00:49:d1  
+          inet addr:10.170.78.31  Bcast:10.170.79.255  Mask:255.255.254.0
+          inet6 addr: fe80::1031:40ff:fe00:49d1/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:13028359 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:9504902 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:2464083770 (2.4 GB)  TX bytes:20165782073 (20.1 GB)
+          Interrupt:25
+</pre>
+
+<p>
+txqueuelen = 1000
+</p>
 
 </div>
 
@@ -4621,7 +4641,7 @@ exit(code)
 </li>
 </ol>
 
-<p>我们的网线都是由世纪互联提供的，质量应该不错，有两种情况需要优先排除。
+<p>我们的网线都是由 <b>世xx联</b> 提供的，质量应该不错，有两种情况需要优先排除。
 </p><ol>
 <li>网线问题（测试方法：换根网线试试）
 </li>
