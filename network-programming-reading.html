@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<title>network-programming-reading</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="network-programming-reading"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-09-04 23:21:33 CST"/>
+<meta name="author" content="dirtysalt"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" type="text/css" href="css/site-plain.css" />
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><g:plusone annotation="inline"></g:plusone>
+
+
+<div id="content">
+<h1 class="title">network-programming-reading</h1>
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="network-programming-reading.html#sec-1">1 network-programming-reading</a>
+<ul>
+<li><a href="network-programming-reading.html#sec-1-1">1.1 network programming issue</a>
+<ul>
+<li><a href="network-programming-reading.html#sec-1-1-1">1.1.1 timeout and retry.</a></li>
+<li><a href="network-programming-reading.html#sec-1-1-2">1.1.2 connection pool implementation.</a></li>
+<li><a href="network-programming-reading.html#sec-1-1-3">1.1.3 when async is better than sync.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> network-programming-reading</h2>
+<div class="outline-text-2" id="text-1">
+
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> network programming issue</h3>
+<div class="outline-text-3" id="text-1-1">
+
+
+</div>
+
+<div id="outline-container-1-1-1" class="outline-4">
+<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> timeout and retry.</h4>
+<div class="outline-text-4" id="text-1-1-1">
+
+<p>超时(timeout)通常是client访问server提供的网络服务所能容忍的时间上限，因为网络服务可能存在诸多的可变性(variability), 而解决网络服务可变性一种常用办法就是重试(retry). 
+</p>
+<p>
+retry可以是服务内部进行retry，也可以是由client发起retry，但是通常服务内部发起retry的代价相比client发起retry的代价要小，这点非常好理解。假设一个访问数据库的服务，逻辑通常是
+</p><ol>
+<li>接收client请求
+</li>
+<li>解析client请求
+</li>
+<li>连接数据库后端
+</li>
+<li>向数据库转发client请求
+</li>
+<li>从数据库接收请求数据
+</li>
+<li>将请求数据打包为client响应
+</li>
+<li>发送client响应
+</li>
+</ol>
+
+<p>可能中间还存在cache等操作但是这里不考虑。其中3，4，5涉及到和数据库网络交互，1，7涉及到和client网络交互，而2，6则主要是CPU计算。就耗时情况来说，其中2，6相比3，4，5几率会更小，超时主要原因主要是集中在访问后端数据库上。如果请求4出现超时的话，那么server内部retry和client发起retry的逻辑分别是
+</p><ul>
+<li>server retry：重新起3，4
+</li>
+<li>client retry：重新发起1，2，3，4
+</li>
+</ul>
+
+<p>也就是说client retry比server retry多出了两个步骤，花费时间更长。所以相对client external retry, server internal retry效率更高。
+</p>
+<p>
+如果选定server internal retry这种方案的话，那么就需要考虑本次请求timeout的时间应该来如何分配在逻辑各个环节中。以上面逻辑为例：
+</p><ul>
+<li>我们忽略1，7最后面这两段的时间，因为这个部分时间和我们如何重试没有关系，我们可以设置一个定值比如内网2ms
+</li>
+<li>2，6也不考虑因为可以假设这个过程很快，我们也可以设置一个定制比如2ms
+</li>
+<li>如果我们考虑长链接的话，3之需要获取建立好的链接即可，这个时间就可以不考虑。
+</li>
+</ul>
+
+<p> 所以timeout分配主要是在4，5两个阶段，也就是请求一次数据库的时间。
+</p>
+<p>
+假设分配时间是300ms，允许请求3次，一种比较简单的办法是平均分，三次各100ms。但是这样存在一个问题就是，比如数据库服务响应时间分布如下
+</p><ul>
+<li>p50 = 2ms
+</li>
+<li>p90 = 8ms
+</li>
+<li>p96 = 100ms
+</li>
+<li>p99 = 140ms
+</li>
+</ul>
+
+<p>那么这种时间分配的话只能满足p96的需求。而如果按照指数分布请求的话，2ms，8ms，16ms，32ms，142ms，那么响应p99的几率就可以增大很多。
+</p>
+<p>
+下面是一段在FastHBaseRest里面分配timeout的代码
+</p>
+
+
+<pre class="src src-Java">private long calcRequestTimeout(int retryTime, int qualifierCount) {
+    final long kCPUReservedTimeSlice = 10; // allocate 10ms for CPU.
+    if (qualifierCount == 0) {
+        retryTime += 7;
+        if (retryTime &gt; 13) {
+            retryTime = 13;
+        }
+        // 128ms .. 8192ms
+    } else if (qualifierCount &gt; 64) {
+        retryTime += 5;
+        if (retryTime &gt; 12) {
+            retryTime = 12;
+        }
+        // 32ms .. 4096ms.
+    } else {
+        retryTime += 3;
+        if (retryTime &gt; 10) {
+            retryTime = 10;
+        }
+        // 8ms .. 1024ms.
+    }
+    long base = 1 &lt;&lt; retryTime;
+    if ((requestTimeout - kCPUReservedTimeSlice) &gt; base) {
+        return base;
+    } else {
+        return 0;
+    }
+}
+</pre>
+
+<ul>
+<li>其中10ms用于CPU与额外开销
+</li>
+<li>qualifierCount表示请求hbase的column数目，
+<ul>
+<li>如果==0的话表示请求column family, 那么超时时间分别是128ms, 256ms, &hellip; 8192ms
+</li>
+<li>如果&gt;64的哈表示请求column但是字段很多，所以超时时间分配是32ms, 64ms, &hellip; 4096ms
+</li>
+<li>其他情况可以认为hbase返回很快，所以超时时间分配是8ms, 16ms, &hellip; 1024ms
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-1-2" class="outline-4">
+<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> connection pool implementation.</h4>
+<div class="outline-text-4" id="text-1-1-2">
+
+<p>connection pool实现上有下面几点考虑
+</p><ol>
+<li>连接一旦连上就不要断开，因为建立连接开销非常大，所以最好不要轻易销毁。
+</li>
+<li>为了防止单机上连接数目过多，需要设置连接数目上限。
+</li>
+<li>后端节点可能会挂掉，我们需要能够检查出这种情况出来，减少上面的连接数目。
+</li>
+<li>后端节点也可能会逐渐恢复，所以也要能够检查这种情况出来，平衡后端服务器负载。
+</li>
+<li>对后端节点请求需要确保负载均衡，除非节点宕机，否则节点之间的压力应该是均匀的。
+</li>
+</ol>
+
+<p>dmp service在实现上综合了这些考虑，在ProxyConnector里面是connection pool的实现
+</p>
+<p>
+后端节点的数据结构如下
+</p>
+
+
+<pre class="src src-Java">public static class Node {
+        InetSocketAddress socketAddress;
+        ClientBootstrap bootstrap;
+        BlockingQueue&lt;ProxyHandler&gt; pool;
+        AtomicInteger connectionNumber = new AtomicInteger(0);
+        int punishCount;
+        static final int kPunishThreshold = 10;
+    }
+</pre>
+
+<ul>
+<li>socketAddress 后端地址 
+</li>
+<li>bootstrap netty框架
+</li>
+<li>pool 表示和这个节点上相连可用的连接池。需要说明的是这个连接也可能是作废的，因为如果节点重启的话那么这个连接失效。失效检测是在发起请求的时候才会触发。
+</li>
+<li>connectionNumber 和这个节点建立了多少个连接。
+</li>
+<li>punishCount 过去一段时间内没有连接成功或者是读写超时断开的次数，这个指标用于监控节点服务是否OK
+</li>
+<li>kPunishThreshold punishCount的上限，超过一定次数之后不会往上加，不然恢复就会非常慢。
+</li>
+</ul>
+
+
+<p>
+获取连接的代码如下
+</p>
+
+
+<pre class="src src-Java">public ProxyHandler acquireConnection() {
+    int id = rrId;
+    rrId = (rrId + 1) % aNodes.length;
+    boolean sleep = false;
+    for (int i = 0; i &lt; aNodes.length; i++) {
+        int idx = (id + i) % aNodes.length;
+        Node node = aNodes[idx];
+        if (node.punishCount &gt;= (Node.kPunishThreshold - 2)) {
+            continue;
+        }
+        try {
+            sleep = true;
+            int retry = 3;
+            while (retry &gt; 0) {
+                ProxyHandler handler = node.pool.poll(configuration.getProxyConnectTimeout(), TimeUnit.MILLISECONDS);
+                if (handler == null) {
+                    VeritasServer.logger.debug(<span style="color: #ffff00;">"proxy connector acquire connection timeout"</span>);
+                    connect(node);
+                } else {
+                    VeritasServer.logger.debug(<span style="color: #ffff00;">"proxy connector acquire connection OK!"</span>);
+                    return handler;
+                }
+                retry--;
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            // pass.
+        }
+    }
+    if (!sleep) {
+        // if we turn around and find no connection available, we have to wait.
+        try {
+            Thread.sleep(configuration.getProxyConnectTimeout());
+        } catch (Exception e) {
+            e.printStackTrace();
+            // pass.
+        }
+    }
+    return null;
+}
+
+public void releaseConnection(ProxyHandler handler) {
+    try {
+        VeritasServer.logger.debug(<span style="color: #ffff00;">"proxy connector release connection"</span>);
+        handler.node.pool.put(handler);
+    } catch (InterruptedException e) {
+        e.printStackTrace();
+    }
+}
+</pre>
+
+<ol>
+<li>rrId是一个静态变量，相当于每次调用acquireConnection的时候都以round-robin的方式从某个node开始挑选
+</li>
+<li>一轮会检查所以的节点可用情况，挑选一个可用节点上的连接出来。 <b>这样来达到大致的负载均衡</b>
+</li>
+<li>如果过去一段时间连接失败次数过多的话，那么就不考虑从这个节点的链接。这里-2是考虑到很可能这个时候节点已经开始恢复了，但是恢复比较慢，所以可以考虑考虑这个节点了。
+</li>
+<li>然后在某个节点上尝试3次从队列里面获取，获取时间是connectTimeout. 这个考虑是如果没有的话，那么就发起连接。如果连接正常的话，那么下次就一定可以获取到连接。如果连续发起两个连接依然没有获得的话，那么可能这个节点可能失效了或者说当前连接数目都用满了，就会放弃。
+</li>
+<li>在步骤4这里有过一些等待时间，所以将sleep = true. 这里sleep主要是为了防止一个情况，假设所有节点失效，外部过于频繁地调用acquireConnection, 那么非常耗CPU，所以如果在一轮里面检测到所有节点失效的话，那么就会等待一段时间。
+</li>
+</ol>
+
+
+<p>
+节点建立连接和关闭过程如下
+</p>
+
+
+<pre class="src src-Java">public void channelConnected(ChannelHandlerContext ctx, ChannelStateEvent e) throws Exception {
+    VeritasServer.logger.debug(<span style="color: #ffff00;">"proxy channel connected"</span>);
+    channel = e.getChannel();
+    channel.setReadable(false);
+    context = ctx;
+    node.punishCount -= 1;
+    proxyConnector.releaseConnection(this);
+}
+
+public void onChannelClosed(Channel channel, final Node node) {
+    // connection closed.
+    VeritasServer.logger.debug(<span style="color: #ffff00;">"connector on channel closed end"</span>);
+    connectionNumber.decrementAndGet();
+    node.connectionNumber.decrementAndGet();
+    node.punishCount += 1;
+    if (node.punishCount &gt;= Node.kPunishThreshold) {
+        node.punishCount = Node.kPunishThreshold;
+    }
+    AsyncClient.timer.newTimeout(new TimerTask() {
+        @Override
+        public void run(Timeout timeout) throws Exception {
+            ProxyConnector.getInstance().connect(node);
+        }
+    }, configuration.getProxyConnectTimeout() * (1 &lt;&lt; node.punishCount), TimeUnit.MILLISECONDS);
+}
+
+public void connect(Node node) {
+    // if connection number on this node got threshold.
+    if (node.connectionNumber.get() &lt; configuration.getProxyConnectionNumberPerNode()) {
+        connectionNumber.incrementAndGet();
+        node.connectionNumber.incrementAndGet();
+        node.bootstrap.connect(node.socketAddress);
+    }
+}
+</pre>
+
+<ul>
+<li>channelConnected是在连接建立OK的时候调用，这时候punishCount -= 1
+</li>
+<li>onChannelClosed是在连接关闭的时候调用。通常连接是不关闭的，如果关闭肯定是因为连接不上或者是读写异常造成的，那么需要以 (1 &lt;&lt; node.punishCount) * connectTimeout 作为指数退避来等待重新建立连接，不然如果节点挂掉的话，就会出现频繁请求连接而又不能够成功。因为punishCount上线是10, connecTimeout = 10ms, 所以等待最长时间就是10s，这一般是人工恢复时间间隔。
+</li>
+<li>connect是发起连接的操作，这里判断了连接数目的上限。
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-1-3" class="outline-4">
+<h4 id="sec-1-1-3"><span class="section-number-4">1.1.3</span> when async is better than sync.</h4>
+<div class="outline-text-4" id="text-1-1-3">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'network-programming-reading.html';var disqus_title = 'network-programming-reading.html';var disqus_url = 'http://dirlt.com/network-programming-reading.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+</html>

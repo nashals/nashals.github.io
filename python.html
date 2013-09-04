@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="python"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-08-13 19:43:12 CST"/>
+<meta name="generated" content="2013-09-04 20:19:40 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -107,6 +107,7 @@
 <li><a href="python.html#sec-1-2-1">1.2.1 wsgi</a></li>
 <li><a href="python.html#sec-1-2-2">1.2.2 excel</a></li>
 <li><a href="python.html#sec-1-2-3">1.2.3 http</a></li>
+<li><a href="python.html#sec-1-2-4">1.2.4 date/time</a></li>
 </ul>
 </li>
 </ul>
@@ -405,6 +406,29 @@ for i in range(0,book.nsheets):
 
 </li>
 </ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-4" class="outline-4">
+<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> date/time</h4>
+<div class="outline-text-4" id="text-1-2-4">
+
+
+
+
+<pre class="src src-Python">def convertDateTimeToTimeStamp(s):
+    st = time.strptime(s,'%Y-%m-%d %H:%M:%S')
+    return int(time.mktime(st))
+
+def convertTimeStampToDateTime(ts):
+    # in seconds.
+    st = time.localtime(int(ts))
+    return time.strftime('%Y-%m-%d %H:%M:%S',st)
+</pre>
+
 
 </div>
 </div>

@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="java"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-08-29 12:35:38 CST"/>
+<meta name="generated" content="2013-09-04 21:20:06 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -129,6 +129,7 @@
 <li><a href="java.html#sec-1-5-8">1.5.8 Runnable &amp; Thread</a></li>
 <li><a href="java.html#sec-1-5-9">1.5.9 Collection</a></li>
 <li><a href="java.html#sec-1-5-10">1.5.10 JMX</a></li>
+<li><a href="java.html#sec-1-5-11">1.5.11 Future</a></li>
 </ul>
 </li>
 <li><a href="java.html#sec-1-6">1.6 Tool</a>
@@ -949,6 +950,31 @@ jmx似乎是一个标准，在JDK里面有默认的实现。通过jmx可以暴�
 <li>Notifcation允许RMI之后做通知
 </li>
 <li><b>so advanced, so powerful, yet so complex</b>
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-5-11" class="outline-4">
+<h4 id="sec-1-5-11"><span class="section-number-4">1.5.11</span> Future</h4>
+<div class="outline-text-4" id="text-1-5-11">
+
+
+<hr/>
+<p>
+关于Future的一点个人感想： 
+</p>
+<p>
+<b>Future这个概念非常好，可以做成一个Callable对象的continuation.</b>  但是曾经一段时间我非常希望将其当作一个类似Nio下面的Channel对象来看待，因为一旦如此那么便可以使用类似Select/Epoll这种多路复用组件，来管理众多的continuation，可以检测continuation是否ready或者是是否超时，并且触发回调，整个过程和Nio多路复用非常类似，然后在这上面做异步就非常容易了。但是后来考虑清楚了，这件事情是不靠谱的。原因如下：
+</p><ul>
+<li>检测continuation是否ready非常容易，只需要把continuation逻辑写在发起的Callable之后即可。因此在JDK里面也有FutureTask并且衍生了一些辅助类比如ExecutorCompletionService, 但是这些组件实际上都是封装，没有解决实际问题。
+</li>
+<li>事实上Future和Channel存在本质的不同，Future发起的是一个Callable操作也就是CPU操作，虽然这里面可能有IO操作，但是如果当作通用的CPU操作来看的话，这个操作即使检测到超时也不能够停止，而Channel上read/write是不同的，Channel上面的操作是允许中断的。
+</li>
+<li>就像之前所说的，Future本质发起的Callable对象是一个CPU操作，里面可能也带有IO操作，将Callable对象放在线程池里面执行，也就是说实际上需要靠线程池数量来支撑Callable并发，这点和异步是相反思路的。
 </li>
 </ul>
 
