@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="network-programming-reading"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-05 18:20:20 CST"/>
+<meta name="generated" content="2013-09-05 20:00:57 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -101,6 +101,7 @@
 <ul>
 <li><a href="network-programming-reading.html#sec-1-1-1">1.1.1 timeout and retry</a></li>
 <li><a href="network-programming-reading.html#sec-1-1-2">1.1.2 connection pool implementation</a></li>
+<li><a href="network-programming-reading.html#sec-1-1-3">1.1.3 when async is better than sync</a></li>
 </ul>
 </li>
 </ul>
@@ -461,6 +462,46 @@ public void handleProxyResponseId() {
     }
 </pre>
 
+
+</div>
+
+</div>
+
+<div id="outline-container-1-1-3" class="outline-4">
+<h4 id="sec-1-1-3"><span class="section-number-4">1.1.3</span> when async is better than sync</h4>
+<div class="outline-text-4" id="text-1-1-3">
+
+<p>什么时候异步比同步好？ 先来看看同步处理网络请求的方式
+</p><ul>
+<li>accept接收请求获得fd
+</li>
+<li>开辟线程（池）来处理fd
+</li>
+<li>处理fd存在read/write fd操作以及CPU操作
+</li>
+</ul>
+
+
+<p>
+<img src="images/network-sync-handler.png"  alt="./images/network-sync-handler.png" />
+</p>
+<p>
+如果read/write fd操作非常快的话，那么阴影部分也就是CPU部分比例就相对更多，瓶颈就在CPU上，这种情况非常适合同步。说白了就是CPU密集型的计算。可是通常来说，大部分互联网服务即使是在内网服务也不一定是CPU密集型计算。比如一个分配uniq id的服务，可能网络时间在1ms，而CPU时间也在1ms左右，那么网络传输时间相当占据50%。如果在外网这种情况更加明显，比如通过手机访问服务的话，传输时间可能就在秒级别，而CPU处理时间在ms级别。也就是说大部分互联网服务，相对CPU计算相比，网路传输时间还是非常长的。
+</p>
+<p>
+以外网服务为例，假设网络传输占用500ms，CPU处理时间在10ms，以同步方式处理的话，1个线程每秒处理2个请求，如果线程池是1k的话，那么QPS峰值也就是2k。然后问题是我们是否可以通过开高线程数目来解决并发问题呢？比如线程数目开到1w？这样如果CPU不是瓶颈的话，那么QPS就能达到2w. <b>这种方式实际上就是通过线程来支撑并发。</b> 但是线程数目实际上会受到上下文切换(context switch)限制，因为线程数目越多，上下文切换开销代价越大，消耗额外的CPU时间越长。理论上通过减少上下文切换开销，就可以以允许开更多的执行单元。历史上有过这样的做法，就是从进程到线程，历史还在延续，那就是从线程到纤程(fiber)/协程(coroutine). 这是一个思路，只是现在这样的做法以及框架还不够多。Akka，Erlang算是几个。 <b>TODO(dirlt):write a benchmark to verify context switch as bottlenect</b>
+</p>
+
+<hr/>
+<p>
+上面的问题在于，通过在执行单元上检查fd是否可以读写，这样一个fd需要分配一个执行单元。如果有这样一个组件，可以在一个执行单元里面有效地检测多个fd上面是否可读可写，那么就可以不通过开辟更多的执行单元来支撑更多的fd。这个组件就是多路复用，实现有select/kqueue/epoll. 通过epoll可以在一个执行单元里面有效地管理多个fd. 如果使用epoll的话，那么上面请求方式就变成如下：
+</p>
+<p>
+<img src="images/network-async-handler.png"  alt="./images/network-async-handler.png" />
+</p>
+<p>
+这种情况下epoll组件完成了检测fd是否可以读写的事情，执行单元则只做CPU方面的工作。因为epoll可以有效地检测众多fd上面可读可写，所以就没有必要通过靠执行单元来支撑并发数量了。 <b>对于执行单元来说，不再是自己去同步等待fd上的数据到达，而是让将等待fd数据到达交给epoll这个组件去完成，等epoll发现fd上面可读或者是可写的时候，在返回和通知执行单元可以操作这个fd.这种方式就是异步</b>
+</p>
 </div>
 </div>
 </div>
