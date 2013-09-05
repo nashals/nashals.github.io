@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="network-programming-reading"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-04 23:21:33 CST"/>
+<meta name="generated" content="2013-09-05 06:36:17 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -99,9 +99,9 @@
 <ul>
 <li><a href="network-programming-reading.html#sec-1-1">1.1 network programming issue</a>
 <ul>
-<li><a href="network-programming-reading.html#sec-1-1-1">1.1.1 timeout and retry.</a></li>
-<li><a href="network-programming-reading.html#sec-1-1-2">1.1.2 connection pool implementation.</a></li>
-<li><a href="network-programming-reading.html#sec-1-1-3">1.1.3 when async is better than sync.</a></li>
+<li><a href="network-programming-reading.html#sec-1-1-1">1.1.1 timeout and retry</a></li>
+<li><a href="network-programming-reading.html#sec-1-1-2">1.1.2 connection pool implementation</a></li>
+<li><a href="network-programming-reading.html#sec-1-1-3">1.1.3 when async is better than sync</a></li>
 </ul>
 </li>
 </ul>
@@ -126,7 +126,7 @@
 </div>
 
 <div id="outline-container-1-1-1" class="outline-4">
-<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> timeout and retry.</h4>
+<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> timeout and retry</h4>
 <div class="outline-text-4" id="text-1-1-1">
 
 <p>超时(timeout)通常是client访问server提供的网络服务所能容忍的时间上限，因为网络服务可能存在诸多的可变性(variability), 而解决网络服务可变性一种常用办法就是重试(retry). 
@@ -245,7 +245,7 @@ retry可以是服务内部进行retry，也可以是由client发起retry，但�
 </div>
 
 <div id="outline-container-1-1-2" class="outline-4">
-<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> connection pool implementation.</h4>
+<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> connection pool implementation</h4>
 <div class="outline-text-4" id="text-1-1-2">
 
 <p>connection pool实现上有下面几点考虑
@@ -416,12 +416,59 @@ public void connect(Node node) {
 </ul>
 
 
+<p>
+<b>然后还有一个问题就是如何解决后端链接失效的问题</b> 。后端失效的问题是这样产生的，假设服务A需要访问服务B，所以开辟了很多和B的链接。之后B重启了服务，那么之前A缓存的所有链接都失效了。一个办法是定时去检查这些链接是否失效，如果失效的话，那么就直接丢弃并且建立新的链接。另外一种办法就是在访问的时候进行判断，如果对端关闭的话，那么在write的时候就会出现pipe broken/CloeedChannelException这样的问题，而这个过程触发是非常快的。 <b>注意我们没有使用访问前先检查链接是否正常的方式来工作，是因为对于大部分链接来说平时是不会断开的，每次访问之前都要重新检查链接这个过程是没有意义的</b> 如果出现后端链接失效的话，可以认为和访问超时逻辑一样，丢弃链接之后发起重试，这样在很短的时间就可以基本上将所有的失效链接全部检查出来并且丢弃。
+</p>
+
+
+
+<pre class="src src-Java">public void handleProxyRequestId() {
+    if (retryProxyId == 0) {
+        requestProxyIdTimestamp = System.currentTimeMillis();
+    }
+    // check timeout.
+    long timeout = calcRequestTimeout(retryProxyId);
+    if (timeout &lt; 0) {
+        raiseException(<span style="color: #ffff00;">"detect timeout in request proxy id"</span>);
+        return;
+    }
+    // build request.
+    // ...
+    // obtain connection.
+    ProxyHandler handler = null;
+    while (true) {
+        handler = ProxyConnector.getInstance().acquireConnection();
+        if (handler == null) {
+            if (calcRequestTimeout(retryProxyId) &lt; 0) {
+                raiseException(<span style="color: #ffff00;">"detect timeout in request proxy id"</span>);
+                return;
+            }
+        } else {
+            break;
+        }
+    }
+    // write it out.
+    // ...
+}
+
+public void handleProxyResponseId() {
+     // check proxy channel closed.
+    if (proxyChannelClosed) {
+        proxyChannelClosed = false;
+        retryProxyId += 1;
+        code = Status.kProxyRequestId;
+        run();
+        return;
+    }
+</pre>
+
+
 </div>
 
 </div>
 
 <div id="outline-container-1-1-3" class="outline-4">
-<h4 id="sec-1-1-3"><span class="section-number-4">1.1.3</span> when async is better than sync.</h4>
+<h4 id="sec-1-1-3"><span class="section-number-4">1.1.3</span> when async is better than sync</h4>
 <div class="outline-text-4" id="text-1-1-3">
 
 </div>
