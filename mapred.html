@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="mapred"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-05 06:33:48 CST"/>
+<meta name="generated" content="2013-09-05 09:53:15 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -112,6 +112,7 @@
 <li><a href="mapred.html#sec-1-1-2">1.1.2 HowManyMapsAndReduces - Hadoop Wiki</a></li>
 <li><a href="mapred.html#sec-1-1-3">1.1.3 7 Tips for Improving MapReduce Performance | Apache Hadoop for the Enterprise | Cloudera</a></li>
 <li><a href="mapred.html#sec-1-1-4">1.1.4 Under the Hood: Scheduling MapReduce jobs more efficiently with Corona | Facebook</a></li>
+<li><a href="mapred.html#sec-1-1-5">1.1.5 MapReduce Patterns, Algorithms, and Use Cases | Highly Scalable Blog</a></li>
 </ul>
 </li>
 <li><a href="mapred.html#sec-1-2">1.2 Scheduler</a></li>
@@ -683,6 +684,92 @@ Corona在fb部署过程是这样的
 <li>It’s worth noting that we considered Apache YARN as a possible alternative to Corona. However, after investigating the use of YARN on top of our version of HDFS (a strong requirement due to our many petabytes of archived data) we found numerous incompatibilities that would be time-prohibitive and risky to fix. Also, it is unknown when YARN would be ready to work at Facebook-scale workloads.
 </li>
 <li>没有升级到YARN一方面是考虑到兼容性问题，另外一方面是考虑到风险性
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-1-5" class="outline-4">
+<h4 id="sec-1-1-5"><span class="section-number-4">1.1.5</span> MapReduce Patterns, Algorithms, and Use Cases | Highly Scalable Blog</h4>
+<div class="outline-text-4" id="text-1-1-5">
+
+<p><a href="http://highlyscalable.wordpress.com/2012/02/01/mapreduce-patterns/">http://highlyscalable.wordpress.com/2012/02/01/mapreduce-patterns/</a>
+</p>
+<p>
+<a href="http://blog.nosqlfan.com/html/4179.html">http://blog.nosqlfan.com/html/4179.html</a>
+</p>
+<ul>
+<li>基本MapReduce模式
+<ul>
+<li>计数与求和 # 在mapper里面使用hashmap以及使用combiner来减少传输数据量
+</li>
+<li>整理归类 # 类似倒排索引性质
+</li>
+<li>过滤 (文本查找)，解析和校验 # 每个mapper单独处理
+</li>
+<li>分布式任务执行 # mapper处理小任务使用一个reducer做汇总
+</li>
+<li>排序 # 使用CompositeKey,Group来做扩展
+</li>
+</ul>
+
+</li>
+<li>非基本MapReduce模式
+<ul>
+<li>迭代消息传递 (图处理) # 多轮迭代物化每轮中间结果
+</li>
+<li>值去重 （对唯一项计数） # 扩展排序
+</li>
+<li>互相关 
+</li>
+</ul>
+
+</li>
+<li>用MapReduce表达关系模式
+<ul>
+<li>筛选（Selection）
+</li>
+<li>投影（Projection）
+</li>
+<li>合并（Union） 
+</li>
+<li>交集（Intersection）
+</li>
+<li>差异（Difference）
+</li>
+<li>分组聚合（GroupBy and Aggregation）
+</li>
+<li>连接（Joining）
+<ul>
+<li>分配后连接 （Reduce端连接,排序-合并连接）
+</li>
+<li>复制链接Replicated Join （Mapper端连接, Hash 连接） # 一路数据作为hashmap存放在mapper里面做连接
+</li>
+<li><a href="http://www.inf.ed.ac.uk/publications/thesis/online/IM100859.pdf">Join Algorithms using Map/Reduce</a>
+</li>
+<li><a href="mapred.html#Optimizing-Joins-in-a-MapReduce-Environment">Optimizing Joins in a MapReduce Environment</a>
+</li>
+</ul>
+
+</li>
+</ul>
+
+</li>
+<li>reference
+<ul>
+<li>C. T. Chu et al provides an excellent description of  machine learning algorithms for MapReduce in the article Map-Reduce for Machine Learning on Multicore.
+</li>
+<li>FFT using MapReduce:  <a href="http://www.slideshare.net/hortonworks/large-scale-math-with-hadoop-mapreduce">http://www.slideshare.net/hortonworks/large-scale-math-with-hadoop-mapreduce</a>
+</li>
+<li>MapReduce for integer factorization: <a href="http://www.javiertordable.com/files/MapreduceForIntegerFactorization.pdf">http://www.javiertordable.com/files/MapreduceForIntegerFactorization.pdf</a>
+</li>
+<li>Matrix multiplication with MapReduce: <a href="http://csl.skku.edu/papers/CS-TR-2010-330.pdf">http://csl.skku.edu/papers/CS-TR-2010-330.pdf</a> and <a href="http://www.norstad.org/matrix-multiply/index.html">http://www.norstad.org/matrix-multiply/index.html</a>
+</li>
+</ul>
+
 </li>
 </ul>
 
