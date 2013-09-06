@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<title>scala</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="scala"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-09-06 20:04:09 CST"/>
+<meta name="author" content="dirtysalt"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" type="text/css" href="css/site-plain.css" />
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><g:plusone annotation="inline"></g:plusone>
+
+
+<div id="content">
+<h1 class="title">scala</h1>
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="scala.html#sec-1">1 scala</a>
+<ul>
+<li><a href="scala.html#sec-1-1">1.1 基本语法</a>
+<ul>
+<li><a href="scala.html#sec-1-1-1">1.1.1 原始类型</a></li>
+<li><a href="scala.html#sec-1-1-2">1.1.2 变量定义</a></li>
+<li><a href="scala.html#sec-1-1-3">1.1.3 函数定义</a></li>
+<li><a href="scala.html#sec-1-1-4">1.1.4 匿名函数</a></li>
+<li><a href="scala.html#sec-1-1-5">1.1.5 控制结构</a></li>
+<li><a href="scala.html#sec-1-1-6">1.1.6 等值比较</a></li>
+<li><a href="scala.html#sec-1-1-7">1.1.7 操作符重载</a></li>
+</ul>
+</li>
+<li><a href="scala.html#sec-1-2">1.2 面向对象</a>
+<ul>
+<li><a href="scala.html#sec-1-2-1">1.2.1 单例对象</a></li>
+</ul>
+</li>
+<li><a href="scala.html#sec-1-3">1.3 面向函数</a></li>
+<li><a href="scala.html#sec-1-4">1.4 面向泛型</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> scala</h2>
+<div class="outline-text-2" id="text-1">
+
+<ul>
+<li><a href="http://www.cs.ucsb.edu/~benh/260/Programming-in-Scala.pdf">Programming in Scala</a> 
+</li>
+<li>The Scala Programming Language : <a href="http://www.scala-lang.org/">http://www.scala-lang.org/</a>
+</li>
+</ul>
+
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 基本语法</h3>
+<div class="outline-text-3" id="text-1-1">
+
+
+</div>
+
+<div id="outline-container-1-1-1" class="outline-4">
+<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> 原始类型</h4>
+<div class="outline-text-4" id="text-1-1-1">
+
+<p>More generally, all of Java’s primitive types have corresponding classes in the scala package. And when you compile your Scala code to Java bytecodes, the Scala com- piler will use Java’s primitive types where possible to give you the perfor- mance benefits of the primitive types.
+</p>
+<p>
+java原始类型已经全部导入了scala这个包里面，并且这个包是自动引入的。然后所有的原始类型全部变为大写字母开头比如Int,Float,Long等。这样存在一个好处就是从语法上完全统一了扩展类型和原始类型，并且对于这些原始类型scala在上面也做了一些扩展提供了方法，这样使得就更加模糊了扩展类型和原始类型之间的区别。但是scala在底层会尽可能地使用原始类型操作，在性能上不会存在损失。
+</p>
+
+
+
+<pre class="example">scala&gt; val a:Int=2
+a: Int = 2
+
+scala&gt; a.toString()
+res0: String = 2
+
+scala&gt; a.to(4)
+res1: scala.collection.immutable.Range.Inclusive = Range(2, 3, 4)
+</pre>
+
+
+<p>
+<b>TODO(dirlt):可以学习一下这些原始类型提供的方法</b> 
+</p>
+
+<hr/>
+<p>
+数组类型则是 Array[&lt;type&gt;] 比如
+</p><ul>
+<li>Array[String]
+</li>
+<li>Array[Array[String]]
+</li>
+</ul>
+
+
+
+
+<pre class="example">scala&gt; val a = new Array[Array[String]](10)
+a: Array[Array[String]] = Array(null, null, null, null, null, null, null, null, null, null)
+
+scala&gt; a[0]
+&lt;console&gt;:1: error: identifier expected but integer literal found.
+       a[0]
+
+scala&gt; a(0)
+res1: Array[String] = null
+
+scala&gt; a.apply(0)
+res2: Array[String] = null
+</pre>
+
+<p>
+注意这里不能够在用[]这种方式来访问数组，而必须使用()的方式来访问。实际上scala将()调用方法定向到了apply这个函数，可以认为是操作符重载。 
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-1-2" class="outline-4">
+<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> 变量定义</h4>
+<div class="outline-text-4" id="text-1-1-2">
+
+<p>Scala has two kinds of variables, vals and vars. A val is similar to a final variable in Java. Once initialized, a val can never be reassigned. A var, by contrast, is similar to a non-final variable in Java. A var can be reassigned throughout its lifetime. 
+</p>
+<p>
+scala提供了两种变量定义的方式，分别是val和var. 对于val来说一旦赋值便不能够更改，有点类似C++的引用或者是用const/final字段做修饰。而var则是类似普通变量赋值之后依然可以更改。定义变量形式如下
+</p>
+
+
+<pre class="example">[val|var] &lt;name&gt; : &lt;type&gt; = &lt;initializor&gt;
+</pre>
+
+<p>
+因为scala有type inference功能，所以实际上&lt;type&gt;这个字段可以省略，直接通过&lt;initializor&gt;这个字段来推测类型。
+</p>
+
+
+
+<pre class="example">scala&gt; val a = 1
+a: Int = 1
+
+scala&gt; val a = 1L
+a: Long = 1
+
+scala&gt; val a = 1.0
+a: Double = 1.0
+
+scala&gt; val a = "Hello"
+a: String = Hello
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-1-3" class="outline-4">
+<h4 id="sec-1-1-3"><span class="section-number-4">1.1.3</span> 函数定义</h4>
+<div class="outline-text-4" id="text-1-1-3">
+
+<p>a function defines an expression that results in a value.
+</p>
+<p>
+大致形式如下
+</p>
+
+
+<pre class="example">def &lt;func&gt;(&lt;param1&gt;:&lt;type1&gt;, &lt;param2&gt;:&lt;type2&gt;,..):&lt;return-type&gt; = {
+  // function body.
+}
+</pre>
+
+
+<p>
+函数本质上就是求得一个表达式，所以在&lt;function-body&gt;部分最后一个表达式就function返回结果，不需要使用return来显示说明。同样这里也可以使用type inference, 所以如果scala可以从function-body推断的话，那么&lt;return-type&gt;这个部分也可以不用写。但是scala type inference依然比较简单，如果有显示return语句的话(有时候我们确实需要），那么依然需要指定返回类型。
+</p>
+
+
+<pre class="example">scala&gt; def foo(a:Int,b:Int):Int = {
+     | a+b
+     | }
+foo: (a: Int, b: Int)Int
+
+scala&gt; def foo(a:Int,b:Int)  = {
+     | a+b
+     | }
+foo: (a: Int, b: Int)Int
+
+scala&gt; def foo(a:Int,b:Int)  = {
+     | return a+b
+     | }
+&lt;console&gt;:9: error: method foo has return statement; needs result type
+       return a+b
+       ^
+</pre>
+
+
+<p>
+但是scala也允许定义没有任何返回值的函数.对于这类函数&lt;return-type&gt;=Unit, 类似java里面的void. 但是从概念上来说因为不返回值，所以没有必要加上=这个标签，这样看上去更像是一个过程
+</p>
+
+
+<pre class="src src-Scala">def printLine(a:String) {
+  println(a)
+}
+</pre>
+
+
+<p>
+<b>NOTE（dirlt)：需要注意的是传入的param实际上都是以val来定义的，所以在funciton-body里面不允许做修改</b>
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-1-4" class="outline-4">
+<h4 id="sec-1-1-4"><span class="section-number-4">1.1.4</span> 匿名函数</h4>
+<div class="outline-text-4" id="text-1-1-4">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-1-5" class="outline-4">
+<h4 id="sec-1-1-5"><span class="section-number-4">1.1.5</span> 控制结构</h4>
+<div class="outline-text-4" id="text-1-1-5">
+
+<ul>
+<li>while
+</li>
+<li>foreach # args.foreach(&lt;function&gt;).
+</li>
+<li>for # for(arg &lt;- args). 注意这里的arg以val定义所以不能够修改
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-1-6" class="outline-4">
+<h4 id="sec-1-1-6"><span class="section-number-4">1.1.6</span> 等值比较</h4>
+<div class="outline-text-4" id="text-1-1-6">
+
+<p>scala下==的和java是不同的。 <b>在java下==是比较引用相等性，而scala下==则是比较值相等性，也就是说会调用equal来做比较</b> 
+</p>
+<p>
+<b>TODO（dirlt）：怎么判断引用相等？</b> 
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-1-7" class="outline-4">
+<h4 id="sec-1-1-7"><span class="section-number-4">1.1.7</span> 操作符重载</h4>
+<div class="outline-text-4" id="text-1-1-7">
+
+<ul>
+<li>a op b -&gt; a.op(b)
+</li>
+<li>a(b) -&gt; a.apply(b)
+</li>
+<li>a(b)=c -&gt; a.update(b,c)
+</li>
+<li>a op: b -&gt; b.op(a) # If the method name ends in a colon, the method is invoked on the right operand. 
+<ul>
+<li><b>NOTE(dirlt):但是evaluation的顺序依然先是a，然后是b</b>
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+
+
+
+<pre class="src src-Scala">var Id = 0 // for identification.
+class Op() {
+  val id = Id;
+  Id += 1;
+  def + (x: Op) {
+    println(<span style="color: #ffff00;">"operation by Op#"</span> + id);
+  }
+  def +: (x: Op) {
+    println(<span style="color: #ffff00;">"operation by Op#"</span> + id);
+  }
+  def apply(p: Int) {
+    println(<span style="color: #ffff00;">"apply with "</span> + p)
+  }
+  def update(p: Int, c:Int) {
+    println(<span style="color: #ffff00;">"update with "</span> + p + <span style="color: #ffff00;">", "</span> + c);
+  }
+}
+val a = new Op(); // Op#0
+val b = new Op(); // Op#1
+a + b;
+a +: b;
+a(0);
+a(0)=1;
+</pre>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 面向对象</h3>
+<div class="outline-text-3" id="text-1-2">
+
+
+</div>
+
+<div id="outline-container-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> 单例对象</h4>
+<div class="outline-text-4" id="text-1-2-1">
+
+<p>单例对象很好地解决了Java的两个问题，一个是是单例模式没有集成到语言当中去导致代码编写冗余，一个是静态字段和静态方法嵌入在类定义中导致代码结构不清晰。下面是一段Java代码
+</p>
+
+
+<pre class="src src-Java">/* coding:utf-8
+ * Copyright (C) dirlt
+ */
+
+public class Hello {
+  public static final kConstant = 10;
+  private static instance;
+  public static void init() {
+    instance = new Hello();
+  }
+  public static Hello getInstance() {
+    return instance;
+  }
+  public void method() {
+  }
+}
+</pre>
+
+
+<p>
+而scala引入单例对象方式解决这个问题。单例对象使用object来定义，使用时候直接拿名称引用即可。
+</p>
+
+
+<pre class="src src-Scala">object Hello {
+  val kConstant = 10;
+  def method() {
+  }
+}
+Hello.method();
+println(Hello.kConstant);
+</pre>
+
+
+<p>
+When a singleton object shares the same name with a class, it is called that class’s companion object. You must define both the class and its companion object in the same source file. The class is called the companion class of the singleton object. A class and its companion object can access each other’s private members.
+</p>
+<p>
+如果定义了和这个单例对象名称相同的类的话，那么
+</p><ul>
+<li><b>这两个定义必须放在同一份文件</b>
+</li>
+<li>这个类称为这个单例对象的 <b>共生类</b>
+</li>
+<li>这个单例对象称为这个类的 <b>共生对象</b> 
+</li>
+</ul>
+
+
+<p>
+A singleton object that does not share the same name with a companion class is called a standalone object. You can use standalone objects for many purposes, including collecting related utility methods together, or defining an entry point to a Scala application. 
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> 面向函数</h3>
+<div class="outline-text-3" id="text-1-3">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> 面向泛型</h3>
+<div class="outline-text-3" id="text-1-4">
+
+</div>
+</div>
+</div>
+</div>
+
+<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'scala.html';var disqus_title = 'scala.html';var disqus_url = 'http://dirlt.com/scala.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+</html>
