@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="scala"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-10 17:12:13 CST"/>
+<meta name="generated" content="2013-09-10 21:45:18 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -107,6 +107,7 @@
 <li><a href="scala.html#sec-1-1-6">1.1.6 等值比较</a></li>
 <li><a href="scala.html#sec-1-1-7">1.1.7 operator</a></li>
 <li><a href="scala.html#sec-1-1-8">1.1.8 前提断言</a></li>
+<li><a href="scala.html#sec-1-1-9">1.1.9 package</a></li>
 </ul>
 </li>
 <li><a href="scala.html#sec-1-2">1.2 面向对象</a>
@@ -115,7 +116,10 @@
 <li><a href="scala.html#sec-1-2-2">1.2.2 构造函数</a></li>
 <li><a href="scala.html#sec-1-2-3">1.2.3 override</a></li>
 <li><a href="scala.html#sec-1-2-4">1.2.4 隐式转换</a></li>
-<li><a href="scala.html#sec-1-2-5">1.2.5 类型层次</a></li>
+<li><a href="scala.html#sec-1-2-5">1.2.5 ()method</a></li>
+<li><a href="scala.html#sec-1-2-6">1.2.6 类型继承</a></li>
+<li><a href="scala.html#sec-1-2-7">1.2.7 类型层次</a></li>
+<li><a href="scala.html#sec-1-2-8">1.2.8 Traits</a></li>
 </ul>
 </li>
 <li><a href="scala.html#sec-1-3">1.3 面向函数</a>
@@ -355,6 +359,44 @@ scala&gt; def foo(a:Int,b:Int)  = {
 <p>
 <b>NOTE（dirlt)：需要注意的是传入的param实际上都是以val来定义的，所以在funciton-body里面不允许做修改</b>
 </p>
+
+<hr/>
+<p>
+java里面使用&hellip;来表示参数列表比如
+</p>
+
+
+<pre class="src src-Java">public static void main(String... args) {
+  System.out.println(args[0]);
+}
+</pre>
+
+<p>
+而外部可以将类型为String[]的参数直接传入使用。 
+</p>
+<p>
+scala里面对应的表示如下,类型为String*
+</p>
+
+
+<pre class="src src-Scala">def foo(args:String*) {
+  for(arg &lt;- args) {
+    println(arg);
+  }
+}
+</pre>
+
+
+<p>
+但是和java不同的是没有办法直接传入数组，而必须使用:_*操作符展开。
+</p>
+
+
+<pre class="src src-Scala">val x = Array(<span style="color: #ffff00;">"Hello"</span>,<span style="color: #ffff00;">"World"</span>);
+foo(x:_*)
+</pre>
+
+
 </div>
 
 </div>
@@ -497,8 +539,18 @@ val y =
 <p>scala下==的和java是不同的。 <b>在java下==是比较引用相等性，而scala下==则是比较值相等性，也就是说会调用equal来做比较</b> 
 </p>
 <p>
-<b>TODO（dirlt）：怎么判断引用相等？</b> 
+使用eq,ne来判断引用相当，但是判断引用相等仅限于引用类型
 </p>
+
+
+<pre class="src src-Scala">val a = Array(<span style="color: #ffff00;">"1"</span>);
+val b = Array(<span style="color: #ffff00;">"2"</span>);
+println(a eq b)
+val c = b
+println(c eq b)
+</pre>
+
+
 </div>
 
 </div>
@@ -572,6 +624,92 @@ a(0)=1;
 
 
 </div>
+
+</div>
+
+<div id="outline-container-1-1-9" class="outline-4">
+<h4 id="sec-1-1-9"><span class="section-number-4">1.1.9</span> package</h4>
+<div class="outline-text-4" id="text-1-1-9">
+
+<p>scala提供了两种定义package的方式，一种是java的，一种是类似C++ namespace的，关键字_root_来引用到最外层package
+</p>
+
+
+<pre class="src src-Scala">package A {  
+  class X {
+  }
+  package B {
+    class X {
+    }
+  }
+  package C {
+    object Hello extends App {
+      val x = new A.X() // new _root_.A.X()
+      val x2 = new B.X()
+    }
+  }
+}
+</pre>
+
+
+<p>
+import有下面几种常用方法 <a href="http://www.scala-lang.org/old/node/119.html">http://www.scala-lang.org/old/node/119.html</a>
+</p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption></caption>
+<colgroup><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">The clause</th><th scope="col" class="left">makes available without qualification..</th></tr>
+</thead>
+<tbody>
+<tr><td class="left">import p._</td><td class="left">all members of p (this is analogous to import p.* in Java).</td></tr>
+<tr><td class="left">import p.x</td><td class="left">the member x of p.</td></tr>
+<tr><td class="left">import p.{x =&gt; a}</td><td class="left">the member x of p renamed as a.</td></tr>
+<tr><td class="left">import p.{x =&gt; _}</td><td class="left">the member x of p removed.</td></tr>
+<tr><td class="left">import p.{x, y}</td><td class="left">the members x and y of p.</td></tr>
+<tr><td class="left">import p1.p2.z</td><td class="left">the member z of p2, itself member of p1.</td></tr>
+</tbody>
+</table>
+
+Futhermore the clause import p1._, p2._ is a shorthand for import p1._; import p2._. A catch-all ‘_’. This imports all members except those members men-tioned in a preceding clause. If a catch-all is given, it must come last in the list of import selectors.
+
+<p>
+cacth-all只能够用在最后一个selector上面，过滤之前所有的条件之后的部分，也就是说import p.{x=&gt;_,_}导入p的除x之外的所有members, import p.{x=&gt;a,_}则是导入p所有的members但是将x重命名为a.
+</p>
+<p>
+scala import相比java import更加灵活
+</p><ul>
+<li>may appear anywhere // 类似Python的import.
+</li>
+<li>may refer to objects (singleton or regular) in addition to packages
+</li>
+<li>let you rename and hide some of the imported members
+</li>
+</ul>
+
+
+
+
+<pre class="src src-Scala">def showFruit(fruit: Fruit) {
+  import fruit._
+  println(name +<span style="color: #ffff00;">"s are "</span>+ color)
+}
+</pre>
+
+
+<p>
+Implicitly imported into every compilation unit are, in that order:
+</p><ul>
+<li>the package java.lang,
+</li>
+<li>the package scala,
+</li>
+<li>and the object scala.Predef.
+</li>
+</ul>
+
+
+</div>
 </div>
 
 </div>
@@ -626,7 +764,7 @@ println(Hello.kConstant);
 
 
 <p>
-When a singleton object shares the same name with a class, it is called that class’s companion object. You must define both the class and its companion object in the same source file. The class is called the companion class of the singleton object. A class and its companion object can access each other’s private members.
+When a singleton object shares the same name with a class, it is called that class’s companion object. You must define both the class and its companion object in the same source file. The class is called the companion class of the singleton object. A class and its companion object can access each other’s private members. A singleton object that does not share the same name with a companion class is called a standalone object. You can use standalone objects for many purposes, including collecting related utility methods together, or defining an entry point to a Scala application. 
 </p>
 <p>
 如果定义了和这个单例对象名称相同的类的话，那么
@@ -639,9 +777,7 @@ When a singleton object shares the same name with a class, it is called that cla
 </li>
 </ul>
 
-
-<p>
-A singleton object that does not share the same name with a companion class is called a standalone object. You can use standalone objects for many purposes, including collecting related utility methods together, or defining an entry point to a Scala application. 
+<p>共生对象和共生类可以相互访问private members
 </p>
 </div>
 
@@ -706,7 +842,7 @@ scala将构造函数和初始化代码融合，只是使用初始化代码来作
 </pre>
 
 <p>
-在class parameter之前添加[private|public|protected|override] [val|var]即可，这样既定义了类构造函数参数也定义了对应的字段。
+在class parameter之前添加[private|protected|override] [val|var]即可，这样既定义了类构造函数参数也定义了对应的字段。scala访问修饰符只有private/protected,默认是public. The way you make members public in Scala is by not explicitly specifying any access modifier. Put another way, where you’d say “public” in Java, you simply say nothing in Scala. Public is Scala’s default access level. 
 </p>
 <p>
 如果面向对象角度相比于java，上面这种方式确实简化不少。而scala本意应该是更想到达函数式类构造效果，构造生成对象称为 <b>functional object</b> . 我们之所以想保存这些参数是因为在编写java时候这些参数只能够在构造函数中获得，而在scala里面实际上在整个类里面都是可以获得的，因此对于上面情况来说我们根本没有必要保存这些类参数。在下面closure代码里面我们实际上可以直接引用pn,pd来参与计算。
@@ -831,19 +967,295 @@ Because im- plicit conversions are applied implicitly by the compiler, not expli
 </div>
 
 <div id="outline-container-1-2-5" class="outline-4">
-<h4 id="sec-1-2-5"><span class="section-number-4">1.2.5</span> 类型层次</h4>
+<h4 id="sec-1-2-5"><span class="section-number-4">1.2.5</span> ()method</h4>
 <div class="outline-text-4" id="text-1-2-5">
 
-<ul>
-<li>Unit () # 赋值语句产生()
+<p>parameterless vs. empty-paren method. 对于函数来说如果没有任何参数的话，那么可以将()取消:
+</p><ul>
+<li>def foo() = 1 // empty-paren
 </li>
-<li>Null null
-</li>
-<li>Nothing
+<li>def foo = 1 // parameterless
 </li>
 </ul>
 
+<p>本质上这两者没有任何差别，但是在习惯上我们通常做出如下选择： <b>如果这个方法存在side-effect的话，那么选用foo()这种方式，否则选用foo方式</b>
+</p>
+<p>
+这样的选择有个好处就是可以统一method和field访问，使得代码更加简洁。考虑在Java经常需要编写getter方法导致冗长的代码
+</p>
 
+
+<pre class="src src-Java">public class Hello {
+  private int n;
+  private int d;
+  public Hello(int n,int d) {
+    this.n = n;
+    this.d = d;
+  }
+  public int squareN() {
+    return n*n;
+  }
+  public int doubleD() {
+    return 2*d;
+  }
+  public static void usage() {
+    Hello h = new Hello(1,2);
+    h.squareN();
+    h.doubleD();
+  }
+}
+</pre>
+
+
+<p>
+而scala代码相对简洁，并且访问squareN和doubleD更像是访问字段而不是在调用方法。 <b>NOTE(dirlt):不过从个人感觉上看，如果计算代价比较大的话，还是使用empty-paren比较好</b>
+</p>
+
+
+<pre class="src src-Scala">class Hello(private val n:Int,
+            private val d:Int) {
+  def squareN = n * n;
+  def doubleD = d * d;
+}
+
+val h = new Hello(1,2);
+println(h.squareN)
+println(h.doubleD)
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-6" class="outline-4">
+<h4 id="sec-1-2-6"><span class="section-number-4">1.2.6</span> 类型继承</h4>
+<div class="outline-text-4" id="text-1-2-6">
+
+<p>使用extends关键字来继承，然后在继承的声明里面可以对父类做初始化。父类实例使用super来引用。
+</p>
+
+
+<pre class="src src-Scala">class A(n:Int) {
+  println(<span style="color: #ffff00;">"init A with n = "</span> + n);
+}
+
+class B(n:Int) extends A(n) {
+  println(<span style="color: #ffff00;">"init B with n = "</span> + n);
+}
+
+val b = new B(10);
+</pre>
+
+
+<p> 
+抽象类中存在没有实现的方法(只给出声明)，在class之前使用abstract关键字指示
+</p>
+
+
+<pre class="src src-Scala">abstract class Hello {
+  def echo()
+}
+</pre>
+
+<p>
+抽象类不能够用来创建实例，类必须继承实现方法才能够创建实例。
+</p>
+<p>
+与抽象类相对应的是final类，这个类不能够再被继承。同时final字段还能够用在方法和字段上面这样可以不被override.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-2-7" class="outline-4">
+<h4 id="sec-1-2-7"><span class="section-number-4">1.2.7</span> 类型层次</h4>
+<div class="outline-text-4" id="text-1-2-7">
+
+<p><img src="images/scala-class-hierarchy.png"  alt="./images/scala-class-hierarchy.png" />
+</p>
+<p>
+所有的基类是Any，定义了下面这些方法
+</p>
+
+
+<pre class="src src-Scala">final def ==(that: Any): Boolean
+final def !=(that: Any): Boolean
+def equals(that: Any): Boolean
+def hashCode: Int
+def toString: String
+</pre>
+
+<p>
+注意这里我们不需要实现==,!=，它们会调用equals这个方法，这个才是我们需要复写的。
+</p>
+<p>
+The root class Any has two subclasses: AnyVal and AnyRef. AnyVal is the parent class of every built-in value class in Scala. There are nine such value classes: Byte, Short, Char, Int, Long, Float, Double, Boolean, and Unit. The first eight of these correspond to Java’s primitive types, and their values are represented at run time as Java’s primitive values. The instances of these classes are all written as literals in Scala. As mentioned previously, on the Java platform AnyRef is in fact just an alias for class java.lang.Object. So classes written in Java as well as classes written in Scala all inherit from AnyRef.
+</p>
+<p>
+AnyVal是所有的内置类型基类，包括8种对应的java基本类型以及Unit（对应void类型），AnyRef是所有引用类型的基类。对于scala内置类型而言，值是通过字面量来创建的，也就是说不能够通过比如new Int这样的方法来创建，而Unit对应的value为(). 在JVM平台上面，AnyRef是Object的alias,但是如果可以的话尽可能地使用AnyRef而不要使用Object. <b>因为AnyRef上定义了eq和ne两个方法，所以只有引用类型才能够调用</b>
+</p>
+<p>
+Scala classes are different from Java classes in that they also inherit from a special marker trait called ScalaObject. The idea is that the ScalaObject contains methods that the Scala compiler defines and implements in order to make execution of Scala programs more efficient. Right now, Scala object contains a single method, named $tag, which is used internally to speed up pattern matching.
+</p>
+<p>
+继承ScalaObject主要是用来加速pattern matching.
+</p>
+<p>
+Class Null is the type of the null reference; it is a subclass of every reference class (i.e., every class that itself inherits from AnyRef). Type Nothing is at the very bottom of Scala’s class hierarchy; it is a sub- type of every other type. However, there exist no values of this type whatso-ever.
+</p>
+<p>
+Null是所有引用类型的子类，其实例对象是null. 而Nothing是所有类型的子类，但是没有实例对象。对于Nothing没有实例对象需要了解Nothing的引入。Nothing引入是为了将异常融入类型系统的，比如下面scala代码
+</p>
+
+
+<pre class="src src-Scala">def error(message: String): Nothing =
+  throw new RuntimeException(message)
+</pre>
+
+<p>
+定义了error这个函数来报告错误，然后我们在使用的时候
+</p>
+
+
+<pre class="src src-Scala">def divide(x: Int, y: Int): Int =
+  if (y != 0) x / y
+  else error(<span style="color: #ffff00;">"can't divide by zero"</span>)
+</pre>
+
+<p>
+我们必须确保类型能够统一，所以error类型必须和Int兼容，因此Nothing在设计上必须是所有类型的子类。
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-2-8" class="outline-4">
+<h4 id="sec-1-2-8"><span class="section-number-4">1.2.8</span> Traits</h4>
+<div class="outline-text-4" id="text-1-2-8">
+
+<p>所谓的traits就是特征，在面向对象里面就是指代这个类或者是这个对象的特征。scala trait和java interface非常相似，其引入都是为了解决多重继承的问题。 <b>trait包含方法和字段，但是没有类参数（class parameter）和构造函数。</b>  <b>NOTE（dirlt）：我觉得这点设计让trait回归到了本意，同时简化了设计和使用</b>
+trait的定义和class类似，mixin trait上也是通过关键字extends来完成的，如果需要mixin多个trait的话用with关键字
+</p>
+
+
+<pre class="src src-Scala">trait A {
+  def foo();
+}
+
+trait B {
+  def bar();
+}
+
+class C extends A with B {
+  def foo() {
+    println(<span style="color: #ffff00;">"foo"</span>);
+  }
+  def bar() {
+    println(<span style="color: #ffff00;">"bar"</span>);
+  }
+}
+</pre>
+
+
+<p>
+trait的引入解决了一些多重继承的问题，最重要的问题就是如何解释super. 多重继承里面最麻烦的就是菱形继承问题A-&gt;B,A-&gt;C,B-&gt;D,C-&gt;D. 下面是一段C++代码
+</p>
+
+
+<pre class="src src-C++">/* coding:utf-8
+ * Copyright (C) dirlt
+ */
+
+#include &lt;cstdio&gt;
+
+class A {
+ public:
+  void foo() {
+    printf(<span style="color: #ffff00;">"A\n"</span>);
+  }
+};
+
+class B:public A {
+ public:
+  void foo() {
+    A::foo();
+    printf(<span style="color: #ffff00;">"B\n"</span>);
+  }
+};
+
+class C:public A {
+ public:
+  void foo() {
+    A::foo();
+    printf(<span style="color: #ffff00;">"C\n"</span>);
+  }
+};
+
+class D:public B,
+        public C {
+ public:
+  void foo() {
+    B::foo();
+    C::foo();        
+    printf(<span style="color: #ffff00;">"D\n"</span>);
+  }
+};
+
+int main() {
+  D d;
+  d.foo();
+  return 0;
+}
+</pre>
+
+<p>
+这里D想调用A,B,C的foo各一次，但是最终调用了A两次。因为在C++里面允许多重继承没有super这个概念，所以只指定哪些父类，但是即使存在super这个概念也比较难以解决这个问题。比较难以解决这个问题的根本是，super这个parent-child关系是静态确定的，也就是说一旦出现菱形继承这样的情况，能够选择其中一条parent-child链执行。而如果语言能够在语言级别的层面上，根据当前继承关系动态地给出一个包含所有节点parent-child链的话，就可以解决这个问题。scala就是这个做法。
+</p>
+<p>
+scala这种动态确定关系链的技术叫做linearization, 也就是将继承关系线性化得到一个linear order。以下面这个继承关系为例
+</p>
+
+
+<pre class="example">class Animal
+trait Furry extends Animal
+trait HasLegs extends Animal
+trait FourLegged extends HasLegs
+class Cat extends Animal with Furry with FourLegged
+</pre>
+
+
+<p>
+<img src="images/scala-linearization.png"  alt="./images/scala-linearization.png" />
+</p>
+<p>
+以Cat直接继承和混入类型， <b>从左向右分析</b>
+</p><ol>
+<li>Animal linear order = Animal -&gt; AnyRef -&gt; Any
+</li>
+<li>Flurry linear order = Furry -&gt; Animal -&gt; AnyRef -&gt; Any
+</li>
+<li>FourLegged linear order = HasLegs -&gt; Animal -&gt; AnyRef -&gt; Any
+</li>
+</ol>
+
+<p>优先级别上1&gt;2&gt;3. 1和2结合结果为
+</p><ul>
+<li>Furry -&gt; Animal -&gt; AnyRef -&gt; Any
+</li>
+</ul>
+
+<p>然后和3结合结果为
+</p><ul>
+<li>FourLegged -&gt; HasLegs -&gt; Furry -&gt; Animal -&gt; AnyRef -&gt; Any
+</li>
+</ul>
+
+<p>所以最后的linear order为此，以此顺序调用super.
+</p>
+<p>
+<b>NOTE（dirlt）：这种动态执行的效果就是，你不能够确定super到底是哪个，取决于context.</b>
+</p>
 </div>
 </div>
 
@@ -965,6 +1377,19 @@ val pFoo2 = foo2(1,_:Int)
 <p>
 <b>open term因为free variable被captured住之后形成的function value称为closure.</b> The resulting function value, which will contain a reference to the captured more variable, is called a closure, therefore, because the function value is the end product of the act of closing the open term.
 </p>
+<p>
+需要注意的是， <b>closure capture的不是variable的值而是variable本身</b> ，所以如果variable变化的话那么closure本身行为也是会变化的。
+</p>
+
+
+<pre class="src src-Scala">var y = 10
+val foo = (x:Int) =&gt; x+y
+println(foo(1)) // 11
+y = 0
+println(foo(1)) // 1
+</pre>
+
+
 </div>
 </div>
 
