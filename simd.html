@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="simd"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-08-13 19:43:04 CST"/>
+<meta name="generated" content="2013-09-15 15:18:25 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -59,33 +59,15 @@
   .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
                                  font-weight:bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" type="text/css" href="css/site-plain.css" />
-<script type="text/javascript">
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
+</style><link rel="stylesheet" type="text/css" href="css/site.css" />
+
 
 </head>
 <body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><g:plusone annotation="inline"></g:plusone>
 
+<div id="preamble">
+
+</div>
 
 <div id="content">
 <h1 class="title">simd</h1>
@@ -314,102 +296,102 @@ SIMD全称是Single Instruction Multiple Data,即单指令多数据,
 int check_support_mmx(){
     int res=0;
     __asm__ __volatile__(
-        <span style="color: #ffff00;">"movl $1,%%eax\n\t"</span>
-        <span style="color: #ffff00;">"cpuid\n\t"</span>
-        <span style="color: #ffff00;">"test $0x800000,%%edx\n\t"</span>
-        <span style="color: #ffff00;">"jz 1f\n\t"</span>
-        <span style="color: #ffff00;">"movl $1,%0\n\t"</span>
-        <span style="color: #ffff00;">"1:\n\t"</span>
-        :<span style="color: #ffff00;">"=m"</span>(res)
-        ::<span style="color: #ffff00;">"eax"</span>,<span style="color: #ffff00;">"edx"</span>);
+        <span class="org-string">"movl $1,%%eax\n\t"</span>
+        <span class="org-string">"cpuid\n\t"</span>
+        <span class="org-string">"test $0x800000,%%edx\n\t"</span>
+        <span class="org-string">"jz 1f\n\t"</span>
+        <span class="org-string">"movl $1,%0\n\t"</span>
+        <span class="org-string">"1:\n\t"</span>
+        :<span class="org-string">"=m"</span>(res)
+        ::<span class="org-string">"eax"</span>,<span class="org-string">"edx"</span>);
     return res;
 }
 int check_support_sse(){
     int res=0;
     __asm__ __volatile__(
-        <span style="color: #ffff00;">"movl $1,%%eax\n\t"</span>
-        <span style="color: #ffff00;">"cpuid\n\t"</span>
-        <span style="color: #ffff00;">"test $0x02000000,%%edx\n\t"</span>
-        <span style="color: #ffff00;">"jz 1f\n\t"</span>
-        <span style="color: #ffff00;">"movl $1,%0\n\t"</span>
-        <span style="color: #ffff00;">"1:\n\t"</span>
-        :<span style="color: #ffff00;">"=m"</span>(res)
-        ::<span style="color: #ffff00;">"eax"</span>,<span style="color: #ffff00;">"edx"</span>);
+        <span class="org-string">"movl $1,%%eax\n\t"</span>
+        <span class="org-string">"cpuid\n\t"</span>
+        <span class="org-string">"test $0x02000000,%%edx\n\t"</span>
+        <span class="org-string">"jz 1f\n\t"</span>
+        <span class="org-string">"movl $1,%0\n\t"</span>
+        <span class="org-string">"1:\n\t"</span>
+        :<span class="org-string">"=m"</span>(res)
+        ::<span class="org-string">"eax"</span>,<span class="org-string">"edx"</span>);
     return res;
 }
 int check_support_sse2(){
     int res=0;
     __asm__ __volatile__(
-        <span style="color: #ffff00;">"movl $1,%%eax\n\t"</span>
-        <span style="color: #ffff00;">"cpuid\n\t"</span>
-        <span style="color: #ffff00;">"test $0x04000000,%%edx\n\t"</span>
-        <span style="color: #ffff00;">"jz 1f\n\t"</span>
-        <span style="color: #ffff00;">"movl $1,%0\n\t"</span>
-        <span style="color: #ffff00;">"1:\n\t"</span>
-        :<span style="color: #ffff00;">"=m"</span>(res)
-        ::<span style="color: #ffff00;">"eax"</span>,<span style="color: #ffff00;">"edx"</span>);
+        <span class="org-string">"movl $1,%%eax\n\t"</span>
+        <span class="org-string">"cpuid\n\t"</span>
+        <span class="org-string">"test $0x04000000,%%edx\n\t"</span>
+        <span class="org-string">"jz 1f\n\t"</span>
+        <span class="org-string">"movl $1,%0\n\t"</span>
+        <span class="org-string">"1:\n\t"</span>
+        :<span class="org-string">"=m"</span>(res)
+        ::<span class="org-string">"eax"</span>,<span class="org-string">"edx"</span>);
     return res;
 }
 int check_support_sse3(){
     int res=0;
     __asm__ __volatile__(
-        <span style="color: #ffff00;">"movl $1,%%eax\n\t"</span>
-        <span style="color: #ffff00;">"cpuid\n\t"</span>
-        <span style="color: #ffff00;">"test $0x1,%%ecx\n\t"</span>
-        <span style="color: #ffff00;">"jz 1f\n\t"</span>
-        <span style="color: #ffff00;">"movl $1,%0\n\t"</span>
-        <span style="color: #ffff00;">"1:\n\t"</span>
-        :<span style="color: #ffff00;">"=m"</span>(res)
-        ::<span style="color: #ffff00;">"eax"</span>,<span style="color: #ffff00;">"edx"</span>);
+        <span class="org-string">"movl $1,%%eax\n\t"</span>
+        <span class="org-string">"cpuid\n\t"</span>
+        <span class="org-string">"test $0x1,%%ecx\n\t"</span>
+        <span class="org-string">"jz 1f\n\t"</span>
+        <span class="org-string">"movl $1,%0\n\t"</span>
+        <span class="org-string">"1:\n\t"</span>
+        :<span class="org-string">"=m"</span>(res)
+        ::<span class="org-string">"eax"</span>,<span class="org-string">"edx"</span>);
     return res;
 }
 int check_support_ssse3(){
     int res=0;
     __asm__ __volatile__(
-        <span style="color: #ffff00;">"movl $1,%%eax\n\t"</span>
-        <span style="color: #ffff00;">"cpuid\n\t"</span>
-        <span style="color: #ffff00;">"test $0x0200,%%ecx\n\t"</span>
-        <span style="color: #ffff00;">"jz 1f\n\t"</span>
-        <span style="color: #ffff00;">"movl $1,%0\n\t"</span>
-        <span style="color: #ffff00;">"1:\n\t"</span>
-        :<span style="color: #ffff00;">"=m"</span>(res)
-        ::<span style="color: #ffff00;">"eax"</span>,<span style="color: #ffff00;">"edx"</span>);
+        <span class="org-string">"movl $1,%%eax\n\t"</span>
+        <span class="org-string">"cpuid\n\t"</span>
+        <span class="org-string">"test $0x0200,%%ecx\n\t"</span>
+        <span class="org-string">"jz 1f\n\t"</span>
+        <span class="org-string">"movl $1,%0\n\t"</span>
+        <span class="org-string">"1:\n\t"</span>
+        :<span class="org-string">"=m"</span>(res)
+        ::<span class="org-string">"eax"</span>,<span class="org-string">"edx"</span>);
     return res;
 }
 int check_support_sse4_1(){
     int res=0;
     __asm__ __volatile__(
-        <span style="color: #ffff00;">"movl $1,%%eax\n\t"</span>
-        <span style="color: #ffff00;">"cpuid\n\t"</span>
-        <span style="color: #ffff00;">"test $0x80000,%%ecx\n\t"</span>
-        <span style="color: #ffff00;">"jz 1f\n\t"</span>
-        <span style="color: #ffff00;">"movl $1,%0\n\t"</span>
-        <span style="color: #ffff00;">"1:\n\t"</span>
-        :<span style="color: #ffff00;">"=m"</span>(res)
-        ::<span style="color: #ffff00;">"eax"</span>,<span style="color: #ffff00;">"edx"</span>);
+        <span class="org-string">"movl $1,%%eax\n\t"</span>
+        <span class="org-string">"cpuid\n\t"</span>
+        <span class="org-string">"test $0x80000,%%ecx\n\t"</span>
+        <span class="org-string">"jz 1f\n\t"</span>
+        <span class="org-string">"movl $1,%0\n\t"</span>
+        <span class="org-string">"1:\n\t"</span>
+        :<span class="org-string">"=m"</span>(res)
+        ::<span class="org-string">"eax"</span>,<span class="org-string">"edx"</span>);
     return res;
 }
 int check_support_sse4_2(){
     int res=0;
     __asm__ __volatile__(
-        <span style="color: #ffff00;">"movl $1,%%eax\n\t"</span>
-        <span style="color: #ffff00;">"cpuid\n\t"</span>
-        <span style="color: #ffff00;">"test $0x0100000,%%ecx\n\t"</span>
-        <span style="color: #ffff00;">"jz 1f\n\t"</span>
-        <span style="color: #ffff00;">"movl $1,%0\n\t"</span>
-        <span style="color: #ffff00;">"1:\n\t"</span>
-        :<span style="color: #ffff00;">"=m"</span>(res)
-        ::<span style="color: #ffff00;">"eax"</span>,<span style="color: #ffff00;">"edx"</span>);
+        <span class="org-string">"movl $1,%%eax\n\t"</span>
+        <span class="org-string">"cpuid\n\t"</span>
+        <span class="org-string">"test $0x0100000,%%ecx\n\t"</span>
+        <span class="org-string">"jz 1f\n\t"</span>
+        <span class="org-string">"movl $1,%0\n\t"</span>
+        <span class="org-string">"1:\n\t"</span>
+        :<span class="org-string">"=m"</span>(res)
+        ::<span class="org-string">"eax"</span>,<span class="org-string">"edx"</span>);
     return res;
 }
 int main(){
-    printf(<span style="color: #ffff00;">"MMX[%s]\n"</span>,check_support_mmx()?<span style="color: #ffff00;">"OK"</span>:<span style="color: #ffff00;">"FAILED"</span>);
-    printf(<span style="color: #ffff00;">"SSE[%s]\n"</span>,check_support_sse()?<span style="color: #ffff00;">"OK"</span>:<span style="color: #ffff00;">"FAILED"</span>);
-    printf(<span style="color: #ffff00;">"SSE2[%s]\n"</span>,check_support_sse2()?<span style="color: #ffff00;">"OK"</span>:<span style="color: #ffff00;">"FAILED"</span>);
-    printf(<span style="color: #ffff00;">"SSE3[%s]\n"</span>,check_support_sse3()?<span style="color: #ffff00;">"OK"</span>:<span style="color: #ffff00;">"FAILED"</span>);
-    printf(<span style="color: #ffff00;">"SSSE3[%s]\n"</span>,check_support_ssse3()?<span style="color: #ffff00;">"OK"</span>:<span style="color: #ffff00;">"FAILED"</span>);
-    printf(<span style="color: #ffff00;">"SSE4.1[%s]\n"</span>,check_support_sse4_1()?<span style="color: #ffff00;">"OK"</span>:<span style="color: #ffff00;">"FAILED"</span>);
-    printf(<span style="color: #ffff00;">"SSE4.2[%s]\n"</span>,check_support_sse4_2()?<span style="color: #ffff00;">"OK"</span>:<span style="color: #ffff00;">"FAILED"</span>);
+    printf(<span class="org-string">"MMX[%s]\n"</span>,check_support_mmx()?<span class="org-string">"OK"</span>:<span class="org-string">"FAILED"</span>);
+    printf(<span class="org-string">"SSE[%s]\n"</span>,check_support_sse()?<span class="org-string">"OK"</span>:<span class="org-string">"FAILED"</span>);
+    printf(<span class="org-string">"SSE2[%s]\n"</span>,check_support_sse2()?<span class="org-string">"OK"</span>:<span class="org-string">"FAILED"</span>);
+    printf(<span class="org-string">"SSE3[%s]\n"</span>,check_support_sse3()?<span class="org-string">"OK"</span>:<span class="org-string">"FAILED"</span>);
+    printf(<span class="org-string">"SSSE3[%s]\n"</span>,check_support_ssse3()?<span class="org-string">"OK"</span>:<span class="org-string">"FAILED"</span>);
+    printf(<span class="org-string">"SSE4.1[%s]\n"</span>,check_support_sse4_1()?<span class="org-string">"OK"</span>:<span class="org-string">"FAILED"</span>);
+    printf(<span class="org-string">"SSE4.2[%s]\n"</span>,check_support_sse4_2()?<span class="org-string">"OK"</span>:<span class="org-string">"FAILED"</span>);
     return 0;
 }
 
@@ -1770,5 +1752,11 @@ FISTP需要修改FPU Tag Word设置为截断处理才会有这样的效果,
 </div>
 </div>
 
+<div id="postamble">
+<p class="date">Date: 2013-09-15 15:18:25 CST</p>
+<p class="creator">Org version 7.8.11 with Emacs version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
 <!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'simd.html';var disqus_title = 'simd.html';var disqus_url = 'http://dirlt.com/simd.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

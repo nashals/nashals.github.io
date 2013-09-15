@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="cpp"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-08-13 19:44:10 CST"/>
+<meta name="generated" content="2013-09-15 15:19:38 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -59,33 +59,15 @@
   .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
                                  font-weight:bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" type="text/css" href="css/site-plain.css" />
-<script type="text/javascript">
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
+</style><link rel="stylesheet" type="text/css" href="css/site.css" />
+
 
 </head>
 <body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><g:plusone annotation="inline"></g:plusone>
 
+<div id="preamble">
+
+</div>
 
 <div id="content">
 <h1 class="title">cpp</h1>
@@ -259,11 +241,11 @@ new/delete如果作为类成员的话被重载的话，始终是静态成员，�
 class A{
  public:
   void* operator new(size_t s,int arg) throw(std::bad_alloc) {
-    std::cout &lt;&lt; <span style="color: #ffff00;">"size : "</span> &lt;&lt; s &lt;&lt; <span style="color: #ffff00;">", arg : "</span> &lt;&lt; arg &lt;&lt; std::endl;
+    std::cout &lt;&lt; <span class="org-string">"size : "</span> &lt;&lt; s &lt;&lt; <span class="org-string">", arg : "</span> &lt;&lt; arg &lt;&lt; std::endl;
     return ::operator new(s);
   }
   void* operator new(size_t s,int arg,const std::nothrow_t&amp; nothrow){
-    std::cout &lt;&lt; <span style="color: #ffff00;">"[nothrow]size : "</span> &lt;&lt; s &lt;&lt; <span style="color: #ffff00;">", arg : "</span> &lt;&lt; arg &lt;&lt; std::endl;
+    std::cout &lt;&lt; <span class="org-string">"[nothrow]size : "</span> &lt;&lt; s &lt;&lt; <span class="org-string">", arg : "</span> &lt;&lt; arg &lt;&lt; std::endl;
     return ::operator new(s,nothrow);
   }
   void operator delete(void* p) {
@@ -420,13 +402,13 @@ struct B: public A{
 
 void onComplete(A* o){
   B* pb=reinterpret_cast&lt;B*&gt;(o);
-  printf(<span style="color: #ffff00;">"%p\n"</span>,&amp;(pb-&gt;g));
+  printf(<span class="org-string">"%p\n"</span>,&amp;(pb-&gt;g));
 }
 
 int main() {
   B b;
   onComplete(&amp;b);
-  printf(<span style="color: #ffff00;">"%p\n"</span>,&amp;(b.g));
+  printf(<span class="org-string">"%p\n"</span>,&amp;(b.g));
   return 0;
 }
 
@@ -472,13 +454,13 @@ struct C: public Holder,
 
 void onComplete(A* o){
   B* pb=reinterpret_cast&lt;B*&gt;(o);
-  printf(<span style="color: #ffff00;">"o:%p pb-&gt;g:%p\n"</span>,pb, &amp;(pb-&gt;g));
+  printf(<span class="org-string">"o:%p pb-&gt;g:%p\n"</span>,pb, &amp;(pb-&gt;g));
 }
 
 int main() {
   C c;
   onComplete(&amp;c);
-  printf(<span style="color: #ffff00;">"c:%p c.g:%p\n"</span>,&amp;c, &amp;(c.g));
+  printf(<span class="org-string">"c:%p c.g:%p\n"</span>,&amp;c, &amp;(c.g));
   return 0;
 }
 </pre>
@@ -559,7 +541,7 @@ c:0xbfff9a9c c.g:0xbfff9aa0
 class A{
  public:
   A(){
-    std::cout &lt;&lt; <span style="color: #ffff00;">"A()"</span> &lt;&lt; std::endl;
+    std::cout &lt;&lt; <span class="org-string">"A()"</span> &lt;&lt; std::endl;
   }
 };
 void foo(){
@@ -668,13 +650,13 @@ void __cyg_profile_func_exit(void *this, void *callsite);
 #include &lt;cstdlib&gt;
 void foo() __attribute__((no_instrument_function));
 void foo() {
-    printf(<span style="color: #ffff00;">"%s\n"</span>,__func__);
+    printf(<span class="org-string">"%s\n"</span>,__func__);
 }
 int main() {
-    printf(<span style="color: #ffff00;">"main\n"</span>);
+    printf(<span class="org-string">"main\n"</span>);
     return 0;
 }
-extern <span style="color: #ffff00;">"C"</span> {
+extern <span class="org-string">"C"</span> {
     void __cyg_profile_func_enter(void* callee, void* callsite)  __attribute__((no_instrument_function));
     void __cyg_profile_func_exit(void* callee, void* callsite) __attribute__((no_instrument_function));
     void __cyg_profile_func_enter(void* callee, void* callsite) {
@@ -701,19 +683,19 @@ extern <span style="color: #ffff00;">"C"</span> {
 #include &lt;cstdlib&gt;
 
 void* malloc(size_t size){
-    write(2,<span style="color: #ffff00;">"do malloc\n"</span>,strlen(<span style="color: #ffff00;">"do malloc\n"</span>)+1); // &#36825;&#37324;&#19981;&#33021;&#22815;&#29992;printf,&#22240;&#20026;&#20869;&#37096;&#21487;&#33021;&#20250;&#35843;&#29992;malloc
+    write(2,<span class="org-string">"do malloc\n"</span>,strlen(<span class="org-string">"do malloc\n"</span>)+1); // &#36825;&#37324;&#19981;&#33021;&#22815;&#29992;printf,&#22240;&#20026;&#20869;&#37096;&#21487;&#33021;&#20250;&#35843;&#29992;malloc
     static void* (*pmalloc)(size_t size)=0;
     if(!pmalloc){        
-        pmalloc=(void*(*)(size_t size))(dlsym(RTLD_NEXT,<span style="color: #ffff00;">"malloc"</span>));
+        pmalloc=(void*(*)(size_t size))(dlsym(RTLD_NEXT,<span class="org-string">"malloc"</span>));
     }
     return pmalloc(size);
 }
 
 void free(void *p){
-    write(2,<span style="color: #ffff00;">"do free\n"</span>,strlen(<span style="color: #ffff00;">"do free\n"</span>)+1);
+    write(2,<span class="org-string">"do free\n"</span>,strlen(<span class="org-string">"do free\n"</span>)+1);
     static void (*pfree)(void* p)=0;    
     if(!pfree){        
-        pfree=(void(*)(void* p))(dlsym(RTLD_NEXT,<span style="color: #ffff00;">"free"</span>));
+        pfree=(void(*)(void* p))(dlsym(RTLD_NEXT,<span class="org-string">"free"</span>));
     }
     return pfree(p);
 }
@@ -761,8 +743,8 @@ int main(){
 
 <pre class="src src-C++">#include &lt;string&gt;
 int main() {
-  std::string s1=<span style="color: #ffff00;">"h"</span>;
-  std::string s2=<span style="color: #ffff00;">"o"</span>;
+  std::string s1=<span class="org-string">"h"</span>;
+  std::string s2=<span class="org-string">"o"</span>;
   const char* s=(s1+s2).c_str();
   return 0;
 }
@@ -797,14 +779,14 @@ int main() {
 <pre class="src src-C++">class A{
  public:
   void fun(Executor* x,std::string s){
-    std::cout &lt;&lt; <span style="color: #ffff00;">"executor="</span> &lt;&lt; x &lt;&lt; <span style="color: #ffff00;">", s="</span> &lt;&lt; s &lt;&lt; std::endl;
+    std::cout &lt;&lt; <span class="org-string">"executor="</span> &lt;&lt; x &lt;&lt; <span class="org-string">", s="</span> &lt;&lt; s &lt;&lt; std::endl;
   }
 }; // class A
 
 class B{
  public:
   void fun(Executor* x,int s){
-    std::cout &lt;&lt; <span style="color: #ffff00;">"executor="</span> &lt;&lt; x &lt;&lt; <span style="color: #ffff00;">", s="</span> &lt;&lt; s &lt;&lt; std::endl;
+    std::cout &lt;&lt; <span class="org-string">"executor="</span> &lt;&lt; x &lt;&lt; <span class="org-string">", s="</span> &lt;&lt; s &lt;&lt; std::endl;
   }
 }; // class B
 </pre>
@@ -818,8 +800,8 @@ class B{
 </p>
 
 
-<pre class="src src-C++">x.push(boost::bind(&amp;A::fun,&amp;a,_1,<span style="color: #ffff00;">"hello"</span>));
-x.push(boost::bind(&amp;A::fun,&amp;a,_1,<span style="color: #ffff00;">"world"</span>));
+<pre class="src src-C++">x.push(boost::bind(&amp;A::fun,&amp;a,_1,<span class="org-string">"hello"</span>));
+x.push(boost::bind(&amp;A::fun,&amp;a,_1,<span class="org-string">"world"</span>));
 x.push(boost::bind(&amp;B::fun,&amp;b,_1,123));
 x.push(boost::bind(&amp;B::fun,&amp;b,_1,456));
 </pre>
@@ -941,7 +923,7 @@ static inline double gettime_ms() {
 }
 
 static const int NUMBER = 10000000;
-static const char* PREFIX = <span style="color: #ffff00;">"s"</span>;
+static const char* PREFIX = <span class="org-string">"s"</span>;
 
 static void action() {
   double start = gettime_ms();  
@@ -949,16 +931,16 @@ static void action() {
   char buf[64];
   char buf2[64];
   for(int i = 0; i &lt; NUMBER; i++) {
-    snprintf(buf, sizeof(buf), <span style="color: #ffff00;">"%s%d"</span>, PREFIX, i);
+    snprintf(buf, sizeof(buf), <span class="org-string">"%s%d"</span>, PREFIX, i);
     dict[buf] = i;
   }
   for(int i = 0; i &lt; NUMBER; i++) {
-    snprintf(buf, sizeof(buf), <span style="color: #ffff00;">"%s%d"</span>, PREFIX, i);
-    snprintf(buf2, sizeof(buf2), <span style="color: #ffff00;">"%s%d"</span>, PREFIX, (i + 1000) % NUMBER);
+    snprintf(buf, sizeof(buf), <span class="org-string">"%s%d"</span>, PREFIX, i);
+    snprintf(buf2, sizeof(buf2), <span class="org-string">"%s%d"</span>, PREFIX, (i + 1000) % NUMBER);
     dict[buf] += dict[buf2];
   }
   double end = gettime_ms();
-  printf(<span style="color: #ffff00;">"%.2lf\n"</span>, end - start);
+  printf(<span class="org-string">"%.2lf\n"</span>, end - start);
 }
 
 static void action2() {
@@ -971,7 +953,7 @@ static void action2() {
     dict[i] += dict[(i + 1000) % NUMBER];
   }
   double end = gettime_ms();
-  printf(<span style="color: #ffff00;">"%.2lf\n"</span>, end - start);  
+  printf(<span class="org-string">"%.2lf\n"</span>, end - start);  
 }
 
 int main() {
@@ -1052,5 +1034,11 @@ playboard git:(master) ✗ g++ map_perf_test.cc -O2
 </div>
 </div>
 
+<div id="postamble">
+<p class="date">Date: 2013-09-15 15:19:38 CST</p>
+<p class="creator">Org version 7.8.11 with Emacs version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
 <!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'cpp.html';var disqus_title = 'cpp.html';var disqus_url = 'http://dirlt.com/cpp.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="tcmalloc"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-08-13 19:42:58 CST"/>
+<meta name="generated" content="2013-09-15 15:18:18 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -59,33 +59,15 @@
   .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
                                  font-weight:bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" type="text/css" href="css/site-plain.css" />
-<script type="text/javascript">
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
+</style><link rel="stylesheet" type="text/css" href="css/site.css" />
+
 
 </head>
 <body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><g:plusone annotation="inline"></g:plusone>
 
+<div id="preamble">
+
+</div>
 
 <div id="content">
 <h1 class="title">tcmalloc</h1>
@@ -257,7 +239,7 @@ tcmallo.cc里面定义了函数入口.对于安排在section(google_malloc)不�
 <pre class="src src-C++">#include &lt;malloc.h&gt;
 #define __THROW
 # define ATTRIBUTE_SECTION(name) __attribute__ ((section (#name)))
-extern <span style="color: #ffff00;">"C"</span> {
+extern <span class="org-string">"C"</span> {
   void* tc_malloc(size_t size) __THROW
       ATTRIBUTE_SECTION(google_malloc);
   void tc_free(void* ptr) __THROW
@@ -272,14 +254,14 @@ extern <span style="color: #ffff00;">"C"</span> {
 
 
 <pre class="src src-C++">#define ALIAS(tc_fn)   __attribute__ ((alias (#tc_fn)))
-extern <span style="color: #ffff00;">"C"</span> {
+extern <span class="org-string">"C"</span> {
   void* __libc_malloc(size_t size)                ALIAS(tc_malloc);
   void __libc_free(void* ptr)                     ALIAS(tc_free);
-} // extern <span style="color: #ffff00;">"C"</span>
-extern <span style="color: #ffff00;">"C"</span> {
+} // extern <span class="org-string">"C"</span>
+extern <span class="org-string">"C"</span> {
   void* malloc(size_t size) __THROW               ALIAS(tc_malloc);
   void free(void* ptr) __THROW                    ALIAS(tc_free);
-} // extern <span style="color: #ffff00;">"C"</span>
+} // extern <span class="org-string">"C"</span>
 </pre>
 
 
@@ -289,7 +271,7 @@ extern <span style="color: #ffff00;">"C"</span> {
 </p>
 
 
-<pre class="src src-C++">extern <span style="color: #ffff00;">"C"</span> {
+<pre class="src src-C++">extern <span class="org-string">"C"</span> {
 static void* glibc_override_malloc(size_t size, const void *caller) {
   return tc_malloc(size);
 }
@@ -300,7 +282,7 @@ void* (* MALLOC_HOOK_MAYBE_VOLATILE __malloc_hook)(size_t, const void*)
     = &amp;glibc_override_malloc;
 void (* MALLOC_HOOK_MAYBE_VOLATILE __free_hook)(void*, const void*)
     = &amp;glibc_override_free;
-} // extern <span style="color: #ffff00;">"C"</span>
+} // extern <span class="org-string">"C"</span>
 </pre>
 
 
@@ -390,11 +372,11 @@ if (kDebugMode &amp;&amp; sizeof(void*) &gt; 4) {
       if (result != NULL) {
         return result;
       }
-      TCMalloc_MESSAGE(__FILE__, __LINE__, <span style="color: #ffff00;">"%s failed.\n"</span>, names_[i]);
+      TCMalloc_MESSAGE(__FILE__, __LINE__, <span class="org-string">"%s failed.\n"</span>, names_[i]);
       failed_[i] = true;
     }
   }
-  // After both failed, reset <span style="color: #ffff00;">"failed_"</span> to false so that a single failed
+  // After both failed, reset <span class="org-string">"failed_"</span> to false so that a single failed
   // allocation won't make the allocator never work again.
   for (int i = 0; i &lt; kMaxAllocators; i++) {
     failed_[i] = false;
@@ -476,7 +458,7 @@ TCMallocGuard::TCMallocGuard() {
 
 <pre class="src src-C++">TCMallocGuard::~TCMallocGuard() {
   if (--tcmallocguard_refcount == 0) {
-    const char* env = getenv(<span style="color: #ffff00;">"MALLOCSTATS"</span>);
+    const char* env = getenv(<span class="org-string">"MALLOCSTATS"</span>);
     if (env != NULL) {
       int level = atoi(env);
       if (level &lt; 1) level = 1;
@@ -578,12 +560,12 @@ int main() {
   tcmalloc::SizeMap* sizemap=tcmalloc::Static::sizemap();
   // print aux info
   for(int i=1;i&lt;kNumClasses;i++){
-    printf(<span style="color: #ffff00;">"SC %d [%d]\n"</span>,i,sizemap-&gt;num_objects_to_move(i));
+    printf(<span class="org-string">"SC %d [%d]\n"</span>,i,sizemap-&gt;num_objects_to_move(i));
   }
   // print stats.
   TCMalloc_Printer printer(buf,sizeof(buf));
   sizemap-&gt;Dump(&amp;printer);
-  printf(<span style="color: #ffff00;">"%s\n"</span>,buf);
+  printf(<span class="org-string">"%s\n"</span>,buf);
   return 0;
 }
 </pre>
@@ -979,7 +961,7 @@ CentralFreeList的接口非常少
     if (span) Static::pageheap()-&gt;RegisterSizeClass(span, size_class_);
   }
   if (span == NULL) {
-    MESSAGE(<span style="color: #ffff00;">"tcmalloc: allocation failed"</span>, npages &lt;&lt; kPageShift);
+    MESSAGE(<span class="org-string">"tcmalloc: allocation failed"</span>, npages &lt;&lt; kPageShift);
     lock_.Lock();
     return;
   }
@@ -1271,7 +1253,7 @@ bool PageHeap::GrowHeap(Length n) {
   void* ptr = TCMalloc_SystemAlloc(ask &lt;&lt; kPageShift, &amp;actual_size, kPageSize);
   if (ptr == NULL) {
     if (n &lt; ask) {
-      // Try growing just <span style="color: #ffff00;">"n"</span> pages
+      // Try growing just <span class="org-string">"n"</span> pages
       ask = n;
       ptr = TCMalloc_SystemAlloc(ask &lt;&lt; kPageShift, &amp;actual_size, kPageSize); // &#22914;&#26524;ask&#20998;&#37197;&#19981;&#20102;&#65292;&#37027;&#20040;&#23581;&#35797;&#20998;&#37197;n
     }
@@ -1310,7 +1292,7 @@ bool PageHeap::GrowHeap(Length n) {
     ASSERT(Check());
     return true;
   } else {
-    // We could not allocate memory within <span style="color: #ffff00;">"pagemap_"</span>
+    // We could not allocate memory within <span class="org-string">"pagemap_"</span>
     // TODO: Once we can return memory to the system, return the new span
     return false;
   }
@@ -1838,7 +1820,7 @@ pthread_key_t ThreadCache::heap_key_; // &#22914;&#26524;&#20351;&#29992;pthread
 
 
 <pre class="src src-C++">void ThreadCache::DestroyThreadCache(void* ptr) {
-  // Note that <span style="color: #ffff00;">"ptr"</span> cannot be NULL since pthread promises not
+  // Note that <span class="org-string">"ptr"</span> cannot be NULL since pthread promises not
   // to invoke the destructor on NULL values, but for safety,
   // we check anyway.
   if (ptr == NULL) return;
@@ -2011,10 +1993,10 @@ int main() {
   for(int i=0;i&lt;10;i++){
     pthread_create(&amp;tid,NULL,foo,NULL);
     pthread_join(tid,NULL);
-    printf(<span style="color: #ffff00;">"%zu\n"</span>,static_cast&lt;size_t&gt;(tid));
+    printf(<span class="org-string">"%zu\n"</span>,static_cast&lt;size_t&gt;(tid));
     pthread_create(&amp;tid,NULL,foo,NULL);
     pthread_join(tid,NULL);
-    printf(<span style="color: #ffff00;">"%zu\n"</span>,static_cast&lt;size_t&gt;(tid));
+    printf(<span class="org-string">"%zu\n"</span>,static_cast&lt;size_t&gt;(tid));
   }
   return 0;
 }
@@ -2486,13 +2468,13 @@ void ThreadCache::Scavenge() {
 </p>
 
 
-<pre class="src src-C++">extern <span style="color: #ffff00;">"C"</span> PERFTOOLS_DLL_DECL void* tc_malloc(size_t size) __THROW {
+<pre class="src src-C++">extern <span class="org-string">"C"</span> PERFTOOLS_DLL_DECL void* tc_malloc(size_t size) __THROW {
   void* result = do_malloc_or_cpp_alloc(size);
   MallocHook::InvokeNewHook(result, size);
   return result;
 }
 
-extern <span style="color: #ffff00;">"C"</span> PERFTOOLS_DLL_DECL void tc_free(void* ptr) __THROW {
+extern <span class="org-string">"C"</span> PERFTOOLS_DLL_DECL void tc_free(void* ptr) __THROW {
   MallocHook::InvokeDeleteHook(ptr);
   do_free(ptr);
 }
@@ -2581,18 +2563,18 @@ extern <span style="color: #ffff00;">"C"</span> PERFTOOLS_DLL_DECL void tc_free(
 <pre class="src src-C++">// &#36890;&#36807;&#33719;&#21462;&#29615;&#22659;&#21464;&#37327;&#21363;&#21487;&#24471;&#21040;
 const int64 kDefaultLargeAllocReportThreshold = static_cast&lt;int64&gt;(1) &lt;&lt; 30; // &#40664;&#35748;&#26159;1GB
 DEFINE_int64(tcmalloc_large_alloc_report_threshold,
-             EnvToInt64(<span style="color: #ffff00;">"TCMALLOC_LARGE_ALLOC_REPORT_THRESHOLD"</span>,
+             EnvToInt64(<span class="org-string">"TCMALLOC_LARGE_ALLOC_REPORT_THRESHOLD"</span>,
                         kDefaultLargeAllocReportThreshold),
-             <span style="color: #ffff00;">"Allocations larger than this value cause a stack "</span>
-             <span style="color: #ffff00;">"trace to be dumped to stderr.  The threshold for "</span>
-             <span style="color: #ffff00;">"dumping stack traces is increased by a factor of 1.125 "</span>
-             <span style="color: #ffff00;">"every time we print a message so that the threshold "</span>
-             <span style="color: #ffff00;">"automatically goes up by a factor of ~1000 every 60 "</span>
-             <span style="color: #ffff00;">"messages.  This bounds the amount of extra logging "</span>
-             <span style="color: #ffff00;">"generated by this flag.  Default value of this flag "</span>
-             <span style="color: #ffff00;">"is very large and therefore you should see no extra "</span>
-             <span style="color: #ffff00;">"logging unless the flag is overridden.  Set to 0 to "</span>
-             <span style="color: #ffff00;">"disable reporting entirely."</span>);
+             <span class="org-string">"Allocations larger than this value cause a stack "</span>
+             <span class="org-string">"trace to be dumped to stderr.  The threshold for "</span>
+             <span class="org-string">"dumping stack traces is increased by a factor of 1.125 "</span>
+             <span class="org-string">"every time we print a message so that the threshold "</span>
+             <span class="org-string">"automatically goes up by a factor of ~1000 every 60 "</span>
+             <span class="org-string">"messages.  This bounds the amount of extra logging "</span>
+             <span class="org-string">"generated by this flag.  Default value of this flag "</span>
+             <span class="org-string">"is very large and therefore you should see no extra "</span>
+             <span class="org-string">"logging unless the flag is overridden.  Set to 0 to "</span>
+             <span class="org-string">"disable reporting entirely."</span>);
 
 // &#36825;&#20010;large_alloc_threshold&#32943;&#23450;&#35201;&#27604;kPageSize&#35201;&#25171;
 static int64_t large_alloc_threshold =
@@ -2625,13 +2607,13 @@ inline bool should_report_large(Length num_pages) {
   static const int N = 1000;
   char buffer[N];
   TCMalloc_Printer printer(buffer, N);
-  printer.printf(<span style="color: #ffff00;">"tcmalloc: large alloc %"</span>PRIu64<span style="color: #ffff00;">" bytes == %p @ "</span>,
+  printer.printf(<span class="org-string">"tcmalloc: large alloc %"</span>PRIu64<span class="org-string">" bytes == %p @ "</span>,
                  static_cast&lt;uint64&gt;(num_pages) &lt;&lt; kPageShift,
                  result);
   for (int i = 0; i &lt; stack.depth; i++) {
-    printer.printf(<span style="color: #ffff00;">" %p"</span>, stack.stack[i]);
+    printer.printf(<span class="org-string">" %p"</span>, stack.stack[i]);
   }
-  printer.printf(<span style="color: #ffff00;">"\n"</span>);
+  printer.printf(<span class="org-string">"\n"</span>);
   write(STDERR_FILENO, buffer, strlen(buffer));
 }
 </pre>
@@ -2698,7 +2680,7 @@ inline bool should_report_large(Length num_pages) {
   }
 }
 
-// The default <span style="color: #ffff00;">"do_free"</span> that uses the default callback.
+// The default <span class="org-string">"do_free"</span> that uses the default callback.
 inline void do_free(void* ptr) {
   return do_free_with_callback(ptr, &amp;InvalidFree); // &#40664;&#35748;&#24773;&#20917;&#23601;&#26159;&#25171;&#21360;&#19968;&#20010;log&#24182;&#19988;&#30452;&#25509;crash&#25481;.
 }
@@ -2880,5 +2862,11 @@ system-alloc.h:extern void* TCMalloc_SystemAlloc(size_t bytes, size_t *actual_by
 </div>
 </div>
 
+<div id="postamble">
+<p class="date">Date: 2013-09-15 15:18:18 CST</p>
+<p class="creator">Org version 7.8.11 with Emacs version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
 <!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'tcmalloc.html';var disqus_title = 'tcmalloc.html';var disqus_url = 'http://dirlt.com/tcmalloc.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

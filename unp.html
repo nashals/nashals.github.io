@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="unp"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-08-13 19:42:53 CST"/>
+<meta name="generated" content="2013-09-15 15:18:13 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -59,33 +59,15 @@
   .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
                                  font-weight:bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" type="text/css" href="css/site-plain.css" />
-<script type="text/javascript">
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
+</style><link rel="stylesheet" type="text/css" href="css/site.css" />
+
 
 </head>
 <body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><g:plusone annotation="inline"></g:plusone>
 
+<div id="preamble">
+
+</div>
 
 <div id="content">
 <h1 class="title">unp</h1>
@@ -631,12 +613,12 @@ extern __const char *inet_ntop (int __af, __const void *__restrict __cp,
 #include &lt;netinet/in.h&gt;
 #include &lt;cstdio&gt;
 int main(){
-    const char* ip=<span style="color: #ffff00;">"255.244.233.211"</span>;
+    const char* ip=<span class="org-string">"255.244.233.211"</span>;
     char ip_dst[INET_ADDRSTRLEN];
     sockaddr_in addr;
     inet_pton(AF_INET,ip,&amp;(addr.sin_addr));
     inet_ntop(AF_INET,&amp;(addr.sin_addr),ip_dst,sizeof(ip_dst));
-    printf(<span style="color: #ffff00;">"%s\n"</span>,ip_dst);
+    printf(<span class="org-string">"%s\n"</span>,ip_dst);
     return 0;
 }
 </pre>
@@ -733,7 +715,7 @@ int main(){
     sockaddr_in addr;
     addr.sin_port=htons(12345);
     in_port_t port=ntohs(addr.sin_port);
-    printf(<span style="color: #ffff00;">"%d\n"</span>,port);
+    printf(<span class="org-string">"%d\n"</span>,port);
     return 0;
 }
 </pre>
@@ -3198,10 +3180,10 @@ static bool reuseaddr=false;
 static bool half_close=false;
 
 static void usage(){
-    fprintf(stderr,<span style="color: #ffff00;">"usage:%s [-b port] [-l] [-r] [-H] ip port\n"</span>,prog);
+    fprintf(stderr,<span class="org-string">"usage:%s [-b port] [-l] [-r] [-H] ip port\n"</span>,prog);
 }
 static void signal_handler(int signo){
-    printf(<span style="color: #ffff00;">"caught signal:%s\n"</span>,strsignal(signo));
+    printf(<span class="org-string">"caught signal:%s\n"</span>,strsignal(signo));
 }
 
 int main(int argc,char* const argv[]){
@@ -3227,7 +3209,7 @@ int main(int argc,char* const argv[]){
                     half_close=true;
                     break;
                 default:
-                    fprintf(stderr,<span style="color: #ffff00;">"%s:unknown option '%s'\n"</span>,prog,argv[i]);
+                    fprintf(stderr,<span class="org-string">"%s:unknown option '%s'\n"</span>,prog,argv[i]);
                     usage();
                     return -1;
             }
@@ -3244,14 +3226,14 @@ int main(int argc,char* const argv[]){
     }
     int fd=socket(AF_INET,SOCK_STREAM,IPPROTO_TCP);
     if(fd==-1){
-        printf(<span style="color: #ffff00;">"socket failed:%m\n"</span>);
+        printf(<span class="org-string">"socket failed:%m\n"</span>);
         return -1;
     }
     if(reuseaddr){
         int ok=1;
-        printf(<span style="color: #ffff00;">"setsockopt SO_REUSEADDR\n"</span>);
+        printf(<span class="org-string">"setsockopt SO_REUSEADDR\n"</span>);
         if(setsockopt(fd,SOL_SOCKET,SO_REUSEADDR,&amp;ok,sizeof(ok))==-1){
-            fprintf(stderr,<span style="color: #ffff00;">"setsockopt SO_REUSEADDR failed:%m\n"</span>);
+            fprintf(stderr,<span class="org-string">"setsockopt SO_REUSEADDR failed:%m\n"</span>);
             return -1;
         }
     }
@@ -3259,9 +3241,9 @@ int main(int argc,char* const argv[]){
         struct linger val;
         val.l_onoff=1;
         val.l_linger=0;
-        printf(<span style="color: #ffff00;">"setsockopt SO_LINGER\n"</span>);
+        printf(<span class="org-string">"setsockopt SO_LINGER\n"</span>);
         if(setsockopt(fd,SOL_SOCKET,SO_LINGER,&amp;val,sizeof(val))==-1){
-            fprintf(stderr,<span style="color: #ffff00;">"setsockopt SO_LINGER failed:%m\n"</span>);
+            fprintf(stderr,<span class="org-string">"setsockopt SO_LINGER failed:%m\n"</span>);
             return -1;
         }
     }
@@ -3271,9 +3253,9 @@ int main(int argc,char* const argv[]){
         addr.sin_family=AF_INET;
         addr.sin_addr.s_addr=INADDR_ANY;
         addr.sin_port=htons(bind_port);
-        printf(<span style="color: #ffff00;">"bind (0.0.0.0:%d)\n"</span>,bind_port);
+        printf(<span class="org-string">"bind (0.0.0.0:%d)\n"</span>,bind_port);
         if(bind(fd,(struct sockaddr*)&amp;addr,sizeof(addr))==-1){
-            printf(<span style="color: #ffff00;">"bind failed:%m\n"</span>);
+            printf(<span class="org-string">"bind failed:%m\n"</span>);
             return -1;
         }
     }
@@ -3282,12 +3264,12 @@ int main(int argc,char* const argv[]){
     addr.sin_family=AF_INET;
     inet_pton(AF_INET,connect_ip.c_str(),&amp;(addr.sin_addr));
     addr.sin_port=htons(connect_port);
-    printf(<span style="color: #ffff00;">"connect %s:%d ...\n"</span>,connect_ip.c_str(),connect_port);
+    printf(<span class="org-string">"connect %s:%d ...\n"</span>,connect_ip.c_str(),connect_port);
     if(connect(fd,(struct sockaddr*)&amp;addr,sizeof(addr))==-1){
-        printf(<span style="color: #ffff00;">"connect failed:%m\n"</span>);
+        printf(<span class="org-string">"connect failed:%m\n"</span>);
         return -1;
     }else{
-        printf(<span style="color: #ffff00;">"connect succeed\n"</span>);
+        printf(<span class="org-string">"connect succeed\n"</span>);
     }
 
     signal(SIGPIPE,signal_handler);
@@ -3298,17 +3280,17 @@ int main(int argc,char* const argv[]){
         shutdown(fd,SHUT_RD);
         ret=read(fd,data,sizeof(data));
         if(ret==-1){
-            printf(<span style="color: #ffff00;">"read failed:%m\n"</span>);
+            printf(<span class="org-string">"read failed:%m\n"</span>);
         }else{
-            printf(<span style="color: #ffff00;">"read succeed=%d\n"</span>,ret);
+            printf(<span class="org-string">"read succeed=%d\n"</span>,ret);
         }
         //SHUT_WR
         shutdown(fd,SHUT_WR);
         ret=write(fd,data,sizeof(data));
         if(ret==-1){
-            printf(<span style="color: #ffff00;">"write failed:%m\n"</span>);
+            printf(<span class="org-string">"write failed:%m\n"</span>);
         }else{
-            printf(<span style="color: #ffff00;">"write succeed=%d\n"</span>,ret);
+            printf(<span class="org-string">"write succeed=%d\n"</span>,ret);
         }
     }
     return 0;
@@ -3358,10 +3340,10 @@ static int bind_port=0;
 static bool echo_char=false;
 static bool reuseaddr=false;
 static void usage(){
-    fprintf(stderr,<span style="color: #ffff00;">"usage:%s [-r] [-d delay] [-b ip] [-c] port\n"</span>,prog);
+    fprintf(stderr,<span class="org-string">"usage:%s [-r] [-d delay] [-b ip] [-c] port\n"</span>,prog);
 }
 void sig_handler(int signo){
-    printf(<span style="color: #ffff00;">"caught signal:%s\n"</span>,strsignal(signo));
+    printf(<span class="org-string">"caught signal:%s\n"</span>,strsignal(signo));
 }
 
 int main(int argc,char* const argv[]){
@@ -3388,7 +3370,7 @@ int main(int argc,char* const argv[]){
                     echo_char=true;
                     break;
                 default:
-                    fprintf(stderr,<span style="color: #ffff00;">"%s:unknown option '%s'\n"</span>,prog,argv[i]);
+                    fprintf(stderr,<span class="org-string">"%s:unknown option '%s'\n"</span>,prog,argv[i]);
                     usage();
                     return -1;
             }
@@ -3404,14 +3386,14 @@ int main(int argc,char* const argv[]){
     }
     int fd=socket(AF_INET,SOCK_STREAM,IPPROTO_TCP);
     if(fd==-1){
-        printf(<span style="color: #ffff00;">"socket failed:%m\n"</span>);
+        printf(<span class="org-string">"socket failed:%m\n"</span>);
         return -1;
     }
     if(reuseaddr){
         int ok=1;
-        printf(<span style="color: #ffff00;">"setsockopt SO_REUSEADDR\n"</span>);
+        printf(<span class="org-string">"setsockopt SO_REUSEADDR\n"</span>);
         if(setsockopt(fd,SOL_SOCKET,SO_REUSEADDR,&amp;ok,sizeof(ok))==-1){
-            fprintf(stderr,<span style="color: #ffff00;">"setsockopt SO_REUSEADDR failed:%m\n"</span>);
+            fprintf(stderr,<span class="org-string">"setsockopt SO_REUSEADDR failed:%m\n"</span>);
             return -1;
         }
     }
@@ -3421,18 +3403,18 @@ int main(int argc,char* const argv[]){
     addr.sin_port=htons(bind_port);
     if(bind_ip.size()){
         inet_pton(AF_INET,bind_ip.c_str(),&amp;(addr.sin_addr));
-        printf(<span style="color: #ffff00;">"bind (%s:%d)\n"</span>,bind_ip.c_str(),bind_port);
+        printf(<span class="org-string">"bind (%s:%d)\n"</span>,bind_ip.c_str(),bind_port);
     }else{
         addr.sin_addr.s_addr=INADDR_ANY;
-        printf(<span style="color: #ffff00;">"bind (0.0.0.0:%d)\n"</span>,bind_port);
+        printf(<span class="org-string">"bind (0.0.0.0:%d)\n"</span>,bind_port);
     }
     if(bind(fd,(struct sockaddr*)&amp;addr,sizeof(addr))==-1){
-        printf(<span style="color: #ffff00;">"bind failed:%m\n"</span>);
+        printf(<span class="org-string">"bind failed:%m\n"</span>);
         return -1;
     }
-    printf(<span style="color: #ffff00;">"listen 5\n"</span>);
+    printf(<span class="org-string">"listen 5\n"</span>);
     if(listen(fd,5)==-1){
-        printf(<span style="color: #ffff00;">"listen failed:%m\n"</span>);
+        printf(<span class="org-string">"listen failed:%m\n"</span>);
         return -1;
     }
     if(delay_time){
@@ -3442,28 +3424,28 @@ int main(int argc,char* const argv[]){
     while(1){
         sockaddr_in cli_addr;
         socklen_t cli_addr_size=sizeof(cli_addr);
-        printf(<span style="color: #ffff00;">"accept ...\n"</span>);
+        printf(<span class="org-string">"accept ...\n"</span>);
         int conn_fd=accept(fd,(struct sockaddr*)&amp;cli_addr,&amp;cli_addr_size);
         if(conn_fd==-1){
-            printf(<span style="color: #ffff00;">"accept failed:%m\n"</span>);
+            printf(<span class="org-string">"accept failed:%m\n"</span>);
             return -1;
         }
         char cli_ip[INET6_ADDRSTRLEN];
         inet_ntop(AF_INET,&amp;(cli_addr.sin_addr),cli_ip,sizeof(cli_ip));
-        printf(<span style="color: #ffff00;">"client (%s:%d)\n"</span>,cli_ip,ntohs(cli_addr.sin_port));
+        printf(<span class="org-string">"client (%s:%d)\n"</span>,cli_ip,ntohs(cli_addr.sin_port));
         if(echo_char){
             char data[1];
             int ret=read(conn_fd,data,sizeof(data));
             if(ret==-1){
-                printf(<span style="color: #ffff00;">"read failed:%m\n"</span>);
+                printf(<span class="org-string">"read failed:%m\n"</span>);
             }else{
-                printf(<span style="color: #ffff00;">"read succeed=%d\n"</span>,ret);
+                printf(<span class="org-string">"read succeed=%d\n"</span>,ret);
             }
             ret=write(conn_fd,data,sizeof(data));
             if(ret==-1){
-                printf(<span style="color: #ffff00;">"write failed:%m\n"</span>);
+                printf(<span class="org-string">"write failed:%m\n"</span>);
             }else{
-                printf(<span style="color: #ffff00;">"write succeed=%d\n"</span>,ret);
+                printf(<span class="org-string">"write succeed=%d\n"</span>,ret);
             }
         }
         close(conn_fd);
@@ -3513,24 +3495,24 @@ union val{
 
 static const char* sock_str_flag(union val* v){
     static char buf[1024];
-    snprintf(buf,sizeof(buf),<span style="color: #ffff00;">"%s"</span>,v-&gt;i?<span style="color: #ffff00;">"on"</span>:<span style="color: #ffff00;">"off"</span>);
+    snprintf(buf,sizeof(buf),<span class="org-string">"%s"</span>,v-&gt;i?<span class="org-string">"on"</span>:<span class="org-string">"off"</span>);
     return buf;
 }
 static const char* sock_str_value(union val* v){
     static char buf[1024];
-    snprintf(buf,sizeof(buf),<span style="color: #ffff00;">"%d"</span>,v-&gt;i);
+    snprintf(buf,sizeof(buf),<span class="org-string">"%d"</span>,v-&gt;i);
     return buf;
 }
 static const char* sock_str_linger(union val* v){
     static char buf[1024];
-    snprintf(buf,sizeof(buf),<span style="color: #ffff00;">"l_onoff=%s,l_linger=%d"</span>,
-             v-&gt;l.l_onoff?<span style="color: #ffff00;">"on"</span>:<span style="color: #ffff00;">"off"</span>,
+    snprintf(buf,sizeof(buf),<span class="org-string">"l_onoff=%s,l_linger=%d"</span>,
+             v-&gt;l.l_onoff?<span class="org-string">"on"</span>:<span class="org-string">"off"</span>,
              v-&gt;l.l_linger);
     return buf;
 }
 static const char* sock_str_timeval(union val* v){
     static char buf[1024];
-    snprintf(buf,sizeof(buf),<span style="color: #ffff00;">"(%d,%d)"</span>,
+    snprintf(buf,sizeof(buf),<span class="org-string">"(%d,%d)"</span>,
              v-&gt;t.tv_sec,
              v-&gt;t.tv_usec);
     return buf;
@@ -3542,26 +3524,26 @@ static struct sock_opt{
     int opt_name;
     const char* (*func)(union val* v);
 } sock_opts[]={
-    {<span style="color: #ffff00;">"SO_ERROR"</span>,SOL_SOCKET,SO_ERROR,sock_str_value},
-    {<span style="color: #ffff00;">"SO_KEEPALIVE"</span>,SOL_SOCKET,SO_KEEPALIVE,sock_str_flag},
-    {<span style="color: #ffff00;">"SO_LINGER"</span>,SOL_SOCKET,SO_LINGER,sock_str_linger},
-    {<span style="color: #ffff00;">"SO_RCVBUF"</span>,SOL_SOCKET,SO_RCVBUF,sock_str_value},
-    {<span style="color: #ffff00;">"SO_SNDBUF"</span>,SOL_SOCKET,SO_SNDBUF,sock_str_value},
-    {<span style="color: #ffff00;">"SO_RCVLOWAT"</span>,SOL_SOCKET,SO_RCVLOWAT,sock_str_value},
-    {<span style="color: #ffff00;">"SO_SNDLOWAT"</span>,SOL_SOCKET,SO_SNDLOWAT,sock_str_value},
-    {<span style="color: #ffff00;">"SO_RCVTIMEO"</span>,SOL_SOCKET,SO_RCVTIMEO,sock_str_timeval},
-    {<span style="color: #ffff00;">"SO_SNDTIMEO"</span>,SOL_SOCKET,SO_SNDTIMEO,sock_str_timeval},
-    {<span style="color: #ffff00;">"SO_REUSEADDR"</span>,SOL_SOCKET,SO_REUSEADDR,sock_str_flag},
-    {<span style="color: #ffff00;">"TCP_MAXSEG"</span>,IPPROTO_TCP,TCP_MAXSEG,sock_str_value},
-    {<span style="color: #ffff00;">"TCP_NODELAY"</span>,IPPROTO_TCP,TCP_NODELAY,sock_str_flag},
-    {<span style="color: #ffff00;">"TCP_QUICKACK"</span>,IPPROTO_TCP,TCP_QUICKACK,sock_str_flag},
-    {<span style="color: #ffff00;">"TCP_CORK"</span>,IPPROTO_TCP,TCP_CORK,sock_str_flag},
+    {<span class="org-string">"SO_ERROR"</span>,SOL_SOCKET,SO_ERROR,sock_str_value},
+    {<span class="org-string">"SO_KEEPALIVE"</span>,SOL_SOCKET,SO_KEEPALIVE,sock_str_flag},
+    {<span class="org-string">"SO_LINGER"</span>,SOL_SOCKET,SO_LINGER,sock_str_linger},
+    {<span class="org-string">"SO_RCVBUF"</span>,SOL_SOCKET,SO_RCVBUF,sock_str_value},
+    {<span class="org-string">"SO_SNDBUF"</span>,SOL_SOCKET,SO_SNDBUF,sock_str_value},
+    {<span class="org-string">"SO_RCVLOWAT"</span>,SOL_SOCKET,SO_RCVLOWAT,sock_str_value},
+    {<span class="org-string">"SO_SNDLOWAT"</span>,SOL_SOCKET,SO_SNDLOWAT,sock_str_value},
+    {<span class="org-string">"SO_RCVTIMEO"</span>,SOL_SOCKET,SO_RCVTIMEO,sock_str_timeval},
+    {<span class="org-string">"SO_SNDTIMEO"</span>,SOL_SOCKET,SO_SNDTIMEO,sock_str_timeval},
+    {<span class="org-string">"SO_REUSEADDR"</span>,SOL_SOCKET,SO_REUSEADDR,sock_str_flag},
+    {<span class="org-string">"TCP_MAXSEG"</span>,IPPROTO_TCP,TCP_MAXSEG,sock_str_value},
+    {<span class="org-string">"TCP_NODELAY"</span>,IPPROTO_TCP,TCP_NODELAY,sock_str_flag},
+    {<span class="org-string">"TCP_QUICKACK"</span>,IPPROTO_TCP,TCP_QUICKACK,sock_str_flag},
+    {<span class="org-string">"TCP_CORK"</span>,IPPROTO_TCP,TCP_CORK,sock_str_flag},
     {NULL,0,0,NULL}
 };
 
 int main(){
     for(int i=0;sock_opts[i].opt_str;i++){
-        printf(<span style="color: #ffff00;">"%s:"</span>,sock_opts[i].opt_str);
+        printf(<span class="org-string">"%s:"</span>,sock_opts[i].opt_str);
         int fd=-1;
         switch(sock_opts[i].opt_level){
             case SOL_SOCKET:
@@ -3577,7 +3559,7 @@ int main(){
                    sock_opts[i].opt_level,
                    sock_opts[i].opt_name,
                    &amp;v,&amp;size);
-        printf(<span style="color: #ffff00;">"%s\n"</span>,sock_opts[i].func(&amp;v));
+        printf(<span class="org-string">"%s\n"</span>,sock_opts[i].func(&amp;v));
         close(fd);
     }
     return 0;
@@ -3616,29 +3598,29 @@ int main(){
 #include &lt;cstdio&gt;
 
 static void print_hostent(const char* s,const struct hostent* p){
-    printf(<span style="color: #ffff00;">"====================%s====================\n"</span>,s);
+    printf(<span class="org-string">"====================%s====================\n"</span>,s);
     if(p-&gt;h_name){
-        printf(<span style="color: #ffff00;">"hostname:%s\n"</span>,p-&gt;h_name);
+        printf(<span class="org-string">"hostname:%s\n"</span>,p-&gt;h_name);
     }
     if(p-&gt;h_aliases &amp;&amp; p-&gt;h_aliases[0]){
-        printf(<span style="color: #ffff00;">"alias:\n"</span>);
+        printf(<span class="org-string">"alias:\n"</span>);
         for(int i=0;p-&gt;h_aliases[i];i++){
-            printf(<span style="color: #ffff00;">"\t%s\n"</span>,p-&gt;h_aliases[i]);
+            printf(<span class="org-string">"\t%s\n"</span>,p-&gt;h_aliases[i]);
         }
     }
     if(p-&gt;h_addr_list &amp;&amp; p-&gt;h_addr_list[0]){
-        printf(<span style="color: #ffff00;">"ip:\n"</span>);
+        printf(<span class="org-string">"ip:\n"</span>);
         for(int i=0;p-&gt;h_addr_list[i];i++){
             char ip[INET6_ADDRSTRLEN];
             inet_ntop(p-&gt;h_addrtype,p-&gt;h_addr_list[i],ip,sizeof(ip));
-            printf(<span style="color: #ffff00;">"\t%s\n"</span>,ip);
+            printf(<span class="org-string">"\t%s\n"</span>,ip);
         }
     }
 }
 
 int main(int argc,char* const argv[]){
     if(argc!=2){
-        fprintf(stderr,<span style="color: #ffff00;">"usage:%s hostname\n"</span>,argv[0]);
+        fprintf(stderr,<span class="org-string">"usage:%s hostname\n"</span>,argv[0]);
         return -1;
     }
     const char* hostname=argv[1];
@@ -3650,11 +3632,11 @@ int main(int argc,char* const argv[]){
         //AF_INET
         gethostbyname2_r(hostname,AF_INET,&amp;ent,buf,sizeof(buf),&amp;entp,&amp;herrno);
         if(!entp){
-            fprintf(stderr,<span style="color: #ffff00;">"gethostbyname2_r(%s,AF_INET) failed:%s\n"</span>,
+            fprintf(stderr,<span class="org-string">"gethostbyname2_r(%s,AF_INET) failed:%s\n"</span>,
                     hostname,hstrerror(herrno));
             goto next1;
         }else{
-            print_hostent(<span style="color: #ffff00;">"IPv4"</span>,entp);
+            print_hostent(<span class="org-string">"IPv4"</span>,entp);
         }
     }
 next1:
@@ -3662,11 +3644,11 @@ next1:
         //AF_INET6
         gethostbyname2_r(hostname,AF_INET6,&amp;ent,buf,sizeof(buf),&amp;entp,&amp;herrno);
         if(!entp){
-            fprintf(stderr,<span style="color: #ffff00;">"gethostbyname2_r(%s,AF_INET6) failed:%s\n"</span>,
+            fprintf(stderr,<span class="org-string">"gethostbyname2_r(%s,AF_INET6) failed:%s\n"</span>,
                     hostname,hstrerror(herrno));
             goto next2;
         }else{
-            print_hostent(<span style="color: #ffff00;">"IPv6"</span>,entp);
+            print_hostent(<span class="org-string">"IPv6"</span>,entp);
         }
     }
 next2:
@@ -3707,29 +3689,29 @@ next2:
 #include &lt;cstring&gt;
 
 static void print_hostent(const char* s,const struct hostent* p){
-    printf(<span style="color: #ffff00;">"====================%s====================\n"</span>,s);
+    printf(<span class="org-string">"====================%s====================\n"</span>,s);
     if(p-&gt;h_name){
-        printf(<span style="color: #ffff00;">"hostname:%s\n"</span>,p-&gt;h_name);
+        printf(<span class="org-string">"hostname:%s\n"</span>,p-&gt;h_name);
     }
     if(p-&gt;h_aliases &amp;&amp; p-&gt;h_aliases[0]){
-        printf(<span style="color: #ffff00;">"alias:\n"</span>);
+        printf(<span class="org-string">"alias:\n"</span>);
         for(int i=0;p-&gt;h_aliases[i];i++){
-            printf(<span style="color: #ffff00;">"\t%s\n"</span>,p-&gt;h_aliases[i]);
+            printf(<span class="org-string">"\t%s\n"</span>,p-&gt;h_aliases[i]);
         }
     }
     if(p-&gt;h_addr_list &amp;&amp; p-&gt;h_addr_list[0]){
-        printf(<span style="color: #ffff00;">"ip:\n"</span>);
+        printf(<span class="org-string">"ip:\n"</span>);
         for(int i=0;p-&gt;h_addr_list[i];i++){
             char ip[INET6_ADDRSTRLEN];
             inet_ntop(p-&gt;h_addrtype,p-&gt;h_addr_list[i],ip,sizeof(ip));
-            printf(<span style="color: #ffff00;">"\t%s\n"</span>,ip);
+            printf(<span class="org-string">"\t%s\n"</span>,ip);
         }
     }
 }
 
 int main(int argc,char* const argv[]){
     if(argc!=2){
-        fprintf(stderr,<span style="color: #ffff00;">"usage:%s ip\n"</span>,argv[0]);
+        fprintf(stderr,<span class="org-string">"usage:%s ip\n"</span>,argv[0]);
         return -1;
     }
     const char* ip=argv[1];
@@ -3744,11 +3726,11 @@ int main(int argc,char* const argv[]){
         gethostbyaddr_r(&amp;(addr.sin6_addr),sizeof(addr.sin6_addr),AF_INET6,
                         &amp;ent,buf,sizeof(buf),&amp;entp,&amp;herrno);
         if(!entp){
-            fprintf(stderr,<span style="color: #ffff00;">"gethostbyaddr_r(%s,AF_INET6) failed:%s\n"</span>,
+            fprintf(stderr,<span class="org-string">"gethostbyaddr_r(%s,AF_INET6) failed:%s\n"</span>,
                     ip,hstrerror(herrno));
             return -1;
         }
-        print_hostent(<span style="color: #ffff00;">"IPv6"</span>,entp);
+        print_hostent(<span class="org-string">"IPv6"</span>,entp);
     }else{
         //ipv4.
         struct sockaddr_in addr;
@@ -3756,11 +3738,11 @@ int main(int argc,char* const argv[]){
         gethostbyaddr_r(&amp;(addr.sin_addr),sizeof(addr.sin_addr),AF_INET,
                         &amp;ent,buf,sizeof(buf),&amp;entp,&amp;herrno);
         if(!entp){
-            fprintf(stderr,<span style="color: #ffff00;">"gethostbyaddr_r(%s,AF_INET) failed:%s\n"</span>,
+            fprintf(stderr,<span class="org-string">"gethostbyaddr_r(%s,AF_INET) failed:%s\n"</span>,
                     ip,hstrerror(herrno));
             return -1;
         }
-        print_hostent(<span style="color: #ffff00;">"IPv4"</span>,entp);
+        print_hostent(<span class="org-string">"IPv4"</span>,entp);
     }
     return 0;
 }
@@ -3773,5 +3755,11 @@ int main(int argc,char* const argv[]){
 </div>
 </div>
 
+<div id="postamble">
+<p class="date">Date: 2013-09-15 15:18:13 CST</p>
+<p class="creator">Org version 7.8.11 with Emacs version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
 <!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'unp.html';var disqus_title = 'unp.html';var disqus_url = 'http://dirlt.com/unp.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

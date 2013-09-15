@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="libev"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-08-13 19:43:28 CST"/>
+<meta name="generated" content="2013-09-15 15:18:53 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -59,33 +59,15 @@
   .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
                                  font-weight:bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" type="text/css" href="css/site-plain.css" />
-<script type="text/javascript">
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
+</style><link rel="stylesheet" type="text/css" href="css/site.css" />
+
 
 </head>
 <body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><g:plusone annotation="inline"></g:plusone>
 
+<div id="preamble">
+
+</div>
 
 <div id="content">
 <h1 class="title">libev</h1>
@@ -186,8 +168,8 @@ ev_io_start (EV_P_ ev_io *w)
   if (expect_false (ev_is_active (w)))
     return;
 
-  assert ((<span style="color: #ffff00;">"libev: ev_io_start called with negative fd"</span>, fd &gt;= 0));
-  assert ((<span style="color: #ffff00;">"libev: ev_io_start called with illegal event mask"</span>, !(w-&gt;events &amp; ~(EV__IOFDSET | EV_READ | EV_WRITE))));
+  assert ((<span class="org-string">"libev: ev_io_start called with negative fd"</span>, fd &gt;= 0));
+  assert ((<span class="org-string">"libev: ev_io_start called with illegal event mask"</span>, !(w-&gt;events &amp; ~(EV__IOFDSET | EV_READ | EV_WRITE))));
 
   EV_FREQUENT_CHECK;
 
@@ -397,7 +379,7 @@ wacther的状态有下面这么几种：
 <pre class="src src-C++">void
 ev_run (EV_P_ int flags)
 {
-  assert ((<span style="color: #ffff00;">"libev: ev_loop recursion during release detected"</span>, loop_done != EVBREAK_RECURSE));
+  assert ((<span class="org-string">"libev: ev_loop recursion during release detected"</span>, loop_done != EVBREAK_RECURSE));
 
   loop_done = EVBREAK_CANCEL;
 
@@ -558,8 +540,8 @@ ev_io_start (EV_P_ ev_io *w)
   if (expect_false (ev_is_active (w)))
     return;
 
-  assert ((<span style="color: #ffff00;">"libev: ev_io_start called with negative fd"</span>, fd &gt;= 0));
-  assert ((<span style="color: #ffff00;">"libev: ev_io_start called with illegal event mask"</span>, !(w-&gt;events &amp; ~(EV__IOFDSET | EV_READ | EV_WRITE))));
+  assert ((<span class="org-string">"libev: ev_io_start called with negative fd"</span>, fd &gt;= 0));
+  assert ((<span class="org-string">"libev: ev_io_start called with illegal event mask"</span>, !(w-&gt;events &amp; ~(EV__IOFDSET | EV_READ | EV_WRITE))));
 
   EV_FREQUENT_CHECK;
 
@@ -664,7 +646,7 @@ timers_reify (EV_P)
         {
           ev_timer *w = (ev_timer *)ANHE_w (timers [HEAP0]);
 
-          /*assert ((<span style="color: #ffff00;">"libev: inactive timer on timer heap detected"</span>, ev_is_active (w)));*/
+          /*assert ((<span class="org-string">"libev: inactive timer on timer heap detected"</span>, ev_is_active (w)));*/
 
           /* first reschedule or stop timer */
           if (w-&gt;repeat)
@@ -673,7 +655,7 @@ timers_reify (EV_P)
               if (ev_at (w) &lt; mn_now)
                 ev_at (w) = mn_now;
 
-              assert ((<span style="color: #ffff00;">"libev: negative ev_timer repeat value found while processing timers"</span>, w-&gt;repeat &gt; 0.));
+              assert ((<span class="org-string">"libev: negative ev_timer repeat value found while processing timers"</span>, w-&gt;repeat &gt; 0.));
 
               ANHE_at_cache (timers [HEAP0]);
               downheap (timers, timercnt, HEAP0);
@@ -785,19 +767,19 @@ static std::string address_to_string(struct sockaddr_in* addr){
     char ip[128];
     inet_ntop(AF_INET,&amp;(addr-&gt;sin_addr),ip,sizeof(ip));
     char port[32];
-    snprintf(port,sizeof(port),<span style="color: #ffff00;">"%d"</span>,ntohs(addr-&gt;sin_port));
+    snprintf(port,sizeof(port),<span class="org-string">"%d"</span>,ntohs(addr-&gt;sin_port));
     std::string r;
-    r=r+<span style="color: #ffff00;">"("</span>+ip+<span style="color: #ffff00;">":"</span>+port+<span style="color: #ffff00;">")"</span>;
+    r=r+<span class="org-string">"("</span>+ip+<span class="org-string">":"</span>+port+<span class="org-string">")"</span>;
     return r;
 }
 
 static int new_tcp_server(int port){
     int fd=socket(AF_INET,SOCK_STREAM,IPPROTO_TCP);
-    D(fd&gt;0,<span style="color: #ffff00;">"socket failed(%m)\n"</span>);
+    D(fd&gt;0,<span class="org-string">"socket failed(%m)\n"</span>);
     setnonblock(fd);
     setreuseaddr(fd);
     sockaddr_in addr;
-    setaddress(<span style="color: #ffff00;">"0.0.0.0"</span>,port,&amp;addr);
+    setaddress(<span class="org-string">"0.0.0.0"</span>,port,&amp;addr);
     bind(fd,(struct sockaddr*)&amp;addr,sizeof(addr));
     listen(fd,64); // backlog = 64
     return fd;
@@ -829,8 +811,8 @@ static int new_tcp_client(const char* ip,int port){
 
 
 
-<pre class="src src-C++">#include <span style="color: #ffff00;">"ev.h"</span>
-#include <span style="color: #ffff00;">"common.h"</span>
+<pre class="src src-C++">#include <span class="org-string">"ev.h"</span>
+#include <span class="org-string">"common.h"</span>
 
 static void do_connected(struct ev_loop* reactor,ev_io* w,int events){
     close(w-&gt;fd);
@@ -839,7 +821,7 @@ static void do_connected(struct ev_loop* reactor,ev_io* w,int events){
 
 int main(){
     struct ev_loop* reactor=ev_loop_new(EVFLAG_AUTO);
-    int fd=common::new_tcp_client(<span style="color: #ffff00;">"127.0.0.1"</span>,34567);
+    int fd=common::new_tcp_client(<span class="org-string">"127.0.0.1"</span>,34567);
     ev_io io;
     ev_io_init(&amp;io,&amp;do_connected,fd,EV_WRITE);
     ev_io_start(reactor,&amp;io);
@@ -863,15 +845,15 @@ int main(){
 
 
 
-<pre class="src src-C++">#include <span style="color: #ffff00;">"ev.h"</span>
-#include <span style="color: #ffff00;">"common.h"</span>
+<pre class="src src-C++">#include <span class="org-string">"ev.h"</span>
+#include <span class="org-string">"common.h"</span>
 
 static void do_accept(struct ev_loop* reactor,ev_io* w,int events){
     struct sockaddr_in addr;
     socklen_t addr_size=sizeof(addr);
     int conn=accept(w-&gt;fd,(struct sockaddr*)&amp;addr,&amp;addr_size);
     std::string r=common::address_to_string(&amp;addr);
-    fprintf(stderr,<span style="color: #ffff00;">"accept %s\n"</span>,r.c_str());
+    fprintf(stderr,<span class="org-string">"accept %s\n"</span>,r.c_str());
     close(conn);
 }
 
@@ -894,5 +876,11 @@ int main(){
 </div>
 </div>
 
+<div id="postamble">
+<p class="date">Date: 2013-09-15 15:18:53 CST</p>
+<p class="creator">Org version 7.8.11 with Emacs version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
 <!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'libev.html';var disqus_title = 'libev.html';var disqus_url = 'http://dirlt.com/libev.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

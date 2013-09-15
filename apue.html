@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="apue"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-08-13 19:44:23 CST"/>
+<meta name="generated" content="2013-09-15 15:19:51 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -59,33 +59,15 @@
   .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
                                  font-weight:bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" type="text/css" href="css/site-plain.css" />
-<script type="text/javascript">
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
+</style><link rel="stylesheet" type="text/css" href="css/site.css" />
+
 
 </head>
 <body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><g:plusone annotation="inline"></g:plusone>
 
+<div id="preamble">
+
+</div>
 
 <div id="content">
 <h1 class="title">apue</h1>
@@ -668,20 +650,20 @@ TODO(zhangyan04):对于附加组ID并不是很了解，而且觉得没有必要�
 int main(){
     long clock_tck_per_sec=sysconf(_SC_CLK_TCK);
     if(clock_tck_per_sec==-1){
-        perror(<span style="color: #ffff00;">"_SC_CLK_TCK not supported"</span>);
+        perror(<span class="org-string">"_SC_CLK_TCK not supported"</span>);
         exit(-1);
     }
     //operations.
     //...
     struct tms buf;
     if(times(&amp;buf)==-1){
-        perror(<span style="color: #ffff00;">"times failed"</span>);
+        perror(<span class="org-string">"times failed"</span>);
         exit(-1);
     }
-    printf(<span style="color: #ffff00;">"user time:%.3lfs\n"</span>
-           <span style="color: #ffff00;">"sys time:%.3lfs\n"</span>
-           <span style="color: #ffff00;">"cuser time:%.3lfs\n"</span>
-           <span style="color: #ffff00;">"csys time:%.3lfs\n"</span>,
+    printf(<span class="org-string">"user time:%.3lfs\n"</span>
+           <span class="org-string">"sys time:%.3lfs\n"</span>
+           <span class="org-string">"cuser time:%.3lfs\n"</span>
+           <span class="org-string">"csys time:%.3lfs\n"</span>,
            buf.tms_utime*1.0/clock_tck_per_sec,
            buf.tms_stime*1.0/clock_tck_per_sec,
            buf.tms_cutime*1.0/clock_tck_per_sec,
@@ -1337,10 +1319,10 @@ O_CREAT也非常关键，语义是入如果不存在就创建，这样使得这�
 #include &lt;unistd.h&gt;
 #include &lt;cstring&gt;
 int main(){
-    int fd=open(<span style="color: #ffff00;">"hole"</span>,O_WRONLY | O_CREAT,0666);
-    write(fd,<span style="color: #ffff00;">"1G hole are coming"</span>,strlen(<span style="color: #ffff00;">"1G hole are coming"</span>));
+    int fd=open(<span class="org-string">"hole"</span>,O_WRONLY | O_CREAT,0666);
+    write(fd,<span class="org-string">"1G hole are coming"</span>,strlen(<span class="org-string">"1G hole are coming"</span>));
     lseek(fd,1024*1024*1024,SEEK_CUR);
-    write(fd,<span style="color: #ffff00;">"1G hole are ending"</span>,strlen(<span style="color: #ffff00;">"1G hole are ending"</span>));
+    write(fd,<span class="org-string">"1G hole are ending"</span>,strlen(<span class="org-string">"1G hole are ending"</span>));
     close(fd);
     return 0;
 }
@@ -1506,13 +1488,13 @@ O_DIRECT 和 RAW设备最根本的区别是O_DIRECT是基于文件系统的，�
 #include &lt;cstring&gt;
 #include &lt;cstdio&gt;
 int main(){
-    int fd=open(<span style="color: #ffff00;">"main.cc"</span>,O_RDONLY);
+    int fd=open(<span class="org-string">"main.cc"</span>,O_RDONLY);
     char buf[128];
     memset(buf,0,sizeof(buf));
     for(int i=0;i&lt;10;i++){
         //&#27599;&#27425;&#35835;&#21462;&#21040;&#30340;&#37117;&#26159;&#30456;&#21516;&#30340;&#20869;&#23481;
         pread(fd,buf,sizeof(buf)-1,128);
-        printf(<span style="color: #ffff00;">"%s\n"</span>,buf);
+        printf(<span class="org-string">"%s\n"</span>,buf);
     }
     close(fd);
     return 0;
@@ -1900,11 +1882,11 @@ TODO:给出两个字符特殊文件和块特殊文件的例子，更加好区分
 #include &lt;cstdio&gt;
 int main(){
     struct stat buf;
-    stat(<span style="color: #ffff00;">"/usr/bin/passwd"</span>,&amp;buf);
-    printf(<span style="color: #ffff00;">"is_uid:%d\n"</span>,(buf.st_mode &amp;&amp; S_ISUID)!=0);
-    printf(<span style="color: #ffff00;">"is_gid:%d\n"</span>,(buf.st_mode &amp;&amp; S_ISGID)!=0);
-    printf(<span style="color: #ffff00;">"owner uid:%d\n"</span>,buf.st_uid);
-    printf(<span style="color: #ffff00;">"owner gid:%d\n"</span>,buf.st_gid);
+    stat(<span class="org-string">"/usr/bin/passwd"</span>,&amp;buf);
+    printf(<span class="org-string">"is_uid:%d\n"</span>,(buf.st_mode &amp;&amp; S_ISUID)!=0);
+    printf(<span class="org-string">"is_gid:%d\n"</span>,(buf.st_mode &amp;&amp; S_ISGID)!=0);
+    printf(<span class="org-string">"owner uid:%d\n"</span>,buf.st_uid);
+    printf(<span class="org-string">"owner gid:%d\n"</span>,buf.st_gid);
     return 0;
 }
 </pre>
@@ -2088,14 +2070,14 @@ mask为S_IRUSR | S_IWUSR的话，那么在创建文件和目录时，那么用�
 #include &lt;cstdio&gt;
 int main(){
     //&#20135;&#29983;&#19968;&#20010;&#31354;&#27934;&#25991;&#20214;
-    int fd=open(<span style="color: #ffff00;">"hole"</span>,O_WRONLY | O_CREAT,0666);
-    write(fd,<span style="color: #ffff00;">"1G hole are coming"</span>,strlen(<span style="color: #ffff00;">"1G hole are coming"</span>));
+    int fd=open(<span class="org-string">"hole"</span>,O_WRONLY | O_CREAT,0666);
+    write(fd,<span class="org-string">"1G hole are coming"</span>,strlen(<span class="org-string">"1G hole are coming"</span>));
     lseek(fd,1024*1024*1024,SEEK_CUR);
-    write(fd,<span style="color: #ffff00;">"1G hole are ending"</span>,strlen(<span style="color: #ffff00;">"1G hole are ending"</span>));
+    write(fd,<span class="org-string">"1G hole are ending"</span>,strlen(<span class="org-string">"1G hole are ending"</span>));
     close(fd);
     struct stat buf;
-    stat(<span style="color: #ffff00;">"hole"</span>,&amp;buf);
-    printf(<span style="color: #ffff00;">"size:%lu,st_blksize:%lu,st_blocks:%lu\n"</span>,
+    stat(<span class="org-string">"hole"</span>,&amp;buf);
+    printf(<span class="org-string">"size:%lu,st_blksize:%lu,st_blocks:%lu\n"</span>,
            buf.st_size,buf.st_blksize,buf.st_blocks);
     return 0;
 }
@@ -2134,12 +2116,12 @@ int ftruncate(int fd,off_t length);
 #include &lt;cstring&gt;
 #include &lt;cstdio&gt;
 int main(){
-    int fd=open(<span style="color: #ffff00;">"hole"</span>,O_WRONLY | O_CREAT,0666);
+    int fd=open(<span class="org-string">"hole"</span>,O_WRONLY | O_CREAT,0666);
     close(fd);
-    truncate(<span style="color: #ffff00;">"hole"</span>,1024*1024*1024);
+    truncate(<span class="org-string">"hole"</span>,1024*1024*1024);
     struct stat buf;
-    stat(<span style="color: #ffff00;">"hole"</span>,&amp;buf);
-    printf(<span style="color: #ffff00;">"size:%lu,st_blksize:%lu,st_blocks:%lu\n"</span>,
+    stat(<span class="org-string">"hole"</span>,&amp;buf);
+    printf(<span class="org-string">"size:%lu,st_blksize:%lu,st_blocks:%lu\n"</span>,
            buf.st_size,buf.st_blksize,buf.st_blocks);
     return 0;
 }
@@ -2251,16 +2233,16 @@ size:1073741824,st_blksize:4096,st_blocks:8
 #include &lt;fcntl.h&gt;
 #include &lt;unistd.h&gt;
 int main(){
-    int fd=open(<span style="color: #ffff00;">"hello"</span>,O_RDWR | O_TRUNC | O_CREAT,0666);
-    unlink(<span style="color: #ffff00;">"hello"</span>);
-    write(fd,<span style="color: #ffff00;">"hello"</span>,6);
+    int fd=open(<span class="org-string">"hello"</span>,O_RDWR | O_TRUNC | O_CREAT,0666);
+    unlink(<span class="org-string">"hello"</span>);
+    write(fd,<span class="org-string">"hello"</span>,6);
     lseek(fd,0,SEEK_SET);
     char buf[12];
     buf[0]=0;
     read(fd,buf,sizeof(buf));
     //&#23613;&#31649;&#20043;&#21069;unlink&#20102;
     //&#20381;&#28982;&#21487;&#20197;&#35835;&#21462;&#21040;hello
-    printf(<span style="color: #ffff00;">"%s\n"</span>,buf);
+    printf(<span class="org-string">"%s\n"</span>,buf);
     close(fd);
 }
 </pre>
@@ -2418,18 +2400,18 @@ int main(int argc,char * const* argv){
     for(int i=1;i&lt;argc;i++){
         struct stat buf;
         stat(argv[i],&amp;buf);
-        printf(<span style="color: #ffff00;">"%s dev=%d/%d"</span>,argv[i],
+        printf(<span class="org-string">"%s dev=%d/%d"</span>,argv[i],
                major(buf.st_dev),minor(buf.st_dev));
         if(S_ISCHR(buf.st_mode) || S_ISBLK(buf.st_mode)){
             if(S_ISCHR(buf.st_mode)){
-                printf(<span style="color: #ffff00;">" (character)"</span>);
+                printf(<span class="org-string">" (character)"</span>);
             }else if(S_ISBLK(buf.st_mode)){
-                printf(<span style="color: #ffff00;">" (block)"</span>);
+                printf(<span class="org-string">" (block)"</span>);
             }
-            printf(<span style="color: #ffff00;">" rdev=%d/%d"</span>,
+            printf(<span class="org-string">" rdev=%d/%d"</span>,
                    major(buf.st_rdev),minor(buf.st_rdev));
         }
-        printf(<span style="color: #ffff00;">"\n"</span>);
+        printf(<span class="org-string">"\n"</span>);
     }
     return 0;
 }
@@ -2754,7 +2736,7 @@ int main(){
     //&#36864;&#20986;&#21518;&#36755;&#20986;
     char buffer[1024];
     setvbuf(stdout,buffer,_IOFBF,sizeof(buffer));
-    printf(<span style="color: #ffff00;">"helloworld"</span>);
+    printf(<span class="org-string">"helloworld"</span>);
     sleep(2);
     return 0;
 }
@@ -2775,7 +2757,7 @@ int main(){
     //&#36864;&#20986;&#21518;&#36755;&#20986;
     char buffer[128];
     setvbuf(stdout,buffer,_IOLBF,sizeof(buffer));
-    printf(<span style="color: #ffff00;">"helloworld"</span>);
+    printf(<span class="org-string">"helloworld"</span>);
     sleep(2);
     return 0;
 }
@@ -2788,7 +2770,7 @@ int main(){
     //&#31435;&#21051;&#36755;&#20986;
     char buffer[128];
     setvbuf(stdout,buffer,_IOLBF,sizeof(buffer));
-    printf(<span style="color: #ffff00;">"helloworld\n"</span>);
+    printf(<span class="org-string">"helloworld\n"</span>);
     sleep(2);
     return 0;
 }
@@ -2804,7 +2786,7 @@ int main(){
     //&#32780;&#23545;&#20110;64&#31435;&#21051;&#36755;&#20986;&#65292;&#20294;&#26159;&#20854;&#23454;&#37117;&#27809;&#26377;&#22635;&#28385;
     char buffer[64];
     setvbuf(stdout,buffer,_IOLBF,sizeof(buffer));
-    printf(<span style="color: #ffff00;">"helloworld"</span>);
+    printf(<span class="org-string">"helloworld"</span>);
     sleep(2);
     return 0;
 }
@@ -3119,11 +3101,11 @@ tmpnam的ptr传入一个L_tmpnam长度的buf,然后会返回一个临时文件�
 <pre class="src src-C++">#include &lt;cstdio&gt;
 int main(){
     char name[L_tmpnam];
-    printf(<span style="color: #ffff00;">"%d\n"</span>,TMP_MAX);
+    printf(<span class="org-string">"%d\n"</span>,TMP_MAX);
     for(int i=0;i&lt;10;i++){
         name[0]=0;
         tmpnam(name);
-        printf(<span style="color: #ffff00;">"%s\n"</span>,name);
+        printf(<span class="org-string">"%s\n"</span>,name);
     }
     return 0;
 }
@@ -3183,13 +3165,13 @@ tempnam相对于tmpnam来说功能更强大，但是至于是否好用就不好�
 #include &lt;cstdlib&gt;
 #include &lt;unistd.h&gt;
 int main(){
-    printf(<span style="color: #ffff00;">"%s\n"</span>,P_tmpdir);
+    printf(<span class="org-string">"%s\n"</span>,P_tmpdir);
     //&#21482;&#21462;&#21069;&#38754;5&#20010;&#23383;&#31526;
-    char* p=tempnam(<span style="color: #ffff00;">"/var/tmp"</span>,<span style="color: #ffff00;">"helloworld"</span>);
-    printf(<span style="color: #ffff00;">"%s\n"</span>,p);
+    char* p=tempnam(<span class="org-string">"/var/tmp"</span>,<span class="org-string">"helloworld"</span>);
+    printf(<span class="org-string">"%s\n"</span>,p);
     free(p);
-    p=tempnam(NULL,<span style="color: #ffff00;">"helloworld"</span>);
-    printf(<span style="color: #ffff00;">"%s\n"</span>,p);
+    p=tempnam(NULL,<span class="org-string">"helloworld"</span>);
+    printf(<span class="org-string">"%s\n"</span>,p);
     free(p);
     return 0;
 }
@@ -3294,7 +3276,7 @@ int main(){
     setpwent();
     struct passwd* pw=getpwent();
     while(pw){
-        printf(<span style="color: #ffff00;">"%s:%s:%d:%d:%s:%s:%s\n"</span>,
+        printf(<span class="org-string">"%s:%s:%d:%d:%s:%s:%s\n"</span>,
                pw-&gt;pw_name,pw-&gt;pw_passwd,pw-&gt;pw_uid,pw-&gt;pw_gid,
                pw-&gt;pw_gecos,pw-&gt;pw_dir,pw-&gt;pw_shell);
         pw=getpwent();
@@ -3399,15 +3381,15 @@ int main(){
     setgrent();
     struct group *gp=getgrent();
     while(gp){
-        printf(<span style="color: #ffff00;">"%s:%s:%d:"</span>,gp-&gt;gr_name,gp-&gt;gr_passwd,gp-&gt;gr_gid);
+        printf(<span class="org-string">"%s:%s:%d:"</span>,gp-&gt;gr_name,gp-&gt;gr_passwd,gp-&gt;gr_gid);
         if(*(gp-&gt;gr_mem)){
             while(*(gp-&gt;gr_mem+1)){
-                printf(<span style="color: #ffff00;">"%s,"</span>,*(gp-&gt;gr_mem));
+                printf(<span class="org-string">"%s,"</span>,*(gp-&gt;gr_mem));
                 gp-&gt;gr_mem++;
             }
-            printf(<span style="color: #ffff00;">"%s"</span>,*(gp-&gt;gr_mem));
+            printf(<span class="org-string">"%s"</span>,*(gp-&gt;gr_mem));
         }
-        printf(<span style="color: #ffff00;">"\n"</span>);
+        printf(<span class="org-string">"\n"</span>);
         gp=getgrent();
     }
     endgrent();
@@ -3467,7 +3449,7 @@ int main(){
 struct utmp {
     short ut_type;              /* type of login */
     pid_t ut_pid;               /* PID of login process */
-    char ut_line[UT_LINESIZE];  /* device name of tty - <span style="color: #ffff00;">"/dev/"</span> */
+    char ut_line[UT_LINESIZE];  /* device name of tty - <span class="org-string">"/dev/"</span> */
     char ut_id[4];              /* init id or abbrev. ttyname */
     char ut_user[UT_NAMESIZE];  /* user name */
     char ut_host[UT_HOSTSIZE];  /* hostname for remote login */
@@ -3547,18 +3529,18 @@ int gethostname(char* name,int namelen);
 int main(){
     struct utsname buf;
     uname(&amp;buf);
-    printf(<span style="color: #ffff00;">"sysname:%s\n"</span>
-           <span style="color: #ffff00;">"nodename:%s\n"</span>
-           <span style="color: #ffff00;">"release:%s\n"</span>
-           <span style="color: #ffff00;">"version:%s\n"</span>
-           <span style="color: #ffff00;">"machine:%s\n"</span>
-           <span style="color: #ffff00;">"domainname:%s\n"</span>,
+    printf(<span class="org-string">"sysname:%s\n"</span>
+           <span class="org-string">"nodename:%s\n"</span>
+           <span class="org-string">"release:%s\n"</span>
+           <span class="org-string">"version:%s\n"</span>
+           <span class="org-string">"machine:%s\n"</span>
+           <span class="org-string">"domainname:%s\n"</span>,
            buf.sysname,buf.nodename,
            buf.release,buf.version,
            buf.machine,buf.domainname);
     char host[128];
     gethostname(host,sizeof(host));
-    printf(<span style="color: #ffff00;">"hostname:%s\n"</span>,host);
+    printf(<span class="org-string">"hostname:%s\n"</span>,host);
     return 0;
 }
 </pre>
@@ -3788,14 +3770,14 @@ ISO C提供了下面这些函数来分配heap上空间：
 int main(){
     //alloca
     char* p=(char*)alloca(100);
-    strcpy(p,<span style="color: #ffff00;">"hello,world"</span>);
-    printf(<span style="color: #ffff00;">"%s\n"</span>,p);
+    strcpy(p,<span class="org-string">"hello,world"</span>);
+    printf(<span class="org-string">"%s\n"</span>,p);
 
     //VLA
     int len=100;
     char p2[len];
-    strcpy(p2,<span style="color: #ffff00;">"hello,world"</span>);
-    printf(<span style="color: #ffff00;">"%s\n"</span>,p2);
+    strcpy(p2,<span class="org-string">"hello,world"</span>);
+    printf(<span class="org-string">"%s\n"</span>,p2);
     return 0;
 }
 </pre>
@@ -3890,16 +3872,16 @@ longjmp并且val!=0的话，那么调回这个位置时候，说明是非局部�
 #include &lt;stdio.h&gt;
 jmp_buf env;
 void foo(){
-    printf(<span style="color: #ffff00;">"ins 1\n"</span>);
+    printf(<span class="org-string">"ins 1\n"</span>);
     longjmp(env,1);
-    printf(<span style="color: #ffff00;">"ins 2\n"</span>);
+    printf(<span class="org-string">"ins 2\n"</span>);
 }
 int main(){
     int ret=setjmp(env);
     if(ret==0){
         foo();
     }else if(ret==1){
-        printf(<span style="color: #ffff00;">"jmp from foo\n"</span>);
+        printf(<span class="org-string">"jmp from foo\n"</span>);
     }
     return 0;
 }
@@ -3927,27 +3909,27 @@ jmp_buf main_env;
 jmp_buf foo_env;
 void foo(){
     char stack[16];
-    strcpy(stack,<span style="color: #ffff00;">"hello,world"</span>);
+    strcpy(stack,<span class="org-string">"hello,world"</span>);
     if(setjmp(foo_env)==0){
-        printf(<span style="color: #ffff00;">"%p,%x\n"</span>,stack,(unsigned char)stack[0]);
+        printf(<span class="org-string">"%p,%x\n"</span>,stack,(unsigned char)stack[0]);
     }else{
-        printf(<span style="color: #ffff00;">"%p,%x\n"</span>,stack,(unsigned char)stack[0]);
+        printf(<span class="org-string">"%p,%x\n"</span>,stack,(unsigned char)stack[0]);
         longjmp(main_env,1);
     }
 }
 void foo2(){
     char stack[16];
-    strcpy(stack,<span style="color: #ffff00;">"hello,dirlt"</span>);
-    printf(<span style="color: #ffff00;">"%s\n"</span>,stack);
+    strcpy(stack,<span class="org-string">"hello,dirlt"</span>);
+    printf(<span class="org-string">"%s\n"</span>,stack);
 }
 int main(){
     if(setjmp(main_env)==0){
         foo();
         foo2();
-        printf(<span style="color: #ffff00;">"jmp to foo again\n"</span>);
+        printf(<span class="org-string">"jmp to foo again\n"</span>);
         longjmp(foo_env,1);
     }else{
-        printf(<span style="color: #ffff00;">"jmp from foo\n"</span>);
+        printf(<span class="org-string">"jmp from foo\n"</span>);
     }
     return 0;
 }
@@ -4256,8 +4238,8 @@ int main(){
         sleep(2);
         exit(0);
     }else{ //parent
-        printf(<span style="color: #ffff00;">"parent are waiting...\n"</span>);
-        printf(<span style="color: #ffff00;">"%d\n"</span>,env);
+        printf(<span class="org-string">"parent are waiting...\n"</span>);
+        printf(<span class="org-string">"%d\n"</span>,env);
         return 0;
     }
 }
@@ -4288,8 +4270,8 @@ int main(){
         env=1;
         return 0;
     }else{ //parent
-        printf(<span style="color: #ffff00;">"parent are waiting...\n"</span>);
-        printf(<span style="color: #ffff00;">"%d\n"</span>,env);
+        printf(<span class="org-string">"parent are waiting...\n"</span>);
+        printf(<span class="org-string">"%d\n"</span>,env);
         return 0;
     }
 }
@@ -4331,7 +4313,7 @@ int main(){
     pid_t pid=fork();
     if(pid==0){
         sleep(2);
-        printf(<span style="color: #ffff00;">"%d\n"</span>,getppid());
+        printf(<span class="org-string">"%d\n"</span>,getppid());
     }else{ //parent
     }
     return 0;
@@ -4682,7 +4664,7 @@ int main(int argc,char* const argv[]){
 #include &lt;unistd.h&gt;
 #include &lt;cstdio&gt;
 int main(){
-    printf(<span style="color: #ffff00;">"ruid=%d,euid=%d\n"</span>,getuid(),geteuid());
+    printf(<span class="org-string">"ruid=%d,euid=%d\n"</span>,getuid(),geteuid());
     return 0;
 }
 </pre>
@@ -4790,7 +4772,7 @@ ruid=500,euid=0 //这个时候就修改成功了
 <pre class="src src-C++">#include &lt;cstdio&gt;
 int main(int argc,char* const argv[]){
     for(int i=0;i&lt;argc;i++){
-        printf(<span style="color: #ffff00;">"%s\n"</span>,argv[i]);
+        printf(<span class="org-string">"%s\n"</span>,argv[i]);
     }
     return 0;
 }
@@ -4818,11 +4800,11 @@ arg1
 
 
 <pre class="src src-Python">#!/usr/bin/env python
-print(<span style="color: #ffff00;">"hello,world"</span>)
+print(<span class="org-string">"hello,world"</span>)
 </pre>
 
 
-<pre class="src src-Shell">/usr/bin/env python -c 'print(<span style="color: #ffff00;">"hello,world"</span>)'
+<pre class="src src-Shell">/usr/bin/env python -c 'print(<span class="org-string">"hello,world"</span>)'
 </pre>
 
 <p>
@@ -5197,31 +5179,31 @@ x
 #include &lt;cstdlib&gt;
 
 static void sig_hup(int signo){
-    printf(<span style="color: #ffff00;">"SIGHUP received,pid=%d\n"</span>,getpid());
+    printf(<span class="org-string">"SIGHUP received,pid=%d\n"</span>,getpid());
 }
 static void pr_ids(const char* name){
-    printf(<span style="color: #ffff00;">"%s:pid=%d,ppid=%d,pgrp=%d,tpgrp=%d\n"</span>,
+    printf(<span class="org-string">"%s:pid=%d,ppid=%d,pgrp=%d,tpgrp=%d\n"</span>,
            name,getpid(),getppid(),getpgrp(),tcgetpgrp(STDIN_FILENO));
 }
 int main(){
-    pr_ids(<span style="color: #ffff00;">"parent"</span>);
+    pr_ids(<span class="org-string">"parent"</span>);
     pid_t pid;
     if((pid=fork())==0){//child
-        pr_ids(<span style="color: #ffff00;">"child"</span>);
+        pr_ids(<span class="org-string">"child"</span>);
         signal(SIGHUP,sig_hup);
         //sleep(5);
         kill(getpid(),SIGTSTP);
-        pr_ids(<span style="color: #ffff00;">"child"</span>);
+        pr_ids(<span class="org-string">"child"</span>);
         char c;
         if(read(STDIN_FILENO,&amp;c,sizeof(c))==-1){
-            printf(<span style="color: #ffff00;">"read from tty error,errno=%m\n"</span>);
+            printf(<span class="org-string">"read from tty error,errno=%m\n"</span>);
         }
         exit(0);
     }else{
         //wait the child to install signal handler and send signal
         sleep(3);
         exit(0);
-        printf(<span style="color: #ffff00;">"parent exit\n"</span>);
+        printf(<span class="org-string">"parent exit\n"</span>);
     }
 }
 </pre>
@@ -5575,8 +5557,8 @@ int main(){
     sigprocmask(SIG_BLOCK,&amp;set,NULL);
     pause();
     sigpending(&amp;set);
-    printf(<span style="color: #ffff00;">"pending SIGUSR1=%d\n"</span>,sigismember(&amp;set,SIGUSR1));
-    printf(<span style="color: #ffff00;">"pending SIGUSR2=%d\n"</span>,sigismember(&amp;set,SIGUSR2));
+    printf(<span class="org-string">"pending SIGUSR1=%d\n"</span>,sigismember(&amp;set,SIGUSR1));
+    printf(<span class="org-string">"pending SIGUSR2=%d\n"</span>,sigismember(&amp;set,SIGUSR2));
 }
 </pre>
 
@@ -5746,7 +5728,7 @@ int main(){
     if(setjmp(env)==1){
         sigset_t nowmask;
         sigprocmask(SIG_BLOCK,NULL,&amp;nowmask);
-        printf(<span style="color: #ffff00;">"SIGUSR1 masked=%d\n"</span>,sigismember(&amp;nowmask,SIGUSR1));
+        printf(<span class="org-string">"SIGUSR1 masked=%d\n"</span>,sigismember(&amp;nowmask,SIGUSR1));
         exit(0);
     }
     signal(SIGUSR1,handler);
@@ -5776,7 +5758,7 @@ int main(){
     if(sigsetjmp(env,1)==1){
         sigset_t nowmask;
         sigprocmask(SIG_BLOCK,NULL,&amp;nowmask);
-        printf(<span style="color: #ffff00;">"SIGUSR1 masked=%d\n"</span>,sigismember(&amp;nowmask,SIGUSR1));
+        printf(<span class="org-string">"SIGUSR1 masked=%d\n"</span>,sigismember(&amp;nowmask,SIGUSR1));
         exit(0);
     }
     signal(SIGUSR1,handler);
@@ -5867,7 +5849,7 @@ SIG_ERR表示调用signal错误，SIG_DFL表示默认处理函数，SIG_IGN表�
 #include &lt;cstring&gt;
 
 void sig_handler(int signo){
-    printf(<span style="color: #ffff00;">"%s\n"</span>,strsignal(signo));
+    printf(<span class="org-string">"%s\n"</span>,strsignal(signo));
 }
 
 int main(){
@@ -5906,14 +5888,14 @@ int main(){
 #include &lt;cstring&gt;
 
 void handler1(int signo){
-    printf(<span style="color: #ffff00;">"SIGUSR1 received\n"</span>);
+    printf(<span class="org-string">"SIGUSR1 received\n"</span>);
     for(;;){
         sleep(5);
     }
 }
 
 void handler2(int signo){
-    printf(<span style="color: #ffff00;">"SIGUSR2 received\n"</span>);
+    printf(<span class="org-string">"SIGUSR2 received\n"</span>);
     for(;;){
         sleep(5);
     }
@@ -5989,7 +5971,7 @@ int main(){
         wait(NULL); //&#22914;&#26524;&#27809;&#26377;wait&#30340;&#35805;&#65292;&#37027;&#20040;&#23384;&#22312;&#19968;&#20010;&#20725;&#27515;&#36827;&#31243;
         sleep(4);
         if(kill(pid,1)==-1){
-            printf(<span style="color: #ffff00;">"%m\n"</span>);
+            printf(<span class="org-string">"%m\n"</span>);
         }
     }
     return 0;
@@ -6033,13 +6015,13 @@ alarm设置闹钟，如果提前返回的话那么返回剩余时间，同时触
 #include &lt;cstdlib&gt;
 #include &lt;cstring&gt;
 void sig_handler(int signo){
-    printf(<span style="color: #ffff00;">"%s received\n"</span>,strsignal(signo));
+    printf(<span class="org-string">"%s received\n"</span>,strsignal(signo));
 }
 int main(){
     signal(SIGALRM,sig_handler);
     alarm(5);
     int ret=pause();
-    printf(<span style="color: #ffff00;">"%d errno=%m\n"</span>,ret);
+    printf(<span class="org-string">"%d errno=%m\n"</span>,ret);
     return 0;
 }
 </pre>
@@ -6082,7 +6064,7 @@ POSIX要求如果abort调用终止进程的话，那么它对所有打开标准I
 
 jmp_buf env;
 void handler(int signo){
-    printf(<span style="color: #ffff00;">"%s received\n"</span>,strsignal(signo));
+    printf(<span class="org-string">"%s received\n"</span>,strsignal(signo));
     longjmp(env,1);
 }
 
@@ -6091,7 +6073,7 @@ int main(){
         signal(SIGABRT,handler);
         abort();
     }else{
-        printf(<span style="color: #ffff00;">"jump frm abort\n"</span>);
+        printf(<span class="org-string">"jump frm abort\n"</span>);
         return 0;
     }
     return 0;
@@ -6153,21 +6135,21 @@ int pseudo_system(const char* cmd){
         sleep(2);
         exit(0);
     }else{ //parent
-        printf(<span style="color: #ffff00;">"parent wait\n"</span>);
-        printf(<span style="color: #ffff00;">"%d exit\n"</span>,wait(NULL));
-        printf(<span style="color: #ffff00;">"parent over\n"</span>);
+        printf(<span class="org-string">"parent wait\n"</span>);
+        printf(<span class="org-string">"%d exit\n"</span>,wait(NULL));
+        printf(<span class="org-string">"parent over\n"</span>);
     }
     return 0;
 }
 
 void sig_handler(int signo){
-    printf(<span style="color: #ffff00;">"%s received\n"</span>,strsignal(signo));
-    printf(<span style="color: #ffff00;">"%d exit,%m\n"</span>,wait(NULL));
+    printf(<span class="org-string">"%s received\n"</span>,strsignal(signo));
+    printf(<span class="org-string">"%d exit,%m\n"</span>,wait(NULL));
 }
 
 int main(){
     signal(SIGCHLD,sig_handler);
-    pseudo_system(<span style="color: #ffff00;">"command"</span>);
+    pseudo_system(<span class="org-string">"command"</span>);
     return 0;
 }
 </pre>
@@ -6327,14 +6309,14 @@ _syscall0(pid_t,gettid)
 pid_t user_gettid(){
     pid_t pid=0;
     __asm__ __volatile__(
-        <span style="color: #ffff00;">"movl %%fs:%c1,%0\n\t"</span>
-        :<span style="color: #ffff00;">"=r"</span>(pid)
-        :<span style="color: #ffff00;">"i"</span>(144));
+        <span class="org-string">"movl %%fs:%c1,%0\n\t"</span>
+        :<span class="org-string">"=r"</span>(pid)
+        :<span class="org-string">"i"</span>(144));
     return pid;
 }
 int main(){
-    printf(<span style="color: #ffff00;">"%d\n"</span>,user_gettid());
-    printf(<span style="color: #ffff00;">"%d\n"</span>,gettid());
+    printf(<span class="org-string">"%d\n"</span>,user_gettid());
+    printf(<span class="org-string">"%d\n"</span>,gettid());
 }
 </pre>
 
@@ -6384,7 +6366,7 @@ int pthread_once(pthread_once_t* initflag,void (*initfn)(void));
 
 pthread_once_t initflag=PTHREAD_ONCE_INIT;
 void run_once(){
-    printf(<span style="color: #ffff00;">"just run once\n"</span>);
+    printf(<span class="org-string">"just run once\n"</span>);
 }
 void* foo(void* arg){
     pthread_once(&amp;initflag,run_once);
@@ -6450,11 +6432,11 @@ void pthread_cleanup_pop(int execute); //&#38750;0&#34920;&#31034;&#31435;&#2136
 
 
 <pre class="src src-C++">void foo(void* arg){
-    printf(<span style="color: #ffff00;">"%s\n"</span>,(char*)arg);
+    printf(<span class="org-string">"%s\n"</span>,(char*)arg);
 }
 void* pthread_func(void* arg){
-    pthread_cleanup_push(foo,(void*)<span style="color: #ffff00;">"push1"</span>);
-    pthread_cleanup_push(foo,(void*)<span style="color: #ffff00;">"push2"</span>);
+    pthread_cleanup_push(foo,(void*)<span class="org-string">"push1"</span>);
+    pthread_cleanup_push(foo,(void*)<span class="org-string">"push2"</span>);
     for(;;){
         sleep(5);
     }
@@ -6469,11 +6451,11 @@ int main(){
     pthread_create(&amp;tid,NULL,pthread_func,0);
     ret=pthread_detach(tid);
     if(ret){
-        printf(<span style="color: #ffff00;">"pthread_detach:%s\n"</span>,strerror(ret));
+        printf(<span class="org-string">"pthread_detach:%s\n"</span>,strerror(ret));
     }
     ret=pthread_join(tid,NULL); //detach&#20043;&#21518;&#36820;&#22238;join&#36820;&#22238;EINVAL&#38169;&#35823;
     if(ret){
-        printf(<span style="color: #ffff00;">"pthread_join:%s\n"</span>,strerror(ret));
+        printf(<span class="org-string">"pthread_join:%s\n"</span>,strerror(ret));
     }
     pthread_cancel(tid);
     return 0;
@@ -7111,7 +7093,7 @@ void* signal_handler_thread(void* arg){
         int signo;
         sigwait(&amp;set,&amp;signo);
         //in a synchronous way.
-        printf(<span style="color: #ffff00;">"%s received\n"</span>,strsignal(signo));
+        printf(<span class="org-string">"%s received\n"</span>,strsignal(signo));
         if(signo==SIGINT){
             quit_flag=1;
             return NULL;
@@ -7686,9 +7668,9 @@ int main(){
 //     clock_nanosleep(CLOCK_REALTIME, TIMER_ABSTIME,&amp;tp,NULL);
     sleep(2);
     clock_gettime(id,&amp;tp);
-    printf(<span style="color: #ffff00;">"exhausted %lf ms\n"</span>,tp.tv_sec*1000.0+tp.tv_nsec/1000000.0);
+    printf(<span class="org-string">"exhausted %lf ms\n"</span>,tp.tv_sec*1000.0+tp.tv_nsec/1000000.0);
     clock_getres(id,&amp;tp);
-    printf(<span style="color: #ffff00;">"resolution %lf ms\n"</span>,tp.tv_sec*1000.0+tp.tv_nsec/1000000.0);
+    printf(<span class="org-string">"resolution %lf ms\n"</span>,tp.tv_sec*1000.0+tp.tv_nsec/1000000.0);
     return 0;
 }
 </pre>
@@ -7806,21 +7788,21 @@ class Lock {
 
 static Lock lock;
 void* func2(void* arg){
-  printf(<span style="color: #ffff00;">"enter func2\n"</span>);
+  printf(<span class="org-string">"enter func2\n"</span>);
   lock.lock();
   while(1){
     sleep(2);
   }
   lock.unlock();
-  printf(<span style="color: #ffff00;">"exit func2\n"</span>);
+  printf(<span class="org-string">"exit func2\n"</span>);
   return NULL;
 }
 void* func1(void* arg){
-  printf(<span style="color: #ffff00;">"enter func1\n"</span>);
+  printf(<span class="org-string">"enter func1\n"</span>);
   pthread_t tid;
   pthread_create(&amp;tid,NULL,func2,NULL);
   pthread_join(tid,NULL);
-  printf(<span style="color: #ffff00;">"exit func1\n"</span>);
+  printf(<span class="org-string">"exit func1\n"</span>);
   return NULL;
 }
 int main() {
@@ -7830,7 +7812,7 @@ int main() {
   sleep(1);
   pthread_cancel(tid);
   pthread_join(tid,NULL);
-  printf(<span style="color: #ffff00;">"exit main\n"</span>);
+  printf(<span class="org-string">"exit main\n"</span>);
   return 0;
 }
 </pre>
@@ -7924,9 +7906,9 @@ a.out: main.cc:17: Lock::~Lock(): Assertion `holder_==0′ failed.
 
 
 <pre class="src src-C++">void print_ids(const char* name){
-    printf(<span style="color: #ffff00;">"%s:pid=%d,ppid=%d,pgid=%d,sid=%d\n"</span>,
+    printf(<span class="org-string">"%s:pid=%d,ppid=%d,pgid=%d,sid=%d\n"</span>,
            name,getpid(),getppid(),getpgid(0),getsid(0));
-    //printf(<span style="color: #ffff00;">"%s\n"</span>,name);
+    //printf(<span class="org-string">"%s\n"</span>,name);
 }
 
 void daemonize(){
@@ -7936,20 +7918,20 @@ void daemonize(){
         exit(0);
     }
     sleep(1);
-    print_ids(<span style="color: #ffff00;">"after fork()"</span>);
+    print_ids(<span class="org-string">"after fork()"</span>);
     setsid();
-    print_ids(<span style="color: #ffff00;">"after setsid()"</span>);
+    print_ids(<span class="org-string">"after setsid()"</span>);
     pid=fork();
     if(pid!=0){
         exit(0);
     }
-    print_ids(<span style="color: #ffff00;">"after fork()"</span>);
-    chdir(<span style="color: #ffff00;">"/"</span>);
+    print_ids(<span class="org-string">"after fork()"</span>);
+    chdir(<span class="org-string">"/"</span>);
     long v=sysconf(_SC_OPEN_MAX);
     for(long i=0;i&lt;v;i++){
         close(i);
     }
-    open(<span style="color: #ffff00;">"/dev/null"</span>,O_RDWR);
+    open(<span class="org-string">"/dev/null"</span>,O_RDWR);
     dup(0);
     dup(0);
 }
@@ -7968,12 +7950,12 @@ void daemonize(){
     if(pid!=0){
         exit(0);
     }
-    chdir(<span style="color: #ffff00;">"/"</span>);
+    chdir(<span class="org-string">"/"</span>);
     long v=sysconf(_SC_OPEN_MAX);
     for(long i=0;i&lt;v;i++){
         close(i);
     }
-    open(<span style="color: #ffff00;">"/dev/null"</span>,O_RDWR);
+    open(<span class="org-string">"/dev/null"</span>,O_RDWR);
     dup(0);
     dup(0);
 }
@@ -8096,8 +8078,8 @@ local7.*                                                /var/log/boot.log
 
 <pre class="src src-C++">#include &lt;syslog.h&gt;
 int main(){
-    openlog(<span style="color: #ffff00;">"FuckYourAss"</span>,0,LOG_EMERG);
-    syslog(0,<span style="color: #ffff00;">"%s\n"</span>,<span style="color: #ffff00;">"Fuck Your Ass!!!!"</span>);
+    openlog(<span class="org-string">"FuckYourAss"</span>,0,LOG_EMERG);
+    syslog(0,<span class="org-string">"%s\n"</span>,<span class="org-string">"Fuck Your Ass!!!!"</span>);
     closelog();
 }
 </pre>
@@ -8493,7 +8475,7 @@ SIGIO是通用异步信号，而SIGURG是用药通知进程在网络连接上有
 
 static int id=0;
 void sig_handler(int signo){
-    printf(<span style="color: #ffff00;">"%s received(%d)\n"</span>,strsignal(signo),id);
+    printf(<span class="org-string">"%s received(%d)\n"</span>,strsignal(signo),id);
     id++;
 }
 
@@ -8676,7 +8658,7 @@ extern int msync (void *__addr, size_t __len, int __flags);
 #include &lt;signal.h&gt;
 
 void signal_handler(int signo){
-    printf(<span style="color: #ffff00;">"%s received\n"</span>,strsignal(signo));
+    printf(<span class="org-string">"%s received\n"</span>,strsignal(signo));
     exit(0);
 }
 
@@ -8684,12 +8666,12 @@ int main(){
     signal(SIGSEGV,signal_handler);
     signal(SIGBUS,signal_handler);
     struct stat stat_buf;
-    stat(<span style="color: #ffff00;">"main.cc"</span>,&amp;stat_buf);
-    int fd=open(<span style="color: #ffff00;">"main.cc"</span>,O_RDWR);
+    stat(<span class="org-string">"main.cc"</span>,&amp;stat_buf);
+    int fd=open(<span class="org-string">"main.cc"</span>,O_RDWR);
     char* addr=(char*)mmap(NULL,stat_buf.st_size,PROT_READ | PROT_WRITE,MAP_SHARED,fd,0);
     close(fd);
     getchar(); //&#36825;&#20010;&#22320;&#26041;&#23558;main.cc&#21024;&#38500;&#25481;
-    printf(<span style="color: #ffff00;">"change last one byte\n"</span>);
+    printf(<span class="org-string">"change last one byte\n"</span>);
     addr[stat_buf.st_size-1]='x';
     msync(addr,stat_buf.st_size,MS_SYNC); //&#26368;&#21518;&#36824;&#23581;&#35797;&#36827;&#34892;&#21516;&#27493;
     munmap(addr,stat_buf.st_size);
@@ -8793,7 +8775,7 @@ int io_destroy(aio_context_t ctx);
  *
  * RED HAT DISCLAIMS ANY WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
- * PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS ON AN <span style="color: #ffff00;">"AS IS"</span> BASIS, AND
+ * PURPOSE.  THE SOFTWARE PROVIDED HEREUNDER IS ON AN <span class="org-string">"AS IS"</span> BASIS, AND
  * RED HAT HAS NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES,
  * ENHANCEMENTS, OR MODIFICATIONS.
  */
@@ -8820,9 +8802,9 @@ enum {
 };
 
 /*
- * Valid flags for the <span style="color: #ffff00;">"aio_flags"</span> member of the <span style="color: #ffff00;">"struct iocb"</span>.
+ * Valid flags for the <span class="org-string">"aio_flags"</span> member of the <span class="org-string">"struct iocb"</span>.
  *
- * IOCB_FLAG_RESFD - Set if the <span style="color: #ffff00;">"aio_resfd"</span> member of the <span style="color: #ffff00;">"struct iocb"</span>
+ * IOCB_FLAG_RESFD - Set if the <span class="org-string">"aio_resfd"</span> member of the <span class="org-string">"struct iocb"</span>
  *                   is valid.
  */
 #define IOCB_FLAG_RESFD         (1 &lt;&lt; 0)
@@ -8867,11 +8849,11 @@ struct iocb {
         /* extra parameters */
         __u64   aio_reserved2;  /* TODO: use this for a (struct sigevent *) */
 
-        /* flags for the <span style="color: #ffff00;">"struct iocb"</span> */
+        /* flags for the <span class="org-string">"struct iocb"</span> */
         __u32   aio_flags;
 
         /*
-         * if the IOCB_FLAG_RESFD flag of <span style="color: #ffff00;">"aio_flags"</span> is set, this is an
+         * if the IOCB_FLAG_RESFD flag of <span class="org-string">"aio_flags"</span> is set, this is an
          * eventfd to signal AIO readiness to
          */
         __u32   aio_resfd; // &#22914;&#26524;&#35774;&#32622;RESFD&#26631;&#35760;&#30340;&#35805;&#65292;&#37027;&#20040;&#24403;&#23436;&#25104;&#36825;&#20010;&#25805;&#20316;&#30340;&#35805;&#20063;&#20250;&#36890;&#30693;&#36825;&#20010;fd&#12290;
@@ -8978,7 +8960,7 @@ int main(){
     pipe(fd);
     struct stat stat_buf;
     fstat(fd[0],&amp;stat_buf);
-    printf(<span style="color: #ffff00;">"PIPE_BUF=%d,S_ISFIFO=%d\n"</span>,
+    printf(<span class="org-string">"PIPE_BUF=%d,S_ISFIFO=%d\n"</span>,
            fpathconf(fd[0],_PC_PIPE_BUF),
            S_ISFIFO(stat_buf.st_mode));
     pid_t pid=fork();
@@ -8986,11 +8968,11 @@ int main(){
         close(fd[1]);
         char buf[1024];
         read(fd[0],buf,sizeof(buf));
-        printf(<span style="color: #ffff00;">"%s\n"</span>,buf);
+        printf(<span class="org-string">"%s\n"</span>,buf);
         exit(0);
     }
     close(fd[0]);
-    write(fd[1],<span style="color: #ffff00;">"hello,world"</span>,strlen(<span style="color: #ffff00;">"hello,world"</span>)+1);
+    write(fd[1],<span class="org-string">"hello,world"</span>,strlen(<span class="org-string">"hello,world"</span>)+1);
     wait(NULL);
     return 0;
 }
@@ -9032,10 +9014,10 @@ fd必然和这个进程号做了一个绑定。不然我们在pclose使用FILE*�
 #include &lt;cstdio&gt;
 
 int main(){
-    FILE* fp=popen(<span style="color: #ffff00;">"cat &gt; tmp.txt"</span>,<span style="color: #ffff00;">"w"</span>);
-    fputs(<span style="color: #ffff00;">"hello,world\n"</span>,fp);
+    FILE* fp=popen(<span class="org-string">"cat &gt; tmp.txt"</span>,<span class="org-string">"w"</span>);
+    fputs(<span class="org-string">"hello,world\n"</span>,fp);
     int status=pclose(fp);
-    printf(<span style="color: #ffff00;">"status:%d\n"</span>,status);
+    printf(<span class="org-string">"status:%d\n"</span>,status);
     return 0;
 }
 </pre>
@@ -9065,21 +9047,21 @@ int mkfifo(const char* pathname,mode_t mode);
 
 
 <pre class="src src-C++">int main(){
-    mkfifo(<span style="color: #ffff00;">"./fifo"</span>,0666);
+    mkfifo(<span class="org-string">"./fifo"</span>,0666);
     pid_t pid=fork();
     if(pid==0){
-        int fd=open(<span style="color: #ffff00;">"./fifo"</span>,O_RDONLY);
+        int fd=open(<span class="org-string">"./fifo"</span>,O_RDONLY);
         char buf[1024];
         read(fd,buf,sizeof(buf));
-        printf(<span style="color: #ffff00;">"%s\n"</span>,buf);
+        printf(<span class="org-string">"%s\n"</span>,buf);
         close(fd);
         exit(0);
     }
-    int fd=open(<span style="color: #ffff00;">"./fifo"</span>,O_WRONLY);
-    write(fd,<span style="color: #ffff00;">"hello,world"</span>,strlen(<span style="color: #ffff00;">"hello,world"</span>)+1);
+    int fd=open(<span class="org-string">"./fifo"</span>,O_WRONLY);
+    write(fd,<span class="org-string">"hello,world"</span>,strlen(<span class="org-string">"hello,world"</span>)+1);
     close(fd);
     wait(NULL);
-    unlink(<span style="color: #ffff00;">"./fifo"</span>);
+    unlink(<span class="org-string">"./fifo"</span>);
     return 0;
 }
 </pre>
@@ -9376,29 +9358,29 @@ int main(){
     int msgid=msgget(IPC_PRIVATE,0666);
     message snd;
     snd.mtype=911;
-    strcpy(snd.mtext,<span style="color: #ffff00;">"help"</span>);
+    strcpy(snd.mtext,<span class="org-string">"help"</span>);
     if(msgsnd(msgid,&amp;snd,5,0)==-1){
-        printf(<span style="color: #ffff00;">"msgsnd %m\n"</span>);
+        printf(<span class="org-string">"msgsnd %m\n"</span>);
         return -1;
     }
     struct msqid_ds ds;
     if(msgctl(msgid,IPC_STAT,&amp;ds)==-1){
-        printf(<span style="color: #ffff00;">"msgctl IPC_STAT %m\n"</span>);
+        printf(<span class="org-string">"msgctl IPC_STAT %m\n"</span>);
         return -1;
     }
-    printf(<span style="color: #ffff00;">"current bytes:%d,current number:%d,max bytes:%d\n"</span>,
+    printf(<span class="org-string">"current bytes:%d,current number:%d,max bytes:%d\n"</span>,
            ds.__msg_cbytes,ds.msg_qnum,ds.msg_qbytes);
     message rcv;
     if(msgrcv(msgid,&amp;rcv,512,910,IPC_NOWAIT)==-1){
-        printf(<span style="color: #ffff00;">"msgrcv1 %m\n"</span>);
+        printf(<span class="org-string">"msgrcv1 %m\n"</span>);
     }
     if(msgrcv(msgid,&amp;rcv,521,911,0)==-1){
-        printf(<span style="color: #ffff00;">"msgrcv2 %m\n"</span>);
+        printf(<span class="org-string">"msgrcv2 %m\n"</span>);
         return -1;
     }
-    printf(<span style="color: #ffff00;">"%s\n"</span>,rcv.mtext);
+    printf(<span class="org-string">"%s\n"</span>,rcv.mtext);
     if(msgctl(msgid,IPC_RMID,NULL)==-1){
-        printf(<span style="color: #ffff00;">"msgctl IPC_RMID %m\n"</span>);
+        printf(<span class="org-string">"msgctl IPC_RMID %m\n"</span>);
     }
     return 0;
 }
@@ -9592,16 +9574,16 @@ int main(){
         struct sembuf buf;
         buf.sem_num=0;
         buf.sem_op=-1;
-        printf(<span style="color: #ffff00;">"child wait to exit\n"</span>);
+        printf(<span class="org-string">"child wait to exit\n"</span>);
         semop(semid,&amp;buf,1);
-        printf(<span style="color: #ffff00;">"child about to exit\n"</span>);
+        printf(<span class="org-string">"child about to exit\n"</span>);
         return 0;
     }
     sleep(2);
     struct sembuf buf;
     buf.sem_num=0;
     buf.sem_op=1;
-    printf(<span style="color: #ffff00;">"tell child ready\n"</span>);
+    printf(<span class="org-string">"tell child ready\n"</span>);
     semop(semid,&amp;buf,1);
     wait(NULL);
 
@@ -9699,20 +9681,20 @@ extern int shmdt (__const void *__shmaddr) __THROW;
 #include &lt;cstring&gt;
 
 int main(){
-    printf(<span style="color: #ffff00;">"SHMLBA(shared memory low boundary):%d\n"</span>,SHMLBA);
+    printf(<span class="org-string">"SHMLBA(shared memory low boundary):%d\n"</span>,SHMLBA);
     int shmid=shmget(IPC_PRIVATE,1024,0666);
     pid_t pid=fork();
     if(pid==0){//child
         sleep(2);
         char* addr=(char*)shmat(shmid,0,0);
-        printf(<span style="color: #ffff00;">"%s\n"</span>,addr);
+        printf(<span class="org-string">"%s\n"</span>,addr);
         shmid_ds buf;
         shmctl(shmid,IPC_STAT,&amp;buf);
-        printf(<span style="color: #ffff00;">"segment size:%d,attach number:%d\n"</span>,buf.shm_segsz,buf.shm_nattch);
+        printf(<span class="org-string">"segment size:%d,attach number:%d\n"</span>,buf.shm_segsz,buf.shm_nattch);
         return 0;
     }
     char* addr=(char*)shmat(shmid,0,0);
-    strcpy(addr,<span style="color: #ffff00;">"hello,world"</span>);
+    strcpy(addr,<span class="org-string">"hello,world"</span>);
     wait(NULL);
     return 0;
 }
@@ -9750,16 +9732,16 @@ mmap映射/dev/zero这个文件。因为/dev/zero是一个特殊文件任何写�
 #include &lt;cstring&gt;
 
 int main(){
-    int fd=open(<span style="color: #ffff00;">"/dev/zero"</span>,O_RDWR);
+    int fd=open(<span class="org-string">"/dev/zero"</span>,O_RDWR);
     char* addr=(char*)mmap(0,1024,PROT_READ | PROT_WRITE,MAP_SHARED,fd,0);
     close(fd);
     if(fork()==0){//child
         sleep(1);
-        printf(<span style="color: #ffff00;">"%s\n"</span>,addr);
+        printf(<span class="org-string">"%s\n"</span>,addr);
         munmap(addr,1024);
         return 0;
     }
-    strcpy(addr,<span style="color: #ffff00;">"hello"</span>);
+    strcpy(addr,<span class="org-string">"hello"</span>);
     wait(NULL);
     munmap(addr,1024);
     return 0;
@@ -9778,11 +9760,11 @@ int main(){
     char* addr=(char*)mmap(0,1024,PROT_READ | PROT_WRITE,MAP_SHARED | MAP_ANON,-1,0);
     if(fork()==0){//child
         sleep(1);
-        printf(<span style="color: #ffff00;">"%s\n"</span>,addr);
+        printf(<span class="org-string">"%s\n"</span>,addr);
         munmap(addr,1024);
         return 0;
     }
-    strcpy(addr,<span style="color: #ffff00;">"hello"</span>);
+    strcpy(addr,<span class="org-string">"hello"</span>);
     wait(NULL);
     munmap(addr,1024);
     return 0;
@@ -9829,27 +9811,27 @@ int main(){
     pthread_cond_init(cond,&amp;attr2);
 
     if(fork()==0){//child
-        printf(<span style="color: #ffff00;">"child wait to exit\n"</span>);
+        printf(<span class="org-string">"child wait to exit\n"</span>);
         pthread_mutex_lock(mutex);
         pthread_cond_wait(cond,mutex);
         pthread_mutex_unlock(mutex);
-        printf(<span style="color: #ffff00;">"child about to exit\n"</span>);
+        printf(<span class="org-string">"child about to exit\n"</span>);
         munmap(addr,1024);
         return 0;
     }
     sleep(1);
     pthread_cond_signal(cond);
-    printf(<span style="color: #ffff00;">"parent waiting\n"</span>);
+    printf(<span class="org-string">"parent waiting\n"</span>);
     wait(NULL);
     //fini.&#21482;&#38656;&#35201;&#38144;&#27585;&#19968;&#27425;
     int err=0;
     err=pthread_mutex_destroy(mutex);
     if(err!=0){
-        printf(<span style="color: #ffff00;">"mutex destroy:%s\n"</span>,strerror(err));
+        printf(<span class="org-string">"mutex destroy:%s\n"</span>,strerror(err));
     }
     err=pthread_cond_destroy(cond);
     if(err!=0){
-        printf(<span style="color: #ffff00;">"cond destroy:%s\n"</span>,strerror(err));
+        printf(<span class="org-string">"cond destroy:%s\n"</span>,strerror(err));
     }
     munmap(addr,1024);
     return 0;
@@ -9870,5 +9852,11 @@ child about to exit
 </div>
 </div>
 
+<div id="postamble">
+<p class="date">Date: 2013-09-15 15:19:51 CST</p>
+<p class="creator">Org version 7.8.11 with Emacs version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
 <!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'apue.html';var disqus_title = 'apue.html';var disqus_url = 'http://dirlt.com/apue.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

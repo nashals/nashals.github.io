@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="percolator"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-08-13 19:43:16 CST"/>
+<meta name="generated" content="2013-09-15 15:18:39 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -59,33 +59,15 @@
   .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
                                  font-weight:bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" type="text/css" href="css/site-plain.css" />
-<script type="text/javascript">
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
+</style><link rel="stylesheet" type="text/css" href="css/site.css" />
+
 
 </head>
 <body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><g:plusone annotation="inline"></g:plusone>
 
+<div id="preamble">
+
+</div>
 
 <div id="content">
 <h1 class="title">percolator</h1>
@@ -310,13 +292,13 @@ The remainder of this paper describes a particular in-cremental processing syste
 
 <pre class="src src-C++">bool UpdateDocument(Document doc) {
   Transaction t(&amp;cluster);
-  t.Set(doc.url(), <span style="color: #ffff00;">"contents"</span>, <span style="color: #ffff00;">"document"</span>, doc.contents());
+  t.Set(doc.url(), <span class="org-string">"contents"</span>, <span class="org-string">"document"</span>, doc.contents());
   int hash = Hash(doc.contents());
   // dups table maps hash &#8594; canonical URL
   string canonical;
-  if (!t.Get(hash, <span style="color: #ffff00;">"canonical-url"</span>, <span style="color: #ffff00;">"dups"</span>, &amp;canonical)) {
+  if (!t.Get(hash, <span class="org-string">"canonical-url"</span>, <span class="org-string">"dups"</span>, &amp;canonical)) {
     // No canonical yet; write myself in
-    t.Set(hash, <span style="color: #ffff00;">"canonical-url"</span>, <span style="color: #ffff00;">"dups"</span>, doc.url());
+    t.Set(hash, <span class="org-string">"canonical-url"</span>, <span class="org-string">"dups"</span>, doc.url());
   } // else this document already exists, ignore new copy
   return t.Commit();
 }
@@ -376,7 +358,7 @@ write skew的意思是指，如果两个事务同时写两个不同变量（但�
 wikipedia最后面还提到了使用snapshot isolation转换成为serializability的实现方式，并且PostgreSQL里面就已经这么实现了。
 </p>
 <p class="verse">
-With additional communication between transactions, the anomalies that snapshot isolation normally allows can be blocked by aborting one of the transactions involved, turning a snapshot isolation implementation into a full serializability guarantee[8]. This implementation of serializability is well-suited to multiversion concurrency control databases, and has been adopted in PostgreSQL 9.1[6], where it is referred to as "Serializable Snapshot Isolation", abbreviated to SSI. When used consistently, this eliminates the need for the above workarounds. The downside over snapshot isolation is an increase in aborted transactions. This can perform better or worse than snapshot isolation with the above workarounds, depending on workload.<br/>
+With additional communication between transactions, the anomalies that snapshot isolation normally allows can be blocked by aborting one of the transactions involved, turning a snapshot isolation implementation into a full serializability guarantee<sup><a class="footref" name="fnr.1" href="percolator.html#fn.1">1</a></sup>. This implementation of serializability is well-suited to multiversion concurrency control databases, and has been adopted in PostgreSQL 9.1<sup><a class="footref" name="fnr.2" href="percolator.html#fn.2">2</a></sup>, where it is referred to as "Serializable Snapshot Isolation", abbreviated to SSI. When used consistently, this eliminates the need for the above workarounds. The downside over snapshot isolation is an increase in aborted transactions. This can perform better or worse than snapshot isolation with the above workarounds, depending on workload.<br/>
 </p>
 
 
@@ -424,16 +406,16 @@ Snapshot isolation does not provide serializability，这个问题以下面的ps
     while (true) {
       bigtable::Txn T = bigtable::StartRowTransaction(row); // TODO(dirlt):??
       // Check for locks that signal concurrent writes.
-      if (T.Read(row, c+<span style="color: #ffff00;">"lock"</span>, [0, start ts ])) { // &#22914;&#26524;&#22312;&#36825;&#20010;timestamp&#20043;&#21069;&#23384;&#22312;lock,&#35828;&#26126;&#22312;&#36825;&#20010;ts&#20043;&#21069;&#32943;&#23450;&#23384;&#22312;commit&#20294;&#26159;&#36824;&#27809;&#26377;&#25552;&#20132;&#25104;&#21151;&#65288;&#21487;&#33021;&#22312;&#36816;&#34892;&#65292;&#20063;&#21487;&#33021;&#30452;&#25509;fail&#65289;
+      if (T.Read(row, c+<span class="org-string">"lock"</span>, [0, start ts ])) { // &#22914;&#26524;&#22312;&#36825;&#20010;timestamp&#20043;&#21069;&#23384;&#22312;lock,&#35828;&#26126;&#22312;&#36825;&#20010;ts&#20043;&#21069;&#32943;&#23450;&#23384;&#22312;commit&#20294;&#26159;&#36824;&#27809;&#26377;&#25552;&#20132;&#25104;&#21151;&#65288;&#21487;&#33021;&#22312;&#36816;&#34892;&#65292;&#20063;&#21487;&#33021;&#30452;&#25509;fail&#65289;
         // There is a pending lock; try to clean it and wait
         BackoffAndMaybeCleanupLock(row, c); // &#23545;&#20110;&#36825;&#20010;pending lock&#65292;&#25105;&#20204;&#20250;&#36873;&#25321;&#31561;&#24453;&#65292;&#25110;&#32773;&#21487;&#33021;&#26159;&#21024;&#38500;&#12290;
         continue;
       }
       // Find the latest write below our start timestamp.
-      latest write = T.Read(row, c+<span style="color: #ffff00;">"write"</span>, [0, start ts ]); // &#35828;&#26126;&#20043;&#21069;&#30340;commit&#20197;&#21069;&#25552;&#20132;&#23436;&#25104;&#65292;&#37027;&#20040;&#30475;&#26368;&#36817;&#19968;&#27425;&#30340;write&#26159;&#22312;&#20160;&#20040;&#26102;&#20505;&#12290;&#25152;&#35859;&#26368;&#36817;&#26159;&#25351;&#20889;&#20837;&#30340;&#26102;&#38388;&#26159;&#21518;&#38754;&#30340;commit_ts.
+      latest write = T.Read(row, c+<span class="org-string">"write"</span>, [0, start ts ]); // &#35828;&#26126;&#20043;&#21069;&#30340;commit&#20197;&#21069;&#25552;&#20132;&#23436;&#25104;&#65292;&#37027;&#20040;&#30475;&#26368;&#36817;&#19968;&#27425;&#30340;write&#26159;&#22312;&#20160;&#20040;&#26102;&#20505;&#12290;&#25152;&#35859;&#26368;&#36817;&#26159;&#25351;&#20889;&#20837;&#30340;&#26102;&#38388;&#26159;&#21518;&#38754;&#30340;commit_ts.
       if (!latest write.found()) return false; // no data
       int data ts = latest write.start timestamp(); // &#28982;&#21518;&#26368;&#36817;&#20889;&#20837;write&#30340;&#21457;&#36215;&#26102;&#38388;&#65292;&#20063;&#23601;&#26159;start_ts.&#36825;&#20010;&#38656;&#35201;&#32467;&#21512;&#21518;&#38754;&#30340;prewrite&#21644;commit&#26469;&#29702;&#35299;&#12290;
-      *value = T.Read(row, c+<span style="color: #ffff00;">"data"</span>, [data ts, data ts]);
+      *value = T.Read(row, c+<span class="org-string">"data"</span>, [data ts, data ts]);
       return true;
     }
   }
@@ -442,13 +424,13 @@ Snapshot isolation does not provide serializability，这个问题以下面的ps
     Column c = w.col;
     bigtable::Txn T = bigtable::StartRowTransaction(w.row);
     // Abort on writes after our start timestamp . . .
-    if (T.Read(w.row, c+<span style="color: #ffff00;">"write"</span>, [start ts , INFINITY])) return false; // start_ts&#20043;&#21518;&#26159;&#21542;&#26377;&#26032;&#30340;&#25552;&#20132;&#12290;&#22914;&#26524;&#23384;&#22312;&#26032;&#30340;&#25552;&#20132;&#30340;&#35805;&#65292;&#36825;&#23601;&#24847;&#21619;&#36825;&#26412;&#27425;T&#30340;&#22833;&#36133;&#12290;
+    if (T.Read(w.row, c+<span class="org-string">"write"</span>, [start ts , INFINITY])) return false; // start_ts&#20043;&#21518;&#26159;&#21542;&#26377;&#26032;&#30340;&#25552;&#20132;&#12290;&#22914;&#26524;&#23384;&#22312;&#26032;&#30340;&#25552;&#20132;&#30340;&#35805;&#65292;&#36825;&#23601;&#24847;&#21619;&#36825;&#26412;&#27425;T&#30340;&#22833;&#36133;&#12290;
     // &#36825;&#20010;&#22320;&#26041;&#38750;&#24120;&#37325;&#35201;&#65292;&#22240;&#20026;&#25105;&#20204;&#35835;&#21462;&#30340;&#25968;&#25454;&#26159;start_ts&#20043;&#21069;&#30340;&#25968;&#25454;&#65292;&#22240;&#27492;&#22914;&#26524;start_ts&#20043;&#21518;&#23384;&#22312;&#25968;&#25454;&#20889;&#20837;&#30340;&#35805;&#65292;&#37027;&#20040;&#35828;&#26126;&#23384;&#22312;&#22810;&#20010;&#20107;&#29289;&#27491;&#22312;&#25552;&#20132;
     // &#26159;write-write conflicts.
     //. . . or locks at any timestamp.
-    if (T.Read(w.row, c+<span style="color: #ffff00;">"lock"</span>, [0, INFINITY])) return false; // &#22914;&#26524;&#36825;&#20010;cell&#34987;lock&#30340;&#35805;&#65292;&#37027;&#20040;&#24847;&#21619;&#30528;&#26412;&#22320;T&#20063;&#26159;&#22833;&#36133;&#30340;&#12290;&#27880;&#24847;&#36825;&#37324;&#23545;lock&#26102;&#38388;&#27809;&#26377;&#20219;&#20309;&#38480;&#21046;&#12290;
-    T.Write(w.row, c+<span style="color: #ffff00;">"data"</span>, start ts , w.value); // &#20889;&#20837;&#25968;&#25454;&#65292;&#27880;&#24847;&#36825;&#37324;&#30340;&#26102;&#38388;&#25139;&#26159;start_ts
-    T.Write(w.row, c+<span style="color: #ffff00;">"lock"</span>, start ts , // &#20889;&#20837;lock&#65292;&#20869;&#23481;&#26159;primary row&#21644;col
+    if (T.Read(w.row, c+<span class="org-string">"lock"</span>, [0, INFINITY])) return false; // &#22914;&#26524;&#36825;&#20010;cell&#34987;lock&#30340;&#35805;&#65292;&#37027;&#20040;&#24847;&#21619;&#30528;&#26412;&#22320;T&#20063;&#26159;&#22833;&#36133;&#30340;&#12290;&#27880;&#24847;&#36825;&#37324;&#23545;lock&#26102;&#38388;&#27809;&#26377;&#20219;&#20309;&#38480;&#21046;&#12290;
+    T.Write(w.row, c+<span class="org-string">"data"</span>, start ts , w.value); // &#20889;&#20837;&#25968;&#25454;&#65292;&#27880;&#24847;&#36825;&#37324;&#30340;&#26102;&#38388;&#25139;&#26159;start_ts
+    T.Write(w.row, c+<span class="org-string">"lock"</span>, start ts , // &#20889;&#20837;lock&#65292;&#20869;&#23481;&#26159;primary row&#21644;col
             {primary.row, primary.col});
     // The primary&#8217;s location.
     return T.Commit(); 
@@ -463,18 +445,18 @@ Snapshot isolation does not provide serializability，这个问题以下面的ps
     // Commit primary first.
     Write p = primary;
     bigtable::Txn T = bigtable::StartRowTransaction(p.row);
-    if (!T.Read(p.row, p.col+<span style="color: #ffff00;">"lock"</span>, [start ts , start ts ])) // &#37325;&#26032;&#26816;&#26597;&#20043;&#21069;&#30340;&#38145;&#26159;&#21542;&#36824;&#22312;&#65311;&#22914;&#26524;&#36824;&#22312;&#30340;&#35805;&#37027;&#20040;&#20889;&#20837;&#25968;&#25454;&#24182;&#19988;&#21024;&#38500;&#25481;&#38145;&#12290;&#36825;&#20010;&#24517;&#39035;&#26159;&#19968;&#20010;&#20107;&#21153;&#25805;&#20316;&#65292;&#32780;&#36825;&#20010;&#28857;&#23601;&#26159;commit point
+    if (!T.Read(p.row, p.col+<span class="org-string">"lock"</span>, [start ts , start ts ])) // &#37325;&#26032;&#26816;&#26597;&#20043;&#21069;&#30340;&#38145;&#26159;&#21542;&#36824;&#22312;&#65311;&#22914;&#26524;&#36824;&#22312;&#30340;&#35805;&#37027;&#20040;&#20889;&#20837;&#25968;&#25454;&#24182;&#19988;&#21024;&#38500;&#25481;&#38145;&#12290;&#36825;&#20010;&#24517;&#39035;&#26159;&#19968;&#20010;&#20107;&#21153;&#25805;&#20316;&#65292;&#32780;&#36825;&#20010;&#28857;&#23601;&#26159;commit point
       return false;     
     // &#20043;&#21518;&#25552;&#20132;&#25968;&#25454;&#65292;&#20462;&#25913;write&#26102;&#38388;&#24182;&#19988;&#23558;lock&#28165;&#38500;&#25481;&#12290;
     // aborted while working
-    T.Write(p.row, p.col+<span style="color: #ffff00;">"write"</span>, commit ts,
+    T.Write(p.row, p.col+<span class="org-string">"write"</span>, commit ts,
             start ts ); // Pointer to data written at start ts .
-    T.Erase(p.row, p.col+<span style="color: #ffff00;">"lock"</span>, commit ts);
+    T.Erase(p.row, p.col+<span class="org-string">"lock"</span>, commit ts);
     if (!T.Commit()) return false;  // commit point
     // Second phase: write out write records for secondary cells.
     for (Write w : secondaries) {
-      bigtable::Write(w.row, w.col+<span style="color: #ffff00;">"write"</span>, commit ts, start ts );
-      bigtable::Erase(w.row, w.col+<span style="color: #ffff00;">"lock"</span>, commit ts);
+      bigtable::Write(w.row, w.col+<span class="org-string">"write"</span>, commit ts, start ts );
+      bigtable::Erase(w.row, w.col+<span class="org-string">"lock"</span>, commit ts);
     }
     return true;
   }
@@ -621,10 +603,27 @@ Snapshot isolation does not provide serializability，这个问题以下面的ps
 <h3 id="sec-1-6"><span class="section-number-3">1.6</span> Conclusion and Future Work</h3>
 <div class="outline-text-3" id="text-1-6">
 
+
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+<p class="footnote"><sup><a class="footnum" name="fn.1" href="percolator.html#fnr.1">1</a></sup> DEFINITION NOT FOUND: 8
+</p>
+
+<p class="footnote"><sup><a class="footnum" name="fn.2" href="percolator.html#fnr.2">2</a></sup> DEFINITION NOT FOUND: 6
+</p></div>
 </div>
+</div>
+
 </div>
 </div>
 </div>
 
+<div id="postamble">
+<p class="date">Date: 2013-09-15 15:18:39 CST</p>
+<p class="creator">Org version 7.8.11 with Emacs version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
 <!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'percolator.html';var disqus_title = 'percolator.html';var disqus_url = 'http://dirlt.com/percolator.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

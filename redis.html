@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="redis"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-08-13 19:43:11 CST"/>
+<meta name="generated" content="2013-09-15 15:18:33 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -59,33 +59,15 @@
   .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
                                  font-weight:bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" type="text/css" href="css/site-plain.css" />
-<script type="text/javascript">
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
+</style><link rel="stylesheet" type="text/css" href="css/site.css" />
+
 
 </head>
 <body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><g:plusone annotation="inline"></g:plusone>
 
+<div id="preamble">
+
+</div>
 
 <div id="content">
 <h1 class="title">redis</h1>
@@ -1452,7 +1434,7 @@ typedef struct redisObject {
 
 void redisLog(int level, const char *fmt, ...) {
     const int syslogLevelMap[] = { LOG_DEBUG, LOG_INFO, LOG_NOTICE, LOG_WARNING }; // syslog&#26085;&#24535;&#31561;&#32423;
-    const char *c = <span style="color: #ffff00;">".-*#"</span>; // &#26085;&#24535;&#31561;&#32423;&#21069;&#32512;.
+    const char *c = <span class="org-string">".-*#"</span>; // &#26085;&#24535;&#31561;&#32423;&#21069;&#32512;.
     time_t now = time(NULL);
     va_list ap;
     FILE *fp;
@@ -1461,20 +1443,20 @@ void redisLog(int level, const char *fmt, ...) {
 
     if (level &lt; server.verbosity) return;
 
-    fp = (server.logfile == NULL) ? stdout : fopen(server.logfile,<span style="color: #ffff00;">"a"</span>);
+    fp = (server.logfile == NULL) ? stdout : fopen(server.logfile,<span class="org-string">"a"</span>);
     if (!fp) return;
 
     va_start(ap, fmt);
     vsnprintf(msg, sizeof(msg), fmt, ap);
     va_end(ap);
 
-    strftime(buf,sizeof(buf),<span style="color: #ffff00;">"%d %b %H:%M:%S"</span>,localtime(&amp;now));
-    fprintf(fp,<span style="color: #ffff00;">"[%d] %s %c %s\n"</span>,(int)getpid(),buf,c[level],msg);
+    strftime(buf,sizeof(buf),<span class="org-string">"%d %b %H:%M:%S"</span>,localtime(&amp;now));
+    fprintf(fp,<span class="org-string">"[%d] %s %c %s\n"</span>,(int)getpid(),buf,c[level],msg);
     fflush(fp);
 
     if (server.logfile) fclose(fp);
 
-    if (server.syslog_enabled) syslog(syslogLevelMap[level], <span style="color: #ffff00;">"%s"</span>, msg);
+    if (server.syslog_enabled) syslog(syslogLevelMap[level], <span class="org-string">"%s"</span>, msg);
 }
 </pre>
 
@@ -1515,7 +1497,7 @@ void bugReportStart(void);
 <pre class="src src-C++">void bugReportStart(void) {
     if (server.bug_report_start == 0) {
         redisLog(REDIS_WARNING,
-            <span style="color: #ffff00;">"=== REDIS BUG REPORT START: Cut &amp; paste starting from here ==="</span>);
+            <span class="org-string">"=== REDIS BUG REPORT START: Cut &amp; paste starting from here ==="</span>);
         server.bug_report_start = 1;
     }
 }
@@ -1539,13 +1521,13 @@ redis应该是截获了SIGSEGV信号，如果触发了这个信号的话会调�
 #ifdef HAVE_BACKTRACE
     bugReportStart(); // &#24320;&#21551;bug report.
 #endif
-    redisLog(REDIS_WARNING,<span style="color: #ffff00;">"=== ASSERTION FAILED ==="</span>);
-    redisLog(REDIS_WARNING,<span style="color: #ffff00;">"==&gt; %s:%d '%s' is not true"</span>,file,line,estr);
+    redisLog(REDIS_WARNING,<span class="org-string">"=== ASSERTION FAILED ==="</span>);
+    redisLog(REDIS_WARNING,<span class="org-string">"==&gt; %s:%d '%s' is not true"</span>,file,line,estr);
 #ifdef HAVE_BACKTRACE
     server.assert_failed = estr;
     server.assert_file = file;
     server.assert_line = line;
-    redisLog(REDIS_WARNING,<span style="color: #ffff00;">"(forcing SIGSEGV to print the bug report.)"</span>);
+    redisLog(REDIS_WARNING,<span class="org-string">"(forcing SIGSEGV to print the bug report.)"</span>);
 #endif
     *((char*)-1) = 'x';
 }
@@ -1568,10 +1550,10 @@ redis应该是截获了SIGSEGV信号，如果触发了这个信号的话会调�
 #ifdef HAVE_BACKTRACE
     bugReportStart();
 #endif
-    redisLog(REDIS_WARNING,<span style="color: #ffff00;">"!!! Software Failure. Press left mouse button to continue"</span>);
-    redisLog(REDIS_WARNING,<span style="color: #ffff00;">"Guru Meditation: %s #%s:%d"</span>,msg,file,line);
+    redisLog(REDIS_WARNING,<span class="org-string">"!!! Software Failure. Press left mouse button to continue"</span>);
+    redisLog(REDIS_WARNING,<span class="org-string">"Guru Meditation: %s #%s:%d"</span>,msg,file,line);
 #ifdef HAVE_BACKTRACE
-    redisLog(REDIS_WARNING,<span style="color: #ffff00;">"(forcing SIGSEGV in order to print the stack trace)"</span>);
+    redisLog(REDIS_WARNING,<span class="org-string">"(forcing SIGSEGV in order to print the stack trace)"</span>);
 #endif
     *((char*)-1) = 'x';
 }
@@ -2643,7 +2625,7 @@ int fwriteBulkObject(FILE *fp, robj *obj) {
     } else if (obj-&gt;encoding == REDIS_ENCODING_RAW) {
         return fwriteBulkString(fp,obj-&gt;ptr,sdslen(obj-&gt;ptr));
     } else {
-        redisPanic(<span style="color: #ffff00;">"Unknown string encoding"</span>);
+        redisPanic(<span class="org-string">"Unknown string encoding"</span>);
     }
 }
 </pre>
@@ -2815,7 +2797,7 @@ if (type == REDIS_BIO_CLOSE_FILE) {
 } else if (type == REDIS_BIO_AOF_FSYNC) {
     aof_fsync((long)job-&gt;arg1);
 } else {
-    redisPanic(<span style="color: #ffff00;">"Wrong job type in bioProcessBackgroundJobs()."</span>);
+    redisPanic(<span class="org-string">"Wrong job type in bioProcessBackgroundJobs()."</span>);
 }
 </pre>
 
@@ -2919,7 +2901,7 @@ void flushAppendOnlyFile(int force) {
             // &#20294;&#26159;2s&#27809;&#26377;&#21047;&#26032;&#19979;&#21435;&#30340;&#35805;&#37027;&#20040;&#20250;&#25253;&#35686;.
             /* Otherwise fall trough, and go write since we can't wait
              * over two seconds. */
-            redisLog(REDIS_NOTICE,<span style="color: #ffff00;">"Asynchronous AOF fsync is taking too long (disk is busy?). Writing the AOF buffer without waiting for fsync to complete, this may slow down Redis."</span>);
+            redisLog(REDIS_NOTICE,<span class="org-string">"Asynchronous AOF fsync is taking too long (disk is busy?). Writing the AOF buffer without waiting for fsync to complete, this may slow down Redis."</span>);
         }
     }
     /* If you are following this code path, then we are going to write so
@@ -2938,9 +2920,9 @@ void flushAppendOnlyFile(int force) {
          * aborting instead of giving the illusion that everything is
          * working as expected. */
         if (nwritten == -1) {
-            redisLog(REDIS_WARNING,<span style="color: #ffff00;">"Exiting on error writing to the append-only file: %s"</span>,strerror(errno));
+            redisLog(REDIS_WARNING,<span class="org-string">"Exiting on error writing to the append-only file: %s"</span>,strerror(errno));
         } else {
-            redisLog(REDIS_WARNING,<span style="color: #ffff00;">"Exiting on short write while writing to the append-only file: %s"</span>,strerror(errno));
+            redisLog(REDIS_WARNING,<span class="org-string">"Exiting on short write while writing to the append-only file: %s"</span>,strerror(errno));
         }
         exit(1);
     }
@@ -2991,7 +2973,7 @@ void flushAppendOnlyFile(int force) {
 </p>
 
 
-<pre class="src src-C++">/* Called when the user switches from <span style="color: #ffff00;">"appendonly yes"</span> to <span style="color: #ffff00;">"appendonly no"</span>
+<pre class="src src-C++">/* Called when the user switches from <span class="org-string">"appendonly yes"</span> to <span class="org-string">"appendonly no"</span>
  * at runtime using the CONFIG command. */
 void stopAppendOnly(void) {
     flushAppendOnlyFile(1);
@@ -3028,20 +3010,20 @@ void stopAppendOnly(void) {
 </p>
 
 
-<pre class="src src-C++">/* Called when the user switches from <span style="color: #ffff00;">"appendonly no"</span> to <span style="color: #ffff00;">"appendonly yes"</span>
+<pre class="src src-C++">/* Called when the user switches from <span class="org-string">"appendonly no"</span> to <span class="org-string">"appendonly yes"</span>
  * at runtime using the CONFIG command. */
 int startAppendOnly(void) {
     server.appendonly = 1;
     server.lastfsync = time(NULL); // &#21018;&#24320;&#21551;&#30340;&#35805;&#24517;&#28982;&#24050;&#32463;&#35843;&#29992;&#20102;fsync.
     server.appendfd = open(server.appendfilename,O_WRONLY|O_APPEND|O_CREAT,0644);
     if (server.appendfd == -1) {
-        redisLog(REDIS_WARNING,<span style="color: #ffff00;">"Used tried to switch on AOF via CONFIG, but I can't open the AOF file: %s"</span>,strerror(errno));
+        redisLog(REDIS_WARNING,<span class="org-string">"Used tried to switch on AOF via CONFIG, but I can't open the AOF file: %s"</span>,strerror(errno));
         return REDIS_ERR;
     }
     if (rewriteAppendOnlyFileBackground() == REDIS_ERR) { // &#21518;&#21488;&#21551;&#21160;AOF&#20197;&#21450;rewrite&#24037;&#20316;.
         server.appendonly = 0;
         close(server.appendfd);
-        redisLog(REDIS_WARNING,<span style="color: #ffff00;">"Used tried to switch on AOF via CONFIG, I can't trigger a background AOF rewrite operation. Check the above logs for more info about the error."</span>,strerror(errno));
+        redisLog(REDIS_WARNING,<span class="org-string">"Used tried to switch on AOF via CONFIG, I can't trigger a background AOF rewrite operation. Check the above logs for more info about the error."</span>,strerror(errno));
         return REDIS_ERR;
     }
     return REDIS_OK;
@@ -3130,19 +3112,19 @@ int startAppendOnly(void) {
 
 #if defined(USE_TCMALLOC)
 // &#37197;&#19978;tcmalloc&#30340;&#29256;&#26412;.
-#define ZMALLOC_LIB (<span style="color: #ffff00;">"tcmalloc-"</span> __xstr(TC_VERSION_MAJOR) <span style="color: #ffff00;">"."</span> __xstr(TC_VERSION_MINOR))
+#define ZMALLOC_LIB (<span class="org-string">"tcmalloc-"</span> __xstr(TC_VERSION_MAJOR) <span class="org-string">"."</span> __xstr(TC_VERSION_MINOR))
 #include &lt;google/tcmalloc.h&gt;
 // 1.6&#20197;&#21518;&#24320;&#22987;&#26377;zmalloc_size&#23454;&#29616;.
 #if TC_VERSION_MAJOR &gt;= 1 &amp;&amp; TC_VERSION_MINOR &gt;= 6
 #define HAVE_MALLOC_SIZE 1
 #define zmalloc_size(p) tc_malloc_size(p)
 #else
-#error <span style="color: #ffff00;">"Newer version of tcmalloc required"</span>
+#error <span class="org-string">"Newer version of tcmalloc required"</span>
 #endif
 
 #elif defined(USE_JEMALLOC)
 // &#37197;&#19978;jemalloc&#29256;&#26412;.
-#define ZMALLOC_LIB (<span style="color: #ffff00;">"jemalloc-"</span> __xstr(JEMALLOC_VERSION_MAJOR) <span style="color: #ffff00;">"."</span> __xstr(JEMALLOC_VERSION_MINOR) <span style="color: #ffff00;">"."</span> __xstr(JEMALLOC_VERSION_BUGFIX))
+#define ZMALLOC_LIB (<span class="org-string">"jemalloc-"</span> __xstr(JEMALLOC_VERSION_MAJOR) <span class="org-string">"."</span> __xstr(JEMALLOC_VERSION_MINOR) <span class="org-string">"."</span> __xstr(JEMALLOC_VERSION_BUGFIX))
 #define JEMALLOC_MANGLE
 #include &lt;jemalloc/jemalloc.h&gt;
 #if JEMALLOC_VERSION_MAJOR &gt;= 2 &amp;&amp; JEMALLOC_VERSION_MINOR &gt;= 1
@@ -3150,7 +3132,7 @@ int startAppendOnly(void) {
 #define HAVE_MALLOC_SIZE 1
 #define zmalloc_size(p) JEMALLOC_P(malloc_usable_size)(p)
 #else
-#error <span style="color: #ffff00;">"Newer version of jemalloc required"</span>
+#error <span class="org-string">"Newer version of jemalloc required"</span>
 #endif
 
 // &#22312;apple&#19978;&#36816;&#34892;.
@@ -3162,7 +3144,7 @@ int startAppendOnly(void) {
 
 // &#22914;&#26524;&#27809;&#26377;&#30340;&#35805;&#37027;&#20040;&#40664;&#35748;&#20351;&#29992;libc malloc.
 #ifndef ZMALLOC_LIB
-#define ZMALLOC_LIB <span style="color: #ffff00;">"libc"</span>
+#define ZMALLOC_LIB <span class="org-string">"libc"</span>
 #endif
 </pre>
 
@@ -3266,7 +3248,7 @@ size_t zmalloc_used_memory(void) {
 
 
 <pre class="src src-C++">static void zmalloc_oom(size_t size) {
-    fprintf(stderr, <span style="color: #ffff00;">"zmalloc: Out of memory trying to allocate %zu bytes\n"</span>,
+    fprintf(stderr, <span class="org-string">"zmalloc: Out of memory trying to allocate %zu bytes\n"</span>,
         size);
     fflush(stderr);
     abort();
@@ -3463,7 +3445,7 @@ RedisEstimateRSS这个函数得到大概的估值。
  * and may not be called in the busy loops where Redis tries to release
  * memory expiring or swapping out objects.
  *
- * For this kind of <span style="color: #ffff00;">"fast RSS reporting"</span> usages use instead the
+ * For this kind of <span class="org-string">"fast RSS reporting"</span> usages use instead the
  * function RedisEstimateRSS() that is a much faster (and less precise)
  * version of the funciton. */
 
@@ -3475,7 +3457,7 @@ size_t zmalloc_get_rss(void) {
     int fd, count;
     char *p, *x;
 
-    snprintf(filename,256,<span style="color: #ffff00;">"/proc/%d/stat"</span>,getpid());
+    snprintf(filename,256,<span class="org-string">"/proc/%d/stat"</span>,getpid());
     if ((fd = open(filename,O_RDONLY)) == -1) return 0;
     if (read(fd,buf,4096) &lt;= 0) {
         close(fd);
@@ -3779,10 +3761,10 @@ static intset *intsetResize(intset *is, uint32_t len) {
 </p>
 
 
-<pre class="src src-C++">/* Search for the position of <span style="color: #ffff00;">"value"</span>. Return 1 when the value was found and
- * sets <span style="color: #ffff00;">"pos"</span> to the position of the value within the intset. Return 0 when
- * the value is not present in the intset and sets <span style="color: #ffff00;">"pos"</span> to the position
- * where <span style="color: #ffff00;">"value"</span> can be inserted. */
+<pre class="src src-C++">/* Search for the position of <span class="org-string">"value"</span>. Return 1 when the value was found and
+ * sets <span class="org-string">"pos"</span> to the position of the value within the intset. Return 0 when
+ * the value is not present in the intset and sets <span class="org-string">"pos"</span> to the position
+ * where <span class="org-string">"value"</span> can be inserted. */
 static uint8_t intsetSearch(intset *is, int64_t value, uint32_t *pos) {
     int min = 0, max = is-&gt;length-1, mid = -1;
     int64_t cur = -1;
@@ -3858,7 +3840,7 @@ static intset *intsetUpgradeAndAdd(intset *is, int64_t value) {
     is = intsetResize(is,is-&gt;length+1);
 
     /* Upgrade back-to-front so we don't overwrite values.
-     * Note that the <span style="color: #ffff00;">"prepend"</span> variable is used to make sure we have an empty
+     * Note that the <span class="org-string">"prepend"</span> variable is used to make sure we have an empty
      * space at either the beginning or the end of the intset. */
     while(length--) // &#36825;&#37324;&#38656;&#35201;&#37325;&#26032;&#35745;&#31639;&#19968;&#27425;encoding.
         _intsetSet(is,length+prepend,_intsetGetEncoded(is,length,curenc));
@@ -4628,7 +4610,7 @@ static int _dictExpandIfNeeded(dict *d)
     // &#28982;&#21518;&#24320;&#22987;&#35302;&#21457;rehash&#25805;&#20316;.
     /* If we reached the 1:1 ratio, and we are allowed to resize the hash
      * table (global setting) or we should avoid it but the ratio between
-     * elements/buckets is over the <span style="color: #ffff00;">"safe"</span> threshold, we resize doubling
+     * elements/buckets is over the <span class="org-string">"safe"</span> threshold, we resize doubling
      * the number of buckets. */
     if (d-&gt;ht[0].used &gt;= d-&gt;ht[0].size &amp;&amp;
         (dict_can_resize ||
@@ -5132,7 +5114,7 @@ dictIterator *dictGetSafeIterator(dict *d) {
 <pre class="src src-C++">void dictPrintStats(dict *d) {
     _dictPrintStatsHt(&amp;d-&gt;ht[0]);
     if (dictIsRehashing(d)) { // &#22914;&#26524;&#22312;rehash&#30340;&#35805;&#37027;&#20040;&#20250;&#25171;&#21360;ht(1).
-        printf(<span style="color: #ffff00;">"-- Rehashing into ht[1]:\n"</span>);
+        printf(<span class="org-string">"-- Rehashing into ht[1]:\n"</span>);
         _dictPrintStatsHt(&amp;d-&gt;ht[1]);
     }
 }
@@ -5486,7 +5468,7 @@ static unsigned int zipEncodeLength(unsigned char *p, unsigned char encoding, un
 </p>
 
 
-<pre class="src src-C++">/* Decode the length of the previous element stored at <span style="color: #ffff00;">"p"</span>. */
+<pre class="src src-C++">/* Decode the length of the previous element stored at <span class="org-string">"p"</span>. */
 static unsigned int zipPrevDecodeLength(unsigned char *p, unsigned int *lensize) {
     unsigned int len = *p;
     if (len &lt; ZIP_BIGLEN) {
@@ -5513,8 +5495,8 @@ static unsigned int zipPrevDecodeLength(unsigned char *p, unsigned int *lensize)
 </p>
 
 
-<pre class="src src-C++">/* Encode the length of the previous entry and write it to <span style="color: #ffff00;">"p"</span>. Return the
- * number of bytes needed to encode this length if <span style="color: #ffff00;">"p"</span> is NULL. */
+<pre class="src src-C++">/* Encode the length of the previous entry and write it to <span class="org-string">"p"</span>. Return the
+ * number of bytes needed to encode this length if <span class="org-string">"p"</span> is NULL. */
 static unsigned int zipPrevEncodeLength(unsigned char *p, unsigned int len) {
     if (p == NULL) {
         return (len &lt; ZIP_BIGLEN) ? 1 : sizeof(len)+1;
@@ -5545,7 +5527,7 @@ static unsigned int zipPrevEncodeLength(unsigned char *p, unsigned int len) {
 </p>
 
 
-<pre class="src src-C++">/* Encode the length of the previous entry and write it to <span style="color: #ffff00;">"p"</span>. This only
+<pre class="src src-C++">/* Encode the length of the previous entry and write it to <span class="org-string">"p"</span>. This only
  * uses the larger encoding (required in __ziplistCascadeUpdate). */
 static void zipPrevEncodeLengthForceLarge(unsigned char *p, unsigned int len) {
     if (p == NULL) return;
@@ -5569,7 +5551,7 @@ static void zipPrevEncodeLengthForceLarge(unsigned char *p, unsigned int len) {
 
 
 <pre class="src src-C++">/* Return the difference in number of bytes needed to store the new length
- * <span style="color: #ffff00;">"len"</span> on the entry pointed to by <span style="color: #ffff00;">"p"</span>. */
+ * <span class="org-string">"len"</span> on the entry pointed to by <span class="org-string">"p"</span>. */
 static int zipPrevLenByteDiff(unsigned char *p, unsigned int len) {
     unsigned int prevlensize;
     zipPrevDecodeLength(p,&amp;prevlensize);
@@ -5724,7 +5706,7 @@ static zlentry zipEntry(unsigned char *p) {
 </p>
 
 
-<pre class="src src-C++">/* Return the total number of bytes used by the entry at <span style="color: #ffff00;">"p"</span>. */
+<pre class="src src-C++">/* Return the total number of bytes used by the entry at <span class="org-string">"p"</span>. */
 static unsigned int zipRawEntryLength(unsigned char *p) {
     zlentry e = zipEntry(p);
     return e.headersize + e.len;
@@ -5767,12 +5749,12 @@ static unsigned int zipRawEntryLength(unsigned char *p) {
  *
  * Note that this effect can also happen in reverse, where the bytes required
  * to encode the prevlen field can shrink. This effect is deliberately ignored,
- * because it can cause a <span style="color: #ffff00;">"flapping"</span> effect where a chain prevlen fields is
+ * because it can cause a <span class="org-string">"flapping"</span> effect where a chain prevlen fields is
  * first grown and then shrunk again after consecutive inserts. Rather, the
  * field is allowed to stay larger than necessary, because a large prevlen
  * field implies the ziplist is holding large entries anyway.
  *
- * The pointer <span style="color: #ffff00;">"p"</span> points to the first entry that does NOT need to be
+ * The pointer <span class="org-string">"p"</span> points to the first entry that does NOT need to be
  * updated, i.e. consecutive fields MAY need an update. */
 static unsigned char *__ziplistCascadeUpdate(unsigned char *zl, unsigned char *p) {
     size_t curlen = ZIPLIST_BYTES(zl), rawlen, rawlensize;
@@ -5789,12 +5771,12 @@ static unsigned char *__ziplistCascadeUpdate(unsigned char *zl, unsigned char *p
         if (p[rawlen] == ZIP_END) break; // &#26368;&#21518;&#20803;&#32032;.
         next = zipEntry(p+rawlen);
 
-        /* Abort when <span style="color: #ffff00;">"prevlen"</span> has not changed. */
+        /* Abort when <span class="org-string">"prevlen"</span> has not changed. */
         if (next.prevrawlen == rawlen) break; // &#22914;&#26524;&#38271;&#24230;&#27809;&#26377;&#21457;&#29983;&#25913;&#21464;.
 
         if (next.prevrawlensize &lt; rawlensize) { // &#22914;&#26524;&#21407;&#38271;&#24230;&#26356;&#23567;&#65292;&#29616;&#22312;&#38656;&#35201;&#25193;&#22823;.
-            /* The <span style="color: #ffff00;">"prevlen"</span> field of <span style="color: #ffff00;">"next"</span> needs more bytes to hold
-             * the raw length of <span style="color: #ffff00;">"cur"</span>. */
+            /* The <span class="org-string">"prevlen"</span> field of <span class="org-string">"next"</span> needs more bytes to hold
+             * the raw length of <span class="org-string">"cur"</span>. */
             offset = p-zl;
             extra = rawlensize-next.prevrawlensize;
             zl = ziplistResize(zl,curlen+extra); // &#37027;&#20040;&#38656;&#35201;&#33150;&#20986;extra&#23383;&#33410;.
@@ -5821,13 +5803,13 @@ static unsigned char *__ziplistCascadeUpdate(unsigned char *zl, unsigned char *p
             if (next.prevrawlensize &gt; rawlensize) { // &#22914;&#26524;&#21407;&#38271;&#24230;&#21344;&#29992;&#23383;&#33410;&#26356;&#23569;
                 // &#37027;&#20040;&#23436;&#20840;&#21487;&#20197;&#36890;&#36807;&#20462;&#25913;&#34920;&#31034;&#36798;&#21040;.
                 /* This would result in shrinking, which we want to avoid.
-                 * So, set <span style="color: #ffff00;">"rawlen"</span> in the available bytes. */
+                 * So, set <span class="org-string">"rawlen"</span> in the available bytes. */
                 zipPrevEncodeLengthForceLarge(p+rawlen,rawlen);
             } else {
                 zipPrevEncodeLength(p+rawlen,rawlen); // &#21542;&#21017;&#20165;&#20165;&#20462;&#25913;&#20869;&#23481;.
             }
 
-            /* Stop here, as the raw length of <span style="color: #ffff00;">"next"</span> has not changed. */
+            /* Stop here, as the raw length of <span class="org-string">"next"</span> has not changed. */
             break;
         }
     }
@@ -5849,7 +5831,7 @@ static unsigned char *__ziplistCascadeUpdate(unsigned char *zl, unsigned char *p
 </p>
 
 
-<pre class="src src-C++">/* Delete <span style="color: #ffff00;">"num"</span> entries, starting at <span style="color: #ffff00;">"p"</span>. Returns pointer to the ziplist. */
+<pre class="src src-C++">/* Delete <span class="org-string">"num"</span> entries, starting at <span class="org-string">"p"</span>. Returns pointer to the ziplist. */
 static unsigned char *__ziplistDelete(unsigned char *zl, unsigned char *p, unsigned int num) {
     unsigned int i, totlen, deleted = 0;
     size_t offset;
@@ -5876,7 +5858,7 @@ static unsigned char *__ziplistDelete(unsigned char *zl, unsigned char *p, unsig
             ZIPLIST_TAIL_OFFSET(zl) -= totlen;
 
             /* When the tail contains more than one entry, we need to take
-             * <span style="color: #ffff00;">"nextdiff"</span> in account as well. Otherwise, a change in the
+             * <span class="org-string">"nextdiff"</span> in account as well. Otherwise, a change in the
              * size of prevlen doesn't have an effect on the *tail* offset. */
             tail = zipEntry(p);
             if (p[tail.headersize+tail.len] != ZIP_END)
@@ -5917,7 +5899,7 @@ static unsigned char *__ziplistDelete(unsigned char *zl, unsigned char *p, unsig
 </p>
 
 
-<pre class="src src-C++">/* Insert item at <span style="color: #ffff00;">"p"</span>. */
+<pre class="src src-C++">/* Insert item at <span class="org-string">"p"</span>. */
 static unsigned char *__ziplistInsert(unsigned char *zl, unsigned char *p, unsigned char *s, unsigned int slen) {
     size_t curlen = ZIPLIST_BYTES(zl), reqlen, prevlen = 0;
     size_t offset;
@@ -5975,7 +5957,7 @@ static unsigned char *__ziplistInsert(unsigned char *zl, unsigned char *p, unsig
         ZIPLIST_TAIL_OFFSET(zl) += reqlen;
 
         /* When the tail contains more than one entry, we need to take
-         * <span style="color: #ffff00;">"nextdiff"</span> in account as well. Otherwise, a change in the
+         * <span class="org-string">"nextdiff"</span> in account as well. Otherwise, a change in the
          * size of prevlen doesn't have an effect on the *tail* offset. */
         tail = zipEntry(p+reqlen);
         if (p[reqlen+tail.headersize+tail.len] != ZIP_END)
@@ -6192,9 +6174,9 @@ static unsigned char *__ziplistInsert(unsigned char *zl, unsigned char *p, unsig
 
 
 
-<pre class="src src-C++">/* Memory layout of a zipmap, for the map <span style="color: #ffff00;">"foo"</span> =&gt; <span style="color: #ffff00;">"bar"</span>, <span style="color: #ffff00;">"hello"</span> =&gt; <span style="color: #ffff00;">"world"</span>:
+<pre class="src src-C++">/* Memory layout of a zipmap, for the map <span class="org-string">"foo"</span> =&gt; <span class="org-string">"bar"</span>, <span class="org-string">"hello"</span> =&gt; <span class="org-string">"world"</span>:
  *
- * &lt;zmlen&gt;&lt;len&gt;<span style="color: #ffff00;">"foo"</span>&lt;len&gt;&lt;free&gt;<span style="color: #ffff00;">"bar"</span>&lt;len&gt;<span style="color: #ffff00;">"hello"</span>&lt;len&gt;&lt;free&gt;<span style="color: #ffff00;">"world"</span>
+ * &lt;zmlen&gt;&lt;len&gt;<span class="org-string">"foo"</span>&lt;len&gt;&lt;free&gt;<span class="org-string">"bar"</span>&lt;len&gt;<span class="org-string">"hello"</span>&lt;len&gt;&lt;free&gt;<span class="org-string">"world"</span>
  *
  * &lt;zmlen&gt; is 1 byte length that holds the current size of the zipmap.
  * When the zipmap length is greater than or equal to 254, this value
@@ -6210,23 +6192,23 @@ static unsigned char *__ziplistInsert(unsigned char *zl, unsigned char *p, unsig
  *
  * &lt;free&gt; is the number of free unused bytes
  * after the string, resulting from modification of values associated to a
- * key (for instance if <span style="color: #ffff00;">"foo"</span> is set to <span style="color: #ffff00;">"bar', and later "</span>foo<span style="color: #ffff00;">" will be se to</span>
-<span style="color: #ffff00;"> * "</span>hi<span style="color: #ffff00;">", I'll have a free byte to use if the value will enlarge again later,</span>
-<span style="color: #ffff00;"> * or even in order to add a key/value pair if it fits.</span>
-<span style="color: #ffff00;"> *</span>
-<span style="color: #ffff00;"> * &lt;free&gt; is always an unsigned 8 bit number, because if after an</span>
-<span style="color: #ffff00;"> * update operation there are more than a few free bytes, the zipmap will be</span>
-<span style="color: #ffff00;"> * reallocated to make sure it is as small as possible.</span>
-<span style="color: #ffff00;"> *</span>
-<span style="color: #ffff00;"> * The most compact representation of the above two elements hash is actually:</span>
-<span style="color: #ffff00;"> *</span>
-<span style="color: #ffff00;"> * "</span>\x02\x03foo\x03\x00bar\x05hello\x05\x00world\xff<span style="color: #ffff00;">"</span>
-<span style="color: #ffff00;"> *</span>
-<span style="color: #ffff00;"> * Note that because keys and values are prefixed length "</span>objects<span style="color: #ffff00;">",</span>
-<span style="color: #ffff00;"> * the lookup will take O(N) where N is the number of elements</span>
-<span style="color: #ffff00;"> * in the zipmap and *not* the number of bytes needed to represent the zipmap.</span>
-<span style="color: #ffff00;"> * This lowers the constant times considerably.</span>
-<span style="color: #ffff00;"> */</span>
+ * key (for instance if <span class="org-string">"foo"</span> is set to <span class="org-string">"bar', and later "</span>foo<span class="org-string">" will be se to</span>
+<span class="org-string"> * "</span>hi<span class="org-string">", I'll have a free byte to use if the value will enlarge again later,</span>
+<span class="org-string"> * or even in order to add a key/value pair if it fits.</span>
+<span class="org-string"> *</span>
+<span class="org-string"> * &lt;free&gt; is always an unsigned 8 bit number, because if after an</span>
+<span class="org-string"> * update operation there are more than a few free bytes, the zipmap will be</span>
+<span class="org-string"> * reallocated to make sure it is as small as possible.</span>
+<span class="org-string"> *</span>
+<span class="org-string"> * The most compact representation of the above two elements hash is actually:</span>
+<span class="org-string"> *</span>
+<span class="org-string"> * "</span>\x02\x03foo\x03\x00bar\x05hello\x05\x00world\xff<span class="org-string">"</span>
+<span class="org-string"> *</span>
+<span class="org-string"> * Note that because keys and values are prefixed length "</span>objects<span class="org-string">",</span>
+<span class="org-string"> * the lookup will take O(N) where N is the number of elements</span>
+<span class="org-string"> * in the zipmap and *not* the number of bytes needed to represent the zipmap.</span>
+<span class="org-string"> * This lowers the constant times considerably.</span>
+<span class="org-string"> */</span>
 </pre>
 
 
@@ -6775,16 +6757,16 @@ void SHA1Transform(u_int32_t state[5], const unsigned char buffer[64]);
 
 <pre class="src src-C++">// &#21629;&#20196;&#20998;&#32452;.
 static char *commandGroups[] = {
-    <span style="color: #ffff00;">"generic"</span>,
-    <span style="color: #ffff00;">"string"</span>,
-    <span style="color: #ffff00;">"list"</span>,
-    <span style="color: #ffff00;">"set"</span>,
-    <span style="color: #ffff00;">"sorted_set"</span>,
-    <span style="color: #ffff00;">"hash"</span>,
-    <span style="color: #ffff00;">"pubsub"</span>,
-    <span style="color: #ffff00;">"transactions"</span>,
-    <span style="color: #ffff00;">"connection"</span>,
-    <span style="color: #ffff00;">"server"</span>
+    <span class="org-string">"generic"</span>,
+    <span class="org-string">"string"</span>,
+    <span class="org-string">"list"</span>,
+    <span class="org-string">"set"</span>,
+    <span class="org-string">"sorted_set"</span>,
+    <span class="org-string">"hash"</span>,
+    <span class="org-string">"pubsub"</span>,
+    <span class="org-string">"transactions"</span>,
+    <span class="org-string">"connection"</span>,
+    <span class="org-string">"server"</span>
 };
 
 // &#27599;&#26465;&#21629;&#20196;.
@@ -7121,7 +7103,7 @@ sds *sdssplitargs(char *line, int *argc); // &#25286;&#20998;line&#31216;&#20026
  *
  * This is useful as we don't know if a value object is or not on disk, but we
  * are always able to read obj-&gt;storage to check this. For vmPointer
- * structures <span style="color: #ffff00;">"type"</span> is set to REDIS_VMPOINTER (even if without this field
+ * structures <span class="org-string">"type"</span> is set to REDIS_VMPOINTER (even if without this field
  * is still possible to check the kind of object from the value of 'storage').*/
 // &#22836;&#37096;&#20960;&#20010;&#23383;&#33410;&#21487;&#20197;&#30452;&#25509;&#36716;&#25442;&#31216;&#20026;redisObject.&#23601;&#21487;&#20197;&#20102;&#35299;&#36825;&#20010;&#23545;&#35937;&#26159;&#22312;disk&#36824;&#26159;memory&#19978;.
 typedef struct vmPointer {
@@ -7183,5 +7165,11 @@ vmpointer *vmSwapObjectBlocking(robj *val);
 </div>
 </div>
 
+<div id="postamble">
+<p class="date">Date: 2013-09-15 15:18:33 CST</p>
+<p class="creator">Org version 7.8.11 with Emacs version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
 <!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'redis.html';var disqus_title = 'redis.html';var disqus_url = 'http://dirlt.com/redis.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

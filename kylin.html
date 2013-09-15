@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="kylin"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-08-13 19:43:49 CST"/>
+<meta name="generated" content="2013-09-15 15:19:15 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -59,33 +59,15 @@
   .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
                                  font-weight:bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" type="text/css" href="css/site-plain.css" />
-<script type="text/javascript">
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
+</style><link rel="stylesheet" type="text/css" href="css/site.css" />
+
 
 </head>
 <body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><g:plusone annotation="inline"></g:plusone>
 
+<div id="preamble">
+
+</div>
 
 <div id="content">
 <h1 class="title">kylin</h1>
@@ -276,20 +258,20 @@ kylin是baidu in-house的异步编程框架，提供CPU，Network以及Disk异�
 <pre class="src src-C++">// return old value
 static inline int atomic_add(volatile int *count, int add) {
     __asm__ __volatile__(
-        <span style="color: #ffff00;">"lock xadd %0, (%1);"</span>
-        : <span style="color: #ffff00;">"=a"</span>(add)
-        : <span style="color: #ffff00;">"r"</span>(count), <span style="color: #ffff00;">"a"</span>(add)
-        : <span style="color: #ffff00;">"memory"</span>);
+        <span class="org-string">"lock xadd %0, (%1);"</span>
+        : <span class="org-string">"=a"</span>(add)
+        : <span class="org-string">"r"</span>(count), <span class="org-string">"a"</span>(add)
+        : <span class="org-string">"memory"</span>);
     return add;
 }
 
 // return old value
 static inline int atomic_swap(volatile void *lockword, int value) {
     __asm__ __volatile__(
-        <span style="color: #ffff00;">"lock xchg %0, (%1);"</span>
-        : <span style="color: #ffff00;">"=a"</span>(value)
-        : <span style="color: #ffff00;">"r"</span>(lockword), <span style="color: #ffff00;">"a"</span>(value)
-        : <span style="color: #ffff00;">"memory"</span>);
+        <span class="org-string">"lock xchg %0, (%1);"</span>
+        : <span class="org-string">"=a"</span>(value)
+        : <span class="org-string">"r"</span>(lockword), <span class="org-string">"a"</span>(value)
+        : <span class="org-string">"memory"</span>);
     return value;
 }
 
@@ -306,9 +288,9 @@ static inline int atomic_comp_swap(volatile void *lockword,
                                    int comperand)
 {
     __asm__ __volatile__(
-        <span style="color: #ffff00;">"lock cmpxchg %1, (%2)"</span>
-        :<span style="color: #ffff00;">"=a"</span>(comperand)
-        :<span style="color: #ffff00;">"d"</span>(exchange), <span style="color: #ffff00;">"r"</span>(lockword), <span style="color: #ffff00;">"a"</span>(comperand));
+        <span class="org-string">"lock cmpxchg %1, (%2)"</span>
+        :<span class="org-string">"=a"</span>(comperand)
+        :<span class="org-string">"d"</span>(exchange), <span class="org-string">"r"</span>(lockword), <span class="org-string">"a"</span>(comperand));
     return comperand;
 }
 </pre>
@@ -414,10 +396,10 @@ static inline int token_set(volatile int *token, int id) {
 
 <pre class="src src-C++">static inline uint64 rdtsc() {
     unsigned int lo, hi;
-    /* We cannot use <span style="color: #ffff00;">"=A"</span>, since this would use %rax on x86_64 */
+    /* We cannot use <span class="org-string">"=A"</span>, since this would use %rax on x86_64 */
     __asm__ __volatile__ (
-        <span style="color: #ffff00;">"rdtsc"</span>
-        : <span style="color: #ffff00;">"=a"</span> (lo), <span style="color: #ffff00;">"=d"</span> (hi));
+        <span class="org-string">"rdtsc"</span>
+        : <span class="org-string">"=a"</span> (lo), <span class="org-string">"=d"</span> (hi));
     return (uint64)hi &lt;&lt; 32 | lo;
 }
 </pre>
@@ -470,7 +452,7 @@ power management:
 #include &lt;sys/syscall.h&gt;
 #include &lt;cstdio&gt;
 int main() {
-    printf(<span style="color: #ffff00;">"%lu\n"</span>,syscall(__NR_gettid));
+    printf(<span class="org-string">"%lu\n"</span>,syscall(__NR_gettid));
     return 0;
 }
 </pre>
@@ -877,7 +859,7 @@ WorkerProc(void* pData)
     JobQ* pJobQ = pCtx-&gt;pJobQ;
     Job* pJob;
 
-    TRACE4(<span style="color: #ffff00;">"%s worker#%d started...\n"</span>, ThreadType2Str(pCtx-&gt;type), pCtx-&gt;id);
+    TRACE4(<span class="org-string">"%s worker#%d started...\n"</span>, ThreadType2Str(pCtx-&gt;type), pCtx-&gt;id);
     pCtx-&gt;thread_id = thread_getid();
     if (pCtx-&gt;fInit) { // &#22914;&#26524;&#26377;&#21021;&#22987;&#21270;&#20989;&#25968;&#30340;&#35805;&#37027;&#20040;&#25191;&#34892;&#21021;&#22987;&#21270;&#20989;&#25968;
         pCtx-&gt;fInit(pCtx-&gt;type, pCtx-&gt;id);
@@ -897,7 +879,7 @@ WorkerProc(void* pData)
             }
         }
     }
-    TRACE4(<span style="color: #ffff00;">"%s worker#%d stopped.\n"</span>, ThreadType2Str(pCtx-&gt;type), pCtx-&gt;id);
+    TRACE4(<span class="org-string">"%s worker#%d stopped.\n"</span>, ThreadType2Str(pCtx-&gt;type), pCtx-&gt;id);
     return NULL;
 }
 </pre>
@@ -950,7 +932,7 @@ TerminateWorker(ControlJob* pCtl, WorkerContext* pCtx)
             m_pContexts[m_nWorkers].pJobQ = new JobQ; // &#20250;&#20026;&#27599;&#19968;&#20010;WorkerContext&#20998;&#37197;&#19968;&#20010;JobQ.&#23545;&#20110;&#20849;&#20139;Q&#30340;&#35805;&#22312;&#21021;&#22987;&#21270;&#23601;&#20998;&#37197;&#22909;&#20102;&#12290;
         }
         if (0 != thread_create(&amp;m_hWorkerThreads[m_nWorkers], NULL, WorkerProc, &amp;m_pContexts[m_nWorkers])) { // &#28982;&#21518;&#21551;&#21160;&#32447;&#31243;&#21363;&#21487;
-            PERROR(<span style="color: #ffff00;">"thread_create"</span>);
+            PERROR(<span class="org-string">"thread_create"</span>);
             break;
         }
         m_nWorkers ++;
@@ -970,7 +952,7 @@ DelWorker因为有ControlJob的辅助所以可以很好地解决，只需要在�
     TerminationJob *pTerminations = new TerminationJob[nDel];
     int i;
 
-    TRACE4(<span style="color: #ffff00;">"%s start terminating %d workers...\n"</span>, ThreadType2Str(m_nType), nDel);
+    TRACE4(<span class="org-string">"%s start terminating %d workers...\n"</span>, ThreadType2Str(m_nType), nDel);
     for (i=0; i&lt;nDel &amp;&amp; m_nWorkers&gt;0; i++) {
         m_nWorkers --;
         DLINK_INITIALIZE(&amp;pTerminations[m_nWorkers].link);
@@ -980,10 +962,10 @@ DelWorker因为有ControlJob的辅助所以可以很好地解决，只需要在�
         m_pContexts[m_nWorkers].pJobQ-&gt;push_back((Job*)&amp;pTerminations[m_nWorkers]);
     }
     for (int j=m_nWorkers; j&lt;i+m_nWorkers; j++) {
-        TRACE4(<span style="color: #ffff00;">"%s wait for worker #%d.\n"</span>, ThreadType2Str(m_nType), j);
+        TRACE4(<span class="org-string">"%s wait for worker #%d.\n"</span>, ThreadType2Str(m_nType), j);
         thread_join(m_hWorkerThreads[j], NULL);
     }
-    TRACE4(<span style="color: #ffff00;">"%s end terminating workers.\n"</span>, ThreadType2Str(m_nType));
+    TRACE4(<span class="org-string">"%s end terminating workers.\n"</span>, ThreadType2Str(m_nType));
     delete[] pTerminations;
     return i;
 }
@@ -1136,7 +1118,7 @@ bool CThreadPool::CancelJob(Job* pJob, int nWhich)
   m_nBlockSize = nBlockSize;
   m_nBlockBase = Log_2(nBlockSize);
   if (-1 == m_nBlockBase) {
-    TRACE0(<span style="color: #ffff00;">"Fatal: invalid block size of %d\n"</span>, nBlockSize);
+    TRACE0(<span class="org-string">"Fatal: invalid block size of %d\n"</span>, nBlockSize);
     return false;
   }
   m_nAlloc = nAlloc;
@@ -1327,7 +1309,7 @@ bool CThreadPool::CancelJob(Job* pJob, int nWhich)
           if (now - last &gt;= 30) {   // avoid too frequent print
             int n1 = m_nMaxBuffers - m_nBuffers + n;
             int n2 = m_nMaxBuffers - m_nWaterMarks[nPriority];
-            TRACE0(<span style="color: #ffff00;">"Warning: available tran buf (#%d) touches watermark(#%d, %.f%%)\n"</span>,
+            TRACE0(<span class="org-string">"Warning: available tran buf (#%d) touches watermark(#%d, %.f%%)\n"</span>,
                    n1, n2, (double)(n1 * 100) / m_nMaxBuffers);
             last = now;
           }
@@ -1524,9 +1506,9 @@ class CBufHandlePool : public TObjectPool&lt;BufHandle&gt; {
   CTranBufPool m_BigBufPool; // big buf pool
 };
 
-  CBufHandlePool() : TObjectPool&lt;BufHandle&gt;(<span style="color: #ffff00;">"BufHandle"</span>, BUFPOOL_C2),
-    m_TranBufPool(<span style="color: #ffff00;">"TranBuffer"</span>, BUFPOOL_C1),
-    m_BigBufPool(<span style="color: #ffff00;">"BigBuffer"</span>, BUFPOOL_C1) {
+  CBufHandlePool() : TObjectPool&lt;BufHandle&gt;(<span class="org-string">"BufHandle"</span>, BUFPOOL_C2),
+    m_TranBufPool(<span class="org-string">"TranBuffer"</span>, BUFPOOL_C1),
+    m_BigBufPool(<span class="org-string">"BigBuffer"</span>, BUFPOOL_C1) {
     m_lock = 0;
     Create(1024, 1);
 
@@ -1611,7 +1593,7 @@ BufHandle* DoAllocate(CTranBufPool* pPool, int nRetry) {
     if (NULL != pHdl) // &#22914;&#26524;&#25104;&#21151;&#30452;&#25509;&#36820;&#22238;.
       return pHdl;
     if (i &gt; 1) {
-      TRACE0(<span style="color: #ffff00;">"No enough memory, sleep %d\n"</span>, i + 1);
+      TRACE0(<span class="org-string">"No enough memory, sleep %d\n"</span>, i + 1);
     }
     sleep(1); // &#21542;&#21017;&#20250;hang&#20303;&#31561;&#24453;&#37322;&#25918;.
   }
@@ -2104,7 +2086,7 @@ APF_ERROR CExecMan::QueueExec(AsyncContext* pCtx, bool bClientReferred)
     // &#37027;&#20040;&#23558;m_nCurJobs&#37325;&#32622;
     AtomicSetValue(m_nCurJobs, LARGE_ENOUGH_NEGATIVE);
     if (IsKylinRunning()) {
-        TRACE0(<span style="color: #ffff00;">"Fatal error: Exec workers are not started\n"</span>);
+        TRACE0(<span class="org-string">"Fatal error: Exec workers are not started\n"</span>);
     }
     return APFE_NO_WORKER;
 }
@@ -2193,8 +2175,8 @@ DelayExec里面的逻辑会根据定时时间来判断如何实现，如果定�
 <pre class="src src-C++">#include &lt;cstdio&gt;
 #include &lt;vector&gt;
 #include &lt;time.h&gt;
-#include <span style="color: #ffff00;">"stdafx.h"</span>
-#include <span style="color: #ffff00;">"Kylin.h"</span>
+#include <span class="org-string">"stdafx.h"</span>
+#include <span class="org-string">"Kylin.h"</span>
 
 static volatile int worker=16;
 static const int PRINT=0;
@@ -2236,7 +2218,7 @@ class XAsyncClient:public CAsyncClient{
         g_pExecMan-&gt;DelayExec(TIMEOUT,this,TIMEOUT_MS,&amp;delay_ctx);
     }
     void Print(){
-        fprintf(stderr,<span style="color: #ffff00;">"(%d)xref:%d,current:%d\n"</span>,id,CAsyncClient::GetRef(),
+        fprintf(stderr,<span class="org-string">"(%d)xref:%d,current:%d\n"</span>,id,CAsyncClient::GetRef(),
                 current_number);
     }
     virtual void OnCompletion(AsyncContext* ctx){
@@ -2245,14 +2227,14 @@ class XAsyncClient:public CAsyncClient{
                 if(stop){
                     break;
                 }
-                fprintf(stderr,<span style="color: #ffff00;">"(%d)%d\n"</span>,id,current_number);
+                fprintf(stderr,<span class="org-string">"(%d)%d\n"</span>,id,current_number);
                 current_number++;
                 if((current_number-last_working_number)&gt;=threshold){
                     // update
                     last_working_number=current_number;
                     threshold*=2;
                     // canel timer.
-                    fprintf(stderr,<span style="color: #ffff00;">"(%d)==============================restart timer==============================\n"</span>,id);
+                    fprintf(stderr,<span class="org-string">"(%d)==============================restart timer==============================\n"</span>,id);
                     g_pExecMan-&gt;CancelExec(&amp;delay_ctx);
                     g_pExecMan-&gt;DelayExec(TIMEOUT,this,TIMEOUT_MS,&amp;delay_ctx);
                 }
@@ -2260,7 +2242,7 @@ class XAsyncClient:public CAsyncClient{
                 g_pExecMan-&gt;QueueExec(&amp;print_ctx,true);
                 break;
             case TIMEOUT:
-                fprintf(stderr,<span style="color: #ffff00;">"(%d)********************quit********************\n"</span>,id);
+                fprintf(stderr,<span class="org-string">"(%d)********************quit********************\n"</span>,id);
                 atomic_add(&amp;worker,-1);
                 stop=true;
                 break;
@@ -2575,13 +2557,13 @@ WriteOp(Job* pJob)
 #include &lt;vector&gt;
 #include &lt;string&gt;
 #include &lt;time.h&gt;
-#include <span style="color: #ffff00;">"stdafx.h"</span>
-#include <span style="color: #ffff00;">"Kylin.h"</span>
+#include <span class="org-string">"stdafx.h"</span>
+#include <span class="org-string">"Kylin.h"</span>
 
 static const int worker_num=8;
 static volatile int worker=worker_num;
-static const char* fname_prefix=<span style="color: #ffff00;">"hello"</span>;
-static const char* content=<span style="color: #ffff00;">"world"</span>;
+static const char* fname_prefix=<span class="org-string">"hello"</span>;
+static const char* content=<span class="org-string">"world"</span>;
 static const int READ=0;
 static const int WRITE=1;
 static const int disk_thread_num=4;
@@ -2601,7 +2583,7 @@ class XAsyncClient:public CAsyncClient{
             id(id_){
         // make filename.
         char tmp[128];
-        snprintf(tmp,sizeof(tmp),<span style="color: #ffff00;">"%s_%d"</span>,fname_prefix,id);
+        snprintf(tmp,sizeof(tmp),<span class="org-string">"%s_%d"</span>,fname_prefix,id);
         name=tmp;
         g_pDiskMan-&gt;Associate(id%disk_thread_num,const_cast&lt;char*&gt;(name.c_str()),O_RDWR | O_CREAT,this,&amp;disk_ctx);
     }
@@ -2615,7 +2597,7 @@ class XAsyncClient:public CAsyncClient{
         g_pDiskMan-&gt;Write(&amp;disk_ctx,s,strlen(s)+1,&amp;disk_req);
     }
     void Print(){
-        fprintf(stderr,<span style="color: #ffff00;">"(%d)xref:%d\n"</span>,id,CAsyncClient::GetRef());
+        fprintf(stderr,<span class="org-string">"(%d)xref:%d\n"</span>,id,CAsyncClient::GetRef());
     }
     virtual void OnCompletion(AsyncContext* ctx){
         XDiskRequest* req=(XDiskRequest*)ctx;
@@ -2630,7 +2612,7 @@ class XAsyncClient:public CAsyncClient{
             g_pDiskMan-&gt;Read(&amp;disk_ctx,s,req-&gt;request,&amp;disk_req);
         }else if(req-&gt;nAction==READ){
             assert(req-&gt;xfered==req-&gt;request);
-            fprintf(stderr,<span style="color: #ffff00;">"(%d)%s\n"</span>,id,req-&gt;buf);
+            fprintf(stderr,<span class="org-string">"(%d)%s\n"</span>,id,req-&gt;buf);
             // free read buffer.
             free(req-&gt;buf);
             atomic_add(&amp;worker,-1);
@@ -3156,7 +3138,7 @@ void CNetworkMan::Write(NetContext* pCtx, NetRequest* pReq)
     m_fd = sys_epoll_create(size);
     if (0 &lt; m_fd)
         return APFE_OK;
-    PERROR(<span style="color: #ffff00;">"epoll_create"</span>);
+    PERROR(<span class="org-string">"epoll_create"</span>);
     return GetLastError();
 }
 
@@ -3192,13 +3174,13 @@ void CEPoller::Close()
     ev.events = EPOLLIN | EPOLLOUT | EPOLLERR | EPOLLET;
     ev.data.ptr = pCtx;
 
-    //TRACE0(<span style="color: #ffff00;">"before CEPoller::Associate\n"</span>);
+    //TRACE0(<span class="org-string">"before CEPoller::Associate\n"</span>);
     pCtx-&gt;pClient-&gt;AddRef(); // &#27880;&#24847;&#36825;&#37324;AddRef
-    TRACE1(<span style="color: #ffff00;">"Associate %x -&gt; %s\n"</span>, pCtx-&gt;s, pCtx-&gt;pClient-&gt;GetName());
+    TRACE1(<span class="org-string">"Associate %x -&gt; %s\n"</span>, pCtx-&gt;s, pCtx-&gt;pClient-&gt;GetName());
     if (0 == sys_epoll_ctl(m_fd, EPOLL_CTL_ADD, pCtx-&gt;s, &amp;ev)) { // &#21152;&#20837;&#21040;epoll&#37324;&#38754;
         return APFE_OK;
     }
-    PERROR(<span style="color: #ffff00;">"epoll_ctl in Associate"</span>);
+    PERROR(<span class="org-string">"epoll_ctl in Associate"</span>);
     pCtx-&gt;pClient-&gt;Release();
     return GetLastError();
 }
@@ -3207,7 +3189,7 @@ APF_ERROR CEPoller::Deassociate(NetContext* pCtx)
 {
     if (pCtx-&gt;s != INVALID_SOCKET) {
         if (0 == sys_epoll_ctl(m_fd, EPOLL_CTL_DEL, pCtx-&gt;s, NULL)) { // &#20174;epoll&#21024;&#38500;
-            TRACE1(<span style="color: #ffff00;">"Deassociate %x\n"</span>, pCtx-&gt;s);
+            TRACE1(<span class="org-string">"Deassociate %x\n"</span>, pCtx-&gt;s);
             pCtx-&gt;s = INVALID_SOCKET;
             return APFE_OK;
         }
@@ -3242,7 +3224,7 @@ APF_ERROR CEPoller::Deassociate(NetContext* pCtx)
     pCtx-&gt;tTimeoutCycle = 0;
 
     int err = connect(pCtx-&gt;s, (LPSOCKADDR)&amp;sa, sizeof(sa));
-    //TRACE0(<span style="color: #ffff00;">"connect = %d, %d, %s\n"</span>, err, errno, strerror(errno));
+    //TRACE0(<span class="org-string">"connect = %d, %d, %s\n"</span>, err, errno, strerror(errno));
     if (EINPROGRESS == errno) {
         if (INFINITE != pCtx-&gt;nTimeout) { // &#22914;&#26524;&#38656;&#35201;&#35774;&#32622;&#36229;&#26102;&#30340;&#35805;
             Delay(pCtx, pCtx-&gt;nTimeout); // &#37027;&#20040;&#20250;&#21457;&#36215;&#19968;&#20010;&#36229;&#26102;&#25805;&#20316;
@@ -3344,7 +3326,7 @@ void CEPoller::Write(NetContext* pCtx, NetRequest* pReq)
 
     while (0 == (t=pCtx-&gt;tRead.Add())) { // TODO(zhangyan04):&#36825;&#20010;&#22320;&#26041;&#23436;&#20840;&#27809;&#26377;&#30475;&#25026;
         if (SS_CONNECTED != AtomicGetValue(pCtx-&gt;state)) {
-            TRACE1(<span style="color: #ffff00;">"Not read due to state=%s\n"</span>, State2Str(pCtx-&gt;state));
+            TRACE1(<span class="org-string">"Not read due to state=%s\n"</span>, State2Str(pCtx-&gt;state));
             if (1 == pCtx-&gt;tRead.Set(0)) {
                 return false;
             }
@@ -3369,7 +3351,7 @@ void CEPoller::Write(NetContext* pCtx, NetRequest* pReq)
                 pReq-&gt;port = ntohs(sa.sin_port);
                 pReq-&gt;ip = sa.sin_addr.s_addr;
             }
-            //TRACE5(<span style="color: #ffff00;">"recv(%x, %p, %d): %d, %d(%s)\n"</span>, pCtx-&gt;s, (char*)pReq-&gt;buf+pReq-&gt;xfered,
+            //TRACE5(<span class="org-string">"recv(%x, %p, %d): %d, %d(%s)\n"</span>, pCtx-&gt;s, (char*)pReq-&gt;buf+pReq-&gt;xfered,
             //      pReq-&gt;len-pReq-&gt;xfered, n, errno, strerror(errno));
             if (0&gt;n &amp;&amp; EAGAIN==errno) {
                 pCtx-&gt;tRead.Set(0);
@@ -3387,7 +3369,7 @@ void CEPoller::Write(NetContext* pCtx, NetRequest* pReq)
                 g_pExecMan-&gt;RunTimer(); // &#24182;&#19988;&#35843;&#29992;RunTimer&#26469;&#26816;&#26597;&#36229;&#26102;&#24773;&#20917;
             }
             else {
-                TRACE3(<span style="color: #ffff00;">"Error in recv(%x, %d): %d, %d(%s)\n"</span>, pCtx-&gt;s, pReq-&gt;len-pReq-&gt;xfered,
+                TRACE3(<span class="org-string">"Error in recv(%x, %d): %d, %d(%s)\n"</span>, pCtx-&gt;s, pReq-&gt;len-pReq-&gt;xfered,
                        n, errno, strerror(errno));
                 AtomicSetValueIf(pCtx-&gt;state, SS_SHUTDOWN, SS_CONNECTED);
                 shutdown(pCtx-&gt;s, SHUT_RDWR);
@@ -3427,7 +3409,7 @@ StartWrite这个过程也是非常相似的，不过为了方便起见的话每�
 
     while (0 == (t=pCtx-&gt;tWrite.Add())) { // TODO(zhangyan04):&#23436;&#20840;&#27809;&#26377;&#30475;&#25026;
         if (SS_CONNECTED != AtomicGetValue(pCtx-&gt;state)) {
-            TRACE1(<span style="color: #ffff00;">"Not write due to state=%s\n"</span>, State2Str(pCtx-&gt;state));
+            TRACE1(<span class="org-string">"Not write due to state=%s\n"</span>, State2Str(pCtx-&gt;state));
             /*if (SS_ERROR == pCtx-&gt;state) {
                 NetRequest* pReq;
                 if (NULL != pCtx-&gt;pWriteReq) {
@@ -3458,7 +3440,7 @@ StartWrite这个过程也是非常相似的，不过为了方便起见的话每�
                 sa.sin_addr.s_addr = pCtx-&gt;pWriteReq-&gt;ip;
                 n = sendto(pCtx-&gt;s, pHdl-&gt;pBuf, pHdl-&gt;nDataLen, 0, (LPSOCKADDR)&amp;sa, sizeof(sa));
             }
-            //TRACE5(<span style="color: #ffff00;">"send(%x, %d): %d, %d(%s)\n"</span>, pCtx-&gt;s, pHdl-&gt;nDataLen, n, errno, strerror(errno));
+            //TRACE5(<span class="org-string">"send(%x, %d): %d, %d(%s)\n"</span>, pCtx-&gt;s, pHdl-&gt;nDataLen, n, errno, strerror(errno));
             if (0 &lt; n) {
                 pHdl-&gt;nDataLen -= n;
                 ASSERT(pHdl-&gt;nDataLen &gt;= 0);
@@ -3472,7 +3454,7 @@ StartWrite这个过程也是非常相似的，不过为了方便起见的话每�
                 return true;
             }
             else {
-                TRACE2(<span style="color: #ffff00;">"Error in send(%x, %p, %d): %d, %d(%s), %s\n"</span>, pCtx-&gt;s, pHdl-&gt;pBuf,
+                TRACE2(<span class="org-string">"Error in send(%x, %p, %d): %d, %d(%s), %s\n"</span>, pCtx-&gt;s, pHdl-&gt;pBuf,
                     pHdl-&gt;nDataLen, n, errno, strerror(errno), State2Str(pCtx-&gt;state));
                 AtomicSetValueIf(pCtx-&gt;state, SS_SHUTDOWN, SS_CONNECTED);
                 shutdown(pCtx-&gt;s, SHUT_RDWR);
@@ -3569,7 +3551,7 @@ NotifyClient(int nErrCode, NetContext* pCtx, NetRequest* pReq)
     pReq-&gt;async.pClient = pClient;
     //int nAction = pReq-&gt;async.nAction;
 
-    TRACE5(<span style="color: #ffff00;">"Notify client (%p,%d) %d, %d, %p, %p\n"</span>, pClient, pClient-&gt;GetRef(), pReq-&gt;async.nAction, nErrCode, pCtx, pReq);
+    TRACE5(<span class="org-string">"Notify client (%p,%d) %d, %d, %p, %p\n"</span>, pClient, pClient-&gt;GetRef(), pReq-&gt;async.nAction, nErrCode, pCtx, pReq);
     if (0 != (pCtx-&gt;flag &amp; SF_DIRECT_CALLBACK)) { // &#22914;&#26524;flag&#37324;&#38754;&#26377;SF_DIRECT_CALLBACK,&#37027;&#20040;&#22312;&#26412;&#32447;&#31243;&#25191;&#34892;
         pClient-&gt;OnCompletion((AsyncContext*)pReq);
         pClient-&gt;Release();
@@ -3577,7 +3559,7 @@ NotifyClient(int nErrCode, NetContext* pCtx, NetRequest* pReq)
     else { // &#21542;&#21017;&#21152;&#20837;CPU&#32447;&#31243;&#25191;&#34892;
         g_pExecMan-&gt;QueueExec((AsyncContext*)pReq, true);
     }
-    //TRACE0(<span style="color: #ffff00;">"After EPoll::NotifyClient: %d\n"</span>, nAction);
+    //TRACE0(<span class="org-string">"After EPoll::NotifyClient: %d\n"</span>, nAction);
 }
 </pre>
 
@@ -3614,9 +3596,9 @@ NotifyClient(int nErrCode, NetContext* pCtx, NetRequest* pReq)
     bool bRead, bWrite, bErr;
 
     while (1) {
-        TRACE7(<span style="color: #ffff00;">"epoll_wait start\n"</span>);
+        TRACE7(<span class="org-string">"epoll_wait start\n"</span>);
         nfds = sys_epoll_wait(m_fd, events, MAX_EPOLL_EVENT, g_nTickPrecision); // &#36827;&#34892;epoll_wait
-        TRACE7(<span style="color: #ffff00;">"epoll_wait return: nfds=%d\n"</span>, nfds);
+        TRACE7(<span class="org-string">"epoll_wait return: nfds=%d\n"</span>, nfds);
         if (nfds &gt;= 0) {
             for (int i=0; i&lt;nfds; i++) {
                 pCtx = (NetContext*)events[i].data.ptr;
@@ -3630,13 +3612,13 @@ NotifyClient(int nErrCode, NetContext* pCtx, NetRequest* pReq)
 
 #ifdef  _DEBUG
                 if (0 != bErr) {
-                    TRACE4(<span style="color: #ffff00;">"EPOLLERR: %x(%p), state=%s\n"</span>, pCtx-&gt;s, pCtx, State2Str(pCtx-&gt;state));
+                    TRACE4(<span class="org-string">"EPOLLERR: %x(%p), state=%s\n"</span>, pCtx-&gt;s, pCtx, State2Str(pCtx-&gt;state));
                 }
                 if (bRead) {
-                    TRACE7(<span style="color: #ffff00;">"EPOLLIN: %x(%p), state=%s\n"</span>, pCtx-&gt;s, pCtx, State2Str(pCtx-&gt;state));
+                    TRACE7(<span class="org-string">"EPOLLIN: %x(%p), state=%s\n"</span>, pCtx-&gt;s, pCtx, State2Str(pCtx-&gt;state));
                 }
                 if (bWrite) {
-                    TRACE7(<span style="color: #ffff00;">"EPOLLOUT: %x(%p), state=%s\n"</span>, pCtx-&gt;s, pCtx, State2Str(pCtx-&gt;state));
+                    TRACE7(<span class="org-string">"EPOLLOUT: %x(%p), state=%s\n"</span>, pCtx-&gt;s, pCtx, State2Str(pCtx-&gt;state));
                 }
 #endif
                 switch (AtomicGetValue(pCtx-&gt;state)) {
@@ -3733,7 +3715,7 @@ NotifyClient(int nErrCode, NetContext* pCtx, NetRequest* pReq)
         }
         else if (EINTR != GetLastError()) {
             if (IsKylinRunning())
-                PERROR(<span style="color: #ffff00;">"Error in epoll_wait"</span>);
+                PERROR(<span class="org-string">"Error in epoll_wait"</span>);
             return GetLastError();
         }
     }
@@ -3864,15 +3846,15 @@ retry1:
     }
     else {
         err = WSAGetLastError();
-        TRACE0(<span style="color: #ffff00;">"WSASocket() error: %d(%s)\n"</span>, err, strerror(err));
+        TRACE0(<span class="org-string">"WSASocket() error: %d(%s)\n"</span>, err, strerror(err));
         if (retry++ &lt; 10) { // &#21019;&#24314;socket&#21487;&#33021;&#20250;&#22240;&#20026;&#21477;&#26564;&#19978;&#32447;&#32780;&#21019;&#24314;&#22833;&#36133;&#65292;&#36825;&#37324;&#20250;&#36827;&#34892;&#37325;&#35797;&#12290;
             // it should be 24: too many open files, we may need to sleep and retry
             Sleep(500);
-            TRACE0(<span style="color: #ffff00;">"Retry %d\n"</span>, retry);
+            TRACE0(<span class="org-string">"Retry %d\n"</span>, retry);
             goto retry1;
         }
         else {
-            TRACE0(<span style="color: #ffff00;">"Total sockets: %d\n"</span>, AtomicGetValue(s_nSockets));
+            TRACE0(<span class="org-string">"Total sockets: %d\n"</span>, AtomicGetValue(s_nSockets));
             return err;
         }
     }
@@ -3886,12 +3868,12 @@ retry2:
 
     UNLIKELY_IF (SOCKET_ERROR == bind(m_s, (LPSOCKADDR)&amp;sa, sizeof(sa))) { // &#28982;&#21518;&#36827;&#34892;&#32465;&#23450;&#65292;&#20854;&#23454;&#23545;&#20110;client&#21487;&#26377;&#21487;&#26080;&#20294;&#26159;&#27809;&#26377;&#20219;&#20309;&#24433;&#21709;
         err = WSAGetLastError();
-        TRACE0(<span style="color: #ffff00;">"Error in bind(%s, %d): %s\n"</span>, bTCP?<span style="color: #ffff00;">"TCP"</span>:<span style="color: #ffff00;">"UDP"</span>, port, strerror(err));
+        TRACE0(<span class="org-string">"Error in bind(%s, %d): %s\n"</span>, bTCP?<span class="org-string">"TCP"</span>:<span class="org-string">"UDP"</span>, port, strerror(err));
 
         retry ++;
         if (retry&lt;3 || (0==port &amp;&amp; retry&lt;10)) { // TODO(zhangyan04):&#36825;&#37324;&#37325;&#35797;&#21407;&#22240;&#19981;&#22826;&#28165;&#26970;
             Sleep(500);
-            TRACE0(<span style="color: #ffff00;">"Retry %d\n"</span>, retry);
+            TRACE0(<span class="org-string">"Retry %d\n"</span>, retry);
             goto retry2;
         }
 
@@ -3910,8 +3892,8 @@ retry2:
     m_Ctx.ip = ip;
     m_Ctx.port = port;
 
-    SetName(<span style="color: #ffff00;">"Socket(%x)"</span>, m_s);
-    TRACE4(<span style="color: #ffff00;">"%s %s created, port=%d\n"</span>, m_name, bTCP?<span style="color: #ffff00;">"TCP"</span>:<span style="color: #ffff00;">"UDP"</span>, port);
+    SetName(<span class="org-string">"Socket(%x)"</span>, m_s);
+    TRACE4(<span class="org-string">"%s %s created, port=%d\n"</span>, m_name, bTCP?<span class="org-string">"TCP"</span>:<span class="org-string">"UDP"</span>, port);
     m_port = port;
     AtomicSetValue(m_type, ST_CREATED); // &#36825;&#26159;&#25104;&#20026;ST_CRERATED&#31867;&#22411;
     if (!bTCP) {
@@ -3939,7 +3921,7 @@ retry2:
     m_Ctx.port = port;
 
     AtomicSetValue(m_type, ST_CREATED);
-    SetName(<span style="color: #ffff00;">"Socket(%x)"</span>, m_s);
+    SetName(<span class="org-string">"Socket(%x)"</span>, m_s);
     g_pNetworkMan-&gt;Monitor(&amp;m_Ctx); // &#31435;&#21363;&#21551;&#21160;monitor.monitor&#29366;&#24577;&#22312;run&#37324;&#38754;&#30340;&#35805;&#23601;&#20250;&#36890;&#36807;(APFE_NOTIFY,AA_READ)&#26469;&#36890;&#30693;server&#24212;&#35813;&#21457;&#36215;&#35835;&#25805;&#20316;&#20102;.
     // Monitor&#26080;&#38750;&#23601;&#26159;&#36890;&#30693;&#26381;&#21153;&#22120;&#21018;&#36830;&#25509;&#19978;&#26469;&#30340;&#23458;&#25143;&#31471;&#21487;&#35835;&#20102;&#12290;
     return APFE_OK;
@@ -3994,7 +3976,7 @@ retry2:
 {
     int state = AtomicSetValue(m_Ctx.state, SS_SHUTDOWN);
     if (INVALID_SOCKET != m_s) {
-        TRACE2(<span style="color: #ffff00;">"Shutdown socket(%x), LingerOff=%d\n"</span>, m_s, bLingerOff);
+        TRACE2(<span class="org-string">"Shutdown socket(%x), LingerOff=%d\n"</span>, m_s, bLingerOff);
         if (bLingerOff) { // &#25105;&#20204;&#19981;care&#36825;&#20010;linger&#37096;&#20998;
             SetLingerOff(m_s);
         }
@@ -4046,14 +4028,14 @@ retry2:
 
 <pre class="src src-C++">void CSocketV::Connect(uint32 ip, uint16 port, uint32 timeout)
 {
-    //TRACE5(<span style="color: #ffff00;">"Connecting(%x) %s:%d...\n"</span>, m_s, in_ntoa(ip), port);
+    //TRACE5(<span class="org-string">"Connecting(%x) %s:%d...\n"</span>, m_s, in_ntoa(ip), port);
     ASSERT(IsCreated());
     g_pNetworkMan-&gt;Connect(&amp;m_Ctx, ip, port, NULL, 0, timeout, &amp;m_Req);
 }
 
 void CSocketV::ConnectAndWrite(uint32 ip, uint16 port, void* pBuf, int count, uint32 timeout)
 {
-    //TRACE5(<span style="color: #ffff00;">"Connecting(%x) %s:%d...\n"</span>, m_s, in_ntoa(ip), port);
+    //TRACE5(<span class="org-string">"Connecting(%x) %s:%d...\n"</span>, m_s, in_ntoa(ip), port);
     ASSERT(IsCreated());
     g_pNetworkMan-&gt;Connect(&amp;m_Ctx, ip, port, pBuf, count, timeout, &amp;m_Req);
 }
@@ -4135,14 +4117,14 @@ void CSocketV::Write(void* pBuf, int count, NetRequest* pReq)
                 SOCKADDR_IN sa;
                 socklen_t saLen = sizeof(sa);
 
-                TRACE7(<span style="color: #ffff00;">"To accept(%x)\n"</span>, m_s);
+                TRACE7(<span class="org-string">"To accept(%x)\n"</span>, m_s);
                 SOCKET s = accept(m_s, (LPSOCKADDR)&amp;sa, &amp;saLen);
                 if (-1 != s) {
-                    TRACE1(<span style="color: #ffff00;">"Accepted(%x) %s:%d = %x\n"</span>, m_s, in_ntoa(sa.sin_addr.s_addr), ntohs(sa.sin_port), s);
+                    TRACE1(<span class="org-string">"Accepted(%x) %s:%d = %x\n"</span>, m_s, in_ntoa(sa.sin_addr.s_addr), ntohs(sa.sin_port), s);
                     OnListened(s, &amp;sa); // &#23545;&#20110;&#27599;&#19968;&#20010;accept&#37117;&#35302;&#21457;OnListened&#22238;&#35843;
                 }
                 else {
-                    TRACE7(<span style="color: #ffff00;">"Error in accept(%x)\n"</span>, m_s);
+                    TRACE7(<span class="org-string">"Error in accept(%x)\n"</span>, m_s);
                     break;
                 }
             }
@@ -4152,7 +4134,7 @@ void CSocketV::Write(void* pBuf, int count, NetRequest* pReq)
 
     case AA_CONNECT: // &#22914;&#26524;&#25105;&#20204;&#21457;&#36215;&#30340;&#26159;CONNECT&#25805;&#20316;&#30340;&#35805;
         AtomicSetValue(m_type, ST_CONNECTED);
-        TRACE1(<span style="color: #ffff00;">"OnConnected(%x): %d, %p\n"</span>, m_s, pContext-&gt;nErrCode, pContext);
+        TRACE1(<span class="org-string">"OnConnected(%x): %d, %p\n"</span>, m_s, pContext-&gt;nErrCode, pContext);
         if (0 == pContext-&gt;nErrCode) {
             OnConnected(0); // &#24182;&#19988;&#27809;&#26377;&#20219;&#20309;&#38169;&#35823;&#65292;&#37027;&#20040;&#35302;&#21457;OnConnected(0)
             break;
@@ -4172,7 +4154,7 @@ void CSocketV::Write(void* pBuf, int count, NetRequest* pReq)
         // APFE_TIMEDOUT &#36830;&#25509;&#20986;&#29616;&#36229;&#26102;
         // APFE_SYS_ERROR TODO(zhangyan04):???
         // APFE_NET_ERROR TODO(zhangyan04):???
-        TRACE5(<span style="color: #ffff00;">"CSocket::OnBroken(%x): %d\n"</span>, m_s, pContext-&gt;nErrCode);
+        TRACE5(<span class="org-string">"CSocket::OnBroken(%x): %d\n"</span>, m_s, pContext-&gt;nErrCode);
         AtomicSetValue(m_type, ST_ERROR);
         ASSERT(NULL == m_Ctx.pReadReq);
         ASSERT(NULL == m_Ctx.pWriteReq);
@@ -4270,9 +4252,9 @@ void CSocketV::Write(void* pBuf, int count, NetRequest* pReq)
 #include &lt;vector&gt;
 #include &lt;string&gt;
 #include &lt;time.h&gt;
-#include <span style="color: #ffff00;">"stdafx.h"</span>
-#include <span style="color: #ffff00;">"Kylin.h"</span>
-#include <span style="color: #ffff00;">"Socket.h"</span>
+#include <span class="org-string">"stdafx.h"</span>
+#include <span class="org-string">"Kylin.h"</span>
+#include <span class="org-string">"Socket.h"</span>
 
 #define ERR(fmt,...) fprintf(stderr,fmt,##__VA_ARGS__)
 #define DBG(fmt,...) fprintf(stdout,fmt,##__VA_ARGS__)
@@ -4299,7 +4281,7 @@ class XAsyncClient:public CSocketV {
     ~XAsyncClient(){
     }
     void Print(){
-        ERR(<span style="color: #ffff00;">"(%d)xref:%d\n"</span>,id,CAsyncClient::GetRef());
+        ERR(<span class="org-string">"(%d)xref:%d\n"</span>,id,CAsyncClient::GetRef());
     }
     void Close(){
         CSocketV::Close();
@@ -4308,58 +4290,58 @@ class XAsyncClient:public CSocketV {
     void StartConnnect(){
         APF_ERROR err=CSocketV::Create(true);
         if(err==APFE_OK){
-            Connect(in_aton(<span style="color: #ffff00;">"127.0.0.1"</span>),19870);
+            Connect(in_aton(<span class="org-string">"127.0.0.1"</span>),19870);
             // we don't need to AddRef() right here.
             g_pExecMan-&gt;DelayExec(CONNECT_TIMEOUT,this,connect_timeout_ms,&amp;delay_ctx);
         }else{
-            ERR(<span style="color: #ffff00;">"Create(%s)\n"</span>,APFError2Str(err));
+            ERR(<span class="org-string">"Create(%s)\n"</span>,APFError2Str(err));
         }
     }
     virtual void OnBroken(APF_ERROR nErrCode){
-        ERR(<span style="color: #ffff00;">"OnBroken(%s)\n"</span>,APFError2Str(nErrCode));
+        ERR(<span class="org-string">"OnBroken(%s)\n"</span>,APFError2Str(nErrCode));
         Close();
         Release();
     }
     virtual bool OnConnected(APF_ERROR nErrCode){
         g_pExecMan-&gt;CancelExec(&amp;delay_ctx);
         if(nErrCode==APFE_OK){
-            DBG(<span style="color: #ffff00;">"APFE_OK OnConnected ready\n"</span>);
+            DBG(<span class="org-string">"APFE_OK OnConnected ready\n"</span>);
             Write(packet,packet_size,&amp;m_Req);
             return true;
         }else{
-            ERR(<span style="color: #ffff00;">"OnConnected(%s)\n"</span>,APFError2Str(nErrCode));
+            ERR(<span class="org-string">"OnConnected(%s)\n"</span>,APFError2Str(nErrCode));
             return false;
         }
     }
     virtual void OnWritten(APF_ERROR nErrCode,NetRequest* req){
         if(nErrCode==APFE_OK){
-            DBG(<span style="color: #ffff00;">"APFE_OK OnWritten(%d)\n"</span>,req-&gt;xfered);
+            DBG(<span class="org-string">"APFE_OK OnWritten(%d)\n"</span>,req-&gt;xfered);
             Read(req-&gt;buf,req-&gt;xfered,&amp;m_Req);
             // we don't need to AddRef() right here.
             g_pExecMan-&gt;DelayExec(READ_TIMEOUT,this,read_timeout_ms,&amp;delay_ctx);
         }else{
-            ERR(<span style="color: #ffff00;">"OnWritten(%s)\n"</span>,APFError2Str(nErrCode));
+            ERR(<span class="org-string">"OnWritten(%s)\n"</span>,APFError2Str(nErrCode));
             Close();
         }
 }
     virtual void OnRead(APF_ERROR nErrCode,NetRequest* req){
         g_pExecMan-&gt;CancelExec(&amp;delay_ctx);
         if(nErrCode==APFE_OK){
-            DBG(<span style="color: #ffff00;">"APFE_OK OnRead(%d)\n"</span>,req-&gt;xfered);
+            DBG(<span class="org-string">"APFE_OK OnRead(%d)\n"</span>,req-&gt;xfered);
             Write(req-&gt;buf,req-&gt;xfered,&amp;m_Req);
         }else{
-            ERR(<span style="color: #ffff00;">"OnRead(%s)\n"</span>,APFError2Str(nErrCode));
+            ERR(<span class="org-string">"OnRead(%s)\n"</span>,APFError2Str(nErrCode));
             Close();
         }
     }
     virtual void OnCompletion(AsyncContext* ctx){
         switch(ctx-&gt;nAction){
             case CONNECT_TIMEOUT:
-                ERR(<span style="color: #ffff00;">"connect timeout(%d ms)\n"</span>,connect_timeout_ms);
+                ERR(<span class="org-string">"connect timeout(%d ms)\n"</span>,connect_timeout_ms);
                 Close();
                 break;
             case READ_TIMEOUT:
-                ERR(<span style="color: #ffff00;">"read timeout(%d ms)\n"</span>,read_timeout_ms);
+                ERR(<span class="org-string">"read timeout(%d ms)\n"</span>,read_timeout_ms);
                 Close();
                 break;
             default:
@@ -4420,9 +4402,9 @@ int main(){
 #include &lt;string&gt;
 #include &lt;time.h&gt;
 #include &lt;signal.h&gt;
-#include <span style="color: #ffff00;">"stdafx.h"</span>
-#include <span style="color: #ffff00;">"Kylin.h"</span>
-#include <span style="color: #ffff00;">"Socket.h"</span>
+#include <span class="org-string">"stdafx.h"</span>
+#include <span class="org-string">"Kylin.h"</span>
+#include <span class="org-string">"Socket.h"</span>
 
 #define ERR(fmt,...) fprintf(stderr,fmt,##__VA_ARGS__)
 #define DBG(fmt,...) fprintf(stdout,fmt,##__VA_ARGS__)
@@ -4448,14 +4430,14 @@ class XAsyncClient:public CSocketV {
     ~XAsyncClient(){
     }
     void Print(){
-        fprintf(stderr,<span style="color: #ffff00;">"(%d)xref:%d\n"</span>,id,CAsyncClient::GetRef());
+        fprintf(stderr,<span class="org-string">"(%d)xref:%d\n"</span>,id,CAsyncClient::GetRef());
     }
     void StartServe(){
         APF_ERROR err=CSocketV::Create(true,19870);
         if(err==APFE_OK){
             Listen();
         }else{
-            ERR(<span style="color: #ffff00;">"Create(%s)\n"</span>,APFError2Str(err));
+            ERR(<span class="org-string">"Create(%s)\n"</span>,APFError2Str(err));
         }
     }
     void OnListened(SOCKET s,SOCKADDR_IN* pSockAddrIn){
@@ -4464,23 +4446,23 @@ class XAsyncClient:public CSocketV {
         if(err==APFE_OK){
             ;
         }else{
-            ERR(<span style="color: #ffff00;">"Create(%s)\n"</span>,APFError2Str(err));
+            ERR(<span class="org-string">"Create(%s)\n"</span>,APFError2Str(err));
             Release();
         }
     }
     virtual void OnBroken(APF_ERROR nErrCode){
-        ERR(<span style="color: #ffff00;">"OnBroken(%s)\n"</span>,APFError2Str(nErrCode));
+        ERR(<span class="org-string">"OnBroken(%s)\n"</span>,APFError2Str(nErrCode));
         Close();
         Release(); // we have to call 'Release' right here to free connection.
     }
     virtual void OnWritten(APF_ERROR nErrCode,NetRequest* req){
         switch(nErrCode){
             case APFE_OK:
-                DBG(<span style="color: #ffff00;">"APFE_OK OnWritten(%d)\n"</span>,req-&gt;xfered);
+                DBG(<span class="org-string">"APFE_OK OnWritten(%d)\n"</span>,req-&gt;xfered);
                 Read(req-&gt;buf,req-&gt;xfered,&amp;m_Req);
                 break;
             default:
-                ERR(<span style="color: #ffff00;">"OnWritten(%s)\n"</span>,APFError2Str(nErrCode));
+                ERR(<span class="org-string">"OnWritten(%s)\n"</span>,APFError2Str(nErrCode));
                 Close();
                 break;
         }
@@ -4489,15 +4471,15 @@ class XAsyncClient:public CSocketV {
         switch(nErrCode){
             case APFE_NOTIFY:
                 delete req;
-                DBG(<span style="color: #ffff00;">"APFE_NOTIFY OnRead ready\n"</span>);
+                DBG(<span class="org-string">"APFE_NOTIFY OnRead ready\n"</span>);
                 Read(packet,packet_size,&amp;m_Req);
                 break;
             case APFE_OK:
-                DBG(<span style="color: #ffff00;">"APFE_OK OnRead(%d)\n"</span>,req-&gt;xfered);
+                DBG(<span class="org-string">"APFE_OK OnRead(%d)\n"</span>,req-&gt;xfered);
                 Write(req-&gt;buf,req-&gt;xfered,&amp;m_Req);
                 break;
             default:
-                ERR(<span style="color: #ffff00;">"OnRead(%s)\n"</span>,APFError2Str(nErrCode));
+                ERR(<span class="org-string">"OnRead(%s)\n"</span>,APFError2Str(nErrCode));
                 Close();
                 break;
         }
@@ -4562,9 +4544,9 @@ int main(){
 #include &lt;vector&gt;
 #include &lt;string&gt;
 #include &lt;time.h&gt;
-#include <span style="color: #ffff00;">"stdafx.h"</span>
-#include <span style="color: #ffff00;">"Kylin.h"</span>
-#include <span style="color: #ffff00;">"Socket.h"</span>
+#include <span class="org-string">"stdafx.h"</span>
+#include <span class="org-string">"Kylin.h"</span>
+#include <span class="org-string">"Socket.h"</span>
 
 #define ERR(fmt,...) fprintf(stderr,fmt,##__VA_ARGS__)
 #define DBG(fmt,...) fprintf(stdout,fmt,##__VA_ARGS__)
@@ -4574,7 +4556,7 @@ static const int connect_timeout_ms=5*1000;
 static const int CONNECT_TIMEOUT=AA_USER_BEGIN;
 static const int worker_num=1;
 static volatile int worker=worker_num;
-static const char* filename=<span style="color: #ffff00;">"./file-server.cc"</span>;
+static const char* filename=<span class="org-string">"./file-server.cc"</span>;
 
 class XAsyncClient:public CSocketV {
   public:
@@ -4593,7 +4575,7 @@ class XAsyncClient:public CSocketV {
     ~XAsyncClient(){
     }
     void Print(){
-        ERR(<span style="color: #ffff00;">"(%d)xref:%d\n"</span>,id,CAsyncClient::GetRef());
+        ERR(<span class="org-string">"(%d)xref:%d\n"</span>,id,CAsyncClient::GetRef());
     }
     void Close(){
         CSocketV::Close();
@@ -4602,15 +4584,15 @@ class XAsyncClient:public CSocketV {
     void StartConnnect(){
         APF_ERROR err=CSocketV::Create(true);
         if(err==APFE_OK){
-            Connect(in_aton(<span style="color: #ffff00;">"127.0.0.1"</span>),19870);
+            Connect(in_aton(<span class="org-string">"127.0.0.1"</span>),19870);
             // we don't need to AddRef() right here.
             g_pExecMan-&gt;DelayExec(CONNECT_TIMEOUT,this,connect_timeout_ms,&amp;delay_ctx);
         }else{
-            ERR(<span style="color: #ffff00;">"Create(%s)\n"</span>,APFError2Str(err));
+            ERR(<span class="org-string">"Create(%s)\n"</span>,APFError2Str(err));
         }
     }
     virtual void OnBroken(APF_ERROR nErrCode){
-        ERR(<span style="color: #ffff00;">"OnBroken(%s)\n"</span>,APFError2Str(nErrCode));
+        ERR(<span class="org-string">"OnBroken(%s)\n"</span>,APFError2Str(nErrCode));
         Close();
         Release();
     }
@@ -4625,52 +4607,52 @@ class XAsyncClient:public CSocketV {
     virtual bool OnConnected(APF_ERROR nErrCode){
         g_pExecMan-&gt;CancelExec(&amp;delay_ctx);
         if(nErrCode==APFE_OK){
-            DBG(<span style="color: #ffff00;">"OnConnected\n"</span>);
+            DBG(<span class="org-string">"OnConnected\n"</span>);
             char* request=NULL;
             int request_len=MakeFileRequest(filename,&amp;request);
-            DBG(<span style="color: #ffff00;">"MakeFileRequest (%s)(%d)\n"</span>,filename,request_len);
+            DBG(<span class="org-string">"MakeFileRequest (%s)(%d)\n"</span>,filename,request_len);
             Write(request,request_len,&amp;m_Req);
             return true;
         }else{
-            ERR(<span style="color: #ffff00;">"OnConnected(%s)\n"</span>,APFError2Str(nErrCode));
+            ERR(<span class="org-string">"OnConnected(%s)\n"</span>,APFError2Str(nErrCode));
             return false;
         }
     }
     virtual void OnWritten(APF_ERROR nErrCode,NetRequest* req){
         free(req-&gt;buf);
         if(nErrCode==APFE_OK){
-            DBG(<span style="color: #ffff00;">"ReadBodyLen\n"</span>);
+            DBG(<span class="org-string">"ReadBodyLen\n"</span>);
             status=READ_BOEY_LEN;
             Read(&amp;read_body_len,sizeof(read_body_len),&amp;m_Req);
         }else{
-            ERR(<span style="color: #ffff00;">"OnWritten(%s)\n"</span>,APFError2Str(nErrCode));
+            ERR(<span class="org-string">"OnWritten(%s)\n"</span>,APFError2Str(nErrCode));
             Close();
         }
     }
     virtual void OnRead(APF_ERROR nErrCode,NetRequest* req){
         if(nErrCode==APFE_OK){
             if(status==READ_BOEY_LEN){
-                DBG(<span style="color: #ffff00;">"ReadBodyLen OK(%d)\n"</span>,read_body_len);
+                DBG(<span class="org-string">"ReadBodyLen OK(%d)\n"</span>,read_body_len);
                 char* tmp=(char*)malloc(read_body_len);
                 status=READ_BODY_CONTENT;
                 Read(tmp,read_body_len,&amp;m_Req);
             }else if(status==READ_BODY_CONTENT){
                 free(req-&gt;buf);
-                DBG(<span style="color: #ffff00;">"ReadBodyContent OK\n"</span>);
+                DBG(<span class="org-string">"ReadBodyContent OK\n"</span>);
                 char* request=NULL;
                 int request_len=MakeFileRequest(filename,&amp;request);
-                DBG(<span style="color: #ffff00;">"MakeFileRequest (%s)(%d)\n"</span>,filename,request_len);
+                DBG(<span class="org-string">"MakeFileRequest (%s)(%d)\n"</span>,filename,request_len);
                 Write(request,request_len,&amp;m_Req);
             }
         }else{
-            ERR(<span style="color: #ffff00;">"OnRead(%s)\n"</span>,APFError2Str(nErrCode));
+            ERR(<span class="org-string">"OnRead(%s)\n"</span>,APFError2Str(nErrCode));
             Close();
         }
     }
     virtual void OnCompletion(AsyncContext* ctx){
         switch(ctx-&gt;nAction){
             case CONNECT_TIMEOUT:
-                ERR(<span style="color: #ffff00;">"connect timeout(%d ms)\n"</span>,connect_timeout_ms);
+                ERR(<span class="org-string">"connect timeout(%d ms)\n"</span>,connect_timeout_ms);
                 Close();
                 break;
             default:
@@ -4732,9 +4714,9 @@ int main(){
 #include &lt;string&gt;
 #include &lt;time.h&gt;
 #include &lt;signal.h&gt;
-#include <span style="color: #ffff00;">"stdafx.h"</span>
-#include <span style="color: #ffff00;">"Kylin.h"</span>
-#include <span style="color: #ffff00;">"Socket.h"</span>
+#include <span class="org-string">"stdafx.h"</span>
+#include <span class="org-string">"Kylin.h"</span>
+#include <span class="org-string">"Socket.h"</span>
 
 #define ERR(fmt,...) fprintf(stderr,fmt,##__VA_ARGS__)
 #define DBG(fmt,...) fprintf(stdout,fmt,##__VA_ARGS__)
@@ -4769,29 +4751,29 @@ class XAsyncClient:public CSocketV {
     ~XAsyncClient(){
     }
     void Print(){
-        fprintf(stderr,<span style="color: #ffff00;">"(%d)xref:%d\n"</span>,id,CAsyncClient::GetRef());
+        fprintf(stderr,<span class="org-string">"(%d)xref:%d\n"</span>,id,CAsyncClient::GetRef());
     }
     void StartServe(){
         APF_ERROR err=CSocketV::Create(true,19870);
         if(err==APFE_OK){
             Listen();
         }else{
-            ERR(<span style="color: #ffff00;">"Create(%s)\n"</span>,APFError2Str(err));
+            ERR(<span class="org-string">"Create(%s)\n"</span>,APFError2Str(err));
         }
     }
     void OnListened(SOCKET s,SOCKADDR_IN* pSockAddrIn){
-        DBG(<span style="color: #ffff00;">"OnListened\n"</span>);
+        DBG(<span class="org-string">"OnListened\n"</span>);
         XAsyncClient* client=new XAsyncClient(atomic_add(&amp;client_id,1));
         APF_ERROR err=client-&gt;Create(s,pSockAddrIn-&gt;sin_port);
         if(err==APFE_OK){
             ;
         }else{
-            ERR(<span style="color: #ffff00;">"Create(%s)\n"</span>,APFError2Str(err));
+            ERR(<span class="org-string">"Create(%s)\n"</span>,APFError2Str(err));
             Release();
         }
     }
     virtual void OnBroken(APF_ERROR nErrCode){
-        ERR(<span style="color: #ffff00;">"OnBroken(%s)\n"</span>,APFError2Str(nErrCode));
+        ERR(<span class="org-string">"OnBroken(%s)\n"</span>,APFError2Str(nErrCode));
         Close();
         Release(); // we have to call 'Release' right here to free connection.
     }
@@ -4799,12 +4781,12 @@ class XAsyncClient:public CSocketV {
         free(req-&gt;buf);
         switch(nErrCode){
             case APFE_OK:
-                DBG(<span style="color: #ffff00;">"OnWritten\n"</span>);
+                DBG(<span class="org-string">"OnWritten\n"</span>);
                 status=READ_BODY_LEN;
                 Read(&amp;read_body_len,sizeof(read_body_len),&amp;m_Req);
                 break;
             default:
-                ERR(<span style="color: #ffff00;">"OnWritten(%s)\n"</span>,APFError2Str(nErrCode));
+                ERR(<span class="org-string">"OnWritten(%s)\n"</span>,APFError2Str(nErrCode));
                 Close();
                 break;
         }
@@ -4813,18 +4795,18 @@ class XAsyncClient:public CSocketV {
         switch(nErrCode){
             case APFE_NOTIFY:
                 delete req;
-                DBG(<span style="color: #ffff00;">"OnRead APFE_NOTIFY\n"</span>);
+                DBG(<span class="org-string">"OnRead APFE_NOTIFY\n"</span>);
                 status=READ_BODY_LEN;
                 Read(&amp;read_body_len,sizeof(read_body_len),&amp;m_Req);
                 break;
             case APFE_OK:
                 if(status==READ_BODY_LEN){
-                    DBG(<span style="color: #ffff00;">"ReadBodyLen OK(%d)\n"</span>,read_body_len);
+                    DBG(<span class="org-string">"ReadBodyLen OK(%d)\n"</span>,read_body_len);
                     char* request=(char*)malloc(read_body_len);
                     status=READ_BODY_CONTENT;
                     Read(request,read_body_len,&amp;m_Req);
                 }else if(status==READ_BODY_CONTENT){
-                    DBG(<span style="color: #ffff00;">"ReadBodyContent OK(%s)\n"</span>,req-&gt;buf);
+                    DBG(<span class="org-string">"ReadBodyContent OK(%s)\n"</span>,req-&gt;buf);
                     int fd=open((char*)req-&gt;buf,O_RDONLY,0666);
                     free(req-&gt;buf);
 
@@ -4835,13 +4817,13 @@ class XAsyncClient:public CSocketV {
                     reply=(char*)malloc(reply_len);
                     *(int*)reply=(int)st_buf.st_size;
                     g_pDiskMan-&gt;Associate(id%disk_thread_num,fd,this,&amp;disk_ctx);
-                    DBG(<span style="color: #ffff00;">"ReadDiskContent (%d)\n"</span>,reply_len-sizeof(int));
+                    DBG(<span class="org-string">"ReadDiskContent (%d)\n"</span>,reply_len-sizeof(int));
                     disk_req.off=0; // read from beginning.
                     g_pDiskMan-&gt;Read(&amp;disk_ctx,reply+sizeof(int),reply_len-sizeof(int),&amp;disk_req);
                 }
                 break;
             default:
-                ERR(<span style="color: #ffff00;">"OnRead(%s)\n"</span>,APFError2Str(nErrCode));
+                ERR(<span class="org-string">"OnRead(%s)\n"</span>,APFError2Str(nErrCode));
                 Close();
                 break;
         }
@@ -4849,7 +4831,7 @@ class XAsyncClient:public CSocketV {
     virtual void OnCompletion(AsyncContext* ctx){
         if(ctx==&amp;(disk_req.async)){
             assert(ctx-&gt;nAction==AA_READ); // disk read done.
-            DBG(<span style="color: #ffff00;">"request %d, xfered %d %s\n"</span>,disk_req.request,disk_req.xfered,APFError2Str(ctx-&gt;nErrCode));
+            DBG(<span class="org-string">"request %d, xfered %d %s\n"</span>,disk_req.request,disk_req.xfered,APFError2Str(ctx-&gt;nErrCode));
             assert(disk_req.request==disk_req.xfered);
             g_pDiskMan-&gt;Deassociate(&amp;disk_ctx);
             close(disk_ctx.fd);
@@ -4886,5 +4868,11 @@ int main(){
 </div>
 </div>
 
+<div id="postamble">
+<p class="date">Date: 2013-09-15 15:19:15 CST</p>
+<p class="creator">Org version 7.8.11 with Emacs version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
 <!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'kylin.html';var disqus_title = 'kylin.html';var disqus_url = 'http://dirlt.com/kylin.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="oozie"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-08-13 19:43:17 CST"/>
+<meta name="generated" content="2013-09-15 15:18:40 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -59,33 +59,15 @@
   .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
                                  font-weight:bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" type="text/css" href="css/site-plain.css" />
-<script type="text/javascript">
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
+</style><link rel="stylesheet" type="text/css" href="css/site.css" />
+
 
 </head>
 <body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><g:plusone annotation="inline"></g:plusone>
 
+<div id="preamble">
+
+</div>
 
 <div id="content">
 <h1 class="title">oozie</h1>
@@ -351,26 +333,26 @@ oozie执行分为三种模式：
 
 <pre class="src src-XML">&lt;!--
   Copyright (c) 2010 Yahoo! Inc. All rights reserved.
-  Licensed under the Apache License, Version 2.0 (the <span style="color: #ffff00;">"License"</span>);
+  Licensed under the Apache License, Version 2.0 (the <span class="org-string">"License"</span>);
   you may not use this file except in compliance with the License.
   You may obtain a copy of the License at
 
     http://www.apache.org/licenses/LICENSE-2.0
 
   Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an <span style="color: #ffff00;">"AS IS"</span> BASIS,
+  distributed under the License is distributed on an <span class="org-string">"AS IS"</span> BASIS,
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License. See accompanying LICENSE file.
 --&gt;
-&lt;workflow-app xmlns=<span style="color: #ffff00;">"uri:oozie:workflow:0.1"</span> name=<span style="color: #ffff00;">"map-reduce-wf"</span>&gt;
-    &lt;start to=<span style="color: #ffff00;">"mr-node"</span>/&gt;
-    &lt;action name=<span style="color: #ffff00;">"mr-node"</span>&gt;
+&lt;workflow-app xmlns=<span class="org-string">"uri:oozie:workflow:0.1"</span> name=<span class="org-string">"map-reduce-wf"</span>&gt;
+    &lt;start to=<span class="org-string">"mr-node"</span>/&gt;
+    &lt;action name=<span class="org-string">"mr-node"</span>&gt;
         &lt;map-reduce&gt;
             &lt;job-tracker&gt;${jobTracker}&lt;/job-tracker&gt;
             &lt;name-node&gt;${nameNode}&lt;/name-node&gt;
             &lt;prepare&gt;
-                &lt;delete path=<span style="color: #ffff00;">"${nameNode}/user/${wf:user()}/${examplesRoot}/output-data/${outputDir}"</span>/&gt;
+                &lt;delete path=<span class="org-string">"${nameNode}/user/${wf:user()}/${examplesRoot}/output-data/${outputDir}"</span>/&gt;
             &lt;/prepare&gt;
             &lt;configuration&gt;
                 &lt;property&gt;
@@ -399,13 +381,13 @@ oozie执行分为三种模式：
                 &lt;/property&gt;
             &lt;/configuration&gt;
         &lt;/map-reduce&gt;
-        &lt;ok to=<span style="color: #ffff00;">"end"</span>/&gt;
-        &lt;error to=<span style="color: #ffff00;">"fail"</span>/&gt;
+        &lt;ok to=<span class="org-string">"end"</span>/&gt;
+        &lt;error to=<span class="org-string">"fail"</span>/&gt;
     &lt;/action&gt;
-    &lt;kill name=<span style="color: #ffff00;">"fail"</span>&gt;
+    &lt;kill name=<span class="org-string">"fail"</span>&gt;
         &lt;message&gt;Map/Reduce failed, error message[${wf:errorMessage(wf:lastErrorNode())}]&lt;/message&gt;
     &lt;/kill&gt;
-    &lt;end name=<span style="color: #ffff00;">"end"</span>/&gt;
+    &lt;end name=<span class="org-string">"end"</span>/&gt;
 &lt;/workflow-app&gt;
 </pre>
 
@@ -546,9 +528,9 @@ NOTE（dirlt）：关于coordinator的文档非常少，而且使用起来有诸
 
 
 
-<pre class="src src-XML">&lt;coordinator-app name=<span style="color: #ffff00;">"coord"</span> frequency=<span style="color: #ffff00;">"${coord:hours(1)}"</span>
-                 start=<span style="color: #ffff00;">"${startTime}"</span> end=<span style="color: #ffff00;">"${endTime}"</span> timezone=<span style="color: #ffff00;">"${tz}"</span>
-                 xmlns=<span style="color: #ffff00;">"uri:oozie:coordinator:0.1"</span>&gt;
+<pre class="src src-XML">&lt;coordinator-app name=<span class="org-string">"coord"</span> frequency=<span class="org-string">"${coord:hours(1)}"</span>
+                 start=<span class="org-string">"${startTime}"</span> end=<span class="org-string">"${endTime}"</span> timezone=<span class="org-string">"${tz}"</span>
+                 xmlns=<span class="org-string">"uri:oozie:coordinator:0.1"</span>&gt;
   &lt;controls&gt;
     &lt;timeout&gt;-1&lt;/timeout&gt;
     &lt;concurrency&gt;2&lt;/concurrency&gt;
@@ -556,19 +538,19 @@ NOTE（dirlt）：关于coordinator的文档非常少，而且使用起来有诸
   &lt;/controls&gt;     
 
   &lt;datasets&gt;
-    &lt;dataset name=<span style="color: #ffff00;">"ds"</span> frequency=<span style="color: #ffff00;">"${coord:hours(1)}"</span>
-             initial-instance=<span style="color: #ffff00;">"${dsStartTime}"</span> timezone=<span style="color: #ffff00;">"${tz}"</span>&gt;
+    &lt;dataset name=<span class="org-string">"ds"</span> frequency=<span class="org-string">"${coord:hours(1)}"</span>
+             initial-instance=<span class="org-string">"${dsStartTime}"</span> timezone=<span class="org-string">"${tz}"</span>&gt;
       &lt;uri-template&gt;${appPath}/data/${YEAR}/${MONTH}/${DAY}/${HOUR}&lt;/uri-template&gt;
     &lt;/dataset&gt;
   &lt;/datasets&gt;
 
   &lt;input-events&gt;
-    &lt;data-in name=<span style="color: #ffff00;">"input"</span> dataset=<span style="color: #ffff00;">"ds"</span>&gt;
+    &lt;data-in name=<span class="org-string">"input"</span> dataset=<span class="org-string">"ds"</span>&gt;
       &lt;instance&gt;${coord:current(-1)}&lt;/instance&gt;
     &lt;/data-in&gt;
   &lt;/input-events&gt;
   &lt;output-events&gt;
-    &lt;data-out name=<span style="color: #ffff00;">"output"</span> dataset=<span style="color: #ffff00;">"ds"</span>&gt;
+    &lt;data-out name=<span class="org-string">"output"</span> dataset=<span class="org-string">"ds"</span>&gt;
       &lt;instance&gt;${coord:current(0)}&lt;/instance&gt;
     &lt;/data-out&gt;
   &lt;/output-events&gt;
@@ -681,5 +663,11 @@ NOTE（dirlt）：不过后来测试了一下之后，发现其实是可以观�
 </div>
 </div>
 
+<div id="postamble">
+<p class="date">Date: 2013-09-15 15:18:40 CST</p>
+<p class="creator">Org version 7.8.11 with Emacs version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
 <!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'oozie.html';var disqus_title = 'oozie.html';var disqus_url = 'http://dirlt.com/oozie.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

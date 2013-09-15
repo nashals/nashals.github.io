@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="leveldb"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-08-13 19:43:45 CST"/>
+<meta name="generated" content="2013-09-15 15:19:10 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -59,33 +59,15 @@
   .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
                                  font-weight:bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" type="text/css" href="css/site-plain.css" />
-<script type="text/javascript">
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
+</style><link rel="stylesheet" type="text/css" href="css/site.css" />
+
 
 </head>
 <body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><g:plusone annotation="inline"></g:plusone>
 
+<div id="preamble">
+
+</div>
 
 <div id="content">
 <h1 class="title">leveldb</h1>
@@ -1244,7 +1226,7 @@ NOTE(dirlt):不过后来仔细想了一下觉得Record Cache还是在应用层�
  public:
   Cache() { }
 
-  // Destroys all existing entries by calling the <span style="color: #ffff00;">"deleter"</span>
+  // Destroys all existing entries by calling the <span class="org-string">"deleter"</span>
   // function that was passed to the constructor.
   virtual ~Cache();
 
@@ -1259,11 +1241,11 @@ NOTE(dirlt):不过后来仔细想了一下觉得Record Cache还是在应用层�
   // longer needed.
   //
   // When the inserted entry is no longer needed, the key and
-  // value will be passed to <span style="color: #ffff00;">"deleter"</span>.
+  // value will be passed to <span class="org-string">"deleter"</span>.
   virtual Handle* Insert(const Slice&amp; key, void* value, size_t charge,
                          void (*deleter)(const Slice&amp; key, void* value)) = 0;
 
-  // If the cache has no mapping for <span style="color: #ffff00;">"key"</span>, returns NULL.
+  // If the cache has no mapping for <span class="org-string">"key"</span>, returns NULL.
   //
   // Else return a handle that corresponds to the mapping.  The caller
   // must call this-&gt;Release(handle) when the returned mapping is no
@@ -1421,7 +1403,7 @@ DB是我们发起操作的对象。然后我们看看最关键的DB提供了哪�
 // any external synchronization.
 class DB {
  public:
-  // Open the database with the specified <span style="color: #ffff00;">"name"</span>.
+  // Open the database with the specified <span class="org-string">"name"</span>.
   // Stores a pointer to a heap-allocated database in *dbptr and returns
   // OK on success.
   // Stores NULL in *dbptr and returns a non-OK status on error.
@@ -1433,15 +1415,15 @@ class DB {
   DB() { }
   virtual ~DB();
 
-  // Set the database entry for <span style="color: #ffff00;">"key"</span> to <span style="color: #ffff00;">"value"</span>.  Returns OK on success,
+  // Set the database entry for <span class="org-string">"key"</span> to <span class="org-string">"value"</span>.  Returns OK on success,
   // and a non-OK status on error.
   // Note: consider setting options.sync = true.
   virtual Status Put(const WriteOptions&amp; options,
                      const Slice&amp; key,
                      const Slice&amp; value) = 0;
 
-  // Remove the database entry (if any) for <span style="color: #ffff00;">"key"</span>.  Returns OK on
-  // success, and a non-OK status on error.  It is not an error if <span style="color: #ffff00;">"key"</span>
+  // Remove the database entry (if any) for <span class="org-string">"key"</span>.  Returns OK on
+  // success, and a non-OK status on error.  It is not an error if <span class="org-string">"key"</span>
   // did not exist in the database.
   // Note: consider setting options.sync = true.
   virtual Status Delete(const WriteOptions&amp; options, const Slice&amp; key) = 0;
@@ -1451,10 +1433,10 @@ class DB {
   // Note: consider setting options.sync = true.
   virtual Status Write(const WriteOptions&amp; options, WriteBatch* updates) = 0;
 
-  // If the database contains an entry for <span style="color: #ffff00;">"key"</span> store the
+  // If the database contains an entry for <span class="org-string">"key"</span> store the
   // corresponding value in *value and return OK.
   //
-  // If there is no entry for <span style="color: #ffff00;">"key"</span> leave *value unchanged and return
+  // If there is no entry for <span class="org-string">"key"</span> leave *value unchanged and return
   // a status for which Status::IsNotFound() returns true.
   //
   // May return some other Status on an error.
@@ -1476,27 +1458,27 @@ class DB {
   virtual const Snapshot* GetSnapshot() = 0;
 
   // Release a previously acquired snapshot.  The caller must not
-  // use <span style="color: #ffff00;">"snapshot"</span> after this call.
+  // use <span class="org-string">"snapshot"</span> after this call.
   virtual void ReleaseSnapshot(const Snapshot* snapshot) = 0;
 
   // DB implementations can export properties about their state
-  // via this method.  If <span style="color: #ffff00;">"property"</span> is a valid property understood by this
-  // DB implementation, fills <span style="color: #ffff00;">"*value"</span> with its current value and returns
+  // via this method.  If <span class="org-string">"property"</span> is a valid property understood by this
+  // DB implementation, fills <span class="org-string">"*value"</span> with its current value and returns
   // true.  Otherwise returns false.
   //
   //
   // Valid property names include:
   //
-  //  <span style="color: #ffff00;">"leveldb.num-files-at-level&lt;N&gt;"</span> - return the number of files at level &lt;N&gt;,
-  //     where &lt;N&gt; is an ASCII representation of a level number (e.g. <span style="color: #ffff00;">"0"</span>).
-  //  <span style="color: #ffff00;">"leveldb.stats"</span> - returns a multi-line string that describes statistics
+  //  <span class="org-string">"leveldb.num-files-at-level&lt;N&gt;"</span> - return the number of files at level &lt;N&gt;,
+  //     where &lt;N&gt; is an ASCII representation of a level number (e.g. <span class="org-string">"0"</span>).
+  //  <span class="org-string">"leveldb.stats"</span> - returns a multi-line string that describes statistics
   //     about the internal operation of the DB.
-  //  <span style="color: #ffff00;">"leveldb.sstables"</span> - returns a multi-line string that describes all
+  //  <span class="org-string">"leveldb.sstables"</span> - returns a multi-line string that describes all
   //     of the sstables that make up the db contents.
   virtual bool GetProperty(const Slice&amp; property, std::string* value) = 0;
 
-  // For each i in [0,n-1], store in <span style="color: #ffff00;">"sizes[i]"</span>, the approximate
-  // file system space used by keys in <span style="color: #ffff00;">"[range[i].start .. range[i].limit)"</span>.
+  // For each i in [0,n-1], store in <span class="org-string">"sizes[i]"</span>, the approximate
+  // file system space used by keys in <span class="org-string">"[range[i].start .. range[i].limit)"</span>.
   //
   // Note that the returned sizes measure file system space usage, so
   // if the user data compresses by a factor of ten, the returned
@@ -1632,7 +1614,7 @@ Status RepairDB(const std::string&amp; dbname, const Options&amp; options);
   virtual bool FileExists(const std::string&amp; fname) = 0;
 
   // Store in *result the names of the children of the specified directory.
-  // The names are relative to <span style="color: #ffff00;">"dir"</span>.
+  // The names are relative to <span class="org-string">"dir"</span>.
   // Original contents of *results are dropped.
   virtual Status GetChildren(const std::string&amp; dir,
                              std::vector&lt;std::string&gt;* result) = 0;
@@ -1674,9 +1656,9 @@ Status RepairDB(const std::string&amp; dbname, const Options&amp; options);
   // REQUIRES: lock has not already been unlocked.
   virtual Status UnlockFile(FileLock* lock) = 0;
 
-  // Arrange to run <span style="color: #ffff00;">"(*function)(arg)"</span> once in a background thread.
+  // Arrange to run <span class="org-string">"(*function)(arg)"</span> once in a background thread.
   //
-  // <span style="color: #ffff00;">"function"</span> may run in an unspecified thread.  Multiple functions
+  // <span class="org-string">"function"</span> may run in an unspecified thread.  Multiple functions
   // added to the same Env may run concurrently in different threads.
   // I.e., the caller may not assume that background work items are
   // serialized.
@@ -1684,8 +1666,8 @@ Status RepairDB(const std::string&amp; dbname, const Options&amp; options);
       void (*function)(void* arg),
       void* arg) = 0;
 
-  // Start a new thread, invoking <span style="color: #ffff00;">"function(arg)"</span> within the new thread.
-  // When <span style="color: #ffff00;">"function(arg)"</span> returns, the thread will be destroyed.
+  // Start a new thread, invoking <span class="org-string">"function(arg)"</span> within the new thread.
+  // When <span class="org-string">"function(arg)"</span> returns, the thread will be destroyed.
   virtual void StartThread(void (*function)(void* arg), void* arg) = 0;
 
   // *path is set to a temporary directory that can be used for testing. It may
@@ -1837,12 +1819,12 @@ class RandomAccessFile {
   RandomAccessFile() { }
   virtual ~RandomAccessFile();
 
-  // Read up to <span style="color: #ffff00;">"n"</span> bytes from the file starting at <span style="color: #ffff00;">"offset"</span>.
-  // <span style="color: #ffff00;">"scratch[0..n-1]"</span> may be written by this routine.  Sets <span style="color: #ffff00;">"*result"</span>
-  // to the data that was read (including if fewer than <span style="color: #ffff00;">"n"</span> bytes were
-  // successfully read).  May set <span style="color: #ffff00;">"*result"</span> to point at data in
-  // <span style="color: #ffff00;">"scratch[0..n-1]"</span>, so <span style="color: #ffff00;">"scratch[0..n-1]"</span> must be live when
-  // <span style="color: #ffff00;">"*result"</span> is used.  If an error was encountered, returns a non-OK
+  // Read up to <span class="org-string">"n"</span> bytes from the file starting at <span class="org-string">"offset"</span>.
+  // <span class="org-string">"scratch[0..n-1]"</span> may be written by this routine.  Sets <span class="org-string">"*result"</span>
+  // to the data that was read (including if fewer than <span class="org-string">"n"</span> bytes were
+  // successfully read).  May set <span class="org-string">"*result"</span> to point at data in
+  // <span class="org-string">"scratch[0..n-1]"</span>, so <span class="org-string">"scratch[0..n-1]"</span> must be live when
+  // <span class="org-string">"*result"</span> is used.  If an error was encountered, returns a non-OK
   // status.
   //
   // Safe for concurrent use by multiple threads.
@@ -1870,17 +1852,17 @@ class SequentialFile {
   SequentialFile() { }
   virtual ~SequentialFile();
 
-  // Read up to <span style="color: #ffff00;">"n"</span> bytes from the file.  <span style="color: #ffff00;">"scratch[0..n-1]"</span> may be
-  // written by this routine.  Sets <span style="color: #ffff00;">"*result"</span> to the data that was
-  // read (including if fewer than <span style="color: #ffff00;">"n"</span> bytes were successfully read).
-  // May set <span style="color: #ffff00;">"*result"</span> to point at data in <span style="color: #ffff00;">"scratch[0..n-1]"</span>, so
-  // <span style="color: #ffff00;">"scratch[0..n-1]"</span> must be live when <span style="color: #ffff00;">"*result"</span> is used.
+  // Read up to <span class="org-string">"n"</span> bytes from the file.  <span class="org-string">"scratch[0..n-1]"</span> may be
+  // written by this routine.  Sets <span class="org-string">"*result"</span> to the data that was
+  // read (including if fewer than <span class="org-string">"n"</span> bytes were successfully read).
+  // May set <span class="org-string">"*result"</span> to point at data in <span class="org-string">"scratch[0..n-1]"</span>, so
+  // <span class="org-string">"scratch[0..n-1]"</span> must be live when <span class="org-string">"*result"</span> is used.
   // If an error was encountered, returns a non-OK status.
   //
   // REQUIRES: External synchronization
   virtual Status Read(size_t n, Slice* result, char* scratch) = 0;
 
-  // Skip <span style="color: #ffff00;">"n"</span> bytes from the file. This is guaranteed to be no
+  // Skip <span class="org-string">"n"</span> bytes from the file. This is guaranteed to be no
   // slower that reading the same data, but may be faster.
   //
   // If end of file is reached, skipping will stop at the end of the
@@ -1968,7 +1950,7 @@ bloomfilter里面的话这个数值叫做probe.
       const = 0;
 
   // &#21028;&#26029;key&#26159;&#21542;&#22312;filter&#37324;&#38754;&#12290;&#36825;&#20010;filter&#26159;&#22312;CreateFilter&#37324;&#38754;&#30340;dst&#21253;&#35013;&#20986;&#26469;&#30340;&#12290;
-  // <span style="color: #ffff00;">"filter"</span> contains the data appended by a preceding call to
+  // <span class="org-string">"filter"</span> contains the data appended by a preceding call to
   // CreateFilter() on this class.  This method must return true if
   // the key was in the list of keys passed to CreateFilter().
   // This method may return true or false if the key was not on the
@@ -2288,9 +2270,9 @@ struct ReadOptions {
   // Default: true
   bool fill_cache; // &#26159;&#21542;&#38656;&#35201;&#20174;cache&#37324;&#38754;&#26597;&#25214;.&#22914;&#26524;&#26159;bulk scans&#30340;&#35805;&#37027;&#20040;&#35774;&#32622;false.
 
-  // If <span style="color: #ffff00;">"snapshot"</span> is non-NULL, read as of the supplied snapshot
+  // If <span class="org-string">"snapshot"</span> is non-NULL, read as of the supplied snapshot
   // (which must belong to the DB that is being read and which must
-  // not have been released).  If <span style="color: #ffff00;">"snapshot"</span> is NULL, use an impliicit
+  // not have been released).  If <span class="org-string">"snapshot"</span> is NULL, use an impliicit
   // snapshot of the state at the beginning of this read operation.
   // Default: NULL
   const Snapshot* snapshot; // &#22914;&#26524;&#23384;&#22312;Snapshot&#30340;&#35805;&#37027;&#20040;&#23601;&#22312;snapshot&#19978;&#38754;&#35835;&#21462;.
@@ -2329,9 +2311,9 @@ struct WriteOptions {
   // lost even if sync==false.
   //
   // In other words, a DB write with sync==false has similar
-  // crash semantics as the <span style="color: #ffff00;">"write()"</span> system call.  A DB write
-  // with sync==true has similar crash semantics to a <span style="color: #ffff00;">"write()"</span>
-  // system call followed by <span style="color: #ffff00;">"fsync()"</span>.
+  // crash semantics as the <span class="org-string">"write()"</span> system call.  A DB write
+  // with sync==true has similar crash semantics to a <span class="org-string">"write()"</span>
+  // system call followed by <span class="org-string">"fsync()"</span>.
   //
   // Default: false
   bool sync; // &#26159;&#21542;&#27599;&#27425;&#20889;&#37117;&#38656;&#35201;fsync.
@@ -2421,7 +2403,7 @@ struct WriteOptions {
   bool IsNotFound() const { return code() == kNotFound; }
 
   // Return a string representation of this status suitable for printing.
-  // Returns the string <span style="color: #ffff00;">"OK"</span> for success.
+  // Returns the string <span class="org-string">"OK"</span> for success.
   std::string ToString() const;
 
  private:
@@ -2574,14 +2556,14 @@ inline void Status::operator=(const Status&amp; s) {
 class Table {
  public:
   // Attempt to open the table that is stored in bytes [0..file_size)
-  // of <span style="color: #ffff00;">"file"</span>, and read the metadata entries necessary to allow
+  // of <span class="org-string">"file"</span>, and read the metadata entries necessary to allow
   // retrieving data from the table.
   //
-  // If successful, returns ok and sets <span style="color: #ffff00;">"*table"</span> to the newly opened
-  // table.  The client should delete <span style="color: #ffff00;">"*table"</span> when no longer needed.
-  // If there was an error while initializing the table, sets <span style="color: #ffff00;">"*table"</span>
+  // If successful, returns ok and sets <span class="org-string">"*table"</span> to the newly opened
+  // table.  The client should delete <span class="org-string">"*table"</span> when no longer needed.
+  // If there was an error while initializing the table, sets <span class="org-string">"*table"</span>
   // to NULL and returns a non-ok status.  Does not take ownership of
-  // <span style="color: #ffff00;">"*source"</span>, but the client must ensure that <span style="color: #ffff00;">"source"</span> remains live
+  // <span class="org-string">"*source"</span>, but the client must ensure that <span class="org-string">"source"</span> remains live
   // for the duration of the returned table's lifetime.
   //
   // *file must remain live while this Table is in use.
@@ -2647,10 +2629,10 @@ class Table {
   WriteBatch();
   ~WriteBatch();
 
-  // Store the mapping <span style="color: #ffff00;">"key-&gt;value"</span> in the database.
+  // Store the mapping <span class="org-string">"key-&gt;value"</span> in the database.
   void Put(const Slice&amp; key, const Slice&amp; value);
 
-  // If the database contains a mapping for <span style="color: #ffff00;">"key"</span>, erase it.  Else do nothing.
+  // If the database contains a mapping for <span class="org-string">"key"</span>, erase it.  Else do nothing.
   void Delete(const Slice&amp; key);
 
   // Clear all updates buffered in this batch.
@@ -2747,13 +2729,13 @@ class Table {
 
 <pre class="src src-C++">Status SetCurrentFile(Env* env, const std::string&amp; dbname,
                       uint64_t descriptor_number) {
-  // Remove leading <span style="color: #ffff00;">"dbname/"</span> and add newline to manifest file name
+  // Remove leading <span class="org-string">"dbname/"</span> and add newline to manifest file name
   std::string manifest = DescriptorFileName(dbname, descriptor_number);
   Slice contents = manifest;
-  assert(contents.starts_with(dbname + <span style="color: #ffff00;">"/"</span>));
+  assert(contents.starts_with(dbname + <span class="org-string">"/"</span>));
   contents.remove_prefix(dbname.size() + 1);
   std::string tmp = TempFileName(dbname, descriptor_number);
-  Status s = WriteStringToFile(env, contents.ToString() + <span style="color: #ffff00;">"\n"</span>, tmp);
+  Status s = WriteStringToFile(env, contents.ToString() + <span class="org-string">"\n"</span>, tmp);
   if (s.ok()) {
     s = env-&gt;RenameFile(tmp, CurrentFileName(dbname));
   }
@@ -2878,7 +2860,7 @@ static const int kMaxMemCompactLevel = 2;
   Status bg_error_; // &#21518;&#21488;&#32447;&#31243;&#36816;&#34892;&#29366;&#24577;.
 
   // Per level compaction stats.  stats_[level] stores the stats for
-  // compactions that produced data for the specified <span style="color: #ffff00;">"level"</span>.
+  // compactions that produced data for the specified <span class="org-string">"level"</span>.
   struct CompactionStats { // &#21387;&#32553;&#29366;&#24577;&#20449;&#24687;.
     int64_t micros;
     int64_t bytes_read;
@@ -3087,7 +3069,7 @@ static const int kMaxMemCompactLevel = 2;
   delete file;
   // &#28982;&#21518;&#23558;CURRENT&#37324;&#38754;&#30340;&#25991;&#20214;&#35774;&#32622;&#20026;&#29256;&#26412;1&#30340;manifest&#25991;&#20214;.
   if (s.ok()) {
-    // Make <span style="color: #ffff00;">"CURRENT"</span> file that points to the new manifest file.
+    // Make <span class="org-string">"CURRENT"</span> file that points to the new manifest file.
     s = SetCurrentFile(env_, dbname_, 1);
   } else {
     env_-&gt;DeleteFile(manifest);
@@ -3130,12 +3112,12 @@ static const int kMaxMemCompactLevel = 2;
       }
     } else {
       return Status::InvalidArgument(
-          dbname_, <span style="color: #ffff00;">"does not exist (create_if_missing is false)"</span>);
+          dbname_, <span class="org-string">"does not exist (create_if_missing is false)"</span>);
     }
   } else {
     if (options_.error_if_exists) {
       return Status::InvalidArgument(
-          dbname_, <span style="color: #ffff00;">"exists (error_if_exists is true)"</span>);
+          dbname_, <span class="org-string">"exists (error_if_exists is true)"</span>);
     }
   }
 
@@ -3223,8 +3205,8 @@ static const int kMaxMemCompactLevel = 2;
     const char* fname;
     Status* status;  // NULL if options_.paranoid_checks==false
     virtual void Corruption(size_t bytes, const Status&amp; s) {
-      Log(info_log, <span style="color: #ffff00;">"%s%s: dropping %d bytes; %s"</span>,
-          (this-&gt;status == NULL ? <span style="color: #ffff00;">"(ignoring error) "</span> : <span style="color: #ffff00;">""</span>),
+      Log(info_log, <span class="org-string">"%s%s: dropping %d bytes; %s"</span>,
+          (this-&gt;status == NULL ? <span class="org-string">"(ignoring error) "</span> : <span class="org-string">""</span>),
           fname, static_cast&lt;int&gt;(bytes), s.ToString().c_str());
       if (this-&gt;status != NULL &amp;&amp; this-&gt;status-&gt;ok()) *this-&gt;status = s;
     }
@@ -3256,7 +3238,7 @@ static const int kMaxMemCompactLevel = 2;
   // &#35835;&#21462;&#26085;&#24535;&#25991;&#20214;.&#20570;&#26657;&#39564;&#24182;&#19988;&#20174;0&#20559;&#31227;&#24320;&#22987;&#35835;&#21462;.
   log::Reader reader(file, &amp;reporter, true/*checksum*/,
                      0/*initial_offset*/);
-  Log(options_.info_log, <span style="color: #ffff00;">"Recovering log #%llu"</span>,
+  Log(options_.info_log, <span class="org-string">"Recovering log #%llu"</span>,
       (unsigned long long) log_number);
 
   // Read all the records and add to a memtable
@@ -3269,7 +3251,7 @@ static const int kMaxMemCompactLevel = 2;
          status.ok()) {
     if (record.size() &lt; 12) {
       reporter.Corruption(
-          record.size(), Status::Corruption(<span style="color: #ffff00;">"log record too small"</span>));
+          record.size(), Status::Corruption(<span class="org-string">"log record too small"</span>));
       continue;
     }
     // log&#37324;&#38754;&#37117;&#26159;write batch&#30340;&#20869;&#23481;
@@ -3338,7 +3320,7 @@ static const int kMaxMemCompactLevel = 2;
   if (s-&gt;ok() || options_.paranoid_checks) {
     // No change needed
   } else {
-    Log(options_.info_log, <span style="color: #ffff00;">"Ignoring error %s"</span>, s-&gt;ToString().c_str());
+    Log(options_.info_log, <span class="org-string">"Ignoring error %s"</span>, s-&gt;ToString().c_str());
     *s = Status::OK();
   }
 }
@@ -3369,7 +3351,7 @@ static const int kMaxMemCompactLevel = 2;
   //
   pending_outputs_.insert(meta.number);
   Iterator* iter = mem-&gt;NewIterator();
-  Log(options_.info_log, <span style="color: #ffff00;">"Level-0 table #%llu: started"</span>,
+  Log(options_.info_log, <span class="org-string">"Level-0 table #%llu: started"</span>,
       (unsigned long long) meta.number);
 
   Status s;
@@ -3380,7 +3362,7 @@ static const int kMaxMemCompactLevel = 2;
     mutex_.Lock();
   }
 
-  Log(options_.info_log, <span style="color: #ffff00;">"Level-0 table #%llu: %lld bytes %s"</span>,
+  Log(options_.info_log, <span class="org-string">"Level-0 table #%llu: %lld bytes %s"</span>,
       (unsigned long long) meta.number,
       (unsigned long long) meta.file_size,
       s.ToString().c_str());
@@ -3569,7 +3551,7 @@ Status DBImpl::MakeRoomForWrite(bool force) {
       // There are too many level-0 files.
       // level0&#25991;&#20214;&#20010;&#25968;&#36807;&#22810;&#30340;&#35805;&#37027;&#20040;&#31561;&#24453;compaction&#30340;&#23436;&#25104;.
       // NOTE(dirlt):&#36825;&#20010;&#37096;&#20998;&#38750;&#24120;&#37325;&#35201;&#65292;&#36825;&#26679;&#21487;&#20197;&#38480;&#21046;&#20889;&#20837;&#36895;&#24230;&#20445;&#35777;&#31995;&#32479;balance.
-      Log(options_.info_log, <span style="color: #ffff00;">"waiting...\n"</span>);
+      Log(options_.info_log, <span class="org-string">"waiting...\n"</span>);
       bg_cv_.Wait();
     } else {
       // Attempt to switch to a new memtable and trigger compaction of old
@@ -3699,11 +3681,11 @@ Status DBImpl::MakeRoomForWrite(bool force) {
       manual_end = c-&gt;input(0, c-&gt;num_input_files(0) - 1)-&gt;largest;
     }
     Log(options_.info_log,
-        <span style="color: #ffff00;">"Manual compaction at level-%d from %s .. %s; will stop at %s\n"</span>,
+        <span class="org-string">"Manual compaction at level-%d from %s .. %s; will stop at %s\n"</span>,
         m-&gt;level,
-        (m-&gt;begin ? m-&gt;begin-&gt;DebugString().c_str() : <span style="color: #ffff00;">"(begin)"</span>),
-        (m-&gt;end ? m-&gt;end-&gt;DebugString().c_str() : <span style="color: #ffff00;">"(end)"</span>),
-        (m-&gt;done ? <span style="color: #ffff00;">"(end)"</span> : manual_end.DebugString().c_str()));
+        (m-&gt;begin ? m-&gt;begin-&gt;DebugString().c_str() : <span class="org-string">"(begin)"</span>),
+        (m-&gt;end ? m-&gt;end-&gt;DebugString().c_str() : <span class="org-string">"(end)"</span>),
+        (m-&gt;done ? <span class="org-string">"(end)"</span> : manual_end.DebugString().c_str()));
   } else { // &#22914;&#26524;&#19981;&#26159;manual compaction&#37027;&#20040;&#25361;&#36873;&#19968;&#20010;&#20986;&#26469;.
     c = versions_-&gt;PickCompaction();
   }
@@ -3720,7 +3702,7 @@ Status DBImpl::MakeRoomForWrite(bool force) {
                        f-&gt;smallest, f-&gt;largest);
     status = versions_-&gt;LogAndApply(c-&gt;edit(), &amp;mutex_);
     VersionSet::LevelSummaryStorage tmp;
-    Log(options_.info_log, <span style="color: #ffff00;">"Moved #%lld to level-%d %lld bytes %s: %s\n"</span>,
+    Log(options_.info_log, <span class="org-string">"Moved #%lld to level-%d %lld bytes %s: %s\n"</span>,
         static_cast&lt;unsigned long long&gt;(f-&gt;number),
         c-&gt;level() + 1,
         static_cast&lt;unsigned long long&gt;(f-&gt;file_size),
@@ -3739,7 +3721,7 @@ Status DBImpl::MakeRoomForWrite(bool force) {
     // Ignore compaction errors found during shutting down
   } else {
     Log(options_.info_log,
-        <span style="color: #ffff00;">"Compaction error: %s"</span>, status.ToString().c_str());
+        <span class="org-string">"Compaction error: %s"</span>, status.ToString().c_str());
     if (options_.paranoid_checks &amp;&amp; bg_error_.ok()) {
       bg_error_ = status;
     }
@@ -3785,7 +3767,7 @@ Status DBImpl::MakeRoomForWrite(bool force) {
   base-&gt;Unref();
 
   if (s.ok() &amp;&amp; shutting_down_.Acquire_Load()) {
-    s = Status::IOError(<span style="color: #ffff00;">"Deleting DB during memtable compaction"</span>);
+    s = Status::IOError(<span class="org-string">"Deleting DB during memtable compaction"</span>);
   }
 
   // Replace immutable memtable with the generated Table
@@ -3956,7 +3938,7 @@ Status DBImpl::MakeRoomForWrite(bool force) {
   const uint64_t start_micros = env_-&gt;NowMicros();
   int64_t imm_micros = 0;  // Micros spent doing imm_ compactions
 
-  Log(options_.info_log,  <span style="color: #ffff00;">"Compacting %d@%d + %d@%d files"</span>,
+  Log(options_.info_log,  <span class="org-string">"Compacting %d@%d + %d@%d files"</span>,
       compact-&gt;compaction-&gt;num_input_files(0),
       compact-&gt;compaction-&gt;level(),
       compact-&gt;compaction-&gt;num_input_files(1),
@@ -4047,8 +4029,8 @@ Status DBImpl::MakeRoomForWrite(bool force) {
     }
 #if 0
     Log(options_.info_log,
-        <span style="color: #ffff00;">"  Compact: %s, seq %d, type: %d %d, drop: %d, is_base: %d, "</span>
-        <span style="color: #ffff00;">"%d smallest_snapshot: %d"</span>,
+        <span class="org-string">"  Compact: %s, seq %d, type: %d %d, drop: %d, is_base: %d, "</span>
+        <span class="org-string">"%d smallest_snapshot: %d"</span>,
         ikey.user_key.ToString().c_str(),
         (int)ikey.sequence, ikey.type, kTypeValue, drop,
         compact-&gt;compaction-&gt;IsBaseLevelForKey(ikey.user_key),
@@ -4088,7 +4070,7 @@ Status DBImpl::MakeRoomForWrite(bool force) {
   }
 
   if (status.ok() &amp;&amp; shutting_down_.Acquire_Load()) {
-    status = Status::IOError(<span style="color: #ffff00;">"Deleting DB during compaction"</span>);
+    status = Status::IOError(<span class="org-string">"Deleting DB during compaction"</span>);
   }
   // &#26368;&#21518;&#21487;&#33021;&#38656;&#35201;&#20851;&#38381;compaction&#30340;&#25991;&#20214;.
   if (status.ok() &amp;&amp; compact-&gt;builder != NULL) {
@@ -4123,7 +4105,7 @@ Status DBImpl::MakeRoomForWrite(bool force) {
   }
   VersionSet::LevelSummaryStorage tmp;
   Log(options_.info_log,
-      <span style="color: #ffff00;">"compacted to: %s"</span>, versions_-&gt;LevelSummary(&amp;tmp));
+      <span class="org-string">"compacted to: %s"</span>, versions_-&gt;LevelSummary(&amp;tmp));
   return status;
 }
 </pre>
@@ -4180,7 +4162,7 @@ Status DBImpl::MakeRoomForWrite(bool force) {
 
 <pre class="src src-C++">Status DBImpl::InstallCompactionResults(CompactionState* compact) {
   mutex_.AssertHeld();
-  Log(options_.info_log,  <span style="color: #ffff00;">"Compacted %d@%d + %d@%d files =&gt; %lld bytes"</span>,
+  Log(options_.info_log,  <span class="org-string">"Compacted %d@%d + %d@%d files =&gt; %lld bytes"</span>,
       compact-&gt;compaction-&gt;num_input_files(0),
       compact-&gt;compaction-&gt;level(),
       compact-&gt;compaction-&gt;num_input_files(1),
@@ -4311,7 +4293,7 @@ Status DBImpl::MakeRoomForWrite(bool force) {
     delete iter;
     if (s.ok()) {
       Log(options_.info_log,
-          <span style="color: #ffff00;">"Generated table #%llu: %lld keys, %lld bytes"</span>,
+          <span class="org-string">"Generated table #%llu: %lld keys, %lld bytes"</span>,
           (unsigned long long) output_number,
           (unsigned long long) current_entries,
           (unsigned long long) current_bytes);
@@ -4346,7 +4328,7 @@ Status DBImpl::MakeRoomForWrite(bool force) {
     last_sequence += WriteBatchInternal::Count(updates); // &#26356;&#26032;&#19978;&#27425;sequence.
 
     // Add to log and apply to memtable.  We can release the lock during
-    // this phase since the <span style="color: #ffff00;">"logger_"</span> flag protects against concurrent
+    // this phase since the <span class="org-string">"logger_"</span> flag protects against concurrent
     // loggers and concurrent writes into mem_.
     {
       assert(logger_ == &amp;self);
@@ -4442,29 +4424,29 @@ Options SanitizeOptions(const std::string&amp; dbname,
   MutexLock l(&amp;mutex_);
   Slice in = property;
   // &#23646;&#24615;&#30340;key&#24517;&#39035;&#26159;&#20197;leveldb.&#24320;&#22836;&#30340;.
-  Slice prefix(<span style="color: #ffff00;">"leveldb."</span>);
+  Slice prefix(<span class="org-string">"leveldb."</span>);
   if (!in.starts_with(prefix)) return false;
   in.remove_prefix(prefix.size());
 
-  if (in.starts_with(<span style="color: #ffff00;">"num-files-at-level"</span>)) { // &#27599;&#20010;level&#30340;&#25991;&#20214;&#25968;&#30446;.
-    in.remove_prefix(strlen(<span style="color: #ffff00;">"num-files-at-level"</span>));
+  if (in.starts_with(<span class="org-string">"num-files-at-level"</span>)) { // &#27599;&#20010;level&#30340;&#25991;&#20214;&#25968;&#30446;.
+    in.remove_prefix(strlen(<span class="org-string">"num-files-at-level"</span>));
     uint64_t level;
     bool ok = ConsumeDecimalNumber(&amp;in, &amp;level) &amp;&amp; in.empty();
     if (!ok || level &gt;= config::kNumLevels) {
       return false;
     } else {
       char buf[100];
-      snprintf(buf, sizeof(buf), <span style="color: #ffff00;">"%d"</span>,
+      snprintf(buf, sizeof(buf), <span class="org-string">"%d"</span>,
                versions_-&gt;NumLevelFiles(static_cast&lt;int&gt;(level)));
       *value = buf;
       return true;
     }
-  } else if (in == <span style="color: #ffff00;">"stats"</span>) { // &#25972;&#20010;db&#30340;&#29366;&#24577;.
+  } else if (in == <span class="org-string">"stats"</span>) { // &#25972;&#20010;db&#30340;&#29366;&#24577;.
     char buf[200];
     snprintf(buf, sizeof(buf),
-             <span style="color: #ffff00;">"                               Compactions\n"</span>
-             <span style="color: #ffff00;">"Level  Files Size(MB) Time(sec) Read(MB) Write(MB)\n"</span>
-             <span style="color: #ffff00;">"--------------------------------------------------\n"</span>
+             <span class="org-string">"                               Compactions\n"</span>
+             <span class="org-string">"Level  Files Size(MB) Time(sec) Read(MB) Write(MB)\n"</span>
+             <span class="org-string">"--------------------------------------------------\n"</span>
              );
     value-&gt;append(buf);
     for (int level = 0; level &lt; config::kNumLevels; level++) {
@@ -4472,7 +4454,7 @@ Options SanitizeOptions(const std::string&amp; dbname,
       if (stats_[level].micros &gt; 0 || files &gt; 0) {
         snprintf(
             buf, sizeof(buf),
-            <span style="color: #ffff00;">"%3d %8d %8.0f %9.0f %8.0f %9.0f\n"</span>,
+            <span class="org-string">"%3d %8d %8.0f %9.0f %8.0f %9.0f\n"</span>,
             level,
             files,
             versions_-&gt;NumLevelBytes(level) / 1048576.0,
@@ -4483,7 +4465,7 @@ Options SanitizeOptions(const std::string&amp; dbname,
       }
     }
     return true;
-  } else if (in == <span style="color: #ffff00;">"sstables"</span>) { // &#24403;&#21069;sstables&#30340;&#29366;&#24577;.
+  } else if (in == <span class="org-string">"sstables"</span>) { // &#24403;&#21069;sstables&#30340;&#29366;&#24577;.
     // &#36825;&#20010;&#26159;Version&#25171;&#21360;&#20986;&#30340;&#23383;&#31526;&#20018;.
     *value = versions_-&gt;current()-&gt;DebugString();
     return true;
@@ -4622,7 +4604,7 @@ Options SanitizeOptions(const std::string&amp; dbname,
           break;
         case kTempFile:
           // Any temp files that are currently being written to must
-          // be recorded in pending_outputs_, which is inserted into <span style="color: #ffff00;">"live"</span>
+          // be recorded in pending_outputs_, which is inserted into <span class="org-string">"live"</span>
           keep = (live.find(number) != live.end()); // &#21028;&#26029;&#25991;&#20214;&#26159;&#21542;&#38656;&#35201;&#21024;&#38500;.
           break;
         case kCurrentFile:
@@ -4636,10 +4618,10 @@ Options SanitizeOptions(const std::string&amp; dbname,
         if (type == kTableFile) { // &#22914;&#26524;&#26159;table&#25991;&#20214;&#30340;&#35805;&#36824;&#38656;&#35201;&#20174;cache&#37324;&#38754;&#21435;&#25481;.
           table_cache_-&gt;Evict(number);
         }
-        Log(options_.info_log, <span style="color: #ffff00;">"Delete type=%d #%lld\n"</span>,
+        Log(options_.info_log, <span class="org-string">"Delete type=%d #%lld\n"</span>,
             int(type),
             static_cast&lt;unsigned long long&gt;(number));
-        env_-&gt;DeleteFile(dbname_ + <span style="color: #ffff00;">"/"</span> + filenames[i]); // &#28982;&#21518;&#21024;&#38500;&#25991;&#20214;.
+        env_-&gt;DeleteFile(dbname_ + <span class="org-string">"/"</span> + filenames[i]); // &#28982;&#21518;&#21024;&#38500;&#25991;&#20214;.
       }
     }
   }
@@ -4938,7 +4920,7 @@ class DBIter: public Iterator {
 
 <pre class="src src-C++">inline bool DBIter::ParseKey(ParsedInternalKey* ikey) {
   if (!ParseInternalKey(iter_-&gt;key(), ikey)) {
-    status_ = Status::Corruption(<span style="color: #ffff00;">"corrupted internal key in DBIter"</span>);
+    status_ = Status::Corruption(<span class="org-string">"corrupted internal key in DBIter"</span>);
     return false;
   } else {
     return true;
@@ -5269,7 +5251,7 @@ class LookupKey {
   //    tag      uint64
   //                                    &lt;-- end_
   // The array is a suitable MemTable key.
-  // The suffix starting with <span style="color: #ffff00;">"userkey"</span> can be used as an InternalKey.
+  // The suffix starting with <span class="org-string">"userkey"</span> can be used as an InternalKey.
   const char* start_;
   const char* kstart_;
   const char* end_;
@@ -5483,7 +5465,7 @@ class InternalKey {
 </p>
 
 
-<pre class="src src-C++">// Return the length of the encoding of <span style="color: #ffff00;">"key"</span>.
+<pre class="src src-C++">// Return the length of the encoding of <span class="org-string">"key"</span>.
 inline size_t InternalKeyEncodingLength(const ParsedInternalKey&amp; key) {
   return key.user_key.size() + 8;
 }
@@ -5578,7 +5560,7 @@ class InternalKeyComparator : public Comparator {
   const Comparator* user_comparator_;
  public:
   explicit InternalKeyComparator(const Comparator* c) : user_comparator_(c) { }
-  virtual const char* Name() const; // <span style="color: #ffff00;">"leveldb.InternalKeyComparator"</span>
+  virtual const char* Name() const; // <span class="org-string">"leveldb.InternalKeyComparator"</span>
   virtual int Compare(const Slice&amp; a, const Slice&amp; b) const;
   virtual void FindShortestSeparator(
       std::string* start,
@@ -5919,7 +5901,7 @@ key的话采用这个filemetadata里面的最大的key,而value采用filenumber+
   TableCache* cache = reinterpret_cast&lt;TableCache*&gt;(arg);
   if (file_value.size() != 16) {
     return NewErrorIterator(
-        Status::Corruption(<span style="color: #ffff00;">"FileReader invoked with unexpected value"</span>));
+        Status::Corruption(<span class="org-string">"FileReader invoked with unexpected value"</span>));
   } else {
     return cache-&gt;NewIterator(options,
                               DecodeFixed64(file_value.data()),
@@ -5943,7 +5925,7 @@ key的话采用这个filemetadata里面的最大的key,而value采用filenumber+
 
 <pre class="src src-C++">// Return the smallest index i such that files[i]-&gt;largest &gt;= key.
 // Return files.size() if there is no such file.
-// REQUIRES: <span style="color: #ffff00;">"files"</span> contains a sorted list of non-overlapping files.
+// REQUIRES: <span class="org-string">"files"</span> contains a sorted list of non-overlapping files.
 int FindFile(const InternalKeyComparator&amp; icmp,
              const std::vector&lt;FileMetaData*&gt;&amp; files,
              const Slice&amp; key) {
@@ -5953,12 +5935,12 @@ int FindFile(const InternalKeyComparator&amp; icmp,
     uint32_t mid = (left + right) / 2;
     const FileMetaData* f = files[mid];
     if (icmp.InternalKeyComparator::Compare(f-&gt;largest.Encode(), key) &lt; 0) {
-      // Key at <span style="color: #ffff00;">"mid.largest"</span> is &lt; <span style="color: #ffff00;">"target"</span>.  Therefore all
-      // files at or before <span style="color: #ffff00;">"mid"</span> are uninteresting.
+      // Key at <span class="org-string">"mid.largest"</span> is &lt; <span class="org-string">"target"</span>.  Therefore all
+      // files at or before <span class="org-string">"mid"</span> are uninteresting.
       left = mid + 1;
     } else {
-      // Key at <span style="color: #ffff00;">"mid.largest"</span> is &gt;= <span style="color: #ffff00;">"target"</span>.  Therefore all files
-      // after <span style="color: #ffff00;">"mid"</span> are uninteresting.
+      // Key at <span class="org-string">"mid.largest"</span> is &gt;= <span class="org-string">"target"</span>.  Therefore all files
+      // after <span class="org-string">"mid"</span> are uninteresting.
       right = mid;
     }
   }
@@ -5979,7 +5961,7 @@ int FindFile(const InternalKeyComparator&amp; icmp,
 </p>
 
 
-<pre class="src src-C++">// Returns true iff some file in <span style="color: #ffff00;">"files"</span> overlaps the user key range
+<pre class="src src-C++">// Returns true iff some file in <span class="org-string">"files"</span> overlaps the user key range
 // [*smallest,*largest].
 // smallest==NULL represents a key smaller than all keys in the DB.
 // largest==NULL represents a key largest than all keys in the DB.
@@ -6174,7 +6156,7 @@ bool SomeFileOverlapsRange(
       } else {
         tmp2 = files[index];
         if (ucmp-&gt;Compare(user_key, tmp2-&gt;smallest.user_key()) &lt; 0) {
-          // All of <span style="color: #ffff00;">"tmp2"</span> is past any data for user_key
+          // All of <span class="org-string">"tmp2"</span> is past any data for user_key
           files = NULL;
           num_files = 0;
         } else {
@@ -6234,7 +6216,7 @@ bool SomeFileOverlapsRange(
 </p>
 
 
-<pre class="src src-C++">// If <span style="color: #ffff00;">"*iter"</span> points at a value or deletion for user_key, store
+<pre class="src src-C++">// If <span class="org-string">"*iter"</span> points at a value or deletion for user_key, store
 // either the value, or a NotFound error and return true.
 // Else return false.
 static bool GetValue(const Comparator* cmp,
@@ -6247,7 +6229,7 @@ static bool GetValue(const Comparator* cmp,
   ParsedInternalKey parsed_key;
   // &#23545;&#20110;iterator&#37324;&#38754;&#26159;internal key.&#35299;&#26512;&#20986;parsed internal key&#20986;&#26469;.
   if (!ParseInternalKey(iter-&gt;key(), &amp;parsed_key)) {
-    *s = Status::Corruption(<span style="color: #ffff00;">"corrupted key for "</span>, user_key);
+    *s = Status::Corruption(<span class="org-string">"corrupted key for "</span>, user_key);
     return true;
   }
   // &#27604;&#36739;user key&#20869;&#23481;&#26159;&#21542;&#19968;&#33268;.&#36825;&#37324;&#27809;&#26377;&#32771;&#34385;sequence number.
@@ -6309,7 +6291,7 @@ static bool GetValue(const Comparator* cmp,
 </p>
 
 
-<pre class="src src-C++">// Store in <span style="color: #ffff00;">"*inputs"</span> all files in <span style="color: #ffff00;">"level"</span> that overlap [begin,end]
+<pre class="src src-C++">// Store in <span class="org-string">"*inputs"</span> all files in <span class="org-string">"level"</span> that overlap [begin,end]
 void Version::GetOverlappingInputs(
     int level,
     const InternalKey* begin,
@@ -6329,9 +6311,9 @@ void Version::GetOverlappingInputs(
     const Slice file_start = f-&gt;smallest.user_key();
     const Slice file_limit = f-&gt;largest.user_key();
     if (begin != NULL &amp;&amp; user_cmp-&gt;Compare(file_limit, user_begin) &lt; 0) {
-      // <span style="color: #ffff00;">"f"</span> is completely before specified range; skip it
+      // <span class="org-string">"f"</span> is completely before specified range; skip it
     } else if (end != NULL &amp;&amp; user_cmp-&gt;Compare(file_start, user_end) &gt; 0) {
-      // <span style="color: #ffff00;">"f"</span> is completely after specified range; skip it
+      // <span class="org-string">"f"</span> is completely after specified range; skip it
     } else {
       inputs-&gt;push_back(f);
       if (level == 0) {
@@ -6466,20 +6448,20 @@ int Version::PickLevelForMemTableOutput(
     //   --- level 1 ---
     //   17:123['a' .. 'd']
     //   20:43['e' .. 'g']
-    r.append(<span style="color: #ffff00;">"--- level "</span>);
+    r.append(<span class="org-string">"--- level "</span>);
     AppendNumberTo(&amp;r, level);
-    r.append(<span style="color: #ffff00;">" ---\n"</span>);
+    r.append(<span class="org-string">" ---\n"</span>);
     const std::vector&lt;FileMetaData*&gt;&amp; files = files_[level];
     for (size_t i = 0; i &lt; files.size(); i++) {
       r.push_back(' ');
       AppendNumberTo(&amp;r, files[i]-&gt;number); // file_number
       r.push_back(':');
       AppendNumberTo(&amp;r, files[i]-&gt;file_size); // file&#22823;&#23567;.
-      r.append(<span style="color: #ffff00;">"["</span>);
+      r.append(<span class="org-string">"["</span>);
       r.append(files[i]-&gt;smallest.DebugString()); // &#26368;&#23567;&#21644;&#26368;&#22823;&#30340;key&#30340;&#25171;&#21360;.
-      r.append(<span style="color: #ffff00;">" .. "</span>);
+      r.append(<span class="org-string">" .. "</span>);
       r.append(files[i]-&gt;largest.DebugString());
-      r.append(<span style="color: #ffff00;">"]\n"</span>);
+      r.append(<span class="org-string">"]\n"</span>);
     }
   }
   return r;
@@ -6613,7 +6595,7 @@ version_set了解到哪些文件依然是被正在使用的.
 
 
 <pre class="src src-C++">void VersionSet::AppendVersion(Version* v) {
-  // Make <span style="color: #ffff00;">"v"</span> current
+  // Make <span class="org-string">"v"</span> current
   assert(v-&gt;refs_ == 0);
   assert(v != current_);
   if (current_ != NULL) {
@@ -6734,19 +6716,19 @@ version_set了解到哪些文件依然是被正在使用的.
       if (icmp_.Compare(files[i]-&gt;largest, ikey) &lt;= 0) { // &#22914;&#26524;&#27604;largest key&#22823;&#30340;&#35805;&#37027;&#20040;&#36825;&#20010;
         // &#37027;&#20040;&#20559;&#31227;&#38656;&#35201;&#31639;&#19978;&#25972;&#20010;&#25991;&#20214;.&#20294;&#26159;&#36825;&#37324;&#36824;&#21253;&#25324;&#20102;index block,meta block&#20197;&#21450;footer&#22823;&#23567;.
         // &#25152;&#20197;&#21482;&#33021;&#22815;&#35828;&#26159;&#22823;&#33268;&#22823;&#23567;.
-        // Entire file is before <span style="color: #ffff00;">"ikey"</span>, so just add the file size
+        // Entire file is before <span class="org-string">"ikey"</span>, so just add the file size
         result += files[i]-&gt;file_size;
       } else if (icmp_.Compare(files[i]-&gt;smallest, ikey) &gt; 0) { // &#22914;&#26524;smallest&#27604;&#24403;&#21069;key&#22823;&#30340;&#35805;&#37027;&#20040;&#21462;&#28040;.
-        // Entire file is after <span style="color: #ffff00;">"ikey"</span>, so ignore
+        // Entire file is after <span class="org-string">"ikey"</span>, so ignore
         if (level &gt; 0) { // &#22914;&#26524;&#26159;&gt;0&#30340;level&#37027;&#20040;&#21487;&#20197;&#30452;&#25509;&#21462;&#28040;.&#22240;&#20026;&#36825;&#20010;&#37096;&#20998;&#30340;file&#37117;&#26159;&#25353;&#29031;smallest&#25490;&#24207;&#30340;.
           // Files other than level 0 are sorted by meta-&gt;smallest, so
           // no further files in this level will contain data for
-          // <span style="color: #ffff00;">"ikey"</span>.
+          // <span class="org-string">"ikey"</span>.
           break;
         }
       } else { // &#22914;&#26524;&#23384;&#22312;&#20132;&#38598;&#30340;&#35805;&#37027;&#20040;&#37027;&#20040;&#21487;&#20197;&#26500;&#36896;&#20986;Table&#23545;&#35937;&#25214;&#21040;&#36825;&#20010;key&#22823;&#33268;&#20559;&#31227;.
-        // <span style="color: #ffff00;">"ikey"</span> falls in the range for this table.  Add the
-        // approximate offset of <span style="color: #ffff00;">"ikey"</span> within the table.
+        // <span class="org-string">"ikey"</span> falls in the range for this table.  Add the
+        // approximate offset of <span class="org-string">"ikey"</span> within the table.
         Table* tableptr;
         Iterator* iter = table_cache_-&gt;NewIterator(
             ReadOptions(), files[i]-&gt;number, files[i]-&gt;file_size, &amp;tableptr);
@@ -6805,7 +6787,7 @@ version_set了解到哪些文件依然是被正在使用的.
   // Update code if kNumLevels changes
   assert(config::kNumLevels == 7);
   snprintf(scratch-&gt;buffer, sizeof(scratch-&gt;buffer),
-           <span style="color: #ffff00;">"files[ %d %d %d %d %d %d %d ]"</span>,
+           <span class="org-string">"files[ %d %d %d %d %d %d %d ]"</span>,
            int(current_-&gt;files_[0].size()),
            int(current_-&gt;files_[1].size()),
            int(current_-&gt;files_[2].size()),
@@ -6938,18 +6920,18 @@ CURRENT里面的manifest文件回放之后就得到最新的内容.然后根据�
   };
 
   // &#35835;&#21462;&#24403;&#21069;current&#36825;&#20010;&#20869;&#23481;,&#24471;&#21040;&#26368;&#26032;&#30340;manifest&#25991;&#20214;.
-  // Read <span style="color: #ffff00;">"CURRENT"</span> file, which contains a pointer to the current manifest file
+  // Read <span class="org-string">"CURRENT"</span> file, which contains a pointer to the current manifest file
   std::string current;
   Status s = ReadFileToString(env_, CurrentFileName(dbname_), &amp;current);
   if (!s.ok()) {
     return s;
   }
   if (current.empty() || current[current.size()-1] != '\n') {
-    return Status::Corruption(<span style="color: #ffff00;">"CURRENT file does not end with newline"</span>);
+    return Status::Corruption(<span class="org-string">"CURRENT file does not end with newline"</span>);
   }
   current.resize(current.size() - 1);
 
-  std::string dscname = dbname_ + <span style="color: #ffff00;">"/"</span> + current;
+  std::string dscname = dbname_ + <span class="org-string">"/"</span> + current;
   SequentialFile* file;
   s = env_-&gt;NewSequentialFile(dscname, &amp;file);
   if (!s.ok()) {
@@ -6981,7 +6963,7 @@ CURRENT里面的manifest文件回放之后就得到最新的内容.然后根据�
         if (edit.has_comparator_ &amp;&amp;
             edit.comparator_ != icmp_.user_comparator()-&gt;Name()) {
           s = Status::InvalidArgument(
-              edit.comparator_ + <span style="color: #ffff00;">"does not match existing comparator "</span>,
+              edit.comparator_ + <span class="org-string">"does not match existing comparator "</span>,
               icmp_.user_comparator()-&gt;Name());
         }
       }
@@ -7017,11 +6999,11 @@ CURRENT里面的manifest文件回放之后就得到最新的内容.然后根据�
 
   if (s.ok()) {
     if (!have_next_file) {
-      s = Status::Corruption(<span style="color: #ffff00;">"no meta-nextfile entry in descriptor"</span>);
+      s = Status::Corruption(<span class="org-string">"no meta-nextfile entry in descriptor"</span>);
     } else if (!have_log_number) {
-      s = Status::Corruption(<span style="color: #ffff00;">"no meta-lognumber entry in descriptor"</span>);
+      s = Status::Corruption(<span class="org-string">"no meta-lognumber entry in descriptor"</span>);
     } else if (!have_last_sequence) {
-      s = Status::Corruption(<span style="color: #ffff00;">"no last-sequence-number entry in descriptor"</span>);
+      s = Status::Corruption(<span class="org-string">"no last-sequence-number entry in descriptor"</span>);
     }
 
     if (!have_prev_log_number) {
@@ -7369,8 +7351,8 @@ void VersionSet::GetRange2(const std::vector&lt;FileMetaData*&gt;&amp; inputs1,
   InternalKey all_start, all_limit;
   GetRange2(c-&gt;inputs_[0], c-&gt;inputs_[1], &amp;all_start, &amp;all_limit);
 
-  // See if we can grow the number of inputs in <span style="color: #ffff00;">"level"</span> without
-  // changing the number of <span style="color: #ffff00;">"level+1"</span> files we pick up.
+  // See if we can grow the number of inputs in <span class="org-string">"level"</span> without
+  // changing the number of <span class="org-string">"level+1"</span> files we pick up.
   // &#35266;&#23519;&#26159;&#21542;&#21487;&#20197;&#25193;&#22823;level input files&#25968;&#37327;&#20294;&#26159;&#19981;&#36896;&#25104;level+1 input files&#25968;&#37327;&#21464;&#21270;.
   if (!c-&gt;inputs_[1].empty()) {
     std::vector&lt;FileMetaData*&gt; expanded0;
@@ -7383,7 +7365,7 @@ void VersionSet::GetRange2(const std::vector&lt;FileMetaData*&gt;&amp; inputs1,
                                      &amp;expanded1);
       if (expanded1.size() == c-&gt;inputs_[1].size()) {
         Log(options_-&gt;info_log,
-            <span style="color: #ffff00;">"Expanding@%d %d+%d to %d+%d\n"</span>,
+            <span class="org-string">"Expanding@%d %d+%d to %d+%d\n"</span>,
             level,
             int(c-&gt;inputs_[0].size()),
             int(c-&gt;inputs_[1].size()),
@@ -7408,7 +7390,7 @@ void VersionSet::GetRange2(const std::vector&lt;FileMetaData*&gt;&amp; inputs1,
   }
 
   if (false) {
-    Log(options_-&gt;info_log, <span style="color: #ffff00;">"Compacting %d '%s' .. '%s'"</span>,
+    Log(options_-&gt;info_log, <span class="org-string">"Compacting %d '%s' .. '%s'"</span>,
         level,
         smallest.DebugString().c_str(),
         largest.DebugString().c_str());
@@ -7744,7 +7726,7 @@ class Compaction {
   Version* input_version_; // &#38024;&#23545;&#21738;&#20010;version&#36827;&#34892;&#25805;&#20316;.
   VersionEdit edit_; // &#24212;&#35813;&#26159;&#38024;&#23545;version&#25805;&#20316;&#20043;&#21518;&#30340;log&#20449;&#24687;.&#27604;&#22914;&#21024;&#38500;&#21738;&#20123;&#25991;&#20214;&#28155;&#21152;&#20102;&#21738;&#20123;&#25991;&#20214;&#31561;.
 
-  // Each compaction reads inputs from <span style="color: #ffff00;">"level_"</span> and <span style="color: #ffff00;">"level_+1"</span>
+  // Each compaction reads inputs from <span class="org-string">"level_"</span> and <span class="org-string">"level_+1"</span>
   std::vector&lt;FileMetaData*&gt; inputs_[2];      // The two sets of inputs. &#35201;&#36827;&#34892;compaction&#30340;&#25991;&#20214;&#26377;&#21738;&#20123;.
   //1 &#24212;&#35813;&#23601;&#26159;parent level.
 
@@ -8129,7 +8111,7 @@ Version造成了哪些变动，比如增加或者是删除啦哪些文件，下�
 </p>
 
 
-<pre class="src src-C++">// Delete the specified <span style="color: #ffff00;">"file"</span> from the specified <span style="color: #ffff00;">"level"</span>.
+<pre class="src src-C++">// Delete the specified <span class="org-string">"file"</span> from the specified <span class="org-string">"level"</span>.
 void DeleteFile(int level, uint64_t file) {
   deleted_files_.insert(std::make_pair(level, file));
 }
@@ -8292,13 +8274,13 @@ class SnapshotList {
  public:
   PosixEnv();
   virtual ~PosixEnv() {
-    fprintf(stderr, <span style="color: #ffff00;">"Destroying Env::Default()\n"</span>);
+    fprintf(stderr, <span class="org-string">"Destroying Env::Default()\n"</span>);
     exit(1);
   }
 
   virtual Status NewSequentialFile(const std::string&amp; fname,
                                    SequentialFile** result) {
-    FILE* f = fopen(fname.c_str(), <span style="color: #ffff00;">"r"</span>);
+    FILE* f = fopen(fname.c_str(), <span class="org-string">"r"</span>);
     if (f == NULL) {
       *result = NULL;
       return IOError(fname, errno);
@@ -8402,7 +8384,7 @@ class SnapshotList {
     if (fd &lt; 0) {
       result = IOError(fname, errno);
     } else if (LockOrUnlock(fd, true) == -1) { // &#36825;&#20010;&#20250;&#22312;&#21518;&#38754;&#20180;&#32454;&#30475;&#30475;.true&#34920;&#31034;lock.
-      result = IOError(<span style="color: #ffff00;">"lock "</span> + fname, errno);
+      result = IOError(<span class="org-string">"lock "</span> + fname, errno);
       close(fd);
     } else {
       PosixFileLock* my_lock = new PosixFileLock; // &#21019;&#24314;&#19968;&#20010;PosixFileLock&#23545;&#35937;
@@ -8416,7 +8398,7 @@ class SnapshotList {
     PosixFileLock* my_lock = reinterpret_cast&lt;PosixFileLock*&gt;(lock);
     Status result;
     if (LockOrUnlock(my_lock-&gt;fd_, false) == -1) { // false&#34920;&#31034;unlock
-      result = IOError(<span style="color: #ffff00;">"unlock"</span>, errno);
+      result = IOError(<span class="org-string">"unlock"</span>, errno);
     }
     close(my_lock-&gt;fd_); // &#20851;&#38381;&#23545;&#24212;&#30340;&#25991;&#20214;&#25551;&#36848;&#31526;.
     delete my_lock;
@@ -8428,12 +8410,12 @@ class SnapshotList {
   virtual void StartThread(void (*function)(void* arg), void* arg);
 
   virtual Status GetTestDirectory(std::string* result) {
-    const char* env = getenv(<span style="color: #ffff00;">"TEST_TMPDIR"</span>);
+    const char* env = getenv(<span class="org-string">"TEST_TMPDIR"</span>);
     if (env &amp;&amp; env[0] != '\0') {
       *result = env;
     } else {
       char buf[100];
-      snprintf(buf, sizeof(buf), <span style="color: #ffff00;">"/tmp/leveldbtest-%d"</span>, int(geteuid()));
+      snprintf(buf, sizeof(buf), <span class="org-string">"/tmp/leveldbtest-%d"</span>, int(geteuid()));
       *result = buf;
     }
     // Directory may already exist
@@ -8449,7 +8431,7 @@ class SnapshotList {
   }
 
   virtual Status NewLogger(const std::string&amp; fname, Logger** result) {
-    FILE* f = fopen(fname.c_str(), <span style="color: #ffff00;">"w"</span>);
+    FILE* f = fopen(fname.c_str(), <span class="org-string">"w"</span>);
     if (f == NULL) {
       *result = NULL;
       return IOError(fname, errno);
@@ -8472,7 +8454,7 @@ class SnapshotList {
  private:
   void PthreadCall(const char* label, int result) {
     if (result != 0) {
-      fprintf(stderr, <span style="color: #ffff00;">"pthread %s: %s\n"</span>, label, strerror(result));
+      fprintf(stderr, <span class="org-string">"pthread %s: %s\n"</span>, label, strerror(result));
       exit(1);
     }
   }
@@ -8539,20 +8521,20 @@ class SnapshotList {
 
 
 <pre class="src src-C++">void PosixEnv::Schedule(void (*function)(void*), void* arg) {
-  PthreadCall(<span style="color: #ffff00;">"lock"</span>, pthread_mutex_lock(&amp;mu_));
+  PthreadCall(<span class="org-string">"lock"</span>, pthread_mutex_lock(&amp;mu_));
 
   // Start background thread if necessary
   if (!started_bgthread_) {
     started_bgthread_ = true;
     PthreadCall( // &#21019;&#24314;&#32447;&#31243;.
-        <span style="color: #ffff00;">"create thread"</span>,
+        <span class="org-string">"create thread"</span>,
         pthread_create(&amp;bgthread_, NULL,  &amp;PosixEnv::BGThreadWrapper, this));
   }
 
   // If the queue is currently empty, the background thread may currently be
   // waiting.
   if (queue_.empty()) {
-    PthreadCall(<span style="color: #ffff00;">"signal"</span>, pthread_cond_signal(&amp;bgsignal_)); // &#38431;&#21015;&#36890;&#30693;
+    PthreadCall(<span class="org-string">"signal"</span>, pthread_cond_signal(&amp;bgsignal_)); // &#38431;&#21015;&#36890;&#30693;
   }
 
   // Add to priority queue
@@ -8560,7 +8542,7 @@ class SnapshotList {
   queue_.back().function = function;
   queue_.back().arg = arg;
 
-  PthreadCall(<span style="color: #ffff00;">"unlock"</span>, pthread_mutex_unlock(&amp;mu_));
+  PthreadCall(<span class="org-string">"unlock"</span>, pthread_mutex_unlock(&amp;mu_));
 }
 </pre>
 
@@ -8577,16 +8559,16 @@ class SnapshotList {
 void PosixEnv::BGThread() {
   while (true) {
     // Wait until there is an item that is ready to run
-    PthreadCall(<span style="color: #ffff00;">"lock"</span>, pthread_mutex_lock(&amp;mu_));
+    PthreadCall(<span class="org-string">"lock"</span>, pthread_mutex_lock(&amp;mu_));
     while (queue_.empty()) {
-      PthreadCall(<span style="color: #ffff00;">"wait"</span>, pthread_cond_wait(&amp;bgsignal_, &amp;mu_));
+      PthreadCall(<span class="org-string">"wait"</span>, pthread_cond_wait(&amp;bgsignal_, &amp;mu_));
     }
 
     void (*function)(void*) = queue_.front().function; // &#22312;&#32447;&#31243;&#20869;&#37096;&#25191;&#34892;&#20989;&#25968;.
     void* arg = queue_.front().arg;
     queue_.pop_front();
 
-    PthreadCall(<span style="color: #ffff00;">"unlock"</span>, pthread_mutex_unlock(&amp;mu_));
+    PthreadCall(<span class="org-string">"unlock"</span>, pthread_mutex_unlock(&amp;mu_));
     (*function)(arg);
   }
 }
@@ -8610,7 +8592,7 @@ void PosixEnv::BGThread() {
   StartThreadState* state = new StartThreadState;
   state-&gt;user_function = function;
   state-&gt;arg = arg;
-  PthreadCall(<span style="color: #ffff00;">"start thread"</span>,
+  PthreadCall(<span class="org-string">"start thread"</span>,
               pthread_create(&amp;t, NULL,  &amp;StartThreadWrapper, state));
 }
 </pre>
@@ -8698,7 +8680,7 @@ PosixLogger持有了FILE*对象以及gettid的函数指针.只有一个方法Log
     struct tm t;
     localtime_r(&amp;seconds, &amp;t); // &#26412;&#22320;&#26102;&#38388;+microseconds &#32447;&#31243;&#21495; &#33258;&#23450;&#20041;&#26684;&#24335;.
     p += snprintf(p, limit - p,
-                  <span style="color: #ffff00;">"%04d/%02d/%02d-%02d:%02d:%02d.%06d %llx "</span>,
+                  <span class="org-string">"%04d/%02d/%02d-%02d:%02d:%02d.%06d %llx "</span>,
                   t.tm_year + 1900,
                   t.tm_mon + 1,
                   t.tm_mday,
@@ -9104,7 +9086,7 @@ class LRUCache {
   // Separate from constructor so caller can easily make an array of LRUCache
   void SetCapacity(size_t capacity) { capacity_ = capacity; }
 
-  // Like Cache methods, but with an extra <span style="color: #ffff00;">"hash"</span> parameter.
+  // Like Cache methods, but with an extra <span class="org-string">"hash"</span> parameter.
   Cache::Handle* Insert(const Slice&amp; key, uint32_t hash,
                         void* value, size_t charge,
                         void (*deleter)(const Slice&amp; key, void* value));
@@ -9276,7 +9258,7 @@ struct LRUHandle {
 
   Slice key() const {
     // For cheaper lookups, we allow a temporary Handle object
-    // to store a pointer to a key in <span style="color: #ffff00;">"value"</span>.
+    // to store a pointer to a key in <span class="org-string">"value"</span>.
     if (next == this) {
       return *(reinterpret_cast&lt;Slice*&gt;(value));
     } else {
@@ -9517,7 +9499,7 @@ Status WriteBatchInternal::InsertInto(const WriteBatch* b,
 <pre class="src src-C++">Status WriteBatch::Iterate(Handler* handler) const {
   Slice input(rep_);
   if (input.size() &lt; 12) {
-    return Status::Corruption(<span style="color: #ffff00;">"malformed WriteBatch (too small)"</span>);
+    return Status::Corruption(<span class="org-string">"malformed WriteBatch (too small)"</span>);
   }
 
   // &#24573;&#30053;&#20043;&#21069;&#30340;12&#20010;&#23383;&#33410;.
@@ -9534,23 +9516,23 @@ Status WriteBatchInternal::InsertInto(const WriteBatch* b,
             GetLengthPrefixedSlice(&amp;input, &amp;value)) {
           handler-&gt;Put(key, value); // &#35843;&#29992;handler-&gt;Put&#25509;&#21475;.
         } else {
-          return Status::Corruption(<span style="color: #ffff00;">"bad WriteBatch Put"</span>); // &#21542;&#21017;&#35748;&#20026;&#25968;&#25454;&#25439;&#22351;.
+          return Status::Corruption(<span class="org-string">"bad WriteBatch Put"</span>); // &#21542;&#21017;&#35748;&#20026;&#25968;&#25454;&#25439;&#22351;.
         }
         break;
       case kTypeDeletion: // &#22914;&#26524;&#26159;delete&#25805;&#20316;&#30340;&#35805;.
         if (GetLengthPrefixedSlice(&amp;input, &amp;key)) {
           handler-&gt;Delete(key); // &#37027;&#20040;&#35843;&#29992;Delete&#25509;&#21475;
         } else {
-          return Status::Corruption(<span style="color: #ffff00;">"bad WriteBatch Delete"</span>);
+          return Status::Corruption(<span class="org-string">"bad WriteBatch Delete"</span>);
         }
         break;
       default: // &#40664;&#35748;&#20026;&#25968;&#25454;&#25439;&#22351;.
-        return Status::Corruption(<span style="color: #ffff00;">"unknown WriteBatch tag"</span>);
+        return Status::Corruption(<span class="org-string">"unknown WriteBatch tag"</span>);
     }
   }
   // &#26657;&#39564;&#19968;&#19979;&#20010;&#25968;&#26159;&#21542;&#27491;&#30830;.
   if (found != WriteBatchInternal::Count(this)) {
-    return Status::Corruption(<span style="color: #ffff00;">"WriteBatch has wrong count"</span>);
+    return Status::Corruption(<span class="org-string">"WriteBatch has wrong count"</span>);
   } else {
     return Status::OK();
   }
@@ -9975,9 +9957,9 @@ not necessarily the format.
 
 <pre class="src src-C++">class Writer {
  public:
-  // Create a writer that will append data to <span style="color: #ffff00;">"*dest"</span>.
-  // <span style="color: #ffff00;">"*dest"</span> must be initially empty.
-  // <span style="color: #ffff00;">"*dest"</span> must remain live while this Writer is in use.
+  // Create a writer that will append data to <span class="org-string">"*dest"</span>.
+  // <span class="org-string">"*dest"</span> must be initially empty.
+  // <span class="org-string">"*dest"</span> must remain live while this Writer is in use.
   explicit Writer(WritableFile* dest);
   ~Writer();
 
@@ -10048,7 +10030,7 @@ not necessarily the format.
       if (leftover &gt; 0) {
         // Fill the trailer (literal below relies on kHeaderSize being 7)
         assert(kHeaderSize == 7);
-        dest_-&gt;Append(Slice(<span style="color: #ffff00;">"\x00\x00\x00\x00\x00\x00"</span>, leftover)); // &#21097;&#20313;&#30340;&#37096;&#20998;&#22635;&#20805;0x00.
+        dest_-&gt;Append(Slice(<span class="org-string">"\x00\x00\x00\x00\x00\x00"</span>, leftover)); // &#21097;&#20313;&#30340;&#37096;&#20998;&#22635;&#20805;0x00.
       }
       block_offset_ = 0; // &#29616;&#22312;blcok_offset==0&#37325;&#26032;&#24320;&#36767;&#20102;&#19968;&#22359;&#20869;&#23481;.
     }
@@ -10145,19 +10127,19 @@ not necessarily the format.
    public:
     virtual ~Reporter();
 
-    // Some corruption was detected.  <span style="color: #ffff00;">"size"</span> is the approximate number
+    // Some corruption was detected.  <span class="org-string">"size"</span> is the approximate number
     // of bytes dropped due to the corruption.
     virtual void Corruption(size_t bytes, const Status&amp; status) = 0;
   };
 
-  // Create a reader that will return log records from <span style="color: #ffff00;">"*file"</span>.
-  // <span style="color: #ffff00;">"*file"</span> must remain live while this Reader is in use.
+  // Create a reader that will return log records from <span class="org-string">"*file"</span>.
+  // <span class="org-string">"*file"</span> must remain live while this Reader is in use.
   //
-  // If <span style="color: #ffff00;">"reporter"</span> is non-NULL, it is notified whenever some data is
-  // dropped due to a detected corruption.  <span style="color: #ffff00;">"*reporter"</span> must remain
+  // If <span class="org-string">"reporter"</span> is non-NULL, it is notified whenever some data is
+  // dropped due to a detected corruption.  <span class="org-string">"*reporter"</span> must remain
   // live while this Reader is in use.
   //
-  // If <span style="color: #ffff00;">"checksum"</span> is true, verify checksums if available.
+  // If <span class="org-string">"checksum"</span> is true, verify checksums if available.
   //
   // The Reader will start reading at the first record located at physical
   // position &gt;= initial_offset within the file.
@@ -10168,7 +10150,7 @@ not necessarily the format.
 
   // Read the next record into *record.  Returns true if read
   // successfully, false if we hit end of the input.  May use
-  // <span style="color: #ffff00;">"*scratch"</span> as temporary storage.  The contents filled in *record
+  // <span class="org-string">"*scratch"</span> as temporary storage.  The contents filled in *record
   // will only be valid until the next mutating operation on this
   // reader or the next mutation to *scratch.
   bool ReadRecord(Slice* record, std::string* scratch);
@@ -10206,7 +10188,7 @@ not necessarily the format.
     kBadRecord = kMaxRecordType + 2
   };
 
-  // Skips all blocks that are completely before <span style="color: #ffff00;">"initial_offset_"</span>.
+  // Skips all blocks that are completely before <span class="org-string">"initial_offset_"</span>.
   //
   // Returns true on success. Handles reporting.
   bool SkipToInitialBlock();
@@ -10291,7 +10273,7 @@ not necessarily the format.
       } else { // &#25991;&#20214;&#26411;&#23614;&#35835;&#21462;&#22833;&#36133;(&#25130;&#26029;)
         size_t drop_size = buffer_.size();
         buffer_.clear();
-        ReportCorruption(drop_size, <span style="color: #ffff00;">"truncated record at end of file"</span>);
+        ReportCorruption(drop_size, <span class="org-string">"truncated record at end of file"</span>);
         return kEof;
       }
     }
@@ -10306,7 +10288,7 @@ not necessarily the format.
     if (kHeaderSize + length &gt; buffer_.size()) {
       size_t drop_size = buffer_.size();
       buffer_.clear();
-      ReportCorruption(drop_size, <span style="color: #ffff00;">"bad record length"</span>);
+      ReportCorruption(drop_size, <span class="org-string">"bad record length"</span>);
       return kBadRecord;
     }
 
@@ -10324,13 +10306,13 @@ not necessarily the format.
       uint32_t expected_crc = crc32c::Unmask(DecodeFixed32(header));
       uint32_t actual_crc = crc32c::Value(header + 6, 1 + length); // &#20570;crc32c&#38656;&#35201;&#21253;&#21547;type&#23383;&#27573;.
       if (actual_crc != expected_crc) {
-        // Drop the rest of the buffer since <span style="color: #ffff00;">"length"</span> itself may have
+        // Drop the rest of the buffer since <span class="org-string">"length"</span> itself may have
         // been corrupted and if we trust it, we could find some
         // fragment of a real log record that just happens to look
         // like a valid log record.
         size_t drop_size = buffer_.size();
         buffer_.clear();
-        ReportCorruption(drop_size, <span style="color: #ffff00;">"checksum mismatch"</span>);
+        ReportCorruption(drop_size, <span class="org-string">"checksum mismatch"</span>);
         return kBadRecord;
       }
     }
@@ -10396,7 +10378,7 @@ not necessarily the format.
           if (scratch-&gt;empty()) {
             in_fragmented_record = false; // &#24573;&#30053;&#36825;&#31181;&#38169;&#35823;.&#21487;&#33021;&#26159;&#32771;&#34385;&#20860;&#23481;.
           } else { // &#35835;&#21462;&#21040;FullType&#20294;&#26159;&#21364;&#26377;fragmented&#30340;&#34920;&#31034;.
-            ReportCorruption(scratch-&gt;size(), <span style="color: #ffff00;">"partial record without end(1)"</span>);
+            ReportCorruption(scratch-&gt;size(), <span class="org-string">"partial record without end(1)"</span>);
           }
         }
         prospective_record_offset = physical_record_offset;
@@ -10414,7 +10396,7 @@ not necessarily the format.
           if (scratch-&gt;empty()) {
             in_fragmented_record = false; // &#24573;&#30053;&#36825;&#31181;&#38169;&#35823;,&#21487;&#33021;&#26159;&#32771;&#34385;&#20860;&#23481;.
           } else {
-            ReportCorruption(scratch-&gt;size(), <span style="color: #ffff00;">"partial record without end(2)"</span>);
+            ReportCorruption(scratch-&gt;size(), <span class="org-string">"partial record without end(2)"</span>);
           }
         }
         prospective_record_offset = physical_record_offset;
@@ -10425,7 +10407,7 @@ not necessarily the format.
       case kMiddleType:
         if (!in_fragmented_record) {
           ReportCorruption(fragment.size(),
-                           <span style="color: #ffff00;">"missing start of fragmented record(1)"</span>);
+                           <span class="org-string">"missing start of fragmented record(1)"</span>);
         } else {
           scratch-&gt;append(fragment.data(), fragment.size());
         }
@@ -10434,7 +10416,7 @@ not necessarily the format.
       case kLastType:
         if (!in_fragmented_record) {
           ReportCorruption(fragment.size(),
-                           <span style="color: #ffff00;">"missing start of fragmented record(2)"</span>);
+                           <span class="org-string">"missing start of fragmented record(2)"</span>);
         } else {
           scratch-&gt;append(fragment.data(), fragment.size());
           *record = Slice(*scratch);
@@ -10445,14 +10427,14 @@ not necessarily the format.
 
       case kEof:
         if (in_fragmented_record) {
-          ReportCorruption(scratch-&gt;size(), <span style="color: #ffff00;">"partial record without end(3)"</span>);
+          ReportCorruption(scratch-&gt;size(), <span class="org-string">"partial record without end(3)"</span>);
           scratch-&gt;clear();
         }
         return false;
 
       case kBadRecord:
         if (in_fragmented_record) {
-          ReportCorruption(scratch-&gt;size(), <span style="color: #ffff00;">"error in middle of record"</span>);
+          ReportCorruption(scratch-&gt;size(), <span class="org-string">"error in middle of record"</span>);
           in_fragmented_record = false;
           scratch-&gt;clear();
         }
@@ -10460,7 +10442,7 @@ not necessarily the format.
 
       default: {
         char buf[40];
-        snprintf(buf, sizeof(buf), <span style="color: #ffff00;">"unknown record type %u"</span>, record_type);
+        snprintf(buf, sizeof(buf), <span class="org-string">"unknown record type %u"</span>, record_type);
         ReportCorruption(
             (fragment.size() + (in_fragmented_record ? scratch-&gt;size() : 0)),
             buf);
@@ -10765,10 +10747,10 @@ TODO(postrelease): record following stats.
   ~TableCache();
 
   // Return an iterator for the specified file number (the corresponding
-  // file length must be exactly <span style="color: #ffff00;">"file_size"</span> bytes).  If <span style="color: #ffff00;">"tableptr"</span> is
-  // non-NULL, also sets <span style="color: #ffff00;">"*tableptr"</span> to point to the Table object
+  // file length must be exactly <span class="org-string">"file_size"</span> bytes).  If <span class="org-string">"tableptr"</span> is
+  // non-NULL, also sets <span class="org-string">"*tableptr"</span> to point to the Table object
   // underlying the returned iterator, or NULL if no Table object underlies
-  // the returned iterator.  The returned <span style="color: #ffff00;">"*tableptr"</span> object is owned by
+  // the returned iterator.  The returned <span class="org-string">"*tableptr"</span> object is owned by
   // the cache and should not be deleted, and is valid for as long as the
   // returned iterator is live.
   Iterator* NewIterator(const ReadOptions&amp; options,
@@ -10966,7 +10948,7 @@ Iterator* TableCache::NewIterator(const ReadOptions&amp; options,
                    Table** table) {
   *table = NULL;
   if (size &lt; Footer::kEncodedLength) { // &#23545;&#20110;&#25991;&#20214;&#22823;&#23567;&#32943;&#23450;&#38656;&#35201;&#19968;&#20010;footer&#23545;&#35937;.
-    return Status::InvalidArgument(<span style="color: #ffff00;">"file is too short to be an sstable"</span>);
+    return Status::InvalidArgument(<span class="org-string">"file is too short to be an sstable"</span>);
   }
 
   char footer_space[Footer::kEncodedLength]; // footer&#31354;&#38388;.
@@ -11234,8 +11216,8 @@ Iterator* Table::BlockReader(void* arg,
   // We do not emit the index entry for a block until we have seen the
   // first key for the next data block.  This allows us to use shorter
   // keys in the index block.  For example, consider a block boundary
-  // between the keys <span style="color: #ffff00;">"the quick brown fox"</span> and <span style="color: #ffff00;">"the who"</span>.  We can use
-  // <span style="color: #ffff00;">"the r"</span> as the key for the index block entry since it is &gt;= all
+  // between the keys <span class="org-string">"the quick brown fox"</span> and <span class="org-string">"the who"</span>.  We can use
+  // <span class="org-string">"the r"</span> as the key for the index block entry since it is &gt;= all
   // entries in the first block and &lt; all entries in subsequent
   // blocks.
   //
@@ -11279,7 +11261,7 @@ Iterator* Table::BlockReader(void* arg,
   // change in the middle of building a Table.
   if (options.comparator != rep_-&gt;options.comparator) {
     // &#38656;&#35201;&#30830;&#20445;comparator&#23545;&#35937;&#27809;&#26377;&#21457;&#29983;&#25913;&#21464;.
-    return Status::InvalidArgument(<span style="color: #ffff00;">"changing comparator while building table"</span>);
+    return Status::InvalidArgument(<span class="org-string">"changing comparator while building table"</span>);
   }
 
   // Note that any live BlockBuilders point to rep_-&gt;options and therefore
@@ -11571,8 +11553,8 @@ void TableBuilder::Abandon() {
 <pre class="src src-C++">// When we store a key, we drop the prefix shared with the previous
 // string.  This helps reduce the space requirement significantly.
 // Furthermore, once every K keys, we do not apply the prefix
-// compression and store the entire key.  We call this a <span style="color: #ffff00;">"restart</span>
-<span style="color: #ffff00;">// point"</span>.  The tail end of the block stores the offsets of all of the
+// compression and store the entire key.  We call this a <span class="org-string">"restart</span>
+<span class="org-string">// point"</span>.  The tail end of the block stores the offsets of all of the
 // restart points, and can be used to do a binary search when looking
 // for a particular key.  Values are stored as-is (without compression)
 // immediately following the corresponding key.
@@ -11721,7 +11703,7 @@ void TableBuilder::Abandon() {
   }
   const size_t non_shared = key.size() - shared;
 
-  // Add <span style="color: #ffff00;">"&lt;shared&gt;&lt;non_shared&gt;&lt;value_size&gt;"</span> to buffer_
+  // Add <span class="org-string">"&lt;shared&gt;&lt;non_shared&gt;&lt;value_size&gt;"</span> to buffer_
   PutVarint32(&amp;buffer_, shared);
   PutVarint32(&amp;buffer_, non_shared);
   PutVarint32(&amp;buffer_, value.size());
@@ -11841,7 +11823,7 @@ Block::~Block() {
 
 <pre class="src src-C++">Iterator* Block::NewIterator(const Comparator* cmp) {
   if (size_ &lt; 2*sizeof(uint32_t)) {
-    return NewErrorIterator(Status::Corruption(<span style="color: #ffff00;">"bad block contents"</span>));
+    return NewErrorIterator(Status::Corruption(<span class="org-string">"bad block contents"</span>));
   }
   const uint32_t num_restarts = NumRestarts();
   if (num_restarts == 0) {
@@ -12177,12 +12159,12 @@ inline uint32_t NextEntryOffset() const {
     }
     Slice mid_key(key_ptr, non_shared);
     if (Compare(mid_key, target) &lt; 0) {
-      // Key at <span style="color: #ffff00;">"mid"</span> is smaller than <span style="color: #ffff00;">"target"</span>.  Therefore all
-      // blocks before <span style="color: #ffff00;">"mid"</span> are uninteresting.
+      // Key at <span class="org-string">"mid"</span> is smaller than <span class="org-string">"target"</span>.  Therefore all
+      // blocks before <span class="org-string">"mid"</span> are uninteresting.
       left = mid;
     } else {
-      // Key at <span style="color: #ffff00;">"mid"</span> is &gt;= <span style="color: #ffff00;">"target"</span>.  Therefore all blocks at or
-      // after <span style="color: #ffff00;">"mid"</span> are uninteresting.
+      // Key at <span class="org-string">"mid"</span> is &gt;= <span class="org-string">"target"</span>.  Therefore all blocks at or
+      // after <span class="org-string">"mid"</span> are uninteresting.
       right = mid - 1;
     }
   }
@@ -12281,7 +12263,7 @@ inline BlockHandle::BlockHandle()
       GetVarint64(input, &amp;size_)) {
     return Status::OK();
   } else {
-    return Status::Corruption(<span style="color: #ffff00;">"bad block handle"</span>);
+    return Status::Corruption(<span class="org-string">"bad block handle"</span>);
   }
 }
 </pre>
@@ -12391,7 +12373,7 @@ class Footer {
   const uint64_t magic = ((static_cast&lt;uint64_t&gt;(magic_hi) &lt;&lt; 32) |
                           (static_cast&lt;uint64_t&gt;(magic_lo)));
   if (magic != kTableMagicNumber) {
-    return Status::InvalidArgument(<span style="color: #ffff00;">"not an sstable (bad magic number)"</span>);
+    return Status::InvalidArgument(<span class="org-string">"not an sstable (bad magic number)"</span>);
   }
 
   Status result = metaindex_handle_.DecodeFrom(input);
@@ -12399,7 +12381,7 @@ class Footer {
     result = index_handle_.DecodeFrom(input);
   }
   if (result.ok()) {
-    // We skip over any leftover data (just padding for now) in <span style="color: #ffff00;">"input"</span>
+    // We skip over any leftover data (just padding for now) in <span class="org-string">"input"</span>
     const char* end = magic_ptr + 8;
     *input = Slice(end, input-&gt;data() + input-&gt;size() - end);
   }
@@ -12451,7 +12433,7 @@ static const size_t kBlockTrailerSize = 5;
   }
   if (contents.size() != n + kBlockTrailerSize) {
     delete[] buf;
-    return Status::Corruption(<span style="color: #ffff00;">"truncated block read"</span>);
+    return Status::Corruption(<span class="org-string">"truncated block read"</span>);
   }
 
   // &#26657;&#39564;CRC32C
@@ -12462,7 +12444,7 @@ static const size_t kBlockTrailerSize = 5;
     const uint32_t actual = crc32c::Value(data, n + 1);
     if (actual != crc) {
       delete[] buf;
-      s = Status::Corruption(<span style="color: #ffff00;">"block checksum mismatch"</span>);
+      s = Status::Corruption(<span class="org-string">"block checksum mismatch"</span>);
       return s;
     }
   }
@@ -12485,7 +12467,7 @@ static const size_t kBlockTrailerSize = 5;
     }
     default:
       delete[] buf;
-      return Status::Corruption(<span style="color: #ffff00;">"bad block type"</span>);
+      return Status::Corruption(<span class="org-string">"bad block type"</span>);
   }
 
   // &#36820;&#22238;Block&#23545;&#35937;.
@@ -12573,7 +12555,7 @@ static const size_t kBlockTrailerSize = 5;
 // index iterator whose values point to a sequence of blocks where
 // each block is itself a sequence of key,value pairs.  The returned
 // two-level iterator yields the concatenation of all key/value pairs
-// in the sequence of blocks.  Takes ownership of <span style="color: #ffff00;">"index_iter"</span> and
+// in the sequence of blocks.  Takes ownership of <span class="org-string">"index_iter"</span> and
 // will delete it when no longer needed.
 //
 // Uses a supplied function to convert an index_iter value into
@@ -12626,8 +12608,8 @@ class TwoLevelIterator: public Iterator {
   IteratorWrapper index_iter_;
   // &#23545;&#20110;key,value&#36825;&#26679;&#30340;&#26041;&#27861;&#30452;&#25509;&#32473;data_iter_&#20195;&#29702;&#21363;&#21487;.
   IteratorWrapper data_iter_; // May be NULL
-  // If data_iter_ is non-NULL, then <span style="color: #ffff00;">"data_block_handle_"</span> holds the
-  // <span style="color: #ffff00;">"index_value"</span> passed to block_function_ to create the data_iter_.
+  // If data_iter_ is non-NULL, then <span class="org-string">"data_block_handle_"</span> holds the
+  // <span class="org-string">"index_value"</span> passed to block_function_ to create the data_iter_.
   std::string data_block_handle_;
 };
 
@@ -13216,7 +13198,7 @@ Iterator* NewMergingIterator(const Comparator* cmp, Iterator** list, int n) {
   Arena();
   ~Arena();
 
-  // Return a pointer to a newly allocated memory block of <span style="color: #ffff00;">"bytes"</span> bytes.
+  // Return a pointer to a newly allocated memory block of <span class="org-string">"bytes"</span> bytes.
   char* Allocate(size_t bytes);
 
   // Allocate memory with the normal alignment guarantees provided by malloc
@@ -13437,8 +13419,8 @@ class SkipList {
   struct Node;
 
  public:
-  // Create a new SkipList object that will use <span style="color: #ffff00;">"cmp"</span> for comparing keys,
-  // and will allocate memory using <span style="color: #ffff00;">"*arena"</span>.  Objects allocated in the arena
+  // Create a new SkipList object that will use <span class="org-string">"cmp"</span> for comparing keys,
+  // and will allocate memory using <span class="org-string">"*arena"</span>.  Objects allocated in the arena
   // must remain allocated for the lifetime of the skiplist object.
   explicit SkipList(Comparator cmp, Arena* arena);
 
@@ -13512,14 +13494,14 @@ class SkipList {
   int RandomHeight();
   bool Equal(const Key&amp; a, const Key&amp; b) const { return (compare_(a, b) == 0); }
 
-  // Return true if key is greater than the data stored in <span style="color: #ffff00;">"n"</span>
+  // Return true if key is greater than the data stored in <span class="org-string">"n"</span>
   bool KeyIsAfterNode(const Key&amp; key, Node* n) const;
 
   // Return the earliest node that comes at or after key.
   // Return NULL if there is no such node.
   //
   // If prev is non-NULL, fills prev[level] with pointer to previous
-  // node at <span style="color: #ffff00;">"level"</span> for every level in [0..max_height_-1].
+  // node at <span class="org-string">"level"</span> for every level in [0..max_height_-1].
   Node* FindGreaterOrEqual(const Key&amp; key, Node** prev) const;
 
   // Return the latest node with a key &lt; key.
@@ -13654,7 +13636,7 @@ void SkipList&lt;Key,Comparator&gt;::Insert(const Key&amp; key) {
     for (int i = GetMaxHeight(); i &lt; height; i++) {
       prev[i] = head_; // &#22914;&#26524;&#27809;&#26377;&#30340;&#35805;&#65292;&#37027;&#20040;&#21021;&#22987;&#21270;&#20026;head_.
     }
-    //fprintf(stderr, <span style="color: #ffff00;">"Change height from %d to %d\n"</span>, max_height_, height);
+    //fprintf(stderr, <span class="org-string">"Change height from %d to %d\n"</span>, max_height_, height);
 
     // It is ok to mutate max_height_ without any synchronization
     // with concurrent readers.  A concurrent reader that observes
@@ -13669,7 +13651,7 @@ void SkipList&lt;Key,Comparator&gt;::Insert(const Key&amp; key) {
   x = NewNode(key, height); // &#20135;&#29983;&#19968;&#20010;&#26032;&#30340;&#33410;&#28857;.
   for (int i = 0; i &lt; height; i++) { // &#28982;&#21518;&#25554;&#20837;&#32500;&#25252;&#22909;&#36825;&#20010;&#36339;&#34920;&#32467;&#26500;.
     // NoBarrier_SetNext() suffices since we will add a barrier when
-    // we publish a pointer to <span style="color: #ffff00;">"x"</span> in prev[i].
+    // we publish a pointer to <span class="org-string">"x"</span> in prev[i].
     x-&gt;NoBarrier_SetNext(i, prev[i]-&gt;NoBarrier_Next(i));
     prev[i]-&gt;SetNext(i, x);
   }
@@ -13888,7 +13870,7 @@ inline void SkipList&lt;Key,Comparator&gt;::Iterator::Next() {
 
 template&lt;typename Key, class Comparator&gt;
 inline void SkipList&lt;Key,Comparator&gt;::Iterator::Prev() {
-  // Instead of using explicit <span style="color: #ffff00;">"prev"</span> links, we just search for the
+  // Instead of using explicit <span class="org-string">"prev"</span> links, we just search for the
   // last node that falls before key.
   assert(Valid());
   node_ = list_-&gt;FindLessThan(node_-&gt;key); // &#21487;&#33021;&#24615;&#33021;&#20250;&#23384;&#22312;&#38382;&#39064;.&#25152;&#20197;&#26368;&#22909;&#19981;&#35201;&#21069;&#21521;&#36941;&#21382;.
@@ -13941,7 +13923,7 @@ inline void SkipList&lt;Key,Comparator&gt;::Iterator::SeekToLast() {
 inline void MemoryBarrier() {
   // See http://gcc.gnu.org/ml/gcc/2003-04/msg01180.html for a discussion on
   // this idiom. Also see http://en.wikipedia.org/wiki/Memory_ordering.
-  __asm__ __volatile__(<span style="color: #ffff00;">""</span> : : : <span style="color: #ffff00;">"memory"</span>);
+  __asm__ __volatile__(<span class="org-string">""</span> : : : <span class="org-string">"memory"</span>);
 }
 
 #if defined(LEVELDB_HAVE_MEMORY_BARRIER)
@@ -14297,5 +14279,11 @@ Iterator* internal_iter =
 </div>
 </div>
 
+<div id="postamble">
+<p class="date">Date: 2013-09-15 15:19:10 CST</p>
+<p class="creator">Org version 7.8.11 with Emacs version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
 <!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'leveldb.html';var disqus_title = 'leveldb.html';var disqus_url = 'http://dirlt.com/leveldb.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="scala"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-12 00:39:00 CST"/>
+<meta name="generated" content="2013-09-15 15:18:26 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -59,33 +59,15 @@
   .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
                                  font-weight:bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" type="text/css" href="css/site-plain.css" />
-<script type="text/javascript">
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
+</style><link rel="stylesheet" type="text/css" href="css/site.css" />
+
 
 </head>
 <body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><g:plusone annotation="inline"></g:plusone>
 
+<div id="preamble">
+
+</div>
 
 <div id="content">
 <h1 class="title">scala</h1>
@@ -395,7 +377,7 @@ scala里面对应的表示如下,类型为String*
 </p>
 
 
-<pre class="src src-Scala">val x = Array(<span style="color: #ffff00;">"Hello"</span>,<span style="color: #ffff00;">"World"</span>);
+<pre class="src src-Scala">val x = Array(<span class="org-string">"Hello"</span>,<span class="org-string">"World"</span>);
 foo(x:_*)
 </pre>
 
@@ -445,7 +427,7 @@ foo(x:_*)
     if i%4 == 0;
     j &lt;- 0 to 5
     if j%2 == 1) {
-  println(<span style="color: #ffff00;">"i="</span> + i + <span style="color: #ffff00;">",j="</span> + j);
+  println(<span class="org-string">"i="</span> + i + <span class="org-string">",j="</span> + j);
 }
 </pre>
 
@@ -480,7 +462,7 @@ println(x) // Vector(0, 1, 2, 3, 4)
 
 
 <pre class="src src-Scala">def f() {
-  throw new Exception(<span style="color: #ffff00;">"hello"</span>);
+  throw new Exception(<span class="org-string">"hello"</span>);
 }
 
 def g():Int = {
@@ -518,11 +500,11 @@ match和switch非常类似，但是有下面两个比较重要的差别：
 </p>
 
 
-<pre class="src src-Scala">val x = <span style="color: #ffff00;">"hello"</span>;
+<pre class="src src-Scala">val x = <span class="org-string">"hello"</span>;
 val y = 
   x match {
-    case <span style="color: #ffff00;">"world"</span> =&gt; 2;
-    case <span style="color: #ffff00;">"hello"</span> =&gt; 3;
+    case <span class="org-string">"world"</span> =&gt; 2;
+    case <span class="org-string">"hello"</span> =&gt; 3;
     case _ =&gt; 4;
   }
 </pre>
@@ -546,8 +528,8 @@ val y =
 </p>
 
 
-<pre class="src src-Scala">val a = Array(<span style="color: #ffff00;">"1"</span>);
-val b = Array(<span style="color: #ffff00;">"2"</span>);
+<pre class="src src-Scala">val a = Array(<span class="org-string">"1"</span>);
+val b = Array(<span class="org-string">"2"</span>);
 println(a eq b)
 val c = b
 println(c eq b)
@@ -587,16 +569,16 @@ class Op() {
   val id = Id;
   Id += 1;
   def + (x: Op) {
-    println(<span style="color: #ffff00;">"operation by Op#"</span> + id);
+    println(<span class="org-string">"operation by Op#"</span> + id);
   }
   def +: (x: Op) {
-    println(<span style="color: #ffff00;">"operation by Op#"</span> + id);
+    println(<span class="org-string">"operation by Op#"</span> + id);
   }
   def apply(p: Int) {
-    println(<span style="color: #ffff00;">"apply with "</span> + p)
+    println(<span class="org-string">"apply with "</span> + p)
   }
   def update(p: Int, c:Int) {
-    println(<span style="color: #ffff00;">"update with "</span> + p + <span style="color: #ffff00;">", "</span> + c);
+    println(<span class="org-string">"update with "</span> + p + <span class="org-string">", "</span> + c);
   }
 }
 val a = new Op(); // Op#0
@@ -695,7 +677,7 @@ scala import相比java import更加灵活
 
 <pre class="src src-Scala">def showFruit(fruit: Fruit) {
   import fruit._
-  println(name +<span style="color: #ffff00;">"s are "</span>+ color)
+  println(name +<span class="org-string">"s are "</span>+ color)
 }
 </pre>
 
@@ -809,7 +791,7 @@ public class Hello {
     this(n,0);
   }
   {
-    System.out.println(<span style="color: #ffff00;">"initializing...("</span> + n + <span style="color: #ffff00;">","</span> + d + <span style="color: #ffff00;">")"</span>);
+    System.out.println(<span class="org-string">"initializing...("</span> + n + <span class="org-string">","</span> + d + <span class="org-string">")"</span>);
   }
 }
 </pre>
@@ -825,7 +807,7 @@ public class Hello {
 <pre class="src src-Scala">class Hello(pn: Int, pd: Int) {
   private val n = pn;
   private val d = pd;
-  println(<span style="color: #ffff00;">"initializing...("</span> + n + <span style="color: #ffff00;">","</span> + d + <span style="color: #ffff00;">")"</span>);
+  println(<span class="org-string">"initializing...("</span> + n + <span class="org-string">","</span> + d + <span class="org-string">")"</span>);
   def this(pn:Int) = this(pn,0);
 }
 </pre>
@@ -839,7 +821,7 @@ scala将构造函数和初始化代码融合，只是使用初始化代码来作
 
 
 <pre class="src src-Scala">class Hello(private val pn: Int, private val pd: Int) {
-  println(<span style="color: #ffff00;">"initializing...("</span> + pn + <span style="color: #ffff00;">","</span> + pd + <span style="color: #ffff00;">")"</span>);
+  println(<span class="org-string">"initializing...("</span> + pn + <span class="org-string">","</span> + pd + <span class="org-string">")"</span>);
   def this(pn:Int) = this(pn,0);
 }
 </pre>
@@ -879,7 +861,7 @@ println(h.closure(2.0f));
 
 
 <pre class="src src-Scala">class Hello(pn: Int, pd: Int) {
-  def toString() = <span style="color: #ffff00;">"n = "</span> + pn + <span style="color: #ffff00;">", d = "</span> + pd;
+  def toString() = <span class="org-string">"n = "</span> + pn + <span class="org-string">", d = "</span> + pd;
 }
 </pre>
 
@@ -933,12 +915,12 @@ x.echoX(); // 1
 <pre class="src src-Scala">class Hello(p:Int) {
   private val x = p;
   def op(h:Hello) {
-    println(<span style="color: #ffff00;">"op("</span> + x + <span style="color: #ffff00;">","</span> + h.x + <span style="color: #ffff00;">")"</span>);
+    println(<span class="org-string">"op("</span> + x + <span class="org-string">","</span> + h.x + <span class="org-string">")"</span>);
   }
 }
 
 implicit def intToHello(x:Int) = {
-  println(<span style="color: #ffff00;">"do implicit conversion"</span>);
+  println(<span class="org-string">"do implicit conversion"</span>);
   new Hello(x);
 }
 
@@ -1040,11 +1022,11 @@ println(h.doubleD)
 
 
 <pre class="src src-Scala">class A(n:Int) {
-  println(<span style="color: #ffff00;">"init A with n = "</span> + n);
+  println(<span class="org-string">"init A with n = "</span> + n);
 }
 
 class B(n:Int) extends A(n) {
-  println(<span style="color: #ffff00;">"init B with n = "</span> + n);
+  println(<span class="org-string">"init B with n = "</span> + n);
 }
 
 val b = new B(10);
@@ -1123,7 +1105,7 @@ Null是所有引用类型的子类，其实例对象是null. 而Nothing是所有
 
 <pre class="src src-Scala">def divide(x: Int, y: Int): Int =
   if (y != 0) x / y
-  else error(<span style="color: #ffff00;">"can't divide by zero"</span>)
+  else error(<span class="org-string">"can't divide by zero"</span>)
 </pre>
 
 <p>
@@ -1152,10 +1134,10 @@ trait B {
 
 class C extends A with B {
   def foo() {
-    println(<span style="color: #ffff00;">"foo"</span>);
+    println(<span class="org-string">"foo"</span>);
   }
   def bar() {
-    println(<span style="color: #ffff00;">"bar"</span>);
+    println(<span class="org-string">"bar"</span>);
   }
 }
 </pre>
@@ -1175,7 +1157,7 @@ trait的引入解决了一些多重继承的问题，最重要的问题就是如
 class A {
  public:
   void foo() {
-    printf(<span style="color: #ffff00;">"A\n"</span>);
+    printf(<span class="org-string">"A\n"</span>);
   }
 };
 
@@ -1183,7 +1165,7 @@ class B:public A {
  public:
   void foo() {
     A::foo();
-    printf(<span style="color: #ffff00;">"B\n"</span>);
+    printf(<span class="org-string">"B\n"</span>);
   }
 };
 
@@ -1191,7 +1173,7 @@ class C:public A {
  public:
   void foo() {
     A::foo();
-    printf(<span style="color: #ffff00;">"C\n"</span>);
+    printf(<span class="org-string">"C\n"</span>);
   }
 };
 
@@ -1201,7 +1183,7 @@ class D:public B,
   void foo() {
     B::foo();
     C::foo();        
-    printf(<span style="color: #ffff00;">"D\n"</span>);
+    printf(<span class="org-string">"D\n"</span>);
   }
 };
 
@@ -1407,5 +1389,11 @@ println(foo(1)) // 1
 </div>
 </div>
 
+<div id="postamble">
+<p class="date">Date: 2013-09-15 15:18:26 CST</p>
+<p class="creator">Org version 7.8.11 with Emacs version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
 <!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'scala.html';var disqus_title = 'scala.html';var disqus_url = 'http://dirlt.com/scala.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

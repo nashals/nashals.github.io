@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="gcc-asm"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-08-13 19:44:03 CST"/>
+<meta name="generated" content="2013-09-15 15:19:30 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -59,33 +59,15 @@
   .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
                                  font-weight:bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" type="text/css" href="css/site-plain.css" />
-<script type="text/javascript">
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
+</style><link rel="stylesheet" type="text/css" href="css/site.css" />
+
 
 </head>
 <body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><g:plusone annotation="inline"></g:plusone>
 
+<div id="preamble">
+
+</div>
 
 <div id="content">
 <h1 class="title">gcc-asm</h1>
@@ -153,28 +135,28 @@
 
 
 <pre class="src src-C++">__asm__ __volatile__(
-    <span style="color: #ffff00;">"xorps %%xmm0,%%xmm1\n\t"</span>
-    <span style="color: #ffff00;">"1:\n\t"</span>
-    <span style="color: #ffff00;">"movdqa %%xmm0,%%xmm1\n\t"</span>
-    <span style="color: #ffff00;">"pcmpgtd (%1),%%xmm1\n\t"</span>
-    <span style="color: #ffff00;">"andps %%xmm1,%%xmm0\n\t"</span>
-    <span style="color: #ffff00;">"andnps (%1),%%xmm1\n\t"</span>
-    <span style="color: #ffff00;">"orps %%xmm1,%%xmm0\n\t"</span>
-    <span style="color: #ffff00;">"addq $16,%1\n\t"</span>
-    <span style="color: #ffff00;">"subq $4,%2\n\t"</span>
-    <span style="color: #ffff00;">"jnz 1b\n\t"</span>
-    <span style="color: #ffff00;">"movdqu %%xmm0,(%3)\n\t"</span>
-    <span style="color: #ffff00;">"movl (%3),%%eax\n\t"</span>
-    <span style="color: #ffff00;">"cmpl 4(%3),%%eax\n\t"</span>
-    <span style="color: #ffff00;">"cmovll 4(%3),%%eax\n\t"</span>
-    <span style="color: #ffff00;">"cmpl 8(%3),%%eax\n\t"</span>
-    <span style="color: #ffff00;">"cmovll 8(%3),%%eax\n\t"</span>
-    <span style="color: #ffff00;">"cmpl 12(%3),%%eax\n\t"</span>
-    <span style="color: #ffff00;">"cmovll 12(%3),%%eax\n\t"</span>
-    <span style="color: #ffff00;">"movl %%eax,%0\n\t"</span>
-    :<span style="color: #ffff00;">"=m"</span>(mx)
-    :<span style="color: #ffff00;">"r"</span>(a),<span style="color: #ffff00;">"r"</span>((long long)N),<span style="color: #ffff00;">"r"</span>(tmp)
-    :<span style="color: #ffff00;">"eax"</span>);
+    <span class="org-string">"xorps %%xmm0,%%xmm1\n\t"</span>
+    <span class="org-string">"1:\n\t"</span>
+    <span class="org-string">"movdqa %%xmm0,%%xmm1\n\t"</span>
+    <span class="org-string">"pcmpgtd (%1),%%xmm1\n\t"</span>
+    <span class="org-string">"andps %%xmm1,%%xmm0\n\t"</span>
+    <span class="org-string">"andnps (%1),%%xmm1\n\t"</span>
+    <span class="org-string">"orps %%xmm1,%%xmm0\n\t"</span>
+    <span class="org-string">"addq $16,%1\n\t"</span>
+    <span class="org-string">"subq $4,%2\n\t"</span>
+    <span class="org-string">"jnz 1b\n\t"</span>
+    <span class="org-string">"movdqu %%xmm0,(%3)\n\t"</span>
+    <span class="org-string">"movl (%3),%%eax\n\t"</span>
+    <span class="org-string">"cmpl 4(%3),%%eax\n\t"</span>
+    <span class="org-string">"cmovll 4(%3),%%eax\n\t"</span>
+    <span class="org-string">"cmpl 8(%3),%%eax\n\t"</span>
+    <span class="org-string">"cmovll 8(%3),%%eax\n\t"</span>
+    <span class="org-string">"cmpl 12(%3),%%eax\n\t"</span>
+    <span class="org-string">"cmovll 12(%3),%%eax\n\t"</span>
+    <span class="org-string">"movl %%eax,%0\n\t"</span>
+    :<span class="org-string">"=m"</span>(mx)
+    :<span class="org-string">"r"</span>(a),<span class="org-string">"r"</span>((long long)N),<span class="org-string">"r"</span>(tmp)
+    :<span class="org-string">"eax"</span>);
 </pre>
 
 <p>
@@ -327,7 +309,7 @@
 
 
 
-<pre class="src src-C++">__asm__ __volatile__ (<span style="color: #ffff00;">"call func\n\tmovl %%ebx,%1"</span>,<span style="color: #ffff00;">"=a"</span>(foo),<span style="color: #ffff00;">"r"</span>(bar));
+<pre class="src src-C++">__asm__ __volatile__ (<span class="org-string">"call func\n\tmovl %%ebx,%1"</span>,<span class="org-string">"=a"</span>(foo),<span class="org-string">"r"</span>(bar));
 </pre>
 
 <p>
@@ -336,7 +318,7 @@
 </p>
 
 
-<pre class="src src-C++">__asm__ __volatile__ (<span style="color: #ffff00;">"call func\n\tmovl %%ebx,%1"</span>,<span style="color: #ffff00;">"=&amp;a"</span>(foo),<span style="color: #ffff00;">"r"</span>(bar));
+<pre class="src src-C++">__asm__ __volatile__ (<span class="org-string">"call func\n\tmovl %%ebx,%1"</span>,<span class="org-string">"=&amp;a"</span>(foo),<span class="org-string">"r"</span>(bar));
 </pre>
 
 
@@ -383,8 +365,8 @@ b表示backward,f表示foreward.比如jnz 1b.使用1,2,3来命名的标签都是
 </p>
 
 
-<pre class="src src-C++">__asm__ __volatile__ (<span style="color: #ffff00;">"cpuid"</span>:<span style="color: #ffff00;">"+r"</span>(a)::)
-__asm__ __volatile__ (<span style="color: #ffff00;">"cpuid"</span>:<span style="color: #ffff00;">"=r"</span>(a):<span style="color: #ffff00;">"0"</span>(a):)
+<pre class="src src-C++">__asm__ __volatile__ (<span class="org-string">"cpuid"</span>:<span class="org-string">"+r"</span>(a)::)
+__asm__ __volatile__ (<span class="org-string">"cpuid"</span>:<span class="org-string">"=r"</span>(a):<span class="org-string">"0"</span>(a):)
 </pre>
 
 <p>
@@ -414,7 +396,7 @@ __asm__ __volatile__ (<span style="color: #ffff00;">"cpuid"</span>:<span style="
 </p>
 
 
-<pre class="src src-C++">__asm__ __volatile__ (<span style="color: #ffff00;">""</span>:::<span style="color: #ffff00;">"memory"</span>)
+<pre class="src src-C++">__asm__ __volatile__ (<span class="org-string">""</span>:::<span class="org-string">"memory"</span>)
 </pre>
 
 
@@ -1442,5 +1424,11 @@ return -1; \
 </div>
 </div>
 
+<div id="postamble">
+<p class="date">Date: 2013-09-15 15:19:30 CST</p>
+<p class="creator">Org version 7.8.11 with Emacs version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
 <!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'gcc-asm.html';var disqus_title = 'gcc-asm.html';var disqus_url = 'http://dirlt.com/gcc-asm.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

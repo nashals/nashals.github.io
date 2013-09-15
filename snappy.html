@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="snappy"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-08-13 19:43:03 CST"/>
+<meta name="generated" content="2013-09-15 15:18:25 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -59,33 +59,15 @@
   .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
                                  font-weight:bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" type="text/css" href="css/site-plain.css" />
-<script type="text/javascript">
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
+</style><link rel="stylesheet" type="text/css" href="css/site.css" />
+
 
 </head>
 <body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><g:plusone annotation="inline"></g:plusone>
 
+<div id="preamble">
+
+</div>
 
 <div id="content">
 <h1 class="title">snappy</h1>
@@ -304,7 +286,7 @@ class Sink {
   Sink() { }
   virtual ~Sink();
 
-  // Append <span style="color: #ffff00;">"bytes[0,n-1]"</span> to this.
+  // Append <span class="org-string">"bytes[0,n-1]"</span> to this.
   virtual void Append(const char* bytes, size_t n) = 0;
 
   // Returns a writable buffer of the specified length for appending.
@@ -312,7 +294,7 @@ class Sink {
   // must have at least the indicated length.  The returned buffer is
   // only valid until the next operation on this Sink.
   //
-  // After writing at most <span style="color: #ffff00;">"length"</span> bytes, call Append() with the
+  // After writing at most <span class="org-string">"length"</span> bytes, call Append() with the
   // pointer returned from this function and the number of bytes
   // written.  Many Append() implementations will avoid copying
   // bytes if this function returned an internal buffer.
@@ -540,16 +522,16 @@ class Varint {
   // Never reads a character at or beyond limit.  If a valid/terminated varint32
   // was found in the range, stores it in *OUTPUT and returns a pointer just
   // past the last byte of the varint32. Else returns NULL.  On success,
-  // <span style="color: #ffff00;">"result &lt;= limit"</span>.
+  // <span class="org-string">"result &lt;= limit"</span>.
   static const char* Parse32WithLimit(const char* ptr, const char* limit,
                                       uint32* OUTPUT);
 
-  // REQUIRES   <span style="color: #ffff00;">"ptr"</span> points to a buffer of length sufficient to hold <span style="color: #ffff00;">"v"</span>.
-  // EFFECTS    Encodes <span style="color: #ffff00;">"v"</span> into <span style="color: #ffff00;">"ptr"</span> and returns a pointer to the
+  // REQUIRES   <span class="org-string">"ptr"</span> points to a buffer of length sufficient to hold <span class="org-string">"v"</span>.
+  // EFFECTS    Encodes <span class="org-string">"v"</span> into <span class="org-string">"ptr"</span> and returns a pointer to the
   //            byte just past the last encoded byte.
   static char* Encode32(char* ptr, uint32 v);
 
-  // EFFECTS    Appends the varint representation of <span style="color: #ffff00;">"value"</span> to <span style="color: #ffff00;">"*s"</span>.
+  // EFFECTS    Appends the varint representation of <span class="org-string">"value"</span> to <span class="org-string">"*s"</span>.
   static void Append32(string* s, uint32 value);
 };
 
@@ -663,8 +645,8 @@ uint16* WorkingMemory::GetHashTable(size_t input_size, int* table_size) {
   while (htsize &lt; kMaxHashTableSize &amp;&amp; htsize &lt; input_size) {
     htsize &lt;&lt;= 1;
   }
-  CHECK_EQ(0, htsize &amp; (htsize - 1)) &lt;&lt; <span style="color: #ffff00;">": must be power of two"</span>;
-  CHECK_LE(htsize, kMaxHashTableSize) &lt;&lt; <span style="color: #ffff00;">": hash table too large"</span>;
+  CHECK_EQ(0, htsize &amp; (htsize - 1)) &lt;&lt; <span class="org-string">": must be power of two"</span>;
+  CHECK_LE(htsize, kMaxHashTableSize) &lt;&lt; <span class="org-string">": hash table too large"</span>;
 
   uint16* table;
   if (htsize &lt;= ARRAYSIZE(small_table_)) { // &#23545;&#20110;WorkingMemory&#20869;&#37096;&#26377;&#19968;&#20010;small_table_[1&lt;&lt;10],&#36825;&#26679;&#21487;&#20197;&#20943;&#23569;&#20998;&#37197;&#20195;&#20215;
@@ -767,16 +749,16 @@ static inline int FindMatchLength(const char* s1,
   // since a literal of length 60 needs one tag byte + one extra byte
   // for length information.
   //
-  // Item blowup is trickier to measure.  Suppose the <span style="color: #ffff00;">"copy"</span> op copies
+  // Item blowup is trickier to measure.  Suppose the <span class="org-string">"copy"</span> op copies
   // 4 bytes of data.  Because of a special check in the encoding code,
   // we produce a 4-byte copy only if the offset is &lt; 65536.  Therefore
   // the copy op takes 3 bytes to encode, and this type of item leads
   // to at most the 62/60 blowup for representing literals.
   //
-  // Suppose the <span style="color: #ffff00;">"copy"</span> op copies 5 bytes of data.  If the offset is big
+  // Suppose the <span class="org-string">"copy"</span> op copies 5 bytes of data.  If the offset is big
   // enough, it will take 5 bytes to encode the copy op.  Therefore the
   // worst case here is a one-byte literal followed by a five-byte copy.
-  // I.e., 6 bytes of input turn into 7 bytes of <span style="color: #ffff00;">"compressed"</span> data.
+  // I.e., 6 bytes of input turn into 7 bytes of <span class="org-string">"compressed"</span> data.
   //
   // This last factor dominates the blowup, so the final estimate is:
   return 32 + source_len + source_len/6;
@@ -796,14 +778,14 @@ static inline int FindMatchLength(const char* s1,
 </p>
 
 
-<pre class="src src-C++">// Copy <span style="color: #ffff00;">"len"</span> bytes from <span style="color: #ffff00;">"src"</span> to <span style="color: #ffff00;">"op"</span>, one byte at a time.  Used for
+<pre class="src src-C++">// Copy <span class="org-string">"len"</span> bytes from <span class="org-string">"src"</span> to <span class="org-string">"op"</span>, one byte at a time.  Used for
 // handling COPY operations where the input and output regions may
 // overlap.  For example, suppose:
-//    src    == <span style="color: #ffff00;">"ab"</span>
+//    src    == <span class="org-string">"ab"</span>
 //    op     == src + 2
 //    len    == 20
 // After IncrementalCopy(src, op, len), the result will have
-// eleven copies of <span style="color: #ffff00;">"ab"</span>
+// eleven copies of <span class="org-string">"ab"</span>
 //    ababababababababababab
 // Note that this does not match the semantics of either memcpy()
 // or memmove();
@@ -1039,7 +1021,7 @@ static inline char* EmitCopy(char* op, int offset, int len) {
     // Get next block to compress (without copying if possible)
     size_t fragment_size;
     const char* fragment = reader-&gt;Peek(&amp;fragment_size);
-    DCHECK_NE(fragment_size, 0) &lt;&lt; <span style="color: #ffff00;">": premature end of input"</span>;
+    DCHECK_NE(fragment_size, 0) &lt;&lt; <span class="org-string">": premature end of input"</span>;
     const int num_to_read = min(N, kBlockSize);
     size_t bytes_read = fragment_size;
 
@@ -1123,10 +1105,10 @@ static inline char* EmitCopy(char* op, int offset, int len) {
                        char* op,
                        uint16* table,
                        const int table_size) {
-  // <span style="color: #ffff00;">"ip"</span> is the input pointer, and <span style="color: #ffff00;">"op"</span> is the output pointer.
+  // <span class="org-string">"ip"</span> is the input pointer, and <span class="org-string">"op"</span> is the output pointer.
   const char* ip = input;
   CHECK_LE(input_size, kBlockSize);
-  CHECK_EQ(table_size &amp; (table_size - 1), 0) &lt;&lt; <span style="color: #ffff00;">": table must be power of two"</span>;
+  CHECK_EQ(table_size &amp; (table_size - 1), 0) &lt;&lt; <span class="org-string">": table must be power of two"</span>;
   const int shift = 32 - Bits::Log2Floor(table_size);
   DCHECK_EQ(kuint32max &gt;&gt; shift, table_size - 1);
   const char* ip_end = input + input_size;
@@ -1164,10 +1146,10 @@ static inline char* EmitCopy(char* op, int offset, int len) {
       // immediately go back to looking at every byte. This is a small loss
       // (~5% performance, ~0.1% density) for compressible data due to more
       // bookkeeping, but for non-compressible data (such as JPEG) it's a huge
-      // win since the compressor quickly <span style="color: #ffff00;">"realizes"</span> the data is incompressible
+      // win since the compressor quickly <span class="org-string">"realizes"</span> the data is incompressible
       // and doesn't bother looking for matches everywhere.
       //
-      // The <span style="color: #ffff00;">"skip"</span> variable keeps track of how many bytes there are since the
+      // The <span class="org-string">"skip"</span> variable keeps track of how many bytes there are since the
       // last match; dividing it by 32 (ie. right-shifting by five) gives the
       // number of bytes to move ahead for each iteration.
       uint32 skip = 32;
@@ -1212,7 +1194,7 @@ static inline char* EmitCopy(char* op, int offset, int len) {
 
       // Step 2: A 4-byte match has been found.  We'll later see if more
       // than 4 bytes match.  But, prior to the match, input
-      // bytes [next_emit, ip) are unmatched.  Emit them as <span style="color: #ffff00;">"literal bytes."</span>
+      // bytes [next_emit, ip) are unmatched.  Emit them as <span class="org-string">"literal bytes."</span>
       DCHECK_LE(next_emit + 16, ip_end); // including margin bytes.
       op = EmitLiteral(op, next_emit, ip - next_emit, true);
 
@@ -1231,7 +1213,7 @@ static inline char* EmitCopy(char* op, int offset, int len) {
 
       do {
         // We have a 4-byte match at ip, and no need to emit any
-        // <span style="color: #ffff00;">"literal bytes"</span> prior to ip.
+        // <span class="org-string">"literal bytes"</span> prior to ip.
         const char* base = ip;
 
         // &#22914;&#26524;ip&#21644;candidate&#21305;&#37197;&#30340;&#35805;&#65292;&#37027;&#20040;&#23581;&#35797;&#21462;&#21457;&#29616;&#26356;&#38271;&#30340;copy
@@ -1574,8 +1556,8 @@ void DecompressAllTags(Writer* writer) {
 #include &lt;snappy.h&gt;
 #include &lt;snappy-sinksource.h&gt;
 
-static const char* IN_NAME=<span style="color: #ffff00;">"./main.cc"</span>;
-static const char* OUT_NAME=<span style="color: #ffff00;">"./main.cc.compress"</span>;
+static const char* IN_NAME=<span class="org-string">"./main.cc"</span>;
+static const char* OUT_NAME=<span class="org-string">"./main.cc.compress"</span>;
 
 class FileSink:public snappy::Sink{
   public:
@@ -1601,7 +1583,7 @@ int main(){
     // do comress
     char* in_buf=new char[in_fsize];
     {
-        FILE* fin=fopen(IN_NAME,<span style="color: #ffff00;">"rb"</span>);
+        FILE* fin=fopen(IN_NAME,<span class="org-string">"rb"</span>);
         fread(in_buf,1,in_fsize,fin);
         fclose(fin);
         snappy::ByteArraySource source(in_buf,in_fsize);
@@ -1619,7 +1601,7 @@ int main(){
     char* out_buf=new char[out_fsize];
     std::string out;
     {
-        FILE* fin=fopen(OUT_NAME,<span style="color: #ffff00;">"rb"</span>);
+        FILE* fin=fopen(OUT_NAME,<span class="org-string">"rb"</span>);
         fread(out_buf,1,out_fsize,fin);
         fclose(fin);
         assert(snappy::Uncompress(out_buf,out_fsize,&amp;out)==true);
@@ -1639,5 +1621,11 @@ int main(){
 </div>
 </div>
 
+<div id="postamble">
+<p class="date">Date: 2013-09-15 15:18:25 CST</p>
+<p class="creator">Org version 7.8.11 with Emacs version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
 <!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'snappy.html';var disqus_title = 'snappy.html';var disqus_url = 'http://dirlt.com/snappy.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

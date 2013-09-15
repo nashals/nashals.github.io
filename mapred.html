@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="mapred"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-06 20:00:56 CST"/>
+<meta name="generated" content="2013-09-15 15:18:49 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -59,33 +59,15 @@
   .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
                                  font-weight:bold; }
   /*]]>*/-->
-</style><link rel="stylesheet" type="text/css" href="css/site-plain.css" />
-<script type="text/javascript">
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
-</script>
+</style><link rel="stylesheet" type="text/css" href="css/site.css" />
+
 
 </head>
 <body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><g:plusone annotation="inline"></g:plusone>
 
+<div id="preamble">
+
+</div>
 
 <div id="content">
 <h1 class="title">mapred</h1>
@@ -896,18 +878,18 @@ Corona在fb部署过程是这样的
 
 <pre class="src src-Java">public ShuffleRamManager(Configuration conf) throws IOException {
   final float maxInMemCopyUse =
-    conf.getFloat(<span style="color: #ffff00;">"mapred.job.shuffle.input.buffer.percent"</span>, 0.70f);
+    conf.getFloat(<span class="org-string">"mapred.job.shuffle.input.buffer.percent"</span>, 0.70f);
   if (maxInMemCopyUse &gt; 1.0 || maxInMemCopyUse &lt; 0.0) {
-    throw new IOException(<span style="color: #ffff00;">"mapred.job.shuffle.input.buffer.percent"</span> +
+    throw new IOException(<span class="org-string">"mapred.job.shuffle.input.buffer.percent"</span> +
                           maxInMemCopyUse);
   }
   // Allow unit tests to fix Runtime memory
-  maxSize = (int)(conf.getInt(<span style="color: #ffff00;">"mapred.job.reduce.total.mem.bytes"</span>,
+  maxSize = (int)(conf.getInt(<span class="org-string">"mapred.job.reduce.total.mem.bytes"</span>,
       (int)Math.min(Runtime.getRuntime().maxMemory(), Integer.MAX_VALUE))
     * maxInMemCopyUse);
   maxSingleShuffleLimit = (long)(maxSize * MAX_SINGLE_SHUFFLE_SEGMENT_FRACTION);
-  LOG.info(<span style="color: #ffff00;">"ShuffleRamManager: MemoryLimit="</span> + maxSize + 
-           <span style="color: #ffff00;">", MaxSingleShuffleLimit="</span> + maxSingleShuffleLimit);
+  LOG.info(<span class="org-string">"ShuffleRamManager: MemoryLimit="</span> + maxSize + 
+           <span class="org-string">", MaxSingleShuffleLimit="</span> + maxSingleShuffleLimit);
 }
 </pre>
 
@@ -991,7 +973,7 @@ Corona在fb部署过程是这样的
 public void write(Path path, LongWritable offset) throws IOException, InterruptedException {
   if (outputStream == null) {
     // Set up the output file on the first record.
-    LOG.info(<span style="color: #ffff00;">"Setting up output stream to write index file for "</span> + path);
+    LOG.info(<span class="org-string">"Setting up output stream to write index file for "</span> + path);
     outputStream = setupOutputFile(path);
   }
   offset.write(outputStream);
@@ -1011,7 +993,7 @@ public void close(TaskAttemptContext taskAttemptContext) throws IOException, Int
     // Close the output stream so that the tmp file is synced, then move it.
     outputStream.close();
 
-    LOG.info(<span style="color: #ffff00;">"In close, now renaming "</span> + tmpIndexPath + <span style="color: #ffff00;">" to final location "</span> + realIndexPath);
+    LOG.info(<span class="org-string">"In close, now renaming "</span> + tmpIndexPath + <span class="org-string">" to final location "</span> + realIndexPath);
     // Rename, indexing completed.
     fs.rename(tmpIndexPath, realIndexPath);
   }
@@ -1093,14 +1075,14 @@ public boolean nextKeyValue() throws IOException {
     // An uncompressed block size of zero means end of file.
     return false;
   } else if (uncompressedBlockSize &lt; 0) {
-    throw new EOFException(<span style="color: #ffff00;">"Could not read uncompressed block size at position "</span> +
-                           rawInputStream.getPos() + <span style="color: #ffff00;">" in file "</span> + lzoFile);
+    throw new EOFException(<span class="org-string">"Could not read uncompressed block size at position "</span> +
+                           rawInputStream.getPos() + <span class="org-string">" in file "</span> + lzoFile);
   }
 
   int compressedBlockSize = rawInputStream.readInt();
   if (compressedBlockSize &lt;= 0) {
-    throw new EOFException(<span style="color: #ffff00;">"Could not read compressed block size at position "</span> +
-                           rawInputStream.getPos() + <span style="color: #ffff00;">" in file "</span> + lzoFile);
+    throw new EOFException(<span class="org-string">"Could not read compressed block size at position "</span> +
+                           rawInputStream.getPos() + <span class="org-string">" in file "</span> + lzoFile);
   }
 
   // See LzopInputStream.getCompressedData
@@ -1117,8 +1099,8 @@ public boolean nextKeyValue() throws IOException {
 
   // Log some progress every so often.
   if (numBlocksRead % LOG_EVERY_N_BLOCKS == 0) {
-    LOG.info(<span style="color: #ffff00;">"Reading block "</span> + numBlocksRead + <span style="color: #ffff00;">" at pos "</span> + pos + <span style="color: #ffff00;">" of "</span> + totalFileSize + <span style="color: #ffff00;">". Read is "</span> +
-             (100.0 * getProgress()) + <span style="color: #ffff00;">"% done. "</span>);
+    LOG.info(<span class="org-string">"Reading block "</span> + numBlocksRead + <span class="org-string">" at pos "</span> + pos + <span class="org-string">" of "</span> + totalFileSize + <span class="org-string">". Read is "</span> +
+             (100.0 * getProgress()) + <span class="org-string">"% done. "</span>);
   }
 
   return true;
@@ -1206,7 +1188,7 @@ protected List&lt;FileStatus&gt; listStatus(JobContext job) throws IOException {
     if (!LzoInputFormatCommon.isLzoFile(file.toString())) {
       // Get rid of non-LZO files, unless the conf explicitly tells us to
       // keep them.
-      // However, always skip over files that end with <span style="color: #ffff00;">".lzo.index"</span>, since
+      // However, always skip over files that end with <span class="org-string">".lzo.index"</span>, since
       // they are not part of the input.
       if (ignoreNonLzo || LzoInputFormatCommon.isLzoIndexFile(file.toString())) {
         iterator.remove();
@@ -1320,7 +1302,7 @@ public List&lt;InputSplit&gt; getSplits(JobContext job) throws IOException {
     // LZO file, try to split if the .index file was found
     LzoIndex index = indexes.get(file);
     if (index == null) {
-      throw new IOException(<span style="color: #ffff00;">"Index not found for "</span> + file);
+      throw new IOException(<span class="org-string">"Index not found for "</span> + file);
     }
 
     if (index.isEmpty()) {
@@ -2666,5 +2648,11 @@ none             24G     0   24G   0% /run/shm
 </div>
 </div>
 
+<div id="postamble">
+<p class="date">Date: 2013-09-15 15:18:49 CST</p>
+<p class="creator">Org version 7.8.11 with Emacs version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
 <!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'mapred.html';var disqus_title = 'mapred.html';var disqus_url = 'http://dirlt.com/mapred.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>
