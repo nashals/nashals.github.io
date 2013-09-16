@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="scala"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-15 15:18:26 CST"/>
+<meta name="generated" content="2013-09-16 22:34:13 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -90,6 +90,7 @@
 <li><a href="scala.html#sec-1-1-7">1.1.7 operator</a></li>
 <li><a href="scala.html#sec-1-1-8">1.1.8 前提断言</a></li>
 <li><a href="scala.html#sec-1-1-9">1.1.9 package</a></li>
+<li><a href="scala.html#sec-1-1-10">1.1.10 模式匹配</a></li>
 </ul>
 </li>
 <li><a href="scala.html#sec-1-2">1.2 面向对象</a>
@@ -102,6 +103,8 @@
 <li><a href="scala.html#sec-1-2-6">1.2.6 类型继承</a></li>
 <li><a href="scala.html#sec-1-2-7">1.2.7 类型层次</a></li>
 <li><a href="scala.html#sec-1-2-8">1.2.8 Traits</a></li>
+<li><a href="scala.html#sec-1-2-9">1.2.9 访问权限</a></li>
+<li><a href="scala.html#sec-1-2-10">1.2.10 Option</a></li>
 </ul>
 </li>
 <li><a href="scala.html#sec-1-3">1.3 面向函数</a>
@@ -695,6 +698,191 @@ Implicitly imported into every compilation unit are, in that order:
 
 
 </div>
+
+</div>
+
+<div id="outline-container-1-1-10" class="outline-4">
+<h4 id="sec-1-1-10"><span class="section-number-4">1.1.10</span> 模式匹配</h4>
+<div class="outline-text-4" id="text-1-1-10">
+
+<p>模式匹配pattern matching在scala里面是一个重量级的功能，依赖于pm可以优雅地实现很多功能。大致格式如下
+</p>
+
+
+<pre class="example">selector match {
+  pattern1 =&gt; &lt;body1&gt;
+  pattern2 =&gt; &lt;body2&gt;
+  ...
+}
+</pre>
+
+
+<p>
+pattern总结起来大约以下几类：
+</p><ol>
+<li>Wildcard patterns // _ 统配
+</li>
+<li>Constant patterns // 常量
+</li>
+<li>Variable patterns // 变量
+</li>
+<li>Constructor patterns // 构造函数
+</li>
+<li>Sequence patterns // 比如List(_,_). 如果需要匹配剩余的话使用List(0,_*)
+</li>
+<li>Tuple patterns // (a,b,c)
+</li>
+<li>Typed patterns // 使用类型匹配 case a:Map[_,_]
+<ul>
+<li>asInstanceOf[&lt;type&gt;]
+</li>
+<li>isInstanceOf[&lt;type&gt;]
+</li>
+<li><b>NOTE(dirlt):这里需要注意容器类型擦除.Array例外因为这个是java内置类型</b> 
+</li>
+</ul>
+
+</li>
+</ol>
+
+
+<p>
+实际上我们还能够使用pattern完成下面事情：
+</p><ol>
+<li>Patterns in variable definitions // val (a,b) = ("123","345");
+</li>
+<li>Case sequences as partial functions 
+<ul>
+<li>直接使用pattern来构造函数.以参数为match对象，在body里面直接编写case. 
+</li>
+<li>Each case is an entry point to the function, and the parameters are specified with the pattern. The body of each entry point is the right-hand side of the case.
+</li>
+</ul>
+
+</li>
+<li>Patterns in for expressions // for ((country, city) &lt;- capitals)
+</li>
+</ol>
+
+
+
+
+<pre class="src src-Scala">// case sequences as partial function. 
+val foo : Option[String] =&gt; String = {
+  case Some(e) =&gt; e
+  case None =&gt; <span class="org-string">"???"</span>
+}
+
+val a = Option[String](<span class="org-string">"hello"</span>)
+println(foo(a))
+val b = None
+println(foo(b))
+</pre>
+
+
+<p>
+pattern matching过程中还有下面几个问题需要注意：
+</p><ul>
+<li>Patterns are tried in the order in which they are written.
+</li>
+<li>Variable binding // 有时候我们希望匹配的变量包含外层结构
+<ul>
+<li>A(1,B(x)) =&gt; handle(B(x))
+</li>
+<li>A(1, p @ B(_)) =&gt; handle(p) # p绑定了B(x)这个匹配
+</li>
+</ul>
+
+</li>
+<li>Pattern guards // 有时候我们希望对pattern做一些限制性条件
+<ul>
+<li>A(1,e,e) 比如希望后面两个元素相等，但是这个在pm里面没有办法表达
+</li>
+<li>A(1,x,y) if x == y =&gt; &lt;body&gt; // 通过guard来完成
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+
+<hr/>
+<p>
+scala为了方便扩展pm对象的case, 提供case class这个概念。case class和普通class大致相同，不过有以下三个区别，定义上只需要在class之前加上case即可：
+</p><ul>
+<li>提供factory method来方便构造object
+</li>
+<li>class parameter隐含val prefix
+</li>
+<li>自带toString,hashCode,equals实现
+</li>
+</ul>
+
+
+
+
+<pre class="src src-Scala">case class A(x:Int) {} // implicit val x:Int  
+val a = A(1); // factory method.
+println(a.x); 
+println(a); // toString = A(1)
+</pre>
+
+<p>
+case class最大就是可以很方便地用来做pattern matching.
+</p>
+
+<hr/>
+<p>
+如果我们能够知道某个selector所有可能的pattern的话，那么就能够在编译期做一些安全性检查。但是selector这个过于宽泛，如果将selector限制在类层次上的话，那么还是可以实现的。举例如下：
+</p>
+
+
+<pre class="src src-Scala">abstract class A; // sealed abstract class A
+case class B(a:Int) extends A;
+case class C(a:Int) extends A;
+case class D(a:Int) extends A;
+
+val a:A = B(1);
+
+a match {
+  case e @ B(_) =&gt; println(e)
+  case e @ C(_) =&gt; println(e)
+}
+</pre>
+
+<p>
+在match a这个过程中，实际上我们可能存在B，C，D三种子类，但是因为我们这里缺少检查。使用sealed关键字可以完成这个工作。sealed class必须和subclass在同一个文件内。A sealed class cannot have any new subclasses added except the ones in the same file. 如果上面增加sealed的话，那么编译会出现如下警告，说明我们没有枚举所有可能的情况。
+</p>
+
+
+<pre class="example">/Users/dirlt/scala/Hello.scala:8: warning: match may not be exhaustive.
+It would fail on the following input: D(_)
+a match {
+^
+one warning found
+</pre>
+
+
+<p> 
+有三个方式可以解决这个问题，一个是加上对D的处理，一个是使用unchecked annotation, 一个则是在最后用wildcard匹配 
+</p>
+
+
+<pre class="src src-Scala">(a : @unchecked)  match {
+  case e @ B(_) =&gt; println(e)
+  case e @ C(_) =&gt; println(e)
+}
+
+a match {
+  case e @ B(_) =&gt; println(e)
+  case e @ C(_) =&gt; println(e)
+  case _ =&gt; throw new RuntimeException(<span class="org-string">"??"</span>);
+}
+</pre>
+
+
+</div>
 </div>
 
 </div>
@@ -1242,6 +1430,77 @@ class Cat extends Animal with Furry with FourLegged
 <b>NOTE（dirlt）：这种动态执行的效果就是，你不能够确定super到底是哪个，取决于context.</b>
 </p>
 </div>
+
+</div>
+
+<div id="outline-container-1-2-9" class="outline-4">
+<h4 id="sec-1-2-9"><span class="section-number-4">1.2.9</span> 访问权限</h4>
+<div class="outline-text-4" id="text-1-2-9">
+
+<p>The way you make members public in Scala is by not explicitly specifying any access modifier. Put another way, where you’d say “public” in Java, you simply say nothing in Scala. Public is Scala’s default access level.  
+</p>
+<p>
+scala访问修饰符只有private/protected,默认是public. 访问权限上和java非常类似。
+</p>
+<p>
+但是scala还提供了更细粒度的访问权限控制scope of protection. 也就是说访问权限是按照作用域来设置的。基本语法如下：
+</p>
+
+
+<pre class="example">[private|protected][X]
+</pre>
+
+<p>
+A modifier of the form private[X] or protected[X] means that access is private or protected “up to” X, where X designates some enclosing package, class or singleton object.  可以用来修饰class, field, method.  <b>其含义是private/protected属性最多作用到X以外，X以内均可以作为public来进行访问。</b> 其中X还有一个特例就是this，那么标明这个字段只能够在这个实例里面访问。下面是一个例子。
+</p>
+
+
+
+<pre class="src src-Scala">class A(private val x:Int) {
+  def foo(o:A) {
+    println(x + o.x); // works.
+  }
+}
+
+class B(private[this] val x:Int) {
+  def foo(o:A) {
+    println(x + o.x); // can not access o.x
+  }
+}
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-10" class="outline-4">
+<h4 id="sec-1-2-10"><span class="section-number-4">1.2.10</span> Option</h4>
+<div class="outline-text-4" id="text-1-2-10">
+
+<p>Option type能够很好地解决java里面null的问题. 举个例子我们在java里面处理map.get("hello")返回值的时候，都需要判断是否为null然后在做处理，否则可能会出现NullPointerException. 同样在scala里面，map.get("hello")返回一个Option对象，这个对象必然是一个有效的引用对象。对于一个Option对象而言：
+</p><ol>
+<li>Some(x). 表示其value是x
+</li>
+<li>None. 表示缺失value.
+</li>
+</ol>
+
+<p>可以通过模式匹配来判断是否为None以及获取value.
+</p>
+
+
+<pre class="src src-Scala">def show(x: Option[String]) = x match {
+  case Some(s) =&gt; s
+  case None =&gt; <span class="org-string">"?"</span>
+}
+</pre>
+
+
+<p> 
+By contrast, Scala encourages the use of Option to indicate an optional value. This approach to optional values has several advantages over Java’s. First, it is far more obvious to readers of code that a variable whose type is Option[String] is an optional String than a variable of type String, which may sometimes be null. But most importantly, that programming error described earlier of using a variable that may be null without first checking it for null becomes in Scala a type error. If a variable is of type Option[String] and you try to use it as a String, your Scala program will not compile.
+</p>
+</div>
 </div>
 
 </div>
@@ -1384,13 +1643,14 @@ println(foo(1)) // 1
 <h3 id="sec-1-4"><span class="section-number-3">1.4</span> 面向泛型</h3>
 <div class="outline-text-3" id="text-1-4">
 
+
 </div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-09-15 15:18:26 CST</p>
+<p class="date">Date: 2013-09-16 22:34:13 CST</p>
 <p class="creator">Org version 7.8.11 with Emacs version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
