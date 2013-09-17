@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="scala"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-17 08:51:40 CST"/>
+<meta name="generated" content="2013-09-17 10:07:13 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -100,12 +100,13 @@
 <li><a href="scala.html#sec-1-2-2">1.2.2 构造函数</a></li>
 <li><a href="scala.html#sec-1-2-3">1.2.3 override</a></li>
 <li><a href="scala.html#sec-1-2-4">1.2.4 隐式转换</a></li>
-<li><a href="scala.html#sec-1-2-5">1.2.5 ()method</a></li>
-<li><a href="scala.html#sec-1-2-6">1.2.6 类型继承</a></li>
-<li><a href="scala.html#sec-1-2-7">1.2.7 类型层次</a></li>
-<li><a href="scala.html#sec-1-2-8">1.2.8 Traits</a></li>
-<li><a href="scala.html#sec-1-2-9">1.2.9 访问权限</a></li>
-<li><a href="scala.html#sec-1-2-10">1.2.10 Enumeration</a></li>
+<li><a href="scala.html#sec-1-2-5">1.2.5 隐式参数</a></li>
+<li><a href="scala.html#sec-1-2-6">1.2.6 ()method</a></li>
+<li><a href="scala.html#sec-1-2-7">1.2.7 类型继承</a></li>
+<li><a href="scala.html#sec-1-2-8">1.2.8 类型层次</a></li>
+<li><a href="scala.html#sec-1-2-9">1.2.9 Traits</a></li>
+<li><a href="scala.html#sec-1-2-10">1.2.10 访问权限</a></li>
+<li><a href="scala.html#sec-1-2-11">1.2.11 Enumeration</a></li>
 </ul>
 </li>
 <li><a href="scala.html#sec-1-3">1.3 面向函数</a>
@@ -1217,30 +1218,161 @@ h op 2;
 
 
 <p>
-但是从一个类型向另外一个类型做隐式转换只能够提供一个函数，不然就会出现歧义. 这里我提供了两个隐式转换函数结果编译出错。 
+Because im- plicit conversions are applied implicitly by the compiler, not explicitly writ- ten down in the source code, it can be non-obvious to client programmers what implicit conversions are being applied. 隐式转换这个东西还是尽量少用比较好。
+</p>
+
+<hr/>
+<p>
+关于隐式转换有下面几个通用规则 Implicit conversions are governed by the following general rules:
+</p><ol>
+<li>Marking Rule: Only definitions marked implicit are available. 必须显示指明implicit. 
+</li>
+<li>Scope Rule: An inserted implicit conversion must be in scope as a single identifier, or be associated with the source or target type of the conver- sion. 隐式转换函数必须能够以单个id来访问，或者是在转换类型共生对象内部有定义
+</li>
+<li>Non-Ambiguity Rule: An implicit conversion is only inserted if there is no other possible conversion to insert. 无歧义否则编译出现如下错误“implicit conversions are not applicable because they are ambiguous”
+</li>
+<li>One-at-a-time Rule: Only one implicit is tried. 只会尝试做一次隐式转换
+</li>
+<li>Explicits-First Rule: Whenever code type checks as it is written, no implicits are attempted. 如果类型匹配就不会做隐式转换
+</li>
+</ol>
+
+
+<p>
+这里主要说说第2点，举个例子
 </p>
 
 
-<pre class="example">Note that implicit conversions are not applicable because they are ambiguous:
- both method intToHello of type (x: Int)this.Hello
- and method intToHello2 of type (x: Int)this.Hello
- are possible conversion functions from Int(2) to this.Hello
+<pre class="src src-Scala">class C(val x:Int) {
+  def op(c:C) {
+
+  }
+}
+
+object X {
+  implicit def intToC(x:Int) = new C(x)
+}
+
+// import X._ 
+// works.
+val x = new C(1)
+x op 10
 </pre>
 
 
 <p>
-Because im- plicit conversions are applied implicitly by the compiler, not explicitly writ- ten down in the source code, it can be non-obvious to client programmers what implicit conversions are being applied. 
+运行时候出现如下错误
+</p>
+
+
+<pre class="example">/Users/dirlt/scala/Hello.scala:12: error: type mismatch;
+ found   : Int(10)
+ required: this.C
+x op 10
+     ^
+one error found
+</pre>
+
+<p>
+也就是说找不到隐式转换函数，因为隐式转换函数只能够以单个id存在，而现在需要使用X.intToC才能够使用。所以解决办法是import X._将intToC这个函数导入到外部。
 </p>
 <p>
-所以隐式转换这个东西还是尽量少用比较好。
+存在一个特例，就是这个类型的共生对象(companion object)提供隐式转换函数也可以正常工作。
+</p>
+
+
+<pre class="src src-Scala">class C(val x:Int) {
+  def op(c:C) {
+
+  }
+}
+
+class D(val y:Int) {
+}
+
+object D {
+  implicit def D2C(d:D):C = {
+    println(<span class="org-string">"called..."</span>);
+    new C(d.y)
+  }
+}
+
+val x = new C(1)
+val y = new D(2)
+x op y
+</pre>
+
+
+
+<hr/>
+
+<p>
+隐式转换会发生在下面三个地方：
+</p><ol>
+<li>conversions to an expected type, 
+</li>
+<li>conversions of the receiver of a selection, and 
+</li>
+</ol>
+
+<p>可以理解为其中1是作用在operand上，而2是作用在receiver上。1这个类型转换过程相对比较好理解，2的话稍微有点麻烦，以下面为例
+</p>
+
+
+<pre class="src src-Scala">class A(val x:Int) {
+  def op(a:A) {
+  }
+}
+
+val a = new A(2)
+1 op a
+</pre>
+
+<p>
+上面这段程序肯定是不能够成功的. 对于scala来说其实要找的隐式转换函数式这样的：“能够将int转换成为某个type, 这个type有op(A)这样的方法". 所以如果添加IntToA这样的隐式转换函数即可。
 </p>
 </div>
 
 </div>
 
 <div id="outline-container-1-2-5" class="outline-4">
-<h4 id="sec-1-2-5"><span class="section-number-4">1.2.5</span> ()method</h4>
+<h4 id="sec-1-2-5"><span class="section-number-4">1.2.5</span> 隐式参数</h4>
 <div class="outline-text-4" id="text-1-2-5">
+
+<p>关于隐式参数有点类似C++的缺省参数，但是从实现上来看还不太一样。scala的隐式参数实现和隐式转换有点类似，要求隐式参数必须能够使用单个id访问到。下面是使用隐式参数例子 
+</p>
+
+
+<pre class="src src-Scala">def foo(x:Int)(implicit a:String,b:String) {
+  println(x + <span class="org-string">","</span> + a + <span class="org-string">","</span> + b);
+}
+</pre>
+
+<p>
+implicit作用在后面所有的参数上，需要和explicit参数分开编写。
+</p>
+<p>
+隐式参数的提供有点类似全局变量方式
+</p>
+
+
+<pre class="src src-Scala">implicit val defaultString:String = <span class="org-string">"hello"</span>
+foo(1) // 1,hello,hello
+</pre>
+
+<p>
+这里需要注意的是，隐式参数的匹配不是靠名字而是靠类型来匹配的。又因为这个方式有点类似全局变量，所以隐式参数类型定义上一定要选择比较unique的，这样才不容易出现冲突。As a style rule, it is best to use a custom named type in the types of implicit parameters. 
+</p>
+<p>
+<b>TODO(dirlt):view bound.</b>
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-2-6" class="outline-4">
+<h4 id="sec-1-2-6"><span class="section-number-4">1.2.6</span> ()method</h4>
+<div class="outline-text-4" id="text-1-2-6">
 
 <p>parameterless vs. empty-paren method. 对于函数来说如果没有任何参数的话，那么可以将()取消:
 </p><ul>
@@ -1300,9 +1432,9 @@ println(h.doubleD)
 
 </div>
 
-<div id="outline-container-1-2-6" class="outline-4">
-<h4 id="sec-1-2-6"><span class="section-number-4">1.2.6</span> 类型继承</h4>
-<div class="outline-text-4" id="text-1-2-6">
+<div id="outline-container-1-2-7" class="outline-4">
+<h4 id="sec-1-2-7"><span class="section-number-4">1.2.7</span> 类型继承</h4>
+<div class="outline-text-4" id="text-1-2-7">
 
 <p>使用extends关键字来继承，然后在继承的声明里面可以对父类做初始化。父类实例使用super来引用。
 </p>
@@ -1340,9 +1472,9 @@ val b = new B(10);
 
 </div>
 
-<div id="outline-container-1-2-7" class="outline-4">
-<h4 id="sec-1-2-7"><span class="section-number-4">1.2.7</span> 类型层次</h4>
-<div class="outline-text-4" id="text-1-2-7">
+<div id="outline-container-1-2-8" class="outline-4">
+<h4 id="sec-1-2-8"><span class="section-number-4">1.2.8</span> 类型层次</h4>
+<div class="outline-text-4" id="text-1-2-8">
 
 <p><img src="images/scala-class-hierarchy.png"  alt="./images/scala-class-hierarchy.png" />
 </p>
@@ -1427,9 +1559,9 @@ By contrast, Scala encourages the use of Option to indicate an optional value. T
 
 </div>
 
-<div id="outline-container-1-2-8" class="outline-4">
-<h4 id="sec-1-2-8"><span class="section-number-4">1.2.8</span> Traits</h4>
-<div class="outline-text-4" id="text-1-2-8">
+<div id="outline-container-1-2-9" class="outline-4">
+<h4 id="sec-1-2-9"><span class="section-number-4">1.2.9</span> Traits</h4>
+<div class="outline-text-4" id="text-1-2-9">
 
 <p>所谓的traits就是特征，在面向对象里面就是指代这个类或者是这个对象的特征。scala trait和java interface非常相似，其引入都是为了解决多重继承的问题。 <b>trait包含方法和字段，但是没有类参数（class parameter）和构造函数。</b>  <b>NOTE（dirlt）：我觉得这点设计让trait回归到了本意，同时简化了设计和使用</b> trait的定义和class类似，mixin trait上也是通过关键字extends来完成的，如果需要mixin多个trait的话用with关键字
 </p>
@@ -1623,9 +1755,9 @@ b.say
 
 </div>
 
-<div id="outline-container-1-2-9" class="outline-4">
-<h4 id="sec-1-2-9"><span class="section-number-4">1.2.9</span> 访问权限</h4>
-<div class="outline-text-4" id="text-1-2-9">
+<div id="outline-container-1-2-10" class="outline-4">
+<h4 id="sec-1-2-10"><span class="section-number-4">1.2.10</span> 访问权限</h4>
+<div class="outline-text-4" id="text-1-2-10">
 
 <p>The way you make members public in Scala is by not explicitly specifying any access modifier. Put another way, where you’d say “public” in Java, you simply say nothing in Scala. Public is Scala’s default access level.  
 </p>
@@ -1664,9 +1796,9 @@ class B(private[this] val x:Int) {
 
 </div>
 
-<div id="outline-container-1-2-10" class="outline-4">
-<h4 id="sec-1-2-10"><span class="section-number-4">1.2.10</span> Enumeration</h4>
-<div class="outline-text-4" id="text-1-2-10">
+<div id="outline-container-1-2-11" class="outline-4">
+<h4 id="sec-1-2-11"><span class="section-number-4">1.2.11</span> Enumeration</h4>
+<div class="outline-text-4" id="text-1-2-11">
 
 <p>创建枚举类型非常简单.对于枚举类型来说通常都是单例所以直接使用object较多。You can find more information in the Scaladoc comments of class scala.Enumeration.
 </p>
@@ -1849,7 +1981,7 @@ println(foo(1)) // 1
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-09-17 08:51:40 CST</p>
+<p class="date">Date: 2013-09-17 10:07:13 CST</p>
 <p class="creator">Org version 7.8.11 with Emacs version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
