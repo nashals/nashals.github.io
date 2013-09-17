@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="scala"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-16 22:34:13 CST"/>
+<meta name="generated" content="2013-09-17 08:51:40 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -91,6 +91,7 @@
 <li><a href="scala.html#sec-1-1-8">1.1.8 前提断言</a></li>
 <li><a href="scala.html#sec-1-1-9">1.1.9 package</a></li>
 <li><a href="scala.html#sec-1-1-10">1.1.10 模式匹配</a></li>
+<li><a href="scala.html#sec-1-1-11">1.1.11 annotation</a></li>
 </ul>
 </li>
 <li><a href="scala.html#sec-1-2">1.2 面向对象</a>
@@ -104,7 +105,7 @@
 <li><a href="scala.html#sec-1-2-7">1.2.7 类型层次</a></li>
 <li><a href="scala.html#sec-1-2-8">1.2.8 Traits</a></li>
 <li><a href="scala.html#sec-1-2-9">1.2.9 访问权限</a></li>
-<li><a href="scala.html#sec-1-2-10">1.2.10 Option</a></li>
+<li><a href="scala.html#sec-1-2-10">1.2.10 Enumeration</a></li>
 </ul>
 </li>
 <li><a href="scala.html#sec-1-3">1.3 面向函数</a>
@@ -250,6 +251,18 @@ res2: Array[String] = null
 <p>
 注意这里不能够在用[]这种方式来访问数组，而必须使用()的方式来访问。实际上scala将()调用方法定向到了apply这个函数，可以认为是操作符重载。 
 </p>
+
+<hr/>
+<p>
+scala允许使用type关键字来为类型做别名，类型别名能够很大程度上简化代码
+</p>
+
+
+<pre class="src src-Scala">type Counter = Long;
+var id : Counter = 0;
+</pre>
+
+
 </div>
 
 </div>
@@ -285,6 +298,18 @@ a: Double = 1.0
 
 scala&gt; val a = "Hello"
 a: String = Hello
+</pre>
+
+
+<p>
+如果没有赋初值的话那么相当只是声明而非定义。如果对于初值不感兴趣的话，那么可以使用_这个特殊的initializor. <b>但是注意只对var有效，这是因为val其实上必须设置有效的初值</b>. 这个初始值语义上表示0,对于不同的类型有不同的初始值。比如int = 0, float = 0.0f, 引用类型 = null. 
+</p>
+
+
+<pre class="src src-Scala">var a:Int = _;
+var b:Float = _;
+println(a);
+println(b);
 </pre>
 
 
@@ -457,6 +482,9 @@ println(x) // Vector(0, 1, 2, 3, 4)
 </pre>
 
 
+<p>
+<b>NOTE（dirlt）：在书中“For Expressions Revisited”这节其实可以认为for是语法糖衣，将map/filter/anonymous-function包装起来.事实上缺少break/continue这样的控制语句，将for转换成为函数式计算也相对比较简单</b>
+</p>
 
 <hr/>
 <p>
@@ -832,6 +860,7 @@ println(a); // toString = A(1)
 case class最大就是可以很方便地用来做pattern matching.
 </p>
 
+
 <hr/>
 <p>
 如果我们能够知道某个selector所有可能的pattern的话，那么就能够在编译期做一些安全性检查。但是selector这个过于宽泛，如果将selector限制在类层次上的话，那么还是可以实现的。举例如下：
@@ -880,6 +909,76 @@ a match {
   case _ =&gt; throw new RuntimeException(<span class="org-string">"??"</span>);
 }
 </pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-1-11" class="outline-4">
+<h4 id="sec-1-1-11"><span class="section-number-4">1.1.11</span> annotation</h4>
+<div class="outline-text-4" id="text-1-1-11">
+
+<p>Unlike comments, they have structure, thus making them easier to machine process. There are many things you can do with a program other than compiling and running it. Some examples are:
+</p><ol>
+<li>Automatic generation of documentation as with Scaladoc.
+</li>
+<li>Pretty printing code so that it matches your preferred style.
+</li>
+<li>Checking code for common errors such as opening a file but, on some control paths, never closing it.
+</li>
+<li>Experimental type checking, for example to manage side effects or ensure ownership properties.
+</li>
+</ol>
+
+<p>Such tools are called meta-programming tools, because they are pro- grams that take other programs as input. Annotations support these tools by letting the programmer sprinkle directives to the tool throughout their source code. Such directives let the tools be more effective than if they could have no user input. （所谓元编程就是能够编写以程序为输入的程序） 
+</p>
+<p>
+annotation作用方式通常有两种：
+</p><ul>
+<li>@annotation [val|var|def|class|object] // 作用在声明和定义上
+</li>
+<li>(expression : @annotation) // 作用在表达式上 
+</li>
+</ul>
+
+
+
+
+<pre class="example">@deprecated class QuickAndDirty {}
+(e: @unchecked) match {}
+</pre>
+
+
+<p>
+annotation通常格式如下
+</p>
+
+
+<pre class="example">@annot(exp1, exp2, ...) {val name1=const1, ..., val namen=constn}
+</pre>
+
+<p>
+其中annot是名字，exp是对应参数，而后面部分一些可选命名参数，没有顺序要求。
+</p>
+
+<hr/>
+<p>
+一些常用的annotation包括
+</p><ul>
+<li>@deprecated
+</li>
+<li>@volatile
+</li>
+<li>@serializable
+</li>
+<li>@SerialVersionUID(1234) # 实际上就是相当为这个className定义UID，这样在反序列化的时候会进行检查
+</li>
+<li>@transient
+</li>
+<li>@unchecked # pm的时候不要考虑遗漏情况
+</li>
+</ul>
 
 
 </div>
@@ -1299,6 +1398,31 @@ Null是所有引用类型的子类，其实例对象是null. 而Nothing是所有
 <p>
 我们必须确保类型能够统一，所以error类型必须和Int兼容，因此Nothing在设计上必须是所有类型的子类。
 </p>
+
+<hr/>
+<p>
+Option type能够很好地解决java里面null的问题. 举个例子我们在java里面处理map.get("hello")返回值的时候，都需要判断是否为null然后在做处理，否则可能会出现NullPointerException. 同样在scala里面，map.get("hello")返回一个Option对象，这个对象必然是一个有效的引用对象。对于一个Option对象而言：
+</p><ol>
+<li>Some(x). 表示其value是x
+</li>
+<li>None. 表示缺失value.
+</li>
+</ol>
+
+<p>可以通过模式匹配来判断是否为None以及获取value.
+</p>
+
+
+<pre class="src src-Scala">def show(x: Option[String]) = x match {
+  case Some(s) =&gt; s
+  case None =&gt; <span class="org-string">"?"</span>
+}
+</pre>
+
+
+<p> 
+By contrast, Scala encourages the use of Option to indicate an optional value. This approach to optional values has several advantages over Java’s. First, it is far more obvious to readers of code that a variable whose type is Option[String] is an optional String than a variable of type String, which may sometimes be null. But most importantly, that programming error described earlier of using a variable that may be null without first checking it for null becomes in Scala a type error. If a variable is of type Option[String] and you try to use it as a String, your Scala program will not compile.
+</p>
 </div>
 
 </div>
@@ -1307,8 +1431,7 @@ Null是所有引用类型的子类，其实例对象是null. 而Nothing是所有
 <h4 id="sec-1-2-8"><span class="section-number-4">1.2.8</span> Traits</h4>
 <div class="outline-text-4" id="text-1-2-8">
 
-<p>所谓的traits就是特征，在面向对象里面就是指代这个类或者是这个对象的特征。scala trait和java interface非常相似，其引入都是为了解决多重继承的问题。 <b>trait包含方法和字段，但是没有类参数（class parameter）和构造函数。</b>  <b>NOTE（dirlt）：我觉得这点设计让trait回归到了本意，同时简化了设计和使用</b>
-trait的定义和class类似，mixin trait上也是通过关键字extends来完成的，如果需要mixin多个trait的话用with关键字
+<p>所谓的traits就是特征，在面向对象里面就是指代这个类或者是这个对象的特征。scala trait和java interface非常相似，其引入都是为了解决多重继承的问题。 <b>trait包含方法和字段，但是没有类参数（class parameter）和构造函数。</b>  <b>NOTE（dirlt）：我觉得这点设计让trait回归到了本意，同时简化了设计和使用</b> trait的定义和class类似，mixin trait上也是通过关键字extends来完成的，如果需要mixin多个trait的话用with关键字
 </p>
 
 
@@ -1429,6 +1552,73 @@ class Cat extends Animal with Furry with FourLegged
 <p>
 <b>NOTE（dirlt）：这种动态执行的效果就是，你不能够确定super到底是哪个，取决于context.</b>
 </p>
+
+<hr/>
+<p>
+和java inteface一样，scala也允许构造匿名对象实现trait. 不过因为trait相比interface引入了字段，所以也引入了一些问题。这个问题主要是字段初始化顺序问题。下面是一个例子
+</p>
+
+
+<pre class="src src-Scala">trait A{  
+  val a: Int;
+  val b: Int;
+  println(<span class="org-string">"A..."</span> + a + <span class="org-string">","</span> + b);
+}
+
+val b = new A {
+  val a = 1;
+  val b = 2;
+  println(<span class="org-string">"B..."</span>);
+}
+</pre>
+
+
+<p>
+上面这段代码里面，构造了一个匿名trait A的实现。但是注意运行的时候A在B之前初始化，也就是说虽然我们给了a，b定义，但是在执行到A初始化的时候，a，b实际上还是没有任何值的。对于这个问题scala给出了两种解决办法。
+</p>
+<p>
+一种是显式地说在A初始化之前就给出值的定义,这种方式称为pre-initialized field. 
+</p>
+
+
+<pre class="src src-Scala">trait A{  
+  val a: Int;
+  val b: Int;
+  println(<span class="org-string">"A..."</span> + a + <span class="org-string">","</span> + b);
+}
+
+val b = new {
+  val a = 1;
+  val b = 2;
+} with A;
+</pre>
+
+
+<p>
+另外一种是对值做惰性初始化，这种方式称为lazy-evaluation. 这种方式和定义函数非常类似，但是有个好处就是一旦初始化一次之后就不会再次evaluation.
+</p>
+
+
+<pre class="src src-Scala">trait A{  
+  val a: Int;
+  val b: Int;
+  lazy val c = a;
+  lazy val d = b;
+  def say() {
+    println(c + <span class="org-string">","</span> + d);
+  }
+}
+
+val b = new A{
+  val a = 1;
+  val b = 2;
+}
+b.say
+</pre>
+
+<p>
+但是lazy不允许只有声明必须有定义，这个定义对应expression表示这个lazy value计算方式。
+</p>
 </div>
 
 </div>
@@ -1475,31 +1665,40 @@ class B(private[this] val x:Int) {
 </div>
 
 <div id="outline-container-1-2-10" class="outline-4">
-<h4 id="sec-1-2-10"><span class="section-number-4">1.2.10</span> Option</h4>
+<h4 id="sec-1-2-10"><span class="section-number-4">1.2.10</span> Enumeration</h4>
 <div class="outline-text-4" id="text-1-2-10">
 
-<p>Option type能够很好地解决java里面null的问题. 举个例子我们在java里面处理map.get("hello")返回值的时候，都需要判断是否为null然后在做处理，否则可能会出现NullPointerException. 同样在scala里面，map.get("hello")返回一个Option对象，这个对象必然是一个有效的引用对象。对于一个Option对象而言：
-</p><ol>
-<li>Some(x). 表示其value是x
-</li>
-<li>None. 表示缺失value.
-</li>
-</ol>
-
-<p>可以通过模式匹配来判断是否为None以及获取value.
+<p>创建枚举类型非常简单.对于枚举类型来说通常都是单例所以直接使用object较多。You can find more information in the Scaladoc comments of class scala.Enumeration.
 </p>
 
 
-<pre class="src src-Scala">def show(x: Option[String]) = x match {
-  case Some(s) =&gt; s
-  case None =&gt; <span class="org-string">"?"</span>
+
+<pre class="src src-Scala">object X extends Enumeration {
+  val A,B,C = Value; // print as A,B,C
+  val E = Value(<span class="org-string">"hello"</span>);
+  val F = Value(<span class="org-string">"???"</span>); // print as ???
 }
 </pre>
 
-
-<p> 
-By contrast, Scala encourages the use of Option to indicate an optional value. This approach to optional values has several advantages over Java’s. First, it is far more obvious to readers of code that a variable whose type is Option[String] is an optional String than a variable of type String, which may sometimes be null. But most importantly, that programming error described earlier of using a variable that may be null without first checking it for null becomes in Scala a type error. If a variable is of type Option[String] and you try to use it as a String, your Scala program will not compile.
+<p>
+Value这里是一个比较特殊的类型path-dependent type.所谓path-dependent type是指这个类型随着路径不同而不同。在X里面，那么Value type全称是X.Value, 这样就可以和其他枚举类型的Value区分开来。
 </p>
+<p>
+scala提供的枚举类型也相对比较灵活，也可以很容易地访问整个枚举类型内部，也可以很容易地构造出枚举类型
+</p>
+
+
+<pre class="src src-Scala">for (a &lt;- X) { // TODO(dirlt): seems don't work now!.
+  println(a)
+}
+
+val x = X(1) // easy construction.
+println(x.id + <span class="org-string">","</span> + x)
+val y = X(4)
+println(y.id + <span class="org-string">","</span> + y)
+</pre>
+
+
 </div>
 </div>
 
@@ -1650,7 +1849,7 @@ println(foo(1)) // 1
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-09-16 22:34:13 CST</p>
+<p class="date">Date: 2013-09-17 08:51:40 CST</p>
 <p class="creator">Org version 7.8.11 with Emacs version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
