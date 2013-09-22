@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="scala"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-17 10:07:13 CST"/>
+<meta name="generated" content="2013-09-22 12:08:41 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -216,10 +216,7 @@ res1: scala.collection.immutable.Range.Inclusive = Range(2, 3, 4)
 
 
 <p>
-<b>TODO(dirlt):可以学习一下这些原始类型提供的方法</b> 
-</p>
-<p>
-<b>NOTE(dirlt):实际上scala内部提供了隐式转换到其他类来提供扩展方法的，比如将Int-&gt;RichInt</b>
+<b>NOTE(dirlt):实际上scala内部提供了隐式转换到其他类来提供扩展方法的，比如将Int-&gt;RichInt.可以学习一下这些扩展方法</b>
 </p>
 
 <hr/>
@@ -820,6 +817,8 @@ pattern matching过程中还有下面几个问题需要注意：
 </li>
 <li>A(1, p @ B(_)) =&gt; handle(p) # p绑定了B(x)这个匹配
 </li>
+<li>A(1, p @ B()) =&gt; handle(p) # <b>B是可以包含unapply从type(p) =&gt; Boolean的类，做条件判断</b>
+</li>
 </ul>
 
 </li>
@@ -860,7 +859,6 @@ println(a); // toString = A(1)
 <p>
 case class最大就是可以很方便地用来做pattern matching.
 </p>
-
 
 <hr/>
 <p>
@@ -908,6 +906,79 @@ a match {
   case e @ B(_) =&gt; println(e)
   case e @ C(_) =&gt; println(e)
   case _ =&gt; throw new RuntimeException(<span class="org-string">"??"</span>);
+}
+</pre>
+
+
+
+<hr/>
+<p>
+模式匹配除了能够直接作用在case class上之外，也可以作用在普通的class上面，但是需要普通的class提供一些辅助的方法将转换成为case class或者是constant/string上面。这个机制在scala里面称为 <b>extractor</b> 
+</p>
+<p>
+下面是一个例子
+</p>
+
+
+<pre class="src src-Scala">class A(val a:String,
+        val b:String) {
+
+}
+
+val a = new A(<span class="org-string">"hello"</span>,<span class="org-string">"world"</span>);
+a match {
+  case A(x,y) =&gt; println(x + <span class="org-string">","</span> + y);
+  case _ =&gt; println(<span class="org-string">"!match"</span>);
+}
+</pre>
+
+<p>
+这段代码不能够运行，原因在于没有办法告诉scala，如果将A实例和A(x,y)来做匹配。对于case classes来说实现可能相对简单，因为case class的class parameters都是val定义的，也就是说构造参数没有办法改变，编译器内部处理case classes的话可以保存这个构造参数，而general class却不能够像case class一样。所以需要用户提供辅助函数来帮助scala做pattern matching. <b>用户需要在companion object提供unapply函数</b> 
+</p>
+
+
+
+<pre class="src src-Scala">object A {
+  def apply(a:String,b:String) = new A(a,b)
+  def unapply(x:A) = Some((x.a,x.b))
+}
+</pre>
+
+<p>
+unapply和apply通常是配对的函数。apply将参数构造成为一个对象，而unapply将对象解构成为参数。the apply method is called an injection, because it takes some arguments and yields an element of a given set. The unapply method is called an extrac- tion, because it takes an element of the same set and extracts some of its parts. 而companion object则称为extractor.
+</p>
+<p>
+<b>unapply的过程可以认为是将unapply参数最用在expression上，抽取出这个expression的构造参数</b> 比如上面过程可以认为类似
+</p>
+
+
+<pre class="src src-Scala">object A {
+  def apply(a:String,b:String) = new A(a,b)
+  def unapply(a: A) = Some((a.a,a.b))
+}
+
+val a = new A(<span class="org-string">"hello"</span>,<span class="org-string">"world"</span>);
+A.unapply(a) match {
+  case Some((x,y)) =&gt; println(x + <span class="org-string">","</span> + y);
+  case _ =&gt; println(<span class="org-string">"!match"</span>);
+}
+</pre>
+
+
+<p>
+使用上面的unapply方法不能够匹配带有_*这种sequence variable的pattern.允许匹配这种pattern的话，那么需要实现unapplySeq方法，返回参数必须是Option[Seq[T]]这个类型
+</p>
+
+
+<pre class="src src-Scala">object A {
+  def apply(a:String,b:String) = new A(a,b)
+  def unapplySeq(a: A):Option[Seq[String]] = Some(List(a.a,a.b))
+}
+
+val a = new A(<span class="org-string">"hello"</span>,<span class="org-string">"world"</span>);
+a match {
+  case A(x,_*) =&gt; println(x);
+  case _ =&gt; println(<span class="org-string">"!match"</span>);
 }
 </pre>
 
@@ -1363,8 +1434,50 @@ foo(1) // 1,hello,hello
 <p>
 这里需要注意的是，隐式参数的匹配不是靠名字而是靠类型来匹配的。又因为这个方式有点类似全局变量，所以隐式参数类型定义上一定要选择比较unique的，这样才不容易出现冲突。As a style rule, it is best to use a custom named type in the types of implicit parameters. 
 </p>
+
+<hr/>
 <p>
-<b>TODO(dirlt):view bound.</b>
+Note that when you use implicit on a parameter, then not only will the compiler try to supply that parameter with an implicit value, but the compiler will also use that parameter as an available implicit in the body of the method! 
+</p>
+<p>
+使用隐式参数的话，编译器不仅仅会在外部调用时候使用这个参数，在函数体内也会使用这个参数，以下面代码为例
+</p>
+
+
+<pre class="src src-Scala">def maxList[T](elements: List[T])
+(implicit orderer: T =&gt; Ordered[T]): T =
+  elements match {
+    case List() =&gt;
+      throw new IllegalArgumentException(<span class="org-string">"empty list!"</span>)
+    case List(x) =&gt; x
+    case x :: rest =&gt;
+      val maxRest = maxList(rest)  // (orderer) is implicit
+    if (x &gt; maxRest) x           // orderer(x) is implicit
+    else maxRest
+  }
+</pre>
+
+<p>
+函数体内部默认地都是用了两个隐式参数。但是注意在函数体内实际上这个隐式参数根本没有使用。
+</p>
+<p>
+Because this pattern is common, Scala lets you leave out the name of this pa- rameter and shorten the method header by using a view bound. 因为这个模式非常通用，所以scala提出了一个 <b>view bound</b> . 上面代码可以写为
+</p>
+
+
+<pre class="src src-Scala">def maxList[T &lt;% Ordered[T]](elements: List[T]): T = elements match {
+  case List() =&gt;
+    throw new IllegalArgumentException(<span class="org-string">"empty list!"</span>)
+  case List(x) =&gt; x
+  case x :: rest =&gt;
+    val maxRest = maxList(rest)  // (orderer) is implicit
+  if (x &gt; maxRest) x           // orderer(x) is implicit
+  else maxRest
+}
+</pre>
+
+<p>
+这里对T做了view bound.  <b>You can think of “T &lt;% Ordered[T]” as saying, “I can use any T, so long as T can be treated as an Ordered[T].”</b>  也就是说T可以被认为是Ordered[T]这个类型传入，只要外部提供了T =&gt; Ordered[T]的隐式转换函数。 
 </p>
 </div>
 
@@ -1981,8 +2094,8 @@ println(foo(1)) // 1
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-09-17 10:07:13 CST</p>
-<p class="creator">Org version 7.8.11 with Emacs version 24</p>
+<p class="date">Date: 2013-09-22 12:08:41 CST</p>
+<p class="creator">Org version 7.8.02 with Emacs version 23</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
