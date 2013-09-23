@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="hbase"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-15 15:19:24 CST"/>
+<meta name="generated" content="2013-09-23 17:30:50 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -106,6 +106,7 @@
 <li><a href="hbase.html#sec-1-2-4">1.2.4 hbase increment</a></li>
 <li><a href="hbase.html#sec-1-2-5">1.2.5 python client</a></li>
 <li><a href="hbase.html#sec-1-2-6">1.2.6 获取集群运行状况</a></li>
+<li><a href="hbase.html#sec-1-2-7">1.2.7 bulk load</a></li>
 </ul>
 </li>
 <li><a href="hbase.html#sec-1-3">1.3 日志分析</a>
@@ -921,9 +922,68 @@ thrift.Thrift.TApplicationException: Invalid method name: 'scannerOpenWithScan'
 </li>
 <li>HBaseAdmin可以获取节点信息
 </li>
-<li>HTable可以获取table
+<li>HTable可以获取table信息
 </li>
 </ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-7" class="outline-4">
+<h4 id="sec-1-2-7"><span class="section-number-4">1.2.7</span> bulk load</h4>
+<div class="outline-text-4" id="text-1-2-7">
+
+<ul>
+<li><a href="http://hbase.apache.org/book/arch.bulk.load.html">http://hbase.apache.org/book/arch.bulk.load.html</a>
+</li>
+<li>Preparing data via a MapReduce job
+<ul>
+<li>将输入文件转换成为HFile格式
+</li>
+<li>参考代码 com.dirlt.java.mr.HBaseLoaderMR
+</li>
+<li>region，reduce，output对应，也就是说有多少个region就有多少个reduce
+<ul>
+<li><b>NOTE（dirlt）：所以需要关注region分布。如果过于集中的话需要考虑使用做pre-split或者是将key做hash-prefix等</b>
+</li>
+</ul>
+
+</li>
+<li>configureIncrementalLoad会改写reducer实现，所以这个转换过程只能够由单独任务完成。
+</li>
+<li>In order to function efficiently, HFileOutputFormat must be configured such that each output HFile fits within a single region. In order to do this, jobs whose output will be bulk loaded into HBase use Hadoop's TotalOrderPartitioner class to partition the map output into disjoint ranges of the key space, corresponding to the key ranges of the regions in the table. HFileOutputFormat includes a convenience function, configureIncrementalLoad(), which automatically sets up a TotalOrderPartitioner based on the current region boundaries of a table.
+</li>
+</ul>
+
+</li>
+<li>Completing the data load
+<ul>
+<li>将上步产生的HFile移动到相应目录并且通知对应的rs
+</li>
+<li>If the region boundaries have changed during the course of bulk load preparation, or between the preparation and completion steps, the completebulkloads utility will automatically split the data files into pieces corresponding to the new boundaries. This process is not optimally efficient, so users should take care to minimize the delay between preparing a bulk load and importing it into the cluster, especially if other clients are simultaneously loading data through other means.
+</li>
+<li>如果在产生HFile和load之间rs出现分裂的话，bulkload工具能够自动处理，但是相对来说效率不是最佳。
+</li>
+<li>hadoop jar hbase-VERSION.jar completebulkload [-c /path/to/hbase/config/hbase-site.xml] /user/todd/myoutput mytable
+</li>
+</ul>
+
+</li>
+<li><b>NOTE(dirlt):实际上上面命令可能会出现权限问题，如果转换程序输出是hdfs owner的话，而要将文件移动到hbase那么必须是hbase owner. 所以通常使用下面命令完成</b>
+<ul>
+<li>sudo -u hdfs hadoop fs -chmod -R 0777 &lt;hfile-path&gt; # 修改权限
+</li>
+<li>sudo -u hdfs hadoop fs -chown -R hbase &lt;hfile-path&gt; # 修改owner
+</li>
+<li>sudo -u hbase hadoop jar /usr/lib/hbase/hbase-0.94.6-cdh4.3.0-security.jar completebulkload &lt;hfile-path&gt; &lt;table&gt;
+</li>
+</ul>
+
+</li>
+</ul>
+
 
 </div>
 </div>
@@ -3151,8 +3211,8 @@ Currently the WAL is using a Hadoop SequenceFile, which stores records as sets o
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-09-15 15:19:24 CST</p>
-<p class="creator">Org version 7.8.11 with Emacs version 24</p>
+<p class="date">Date: 2013-09-23 17:30:50 CST</p>
+<p class="creator">Org version 7.8.02 with Emacs version 23</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
