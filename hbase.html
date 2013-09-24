@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="hbase"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-23 17:30:50 CST"/>
+<meta name="generated" content="2013-09-24 21:13:36 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -101,12 +101,13 @@
 <li><a href="hbase.html#sec-1-2">1.2 使用问题</a>
 <ul>
 <li><a href="hbase.html#sec-1-2-1">1.2.1 单节点搭建</a></li>
-<li><a href="hbase.html#sec-1-2-2">1.2.2 hbase shell</a></li>
-<li><a href="hbase.html#sec-1-2-3">1.2.3 hbase hbck</a></li>
-<li><a href="hbase.html#sec-1-2-4">1.2.4 hbase increment</a></li>
-<li><a href="hbase.html#sec-1-2-5">1.2.5 python client</a></li>
-<li><a href="hbase.html#sec-1-2-6">1.2.6 获取集群运行状况</a></li>
-<li><a href="hbase.html#sec-1-2-7">1.2.7 bulk load</a></li>
+<li><a href="hbase.html#sec-1-2-2">1.2.2 table configuration</a></li>
+<li><a href="hbase.html#sec-1-2-3">1.2.3 hbase shell</a></li>
+<li><a href="hbase.html#sec-1-2-4">1.2.4 hbase hbck</a></li>
+<li><a href="hbase.html#sec-1-2-5">1.2.5 hbase increment</a></li>
+<li><a href="hbase.html#sec-1-2-6">1.2.6 python client</a></li>
+<li><a href="hbase.html#sec-1-2-7">1.2.7 获取集群运行状况</a></li>
+<li><a href="hbase.html#sec-1-2-8">1.2.8 bulk load</a></li>
 </ul>
 </li>
 <li><a href="hbase.html#sec-1-3">1.3 日志分析</a>
@@ -784,8 +785,34 @@ fusion iomemory 是类似 ssd的东西， <b>操作速度接近DRAM，成本更�
 </div>
 
 <div id="outline-container-1-2-2" class="outline-4">
-<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> hbase shell</h4>
+<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> table configuration</h4>
 <div class="outline-text-4" id="text-1-2-2">
+
+<ul>
+<li>DATA_BLOCK_ENCODING =&gt; 'FAST_DIFF'(PREFIX,DIFF) # block压缩算法（偏向应用层）
+</li>
+<li>ENCODE_ON_DISK =&gt; 'false' # 以上encoding是否需要作用在disk上
+</li>
+<li>BLOOMFILTER =&gt; 'ROW'(ROWCOL) # 按照row还是按照row+qualifier做bloom filter.
+</li>
+<li>COMPRESSION =&gt; 'SNAPPY' # block压缩算法（偏向系统层）
+</li>
+<li>BLOCKSIZE =&gt; '32768' # 对于随机查询高的table,blocksize缩小可以减少LRUCache使用
+</li>
+<li>VERSIONS =&gt; '100' # 保存历史版本数目
+</li>
+<li>NAME =&gt; 'info' # column family
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-3" class="outline-4">
+<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> hbase shell</h4>
+<div class="outline-text-4" id="text-1-2-3">
 
 <ul>
 <li>scan 'test' 
@@ -848,9 +875,9 @@ fusion iomemory 是类似 ssd的东西， <b>操作速度接近DRAM，成本更�
 
 </div>
 
-<div id="outline-container-1-2-3" class="outline-4">
-<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> hbase hbck</h4>
-<div class="outline-text-4" id="text-1-2-3">
+<div id="outline-container-1-2-4" class="outline-4">
+<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> hbase hbck</h4>
+<div class="outline-text-4" id="text-1-2-4">
 
 <ul>
 <li>默认检查hbase状态
@@ -864,9 +891,9 @@ fusion iomemory 是类似 ssd的东西， <b>操作速度接近DRAM，成本更�
 
 </div>
 
-<div id="outline-container-1-2-4" class="outline-4">
-<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> hbase increment</h4>
-<div class="outline-text-4" id="text-1-2-4">
+<div id="outline-container-1-2-5" class="outline-4">
+<h4 id="sec-1-2-5"><span class="section-number-4">1.2.5</span> hbase increment</h4>
+<div class="outline-text-4" id="text-1-2-5">
 
 <p><a href="http://hbase.apache.org/apidocs/org/apache/hadoop/hbase/client/Increment.html">http://hbase.apache.org/apidocs/org/apache/hadoop/hbase/client/Increment.html</a>
 </p>
@@ -877,9 +904,9 @@ fusion iomemory 是类似 ssd的东西， <b>操作速度接近DRAM，成本更�
 
 </div>
 
-<div id="outline-container-1-2-5" class="outline-4">
-<h4 id="sec-1-2-5"><span class="section-number-4">1.2.5</span> python client</h4>
-<div class="outline-text-4" id="text-1-2-5">
+<div id="outline-container-1-2-6" class="outline-4">
+<h4 id="sec-1-2-6"><span class="section-number-4">1.2.6</span> python client</h4>
+<div class="outline-text-4" id="text-1-2-6">
 
 <p>使用python来访问hbase确实可以很大地提高开发效率，但是通过thrift server来进行中转的话对于性能还是存在影响的，因此比较适合测试。
 </p><ul>
@@ -913,9 +940,9 @@ thrift.Thrift.TApplicationException: Invalid method name: 'scannerOpenWithScan'
 
 </div>
 
-<div id="outline-container-1-2-6" class="outline-4">
-<h4 id="sec-1-2-6"><span class="section-number-4">1.2.6</span> 获取集群运行状况</h4>
-<div class="outline-text-4" id="text-1-2-6">
+<div id="outline-container-1-2-7" class="outline-4">
+<h4 id="sec-1-2-7"><span class="section-number-4">1.2.7</span> 获取集群运行状况</h4>
+<div class="outline-text-4" id="text-1-2-7">
 
 <ul>
 <li>参考代码 com.dirlt.java.hbase.ClusterSummary
@@ -931,9 +958,9 @@ thrift.Thrift.TApplicationException: Invalid method name: 'scannerOpenWithScan'
 
 </div>
 
-<div id="outline-container-1-2-7" class="outline-4">
-<h4 id="sec-1-2-7"><span class="section-number-4">1.2.7</span> bulk load</h4>
-<div class="outline-text-4" id="text-1-2-7">
+<div id="outline-container-1-2-8" class="outline-4">
+<h4 id="sec-1-2-8"><span class="section-number-4">1.2.8</span> bulk load</h4>
+<div class="outline-text-4" id="text-1-2-8">
 
 <ul>
 <li><a href="http://hbase.apache.org/book/arch.bulk.load.html">http://hbase.apache.org/book/arch.bulk.load.html</a>
@@ -3211,7 +3238,7 @@ Currently the WAL is using a Hadoop SequenceFile, which stores records as sets o
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-09-23 17:30:50 CST</p>
+<p class="date">Date: 2013-09-24 21:13:36 CST</p>
 <p class="creator">Org version 7.8.02 with Emacs version 23</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
