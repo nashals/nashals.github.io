@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="hdfs"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-25 08:47:54 CST"/>
+<meta name="generated" content="2013-09-25 18:25:32 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -184,39 +184,9 @@
 <ul>
 <li><a href="hdfs.html#sec-1-7-1">1.7.1 Balancer</a>
 <ul>
-<li><a href="hdfs.html#sec-1-7-1-1">1.7.1.1 NNS balance iteration</a>
-<ul>
-<li><a href="hdfs.html#sec-1-7-1-1-1">1.7.1.1.1 main thread</a></li>
-<li><a href="hdfs.html#sec-1-7-1-1-2">1.7.1.1.2 BalancingPolicy</a></li>
-</ul>
-</li>
-<li><a href="hdfs.html#sec-1-7-1-2">1.7.1.2 NN balance iteration</a>
-<ul>
-<li><a href="hdfs.html#sec-1-7-1-2-1">1.7.1.2.1 Balancer</a></li>
-<li><a href="hdfs.html#sec-1-7-1-2-2">1.7.1.2.2 Balancer::run</a></li>
-<li><a href="hdfs.html#sec-1-7-1-2-3">1.7.1.2.3 Balancer::initNodes</a></li>
-<li><a href="hdfs.html#sec-1-7-1-2-4">1.7.1.2.4 Balancer::chooseNodes</a></li>
-<li><a href="hdfs.html#sec-1-7-1-2-5">1.7.1.2.5 dispatchBlockMoves</a></li>
-<li><a href="hdfs.html#sec-1-7-1-2-6">1.7.1.2.6 waitForMoveCompletion</a></li>
-<li><a href="hdfs.html#sec-1-7-1-2-7">1.7.1.2.7 resetData</a></li>
-<li><a href="hdfs.html#sec-1-7-1-2-8">1.7.1.2.8 MovedBlocks</a></li>
-</ul>
-</li>
-<li><a href="hdfs.html#sec-1-7-1-3">1.7.1.3 Source balance iteration</a>
-<ul>
-<li><a href="hdfs.html#sec-1-7-1-3-1">1.7.1.3.1 BalancerDatanode</a></li>
-<li><a href="hdfs.html#sec-1-7-1-3-2">1.7.1.3.2 BalancerBlock</a></li>
-<li><a href="hdfs.html#sec-1-7-1-3-3">1.7.1.3.3 NodeTask</a></li>
-<li><a href="hdfs.html#sec-1-7-1-3-4">1.7.1.3.4 Source</a></li>
-<li><a href="hdfs.html#sec-1-7-1-3-5">1.7.1.3.5 Source::BlockMoveDispatcher</a></li>
-<li><a href="hdfs.html#sec-1-7-1-3-6">1.7.1.3.6 Source::dispatchBlocks</a></li>
-<li><a href="hdfs.html#sec-1-7-1-3-7">1.7.1.3.7 Source::getBlockList</a></li>
-<li><a href="hdfs.html#sec-1-7-1-3-8">1.7.1.3.8 Source::isGoodBlockCandidate</a></li>
-<li><a href="hdfs.html#sec-1-7-1-3-9">1.7.1.3.9 Source::filterMovedBlocks</a></li>
-<li><a href="hdfs.html#sec-1-7-1-3-10">1.7.1.3.10 Source::shouldFetchMoreBlocks</a></li>
-<li><a href="hdfs.html#sec-1-7-1-3-11">1.7.1.3.11 Source::chooseNextBlockToMove</a></li>
-</ul>
-</li>
+<li><a href="hdfs.html#sec-1-7-1-1">1.7.1.1 NNS balance iteration</a></li>
+<li><a href="hdfs.html#sec-1-7-1-2">1.7.1.2 NN balance iteration</a></li>
+<li><a href="hdfs.html#sec-1-7-1-3">1.7.1.3 Source balance iteration</a></li>
 </ul>
 </li>
 </ul>
@@ -1726,11 +1696,11 @@ uri = file:///
 
 <p><b>NOTE(dirlt):名词是自己定义的方便理解</b>
 </p><ul>
-<li>NNs balance iteration # 对于hdfs federation来说可能存在多个NN. 并且对于这些NN需要发起多轮balance迭代，每轮迭代称为NNs balance iteration.
+<li>NNs balance # 对于hdfs federation来说可能存在多个NN. 并且对于这些NN需要发起多轮balance迭代，每轮迭代称为NNs balance.
 </li>
-<li>NN balance iteration # NNs balance iteration内部针对每个NN集群发起一轮balance迭代称为NN balance iteration. 内部会拆解成为多个source发起balance.
+<li>NN balance # NNs balance iteration内部针对每个NN集群发起alance称为NN balance iteration. 内部会拆解成为多个source发起balance.
 </li>
-<li>Source balance iteration # 每个source发起balance, 内部也会多次挑选block来做move. 这样每次move称为source balance iteration.
+<li>Source balance # 每个source发起balance, 内部也会多次挑选block来做move. 其中Source balance内部会有多轮迭代。
 </li>
 </ul>
 
@@ -1742,15 +1712,10 @@ uri = file:///
 <h5 id="sec-1-7-1-1"><span class="section-number-5">1.7.1.1</span> NNS balance iteration</h5>
 <div class="outline-text-5" id="text-1-7-1-1">
 
-
-</div>
-
-<div id="outline-container-1-7-1-1-1" class="outline-6">
-<h6 id="sec-1-7-1-1-1"><span class="section-number-6">1.7.1.1.1</span> main thread</h6>
-<div class="outline-text-6" id="text-1-7-1-1-1">
-
-<p>主流程大致是这样的：
-</p><ol>
+<ul>
+<li id="sec-1-7-1-1-1">main thread<br/>
+主流程大致是这样的：
+<ol>
 <li>获得所有namenodes(hdfs federation supported)
 </li>
 <li>对每个namenode进行balance(block pool or node)
@@ -1822,16 +1787,12 @@ Parameters有两个控制参数
 </ul>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-7-1-1-2">BalancingPolicy<br/>
+定义如何计算disk util，包括计算per node/pool disk util 和 avg disk util. 根据Node和Pool不同特性有两个实现，
 
-</div>
-
-<div id="outline-container-1-7-1-1-2" class="outline-6">
-<h6 id="sec-1-7-1-1-2"><span class="section-number-6">1.7.1.1.2</span> BalancingPolicy</h6>
-<div class="outline-text-6" id="text-1-7-1-1-2">
-
-<p>定义如何计算disk util，包括计算per node/pool disk util 和 avg disk util. 根据Node和Pool不同特性有两个实现，
-</p>
 
 
 
@@ -1921,7 +1882,8 @@ Pool实现
 
 
 
-</div>
+</li>
+</ul>
 </div>
 
 </div>
@@ -1930,15 +1892,10 @@ Pool实现
 <h5 id="sec-1-7-1-2"><span class="section-number-5">1.7.1.2</span> NN balance iteration</h5>
 <div class="outline-text-5" id="text-1-7-1-2">
 
+<ul>
+<li id="sec-1-7-1-2-1">Balancer<br/>
+Balancer数据结构
 
-</div>
-
-<div id="outline-container-1-7-1-2-1" class="outline-6">
-<h6 id="sec-1-7-1-2-1"><span class="section-number-6">1.7.1.2.1</span> Balancer</h6>
-<div class="outline-text-6" id="text-1-7-1-2-1">
-
-<p>Balancer数据结构
-</p>
 
 
 
@@ -1972,10 +1929,10 @@ Pool实现
   private Collection&lt;BalancerDatanode&gt; targets
                                = new HashSet&lt;BalancerDatanode&gt;();
 
-  // &#20445;&#23384;&#25152;&#26377;&#35843;&#24230;&#20986;&#29616;&#36807;&#30340;Block
+  // &#20445;&#23384;&#25152;&#26377;&#35843;&#24230;&#20986;&#29616;&#36807;&#30340;Block. NOTE(dirlt)&#65306;&#20284;&#20046;&#26159;&#36951;&#30041;&#20195;&#30721;&#65292;&#27809;&#26377;&#23454;&#38469;&#29992;&#36884;
   private Map&lt;Block, BalancerBlock&gt; globalBlockList
                  = new HashMap&lt;Block, BalancerBlock&gt;();
-  // 
+  // &#22312;&#26368;&#36817;&#19968;&#27573;&#26102;&#38388;&#20869;&#31227;&#21160;&#36807;&#30340;Block.
   private MovedBlocks movedBlocks = new MovedBlocks();
 
   // Map storage IDs to BalancerDatanodes
@@ -1988,9 +1945,11 @@ Pool实现
 
   // &#21518;&#21488;&#32447;&#31243;&#27744;
   final static private int MOVER_THREAD_POOL_SIZE = 1000;
+  // &#23436;&#25104;&#31227;&#21160;&#25805;&#20316;&#32447;&#31243;&#27744;
   final private ExecutorService moverExecutor = 
     Executors.newFixedThreadPool(MOVER_THREAD_POOL_SIZE);
   final static private int DISPATCHER_THREAD_POOL_SIZE = 200;
+  // &#23436;&#25104;&#20998;&#21457;&#25805;&#20316;&#32447;&#31243;&#27744;
   final private ExecutorService dispatcherExecutor =
     Executors.newFixedThreadPool(DISPATCHER_THREAD_POOL_SIZE);
 
@@ -2005,16 +1964,12 @@ Pool实现
 </pre>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1-7-1-2-2" class="outline-6">
-<h6 id="sec-1-7-1-2-2"><span class="section-number-6">1.7.1.2.2</span> Balancer::run</h6>
-<div class="outline-text-6" id="text-1-7-1-2-2">
-
-<p><b>NN balance iteration</b>
-</p><ol>
+</li>
+</ul>
+<ul>
+<li id="sec-1-7-1-2-2">Balancer::run<br/>
+<b>NN balance iteration</b>
+<ol>
 <li>计算还有多少字节（block）需要移动，如果==0的话那么返回
 </li>
 <li>选择需要参与移动block的节点返回会移动多少字节（block），如果==0的话那么返回
@@ -2086,16 +2041,12 @@ Pool实现
 </pre>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1-7-1-2-3" class="outline-6">
-<h6 id="sec-1-7-1-2-3"><span class="section-number-6">1.7.1.2.3</span> Balancer::initNodes</h6>
-<div class="outline-text-6" id="text-1-7-1-2-3">
-
-<p>从namenode得到所有处于存活状态的datanodes.但是在处理的时候排除掉那些已经decommission以及正在decommission的节点
-</p><ol>
+</li>
+</ul>
+<ul>
+<li id="sec-1-7-1-2-3">Balancer::initNodes<br/>
+从namenode得到所有处于存活状态的datanodes.但是在处理的时候排除掉那些已经decommission以及正在decommission的节点
+<ol>
 <li>计算所有这些datanodes磁盘平均使用状况（根据Node还是Pool策略）
 </li>
 <li>根据每个datanode disk util和avg disk util的比较，放置到不同的列表里面，注意不同列表节点类型也不同
@@ -2176,16 +2127,12 @@ Pool实现
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-7-1-2-4">Balancer::chooseNodes<br/>
+选出source和target更新到sources和targets节点
 
-</div>
-
-<div id="outline-container-1-7-1-2-4" class="outline-6">
-<h6 id="sec-1-7-1-2-4"><span class="section-number-6">1.7.1.2.4</span> Balancer::chooseNodes</h6>
-<div class="outline-text-6" id="text-1-7-1-2-4">
-
-<p>选出source和target更新到sources和targets节点
-</p>
 
 
 
@@ -2211,18 +2158,197 @@ Pool实现
 
 
 <p>
-TODO（dirlt）：
+内部调用了chooseNodes(onRack)这个方法，参数表示是否选择nodes在相同rack的
 </p>
-</div>
 
-</div>
 
-<div id="outline-container-1-7-1-2-5" class="outline-6">
-<h6 id="sec-1-7-1-2-5"><span class="section-number-6">1.7.1.2.5</span> dispatchBlockMoves</h6>
-<div class="outline-text-6" id="text-1-7-1-2-5">
+<pre class="src src-Java">private void chooseNodes(boolean onRack) {
+  /* first step: match each overUtilized datanode (source) to
+   * one or more underUtilized datanodes (targets).
+   */
+  chooseTargets(underUtilizedDatanodes.iterator(), onRack); // &#20197;under util&#33410;&#28857;&#20026;target. over util&#33410;&#28857;&#20026;source.
 
-<p>发起block move操作
-</p>
+  /* match each remaining overutilized datanode (source) to 
+   * below average utilized datanodes (targets).
+   * Note only overutilized datanodes that haven't had that max bytes to move
+   * satisfied in step 1 are selected
+   */
+  chooseTargets(belowAvgUtilizedDatanodes.iterator(), onRack); // &#20197;below util&#20026;target. over util&#33410;&#28857;&#20026;source.
+
+  /* match each remaining underutilized datanode to 
+   * above average utilized datanodes.
+   * Note only underutilized datanodes that have not had that max bytes to
+   * move satisfied in step 1 are selected.
+   */
+  chooseSources(aboveAvgUtilizedDatanodes.iterator(), onRack); // &#20197;above util&#20026;source. under util&#20026;target.
+}
+</pre>
+
+
+</li>
+</ul>
+<ul>
+<li id="sec-1-7-1-2-5">Balancer::chooseTargets<br/>
+寻找和over util匹配的target.
+
+
+
+
+<pre class="src src-Java">private void chooseTargets(  
+      Iterator&lt;BalancerDatanode&gt; targetCandidates, boolean onRackTarget ) {
+    for (Iterator&lt;Source&gt; srcIterator = overUtilizedDatanodes.iterator();
+        srcIterator.hasNext();) {
+      Source source = srcIterator.next();
+      while (chooseTarget(source, targetCandidates, onRackTarget)) {
+      }
+      if (!source.isMoveQuotaFull()) { // &#22914;&#26524;&#36825;&#20010;source&#22312;&#35268;&#21010;&#19978;&#37197;&#39069;&#28385;&#30340;&#35805;&#37027;&#20040;&#23601;&#19981;&#32771;&#34385;&#36825;&#20010;source.
+        srcIterator.remove();
+      }
+    }
+    return;
+  }
+</pre>
+
+
+</li>
+</ul>
+<ul>
+<li id="sec-1-7-1-2-6">Balancer::chooseTarget<br/>
+
+
+
+<pre class="src src-Java">private boolean chooseTarget(Source source,
+    Iterator&lt;BalancerDatanode&gt; targetCandidates, boolean onRackTarget) {
+  if (!source.isMoveQuotaFull()) { // &#22914;&#26524;source&#37197;&#39069;&#28385;&#30340;&#35805;
+    return false;
+  }
+  boolean foundTarget = false;
+  BalancerDatanode target = null;
+  while (!foundTarget &amp;&amp; targetCandidates.hasNext()) {
+    target = targetCandidates.next();
+    if (!target.isMoveQuotaFull()) {
+      targetCandidates.remove();
+      continue;
+    }
+    if (onRackTarget) {
+      // choose from on-rack nodes
+      if (cluster.isOnSameRack(source.datanode, target.datanode)) {
+        foundTarget = true;
+      }
+    } else {
+      // choose from off-rack nodes
+      if (!cluster.isOnSameRack(source.datanode, target.datanode)) {
+        foundTarget = true;
+      }
+    }
+  }
+  if (foundTarget) {
+    assert(target != null):<span class="org-string">"Choose a null target"</span>;
+    long size = Math.min(source.availableSizeToMove(),
+        target.availableSizeToMove()); // &#20004;&#32773;&#36890;&#20449;&#26368;&#22810;&#22810;&#23569;&#23383;&#33410;&#65311;
+    NodeTask nodeTask = new NodeTask(target, size);
+    source.addNodeTask(nodeTask);
+    target.incScheduledSize(nodeTask.getSize());
+    sources.add(source);
+    targets.add(target);
+    if (!target.isMoveQuotaFull()) {
+      targetCandidates.remove();
+    }
+    LOG.info(<span class="org-string">"Decided to move "</span>+StringUtils.byteDesc(size)+<span class="org-string">" bytes from "</span>
+        +source.datanode + <span class="org-string">" to "</span> + target.datanode);
+    return true;
+  }
+  return false;
+}
+</pre>
+
+
+</li>
+</ul>
+<ul>
+<li id="sec-1-7-1-2-7">Balancer::chooseSources<br/>
+寻找和under util匹配的source.
+
+
+
+
+<pre class="src src-Java">private void chooseSources(
+    Iterator&lt;Source&gt; sourceCandidates, boolean onRackSource) {
+  for (Iterator&lt;BalancerDatanode&gt; targetIterator = 
+    underUtilizedDatanodes.iterator(); targetIterator.hasNext();) {
+    BalancerDatanode target = targetIterator.next();
+    while (chooseSource(target, sourceCandidates, onRackSource)) {
+    }
+    if (!target.isMoveQuotaFull()) { // &#22914;&#26524;&#36825;&#20010;target&#22312;&#35268;&#21010;&#19978;&#37197;&#39069;&#28385;&#30340;&#35805;&#37027;&#20040;&#23601;&#19981;&#32771;&#34385;&#36825;&#20010;target.
+      targetIterator.remove();
+    }
+  }
+  return;
+}
+</pre>
+
+
+</li>
+</ul>
+<ul>
+<li id="sec-1-7-1-2-8">Balancer::chooseSource<br/>
+和之前的chooseTarget非常类似
+
+
+
+
+<pre class="src src-Java">private boolean chooseSource(BalancerDatanode target,
+    Iterator&lt;Source&gt; sourceCandidates, boolean onRackSource) {
+  if (!target.isMoveQuotaFull()) {
+    return false;
+  }
+  boolean foundSource = false;
+  Source source = null;
+  while (!foundSource &amp;&amp; sourceCandidates.hasNext()) {
+    source = sourceCandidates.next();
+    if (!source.isMoveQuotaFull()) {
+      sourceCandidates.remove();
+      continue;
+    }
+    if (onRackSource) {
+      // choose from on-rack nodes
+      if ( cluster.isOnSameRack(source.getDatanode(), target.getDatanode())) {
+        foundSource = true;
+      }
+    } else {
+      // choose from off-rack nodes
+      if (!cluster.isOnSameRack(source.datanode, target.datanode)) {
+        foundSource = true;
+      }
+    }
+  }
+  if (foundSource) {
+    assert(source != null):<span class="org-string">"Choose a null source"</span>;
+    long size = Math.min(source.availableSizeToMove(),
+        target.availableSizeToMove());
+    NodeTask nodeTask = new NodeTask(target, size);
+    source.addNodeTask(nodeTask);
+    target.incScheduledSize(nodeTask.getSize());
+    sources.add(source);
+    targets.add(target);
+    if ( !source.isMoveQuotaFull()) {
+      sourceCandidates.remove();
+    }
+    LOG.info(<span class="org-string">"Decided to move "</span>+StringUtils.byteDesc(size)+<span class="org-string">" bytes from "</span>
+        +source.datanode + <span class="org-string">" to "</span> + target.datanode);
+    return true;
+  }
+  return false;
+}
+</pre>
+
+
+</li>
+</ul>
+<ul>
+<li id="sec-1-7-1-2-9">Balancer::dispatchBlockMoves<br/>
+发起block move操作
+
 
 
 
@@ -2255,16 +2381,12 @@ TODO（dirlt）：
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-7-1-2-10">Balancer::waitForMoveCompletion<br/>
+从target的pendingQ里面可以看到整个move过程是否结束
 
-</div>
-
-<div id="outline-container-1-7-1-2-6" class="outline-6">
-<h6 id="sec-1-7-1-2-6"><span class="section-number-6">1.7.1.2.6</span> waitForMoveCompletion</h6>
-<div class="outline-text-6" id="text-1-7-1-2-6">
-
-<p>从target的pendingQ里面可以看到整个move过程是否结束
-</p>
 
 
 
@@ -2287,19 +2409,12 @@ TODO（dirlt）：
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-7-1-2-11">Balancer::resetData<br/>
+清除NN balance iteration产生数据，为下轮NN balance iteration准备。
 
-</div>
-
-<div id="outline-container-1-7-1-2-7" class="outline-6">
-<h6 id="sec-1-7-1-2-7"><span class="section-number-6">1.7.1.2.7</span> resetData</h6>
-<div class="outline-text-6" id="text-1-7-1-2-7">
-
-<p>清除NN balance iteration产生数据，为下轮NN balance iteration准备。
-</p>
-<p>
-TODO(dirlt):???
-</p>
 
 
 
@@ -2332,18 +2447,46 @@ TODO(dirlt):???
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-7-1-2-12">MovedBlocks<br/>
+注释相对还是比较清晰的，类似0/1切换，触发时间在cleanup阶段
 
-</div>
 
-<div id="outline-container-1-7-1-2-8" class="outline-6">
-<h6 id="sec-1-7-1-2-8"><span class="section-number-6">1.7.1.2.8</span> MovedBlocks</h6>
-<div class="outline-text-6" id="text-1-7-1-2-8">
 
-<p>TODO(dirlt):
-</p>
 
-</div>
+<pre class="src src-Java">/** This window makes sure to keep blocks that have been moved within 1.5 hour.
+ * Old window has blocks that are older;
+ * Current window has blocks that are more recent;
+ * Cleanup method triggers the check if blocks in the old window are
+ * more than 1.5 hour old. If yes, purge the old window and then
+ * move blocks in current window to old window.
+ */ 
+  private long lastCleanupTime = Time.now();
+  final private static int CUR_WIN = 0;
+  final private static int OLD_WIN = 1;
+  final private static int NUM_WINS = 2;
+  final private List&lt;HashMap&lt;Block, BalancerBlock&gt;&gt; movedBlocks = 
+    new ArrayList&lt;HashMap&lt;Block, BalancerBlock&gt;&gt;(NUM_WINS);
+
+  /* remove old blocks */
+  synchronized private void cleanup() {
+    long curTime = Time.now();
+    // check if old win is older than winWidth
+    if (lastCleanupTime + WIN_WIDTH &lt;= curTime) {
+      // purge the old window
+      movedBlocks.set(OLD_WIN, movedBlocks.get(CUR_WIN));
+      movedBlocks.set(CUR_WIN, new HashMap&lt;Block, BalancerBlock&gt;());
+      lastCleanupTime = curTime;
+    }
+  }
+</pre>
+
+
+
+</li>
+</ul>
 </div>
 
 </div>
@@ -2356,20 +2499,22 @@ TODO(dirlt):???
 </p><ul>
 <li>timeout = 20min
 </li>
-<li>block size = 2 * scheduledSize # scheduledSize在NN balance iteration的chooseNodes阶段设置
+<li>source sent block size = 2 * scheduledSize # scheduledSize在NN balance iteration的chooseNodes阶段设置，上限10GB
+<ul>
+<li><b>NOTE（dirlt）：factor == 2 是为何？</b>
+</li>
+</ul>
+
+</li>
+<li>target receive block size = scheduledSize 
 </li>
 </ul>
 
 
+<ul>
+<li id="sec-1-7-1-3-1">BalancerDatanode<br/>
+保存sink节点，也就是说其disk util比较低，可以接收disk util比较高的节点的数据来做平衡。
 
-</div>
-
-<div id="outline-container-1-7-1-3-1" class="outline-6">
-<h6 id="sec-1-7-1-3-1"><span class="section-number-6">1.7.1.3.1</span> BalancerDatanode</h6>
-<div class="outline-text-6" id="text-1-7-1-3-1">
-
-<p>保存sink节点，也就是说其disk util比较低，可以接收disk util比较高的节点的数据来做平衡。
-</p>
 
 
 
@@ -2382,7 +2527,8 @@ TODO(dirlt):???
    protected long scheduledSize = 0L; // &#26412;&#27425;&#22312;&#27492;&#33410;&#28857;&#19978;&#31227;&#21160;&#22810;&#23569;&#23383;&#33410;
    //  blocks being moved but not confirmed yet
    private List&lt;PendingBlockMove&gt; pendingBlocks = // pending block move&#25805;&#20316;&#38431;&#21015;
-     // &#36825;&#20010;&#23383;&#27573;&#23545;&#20110;sink&#26469;&#35828;&#27809;&#26377;&#29992;&#65292;&#21482;&#26159;&#34987;source&#20351;&#29992;
+     // source&#33410;&#28857;&#23558;&#25152;&#26377;&#25805;&#20316;&#23553;&#35013;&#25104;&#20026;PendingBlockMove&#28155;&#21152;&#21040;target&#30340;&#36825;&#20010;&#38431;&#21015;
+     // target&#38431;&#21015;&#22312;move
      new ArrayList&lt;PendingBlockMove&gt;(MAX_NUM_CONCURRENT_MOVES); 
 
    /* Constructor 
@@ -2417,16 +2563,12 @@ TODO(dirlt):???
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-7-1-3-2">BalancerBlock<br/>
+内部管理Block数据结构
 
-</div>
-
-<div id="outline-container-1-7-1-3-2" class="outline-6">
-<h6 id="sec-1-7-1-3-2"><span class="section-number-6">1.7.1.3.2</span> BalancerBlock</h6>
-<div class="outline-text-6" id="text-1-7-1-3-2">
-
-<p>内部管理Block数据结构
-</p>
 
 
 
@@ -2451,14 +2593,10 @@ TODO(dirlt):???
 </pre>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1-7-1-3-3" class="outline-6">
-<h6 id="sec-1-7-1-3-3"><span class="section-number-6">1.7.1.3.3</span> NodeTask</h6>
-<div class="outline-text-6" id="text-1-7-1-3-3">
-
+</li>
+</ul>
+<ul>
+<li id="sec-1-7-1-3-3">NodeTask<br/>
 <ul>
 <li>datanode # sink节点
 </li>
@@ -2476,16 +2614,12 @@ TODO(dirlt):???
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-7-1-3-4">Source<br/>
+Source继承BalancerDatanode. 但是感觉代码差别还是比较大的，所以单独拿出来分析仔细分析每个函数。先看看这个类数据结构
 
-</div>
-
-<div id="outline-container-1-7-1-3-4" class="outline-6">
-<h6 id="sec-1-7-1-3-4"><span class="section-number-6">1.7.1.3.4</span> Source</h6>
-<div class="outline-text-6" id="text-1-7-1-3-4">
-
-<p>Source继承BalancerDatanode. 但是感觉代码差别还是比较大的，所以单独拿出来分析仔细分析每个函数。先看看这个类数据结构
-</p>
 
 
 
@@ -2510,16 +2644,12 @@ TODO(dirlt):???
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-7-1-3-5">Source::BlockMoveDispatcher<br/>
+在NN balance iteration里面dispatchBlockMoves使用了这个类，这个类非常简单直接调用dispatchBlocks方法
 
-</div>
-
-<div id="outline-container-1-7-1-3-5" class="outline-6">
-<h6 id="sec-1-7-1-3-5"><span class="section-number-6">1.7.1.3.5</span> Source::BlockMoveDispatcher</h6>
-<div class="outline-text-6" id="text-1-7-1-3-5">
-
-<p>在NN balance iteration里面dispatchBlockMoves使用了这个类，这个类非常简单直接调用dispatchBlocks方法
-</p>
 
 
 
@@ -2532,16 +2662,12 @@ TODO(dirlt):???
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-7-1-3-6">Source::dispatchBlocks<br/>
+source如何发起block move.
 
-</div>
-
-<div id="outline-container-1-7-1-3-6" class="outline-6">
-<h6 id="sec-1-7-1-3-6"><span class="section-number-6">1.7.1.3.6</span> Source::dispatchBlocks</h6>
-<div class="outline-text-6" id="text-1-7-1-3-6">
-
-<p>source如何发起block move.
-</p>
 
 
 
@@ -2565,7 +2691,7 @@ private void dispatchBlocks() { // &#36825;&#20010;&#20989;&#25968;&#20855;&#203
     PendingBlockMove pendingBlock = chooseNextBlockToMove();
     if (pendingBlock != null) {
       // move the block
-      pendingBlock.scheduleBlockMove();
+      pendingBlock.scheduleBlockMove(); // &#21457;&#36215;&#31227;&#21160;&#25805;&#20316;
       continue;
     }
 
@@ -2607,16 +2733,12 @@ private void dispatchBlocks() { // &#36825;&#20010;&#20989;&#25968;&#20855;&#203
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-7-1-3-7">Source::getBlockList<br/>
+从nn获取blocks.
 
-</div>
-
-<div id="outline-container-1-7-1-3-7" class="outline-6">
-<h6 id="sec-1-7-1-3-7"><span class="section-number-6">1.7.1.3.7</span> Source::getBlockList</h6>
-<div class="outline-text-6" id="text-1-7-1-3-7">
-
-<p>从nn获取blocks.
-</p>
 
 
 
@@ -2634,7 +2756,7 @@ private long getBlockList() throws IOException {
     bytesReceived += blk.getBlock().getNumBytes();
     BalancerBlock block;
     synchronized(globalBlockList) {
-      block = globalBlockList.get(blk.getBlock()); // TODO&#65288;dirlt&#65289;&#65306;&#65311;&#65311;&#65311;
+      block = globalBlockList.get(blk.getBlock()); // TODO&#65288;dirlt&#65289;&#65306;???
       if (block==null) {
         block = new BalancerBlock(blk.getBlock());
         globalBlockList.put(blk.getBlock(), block);
@@ -2664,19 +2786,12 @@ private long getBlockList() throws IOException {
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-7-1-3-8">Source::isGoodBlockCandidate<br/>
+决定这个block是否合适来调度
 
-</div>
-
-<div id="outline-container-1-7-1-3-8" class="outline-6">
-<h6 id="sec-1-7-1-3-8"><span class="section-number-6">1.7.1.3.8</span> Source::isGoodBlockCandidate</h6>
-<div class="outline-text-6" id="text-1-7-1-3-8">
-
-<p>决定这个block是否合适来调度
-</p>
-<p>
-TODO(dirlt):??
-</p>
 
 
 
@@ -2692,16 +2807,69 @@ private boolean isGoodBlockCandidate(BalancerBlock block) {
 </pre>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1-7-1-3-9" class="outline-6">
-<h6 id="sec-1-7-1-3-9"><span class="section-number-6">1.7.1.3.9</span> Source::filterMovedBlocks</h6>
-<div class="outline-text-6" id="text-1-7-1-3-9">
-
-<p>从srcBlockList里面过滤在一段时间内已经移动过的block. 实现可以参考MovedBlocks.
+<p>
+这个函数调用了另外一个方法，检查这个block,source,所有target的关系，只要存在一个OK即可
 </p>
+
+
+
+<pre class="src src-Java">/* Decide if it is OK to move the given block from source to target
+ * A block is a good candidate if
+ * 1. the block is not in the process of being moved/has not been moved;
+ * 2. the block does not have a replica on the target;
+ * 3. doing the move does not reduce the number of racks that the block has
+ */
+private boolean isGoodBlockCandidate(Source source, 
+    BalancerDatanode target, BalancerBlock block) {
+  // check if the block is moved or not
+  if (movedBlocks.contains(block)) { // &#36825;&#20010;block&#26159;&#21542;&#24050;&#32463;&#31227;&#21160;&#65311;
+      return false;
+  }
+  if (block.isLocatedOnDatanode(target)) { // &#26159;&#21542;&#24050;&#32463;&#22312;target&#19978;
+    return false;
+  }
+
+  boolean goodBlock = false;
+  if (cluster.isOnSameRack(source.getDatanode(), target.getDatanode())) { // source&#21644;target&#22312;&#21516;rack&#65292;&#20165;&#20165;&#26159;rack&#20869;&#24179;&#34913;&#30913;&#30424;
+    // good if source and target are on the same rack
+    goodBlock = true;
+  } else {
+    boolean notOnSameRack = true;
+    synchronized (block) {
+      for (BalancerDatanode loc : block.locations) {
+        // &#22240;&#20026;&#36825;&#20010;block&#24050;&#32463;&#22312;source&#19978;&#20102;&#65292;&#24182;&#19988;&#19978;&#38754;&#26465;&#20214;source&#21644;target&#19981;&#20877;&#19968;&#20010;rack
+        // &#19979;&#38754;&#23601;&#26159;&#35201;&#26816;&#26597;&#26159;&#20854;&#20182;&#33410;&#28857;&#21644;target&#22312;&#21516;&#19968;&#20010;rack
+        if (cluster.isOnSameRack(loc.datanode, target.datanode)) { 
+          notOnSameRack = false;
+          break;
+        }
+      }
+    }
+    if (notOnSameRack) {
+      // good if target is target is not on the same rack as any replica
+      goodBlock = true;
+    } else {
+      // good if source is on the same rack as on of the replicas
+      for (BalancerDatanode loc : block.locations) {
+        if (loc != source &amp;&amp; 
+            cluster.isOnSameRack(loc.datanode, source.datanode)) {
+          goodBlock = true;
+          break;
+        }
+      }
+    }
+  }
+  return goodBlock;
+}
+</pre>
+
+
+</li>
+</ul>
+<ul>
+<li id="sec-1-7-1-3-9">Source::filterMovedBlocks<br/>
+从srcBlockList里面过滤在一段时间内已经移动过的block. 实现可以参考MovedBlocks.
+
 
 
 
@@ -2717,16 +2885,12 @@ private void filterMovedBlocks() {
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-7-1-3-10">Source::shouldFetchMoreBlocks<br/>
+是否应该尝试获取更多的blocks.
 
-</div>
-
-<div id="outline-container-1-7-1-3-10" class="outline-6">
-<h6 id="sec-1-7-1-3-10"><span class="section-number-6">1.7.1.3.10</span> Source::shouldFetchMoreBlocks</h6>
-<div class="outline-text-6" id="text-1-7-1-3-10">
-
-<p>是否应该尝试获取更多的blocks.
-</p>
 
 
 
@@ -2740,19 +2904,24 @@ private boolean shouldFetchMoreBlocks() {
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-7-1-3-11">Source::chooseNextBlockToMove<br/>
+从srcBlockList选出block来向target发起move.
+<ol>
+<li>遍历所有NodeTask找到对应target.
+</li>
+<li>创建PendingBlockMove
+</li>
+<li>尝试将这个PendingBlockMove添加到target队列里面
+</li>
+<li>如果添加成功的话，那么设置source,target并且选择block(chooseBlockAndProxy)(应该是从source的srcBlockList里面选择）
+</li>
+<li>如果没有选择到的话那么删除这个PendingBlockMove.
+</li>
+</ol>
 
-</div>
-
-<div id="outline-container-1-7-1-3-11" class="outline-6">
-<h6 id="sec-1-7-1-3-11"><span class="section-number-6">1.7.1.3.11</span> Source::chooseNextBlockToMove</h6>
-<div class="outline-text-6" id="text-1-7-1-3-11">
-
-<p>从srcBlockList选出block来向target发起move.
-</p>
-<p>
-TODO（dirlt）：？？？
-</p>
 
 
 
@@ -2774,9 +2943,9 @@ private PendingBlockMove chooseNextBlockToMove() {
       pendingBlock.target = target;
       if ( pendingBlock.chooseBlockAndProxy() ) {
         long blockSize = pendingBlock.block.getNumBytes(); 
-        scheduledSize -= blockSize;
-        task.size -= blockSize;
-        if (task.size == 0) {
+        scheduledSize -= blockSize; // NOTE(dirlt):&#20854;&#23454;&#36825;&#20010;&#25805;&#20316;&#27809;&#26377;&#29992;&#65292;&#22240;&#20026;scheduledSize&#26159;&#22312;chooseNodes&#38745;&#24577;&#35745;&#31639;&#20043;&#21518;&#65292;&#22312;&#23454;&#38469;&#25805;&#20316;&#38454;&#27573;&#24182;&#19981;&#24433;&#21709;&#36923;&#36753;
+        task.size -= blockSize; // &#36825;&#20010;task&#19978;&#21521;target&#26368;&#22810;&#20256;&#36755;size.
+        if (task.size == 0) { // NOTE(dirlt):==0&#26159;&#21542;&#20250;&#27491;&#24120;&#65311;
           tasks.remove();
         }
         return pendingBlock;
@@ -2791,7 +2960,145 @@ private PendingBlockMove chooseNextBlockToMove() {
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-7-1-3-12">PendingBlockMove<br/>
+这个用来描述BlockMove操作的，这个对象由source生成，然后在target线程池执行
+
+
+
+
+<pre class="src src-Java">private class PendingBlockMove {
+    private BalancerBlock block; // &#35201;&#31227;&#21160;&#30340;block
+    private Source source; // from where
+    private BalancerDatanode proxySource; // &#22914;&#26524;&#20854;&#20182;&#33410;&#28857;&#26377;&#30456;&#21516;block&#30340;&#35805;&#65292;&#37027;&#20040;&#21487;&#20197;&#30001;&#37027;&#20010;&#33410;&#28857;&#20195;&#20026;&#36716;&#21457;&#12290;
+    private BalancerDatanode target; // to where
+}
+</pre>
+
+
+</li>
+</ul>
+<ul>
+<li id="sec-1-7-1-3-13">PendingBlockMove::chooseBlockAndProxy<br/>
+
+
+
+<pre class="src src-Java">private boolean chooseBlockAndProxy() {
+  // iterate all source's blocks until find a good one    
+  for (Iterator&lt;BalancerBlock&gt; blocks=
+    source.getBlockIterator(); blocks.hasNext();) { // &#36941;&#21382;source&#27599;&#20010;&#22359;
+    if (markMovedIfGoodBlock(blocks.next())) { // &#22914;&#26524;&#28385;&#36275;&#26465;&#20214;&#37027;&#20040;&#33719;&#21462;&#36825;&#20010;block&#24182;&#19988;&#20174;iterator&#21024;&#38500;&#36820;&#22238;
+      blocks.remove();
+      return true;
+    }
+  }
+  return false;
+}
+</pre>
+
+
+</li>
+</ul>
+<ul>
+<li id="sec-1-7-1-3-14">PendingBlockMove::markMovedIfGoodBlock<br/>
+
+
+
+<pre class="src src-Java">/* Return true if the given block is good for the tentative move;
+ * If it is good, add it to the moved list to marked as <span class="org-string">"Moved"</span>.
+ * A block is good if
+ * 1. it is a good candidate; see isGoodBlockCandidate
+ * 2. can find a proxy source that's not busy for this move
+ */
+private boolean markMovedIfGoodBlock(BalancerBlock block) {
+  synchronized(block) {
+    synchronized(movedBlocks) {
+      if (isGoodBlockCandidate(source, target, block)) { // block&#26159;&#21542;good.
+        this.block = block;
+        if ( chooseProxySource() ) { // &#36873;&#25321;proxy.
+          movedBlocks.add(block);
+          if (LOG.isDebugEnabled()) {
+            LOG.debug(<span class="org-string">"Decided to move block "</span>+ block.getBlockId()
+                +<span class="org-string">" with a length of "</span>+StringUtils.byteDesc(block.getNumBytes())
+                + <span class="org-string">" bytes from "</span> + source.getDisplayName()
+                + <span class="org-string">" to "</span> + target.getDisplayName()
+                + <span class="org-string">" using proxy source "</span> + proxySource.getDisplayName() );
+          }
+          return true;
+        }
+      }
+    }
+  }
+  return false;
+}
+</pre>
+
+
+</li>
+</ul>
+<ul>
+<li id="sec-1-7-1-3-15">PendingBlockMove::chooseProxySource<br/>
+首先选择和target相同rack的节点，然后选择这个block相对来说不是很繁忙的节点。选择proxy节点好处可以节省一定开销并且做均衡。
+
+
+
+
+<pre class="src src-Java">/* Now we find out source, target, and block, we need to find a proxy
+ * 
+ * @return true if a proxy is found; otherwise false
+ */
+private boolean chooseProxySource() {
+  // check if there is replica which is on the same rack with the target
+  for (BalancerDatanode loc : block.getLocations()) {
+    if (cluster.isOnSameRack(loc.getDatanode(), target.getDatanode())) {
+      if (loc.addPendingBlock(this)) {
+        proxySource = loc;
+        return true;
+      }
+    }
+  }
+  // find out a non-busy replica
+  for (BalancerDatanode loc : block.getLocations()) {
+    if (loc.addPendingBlock(this)) {
+      proxySource = loc;
+      return true;
+    }
+  }
+  return false;
+}
+</pre>
+
+
+</li>
+</ul>
+<ul>
+<li id="sec-1-7-1-3-16">PendingBlockMove::scheduleBlockMove<br/>
+这个在Source::dispatchBlocks里面出现过，主要是发起block move操作。产生runnable对象放在moverexecutor里面执行
+
+
+
+
+<pre class="src src-Java">/* start a thread to dispatch the block move */
+private void scheduleBlockMove() {
+  moverExecutor.execute(new Runnable() {
+    @Override
+    public void run() {
+      if (LOG.isDebugEnabled()) {
+        LOG.debug(<span class="org-string">"Starting moving "</span>+ block.getBlockId() +
+            <span class="org-string">" from "</span> + proxySource.getDisplayName() + <span class="org-string">" to "</span> +
+            target.getDisplayName());
+      }
+      dispatch();
+    }
+  });
+}
+</pre>
+
+
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -2800,8 +3107,8 @@ private PendingBlockMove chooseNextBlockToMove() {
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-09-25 08:47:54 CST</p>
-<p class="creator">Org version 7.8.11 with Emacs version 24</p>
+<p class="date">Date: 2013-09-25 18:25:32 CST</p>
+<p class="creator">Org version 7.8.02 with Emacs version 23</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
