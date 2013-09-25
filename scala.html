@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="scala"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-25 08:47:47 CST"/>
+<meta name="generated" content="2013-09-25 20:18:52 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -384,6 +384,17 @@ scala&gt; def foo(a:Int,b:Int)  = {
 <p>
 <b>NOTE（dirlt)：需要注意的是传入的param实际上都是以val来定义的，所以在funciton-body里面不允许做修改</b>
 </p>
+<p>
+所有函数都是继承于Function这个类的，比如(Int,Int) =&gt; Long那么继承于Function2[Int,Int,Long]并且实现了apply方法，所以如果想创建函数的话，实际上也可以使用创建对象方式来完成
+</p>
+
+
+<pre class="src src-Scala">val x = new Function2[Int,Int,Long] {
+  def apply(x:Int,y:Int) = x + y
+}
+</pre>
+
+
 
 <hr/>
 <p>
@@ -1986,6 +1997,25 @@ println(y.id + <span class="org-string">","</span> + y)
 匿名函数不允许指定return-type，也就是说匿名函数必须通过type inference确定返回类型。
 </p>
 <p>
+<b>NOTE(dirlt):实际上匿名函数也可以指定return-type</b> 参考 <a href="http://stackoverflow.com/questions/2088524/is-it-possible-to-specify-an-anonymous-functions-return-type-in-scala">http://stackoverflow.com/questions/2088524/is-it-possible-to-specify-an-anonymous-functions-return-type-in-scala</a>
+</p><ul>
+<li>syntax支持
+</li>
+<li>匿名实例（因为所有函数都是继承Function这个类的）
+</li>
+</ul>
+
+
+
+
+<pre class="src src-Scala">val x = (x : Int) =&gt; { x + 1 } : Int
+val y = new Function1[Int,Int] {
+  def apply(x:Int): Int = x + 1
+}
+</pre>
+
+
+<p>
 但是在某些特殊情况则不需要指定parameter-type, 因为parameter-type可以通过上下文推导出来。 
 </p>
 
@@ -2485,8 +2515,8 @@ public final class C extends java.lang.Object{
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-09-25 08:47:47 CST</p>
-<p class="creator">Org version 7.8.11 with Emacs version 24</p>
+<p class="date">Date: 2013-09-25 20:18:52 CST</p>
+<p class="creator">Org version 7.8.02 with Emacs version 23</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
