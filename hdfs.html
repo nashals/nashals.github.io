@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="hdfs"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-26 00:54:40 CST"/>
+<meta name="generated" content="2013-09-26 21:50:42 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -187,6 +187,20 @@
 <li><a href="hdfs.html#sec-1-7-1-1">1.7.1.1 NNS balance iteration</a></li>
 <li><a href="hdfs.html#sec-1-7-1-2">1.7.1.2 NN balance iteration</a></li>
 <li><a href="hdfs.html#sec-1-7-1-3">1.7.1.3 Source balance iteration</a></li>
+</ul>
+</li>
+<li><a href="hdfs.html#sec-1-7-2">1.7.2 BlockPlacementPolicy</a>
+<ul>
+<li><a href="hdfs.html#sec-1-7-2-1">1.7.2.1 Interface</a></li>
+<li><a href="hdfs.html#sec-1-7-2-2">1.7.2.2 chooseTarget</a></li>
+<li><a href="hdfs.html#sec-1-7-2-3">1.7.2.3 chooseLocalNode</a></li>
+<li><a href="hdfs.html#sec-1-7-2-4">1.7.2.4 isGoodTarget</a></li>
+<li><a href="hdfs.html#sec-1-7-2-5">1.7.2.5 chooseLocalRack</a></li>
+<li><a href="hdfs.html#sec-1-7-2-6">1.7.2.6 chooseRemoteRack</a></li>
+<li><a href="hdfs.html#sec-1-7-2-7">1.7.2.7 chooseRandom</a></li>
+<li><a href="hdfs.html#sec-1-7-2-8">1.7.2.8 getPipeline</a></li>
+<li><a href="hdfs.html#sec-1-7-2-9">1.7.2.9 verifyBlockPlacement</a></li>
+<li><a href="hdfs.html#sec-1-7-2-10">1.7.2.10 chooseReplicaToDelete</a></li>
 </ul>
 </li>
 </ul>
@@ -1694,7 +1708,10 @@ uri = file:///
 <h4 id="sec-1-7-1"><span class="section-number-4">1.7.1</span> Balancer</h4>
 <div class="outline-text-4" id="text-1-7-1">
 
-<p><b>NOTE(dirlt):名词是自己定义的方便理解</b>
+<p><b>NOTE(dirlt):hadoop-2.0.0-cdh4.3.0</b>
+</p>
+<p>
+<b>NOTE(dirlt):名词是自己定义的方便理解</b>
 </p><ul>
 <li>NNs balance # 对于hdfs federation来说可能存在多个NN. 并且对于这些NN需要发起多轮balance迭代，每轮迭代称为NNs balance.
 </li>
@@ -1705,6 +1722,9 @@ uri = file:///
 </ul>
 
 
+<p>
+从传入参数上似乎没有做限速，可能是在dn传输之间做了限速
+</p>
 
 </div>
 
@@ -3097,9 +3117,834 @@ private void scheduleBlockMove() {
 </pre>
 
 
-
 </li>
 </ul>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-7-2" class="outline-4">
+<h4 id="sec-1-7-2"><span class="section-number-4">1.7.2</span> BlockPlacementPolicy</h4>
+<div class="outline-text-4" id="text-1-7-2">
+
+<p><b>NOTE(dirlt):hadoop-2.0.0-cdh4.3.0</b>
+</p>
+<p>
+就像之前论文里面提到的，block placement策略上没有考虑磁盘利用率问题，可能造成disk util上各个节点出现imbalance情况，需要靠balancer来做均衡。 
+</p>
+
+</div>
+
+<div id="outline-container-1-7-2-1" class="outline-5">
+<h5 id="sec-1-7-2-1"><span class="section-number-5">1.7.2.1</span> Interface</h5>
+<div class="outline-text-5" id="text-1-7-2-1">
+
+<p>BlockPlacementPolicy负责块放置策略，本身是抽象类，有默认实现是BlockPlacementPolicyDefault。接口有下面这些，其意义注释上还是比较好理解的。
+</p>
+
+
+
+<pre class="src src-Java">/**
+ * choose &lt;i&gt;numOfReplicas&lt;/i&gt; data nodes for &lt;i&gt;writer&lt;/i&gt; 
+ * to re-replicate a block with size &lt;i&gt;blocksize&lt;/i&gt; 
+ * If not, return as many as we can.
+ *
+ * @param srcPath the file to which this chooseTargets is being invoked.
+ * @param numOfReplicas additional number of replicas wanted.
+ * @param writer the writer's machine, null if not in the cluster.
+ * @param chosenNodes datanodes that have been chosen as targets.
+ * @param returnChosenNodes decide if the chosenNodes are returned.
+ * @param excludedNodes datanodes that should not be considered as targets.
+ * @param blocksize size of the data to be written.
+ * @return array of DatanodeDescriptor instances chosen as target
+ * and sorted as a pipeline.
+ */
+public abstract DatanodeDescriptor[] chooseTarget(String srcPath,
+                                           int numOfReplicas,
+                                           DatanodeDescriptor writer,
+                                           List&lt;DatanodeDescriptor&gt; chosenNodes,
+                                           boolean returnChosenNodes,
+                                           HashMap&lt;Node, Node&gt; excludedNodes,
+                                           long blocksize);
+
+/**
+ * Verify that the block is replicated on at least minRacks different racks
+ * if there is more than minRacks rack in the system.
+ * 
+ * @param srcPath the full pathname of the file to be verified
+ * @param lBlk block with locations
+ * @param minRacks number of racks the block should be replicated to
+ * @return the difference between the required and the actual number of racks
+ * the block is replicated to.
+ */
+abstract public int verifyBlockPlacement(String srcPath,
+                                         LocatedBlock lBlk,
+                                         int minRacks);
+
+/**
+ * Decide whether deleting the specified replica of the block still makes 
+ * the block conform to the configured block placement policy.
+ * 
+ * @param srcBC block collection of file to which block-to-be-deleted belongs
+ * @param block The block to be deleted
+ * @param replicationFactor The required number of replicas for this block
+ * @param existingReplicas The replica locations of this block that are present
+                on at least two unique racks. 
+ * @param moreExistingReplicas Replica locations of this block that are not
+                 listed in the previous parameter.
+ * @return the replica that is the best candidate for deletion
+ */
+abstract public DatanodeDescriptor chooseReplicaToDelete(BlockCollection srcBC,
+                                    Block block, 
+                                    short replicationFactor,
+                                    Collection&lt;DatanodeDescriptor&gt; existingReplicas,
+                                    Collection&lt;DatanodeDescriptor&gt; moreExistingReplicas);
+</pre>
+
+
+<p>
+这里还提供了一个创建policy实例的函数
+</p>
+
+
+<pre class="src src-Java">/**
+ * Get an instance of the configured Block Placement Policy based on the
+ * value of the configuration paramater dfs.block.replicator.classname.
+ * 
+ * @param conf the configuration to be used
+ * @param stats an object that is used to retrieve the load on the cluster
+ * @param clusterMap the network topology of the cluster
+ * @return an instance of BlockPlacementPolicy
+ */
+public static BlockPlacementPolicy getInstance(Configuration conf, 
+                                               FSClusterStats stats,
+                                               NetworkTopology clusterMap) {
+  Class&lt;? extends BlockPlacementPolicy&gt; replicatorClass =
+                    conf.getClass(<span class="org-string">"dfs.block.replicator.classname"</span>,
+                                  BlockPlacementPolicyDefault.class,
+                                  BlockPlacementPolicy.class);
+  BlockPlacementPolicy replicator = (BlockPlacementPolicy) ReflectionUtils.newInstance(
+                                                           replicatorClass, conf);
+  replicator.initialize(conf, stats, clusterMap);
+  return replicator;
+}
+</pre>
+
+<p>
+也就是说如果我们需要替换这个policy的话，可以通过dfs.block.replicator.classname来指定。
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-7-2-2" class="outline-5">
+<h5 id="sec-1-7-2-2"><span class="section-number-5">1.7.2.2</span> chooseTarget</h5>
+<div class="outline-text-5" id="text-1-7-2-2">
+
+<p>BlockPlacementPolicyDefault实现上将srcPath忽略了，并没有对某个文件做单独处理，然后使用内部实现。
+</p>
+
+
+<pre class="src src-Java">@Override
+public DatanodeDescriptor[] chooseTarget(String srcPath,
+                                  int numOfReplicas,
+                                  DatanodeDescriptor writer,
+                                  List&lt;DatanodeDescriptor&gt; chosenNodes,
+                                  boolean returnChosenNodes,
+                                  HashMap&lt;Node, Node&gt; excludedNodes,
+                                  long blocksize) {
+  return chooseTarget(numOfReplicas, writer, chosenNodes, returnChosenNodes,
+      excludedNodes, blocksize);
+}
+</pre>
+
+
+
+<hr/>
+<p>
+每个参数含义如下
+</p><ul>
+<li>numOfReplicas # replicas数目
+</li>
+<li>writer # 发起者，如果这个发起者是client的话，那么可能是null.注意发起者和target节点没有必然联系，但是在选择算法中会优先考虑
+</li>
+<li>chosenNodes. # 已经被选中的节点
+</li>
+<li>returnChosenNodes # 是否同时返回已经选中节点
+</li>
+<li>excludedNodes # 排除选择的节点
+</li>
+<li>blockSize # block大小
+</li>
+</ul>
+
+
+
+
+<pre class="src src-Java">/** This is the implementation. */
+DatanodeDescriptor[] chooseTarget(int numOfReplicas,
+                                  DatanodeDescriptor writer,
+                                  List&lt;DatanodeDescriptor&gt; chosenNodes,
+                                  boolean returnChosenNodes,
+                                  HashMap&lt;Node, Node&gt; excludedNodes,
+                                  long blocksize) {
+  if (numOfReplicas == 0 || clusterMap.getNumOfLeaves()==0) {
+    return new DatanodeDescriptor[0];
+  }
+
+  if (excludedNodes == null) {
+    excludedNodes = new HashMap&lt;Node, Node&gt;();
+  }
+
+  int clusterSize = clusterMap.getNumOfLeaves(); // &#38598;&#32676;&#22823;&#23567;
+  int totalNumOfReplicas = chosenNodes.size()+numOfReplicas; // &#23436;&#25104;replication&#20043;&#21518;&#30340;replicas
+  if (totalNumOfReplicas &gt; clusterSize) { // &#22914;&#26524;&#27599;&#20010;&#33410;&#28857;&#19978;&#37117;&#26377;&#30340;&#35805;&#65292;&#37027;&#20040;&#27809;&#26377;&#24517;&#35201;&#20351;&#29992;numOfReplicas&#22823;&#23567;
+    numOfReplicas -= (totalNumOfReplicas-clusterSize);
+    totalNumOfReplicas = clusterSize;
+  }
+
+  int maxNodesPerRack = 
+    (totalNumOfReplicas-1)/clusterMap.getNumOfRacks()+2; // NOTE&#65288;dirlt&#65289;&#65306;&#22914;&#26524;rack&#35201;&#20998;&#24067;&#22343;&#21248;replica&#30340;&#35805;&#65292;&#37027;&#20040;&#27599;&#20010;rack&#38656;&#35201;&#30340;&#33410;&#28857;
+  // NOTE&#65288;dirlt&#65289;&#65306;&#20294;&#26159;&#36825;&#20010;&#21517;&#23383;&#20284;&#20046;&#26377;&#28857;&#28151;&#28102;
+  // NOTE(dirlt):&#36825;&#20010;&#20316;&#29992;&#26159;&#22914;&#26524;&#38450;&#27490;&#22312;&#36825;&#20010;rack&#19978;&#30340;replicas&#36807;&#22810;&#30340;&#35805;&#65292;&#37027;&#20040;&#21487;&#33021;&#19981;&#34987;&#35748;&#20026;&#26159;good target. &#21442;&#35265;isGoodTarget
+
+  List&lt;DatanodeDescriptor&gt; results = 
+    new ArrayList&lt;DatanodeDescriptor&gt;(chosenNodes);
+  for (Node node:chosenNodes) {
+    excludedNodes.put(node, node); // &#23545;&#20110;&#24050;&#32463;&#36873;&#20013;&#33410;&#28857;&#37027;&#20040;&#20415;&#19981;&#32771;&#34385;
+  }
+
+  if (!clusterMap.contains(writer)) { // &#22914;&#26524;writer&#27809;&#26377;&#21253;&#21547;&#22312;&#38598;&#32676;&#37324;&#38754;&#30340;&#35805;&#37027;&#20040;&#35774;&#32622;&#20026;null.
+    writer=null;
+  }
+
+  // &#19981;&#32771;&#34385;&#37027;&#20123;&#24050;&#32463;stale&#30340;&#33410;&#28857;&#65292;&#25152;&#35859;stale&#30340;&#33410;&#28857;&#24212;&#35813;&#26159;&#38271;&#26399;&#27809;&#26377;&#21644;nn&#36890;&#20449;&#32780;&#22788;&#20110;&#29366;&#24577;&#30456;&#23545;&#33853;&#21518;&#30340;&#33410;&#28857;&#12290;
+  boolean avoidStaleNodes = (stats != null
+      &amp;&amp; stats.isAvoidingStaleDataNodesForWrite());
+  // &#29616;&#22312;results&#37324;&#38754;&#32500;&#25252;&#30340;&#26159;&#24050;&#32463;&#36873;&#25321;&#30340;&#33410;&#28857;&#65292;chooseTarget&#36820;&#22238;&#21457;&#36215;&#33410;&#28857;&#65292;&#36873;&#25321;&#30340;&#33410;&#28857;&#23384;&#25918;&#22312;results&#37324;&#38754;&#12290;
+  DatanodeDescriptor localNode = chooseTarget(numOfReplicas, writer,
+      excludedNodes, blocksize, maxNodesPerRack, results, avoidStaleNodes);
+  if (!returnChosenNodes) { // &#22914;&#26524;&#19981;&#36820;&#22238;&#24050;&#32463;&#36873;&#25321;&#33410;&#28857;&#30340;&#35805;&#37027;&#20040;&#21024;&#38500;&#20043;
+    results.removeAll(chosenNodes);
+  }
+
+  // sorting nodes to form a pipeline 
+  // &#32452;&#21512;&#25104;&#20026;pipeline. 
+  return getPipeline((writer==null)?localNode:writer,
+                     results.toArray(new DatanodeDescriptor[results.size()]));
+}
+</pre>
+
+
+
+<hr/>
+<p>
+选出一系列节点出来存放在results里面，同时返回一个发起节点
+</p>
+<p>
+<b>NOTE（dirlt）：返回发起节点是有意义的，这样我们才能根据计算其他节点到这个发起节点的距离来做排序</b>
+</p>
+
+
+
+<pre class="src src-Java">private DatanodeDescriptor chooseTarget(int numOfReplicas,
+                                        DatanodeDescriptor writer,
+                                        HashMap&lt;Node, Node&gt; excludedNodes,
+                                        long blocksize,
+                                        int maxNodesPerRack,
+                                        List&lt;DatanodeDescriptor&gt; results,
+                                        final boolean avoidStaleNodes) {
+  if (numOfReplicas == 0 || clusterMap.getNumOfLeaves()==0) {
+    return writer;
+  }
+  int totalReplicasExpected = numOfReplicas + results.size(); // 
+
+  int numOfResults = results.size();
+  boolean newBlock = (numOfResults==0); // &#26159;&#21542;&#20026;&#21021;&#27425;&#24320;&#36767;
+  if (writer == null &amp;&amp; !newBlock) { // &#22914;&#26524;&#27809;&#26377;&#21457;&#36215;&#32773;&#24182;&#19988;&#36873;&#25321;&#20986;&#26469;&#20102;&#33410;&#28857;&#30340;&#35805;&#65292;&#37027;&#20040;&#30452;&#25509;&#29992;results[0]
+    writer = results.get(0);
+  }
+
+  // Keep a copy of original excludedNodes
+  final HashMap&lt;Node, Node&gt; oldExcludedNodes = avoidStaleNodes ? 
+      new HashMap&lt;Node, Node&gt;(excludedNodes) : null; 
+  try {
+    if (numOfResults == 0) { // &#21021;&#27425;&#24320;&#36767;&#33410;&#28857;
+      writer = chooseLocalNode(writer, excludedNodes, blocksize, 
+          maxNodesPerRack, results, avoidStaleNodes);
+      if (--numOfReplicas == 0) {
+        return writer;
+      }
+    }
+    if (numOfResults &lt;= 1) { // &#22914;&#26524;&#20043;&#21069;results &lt;= 1&#30340;&#35805;&#65292;&#37027;&#20040;&#36873;&#25321;&#19968;&#20010;&#21644;results[0]&#19981;&#21516;rack&#30340;&#33410;&#28857;
+      chooseRemoteRack(1, results.get(0), excludedNodes, blocksize,
+          maxNodesPerRack, results, avoidStaleNodes); 
+      if (--numOfReplicas == 0) {
+        return writer;
+      }
+    }
+    if (numOfResults &lt;= 2) { // &#22914;&#26524;&#20043;&#21069;results &lt;= 2&#30340;&#35805;&#65292;
+      // &#22914;&#26524;&#21069;&#20004;&#20010;&#30456;&#21516;rack&#30340;&#35805;&#65292;&#37027;&#20040;&#36873;&#25321;&#19968;&#20010;results[0]&#19981;&#21516;rack&#30340;&#33410;&#28857;
+      if (clusterMap.isOnSameRack(results.get(0), results.get(1))) {
+        chooseRemoteRack(1, results.get(0), excludedNodes,
+                         blocksize, maxNodesPerRack, 
+                         results, avoidStaleNodes);
+      } else if (newBlock){ // NOTE (dirlt):&#24212;&#35813;&#19981;&#20250;&#21040;&#36798;&#36825;&#20010;&#26465;&#20214;&#30340;
+        chooseLocalRack(results.get(1), excludedNodes, blocksize, 
+                        maxNodesPerRack, results, avoidStaleNodes);
+      } else { // &#20174;&#21457;&#36215;&#32773;write&#30456;&#21516;&#30340;rack&#36873;&#25321;&#19968;&#20010;&#33410;&#28857;
+        chooseLocalRack(writer, excludedNodes, blocksize, maxNodesPerRack,
+            results, avoidStaleNodes);
+      }
+      if (--numOfReplicas == 0) {
+        return writer;
+      }
+    }
+    // &#21097;&#20313;&#33410;&#28857;&#38543;&#26426;&#36873;&#25321;
+    chooseRandom(numOfReplicas, NodeBase.ROOT, excludedNodes, blocksize,
+        maxNodesPerRack, results, avoidStaleNodes);
+  } catch (NotEnoughReplicasException e) {
+    LOG.warn(<span class="org-string">"Not able to place enough replicas, still in need of "</span>
+             + (totalReplicasExpected - results.size()) + <span class="org-string">" to reach "</span>
+             + totalReplicasExpected + <span class="org-string">"\n"</span>
+             + e.getMessage());
+    // &#22914;&#26524;&#25972;&#20010;&#36807;&#31243;&#27809;&#26377;&#36873;&#25321;&#36275;&#22815;&#30340;&#35805;&#65292;&#37027;&#20040;&#32771;&#34385;stale&#33410;&#28857;&#37325;&#26032;&#21457;&#36215;&#19968;&#36718;
+    if (avoidStaleNodes) {
+      // Retry chooseTarget again, this time not avoiding stale nodes.
+
+      // excludedNodes contains the initial excludedNodes and nodes that were
+      // not chosen because they were stale, decommissioned, etc.
+      // We need to additionally exclude the nodes that were added to the 
+      // result list in the successful calls to choose*() above.
+      for (Node node : results) {
+        oldExcludedNodes.put(node, node);
+      }
+      // Set numOfReplicas, since it can get out of sync with the result list
+      // if the NotEnoughReplicasException was thrown in chooseRandom().
+      numOfReplicas = totalReplicasExpected - results.size();
+      return chooseTarget(numOfReplicas, writer, oldExcludedNodes, blocksize,
+          maxNodesPerRack, results, false);
+    }
+  }
+  return writer;
+}
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-7-2-3" class="outline-5">
+<h5 id="sec-1-7-2-3"><span class="section-number-5">1.7.2.3</span> chooseLocalNode</h5>
+<div class="outline-text-5" id="text-1-7-2-3">
+
+<p>选择和发起者相同的节点
+</p>
+
+
+
+<pre class="src src-Java">/* choose &lt;i&gt;localMachine&lt;/i&gt; as the target.
+ * if &lt;i&gt;localMachine&lt;/i&gt; is not available, 
+ * choose a node on the same rack
+ * @return the chosen node
+ */
+protected DatanodeDescriptor chooseLocalNode(
+                                           DatanodeDescriptor localMachine,
+                                           HashMap&lt;Node, Node&gt; excludedNodes,
+                                           long blocksize,
+                                           int maxNodesPerRack,
+                                           List&lt;DatanodeDescriptor&gt; results,
+                                           boolean avoidStaleNodes)
+  throws NotEnoughReplicasException {
+  // if no local machine, randomly choose one node
+  if (localMachine == null) // &#22914;&#26524;&#27809;&#26377;&#21457;&#36215;&#32773;&#30340;&#35805;&#65292;&#37027;&#20040;&#23601;&#35201;&#38543;&#26426;&#36873;&#25321;
+    return chooseRandom(NodeBase.ROOT, excludedNodes, blocksize,
+        maxNodesPerRack, results, avoidStaleNodes);
+  if (preferLocalNode) { // &#40664;&#35748;&#20026;true
+    // otherwise try local machine first
+    Node oldNode = excludedNodes.put(localMachine, localMachine); // &#28155;&#21152;localMachine&#24182;&#19988;&#36820;&#22238;&#21407;&#26469;&#20540;&#65292;&#36825;&#37324;&#38750;&#24120;&#24039;&#22937;
+    if (oldNode == null) { // was not in the excluded list 
+      if (isGoodTarget(localMachine, blocksize, maxNodesPerRack, false,
+          results, avoidStaleNodes)) { // &#26159;&#21542;&#20026;good target. &#22914;&#26524;OK, &#37027;&#20040;&#28155;&#21152;
+        results.add(localMachine);
+        return localMachine;
+      }
+    } 
+  }      
+  // try a node on local rack
+  return chooseLocalRack(localMachine, excludedNodes, blocksize, // &#19981;&#28982;&#36873;&#25321;&#21644;localMachine&#30456;&#21516;rack&#30340;&#33410;&#28857;
+      maxNodesPerRack, results, avoidStaleNodes);
+}
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-7-2-4" class="outline-5">
+<h5 id="sec-1-7-2-4"><span class="section-number-5">1.7.2.4</span> isGoodTarget</h5>
+<div class="outline-text-5" id="text-1-7-2-4">
+
+<p>包装函数是
+</p>
+
+
+<pre class="src src-Java">private boolean isGoodTarget(DatanodeDescriptor node,
+                             long blockSize, int maxTargetPerRack,
+                             List&lt;DatanodeDescriptor&gt; results, 
+                             boolean avoidStaleNodes) {
+  return isGoodTarget(node, blockSize, maxTargetPerRack, this.considerLoad,
+      results, avoidStaleNodes);
+}
+</pre>
+
+
+<p>
+其中considerLoad应该是考虑负载均衡，默认是true, 通过dfs.namenode.replication.considerLoad指定
+</p>
+
+<hr/>
+
+
+
+
+<pre class="src src-Java">/**
+ * Determine if a node is a good target. 
+ * 
+ * @param node The target node
+ * @param blockSize Size of block
+ * @param maxTargetPerRack Maximum number of targets per rack. The value of 
+ *                       this parameter depends on the number of racks in 
+ *                       the cluster and total number of replicas for a block
+ * @param considerLoad whether or not to consider load of the target node
+ * @param results A list containing currently chosen nodes. Used to check if 
+ *                too many nodes has been chosen in the target rack.
+ * @param avoidStaleNodes Whether or not to avoid choosing stale nodes
+ * @return Return true if &lt;i&gt;node&lt;/i&gt; has enough space, 
+ *         does not have too much load, 
+ *         and the rack does not have too many nodes.
+ */
+protected boolean isGoodTarget(DatanodeDescriptor node,
+                             long blockSize, int maxTargetPerRack,
+                             boolean considerLoad,
+                             List&lt;DatanodeDescriptor&gt; results,                           
+                             boolean avoidStaleNodes) {
+  // check if the node is (being) decommissed
+  if (node.isDecommissionInProgress() || node.isDecommissioned()) { // &#22914;&#26524;&#36825;&#20010;&#33410;&#28857;&#22312;&#19979;&#32447;
+    if(LOG.isDebugEnabled()) {
+      threadLocalBuilder.get().append(node.toString()).append(<span class="org-string">": "</span>)
+        .append(<span class="org-string">"Node "</span>).append(NodeBase.getPath(node))
+        .append(<span class="org-string">" is not chosen because the node is (being) decommissioned "</span>);
+    }
+    return false;
+  }
+
+  if (avoidStaleNodes) {
+    if (node.isStale(this.staleInterval)) { // &#26159;&#21542;&#38271;&#26102;&#38388;&#27809;&#26377;update&#32780;&#22788;&#20110;stale&#29366;&#24577;
+      // stale&#26102;&#38388;&#36890;&#36807;dfs.namenode.stale.datanode.interval&#25351;&#23450;&#65292;&#40664;&#35748;30s
+      if (LOG.isDebugEnabled()) {
+        threadLocalBuilder.get().append(node.toString()).append(<span class="org-string">": "</span>)
+            .append(<span class="org-string">"Node "</span>).append(NodeBase.getPath(node))
+            .append(<span class="org-string">" is not chosen because the node is stale "</span>);
+      }
+      return false;
+    }
+  }
+
+  long remaining = node.getRemaining() -  // &#21097;&#20313;&#30913;&#30424;&#31354;&#38388;
+                   (node.getBlocksScheduled() * blockSize);  // &#21487;&#33021;&#38656;&#35201;&#20889;&#20837;&#22810;&#23569;
+  // check the remaining capacity of the target machine
+  if (blockSize* HdfsConstants.MIN_BLOCKS_FOR_WRITE&gt;remaining) { // &#22914;&#26524;&#30913;&#30424;&#31354;&#38388;&#36807;&#23567;&#30340;&#35805;
+    if(LOG.isDebugEnabled()) {
+      threadLocalBuilder.get().append(node.toString()).append(<span class="org-string">": "</span>)
+        .append(<span class="org-string">"Node "</span>).append(NodeBase.getPath(node))
+        .append(<span class="org-string">" is not chosen because the node does not have enough space "</span>);
+    }
+    return false;
+  }
+
+  // check the communication traffic of the target machine
+  // load&#36890;&#36807;datanode&#19978;&#30340;active connection&#26469;&#21028;&#26029;&#65292;&#22914;&#26524;&gt;2.0 * avgLoad&#30340;&#35805;&#65292;&#37027;&#20040;&#35748;&#20026;&#27492;&#33410;&#28857;&#24403;&#21069;&#21387;&#21147;&#27604;&#36739;&#22823;
+  if (considerLoad) {
+    double avgLoad = 0;
+    int size = clusterMap.getNumOfLeaves();
+    if (size != 0 &amp;&amp; stats != null) {
+      avgLoad = (double)stats.getTotalLoad()/size;
+    }
+    if (node.getXceiverCount() &gt; (2.0 * avgLoad)) {
+      if(LOG.isDebugEnabled()) {
+        threadLocalBuilder.get().append(node.toString()).append(<span class="org-string">": "</span>)
+          .append(<span class="org-string">"Node "</span>).append(NodeBase.getPath(node))
+          .append(<span class="org-string">" is not chosen because the node is too busy "</span>);
+      }
+      return false;
+    }
+  }
+
+  // check if the target rack has chosen too many nodes
+  // &#22914;&#26524;target rack&#19978;&#38754;replicas&#25968;&#37327;&#36807;&#22810;&#30340;&#35805;
+  String rackname = node.getNetworkLocation();
+  int counter=1;
+  for(Iterator&lt;DatanodeDescriptor&gt; iter = results.iterator();
+      iter.hasNext();) {
+    Node result = iter.next();
+    if (rackname.equals(result.getNetworkLocation())) {
+      counter++;
+    }
+  }
+  if (counter&gt;maxTargetPerRack) {
+    if(LOG.isDebugEnabled()) {
+      threadLocalBuilder.get().append(node.toString()).append(<span class="org-string">": "</span>)
+        .append(<span class="org-string">"Node "</span>).append(NodeBase.getPath(node))
+        .append(<span class="org-string">" is not chosen because the rack has too many chosen nodes "</span>);
+    }
+    return false;
+  }
+  return true;
+}
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-7-2-5" class="outline-5">
+<h5 id="sec-1-7-2-5"><span class="section-number-5">1.7.2.5</span> chooseLocalRack</h5>
+<div class="outline-text-5" id="text-1-7-2-5">
+
+<p>选择和某节点相同rack的节点
+</p>
+
+
+
+<pre class="src src-Java">protected DatanodeDescriptor chooseLocalRack(
+                                           DatanodeDescriptor localMachine,
+                                           HashMap&lt;Node, Node&gt; excludedNodes,
+                                           long blocksize,
+                                           int maxNodesPerRack,
+                                           List&lt;DatanodeDescriptor&gt; results,
+                                           boolean avoidStaleNodes)
+  throws NotEnoughReplicasException {
+  // no local machine, so choose a random machine
+  if (localMachine == null) { // &#22914;&#26524;localMachine == null, &#37027;&#20040;&#38543;&#26426;&#36873;&#25321;
+    return chooseRandom(NodeBase.ROOT, excludedNodes, blocksize,
+        maxNodesPerRack, results, avoidStaleNodes);
+  }
+
+  // choose one from the local rack
+  try {
+    return chooseRandom(localMachine.getNetworkLocation(), excludedNodes,
+        blocksize, maxNodesPerRack, results, avoidStaleNodes); // &#38543;&#26426;&#36873;&#25321;&#21644;localMachine&#30456;&#21516;rack&#30340;&#19968;&#20010;&#33410;&#28857;
+  } catch (NotEnoughReplicasException e1) { // &#25214;&#19981;&#21040;&#21644;&#36825;&#20010;localMachine&#30456;&#21516;rack&#30340;&#33410;&#28857;&#65292;&#37027;&#20040;&#20174;results&#37324;&#38754;&#25361;&#36873;&#31532;&#19968;&#20010;&#21644;localMachine&#19981;&#21516;&#33410;&#28857;&#26426;&#22120;
+    // &#22240;&#20026;&#24635;&#20307;&#36923;&#36753;&#30475;&#21040;&#20102;&#65292;&#31532;&#20108;&#20010;&#33410;&#28857;&#21644;&#31532;&#19968;&#20010;&#33410;&#28857;&#36890;&#24120;&#19981;&#26159;&#21516;&#19968;rack&#65292;&#25152;&#20197;&#31532;&#20108;&#20010;&#33410;&#28857;rack&#19978;&#21487;&#33021;&#33021;&#22815;&#25214;&#21040;&#21487;&#29992;&#33410;&#28857;&#12290;
+    // find the second replica
+    DatanodeDescriptor newLocal=null; 
+    for(Iterator&lt;DatanodeDescriptor&gt; iter=results.iterator();
+        iter.hasNext();) {
+      DatanodeDescriptor nextNode = iter.next();
+      if (nextNode != localMachine) {
+        newLocal = nextNode;
+        break;
+      }
+    }
+    if (newLocal != null) {
+      try {
+        return chooseRandom(newLocal.getNetworkLocation(), excludedNodes, // &#22312;&#26032;&#33410;&#28857;rack&#26597;&#25214;
+            blocksize, maxNodesPerRack, results, avoidStaleNodes);
+      } catch(NotEnoughReplicasException e2) {
+        //otherwise randomly choose one from the network
+        return chooseRandom(NodeBase.ROOT, excludedNodes, blocksize, //  &#38543;&#26426;&#36873;&#25321;
+            maxNodesPerRack, results, avoidStaleNodes);
+      }
+    } else {
+      //otherwise randomly choose one from the network
+      return chooseRandom(NodeBase.ROOT, excludedNodes, blocksize, // &#38543;&#26426;&#36873;&#25321;
+          maxNodesPerRack, results, avoidStaleNodes);
+    }
+  }
+}
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-7-2-6" class="outline-5">
+<h5 id="sec-1-7-2-6"><span class="section-number-5">1.7.2.6</span> chooseRemoteRack</h5>
+<div class="outline-text-5" id="text-1-7-2-6">
+
+<p>选择和localMachine不同的rack节点
+</p>
+
+
+
+<pre class="src src-Java">protected void chooseRemoteRack(int numOfReplicas,
+                              DatanodeDescriptor localMachine,
+                              HashMap&lt;Node, Node&gt; excludedNodes,
+                              long blocksize,
+                              int maxReplicasPerRack,
+                              List&lt;DatanodeDescriptor&gt; results,
+                              boolean avoidStaleNodes)
+  throws NotEnoughReplicasException {
+  int oldNumOfReplicas = results.size();
+  // randomly choose one node from remote racks
+  try {
+    chooseRandom(numOfReplicas, <span class="org-string">"~"</span> + localMachine.getNetworkLocation(), // &#39318;&#20808;&#36873;&#25321;&#20854;&#20182;rack&#33410;&#28857;. &#36825;&#20010;~&#31526;&#21495;&#26159;&#25490;&#38500;&#65292;&#21644;NetworkTopology&#20132;&#20114;
+        excludedNodes, blocksize, maxReplicasPerRack, results,
+        avoidStaleNodes);
+  } catch (NotEnoughReplicasException e) {
+    chooseRandom(numOfReplicas-(results.size()-oldNumOfReplicas), // &#22914;&#26524;replicas&#20010;&#25968;&#19981;&#22815;&#65292;&#37027;&#20040;&#21482;&#33021;&#36873;&#25321;&#30456;&#21516;rack
+                 localMachine.getNetworkLocation(), excludedNodes, blocksize, 
+                 maxReplicasPerRack, results, avoidStaleNodes);
+  }
+}
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-7-2-7" class="outline-5">
+<h5 id="sec-1-7-2-7"><span class="section-number-5">1.7.2.7</span> chooseRandom</h5>
+<div class="outline-text-5" id="text-1-7-2-7">
+
+<p>有两个函数实现
+   a. 从某个rack里面选择1个
+   b. 从某个rack里面选择n个，其实a = b(1) 所以这里我们只看b实现
+<b>NOTE（dirlt）：注意这里rack可以是~排除语法，如果为ROOT的话那么就是所有rack都OK. 随机选择逻辑交给NetworkTopology来处理</b>
+</p>
+
+
+
+<pre class="src src-Java">protected void chooseRandom(int numOfReplicas,
+                          String nodes,
+                          HashMap&lt;Node, Node&gt; excludedNodes,
+                          long blocksize,
+                          int maxNodesPerRack,
+                          List&lt;DatanodeDescriptor&gt; results,
+                          boolean avoidStaleNodes)
+  throws NotEnoughReplicasException {
+
+  int numOfAvailableNodes =
+    clusterMap.countNumOfAvailableNodes(nodes, excludedNodes.keySet());
+  StringBuilder builder = null;
+  if (LOG.isDebugEnabled()) {
+    builder = threadLocalBuilder.get();
+    builder.setLength(0);
+    builder.append(<span class="org-string">"["</span>);
+  }
+  boolean badTarget = false;
+  while(numOfReplicas &gt; 0 &amp;&amp; numOfAvailableNodes &gt; 0) {
+    DatanodeDescriptor chosenNode = 
+      (DatanodeDescriptor)(clusterMap.chooseRandom(nodes));
+    Node oldNode = excludedNodes.put(chosenNode, chosenNode);
+    if (oldNode == null) {
+      numOfAvailableNodes--;
+
+      if (isGoodTarget(chosenNode, blocksize, 
+            maxNodesPerRack, results, avoidStaleNodes)) {
+        numOfReplicas--;
+        results.add(chosenNode);
+      } else {
+        badTarget = true;
+      }
+    }
+  }
+
+  if (numOfReplicas&gt;0) {
+    String detail = enableDebugLogging;
+    if (LOG.isDebugEnabled()) {
+      if (badTarget &amp;&amp; builder != null) {
+        detail = builder.append(<span class="org-string">"]"</span>).toString();
+        builder.setLength(0);
+      } else detail = <span class="org-string">""</span>;
+    }
+    throw new NotEnoughReplicasException(detail);
+  }
+}
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-7-2-8" class="outline-5">
+<h5 id="sec-1-7-2-8"><span class="section-number-5">1.7.2.8</span> getPipeline</h5>
+<div class="outline-text-5" id="text-1-7-2-8">
+
+<p>可以看到是根据和writer距离，针对nodes做选择排序组成pipeline.
+</p>
+
+
+
+<pre class="src src-Java">/* Return a pipeline of nodes.
+ * The pipeline is formed finding a shortest path that 
+ * starts from the writer and traverses all &lt;i&gt;nodes&lt;/i&gt;
+ * This is basically a traveling salesman problem.
+ */
+private DatanodeDescriptor[] getPipeline(
+                                         DatanodeDescriptor writer,
+                                         DatanodeDescriptor[] nodes) {
+  if (nodes.length==0) return nodes;
+
+  synchronized(clusterMap) {
+    int index=0;
+    if (writer == null || !clusterMap.contains(writer)) {
+      writer = nodes[0];
+    }
+    for(;index&lt;nodes.length; index++) {
+      DatanodeDescriptor shortestNode = nodes[index];
+      int shortestDistance = clusterMap.getDistance(writer, shortestNode);
+      int shortestIndex = index;
+      for(int i=index+1; i&lt;nodes.length; i++) {
+        DatanodeDescriptor currentNode = nodes[i];
+        int currentDistance = clusterMap.getDistance(writer, currentNode);
+        if (shortestDistance&gt;currentDistance) {
+          shortestDistance = currentDistance;
+          shortestNode = currentNode;
+          shortestIndex = i;
+        }
+      }
+      //switch position index &amp; shortestIndex
+      if (index != shortestIndex) {
+        nodes[shortestIndex] = nodes[index];
+        nodes[index] = shortestNode;
+      }
+      writer = shortestNode;
+    }
+  }
+  return nodes;
+}
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-7-2-9" class="outline-5">
+<h5 id="sec-1-7-2-9"><span class="section-number-5">1.7.2.9</span> verifyBlockPlacement</h5>
+<div class="outline-text-5" id="text-1-7-2-9">
+
+<p>so trivial!
+</p>
+
+
+
+<pre class="src src-Java">@Override
+public int verifyBlockPlacement(String srcPath,
+                                LocatedBlock lBlk,
+                                int minRacks) {
+  DatanodeInfo[] locs = lBlk.getLocations();
+  if (locs == null)
+    locs = new DatanodeInfo[0];
+  int numRacks = clusterMap.getNumOfRacks();
+  if(numRacks &lt;= 1) // only one rack
+    return 0;
+  minRacks = Math.min(minRacks, numRacks);
+  // 1. Check that all locations are different.
+  // 2. Count locations on different racks.
+  Set&lt;String&gt; racks = new TreeSet&lt;String&gt;();
+  for (DatanodeInfo dn : locs)
+    racks.add(dn.getNetworkLocation());
+  return minRacks - racks.size();
+}
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-7-2-10" class="outline-5">
+<h5 id="sec-1-7-2-10"><span class="section-number-5">1.7.2.10</span> chooseReplicaToDelete</h5>
+<div class="outline-text-5" id="text-1-7-2-10">
+
+<ul>
+<li>bc是block所属的文件block collection 
+</li>
+<li>block是要删除replica的block
+</li>
+<li>replicationFactor是副本数目
+</li>
+<li>first <b>NOTE（dirlt）：我的理解是“block所在的节点，这些节点所在的rack上至少有两个副本”，但是comment似乎不是这么说的</b>
+</li>
+<li>second #
+</li>
+</ul>
+
+
+<p>
+逻辑上可以看出
+</p><ul>
+<li>优先选择所在rack副本数目多的节点
+</li>
+<li>如果有心跳未汇报时间超过12s的话，那么选择心跳延迟最长的节点
+</li>
+<li>否则选择剩余磁盘空间最少的节点
+</li>
+</ul>
+
+
+
+
+
+<pre class="src src-Java">@Override
+public DatanodeDescriptor chooseReplicaToDelete(BlockCollection bc,
+                                               Block block,
+                                               short replicationFactor,
+                                               Collection&lt;DatanodeDescriptor&gt; first, 
+                                               Collection&lt;DatanodeDescriptor&gt; second) {
+  // heartbeat = dfs.heartbeat.interval, &#40664;&#35748;3s
+  // multiplier = dfs.namenode.tolerate.heartbeat.multiplier, &#40664;&#35748;&#26159;4
+  long oldestHeartbeat =
+    now() - heartbeatInterval * tolerateHeartbeatMultiplier;
+  DatanodeDescriptor oldestHeartbeatNode = null;
+  long minSpace = Long.MAX_VALUE;
+  DatanodeDescriptor minSpaceNode = null;
+
+  // pick replica from the first Set. If first is empty, then pick replicas
+  // from second set.
+  // &#20248;&#20808;&#36873;&#25321;&#33410;&#28857;&#65292;&#36825;&#20123;&#33410;&#28857;&#25152;&#22312;rack&#21103;&#26412;&#25968;&#30446;&#22810;
+  Iterator&lt;DatanodeDescriptor&gt; iter = pickupReplicaSet(first, second);
+
+  // Pick the node with the oldest heartbeat or with the least free space,
+  // if all hearbeats are within the tolerable heartbeat interval
+  while (iter.hasNext() ) {
+    DatanodeDescriptor node = iter.next();
+    long free = node.getRemaining();
+    long lastHeartbeat = node.getLastUpdate();
+    if(lastHeartbeat &lt; oldestHeartbeat) {
+      oldestHeartbeat = lastHeartbeat;
+      oldestHeartbeatNode = node;
+    }
+    if (minSpace &gt; free) {
+      minSpace = free;
+      minSpaceNode = node;
+    }
+  }
+  // 
+  return oldestHeartbeatNode != null ? oldestHeartbeatNode : minSpaceNode;
+}
+
+protected Iterator&lt;DatanodeDescriptor&gt; pickupReplicaSet(
+    Collection&lt;DatanodeDescriptor&gt; first,
+    Collection&lt;DatanodeDescriptor&gt; second) {
+  Iterator&lt;DatanodeDescriptor&gt; iter =
+      first.isEmpty() ? second.iterator() : first.iterator();
+  return iter;
+}
+</pre>
+
+
+
 </div>
 </div>
 </div>
@@ -3108,7 +3953,7 @@ private void scheduleBlockMove() {
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-09-26 00:54:40 CST</p>
+<p class="date">Date: 2013-09-26 21:50:42 CST</p>
 <p class="creator">Org version 7.8.11 with Emacs version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
