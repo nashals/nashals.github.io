@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="scala"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-26 00:54:32 CST"/>
+<meta name="generated" content="2013-09-26 16:01:38 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -430,6 +430,21 @@ scala里面对应的表示如下,类型为String*
 
 <pre class="src src-Scala">val x = Array(<span class="org-string">"Hello"</span>,<span class="org-string">"World"</span>);
 foo(x:_*)
+</pre>
+
+
+
+<hr/>
+<p>
+函数调用上，如果没有参数的话可以省去(), 同时scala也支持指定参数传值而不是顺序传值
+</p>
+
+
+<pre class="src src-Scala">def printX() = println(<span class="org-string">"X"</span>)
+printX
+def foo(x:Int,y:Int) = 2 * x + y
+println(foo(x = 1, y = 1))
+println(foo(y = 1, x = 1))
 </pre>
 
 
@@ -2515,8 +2530,8 @@ public final class C extends java.lang.Object{
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-09-26 00:54:32 CST</p>
-<p class="creator">Org version 7.8.11 with Emacs version 24</p>
+<p class="date">Date: 2013-09-26 16:01:38 CST</p>
+<p class="creator">Org version 7.8.02 with Emacs version 23</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
