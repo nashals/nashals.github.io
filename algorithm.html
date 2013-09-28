@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="algorithm"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-26 00:54:44 CST"/>
+<meta name="generated" content="2013-09-28 15:15:30 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -388,6 +388,60 @@ def TreeDistance(root):
 <p>
 对于返回元组来说的话(a,b,c)，a表示树的最长距离，b表示左子树的高度，c表示右子树的高度。
 </p>
+
+<hr/>
+
+<p>
+leetcode上也有类似的题目，但是考虑上了树节点值 <a href="http://oj.leetcode.com/problems/binary-tree-maximum-path-sum/">http://oj.leetcode.com/problems/binary-tree-maximum-path-sum/</a>
+</p>
+
+
+
+<pre class="src src-C++">class Solution {
+ public:
+  int maxPathSum(TreeNode *root) {
+    // Start typing your C/C++ solution below
+    // DO NOT write int main() function
+    if(root == NULL) {
+      return 0;
+    }
+    int p;
+    int s = side(root,&amp;p);
+    return max(s,p);
+  }
+
+  // path means max sum in root, but not contains root node,
+  // so it does not contribute the parent.(but if contains root node, it doesn't matter)
+  // because we just get max of it.
+  // function return value max sum including root node.
+  int side(TreeNode* root,int* path) {
+    if(root-&gt;left == NULL &amp;&amp; root-&gt;right == NULL) {
+      *path = root-&gt;val;
+      return root-&gt;val;
+    } else if(root-&gt;left == NULL) {
+      int rp;
+      int r= side(root-&gt;right,&amp;rp);
+      *path = max(r,rp);
+      return max(0,r) + root-&gt;val;      
+    } else if(root-&gt;right == NULL) {
+      int lp;
+      int l = side(root-&gt;left,&amp;lp);
+      *path = max(l,lp);
+      return max(0,l) + root-&gt;val;
+    } else {
+      int lp,rp;    
+      int l = side(root-&gt;left,&amp;lp);
+      int r = side(root-&gt;right,&amp;rp);
+      int p = max(max(l,r),max(lp,rp));
+      p = max(p, max(0,l) + max(0,r) + root-&gt;val);
+      *path = p;
+      return max(max(0,l), max(0,r)) + root-&gt;val;      
+    }
+  }
+};
+</pre>
+
+
 </div>
 
 </div>
@@ -781,7 +835,7 @@ a1 a1 a1 a2 a2 a2 &hellip; an an an X
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-09-26 00:54:44 CST</p>
+<p class="date">Date: 2013-09-28 15:15:30 CST</p>
 <p class="creator">Org version 7.8.11 with Emacs version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
