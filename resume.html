@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="resume"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-26 21:50:34 CST"/>
+<meta name="generated" content="2013-09-29 22:00:55 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -77,7 +77,16 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="resume.html#sec-1">1 resume</a></li>
+<li><a href="resume.html#sec-1">1 resume</a>
+<ul>
+<li><a href="resume.html#sec-1-1">1.1 Summary</a></li>
+<li><a href="resume.html#sec-1-2">1.2 Experience</a>
+<ul>
+<li><a href="resume.html#sec-1-2-1">1.2.1 2013.2 - now</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -86,14 +95,101 @@
 <h2 id="sec-1"><span class="section-number-2">1</span> resume</h2>
 <div class="outline-text-2" id="text-1">
 
-<p>TODO(dirlt):
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Summary</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<p>extensive experience in:
+</p><ul>
+<li>large-scale distributed system design and implementation.
+</li>
+<li>network programing and framework.
+</li>
+<li>storage system design and implementation.
+</li>
+<li>system software development.
+</li>
+<li>big data processing and analysis.
+</li>
+</ul>
+
+
+<p>
+specialities:
+</p><ul>
+<li>proficient in c/c++, python, java, scala.
+</li>
+<li>solid knowledge of data structure and algorithm.
+</li>
+<li>extremely familiar with system development toolchains on linux.
+</li>
+<li>performance optimization and tuning for systems and applications.
+</li>
+<li>compiler technique and related tools.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Experience</h3>
+<div class="outline-text-3" id="text-1-2">
+
+
+</div>
+
+<div id="outline-container-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> 2013.2 - now</h4>
+<div class="outline-text-4" id="text-1-2-1">
+
+<p>Software Architect at Umeng
 </p>
+<p>
+data platform team.
+</p>
+<ul>
+<li>design umeng internal realtime+batch architecture. (aka. lambda architecture <a href="http://nathanmarz.com/blog/how-to-beat-the-cap-theorem.html">http://nathanmarz.com/blog/how-to-beat-the-cap-theorem.html</a>) 
+
+</li>
+<li>optimize hadoop cluster usage.
+
+</li>
+<li>performance tuning of mapreduce jobs from perspective of
+<ol>
+<li>application(use hbase bulk load instead of writing data to hbase directly)
+</li>
+<li>kernel(change some kernel parameters like /proc/sys/vm/*  to improve memory allocation)
+</li>
+<li>language(use JNI instead of java code to accelerate cpu computation)
+</li>
+<li>system(turn off mapreduce speculative mode when read data from hbase)
+
+</li>
+</ol>
+
+</li>
+<li>build the internal job scheduler system from scratch to arrange different jobs which are codependent.
+
+</li>
+<li>fast-hbase-rest, a http server with cache for easily accessing hbase in multiple languages by using google protocol-buffers. much faster than 'hbase rest' meanwhile with more capabilities like request rewrite. <a href="https://github.com/dirtysalt/sperm/tree/master/code/java/fast-hbase-rest">https://github.com/dirtysalt/sperm/tree/master/code/java/fast-hbase-rest</a>
+</li>
+</ul>
+
+
+</div>
+</div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-09-26 21:50:34 CST</p>
+<p class="date">Date: 2013-09-29 22:00:55 CST</p>
 <p class="creator">Org version 7.8.11 with Emacs version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
