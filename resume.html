@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
 <meta name="title" content="resume"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-29 22:00:55 CST"/>
+<meta name="generated" content="2013-09-30 10:58:52 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -82,7 +82,11 @@
 <li><a href="resume.html#sec-1-1">1.1 Summary</a></li>
 <li><a href="resume.html#sec-1-2">1.2 Experience</a>
 <ul>
-<li><a href="resume.html#sec-1-2-1">1.2.1 2013.2 - now</a></li>
+<li><a href="resume.html#sec-1-2-1">1.2.1 2013.2-now</a></li>
+<li><a href="resume.html#sec-1-2-2">1.2.2 2012.6-2013.2</a></li>
+<li><a href="resume.html#sec-1-2-3">1.2.3 2011.8-2012.6</a></li>
+<li><a href="resume.html#sec-1-2-4">1.2.4 2010.6-2011.8</a></li>
+<li><a href="resume.html#sec-1-2-5">1.2.5 2008.7-2010.6</a></li>
 </ul>
 </li>
 </ul>
@@ -106,9 +110,11 @@
 </p><ul>
 <li>large-scale distributed system design and implementation.
 </li>
-<li>network programing and framework.
+<li>network programing framework design and implementation.
 </li>
 <li>storage system design and implementation.
+</li>
+<li>performance optimization and tuning for systems and applications.
 </li>
 <li>system software development.
 </li>
@@ -126,9 +132,7 @@ specialities:
 </li>
 <li>extremely familiar with system development toolchains on linux.
 </li>
-<li>performance optimization and tuning for systems and applications.
-</li>
-<li>compiler technique and related tools.
+<li>good understanding of compiler technique and related tools.
 </li>
 </ul>
 
@@ -145,10 +149,31 @@ specialities:
 </div>
 
 <div id="outline-container-1-2-1" class="outline-4">
-<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> 2013.2 - now</h4>
+<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> 2013.2-now</h4>
 <div class="outline-text-4" id="text-1-2-1">
 
-<p>Software Architect at Umeng
+<p>Software Architect at Umeng.
+</p>
+<p>
+data platform team.
+</p>
+<ul>
+<li>data analytics and data mining on hadoop.
+</li>
+<li>build data access service on hbase for advertise platform.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> 2012.6-2013.2</h4>
+<div class="outline-text-4" id="text-1-2-2">
+
+<p>Senior Software Engineer at Umeng.
 </p>
 <p>
 data platform team.
@@ -177,9 +202,85 @@ data platform team.
 <li>build the internal job scheduler system from scratch to arrange different jobs which are codependent.
 
 </li>
-<li>fast-hbase-rest, a http server with cache for easily accessing hbase in multiple languages by using google protocol-buffers. much faster than 'hbase rest' meanwhile with more capabilities like request rewrite. <a href="https://github.com/dirtysalt/sperm/tree/master/code/java/fast-hbase-rest">https://github.com/dirtysalt/sperm/tree/master/code/java/fast-hbase-rest</a>
+<li>fast-hbase-rest, a http server with key value cache for easily accessing hbase in multiple languages by using google protocol-buffers. much faster than 'hbase rest' meanwhile with more capabilities like request rewrite. <a href="https://github.com/dirtysalt/sperm/tree/master/code/java/fast-hbase-rest">https://github.com/dirtysalt/sperm/tree/master/code/java/fast-hbase-rest</a>
 </li>
 </ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-3" class="outline-4">
+<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> 2011.8-2012.6</h4>
+<div class="outline-text-4" id="text-1-2-3">
+
+<p>Senior Software Engineer at Baidu.
+</p>
+<p>
+inf(infrastructure) hpc(high performance computing) team.
+</p>
+<ul>
+<li>dstream, an in-house distributed realtime stream processing system in c++ like twitter's storm and yahoo!'s S4. The alpha version of dstream with 10 nodes can process 1 million tuples per second while keep the latency less than 100ms.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-4" class="outline-4">
+<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> 2010.6-2011.8</h4>
+<div class="outline-text-4" id="text-1-2-4">
+
+<p>Software Engineer at Baidu.
+</p>
+<p>
+inf(infrastructure) com(component) team.
+</p>
+<ul>
+<li>itachi, an open-source high performance asynchronous network programming framework in c++. <a href="https://github.com/dirtysalt/sperm/tree/master/code/cc/itachi">https://github.com/dirtysalt/sperm/tree/master/code/cc/itachi</a>
+
+</li>
+<li>comake2, an in-house build system in python, takes advantages of some open-source build systems such as SCons, CMake, google's GYP, boost's jam etc. It have been wildly used in baidu for continuous integration.
+
+</li>
+<li>infpack, an in-house data exchange format in c++, exceeds google's protocol-buffers and facebook's thrift on the speed of serialization and deserialization about 20~30% faster while with 10~20% smaller size. its generated code is carefully hand-tuned so implementation is very efficient.
+
+</li>
+<li>DDBS(distributed database system), an in-house distributed relational database system. I mainly worked on SQL parser to extend syntax for more capability and implementing a SPASS(single point automatic switch system) for its fault-tolerant feature.
+
+</li>
+<li>maintainer and developer of baidu's common library including BSL(baidu standard library), ullib(wraps socket io, file io, and some linux syscalls etc.), comdb(a embedded high-performance key value storage system), memory allocator, character encoding, regular expression, signature and hash algorithm, url handling, http client, lock-free data structures and algorithms etc.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-5" class="outline-4">
+<h4 id="sec-1-2-5"><span class="section-number-4">1.2.5</span> 2008.7-2010.6</h4>
+<div class="outline-text-4" id="text-1-2-5">
+
+<p>Software Engineering Intern at Baidu.
+</p>
+<p>
+ibase com(component) team.
+</p>
+<ul>
+<li>vitamin, an in-house tool to detect the potential bugs in C/C++ source code by static analyzation. It reports thousands of valuable warnings by scanning the whole baidu's code repository while keeping the rate of fake warnings relatively low.
+
+</li>
+<li>idlcompiler, an in-house compiler translates a DSL(domain specified language) called 'idl'(interface description language) which is designed by myself to the code that support data exchange between C/C++ struct/class and mcpack(an in-house data pack like google's protocol-buffers).
+
+</li>
+<li>maintainer and developer of ullib(wraps socket io, file io, and some linux syscalls etc.), comdb(a embedded high-performance key value storage system), memory allocator, character encoding, regular expression, signature and hash algorithm, url handling, http client etc.
+</li>
+</ul>
+
 
 
 </div>
@@ -189,7 +290,7 @@ data platform team.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-09-29 22:00:55 CST</p>
+<p class="date">Date: 2013-09-30 10:58:52 CST</p>
 <p class="creator">Org version 7.8.11 with Emacs version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
