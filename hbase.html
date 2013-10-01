@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="hbase"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-25 08:47:56 CST"/>
+<meta name="generated" content="2013-10-01 13:06:08 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -96,6 +96,7 @@
 <li><a href="hbase.html#sec-1-1-6">1.1.6 clock skew</a></li>
 <li><a href="hbase.html#sec-1-1-7">1.1.7 hbase join</a></li>
 <li><a href="hbase.html#sec-1-1-8">1.1.8 Using HBase with ioMemory :: Fusion-io</a></li>
+<li><a href="hbase.html#sec-1-1-9">1.1.9 阿里HBase业务设计实践</a></li>
 </ul>
 </li>
 <li><a href="hbase.html#sec-1-2">1.2 使用问题</a>
@@ -749,6 +750,118 @@ fusion iomemory 是类似 ssd的东西， <b>操作速度接近DRAM，成本更�
 <li>It consumes significantly less power per GB. <b>功耗更低</b>
 </li>
 <li>The higher physical density of ioMemory can reduce unnecessary scale-out. <b>密度更低</b>
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-1-9" class="outline-4">
+<h4 id="sec-1-1-9"><span class="section-number-4">1.1.9</span> 阿里HBase业务设计实践</h4>
+<div class="outline-text-4" id="text-1-1-9">
+
+<p>产品线、客户端使用建议
+</p><ul>
+<li>海量数据，rowkey范围和分布已知，建议进行预分配
+</li>
+<li>Rowkey一定要尽量短 （如：时间用时间戳整数表示、编码压缩）
+</li>
+<li>CF设计：尽量少，建议CF数量在1-2个
+</li>
+<li>Rowkey设计：写入要分散；如历史交易订单：biz_order_id做reverse后做rowkey
+</li>
+<li>Autoflush参数设置为true；否则极端情况下会丢失数据
+<ul>
+<li>Hbase client的重试次数为3次以上。否则会由于split导致region not onle；从而导致写入失败(udc集群出现过)。
+</li>
+<li>hbase.rpc.timeout 一次rpc的timeout；默认60秒
+</li>
+<li>hbase.client.pause 客户端的一次操作失败，到下次重试之间的等待时间
+</li>
+<li>hbase.client.retries.number 客户端重试的次数
+</li>
+<li>hbase.regionserver.lease.period 客户端租期超时阀值；scan量大时可以考虑增大；否则”Lease Exception: lease -70000000000000001 does not exist”
+</li>
+</ul>
+
+</li>
+<li>ZK连接/HTable对象的使用注意
+<ul>
+<li>Configure对象的使用. 必须是static or singleton模式 <b>TODO(dirlt):???</b>
+</li>
+<li>默认：每台机器与zk直接的连接数不超过30个
+</li>
+<li>HTable的使用
+<ul>
+<li>线程不安全
+</li>
+<li>使用HTableV2
+</li>
+<li>HTablePool (推荐的方式)
+</li>
+</ul>
+
+</li>
+</ul>
+
+</li>
+</ul>
+
+<p>影响汇总
+</p><ol>
+<li>对于写速度而言，影响因素的效果主要为： 写hlog &gt; split &gt; compact；
+</li>
+<li>对于写速度波动而言，想完全不波动是不可能，影响因素的效果主要为：split &gt; 写hlog &gt; compact；
+</li>
+<li>对于写频率较高的应用而言，一台region server上不适合有太多的region； (hbase.hregion.max.filesize = 64G)
+</li>
+<li>Pre-Sharding可以不做，建议做；
+</li>
+<li>对于日志应用可以考虑关闭compact/split
+<ul>
+<li>hbase.regionserver.regionSplitLimit 1关闭split
+</li>
+<li>hbase.hstore.compactionThreshold Integer.MAX_VALUE关闭Compact
+</li>
+<li>hbase.hstore.blockingStoreFiles Integer.MAX_VALUE不要因为store file数量而产生阻塞
+</li>
+</ul>
+
+</li>
+</ol>
+
+
+<p>
+风险点——集群稳定/容灾
+</p><ul>
+<li>regionserver的单点问题
+<ul>
+<li>导致部分数据短暂不可用
+</li>
+</ul>
+
+</li>
+<li>跨机房容灾
+<ul>
+<li>目前还只是部署在单个机房
+</li>
+<li>跨机房性能衰减
+</li>
+</ul>
+
+</li>
+<li>实现：
+<ul>
+<li>程序双写
+</li>
+<li>复制的测试(push的replication已经上线、pull在研)
+</li>
+<li>消息中间件实现(异步消息)
+</li>
+</ul>
+
 </li>
 </ul>
 
@@ -3238,7 +3351,7 @@ Currently the WAL is using a Hadoop SequenceFile, which stores records as sets o
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-09-25 08:47:56 CST</p>
+<p class="date">Date: 2013-10-01 13:06:08 CST</p>
 <p class="creator">Org version 7.8.11 with Emacs version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
