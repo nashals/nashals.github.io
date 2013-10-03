@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="algorithm"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-28 15:15:30 CST"/>
+<meta name="generated" content="2013-10-03 15:09:16 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -780,6 +780,26 @@ a1 a1 a2 a2 &hellip; an an X
 <p>
 这个问题只要将所有的值xor，那么对于a1 xor a1 = 0, 因此结果就剩下X
 </p>
+<p>
+<a href="http://oj.leetcode.com/problems/single-number/">http://oj.leetcode.com/problems/single-number/</a>
+</p>
+
+
+
+<pre class="src src-C++">class Solution {
+ public:
+  int singleNumber(int A[], int n) {
+    // Note: The Solution object is instantiated only once and is reused by each test case.
+    int x = 0;
+    for(int i=0;i&lt;n;i++) {
+      x ^= A[i];
+    }
+    return x;
+  }
+};
+</pre>
+
+
 
 <hr/>
 <p>
@@ -811,6 +831,43 @@ a1 a1 a1 a2 a2 a2 &hellip; an an an X
 <p>
 并且这个处理方法可以扩展到其余数出现 <b>任意次</b> 。
 </p>
+<p>
+<a href="http://oj.leetcode.com/problems/single-number-ii/">http://oj.leetcode.com/problems/single-number-ii/</a>
+</p>
+
+
+
+<pre class="src src-C++">class Solution {
+ public:
+  int singleNumber(int A[], int n) {
+    // Note: The Solution object is instantiated only once and is reused by each test case.
+    int mask[32]; // sizeof(int) == 32;
+    memset(mask,0,sizeof(mask));
+    for(int i=0;i&lt;n;i++) {
+      R(A[i],mask);
+    }
+    int code = S(mask);
+    return code;
+  }
+  void R(int a,int mask[]) {
+    for(int i=0;i&lt;32;i++) {
+      if(a &amp; 0x1) {
+        mask[i] = (mask[i] + 1) % 3;
+      }
+      a &gt;&gt;= 1;
+    }
+  }
+  int S(int mask[]) {
+    int code = 0;
+    for(int i=31;i&gt;=0;i--) {
+      code = (code &lt;&lt; 1) + mask[i];
+    }
+    return code;
+  }
+};
+</pre>
+
+
 </div>
 
 </div>
@@ -829,13 +886,14 @@ a1 a1 a1 a2 a2 a2 &hellip; an an an X
 </p>
 <p>
 另外一个比较好的办法就是只是考虑某一个直方图容纳水多少。对于这个点来说，它所容纳的高度取决于它的左右两边最大高度。因此我们可以先对这个直方图做一个预处理，求解得到left[i]表示第i个柱子左边最大高度，right[i]表示第i个柱子右边最大高度，这个预处理O（n)就可以计算完成。然后再一遍处理即可求解结果。
-</p></div>
+</p>
+</div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-09-28 15:15:30 CST</p>
+<p class="date">Date: 2013-10-03 15:09:16 CST</p>
 <p class="creator">Org version 7.8.11 with Emacs version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
