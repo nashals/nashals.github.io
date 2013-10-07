@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="hbase"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-10-01 13:06:08 CST"/>
+<meta name="generated" content="2013-10-07 18:48:44 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -372,7 +372,7 @@ By default, WAL file is rolled when its size is about 95% of the HDFS block size
 针对时间这种开头的rowkey，我们可以之前加上hashcode来将连续时间row打散，这样访问就不会集中在几个region上面了。而使用这种方式的话在扫描的时候就需要input format支持传入multi scan对象。 <b>NOTE（dirlt）：这种方式不利的地方就是用hbase shell访问的话不是很方便</b>
 </p>
 <p>
-<b>NOTE(dirlt):我编写了一个com.dirlt.java.mr.MultipleTableInputFormat允许以多个table以及每个table上多个scan作为输入</b>
+*NOTE(dirlt):我编写了一个<a href="code/java/mr/src/main/java/com/dirlt/java/mr/MultipleTableInputFormat.java">com.dirlt.java.mr.MultipleTableInputFormat</a> 允许以多个table以及每个table上多个scan作为输入*
 </p>
 </div>
 
@@ -3351,7 +3351,7 @@ Currently the WAL is using a Hadoop SequenceFile, which stores records as sets o
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-10-01 13:06:08 CST</p>
+<p class="date">Date: 2013-10-07 18:48:44 CST</p>
 <p class="creator">Org version 7.8.11 with Emacs version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
