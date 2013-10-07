@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="hbase"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-10-07 18:48:44 CST"/>
+<meta name="generated" content="2013-10-07 21:17:16 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -372,7 +372,7 @@ By default, WAL file is rolled when its size is about 95% of the HDFS block size
 针对时间这种开头的rowkey，我们可以之前加上hashcode来将连续时间row打散，这样访问就不会集中在几个region上面了。而使用这种方式的话在扫描的时候就需要input format支持传入multi scan对象。 <b>NOTE（dirlt）：这种方式不利的地方就是用hbase shell访问的话不是很方便</b>
 </p>
 <p>
-*NOTE(dirlt):我编写了一个<a href="code/java/mr/src/main/java/com/dirlt/java/mr/MultipleTableInputFormat.java">com.dirlt.java.mr.MultipleTableInputFormat</a> 允许以多个table以及每个table上多个scan作为输入*
+*NOTE(dirlt):我编写了一个 <a href="https://github.com/dirtysalt/sperm/blob/master/code/java/mr/src/main/java/com/dirlt/java/mr/MultipleTableInputFormat.java">com.dirlt.java.mr.MultipleTableInputFormat</a> 允许以多个table以及每个table上多个scan作为输入*
 </p>
 </div>
 
@@ -834,7 +834,7 @@ fusion iomemory 是类似 ssd的东西， <b>操作速度接近DRAM，成本更�
 
 
 <p>
-风险点——集群稳定/容灾
+风险点：集群稳定/容灾
 </p><ul>
 <li>regionserver的单点问题
 <ul>
@@ -1023,13 +1023,27 @@ fusion iomemory 是类似 ssd的东西， <b>操作速度接近DRAM，成本更�
 
 <p>使用python来访问hbase确实可以很大地提高开发效率，但是通过thrift server来进行中转的话对于性能还是存在影响的，因此比较适合测试。
 </p><ul>
-<li>首先需要启动thrift server。hbase-deamon.sh start thrift
-</li>
-<li>然后安装happybase。pip install happybase github: <a href="https://github.com/wbolster/happybase">https://github.com/wbolster/happybase</a> doc: <a href="http://happybase.readthedocs.org/en/latest/index.html">http://happybase.readthedocs.org/en/latest/index.html</a>
+<li>启动thrift server
+<ul>
+<li>hbase-deamon.sh start thrift
 </li>
 </ul>
 
-<p>使用起来还是比较简单的，documentation里面的说明也非常详细。具体代码可以参考 code/py/happybase/main.py
+</li>
+<li>安装happybase
+<ul>
+<li>pip install happybase 
+</li>
+<li>github: <a href="https://github.com/wbolster/happybase">https://github.com/wbolster/happybase</a> 
+</li>
+<li>doc: <a href="http://happybase.readthedocs.org/en/latest/index.html">http://happybase.readthedocs.org/en/latest/index.html</a>
+</li>
+</ul>
+
+</li>
+</ul>
+
+<p>使用起来还是比较简单的，documentation也非常详细。
 </p>
 <p>
 <b>NOTE（dirlt）：发现还是存在一些不兼容的thrift协议，比如使用scan似乎就存在问题</b>
@@ -1058,7 +1072,7 @@ thrift.Thrift.TApplicationException: Invalid method name: 'scannerOpenWithScan'
 <div class="outline-text-4" id="text-1-2-7">
 
 <ul>
-<li>参考代码 com.dirlt.java.hbase.ClusterSummary
+<li>参考代码 <a href="https://github.com/dirtysalt/sperm/blob/master/code/java/hbase/src/main/java/com/dirlt/java/hbase/ClusterSummary.java">com.dirlt.java.hbase.ClusterSummary</a>
 </li>
 <li>HBaseAdmin可以获取节点信息
 </li>
@@ -1082,7 +1096,7 @@ thrift.Thrift.TApplicationException: Invalid method name: 'scannerOpenWithScan'
 <ul>
 <li>将输入文件转换成为HFile格式
 </li>
-<li>参考代码 com.dirlt.java.mr.HBaseLoaderMR
+<li>参考代码 <a href="https://github.com/dirtysalt/sperm/blob/master/code/java/mr/src/main/java/com/dirlt/java/mr/HBaseLoaderMR.java">com.dirlt.java.mr.HBaseLoaderMR</a>
 </li>
 <li>region，reduce，output对应，也就是说有多少个region就有多少个reduce
 <ul>
@@ -3351,7 +3365,7 @@ Currently the WAL is using a Hadoop SequenceFile, which stores records as sets o
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-10-07 18:48:44 CST</p>
+<p class="date">Date: 2013-10-07 21:17:16 CST</p>
 <p class="creator">Org version 7.8.11 with Emacs version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="hdfs"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-26 22:02:19 CST"/>
+<meta name="generated" content="2013-10-07 21:12:28 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -1571,7 +1571,7 @@ The filesystem under path '/hbase/.corrupt/dp18.umeng.com%3A60020.1349065853563'
 </li>
 <li>然后通过FileSystem这个实例操作文件系统上的文件
 </li>
-<li>代码可以参考 com.dirlt.java.hdfs.GetFS
+<li>代码可以参考 <a href="https://github.com/dirtysalt/sperm/blob/master/code/java/hdfs/src/main/java/com/dirlt/java/hdfs/GetFS.java">com.dirlt.java.hdfs.GetFS</a>
 </li>
 </ul>
 
@@ -1596,7 +1596,7 @@ The filesystem under path '/hbase/.corrupt/dp18.umeng.com%3A60020.1349065853563'
 
 
 <p>
--以 com.dirlt.java.hdfs.GetFS 为例，如果使用java -cp方式运行的话，那么结果如下
+以 com.dirlt.java.hdfs.GetFS 为例，如果使用java -cp方式运行的话，那么结果如下
 </p>
 
 
@@ -1643,7 +1643,7 @@ uri = file:///
 </li>
 <li>hsync不仅仅有hflush功能，还能够调用对应的datanode将数据刷到local fs上面。
 </li>
-<li><b>NOTE（dirlt）：但是似乎不太work.参考代码 com.dirlt.java.hdfs.TestConsistency</b>
+<li>*NOTE（dirlt）：但是似乎不太work.参考代码 <a href="https://github.com/dirtysalt/sperm/blob/master/code/java/hdfs/src/main/java/com/dirlt/java/hdfs/TestConsistency.java">com.dirlt.java.hdfs.TestConsistency</a>*
 </li>
 </ul>
 
@@ -1671,7 +1671,7 @@ uri = file:///
 </ul>
 
 </li>
-<li>代码可以参考 com.dirlt.java.hdfs.TestProgress
+<li>代码可以参考 <a href="https://github.com/dirtysalt/sperm/blob/master/code/java/hdfs/src/main/java/com/dirlt/java/hdfs/TestProgress.java">com.dirlt.java.hdfs.TestProgress</a>
 </li>
 </ul>
 
@@ -1685,7 +1685,7 @@ uri = file:///
 <div class="outline-text-4" id="text-1-6-6">
 
 <ul>
-<li>参考代码 com.dirlt.java.hdfs.ClusterSummary
+<li>参考代码 <a href="https://github.com/dirtysalt/sperm/blob/master/code/java/hdfs/src/main/java/com/dirlt/java/hdfs/ClusterSummary.java">com.dirlt.java.hdfs.ClusterSummary</a>
 </li>
 <li>通过DFSClient可以获取集群运行状况
 </li>
@@ -3953,7 +3953,7 @@ protected Iterator&lt;DatanodeDescriptor&gt; pickupReplicaSet(
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-09-26 22:02:19 CST</p>
+<p class="date">Date: 2013-10-07 21:12:28 CST</p>
 <p class="creator">Org version 7.8.11 with Emacs version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

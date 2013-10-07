@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="mapred"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-15 15:18:49 CST"/>
+<meta name="generated" content="2013-10-07 21:12:23 CST"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -1764,7 +1764,7 @@ ENOENT: No such file or directory
 <h5 id="sec-1-5-1-2"><span class="section-number-5">1.5.1.2</span> 使用lzo</h5>
 <div class="outline-text-5" id="text-1-5-1-2">
 
-<p>关于如何使用lzo可以参看代码示例， com.dirlt.java.mr.ReadLzoInput . 下面几点需要说明：
+<p>关于如何使用lzo可以参看代码示例 <a href="https://github.com/dirtysalt/sperm/blob/master/code/java/mr/src/main/java/com/dirlt/java/mr/ReadLzoInput.java">com.dirlt.java.mr.ReadLzoInput</a>. 下面几点需要说明：
 </p><ul>
 <li>LzoTextInputFormat用来处理lzo压缩的文本文件，
 <ul>
@@ -1808,7 +1808,7 @@ ENOENT: No such file or directory
 <p>完成之后对于每一个lzo文件都会存在一个.index文件。如果重复运行上面命令的话，会检查.index文件是否存在，如果存在的话那么就不会重新进行索引。
 </p>
 <p>
-如果需要单独使用lzo而不是使用mapreduce来做压缩和解压缩的话，可以参考com.dirlt.java.mr.UseLzoStandadlone.
+如果需要单独使用lzo而不是使用mapreduce来做压缩和解压缩的话，可以参考 <a href="https://github.com/dirtysalt/sperm/blob/master/code/java/mr/src/main/java/com/dirlt/java/mr/UseLzoStandadlone.java">com.dirlt.java.mr.UseLzoStandadlone</a>.
 </p>
 </div>
 
@@ -1849,7 +1849,7 @@ message Message {
 <p>
 此外我们还需要为这个类写几个辅助类，但是索性的是辅助类并不是很复杂。
 </p><ul>
-<li>InputFormat com.dirlt.java.mr.MessageLzoProtobufInputFormat
+<li>InputFormat <a href="https://github.com/dirtysalt/sperm/blob/master/code/java/mr/src/main/java/com/dirlt/java/mr/MessageLzoProtobufInputFormat.java">com.dirlt.java.mr.MessageLzoProtobufInputFormat</a>
 </li>
 </ul>
 
@@ -1866,7 +1866,7 @@ message Message {
 
 
 <ul>
-<li>OutputFormat com.dirlt.java.mr.MessageLzoProtobufOutputFormat
+<li>OutputFormat <a href="https://github.com/dirtysalt/sperm/blob/master/code/java/mr/src/main/java/com/dirlt/java/mr/MessageLzoProtobufOutputFormat.java">com.dirlt.java.mr.MessageLzoProtobufOutputFormat</a>
 </li>
 </ul>
 
@@ -1883,7 +1883,7 @@ message Message {
 
 
 <ul>
-<li>Writable com.dirlt.java.mr.MessageLzoProtobufWritable
+<li>Writable <a href="https://github.com/dirtysalt/sperm/blob/master/code/java/mr/src/main/java/com/dirlt/java/mr/MessageLzoProtobufWritable.java">com.dirlt.java.mr.MessageLzoProtobufWritable</a>
 </li>
 </ul>
 
@@ -1906,7 +1906,7 @@ message Message {
 
 
 <p>
-关于如何使用lzo+protobuf可以参看代码示例， com.dirlt.java.mr.UseLzoProtobuf . 值得注意的是如果输入为lzo文件的话，那么类型是ProtobufWritable&lt;M&gt;（泛型），如果需要取值的话必须通过setConverter提供类信息。
+关于如何使用lzo+protobuf可以参看代码示例 <a href="https://github.com/dirtysalt/sperm/blob/master/code/java/mr/src/main/java/com/dirlt/java/mr/UseLzoProtobuf.java">com.dirlt.java.mr.UseLzoProtobuf</a>. 值得注意的是如果输入为lzo文件的话，那么类型是ProtobufWritable&lt;M&gt;（泛型），如果需要取值的话必须通过setConverter提供类信息。
 </p>
 </div>
 </div>
@@ -1925,7 +1925,7 @@ message Message {
 <div class="outline-text-5" id="text-1-5-2-1">
 
 <ul>
-<li>参考代码 com.dirlt.java.mr.RunMultipleInputs1
+<li>参考代码 <a href="https://github.com/dirtysalt/sperm/blob/master/code/java/mr/src/main/java/com/dirlt/java/mr/RunMultipleInputs1.java">com.dirlt.java.mr.RunMultipleInputs1</a>
 </li>
 <li>支持一个htable和多个文件（但是对于htable不支持设置scan范围）
 </li>
@@ -1965,9 +1965,9 @@ message Message {
 <div class="outline-text-5" id="text-1-5-2-2">
 
 <ul>
-<li>参考代码 com.dirlt.java.mr.RunMultipleInputs2
+<li>参考代码 <a href="https://github.com/dirtysalt/sperm/blob/master/code/java/mr/src/main/java/com/dirlt/java/mr/RunMultipleInputs2.java">com.dirlt.java.mr.RunMultipleInputs2</a>
 </li>
-<li><b>NOTE(dirlt):在cdh4.3.0下面运行的代码略有变动，存放在com.dirlt.java.mr2.RunMultipleInputs2</b>
+<li>*NOTE(dirlt):在cdh4.3.0下面运行的代码略有变动，存放在 <a href="https://github.com/dirtysalt/sperm/blob/master/code/java/mr2/src/main/java/com/dirlt/java/mr2/RunMultipleInputs2.java">com.dirlt.java.mr2.RunMultipleInputs2</a>*
 <ul>
 <li>需要配合MultipleInputs使用
 </li>
@@ -2028,7 +2028,7 @@ message Message {
 <div class="outline-text-5" id="text-1-5-3-1">
 
 <ul>
-<li>参考代码 com.dirlt.java.mr.RunMultipleOutputs
+<li>参考代码 <a href="https://github.com/dirtysalt/sperm/blob/master/code/java/mr/src/main/java/com/dirlt/java/mr/RunMultipleOutputs.java">com.dirlt.java.mr.RunMultipleOutputs</a>
 </li>
 <li>支持多个htable和多个文件
 </li>
@@ -2064,7 +2064,7 @@ message Message {
 <div class="outline-text-5" id="text-1-5-3-2">
 
 <ul>
-<li>参考代码 com.dirlt.java.mr.RunMultipleTableOutput
+<li>参考代码 <a href="https://github.com/dirtysalt/sperm/blob/master/code/java/mr/src/main/java/com/dirlt/java/mr/RunMultipleTableOutput.java">com.dirlt.java.mr.RunMultipleTableOutput</a>
 </li>
 <li>支持多个htable
 </li>
@@ -2090,7 +2090,7 @@ message Message {
 <div class="outline-text-4" id="text-1-5-4">
 
 <ul>
-<li>参考代码 com.dirlt.java.mr.ClusterSummary
+<li>参考代码 <a href="https://github.com/dirtysalt/sperm/blob/master/code/java/mr/src/main/java/com/dirlt/java/mr/ClusterSummary.java">com.dirlt.java.mr.ClusterSummary</a>
 </li>
 <li>获取更多信息可以阅读JobClient API
 </li>
@@ -2649,7 +2649,7 @@ none             24G     0   24G   0% /run/shm
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-09-15 15:18:49 CST</p>
+<p class="date">Date: 2013-10-07 21:12:23 CST</p>
 <p class="creator">Org version 7.8.11 with Emacs version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
