@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="mac"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-15 15:18:50 CST"/>
+<meta name="generated" content="2013-10-23T19:58+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -85,6 +85,7 @@
 <li><a href="mac.html#sec-1-2-1">1.2.1 截屏</a></li>
 <li><a href="mac.html#sec-1-2-2">1.2.2 触控板和键盘</a></li>
 <li><a href="mac.html#sec-1-2-3">1.2.3 控制休眠</a></li>
+<li><a href="mac.html#sec-1-2-4">1.2.4 VirtualBox启动问题</a></li>
 </ul>
 </li>
 </ul>
@@ -100,7 +101,7 @@
 <p>相对ubuntu来说，mac还是非常容易上手的。我相信同学的说法:"你拿到的是世界上最好的笔记本"
 </p>
 <p>
-<b>NOTE（dirlt@2013-01-22）：但是从买来到现在，我主要用它阅读一些文档浏览一些网页而没有在上面做开发。开发还是觉得linux好点</b>
+<b>NOTE（dirlt@2013-01-22）：但是从买来到现在，我主要用它阅读文档和浏览网页，有在上面做开发。开发还是觉得linux好点</b>
 </p>
 
 </div>
@@ -114,39 +115,28 @@
 <p>
 下面软件是通过手动下载dmg安装的: 
 </p><ul>
-<li>evernote
+<li>Evernote
 </li>
-<li>auqamacs # emacs for mac
+<li>brew # apt-get for Mac.
+</li>
+<li>QQ
+</li>
+<li>有道词典 # 鼠标取词功能还行
 <ul>
-<li>但是一些功能似乎存在问题，可能是因为基于emacs22开发
-</li>
-<li>现在自己使用的还是brew安装的emacs24，还算良好。
+<li><b>NOTE(dirlt):mac自带的词典已经足够好了，附带了许多词库。在字典的偏好设置里面可以选择这些词库</b>
 </li>
 </ul>
 
 </li>
-<li>firefox
+<li>Tunnelblick # openvpn似乎在mac下面似乎有bug. <b>NOTE(dirlt):但是感觉没有openvpn好用，而且非常容易断开</b>
 </li>
-<li>thunderbird
+<li>VirtualBox
 </li>
-<li>adium # gtalk
+<li>Chrome
 </li>
-<li>brew # apt-get for mac
+<li>IntelliJ
 </li>
-<li>xcode # prerequisite for brew，这个通过app store安装的。
-</li>
-<li>xcode-command-lines # 这个通过xcode内部插件安装的。 
-</li>
-<li>qq
-</li>
-<li>有道词典
-</li>
-<li>tunnelblick # openvpn似乎在mac下面似乎有bug
-<ul>
-<li>但是感觉没有openvpn好用，而且非常容易断开。
-</li>
-</ul>
-
+<li>AirServer # AirPlay Server.
 </li>
 </ul>
 
@@ -236,15 +226,25 @@ brew的常用选项有下面这些：
 </li>
 </ul>
 
+
 </div>
+
+</div>
+
+<div id="outline-container-1-2-4" class="outline-4">
+<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> VirtualBox启动问题</h4>
+<div class="outline-text-4" id="text-1-2-4">
+
+<p>启动遇到如下错误"VM (VERR_SUPLIB_WORLD_WRITABLE) with following details: code d'erreur: NS_ERROR_FAILURE (0x80004005) composant: console interface: IConsole {515e8e8d-f932-4d8e-9f32-79a52aead882}". 查看日志之后发现/Applications权限存在问题，修改权限到755之后正常启动。
+</p></div>
 </div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-09-15 15:18:50 CST</p>
-<p class="creator">Org version 7.8.11 with Emacs version 24</p>
+<p class="date">Date: 2013-10-23T19:58+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

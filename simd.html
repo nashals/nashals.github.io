@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="simd"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-15 15:18:25 CST"/>
+<meta name="generated" content="2013-10-21T12:46+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -483,7 +483,6 @@ IA-32架构下只允许访问8个%xmm寄存器.
 可以查看Intel Vol.1 10.2.3.%mxcrs默认值是0x1f80.
 </p>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -557,7 +556,6 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 和执行FPU指令切换之间,我们可能需要保存状态.那么下面就是关于FPU操作状态的指令.
 </p>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -684,7 +682,6 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 <p>为了方便表示,我们定义下面缩写和操作.
 </p>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -789,7 +786,6 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 
 <p>对于每一个data element的MSB移到GRP.这些指令通常用于分支判定.
 </p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -812,7 +808,6 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 <div class="outline-text-5" id="text-1-3-1-2">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -841,7 +836,6 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 <div class="outline-text-5" id="text-1-3-1-3">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -868,7 +862,6 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 <div class="outline-text-5" id="text-1-3-1-4">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -893,7 +886,6 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 <div class="outline-text-5" id="text-1-3-1-5">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -916,7 +908,6 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 <div class="outline-text-5" id="text-1-3-1-6">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -954,7 +945,6 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 <ul>
 <li id="sec-1-3-2-1-1">对称处理<br/>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -982,7 +972,6 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 <ul>
 <li id="sec-1-3-2-1-2">水平处理<br/>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -1011,7 +1000,6 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 <ul>
 <li id="sec-1-3-2-2-1">对称处理<br/>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -1040,7 +1028,6 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 <ul>
 <li id="sec-1-3-2-2-2">水平处理<br/>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -1067,7 +1054,6 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 <div class="outline-text-5" id="text-1-3-2-3">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -1097,7 +1083,6 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 <div class="outline-text-5" id="text-1-3-2-4">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -1123,7 +1108,6 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 <ul>
 <li id="sec-1-3-2-5-1">MAX<br/>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -1149,7 +1133,6 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 <ul>
 <li id="sec-1-3-2-5-2">MIN<br/>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -1185,7 +1168,6 @@ PHMINPOSUW可以按照Unsigned Word来水平搜索最小值的位置.
 <div class="outline-text-5" id="text-1-3-2-6">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -1243,7 +1225,6 @@ PHMINPOSUW可以按照Unsigned Word来水平搜索最小值的位置.
 什么比较方式,可以查看具体指令里面的说明,比如CMPPS,CMPSS,CMPPD,CMPSD.
 </p>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -1285,7 +1266,6 @@ PHMINPOSUW可以按照Unsigned Word来水平搜索最小值的位置.
 如果精度取舍是采用截断方式来进行处理的话,那么指令前缀通常是CVTT.
 </p>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -1300,7 +1280,6 @@ PHMINPOSUW可以按照Unsigned Word来水平搜索最小值的位置.
 
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -1335,7 +1314,6 @@ PHMINPOSUW可以按照Unsigned Word来水平搜索最小值的位置.
 
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -1361,7 +1339,6 @@ PHMINPOSUW可以按照Unsigned Word来水平搜索最小值的位置.
 
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -1385,7 +1362,6 @@ PHMINPOSUW可以按照Unsigned Word来水平搜索最小值的位置.
 <div class="outline-text-4" id="text-1-3-5">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -1409,7 +1385,6 @@ PHMINPOSUW可以按照Unsigned Word来水平搜索最小值的位置.
 
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -1439,7 +1414,6 @@ PHMINPOSUW可以按照Unsigned Word来水平搜索最小值的位置.
 <div class="outline-text-4" id="text-1-3-6">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -1471,7 +1445,6 @@ PHMINPOSUW可以按照Unsigned Word来水平搜索最小值的位置.
 <div class="outline-text-4" id="text-1-3-7">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -1504,7 +1477,6 @@ PHMINPOSUW可以按照Unsigned Word来水平搜索最小值的位置.
 src的哪个位置的element来进行填充的.
 </p>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -1537,7 +1509,6 @@ src的哪个位置的element来进行填充的.
 BLENDV操作和BLEND操作过程一样的,不同的是由%xmm0来决定的而不是由imm来决定.
 </p>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -1573,7 +1544,6 @@ BLENDV操作和BLEND操作过程一样的,不同的是由%xmm0来决定的而不
 
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -1753,8 +1723,8 @@ FISTP需要修改FPU Tag Word设置为截断处理才会有这样的效果,
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-09-15 15:18:25 CST</p>
-<p class="creator">Org version 7.8.11 with Emacs version 24</p>
+<p class="date">Date: 2013-10-21T12:46+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="apue"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-15 15:19:51 CST"/>
+<meta name="generated" content="2013-10-21T12:48+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -726,7 +726,6 @@ ISO C标准现在由ISO/IEC JTC1/SC22/WG14这个工作组进行维护和开发�
 优化的，通过告诉编译器对于指向的对象只能够使用这个指针进行优化).ISO C标准定义的头文件包括：
 </p>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -778,7 +777,6 @@ ISO C标准现在由ISO/IEC JTC1/SC22/WG14这个工作组进行维护和开发�
 <p>POSIX有一些可选接口组，这个会在Unix系统实现的选项一节介绍。
 POSIX标准定义的必选和可选头文件如下：
 </p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -960,7 +958,6 @@ Unix系统实现的选项一节介绍。
 <div class="outline-text-6" id="text-1-2-2-1-2">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -998,7 +995,6 @@ Unix系统实现的选项一节介绍。
 <div class="outline-text-6" id="text-1-2-2-1-3">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -1058,7 +1054,6 @@ Unix系统实现的选项一节介绍。
 
 <p>关于每个可选接口组提供的接口，可以通过posixoptions获得。
 </p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -1131,7 +1126,6 @@ Unix系统实现的选项一节介绍。
 <div class="outline-text-6" id="text-1-2-2-2-3">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -1179,7 +1173,6 @@ __cplusplus来判断。
 
 <p>在头文件&lt;sys/types.h&gt;里面定义了某些与实现相关的数据类型，称为基本系统数据类型。常见的有下面这些：
 </p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -1585,7 +1578,6 @@ dup2相当于一个原子操作，首先关闭dst_fd然后再复制到dst_fd上�
 <p>
 但是这仅仅是ioctl所需要包含的文件，不同设备还有专有的头文件：
 </p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -1610,7 +1602,6 @@ dup2相当于一个原子操作，首先关闭dst_fd然后再复制到dst_fd上�
 <div class="outline-text-4" id="text-1-3-12">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -1844,7 +1835,6 @@ TODO:给出两个字符特殊文件和块特殊文件的例子，更加好区分
 
 <p>对于一个进程来说，相关联的ID有下面几个：
 </p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -1909,7 +1899,6 @@ owner gid:0
 
 <p>文件访问权限也可以通过访问st_mode来获得，有下面9个权限位：
 </p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -1990,7 +1979,6 @@ mask为S_IRUSR | S_IWUSR的话，那么在创建文件和目录时，那么用�
 
 <p>修改现有文件的访问权限。出了上面列列举权限位可以使用之外，还有下面这些：
 </p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -2162,7 +2150,6 @@ size:1073741824,st_blksize:4096,st_blocks:8
 符号链接也对应是一个文件，指向另外一个文件。所以在这里我们必须弄清楚，如果操作
 符号链接的话，哪些是操作链接文件，哪些是操作真实文件：
 </p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -2298,7 +2285,6 @@ int main(){
 差别就好比操作文件实际内容和文件属性。不同操作影响时间不同，而且还会影响所在父目录的时间。
 </p>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -2864,7 +2850,6 @@ FILE* fdopen(int fd,const char* type);
 <p>
 关于type有下面这几种枚举值
 </p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -3408,7 +3393,6 @@ int main(){
 
 <p>其他数据文件所提供的接口和上面很相似，包括遍历接口和查找接口。
 </p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -3601,7 +3585,6 @@ time_t是一个秒的概念，Unix还提供了下面结构可以表达日期时�
 当然得到这个结构用户还必须自己制作字符串，所以还有字符串表达方式(const char*)。
 </p>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -3984,7 +3967,6 @@ struct rlimit{
 <p>
 关于resoruce有下面这几个常量：
 </p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -4425,7 +4407,6 @@ pid_t waitpid(pid_t pid,int* statloc,int options);
 <p>
 对于statloc如果不为NULL的话，那么可以获得子进程终止状态，通过宏来处理这个值：
 </p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -4586,7 +4567,6 @@ int setegid(gid_t gid);
 </ul>
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -5287,7 +5267,6 @@ read from tty error,errno=Input/output error
 <div class="outline-text-4" id="text-1-10-2">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -5676,7 +5655,6 @@ int sigaction(int signo,const struct sigaction* restrict act,struct sigaction* r
 <p>
 通常来说我们还是使用sa_handler来处理信号。关于sa_flags我们可以看看选项有哪些：
 </p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -6643,7 +6621,6 @@ int pthread_cond_broadcast(pthread_cond_t* cond);
 
 <p>线程限制有下面这些方面：
 </p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -6679,7 +6656,6 @@ int pthread_attr_destroy(pthread_attr_t* attr);
 对于我们来说，pthread_attr_t接口并不是透明的。所以我们设置属性的话是通过其他API来完成的。POSIX.1定义的
 线程属性包括下面这些：
 </p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -6878,7 +6854,6 @@ extern int pthread_condattr_setpshared (pthread_condattr_t *__attr,
 
 <p>对于互斥量来说有一个类型属性，对于互斥量来说有下面4种类型：
 </p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -8000,7 +7975,6 @@ int setlogmask(int maskpri); //&#23631;&#34109;&#30340;priority
 <p>
 如果我们直接使用syslog也是可以，但是这样会损失很多功能，所以还是很推荐使用openlog首先打开，然后再syslog这种方式。
 </p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -8017,7 +7991,6 @@ int setlogmask(int maskpri); //&#23631;&#34109;&#30340;priority
 
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -8409,7 +8382,6 @@ extern int ppoll (struct pollfd *__fds, nfds_t __nfds,
 和select/pselect最大的不同是，返回之后并不会修改fds里面fd和events字段内容，产生的事件
 直接写在revent字段里面。我们可以看看poll支持的事件有哪些：
 </p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -8611,7 +8583,6 @@ extern int msync (void *__addr, size_t __len, int __flags);
 
 <p>对于prot(protection)有下面这几个值：
 </p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -8627,7 +8598,6 @@ extern int msync (void *__addr, size_t __len, int __flags);
 
 对于flag有下面资格几个值：
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -9853,8 +9823,8 @@ child about to exit
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-09-15 15:19:51 CST</p>
-<p class="creator">Org version 7.8.11 with Emacs version 24</p>
+<p class="date">Date: 2013-10-21T12:48+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

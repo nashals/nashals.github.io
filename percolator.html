@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="percolator"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-09-15 15:18:39 CST"/>
+<meta name="generated" content="2013-10-21T12:47+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -248,7 +248,6 @@ The remainder of this paper describes a particular in-cremental processing syste
 
 <p>percolator API封装了对于bigtable的访问，但是和bigtable api非常类似。封装主要原因一方面是底层可以更好地优化bigtable访问模式，另外主要的一方面是为了能够在bigtable上面实现multirow transactions，通过在原来的table schema上面增加了几个辅助的column：
 </p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
 <thead>
@@ -358,7 +357,7 @@ write skew的意思是指，如果两个事务同时写两个不同变量（但�
 wikipedia最后面还提到了使用snapshot isolation转换成为serializability的实现方式，并且PostgreSQL里面就已经这么实现了。
 </p>
 <p class="verse">
-With additional communication between transactions, the anomalies that snapshot isolation normally allows can be blocked by aborting one of the transactions involved, turning a snapshot isolation implementation into a full serializability guarantee<sup><a class="footref" name="fnr.1" href="percolator.html#fn.1">1</a></sup>. This implementation of serializability is well-suited to multiversion concurrency control databases, and has been adopted in PostgreSQL 9.1<sup><a class="footref" name="fnr.2" href="percolator.html#fn.2">2</a></sup>, where it is referred to as "Serializable Snapshot Isolation", abbreviated to SSI. When used consistently, this eliminates the need for the above workarounds. The downside over snapshot isolation is an increase in aborted transactions. This can perform better or worse than snapshot isolation with the above workarounds, depending on workload.<br/>
+With additional communication between transactions, the anomalies that snapshot isolation normally allows can be blocked by aborting one of the transactions involved, turning a snapshot isolation implementation into a full serializability guarantee<sup><a class="footref" name="fnr-.1" href="percolator.html#fn-.1">1</a></sup>. This implementation of serializability is well-suited to multiversion concurrency control databases, and has been adopted in PostgreSQL 9.1<sup><a class="footref" name="fnr-.2" href="percolator.html#fn-.2">2</a></sup>, where it is referred to as "Serializable Snapshot Isolation", abbreviated to SSI. When used consistently, this eliminates the need for the above workarounds. The downside over snapshot isolation is an increase in aborted transactions. This can perform better or worse than snapshot isolation with the above workarounds, depending on workload.<br/>
 </p>
 
 
@@ -607,10 +606,10 @@ Snapshot isolation does not provide serializability，这个问题以下面的ps
 <div id="footnotes">
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
-<p class="footnote"><sup><a class="footnum" name="fn.1" href="percolator.html#fnr.1">1</a></sup> DEFINITION NOT FOUND: 8
+<p class="footnote"><sup><a class="footnum" name="fn-.1" href="percolator.html#fnr-.1">1</a></sup> DEFINITION NOT FOUND: 8
 </p>
 
-<p class="footnote"><sup><a class="footnum" name="fn.2" href="percolator.html#fnr.2">2</a></sup> DEFINITION NOT FOUND: 6
+<p class="footnote"><sup><a class="footnum" name="fn-.2" href="percolator.html#fnr-.2">2</a></sup> DEFINITION NOT FOUND: 6
 </p></div>
 </div>
 </div>
@@ -620,8 +619,8 @@ Snapshot isolation does not provide serializability，这个问题以下面的ps
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-09-15 15:18:39 CST</p>
-<p class="creator">Org version 7.8.11 with Emacs version 24</p>
+<p class="date">Date: 2013-10-21T12:47+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
