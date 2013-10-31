@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="如何申请域名"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-10-30T10:11+0800"/>
+<meta name="generated" content="2013-10-31T11:48+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -233,8 +233,22 @@ Registrant:<br/>
 
 </li>
 <li>@ A 204.232.175.78 # 主域名和IP绑定.
+<ul>
+<li>@ 直接解析主域名 dirlt.com
+</li>
+<li>A 地址记录，用来指定域名的IPv4地址（如：8.8.8.8），如果需要将域名指向一个IP地址，就需要添加A记录。
+</li>
+</ul>
+
 </li>
 <li>* CNAME dirtysalt.github.com. # 子域名和其他域名绑定.
+<ul>
+<li>* 泛解析，匹配其他所有域名 *.dirlt.com
+</li>
+<li>CNAME 如果需要将域名指向另一个域名，再由另一个域名提供ip地址，就需要添加CNAME记录。
+</li>
+</ul>
+
 </li>
 <li>vps A 66.175.222.39 # 部分子域名可以做其他策略.
 </li>
@@ -245,7 +259,7 @@ Registrant:<br/>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-10-30T10:11+0800</p>
+<p class="date">Date: 2013-10-31T11:48+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
