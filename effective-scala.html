@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
 <title>Effective Scala</title>
-<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Effective Scala"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-10-31T11:53+0800"/>
+<meta name="generated" content="2013-11-05T10:59+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -80,6 +80,18 @@
 <li><a href="effective-scala.html#sec-1">1 effective-scala</a>
 <ul>
 <li><a href="effective-scala.html#sec-1-1">1.1 Introduction</a></li>
+<li><a href="effective-scala.html#sec-1-2">1.2 Formatting</a></li>
+<li><a href="effective-scala.html#sec-1-3">1.3 Types and Generics</a></li>
+<li><a href="effective-scala.html#sec-1-4">1.4 Collections</a></li>
+<li><a href="effective-scala.html#sec-1-5">1.5 Concurrency</a></li>
+<li><a href="effective-scala.html#sec-1-6">1.6 Control structures</a></li>
+<li><a href="effective-scala.html#sec-1-7">1.7 Functional programming</a></li>
+<li><a href="effective-scala.html#sec-1-8">1.8 Object oriented programming</a></li>
+<li><a href="effective-scala.html#sec-1-9">1.9 Error handling</a></li>
+<li><a href="effective-scala.html#sec-1-10">1.10 Garbage collection</a></li>
+<li><a href="effective-scala.html#sec-1-11">1.11 Java compatibility</a></li>
+<li><a href="effective-scala.html#sec-1-12">1.12 Twitter's standard libraries</a></li>
+<li><a href="effective-scala.html#sec-1-13">1.13 Acknowledgements</a></li>
 </ul>
 </li>
 </ul>
@@ -103,6 +115,160 @@
 <h3 id="sec-1-1"><span class="section-number-3">1.1</span> Introduction</h3>
 <div class="outline-text-3" id="text-1-1">
 
+<ul>
+<li>Scala provides many tools that enable succinct expression. Less typing is less reading, and less reading is often faster reading, and thus brevity enhances clarity. However brevity is a blunt tool that can also deliver the opposite effect: After correctness, think always of the reader.
+</li>
+<li>Above all, program in Scala. You are not writing Java, nor Haskell, nor Python; a Scala program is unlike one written in any of these. In order to use the language effectively, you must phrase your problems in its terms. There’s no use coercing a Java program into Scala, for it will be inferior in most ways to its original.
+</li>
+<li>This is a living document that will change to reflect our current “best practices,” but its core ideas are unlikely to change: <b>Always favor readability; write generic code but not at the expensive of clarity; take advantage of simple language features that afford great power but avoid the esoteric ones (especially in the type system). Above all, be always aware of the trade offs you make A sophisticated language requires a complex implementation, and complexity begets complexity: of reasoning, of semantics, of interaction between features, and of the understanding of your collaborators. Thus complexity is the tax of sophistication — you must always ensure that its utility exceeds its cost.</b>
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Formatting</h3>
+<div class="outline-text-3" id="text-1-2">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Types and Generics</h3>
+<div class="outline-text-3" id="text-1-3">
+
+<ul>
+<li>Immutable collections should be covariant. Methods that receive the contained type should “downgrade” the collection appropriately.
+</li>
+</ul>
+
+
+
+
+<pre class="src src-Scala">trait Collection[+T] {
+  def add[U &gt;: T](other: U): Collection[U]
+}
+</pre>
+
+<ul>
+<li>Mutable collections should be invariant. Covariance is typically invalid with mutable collections.
+</li>
+<li>If you do find yourself using implicits, always ask yourself if there is a way to achieve the same thing without their help. Do not use implicits to do automatic conversions between similar datatypes (for example, converting a list to a stream); these are better done explicitly because the types have different semantics, and the reader should beware of these implications.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Collections</h3>
+<div class="outline-text-3" id="text-1-4">
+
+<ul>
+<li><a href="http://www.scala-lang.org/docu/files/collections-api/collections.html">http://www.scala-lang.org/docu/files/collections-api/collections.html</a>
+</li>
+<li>Prefer using immutable collections. They are applicable in most circumstances, and make programs easier to reason about since they are referentially transparent and are thus also threadsafe by default. Use the mutable namespace explicitly. 
+<ul>
+<li>import scala.collection.mutable
+</li>
+<li>val set = mutable.Set()
+</li>
+</ul>
+
+</li>
+<li>Use the default constructor for the collection type. The corollary to the above is: in your own methods and constructors, receive the most generic collection type appropriate. This typically boils down to one of the above: Iterable, Seq, Set, or Map.
+</li>
+<li>High level collections libraries (as with higher level constructs generally) make reasoning about performance more difficult: the further you stray from instructing the computer directly — in other words, imperative style — the harder it is to predict the exact performance implications of a piece of code. Reasoning about correctness however, is typically easier; readability is also enhanced. With Scala the picture is further complicated by the Java runtime; Scala hides boxing/unboxing operations from you, which can incur severe performance or space penalties.
+</li>
+<li>Use scala.collection.JavaConverters to interoperate with Java collections. These are a set of implicits that add conversion asJava and asScala conversion methods. The use of these ensures that such conversions are explicit, aiding the reader.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Concurrency</h3>
+<div class="outline-text-3" id="text-1-5">
+
+<ul>
+<li>The subject of concurrent collections is fraught with opinions, subtleties, dogma and FUD. In most practical situations they are a nonissue: Always start with the simplest, most boring, and most standard collection that serves the purpose. Don’t reach for a concurrent collection before you know that a synchronized one won’t do: the JVM has sophisticated machinery to make synchronization cheap, so their efficacy may surprise you.
+</li>
+<li>
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-1-6" class="outline-3">
+<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Control structures</h3>
+<div class="outline-text-3" id="text-1-6">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-7" class="outline-3">
+<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Functional programming</h3>
+<div class="outline-text-3" id="text-1-7">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-8" class="outline-3">
+<h3 id="sec-1-8"><span class="section-number-3">1.8</span> Object oriented programming</h3>
+<div class="outline-text-3" id="text-1-8">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-9" class="outline-3">
+<h3 id="sec-1-9"><span class="section-number-3">1.9</span> Error handling</h3>
+<div class="outline-text-3" id="text-1-9">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-10" class="outline-3">
+<h3 id="sec-1-10"><span class="section-number-3">1.10</span> Garbage collection</h3>
+<div class="outline-text-3" id="text-1-10">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-11" class="outline-3">
+<h3 id="sec-1-11"><span class="section-number-3">1.11</span> Java compatibility</h3>
+<div class="outline-text-3" id="text-1-11">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-12" class="outline-3">
+<h3 id="sec-1-12"><span class="section-number-3">1.12</span> Twitter's standard libraries</h3>
+<div class="outline-text-3" id="text-1-12">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-13" class="outline-3">
+<h3 id="sec-1-13"><span class="section-number-3">1.13</span> Acknowledgements</h3>
+<div class="outline-text-3" id="text-1-13">
 
 
 </div>
@@ -111,7 +277,7 @@
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-10-31T11:53+0800</p>
+<p class="date">Date: 2013-11-05T10:59+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
