@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Effective Scala"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-11-05T20:50+0800"/>
+<meta name="generated" content="2013-11-06T09:14+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -179,6 +179,43 @@
 <ul>
 <li><a href="http://www.scala-lang.org/docu/files/collections-api/collections.html">http://www.scala-lang.org/docu/files/collections-api/collections.html</a>
 </li>
+<li>The collections library is large: in addition to an elaborate hierarchy — the root of which being Traversable[T] — there are immutable and mutable variants for most collections. Whatever the complexity, the following diagram contains the important distinctions for both immutable and mutable hierarchies. 
+<ul>
+<li>Iterable[T] is any collection that may be iterated over, they provide an iterator method (and thus foreach). 
+</li>
+<li>Seq[T]s are collections that are ordered, 
+<ul>
+<li>IndexedSeq
+<ul>
+<li>Vector
+</li>
+</ul>
+
+</li>
+<li>LinearSeq
+<ul>
+<li>List
+</li>
+</ul>
+
+</li>
+</ul>
+
+</li>
+<li>Set[T]s are mathematical sets (unordered collections of unique items), 
+</li>
+<li>and Map[T]s are associative arrays, also unordered.
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+<p>
+<img src="images/scala-collection-hierarchy-simple.png"  alt="./images/scala-collection-hierarchy-simple.png" />
+</p>
+<ul>
 <li>Prefer using immutable collections. They are applicable in most circumstances, and make programs easier to reason about since they are referentially transparent and are thus also threadsafe by default. Use the mutable namespace explicitly. 
 <ul>
 <li>import scala.collection.mutable
@@ -390,8 +427,8 @@
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-11-05T20:50+0800</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
+<p class="date">Date: 2013-11-06T09:14+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

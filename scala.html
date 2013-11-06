@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="scala"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-11-05T20:49+0800"/>
+<meta name="generated" content="2013-11-06T09:14+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -536,7 +536,17 @@ println(x) // Vector(0, 1, 2, 3, 4)
 
 <p>
 <b>NOTE（dirlt）：在书中“For Expressions Revisited”这节其实可以认为for是语法糖衣，将map/filter/anonymous-function包装起来.事实上缺少break/continue这样的控制语句，将for转换成为函数式计算也相对比较简单</b>
-</p>
+Coursera Reactive Programming
+</p><ul>
+<li>for(x&lt;-e1) yield e2 =&gt; e1.map(x =&gt; e2)
+</li>
+<li>for(x&lt;-e1 if f; s) yield e2 =&gt; for(x&lt;-e1 withFilter f;s) yield e2
+</li>
+<li>for(x&lt;-e1; y&lt;-e2; s) yield e3 =&gt; e1.flatMap(x =&gt; for(y&lt;-e2; s) yield e3)
+</li>
+</ul>
+
+
 
 <hr/>
 <p>
@@ -2584,8 +2594,8 @@ public final class C extends java.lang.Object{
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-11-05T20:49+0800</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
+<p class="date">Date: 2013-11-06T09:14+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
