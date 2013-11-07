@@ -271,7 +271,7 @@ os.system('curl -H Authorization:<span class="org-string">"Basic %s"</span> http
 <p>
 结合weibo API大致描述一下工作方式：
 </p><ol>
-<li>App提供一个uri.用户访问这个uri的话就会触发授权。uri内部有redirect_uri(这个必须和app配置的redirect_uri匹配).如果授权成功的话，那么就会访问这个redirect_uri，同时后面带上一下code.比如<a href="https://api.weibo.com/oauth2/authorize?redirect_uri=http://dirlt.com&amp;response_type=code&amp;client_id=1144364821&amp;display=default">https://api.weibo.com/oauth2/authorize?redirect_uri=http%3A//dirlt.com&amp;response_type=code&amp;client_id=1144364821&amp;display=default</a>. 允许访问的话，那么就会访问到<a href="index.html?code=CODE.�%2582��%2588App�%2597�%2588��%2586CODE">http://dirlt.com?code=CODE.那么App得到了CODE</a>.(似乎每次得到这个CODE都是不同的，猜测这个CODE是存在一定超时失效的）
+<li>App提供一个uri.用户访问这个uri的话就会触发授权。uri内部有redirect_uri(这个必须和app配置的redirect_uri匹配).如果授权成功的话，那么就会访问这个redirect_uri，同时后面带上一下code.比如<a href="https://api.weibo.com/oauth2/authorize?redirect_uri=http://dirlt.com&amp;response_type=code&amp;client_id=1144364821&amp;display=default">https://api.weibo.com/oauth2/authorize?redirect_uri=http%3A//dirlt.com&amp;response_type=code&amp;client_id=1144364821&amp;display=default</a>. 允许访问的话，那么就会访问到<a href="http://dirlt.com?code=CODE.那么App得到了CODE">http://dirlt.com?code=CODE.那么App得到了CODE</a>.(似乎每次得到这个CODE都是不同的，猜测这个CODE是存在一定超时失效的）
 </li>
 <li>然后App按照这个CODE去请求一下access_token.得到这个access_token也是有一定失效时间的。 <b>weibo API做了简化，可以让1,2合成一步完成，似乎这个是一个更好的方式，后台也不用在维护CODE这个概念了。</b> redirect_uri部分直接就带上了access_token以及失效时间返回。
 </li>
