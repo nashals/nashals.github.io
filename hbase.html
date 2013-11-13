@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="hbase"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-10-21T12:48+0800"/>
+<meta name="generated" content="2013-11-13T23:45+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -296,6 +296,59 @@ scan过程大致是这样的：
 实现上asynchbase没有使用任何org.apache.hbase的代码，从头完成了自己的协议访问，这个可以从HBaseClient的构造参数可以看到，在里面没有使用configuration,
 而是直接传入quorumSpec就是zookeeper的地址。
 </p>
+
+<hr/>
+
+<p>
+<b>NOTE(dirlt):关于Deferred实现有点出乎自己的意料</b>
+</p>
+<p>
+<a href="https://github.com/OpenTSDB/asynchbase/issues/72">https://github.com/OpenTSDB/asynchbase/issues/72</a>
+</p>
+<p>
+测试代码可以参考 com.dirlt.java.asynchbase.AsyncHBase, 在Get添加Callback之前会检查结果是否已经获取到。如果已经获取的话，那么会在当前的线程就执行callback
+</p>
+<p>
+===== Question
+</p>
+
+<p class="verse">
+Apology at first because this question should be raise in groups. But since the project has no groups or mail list, so I have to resort to the Github issue.<br/>
+<br/>
+What I wonder is that, is asynchbase using Deferred concept in the right way. I raise a GetRequest first, then get the Deferred object, then bind the callback to the object. However I guess sometimes this way won't work. Let me take the following extremely case for example.<br/>
+<br/>
+val deferred = client.get(request)<br/>
+// wait or hang for a LONG time.<br/>
+deferred addCallback {<br/>
+// process.<br/>
+}<br/>
+<br/>
+Since we add callback to the chain too later, I guess asynchbase engine will not execute the callback, will it?<br/>
+<br/>
+I think the right form should be the following instead of above<br/>
+<br/>
+client.get(request, new Callback {});<br/>
+<br/>
+and before launch the operation, engine has to make sure the callback already bind to the operation.<br/>
+<br/>
+Recently I learn Twitter's finagle, they bring up the concept of Future much like Deferred. However the biggest difference is Future binds to service, and Deferred binds to request.<br/>
+</p>
+
+
+<p>
+===== Answer
+</p>
+
+<p class="verse">
+Try and see by yourself: it works.<br/>
+<br/>
+The reason it works is that if you add a Callback on a Deferred that already has its result available, then the Callback will be invoked right away, with that result in argument.<br/>
+<br/>
+So everything is fine :)<br/>
+</p>
+
+
+
 </div>
 
 </div>
@@ -3363,8 +3416,8 @@ Currently the WAL is using a Hadoop SequenceFile, which stores records as sets o
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-10-21T12:48+0800</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
+<p class="date">Date: 2013-11-13T23:45+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
