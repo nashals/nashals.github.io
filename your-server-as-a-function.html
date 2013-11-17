@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Your Server as a Function"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-11-05T20:49+0800"/>
+<meta name="generated" content="2013-11-16T10:05+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -299,7 +299,7 @@ In most of our servers, major collections are rare. This gives rise to another k
 </p>
 <p>
 Development discipline is an important mitigating factor. In order to ensure that allocation regressions aren’t introduced, we have developed a tool, JVMGCPROF which runs regularly along with our tests, providing reports on per-request allocation rates and lifetimes.
-This is an area of ongoing effort with many intriguing possibil-ities. Since Finagle controls logical-to-physical thread multiplex-ing and is aware of request boundaries, it can bias allocation. This opens up the possibility that, with the cooperation of the underlying JVM, we may make use of region allocation techniques.(jvmgcprof可以观察每个request到来时分配对象的频率以及这些对象的lifetime. fingale本身可以改进内存分配策略)
+This is an area of ongoing effort with many intriguing possibil-ities. Since Finagle controls logical-to-physical thread multiplex-ing and is aware of request boundaries, it can bias allocation. This opens up the possibility that, with the cooperation of the underlying JVM, we may make use of region allocation techniques.(jvmgcprof可以观察每个request到来时分配对象的频率以及这些对象的lifetime. finagle本身可以改进内存分配策略)
 </p>
 </div>
 
@@ -348,8 +348,8 @@ This is an area of ongoing effort with many intriguing possibil-ities. Since Fin
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-11-05T20:49+0800</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
+<p class="date">Date: 2013-11-16T10:05+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
