@@ -1,0 +1,660 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<title>akka</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="akka"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-11-25T19:14+0800"/>
+<meta name="author" content="dirtysalt"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" type="text/css" href="css/site.css" />
+
+
+</head>
+<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><g:plusone annotation="inline"></g:plusone>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">akka</h1>
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="akka.html#sec-1">1 akka</a>
+<ul>
+<li><a href="akka.html#sec-1-1">1.1 About it</a></li>
+<li><a href="akka.html#sec-1-2">1.2 Scala Documentation</a>
+<ul>
+<li><a href="akka.html#sec-1-2-1">1.2.1 Introduction</a></li>
+<li><a href="akka.html#sec-1-2-2">1.2.2 Actor Systems</a></li>
+<li><a href="akka.html#sec-1-2-3">1.2.3 Actor Concepts</a></li>
+<li><a href="akka.html#sec-1-2-4">1.2.4 Actor Lifecycle</a></li>
+<li><a href="akka.html#sec-1-2-5">1.2.5 Supervision And Monitoring</a></li>
+<li><a href="akka.html#sec-1-2-6">1.2.6 Message Order and Delivery Guarantees</a></li>
+<li><a href="akka.html#sec-1-2-7">1.2.7 Location Transparency</a></li>
+<li><a href="akka.html#sec-1-2-8">1.2.8 Configuration</a></li>
+<li><a href="akka.html#sec-1-2-9">1.2.9 Transactors</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> akka</h2>
+<div class="outline-text-2" id="text-1">
+
+<ul>
+<li>Akka : <a href="http://akka.io/">http://akka.io/</a>
+</li>
+</ul>
+
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> About it</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<p><b>NOTE（dirlt）：从主页上看比较重要的三个特性分别是：</b>
+</p><ul>
+<li>Actor
+<ul>
+<li>Actors are very lightweight concurrent entities. They process messages asynchronously using an event-driven receive loop. 
+</li>
+<li>Pattern matching against messages is a convenient way to express an actor's behavior. 
+</li>
+<li>They raise the abstraction level and make it much easier to write, test, understand and maintain concurrent and/or distributed systems. 
+</li>
+<li>You focus on workflow—how the messages flow in the system—instead of low level primitives like threads, locks and socket IO.
+</li>
+</ul>
+
+</li>
+<li>Remoting
+<ul>
+<li>Actors are location transparent and distributable by design. This means that you can write your application without hardcoding how it will be deployed and distributed, and then later just configure your actor system against a certain topology with all of the application’s semantics, including actor supervision, retained.
+</li>
+</ul>
+
+</li>
+<li>Supervision
+<ul>
+<li>Actors form a tree with actors being parents to the actors they've created. 
+</li>
+<li>As a parent, the actor is responsible for handling its children’s failures (so-called supervision), forming a chain of responsibility, all the way to the top. When an actor crashes, its parent can either restart or stop it, or escalate the failure up the hierarchy of actors. （类似Exception处理）
+</li>
+<li>This enables a clean set of semantics for managing failures in a concurrent, distributed system and allows for writing highly fault-tolerant systems that self-heal.
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Scala Documentation</h3>
+<div class="outline-text-3" id="text-1-2">
+
+
+</div>
+
+<div id="outline-container-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> Introduction</h4>
+<div class="outline-text-4" id="text-1-2-1">
+
+<p>Akka implements a unique hybrid
+</p><ul>
+<li>Actors
+<ul>
+<li>Simple and high-level abstractions for concurrency and parallelism. （actor model）
+</li>
+<li>Asynchronous, non-blocking and highly performant event-driven programming model. （reactive programming）
+</li>
+<li>Very lightweight event-driven processes (approximately 2.7 million actors per GB RAM). （little memory footprint）
+</li>
+</ul>
+
+</li>
+<li>Fault Tolerance
+<ul>
+<li>Supervisor hierarchies with “let-it-crash” semantics. （failover as common case）
+</li>
+<li>Supervisor hierarchies can span over multiple JVMs to provide truly fault-tolerant systems.（监控能够跨越JVM）
+</li>
+<li>Excellent for writing highly fault-tolerant systems that self-heal and never stop.
+</li>
+</ul>
+
+</li>
+<li>Location Transparency
+<ul>
+<li>Everything in Akka is designed to work in a distributed environment（位置透明）
+</li>
+<li>all interactions of actors use pure message passing and everything is asynchronous. （异步通信）
+</li>
+</ul>
+
+</li>
+<li>Transactors
+<ul>
+<li>Transactors combine actors and Software Transactional Memory (STM) into transactional actors. （actors + STM = transactors）
+</li>
+<li>It allows you to compose atomic message flows with automatic retry and rollback.
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+
+<hr/>
+<p>
+Akka can be used in different ways:
+</p><ul>
+<li>As a library: used as a regular JAR on the classpath and/or in a web app, to be put into WEB-INF/lib. This is most likely what you want if you are building Web applications. There are several ways you can use Akka in Library mode by adding more and more modules to the stack.
+</li>
+<li>As a stand alone application by instantiating ActorSystem in a main class or using the Microkernel (Scala) / Microkernel (Java). The Akka distribution includes the microkernel. To run the microkernel put your application jar in the deploy directory and use the scripts in the bin directory. （类似插件方式启动）
+</li>
+</ul>
+
+
+
+<hr/>
+<p>
+<b>NOTE(dirlt):参考akka@github的example编写的。这里使用的方式就是手工创建ActorSystem，而不是使用Akka.main指定main class来启动</b>
+</p>
+
+
+
+<pre class="src src-Scala">object Hello extends App {
+  val system = ActorSystem(<span class="org-string">"system"</span>)
+  val hello = system.actorOf(Props[Hello], <span class="org-string">"hello"</span>)
+  hello ! <span class="org-string">"start"</span>
+}
+
+class Hello extends Actor {
+  val log = Logger.getLogger(getClass)
+  val sub = context.actorOf(Props[Worker], <span class="org-string">"worker"</span>)
+
+  override def preStart() {
+    log.debug(<span class="org-string">"hello start..."</span>)
+  }
+
+  override def postStop() {
+    log.debug(<span class="org-string">"hello stop..."</span>)
+  }
+
+  def receive = {
+    case <span class="org-string">"start"</span> =&gt; sub ! <span class="org-string">"masturbation"</span>
+    case s =&gt;
+      println(<span class="org-string">"worker done with "</span> + s)
+      log.debug(<span class="org-string">"shutdown system..."</span>)
+      context.system.shutdown()
+  }
+}
+
+class Worker extends Actor {
+  def receive = {
+    case s =&gt;
+      println(<span class="org-string">"worker working with "</span> + s)
+      sender ! s
+  }
+}
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> Actor Systems</h4>
+<div class="outline-text-4" id="text-1-2-2">
+
+<p>Terminology, Concepts
+</p><ul>
+<li>Concurrency vs. Parallelism
+</li>
+<li>Asynchronous vs. Synchronous
+</li>
+<li>Non-blocking vs. Blocking
+</li>
+<li>Deadlock vs. Starvation vs. Live-lock
+</li>
+<li>Race Condition
+</li>
+<li>Non-blocking Guarantees (Progress Conditions)
+<ul>
+<li>Wait-freedom
+</li>
+<li>Lock-freedom
+</li>
+<li>Obstruction-freedom
+</li>
+</ul>
+
+</li>
+<li>Recommended literature
+<ul>
+<li>The Art of Multiprocessor Programming, M. Herlihy and N Shavit, 2008. ISBN 978-0123705914
+</li>
+<li>Java Concurrency in Practice, B. Goetz, T. Peierls, J. Bloch, J. Bowbeer, D. Holmes and D. Lea, 2006. ISBN 978-0321349606
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+<p>
+An ActorSystem is a heavyweight structure that will allocate 1. . . N Threads, <b>so create one per logical application.</b>
+</p>
+<p>
+Actors are objects which encapsulate state and behavior, they communicate exclusively by exchanging messages which are placed into the recipient’s mailbox. In a sense, actors are the most stringent form of object-oriented programming, but it serves better to view them as persons: while modeling a solution with actors, envision a group of people and assign sub-tasks to them, arrange their functions into an organizational structure and think about how to escalate failure (all with the benefit of not actually dealing with people, which means that we need not concern ourselves with their emotional state or moral issues). The result can then serve as a mental scaffolding for building the software implementation. （类似群体概念。将任务分解给群体里面每个人来完成。组织每个人的只能以及思考如何处理任务失败的情况）
+</p>
+
+<hr/>
+<p>
+<b>Hierarchical Structure</b>
+</p><ul>
+<li>Like in an economic organization, actors naturally form hierarchies. One actor, which is to oversee a certain function in the program might want to split up its task into smaller, more manageable pieces. For this purpose it starts child actors which it supervises. While the details of supervision are explained here, we shall concentrate on the underlying concepts in this section. The only prerequisite is to know that each actor has exactly one supervisor, which is the actor that created it.（parent负责childrren的supervision)
+</li>
+<li>The quintessential feature of actor systems is that tasks are split up and delegated until they become small enough to be handled in one piece. In doing so, not only is the task itself clearly structured, but the resulting actors can be reasoned about in terms of which messages they should process, how they should react normally and how failure should be handled. If one actor does not have the means for dealing with a certain situation, it sends a corresponding failure message to its supervisor, asking for help. The recursive structure then allows to handle failure at the right level.
+</li>
+<li>Now, the difficulty in designing such a system is how to decide who should supervise what. There is of course no single best solution, but there are a few guidelines which might be helpful:
+<ul>
+<li>If one actor manages the work another actor is doing, e.g. by passing on sub-tasks, then the manager should supervise the child. The reason is that the manager knows which kind of failures are expected and how to handle them.
+</li>
+<li>If one actor carries very important data (i.e. its state shall not be lost if avoidable), this actor should source out any possibly dangerous sub-tasks to children it supervises and handle failures of these children as appropriate. Depending on the nature of the requests, it may be best to create a new child for each request, which simplifies state management for collecting the replies. This is known as the “Error Kernel Pattern” from Erlang.
+</li>
+<li>If one actor depends on another actor for carrying out its duty, it should watch that other actor’s liveness and act upon receiving a termination notice. This is different from supervision, as the watching party has no influence on the supervisor strategy, and it should be noted that a functional dependency alone is not a criterion for deciding where to place a certain child actor in the hierarchy.
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+<p>
+<b>Configuration Container</b>
+</p><ul>
+<li><b>NOTE（dirlt）；对于这种Location Transparency系统来说，友好灵活便捷的Configuration是非常需要的</b>
+</li>
+<li>The actor system as a collaborating ensemble of actors is the natural unit for managing shared facilities like scheduling services, configuration, logging, etc. 
+</li>
+<li>Several actor systems with different configuration may co-exist ithin the same JVM without problems, there is no global shared state within Akka itself. 
+</li>
+<li>Couple this with the transparent communication between actor systems—within one node or across a network connection—to see that actor systems themselves can be used as building blocks in a functional hierarchy.
+</li>
+</ul>
+
+
+<p>
+<b>Actor Best Practices</b>
+</p><ul>
+<li>Actors should be like nice co-workers: do their job efficiently without bothering everyone else needlessly and avoid hogging resources.
+</li>
+<li>Do not pass mutable objects between actors. In order to ensure that, prefer immutable messages.（状态共享）
+</li>
+<li>Actors are made to be containers for behavior and state, embracing this means to not routinely send behavior within messages (which may be tempting using Scala closures) (状态共享）
+</li>
+<li>Top-level actors are the innermost part of your Error Kernel, so create them sparingly and prefer truly hierarchical systems.  This has benefits with respect to fault-handling (both considering the granularity of configuration and the performance) and it also reduces the strain on the guardian actor, which is a single point of contention if over-used.（这个问题很重要，如果只有一层的话，那么最顶层也就是Error Kernel层，需要处理大量消息，容易造成冲突）
+</li>
+</ul>
+
+
+<p>
+<b>Blocking Needs Careful Management</b>
+</p><ul>
+<li>The non-exhaustive list of adequate solutions to the “blocking problem” includes the following suggestions:
+<ul>
+<li>Do the blocking call within an actor (or a set of actors managed by a router [Java, Scala]), making sure to configure a thread pool which is either dedicated for this purpose or sufficiently sized.
+</li>
+<li>Do the blocking call within a Future, ensuring an upper bound on the number of such calls at any point in time (submitting an unbounded number of tasks of this nature will exhaust your memory or thread limits).
+</li>
+<li>Do the blocking call within a Future, providing a thread pool with an upper limit on the number of threads which is appropriate for the hardware on which the application runs.
+</li>
+<li>Dedicate a single thread to manage a set of blocking resources (e.g. a NIO selector driving multiple chan-nels) and dispatch events as they occur as actor messages.
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+
+<hr/>
+<p>
+An actor system manages the resources it is configured to use in order to run the actors which it contains. There may be millions of actors within one such system, after all the mantra is to view them as abundant and they weigh in at an overhead of only roughly 300 bytes per instance. Naturally, the exact order in which messages are processed in large systems is not controllable by the application author, but this is also not intended. Take a step back and relax while Akka does the heavy lifting under the hood.（每个actor对象大约只是使用300字节左右，所以可以创建大量actor对象。使用者没有办法控制message处理顺序，需要接收event-driven编程方式）
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-2-3" class="outline-4">
+<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> Actor Concepts</h4>
+<div class="outline-text-4" id="text-1-2-3">
+
+<ul>
+<li>Reference.
+<ul>
+<li><b>NOTE(dirlt):类似Actor对象指针，所有Actor对象操作都是通过引用来完成的。这样Actor如果重启，或者是部署在远程做通信的话，都可以以透明方式来完成</b>
+</li>
+<li>As detailed below, an actor object needs to be shielded from the outside in order to benefit from the actor model. Therefore, actors are represented to the outside using actor references, which are objects that can be passed around freely and without restriction.
+</li>
+<li>This split into inner and outer object enables transparency for all the desired operations: restarting an actor without needing to update references elsewhere, placing the actual actor object on remote hosts, sending messages to actors in completely different applications.
+</li>
+<li>But the most important aspect is that it is not possible to look inside an actor and get hold of its state from the outside, unless the actor unwisely publishes this information itself.
+</li>
+</ul>
+
+</li>
+<li>State
+<ul>
+<li>Behind the scenes Akka will run sets of actors on sets of real threads, where typically many actors share one thread, and subsequent invocations of one actor may end up being processed on different threads. Akka ensures that this implementation detail does not affect the single-threadedness of handling the actor’s state.（多个Actor对象可能会共享一个线程，并且Actor每次执行可能是在不同的线程上执行）
+</li>
+</ul>
+
+</li>
+<li>Because the internal state is vital to an actor’s operations, having inconsistent state is fatal. Thus, when the actor fails and is restarted by its supervisor, the state will be created from scratch, like upon first creating the actor. This is to enable the ability of self-healing of the system.（如果Actor重启的话那么state会恢复到初始状态）
+</li>
+<li>Behavior
+<ul>
+<li><b>NOTE（dirlt）：Akka对FSM支持非常好而不只是简单的become/unbecome函数</b>
+</li>
+<li>Every time a message is processed, it is matched against the current behavior of the actor. Behavior means a function which defines the actions to be taken in reaction to the message at that point in time, say forward a request if the client is authorized, deny it otherwise. 
+</li>
+<li>These changes are achieved by either encoding them in state variables which are read from the behavior logic, or the function itself may be swapped out at runtime, see the become and unbecome operations.
+</li>
+<li>However, the initial behavior defined during construction of the actor object is special in the sense that a restart of the actor will reset its behavior to this initial one.
+</li>
+</ul>
+
+</li>
+<li>Mailbox
+<ul>
+<li>The piece which connects sender and receiver is the actor’s mailbox: each actor has exactly one mailbox to which all senders enqueue their messages. 
+<ul>
+<li>Enqueuing happens in the time-order of send operations, which means that messages sent from different actors may not have a defined order at runtime due to the apparent randomness of distributing actors across threads. （不同sender发向同一个target到达消息的顺序不确定）
+</li>
+<li>Sending multiple messages to the same target from the same actor, on the other hand, will enqueue them in the same order.（如果是一个sender发向一个target的消息顺序是确定的）
+</li>
+</ul>
+
+</li>
+<li>There are different mailbox implementations to choose from, （不同mailbox实现）
+<ul>
+<li>the default being a FIFO: the order of the messages processed by the actor matches the order in which they were enqueued. This is usually a good default, but applications may need to prioritize some messages over others. （一种是默认的FIFO）
+</li>
+<li>In this case, a priority mailbox will enqueue not always at the end but at a position as given by the message priority, which might even be at the front. While using such a queue, the order of messages processed will naturally be defined by the queue’s algorithm and in general not be FIFO.（另外一种是有优先级别的mailbox)
+</li>
+</ul>
+
+</li>
+<li>An important feature in which Akka differs from some other actor model implementations is that the current behavior must always handle the next dequeued message, there is no scanning the mailbox for the next matching one. Failure to handle a message will typically be treated as a failure, unless this behavior is overridden. <b>NOTE（dirlt）：和其他actor model实现有点不太类似是，没有办法对mailbox来做scan来处理匹配的项。也就是说对于mailbox里面所有的消息都需要显式处理</b>
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-4" class="outline-4">
+<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> Actor Lifecycle</h4>
+<div class="outline-text-4" id="text-1-2-4">
+
+<p><img src="images/akka-actor-lifecycle.png"  alt="./images/akka-actor-lifecycle.png" />
+</p>
+<ul>
+<li>Termination
+<ul>
+<li><b>NOTE（dirlt）：actor终止的时候，这个actor原来内部所有的message都会流向EventStream(another special actor)作为DeadLetters，而actor消亡之后其mailbox会重定向到system mailbox, 所有发向这个system mailbox的消息也会流向EventStream作为DeadLetters</b>
+</li>
+<li>Once an actor terminates, i.e. fails in a way which is not handled by a restart, stops itself or is stopped by its supervisor, it will free up its resources, draining all remaining messages from its mailbox into the system’s “dead letter mailbox” which will forward them to the EventStream as DeadLetters. 
+</li>
+<li>The mailbox is then replaced within the actor reference with a system mailbox, redirecting all new messages to the EventStream as DeadLetters. This is done on a best effort basis, though, so do not rely on it in order to construct “guaranteed delivery”.
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-5" class="outline-4">
+<h4 id="sec-1-2-5"><span class="section-number-4">1.2.5</span> Supervision And Monitoring</h4>
+<div class="outline-text-4" id="text-1-2-5">
+
+<p>Akka implements a specific form called <b>“parental supervision”.</b>
+</p><ul>
+<li>Actors can only be created by other actors— <b>where the top-level actor is provided by the library</b> —and each created actor is supervised by its parent. 
+</li>
+<li>Each actor is potentially a supervisor: if it creates children for delegating sub-tasks, it will automatically supervise them. 
+</li>
+<li>The list of children is maintained within the actor’s context and the actor has access to it.
+</li>
+<li>Modifications to the list are done by creating (context.actorOf(&hellip;)) or stopping (context.stop(child)) children and these actions are reflected immediately.
+</li>
+<li>The actual creation and termination actions happen behind the scenes in an asynchronous way, so they do not “block” their supervisor.（对于children的创建和终止是异步完成的）
+</li>
+</ul>
+
+
+
+<hr/>
+<p>
+Depending on the nature of the work to be supervised and the nature of the failure, the supervisor has a choice of the following four options:（监控发现失败的话通常会采取下面几种策略）
+</p><ol>
+<li>Resume the subordinate, keeping its accumulated internal state（恢复）
+</li>
+<li>Restart the subordinate, clearing out its accumulated internal state（重启）
+</li>
+<li>Terminate the subordinate permanently（终止）
+</li>
+<li>Escalate the failure, thereby failing itself（向上传递）
+</li>
+</ol>
+
+
+
+<hr/>
+<p>
+Each supervisor is configured with a function translating all possible failure causes (i.e. exceptions) into one of the four choices given above; notably, this function does not take the failed actor’s identity as an input. It is quite easy to come up with examples of structures where this might not seem flexible enough, e.g. wishing for different strategies to be applied to different subordinates. At this point it is vital to understand that supervision is about forming a recursive fault handling structure. If you try to do too much at one level, it will become hard to reason about, hence the recommended way in this case is to add a level of supervision. Considering that there is only one such strategy for each actor, this means that if different strategies apply to the various children of an actor, the children should be grouped beneath intermediate supervisors with matching strategies, preferring once more the structuring of actor systems according to the splitting of tasks into sub-tasks. （supervisor处理失败函数并不能够是被actor的身份，所以不能够根据actor身份来选择不同的处理策略。如果确实有需求的话，那么需要考虑增加层级，引入间接的actor来分别管理它们）
+</p>
+
+<hr/>
+<p>
+<img src="images/akka-top-level-supervisors.png"  alt="./images/akka-top-level-supervisors.png" />
+</p>
+<p>
+An actor system will during its creation start at least three actors, shown in the image above.
+</p><ul>
+<li>/user: The Guardian Actor
+<ul>
+<li>The actor which is probably most interacted with is the parent of all user-created actors, the guardian named "/user". 
+</li>
+<li>Actors created using <b>system.actorOf()</b> are children of this actor. This means that when this guardian terminates, all normal actors in the system will be shutdown, too. 
+</li>
+<li>It also means that this guardian’s supervisor strategy determines how the top-level normal actors are supervised. Since Akka 2.1 it is possible to configure this using the setting akka.actor.guardian-supervisor-strategy, which takes the fully-qualified class-name of a SupervisorStrategyConfigurator.（可以配置这个guardian的策略）
+</li>
+<li>When the guardian escalates a failure, the root guardian’s response will be to terminate the guardian, which in effect will shut down the whole actor system.（root guardian默认策略是shutdown whole system)
+</li>
+</ul>
+
+</li>
+<li>/system: The System Guardian
+<ul>
+<li>This special guardian has been introduced in order to achieve an orderly shut-down sequence where logging re-mains active while all normal actors terminate, even though logging itself is implemented using actors. This is realized by having the system guardian watch the user guardian and initiate its own shut-down upon re-ception of the Terminated message.（system guardian管理了类似logging这样的actor，通过监控user guardian Termianted信息，如果user guardian actor结束的话那么system guardian也会结束）
+</li>
+<li>The top-level system actors are supervised using a strategy which will restart indefinitely upon all types of Exception except for ActorInitializationException and ActorKilledException, which will terminate the child in question. All other throwables are escalated, which will shut down the whole actor system.
+</li>
+</ul>
+
+</li>
+<li>/: The Root Guardian
+<ul>
+<li>Since every real actor has a supervisor, the supervisor of the root guardian cannot be a real actor. And because this means that it is “outside of the bubble”, it is called the “bubble-walker”. 
+</li>
+<li><b>This is a synthetic ActorRef which in effect stops its child upon the first sign of trouble</b> and sets the actor system’s isTerminated status to true as soon as the root guardian is fully terminated (all children recursively stopped)
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+
+<hr/>
+<p>
+<b>Lifecycle Monitoring</b>
+</p><ul>
+<li>In contrast to the special relationship between parent and child described above, each actor may monitor any other actor. （没有直接parent-child关系的actor也能够相互监控）
+</li>
+<li>Since actors emerge from creation fully alive and restarts are not visible outside of the affected supervisors, the only state change available for monitoring is the transition from alive to dead. （但是之能够监控从alive-&gt;dead这个过程）
+</li>
+<li>Monitoring is thus used to tie one actor to another so that it may react to the other actor’s termination, in contrast to supervision which reacts to failure.（而不能够监控failure的情况）
+</li>
+<li>Lifecycle monitoring is implemented using a Terminated message to be received by the monitoring actor, where the default behavior is to throw a special DeathPactException if not otherwise handled. （通过监控Terminated信息来观察）
+</li>
+<li>In order to start listening for Terminated messages, invoke ActorContext.watch(targetActorRef). To stop listening, invoke ActorContext.unwatch(targetActorRef)
+</li>
+<li>One important property is that the mes-sage will be delivered irrespective of the order in which the monitoring request and target’s termination occur, i.e. you still get the message even if at the time of registration the target is already dead.（和时间顺序无关）
+</li>
+</ul>
+
+
+<p>
+Monitoring is particularly useful if a supervisor cannot simply restart its children and has to terminate them, e.g. in case of errors during actor initialization. In that case it should monitor those children and re-create them or schedule itself to retry this at a later time. Another common use case is that an actor needs to fail in the absence of an external resource, which may also be one of its own children. If a third party terminates a child by way of the system.stop(child) method or sending a PoisonPill, the supervisor might well be affected.
+</p>
+
+<hr/>
+<p>
+One-For-One Strategy vs. All-For-One Strategy
+</p>
+<p>
+There are two classes of supervision strategies which come with Akka: OneForOneStrategy and AllForOneStrategy. Both are configured with a mapping from exception type to supervision directive (see above) and limits on how often a child is allowed to fail before terminating it. <b>The difference between them is that the former applies the obtained directive only to the failed child, whereas the latter applies it to all siblings as well.</b> Normally, you should use the OneForOneStrategy, which also is the default if none is specified explicitly.（前面只是处理失败的child，而后面处理所有的child包括失败和非失败的）
+</p>
+<p>
+The AllForOneStrategy is applicable in cases where the ensemble of children has such tight dependencies among them, that a failure of one child affects the function of the others, i.e. they are inextricably linked. Since a restart does not clear out the mailbox, it often is best to terminate the children upon failure and re-create them explicitly from the supervisor (by watching the children’s lifecycle); otherwise you have to make sure that it is no problem for any of the actors to receive a message which was queued before the restart but processed afterwards.（主要针对各个children之间存在联系的情况）
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-2-6" class="outline-4">
+<h4 id="sec-1-2-6"><span class="section-number-4">1.2.6</span> Message Order and Delivery Guarantees</h4>
+<div class="outline-text-4" id="text-1-2-6">
+
+<p>Supervision related parent-child communication happens by special system messages that have their own mailboxes separate from user messages. This implies that supervision related events are not deter-ministically ordered relative to ordinary messages. In general, the user cannot influence the order of normal messages and failure notifications.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-2-7" class="outline-4">
+<h4 id="sec-1-2-7"><span class="section-number-4">1.2.7</span> Location Transparency</h4>
+<div class="outline-text-4" id="text-1-2-7">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-8" class="outline-4">
+<h4 id="sec-1-2-8"><span class="section-number-4">1.2.8</span> Configuration</h4>
+<div class="outline-text-4" id="text-1-2-8">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-9" class="outline-4">
+<h4 id="sec-1-2-9"><span class="section-number-4">1.2.9</span> Transactors</h4>
+<div class="outline-text-4" id="text-1-2-9">
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2013-11-25T19:14+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'akka.html';var disqus_title = 'akka.html';var disqus_url = 'http://dirlt.com/akka.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+</html>
