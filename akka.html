@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="akka"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-11-25T20:37+0800"/>
+<meta name="generated" content="2013-11-26T09:40+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -81,13 +81,22 @@
 <ul>
 <li><a href="akka.html#sec-1-1">1.1 Introduction</a></li>
 <li><a href="akka.html#sec-1-2">1.2 Actor System</a></li>
-<li><a href="akka.html#sec-1-3">1.3 Actor Concept</a></li>
+<li><a href="akka.html#sec-1-3">1.3 Actor Concept</a>
+<ul>
+<li><a href="akka.html#sec-1-3-1">1.3.1 Reference</a></li>
+<li><a href="akka.html#sec-1-3-2">1.3.2 Path</a></li>
+<li><a href="akka.html#sec-1-3-3">1.3.3 State</a></li>
+<li><a href="akka.html#sec-1-3-4">1.3.4 Behavior</a></li>
+<li><a href="akka.html#sec-1-3-5">1.3.5 Mailbox</a></li>
+</ul>
+</li>
 <li><a href="akka.html#sec-1-4">1.4 Actor Lifecycle</a></li>
 <li><a href="akka.html#sec-1-5">1.5 Supervision And Monitoring</a></li>
 <li><a href="akka.html#sec-1-6">1.6 Message Order and Delivery Guarantees</a></li>
 <li><a href="akka.html#sec-1-7">1.7 Location Transparency</a></li>
-<li><a href="akka.html#sec-1-8">1.8 Configuration</a></li>
-<li><a href="akka.html#sec-1-9">1.9 Transactors</a></li>
+<li><a href="akka.html#sec-1-8">1.8 Memory Model</a></li>
+<li><a href="akka.html#sec-1-9">1.9 Configuration</a></li>
+<li><a href="akka.html#sec-1-10">1.10 Transactors</a></li>
 </ul>
 </li>
 </ul>
@@ -332,11 +341,14 @@ An actor system manages the resources it is configured to use in order to run th
 <p><img src="images/akka-actor-system.png"  alt="./images/akka-actor-system.png" />
 </p>
 
-<hr/>
-<p>
-<b>Reference</b>
-</p><ul>
-<li><b>NOTE(dirlt):类似Actor对象指针，所有Actor对象操作都是通过引用来完成的。这样Actor如果重启，或者是部署在远程做通信的话，都可以以透明方式来完成</b>
+</div>
+
+<div id="outline-container-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> Reference</h4>
+<div class="outline-text-4" id="text-1-3-1">
+
+<ul>
+<li><b>NOTE(dirlt):ActorRef. 类似Actor对象指针，所有Actor对象操作都是通过引用来完成的。这样Actor如果重启，或者是部署在远程做通信的话，都可以以透明方式来完成</b>
 </li>
 <li>As detailed below, an actor object needs to be shielded from the outside in order to benefit from the actor model. Therefore, actors are represented to the outside using actor references, which are objects that can be passed around freely and without restriction.
 </li>
@@ -348,12 +360,190 @@ An actor system manages the resources it is configured to use in order to run th
 
 
 
+<hr/>
+
+<p>
+There are several different types of actor references that are supported depending on the configuration of the actor system:
+</p><ul>
+<li><b>Purely local actor</b> references are used by actor systems which are not configured to support networking functions. These actor references will not function if sent across a network connection to a remote JVM.（完全本地，没有任何通信）
+</li>
+<li><b>Local actor references</b> when remoting is enabled are used by actor systems which support networking func- tions for those references which represent actors within the same JVM. In order to also be reachable when sent to other network nodes, these references include protocol and remote addressing information.（本地，但是会和JVM内部其他actor通信）
+<ul>
+<li>There is a subtype of local actor references which is used for <b>routers (i.e. actors mixing in the Router trait).</b> Its logical structure is the same as for the aforementioned local references, but sending a message to them dispatches to one of their children directly instead.（路由）
+</li>
+</ul>
+
+</li>
+<li><b>Remote actor</b> references represent actors which are reachable using remote communication, i.e. sending messages to them will serialize the messages transparently and send them to the remote JVM.（涉及到远程通信）
+</li>
+<li>There are several special types of actor references which behave like local actor references for all practical purposes:
+<ul>
+<li><b>PromiseActorRef</b> is the special representation of a Promise for the purpose of being completed by the response from an actor. akka.pattern.ask creates this actor reference. （对于ask不是产生Future吗？）
+</li>
+<li><b>DeadLetterActorRef</b> is the default implementation of the dead letters service to which Akka routes all messages whose destinations are shut down or non-existent.（对于已经消亡的actor，向这些actor发送的消息都会转发到这里） 
+</li>
+<li><b>EmptyLocalActorRef</b> is what Akka returns when looking up a non-existent local actor path: it is equivalent to a DeadLetterActorRef, but it retains its path so that Akka can send it over the network and compare it to other existing actor references for that path, some of which might have been obtained before the actor died.（没有对应path的actor）
+</li>
+</ul>
+
+</li>
+<li>And then there are some one-off internal implementations which you should never really see:
+<ul>
+<li>There is an actor reference which does not represent an actor but acts only as a pseudo-supervisor for the root guardian, we call it “the one who walks the bubbles of space-time”.（root guaridan actor）
+</li>
+<li>The first logging service started before actually firing up actor creation facilities is a fake actor reference which accepts log events and prints them directly to standard output; it is Logging.StandardOutLogger.（logger service actor）
+</li>
+</ul>
+
+</li>
+<li><b>Cluster actor references</b> represent clustered actor services which may be replicated, migrated or load-balanced across multiple cluster nodes. As such they are virtual names which the cluster service translates into local or remote actor references as appropriate.
+</li>
+</ul>
+
+
 
 
 <hr/>
+
 <p>
-<b>State</b>
+There are two general categories to how actor references may be obtained: by creating actors or by looking them up, where the latter functionality comes in the two flavours of creating actor references from concrete actor paths and querying the logical actor hierarchy.（创建actor reference有两种方式，一种是创建，一种是查找）
 </p><ul>
+<li>Creating Actors. 
+<ul>
+<li>An actor system is typically started by creating actors beneath the guardian actor using the ActorSystem.actorOf method and then using ActorContext.actorOf from within the created actors to spawn the actor tree. 
+</li>
+<li>These methods return a reference to the newly created actor. Each actor has direct access (through its ActorContext) to references for its parent, itself and its children. These references may be sent within messages to other actors, enabling those to reply directly.
+</li>
+</ul>
+
+</li>
+<li>Looking up Actors by Concrete Path
+<ul>
+<li>In addition, actor references may be looked up using the ActorSystem.actorSelection method. 
+</li>
+<li>The selection can be used for communicating with said actor and <b>the actor corresponding to the selection is looked up when delivering each message.</b> TODO(dirlt): cost issue?
+</li>
+<li>*NOTE(dirlt):support relative path and wildcard. like ../sibling or ../? *
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+
+<hr/>
+
+<p>
+Equality of ActorRef match the intention that an ActorRef corresponds to the target actor incarnation. Two actor references are compared equal <b>when they have the same path and point to the same actor incarnation.</b> A reference pointing to a terminated actor does not compare equal to a reference pointing to another (re-created) actor with the same path. Note that a restart of an actor caused by a failure still means that it is the same actor incarnation, i.e. a restart is not visible for the consumer of the ActorRef.(仅仅比较path是不行的。相同path可能会出现这样的情况：a是died actor，而b是re-created actor. 两者虽然有相同的path，但是却并不相同。不过ActorRef内部重启没有任何影响）
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-3-2" class="outline-4">
+<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> Path</h4>
+<div class="outline-text-4" id="text-1-3-2">
+
+<p>Since actors are created in a strictly hierarchical fashion, there exists a unique sequence of actor names given by recursively following the supervision links between child and parent down towards the root of the actor system. This sequence can be seen as enclosing folders in a file system, hence we adopted the name “path” to refer to it.（非常类似文件系统）
+</p><ul>
+<li>Logical Actor Paths
+<ul>
+<li><b>NOTE(dirlt):主要是强调hierarchy</b>
+</li>
+<li>akka.tcp://sys@A:2552/user/parent/child
+</li>
+<li>The unique path obtained by following the parental supervision links towards the root guardian is called the logical actor path. 
+</li>
+<li>This path matches exactly the creation ancestry of an actor, so it is completely deterministic as soon as the actor system’s remoting configuration (and with it the address component of the path) is set.
+</li>
+</ul>
+
+</li>
+<li>Physical Actor Paths
+<ul>
+<li><b>NOTE(dirlt):主要是强调location</b>
+</li>
+<li>akka.tcp://sys@B:2552/remote/sys@A:2552/user/parent/child # remote node on B.
+</li>
+<li>One important aspect is that a physical actor path never spans multiple actor systems or JVMs. 
+</li>
+<li>This means that the logical path (supervision hierarchy) and the physical path (actor deployment) of an actor may diverge if one of its ancestors is remotely supervised.
+</li>
+</ul>
+
+</li>
+<li>Virtual Actor Paths
+<ul>
+<li>In order to be able to replicate and migrate actors across a cluster of Akka nodes, another level of indirection has to be introduced. 
+</li>
+<li>The cluster component therefore provides a translation from virtual paths to physical paths which may change in reaction to node failures, cluster rebalancing, etc.
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+<p>
+An actor path consists of an anchor, which identifies the actor system, followed by the concatenation of the path elements, from root guardian to the designated actor; the path elements are the names of the traversed actors and are separated by slashes.
+</p><ul>
+<li>"akka://my-sys/user/service-a/worker1"                   // purely local（如果真的可以通过path来判断purely local和local区别的话，那么我之前的理解可能就是错误的）
+</li>
+<li>"akka.tcp://my-sys@host.example.com:5678/user/service-b" // remote
+</li>
+<li>"cluster://my-cluster/service-c"                         // clustered
+</li>
+</ul>
+
+
+
+
+<hr/>
+
+<p>
+When sending an actor reference across the network, it is represented by its path. Hence, the path must fully encode all information necessary to send messages to the underlying actor. This is achieved by encoding protocol, host and port in the address part of the path string. <b>When an actor system receives an actor path from a remote node, it checks whether that path’s address matches the address of this actor system, in which case it will be resolved to the actor’s local reference. Otherwise, it will be represented by a remote actor reference.</b>
+</p>
+<p>
+When an actor creates a child, the actor system’s deployer will decide whether the new actor resides in the same JVM or on another node. In the second case, creation of the actor will be triggered via a network connection to happen in a different JVM and consequently within a different actor system. The remote system will place the new actor below a special path reserved for this purpose and the supervisor of the new actor will be a remote actor reference (representing that actor which triggered its creation). In this case, context.parent (the supervisor reference) and context.path.parent (the parent node in the actor’s path) do not represent the same actor. However, looking up the child’s name within the supervisor will find it on the remote node, preserving logical structure e.g. when sending to an unresolved actor reference.(通常来说parent和supervisor相同的actor，但是仅仅对于本地有效。对于远程这种情况来说，supervisor和parent是不同的对象。不过可以看到依然可以按照原来认为supervisor == parent这种方式来通信，通过route actor来完成）
+</p>
+<p>
+<img src="images/akka-actor-on-remote-node.png"  alt="./images/akka-actor-on-remote-node.png" />
+</p>
+
+<hr/>
+
+<p>
+<b>NOTE(dirlt):可以参照后面的Supervision and Monitoring来看这些path</b>
+</p>
+<p>
+At the root of the path hierarchy resides the root guardian above which all other actors are found; its name is "/". The next level consists of the following:
+</p><ul>
+<li>"/user" is the guardian actor for all user-created top-level actors; actors created using ActorSystem.actorOf are found below this one.
+</li>
+<li>"/system" is the guardian actor for all system-created top-level actors, e.g. logging listeners or actors automatically deployed by configuration at the start of the actor system.
+</li>
+<li>"/deadLetters" is the dead letter actor, which is where all messages sent to stopped or non-existing actors are re-routed (on a best-effort basis: messages may be lost even within the local JVM).
+</li>
+<li>"/temp" is the guardian for all short-lived system-created actors, e.g. those which are used in the imple- mentation of ActorRef.ask.
+</li>
+<li>"/remote" is an artificial path below which all actors reside whose supervisors are remote actor references.
+</li>
+</ul>
+
+
+<p>
+The need to structure the name space for actors like this arises from a central and very simple design goal: everything in the hierarchy is an actor, and all actors function in the same way. Hence you can not only look up the actors you created, you can also look up the system guardian and send it a message (which it will dutifully discard in this case). This powerful principle means that there are no quirks to remember, it makes the whole system more uniform and consistent.（路径的层次化组织使得定位actor更加容易和统一） <b>TODO(dirlt):每个actor需要维护path,这个代价开销有多大？</b> 
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-3-3" class="outline-4">
+<h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> State</h4>
+<div class="outline-text-4" id="text-1-3-3">
+
+<ul>
 <li>Behind the scenes Akka will run sets of actors on sets of real threads, where typically many actors share one thread, and subsequent invocations of one actor may end up being processed on different threads. Akka ensures that this implementation detail does not affect the single-threadedness of handling the actor’s state.（多个Actor对象可能会共享一个线程，并且Actor每次执行可能是在不同的线程上执行）
 </li>
 <li>Because the internal state is vital to an actor’s operations, having inconsistent state is fatal. Thus, when the actor fails and is restarted by its supervisor, the state will be created from scratch, like upon first creating the actor. This is to enable the ability of self-healing of the system.（如果Actor重启的话那么state会恢复到初始状态）
@@ -361,9 +551,15 @@ An actor system manages the resources it is configured to use in order to run th
 </ul>
 
 
-<p>
-<b>Behavior</b>
-</p><ul>
+</div>
+
+</div>
+
+<div id="outline-container-1-3-4" class="outline-4">
+<h4 id="sec-1-3-4"><span class="section-number-4">1.3.4</span> Behavior</h4>
+<div class="outline-text-4" id="text-1-3-4">
+
+<ul>
 <li><b>NOTE（dirlt）：Akka对FSM支持非常好而不只是简单的become/unbecome函数</b>
 </li>
 <li>Every time a message is processed, it is matched against the current behavior of the actor. Behavior means a function which defines the actions to be taken in reaction to the message at that point in time, say forward a request if the client is authorized, deny it otherwise. 
@@ -375,9 +571,15 @@ An actor system manages the resources it is configured to use in order to run th
 </ul>
 
 
-<p> 
-<b>Mailbox</b>
-</p><ul>
+</div>
+
+</div>
+
+<div id="outline-container-1-3-5" class="outline-4">
+<h4 id="sec-1-3-5"><span class="section-number-4">1.3.5</span> Mailbox</h4>
+<div class="outline-text-4" id="text-1-3-5">
+
+<ul>
 <li>The piece which connects sender and receiver is the actor’s mailbox: each actor has exactly one mailbox to which all senders enqueue their messages. 
 <ul>
 <li>Enqueuing happens in the time-order of send operations, which means that messages sent from different actors may not have a defined order at runtime due to the apparent randomness of distributing actors across threads. （不同sender发向同一个target到达消息的顺序不确定）
@@ -401,6 +603,7 @@ An actor system manages the resources it is configured to use in order to run th
 </ul>
 
 
+</div>
 </div>
 
 </div>
@@ -551,7 +754,60 @@ The AllForOneStrategy is applicable in cases where the ensemble of children has 
 <h3 id="sec-1-6"><span class="section-number-3">1.6</span> Message Order and Delivery Guarantees</h3>
 <div class="outline-text-3" id="text-1-6">
 
-<p>Supervision related parent-child communication happens by special system messages that have their own mailboxes separate from user messages. This implies that supervision related events are not deter-ministically ordered relative to ordinary messages. In general, the user cannot influence the order of normal messages and failure notifications.
+<p>These are the rules for message sends (i.e. the tell or ! method, which also underlies the ask pattern): 
+</p><ul>
+<li>at-most-once delivery, i.e. no guaranteed delivery
+</li>
+<li>message ordering per sender–receiver pair <b>NOTE(dirlt):可以参考Memory Model这个部分的内容</b> 
+</li>
+</ul>
+
+<p>The first rule is typically found also in other actor implementations while the second is specific to Akka.
+</p>
+
+<hr/>
+
+<p>
+A local tell operation can however fail for the same reasons as a normal method call can on the JVM:
+</p><ul>
+<li>StackOverflowError
+</li>
+<li>OutOfMemoryError
+</li>
+<li>other VirtualMachineError
+</li>
+</ul>
+
+<p>In addition, local sends can fail in Akka-specific ways:
+</p><ul>
+<li>if the mailbox does not accept the message (e.g. full BoundedMailbox)
+</li>
+<li>if the receiving actor fails while processing the message or is already terminated
+</li>
+</ul>
+
+<p>While the first is clearly a matter of configuration the second deserves some thought: the sender of a message does not get feedback if there was an exception while processing, that notification goes to the supervisor instead. This is in general not distinguishable from a lost message for an outside observer.
+</p>
+
+<hr/>
+
+<p>
+Supervision related parent-child communication happens by special system messages that have their own mailboxes separate from user messages. This implies that supervision related events are not deter-ministically ordered relative to ordinary messages. In general, the user cannot influence the order of normal messages and failure notifications.（对于正常消息和监控消息是分开存放的，这也意味着监控消息和正常消息会混合在一起，并且以一种用户不能够确定的顺序出现） 
+</p>
+
+<hr/>
+
+<p>
+<b>Something about DeadLetters</b>
+</p>
+<p>
+Messages which cannot be delivered (and for which this can be ascertained) will be delivered to a synthetic actor called /deadLetters. This delivery happens on a best-effort basis; it may fail even within the local JVM (e.g. during actor termination). Messages sent via unreliable network transports will be lost without turning up as dead letters.（deadletters的传播是best-effor的没有任何gurantee，并且不能够跨越JVM）
+</p>
+<p>
+Dead letters are not propagated over the network, if you want to collect them in one place you will have to subscribe one actor per network node and forward them manually. Also consider that dead letters are generated at that node which can determine that a send operation is failed, which for a remote send can be the local system (if no network connection can be established) or the remote one (if the actor you are sending to does not exist at that point in time).（如果需要跨越JVM的话那么需要搭建route来做转发）
+</p>
+<p>
+The main use of this facility is for debugging, especially if an actor send does not arrive consistently (where usually inspecting the dead letters will tell you that the sender or recipient was set wrong somewhere along the way). In order to be useful for this purpose it is good practice to avoid sending to deadLetters where possible, i.e. run your application with a suitable dead letter logger (see more below) from time to time and clean up the log output. This exercise—like all else—requires judicious application of common sense: it may well be that avoiding to send to a terminated actor complicates the sender’s code more than is gained in debug output clarity.
 </p>
 </div>
 
@@ -561,21 +817,78 @@ The AllForOneStrategy is applicable in cases where the ensemble of children has 
 <h3 id="sec-1-7"><span class="section-number-3">1.7</span> Location Transparency</h3>
 <div class="outline-text-3" id="text-1-7">
 
+<p>Everything in Akka is designed to work in a distributed setting: all interactions of actors use purely message passing and everything is asynchronous. This effort has been undertaken to ensure that all functions are available equally when running within a single JVM or on a cluster of hundreds of machines. The key for enabling this is to go from remote to local by way of optimization instead of trying to go from local to remote by way of generalization. See <a href="http://doc.akka.io/docs/misc/smli_tr-94-29.pdf">this classic paper</a> for a detailed discussion on why the second approach is bound to fail.(将local特化成为一种remote形式才是正确处理分布式的方法。所有消息之间通信包括远程通信都是异步的）
+</p>
+<p>
+What is true of Akka need not be true of the application which uses it, since designing for distributed execution poses some restrictions on what is possible. The most obvious one is that all messages sent over the wire must be serializable. While being a little less obvious this includes closures which are used as actor factories (i.e. within Props) if the actor is to be created on a remote node.(所有对象都需要能够序列化？开销？） 
+</p>
+<p>
+Another consequence is that everything needs to be aware of all interactions being fully asynchronous, which in a computer network might mean that it may take several minutes for a message to reach its recipient (depending on configuration). It also means that the probability for a message to be lost is much higher than within one JVM, where it is close to zero (still: no hard guarantee!).（消息到达传递时间不一定是瞬时的）
+</p>
+<p>
+We took the idea of transparency to the limit in that there is nearly no API for the remoting layer of Akka: it is purely driven by configuration. Just write your application according to the principles outlined in the previous sections, then specify remote deployment of actor sub-trees in the configuration file. This way, your application can be scaled out without having to touch the code. The only piece of the API which allows programmatic influence on remote deployment is that Props contain a field which may be set to a specific Deploy instance; this has the same effect as putting an equivalent deployment into the configuration file (if both are given, configuration file wins).（对于这种透明成本仅仅体现在配置文件上，而不需要使用特殊的API来控制，所以代价非常小是真正透明的）
+</p>
 </div>
 
 </div>
 
 <div id="outline-container-1-8" class="outline-3">
-<h3 id="sec-1-8"><span class="section-number-3">1.8</span> Configuration</h3>
+<h3 id="sec-1-8"><span class="section-number-3">1.8</span> Memory Model</h3>
 <div class="outline-text-3" id="text-1-8">
+
+<ul>
+<li>Java
+<ul>
+<li>The monitor lock rule: a release of a lock happens before every subsequent acquire of the same lock.
+</li>
+<li>The volatile variable rule: a write of a volatile variable happens before every subsequent read of the same volatile variable
+</li>
+</ul>
+
+</li>
+<li>Actor 
+<ul>
+<li>The actor send rule: the send of the message to an actor happens before the receive of that message by the same actor.
+</li>
+<li>The actor subsequent processing rule: processing of one message happens before processing of the next message by the same actor.
+</li>
+<li>Both rules only apply for the same actor instance and are not valid if different actors are used.
+</li>
+</ul>
+
+</li>
+<li>Future
+<ul>
+<li>The completion of a Future “happens before” the invocation of any callbacks registered to it are executed.
+</li>
+</ul>
+
+</li>
+<li>STM
+<ul>
+<li>The transactional reference rule: a successful write during commit, on an transactional reference, happens before every subsequent read of the same transactional reference.
+</li>
+</ul>
+
+</li>
+</ul>
+
 
 </div>
 
 </div>
 
 <div id="outline-container-1-9" class="outline-3">
-<h3 id="sec-1-9"><span class="section-number-3">1.9</span> Transactors</h3>
+<h3 id="sec-1-9"><span class="section-number-3">1.9</span> Configuration</h3>
 <div class="outline-text-3" id="text-1-9">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-10" class="outline-3">
+<h3 id="sec-1-10"><span class="section-number-3">1.10</span> Transactors</h3>
+<div class="outline-text-3" id="text-1-10">
 
 </div>
 </div>
@@ -583,7 +896,7 @@ The AllForOneStrategy is applicable in cases where the ensemble of children has 
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-11-25T20:37+0800</p>
+<p class="date">Date: 2013-11-26T09:40+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
