@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="akka"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-11-26T09:40+0800"/>
+<meta name="generated" content="2013-11-28T11:20+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -88,6 +88,7 @@
 <li><a href="akka.html#sec-1-3-3">1.3.3 State</a></li>
 <li><a href="akka.html#sec-1-3-4">1.3.4 Behavior</a></li>
 <li><a href="akka.html#sec-1-3-5">1.3.5 Mailbox</a></li>
+<li><a href="akka.html#sec-1-3-6">1.3.6 in Akka</a></li>
 </ul>
 </li>
 <li><a href="akka.html#sec-1-4">1.4 Actor Lifecycle</a></li>
@@ -97,6 +98,8 @@
 <li><a href="akka.html#sec-1-8">1.8 Memory Model</a></li>
 <li><a href="akka.html#sec-1-9">1.9 Configuration</a></li>
 <li><a href="akka.html#sec-1-10">1.10 Transactors</a></li>
+<li><a href="akka.html#sec-1-11">1.11 Typed Channel</a></li>
+<li><a href="akka.html#sec-1-12">1.12 Typed Actor</a></li>
 </ul>
 </li>
 </ul>
@@ -560,13 +563,13 @@ The need to structure the name space for actors like this arises from a central 
 <div class="outline-text-4" id="text-1-3-4">
 
 <ul>
-<li><b>NOTE（dirlt）：Akka对FSM支持非常好而不只是简单的become/unbecome函数</b>
-</li>
 <li>Every time a message is processed, it is matched against the current behavior of the actor. Behavior means a function which defines the actions to be taken in reaction to the message at that point in time, say forward a request if the client is authorized, deny it otherwise. 
 </li>
-<li>These changes are achieved by either encoding them in state variables which are read from the behavior logic, or the function itself may be swapped out at runtime, see the become and unbecome operations.
+<li>If the current actor behavior does not match a received message, unhandled is called, which by default publishes anakka.actor.UnhandledMessage(message, sender, recipient)on the actor system’s event stream (set configuration item akka.actor.debug.unhandled to on to have them converted into actual Debug messages).（以现在Akka API来说如果某个消息没有处理的话，那么会由unhandle函数来处理，默认则是发送到系统的EventStream）
 </li>
-<li>However, the initial behavior defined during construction of the actor object is special in the sense that a restart of the actor will reset its behavior to this initial one.
+<li>These changes are achieved by either encoding them in state variables which are read from the behavior logic, or the function itself may be swapped out at runtime, see the become and unbecome operations.（Akka对FSM支持非常好而不只是简单的become/unbecome函数）
+</li>
+<li>However, the initial behavior defined during construction of the actor object is special in the sense that a restart of the actor will reset its behavior to this initial one. (需要注意，如果重启的话，那么状态会恢复到最初） 
 </li>
 </ul>
 
@@ -600,6 +603,36 @@ The need to structure the name space for actors like this arises from a central 
 </li>
 <li>An important feature in which Akka differs from some other actor model implementations is that the current behavior must always handle the next dequeued message, there is no scanning the mailbox for the next matching one. Failure to handle a message will typically be treated as a failure, unless this behavior is overridden. <b>NOTE（dirlt）：和其他actor model实现有点不太类似是，没有办法对mailbox来做scan来处理匹配的项。也就是说对于mailbox里面所有的消息都需要显式处理</b>
 </li>
+<li>If an exception is thrown while a message is being processed, nothing happens to the mailbox. If the actor is restarted, the same mailbox will be there. So all messages on that mailbox will be there as well.(如果处理消息的时候发生异常，mailbox并不会受影响，并且如果actor重启的话，读取的依然是之前的mailbox里面的内容） <b>TODO（dirlt）：是否有办法清除mailbox里面的内容？</b> 
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3-6" class="outline-4">
+<h4 id="sec-1-3-6"><span class="section-number-4">1.3.6</span> in Akka</h4>
+<div class="outline-text-4" id="text-1-3-6">
+
+<p>Akka实现的Actor对象内部包括了下面几个比较重要的字段和方法
+</p><ul>
+<li><b>self</b> reference to the ActorRef of the actor
+</li>
+<li><b>sender</b> reference sender Actor of the last received message, typically used as described in Reply to mes- sages
+</li>
+<li><b>supervisorStrategy</b> user overridable definition the strategy to use for supervising child actors
+</li>
+<li><b>context</b> exposes contextual information for the actor and the current message, such as: – factory methods to create child actors (actorOf)
+     – system that the actor belongs to
+     – parent supervisor
+     – supervised children
+     – lifecycle monitoring
+     – hotswap behavior stack as described in Become/Unbecome
+</li>
+<li>The <b>receive</b> method should define a series of case statements (which has the type PartialFunction[Any, Unit]) that defines which messages your Actor can handle, using standard Scala pattern matching, along with the implementation of how the messages should be processed.
+</li>
 </ul>
 
 
@@ -614,6 +647,18 @@ The need to structure the name space for actors like this arises from a central 
 
 <p><img src="images/akka-actor-lifecycle.png"  alt="./images/akka-actor-lifecycle.png" />
 </p>
+<p>
+Initialization
+</p><ul>
+<li>constructor. 每次创建对象都会调用。注意重启创建incarnation的时候也是创建新对象。
+</li>
+<li>preStart. 每次创建第一个对象的时候会调用。 
+</li>
+<li>first communication. 第一次通信的时候触发。
+</li>
+</ul>
+
+
 <p>
 Termination
 </p><ul>
@@ -754,7 +799,17 @@ The AllForOneStrategy is applicable in cases where the ensemble of children has 
 <h3 id="sec-1-6"><span class="section-number-3">1.6</span> Message Order and Delivery Guarantees</h3>
 <div class="outline-text-3" id="text-1-6">
 
-<p>These are the rules for message sends (i.e. the tell or ! method, which also underlies the ask pattern): 
+<p>Messages are sent to an Actor through one of the following methods.（两种方式来进行消息发送）
+</p><ul>
+<li>! means “fire-and-forget”, e.g. send a message asynchronously and return immediately. Also known as tell.
+</li>
+<li>? sends a message asynchronously and returns a Future representing a possible reply. Also known as ask.
+</li>
+</ul>
+
+
+<p>
+These are the rules for message sends (i.e. the tell or ! method, which also underlies the ask pattern): 
 </p><ul>
 <li>at-most-once delivery, i.e. no guaranteed delivery
 </li>
@@ -882,6 +937,41 @@ We took the idea of transparency to the limit in that there is nearly no API for
 <h3 id="sec-1-9"><span class="section-number-3">1.9</span> Configuration</h3>
 <div class="outline-text-3" id="text-1-9">
 
+<p>You can start using Akka without defining any configuration, since sensible default values are provided. Later on you might need to amend the settings to change the default behavior or adapt for specific runtime environments. Typical examples of settings that you might amend:
+</p><ul>
+<li>log level and logger backend 
+</li>
+<li>enable remoting
+</li>
+<li>message serializers
+</li>
+<li>definition of routers
+</li>
+<li>tuning of dispatchers
+</li>
+</ul>
+
+<p>Akka uses the <a href="https://github.com/typesafehub/config">Typesafe Config Library</a>, which might also be a good choice for the configuration of your own ap- plication or library built with or without Akka. This library is implemented in Java with no external dependencies. 格式称为 <a href="https://github.com/typesafehub/config/blob/master/HOCON.md">HOCON</a>
+</p>
+<p>
+While constructing an ac- tor system, you can either pass in a Config object or not, where the second case is equivalent to passing ConfigFactory.load() (with the right class loader). This means roughly that the default is to parse all application.conf, application.json and application.properties found at the root of the class path—please refer to the aforementioned documentation for details. The actor system then merges in all reference.conf resources found at the root of the class path to form the fallback configuration, i.e. it inter- nally uses appConfig.withFallback(ConfigFactory.defaultReference(classLoader)). The philosophy is that code never contains default values, but instead relies upon their presence in the reference.conf supplied with the library in question.
+配置表示成为Config对象，这个对象的创建会读取下面几个文件
+</p><ul>
+<li>application.conf
+</li>
+<li>application.json
+</li>
+<li>application.properties
+</li>
+<li><b>NOTE(dirlt):application允许通过config.*配置选项来修改指定</b> 
+</li>
+</ul>
+
+<p>对于那些找不到的属性会查询reference.conf，这是默认属性。Akka倾向所有变量都使用配置而不是在代码提供默认值。
+</p>
+<p>
+Akka’s configuration approach relies heavily on the notion of every module/jar having its own reference.conf file, all of these will be discovered by the configuration and loaded. Unfortunately this also means that if you put/merge multiple jars into the same jar, you need to merge all the reference.confs as well. Otherwise all defaults will be lost and Akka will not function.（可是需要注意如果打包成为fatjar的话，reference.conf可能会覆盖）
+</p>
 </div>
 
 </div>
@@ -891,12 +981,32 @@ We took the idea of transparency to the limit in that there is nearly no API for
 <div class="outline-text-3" id="text-1-10">
 
 </div>
+
+</div>
+
+<div id="outline-container-1-11" class="outline-3">
+<h3 id="sec-1-11"><span class="section-number-3">1.11</span> Typed Channel</h3>
+<div class="outline-text-3" id="text-1-11">
+
+<p>在actor之间通信的channel上指定类型 TODO(dirlt)
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-12" class="outline-3">
+<h3 id="sec-1-12"><span class="section-number-3">1.12</span> Typed Actor</h3>
+<div class="outline-text-3" id="text-1-12">
+
+<p>在actor上指定类型。优势和劣势有点类似静态类型语言和动态类型语言之间的对比。 TODO(dirlt)
+</p>
+</div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-11-26T09:40+0800</p>
+<p class="date">Date: 2013-11-28T11:20+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
