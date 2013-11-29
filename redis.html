@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="redis"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-10-21T12:46+0800"/>
+<meta name="generated" content="2013-11-29T08:06+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -102,13 +102,7 @@
 <li><a href="redis.html#sec-1-9-1">1.9.1 Common</a>
 <ul>
 <li><a href="redis.html#sec-1-9-1-1">1.9.1.1 defines</a></li>
-<li><a href="redis.html#sec-1-9-1-2">1.9.1.2 structs</a>
-<ul>
-<li><a href="redis.html#sec-1-9-1-2-1">1.9.1.2.1 redisServer</a></li>
-<li><a href="redis.html#sec-1-9-1-2-2">1.9.1.2.2 redisClient</a></li>
-<li><a href="redis.html#sec-1-9-1-2-3">1.9.1.2.3 redisObject</a></li>
-</ul>
-</li>
+<li><a href="redis.html#sec-1-9-1-2">1.9.1.2 structs</a></li>
 <li><a href="redis.html#sec-1-9-1-3">1.9.1.3 Interface</a></li>
 <li><a href="redis.html#sec-1-9-1-4">1.9.1.4 redisLog</a></li>
 </ul>
@@ -128,22 +122,8 @@
 <li><a href="redis.html#sec-1-9-4">1.9.4 AsyncEvent</a>
 <ul>
 <li><a href="redis.html#sec-1-9-4-1">1.9.4.1 defines</a></li>
-<li><a href="redis.html#sec-1-9-4-2">1.9.4.2 Interface</a>
-<ul>
-<li><a href="redis.html#sec-1-9-4-2-1">1.9.4.2.1 typedef</a></li>
-<li><a href="redis.html#sec-1-9-4-2-2">1.9.4.2.2 api</a></li>
-</ul>
-</li>
-<li><a href="redis.html#sec-1-9-4-3">1.9.4.3 Loop</a>
-<ul>
-<li><a href="redis.html#sec-1-9-4-3-1">1.9.4.3.1 defines</a></li>
-<li><a href="redis.html#sec-1-9-4-3-2">1.9.4.3.2 aeApiCreate</a></li>
-<li><a href="redis.html#sec-1-9-4-3-3">1.9.4.3.3 aeApiFree</a></li>
-<li><a href="redis.html#sec-1-9-4-3-4">1.9.4.3.4 aeApiAddEvent</a></li>
-<li><a href="redis.html#sec-1-9-4-3-5">1.9.4.3.5 aeApiDelEvent</a></li>
-<li><a href="redis.html#sec-1-9-4-3-6">1.9.4.3.6 aeApiPoll</a></li>
-</ul>
-</li>
+<li><a href="redis.html#sec-1-9-4-2">1.9.4.2 Interface</a></li>
+<li><a href="redis.html#sec-1-9-4-3">1.9.4.3 Loop</a></li>
 <li><a href="redis.html#sec-1-9-4-4">1.9.4.4 aeCreateEventLoop</a></li>
 <li><a href="redis.html#sec-1-9-4-5">1.9.4.5 aeCreateFileEvent</a></li>
 <li><a href="redis.html#sec-1-9-4-6">1.9.4.6 aeDeleteFileEvent</a></li>
@@ -211,118 +191,10 @@
 <li><a href="redis.html#sec-1-9-10">1.9.10 Data Structure</a>
 <ul>
 <li><a href="redis.html#sec-1-9-10-1">1.9.10.1 adlist</a></li>
-<li><a href="redis.html#sec-1-9-10-2">1.9.10.2 intset</a>
-<ul>
-<li><a href="redis.html#sec-1-9-10-2-1">1.9.10.2.1 Interface</a></li>
-<li><a href="redis.html#sec-1-9-10-2-2">1.9.10.2.2 Encoding</a></li>
-<li><a href="redis.html#sec-1-9-10-2-3">1.9.10.2.3 _intsetValueEncoding</a></li>
-<li><a href="redis.html#sec-1-9-10-2-4">1.9.10.2.4 _intsetGet</a></li>
-<li><a href="redis.html#sec-1-9-10-2-5">1.9.10.2.5 _intsetSet</a></li>
-<li><a href="redis.html#sec-1-9-10-2-6">1.9.10.2.6 intsetNew</a></li>
-<li><a href="redis.html#sec-1-9-10-2-7">1.9.10.2.7 intsetResize</a></li>
-<li><a href="redis.html#sec-1-9-10-2-8">1.9.10.2.8 intsetSearch</a></li>
-<li><a href="redis.html#sec-1-9-10-2-9">1.9.10.2.9 intsetUpgradeAndAdd</a></li>
-<li><a href="redis.html#sec-1-9-10-2-10">1.9.10.2.10 intsetMoveTail</a></li>
-<li><a href="redis.html#sec-1-9-10-2-11">1.9.10.2.11 intsetAdd</a></li>
-<li><a href="redis.html#sec-1-9-10-2-12">1.9.10.2.12 intsetRemove</a></li>
-<li><a href="redis.html#sec-1-9-10-2-13">1.9.10.2.13 intsetFind</a></li>
-<li><a href="redis.html#sec-1-9-10-2-14">1.9.10.2.14 intsetRandom</a></li>
-<li><a href="redis.html#sec-1-9-10-2-15">1.9.10.2.15 intsetGet</a></li>
-<li><a href="redis.html#sec-1-9-10-2-16">1.9.10.2.16 intsetLen</a></li>
-<li><a href="redis.html#sec-1-9-10-2-17">1.9.10.2.17 intsetBlobLen</a></li>
-</ul>
-</li>
-<li><a href="redis.html#sec-1-9-10-3">1.9.10.3 dict</a>
-<ul>
-<li><a href="redis.html#sec-1-9-10-3-1">1.9.10.3.1 structs</a></li>
-<li><a href="redis.html#sec-1-9-10-3-2">1.9.10.3.2 defines</a></li>
-<li><a href="redis.html#sec-1-9-10-3-3">1.9.10.3.3 Interface</a></li>
-<li><a href="redis.html#sec-1-9-10-3-4">1.9.10.3.4 DictType</a></li>
-<li><a href="redis.html#sec-1-9-10-3-5">1.9.10.3.5 _dictReset</a></li>
-<li><a href="redis.html#sec-1-9-10-3-6">1.9.10.3.6 _dictInit</a></li>
-<li><a href="redis.html#sec-1-9-10-3-7">1.9.10.3.7 dictCreate</a></li>
-<li><a href="redis.html#sec-1-9-10-3-8">1.9.10.3.8 dictResize</a></li>
-<li><a href="redis.html#sec-1-9-10-3-9">1.9.10.3.9 _dictNextPower</a></li>
-<li><a href="redis.html#sec-1-9-10-3-10">1.9.10.3.10 dictExpand</a></li>
-<li><a href="redis.html#sec-1-9-10-3-11">1.9.10.3.11 dictRehash</a></li>
-<li><a href="redis.html#sec-1-9-10-3-12">1.9.10.3.12 dictRehashMilliseconds</a></li>
-<li><a href="redis.html#sec-1-9-10-3-13">1.9.10.3.13 _dictRehashStep</a></li>
-<li><a href="redis.html#sec-1-9-10-3-14">1.9.10.3.14 _dictExpandIfNeeded</a></li>
-<li><a href="redis.html#sec-1-9-10-3-15">1.9.10.3.15 _dictKeyIndex</a></li>
-<li><a href="redis.html#sec-1-9-10-3-16">1.9.10.3.16 dictAdd</a></li>
-<li><a href="redis.html#sec-1-9-10-3-17">1.9.10.3.17 dictReplace</a></li>
-<li><a href="redis.html#sec-1-9-10-3-18">1.9.10.3.18 dictFind</a></li>
-<li><a href="redis.html#sec-1-9-10-3-19">1.9.10.3.19 dictDelete</a></li>
-<li><a href="redis.html#sec-1-9-10-3-20">1.9.10.3.20 _dictClear</a></li>
-<li><a href="redis.html#sec-1-9-10-3-21">1.9.10.3.21 dictRelease</a></li>
-<li><a href="redis.html#sec-1-9-10-3-22">1.9.10.3.22 dictEmpty</a></li>
-<li><a href="redis.html#sec-1-9-10-3-23">1.9.10.3.23 dictGetRandomKey</a></li>
-<li><a href="redis.html#sec-1-9-10-3-24">1.9.10.3.24 dictGetIterator</a></li>
-<li><a href="redis.html#sec-1-9-10-3-25">1.9.10.3.25 dictNext</a></li>
-<li><a href="redis.html#sec-1-9-10-3-26">1.9.10.3.26 dictReleaseIterator</a></li>
-<li><a href="redis.html#sec-1-9-10-3-27">1.9.10.3.27 dictPrintStats</a></li>
-</ul>
-</li>
-<li><a href="redis.html#sec-1-9-10-4">1.9.10.4 ziplist</a>
-<ul>
-<li><a href="redis.html#sec-1-9-10-4-1">1.9.10.4.1 Format</a></li>
-<li><a href="redis.html#sec-1-9-10-4-2">1.9.10.4.2 defines</a></li>
-<li><a href="redis.html#sec-1-9-10-4-3">1.9.10.4.3 Interface</a></li>
-<li><a href="redis.html#sec-1-9-10-4-4">1.9.10.4.4 zipEntryEncoding</a></li>
-<li><a href="redis.html#sec-1-9-10-4-5">1.9.10.4.5 zipIntSize</a></li>
-<li><a href="redis.html#sec-1-9-10-4-6">1.9.10.4.6 zipDecodeLength</a></li>
-<li><a href="redis.html#sec-1-9-10-4-7">1.9.10.4.7 zipEncodeLength</a></li>
-<li><a href="redis.html#sec-1-9-10-4-8">1.9.10.4.8 zipPrevDecodeLength</a></li>
-<li><a href="redis.html#sec-1-9-10-4-9">1.9.10.4.9 zipPrevEncodeLength</a></li>
-<li><a href="redis.html#sec-1-9-10-4-10">1.9.10.4.10 zipPrevEncodeLengthForceLarge</a></li>
-<li><a href="redis.html#sec-1-9-10-4-11">1.9.10.4.11 zipPrevLenByteDiff</a></li>
-<li><a href="redis.html#sec-1-9-10-4-12">1.9.10.4.12 zipTryEncoding</a></li>
-<li><a href="redis.html#sec-1-9-10-4-13">1.9.10.4.13 zipSaveInteger</a></li>
-<li><a href="redis.html#sec-1-9-10-4-14">1.9.10.4.14 zipLoadInteger</a></li>
-<li><a href="redis.html#sec-1-9-10-4-15">1.9.10.4.15 zipEntry</a></li>
-<li><a href="redis.html#sec-1-9-10-4-16">1.9.10.4.16 zipRawEntryLength</a></li>
-<li><a href="redis.html#sec-1-9-10-4-17">1.9.10.4.17 __ziplistCascadeUpdate</a></li>
-<li><a href="redis.html#sec-1-9-10-4-18">1.9.10.4.18 __ziplistDelete</a></li>
-<li><a href="redis.html#sec-1-9-10-4-19">1.9.10.4.19 __ziplistInsert</a></li>
-<li><a href="redis.html#sec-1-9-10-4-20">1.9.10.4.20 zipListNew</a></li>
-<li><a href="redis.html#sec-1-9-10-4-21">1.9.10.4.21 zipListResize</a></li>
-<li><a href="redis.html#sec-1-9-10-4-22">1.9.10.4.22 ziplistPush</a></li>
-<li><a href="redis.html#sec-1-9-10-4-23">1.9.10.4.23 ziplistIndex</a></li>
-<li><a href="redis.html#sec-1-9-10-4-24">1.9.10.4.24 ziplistNext</a></li>
-<li><a href="redis.html#sec-1-9-10-4-25">1.9.10.4.25 ziplistPrev</a></li>
-<li><a href="redis.html#sec-1-9-10-4-26">1.9.10.4.26 ziplistGet</a></li>
-<li><a href="redis.html#sec-1-9-10-4-27">1.9.10.4.27 ziplistInsert</a></li>
-<li><a href="redis.html#sec-1-9-10-4-28">1.9.10.4.28 ziplistDelete</a></li>
-<li><a href="redis.html#sec-1-9-10-4-29">1.9.10.4.29 ziplistDeleteRange</a></li>
-<li><a href="redis.html#sec-1-9-10-4-30">1.9.10.4.30 ziplistCompare</a></li>
-<li><a href="redis.html#sec-1-9-10-4-31">1.9.10.4.31 ziplistLen</a></li>
-<li><a href="redis.html#sec-1-9-10-4-32">1.9.10.4.32 ziplistBlobLen</a></li>
-<li><a href="redis.html#sec-1-9-10-4-33">1.9.10.4.33 ziplistRepr</a></li>
-</ul>
-</li>
-<li><a href="redis.html#sec-1-9-10-5">1.9.10.5 zipmap</a>
-<ul>
-<li><a href="redis.html#sec-1-9-10-5-1">1.9.10.5.1 Format</a></li>
-<li><a href="redis.html#sec-1-9-10-5-2">1.9.10.5.2 Interface</a></li>
-<li><a href="redis.html#sec-1-9-10-5-3">1.9.10.5.3 zipmapNew</a></li>
-<li><a href="redis.html#sec-1-9-10-5-4">1.9.10.5.4 zipmapDecodeLength</a></li>
-<li><a href="redis.html#sec-1-9-10-5-5">1.9.10.5.5 zipmapEncodeLength</a></li>
-<li><a href="redis.html#sec-1-9-10-5-6">1.9.10.5.6 zipmapLookupRaw</a></li>
-<li><a href="redis.html#sec-1-9-10-5-7">1.9.10.5.7 zipmapRequiredLength</a></li>
-<li><a href="redis.html#sec-1-9-10-5-8">1.9.10.5.8 zipmapRawKeyLength</a></li>
-<li><a href="redis.html#sec-1-9-10-5-9">1.9.10.5.9 zipmapRawValueLength</a></li>
-<li><a href="redis.html#sec-1-9-10-5-10">1.9.10.5.10 zipmapRawEntryLength</a></li>
-<li><a href="redis.html#sec-1-9-10-5-11">1.9.10.5.11 zipmapResize</a></li>
-<li><a href="redis.html#sec-1-9-10-5-12">1.9.10.5.12 zipmapSet</a></li>
-<li><a href="redis.html#sec-1-9-10-5-13">1.9.10.5.13 zipmapDel</a></li>
-<li><a href="redis.html#sec-1-9-10-5-14">1.9.10.5.14 zipmapRewind</a></li>
-<li><a href="redis.html#sec-1-9-10-5-15">1.9.10.5.15 zipmapNext</a></li>
-<li><a href="redis.html#sec-1-9-10-5-16">1.9.10.5.16 zipmapGet</a></li>
-<li><a href="redis.html#sec-1-9-10-5-17">1.9.10.5.17 zipmapExists</a></li>
-<li><a href="redis.html#sec-1-9-10-5-18">1.9.10.5.18 zipmapLen</a></li>
-<li><a href="redis.html#sec-1-9-10-5-19">1.9.10.5.19 zipmapBlobLen</a></li>
-<li><a href="redis.html#sec-1-9-10-5-20">1.9.10.5.20 zipmapRepr</a></li>
-</ul></li>
+<li><a href="redis.html#sec-1-9-10-2">1.9.10.2 intset</a></li>
+<li><a href="redis.html#sec-1-9-10-3">1.9.10.3 dict</a></li>
+<li><a href="redis.html#sec-1-9-10-4">1.9.10.4 ziplist</a></li>
+<li><a href="redis.html#sec-1-9-10-5">1.9.10.5 zipmap</a></li>
 </ul>
 </li>
 <li><a href="redis.html#sec-1-9-11">1.9.11 Utility</a>
@@ -336,12 +208,7 @@
 <li><a href="redis.html#sec-1-9-11-7">1.9.11.7 pqsort.h</a></li>
 <li><a href="redis.html#sec-1-9-11-8">1.9.11.8 config.c</a></li>
 <li><a href="redis.html#sec-1-9-11-9">1.9.11.9 lzf.h</a></li>
-<li><a href="redis.html#sec-1-9-11-10">1.9.11.10 sds.h</a>
-<ul>
-<li><a href="redis.html#sec-1-9-11-10-1">1.9.11.10.1 defines</a></li>
-<li><a href="redis.html#sec-1-9-11-10-2">1.9.11.10.2 Interface</a></li>
-<li><a href="redis.html#sec-1-9-11-10-3">1.9.11.10.3 Implementation</a></li>
-</ul></li>
+<li><a href="redis.html#sec-1-9-11-10">1.9.11.10 sds.h</a></li>
 </ul>
 </li>
 <li><a href="redis.html#sec-1-9-12">1.9.12 Virtual Memory</a>
@@ -1138,15 +1005,10 @@ TODO（dirlt)：考虑到redis的代码质量比较高，对于redis的automatic
 <h5 id="sec-1-9-1-2"><span class="section-number-5">1.9.1.2</span> structs</h5>
 <div class="outline-text-5" id="text-1-9-1-2">
 
+<ul>
+<li id="sec-1-9-1-2-1">redisServer<br/>
+redis作为Server的结构，使用上应该是全局变量。
 
-</div>
-
-<div id="outline-container-1-9-1-2-1" class="outline-6">
-<h6 id="sec-1-9-1-2-1"><span class="section-number-6">1.9.1.2.1</span> redisServer</h6>
-<div class="outline-text-6" id="text-1-9-1-2-1">
-
-<p>redis作为Server的结构，使用上应该是全局变量。
-</p>
 
 
 <pre class="src src-C++">/* Global server state structure */
@@ -1320,16 +1182,12 @@ struct redisServer {
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-1-2-2">redisClient<br/>
+redisClient应该是针对每个client请求保存的状态。TODO(dirlt):解释关于各个字段的含义.
 
-</div>
-
-<div id="outline-container-1-9-1-2-2" class="outline-6">
-<h6 id="sec-1-9-1-2-2"><span class="section-number-6">1.9.1.2.2</span> redisClient</h6>
-<div class="outline-text-6" id="text-1-9-1-2-2">
-
-<p>redisClient应该是针对每个client请求保存的状态。TODO(dirlt):解释关于各个字段的含义.
-</p>
 
 
 <pre class="src src-C++">/* With multiplexing we need to take per-clinet state.
@@ -1370,16 +1228,12 @@ typedef struct redisClient {
 } redisClient;
 </pre>
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-1-2-3">redisObject<br/>
+TODO(dirlt):
 
-</div>
-
-<div id="outline-container-1-9-1-2-3" class="outline-6">
-<h6 id="sec-1-9-1-2-3"><span class="section-number-6">1.9.1.2.3</span> redisObject</h6>
-<div class="outline-text-6" id="text-1-9-1-2-3">
-
-<p>TODO(dirlt):
-</p>
 
 
 <pre class="src src-C++">/* A redis object, that is a type able to hold a string / list / set */
@@ -1402,7 +1256,8 @@ typedef struct redisObject {
 </pre>
 
 
-</div>
+</li>
+</ul>
 </div>
 
 </div>
@@ -1691,13 +1546,8 @@ void addReplyStatusFormat(redisClient *c, const char *fmt, ...);
 <h5 id="sec-1-9-4-2"><span class="section-number-5">1.9.4.2</span> Interface</h5>
 <div class="outline-text-5" id="text-1-9-4-2">
 
-
-</div>
-
-<div id="outline-container-1-9-4-2-1" class="outline-6">
-<h6 id="sec-1-9-4-2-1"><span class="section-number-6">1.9.4.2.1</span> typedef</h6>
-<div class="outline-text-6" id="text-1-9-4-2-1">
-
+<ul>
+<li id="sec-1-9-4-2-1">typedef<br/>
 
 
 
@@ -1746,14 +1596,10 @@ typedef struct aeEventLoop { // &#36825;&#20010;&#26159;&#24322;&#27493;&#20107;
 </pre>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1-9-4-2-2" class="outline-6">
-<h6 id="sec-1-9-4-2-2"><span class="section-number-6">1.9.4.2.2</span> api</h6>
-<div class="outline-text-6" id="text-1-9-4-2-2">
-
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-4-2-2">api<br/>
 
 
 
@@ -1784,7 +1630,8 @@ void aeSetBeforeSleepProc(aeEventLoop *eventLoop, aeBeforeSleepProc *beforesleep
 </pre>
 
 
-</div>
+</li>
+</ul>
 </div>
 
 </div>
@@ -1794,13 +1641,8 @@ void aeSetBeforeSleepProc(aeEventLoop *eventLoop, aeBeforeSleepProc *beforesleep
 <div class="outline-text-5" id="text-1-9-4-3">
 
 <p>对于Loop来说redis提供了select(ae_select.c),kqueue(ae_kqueue.c)以及epoll(ae_epoll.c).我们这里仅仅关注ae_epoll.c提供的功能.
-</p>
-</div>
-
-<div id="outline-container-1-9-4-3-1" class="outline-6">
-<h6 id="sec-1-9-4-3-1"><span class="section-number-6">1.9.4.3.1</span> defines</h6>
-<div class="outline-text-6" id="text-1-9-4-3-1">
-
+</p><ul>
+<li id="sec-1-9-4-3-1">defines<br/>
 
 
 
@@ -1811,16 +1653,12 @@ void aeSetBeforeSleepProc(aeEventLoop *eventLoop, aeBeforeSleepProc *beforesleep
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-4-3-2">aeApiCreate<br/>
+创建Loop对象放在apidata这个字段.
 
-</div>
-
-<div id="outline-container-1-9-4-3-2" class="outline-6">
-<h6 id="sec-1-9-4-3-2"><span class="section-number-6">1.9.4.3.2</span> aeApiCreate</h6>
-<div class="outline-text-6" id="text-1-9-4-3-2">
-
-<p>创建Loop对象放在apidata这个字段.
-</p>
 
 
 <pre class="src src-C++">static int aeApiCreate(aeEventLoop *eventLoop) {
@@ -1835,14 +1673,10 @@ void aeSetBeforeSleepProc(aeEventLoop *eventLoop, aeBeforeSleepProc *beforesleep
 </pre>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1-9-4-3-3" class="outline-6">
-<h6 id="sec-1-9-4-3-3"><span class="section-number-6">1.9.4.3.3</span> aeApiFree</h6>
-<div class="outline-text-6" id="text-1-9-4-3-3">
-
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-4-3-3">aeApiFree<br/>
 
 
 
@@ -1855,14 +1689,10 @@ void aeSetBeforeSleepProc(aeEventLoop *eventLoop, aeBeforeSleepProc *beforesleep
 </pre>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1-9-4-3-4" class="outline-6">
-<h6 id="sec-1-9-4-3-4"><span class="section-number-6">1.9.4.3.4</span> aeApiAddEvent</h6>
-<div class="outline-text-6" id="text-1-9-4-3-4">
-
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-4-3-4">aeApiAddEvent<br/>
 
 
 
@@ -1886,14 +1716,10 @@ void aeSetBeforeSleepProc(aeEventLoop *eventLoop, aeBeforeSleepProc *beforesleep
 </pre>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1-9-4-3-5" class="outline-6">
-<h6 id="sec-1-9-4-3-5"><span class="section-number-6">1.9.4.3.5</span> aeApiDelEvent</h6>
-<div class="outline-text-6" id="text-1-9-4-3-5">
-
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-4-3-5">aeApiDelEvent<br/>
 
 
 
@@ -1918,14 +1744,10 @@ void aeSetBeforeSleepProc(aeEventLoop *eventLoop, aeBeforeSleepProc *beforesleep
 </pre>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1-9-4-3-6" class="outline-6">
-<h6 id="sec-1-9-4-3-6"><span class="section-number-6">1.9.4.3.6</span> aeApiPoll</h6>
-<div class="outline-text-6" id="text-1-9-4-3-6">
-
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-4-3-6">aeApiPoll<br/>
 
 
 
@@ -1954,7 +1776,8 @@ void aeSetBeforeSleepProc(aeEventLoop *eventLoop, aeBeforeSleepProc *beforesleep
 </pre>
 
 
-</div>
+</li>
+</ul>
 </div>
 
 </div>
@@ -3561,16 +3384,11 @@ typedef struct list {
 redis针对这种小批量存储的话使用这种特殊结构，如果过大的话那么可以转换称为hashtable或者是skiplist
 这种通用的结构。intset如果数据量过大的话那么可以转换称为hashtable这种结构。里面实现非常精彩.
 </p>
-
-</div>
-
-<div id="outline-container-1-9-10-2-1" class="outline-6">
-<h6 id="sec-1-9-10-2-1"><span class="section-number-6">1.9.10.2.1</span> Interface</h6>
-<div class="outline-text-6" id="text-1-9-10-2-1">
-
-<p>intset内部二进制存储是有序的所以在查找时候可以通过二分查找完成。intset量不会非常大，
+<ul>
+<li id="sec-1-9-10-2-1">Interface<br/>
+intset内部二进制存储是有序的所以在查找时候可以通过二分查找完成。intset量不会非常大，
 二分查找非常快，同时维护这个结构可能需要整体移动部分也不会太损效率。
-</p>
+
 
 
 <pre class="src src-C++">typedef struct intset {
@@ -3590,17 +3408,13 @@ size_t intsetBlobLen(intset *is);
 </pre>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-2-2" class="outline-6">
-<h6 id="sec-1-9-10-2-2"><span class="section-number-6">1.9.10.2.2</span> Encoding</h6>
-<div class="outline-text-6" id="text-1-9-10-2-2">
-
-<p>intset内部有三种encodings.存储上的话都是按照某种encoding存储的，所以可以认为是同构的。
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-2-2">Encoding<br/>
+intset内部有三种encodings.存储上的话都是按照某种encoding存储的，所以可以认为是同构的。
 当插入某个值的时候，redis会自动判断应该采用什么encoding.
-</p>
+
 
 
 <pre class="src src-C++">/* Note that these encodings are ordered, so:
@@ -3613,16 +3427,12 @@ size_t intsetBlobLen(intset *is);
 <p>
 加入encoding是INTSET_ENC_INT16的话，那么contents里面每个单元都是int16_t来存储的.
 </p>
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-2-3">_intsetValueEncoding<br/>
+redis根据value自动检测采用什么encoding.
 
-</div>
-
-<div id="outline-container-1-9-10-2-3" class="outline-6">
-<h6 id="sec-1-9-10-2-3"><span class="section-number-6">1.9.10.2.3</span> _intsetValueEncoding</h6>
-<div class="outline-text-6" id="text-1-9-10-2-3">
-
-<p>redis根据value自动检测采用什么encoding.
-</p>
 
 
 <pre class="src src-C++">/* Return the required encoding for the provided value. */
@@ -3637,16 +3447,12 @@ static uint8_t _intsetValueEncoding(int64_t v) {
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-2-4">_intsetGet<br/>
+提供position以及对应的encoding,得到这个position上面存储的数值.内部存储都是按照little endian来完成的。
 
-</div>
-
-<div id="outline-container-1-9-10-2-4" class="outline-6">
-<h6 id="sec-1-9-10-2-4"><span class="section-number-6">1.9.10.2.4</span> _intsetGet</h6>
-<div class="outline-text-6" id="text-1-9-10-2-4">
-
-<p>提供position以及对应的encoding,得到这个position上面存储的数值.内部存储都是按照little endian来完成的。
-</p>
 
 
 <pre class="src src-C++">/* Return the value at pos, given an encoding. */
@@ -3677,16 +3483,12 @@ static int64_t _intsetGet(intset *is, int pos) {
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-2-5">_intsetSet<br/>
+将value按照某个encoding插入到position位置.应该是底层的方法.注意set的时候的话底层也会转换称为little endian.
 
-</div>
-
-<div id="outline-container-1-9-10-2-5" class="outline-6">
-<h6 id="sec-1-9-10-2-5"><span class="section-number-6">1.9.10.2.5</span> _intsetSet</h6>
-<div class="outline-text-6" id="text-1-9-10-2-5">
-
-<p>将value按照某个encoding插入到position位置.应该是底层的方法.注意set的时候的话底层也会转换称为little endian.
-</p>
 
 
 <pre class="src src-C++">/* Set the value at pos, using the configured encoding. */
@@ -3705,16 +3507,12 @@ static void _intsetSet(intset *is, int pos, int64_t value) {
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-2-6">intsetNew<br/>
+创建intset对象.初始话时候按照最小的encoding来创建.
 
-</div>
-
-<div id="outline-container-1-9-10-2-6" class="outline-6">
-<h6 id="sec-1-9-10-2-6"><span class="section-number-6">1.9.10.2.6</span> intsetNew</h6>
-<div class="outline-text-6" id="text-1-9-10-2-6">
-
-<p>创建intset对象.初始话时候按照最小的encoding来创建.
-</p>
 
 
 <pre class="src src-C++">/* Create an empty intset. */
@@ -3727,16 +3525,12 @@ intset *intsetNew(void) {
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-2-7">intsetResize<br/>
+对intset的连续内存进行扩展至size.
 
-</div>
-
-<div id="outline-container-1-9-10-2-7" class="outline-6">
-<h6 id="sec-1-9-10-2-7"><span class="section-number-6">1.9.10.2.7</span> intsetResize</h6>
-<div class="outline-text-6" id="text-1-9-10-2-7">
-
-<p>对intset的连续内存进行扩展至size.
-</p>
 
 
 <pre class="src src-C++">/* Resize the intset */
@@ -3748,17 +3542,13 @@ static intset *intsetResize(intset *is, uint32_t len) {
 </pre>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-2-8" class="outline-6">
-<h6 id="sec-1-9-10-2-8"><span class="section-number-6">1.9.10.2.8</span> intsetSearch</h6>
-<div class="outline-text-6" id="text-1-9-10-2-8">
-
-<p>在intset里面找到value对应的position.如果OK的话那么返回1,否则返回0.内部采用的二分算法来进行查找.
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-2-8">intsetSearch<br/>
+在intset里面找到value对应的position.如果OK的话那么返回1,否则返回0.内部采用的二分算法来进行查找.
 如果return 0的话返回的是可以插入的位置。
-</p>
+
 
 
 <pre class="src src-C++">/* Search for the position of <span class="org-string">"value"</span>. Return 1 when the value was found and
@@ -3808,17 +3598,13 @@ static uint8_t intsetSearch(intset *is, int64_t value, uint32_t *pos) {
 </pre>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-2-9" class="outline-6">
-<h6 id="sec-1-9-10-2-9"><span class="section-number-6">1.9.10.2.9</span> intsetUpgradeAndAdd</h6>
-<div class="outline-text-6" id="text-1-9-10-2-9">
-
-<p>按照新的encoding重写并且添加新元素。这里之所以可以直接判断value&lt;0的原因很简单。
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-2-9">intsetUpgradeAndAdd<br/>
+按照新的encoding重写并且添加新元素。这里之所以可以直接判断value&lt;0的原因很简单。
 因为value导致整个encoding变大，
-</p><ul>
+<ul>
 <li>如果value&lt;0的话，那么说明比原来任何值都小.
 </li>
 <li>如果value&gt;0的话，那么说明比原来任何值都要大。
@@ -3856,17 +3642,13 @@ static intset *intsetUpgradeAndAdd(intset *is, int64_t value) {
 </pre>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-2-10" class="outline-6">
-<h6 id="sec-1-9-10-2-10"><span class="section-number-6">1.9.10.2.10</span> intsetMoveTail</h6>
-<div class="outline-text-6" id="text-1-9-10-2-10">
-
-<p>movetail这个名字似乎比较有歧义，更准确的意思应该就是memove但是不改变encoding.
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-2-10">intsetMoveTail<br/>
+movetail这个名字似乎比较有歧义，更准确的意思应该就是memove但是不改变encoding.
 因为这个时候仅仅是需要加入一个value所以intset需要腾出一个位置出来.
-</p>
+
 
 
 <pre class="src src-C++">static void intsetMoveTail(intset *is, uint32_t from, uint32_t to) {
@@ -3890,77 +3672,50 @@ static intset *intsetUpgradeAndAdd(intset *is, int64_t value) {
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-2-11">intsetAdd<br/>
+TODO(dirlt):
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-2-12">intsetRemove<br/>
+TODO(dirlt):
 
-<div id="outline-container-1-9-10-2-11" class="outline-6">
-<h6 id="sec-1-9-10-2-11"><span class="section-number-6">1.9.10.2.11</span> intsetAdd</h6>
-<div class="outline-text-6" id="text-1-9-10-2-11">
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-2-13">intsetFind<br/>
+TODO(dirlt):
 
-<p>TODO(dirlt):
-</p>
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-2-14">intsetRandom<br/>
+TODO(dirlt):
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-2-15">intsetGet<br/>
+TODO(dirlt):
 
-<div id="outline-container-1-9-10-2-12" class="outline-6">
-<h6 id="sec-1-9-10-2-12"><span class="section-number-6">1.9.10.2.12</span> intsetRemove</h6>
-<div class="outline-text-6" id="text-1-9-10-2-12">
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-2-16">intsetLen<br/>
+TODO(dirlt):
 
-<p>TODO(dirlt):
-</p>
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-2-17">intsetBlobLen<br/>
+TODO(dirlt):
 
-</div>
-
-<div id="outline-container-1-9-10-2-13" class="outline-6">
-<h6 id="sec-1-9-10-2-13"><span class="section-number-6">1.9.10.2.13</span> intsetFind</h6>
-<div class="outline-text-6" id="text-1-9-10-2-13">
-
-<p>TODO(dirlt):
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-2-14" class="outline-6">
-<h6 id="sec-1-9-10-2-14"><span class="section-number-6">1.9.10.2.14</span> intsetRandom</h6>
-<div class="outline-text-6" id="text-1-9-10-2-14">
-
-<p>TODO(dirlt):
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-2-15" class="outline-6">
-<h6 id="sec-1-9-10-2-15"><span class="section-number-6">1.9.10.2.15</span> intsetGet</h6>
-<div class="outline-text-6" id="text-1-9-10-2-15">
-
-<p>TODO(dirlt):
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-2-16" class="outline-6">
-<h6 id="sec-1-9-10-2-16"><span class="section-number-6">1.9.10.2.16</span> intsetLen</h6>
-<div class="outline-text-6" id="text-1-9-10-2-16">
-
-<p>TODO(dirlt):
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-2-17" class="outline-6">
-<h6 id="sec-1-9-10-2-17"><span class="section-number-6">1.9.10.2.17</span> intsetBlobLen</h6>
-<div class="outline-text-6" id="text-1-9-10-2-17">
-
-<p>TODO(dirlt):
-</p>
-</div>
+</li>
+</ul>
 </div>
 
 </div>
@@ -3972,13 +3727,8 @@ static intset *intsetUpgradeAndAdd(intset *is, int64_t value) {
 <p>dict本质实现上是hashtable.dict实现得非常通用。个人感觉非常精巧所以非常想读一读。
 实现了iterator(虽然同样很有局限性)和rehash(step rehash以及超时rehash策略让我学到很多东西).
 </p>
-
-</div>
-
-<div id="outline-container-1-9-10-3-1" class="outline-6">
-<h6 id="sec-1-9-10-3-1"><span class="section-number-6">1.9.10.3.1</span> structs</h6>
-<div class="outline-text-6" id="text-1-9-10-3-1">
-
+<ul>
+<li id="sec-1-9-10-3-1">structs<br/>
 
 
 
@@ -4042,14 +3792,10 @@ typedef struct dictIterator {
 </pre>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-3-2" class="outline-6">
-<h6 id="sec-1-9-10-3-2"><span class="section-number-6">1.9.10.3.2</span> defines</h6>
-<div class="outline-text-6" id="text-1-9-10-3-2">
-
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-3-2">defines<br/>
 
 
 
@@ -4098,17 +3844,13 @@ typedef struct dictIterator {
 </pre>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-3-3" class="outline-6">
-<h6 id="sec-1-9-10-3-3"><span class="section-number-6">1.9.10.3.3</span> Interface</h6>
-<div class="outline-text-6" id="text-1-9-10-3-3">
-
-<p>对于这种hashtable的实现，因为之前没有接触过rehash这样的实现并且配合了hashtable的迭代器，
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-3-3">Interface<br/>
+对于这种hashtable的实现，因为之前没有接触过rehash这样的实现并且配合了hashtable的迭代器，
 所以比较想看看redis的hashtable是如何实现的。首先看看redis提供的hashtable接口。
-</p>
+
 
 
 <pre class="src src-C++">/* API */
@@ -4148,16 +3890,12 @@ extern dictType dictTypeHeapStringCopyKeyValue;
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-3-4">DictType<br/>
+NOTICE(dirlt):阅读完了代码才发现，在dict.c里面给了注释
 
-</div>
-
-<div id="outline-container-1-9-10-3-4" class="outline-6">
-<h6 id="sec-1-9-10-3-4"><span class="section-number-6">1.9.10.3.4</span> DictType</h6>
-<div class="outline-text-6" id="text-1-9-10-3-4">
-
-<p>NOTICE(dirlt):阅读完了代码才发现，在dict.c里面给了注释
-</p>
 
 
 <pre class="src src-C++">/* The following are just example hash table types implementations.
@@ -4282,16 +4020,12 @@ static void _dictStringDestructor(void *privdata, void *key)
 </ul>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-3-5">_dictReset<br/>
+清空dict.这里只是修改指针内容，关于table释放的话在destroy部分就要完成.
 
-</div>
-
-<div id="outline-container-1-9-10-3-5" class="outline-6">
-<h6 id="sec-1-9-10-3-5"><span class="section-number-6">1.9.10.3.5</span> _dictReset</h6>
-<div class="outline-text-6" id="text-1-9-10-3-5">
-
-<p>清空dict.这里只是修改指针内容，关于table释放的话在destroy部分就要完成.
-</p>
 
 
 <pre class="src src-C++">/* Reset an hashtable already initialized with ht_init().
@@ -4306,16 +4040,12 @@ static void _dictReset(dictht *ht)
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-3-6">_dictInit<br/>
+初始化dict.设置private data并且设置not rehash状态.
 
-</div>
-
-<div id="outline-container-1-9-10-3-6" class="outline-6">
-<h6 id="sec-1-9-10-3-6"><span class="section-number-6">1.9.10.3.6</span> _dictInit</h6>
-<div class="outline-text-6" id="text-1-9-10-3-6">
-
-<p>初始化dict.设置private data并且设置not rehash状态.
-</p>
 
 
 <pre class="src src-C++">/* Initialize the hash table */
@@ -4333,17 +4063,13 @@ int _dictInit(dict *d, dictType *type,
 </pre>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-3-7" class="outline-6">
-<h6 id="sec-1-9-10-3-7"><span class="section-number-6">1.9.10.3.7</span> dictCreate</h6>
-<div class="outline-text-6" id="text-1-9-10-3-7">
-
-<p>创建dict.注意内部并没有分配任何空间.这样可以加速创建的速度，将分配过程平摊在操作中.
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-3-7">dictCreate<br/>
+创建dict.注意内部并没有分配任何空间.这样可以加速创建的速度，将分配过程平摊在操作中.
 这点在设计时候也是十分合理的，实际上rehash也可以认为是这样的过程.
-</p>
+
 
 
 <pre class="src src-C++">/* Create a new hash table */
@@ -4358,17 +4084,13 @@ dict *dictCreate(dictType *type,
 </pre>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-3-8" class="outline-6">
-<h6 id="sec-1-9-10-3-8"><span class="section-number-6">1.9.10.3.8</span> dictResize</h6>
-<div class="outline-text-6" id="text-1-9-10-3-8">
-
-<p>为dict重新分配大小.底层是调用dictExpand指定了希望expand到的大小.
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-3-8">dictResize<br/>
+为dict重新分配大小.底层是调用dictExpand指定了希望expand到的大小.
 这里涉及到了一个dict_can_resize变量(==1).如果调用函数正在进行rehash的话，那么会失败.
-</p>
+
 
 
 <pre class="src src-C++">/* Resize the table to the minimal size that contains all the elements,
@@ -4386,16 +4108,12 @@ int dictResize(dict *d)
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-3-9">_dictNextPower<br/>
+得到第一个比size大的2<sup>(n+2)</sup>的数值.主要是为了计算expand之后的hashtable大小.
 
-</div>
-
-<div id="outline-container-1-9-10-3-9" class="outline-6">
-<h6 id="sec-1-9-10-3-9"><span class="section-number-6">1.9.10.3.9</span> _dictNextPower</h6>
-<div class="outline-text-6" id="text-1-9-10-3-9">
-
-<p>得到第一个比size大的2<sup>(n+2)</sup>的数值.主要是为了计算expand之后的hashtable大小.
-</p>
 
 
 <pre class="src src-C++">/* Our hash table capability is a power of two */
@@ -4413,16 +4131,12 @@ static unsigned long _dictNextPower(unsigned long size)
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-3-10">dictExpand<br/>
+TODO(dirlt):这个地方似乎没有看懂ht(0)和ht(1)是如何交替使用的.
 
-</div>
-
-<div id="outline-container-1-9-10-3-10" class="outline-6">
-<h6 id="sec-1-9-10-3-10"><span class="section-number-6">1.9.10.3.10</span> dictExpand</h6>
-<div class="outline-text-6" id="text-1-9-10-3-10">
-
-<p>TODO(dirlt):这个地方似乎没有看懂ht(0)和ht(1)是如何交替使用的.
-</p>
 <p>
 NOTICE(dirlt):应该是ht(0)和ht(1)个存在一部分数据.然后每次都是从ht(0)-&gt;ht(1)移动.
 一旦移动完成的话，那么将ht(1)-&gt;ht(0)同时清空ht(1).
@@ -4461,18 +4175,14 @@ int dictExpand(dict *d, unsigned long size)
 </pre>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-3-11" class="outline-6">
-<h6 id="sec-1-9-10-3-11"><span class="section-number-6">1.9.10.3.11</span> dictRehash</h6>
-<div class="outline-text-6" id="text-1-9-10-3-11">
-
-<p>dictRehash是一个增量hash的效果.每次只是rehash其中n个bucket依次来达到增量rehash.非常巧妙.
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-3-11">dictRehash<br/>
+dictRehash是一个增量hash的效果.每次只是rehash其中n个bucket依次来达到增量rehash.非常巧妙.
 返回值上面如果==0的话表示rehash完成否则需要继续进行rehash.rehashidx!=-1的话表示当前正在rehash.
 不过在rehash算法上面没有非常精巧的地方.
-</p>
+
 
 
 <pre class="src src-C++">/* Performs N steps of incremental rehashing. Returns 1 if there are still
@@ -4519,16 +4229,12 @@ int dictRehash(dict *d, int n) {
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-3-12">dictRehashMilliseconds<br/>
+在固定的时间内尽可能多地完成rehash.以此来达到增量rehash过程.非常巧妙.
 
-</div>
-
-<div id="outline-container-1-9-10-3-12" class="outline-6">
-<h6 id="sec-1-9-10-3-12"><span class="section-number-6">1.9.10.3.12</span> dictRehashMilliseconds</h6>
-<div class="outline-text-6" id="text-1-9-10-3-12">
-
-<p>在固定的时间内尽可能多地完成rehash.以此来达到增量rehash过程.非常巧妙.
-</p>
 
 
 <pre class="src src-C++">long long timeInMilliseconds(void) {
@@ -4553,17 +4259,13 @@ int dictRehashMilliseconds(dict *d, int ms) {
 </pre>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-3-13" class="outline-6">
-<h6 id="sec-1-9-10-3-13"><span class="section-number-6">1.9.10.3.13</span> _dictRehashStep</h6>
-<div class="outline-text-6" id="text-1-9-10-3-13">
-
-<p>完成一个bucket的rehash.注释里面说明了触发的时机是在上面没有任何的迭代器，然后在每次update或者是looup
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-3-13">_dictRehashStep<br/>
+完成一个bucket的rehash.注释里面说明了触发的时机是在上面没有任何的迭代器，然后在每次update或者是looup
 的时候会调用一次.不断地在增量过程中完成rehash过程.
-</p>
+
 
 
 <pre class="src src-C++">/* This function performs just a step of rehashing, and only if there are
@@ -4580,16 +4282,12 @@ static void _dictRehashStep(dict *d) {
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-3-14">_dictExpandIfNeeded<br/>
+on demand operation这种操作通常策略是非常重要的。我们来看看这个函数的实现.
 
-</div>
-
-<div id="outline-container-1-9-10-3-14" class="outline-6">
-<h6 id="sec-1-9-10-3-14"><span class="section-number-6">1.9.10.3.14</span> _dictExpandIfNeeded</h6>
-<div class="outline-text-6" id="text-1-9-10-3-14">
-
-<p>on demand operation这种操作通常策略是非常重要的。我们来看看这个函数的实现.
-</p>
 
 
 <pre class="src src-C++">/* Expand the hash table if needed */
@@ -4624,17 +4322,13 @@ static int _dictExpandIfNeeded(dict *d)
 </pre>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-3-15" class="outline-6">
-<h6 id="sec-1-9-10-3-15"><span class="section-number-6">1.9.10.3.15</span> _dictKeyIndex</h6>
-<div class="outline-text-6" id="text-1-9-10-3-15">
-
-<p>根据key找到index.但是同时也会判断这个key是否存在.注意这个函数仅仅是在dictAdd时候调用的。
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-3-15">_dictKeyIndex<br/>
+根据key找到index.但是同时也会判断这个key是否存在.注意这个函数仅仅是在dictAdd时候调用的。
 在dictAdd调用的时候那么就可以考虑进行Expand.所以之前会调用ExpandIfNeeded.
-</p>
+
 
 
 <pre class="src src-C++">/* Returns the index of a free slot that can be populated with
@@ -4669,16 +4363,12 @@ static int _dictKeyIndex(dict *d, const void *key)
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-3-16">dictAdd<br/>
+实现过程非常简单。注意里面如果知道在进行rehash的话那么直接插入到ht(1)内部.
 
-</div>
-
-<div id="outline-container-1-9-10-3-16" class="outline-6">
-<h6 id="sec-1-9-10-3-16"><span class="section-number-6">1.9.10.3.16</span> dictAdd</h6>
-<div class="outline-text-6" id="text-1-9-10-3-16">
-
-<p>实现过程非常简单。注意里面如果知道在进行rehash的话那么直接插入到ht(1)内部.
-</p>
 
 
 <pre class="src src-C++">/* Add an element to the target hash table */
@@ -4710,16 +4400,12 @@ int dictAdd(dict *d, void *key, void *val)
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-3-17">dictReplace<br/>
+替换kv.逻辑上面是首先尝试添加，如果!OK的话那么找出原来对象出来进行修改.
 
-</div>
-
-<div id="outline-container-1-9-10-3-17" class="outline-6">
-<h6 id="sec-1-9-10-3-17"><span class="section-number-6">1.9.10.3.17</span> dictReplace</h6>
-<div class="outline-text-6" id="text-1-9-10-3-17">
-
-<p>替换kv.逻辑上面是首先尝试添加，如果!OK的话那么找出原来对象出来进行修改.
-</p>
 
 
 <pre class="src src-C++">/* Add an element, discarding the old if the key already exists.
@@ -4750,17 +4436,13 @@ int dictReplace(dict *d, void *key, void *val)
 </pre>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-3-18" class="outline-6">
-<h6 id="sec-1-9-10-3-18"><span class="section-number-6">1.9.10.3.18</span> dictFind</h6>
-<div class="outline-text-6" id="text-1-9-10-3-18">
-
-<p>根据k-&gt;v.如果没有找到的话那么直接返回NULL.和KeyIndex差别就是这个对于dict来说只是只读操作
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-3-18">dictFind<br/>
+根据k-&gt;v.如果没有找到的话那么直接返回NULL.和KeyIndex差别就是这个对于dict来说只是只读操作
 不会尝试去修改hashtable做rehash等操作.
-</p>
+
 
 
 <pre class="src src-C++">dictEntry *dictFind(dict *d, const void *key)
@@ -4794,16 +4476,12 @@ void *dictFetchValue(dict *d, const void *key) {
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-3-19">dictDelete<br/>
+删除某个item可以决定是否需要进行free.对于dictDelete和dictDeleteNoFree来说底层都是调用dictGenericDelete.
 
-</div>
-
-<div id="outline-container-1-9-10-3-19" class="outline-6">
-<h6 id="sec-1-9-10-3-19"><span class="section-number-6">1.9.10.3.19</span> dictDelete</h6>
-<div class="outline-text-6" id="text-1-9-10-3-19">
-
-<p>删除某个item可以决定是否需要进行free.对于dictDelete和dictDeleteNoFree来说底层都是调用dictGenericDelete.
-</p>
 
 
 <pre class="src src-C++">/* Search and remove an element */
@@ -4855,16 +4533,12 @@ int dictDeleteNoFree(dict *ht, const void *key) {
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-3-20">_dictClear<br/>
+清空dict里面某个hashtable.过程非常简单遍历然后释放key和value.
 
-</div>
-
-<div id="outline-container-1-9-10-3-20" class="outline-6">
-<h6 id="sec-1-9-10-3-20"><span class="section-number-6">1.9.10.3.20</span> _dictClear</h6>
-<div class="outline-text-6" id="text-1-9-10-3-20">
-
-<p>清空dict里面某个hashtable.过程非常简单遍历然后释放key和value.
-</p>
 
 
 <pre class="src src-C++">/* Destroy an entire dictionary */
@@ -4895,16 +4569,12 @@ int _dictClear(dict *d, dictht *ht)
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-3-21">dictRelease<br/>
+清空ht(0)和ht(1).最终释放这个对象.
 
-</div>
-
-<div id="outline-container-1-9-10-3-21" class="outline-6">
-<h6 id="sec-1-9-10-3-21"><span class="section-number-6">1.9.10.3.21</span> dictRelease</h6>
-<div class="outline-text-6" id="text-1-9-10-3-21">
-
-<p>清空ht(0)和ht(1).最终释放这个对象.
-</p>
 
 
 <pre class="src src-C++">/* Clear &amp; Release the hash table */
@@ -4917,16 +4587,12 @@ void dictRelease(dict *d)
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-3-22">dictEmpty<br/>
+和dictRelease不同的是，Empty最后只是将这个dict对象清空(reset).
 
-</div>
-
-<div id="outline-container-1-9-10-3-22" class="outline-6">
-<h6 id="sec-1-9-10-3-22"><span class="section-number-6">1.9.10.3.22</span> dictEmpty</h6>
-<div class="outline-text-6" id="text-1-9-10-3-22">
-
-<p>和dictRelease不同的是，Empty最后只是将这个dict对象清空(reset).
-</p>
 
 
 <pre class="src src-C++">void dictEmpty(dict *d) {
@@ -4938,17 +4604,13 @@ void dictRelease(dict *d)
 </pre>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-3-23" class="outline-6">
-<h6 id="sec-1-9-10-3-23"><span class="section-number-6">1.9.10.3.23</span> dictGetRandomKey</h6>
-<div class="outline-text-6" id="text-1-9-10-3-23">
-
-<p>随机地从dict里面选择一个entry出来.不太清楚具体的用途.随机算法写得比较有意思的，
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-3-23">dictGetRandomKey<br/>
+随机地从dict里面选择一个entry出来.不太清楚具体的用途.随机算法写得比较有意思的，
 首先针对index做random.然后针对冲突链上面再做一次random.
-</p>
+
 
 
 <pre class="src src-C++">/* Return a random entry from the hash table. Useful to
@@ -4993,18 +4655,14 @@ dictEntry *dictGetRandomKey(dict *d)
 </pre>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-3-24" class="outline-6">
-<h6 id="sec-1-9-10-3-24"><span class="section-number-6">1.9.10.3.24</span> dictGetIterator</h6>
-<div class="outline-text-6" id="text-1-9-10-3-24">
-
-<p>创建iterator并不是件非常麻烦的事情.对于safe这个字段的含义之前也解释清楚了。
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-3-24">dictGetIterator<br/>
+创建iterator并不是件非常麻烦的事情.对于safe这个字段的含义之前也解释清楚了。
 如果safe==0的话那么值允许在上面做一些只读操作比如dictFind和dictNext操作。
 但是如果safe==1的话那么允许在上面做一些读写操作比如dictAdd(但是似乎不能够应对dictDelete).
-</p>
+
 <p>
 NOTICE(dirlt):阅读rehashstep代码就会发现，如果是safe==1的话那么在dict
 上面iterator!=0,这样就不会触发rehash这个操作.
@@ -5033,16 +4691,12 @@ dictIterator *dictGetSafeIterator(dict *d) {
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-3-25">dictNext<br/>
+entry和nextEntry字段表示在外链冲突什么位置.table表示在ht(0)和ht(1).index表示在什么bucket上面.
 
-</div>
-
-<div id="outline-container-1-9-10-3-25" class="outline-6">
-<h6 id="sec-1-9-10-3-25"><span class="section-number-6">1.9.10.3.25</span> dictNext</h6>
-<div class="outline-text-6" id="text-1-9-10-3-25">
-
-<p>entry和nextEntry字段表示在外链冲突什么位置.table表示在ht(0)和ht(1).index表示在什么bucket上面.
-</p>
 
 
 <pre class="src src-C++">dictEntry *dictNext(dictIterator *iter)
@@ -5078,14 +4732,10 @@ dictIterator *dictGetSafeIterator(dict *d) {
 </pre>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-3-26" class="outline-6">
-<h6 id="sec-1-9-10-3-26"><span class="section-number-6">1.9.10.3.26</span> dictReleaseIterator</h6>
-<div class="outline-text-6" id="text-1-9-10-3-26">
-
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-3-26">dictReleaseIterator<br/>
 
 
 
@@ -5099,16 +4749,12 @@ dictIterator *dictGetSafeIterator(dict *d) {
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-3-27">dictPrintStats<br/>
+对于打印每一个hashtable比较琐碎.这里如果发现在rehash的话那么会打印两个hashtable.
 
-</div>
-
-<div id="outline-container-1-9-10-3-27" class="outline-6">
-<h6 id="sec-1-9-10-3-27"><span class="section-number-6">1.9.10.3.27</span> dictPrintStats</h6>
-<div class="outline-text-6" id="text-1-9-10-3-27">
-
-<p>对于打印每一个hashtable比较琐碎.这里如果发现在rehash的话那么会打印两个hashtable.
-</p>
 
 
 <pre class="src src-C++">void dictPrintStats(dict *d) {
@@ -5121,7 +4767,8 @@ dictIterator *dictGetSafeIterator(dict *d) {
 </pre>
 
 
-</div>
+</li>
+</ul>
 </div>
 
 </div>
@@ -5134,15 +4781,10 @@ dictIterator *dictGetSafeIterator(dict *d) {
 但是内部的话会尝试将字符串转换称为整数然后存储起来。对于字符串和整数存储的类型也是不尽相同的。
 在ziplist.c内部描述了是如何组织的。
 </p>
-
-</div>
-
-<div id="outline-container-1-9-10-4-1" class="outline-6">
-<h6 id="sec-1-9-10-4-1"><span class="section-number-6">1.9.10.4.1</span> Format</h6>
-<div class="outline-text-6" id="text-1-9-10-4-1">
-
-<p>关于内存组织的话直接看注释就可以了，解释得非常清楚。
-</p><ul>
+<ul>
+<li id="sec-1-9-10-4-1">Format<br/>
+关于内存组织的话直接看注释就可以了，解释得非常清楚。
+<ul>
 <li>zlbytes 表示占用了多少个字节
 </li>
 <li>zltail 表示末尾entry的offset
@@ -5229,14 +4871,10 @@ dictIterator *dictGetSafeIterator(dict *d) {
 </pre>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-4-2" class="outline-6">
-<h6 id="sec-1-9-10-4-2"><span class="section-number-6">1.9.10.4.2</span> defines</h6>
-<div class="outline-text-6" id="text-1-9-10-4-2">
-
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-2">defines<br/>
 
 
 
@@ -5277,16 +4915,12 @@ dictIterator *dictGetSafeIterator(dict *d) {
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-3">Interface<br/>
+操作接口还算是比较简洁的，大致都明白每个接口的含义。
 
-</div>
-
-<div id="outline-container-1-9-10-4-3" class="outline-6">
-<h6 id="sec-1-9-10-4-3"><span class="section-number-6">1.9.10.4.3</span> Interface</h6>
-<div class="outline-text-6" id="text-1-9-10-4-3">
-
-<p>操作接口还算是比较简洁的，大致都明白每个接口的含义。
-</p>
 
 
 <pre class="src src-C++">#define ZIPLIST_HEAD 0
@@ -5308,16 +4942,12 @@ size_t ziplistBlobLen(unsigned char *zl);
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-4">zipEntryEncoding<br/>
+根据这个entry得到对应的encoding.通过encoding可以知道这个entry的类型以及长度.
 
-</div>
-
-<div id="outline-container-1-9-10-4-4" class="outline-6">
-<h6 id="sec-1-9-10-4-4"><span class="section-number-6">1.9.10.4.4</span> zipEntryEncoding</h6>
-<div class="outline-text-6" id="text-1-9-10-4-4">
-
-<p>根据这个entry得到对应的encoding.通过encoding可以知道这个entry的类型以及长度.
-</p>
 
 
 <pre class="src src-C++">/* Return the encoding pointer to by 'p'. */
@@ -5336,16 +4966,12 @@ static unsigned int zipEntryEncoding(unsigned char *p) {
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-5">zipIntSize<br/>
+如果encoding是int的话，那么知道这个int占用的字节数.
 
-</div>
-
-<div id="outline-container-1-9-10-4-5" class="outline-6">
-<h6 id="sec-1-9-10-4-5"><span class="section-number-6">1.9.10.4.5</span> zipIntSize</h6>
-<div class="outline-text-6" id="text-1-9-10-4-5">
-
-<p>如果encoding是int的话，那么知道这个int占用的字节数.
-</p>
 
 
 <pre class="src src-C++">/* Return bytes needed to store integer encoded by 'encoding' */
@@ -5361,17 +4987,13 @@ static unsigned int zipIntSize(unsigned char encoding) {
 </pre>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-4-6" class="outline-6">
-<h6 id="sec-1-9-10-4-6"><span class="section-number-6">1.9.10.4.6</span> zipDecodeLength</h6>
-<div class="outline-text-6" id="text-1-9-10-4-6">
-
-<p>根据entry得到value的长度(return value)，同时得到表示这个长度所占用的字节数(lensize).
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-6">zipDecodeLength<br/>
+根据entry得到value的长度(return value)，同时得到表示这个长度所占用的字节数(lensize).
 算法非常直接而且也没有什么绕的地方.
-</p>
+
 
 
 <pre class="src src-C++">/* Decode the encoded length pointed by 'p'. If a pointer to 'lensize' is
@@ -5406,16 +5028,12 @@ static unsigned int zipDecodeLength(unsigned char *p, unsigned int *lensize) {
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-7">zipEncodeLength<br/>
+根据encoding以及长度rawlen写入内存.判断encoding是否为string/int,然后根据rawlen的范围然后打包.
 
-</div>
-
-<div id="outline-container-1-9-10-4-7" class="outline-6">
-<h6 id="sec-1-9-10-4-7"><span class="section-number-6">1.9.10.4.7</span> zipEncodeLength</h6>
-<div class="outline-text-6" id="text-1-9-10-4-7">
-
-<p>根据encoding以及长度rawlen写入内存.判断encoding是否为string/int,然后根据rawlen的范围然后打包.
-</p>
 
 
 <pre class="src src-C++">/* Encode the length 'l' writing it in 'p'. If p is NULL it just returns
@@ -5456,16 +5074,12 @@ static unsigned int zipEncodeLength(unsigned char *p, unsigned char encoding, un
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-8">zipPrevDecodeLength<br/>
+根据entry得到前面一个entry的长度.首先读取1个字节.返回字节长度(return value)以及占用字节数(lensize)
 
-</div>
-
-<div id="outline-container-1-9-10-4-8" class="outline-6">
-<h6 id="sec-1-9-10-4-8"><span class="section-number-6">1.9.10.4.8</span> zipPrevDecodeLength</h6>
-<div class="outline-text-6" id="text-1-9-10-4-8">
-
-<p>根据entry得到前面一个entry的长度.首先读取1个字节.返回字节长度(return value)以及占用字节数(lensize)
-</p>
 
 
 <pre class="src src-C++">/* Decode the length of the previous element stored at <span class="org-string">"p"</span>. */
@@ -5483,16 +5097,12 @@ static unsigned int zipPrevDecodeLength(unsigned char *p, unsigned int *lensize)
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-9">zipPrevEncodeLength<br/>
+encode前面一个entry的长度.返回占用了多少个字节.如果p==NULL的话那么仅仅是计算而不写
 
-</div>
-
-<div id="outline-container-1-9-10-4-9" class="outline-6">
-<h6 id="sec-1-9-10-4-9"><span class="section-number-6">1.9.10.4.9</span> zipPrevEncodeLength</h6>
-<div class="outline-text-6" id="text-1-9-10-4-9">
-
-<p>encode前面一个entry的长度.返回占用了多少个字节.如果p==NULL的话那么仅仅是计算而不写
-</p>
 
 
 <pre class="src src-C++">/* Encode the length of the previous entry and write it to <span class="org-string">"p"</span>. Return the
@@ -5515,16 +5125,12 @@ static unsigned int zipPrevEncodeLength(unsigned char *p, unsigned int len) {
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-10">zipPrevEncodeLengthForceLarge<br/>
+强制按照large size方式写入.
 
-</div>
-
-<div id="outline-container-1-9-10-4-10" class="outline-6">
-<h6 id="sec-1-9-10-4-10"><span class="section-number-6">1.9.10.4.10</span> zipPrevEncodeLengthForceLarge</h6>
-<div class="outline-text-6" id="text-1-9-10-4-10">
-
-<p>强制按照large size方式写入.
-</p>
 
 
 <pre class="src src-C++">/* Encode the length of the previous entry and write it to <span class="org-string">"p"</span>. This only
@@ -5538,16 +5144,12 @@ static void zipPrevEncodeLengthForceLarge(unsigned char *p, unsigned int len) {
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-11">zipPrevLenByteDiff<br/>
+如果修改前面一个entry的length的话会造成多少个字节变动.NOTICE(dirlt):这个应该是在修改时候使用的吧.
 
-</div>
-
-<div id="outline-container-1-9-10-4-11" class="outline-6">
-<h6 id="sec-1-9-10-4-11"><span class="section-number-6">1.9.10.4.11</span> zipPrevLenByteDiff</h6>
-<div class="outline-text-6" id="text-1-9-10-4-11">
-
-<p>如果修改前面一个entry的length的话会造成多少个字节变动.NOTICE(dirlt):这个应该是在修改时候使用的吧.
-</p>
 
 
 <pre class="src src-C++">/* Return the difference in number of bytes needed to store the new length
@@ -5560,16 +5162,12 @@ static int zipPrevLenByteDiff(unsigned char *p, unsigned int len) {
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-12">zipTryEncoding<br/>
+尝试将内容压缩称为int表示并且返回encoding.如果成功的话返回1否则0.
 
-</div>
-
-<div id="outline-container-1-9-10-4-12" class="outline-6">
-<h6 id="sec-1-9-10-4-12"><span class="section-number-6">1.9.10.4.12</span> zipTryEncoding</h6>
-<div class="outline-text-6" id="text-1-9-10-4-12">
-
-<p>尝试将内容压缩称为int表示并且返回encoding.如果成功的话返回1否则0.
-</p>
 
 
 <pre class="src src-C++">/* Check if string pointed to by 'entry' can be encoded as an integer.
@@ -5596,16 +5194,12 @@ static int zipTryEncoding(unsigned char *entry, unsigned int entrylen, long long
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-13">zipSaveInteger<br/>
+根据encoding来存储int.内部的话还是按照小端方式来进行存储.
 
-</div>
-
-<div id="outline-container-1-9-10-4-13" class="outline-6">
-<h6 id="sec-1-9-10-4-13"><span class="section-number-6">1.9.10.4.13</span> zipSaveInteger</h6>
-<div class="outline-text-6" id="text-1-9-10-4-13">
-
-<p>根据encoding来存储int.内部的话还是按照小端方式来进行存储.
-</p>
 
 
 <pre class="src src-C++">/* Store integer 'value' at 'p', encoded as 'encoding' */
@@ -5632,16 +5226,12 @@ static void zipSaveInteger(unsigned char *p, int64_t value, unsigned char encodi
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-14">zipLoadInteger<br/>
+根据encoding来载入int.注意这里也做了大小端的转变.
 
-</div>
-
-<div id="outline-container-1-9-10-4-14" class="outline-6">
-<h6 id="sec-1-9-10-4-14"><span class="section-number-6">1.9.10.4.14</span> zipLoadInteger</h6>
-<div class="outline-text-6" id="text-1-9-10-4-14">
-
-<p>根据encoding来载入int.注意这里也做了大小端的转变.
-</p>
 
 
 <pre class="src src-C++">/* Read integer encoded as 'encoding' from 'p' */
@@ -5669,16 +5259,12 @@ static int64_t zipLoadInteger(unsigned char *p, unsigned char encoding) {
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-15">zipEntry<br/>
+将entry载入内存生成zlentry结构.
 
-</div>
-
-<div id="outline-container-1-9-10-4-15" class="outline-6">
-<h6 id="sec-1-9-10-4-15"><span class="section-number-6">1.9.10.4.15</span> zipEntry</h6>
-<div class="outline-text-6" id="text-1-9-10-4-15">
-
-<p>将entry载入内存生成zlentry结构.
-</p>
 
 
 <pre class="src src-C++">/* Return a struct with all information about an entry. */
@@ -5694,16 +5280,12 @@ static zlentry zipEntry(unsigned char *p) {
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-16">zipRawEntryLength<br/>
+这个entry实际占用的字节数.
 
-</div>
-
-<div id="outline-container-1-9-10-4-16" class="outline-6">
-<h6 id="sec-1-9-10-4-16"><span class="section-number-6">1.9.10.4.16</span> zipRawEntryLength</h6>
-<div class="outline-text-6" id="text-1-9-10-4-16">
-
-<p>这个entry实际占用的字节数.
-</p>
 
 
 <pre class="src src-C++">/* Return the total number of bytes used by the entry at <span class="org-string">"p"</span>. */
@@ -5714,17 +5296,13 @@ static unsigned int zipRawEntryLength(unsigned char *p) {
 </pre>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-4-17" class="outline-6">
-<h6 id="sec-1-9-10-4-17"><span class="section-number-6">1.9.10.4.17</span> __ziplistCascadeUpdate</h6>
-<div class="outline-text-6" id="text-1-9-10-4-17">
-
-<p>这个发生在如果一个块被插入或者是某个块被删除，导致整个大小需要重新计算时候触发的。
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-17">__ziplistCascadeUpdate<br/>
+这个发生在如果一个块被插入或者是某个块被删除，导致整个大小需要重新计算时候触发的。
 这个更新可能是级联的。可以看到实现细节还是比较多的(比较琐碎).另外需要关注的就是什么时候break.
-</p><ul>
+<ul>
 <li>已经达到末尾
 </li>
 <li>长度没有发生变化
@@ -5818,17 +5396,13 @@ static unsigned char *__ziplistCascadeUpdate(unsigned char *zl, unsigned char *p
 </pre>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-4-18" class="outline-6">
-<h6 id="sec-1-9-10-4-18"><span class="section-number-6">1.9.10.4.18</span> __ziplistDelete</h6>
-<div class="outline-text-6" id="text-1-9-10-4-18">
-
-<p>删除从某个entry开始的num个.没有仔细地看(应该比较繁琐).直接修改头部一些信息并且memmove一下，
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-18">__ziplistDelete<br/>
+删除从某个entry开始的num个.没有仔细地看(应该比较繁琐).直接修改头部一些信息并且memmove一下，
 然后调用cascadeupdate来进行每个item的更新.
-</p>
+
 
 
 <pre class="src src-C++">/* Delete <span class="org-string">"num"</span> entries, starting at <span class="org-string">"p"</span>. Returns pointer to the ziplist. */
@@ -5887,16 +5461,12 @@ static unsigned char *__ziplistDelete(unsigned char *zl, unsigned char *p, unsig
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-19">__ziplistInsert<br/>
+在某个点之前插入.实现起来也是比较繁琐的没有细看.TODO(dirlt):仔细看看实现.应该是比较繁琐的.想必作者也花了不少时间.
 
-</div>
-
-<div id="outline-container-1-9-10-4-19" class="outline-6">
-<h6 id="sec-1-9-10-4-19"><span class="section-number-6">1.9.10.4.19</span> __ziplistInsert</h6>
-<div class="outline-text-6" id="text-1-9-10-4-19">
-
-<p>在某个点之前插入.实现起来也是比较繁琐的没有细看.TODO(dirlt):仔细看看实现.应该是比较繁琐的.想必作者也花了不少时间.
-</p>
 
 
 <pre class="src src-C++">/* Insert item at <span class="org-string">"p"</span>. */
@@ -5989,147 +5559,92 @@ static unsigned char *__ziplistInsert(unsigned char *zl, unsigned char *p, unsig
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-20">zipListNew<br/>
+TODO(dirlt):
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-21">zipListResize<br/>
+TODO(dirlt):
 
-<div id="outline-container-1-9-10-4-20" class="outline-6">
-<h6 id="sec-1-9-10-4-20"><span class="section-number-6">1.9.10.4.20</span> zipListNew</h6>
-<div class="outline-text-6" id="text-1-9-10-4-20">
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-22">ziplistPush<br/>
+TODO(dirlt):
 
-<p>TODO(dirlt):
-</p>
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-23">ziplistIndex<br/>
+TODO(dirlt):
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-24">ziplistNext<br/>
+TODO(dirlt):
 
-<div id="outline-container-1-9-10-4-21" class="outline-6">
-<h6 id="sec-1-9-10-4-21"><span class="section-number-6">1.9.10.4.21</span> zipListResize</h6>
-<div class="outline-text-6" id="text-1-9-10-4-21">
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-25">ziplistPrev<br/>
+TODO(dirlt):
 
-<p>TODO(dirlt):
-</p>
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-26">ziplistGet<br/>
+TODO(dirlt):
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-27">ziplistInsert<br/>
+TODO(dirlt):
 
-<div id="outline-container-1-9-10-4-22" class="outline-6">
-<h6 id="sec-1-9-10-4-22"><span class="section-number-6">1.9.10.4.22</span> ziplistPush</h6>
-<div class="outline-text-6" id="text-1-9-10-4-22">
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-28">ziplistDelete<br/>
+TODO(dirlt):
 
-<p>TODO(dirlt):
-</p>
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-29">ziplistDeleteRange<br/>
+TODO(dirlt):
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-30">ziplistCompare<br/>
+TODO(dirlt):
 
-<div id="outline-container-1-9-10-4-23" class="outline-6">
-<h6 id="sec-1-9-10-4-23"><span class="section-number-6">1.9.10.4.23</span> ziplistIndex</h6>
-<div class="outline-text-6" id="text-1-9-10-4-23">
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-31">ziplistLen<br/>
+TODO(dirlt):
 
-<p>TODO(dirlt):
-</p>
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-32">ziplistBlobLen<br/>
+TODO(dirlt):
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-4-33">ziplistRepr<br/>
+TODO(dirlt):
 
-<div id="outline-container-1-9-10-4-24" class="outline-6">
-<h6 id="sec-1-9-10-4-24"><span class="section-number-6">1.9.10.4.24</span> ziplistNext</h6>
-<div class="outline-text-6" id="text-1-9-10-4-24">
-
-<p>TODO(dirlt):
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-4-25" class="outline-6">
-<h6 id="sec-1-9-10-4-25"><span class="section-number-6">1.9.10.4.25</span> ziplistPrev</h6>
-<div class="outline-text-6" id="text-1-9-10-4-25">
-
-<p>TODO(dirlt):
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-4-26" class="outline-6">
-<h6 id="sec-1-9-10-4-26"><span class="section-number-6">1.9.10.4.26</span> ziplistGet</h6>
-<div class="outline-text-6" id="text-1-9-10-4-26">
-
-<p>TODO(dirlt):
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-4-27" class="outline-6">
-<h6 id="sec-1-9-10-4-27"><span class="section-number-6">1.9.10.4.27</span> ziplistInsert</h6>
-<div class="outline-text-6" id="text-1-9-10-4-27">
-
-<p>TODO(dirlt):
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-4-28" class="outline-6">
-<h6 id="sec-1-9-10-4-28"><span class="section-number-6">1.9.10.4.28</span> ziplistDelete</h6>
-<div class="outline-text-6" id="text-1-9-10-4-28">
-
-<p>TODO(dirlt):
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-4-29" class="outline-6">
-<h6 id="sec-1-9-10-4-29"><span class="section-number-6">1.9.10.4.29</span> ziplistDeleteRange</h6>
-<div class="outline-text-6" id="text-1-9-10-4-29">
-
-<p>TODO(dirlt):
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-4-30" class="outline-6">
-<h6 id="sec-1-9-10-4-30"><span class="section-number-6">1.9.10.4.30</span> ziplistCompare</h6>
-<div class="outline-text-6" id="text-1-9-10-4-30">
-
-<p>TODO(dirlt):
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-4-31" class="outline-6">
-<h6 id="sec-1-9-10-4-31"><span class="section-number-6">1.9.10.4.31</span> ziplistLen</h6>
-<div class="outline-text-6" id="text-1-9-10-4-31">
-
-<p>TODO(dirlt):
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-4-32" class="outline-6">
-<h6 id="sec-1-9-10-4-32"><span class="section-number-6">1.9.10.4.32</span> ziplistBlobLen</h6>
-<div class="outline-text-6" id="text-1-9-10-4-32">
-
-<p>TODO(dirlt):
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-4-33" class="outline-6">
-<h6 id="sec-1-9-10-4-33"><span class="section-number-6">1.9.10.4.33</span> ziplistRepr</h6>
-<div class="outline-text-6" id="text-1-9-10-4-33">
-
-<p>TODO(dirlt):
-</p>
-</div>
+</li>
+</ul>
 </div>
 
 </div>
@@ -6160,17 +5675,12 @@ static unsigned char *__ziplistInsert(unsigned char *zl, unsigned char *p, unsig
 </pre>
 
 
-
-</div>
-
-<div id="outline-container-1-9-10-5-1" class="outline-6">
-<h6 id="sec-1-9-10-5-1"><span class="section-number-6">1.9.10.5.1</span> Format</h6>
-<div class="outline-text-6" id="text-1-9-10-5-1">
-
-<p>注释开头有关于zipmap内部实现.还是比较好懂的。对于value部分的实际长度应该是&lt;len&gt;-&lt;free&gt;.
+<ul>
+<li id="sec-1-9-10-5-1">Format<br/>
+注释开头有关于zipmap内部实现.还是比较好懂的。对于value部分的实际长度应该是&lt;len&gt;-&lt;free&gt;.
 相对于ziplist实现来说zipmap还是更加简单一些。这里注意zmlen是entries的数目而不是大小
 这个可以通过阅读zipmapLen和zipmapBlobLen就可以发现。
-</p>
+
 
 
 
@@ -6212,16 +5722,12 @@ static unsigned char *__ziplistInsert(unsigned char *zl, unsigned char *p, unsig
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-5-2">Interface<br/>
+我们来看看zipmap提供的接口。粗略的看一下似乎基本上就是hashtable提供的接口(甚至相对于hashtable来说更加简单).
 
-</div>
-
-<div id="outline-container-1-9-10-5-2" class="outline-6">
-<h6 id="sec-1-9-10-5-2"><span class="section-number-6">1.9.10.5.2</span> Interface</h6>
-<div class="outline-text-6" id="text-1-9-10-5-2">
-
-<p>我们来看看zipmap提供的接口。粗略的看一下似乎基本上就是hashtable提供的接口(甚至相对于hashtable来说更加简单).
-</p>
 
 
 <pre class="src src-C++">#define ZIPMAP_BIGLEN 254
@@ -6249,26 +5755,18 @@ void zipmapRepr(unsigned char *p);
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-5-3">zipmapNew<br/>
+TODO(dirlt):
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-5-4">zipmapDecodeLength<br/>
+从k/v开头得到分配的字节数目.
 
-<div id="outline-container-1-9-10-5-3" class="outline-6">
-<h6 id="sec-1-9-10-5-3"><span class="section-number-6">1.9.10.5.3</span> zipmapNew</h6>
-<div class="outline-text-6" id="text-1-9-10-5-3">
-
-<p>TODO(dirlt):
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-5-4" class="outline-6">
-<h6 id="sec-1-9-10-5-4"><span class="section-number-6">1.9.10.5.4</span> zipmapDecodeLength</h6>
-<div class="outline-text-6" id="text-1-9-10-5-4">
-
-<p>从k/v开头得到分配的字节数目.
-</p>
 
 
 <pre class="src src-C++">/* Decode the encoded length pointed by 'p' */
@@ -6283,16 +5781,12 @@ static unsigned int zipmapDecodeLength(unsigned char *p) {
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-5-5">zipmapEncodeLength<br/>
+将len字节数目写入zipmap.
 
-</div>
-
-<div id="outline-container-1-9-10-5-5" class="outline-6">
-<h6 id="sec-1-9-10-5-5"><span class="section-number-6">1.9.10.5.5</span> zipmapEncodeLength</h6>
-<div class="outline-text-6" id="text-1-9-10-5-5">
-
-<p>将len字节数目写入zipmap.
-</p>
 
 
 <pre class="src src-C++">/* Encode the length 'l' writing it in 'p'. If p is NULL it just returns
@@ -6315,17 +5809,13 @@ static unsigned int zipmapEncodeLength(unsigned char *p, unsigned int len) {
 </pre>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-5-6" class="outline-6">
-<h6 id="sec-1-9-10-5-6"><span class="section-number-6">1.9.10.5.6</span> zipmapLookupRaw</h6>
-<div class="outline-text-6" id="text-1-9-10-5-6">
-
-<p>通过某个key查找到对应的entry.如果设置了totlen的话那么无论如何都会遍历完成得到大小.
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-5-6">zipmapLookupRaw<br/>
+通过某个key查找到对应的entry.如果设置了totlen的话那么无论如何都会遍历完成得到大小.
 如果匹配上的话那么返回查找到的entry,否则返回NULL.NOTICE(dirlt):逻辑还是比较诡异的.
-</p>
+
 
 
 
@@ -6368,17 +5858,13 @@ static unsigned char *zipmapLookupRaw(unsigned char *zm, unsigned char *key, uns
 </pre>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-5-7" class="outline-6">
-<h6 id="sec-1-9-10-5-7"><span class="section-number-6">1.9.10.5.7</span> zipmapRequiredLength</h6>
-<div class="outline-text-6" id="text-1-9-10-5-7">
-
-<p>对于分配这个kv的话需要分配多少内存.这个3还是比较诡异的，其实必要字段如果free是0的话，
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-5-7">zipmapRequiredLength<br/>
+对于分配这个kv的话需要分配多少内存.这个3还是比较诡异的，其实必要字段如果free是0的话，
 那么只是需要klen+vlen+1即可的.相当于多分配了2个字节吧:).
-</p>
+
 
 
 <pre class="src src-C++">static unsigned long zipmapRequiredLength(unsigned int klen, unsigned int vlen) {
@@ -6392,16 +5878,12 @@ static unsigned char *zipmapLookupRaw(unsigned char *zm, unsigned char *key, uns
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-5-8">zipmapRawKeyLength<br/>
+key占用的字节数.
 
-</div>
-
-<div id="outline-container-1-9-10-5-8" class="outline-6">
-<h6 id="sec-1-9-10-5-8"><span class="section-number-6">1.9.10.5.8</span> zipmapRawKeyLength</h6>
-<div class="outline-text-6" id="text-1-9-10-5-8">
-
-<p>key占用的字节数.
-</p>
 
 
 <pre class="src src-C++">/* Return the total amount used by a key (encoded length + payload) */
@@ -6412,16 +5894,12 @@ static unsigned int zipmapRawKeyLength(unsigned char *p) {
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-5-9">zipmapRawValueLength<br/>
+value占用的字节数.注意这里需要考虑1 byte的&lt;free&gt;字节.以及&lt;free&gt;字节表示的内容.
 
-</div>
-
-<div id="outline-container-1-9-10-5-9" class="outline-6">
-<h6 id="sec-1-9-10-5-9"><span class="section-number-6">1.9.10.5.9</span> zipmapRawValueLength</h6>
-<div class="outline-text-6" id="text-1-9-10-5-9">
-
-<p>value占用的字节数.注意这里需要考虑1 byte的&lt;free&gt;字节.以及&lt;free&gt;字节表示的内容.
-</p>
 
 
 <pre class="src src-C++">/* Return the total amount used by a value
@@ -6437,16 +5915,12 @@ static unsigned int zipmapRawValueLength(unsigned char *p) {
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-5-10">zipmapRawEntryLength<br/>
+得到整个entry的长度.得到key长度，越过key然后得到value长度.
 
-</div>
-
-<div id="outline-container-1-9-10-5-10" class="outline-6">
-<h6 id="sec-1-9-10-5-10"><span class="section-number-6">1.9.10.5.10</span> zipmapRawEntryLength</h6>
-<div class="outline-text-6" id="text-1-9-10-5-10">
-
-<p>得到整个entry的长度.得到key长度，越过key然后得到value长度.
-</p>
 
 
 <pre class="src src-C++">/* If 'p' points to a key, this function returns the total amount of
@@ -6459,16 +5933,12 @@ static unsigned int zipmapRawEntryLength(unsigned char *p) {
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-5-11">zipmapResize<br/>
+resize还包括了zipmap的delete之后的内存紧缩问题.
 
-</div>
-
-<div id="outline-container-1-9-10-5-11" class="outline-6">
-<h6 id="sec-1-9-10-5-11"><span class="section-number-6">1.9.10.5.11</span> zipmapResize</h6>
-<div class="outline-text-6" id="text-1-9-10-5-11">
-
-<p>resize还包括了zipmap的delete之后的内存紧缩问题.
-</p>
 
 
 <pre class="src src-C++">static inline unsigned char *zipmapResize(unsigned char *zm, unsigned int len) {
@@ -6479,16 +5949,12 @@ static unsigned int zipmapRawEntryLength(unsigned char *p) {
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-5-12">zipmapSet<br/>
+先来看看Set这个接口吧.如果不存在的话那么直接在末尾添加，否则会在远处进行修改(判断free部分是否可以容纳).
 
-</div>
-
-<div id="outline-container-1-9-10-5-12" class="outline-6">
-<h6 id="sec-1-9-10-5-12"><span class="section-number-6">1.9.10.5.12</span> zipmapSet</h6>
-<div class="outline-text-6" id="text-1-9-10-5-12">
-
-<p>先来看看Set这个接口吧.如果不存在的话那么直接在末尾添加，否则会在远处进行修改(判断free部分是否可以容纳).
-</p>
 
 
 <pre class="src src-C++">/* Set key to value, creating the key if it does not already exist.
@@ -6566,16 +6032,12 @@ unsigned char *zipmapSet(unsigned char *zm, unsigned char *key, unsigned int kle
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-5-13">zipmapDel<br/>
+然后在来看看Delete这个接口.对于delete来说相对于set更加简单直接进行memmove然后resize即可.
 
-</div>
-
-<div id="outline-container-1-9-10-5-13" class="outline-6">
-<h6 id="sec-1-9-10-5-13"><span class="section-number-6">1.9.10.5.13</span> zipmapDel</h6>
-<div class="outline-text-6" id="text-1-9-10-5-13">
-
-<p>然后在来看看Delete这个接口.对于delete来说相对于set更加简单直接进行memmove然后resize即可.
-</p>
 
 
 <pre class="src src-C++">/* Remove the specified key. If 'deleted' is not NULL the pointed integer is
@@ -6600,77 +6062,50 @@ unsigned char *zipmapDel(unsigned char *zm, unsigned char *key, unsigned int kle
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-5-14">zipmapRewind<br/>
+TODO(dirlt):
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-5-15">zipmapNext<br/>
+TODO(dirlt):
 
-<div id="outline-container-1-9-10-5-14" class="outline-6">
-<h6 id="sec-1-9-10-5-14"><span class="section-number-6">1.9.10.5.14</span> zipmapRewind</h6>
-<div class="outline-text-6" id="text-1-9-10-5-14">
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-5-16">zipmapGet<br/>
+TODO(dirlt):
 
-<p>TODO(dirlt):
-</p>
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-5-17">zipmapExists<br/>
+TODO(dirlt):
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-5-18">zipmapLen<br/>
+TODO(dirlt):
 
-<div id="outline-container-1-9-10-5-15" class="outline-6">
-<h6 id="sec-1-9-10-5-15"><span class="section-number-6">1.9.10.5.15</span> zipmapNext</h6>
-<div class="outline-text-6" id="text-1-9-10-5-15">
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-5-19">zipmapBlobLen<br/>
+TODO(dirlt):
 
-<p>TODO(dirlt):
-</p>
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-10-5-20">zipmapRepr<br/>
+TODO(dirlt):
 
-</div>
-
-<div id="outline-container-1-9-10-5-16" class="outline-6">
-<h6 id="sec-1-9-10-5-16"><span class="section-number-6">1.9.10.5.16</span> zipmapGet</h6>
-<div class="outline-text-6" id="text-1-9-10-5-16">
-
-<p>TODO(dirlt):
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-5-17" class="outline-6">
-<h6 id="sec-1-9-10-5-17"><span class="section-number-6">1.9.10.5.17</span> zipmapExists</h6>
-<div class="outline-text-6" id="text-1-9-10-5-17">
-
-<p>TODO(dirlt):
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-5-18" class="outline-6">
-<h6 id="sec-1-9-10-5-18"><span class="section-number-6">1.9.10.5.18</span> zipmapLen</h6>
-<div class="outline-text-6" id="text-1-9-10-5-18">
-
-<p>TODO(dirlt):
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-5-19" class="outline-6">
-<h6 id="sec-1-9-10-5-19"><span class="section-number-6">1.9.10.5.19</span> zipmapBlobLen</h6>
-<div class="outline-text-6" id="text-1-9-10-5-19">
-
-<p>TODO(dirlt):
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-9-10-5-20" class="outline-6">
-<h6 id="sec-1-9-10-5-20"><span class="section-number-6">1.9.10.5.20</span> zipmapRepr</h6>
-<div class="outline-text-6" id="text-1-9-10-5-20">
-
-<p>TODO(dirlt):
-</p>
-</div>
+</li>
+</ul>
 </div>
 </div>
 
@@ -6959,13 +6394,8 @@ lzf_decompress (const void *const in_data,  unsigned int in_len,
 
 <p>safe dynamic string.封装的字符串结构.在结构上面封装了很多对应的函数.
 </p>
-
-</div>
-
-<div id="outline-container-1-9-11-10-1" class="outline-6">
-<h6 id="sec-1-9-11-10-1"><span class="section-number-6">1.9.11.10.1</span> defines</h6>
-<div class="outline-text-6" id="text-1-9-11-10-1">
-
+<ul>
+<li id="sec-1-9-11-10-1">defines<br/>
 
 
 
@@ -6984,16 +6414,12 @@ struct sdshdr { // sds header.
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-11-10-2">Interface<br/>
+提供的函数大多数都非常简单，所以这里我们只是稍微看看。后面的话会针对某些比较有意思的接口看看实现。
 
-</div>
-
-<div id="outline-container-1-9-11-10-2" class="outline-6">
-<h6 id="sec-1-9-11-10-2"><span class="section-number-6">1.9.11.10.2</span> Interface</h6>
-<div class="outline-text-6" id="text-1-9-11-10-2">
-
-<p>提供的函数大多数都非常简单，所以这里我们只是稍微看看。后面的话会针对某些比较有意思的接口看看实现。
-</p>
 
 
 <pre class="src src-C++">static inline size_t sdslen(const sds s) {
@@ -7043,17 +6469,14 @@ sds *sdssplitargs(char *line, int *argc); // &#25286;&#20998;line&#31216;&#20026
 </pre>
 
 
-</div>
+</li>
+</ul>
+<ul>
+<li id="sec-1-9-11-10-3">Implementation<br/>
+TODO(dirlt):
 
-</div>
-
-<div id="outline-container-1-9-11-10-3" class="outline-6">
-<h6 id="sec-1-9-11-10-3"><span class="section-number-6">1.9.11.10.3</span> Implementation</h6>
-<div class="outline-text-6" id="text-1-9-11-10-3">
-
-<p>TODO(dirlt):
-</p>
-</div>
+</li>
+</ul>
 </div>
 </div>
 
@@ -7166,8 +6589,8 @@ vmpointer *vmSwapObjectBlocking(robj *val);
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-10-21T12:46+0800</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
+<p class="date">Date: 2013-11-29T08:06+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

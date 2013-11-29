@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="mysql"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-11-13T23:45+0800"/>
+<meta name="generated" content="2013-11-29T08:06+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -89,6 +89,7 @@
 </li>
 <li><a href="mysql.html#sec-1-4">1.4 超时重连</a></li>
 <li><a href="mysql.html#sec-1-5">1.5 连接数量</a></li>
+<li><a href="mysql.html#sec-1-6">1.6 配置选项</a></li>
 </ul>
 </li>
 </ul>
@@ -356,12 +357,25 @@ java.sql.SQLException: null,  message from server: "Can't create a new thread (e
 问题还是出在资源限制上面，可以通过修改开辟最大的进程数目来解决。可以参考链接 <a href="http://www.mysqlperformanceblog.com/2013/02/04/cant_create_thread_errno_11/">http://www.mysqlperformanceblog.com/2013/02/04/cant_create_thread_errno_11/</a> 
 </p>
 </div>
+
+</div>
+
+<div id="outline-container-1-6" class="outline-3">
+<h3 id="sec-1-6"><span class="section-number-3">1.6</span> 配置选项</h3>
+<div class="outline-text-3" id="text-1-6">
+
+<ul>
+<li>max_allowed_packet
+</li>
+</ul>
+
+</div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-11-13T23:45+0800</p>
+<p class="date">Date: 2013-11-29T08:06+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
