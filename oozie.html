@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="oozie"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-10-21T12:47+0800"/>
+<meta name="generated" content="2013-12-02T17:57+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -77,7 +77,7 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="oozie.html#sec-1">1 ozzie</a>
+<li><a href="oozie.html#sec-1">1 oozie</a>
 <ul>
 <li><a href="oozie.html#sec-1-1">1.1 overview</a></li>
 <li><a href="oozie.html#sec-1-2">1.2 deployment</a></li>
@@ -91,7 +91,7 @@
 </div>
 
 <div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> ozzie</h2>
+<h2 id="sec-1"><span class="section-number-2">1</span> oozie</h2>
 <div class="outline-text-2" id="text-1">
 
 
@@ -131,7 +131,7 @@
 <p>
 oozie工作方式也是启动一个mapper任务（这个任务启动真正任务）放在cluster上面运行。大致上来看的话需要几个文件：
 </p><ul>
-<li>workflow.xml ozzie读取它来知道每个任务DAG如何并且失败以及成功之后如何处理。需要提交到hdfs上面。
+<li>workflow.xml oozie读取它来知道每个任务DAG如何并且失败以及成功之后如何处理。需要提交到hdfs上面。
 </li>
 <li>coordinator.xml 如果是coordinator模式的话，还需要这个文件。需要提交到hdfs上面。
 </li>
@@ -141,8 +141,8 @@ oozie工作方式也是启动一个mapper任务（这个任务启动真正任务
 </li>
 </ul>
 
-<p>然后我们需要将这写文件提交到hdfs上面，然后使用ozzie启动。ozzie会提供一个回调url，启动的任务应该会定时向这些url进行汇报状态（回调），或者是
-ozzie去查询这些任务状态（这些任务应该也会内置httpserver）。（应该是通过回调方式完成 <a href="http://localhost/utils/oozie-2.3.2-cdh3u3/docs/WorkflowFunctionalSpec.html#a5_Oozie_Notifications">http://localhost/utils/oozie-2.3.2-cdh3u3/docs/WorkflowFunctionalSpec.html#a5_Oozie_Notifications</a> ，
+<p>然后我们需要将这写文件提交到hdfs上面，然后使用oozie启动。oozie会提供一个回调url，启动的任务应该会定时向这些url进行汇报状态（回调），或者是
+oozie去查询这些任务状态（这些任务应该也会内置httpserver）。（应该是通过回调方式完成 <a href="http://localhost/utils/oozie-2.3.2-cdh3u3/docs/WorkflowFunctionalSpec.html#a5_Oozie_Notifications">http://localhost/utils/oozie-2.3.2-cdh3u3/docs/WorkflowFunctionalSpec.html#a5_Oozie_Notifications</a> ，
 并且这里注意到oozie只是使用best-effort方式来做notification）。值得一提的就是oozie也有local-mode方便调试和测试。
 </p>
 <p>
@@ -664,8 +664,8 @@ NOTE（dirlt）：不过后来测试了一下之后，发现其实是可以观�
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-10-21T12:47+0800</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
+<p class="date">Date: 2013-12-02T17:57+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
