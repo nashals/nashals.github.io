@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="akka"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-12-02T19:56+0800"/>
+<meta name="generated" content="2013-12-03T17:51+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -95,11 +95,23 @@
 <li><a href="akka.html#sec-1-5">1.5 Supervision And Monitoring</a></li>
 <li><a href="akka.html#sec-1-6">1.6 Message Order and Delivery Guarantees</a></li>
 <li><a href="akka.html#sec-1-7">1.7 Location Transparency</a></li>
-<li><a href="akka.html#sec-1-8">1.8 Memory Model</a></li>
-<li><a href="akka.html#sec-1-9">1.9 Configuration</a></li>
-<li><a href="akka.html#sec-1-10">1.10 Transactors</a></li>
-<li><a href="akka.html#sec-1-11">1.11 Typed Channel</a></li>
-<li><a href="akka.html#sec-1-12">1.12 Typed Actor</a></li>
+<li><a href="akka.html#sec-1-8">1.8 Configuration</a></li>
+<li><a href="akka.html#sec-1-9">1.9 Dispatcher</a></li>
+<li><a href="akka.html#sec-1-10">1.10 Mailboxes</a></li>
+<li><a href="akka.html#sec-1-11">1.11 Routing</a></li>
+<li><a href="akka.html#sec-1-12">1.12 Transactors</a></li>
+<li><a href="akka.html#sec-1-13">1.13 Enhancement</a>
+<ul>
+<li><a href="akka.html#sec-1-13-1">1.13.1 Typed Channel</a></li>
+<li><a href="akka.html#sec-1-13-2">1.13.2 Typed Actor</a></li>
+<li><a href="akka.html#sec-1-13-3">1.13.3 FSM</a></li>
+<li><a href="akka.html#sec-1-13-4">1.13.4 Futures</a></li>
+<li><a href="akka.html#sec-1-13-5">1.13.5 Dataflow Concurrency</a></li>
+<li><a href="akka.html#sec-1-13-6">1.13.6 STM</a></li>
+<li><a href="akka.html#sec-1-13-7">1.13.7 Agents</a></li>
+</ul>
+</li>
+<li><a href="akka.html#sec-1-14">1.14 TroubleShooting</a></li>
 </ul>
 </li>
 </ul>
@@ -695,6 +707,7 @@ Termination
 
 
 
+
 <hr/>
 <p>
 Depending on the nature of the work to be supervised and the nature of the failure, the supervisor has a choice of the following four options:（监控发现失败的话通常会采取下面几种策略）
@@ -709,7 +722,8 @@ Depending on the nature of the work to be supervised and the nature of the failu
 </li>
 </ol>
 
-
+<p>This strategy cannot be changed afterwards as it is an integral part of the actor system’s structure.(策略一旦选定之后就不能够改变）
+</p>
 
 <hr/>
 <p>
@@ -888,10 +902,284 @@ We took the idea of transparency to the limit in that there is nearly no API for
 </div>
 
 <div id="outline-container-1-8" class="outline-3">
-<h3 id="sec-1-8"><span class="section-number-3">1.8</span> Memory Model</h3>
+<h3 id="sec-1-8"><span class="section-number-3">1.8</span> Configuration</h3>
 <div class="outline-text-3" id="text-1-8">
 
+<p>You can start using Akka without defining any configuration, since sensible default values are provided. Later on you might need to amend the settings to change the default behavior or adapt for specific runtime environments. Typical examples of settings that you might amend:
+</p><ul>
+<li>log level and logger backend 
+</li>
+<li>enable remoting
+</li>
+<li>message serializers
+</li>
+<li>definition of routers
+</li>
+<li>tuning of dispatchers
+</li>
+</ul>
+
+<p>Akka uses the <a href="https://github.com/typesafehub/config">Typesafe Config Library</a>, which might also be a good choice for the configuration of your own ap- plication or library built with or without Akka. This library is implemented in Java with no external dependencies. 格式称为 <a href="https://github.com/typesafehub/config/blob/master/HOCON.md">HOCON</a>
+</p>
+<p>
+While constructing an ac- tor system, you can either pass in a Config object or not, where the second case is equivalent to passing ConfigFactory.load() (with the right class loader). This means roughly that the default is to parse all application.conf, application.json and application.properties found at the root of the class path—please refer to the aforementioned documentation for details. The actor system then merges in all reference.conf resources found at the root of the class path to form the fallback configuration, i.e. it inter- nally uses appConfig.withFallback(ConfigFactory.defaultReference(classLoader)). The philosophy is that code never contains default values, but instead relies upon their presence in the reference.conf supplied with the library in question.
+配置表示成为Config对象，这个对象的创建会读取下面几个文件
+</p><ul>
+<li>application.conf
+</li>
+<li>application.json
+</li>
+<li>application.properties
+</li>
+<li><b>NOTE(dirlt):application允许通过config.*配置选项来修改指定</b> 
+</li>
+</ul>
+
+<p>对于那些找不到的属性会查询reference.conf，这是默认属性。Akka倾向所有变量都使用配置而不是在代码提供默认值。
+</p>
+<p>
+Akka’s configuration approach relies heavily on the notion of every module/jar having its own reference.conf file, all of these will be discovered by the configuration and loaded. Unfortunately this also means that if you put/merge multiple jars into the same jar, you need to merge all the reference.confs as well. Otherwise all defaults will be lost and Akka will not function.（可是需要注意如果打包成为fatjar的话，reference.conf可能会覆盖）
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-9" class="outline-3">
+<h3 id="sec-1-9"><span class="section-number-3">1.9</span> Dispatcher</h3>
+<div class="outline-text-3" id="text-1-9">
+
+<p>An Akka MessageDispatcher is what makes Akka Actors “tick”, it is the engine of the machine so to speak. All MessageDispatcher implementations are also an ExecutionContext, which means that they can be used to execute arbitrary code, for instance Futures.(Dispatcher让整个Akka运行起来）。There are 4 different types of message dispatchers：
+</p><ul>
+<li>Dispatcher（默认）
 <ul>
+<li>This is an event-based dispatcher that binds a set of Actors to a thread pool. It is the default dispatcher used if one is not specified.
+</li>
+<li>Sharability: Unlimited
+</li>
+<li>Mailboxes: Any, creates one per Actor
+</li>
+<li>Use cases: Default dispatcher, Bulkheading
+</li>
+<li>Driven by: java.util.concurrent.ExecutorService specify  using “ex-ecutor” using “fork-join-executor”, “thread-pool-executor” or the FQCN of an akka.dispatcher.ExecutorServiceConfigurator
+
+</li>
+</ul>
+
+</li>
+<li>PinnedDispatcher
+<ul>
+<li>This dispatcher dedicates a unique thread for each actor using it; i.e. each actor will have its own thread pool with only one thread in the pool.
+</li>
+<li>Sharability: None
+</li>
+<li>Mailboxes: Any, creates one per Actor
+</li>
+<li>Use cases: Bulkheading
+</li>
+<li>Driven by: Any akka.dispatch.ThreadPoolExecutorConfigurator by default a “thread-pool-executor”
+
+</li>
+</ul>
+
+</li>
+<li>BalancingDispatcher
+<ul>
+<li>This is an executor based event driven dispatcher that will try to redistribute work from busy actors to idle actors.
+</li>
+<li>All the actors share a single Mailbox that they get their messages from.
+</li>
+<li>It is assumed that all actors using the same instance of this dispatcher can process all messages that have been sent to one of the actors; i.e. the actors belong to a pool of actors, and to the client there is no guarantee about which actor instance actually processes a given message.
+</li>
+<li>Sharability: Actors of the same type only
+</li>
+<li>Mailboxes: Any, creates one for all Actors
+</li>
+<li>Use cases: Work-sharing
+</li>
+<li>Driven by: java.util.concurrent.ExecutorService specify using “ex-ecutor” using “fork-join-executor”, “thread-pool-executor” or the FQCN of an akka.dispatcher.ExecutorServiceConfigurator
+</li>
+<li><b>Note that you can not use a BalancingDispatcher as a Router Dispatcher. (You can however use it for the Routees)</b>
+
+</li>
+</ul>
+
+</li>
+<li>CallingThreadDispatcher
+<ul>
+<li>This dispatcher runs invocations on the current thread only. This dispatcher does not create any new threads, but it can be used from different threads concurrently for the same actor. See CallingThread-Dispatcher for details and restrictions.
+</li>
+<li>Sharability: Unlimited
+</li>
+<li>Mailboxes: Any, creates one per Actor per Thread (on demand)
+</li>
+<li>Use cases: Testing
+</li>
+<li>Driven by: The calling thread (duh)
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+<p>
+可以通过 <b>system.dispatchers.lookup</b> 来定位dispatcher
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-10" class="outline-3">
+<h3 id="sec-1-10"><span class="section-number-3">1.10</span> Mailboxes</h3>
+<div class="outline-text-3" id="text-1-10">
+
+<p>Akka comes shipped with a number of mailbox implementations:
+</p><ul>
+<li>UnboundedMailbox - The default mailbox
+<ul>
+<li>Backed by a java.util.concurrent.ConcurrentLinkedQueue
+</li>
+<li>Blocking: No
+</li>
+<li>Bounded: No
+</li>
+<li>Configuration name: “unbounded” or “akka.dispatch.UnboundedMailbox”
+
+</li>
+</ul>
+
+</li>
+<li>SingleConsumerOnlyUnboundedMailbox
+<ul>
+<li>Backed by a very efficient Multiple Producer Single Consumer queue, cannot be used withingDispatcher
+</li>
+<li>Blocking: No
+</li>
+<li>Bounded: No
+</li>
+<li>Configuration name: “akka.dispatch.SingleConsumerOnlyUnboundedMailbox”
+
+</li>
+</ul>
+
+</li>
+<li>BoundedMailbox
+<ul>
+<li>Backed by a java.util.concurrent.LinkedBlockingQueue
+</li>
+<li>Blocking: Yes
+</li>
+<li>Bounded: Yes
+</li>
+<li>Configuration name: “bounded” or “akka.dispatch.BoundedMailbox”
+
+</li>
+</ul>
+
+</li>
+<li>UnboundedPriorityMailbox
+<ul>
+<li>Backed by a java.util.concurrent.PriorityBlockingQueue
+</li>
+<li>Blocking: Yes
+</li>
+<li>Bounded: No
+</li>
+<li>Configuration name: “akka.dispatch.UnboundedPriorityMailbox”
+
+</li>
+</ul>
+
+</li>
+<li>BoundedPriorityMailbox
+<ul>
+<li>Backed by a java.util.PriorityBlockingQueue wrapped in an akka.util.BoundedBlockingQueue
+</li>
+<li>Blocking: Yes
+</li>
+<li>Bounded: Yes
+</li>
+<li>Configuration name: “akka.dispatch.BoundedPriorityMailbox”
+
+</li>
+</ul>
+
+</li>
+<li>Durable mailboxes, see Durable Mailboxes.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-11" class="outline-3">
+<h3 id="sec-1-11"><span class="section-number-3">1.11</span> Routing</h3>
+<div class="outline-text-3" id="text-1-11">
+
+<p>A Router is an actor that receives messages and efficiently routes them to other actors, known as its routees. Different routing strategies can be used, according to your application’s needs. Akka comes with several useful routing strategies right out of the box. But, as you will see in this chapter, it is also possible to create your own. The routers shipped with Akka are:
+</p><ul>
+<li>akka.routing.RoundRobinRouter. Routes in a round-robin fashion to its routees.
+</li>
+<li>akka.routing.RandomRouter. As the name implies this router type selects one of its routees randomly and forwards the message it receives to this routee. 
+</li>
+<li>akka.routing.SmallestMailboxRouter. A Router that tries to send to the non-suspended routee with fewest messages in mailbox. The selection is done in this order:
+<ul>
+<li>pick any idle routee (not processing message) with empty mailbox
+</li>
+<li>pick any routee with empty mailbox
+</li>
+<li>pick routee with fewest pending messages in mailbox
+</li>
+<li>pick any remote routee, remote actors are consider lowest priority, since their mailbox size is unknown
+</li>
+</ul>
+
+</li>
+<li>akka.routing.BroadcastRouter. A broadcast router forwards the message it receives to all its routees.
+</li>
+<li>akka.routing.ScatterGatherFirstCompletedRouter. The ScatterGatherFirstCompletedRouter will send the message on to all its routees as a future. It then waits for first result it gets back. This result will be sent back to original sender.
+</li>
+<li>akka.routing.ConsistentHashingRouter. The ConsistentHashingRouter uses consistent hashing to select a connection based on the sent message.
+</li>
+</ul>
+
+
+<p>
+Routers, Routees and Senders
+</p><ul>
+<li>Sending a message to a router is easy. "router ! MyMsg". A router actor forwards messages to its routees according to its routing policy.
+</li>
+<li>The router forwards messages onto its routees without changing the original sender. When a routee replies to a routed message, the reply will be sent to the original sender, not to the router.(直接返回给sender而不会经过router） <b>NOTE（dirlt）：也有办法回复给router</b>
+</li>
+<li>When a router creates routees, they are created as the routers children. This gives each routee its own identity in the actor system.
+</li>
+</ul>
+
+
+<p>
+Handling for Special Messages
+</p><ul>
+<li>Broadcast Messages. A Broadcast message can be used to send a message to all of a router’s routees. When a router receives a Broadcast message, it will broadcast that message’s payload to all routees, no matter how that router would normally route its messages.
+</li>
+<li>PoisonPill Messages. A PoisonPill message has special handling for all actors, including for routers. When any actor receives a PoisonPill message, that actor will be stopped. <b>For a router, which normally passes on messages to routees, it is important to realised that PoisonPill messages are processed by the router only. PoisonPill messages sent to a router will not be sent on to routees.</b>
+</li>
+<li>Kill Messages. Kill messages are another type of message that has special handling. <b>When a Kill message is sent to a router the router processes the message internally, and does not send it on to its routees.</b> The router will throw an ActorKilledException and fail. It will then be either resumed, restarted or terminated, depending how it is supervised.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-12" class="outline-3">
+<h3 id="sec-1-12"><span class="section-number-3">1.12</span> Transactors</h3>
+<div class="outline-text-3" id="text-1-12">
+
+<p>Memory Model
+</p><ul>
 <li>Java
 <ul>
 <li>The monitor lock rule: a release of a lock happens before every subsequent acquire of the same lock.
@@ -933,80 +1221,82 @@ We took the idea of transparency to the limit in that there is nearly no API for
 
 </div>
 
-<div id="outline-container-1-9" class="outline-3">
-<h3 id="sec-1-9"><span class="section-number-3">1.9</span> Configuration</h3>
-<div class="outline-text-3" id="text-1-9">
+<div id="outline-container-1-13" class="outline-3">
+<h3 id="sec-1-13"><span class="section-number-3">1.13</span> Enhancement</h3>
+<div class="outline-text-3" id="text-1-13">
 
-<p>You can start using Akka without defining any configuration, since sensible default values are provided. Later on you might need to amend the settings to change the default behavior or adapt for specific runtime environments. Typical examples of settings that you might amend:
-</p><ul>
-<li>log level and logger backend 
-</li>
-<li>enable remoting
-</li>
-<li>message serializers
-</li>
-<li>definition of routers
-</li>
-<li>tuning of dispatchers
-</li>
-</ul>
-
-<p>Akka uses the <a href="https://github.com/typesafehub/config">Typesafe Config Library</a>, which might also be a good choice for the configuration of your own ap- plication or library built with or without Akka. This library is implemented in Java with no external dependencies. 格式称为 <a href="https://github.com/typesafehub/config/blob/master/HOCON.md">HOCON</a>
-</p>
-<p>
-While constructing an ac- tor system, you can either pass in a Config object or not, where the second case is equivalent to passing ConfigFactory.load() (with the right class loader). This means roughly that the default is to parse all application.conf, application.json and application.properties found at the root of the class path—please refer to the aforementioned documentation for details. The actor system then merges in all reference.conf resources found at the root of the class path to form the fallback configuration, i.e. it inter- nally uses appConfig.withFallback(ConfigFactory.defaultReference(classLoader)). The philosophy is that code never contains default values, but instead relies upon their presence in the reference.conf supplied with the library in question.
-配置表示成为Config对象，这个对象的创建会读取下面几个文件
-</p><ul>
-<li>application.conf
-</li>
-<li>application.json
-</li>
-<li>application.properties
-</li>
-<li><b>NOTE(dirlt):application允许通过config.*配置选项来修改指定</b> 
-</li>
-</ul>
-
-<p>对于那些找不到的属性会查询reference.conf，这是默认属性。Akka倾向所有变量都使用配置而不是在代码提供默认值。
-</p>
-<p>
-Akka’s configuration approach relies heavily on the notion of every module/jar having its own reference.conf file, all of these will be discovered by the configuration and loaded. Unfortunately this also means that if you put/merge multiple jars into the same jar, you need to merge all the reference.confs as well. Otherwise all defaults will be lost and Akka will not function.（可是需要注意如果打包成为fatjar的话，reference.conf可能会覆盖）
-</p>
-</div>
 
 </div>
 
-<div id="outline-container-1-10" class="outline-3">
-<h3 id="sec-1-10"><span class="section-number-3">1.10</span> Transactors</h3>
-<div class="outline-text-3" id="text-1-10">
+<div id="outline-container-1-13-1" class="outline-4">
+<h4 id="sec-1-13-1"><span class="section-number-4">1.13.1</span> Typed Channel</h4>
+<div class="outline-text-4" id="text-1-13-1">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-11" class="outline-3">
-<h3 id="sec-1-11"><span class="section-number-3">1.11</span> Typed Channel</h3>
-<div class="outline-text-3" id="text-1-11">
+<div id="outline-container-1-13-2" class="outline-4">
+<h4 id="sec-1-13-2"><span class="section-number-4">1.13.2</span> Typed Actor</h4>
+<div class="outline-text-4" id="text-1-13-2">
 
-<p>在actor之间通信的channel上指定类型 TODO(dirlt)
-</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-13-3" class="outline-4">
+<h4 id="sec-1-13-3"><span class="section-number-4">1.13.3</span> FSM</h4>
+<div class="outline-text-4" id="text-1-13-3">
+
 </div>
 
 </div>
 
-<div id="outline-container-1-12" class="outline-3">
-<h3 id="sec-1-12"><span class="section-number-3">1.12</span> Typed Actor</h3>
-<div class="outline-text-3" id="text-1-12">
+<div id="outline-container-1-13-4" class="outline-4">
+<h4 id="sec-1-13-4"><span class="section-number-4">1.13.4</span> Futures</h4>
+<div class="outline-text-4" id="text-1-13-4">
 
-<p>在actor上指定类型。优势和劣势有点类似静态类型语言和动态类型语言之间的对比。 TODO(dirlt)
-</p>
 </div>
+
+</div>
+
+<div id="outline-container-1-13-5" class="outline-4">
+<h4 id="sec-1-13-5"><span class="section-number-4">1.13.5</span> Dataflow Concurrency</h4>
+<div class="outline-text-4" id="text-1-13-5">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-13-6" class="outline-4">
+<h4 id="sec-1-13-6"><span class="section-number-4">1.13.6</span> STM</h4>
+<div class="outline-text-4" id="text-1-13-6">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-13-7" class="outline-4">
+<h4 id="sec-1-13-7"><span class="section-number-4">1.13.7</span> Agents</h4>
+<div class="outline-text-4" id="text-1-13-7">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-14" class="outline-3">
+<h3 id="sec-1-14"><span class="section-number-3">1.14</span> TroubleShooting</h3>
+<div class="outline-text-3" id="text-1-14">
+
+<p>TODO(dirlt):
+</p></div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-12-02T19:56+0800</p>
+<p class="date">Date: 2013-12-03T17:51+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
