@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="hbase"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-11-13T23:45+0800"/>
+<meta name="generated" content="2013-12-05T15:33+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -109,91 +109,93 @@
 <li><a href="hbase.html#sec-1-2-6">1.2.6 python client</a></li>
 <li><a href="hbase.html#sec-1-2-7">1.2.7 获取集群运行状况</a></li>
 <li><a href="hbase.html#sec-1-2-8">1.2.8 bulk load</a></li>
+<li><a href="hbase.html#sec-1-2-9">1.2.9 hbase merge</a></li>
 </ul>
 </li>
-<li><a href="hbase.html#sec-1-3">1.3 日志分析</a>
+<li><a href="hbase.html#sec-1-3">1.3 TroubleShooting</a></li>
+<li><a href="hbase.html#sec-1-4">1.4 日志分析</a>
 <ul>
-<li><a href="hbase.html#sec-1-3-1">1.3.1 output error</a></li>
-<li><a href="hbase.html#sec-1-3-2">1.3.2 zookeeper session expired</a></li>
-<li><a href="hbase.html#sec-1-3-3">1.3.3 lease expired exception</a></li>
-<li><a href="hbase.html#sec-1-3-4">1.3.4 filesystem not available</a></li>
-<li><a href="hbase.html#sec-1-3-5">1.3.5 error block recovery</a></li>
+<li><a href="hbase.html#sec-1-4-1">1.4.1 output error</a></li>
+<li><a href="hbase.html#sec-1-4-2">1.4.2 zookeeper session expired</a></li>
+<li><a href="hbase.html#sec-1-4-3">1.4.3 lease expired exception</a></li>
+<li><a href="hbase.html#sec-1-4-4">1.4.4 filesystem not available</a></li>
+<li><a href="hbase.html#sec-1-4-5">1.4.5 error block recovery</a></li>
 </ul>
 </li>
-<li><a href="hbase.html#sec-1-4">1.4 代码分析</a>
+<li><a href="hbase.html#sec-1-5">1.5 代码分析</a>
 <ul>
-<li><a href="hbase.html#sec-1-4-1">1.4.1 put限制</a></li>
-<li><a href="hbase.html#sec-1-4-2">1.4.2 put分析</a></li>
-<li><a href="hbase.html#sec-1-4-3">1.4.3 HBaseConfiguration</a></li>
+<li><a href="hbase.html#sec-1-5-1">1.5.1 put限制</a></li>
+<li><a href="hbase.html#sec-1-5-2">1.5.2 put分析</a></li>
+<li><a href="hbase.html#sec-1-5-3">1.5.3 HBaseConfiguration</a></li>
 </ul>
 </li>
-<li><a href="hbase.html#sec-1-5">1.5 Apache HBase Configuration</a>
+<li><a href="hbase.html#sec-1-6">1.6 Apache HBase Configuration</a>
 <ul>
-<li><a href="hbase.html#sec-1-5-1">1.5.1 core</a></li>
-<li><a href="hbase.html#sec-1-5-2">1.5.2 master</a></li>
-<li><a href="hbase.html#sec-1-5-3">1.5.3 regionserver</a></li>
-<li><a href="hbase.html#sec-1-5-4">1.5.4 client</a></li>
-<li><a href="hbase.html#sec-1-5-5">1.5.5 zookeeper</a></li>
+<li><a href="hbase.html#sec-1-6-1">1.6.1 core</a></li>
+<li><a href="hbase.html#sec-1-6-2">1.6.2 master</a></li>
+<li><a href="hbase.html#sec-1-6-3">1.6.3 regionserver</a></li>
+<li><a href="hbase.html#sec-1-6-4">1.6.4 client</a></li>
+<li><a href="hbase.html#sec-1-6-5">1.6.5 zookeeper</a></li>
 </ul>
 </li>
-<li><a href="hbase.html#sec-1-6">1.6 HBase: The Definitive Guide</a>
+<li><a href="hbase.html#sec-1-7">1.7 HBase: The Definitive Guide</a>
 <ul>
-<li><a href="hbase.html#sec-1-6-1">1.6.1 Preface</a></li>
-<li><a href="hbase.html#sec-1-6-2">1.6.2 Chapter 1. Introduction</a></li>
-<li><a href="hbase.html#sec-1-6-3">1.6.3 Chapter 2. Installation</a>
+<li><a href="hbase.html#sec-1-7-1">1.7.1 Preface</a></li>
+<li><a href="hbase.html#sec-1-7-2">1.7.2 Chapter 1. Introduction</a></li>
+<li><a href="hbase.html#sec-1-7-3">1.7.3 Chapter 2. Installation</a>
 <ul>
-<li><a href="hbase.html#sec-1-6-3-1">1.6.3.1 Hardware</a>
+<li><a href="hbase.html#sec-1-7-3-1">1.7.3.1 Hardware</a>
 <ul>
-<li><a href="hbase.html#sec-1-6-3-1-1">1.6.3.1.1 CPU</a></li>
-<li><a href="hbase.html#sec-1-6-3-1-2">1.6.3.1.2 Memory</a></li>
-<li><a href="hbase.html#sec-1-6-3-1-3">1.6.3.1.3 Disks</a></li>
-<li><a href="hbase.html#sec-1-6-3-1-4">1.6.3.1.4 Chassis</a></li>
+<li><a href="hbase.html#sec-1-7-3-1-1">1.7.3.1.1 CPU</a></li>
+<li><a href="hbase.html#sec-1-7-3-1-2">1.7.3.1.2 Memory</a></li>
+<li><a href="hbase.html#sec-1-7-3-1-3">1.7.3.1.3 Disks</a></li>
+<li><a href="hbase.html#sec-1-7-3-1-4">1.7.3.1.4 Chassis</a></li>
 </ul>
 </li>
-<li><a href="hbase.html#sec-1-6-3-2">1.6.3.2 Networking</a></li>
-<li><a href="hbase.html#sec-1-6-3-3">1.6.3.3 Software</a>
+<li><a href="hbase.html#sec-1-7-3-2">1.7.3.2 Networking</a></li>
+<li><a href="hbase.html#sec-1-7-3-3">1.7.3.3 Software</a>
 <ul>
-<li><a href="hbase.html#sec-1-6-3-3-1">1.6.3.3.1 Operating System</a></li>
-<li><a href="hbase.html#sec-1-6-3-3-2">1.6.3.3.2 File System</a></li>
+<li><a href="hbase.html#sec-1-7-3-3-1">1.7.3.3.1 Operating System</a></li>
+<li><a href="hbase.html#sec-1-7-3-3-2">1.7.3.3.2 File System</a></li>
 </ul></li>
 </ul>
 </li>
-<li><a href="hbase.html#sec-1-6-4">1.6.4 Chapter 3. Client API: The Basics</a>
+<li><a href="hbase.html#sec-1-7-4">1.7.4 Chapter 3. Client API: The Basics</a>
 <ul>
-<li><a href="hbase.html#sec-1-6-4-1">1.6.4.1 General Notes</a></li>
+<li><a href="hbase.html#sec-1-7-4-1">1.7.4.1 General Notes</a></li>
 </ul>
 </li>
-<li><a href="hbase.html#sec-1-6-5">1.6.5 Chapter 4. Client API: Advanced Features</a></li>
-<li><a href="hbase.html#sec-1-6-6">1.6.6 Chapter 5. Client API: Administrative Features</a></li>
-<li><a href="hbase.html#sec-1-6-7">1.6.7 Chapter 6. Available Clients</a></li>
-<li><a href="hbase.html#sec-1-6-8">1.6.8 Chapter 7. MapReduce Integration</a>
+<li><a href="hbase.html#sec-1-7-5">1.7.5 Chapter 4. Client API: Advanced Features</a></li>
+<li><a href="hbase.html#sec-1-7-6">1.7.6 Chapter 5. Client API: Administrative Features</a></li>
+<li><a href="hbase.html#sec-1-7-7">1.7.7 Chapter 6. Available Clients</a></li>
+<li><a href="hbase.html#sec-1-7-8">1.7.8 Chapter 7. MapReduce Integration</a>
 <ul>
-<li><a href="hbase.html#sec-1-6-8-1">1.6.8.1 MapReduce Locality</a></li>
+<li><a href="hbase.html#sec-1-7-8-1">1.7.8.1 MapReduce Locality</a></li>
 </ul>
 </li>
-<li><a href="hbase.html#sec-1-6-9">1.6.9 Chapter 8. Architecture</a>
+<li><a href="hbase.html#sec-1-7-9">1.7.9 Chapter 8. Architecture</a>
 <ul>
-<li><a href="hbase.html#sec-1-6-9-1">1.6.9.1 Storage</a></li>
-<li><a href="hbase.html#sec-1-6-9-2">1.6.9.2 Files</a></li>
-<li><a href="hbase.html#sec-1-6-9-3">1.6.9.3 HFile</a></li>
-<li><a href="hbase.html#sec-1-6-9-4">1.6.9.4 Compactions</a>
+<li><a href="hbase.html#sec-1-7-9-1">1.7.9.1 Storage</a></li>
+<li><a href="hbase.html#sec-1-7-9-2">1.7.9.2 Files</a></li>
+<li><a href="hbase.html#sec-1-7-9-3">1.7.9.3 HFile</a></li>
+<li><a href="hbase.html#sec-1-7-9-4">1.7.9.4 Compactions</a>
 <ul>
-<li><a href="hbase.html#sec-1-6-9-4-1">1.6.9.4.1 Minor</a></li>
-<li><a href="hbase.html#sec-1-6-9-4-2">1.6.9.4.2 Major</a></li>
+<li><a href="hbase.html#sec-1-7-9-4-1">1.7.9.4.1 Minor</a></li>
+<li><a href="hbase.html#sec-1-7-9-4-2">1.7.9.4.2 Major</a></li>
 </ul>
 </li>
-<li><a href="hbase.html#sec-1-6-9-5">1.6.9.5 WAL</a>
+<li><a href="hbase.html#sec-1-7-9-5">1.7.9.5 WAL</a>
 <ul>
-<li><a href="hbase.html#sec-1-6-9-5-1">1.6.9.5.1 Format</a></li>
-<li><a href="hbase.html#sec-1-6-9-5-2">1.6.9.5.2 LogRoller</a></li>
-<li><a href="hbase.html#sec-1-6-9-5-3">1.6.9.5.3 LogSyncer</a></li>
-<li><a href="hbase.html#sec-1-6-9-5-4">1.6.9.5.4 Replay</a></li>
+<li><a href="hbase.html#sec-1-7-9-5-1">1.7.9.5.1 Format</a></li>
+<li><a href="hbase.html#sec-1-7-9-5-2">1.7.9.5.2 LogRoller</a></li>
+<li><a href="hbase.html#sec-1-7-9-5-3">1.7.9.5.3 LogSyncer</a></li>
+<li><a href="hbase.html#sec-1-7-9-5-4">1.7.9.5.4 Replay</a></li>
 </ul>
 </li>
-<li><a href="hbase.html#sec-1-6-9-6">1.6.9.6 Region</a></li>
+<li><a href="hbase.html#sec-1-7-9-6">1.7.9.6 Region</a></li>
 </ul>
 </li>
-<li><a href="hbase.html#sec-1-6-10">1.6.10 Chapter 9. Advanced Usage</a></li>
+<li><a href="hbase.html#sec-1-7-10">1.7.10 Chapter 9. Advanced Usage</a></li>
 </ul>
 </li>
 </ul>
@@ -346,7 +348,6 @@ The reason it works is that if you add a Callback on a Deferred that already has
 <br/>
 So everything is fine :)<br/>
 </p>
-
 
 
 </div>
@@ -1048,7 +1049,7 @@ fusion iomemory 是类似 ssd的东西， <b>操作速度接近DRAM，成本更�
 <ul>
 <li>默认检查hbase状态
 </li>
-<li>如果出现不一致状态，可以使用参数 -fix 来修复
+<li>如果出现不一致状态，可以使用参数 -fix 来修复 <b>NOTE（dirlt）：存在丢失数据的风险</b>
 </li>
 </ul>
 
@@ -1193,20 +1194,102 @@ thrift.Thrift.TApplicationException: Invalid method name: 'scannerOpenWithScan'
 
 
 </div>
+
+</div>
+
+<div id="outline-container-1-2-9" class="outline-4">
+<h4 id="sec-1-2-9"><span class="section-number-4">1.2.9</span> hbase merge</h4>
+<div class="outline-text-4" id="text-1-2-9">
+
+<ul>
+<li><b>NOTE(dirlt):需要停表或者是停集群</b>
+</li>
+<li>hbase org.apache.hadoop.hbase.util.Merge &lt;table&gt; &lt;region1&gt; &lt;region2&gt;
+</li>
+<li>工作原理大致是
+<ol>
+<li>读取region1,region2对应hbase的目录下面数据文件
+</li>
+<li>检查.regioninfo是否相连
+</li>
+<li>合并文件内容输出到另外一个目录下面
+</li>
+<li>修改hbase的.META文件信息
+</li>
+</ol>
+
+</li>
+<li><b>NOTE（dirlt）：这个对于修复数据非常有效</b>
+</li>
+</ul>
+
+</div>
 </div>
 
 </div>
 
 <div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> 日志分析</h3>
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> TroubleShooting</h3>
 <div class="outline-text-3" id="text-1-3">
+
+<p>region一直assign不上，观察曾经尝试被assigned的节点出现下面的错误
+</p>
+
+
+<pre class="example">java.io.IOException: java.io.IOException: java.io.FileNotFoundException: File does not exist: /hbase/installhistory/2f1b909bb15ce5960d72a1773902085c/install/240086423354424bb32d647fab6f9b98
+        at org.apache.hadoop.hdfs.server.namenode.INodeFile.valueOf(INodeFile.java:39)
+        at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getBlockLocationsUpdateTimes(FSNamesystem.java:1341)
+        at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getBlockLocationsInt(FSNamesystem.java:1293)
+        at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getBlockLocations(FSNamesystem.java:1269)
+        at org.apache.hadoop.hdfs.server.namenode.FSNamesystem.getBlockLocations(FSNamesystem.java:1242)
+        at org.apache.hadoop.hdfs.server.namenode.NameNodeRpcServer.getBlockLocations(NameNodeRpcServer.java:392)
+        at org.apache.hadoop.hdfs.protocolPB.ClientNamenodeProtocolServerSideTranslatorPB.getBlockLocations(ClientNamenodeProtocolServerSideTranslatorPB.java:172)
+        at org.apache.hadoop.hdfs.protocol.proto.ClientNamenodeProtocolProtos$ClientNamenodeProtocol$2.callBlockingMethod(ClientNamenodeProtocolProtos.java:44938)
+        at org.apache.hadoop.ipc.ProtobufRpcEngine$Server$ProtoBufRpcInvoker.call(ProtobufRpcEngine.java:453)
+        at org.apache.hadoop.ipc.RPC$Server.call(RPC.java:1002)
+        at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:1701)
+        at org.apache.hadoop.ipc.Server$Handler$1.run(Server.java:1697)
+        at java.security.AccessController.doPrivileged(Native Method)
+        at javax.security.auth.Subject.doAs(Subject.java:396)
+        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1408)
+        at org.apache.hadoop.ipc.Server$Handler.run(Server.java:1695)
+
+        at org.apache.hadoop.hbase.regionserver.HRegion.initializeRegionInternals(HRegion.java:607)
+        at org.apache.hadoop.hbase.regionserver.HRegion.initialize(HRegion.java:520)
+        at org.apache.hadoop.hbase.regionserver.HRegion.openHRegion(HRegion.java:4313)
+        at org.apache.hadoop.hbase.regionserver.HRegion.openHRegion(HRegion.java:4261)
+        at org.apache.hadoop.hbase.regionserver.handler.OpenRegionHandler.openRegion(OpenRegionHandler.java:329)
+        at org.apache.hadoop.hbase.regionserver.handler.OpenRegionHandler.process(OpenRegionHandler.java:100)
+        at org.apache.hadoop.hbase.executor.EventHandler.run(EventHandler.java:175)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:895)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:918)
+        at java.lang.Thread.run(Thread.java:662)
+
+</pre>
+
+<p>
+我们曾经遇到这个问题是因为集群数据出现不一致的情况。观察WebUI上实际上它查找另外一个encodedName 6ef7e4f2c72929d789f63baba2f13d4e. 这个路径在HDFS中存在并且文件名称和240086423354424bb32d647fab6f9b98完全一致。
+</p>
+<p>
+当时我们处理的办法是将6ef7e4f2c72929d789f63baba2f13d4e重命名为2f1b909bb15ce5960d72a1773902085c。实际上这是一个错误的做法，因为2f1b909bb15ce5960d72a1773902085c这个regionName在META里面根本不存在。出现这样的情况是因为当时在6ef7e4f2c72929d789f63baba2f13d4e下面存在一个文件 <b>240086423354424bb32d647fab6f9b98.2f1b909bb15ce5960d72a1773902085c</b> 。这个文件大小非常小，我们当时怀疑是一个类似软链接的文件，当读取240086423354424bb32d647fab6f9b98这个文件的时候，如果存在link文件的话，那么就会转移到另外一个directory下面读取。 <b>所以我们直接将这个link文件删除了，结果region瞬间加载成功</b>
+</p>
+<p>
+<b>NOTE（dirlt）：如果需要强制停止assign一个节点的话，只能进入zookeeper的/hbase/unassigned目录将下面节点完全删除，hbase shell的unassign命令只是针对那些assign成功的region有效</b>
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> 日志分析</h3>
+<div class="outline-text-3" id="text-1-4">
 
 
 </div>
 
-<div id="outline-container-1-3-1" class="outline-4">
-<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> output error</h4>
-<div class="outline-text-4" id="text-1-3-1">
+<div id="outline-container-1-4-1" class="outline-4">
+<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> output error</h4>
+<div class="outline-text-4" id="text-1-4-1">
 
 <p>2013.04.07 AttachAppkeyToDeviceInfo失败很多次，都是因为连接hbase很多次失败。观察发现每次task都是连接某一个regionserver失败。日志中出现很多下面这样的错误：
 </p>
@@ -1238,9 +1321,9 @@ thrift.Thrift.TApplicationException: Invalid method name: 'scannerOpenWithScan'
 
 </div>
 
-<div id="outline-container-1-3-2" class="outline-4">
-<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> zookeeper session expired</h4>
-<div class="outline-text-4" id="text-1-3-2">
+<div id="outline-container-1-4-2" class="outline-4">
+<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> zookeeper session expired</h4>
+<div class="outline-text-4" id="text-1-4-2">
 
 <p>HBase中出现如下FATAL信息。单独看这个日志只是知道zookeeper长时间没有汇报断开连接，但是具体是什么原因需要分析上下文
 </p>
@@ -1305,9 +1388,9 @@ org.apache.zookeeper.KeeperException$SessionExpiredException: KeeperErrorCode = 
 
 </div>
 
-<div id="outline-container-1-3-3" class="outline-4">
-<h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> lease expired exception</h4>
-<div class="outline-text-4" id="text-1-3-3">
+<div id="outline-container-1-4-3" class="outline-4">
+<h4 id="sec-1-4-3"><span class="section-number-4">1.4.3</span> lease expired exception</h4>
+<div class="outline-text-4" id="text-1-4-3">
 
 
 
@@ -1349,9 +1432,9 @@ not exist. [Lease.  Holder: DFSClient_hb_rs_dp22.umeng.com,60020,1365284229083_1
 
 </div>
 
-<div id="outline-container-1-3-4" class="outline-4">
-<h4 id="sec-1-3-4"><span class="section-number-4">1.3.4</span> filesystem not available</h4>
-<div class="outline-text-4" id="text-1-3-4">
+<div id="outline-container-1-4-4" class="outline-4">
+<h4 id="sec-1-4-4"><span class="section-number-4">1.4.4</span> filesystem not available</h4>
+<div class="outline-text-4" id="text-1-4-4">
 
 <p>hbase出现如下fatal日志，并且可以看到这个日志造成region server退出。
 </p>
@@ -1433,9 +1516,9 @@ throws IOException {
 
 </div>
 
-<div id="outline-container-1-3-5" class="outline-4">
-<h4 id="sec-1-3-5"><span class="section-number-4">1.3.5</span> error block recovery</h4>
-<div class="outline-text-4" id="text-1-3-5">
+<div id="outline-container-1-4-5" class="outline-4">
+<h4 id="sec-1-4-5"><span class="section-number-4">1.4.5</span> error block recovery</h4>
+<div class="outline-text-4" id="text-1-4-5">
 
 <p>在dp47上面出现如下日志：
 </p>
@@ -1493,16 +1576,16 @@ org.apache.hadoop.ipc.RemoteException: org.apache.hadoop.ipc.RemoteException: ja
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> 代码分析</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> 代码分析</h3>
+<div class="outline-text-3" id="text-1-5">
 
 
 </div>
 
-<div id="outline-container-1-4-1" class="outline-4">
-<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> put限制</h4>
-<div class="outline-text-4" id="text-1-4-1">
+<div id="outline-container-1-5-1" class="outline-4">
+<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> put限制</h4>
+<div class="outline-text-4" id="text-1-5-1">
 
 <p>在HTable.validatePut对put大小进行了限制
 </p>
@@ -1557,9 +1640,9 @@ private void validatePut(final Put put) throws IllegalArgumentException{
 
 </div>
 
-<div id="outline-container-1-4-2" class="outline-4">
-<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> put分析</h4>
-<div class="outline-text-4" id="text-1-4-2">
+<div id="outline-container-1-5-2" class="outline-4">
+<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> put分析</h4>
+<div class="outline-text-4" id="text-1-5-2">
 
 <p>最后都走到了下面这个方法，可以看到对于每次put并不是立即去写hbase的，除非有特殊开关autoFlush. writeBuffer是一个ArrayList用来hold住所有需要write的put.默认autoFlush=false，所以会缓存到writeBufferSize大小才会commit，而大小是通过heapSize来得到的。而writeBufferSize是通过hbase.client.write.buffer这个属性配置的，默认是2097152=2M
 </p>
@@ -1664,9 +1747,9 @@ processBatch代码比较冗长，大致意思如下：
 
 </div>
 
-<div id="outline-container-1-4-3" class="outline-4">
-<h4 id="sec-1-4-3"><span class="section-number-4">1.4.3</span> HBaseConfiguration</h4>
-<div class="outline-text-4" id="text-1-4-3">
+<div id="outline-container-1-5-3" class="outline-4">
+<h4 id="sec-1-5-3"><span class="section-number-4">1.5.3</span> HBaseConfiguration</h4>
+<div class="outline-text-4" id="text-1-5-3">
 
 <p>HBaseConfiguration继承于Configuration，主要是用来创建配置数据的。和Configuration主要区别，在于加载了一些额外的HBase方面的配置。
 </p>
@@ -1703,9 +1786,9 @@ processBatch代码比较冗长，大致意思如下：
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Apache HBase Configuration</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-1-6" class="outline-3">
+<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Apache HBase Configuration</h3>
+<div class="outline-text-3" id="text-1-6">
 
 <p><a href="http://hbase.apache.org/book/book.html">http://hbase.apache.org/book/book.html</a>
 </p>
@@ -1727,9 +1810,9 @@ processBatch代码比较冗长，大致意思如下：
 
 </div>
 
-<div id="outline-container-1-5-1" class="outline-4">
-<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> core</h4>
-<div class="outline-text-4" id="text-1-5-1">
+<div id="outline-container-1-6-1" class="outline-4">
+<h4 id="sec-1-6-1"><span class="section-number-4">1.6.1</span> core</h4>
+<div class="outline-text-4" id="text-1-6-1">
 
 <ul>
 <li>hbase.rootdir
@@ -1799,9 +1882,9 @@ processBatch代码比较冗长，大致意思如下：
 
 </div>
 
-<div id="outline-container-1-5-2" class="outline-4">
-<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> master</h4>
-<div class="outline-text-4" id="text-1-5-2">
+<div id="outline-container-1-6-2" class="outline-4">
+<h4 id="sec-1-6-2"><span class="section-number-4">1.6.2</span> master</h4>
+<div class="outline-text-4" id="text-1-6-2">
 
 <ul>
 <li>hbase.master.port 
@@ -1888,9 +1971,9 @@ processBatch代码比较冗长，大致意思如下：
 
 </div>
 
-<div id="outline-container-1-5-3" class="outline-4">
-<h4 id="sec-1-5-3"><span class="section-number-4">1.5.3</span> regionserver</h4>
-<div class="outline-text-4" id="text-1-5-3">
+<div id="outline-container-1-6-3" class="outline-4">
+<h4 id="sec-1-6-3"><span class="section-number-4">1.6.3</span> regionserver</h4>
+<div class="outline-text-4" id="text-1-6-3">
 
 <ul>
 <li>hbase.regionserver.port 
@@ -2388,9 +2471,9 @@ processBatch代码比较冗长，大致意思如下：
 
 </div>
 
-<div id="outline-container-1-5-4" class="outline-4">
-<h4 id="sec-1-5-4"><span class="section-number-4">1.5.4</span> client</h4>
-<div class="outline-text-4" id="text-1-5-4">
+<div id="outline-container-1-6-4" class="outline-4">
+<h4 id="sec-1-6-4"><span class="section-number-4">1.6.4</span> client</h4>
+<div class="outline-text-4" id="text-1-6-4">
 
 <ul>
 <li>hbase.client.write.buffer 
@@ -2467,9 +2550,9 @@ processBatch代码比较冗长，大致意思如下：
 
 </div>
 
-<div id="outline-container-1-5-5" class="outline-4">
-<h4 id="sec-1-5-5"><span class="section-number-4">1.5.5</span> zookeeper</h4>
-<div class="outline-text-4" id="text-1-5-5">
+<div id="outline-container-1-6-5" class="outline-4">
+<h4 id="sec-1-6-5"><span class="section-number-4">1.6.5</span> zookeeper</h4>
+<div class="outline-text-4" id="text-1-6-5">
 
 <ul>
 <li>hbase.zookeeper.dns.interface
@@ -2607,24 +2690,24 @@ processBatch代码比较冗长，大致意思如下：
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> HBase: The Definitive Guide</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-1-7" class="outline-3">
+<h3 id="sec-1-7"><span class="section-number-3">1.7</span> HBase: The Definitive Guide</h3>
+<div class="outline-text-3" id="text-1-7">
 
 
 </div>
 
-<div id="outline-container-1-6-1" class="outline-4">
-<h4 id="sec-1-6-1"><span class="section-number-4">1.6.1</span> Preface</h4>
-<div class="outline-text-4" id="text-1-6-1">
+<div id="outline-container-1-7-1" class="outline-4">
+<h4 id="sec-1-7-1"><span class="section-number-4">1.7.1</span> Preface</h4>
+<div class="outline-text-4" id="text-1-7-1">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-6-2" class="outline-4">
-<h4 id="sec-1-6-2"><span class="section-number-4">1.6.2</span> Chapter 1. Introduction</h4>
-<div class="outline-text-4" id="text-1-6-2">
+<div id="outline-container-1-7-2" class="outline-4">
+<h4 id="sec-1-7-2"><span class="section-number-4">1.7.2</span> Chapter 1. Introduction</h4>
+<div class="outline-text-4" id="text-1-7-2">
 
 <p>Dimensions
 </p><ul>
@@ -2671,25 +2754,25 @@ The master server is also responsible for handling load balancing of regions acr
 
 </div>
 
-<div id="outline-container-1-6-3" class="outline-4">
-<h4 id="sec-1-6-3"><span class="section-number-4">1.6.3</span> Chapter 2. Installation</h4>
-<div class="outline-text-4" id="text-1-6-3">
+<div id="outline-container-1-7-3" class="outline-4">
+<h4 id="sec-1-7-3"><span class="section-number-4">1.7.3</span> Chapter 2. Installation</h4>
+<div class="outline-text-4" id="text-1-7-3">
 
 
 </div>
 
-<div id="outline-container-1-6-3-1" class="outline-5">
-<h5 id="sec-1-6-3-1"><span class="section-number-5">1.6.3.1</span> Hardware</h5>
-<div class="outline-text-5" id="text-1-6-3-1">
+<div id="outline-container-1-7-3-1" class="outline-5">
+<h5 id="sec-1-7-3-1"><span class="section-number-5">1.7.3.1</span> Hardware</h5>
+<div class="outline-text-5" id="text-1-7-3-1">
 
 <p>In practice a lot of HBase setups are colocated with Hadoop, to make use of locality using HDFS as well as MapReduce. This can significantly reduce the required network IO and boost processing speeds. Running Hadoop and HBase on the same server results in at least three Java processes running (data node, task tracker, and region server) and may spike to much higher numbers when executing MapReduce jobs. All of these processes need a minimum amount of memory, disk, and CPU resources to run sufficiently.（事实上将Hadoop和HBase混布非常常见的情形，好处就是可以提高locality，减少网络IO，加快处理速度）
 </p>
 
 </div>
 
-<div id="outline-container-1-6-3-1-1" class="outline-6">
-<h6 id="sec-1-6-3-1-1"><span class="section-number-6">1.6.3.1.1</span> CPU</h6>
-<div class="outline-text-6" id="text-1-6-3-1-1">
+<div id="outline-container-1-7-3-1-1" class="outline-6">
+<h6 id="sec-1-7-3-1-1"><span class="section-number-6">1.7.3.1.1</span> CPU</h6>
+<div class="outline-text-6" id="text-1-7-3-1-1">
 
 <p><b>It makes no sense to run three and more Java processes, plus the services provided by the operating system itself, on single core CPU machines.</b> For production use it is typical that you use multi-core processors. Quad-core are state of the art and affordable, while hexa-core processors are also becoming more popular. Most server hardware supports more than one CPU, so that you can use two quad-core CPUs for a total of 8 cores. This allows for each basic Java process to run on its own core while the background tasks like Java garbage collection can be executed in parallel. In addition there is hyperthreading, which adds to their overall performance. （单个core上不要分配超过3个Java进程）
 </p>
@@ -2715,9 +2798,9 @@ As far as CPU is concerned you should spec the master and slave machines the sam
 
 </div>
 
-<div id="outline-container-1-6-3-1-2" class="outline-6">
-<h6 id="sec-1-6-3-1-2"><span class="section-number-6">1.6.3.1.2</span> Memory</h6>
-<div class="outline-text-6" id="text-1-6-3-1-2">
+<div id="outline-container-1-7-3-1-2" class="outline-6">
+<h6 id="sec-1-7-3-1-2"><span class="section-number-6">1.7.3.1.2</span> Memory</h6>
+<div class="outline-text-6" id="text-1-7-3-1-2">
 
 <p>The question really is: is there too much memory? In theory no, but in practice it has been empirically determined that when using Java you should not set the amount of memory given to a single process too high. Memory (called heap in Java terms) can start to get fragmented and in a worst case scenario the entire heap would need a rewriting - this is similar to the well known disk fragmentation but cannot run in the background. The Java Runtime pauses all processing to clean up the mess which can lead to quite a few problems (more
 on this later). The larger you have set the heap the longer this process will take. Processes that do not need a lot of memory should only be given their required amount to avoid this scenario but with the region servers and their block cache there is in theory no upper limit. <b>You need to find a sweet spot depending on your access pattern.</b> （内存大小分配是一门艺术）
@@ -2754,9 +2837,9 @@ It is recommended to optimize your RAM for the memory channel width of your serv
 
 </div>
 
-<div id="outline-container-1-6-3-1-3" class="outline-6">
-<h6 id="sec-1-6-3-1-3"><span class="section-number-6">1.6.3.1.3</span> Disks</h6>
-<div class="outline-text-6" id="text-1-6-3-1-3">
+<div id="outline-container-1-7-3-1-3" class="outline-6">
+<h6 id="sec-1-7-3-1-3"><span class="section-number-6">1.7.3.1.3</span> Disks</h6>
+<div class="outline-text-6" id="text-1-7-3-1-3">
 
 <p>The data is stored on the slave machines and therefore it is those servers that need plenty of capacity. Depending if you are more read/write or processing oriented you need to balance the number of disks with the number of CPU cores available. Typically you should have at least one core per disk, so in an 8 core server adding 6 disks is good, but adding more might not be giving you the optimal performance.（磁盘数量最好不要超过CPU core数目）
 </p>
@@ -2773,9 +2856,9 @@ The disk capacity is usually 1TB per disk but you can also use 2TB drives if nec
 
 </div>
 
-<div id="outline-container-1-6-3-1-4" class="outline-6">
-<h6 id="sec-1-6-3-1-4"><span class="section-number-6">1.6.3.1.4</span> Chassis</h6>
-<div class="outline-text-6" id="text-1-6-3-1-4">
+<div id="outline-container-1-7-3-1-4" class="outline-6">
+<h6 id="sec-1-7-3-1-4"><span class="section-number-6">1.7.3.1.4</span> Chassis</h6>
+<div class="outline-text-6" id="text-1-7-3-1-4">
 
 <p>The actual server chassis is not that crucial, most servers in a specific price bracket provide very similar features. <b>It is often better to shy away from special hardware that offers proprietary functionality but opt for the generic servers so that they can be easily combined over time as you extend the capacity of the cluster</b> 
 </p>
@@ -2793,9 +2876,9 @@ In terms of density it is advisable to select server hardware that fits into a l
 
 </div>
 
-<div id="outline-container-1-6-3-2" class="outline-5">
-<h5 id="sec-1-6-3-2"><span class="section-number-5">1.6.3.2</span> Networking</h5>
-<div class="outline-text-5" id="text-1-6-3-2">
+<div id="outline-container-1-7-3-2" class="outline-5">
+<h5 id="sec-1-7-3-2"><span class="section-number-5">1.7.3.2</span> Networking</h5>
+<div class="outline-text-5" id="text-1-7-3-2">
 
 <p><b>TODO（dirlt）：？？？</b>
 </p>
@@ -2818,16 +2901,16 @@ Finally, given the current status of built-in security into Hadoop and HBase, it
 
 </div>
 
-<div id="outline-container-1-6-3-3" class="outline-5">
-<h5 id="sec-1-6-3-3"><span class="section-number-5">1.6.3.3</span> Software</h5>
-<div class="outline-text-5" id="text-1-6-3-3">
+<div id="outline-container-1-7-3-3" class="outline-5">
+<h5 id="sec-1-7-3-3"><span class="section-number-5">1.7.3.3</span> Software</h5>
+<div class="outline-text-5" id="text-1-7-3-3">
 
 
 </div>
 
-<div id="outline-container-1-6-3-3-1" class="outline-6">
-<h6 id="sec-1-6-3-3-1"><span class="section-number-6">1.6.3.3.1</span> Operating System</h6>
-<div class="outline-text-6" id="text-1-6-3-3-1">
+<div id="outline-container-1-7-3-3-1" class="outline-6">
+<h6 id="sec-1-7-3-3-1"><span class="section-number-6">1.7.3.3.1</span> Operating System</h6>
+<div class="outline-text-6" id="text-1-7-3-3-1">
 
 <ul>
 <li>CentOS
@@ -2894,9 +2977,9 @@ Finally, given the current status of built-in security into Hadoop and HBase, it
 
 </div>
 
-<div id="outline-container-1-6-3-3-2" class="outline-6">
-<h6 id="sec-1-6-3-3-2"><span class="section-number-6">1.6.3.3.2</span> File System</h6>
-<div class="outline-text-6" id="text-1-6-3-3-2">
+<div id="outline-container-1-7-3-3-2" class="outline-6">
+<h6 id="sec-1-7-3-3-2"><span class="section-number-6">1.7.3.3.2</span> File System</h6>
+<div class="outline-text-6" id="text-1-7-3-3-2">
 
 <ul>
 <li>ext3
@@ -2966,18 +3049,18 @@ Finally, given the current status of built-in security into Hadoop and HBase, it
 
 </div>
 
-<div id="outline-container-1-6-4" class="outline-4">
-<h4 id="sec-1-6-4"><span class="section-number-4">1.6.4</span> Chapter 3. Client API: The Basics</h4>
-<div class="outline-text-4" id="text-1-6-4">
+<div id="outline-container-1-7-4" class="outline-4">
+<h4 id="sec-1-7-4"><span class="section-number-4">1.7.4</span> Chapter 3. Client API: The Basics</h4>
+<div class="outline-text-4" id="text-1-7-4">
 
 <p>TODO（dirlt）：
 </p>
 
 </div>
 
-<div id="outline-container-1-6-4-1" class="outline-5">
-<h5 id="sec-1-6-4-1"><span class="section-number-5">1.6.4.1</span> General Notes</h5>
-<div class="outline-text-5" id="text-1-6-4-1">
+<div id="outline-container-1-7-4-1" class="outline-5">
+<h5 id="sec-1-7-4-1"><span class="section-number-5">1.7.4.1</span> General Notes</h5>
+<div class="outline-text-5" id="text-1-7-4-1">
 
 <ul>
 <li>All operations that mutate data are guaranteed to be atomic on a per row basis.
@@ -2992,9 +3075,9 @@ Finally, given the current status of built-in security into Hadoop and HBase, it
 
 </div>
 
-<div id="outline-container-1-6-5" class="outline-4">
-<h4 id="sec-1-6-5"><span class="section-number-4">1.6.5</span> Chapter 4. Client API: Advanced Features</h4>
-<div class="outline-text-4" id="text-1-6-5">
+<div id="outline-container-1-7-5" class="outline-4">
+<h4 id="sec-1-7-5"><span class="section-number-4">1.7.5</span> Chapter 4. Client API: Advanced Features</h4>
+<div class="outline-text-4" id="text-1-7-5">
 
 <p>TODO（dirlt）：
 </p>
@@ -3002,9 +3085,9 @@ Finally, given the current status of built-in security into Hadoop and HBase, it
 
 </div>
 
-<div id="outline-container-1-6-6" class="outline-4">
-<h4 id="sec-1-6-6"><span class="section-number-4">1.6.6</span> Chapter 5. Client API: Administrative Features</h4>
-<div class="outline-text-4" id="text-1-6-6">
+<div id="outline-container-1-7-6" class="outline-4">
+<h4 id="sec-1-7-6"><span class="section-number-4">1.7.6</span> Chapter 5. Client API: Administrative Features</h4>
+<div class="outline-text-4" id="text-1-7-6">
 
 <p>TODO（dirlt）：
 </p>
@@ -3012,9 +3095,9 @@ Finally, given the current status of built-in security into Hadoop and HBase, it
 
 </div>
 
-<div id="outline-container-1-6-7" class="outline-4">
-<h4 id="sec-1-6-7"><span class="section-number-4">1.6.7</span> Chapter 6. Available Clients</h4>
-<div class="outline-text-4" id="text-1-6-7">
+<div id="outline-container-1-7-7" class="outline-4">
+<h4 id="sec-1-7-7"><span class="section-number-4">1.7.7</span> Chapter 6. Available Clients</h4>
+<div class="outline-text-4" id="text-1-7-7">
 
 <p>TODO（dirlt）：
 </p>
@@ -3022,16 +3105,16 @@ Finally, given the current status of built-in security into Hadoop and HBase, it
 
 </div>
 
-<div id="outline-container-1-6-8" class="outline-4">
-<h4 id="sec-1-6-8"><span class="section-number-4">1.6.8</span> Chapter 7. MapReduce Integration</h4>
-<div class="outline-text-4" id="text-1-6-8">
+<div id="outline-container-1-7-8" class="outline-4">
+<h4 id="sec-1-7-8"><span class="section-number-4">1.7.8</span> Chapter 7. MapReduce Integration</h4>
+<div class="outline-text-4" id="text-1-7-8">
 
 
 </div>
 
-<div id="outline-container-1-6-8-1" class="outline-5">
-<h5 id="sec-1-6-8-1"><span class="section-number-5">1.6.8.1</span> MapReduce Locality</h5>
-<div class="outline-text-5" id="text-1-6-8-1">
+<div id="outline-container-1-7-8-1" class="outline-5">
+<h5 id="sec-1-7-8-1"><span class="section-number-5">1.7.8.1</span> MapReduce Locality</h5>
+<div class="outline-text-5" id="text-1-7-8-1">
 
 <ul>
 <li>And here is the kicker: HDFS is smart enough to put the data where it is needed! It has a block placement policy in place that enforces all blocks to be written first on a colocated server. The receiving data node compares the server name of the writer with its own, and if they match the block is written to the local file system. Then a replica is sent to a server within the same rack, and another to a remote rack - assuming you are using rack awareness in HDFS. If not then the additional copies get placed on the least loaded data node in the cluster.（HDFS文件在写的时候已经可以感知尽量将数据写在和client比较近的位置上面）
@@ -3052,16 +3135,16 @@ Finally, given the current status of built-in security into Hadoop and HBase, it
 
 </div>
 
-<div id="outline-container-1-6-9" class="outline-4">
-<h4 id="sec-1-6-9"><span class="section-number-4">1.6.9</span> Chapter 8. Architecture</h4>
-<div class="outline-text-4" id="text-1-6-9">
+<div id="outline-container-1-7-9" class="outline-4">
+<h4 id="sec-1-7-9"><span class="section-number-4">1.7.9</span> Chapter 8. Architecture</h4>
+<div class="outline-text-4" id="text-1-7-9">
 
 
 </div>
 
-<div id="outline-container-1-6-9-1" class="outline-5">
-<h5 id="sec-1-6-9-1"><span class="section-number-5">1.6.9.1</span> Storage</h5>
-<div class="outline-text-5" id="text-1-6-9-1">
+<div id="outline-container-1-7-9-1" class="outline-5">
+<h5 id="sec-1-7-9-1"><span class="section-number-5">1.7.9.1</span> Storage</h5>
+<div class="outline-text-5" id="text-1-7-9-1">
 
 <p><img src="images/hbase-architecture.png"  alt="./images/hbase-architecture.png" />
 </p>
@@ -3090,9 +3173,9 @@ The HRegionServer opens the region and creates a corresponding HRegion object. W
 
 </div>
 
-<div id="outline-container-1-6-9-2" class="outline-5">
-<h5 id="sec-1-6-9-2"><span class="section-number-5">1.6.9.2</span> Files</h5>
-<div class="outline-text-5" id="text-1-6-9-2">
+<div id="outline-container-1-7-9-2" class="outline-5">
+<h5 id="sec-1-7-9-2"><span class="section-number-5">1.7.9.2</span> Files</h5>
+<div class="outline-text-5" id="text-1-7-9-2">
 
 
 
@@ -3152,15 +3235,17 @@ drwxr-xr-x   - dirlt supergroup          0 2013-05-30 12:32 /home/dirlt/hbase/te
 </li>
 <li>Table Level Files
 <ul>
-<li>/&lt;tableName&gt;/md5sum(&lt;regionName&gt;)/&lt;columnFamily&gt;/fileName(random number)
+<li><b>regionName</b> = &lt;tableName&gt;,&lt;startRow&gt;,&lt;endRow&gt; eg. test,,1369886221574
 </li>
-<li>regionName = &lt;tableName&gt;,&lt;startRow&gt;,&lt;endRow&gt; eg. test,,1369886221574
+<li><b>encodedName</b> = md5sum(regionName)
 </li>
-<li>regionNameOnWebUI = &lt;regionName&gt;.md5sum(&lt;regionName&gt;) eg. test,,1369886221574.1938ab7ad31208641c117035f7c012ab.
+<li><b>regionNameOnWebUI</b> = &lt;regionName&gt;.encodedName eg. test,,1369886221574.1938ab7ad31208641c117035f7c012ab.
+</li>
+<li><b>path</b> = /&lt;tableName&gt;/encodedName/&lt;columnFamily&gt;/fileName(random number)
 </li>
 <li>.tmp hold temporary files, for example the rewritten files from a compaction.
 </li>
-<li>.regioninfo the serialized information of the HRegionInfo instance for the given region.
+<li><b>.regioninfo</b> the serialized information of the HRegionInfo instance for the given region.
 </li>
 <li>recovered.edits 在/splitlog完成了log splitting之后移动到这个目录下面进行恢复
 </li>
@@ -3176,9 +3261,9 @@ drwxr-xr-x   - dirlt supergroup          0 2013-05-30 12:32 /home/dirlt/hbase/te
 
 </div>
 
-<div id="outline-container-1-6-9-3" class="outline-5">
-<h5 id="sec-1-6-9-3"><span class="section-number-5">1.6.9.3</span> HFile</h5>
-<div class="outline-text-5" id="text-1-6-9-3">
+<div id="outline-container-1-7-9-3" class="outline-5">
+<h5 id="sec-1-7-9-3"><span class="section-number-5">1.7.9.3</span> HFile</h5>
+<div class="outline-text-5" id="text-1-7-9-3">
 
 <p>The actual storage files are implemented by the HFile class, which was specifically created to serve one purpose: store HBase's data efficiently. They are based on Hadoop's TFile class, and mimic the SSTable format used in Google's BigTable architecture.（可以参考 <a href="leveldb.html">leveldb</a> 代码）
 </p>
@@ -3206,16 +3291,16 @@ drwxr-xr-x   - dirlt supergroup          0 2013-05-30 12:32 /home/dirlt/hbase/te
 
 </div>
 
-<div id="outline-container-1-6-9-4" class="outline-5">
-<h5 id="sec-1-6-9-4"><span class="section-number-5">1.6.9.4</span> Compactions</h5>
-<div class="outline-text-5" id="text-1-6-9-4">
+<div id="outline-container-1-7-9-4" class="outline-5">
+<h5 id="sec-1-7-9-4"><span class="section-number-5">1.7.9.4</span> Compactions</h5>
+<div class="outline-text-5" id="text-1-7-9-4">
 
 
 </div>
 
-<div id="outline-container-1-6-9-4-1" class="outline-6">
-<h6 id="sec-1-6-9-4-1"><span class="section-number-6">1.6.9.4.1</span> Minor</h6>
-<div class="outline-text-6" id="text-1-6-9-4-1">
+<div id="outline-container-1-7-9-4-1" class="outline-6">
+<h6 id="sec-1-7-9-4-1"><span class="section-number-6">1.7.9.4.1</span> Minor</h6>
+<div class="outline-text-6" id="text-1-7-9-4-1">
 
 <ul>
 <li>The minor compactions are responsible for rewriting the last few files into one larger one.
@@ -3248,9 +3333,9 @@ drwxr-xr-x   - dirlt supergroup          0 2013-05-30 12:32 /home/dirlt/hbase/te
 
 </div>
 
-<div id="outline-container-1-6-9-4-2" class="outline-6">
-<h6 id="sec-1-6-9-4-2"><span class="section-number-6">1.6.9.4.2</span> Major</h6>
-<div class="outline-text-6" id="text-1-6-9-4-2">
+<div id="outline-container-1-7-9-4-2" class="outline-6">
+<h6 id="sec-1-7-9-4-2"><span class="section-number-6">1.7.9.4.2</span> Major</h6>
+<div class="outline-text-6" id="text-1-7-9-4-2">
 
 <ul>
 <li>It triggers a check on a regular basis, controlled by <b>hbase.server.thread.wakefrequency</b> (multiplied by <b>hbase.server.thread.wakefrequency.multiplier</b>, set to 1000, to run it less often than the other thread based tasks). （定期去检查是否需要做major compaction）
@@ -3269,18 +3354,18 @@ drwxr-xr-x   - dirlt supergroup          0 2013-05-30 12:32 /home/dirlt/hbase/te
 
 </div>
 
-<div id="outline-container-1-6-9-5" class="outline-5">
-<h5 id="sec-1-6-9-5"><span class="section-number-5">1.6.9.5</span> WAL</h5>
-<div class="outline-text-5" id="text-1-6-9-5">
+<div id="outline-container-1-7-9-5" class="outline-5">
+<h5 id="sec-1-7-9-5"><span class="section-number-5">1.7.9.5</span> WAL</h5>
+<div class="outline-text-5" id="text-1-7-9-5">
 
 <p><img src="images/hbase-wal-structure.png"  alt="./images/hbase-wal-structure.png" />
 </p>
 
 </div>
 
-<div id="outline-container-1-6-9-5-1" class="outline-6">
-<h6 id="sec-1-6-9-5-1"><span class="section-number-6">1.6.9.5.1</span> Format</h6>
-<div class="outline-text-6" id="text-1-6-9-5-1">
+<div id="outline-container-1-7-9-5-1" class="outline-6">
+<h6 id="sec-1-7-9-5-1"><span class="section-number-6">1.7.9.5.1</span> Format</h6>
+<div class="outline-text-6" id="text-1-7-9-5-1">
 
 <p>The figure shows three different regions, hosted on the same region server, and each of them covering a different row key range. Each of these regions shares the same single instance of HLog. This means that the data is written to the WAL in the order of arrival. This imposes some extra work needed when a log needs to be replayed (see the section called “Replay”). But since this happens rather seldom it is optimized to store data sequentially, giving it the best IO performance.
 </p>
@@ -3318,9 +3403,9 @@ Currently the WAL is using a Hadoop SequenceFile, which stores records as sets o
 
 </div>
 
-<div id="outline-container-1-6-9-5-2" class="outline-6">
-<h6 id="sec-1-6-9-5-2"><span class="section-number-6">1.6.9.5.2</span> LogRoller</h6>
-<div class="outline-text-6" id="text-1-6-9-5-2">
+<div id="outline-container-1-7-9-5-2" class="outline-6">
+<h6 id="sec-1-7-9-5-2"><span class="section-number-6">1.7.9.5.2</span> LogRoller</h6>
+<div class="outline-text-6" id="text-1-7-9-5-2">
 
 <ul>
 <li>The LogRoller class runs as a background thread and takes care of rolling log files at certain intervals. This is controlled by the <b>hbase.regionserver.logroll.period</b> property, set by default to one hour.（单独的线程运行，每隔一段时间进行日志的回滚）
@@ -3338,9 +3423,9 @@ Currently the WAL is using a Hadoop SequenceFile, which stores records as sets o
 
 </div>
 
-<div id="outline-container-1-6-9-5-3" class="outline-6">
-<h6 id="sec-1-6-9-5-3"><span class="section-number-6">1.6.9.5.3</span> LogSyncer</h6>
-<div class="outline-text-6" id="text-1-6-9-5-3">
+<div id="outline-container-1-7-9-5-3" class="outline-6">
+<h6 id="sec-1-7-9-5-3"><span class="section-number-6">1.7.9.5.3</span> LogSyncer</h6>
+<div class="outline-text-6" id="text-1-7-9-5-3">
 
 <p><b>NOTE（dirlt）：sync不是针对本地磁盘，而是将所写数据的offset写到namenode上面</b>
 </p>
@@ -3358,9 +3443,9 @@ Currently the WAL is using a Hadoop SequenceFile, which stores records as sets o
 
 </div>
 
-<div id="outline-container-1-6-9-5-4" class="outline-6">
-<h6 id="sec-1-6-9-5-4"><span class="section-number-6">1.6.9.5.4</span> Replay</h6>
-<div class="outline-text-6" id="text-1-6-9-5-4">
+<div id="outline-container-1-7-9-5-4" class="outline-6">
+<h6 id="sec-1-7-9-5-4"><span class="section-number-6">1.7.9.5.4</span> Replay</h6>
+<div class="outline-text-6" id="text-1-7-9-5-4">
 
 <ul>
 <li>Only if you use the graceful stop (see the section called “Node Decommission”) process you will give a server the chance to flush all pending edits before stopping. The normal stop scripts simply fail the servers, and a log replay is required during a cluster restart. Otherwise shutting down a cluster could potentially take a very long time, and cause a considerable spike in IO, caused by the parallel memstore flushes. （graceful stop会将memstore完全flush到disk上，这样重启的话就不需要进行replay）
@@ -3394,9 +3479,9 @@ Currently the WAL is using a Hadoop SequenceFile, which stores records as sets o
 
 </div>
 
-<div id="outline-container-1-6-9-6" class="outline-5">
-<h5 id="sec-1-6-9-6"><span class="section-number-5">1.6.9.6</span> Region</h5>
-<div class="outline-text-5" id="text-1-6-9-6">
+<div id="outline-container-1-7-9-6" class="outline-5">
+<h5 id="sec-1-7-9-6"><span class="section-number-5">1.7.9.6</span> Region</h5>
+<div class="outline-text-5" id="text-1-7-9-6">
 
 
 </div>
@@ -3404,9 +3489,9 @@ Currently the WAL is using a Hadoop SequenceFile, which stores records as sets o
 
 </div>
 
-<div id="outline-container-1-6-10" class="outline-4">
-<h4 id="sec-1-6-10"><span class="section-number-4">1.6.10</span> Chapter 9. Advanced Usage</h4>
-<div class="outline-text-4" id="text-1-6-10">
+<div id="outline-container-1-7-10" class="outline-4">
+<h4 id="sec-1-7-10"><span class="section-number-4">1.7.10</span> Chapter 9. Advanced Usage</h4>
+<div class="outline-text-4" id="text-1-7-10">
 
 <p>TODO（dirlt）：
 </p></div>
@@ -3416,8 +3501,8 @@ Currently the WAL is using a Hadoop SequenceFile, which stores records as sets o
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-11-13T23:45+0800</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<p class="date">Date: 2013-12-05T15:33+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
