@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="hadoop"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-12-13T14:42+0800"/>
+<meta name="generated" content="2013-12-20T09:51+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -836,12 +836,16 @@ Making Hadoop easy to deploy, use, and operate should be the #1 priority for the
 </li>
 <li>bin目录，bin and bin-mapreduce1
 </li>
-<li>lib目录。如果需要使用mr1的话，那么将cp -r share/hadoop/mapreduce1/ .
+<li>lib目录。如果需要使用mr1的话，那么cp -r share/hadoop/mapreduce1/ . <b>NOTE(dirlt):不要更改软链接</b>
 <ul>
 <li><b>NOTE（dirlt）：似乎只需要最顶层的一些jar文件即可</b>
 </li>
+<li><b>NOTE(dirlt): 似乎只需要hadoop-core-.jar文件即可</b>
+</li>
 </ul>
 
+</li>
+<li>webapps目录。如果需要使用mr1的话，那么cp -r share/hadoop/mapreduce1/webapps . <b>NOTE(dirlt):不然不能够访问JobTracker WebUI</b>
 </li>
 </ul>
 
@@ -878,7 +882,8 @@ export HBASE_CLASSPATH=$HBASE_HOME/hbase-0.94.6-cdh4.3.0-security.jar:$HBASE_HOM
 export ZK_HOME=/home/alium_zhanyinan/dirlt/zookeeper-3.4.5-cdh4.3.0
 export ZK_CLASSPATH=$ZK_HOME/zookeeper-3.4.5-cdh4.3.0.jar
 export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:$HBASE_CLASSPATH:$ZK_CLASSPATH
-export JAVA_HOME=/usr/java/default/
+#export JAVA_HOME=/usr/java/default/
+export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HBASE_HOME/bin:$ZK_HOME/bin
 </pre>
 
 
@@ -915,6 +920,36 @@ export JAVA_HOME=/usr/java/default/
 <div id="outline-container-1-3-4-3" class="outline-5">
 <h5 id="sec-1-3-4-3"><span class="section-number-5">1.3.4.3</span> hdfs-site.xml</h5>
 <div class="outline-text-5" id="text-1-3-4-3">
+
+
+
+
+<pre class="src src-XML">&lt;configuration&gt;
+  &lt;property&gt;
+    &lt;name&gt;dfs.name.dir&lt;/name&gt;
+    &lt;value&gt;/home/dirlt/hadoop/dfs/nn&lt;/value&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;dfs.data.dir&lt;/name&gt;
+    &lt;value&gt;/home/dirlt/hadoop/dfs/dn&lt;/value&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;fs.checkpoint.dir&lt;/name&gt;
+    &lt;value&gt;/home/dirlt/hadoop/dfs/snn&lt;/value&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;dfs.replication&lt;/name&gt;
+    &lt;value&gt;1&lt;/value&gt;
+  &lt;/property&gt;
+&lt;/configuration&gt;
+</pre>
+
+
+
+<hr/>
 
 
 
@@ -981,6 +1016,21 @@ export JAVA_HOME=/usr/java/default/
 <div id="outline-container-1-3-4-4" class="outline-5">
 <h5 id="sec-1-3-4-4"><span class="section-number-5">1.3.4.4</span> mapred-site.xml</h5>
 <div class="outline-text-5" id="text-1-3-4-4">
+
+
+
+
+<pre class="src src-XML">&lt;configuration&gt;
+  &lt;property&gt;
+    &lt;name&gt;mapred.job.tracker&lt;/name&gt;
+    &lt;value&gt;localhost:8021&lt;/value&gt;
+  &lt;/property&gt;
+&lt;/configuration&gt;
+</pre>
+
+
+
+<hr/>
 
 
 
@@ -3198,7 +3248,7 @@ Examples:
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2013-12-13T14:42+0800</p>
+<p class="date">Date: 2013-12-20T09:51+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
