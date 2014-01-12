@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="mysql"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-01-02T19:56+0800"/>
+<meta name="generated" content="2014-01-10T09:26+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -79,17 +79,38 @@
 <ul>
 <li><a href="mysql.html#sec-1">1 mysql</a>
 <ul>
-<li><a href="mysql.html#sec-1-1">1.1 基本命令</a></li>
-<li><a href="mysql.html#sec-1-2">1.2 层级估算</a></li>
-<li><a href="mysql.html#sec-1-3">1.3 主从同步</a>
+<li><a href="mysql.html#sec-1-1">1.1 元数据</a></li>
+<li><a href="mysql.html#sec-1-2">1.2 数据类型</a></li>
+<li><a href="mysql.html#sec-1-3">1.3 索引</a>
 <ul>
-<li><a href="mysql.html#sec-1-3-1">1.3.1 binlog和relaylog</a></li>
-<li><a href="mysql.html#sec-1-3-2">1.3.2 半同步</a></li>
+<li><a href="mysql.html#sec-1-3-1">1.3.1 使用索引</a></li>
 </ul>
 </li>
-<li><a href="mysql.html#sec-1-4">1.4 超时重连</a></li>
-<li><a href="mysql.html#sec-1-5">1.5 连接数量</a></li>
-<li><a href="mysql.html#sec-1-6">1.6 配置选项</a></li>
+<li><a href="mysql.html#sec-1-4">1.4 存储引擎</a></li>
+<li><a href="mysql.html#sec-1-5">1.5 查询优化</a>
+<ul>
+<li><a href="mysql.html#sec-1-5-1">1.5.1 层级估算</a></li>
+</ul>
+</li>
+<li><a href="mysql.html#sec-1-6">1.6 事务处理</a></li>
+<li><a href="mysql.html#sec-1-7">1.7 编程接口</a>
+<ul>
+<li><a href="mysql.html#sec-1-7-1">1.7.1 超时重连</a></li>
+<li><a href="mysql.html#sec-1-7-2">1.7.2 连接数量</a></li>
+</ul>
+</li>
+<li><a href="mysql.html#sec-1-8">1.8 数据目录</a></li>
+<li><a href="mysql.html#sec-1-9">1.9 备份复制</a>
+<ul>
+<li><a href="mysql.html#sec-1-9-1">1.9.1 主从同步</a>
+<ul>
+<li><a href="mysql.html#sec-1-9-1-1">1.9.1.1 binlog &amp; relaylog</a></li>
+<li><a href="mysql.html#sec-1-9-1-2">1.9.1.2 半同步(semi-sync)</a></li>
+</ul></li>
+</ul>
+</li>
+<li><a href="mysql.html#sec-1-10">1.10 SQL环境</a></li>
+<li><a href="mysql.html#sec-1-11">1.11 SQL工具</a></li>
 </ul>
 </li>
 </ul>
@@ -100,40 +121,137 @@
 <h2 id="sec-1"><span class="section-number-2">1</span> mysql</h2>
 <div class="outline-text-2" id="text-1">
 
-<p><a href="http://www.mysql.com/">http://www.mysql.com/</a>
-</p>
+<ul>
+<li><a href="http://www.mysql.com/">http://www.mysql.com/</a>
+</li>
+<li>MySQL技术内幕
+</li>
+</ul>
+
+
 
 </div>
 
 <div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 基本命令</h3>
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 元数据</h3>
 <div class="outline-text-3" id="text-1-1">
-
-<p><b>NOTE(dirlt):utils/mysqldb可以用来简单配置和批量操作mysql单机多个实例的脚本</b>
-</p>
-<ul>
-<li>mysql_install_db &ndash;usrer=mysql &ndash;datadir=/var/lib/mysql/ # 创建MySQL基本表
-<ul>
-<li>权限问题 <a href="http://www.huoxingfan.com/834.html">http://www.huoxingfan.com/834.html</a> <b>NOTE（dirlt）：特别坑爹</b>
-</li>
-</ul>
-
-</li>
-<li>source &lt;FILE&gt; # 导入SQL文件
-</li>
-<li>GRANT ALL PRIVILEGES ON <b>.</b> TO 'root'@localhost IDENTIFIED BY '' # 授权
-</li>
-</ul>
-
-
 
 </div>
 
 </div>
 
 <div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 层级估算</h3>
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 数据类型</h3>
 <div class="outline-text-3" id="text-1-2">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> 索引</h3>
+<div class="outline-text-3" id="text-1-3">
+
+
+</div>
+
+<div id="outline-container-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> 使用索引</h4>
+<div class="outline-text-4" id="text-1-3-1">
+
+<p>MyISAM数据表的数据行是在数据文件里面，而索引值是在索引文件里。一个数据表可以存在多个索引，但如果是这样的话，所有的索引都存储在同一个索引文件里。索引文件里的每一个索引都是由分类的关键记录数组组成的，这些数组用于快速访问数据文件。
+</p>
+<p>
+相比之下, InnoDB存储引擎没有按照上面的方法将数据行和索引值分开，尽管它们也都保持着索引数值分类放置的特点。默认情况下，InnoDB存储引擎使用的是同一个表空间，在这个表空间里，它管理者所有InnoDB类型数据表的数据和索引的存储。我们可以通过配置让InnoDB为每个数据分别创建一个它自己的表空间，但即便如此，一个给定的数据表的数据和索引也是保存在同一个表空间文件里的。
+</p>
+
+<hr/>
+
+<p>
+索引的缺点：
+</p><ul>
+<li>索引加快了检索速度，但是却降低了在带索引的数据列里插入，删除以及修改的速度。因为不仅需要维护数据还需要维护索引。
+</li>
+<li>索引要占据磁盘空间。
+</li>
+</ul>
+
+<p>上述两个因素的现实指导意义是：如果不需要某个特定的索引来加快查询速度，就不要创建它。
+</p>
+
+<hr/>
+
+<p>
+挑选索引：
+</p><ul>
+<li>尽量为用来搜索，分类或分组的数据列编制索引，不要为作为输出显示的数据列编制索引。
+</li>
+<li>综合考虑各数据列的维度势。尽可能选择数值差异比较大也就是维度比较高的数据列来做索引。
+</li>
+<li>对短小的值进行索引。
+</li>
+<li>为字符串值的前缀编索引。
+</li>
+<li>充分利用最左边的前缀。MySQL不能使用没有包含最左边前缀的搜索的索引。
+</li>
+<li>适可而止，不要建立过多的索引。
+</li>
+<li>让索引的类型与你打算进行的比较操作的类型保持匹配。btree, rtree(空间数据), hash
+</li>
+<li>利用“慢查询”日志找出性能低劣的查询。
+</li>
+</ul>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> 存储引擎</h3>
+<div class="outline-text-3" id="text-1-4">
+
+<ul>
+<li>ARCHIVE 用于数据存档的引擎（数据行被插入之后就不能再修改） 
+</li>
+<li>BLACKHOLE 写操作是删除数据，读操作是返回空白记录
+</li>
+<li>CSV 存储数据时候以逗号为数据项之间的分隔符 
+</li>
+<li>EXAMPLE 示例（存根）存储引擎
+</li>
+<li>Falcon 用来事务处理的存储引擎 
+</li>
+<li>FEDERATED 用来访问远程数据表的存储引擎
+</li>
+<li>InnoDB 具备外键支持功能的事务处理引擎
+</li>
+<li>MEMORY 内存里的数据表
+</li>
+<li>MERGE 用来管理多个MyISAM数据表构成的数据表集合
+</li>
+<li>MyISAM 默认的存储引擎(indexed sequential access method)
+</li>
+<li>NDB MySQL Cluster的专用存储引擎
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> 查询优化</h3>
+<div class="outline-text-3" id="text-1-5">
+
+
+</div>
+
+<div id="outline-container-1-5-1" class="outline-4">
+<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> 层级估算</h4>
+<div class="outline-text-4" id="text-1-5-1">
 
 <p><b>NOTE（dirlt）：多谢caole讲解</b>
 </p>
@@ -147,91 +265,28 @@
 <b>TODO（dirlt）：如何估算disk IOPS?</b>
 </p>
 </div>
+</div>
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> 主从同步</h3>
-<div class="outline-text-3" id="text-1-3">
-
-
-</div>
-
-<div id="outline-container-1-3-1" class="outline-4">
-<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> binlog和relaylog</h4>
-<div class="outline-text-4" id="text-1-3-1">
-
-<p>mysql实现上是所有操作都会写到binlog里面，然后slave有一个专门的io线程不断地从master binlog里面取出增量数据，写到本地的relay-log.同时slave本地有一个执行线程，将这些realy-log执行修改自己的数据库，达到同步的目的。relay-log里面的内容和master binlog内容每条记录都是完全相同的，最后进入slave binlog记录和master binlog对应记录也是一样的。执行id是master id,执行时间是master binlog记录的时间，本地slave是不会进行任何修改的。
-</p>
-<p>
-常用选项：
-</p><ul>
-<li>relay_log_purge=1. # 默认relay-log是不删除的，这个选项可以删除不必要的relaylog
-</li>
-<li>log-slave-updates  # 这个选项的含义是binlog里面也会保存relay-log（默认是不保存的，这样slave的binlog里面是没有同步的log的，只有直接在slave上面操作留下的log)
-</li>
-<li>log_bin # binlog的存放位置
-</li>
-<li>max_binlog_size # 单个binlog文件最大大小
-</li>
-<li>max_relay_log_size # 单个relaylog文件最大大小
-</li>
-</ul>
-
-
-<p>
-基本命令：
-</p><ul>
-<li>show binary logs; # 所有binlog
-</li>
-<li>show master logs; # 所有binlog
-</li>
-<li>show binlog events; # 察看binlog内容
-</li>
-<li>show master status; # 当前master进度
-</li>
-<li>reset master; # 清除所有binlog
-</li>
-<li>purge binary logs to 'log-bin.000012'; # 将log-bin.000012之前的binlog都删除
-</li>
-<li>expire_logs_days = 7 # binlog的rotate时间
-</li>
-<li>reset slave; # 清除所有relaylog
-</li>
-</ul>
-
+<div id="outline-container-1-6" class="outline-3">
+<h3 id="sec-1-6"><span class="section-number-3">1.6</span> 事务处理</h3>
+<div class="outline-text-3" id="text-1-6">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-3-2" class="outline-4">
-<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> 半同步</h4>
-<div class="outline-text-4" id="text-1-3-2">
+<div id="outline-container-1-7" class="outline-3">
+<h3 id="sec-1-7"><span class="section-number-3">1.7</span> 编程接口</h3>
+<div class="outline-text-3" id="text-1-7">
 
-<ul>
-<li><a href="http://www.db110.com/?p=3364">http://www.db110.com/?p=3364</a>
-</li>
-<li><a href="http://code.google.com/p/google-mysql-tools/wiki/SemiSyncReplication">http://code.google.com/p/google-mysql-tools/wiki/SemiSyncReplication</a>
-</li>
-<li><a href="http://code.google.com/p/google-mysql-tools/wiki/SemiSyncReplicationDesign">http://code.google.com/p/google-mysql-tools/wiki/SemiSyncReplicationDesign</a>
-</li>
-<li><a href="http://dev.mysql.com/doc/refman/5.5/en/replication-semisync.html">http://dev.mysql.com/doc/refman/5.5/en/replication-semisync.html</a>
-</li>
-</ul>
-
-
-<p>
-很早之前做了一个mysql集群主从切换模块，里面就涉及到了半同步。按照半同步的定义（全同步的语义应该就是等待所有的slave都同步完成，强一致性），半同步还是会存在丢数据的可能，半同步的语义仅仅是认为一个slave同步到数据之后的话同步就完成。但是如果master挂掉同时slave也挂掉（或者是没有等其他slave补齐数据的话），那么就会存在数据丢失的可能（仅仅是提供最终一致性可能）。
-</p>
-</div>
-</div>
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> 超时重连</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-1-7-1" class="outline-4">
+<h4 id="sec-1-7-1"><span class="section-number-4">1.7.1</span> 超时重连</h4>
+<div class="outline-text-4" id="text-1-7-1">
 
 <p>JDBC连接数据库出现如下问题
 </p>
@@ -269,9 +324,9 @@ Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: The last pac
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> 连接数量</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-1-7-2" class="outline-4">
+<h4 id="sec-1-7-2"><span class="section-number-4">1.7.2</span> 连接数量</h4>
+<div class="outline-text-4" id="text-1-7-2">
 
 <p>mysql最大连接数目可以通过参数max_connections进行配置，默认的连接数目是比较低的，对于需要处理大量请求的web服务来说需要增大。 <b>修改之后需要重启</b>
 </p>
@@ -357,15 +412,160 @@ java.sql.SQLException: null,  message from server: "Can't create a new thread (e
 问题还是出在资源限制上面，可以通过修改开辟最大的进程数目来解决。可以参考链接 <a href="http://www.mysqlperformanceblog.com/2013/02/04/cant_create_thread_errno_11/">http://www.mysqlperformanceblog.com/2013/02/04/cant_create_thread_errno_11/</a> 
 </p>
 </div>
+</div>
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> 配置选项</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-1-8" class="outline-3">
+<h3 id="sec-1-8"><span class="section-number-3">1.8</span> 数据目录</h3>
+<div class="outline-text-3" id="text-1-8">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-9" class="outline-3">
+<h3 id="sec-1-9"><span class="section-number-3">1.9</span> 备份复制</h3>
+<div class="outline-text-3" id="text-1-9">
+
+
+</div>
+
+<div id="outline-container-1-9-1" class="outline-4">
+<h4 id="sec-1-9-1"><span class="section-number-4">1.9.1</span> 主从同步</h4>
+<div class="outline-text-4" id="text-1-9-1">
+
+
+</div>
+
+<div id="outline-container-1-9-1-1" class="outline-5">
+<h5 id="sec-1-9-1-1"><span class="section-number-5">1.9.1.1</span> binlog &amp; relaylog</h5>
+<div class="outline-text-5" id="text-1-9-1-1">
+
+<p>mysql实现上是所有操作都会写到binlog里面，然后slave有一个专门的io线程不断地从master binlog里面取出增量数据，写到本地的relay-log.同时slave本地有一个执行线程，将这些realy-log执行修改自己的数据库，达到同步的目的。relay-log里面的内容和master binlog内容每条记录都是完全相同的，最后进入slave binlog记录和master binlog对应记录也是一样的。执行id是master id,执行时间是master binlog记录的时间，本地slave是不会进行任何修改的。
+</p>
+<p>
+常用选项：
+</p><ul>
+<li>relay_log_purge=1. # 默认relay-log是不删除的，这个选项可以删除不必要的relaylog
+</li>
+<li>log-slave-updates  # 这个选项的含义是binlog里面也会保存relay-log（默认是不保存的，这样slave的binlog里面是没有同步的log的，只有直接在slave上面操作留下的log)
+</li>
+<li>log_bin # binlog的存放位置
+</li>
+<li>max_binlog_size # 单个binlog文件最大大小
+</li>
+<li>max_relay_log_size # 单个relaylog文件最大大小
+</li>
+</ul>
+
+
+<p>
+基本命令：
+</p><ul>
+<li>show binary logs; # 所有binlog
+</li>
+<li>show master logs; # 所有binlog
+</li>
+<li>show binlog events; # 察看binlog内容
+</li>
+<li>show master status; # 当前master进度
+</li>
+<li>reset master; # 清除所有binlog
+</li>
+<li>purge binary logs to 'log-bin.000012'; # 将log-bin.000012之前的binlog都删除
+</li>
+<li>expire_logs_days = 7 # binlog的rotate时间
+</li>
+<li>reset slave; # 清除所有relaylog
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-9-1-2" class="outline-5">
+<h5 id="sec-1-9-1-2"><span class="section-number-5">1.9.1.2</span> 半同步(semi-sync)</h5>
+<div class="outline-text-5" id="text-1-9-1-2">
 
 <ul>
-<li>max_allowed_packet
+<li><a href="http://www.db110.com/?p=3364">http://www.db110.com/?p=3364</a>
+</li>
+<li><a href="http://code.google.com/p/google-mysql-tools/wiki/SemiSyncReplication">http://code.google.com/p/google-mysql-tools/wiki/SemiSyncReplication</a>
+</li>
+<li><a href="http://code.google.com/p/google-mysql-tools/wiki/SemiSyncReplicationDesign">http://code.google.com/p/google-mysql-tools/wiki/SemiSyncReplicationDesign</a>
+</li>
+<li><a href="http://dev.mysql.com/doc/refman/5.5/en/replication-semisync.html">http://dev.mysql.com/doc/refman/5.5/en/replication-semisync.html</a>
+</li>
+</ul>
+
+
+<p>
+很早之前做了一个mysql集群主从切换模块，里面就涉及到了半同步。按照半同步的定义（全同步的语义应该就是等待所有的slave都同步完成，强一致性），半同步还是会存在丢数据的可能，半同步的语义仅仅是认为一个slave同步到数据之后的话同步就完成。但是如果master挂掉同时slave也挂掉（或者是没有等其他slave补齐数据的话），那么就会存在数据丢失的可能（仅仅是提供最终一致性可能）。
+</p>
+</div>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-10" class="outline-3">
+<h3 id="sec-1-10"><span class="section-number-3">1.10</span> SQL环境</h3>
+<div class="outline-text-3" id="text-1-10">
+
+<p><b>NOTE(dirlt):utils/mysqldb可以用来简单配置和批量操作mysql单机多个实例的脚本</b>
+</p>
+<ul>
+<li>~/.my.cnf
+<ul>
+<li>[client] MySQL客户端程序选项组标记
+</li>
+<li>[mysqld] MySQL服务端程序选项组标记
+</li>
+</ul>
+
+</li>
+<li>SOURCE &lt;FILE&gt; # 导入SQL文件
+</li>
+<li>GRANT ALL PRIVILEGES ON &lt;db&gt;(<b>).&lt;table&gt;(</b>) TO 'user'@localhost IDENTIFIED BY 'password' # 授权
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-11" class="outline-3">
+<h3 id="sec-1-11"><span class="section-number-3">1.11</span> SQL工具</h3>
+<div class="outline-text-3" id="text-1-11">
+
+<ul>
+<li>mysql_install_db # 创建MySQL基本表
+<ul>
+<li>&ndash;usrer=mysql 
+</li>
+<li>&ndash;datadir=/var/lib/mysql/ 
+</li>
+<li>权限问题 <a href="http://www.huoxingfan.com/834.html">http://www.huoxingfan.com/834.html</a>
+</li>
+</ul>
+
+</li>
+<li>mysql # mysql客户端
+<ul>
+<li>&ndash;host=localhost
+</li>
+<li>&ndash;user=root
+</li>
+<li>&ndash;password=rootpass
+</li>
+<li>&lt; 重定向直接导入SQL文件
+</li>
+</ul>
+
 </li>
 </ul>
 
@@ -375,7 +575,7 @@ java.sql.SQLException: null,  message from server: "Can't create a new thread (e
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-01-02T19:56+0800</p>
+<p class="date">Date: 2014-01-10T09:26+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

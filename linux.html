@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="linux"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-01-02T19:56+0800"/>
+<meta name="generated" content="2014-01-10T09:26+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -230,6 +230,7 @@
 <li><a href="linux.html#sec-1-4-5">1.4.5 sync hangup</a></li>
 <li><a href="linux.html#sec-1-4-6">1.4.6 更换glibc</a></li>
 <li><a href="linux.html#sec-1-4-7">1.4.7 允许不从tty执行sudo</a></li>
+<li><a href="linux.html#sec-1-4-8">1.4.8 ssh proxy</a></li>
 </ul>
 </li>
 </ul>
@@ -4811,7 +4812,45 @@ A copy of the C library was found in an unexpected directory | Blog : <a href="h
 </pre>
 
 
+</div>
 
+</div>
+
+<div id="outline-container-1-4-8" class="outline-4">
+<h4 id="sec-1-4-8"><span class="section-number-4">1.4.8</span> ssh proxy</h4>
+<div class="outline-text-4" id="text-1-4-8">
+
+<ul>
+<li>目的机器是D，端口是16021，用户是x
+</li>
+<li>跳板机器是T，端口是18021，用户是y
+</li>
+<li>方法A
+<ul>
+<li>从T上和D建立链接并且配置转发端口p, 所有和T:p的数据交互都会转发到D:16021
+</li>
+<li>在T上执行 ssh -L "*:5502:D:16021" x@D # 转发端口是5502
+<ul>
+<li>-o ServerAliveInterval=60 # 我才想单位应该是s。这样每隔60s可以和server做一些keepalive的通信，确保长时间没有数据通信的情况下，连接不会断开。
+</li>
+</ul>
+
+</li>
+<li>ssh -p 5502 x@T 或者 scp -P 5502 &lt;file&gt; x@T:&lt;path-at-D&gt;
+</li>
+</ul>
+
+</li>
+<li>方法B
+<ul>
+<li>scp可以指定proxyCommand配合D上nc命令完成
+</li>
+<li>scp -o ProxyCommand="ssh -p 18021 y@T 'nc D 16021'" &lt;file&gt; x@D:&lt;path-at-D&gt;
+</li>
+</ul>
+
+</li>
+</ul>
 
 </div>
 </div>
@@ -4820,7 +4859,7 @@ A copy of the C library was found in an unexpected directory | Blog : <a href="h
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-01-02T19:56+0800</p>
+<p class="date">Date: 2014-01-10T09:26+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
