@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="mysql"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-01-10T09:26+0800"/>
+<meta name="generated" content="2014-01-17T10:59+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -86,7 +86,19 @@
 <li><a href="mysql.html#sec-1-3-1">1.3.1 使用索引</a></li>
 </ul>
 </li>
-<li><a href="mysql.html#sec-1-4">1.4 存储引擎</a></li>
+<li><a href="mysql.html#sec-1-4">1.4 存储引擎</a>
+<ul>
+<li><a href="mysql.html#sec-1-4-1">1.4.1 MyISAM</a></li>
+<li><a href="mysql.html#sec-1-4-2">1.4.2 MERGE</a></li>
+<li><a href="mysql.html#sec-1-4-3">1.4.3 MEMORY</a></li>
+<li><a href="mysql.html#sec-1-4-4">1.4.4 InnoDB</a></li>
+<li><a href="mysql.html#sec-1-4-5">1.4.5 FEDERATED</a></li>
+<li><a href="mysql.html#sec-1-4-6">1.4.6 Falcon</a></li>
+<li><a href="mysql.html#sec-1-4-7">1.4.7 NDB</a></li>
+<li><a href="mysql.html#sec-1-4-8">1.4.8 ARCHIVE</a></li>
+<li><a href="mysql.html#sec-1-4-9">1.4.9 CSV</a></li>
+</ul>
+</li>
 <li><a href="mysql.html#sec-1-5">1.5 查询优化</a>
 <ul>
 <li><a href="mysql.html#sec-1-5-1">1.5.1 层级估算</a></li>
@@ -212,32 +224,107 @@
 <h3 id="sec-1-4"><span class="section-number-3">1.4</span> 存储引擎</h3>
 <div class="outline-text-3" id="text-1-4">
 
-<ul>
-<li>ARCHIVE 用于数据存档的引擎（数据行被插入之后就不能再修改） 
-</li>
-<li>BLACKHOLE 写操作是删除数据，读操作是返回空白记录
-</li>
-<li>CSV 存储数据时候以逗号为数据项之间的分隔符 
-</li>
-<li>EXAMPLE 示例（存根）存储引擎
-</li>
-<li>Falcon 用来事务处理的存储引擎 
-</li>
-<li>FEDERATED 用来访问远程数据表的存储引擎
-</li>
-<li>InnoDB 具备外键支持功能的事务处理引擎
-</li>
-<li>MEMORY 内存里的数据表
-</li>
-<li>MERGE 用来管理多个MyISAM数据表构成的数据表集合
-</li>
-<li>MyISAM 默认的存储引擎(indexed sequential access method)
-</li>
-<li>NDB MySQL Cluster的专用存储引擎
-</li>
-</ul>
+
+<p>
+每个数据库db对应一个db目录，每个数据表t对应一个t.frm文件，里面保存该数据表的格式。
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">存储引擎</th><th scope="col" class="left">文件</th></tr>
+</thead>
+<tbody>
+<tr><td class="left">ARCHIVE 用于数据存档的引擎（数据行被插入之后就不能再修改）</td><td class="left">.ARZ 数据文件, .ARM 元数据文件</td></tr>
+<tr><td class="left">BLACKHOLE 写操作是删除数据，读操作是返回空白记录</td><td class="left">不存储任何数据</td></tr>
+<tr><td class="left">CSV 存储数据时候以逗号为数据项之间的分隔符</td><td class="left">.CSV 数据文件,  .CSM 元数据文件</td></tr>
+<tr><td class="left">EXAMPLE 示例（存根）存储引擎</td><td class="left">不存储任何数据</td></tr>
+<tr><td class="left">Falcon 用来事务处理的存储引擎</td><td class="left">数据表的数据和索引存放在表空间。有默认的表空间，但是也可以自定义表空间。每个表空间可以容纳多个数据表。</td></tr>
+<tr><td class="left">FEDERATED 用来访问远程数据表的存储引擎</td><td class="left">不存储任何数据</td></tr>
+<tr><td class="left">InnoDB 具备外键支持功能的事务处理引擎</td><td class="left">数据表的数据和索引存放在共享表空间，也可以一个表空间只能容纳一个数据表，对应.ibd文件</td></tr>
+<tr><td class="left">MEMORY 内存里的数据表</td><td class="left">数据存放在内存，不占用任何磁盘空间</td></tr>
+<tr><td class="left">MERGE 用来管理多个MyISAM数据表构成的数据表集合</td><td class="left">.MRG 由各个成员MyISAM数据表的名字构成的清单</td></tr>
+<tr><td class="left">MyISAM 默认的存储引擎(indexed sequential access method)</td><td class="left">.MYD 数据文件, .MYI 索引文件</td></tr>
+<tr><td class="left">NDB MySQL Cluster的专用存储引擎</td><td class="left"></td></tr>
+</tbody>
+</table>
 
 
+
+
+</div>
+
+<div id="outline-container-1-4-1" class="outline-4">
+<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> MyISAM</h4>
+<div class="outline-text-4" id="text-1-4-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-4-2" class="outline-4">
+<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> MERGE</h4>
+<div class="outline-text-4" id="text-1-4-2">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-4-3" class="outline-4">
+<h4 id="sec-1-4-3"><span class="section-number-4">1.4.3</span> MEMORY</h4>
+<div class="outline-text-4" id="text-1-4-3">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-4-4" class="outline-4">
+<h4 id="sec-1-4-4"><span class="section-number-4">1.4.4</span> InnoDB</h4>
+<div class="outline-text-4" id="text-1-4-4">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-4-5" class="outline-4">
+<h4 id="sec-1-4-5"><span class="section-number-4">1.4.5</span> FEDERATED</h4>
+<div class="outline-text-4" id="text-1-4-5">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-4-6" class="outline-4">
+<h4 id="sec-1-4-6"><span class="section-number-4">1.4.6</span> Falcon</h4>
+<div class="outline-text-4" id="text-1-4-6">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-4-7" class="outline-4">
+<h4 id="sec-1-4-7"><span class="section-number-4">1.4.7</span> NDB</h4>
+<div class="outline-text-4" id="text-1-4-7">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-4-8" class="outline-4">
+<h4 id="sec-1-4-8"><span class="section-number-4">1.4.8</span> ARCHIVE</h4>
+<div class="outline-text-4" id="text-1-4-8">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-4-9" class="outline-4">
+<h4 id="sec-1-4-9"><span class="section-number-4">1.4.9</span> CSV</h4>
+<div class="outline-text-4" id="text-1-4-9">
+
+
+
+</div>
 </div>
 
 </div>
@@ -518,6 +605,8 @@ java.sql.SQLException: null,  message from server: "Can't create a new thread (e
 <p><b>NOTE(dirlt):utils/mysqldb可以用来简单配置和批量操作mysql单机多个实例的脚本</b>
 </p>
 <ul>
+<li>SQL语句关键字大写，其他比如数据库，数据表，视图，数据列，别名，索引，存储程序等全部小写。(not rule, but style)
+</li>
 <li>~/.my.cnf
 <ul>
 <li>[client] MySQL客户端程序选项组标记
@@ -529,7 +618,7 @@ java.sql.SQLException: null,  message from server: "Can't create a new thread (e
 </li>
 <li>SOURCE &lt;FILE&gt; # 导入SQL文件
 </li>
-<li>GRANT ALL PRIVILEGES ON &lt;db&gt;(<b>).&lt;table&gt;(</b>) TO 'user'@localhost IDENTIFIED BY 'password' # 授权
+<li>GRANT ALL PRIVILEGES ON &lt;db&gt;(<b>).&lt;table&gt;(</b>) TO 'user'@'host' IDENTIFIED BY 'password' # 授权
 </li>
 </ul>
 
@@ -575,7 +664,7 @@ java.sql.SQLException: null,  message from server: "Can't create a new thread (e
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-01-10T09:26+0800</p>
+<p class="date">Date: 2014-01-17T10:59+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
