@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="mysql"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-07T13:32+0800"/>
+<meta name="generated" content="2014-02-15T22:05+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -159,6 +159,10 @@
 <li><a href="http://www.mysql.com/">http://www.mysql.com/</a>
 </li>
 <li>MySQL技术内幕
+</li>
+<li>Past, present and future of MySQL and variants: linux.conf.au 2014 : <a href="http://www.mysqlperformanceblog.com/2014/01/22/past-present-future-mysql-variants-linux-conf-au-2014-talk-video/">http://www.mysqlperformanceblog.com/2014/01/22/past-present-future-mysql-variants-linux-conf-au-2014-talk-video/</a>
+</li>
+<li>MySQL 5.6 Reference Manual : <a href="http://dev.mysql.com/doc/refman/5.6/en/index.html">http://dev.mysql.com/doc/refman/5.6/en/index.html</a>
 </li>
 </ul>
 
@@ -1136,22 +1140,23 @@ binlog-format有三种选择
 <div class="outline-text-3" id="text-1-12">
 
 <ul>
-<li>RPM安装包没有/etc/my.cnf，全部使用MySQL默认配置，/usr/share/mysql/my-default.cnf
-</li>
 <li>~/.my.cnf overrides /etc/my.cnf
-<ul>
+</li>
 <li>[client] MySQL客户端程序选项组标记
 </li>
-<li>[mysqld] MySQL服务端程序选项组标记
+<li>[server] MySQL服务端程序选项组标记
+</li>
+<li>[mysqld] MySQL服务端程序选项组标记   
 </li>
 <li>[mysqld-X.Y] MySQL服务端程序选项组标记，但是只有X.Y这个版本才会读取
 </li>
 <li>[mysqld&lt;nnnn&gt;] MySQL服务实例&lt;nnnn&gt;选项组标记，启动多实例时候有用
 </li>
+<li>[mysqld_safe] mysqld_safe程序选项组标记
+</li>
 <li>[mysqld_multi] mysqld_multi程序选项组标记
 </li>
-</ul>
-
+<li>[mysql_install_db] mysql_install_db程序选项组标记
 </li>
 </ul>
 
@@ -1236,7 +1241,7 @@ MySQL服务器提供的状态变量使我们可以及时掌握它的实际运行
 </thead>
 <tbody>
 <tr><td class="left">log-error[=filename]</td><td class="left"></td></tr>
-<tr><td class="left">log=[filename]</td><td class="left"></td></tr>
+<tr><td class="left">log[=filename]</td><td class="left"></td></tr>
 <tr><td class="left">log-slow-queries=[filename]</td><td class="left"></td></tr>
 <tr><td class="left">log-output[=destionation]</td><td class="left">常规/慢查询日志存放地点，FILE（文件，默认）/TABLE（数据表）/NONE</td></tr>
 <tr><td class="left">log-bin[=flename]</td><td class="left"></td></tr>
@@ -1480,12 +1485,42 @@ java.sql.SQLException: null,  message from server: "Can't create a new thread (e
 <h3 id="sec-1-15"><span class="section-number-3">1.15</span> 实用程序</h3>
 <div class="outline-text-3" id="text-1-15">
 
+<p>MySQL（5.6） Installation Layout for Generic Unix/Linux Binary Package
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">Directory</th><th scope="col" class="left">Contents of Directory</th></tr>
+</thead>
+<tbody>
+<tr><td class="left">bin</td><td class="left">Client programs and the mysqld server</td></tr>
+<tr><td class="left">data</td><td class="left">Log files, databases</td></tr>
+<tr><td class="left">docs</td><td class="left">Manual in Info format</td></tr>
+<tr><td class="left">man</td><td class="left">Unix manual pages</td></tr>
+<tr><td class="left">include</td><td class="left">Include (header) files</td></tr>
+<tr><td class="left">lib</td><td class="left">Libraries</td></tr>
+<tr><td class="left">scripts</td><td class="left">mysql_install_db</td></tr>
+<tr><td class="left">share</td><td class="left">Miscellaneous support files, including error messages, sample configuration files, SQL for database installation</td></tr>
+<tr><td class="left">sql-bench</td><td class="left">Benchmarks</td></tr>
+<tr><td class="left">mysql-test</td><td class="left">NOTE(dirlt): test suite</td></tr>
+<tr><td class="left">support-files</td><td class="left"></td></tr>
+</tbody>
+</table>
+
+
 <ul>
 <li>mysql_install_db # 初始化基本表
 <ul>
-<li>&ndash;usrer=mysql 
+<li>&ndash;user 用户
 </li>
-<li>&ndash;datadir=/var/lib/mysql/ 
+<li>&ndash;datadir 数据目录
+</li>
+<li>&ndash;basedir 安装目录
+</li>
+<li>&ndash;defaults-file 配置文件
+</li>
+<li>用户问题 <a href="http://anothermysqldba.blogspot.com/2013/05/warning-because-user-was-set-to-mysql.html">http://anothermysqldba.blogspot.com/2013/05/warning-because-user-was-set-to-mysql.html</a>
 </li>
 <li>权限问题 <a href="http://www.huoxingfan.com/834.html">http://www.huoxingfan.com/834.html</a>
 </li>
@@ -1502,6 +1537,8 @@ java.sql.SQLException: null,  message from server: "Can't create a new thread (e
 </li>
 <li>&ndash;skip-networking # 不启动网络接口
 </li>
+<li>&ndash;defaults-file 配置文件
+</li>
 </ul>
 
 </li>
@@ -1516,9 +1553,9 @@ java.sql.SQLException: null,  message from server: "Can't create a new thread (e
 </li>
 <li>mysqld_multi # 启动多个MySQL实例
 <ul>
-<li>&ndash;defaults_file # Read only this configuration file, do not read the standard system-wide and user-specific files
+<li>&ndash;defaults-file # Read only this configuration file, do not read the standard system-wide and user-specific files
 </li>
-<li>&ndash;defaults_extra_file # Read this configuration file in addition to the standard system-wide and user-specific files
+<li>&ndash;defaults-extra-file # Read this configuration file in addition to the standard system-wide and user-specific files
 </li>
 </ul>
 
@@ -1546,7 +1583,7 @@ java.sql.SQLException: null,  message from server: "Can't create a new thread (e
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-07T13:32+0800</p>
+<p class="date">Date: 2014-02-15T22:05+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
