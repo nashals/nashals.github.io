@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="mysql"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-15T22:05+0800"/>
+<meta name="generated" content="2014-02-26T22:42+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -145,6 +145,14 @@
 </ul>
 </li>
 <li><a href="mysql.html#sec-1-15">1.15 实用程序</a></li>
+<li><a href="mysql.html#sec-1-16">1.16 其他信息</a>
+<ul>
+<li><a href="mysql.html#sec-1-16-1">1.16.1 安装环境</a></li>
+<li><a href="mysql.html#sec-1-16-2">1.16.2 版本选择</a></li>
+<li><a href="mysql.html#sec-1-16-3">1.16.3 测试套件</a></li>
+<li><a href="mysql.html#sec-1-16-4">1.16.4 MySQL技术内幕</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -446,7 +454,16 @@ CREATE TABLE table(&hellip;) ENGINE = InnoDB/MyISAM optionA = &hellip; optionB =
 <h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> 隔离性</h4>
 <div class="outline-text-4" id="text-1-4-2">
 
-<p>InnoDB存储引擎实现的事务隔离级别机制能够让客户控制他们想看到其他事务做的修改。它提供了多种不同的隔离级别以允许或预防在多个事务同时运行时可能发生的各种各样的问题：
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Isolation_(database_systems)">http://en.wikipedia.org/wiki/Isolation_(database_systems)</a>
+</li>
+<li><a href="http://www.ovaistariq.net/597/understanding-innodb-transaction-isolation-levels/">http://www.ovaistariq.net/597/understanding-innodb-transaction-isolation-levels/</a>
+</li>
+</ul>
+
+
+<p>
+InnoDB存储引擎实现的事务隔离级别机制能够让客户控制他们想看到其他事务做的修改。它提供了多种不同的隔离级别以允许或预防在多个事务同时运行时可能发生的各种各样的问题：
 </p><ul>
 <li>脏读（dirty read） 某个事务所作的修改在它尚未被提交时就可以被其他事务看到。
 </li>
@@ -456,17 +473,57 @@ CREATE TABLE table(&hellip;) ENGINE = InnoDB/MyISAM optionA = &hellip; optionB =
 </li>
 </ul>
 
-<p>为了解决这些问题，InnoDB存储引擎提供了4种隔离级别。这些隔离级别用来确定允许某个事务看到与之同时执行的其他事务所做出的修改：（级别不断提高）
+
+<p>
+为了解决这些问题，InnoDB存储引擎提供了4种隔离级别。这些隔离级别用来确定允许某个事务看到与之同时执行的其他事务所做出的修改：（级别不断提高）
 </p><ul>
 <li>READ UNCOMMITED 允许事务看到其他事务尚未提交的数据行改动
 </li>
 <li>READ COMMITED 只允许事务看到其他事务已经提交的数据行改动
+<ul>
+<li>a lock-based concurrency control DBMS implementation keeps write locks (acquired on selected data) until the end of the transaction, but read locks are released as soon as the SELECT operation is performed (so the non-repeatable reads phenomenon can occur in this isolation level, as discussed below). As in the previous level, range-locks are not managed.
 </li>
-<li>REPEATABLE READ 如果某个事务两次执行同一个select语句，其结果是可重复的。也就是说如果两次期间如果有数据修改的话，修改是隔离的。InnoDB默认的事务隔离级别。
-</li>
-<li>SERIALIZABLE 这个隔离级别与REPEATABLE READ很相似，但对事务的隔离更加彻底，某个事务正在查看的数据行不允许其他事务修改，直到该事务完成为止。
+<li>Putting it in simpler words, read committed is an isolation level that guarantees that any data read is committed at the moment it is read. It simply restricts the reader from seeing any intermediate, uncommitted, 'dirty' read. It makes no promise whatsoever that if the transaction re-issues the read, it will find the same data; data is free to change after it is read.
 </li>
 </ul>
+
+</li>
+<li>REPEATABLE READ 如果某个事务两次执行同一个select语句，其结果是可重复的。也就是说如果两次期间如果有数据修改的话，修改是隔离的。InnoDB默认的事务隔离级别。
+<ul>
+<li>a lock-based concurrency control DBMS implementation keeps read and write locks (acquired on selected data) until the end of the transaction. However, range-locks are not managed, so the phantom reads phenomenon can occur (see below). <b>NOTE(dirlt): 没有range-locks!，只出现在SELECT&hellip;WHERE&hellip;BETWEEN&hellip;这样的语句上面，可能还是和锁模型相关</b>
+</li>
+<li>As the text above describes, phantom reads is the only problem that SERIALIZABLE is helping you avoid, otherwise SERIALIZABLE is pretty much same as REPEATABLE-READ. InnoDB has a special locking feature called gap-locking which helps you avoid the phantom reads problem. In the case of gap locking, a lock is set on the gap between index records, or on the gap before the first or after the last index record. Now all you have to do avoid phantom reads is to convert such reads to locking reads using SELECT with FOR UPDATE or LOCK IN SHARE MODE.（可以通过gap-locking来避免phantom read，这样避免使用SERIALIZABLE隔离性）
+</li>
+</ul>
+
+</li>
+<li>SERIALIZABLE 这个隔离级别与REPEATABLE READ很相似，但对事务的隔离更加彻底，某个事务正在查看的数据行不允许其他事务修改，直到该事务完成为止。
+<ul>
+<li>With a lock-based concurrency control DBMS implementation, serializability requires read and write locks (acquired on selected data) to be released at the end of the transaction. Also range-locks must be acquired when a SELECT query uses a ranged WHERE clause, especially to avoid the <b>phantom reads</b> phenomenon (see below). <b>TODO（dirlt）；so there are read and write locks, also there are range-locks</b>
+</li>
+<li>When using non-lock based concurrency control, no locks are acquired; however, if the system detects a write collision among several concurrent transactions, only one of them is allowed to commit. See <b>snapshot isolation</b> for more details on this topic.
+</li>
+</ul>
+
+</li>
+</ul>
+
+
+<p>
+<b>Isolation Levels vs Read Phenomena</b>
+</p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">Isolation level</th><th scope="col" class="left">Dirty reads</th><th scope="col" class="left">Non-repeatable reads</th><th scope="col" class="left">Phantoms</th></tr>
+</thead>
+<tbody>
+<tr><td class="left">Read Uncommitted</td><td class="left">may occur</td><td class="left">may occur</td><td class="left">may occur</td></tr>
+<tr><td class="left">Read Committed</td><td class="left">-</td><td class="left">may occur       may occur</td><td class="left"></td></tr>
+<tr><td class="left">Repeatable Read</td><td class="left">-</td><td class="left">-</td><td class="left">may occur</td></tr>
+<tr><td class="left">Serializable   -</td><td class="left">-</td><td class="left">-</td><td class="left"></td></tr>
+</tbody>
+</table>
 
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -478,12 +535,57 @@ CREATE TABLE table(&hellip;) ENGINE = InnoDB/MyISAM optionA = &hellip; optionB =
 <tbody>
 <tr><td class="left">READ UNCOMMITED</td><td class="left">Y</td><td class="left">Y</td><td class="left">Y</td></tr>
 <tr><td class="left">READ COMMITED</td><td class="left">N</td><td class="left">Y</td><td class="left">Y</td></tr>
-<tr><td class="left">REPEATABLE READ</td><td class="left">N</td><td class="left">N</td><td class="left">N</td></tr>
+<tr><td class="left">REPEATABLE READ</td><td class="left">N</td><td class="left">N</td><td class="left">Y</td></tr>
 <tr><td class="left">SERIALIZABLE</td><td class="left">N</td><td class="left">N</td><td class="left">N</td></tr>
 </tbody>
 </table>
 
 
+<p>
+<b>Isolation Levels vs Lock Duration</b>
+In lock-based concurrency control, isolation level determines the duration that locks are held. 
+</p><ul>
+<li>"C" - Denotes that locks are held until the transaction commits.
+</li>
+<li>"S" - Denotes that the locks are held only during the currently executing statement. Note that if locks are released after a statement, the underlying data could be changed by another transaction before the current transaction commits, thus creating a violation.
+</li>
+</ul>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">Isolation level</th><th scope="col" class="left">Write Operation</th><th scope="col" class="left">Read Operation</th><th scope="col" class="left">Range Operation (&hellip;where&hellip;)</th></tr>
+</thead>
+<tbody>
+<tr><td class="left">Read Uncommitted</td><td class="left">S</td><td class="left">S</td><td class="left">S</td></tr>
+<tr><td class="left">Read Committed</td><td class="left">C</td><td class="left">S</td><td class="left">S</td></tr>
+<tr><td class="left">Repeatable Read</td><td class="left">C</td><td class="left">C</td><td class="left">S</td></tr>
+<tr><td class="left">Serializable</td><td class="left">C</td><td class="left">C</td><td class="left">C</td></tr>
+</tbody>
+</table>
+
+
+<p>
+不同隔离级别使用的锁：
+</p><ul>
+<li>The READ-UNCOMMITTED isolation level has the least number of locking done,
+</li>
+<li>after that comes the READ-COMMITTED isolation level which removes most of the gap-locking and hence produces fewer deadlocks, also in the case of READ-COMMITTED, locking reads only lock the index records and not the gaps before/after them. 
+</li>
+<li>REPEATABLE-READ has a higher level of locking as compared to READ-COMMITTED, UPDATE, DELETE use next-key locking, also locking reads also use next-key locking. 
+</li>
+<li>SERIALIZABLE has the highest level of locking, all the simple SELECTs are automatically converted to SELECT &hellip; LOCK IN SHARE MODE, and hence all records have shared locks.
+</li>
+</ul>
+
+
+<p>
+As I have mentioned in the "Locking and the isolation levels" section, SERIALIZABLE and REPEATABLE-READ employ lots of locking and hence creating more deadlock situations, which in turn decreases performance. In fact SERIALIZABLE is the least performant of the isolation levels, as it converts even plain reads into locking reads. REPEATABLE-READ is better in terms of locking and deadlocks but READ-COMMITTED is even better because there are fewer gap-locks. But locking and deadlocks is not the only thing when considering performance, there is another issue of mutex contention that needs consideration. There is a post by Mark Callaghan comparing both REPEATABLE-READ and READ-COMMITTED in the context of mutex contention. This post can be found <a href="http://www.facebook.com/note.php?note_id=244956410932">here</a>. （随着隔离级别升高使用锁更加激进，那么死锁和带来的性能下降更加明显）
+</p>
+<p>
+The default replication type in MySQL is statement-based replication, and this replication type replicates the data changes by re-executing SQL statements on slaves that were executed on the master. This requires the isolation level to be stricter (involving more locking) so that the data changes are consistent in such a way that the same SQL when executed on the slave produces the same data changes. As mentioned above, READ-COMMITTED creates a situation of non-repeatable read, hence its not safe for statement-based replication. Hence, when using statement-based replication either use SERIALIZABLE or REPEATABLE-READ isolation level. If you have MySQL version &gt;= 5.1 then you can use READ-COMMITTED with the row-based replication, because with row-based replication you have exact information about each data row changes.（不同事务级别对于备份模型的要求） <b>NOTE（dirlt）：可以看得ROW相对STMT来说受到事务隔离性影响更小也会更加安全</b>
+</p>
 </div>
 </div>
 
@@ -1128,8 +1230,21 @@ binlog-format有三种选择
 </li>
 </ul>
 
-<p>很早之前做了一个mysql集群主从切换模块，里面就涉及到了半同步。按照半同步的定义（全同步的语义应该就是等待所有的slave都同步完成，强一致性），半同步还是会存在丢数据的可能，半同步的语义仅仅是认为一个slave同步到数据之后的话同步就完成。但是如果master挂掉同时slave也挂掉（或者是没有等其他slave补齐数据的话），那么就会存在数据丢失的可能（仅仅是提供最终一致性可能）。
-</p>
+<p>很早之前做了一个mysql集群主从切换模块，里面就涉及到了半同步。按照半同步的定义（全同步的语义应该就是等待所有的slave都同步完成，强一致性），半同步还是会存在丢数据的可能，半同步的语义仅仅是认为一个slave同步到数据之后的话同步就完成。但是如果master挂掉同时slave也挂掉（或者是没有等其他slave补齐数据的话），那么就会存在数据丢失的可能（仅仅是提供最终一致性可能）。Semisynchronous replication can be used as an alternative to asynchronous replication:
+</p><ul>
+<li>A slave indicates whether it is semisynchronous-capable when it connects to the master.（slave必须声明自己是semi-sync的）
+</li>
+<li>If semisynchronous replication is enabled on the master side and there is at least one semisynchronous slave, a thread that performs a transaction commit on the master blocks after the commit is done and waits until at least one semisynchronous slave acknowledges that it has received all events for the transaction, or until a timeout occurs.（master也必须声明自己是semi-sync的，并且至少一个semi-sync slave连接上来，才会开启semi-sync模式。事务必须至少有一个semi-sync slave确认之后才会成功返回）
+</li>
+<li>The slave acknowledges receipt of a transaction's events only after the events have been written to its relay log and flushed to disk.（slave的确认是relay log完全刷到磁盘上）
+</li>
+<li>If a timeout occurs without any slave having acknowledged the transaction, the master reverts to asynchronous replication. When at least one semisynchronous slave catches up, the master returns to semisynchronous replication.（如果超时之前没有确认事务的话，那么master会转到async模式，直到有一个semi-sync slave追上为止）
+</li>
+<li>Semisynchronous replication must be enabled on both the master and slave sides. If semisynchronous replication is disabled on the master, or enabled on the master but on no slaves, the master uses asynchronous replication.（slave和master两端都必须打开semi-sync）
+</li>
+</ul>
+
+
 </div>
 </div>
 
@@ -1169,7 +1284,14 @@ binlog-format有三种选择
 <h3 id="sec-1-13"><span class="section-number-3">1.13</span> 系统变量</h3>
 <div class="outline-text-3" id="text-1-13">
 
-<p>系统变量按照其作用范围的大小分为两个级别
+<ul>
+<li><a href="http://www.mysqlperformanceblog.com/2014/01/28/10-mysql-settings-to-tune-after-installation/">http://www.mysqlperformanceblog.com/2014/01/28/10-mysql-settings-to-tune-after-installation/</a>
+</li>
+</ul>
+
+
+<p>
+系统变量按照其作用范围的大小分为两个级别
 </p><ul>
 <li>全局级 # 全面影响整个服务器的操作，比如key_buffer_size控制MyISAM的索引数据缓冲区大小
 </li>
@@ -1257,6 +1379,21 @@ MySQL服务器提供的状态变量使我们可以及时掌握它的实际运行
 </table>
 
 
+
+<p>
+binlog &amp; relaylog
+</p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">选项</th><th scope="col" class="left">内容</th></tr>
+</thead>
+<tbody>
+<tr><td class="left">sync_binlog=n</td><td class="left">每进行n次事务提交之后使用fsync等磁盘同步指令将binlog_cache中数据强制写入磁盘</td></tr>
+</tbody>
+</table>
+
+
 </div>
 
 </div>
@@ -1277,7 +1414,7 @@ MySQL服务器提供的状态变量使我们可以及时掌握它的实际运行
 <tr><td class="left">port</td><td class="left"></td></tr>
 <tr><td class="left">socket</td><td class="left"></td></tr>
 <tr><td class="left">pid-file</td><td class="left"></td></tr>
-<tr><td class="left">max_allowed_packe</td><td class="left">通信使用的缓冲区最大长度</td></tr>
+<tr><td class="left">max_allowed_packet</td><td class="left">通信使用的缓冲区最大长度</td></tr>
 <tr><td class="left">max_connections</td><td class="left">同时处于打开状态的客户连接的最大个数</td></tr>
 <tr><td class="left">table_cache/table_open_cache</td><td class="left">数据表文件句柄最大数</td></tr>
 </tbody>
@@ -1393,7 +1530,14 @@ Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: The last pac
 <h4 id="sec-1-14-2"><span class="section-number-4">1.14.2</span> 连接数量</h4>
 <div class="outline-text-4" id="text-1-14-2">
 
-<p>mysql最大连接数目可以通过参数max_connections进行配置，默认的连接数目是比较低的，对于需要处理大量请求的web服务来说需要增大。 <b>修改之后需要重启</b>
+<ul>
+<li><a href="http://www.mysqlperformanceblog.com/2014/01/23/percona-server-improve-scalability-percona-thread-pool/">http://www.mysqlperformanceblog.com/2014/01/23/percona-server-improve-scalability-percona-thread-pool/</a>
+</li>
+</ul>
+
+
+<p>
+mysql最大连接数目可以通过参数max_connections进行配置，默认的连接数目是比较低的，对于需要处理大量请求的web服务来说需要增大。 <b>修改之后需要重启</b>
 </p>
 
 
@@ -1576,14 +1720,244 @@ java.sql.SQLException: null,  message from server: "Can't create a new thread (e
 </ul>
 
 
+</div>
 
+</div>
+
+<div id="outline-container-1-16" class="outline-3">
+<h3 id="sec-1-16"><span class="section-number-3">1.16</span> 其他信息</h3>
+<div class="outline-text-3" id="text-1-16">
+
+
+</div>
+
+<div id="outline-container-1-16-1" class="outline-4">
+<h4 id="sec-1-16-1"><span class="section-number-4">1.16.1</span> 安装环境</h4>
+<div class="outline-text-4" id="text-1-16-1">
+
+<p>   Not all platforms are equally well-suited for running MySQL. How
+   well a certain platform is suited for a high-load mission-critical
+   MySQL server is determined by the following factors:
+</p>
+<ul>
+<li>General stability of the thread library. A platform may have
+       an excellent reputation otherwise, but MySQL is only as stable
+       as the thread library it calls, even if everything else is
+       perfect.
+
+</li>
+<li>The capability of the kernel and the thread library to take
+       advantage of symmetric multi-processor (SMP) systems. In other
+       words, when a process creates a thread, it should be possible
+       for that thread to run on a CPU different from the original
+       process.
+
+</li>
+<li>The capability of the kernel and the thread library to run
+       many threads that acquire and release a mutex over a short
+       critical region frequently without excessive context switches.
+       If the implementation of pthread_mutex_lock() is too anxious
+       to yield CPU time, this hurts MySQL tremendously. If this
+       issue is not taken care of, adding extra CPUs actually makes
+       MySQL slower.
+
+</li>
+<li>General file system stability and performance.
+
+</li>
+<li>Table size. If your tables are large, performance is affected
+       by the ability of the file system to deal with large files and
+       dealing with them efficiently.
+
+</li>
+<li>Our level of expertise here at Oracle Corporation with the
+       platform. If we know a platform well, we enable
+       platform-specific optimizations and fixes at compile time. We
+       can also provide advice on configuring your system optimally
+       for MySQL.
+
+</li>
+<li>The amount of testing we have done internally for similar
+       configurations.
+
+</li>
+<li>The number of users that have run MySQL successfully on the
+       platform in similar configurations. If this number is high,
+       the likelihood of encountering platform-specific surprises is
+       much smaller.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-16-2" class="outline-4">
+<h4 id="sec-1-16-2"><span class="section-number-4">1.16.2</span> 版本选择</h4>
+<div class="outline-text-4" id="text-1-16-2">
+
+<p>   The naming scheme in MySQL 5.6 uses release names that consist of
+   three numbers and a suffix; for example, mysql-5.6.1-m1. The
+   numbers within the release name are interpreted as follows:
+</p>
+<ul>
+<li>The first number (5) is the major version and describes the
+       file format. All MySQL 5 releases have the same file format.
+
+</li>
+<li>The second number (6) is the release level. Taken together,
+       the major version and release level constitute the release
+       series number.
+
+</li>
+<li>The third number (1) is the version number within the release
+       series. This is incremented for each new release. Usually you
+       want the latest version for the series you have chosen.
+</li>
+</ul>
+
+
+<p>
+   For each minor update, the last number in the version string is
+   incremented. When there are major new features or minor
+   incompatibilities with previous versions, the second number in the
+   version string is incremented. When the file format changes, the
+   first number is increased.
+</p>
+<p>
+   Release names also include a suffix to indicates the stability
+   level of the release. Releases within a series progress through a
+   set of suffixes to indicate how the stability level improves. The
+   possible suffixes are:
+</p>
+<ul>
+<li>mN (for example, m1, m2, m3, &hellip;) indicate a milestone number.
+       MySQL development uses a milestone model, in which each
+       milestone proceeds through a small number of versions with a
+       tight focus on a small subset of thoroughly tested features.
+       Following the releases for one milestone, development proceeds
+       with another small number of releases that focuses on the next
+       small set of features, also thoroughly tested. Features within
+       milestone releases may be considered to be of pre-production
+       quality.
+
+</li>
+<li>rc indicates a Release Candidate. Release candidates are
+       believed to be stable, having passed all of MySQL's internal
+       testing, and with all known fatal runtime bugs fixed. However,
+       the release has not been in widespread use long enough to know
+       for sure that all bugs have been identified. Only minor fixes
+       are added.
+
+</li>
+<li>If there is no suffix, it indicates that the release is a
+       General Availability (GA) or Production release. GA releases
+       are stable, having successfully passed through all earlier
+       release stages and are believed to be reliable, free of
+       serious bugs, and suitable for use in production systems. Only
+       critical bugfixes are applied to the release.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-16-3" class="outline-4">
+<h4 id="sec-1-16-3"><span class="section-number-4">1.16.3</span> 测试套件</h4>
+<div class="outline-text-4" id="text-1-16-3">
+
+<p>   All releases of MySQL are run through our standard tests and
+   benchmarks to ensure that they are relatively safe to use. Because
+   the standard tests are extended over time to check for all
+   previously found bugs, the test suite keeps getting better.
+</p>
+<p>
+   All releases have been tested at least with these tools:
+</p>
+<ul>
+<li>An internal test suite.  The mysql-test directory contains an
+       extensive set of test cases. We run these tests for every
+       server binary. See Section 23.1.2, "The MySQL Test Suite," for
+       more information about this test suite.
+
+</li>
+<li>The MySQL benchmark suite.  This suite runs a range of common
+       queries. It is also a test to determine whether the latest
+       batch of optimizations actually made the code faster. See
+       Section 8.12.2, "The MySQL Benchmark Suite."
+</li>
+</ul>
+
+
+<p>
+   We also perform additional integration and nonfunctional testing
+   of the latest MySQL version in our internal production
+   environment. Integration testing is done with different
+   connectors, storage engines, replication modes, backup,
+   partitioning, stored programs, and so forth in various
+   combinations. Additional nonfunctional testing is done in areas of
+   performance, concurrency, stress, high volume, upgrade and
+   downgrade.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-16-4" class="outline-4">
+<h4 id="sec-1-16-4"><span class="section-number-4">1.16.4</span> MySQL技术内幕</h4>
+<div class="outline-text-4" id="text-1-16-4">
+
+<p>MySQL基础知识
+</p><ul>
+<li>MySQL和SQL入门
+</li>
+<li>使用SQL管理数据
+</li>
+<li>数据类型
+</li>
+<li>存储程序
+</li>
+<li>查询优化
+</li>
+</ul>
+
+<p>MySQL的编程接口
+</p><ul>
+<li>MySQL程序设计
+</li>
+<li>用C语言编写MySQL程序
+</li>
+<li>用Perl DBI编写MySQL程序
+</li>
+<li>用PHP编写MySQL程序
+</li>
+</ul>
+
+<p>MySQL的系统管理
+</p><ul>
+<li>MySQL系统管理简介
+</li>
+<li>MySQL的数据目录
+</li>
+<li>MySQL数据库的日常管理
+</li>
+<li>访问控件和安全
+</li>
+<li>MySQL数据库的维护，备份和复制
+</li>
+</ul>
+
+</div>
 </div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-15T22:05+0800</p>
+<p class="date">Date: 2014-02-26T22:42+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
