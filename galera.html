@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="galera"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-02-26T22:42+0800"/>
+<meta name="generated" content="2014-03-07T14:17+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -80,64 +80,59 @@
 <li><a href="galera.html#sec-1">1 galera</a>
 <ul>
 <li><a href="galera.html#sec-1-1">1.1 Links &amp; Abbr.</a></li>
-<li><a href="galera.html#sec-1-2">1.2 Getting Started</a>
+<li><a href="galera.html#sec-1-2">1.2 wsrep API Annotation</a>
 <ul>
-<li><a href="galera.html#sec-1-2-1">1.2.1 Alex's Instruction</a></li>
-<li><a href="galera.html#sec-1-2-2">1.2.2 Replied Email</a></li>
+<li><a href="galera.html#sec-1-2-1">1.2.1 file layout</a></li>
+<li><a href="galera.html#sec-1-2-2">1.2.2 concept</a></li>
+<li><a href="galera.html#sec-1-2-3">1.2.3 wsrep_init_args</a></li>
+<li><a href="galera.html#sec-1-2-4">1.2.4 wsrep_t</a></li>
 </ul>
 </li>
-<li><a href="galera.html#sec-1-3">1.3 wsrep API Annotation</a>
+<li><a href="galera.html#sec-1-3">1.3 Patched MySQL(mysql-wsrep) 5.6</a>
 <ul>
-<li><a href="galera.html#sec-1-3-1">1.3.1 file layout</a></li>
-<li><a href="galera.html#sec-1-3-2">1.3.2 concept</a></li>
-<li><a href="galera.html#sec-1-3-3">1.3.3 wsrep_init_args</a></li>
-<li><a href="galera.html#sec-1-3-4">1.3.4 wsrep_t</a></li>
+<li><a href="galera.html#sec-1-3-1">1.3.1 wsrep callbacks</a></li>
 </ul>
 </li>
-<li><a href="galera.html#sec-1-4">1.4 Patched MySQL(mysql-wsrep) 5.6</a>
+<li><a href="galera.html#sec-1-4">1.4 Replicator Architecture</a></li>
+<li><a href="galera.html#sec-1-5">1.5 Synchonization Mechanism</a>
 <ul>
-<li><a href="galera.html#sec-1-4-1">1.4.1 wsrep callbacks</a></li>
+<li><a href="galera.html#sec-1-5-1">1.5.1 Virtual Synchrony</a></li>
+<li><a href="galera.html#sec-1-5-2">1.5.2 Finite State Machine</a></li>
+<li><a href="galera.html#sec-1-5-3">1.5.3 Flow Control</a></li>
+<li><a href="galera.html#sec-1-5-4">1.5.4 Writeset Cache</a></li>
+<li><a href="galera.html#sec-1-5-5">1.5.5 Snapshot Transfer</a></li>
+<li><a href="galera.html#sec-1-5-6">1.5.6 Parallel Applying</a></li>
+<li><a href="galera.html#sec-1-5-7">1.5.7 Primary Component</a></li>
+<li><a href="galera.html#sec-1-5-8">1.5.8 Online Schema Upgrade</a></li>
 </ul>
 </li>
-<li><a href="galera.html#sec-1-5">1.5 Replicator Architecture</a></li>
-<li><a href="galera.html#sec-1-6">1.6 Synchonization Mechanism</a>
+<li><a href="galera.html#sec-1-6">1.6 Certification Based Replication</a>
 <ul>
-<li><a href="galera.html#sec-1-6-1">1.6.1 Virtual Synchrony</a></li>
-<li><a href="galera.html#sec-1-6-2">1.6.2 Finite State Machine</a></li>
-<li><a href="galera.html#sec-1-6-3">1.6.3 Flow Control</a></li>
-<li><a href="galera.html#sec-1-6-4">1.6.4 Writeset Cache</a></li>
-<li><a href="galera.html#sec-1-6-5">1.6.5 Snapshot Transfer</a></li>
-<li><a href="galera.html#sec-1-6-6">1.6.6 Parallel Applying</a></li>
-<li><a href="galera.html#sec-1-6-7">1.6.7 Primary Component</a></li>
-<li><a href="galera.html#sec-1-6-8">1.6.8 Online Schema Upgrade</a></li>
+<li><a href="galera.html#sec-1-6-1">1.6.1 Introduction</a></li>
+<li><a href="galera.html#sec-1-6-2">1.6.2 Consistent read(read causality)</a></li>
+<li><a href="galera.html#sec-1-6-3">1.6.3 Multi-Master Conflicts</a></li>
 </ul>
 </li>
-<li><a href="galera.html#sec-1-7">1.7 Certification Based Replication</a>
+<li><a href="galera.html#sec-1-7">1.7 Miscellaneous</a>
 <ul>
-<li><a href="galera.html#sec-1-7-1">1.7.1 Introduction</a></li>
-<li><a href="galera.html#sec-1-7-2">1.7.2 Consistent read(read causality)</a></li>
-<li><a href="galera.html#sec-1-7-3">1.7.3 Multi-Master Conflicts</a></li>
+<li><a href="galera.html#sec-1-7-1">1.7.1 Parameters</a></li>
+<li><a href="galera.html#sec-1-7-2">1.7.2 Status Variables</a></li>
+<li><a href="galera.html#sec-1-7-3">1.7.3 Configuration</a></li>
+<li><a href="galera.html#sec-1-7-4">1.7.4 Monitoring</a></li>
+<li><a href="galera.html#sec-1-7-5">1.7.5 Notification</a></li>
+<li><a href="galera.html#sec-1-7-6">1.7.6 Backup</a></li>
+<li><a href="galera.html#sec-1-7-7">1.7.7 Limitations</a></li>
 </ul>
 </li>
-<li><a href="galera.html#sec-1-8">1.8 Miscellaneous</a>
+<li><a href="galera.html#sec-1-8">1.8 Related Articles</a>
 <ul>
-<li><a href="galera.html#sec-1-8-1">1.8.1 Parameters</a></li>
-<li><a href="galera.html#sec-1-8-2">1.8.2 Status Variables</a></li>
-<li><a href="galera.html#sec-1-8-3">1.8.3 Configuration</a></li>
-<li><a href="galera.html#sec-1-8-4">1.8.4 Monitoring</a></li>
-<li><a href="galera.html#sec-1-8-5">1.8.5 Notification</a></li>
-<li><a href="galera.html#sec-1-8-6">1.8.6 Backup</a></li>
-<li><a href="galera.html#sec-1-8-7">1.8.7 Limitations</a></li>
+<li><a href="galera.html#sec-1-8-1">1.8.1 Commercial</a></li>
+<li><a href="galera.html#sec-1-8-2">1.8.2 Tech Issue</a></li>
+<li><a href="galera.html#sec-1-8-3">1.8.3 Bechmark</a></li>
+<li><a href="galera.html#sec-1-8-4">1.8.4 Presentation</a></li>
 </ul>
 </li>
-<li><a href="galera.html#sec-1-9">1.9 Related Articles</a>
-<ul>
-<li><a href="galera.html#sec-1-9-1">1.9.1 Commercial</a></li>
-<li><a href="galera.html#sec-1-9-2">1.9.2 Tech Issue</a></li>
-<li><a href="galera.html#sec-1-9-3">1.9.3 Bechmark</a></li>
-<li><a href="galera.html#sec-1-9-4">1.9.4 Presentation</a></li>
-</ul>
-</li>
+<li><a href="galera.html#sec-1-9">1.9 Code Analysis</a></li>
 </ul>
 </li>
 </ul>
@@ -262,291 +257,15 @@ Info.(@2012)
 </div>
 
 <div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Getting Started</h3>
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> wsrep API Annotation</h3>
 <div class="outline-text-3" id="text-1-2">
 
 
 </div>
 
 <div id="outline-container-1-2-1" class="outline-4">
-<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> Alex's Instruction</h4>
+<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> file layout</h4>
 <div class="outline-text-4" id="text-1-2-1">
-
-<p>That's a wonderful attitude! Being proactive is what working at Codership is about - that's how you make your job fun ;)
-</p>
-<p>
-First thing you want to do to get up to speed is learning how to build and set up the cluster and then run some tests: no development can be carried without it.
-</p>
-<p>
-For that purpose you should
-</p>
-
-<hr/>
-
-<p>
-register at Launchpad if you have not yet done so, and check out the following branches
-</p><ul>
-<li><a href="https://code.launchpad.net/~codership/galera/3.x">https://code.launchpad.net/~codership/galera/3.x</a>
-</li>
-<li><a href="https://code.launchpad.net/~codership/codership-mysql/wsrep-5.5">https://code.launchpad.net/~codership/codership-mysql/wsrep-5.5</a>
-</li>
-<li><a href="https://code.launchpad.net/~codership/codership-mysql/wsrep-5.6">https://code.launchpad.net/~codership/codership-mysql/wsrep-5.6</a>
-</li>
-</ul>
-
-
-<p>
-We have several Galera branches, but you probably won't need anything but 3.x. On the other hand we have to support both MySQL 5.5.x and 5.6.x
-</p>
-
-<hr/>
-
-<p>
-for quick cluster setup and testing we use custom tarballs. Inside galera do:
-</p>
-
-
-
-<pre class="example">$ export MYSQL_SRC=&lt;path to mysql branch&gt;
-$ ./scripts/mysql/build.sh -b -t
-</pre>
-
-
-<p>
-This will bootstrap the build and create the tarball. For more options see ./scripts/mysql/build.sh &ndash;help.
-The tarball contains an already provisioned data directory with two users: root;rootpass and test:testpass (with all privileges over test schema)
-</p>
-
-<hr/>
-
-<p>
-galera sources also contain a test framework made of shell scripts and configuration files. It is designed to automate cluster setup and basic operations, like node checksums. With it you can setup cluster both on separate machines, via SSH, and on a local host (each server running with its own data directory and listening on own port). It also contains specific test scripts.
-</p>
-<p>
-The main script that manipulates the cluster is ./tests/scripts/command.sh
-It reads configuration files from ./tests/conf
-The configuration files to edit are
-</p><ul>
-<li>./tests/conf/cluster.conf  - contains common cluster configuration
-</li>
-<li>./tests/conf/nodes.conf    - describes individual nodes
-</li>
-<li>./tests/conf/common_my.cnf - common mysqld configuration, to set cluster-wide mysqld parameters
-</li>
-<li>./tests/conf/my*.cnf       - custom mysqld configuration for node-specific mysqld parameters (overrides common_my.cnf)
-</li>
-</ul>
-
-<p>there are templates for these files and I'm attaching mine as an example
-</p>
-
-<hr/>
-
-<p>
-build.sh integrates with test framework, so to build and set up the cluster from scratch I do this (with the cluster on my laptop):
-</p>
-
-
-
-<pre class="example">$ export MYSQL_SRC=&lt;path to mysql branch&gt;
-$ killall mysqld; ./tests/scripts/command.sh remove;./scripts/mysql/build.sh --no-strip -i -d -b &amp;&amp; ./tests/scripts/command.sh start
-</pre>
-
-
-<p>
-this kills running mysqlds (if any), removes data directories, builds and installs debug builds and starts the nodes. So this is normally a matter of a press of a button.
-</p>
-
-<hr/>
-
-<p>
-To load the cluster you will need load balancer. There are no restrictions on what load balancer you can use. We have created load balancer specifically for this, which can be used either as a daemon or as a preloadable library. I usually use the latter as it does not require setting up yet another process and is much faster. You can get it here:
-</p>
-<p>
-<a href="https://github.com/codership/glb">https://github.com/codership/glb</a>
-</p>
-
-<hr/>
-
-<p>
-Once you get this going, run some load against the cluster and check data consistency.
-</p>
-
-
-
-<pre class="example">$ ./tests/scripts/command.sh check
-</pre>
-
-
-<p>
-Feel free to ask when you have any questions.
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-2-2" class="outline-4">
-<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> Replied Email</h4>
-<div class="outline-text-4" id="text-1-2-2">
-
-<p>Hi Alex:
-</p>
-<p>
-Sorry about late reply. I have a lot work to do recently and don't have much time to play the galera. And I take some notes about this experience and put them below.
-</p>
-<p>
-And I still have an important question because till now, I'm still confused about this job. What's the job description? and what responsibility should I take?
-</p>
-
-<hr/>
-
-<p>
-I glance the code of galera. It's well structured. Code is clean, concise, and very readable.
-</p>
-<p>
-I build the tarball successfully. And I read the QUICKSTART and README in the tarball. It's well written and helps me a lot =D.
-</p>
-<p>
-However I can't start up two instances on my computer when use the default configuration in the tarball. Then I read the error log in mysql/var/mysqld.err and found the solutions at last. It seems I have to modify 'wsrep_node_address' to '127.0.0.1:&lt;port&gt;' in mysql/etc/my.cnf, so multiple instances of mysql-galera could run on one node. Otherwise mysql-galera use 4567 as default port and only one instance could run on one node because of 'Address in use' problem.
-</p><ol>
-<li>./mysql-galera -P 3306 -g gcomm:// start  # instance A. wsrep_node_address=127.0.0.1:4568
-</li>
-<li>./mysql-galera -P 3307 -g gcomm://127.0.0.1:4568 start # instance B. wsrep_node_address=127.0.0.1:4569. and B will join the group whose leader is A.
-</li>
-<li>mysql -S mysql/var/mysqld.sock -u root -prootpass # connect to server.
-</li>
-</ol>
-
-
-<p>
-I try some naive SQLs and the replication works well. It's written in the README that the galera-wsrep only supports InnoDB storage engine, but I use 'create table kv( k char(10), v char(10));' to create table without specifying storage engine, it works too. So I guess you change the MySQL code and make InnoDB as default storage engine. 
-</p>
-
-<hr/>
-
-<p>
-I use the test framework to set up cluster. I use the configuration files you give to me with a few file-location-related changes and start 3 instances. 
-</p>
-<p>
-At first I thought maybe I need to modify 'wsrep_node_address' in my*.cnf too, but I found it does not take any effect. I look out that the start command for each instance is 
-</p>
-
-
-
-<pre class="example">MYSQL_PORT=3303  "/home/dirlt/work//galera2/mysql-galera" -g 'gcomm://127.0.0.1:4564?pc.wait_prim=false&amp;gmcast.listen_addr=tcp://0.0.0.0:4562' start
-</pre>
-
-
-<p>
-so I guess gmcast.listen_addr in the command line will override 'wsrep_node_address' in my.cnf.  So the above command means
-</p><ul>
-<li>node listens on address 'tcp://0.0.0.0:4562' 
-</li>
-<li>node joins the group for replication by communicating with node listens on address 'tcp://127.0.0.1:4564'
-</li>
-</ul>
-
-
-<p>
-And another problem I found out is that, a little weird, './tests/scripts/command.sh start' sometimes does't work and fails on the 3rd instance always. From the console output, it seems the 1st instance starts up synchronously, then 2nd and 3rd instance starts up simultaneously. I guess maybe the concurrency causes the 3rd instance failed because I read nodes.conf and found out that, the instance will communicate with the previous one.
-</p>
-
-
-
-<pre class="src src-Shell">gcs_address()
-{
-    local node=$1
-
-    case <span class="org-string">"$GCS_TYPE"</span> in
-    <span class="org-string">"gcomm"</span>)
-        local peer=$(( $node - 1 )) # select previous node as connection peer
-#        local peer=0 # use the first node as a connection handle
-
-        if [ $peer -lt 0 ]; then peer=$NODE_MAX; fi # rollover
-
-        echo <span class="org-string">"'gcomm://${NODE_GCS_HOST[$peer]}:${NODE_GCS_PORT[$peer]}$(extra_params $node)'"</span>
-        ;;
-}
-</pre>
-
-
-<p>
-So if the 3rd instance starts up much faster than 2nd instance and can't connect to the 2nd instance, it fails. However that's just my speculation. At last I start the 3rd instance by execute the command manually and it works.
-</p>
-
-<hr/>
-
-<p>
-I have not tried out glb yet.:(
-</p>
-
-<hr/>
-
-<p>
-I have read all the whitepapers and case stories on your site. And finally I know why Teemu ask me the question about 'Virtually Synchronous' because you are just using this methodology. And I think your products consists three major components:
-</p><ul>
-<li>wsrep provides a simple interface for replication
-</li>
-<li>mysql-wsrep is MySQL code integrated with wsrep interface
-</li>
-<li>galera-wsrep is a wsrep implementation (or called provider)
-</li>
-<li># guess you must implement PostgreSQL-wsrep already.
-</li>
-</ul>
-
-
-
-
-<hr/>
-
-<p>
-whitepapers
-</p><ul>
-<li><a href="http://www.codership.com/wiki/doku.php">http://www.codership.com/wiki/doku.php</a>
-</li>
-<li><a href="http://codership.com/whitepapers">http://codership.com/whitepapers</a>
-</li>
-<li><a href="http://codership.com/info/presentations">http://codership.com/info/presentations</a>
-</li>
-<li><a href="http://codership.com/en/blog(trend)">http://codership.com/en/blog(trend)</a>
-</li>
-</ul>
-
-
-<p>
-products
-</p><ul>
-<li><a href="http://www.codership.com/content/using-galera-cluster">http://www.codership.com/content/using-galera-cluster</a> 
-</li>
-<li><a href="http://www.codership.com/products/galera_replication">http://www.codership.com/products/galera_replication</a>
-</li>
-<li>wsrep as interface(write set replication API)
-</li>
-<li>MySQL-server with Galera(mysql-wsrep) / MariaDB with wsrep API
-</li>
-<li>Galera with wsrep implementation (galera-library)
-</li>
-<li>GLB (galera load balancer)
-</li>
-</ul>
-
-
-</div>
-</div>
-
-</div>
-
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> wsrep API Annotation</h3>
-<div class="outline-text-3" id="text-1-3">
-
-
-</div>
-
-<div id="outline-container-1-3-1" class="outline-4">
-<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> file layout</h4>
-<div class="outline-text-4" id="text-1-3-1">
 
 <ul>
 <li>wsrep_api.h # header
@@ -580,9 +299,9 @@ products
 
 </div>
 
-<div id="outline-container-1-3-2" class="outline-4">
-<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> concept</h4>
-<div class="outline-text-4" id="text-1-3-2">
+<div id="outline-container-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> concept</h4>
+<div class="outline-text-4" id="text-1-2-2">
 
 <ul>
 <li>sst(snapshot state transfer)
@@ -670,9 +389,9 @@ products
 
 </div>
 
-<div id="outline-container-1-3-3" class="outline-4">
-<h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> wsrep_init_args</h4>
-<div class="outline-text-4" id="text-1-3-3">
+<div id="outline-container-1-2-3" class="outline-4">
+<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> wsrep_init_args</h4>
+<div class="outline-text-4" id="text-1-2-3">
 
 <p><b>NOTE（dirlt）；这个应该是和上层相关的实现比如MySQL，如何apply, commit等</b>
 </p>
@@ -716,9 +435,9 @@ products
 
 </div>
 
-<div id="outline-container-1-3-4" class="outline-4">
-<h4 id="sec-1-3-4"><span class="section-number-4">1.3.4</span> wsrep_t</h4>
-<div class="outline-text-4" id="text-1-3-4">
+<div id="outline-container-1-2-4" class="outline-4">
+<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> wsrep_t</h4>
+<div class="outline-text-4" id="text-1-2-4">
 
 <p><b>NOTE（dirlt）：这个应该是和下层相关的实现比如Galera，它定义了整个replication的逻辑</b>
 </p>
@@ -811,9 +530,9 @@ products
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Patched MySQL(mysql-wsrep) 5.6</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Patched MySQL(mysql-wsrep) 5.6</h3>
+<div class="outline-text-3" id="text-1-3">
 
 <ul>
 <li>options <a href="http://www.codership.com/wiki/doku.php?id=mysql_options">http://www.codership.com/wiki/doku.php?id=mysql_options</a>
@@ -824,9 +543,9 @@ products
 
 </div>
 
-<div id="outline-container-1-4-1" class="outline-4">
-<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> wsrep callbacks</h4>
-<div class="outline-text-4" id="text-1-4-1">
+<div id="outline-container-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> wsrep callbacks</h4>
+<div class="outline-text-4" id="text-1-3-1">
 
 <ul>
 <li>logger_cb # mysql如何打印galera日志
@@ -851,9 +570,9 @@ products
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Replicator Architecture</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Replicator Architecture</h3>
+<div class="outline-text-3" id="text-1-4">
 
 <p><img src="images/galera-overview.png"  alt="./images/galera-overview.png" /> <img src="images/galera-library.png"  alt="./images/galera-library.png" />
 </p>
@@ -921,16 +640,16 @@ products
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Synchonization Mechanism</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Synchonization Mechanism</h3>
+<div class="outline-text-3" id="text-1-5">
 
 
 </div>
 
-<div id="outline-container-1-6-1" class="outline-4">
-<h4 id="sec-1-6-1"><span class="section-number-4">1.6.1</span> Virtual Synchrony</h4>
-<div class="outline-text-4" id="text-1-6-1">
+<div id="outline-container-1-5-1" class="outline-4">
+<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> Virtual Synchrony</h4>
+<div class="outline-text-4" id="text-1-5-1">
 
 <p><a href="http://en.wikipedia.org/wiki/Virtual_synchrony">http://en.wikipedia.org/wiki/Virtual_synchrony</a>
 </p>
@@ -938,9 +657,9 @@ products
 
 </div>
 
-<div id="outline-container-1-6-2" class="outline-4">
-<h4 id="sec-1-6-2"><span class="section-number-4">1.6.2</span> Finite State Machine</h4>
-<div class="outline-text-4" id="text-1-6-2">
+<div id="outline-container-1-5-2" class="outline-4">
+<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> Finite State Machine</h4>
+<div class="outline-text-4" id="text-1-5-2">
 
 <ul>
 <li><a href="http://www.codership.com/wiki/doku.php?id=galera_node_fsm">http://www.codership.com/wiki/doku.php?id=galera_node_fsm</a>
@@ -995,9 +714,9 @@ options:
 
 </div>
 
-<div id="outline-container-1-6-3" class="outline-4">
-<h4 id="sec-1-6-3"><span class="section-number-4">1.6.3</span> Flow Control</h4>
-<div class="outline-text-4" id="text-1-6-3">
+<div id="outline-container-1-5-3" class="outline-4">
+<h4 id="sec-1-5-3"><span class="section-number-4">1.5.3</span> Flow Control</h4>
+<div class="outline-text-4" id="text-1-5-3">
 
 <p><a href="http://www.codership.com/wiki/doku.php?id=flow_control">http://www.codership.com/wiki/doku.php?id=flow_control</a>
 </p>
@@ -1021,9 +740,9 @@ options:
 
 </div>
 
-<div id="outline-container-1-6-4" class="outline-4">
-<h4 id="sec-1-6-4"><span class="section-number-4">1.6.4</span> Writeset Cache</h4>
-<div class="outline-text-4" id="text-1-6-4">
+<div id="outline-container-1-5-4" class="outline-4">
+<h4 id="sec-1-5-4"><span class="section-number-4">1.5.4</span> Writeset Cache</h4>
+<div class="outline-text-4" id="text-1-5-4">
 
 <p><a href="http://www.codership.com/wiki/doku.php?id=gcache">http://www.codership.com/wiki/doku.php?id=gcache</a>
 </p>
@@ -1052,9 +771,9 @@ To control memory usage for writeset caching, check Galera parameters: <b>NOTE�
 
 </div>
 
-<div id="outline-container-1-6-5" class="outline-4">
-<h4 id="sec-1-6-5"><span class="section-number-4">1.6.5</span> Snapshot Transfer</h4>
-<div class="outline-text-4" id="text-1-6-5">
+<div id="outline-container-1-5-5" class="outline-4">
+<h4 id="sec-1-5-5"><span class="section-number-4">1.5.5</span> Snapshot Transfer</h4>
+<div class="outline-text-4" id="text-1-5-5">
 
 <p><b>(SST)State Snapshot Transfer</b>
 </p><ul>
@@ -1165,9 +884,9 @@ IST(Very effective)
 
 </div>
 
-<div id="outline-container-1-6-6" class="outline-4">
-<h4 id="sec-1-6-6"><span class="section-number-4">1.6.6</span> Parallel Applying</h4>
-<div class="outline-text-4" id="text-1-6-6">
+<div id="outline-container-1-5-6" class="outline-4">
+<h4 id="sec-1-5-6"><span class="section-number-4">1.5.6</span> Parallel Applying</h4>
+<div class="outline-text-4" id="text-1-5-6">
 
 <p><img src="images/galera-parallel-applying.png"  alt="./images/galera-parallel-applying.png" />
 </p>
@@ -1196,9 +915,9 @@ IST(Very effective)
 
 </div>
 
-<div id="outline-container-1-6-7" class="outline-4">
-<h4 id="sec-1-6-7"><span class="section-number-4">1.6.7</span> Primary Component</h4>
-<div class="outline-text-4" id="text-1-6-7">
+<div id="outline-container-1-5-7" class="outline-4">
+<h4 id="sec-1-5-7"><span class="section-number-4">1.5.7</span> Primary Component</h4>
+<div class="outline-text-4" id="text-1-5-7">
 
 <ul>
 <li><a href="http://www.codership.com/wiki/doku.php?id=galera_arbitrator">http://www.codership.com/wiki/doku.php?id=galera_arbitrator</a>
@@ -1215,9 +934,9 @@ TODO(dirlt):
 
 </div>
 
-<div id="outline-container-1-6-8" class="outline-4">
-<h4 id="sec-1-6-8"><span class="section-number-4">1.6.8</span> Online Schema Upgrade</h4>
-<div class="outline-text-4" id="text-1-6-8">
+<div id="outline-container-1-5-8" class="outline-4">
+<h4 id="sec-1-5-8"><span class="section-number-4">1.5.8</span> Online Schema Upgrade</h4>
+<div class="outline-text-4" id="text-1-5-8">
 
 <p><a href="http://www.codership.com/wiki/doku.php?id=rolling_schema_upgrade">http://www.codership.com/wiki/doku.php?id=rolling_schema_upgrade</a>
 </p>
@@ -1283,16 +1002,16 @@ DDL is non-transactional, and therefore bad for replication. Galera has two meth
 
 </div>
 
-<div id="outline-container-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Certification Based Replication</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-1-6" class="outline-3">
+<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Certification Based Replication</h3>
+<div class="outline-text-3" id="text-1-6">
 
 
 </div>
 
-<div id="outline-container-1-7-1" class="outline-4">
-<h4 id="sec-1-7-1"><span class="section-number-4">1.7.1</span> Introduction</h4>
-<div class="outline-text-4" id="text-1-7-1">
+<div id="outline-container-1-6-1" class="outline-4">
+<h4 id="sec-1-6-1"><span class="section-number-4">1.6.1</span> Introduction</h4>
+<div class="outline-text-4" id="text-1-6-1">
 
 <p>Certification based replication uses group communication and transaction ordering techniques to achieve synchronous replication. Transactions execute optimistically in a single node (or replica) and, at commit time, run a coordinated certification process to enforce global consistency. Global coordination is achieved with the help of a broadcast service, that establishes a global total order among concurrent transactions. (基于 <b>组通信</b> 以及 <b>事务顺序化</b> 技术来达到同步备份。事务首先是乐观地在本地执行，然后提交给其他节点做验证来保证全局一致性）
 </p>
@@ -1331,9 +1050,9 @@ Certification based replication (or more precisely, certification-based conflict
 
 </div>
 
-<div id="outline-container-1-7-2" class="outline-4">
-<h4 id="sec-1-7-2"><span class="section-number-4">1.7.2</span> Consistent read(read causality)</h4>
-<div class="outline-text-4" id="text-1-7-2">
+<div id="outline-container-1-6-2" class="outline-4">
+<h4 id="sec-1-6-2"><span class="section-number-4">1.6.2</span> Consistent read(read causality)</h4>
+<div class="outline-text-4" id="text-1-6-2">
 
 <p><img src="images/galera-consistent-read.png"  alt="./images/galera-consistent-read.png" />
 </p>
@@ -1352,9 +1071,9 @@ There is causal dependency between operations on two database connections:
 
 </div>
 
-<div id="outline-container-1-7-3" class="outline-4">
-<h4 id="sec-1-7-3"><span class="section-number-4">1.7.3</span> Multi-Master Conflicts</h4>
-<div class="outline-text-4" id="text-1-7-3">
+<div id="outline-container-1-6-3" class="outline-4">
+<h4 id="sec-1-6-3"><span class="section-number-4">1.6.3</span> Multi-Master Conflicts</h4>
+<div class="outline-text-4" id="text-1-6-3">
 
 <p>Galera uses optimistic concurrency control:
 </p><ul>
@@ -1405,16 +1124,16 @@ Retry Autocommit:
 
 </div>
 
-<div id="outline-container-1-8" class="outline-3">
-<h3 id="sec-1-8"><span class="section-number-3">1.8</span> Miscellaneous</h3>
-<div class="outline-text-3" id="text-1-8">
+<div id="outline-container-1-7" class="outline-3">
+<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Miscellaneous</h3>
+<div class="outline-text-3" id="text-1-7">
 
 
 </div>
 
-<div id="outline-container-1-8-1" class="outline-4">
-<h4 id="sec-1-8-1"><span class="section-number-4">1.8.1</span> Parameters</h4>
-<div class="outline-text-4" id="text-1-8-1">
+<div id="outline-container-1-7-1" class="outline-4">
+<h4 id="sec-1-7-1"><span class="section-number-4">1.7.1</span> Parameters</h4>
+<div class="outline-text-4" id="text-1-7-1">
 
 <p><a href="http://www.codership.com/wiki/doku.php?id=galera_parameters">http://www.codership.com/wiki/doku.php?id=galera_parameters</a>
 </p>
@@ -1422,9 +1141,9 @@ Retry Autocommit:
 
 </div>
 
-<div id="outline-container-1-8-2" class="outline-4">
-<h4 id="sec-1-8-2"><span class="section-number-4">1.8.2</span> Status Variables</h4>
-<div class="outline-text-4" id="text-1-8-2">
+<div id="outline-container-1-7-2" class="outline-4">
+<h4 id="sec-1-7-2"><span class="section-number-4">1.7.2</span> Status Variables</h4>
+<div class="outline-text-4" id="text-1-7-2">
 
 <p><a href="http://www.codership.com/wiki/doku.php?id=galera_status_0.8">http://www.codership.com/wiki/doku.php?id=galera_status_0.8</a> 
 </p><ul>
@@ -1437,9 +1156,9 @@ Retry Autocommit:
 
 </div>
 
-<div id="outline-container-1-8-3" class="outline-4">
-<h4 id="sec-1-8-3"><span class="section-number-4">1.8.3</span> Configuration</h4>
-<div class="outline-text-4" id="text-1-8-3">
+<div id="outline-container-1-7-3" class="outline-4">
+<h4 id="sec-1-7-3"><span class="section-number-4">1.7.3</span> Configuration</h4>
+<div class="outline-text-4" id="text-1-7-3">
 
 <p><a href="http://www.codership.com/wiki/doku.php?id=configuration_tips">http://www.codership.com/wiki/doku.php?id=configuration_tips</a>
 </p>
@@ -1465,9 +1184,9 @@ Retry Autocommit:
 
 </div>
 
-<div id="outline-container-1-8-4" class="outline-4">
-<h4 id="sec-1-8-4"><span class="section-number-4">1.8.4</span> Monitoring</h4>
-<div class="outline-text-4" id="text-1-8-4">
+<div id="outline-container-1-7-4" class="outline-4">
+<h4 id="sec-1-7-4"><span class="section-number-4">1.7.4</span> Monitoring</h4>
+<div class="outline-text-4" id="text-1-7-4">
 
 <p><a href="http://www.codership.com/wiki/doku.php?id=monitoring">http://www.codership.com/wiki/doku.php?id=monitoring</a> 
 </p>
@@ -1475,9 +1194,9 @@ Retry Autocommit:
 
 </div>
 
-<div id="outline-container-1-8-5" class="outline-4">
-<h4 id="sec-1-8-5"><span class="section-number-4">1.8.5</span> Notification</h4>
-<div class="outline-text-4" id="text-1-8-5">
+<div id="outline-container-1-7-5" class="outline-4">
+<h4 id="sec-1-7-5"><span class="section-number-4">1.7.5</span> Notification</h4>
+<div class="outline-text-4" id="text-1-7-5">
 
 <p>Cluster can trigger notifications. Use for: 
 </p><ul>
@@ -1493,9 +1212,9 @@ Retry Autocommit:
 
 </div>
 
-<div id="outline-container-1-8-6" class="outline-4">
-<h4 id="sec-1-8-6"><span class="section-number-4">1.8.6</span> Backup</h4>
-<div class="outline-text-4" id="text-1-8-6">
+<div id="outline-container-1-7-6" class="outline-4">
+<h4 id="sec-1-7-6"><span class="section-number-4">1.7.6</span> Backup</h4>
+<div class="outline-text-4" id="text-1-7-6">
 
 <p>Best practices:
 </p><ul>
@@ -1558,9 +1277,9 @@ Possible methods:
 
 </div>
 
-<div id="outline-container-1-8-7" class="outline-4">
-<h4 id="sec-1-8-7"><span class="section-number-4">1.8.7</span> Limitations</h4>
-<div class="outline-text-4" id="text-1-8-7">
+<div id="outline-container-1-7-7" class="outline-4">
+<h4 id="sec-1-7-7"><span class="section-number-4">1.7.7</span> Limitations</h4>
+<div class="outline-text-4" id="text-1-7-7">
 
 <p><a href="http://www.codership.com/wiki/doku.php?id=limitations">http://www.codership.com/wiki/doku.php?id=limitations</a>
 </p>
@@ -1569,16 +1288,16 @@ Possible methods:
 
 </div>
 
-<div id="outline-container-1-9" class="outline-3">
-<h3 id="sec-1-9"><span class="section-number-3">1.9</span> Related Articles</h3>
-<div class="outline-text-3" id="text-1-9">
+<div id="outline-container-1-8" class="outline-3">
+<h3 id="sec-1-8"><span class="section-number-3">1.8</span> Related Articles</h3>
+<div class="outline-text-3" id="text-1-8">
 
 
 </div>
 
-<div id="outline-container-1-9-1" class="outline-4">
-<h4 id="sec-1-9-1"><span class="section-number-4">1.9.1</span> Commercial</h4>
-<div class="outline-text-4" id="text-1-9-1">
+<div id="outline-container-1-8-1" class="outline-4">
+<h4 id="sec-1-8-1"><span class="section-number-4">1.8.1</span> Commercial</h4>
+<div class="outline-text-4" id="text-1-8-1">
 
 <ul>
 <li>User Stories | Codership : <a href="http://www.codership.com/user-stories">http://www.codership.com/user-stories</a>
@@ -1594,9 +1313,9 @@ Possible methods:
 
 </div>
 
-<div id="outline-container-1-9-2" class="outline-4">
-<h4 id="sec-1-9-2"><span class="section-number-4">1.9.2</span> Tech Issue</h4>
-<div class="outline-text-4" id="text-1-9-2">
+<div id="outline-container-1-8-2" class="outline-4">
+<h4 id="sec-1-8-2"><span class="section-number-4">1.8.2</span> Tech Issue</h4>
+<div class="outline-text-4" id="text-1-8-2">
 
 <ul>
 <li>Dealing with Locking Sessions | Codership : <a href="http://www.codership.com/content/dealing-locking-sessions">http://www.codership.com/content/dealing-locking-sessions</a> 
@@ -1633,9 +1352,9 @@ Possible methods:
 
 </div>
 
-<div id="outline-container-1-9-3" class="outline-4">
-<h4 id="sec-1-9-3"><span class="section-number-4">1.9.3</span> Bechmark</h4>
-<div class="outline-text-4" id="text-1-9-3">
+<div id="outline-container-1-8-3" class="outline-4">
+<h4 id="sec-1-8-3"><span class="section-number-4">1.8.3</span> Bechmark</h4>
+<div class="outline-text-4" id="text-1-8-3">
 
 <ul>
 <li>How Much Can Galera Sysbench? | Codership : <a href="http://www.codership.com/content/galera-sysbench">http://www.codership.com/content/galera-sysbench</a>
@@ -1665,9 +1384,9 @@ Possible methods:
 
 </div>
 
-<div id="outline-container-1-9-4" class="outline-4">
-<h4 id="sec-1-9-4"><span class="section-number-4">1.9.4</span> Presentation</h4>
-<div class="outline-text-4" id="text-1-9-4">
+<div id="outline-container-1-8-4" class="outline-4">
+<h4 id="sec-1-8-4"><span class="section-number-4">1.8.4</span> Presentation</h4>
+<div class="outline-text-4" id="text-1-8-4">
 
 <ul>
 <li><a href="http://www.codership.com/files/presentations/UC11_galera.pdf">http://www.codership.com/files/presentations/UC11_galera.pdf</a>
@@ -1688,14 +1407,50 @@ Possible methods:
 </li>
 </ul>
 
+
 </div>
+</div>
+
+</div>
+
+<div id="outline-container-1-9" class="outline-3">
+<h3 id="sec-1-9"><span class="section-number-3">1.9</span> Code Analysis</h3>
+<div class="outline-text-3" id="text-1-9">
+
+<ul>
+<li>asio # asynchronous io.
+</li>
+<li>chromium # compiler related code.
+</li>
+<li>common # common definitions.
+</li>
+<li>galera # wsrep-api, certification, apply/commit ordering.
+</li>
+<li>galerautils # common utilities.
+</li>
+<li>garb # galera arbitrator
+</li>
+<li>gcache # galera cache.
+</li>
+<li>gcomm # galera communication ? <b>NOTE(dirlt):maybe just for message broadcast</b>
+</li>
+<li>gcs # group communication system.
+</li>
+<li>scripts
+</li>
+<li>tests
+</li>
+<li>www.evanjones.ca # crc32 implementation.
+</li>
+</ul>
+
 </div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-02-26T22:42+0800</p>
+<p class="date">Date: 2014-03-07T14:17+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
