@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="git"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-07T14:17+0800"/>
+<meta name="generated" content="2014-03-19T14:35+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -79,19 +79,16 @@
 <ul>
 <li><a href="git.html#sec-1">1 git</a>
 <ul>
-<li><a href="git.html#sec-1-1">1.1 FAQ</a>
+<li><a href="git.html#sec-1-1">1.1 git repo</a>
 <ul>
-<li><a href="git.html#sec-1-1-1">1.1.1 git仓库</a>
-<ul>
-<li><a href="git.html#sec-1-1-1-1">1.1.1.1 git本地</a></li>
-<li><a href="git.html#sec-1-1-1-2">1.1.1.2 git远程</a></li>
+<li><a href="git.html#sec-1-1-1">1.1.1 local</a></li>
+<li><a href="git.html#sec-1-1-2">1.1.2 remote</a></li>
 </ul>
 </li>
-<li><a href="git.html#sec-1-1-2">1.1.2 git分支</a></li>
-<li><a href="git.html#sec-1-1-3">1.1.3 git标签</a></li>
-</ul>
-</li>
-<li><a href="git.html#sec-1-2">1.2 git-flow</a></li>
+<li><a href="git.html#sec-1-2">1.2 git branch</a></li>
+<li><a href="git.html#sec-1-3">1.3 git tag</a></li>
+<li><a href="git.html#sec-1-4">1.4 git log/diff</a></li>
+<li><a href="git.html#sec-1-5">1.5 git flow</a></li>
 </ul>
 </li>
 </ul>
@@ -127,15 +124,8 @@
 </div>
 
 <div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> FAQ</h3>
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> git repo</h3>
 <div class="outline-text-3" id="text-1-1">
-
-
-</div>
-
-<div id="outline-container-1-1-1" class="outline-4">
-<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> git仓库</h4>
-<div class="outline-text-4" id="text-1-1-1">
 
 <p>git分为远程仓库和本地仓库。可以从不同的远程仓库拉下内容到本地仓库，并且也可以推送本地仓库到不同的远程仓库去。
 可以通过git remote add origin <a href="https://github.com/dirtysalt/sperm">https://github.com/dirtysalt/sperm</a> 来为仓库建立别名。在pull或者是push的时候就
@@ -144,9 +134,9 @@
 
 </div>
 
-<div id="outline-container-1-1-1-1" class="outline-5">
-<h5 id="sec-1-1-1-1"><span class="section-number-5">1.1.1.1</span> git本地</h5>
-<div class="outline-text-5" id="text-1-1-1-1">
+<div id="outline-container-1-1-1" class="outline-4">
+<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> local</h4>
+<div class="outline-text-4" id="text-1-1-1">
 
 <p>git本地仓库由下面三棵树构成：
 </p><ul>
@@ -198,9 +188,9 @@
 
 </div>
 
-<div id="outline-container-1-1-1-2" class="outline-5">
-<h5 id="sec-1-1-1-2"><span class="section-number-5">1.1.1.2</span> git远程</h5>
-<div class="outline-text-5" id="text-1-1-1-2">
+<div id="outline-container-1-1-2" class="outline-4">
+<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> remote</h4>
+<div class="outline-text-4" id="text-1-1-2">
 
 <ul>
 <li>git remote -v 显示远程仓库信息（本地信息）
@@ -221,9 +211,9 @@
 
 </div>
 
-<div id="outline-container-1-1-2" class="outline-4">
-<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> git分支</h4>
-<div class="outline-text-4" id="text-1-1-2">
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> git branch</h3>
+<div class="outline-text-3" id="text-1-2">
 
 <p>默认来说git包含一个master分支，也可以很容易地创建和删除分支。当从远程clone到本地的时候，
 会将远程repo里面所有的分支内容全部clone到本地，维护所有版本信息以及历史文件，所以本地切换分支非常快。
@@ -257,9 +247,9 @@
 
 </div>
 
-<div id="outline-container-1-1-3" class="outline-4">
-<h4 id="sec-1-1-3"><span class="section-number-4">1.1.3</span> git标签</h4>
-<div class="outline-text-4" id="text-1-1-3">
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> git tag</h3>
+<div class="outline-text-3" id="text-1-3">
 
 <p>Git使用的标签有两种类型：轻量级的（lightweight）和含附注的（annotated）。轻量级标签就像是个不会变化的分支，实际上它就是个指向特 定提交对象的引用。而含附注标签，实际上是存储在仓库中的一个独立对象，它有自身的校验和信息，包含着标签的名字，电子邮件地址和日期，以及标签说明，标签本身也允许使用 GNU Privacy Guard (GPG) 来签署或验证。一般我们都建议使用含附注型的标签，以便保留相关信息；当然，如果只是临时性加注标签，或者不需要旁注额外信息，用轻量级标签也没问题。
 </p>
@@ -278,13 +268,22 @@
 
 
 </div>
+
+</div>
+
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> git log/diff</h3>
+<div class="outline-text-3" id="text-1-4">
+
+<p>TODO(dirlt):
+</p>
 </div>
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> git-flow</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> git flow</h3>
+<div class="outline-text-3" id="text-1-5">
 
 <p>参考资源
 </p><ul>
@@ -383,7 +382,7 @@ git-flow主要推行的就是一种开发方式，然后通过工具来配合这
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-07T14:17+0800</p>
+<p class="date">Date: 2014-03-19T14:35+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

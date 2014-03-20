@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="galera"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-07T14:17+0800"/>
+<meta name="generated" content="2014-03-19T14:36+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -132,7 +132,6 @@
 <li><a href="galera.html#sec-1-8-4">1.8.4 Presentation</a></li>
 </ul>
 </li>
-<li><a href="galera.html#sec-1-9">1.9 Code Analysis</a></li>
 </ul>
 </li>
 </ul>
@@ -203,6 +202,8 @@ Abbr.
 <li>rbr(row-based replication)
 </li>
 <li>sbr(statement-based replication)
+</li>
+<li>mst(multi segment transaction)
 </li>
 </ul>
 
@@ -468,9 +469,9 @@ Info.(@2012)
 </li>
 <li>abort_pre_commit 中断事务提交之前
 </li>
-<li>append_key 将key添加到事务ws（TODO：要写入的行，来判断是否存在冲突？）
+<li>append_key 将key添加到事务ws. 修改行对应的key，可以用来检测冲突。
 </li>
-<li>append_data 将data添加到事务ws（TODO：对应行的数据内容，也就是binlog？）
+<li>append_data 将data添加到事务ws. 修改行对应的value。
 </li>
 <li>casual_read  TODO（dirlt）：
 </li>
@@ -849,7 +850,7 @@ There are two conceptually different ways to transfer a state from one MySQL ser
 </li>
 <li>Copying data files directly. This requires that the receiving server is initialized <b>after</b> the transfer. rsync, xtrabackup and other methods fall into this category. These methods a much faster than mysqldump, but they have certain limitations, like they can be used only on server startup and receiving server must be configured very similarly to the donor (e.g. innodb_file_per_table should be the same and so on). Some of these methods, e.g. xtrabackup, can be potentially made non-blocking on donor.（直接copy文件。要求transfer之后配置好？？速度比较快，但是要求配置源和目的配置相同。使用xtrabackup不会阻塞donor)
 </li>
-<li><b>Xtrabackup and rsync SST cannot be used for a running server.</b> It is not possible to copy datafiles under running InnoDB. Having wsrep_address set to a list of node addresses and starting replication on a running node can lead to node crash. <b>TODO（dirlt）：Xtrabackup需要停机处理吗？</b>
+<li><b>Xtrabackup and rsync SST cannot be used for a running server.</b> It is not possible to copy datafiles under running InnoDB. Having wsrep_address set to a list of node addresses and starting replication on a running node can lead to node crash. <b>TODO（dirlt）：Xtrabackup需要停机处理吗？</b> <b>NOTE（dirlt）：xtrabackup不需要停机处理</b>
 </li>
 </ul>
 
@@ -923,6 +924,8 @@ IST(Very effective)
 <li><a href="http://www.codership.com/wiki/doku.php?id=galera_arbitrator">http://www.codership.com/wiki/doku.php?id=galera_arbitrator</a>
 </li>
 <li><a href="http://www.codership.com/wiki/doku.php?id=weighted_quorum">http://www.codership.com/wiki/doku.php?id=weighted_quorum</a>
+</li>
+<li><a href="http://www.codership.com/wiki/doku.php?id=galera_url">http://www.codership.com/wiki/doku.php?id=galera_url</a>
 </li>
 </ul>
 
@@ -1135,8 +1138,14 @@ Retry Autocommit:
 <h4 id="sec-1-7-1"><span class="section-number-4">1.7.1</span> Parameters</h4>
 <div class="outline-text-4" id="text-1-7-1">
 
-<p><a href="http://www.codership.com/wiki/doku.php?id=galera_parameters">http://www.codership.com/wiki/doku.php?id=galera_parameters</a>
-</p>
+<ul>
+<li><a href="http://www.codership.com/wiki/doku.php?id=galera_parameters">http://www.codership.com/wiki/doku.php?id=galera_parameters</a>
+</li>
+<li><a href="http://www.codership.com/wiki/doku.php?id=mysql_galera_configuration">http://www.codership.com/wiki/doku.php?id=mysql_galera_configuration</a>
+</li>
+</ul>
+
+
 </div>
 
 </div>
@@ -1167,15 +1176,15 @@ Retry Autocommit:
 </li>
 <li>wsrep_cluster_address # cluster connection URL.
 </li>
-<li>binlog_format=ROW # TODO（dirlt）：？？
+<li>binlog_format=ROW # TODO(dirlt):??
 </li>
 <li>default_storage_engine=InnoDB
 </li>
-<li>innodb_autoinc_lock_mode=2 # TODO（dirlt）：？？
+<li>innodb_autoinc_lock_mode=2 # TODO(dirlt):??
 </li>
-<li>innodb_flush_log_at_trx_commit=2 # TODO（dirlt）：？？
+<li>innodb_flush_log_at_trx_commit=2 # TODO(dirlt):??
 </li>
-<li>innodb_doublewrite=1 #TODO（dirlt）：？？
+<li>innodb_doublewrite=1 #TODO(dirlt):??
 </li>
 </ul>
 
@@ -1407,50 +1416,14 @@ Possible methods:
 </li>
 </ul>
 
-
 </div>
-</div>
-
-</div>
-
-<div id="outline-container-1-9" class="outline-3">
-<h3 id="sec-1-9"><span class="section-number-3">1.9</span> Code Analysis</h3>
-<div class="outline-text-3" id="text-1-9">
-
-<ul>
-<li>asio # asynchronous io.
-</li>
-<li>chromium # compiler related code.
-</li>
-<li>common # common definitions.
-</li>
-<li>galera # wsrep-api, certification, apply/commit ordering.
-</li>
-<li>galerautils # common utilities.
-</li>
-<li>garb # galera arbitrator
-</li>
-<li>gcache # galera cache.
-</li>
-<li>gcomm # galera communication ? <b>NOTE(dirlt):maybe just for message broadcast</b>
-</li>
-<li>gcs # group communication system.
-</li>
-<li>scripts
-</li>
-<li>tests
-</li>
-<li>www.evanjones.ca # crc32 implementation.
-</li>
-</ul>
-
 </div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-07T14:17+0800</p>
+<p class="date">Date: 2014-03-19T14:36+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
