@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="pig"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-28T16:50+0800"/>
+<meta name="generated" content="2014-04-15T09:13+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -233,7 +233,7 @@ category, AVG(good_urls.pagerank);
 <div class="outline-text-5" id="text-1-1-3-1">
 
 <ul>
-<li>Note that although Pig Latin programs supply an explicit sequence of operations, it is not necessary that the oper-ations be executed in that order. Pig并不一定按照pig latin操作顺序执行 <b>NOTE（dirlt）：这也就是好处，可以带来更多的potential做优化</b>
+<li>Note that although Pig Latin programs supply an explicit sequence of operations, it is not necessary that the oper-ations be executed in that order. Pig并不一定按照pig latin操作顺序执行 <b>note(dirlt)：这也就是好处，可以带来更多的potential做优化</b>
 </li>
 </ul>
 
@@ -260,11 +260,11 @@ category, AVG(good_urls.pagerank);
 </ul>
 
 </li>
-<li>Pig only supports read-only data analysis workloads, and those workloads tend to be scan-centric, so transactional consistency and index-based lookups are not required. Also, in our environment users often analyze a temporary data set for a day or two, and then discard it, so data curating and schema management can be overkill. <b>NOTE（dirlt）：感觉这点上Pig相比DBMS确实更加适合数据分析</b>
+<li>Pig only supports read-only data analysis workloads, and those workloads tend to be scan-centric, so transactional consistency and index-based lookups are not required. Also, in our environment users often analyze a temporary data set for a day or two, and then discard it, so data curating and schema management can be overkill. <b>note(dirlt)：感觉这点上Pig相比DBMS确实更加适合数据分析</b>
 <ul>
 <li>数据都是read-only的，并且对于数据处理都只是scan而不需要point query. 因此ACID以及索引不需要 
 </li>
-<li>大部分的数据分析都只是处理有限次数，然后丢弃所以没有必要进行修复。 <b>NOTE（dirlt）：对于数据的修复完全可以跑一边MR处理，然后以后可以一直处理满足schema的数据</b>
+<li>大部分的数据分析都只是处理有限次数，然后丢弃所以没有必要进行修复。 <b>note(dirlt)：对于数据的修复完全可以跑一边MR处理，然后以后可以一直处理满足schema的数据</b>
 </li>
 </ul>
 
@@ -367,7 +367,7 @@ category, AVG(good_urls.pagerank);
 <img src="images/pig-latin-expressions.png"  alt="./images/pig-latin-expressions.png" />
 </p>
 <p>
-<b>NOTE（dirlt）：FLATTEN操作需要在某些context下面才能执行</b>
+<b>note(dirlt)：FLATTEN操作需要在某些context下面才能执行</b>
 </p>
 </div>
 
@@ -498,7 +498,7 @@ query_revenues = FOREACH grouped_revenue GENERATE
 <ul>
 <li>A common special case of COGROUP is when there is only one data set involved. In this case, we can use the alter-native, more intuitive keyword GROUP. COGROUP的特殊情况就是如果只有一路数据的话，那么可以使用GROUP
 </li>
-<li><b>NOTE（dirlt）：这里的SUM可以操作bag. revenue.amount这里已经在revenue bag上面做了projection产生bag</b>
+<li><b>note(dirlt)：这里的SUM可以操作bag. revenue.amount这里已经在revenue bag上面做了projection产生bag</b>
 </li>
 </ul>
 
@@ -531,7 +531,7 @@ join_result = FOREACH temp_var GENERATE
 
 <hr/>
 <p>
-<b>NOTE（dirlt）：需要注意的是，上面JOIN那个图输出结果是错误的，我们可以使用下面的例子做验证</b>
+<b>note(dirlt)：需要注意的是，上面JOIN那个图输出结果是错误的，我们可以使用下面的例子做验证</b>
 </p>
 
 
@@ -572,7 +572,7 @@ grunt&gt; DUMP sj;
 <h5 id="sec-1-1-4-6"><span class="section-number-5">1.1.4.6</span> Other Commands</h5>
 <div class="outline-text-5" id="text-1-1-4-6">
 
-<p>Pig Latin has a number of other commands that are very similar to their SQL counterparts. These are: <b>NOTE（dirlt）：这些command相对来说比较简单</b>
+<p>Pig Latin has a number of other commands that are very similar to their SQL counterparts. These are: <b>note(dirlt)：这些command相对来说比较简单</b>
 </p><ol>
 <li>UNION: Returns the union of two or more bags.
 </li>
@@ -610,7 +610,7 @@ query_revenues = FOREACH grouped_revenue{
 <ul>
 <li>When we have nested bags within tuples, either as a result of (co)grouping, or due to the base data being nested, we might want to harness the same power of Pig Latin to process even these nested bags 嵌套操作主要是为了嵌套bag服务的
 </li>
-<li>To allow such processing, Pig Latin allows some commands to be nested within a FOREACH command. At present, we only allow FILTER, ORDER, and DISTINCT to be nested within FOREACH. In the future, as need arises, we might allow other constructs to be nested as well. FOREACH 只是允许FOREACH上面做嵌套操作并且内部只能做一些比较简单的操作 <b>NOTE（dirlt）：似乎这些操作都是可以在foreach对应的reduce时候附带上的而不需要额外操作</b>
+<li>To allow such processing, Pig Latin allows some commands to be nested within a FOREACH command. At present, we only allow FILTER, ORDER, and DISTINCT to be nested within FOREACH. In the future, as need arises, we might allow other constructs to be nested as well. FOREACH 只是允许FOREACH上面做嵌套操作并且内部只能做一些比较简单的操作 <b>note(dirlt)：似乎这些操作都是可以在foreach对应的reduce时候附带上的而不需要额外操作</b>
 </li>
 </ul>
 
@@ -675,7 +675,7 @@ query_revenues = FOREACH grouped_revenue{
 <ul>
 <li>the Pig interpreter first parses it, and verifies that the input files and bags be-ing referred to by the command are valid. 检查输入文件以及定义bag是否合法
 </li>
-<li>Pig builds a logical plan for every bag that the user defines. 针对输出bags来定义logical plan <b>NOTE(dirlt):对于logical plan是和bag关联的，每个bag都会有一个产生这个bag的logical plan</b>
+<li>Pig builds a logical plan for every bag that the user defines. 针对输出bags来定义logical plan <b>note(dirlt):对于logical plan是和bag关联的，每个bag都会有一个产生这个bag的logical plan</b>
 </li>
 <li>Note that no processing is carried out when the logical plans are constructed. Processing is triggered only when the user invokes a STORE command on a bag. At that point, the logical plan for that bag is compiled into a physical plan, and is executed. logical plan不会执行一直到出发STORE这个命令，然后在这个时候才会将logical plan编译成为physical plan然后执行
 </li>
@@ -695,7 +695,7 @@ query_revenues = FOREACH grouped_revenue{
 <div class="outline-text-5" id="text-1-1-5-2">
 
 <ul>
-<li>The map-reduce primitive essentially provides the ability to do a large-scale group by, where the map tasks assign keys for grouping, and the reduce tasks process a group at a time. Our compiler begins by converting each (CO)GROUP command in the logical plan into a distinct map-reduce job with its own map and reduce functions.（以COGROUP为分界线，COGROUP的前部分使用map来处理，COGROUP的后部分使用reduce来处理） <b>TODO（dirlt）：ORDER似乎没有解释</b>
+<li>The map-reduce primitive essentially provides the ability to do a large-scale group by, where the map tasks assign keys for grouping, and the reduce tasks process a group at a time. Our compiler begins by converting each (CO)GROUP command in the logical plan into a distinct map-reduce job with its own map and reduce functions.（以COGROUP为分界线，COGROUP的前部分使用map来处理，COGROUP的后部分使用reduce来处理） <b>todo(dirlt)：ORDER似乎没有解释</b>
 </li>
 <li>The map function for (CO)GROUP command C initially just assigns keys to tuples based on the BY clause(s) of C; the reduce function is initially a no-op.  <b>The map-reduce bound-ary is the cogroup command</b> 
 <ul>
@@ -720,9 +720,9 @@ query_revenues = FOREACH grouped_revenue{
 <ul>
 <li>The first job samples the input to determine quantiles of the sort key.  第一个阶段统计key的分布
 </li>
-<li>The second job range-partitions the input according to the quantiles (thereby en-suring roughly equal-sized partitions), followed by local sort-ing in the reduce phase, resulting in a globally sorted file. 第二个阶段按照key分布进行均分，然后在reduce phase进行排序 <b>NOTE（dirlt）：按照part-r-00000，part-r-00001这样排序的</b>
+<li>The second job range-partitions the input according to the quantiles (thereby en-suring roughly equal-sized partitions), followed by local sort-ing in the reduce phase, resulting in a globally sorted file. 第二个阶段按照key分布进行均分，然后在reduce phase进行排序 <b>note(dirlt)：按照part-r-00000，part-r-00001这样排序的</b>
 </li>
-<li><b>NOTE（dirlt）：注意ORDER其实对于MR是没有影响的，只是对于最终output结果会有影响。如果ORDER没有对应的STORE的话，那么ORDER是可以不需要执行的</b>
+<li><b>note(dirlt)：注意ORDER其实对于MR是没有影响的，只是对于最终output结果会有影响。如果ORDER没有对应的STORE的话，那么ORDER是可以不需要执行的</b>
 </li>
 </ul>
 
@@ -739,7 +739,7 @@ query_revenues = FOREACH grouped_revenue{
 <div class="outline-text-5" id="text-1-1-5-3">
 
 <ul>
-<li>To cope with these cases, our implementation allows for nested bags to spill to disk. Our disk-resident bag implementation comes with database-style external sort algorithms to do operations such as sorting and duplicate elimination of the nested bags <b>NOTE（dirlt）：注意在nested operations里面支持ORDER BY以及DISTINCT操作。对于large nested bag需要spill到磁盘上，并且Pig有专门为在磁盘存储bag的实现，这种实现允许在上面有效地做sort和distinct操作</b>
+<li>To cope with these cases, our implementation allows for nested bags to spill to disk. Our disk-resident bag implementation comes with database-style external sort algorithms to do operations such as sorting and duplicate elimination of the nested bags <b>note(dirlt)：注意在nested operations里面支持ORDER BY以及DISTINCT操作。对于large nested bag需要spill到磁盘上，并且Pig有专门为在磁盘存储bag的实现，这种实现允许在上面有效地做sort和distinct操作</b>
 </li>
 </ul>
 
@@ -806,7 +806,7 @@ query_revenues = FOREACH grouped_revenue{
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-28T16:50+0800</p>
+<p class="date">Date: 2014-04-15T09:13+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

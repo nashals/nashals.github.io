@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="jni"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-28T16:51+0800"/>
+<meta name="generated" content="2014-04-15T09:14+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -135,7 +135,7 @@
 <img src="images/role-of-the-jni.png"  alt="./images/role-of-the-jni.png" />
 </p>
 <p>
-下面是一些JNI的代替方案 <b>NOTE（dirlt）：主要都是通过进程间通信来完成的</b>
+下面是一些JNI的代替方案 <b>note(dirlt)：主要都是通过进程间通信来完成的</b>
 </p><ul>
 <li>A Java application may communicate with a native application through a TCP/IP connection or through other inter-process communication (IPC) mechanisms.
 </li>
@@ -292,7 +292,7 @@ JNIEXPORT void JNICALL Java_Hello_run  (JNIEnv * env, jclass cls)
 <ul>
 <li>JNIEnv定义了JNI所有可以访问JVM对象的接口方法
 </li>
-<li><b>NOTE（dirlt）：这个接口在$JAVA_HOME/include/jni.h里面有定义</b>
+<li><b>note(dirlt)：这个接口在$JAVA_HOME/include/jni.h里面有定义</b>
 </li>
 </ul>
 
@@ -311,11 +311,11 @@ JNIEXPORT void JNICALL Java_Hello_run  (JNIEnv * env, jclass cls)
 
 <p>
 <img src="images/jnienv-interface-pointer.png"  alt="./images/jnienv-interface-pointer.png" />
-<b>NOTE(dirlt):可以看到在pointer下面还有一个internal VM数据块，这个是线程级别的私有数据跟在pointer之后，可以通过指针偏移进行访问</b>
+<b>note(dirlt):可以看到在pointer下面还有一个internal VM数据块，这个是线程级别的私有数据跟在pointer之后，可以通过指针偏移进行访问</b>
 </p>
 <p>
 对于类型还说分为primitive和reference两种类型，reference type都是opaque pointer获取数据必须通过JNIEnv接口提供的方法才能够获得。
-至于具体类型是pritmitive还是reference的话，可以通过阅读jni.h和jni_md.h来判断。primitive type只有下面几种 <b>NOTE(dirlt):in jni_md.h</b>
+至于具体类型是pritmitive还是reference的话，可以通过阅读jni.h和jni_md.h来判断。primitive type只有下面几种 <b>note(dirlt):in jni_md.h</b>
 </p>
 
 
@@ -347,16 +347,16 @@ typedef signed char jbyte;
 <h4 id="sec-1-1-4"><span class="section-number-4">1.1.4</span> Fields and Methods</h4>
 <div class="outline-text-4" id="text-1-1-4">
 
-<p><b>NOTE（dirlt）：field和method的访问接口，非常类似google::protobuf提供的reflection接口</b>
+<p><b>note(dirlt)：field和method的访问接口，非常类似google::protobuf提供的reflection接口</b>
 </p>
 <p>
 Field操作：
 </p><ul>
 <li>GetObjectClass获取object所属的class对象，类型是jclass
 <ul>
-<li>如果是本地静态方法的话，那么传入参数应该就是class对象 <b>NOTE（dirlt）：FindClass</b>
+<li>如果是本地静态方法的话，那么传入参数应该就是class对象 <b>note(dirlt)：FindClass</b>
 </li>
-<li><b>NOTE（dirlt）：应该也可以通过类加载器来获取</b>
+<li><b>note(dirlt)：应该也可以通过类加载器来获取</b>
 </li>
 </ul>
 
@@ -461,7 +461,7 @@ Let us start by comparing the cost of Java/native calls with the cost of Java/Ja
 The overhead of field access using the JNI lies in the cost of calling through the JNIEnv. Rather than directly dereferencing objects, the native code has to per- form a C function call which in turn dereferences the object. The function call is necessary because it isolates the native code from the internal object representa-tion maintained by the virtual machine implementation. The JNI field access over-head is typically negligible because a function call takes only a few cycles.（字段访问开销主要是通过一次得到ID间接访问造成的，但是这样带来的收益是能够将内部object表示不暴露出来，但是索性的是带来的开销并不大）
 </p>
 <p>
-<b>NOTE（dirlt）：我理解这里的意思主要是说在调用和字段访问方面，Java/native calls的开销更大，但是native methods本身在运行速度上可能会带来更大的收益</b>
+<b>note(dirlt)：我理解这里的意思主要是说在调用和字段访问方面，Java/native calls的开销更大，但是native methods本身在运行速度上可能会带来更大的收益</b>
 </p>
 </div>
 
@@ -487,11 +487,11 @@ The overhead of field access using the JNI lies in the cost of calling through t
 <ul>
 <li>Why do you want to delete local references explicitly if the virtual machine automatically frees them after native methods return? A local reference keeps the referenced object from being garbage collected until the local reference is invali-dated. 
 </li>
-<li>但是也可以显示标记不需要这个对象，这样可以减少无用对象的持有。使用DeleteLocalRef来标记。*NOTE（dirlt）：似乎对于每一个native method最多支持16个local reference.
+<li>但是也可以显示标记不需要这个对象，这样可以减少无用对象的持有。使用DeleteLocalRef来标记。*note(dirlt)：似乎对于每一个native method最多支持16个local reference.
 </li>
 <li>NewLocalRef/DeleteLocalRef.
 </li>
-<li>JDK1.2以上有另外的方法支持很多local reference <b>NOTE(dirlt):不过似乎没有什么太大的意思</b>
+<li>JDK1.2以上有另外的方法支持很多local reference <b>note(dirlt):不过似乎没有什么太大的意思</b>
 <ul>
 <li>EnsureLocalCapacity 确保这个frame至少之后可以分配多少个local ref
 </li>
@@ -607,7 +607,7 @@ Calling most JNI functions with a pending exception leads to undefined results. 
 <h4 id="sec-1-1-7"><span class="section-number-4">1.1.7</span> The Invocation Interface</h4>
 <div class="outline-text-4" id="text-1-1-7">
 
-<p><b>NOTE（dirlt）：代码整个过程还是比较清晰的</b>
+<p><b>note(dirlt)：代码整个过程还是比较清晰的</b>
 </p>
 
 
@@ -706,7 +706,7 @@ Hello,World
 <ul>
 <li id="sec-1-1-8-1">JNI and Threads<br/>
 <ul>
-<li>MonitorEnter/MonitorExit可以操作monitor. <b>NOTE(dirlt):对应java里面的synchronized关键字区域</b>
+<li>MonitorEnter/MonitorExit可以操作monitor. <b>note(dirlt):对应java里面的synchronized关键字区域</b>
 </li>
 </ul>
 
@@ -743,7 +743,7 @@ load/unload工作流程是这样的：
 
 
 <p>
-<b>NOTE（dirlt）：因此如果ClassLoader里面关键了global reference的话那么这个class loader是不会被卸载的</b>
+<b>note(dirlt)：因此如果ClassLoader里面关键了global reference的话那么这个class loader是不会被卸载的</b>
 </p>
 </li>
 </ul>
@@ -759,13 +759,13 @@ load/unload工作流程是这样的：
 </p><ul>
 <li>one-to-one mapping. 针对每个函数做一个包装，外部做类型转换.
 </li>
-<li>shared stubs. 做一个dispatcher函数，根据所传参数包装成为合适的C++类型，然后直接传给C++函数。但是调用C++函数这个部分需要自己实现函数调用栈 *NOTE（dirlt）：文章里面是asm_dispatch)
+<li>shared stubs. 做一个dispatcher函数，根据所传参数包装成为合适的C++类型，然后直接传给C++函数。但是调用C++函数这个部分需要自己实现函数调用栈 *note(dirlt)：文章里面是asm_dispatch)
 </li>
 </ul>
 
 
 <p>
-<b>NOTE(dirlt):个人觉得one-to-one mapping虽然实现比较麻烦，可是用起来比较简单，而shared stubs则相反。自己完全可以实现一些简单的common library来简化编写过程</b>
+<b>note(dirlt):个人觉得one-to-one mapping虽然实现比较麻烦，可是用起来比较简单，而shared stubs则相反。自己完全可以实现一些简单的common library来简化编写过程</b>
 </p>
 </div>
 
@@ -914,7 +914,7 @@ Accessing Objects
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-28T16:51+0800</p>
+<p class="date">Date: 2014-04-15T09:14+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

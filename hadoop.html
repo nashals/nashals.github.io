@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="hadoop"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-28T16:51+0800"/>
+<meta name="generated" content="2014-05-22T11:39+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -196,7 +196,7 @@
 <p>Why Hadoop? <a href="http://www.cloudera.com/why-hadoop/">http://www.cloudera.com/why-hadoop/</a>
 </p>
 <p>
-TODO(dirlt):translate it!!!
+todo(dirlt):translate it!!!
 </p>
 <p>
 Simply put, Hadoop can transform the way you store and process data throughout your enterprise. According to analysts, about 80% of the data in the world is unstructured, and until Hadoop, it was essentially unusable in any systematic way. With Hadoop, for the first time you can combine all your data and look at it as one.
@@ -218,7 +218,7 @@ Simply put, Hadoop can transform the way you store and process data throughout y
 <h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> Hadoop包括哪些组件</h4>
 <div class="outline-text-4" id="text-1-1-2">
 
-<p>TODO(dirlt):translate it!!!
+<p>todo(dirlt):translate it!!!
 </p>
 <p>
 Apache Hadoop包括了下面这些组件：
@@ -263,7 +263,7 @@ Apache Hadoop包括了下面这些组件：
 <p>CDH Hadoop FAQ <a href="https://ccp.cloudera.com/display/SUPPORT/Hadoop+FAQ">https://ccp.cloudera.com/display/SUPPORT/Hadoop+FAQ</a>
 </p>
 <p>
-TODO(dirlt):translate it!!!
+todo(dirlt):translate it!!!
 </p>
 <ul>
 <li>What exactly is included in CDH? / Cloudera's Distribution Including Apache Hadoop (CDH) is a certified release of Apache Hadoop. We include some stable patches scheduled to be included in future releases, as well as some patches we have developed for our supported customers, and are in the process of contributing back to Apache.
@@ -588,7 +588,7 @@ As JMX port, ZooKeeper will also use another randomly selected port for RMI. In 
 <h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> Hadoop即将过时了吗？</h4>
 <div class="outline-text-4" id="text-1-2-1">
 
-<p><a href="http://www.kuqin.com/database/20120715/322528.html">http://www.kuqin.com/database/20120715/322528.html</a> 
+<p><a href="http://www.kuqin.com/database/20120715/322528.html">http://www.kuqin.com/database/20120715/322528.html</a>
 </p>
 <p>
 google提出的三个东西都是解决hadoop的软肋，最终目的还是需要解决大数据上面的实时性问题。
@@ -652,7 +652,7 @@ RAID cards, redundant power supplies and other per-component reliability feature
 <ul>
 <li>Thomas Jungblut's Blog: Dealing with "OutOfMemoryError" in Hadoop <a href="http://codingwiththomas.blogspot.jp/2011/07/dealing-with-outofmemoryerror-in-hadoop.html">http://codingwiththomas.blogspot.jp/2011/07/dealing-with-outofmemoryerror-in-hadoop.html</a> 作者给出的解决办法就是修改hadoop的代码，通过调用Java API而不是使用ProcessBuilder来解决。
 </li>
-<li><b>NOTE(dirlt):出现OOM的话必须区分JVM还是Linux System本身的OOM。JVM出现OOM是抛出异常，而Linux出现OOM是会触发OOM killer</b> 
+<li><b>note(dirlt):出现OOM的话必须区分JVM还是Linux System本身的OOM。JVM出现OOM是抛出异常，而Linux出现OOM是会触发OOM killer</b>
 </li>
 </ul>
 
@@ -681,12 +681,12 @@ Making Hadoop easy to deploy, use, and operate should be the #1 priority for the
 <h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> CDH3u3搭建单节点集群</h4>
 <div class="outline-text-4" id="text-1-3-1">
 
-<p>搭建单节点集群允许我们在单机做一些模拟或者是测试，还是非常有意义的。如何操作的话可以参考链接 <a href="http://localhost/utils/hadoop-0.20.2-cdh3u3/docs/single_node_setup.html">http://localhost/utils/hadoop-0.20.2-cdh3u3/docs/single_node_setup.html</a> 
+<p>搭建单节点集群允许我们在单机做一些模拟或者是测试，还是非常有意义的。如何操作的话可以参考链接 <a href="http://localhost/utils/hadoop-0.20.2-cdh3u3/docs/single_node_setup.html">http://localhost/utils/hadoop-0.20.2-cdh3u3/docs/single_node_setup.html</a>
 </p>
 <p>
 这里稍微总结一下：
 </p><ul>
-<li>首先安装ssh和rsync # sudo apt-get install ssh &amp;&amp;  sudo apt-get install rsync 
+<li>首先安装ssh和rsync # sudo apt-get install ssh &amp;&amp;  sudo apt-get install rsync
 </li>
 <li>本机建立好信任关系 # cat ~/.ssh/id_dsa.pub &gt;&gt; ~/.ssh/authorized_keys
 </li>
@@ -749,7 +749,7 @@ Making Hadoop easy to deploy, use, and operate should be the #1 priority for the
 </li>
 <li>webconsole
 <ul>
-<li>NameNode - <a href="http://localhost:50070/">http://localhost:50070/</a> 
+<li>NameNode - <a href="http://localhost:50070/">http://localhost:50070/</a>
 </li>
 <li>JobTracker - <a href="http://localhost:50030/">http://localhost:50030/</a>
 </li>
@@ -771,17 +771,17 @@ Making Hadoop easy to deploy, use, and operate should be the #1 priority for the
 </p><ul>
 <li>配置文件
 <ul>
-<li>配置文件在etc/hadoop，包括环境配置脚本比如hadoop-env.sh 
+<li>配置文件在etc/hadoop，包括环境配置脚本比如hadoop-env.sh
 </li>
-<li>bin/sbin目录下面有hadoop集群启动停止工具 <b>NOTE（dirlt）：不要使用它们</b>
+<li>bin/sbin目录下面有hadoop集群启动停止工具 <b>note(dirlt)：不要使用它们</b>
 </li>
 <li>libexec目录下面是公用的配置脚本
 </li>
-<li>mapred-site.xml中jobtracker地址配置key修改为 mapred.jobtracker.address <b>NOTE(dirlt):this for yarn.如果是mr1那么不用修改,依然是mapred.job.tracker</b>
+<li>mapred-site.xml中jobtracker地址配置key修改为 mapred.jobtracker.address <b>note(dirlt):this for yarn.如果是mr1那么不用修改,依然是mapred.job.tracker</b>
 </li>
 <li><del>hadoop-daemons.sh会使用/sbin/slaves.sh来在各个节点启动，但是 *不知道什么原因，很多环境变量没有设置* ，所以在slaves.sh执行ssh命令部分最开始增加了 source ~/.shrc; 来强制设置我的环境变量</del>
 </li>
-<li><b>NOTE(dirlt):不要使用shell脚本来启动，而是直接使用类似hadoop namenode这种方式来启动单个机器上的实例</b>
+<li><b>note(dirlt):不要使用shell脚本来启动，而是直接使用类似hadoop namenode这种方式来启动单个机器上的实例</b>
 </li>
 </ul>
 
@@ -836,23 +836,23 @@ Making Hadoop easy to deploy, use, and operate should be the #1 priority for the
 </li>
 <li>bin目录，bin and bin-mapreduce1
 </li>
-<li>lib目录。如果需要使用mr1的话，那么cp -r share/hadoop/mapreduce1/ . <b>NOTE(dirlt):不要更改软链接</b>
+<li>lib目录。如果需要使用mr1的话，那么cp -r share/hadoop/mapreduce1/ . <b>note(dirlt):不要更改软链接</b>
 <ul>
-<li><b>NOTE（dirlt）：似乎只需要最顶层的一些jar文件即可</b>
+<li><b>note(dirlt)：似乎只需要最顶层的一些jar文件即可</b>
 </li>
-<li><b>NOTE(dirlt): 似乎只需要hadoop-core-.jar文件即可</b>
+<li><b>note(dirlt): 似乎只需要hadoop-core-.jar文件即可</b>
 </li>
 </ul>
 
 </li>
-<li>webapps目录。如果需要使用mr1的话，那么cp -r share/hadoop/mapreduce1/webapps . <b>NOTE(dirlt):不然不能够访问JobTracker WebUI</b>
+<li>webapps目录。如果需要使用mr1的话，那么cp -r share/hadoop/mapreduce1/webapps . <b>note(dirlt):不然不能够访问JobTracker WebUI</b>
 </li>
 </ul>
 
 </li>
 <li><del>在bin/hadoop-config.sh添加source ~/.shrc 来强制设置环境变量。</del>
 </li>
-<li><b>NOTE（dirlt）：不要使用start-dfs.sh这些脚本启动，似乎这些脚本会去读取master,slaves这些文件然后逐个上去ssh启动。直接使用hadoop namenode这种方式可以只启动单个机器上的实例</b>
+<li><b>note(dirlt)：不要使用start-dfs.sh这些脚本启动，似乎这些脚本会去读取master,slaves这些文件然后逐个上去ssh启动。直接使用hadoop namenode这种方式可以只启动单个机器上的实例</b>
 </li>
 </ul>
 
@@ -1270,13 +1270,13 @@ export HBASE_OPTS=<span class="org-string">"-ea -XX:+UseParNewGC -XX:+UseConcMar
 <ul>
 <li>使用stdin/stdout来作为输入和输出
 </li>
-<li><b>NOTE（dirlt）：倒是可以探索一下如何使用，但是觉得能力有限</b>
+<li><b>note(dirlt)：倒是可以探索一下如何使用，但是觉得能力有限</b>
 <ul>
 <li>Input/Output Format
 </li>
 <li>外围环境的访问比如访问hdfs以及hbase
 </li>
-<li>程序打包。比如使用很多第三方库的话在其他机器上面没有部署。 
+<li>程序打包。比如使用很多第三方库的话在其他机器上面没有部署。
 </li>
 </ul>
 
@@ -1290,7 +1290,7 @@ export HBASE_OPTS=<span class="org-string">"-ea -XX:+UseParNewGC -XX:+UseConcMar
 </li>
 <li>使用Unix Domain Socket来作为输入和输出
 </li>
-<li><b>NOTE（dirlt）：可能使用上面还是没有native mr或者是streaming方式方便</b>
+<li><b>note(dirlt)：可能使用上面还是没有native mr或者是streaming方式方便</b>
 </li>
 </ul>
 
@@ -1352,7 +1352,7 @@ export HBASE_OPTS=<span class="org-string">"-ea -XX:+UseParNewGC -XX:+UseConcMar
 <ul>
 <li>文件系统
 <ul>
-<li>ChecksumFileSystem 
+<li>ChecksumFileSystem
 <ul>
 <li>使用decorator设计模式，底层filesystem称为RawFileSystem
 </li>
@@ -1364,7 +1364,7 @@ export HBASE_OPTS=<span class="org-string">"-ea -XX:+UseParNewGC -XX:+UseConcMar
 </li>
 <li>考虑到存在多副本的情况，如果读取某个副本出错的话，期间那么会调用reportChecksumFailure方法
 <ul>
-<li><b>NOTE（dirlt）：这个部分的代码不太好读，非常绕</b>    
+<li><b>note(dirlt)：这个部分的代码不太好读，非常绕</b>
 </li>
 </ul>
 
@@ -1463,9 +1463,9 @@ export HBASE_OPTS=<span class="org-string">"-ea -XX:+UseParNewGC -XX:+UseConcMar
 </li>
 <li>mapred.output.compress.type = BLOCK/RECORD 如果输出格式为SequenceFile的话，那么这个参数可以控制是块压缩还是记录压缩
 </li>
-<li><b>NOTE（dirlt）：我现在强烈感觉MR的中间结果存储格式为SequenceFile</b> 
+<li><b>note(dirlt)：我现在强烈感觉MR的中间结果存储格式为SequenceFile</b>
 </li>
-<li><b>NOTE（dirlt）：应该是IFile，但是是否共享了这个配置呢？</b>
+<li><b>note(dirlt)：应该是IFile，但是是否共享了这个配置呢？</b>
 </li>
 <li>mapred.compress.map.output = true 将map结果做压缩
 </li>
@@ -1522,7 +1522,7 @@ export HBASE_OPTS=<span class="org-string">"-ea -XX:+UseParNewGC -XX:+UseConcMar
 </ul>
 
 </li>
-<li>MapFile 也是用来存储KV数据结构，但是可以认为已经按照了Key进行排序 <b>NOTE（dirlt）：要求添加顺序就按照Key排序</b>
+<li>MapFile 也是用来存储KV数据结构，但是可以认为已经按照了Key进行排序 <b>note(dirlt)：要求添加顺序就按照Key排序</b>
 <ul>
 <li>存储格式实际上也是SequenceFile，data，index都是。
 </li>
@@ -1587,7 +1587,7 @@ export HBASE_OPTS=<span class="org-string">"-ea -XX:+UseParNewGC -XX:+UseConcMar
 <ul>
 <li>standalone 使用单个JVM进程来模拟
 <ul>
-<li>如果不进行任何配置的话默认使用这个模式 <b>NOTE（dirlt）：这个模式确实不错</b>
+<li>如果不进行任何配置的话默认使用这个模式 <b>note(dirlt)：这个模式确实不错</b>
 </li>
 <li>fs.default.name = file 本地文件系统
 </li>
@@ -1600,7 +1600,7 @@ export HBASE_OPTS=<span class="org-string">"-ea -XX:+UseParNewGC -XX:+UseConcMar
 <ul>
 <li>fs.default.name = hdfs://localhost
 </li>
-<li>mapred.job.tracker = localhost:8021 
+<li>mapred.job.tracker = localhost:8021
 </li>
 </ul>
 
@@ -1659,18 +1659,18 @@ export HBASE_OPTS=<span class="org-string">"-ea -XX:+UseParNewGC -XX:+UseConcMar
 </li>
 <li>MiniMRCluster
 </li>
-<li>MiniHBaseCluster 
+<li>MiniHBaseCluster
 </li>
 <li>MiniZooKeeperClutser
 </li>
-<li><b>NOTE(dirlt):都称为Mini???Cluster？</b>
+<li><b>note(dirlt):都称为Mini???Cluster？</b>
 </li>
 </ul>
 
-<p>另外还有自带的ClusterMapReduceTestCase以及HBaseTestingUtility来帮助进行mapreduce的testcase. 这些类散步在hadoop,hbase,hadoop-test以及hbase-test里面。 
+<p>另外还有自带的ClusterMapReduceTestCase以及HBaseTestingUtility来帮助进行mapreduce的testcase. 这些类散步在hadoop,hbase,hadoop-test以及hbase-test里面。
 </p>
 <p>
-<b>NOTE（dirlt）：但是个人觉得可能还是没有本地测试方便，不过倒是可以试试</b> 
+<b>note(dirlt)：但是个人觉得可能还是没有本地测试方便，不过倒是可以试试</b>
 </p>
 
 <hr/>
@@ -1725,7 +1725,7 @@ job，task and attempt
 </li>
 <li>hadoop.job.history.location 历史作业信息存放位置，超过30天删除，默认在_logs/history
 </li>
-<li>hadoop.job.history.user.location 如果不为none那么历史作业信息在这里也会存在一份，不会删除。 
+<li>hadoop.job.history.user.location 如果不为none那么历史作业信息在这里也会存在一份，不会删除。
 </li>
 </ul>
 
@@ -1754,7 +1754,7 @@ job，task and attempt
 </li>
 <li>分析任务
 <ul>
-<li>JobConf允许设置profile参数 <b>NOTE（dirlt）：新的接口里面JobConf-&gt;JobContext-&gt;Job，Job没有这些接口，但是可以通过Configuration来设置</b>
+<li>JobConf允许设置profile参数 <b>note(dirlt)：新的接口里面JobConf-&gt;JobContext-&gt;Job，Job没有这些接口，但是可以通过Configuration来设置</b>
 <ul>
 <li>setProfileEnabled 打开profile功能，默认false，属性 mapred.task.profile
 </li>
@@ -1766,7 +1766,7 @@ job，task and attempt
 </li>
 <li>其中%s会替换成为profile输出文件
 </li>
-<li><b>NOTE（dirlt）：其实这里似乎也可以设置成为jmxremote来通过jvisualvm来调试</b>
+<li><b>note(dirlt)：其实这里似乎也可以设置成为jmxremote来通过jvisualvm来调试</b>
 </li>
 </ul>
 
@@ -1875,7 +1875,7 @@ Hadoop运行MapReduce作业的工作原理
 </li>
 <li>计数器修改
 </li>
-<li>reporter的progress 
+<li>reporter的progress
 </li>
 </ul>
 
@@ -1987,7 +1987,7 @@ shuffle和排序
 <img src="images/mapreduce-shuffle-sort-2.png"  alt="./images/mapreduce-shuffle-sort-2.png" />
 </p>
 <p>
- 有下面这些参数控制shuffle和sort的过程 <b>NOTE（dirlt）：书上倒是有很多参数，但是好多还是不太理解</b>
+ 有下面这些参数控制shuffle和sort的过程 <b>note(dirlt)：书上倒是有很多参数，但是好多还是不太理解</b>
 </p><ul>
 <li>io.sort.mb map输出缓存空间大小，默认是100MB. 建议设置10* io.sort.factor.
 </li>
@@ -2004,7 +2004,7 @@ shuffle和排序
 </li>
 <li>io.sort.factor 多路归并的数量，默认是10. 建议设置在25-32.
 <ul>
-<li>在map阶段，因为最终会存在多个spill文件，所以需要做多路归并。 <b>TODO（dirlt）：如果归并数量少的话是否可能会多次merge？</b>
+<li>在map阶段，因为最终会存在多个spill文件，所以需要做多路归并。 <b>todo(dirlt)：如果归并数量少的话是否可能会多次merge？</b>
 </li>
 <li>在reduce阶段的话，因为可能存在多路map输出的结果，所以需要做多路归并。
 </li>
@@ -2017,14 +2017,14 @@ shuffle和排序
 </li>
 <li>mapred.reduce.parallel.copies reduce启动多少个线程去请求map输出，默认为5。 <b>reducer as client</b>
 <ul>
-<li><b>NOTE(dirlt):如果reduce和每个map都使用一个线程去请求输出结果的话，只要shuffle阶段没有出现network congestion，那么提高线程数量是有效果的</b>
+<li><b>note(dirlt):如果reduce和每个map都使用一个线程去请求输出结果的话，只要shuffle阶段没有出现network congestion，那么提高线程数量是有效果的</b>
 </li>
-<li><b>NOTE（dirlt）：可以设置到15-50</b>
+<li><b>note(dirlt)：可以设置到15-50</b>
 </li>
 </ul>
 
 </li>
-<li>mapred.reduce.copy.backoff = 300(s) reduce下载线程最大等待时间    
+<li>mapred.reduce.copy.backoff = 300(s) reduce下载线程最大等待时间
 </li>
 <li>mapred.job.shuffle.input.buffer.percent = 0.7 用来缓存shuffle数据的reduce task heap百分比
 </li>
@@ -2088,7 +2088,7 @@ shuffle和排序
 </ul>
 
 </li>
-<li>杂项 <b>NOTE（dirlt）：from misc articles</b>
+<li>杂项 <b>note(dirlt)：from misc articles</b>
 <ul>
 <li>mapred.job.map.capacity  # 最大同时运行map数量
 </li>
@@ -2128,7 +2128,7 @@ MapReduce的类型
 
 
 
-<pre class="src src-Java">protected void map(KEYIN key, VALUEIN value, 
+<pre class="src src-Java">protected void map(KEYIN key, VALUEIN value,
                    Context context) throws IOException, InterruptedException {
   context.write((KEYOUT) key, (VALUEOUT) value);
 }
@@ -2142,7 +2142,7 @@ public void run(Context context) throws IOException, InterruptedException {
 </pre>
 
 <p>
-<b>NOTE（dirlt）：觉得这个特性不是特别有用</b>
+<b>note(dirlt)：觉得这个特性不是特别有用</b>
 </p><ul>
 <li>mapred.input.format.class setInputFormat
 </li>
@@ -2191,14 +2191,14 @@ public void run(Context context) throws IOException, InterruptedException {
 
 
 <pre class="src src-Java">public abstract class InputFormat&lt;K, V&gt; {
-  public abstract 
+  public abstract
     List&lt;InputSplit&gt; getSplits(JobContext context
                                ) throws IOException, InterruptedException;
 
-   public abstract 
+   public abstract
     RecordReader&lt;K,V&gt; createRecordReader(InputSplit split,
                                          TaskAttemptContext context
-                                        ) throws IOException, 
+                                        ) throws IOException,
                                                  InterruptedException;
 
 }
@@ -2206,7 +2206,7 @@ public void run(Context context) throws IOException, InterruptedException {
 public abstract class InputSplit {
   public abstract long getLength() throws IOException, InterruptedException;
 
-  public abstract 
+  public abstract
     String[] getLocations() throws IOException, InterruptedException;
 }
 
@@ -2215,13 +2215,13 @@ public abstract class RecordReader&lt;KEYIN, VALUEIN&gt; implements Closeable {
                                   TaskAttemptContext context
                                   ) throws IOException, InterruptedException;
 
-  public abstract 
+  public abstract
   boolean nextKeyValue() throws IOException, InterruptedException;
 
   public abstract
   KEYIN getCurrentKey() throws IOException, InterruptedException;
 
-  public abstract 
+  public abstract
   VALUEIN getCurrentValue() throws IOException, InterruptedException;
 
   public abstract float getProgress() throws IOException, InterruptedException;
@@ -2294,13 +2294,13 @@ public abstract class RecordReader&lt;KEYIN, VALUEIN&gt; implements Closeable {
 </li>
 <li>XML
 <ul>
-<li>InputFormat使用StreamInputFormat,       
+<li>InputFormat使用StreamInputFormat,
 </li>
 <li>设置RecordReader使用stream.recordreader.class来设置
 </li>
 <li>RecordReader使用org.apache.hadoop.streaming.StreamXmlRecordReader
 </li>
-<li><b>NOTE（dirlt）：也有现成的XmlInputFormat的实现</b>
+<li><b>note(dirlt)：也有现成的XmlInputFormat的实现</b>
 </li>
 </ul>
 
@@ -2314,7 +2314,7 @@ public abstract class RecordReader&lt;KEYIN, VALUEIN&gt; implements Closeable {
 </ul>
 
 </li>
-<li>SequenceFileAsBinaryInputFormat <b>NOTE（dirlt）：似乎没有什么用！</b>
+<li>SequenceFileAsBinaryInputFormat <b>note(dirlt)：似乎没有什么用！</b>
 </li>
 <li>MultipleInputs
 </li>
@@ -2343,11 +2343,11 @@ public abstract class RecordReader&lt;KEYIN, VALUEIN&gt; implements Closeable {
 </li>
 <li>SequenceFileOutputFormat
 </li>
-<li>SequenceFileAsBinaryOutpuFormat <b>NOTE（dirlt）：似乎没有什么用！</b>
+<li>SequenceFileAsBinaryOutpuFormat <b>note(dirlt)：似乎没有什么用！</b>
 </li>
 <li>MapFileOutputFormat
 </li>
-<li>MultipleOutputFormat 
+<li>MultipleOutputFormat
 </li>
 <li>MultipleOutputs
 <ul>
@@ -2392,7 +2392,7 @@ public abstract class RecordReader&lt;KEYIN, VALUEIN&gt; implements Closeable {
 </li>
 <li>使用CompositeInputFormat来运行map端连接。
 </li>
-<li><b>NOTE（dirlt)；不过我稍微看了一下代码，实现上其实也是针对输入文件对每条记录读取，然后进行join包括inner或者是outer。感觉场景会有限，而且效率不会太高</b>
+<li><b>note(dirlt)；不过我稍微看了一下代码，实现上其实也是针对输入文件对每条记录读取，然后进行join包括inner或者是outer。感觉场景会有限，而且效率不会太高</b>
 </li>
 </ul>
 
@@ -2446,7 +2446,7 @@ public abstract class RecordReader&lt;KEYIN, VALUEIN&gt; implements Closeable {
 </li>
 <li>最终达到的效果就是 M+ -&gt; R -&gt; M* （1个或者是多个mapper, 一个reducer，然后0个或者是多个mapper)
 </li>
-<li><b>TODO(dirlt):这样做倒是可以将各个mapper组合起来用作adapter.</b>
+<li><b>todo(dirlt):这样做倒是可以将各个mapper组合起来用作adapter.</b>
 </li>
 </ul>
 
@@ -2505,7 +2505,7 @@ public abstract class RecordReader&lt;KEYIN, VALUEIN&gt; implements Closeable {
 </li>
 <li>这些文件在conf目录下面有，如果想使用不同的文件也可以使用-config来另行指定
 </li>
-<li><b>NOTE(dirlt):所以从上面这个脚本来看，还是具有一定的局限性的</b>
+<li><b>note(dirlt):所以从上面这个脚本来看，还是具有一定的局限性的</b>
 </li>
 </ul>
 
@@ -2560,7 +2560,7 @@ public abstract class RecordReader&lt;KEYIN, VALUEIN&gt; implements Closeable {
 </li>
 <li>dfs.secondary.http.address 0.0.0.0:50090 secondard namenode的HTTP接口
 </li>
-<li>dfs.datanode.dns.interface default 绑定的NIC，默认是绑定默认的NIC比如eth0       
+<li>dfs.datanode.dns.interface default 绑定的NIC，默认是绑定默认的NIC比如eth0
 </li>
 <li>dfs.hosts / dfs.hosts.exclude 加入的datanode以及排除的datanode
 </li>
@@ -2572,18 +2572,18 @@ public abstract class RecordReader&lt;KEYIN, VALUEIN&gt; implements Closeable {
 </li>
 <li>fs.trash.interval 单位分钟，如果不为0的话，那么删除文件会移动到回收站，超过这个单位时间的文件才会完全删除。
 <ul>
-<li>回收站位置/home/${user]/.Trash <b>NOTE(dirlt):回收站这个功能只是对fs shell有效。fs shell remove时候会构造Trash这个类来处理删除文件的请求。如果调用Java API的话那么会直接删除文件</b>
+<li>回收站位置/home/${user]/.Trash <b>note(dirlt):回收站这个功能只是对fs shell有效。fs shell remove时候会构造Trash这个类来处理删除文件的请求。如果调用Java API的话那么会直接删除文件</b>
 </li>
 <li>haddop fs -expunge 强制删除
 </li>
-<li><b>NOTE（dirlt）：grep代码发现只有NameNode在TrashEmptier里面构造了Trash这个类，因此这个配置之需要在nn上配置即可，决定多久定期删除垃圾文件</b>
+<li><b>note(dirlt)：grep代码发现只有NameNode在TrashEmptier里面构造了Trash这个类，因此这个配置之需要在nn上配置即可，决定多久定期删除垃圾文件</b>
 </li>
 </ul>
 
 </li>
 <li>fs.trash.checkpoint.interval 单位分钟，namenode多久检查一次文件是否需要删除。
 <ul>
-<li><b>NOTE（dirlt）：似乎没有这个参数。如果没有这个参数的话，那么两次检查时长应该是由参数fs.trasn.interval来决定</b>
+<li><b>note(dirlt)：似乎没有这个参数。如果没有这个参数的话，那么两次检查时长应该是由参数fs.trasn.interval来决定</b>
 </li>
 </ul>
 
@@ -2607,13 +2607,13 @@ public abstract class RecordReader&lt;KEYIN, VALUEIN&gt; implements Closeable {
 </li>
 <li>mapred.child.ulimit 单个tasktracker允许子进程占用的最大内存空间。通常为2-3* mapred.child.java.opts.
 </li>
-<li>mapred.child.java.opts = -Xmx200m 每个子JVM进程200M. <b>NOTE（dirlt）：这个是在提交机器上面设置的，而不是每个tasktracker上面设置的，每个job可以不同</b>
+<li>mapred.child.java.opts = -Xmx200m 每个子JVM进程200M. <b>note(dirlt)：这个是在提交机器上面设置的，而不是每个tasktracker上面设置的，每个job可以不同</b>
 <ul>
 <li>不一定支持将map/reduce的jvm参数分开设置 <a href="http://hadoop-common.472056.n3.nabble.com/separate-JVM-flags-for-map-and-reduce-tasks-td743351.html">http://hadoop-common.472056.n3.nabble.com/separate-JVM-flags-for-map-and-reduce-tasks-td743351.html</a>
 </li>
-<li><b>NOTE（dirlt）：个人折中思路是限制内存大小为1G，然后大内存机器允许同时执行map/reduce数量上限提高，通过增加job的map/reduce数量来提高并发增加性能</b>
+<li><b>note(dirlt)：个人折中思路是限制内存大小为1G，然后大内存机器允许同时执行map/reduce数量上限提高，通过增加job的map/reduce数量来提高并发增加性能</b>
 </li>
-<li><b>NOTE（dirlt）：我grep了一下cdh3u3的代码，应该是将map/reduce的jvm参数分开进行了设置</b>
+<li><b>note(dirlt)：我grep了一下cdh3u3的代码，应该是将map/reduce的jvm参数分开进行了设置</b>
 <ul>
 <li>mapred.map.child.java.opts
 </li>
@@ -2643,7 +2643,7 @@ public abstract class RecordReader&lt;KEYIN, VALUEIN&gt; implements Closeable {
 </ul>
 
 </li>
-<li>Hadoop Benchmark <b>NOTE（dirlt）：try it out</b>
+<li>Hadoop Benchmark <b>note(dirlt)：try it out</b>
 <ul>
 <li>在hadoop安装目录下面有jar可以来做基准测试
 </li>
@@ -2768,7 +2768,7 @@ public abstract class RecordReader&lt;KEYIN, VALUEIN&gt; implements Closeable {
 </li>
 <li>可以通过页面访问每个datanode的block情况 <a href="http://localhost:50075/blockScannerReport">http://localhost:50075/blockScannerReport</a>
 </li>
-<li>加上listblocks参数可以看每个block情况 <a href="http://localhost:50075/blockScannerReport?listblocks">http://localhost:50075/blockScannerReport?listblocks</a> <b>NOTE（dirlt）：可能会很大</b>
+<li>加上listblocks参数可以看每个block情况 <a href="http://localhost:50075/blockScannerReport?listblocks">http://localhost:50075/blockScannerReport?listblocks</a> <b>note(dirlt)：可能会很大</b>
 </li>
 </ul>
 
@@ -2965,7 +2965,7 @@ Average IO rate mb/sec: 28.125
 </li>
 <li>terasort 对数据排序
 <ul>
-<li>&lt;input dir&gt; 
+<li>&lt;input dir&gt;
 </li>
 <li>&lt;output dir&gt;
 </li>
@@ -3001,7 +3001,7 @@ Options:
          * NOTE: The open_read, rename and delete operations assume that the files they operate on, are already available. The create_write operation must be run before running the other operations.
         -maps &lt;number of maps. default is 1. This is not mandatory&gt;
         -reduces &lt;number of reduces. default is 1. This is not mandatory&gt;
-        -startTime &lt;time to start, given in seconds from the epoch. Make sure this is far enough into the future, so all maps (operations) will start at the same time&gt;. default is launch time + 2 mins. This is not mandatory 
+        -startTime &lt;time to start, given in seconds from the epoch. Make sure this is far enough into the future, so all maps (operations) will start at the same time&gt;. default is launch time + 2 mins. This is not mandatory
         -blockSize &lt;Block size in bytes. default is 1. This is not mandatory&gt;
         -bytesToWrite &lt;Bytes to write. default is 0. This is not mandatory&gt;
         -bytesPerChecksum &lt;Bytes per checksum for the files. default is 1. This is not mandatory&gt;
@@ -3022,7 +3022,7 @@ Options:
 
 
 <pre class="example">➜  ~HADOOP_HOME  hadoop jar hadoop-test-0.20.2-cdh3u3.jar nnbench -operation create_write -bytesToWrite 0 -numberOfFiles 1200
-➜  ~HADOOP_HOME  hadoop jar hadoop-test-0.20.2-cdh3u3.jar nnbench -operation open_read 
+➜  ~HADOOP_HOME  hadoop jar hadoop-test-0.20.2-cdh3u3.jar nnbench -operation open_read
 </pre>
 
 
@@ -3031,7 +3031,7 @@ Options:
 </p>
 
 
-<pre class="example">-------------- NNBench -------------- : 
+<pre class="example">-------------- NNBench -------------- :
                                Version: NameNode Benchmark 0.4
                            Date &amp; time: 2013-04-25 19:41:02,873
 
@@ -3061,7 +3061,7 @@ Avg exec time (ms): Create/Write/Close: 26.526666666666667
                    RAW DATA: Late maps: 0
              RAW DATA: # of exceptions: 0
 
--------------- NNBench -------------- : 
+-------------- NNBench -------------- :
                                Version: NameNode Benchmark 0.4
                            Date &amp; time: 2013-04-25 19:44:42,354
 
@@ -3224,7 +3224,7 @@ Examples:
 </li>
 <li>seqWrite 顺序地写入每个key
 </li>
-<li><b>NOTE(dirlt):这里的key都非常简单，10个字符的数字，printf("%010d",row)</b>
+<li><b>note(dirlt):这里的key都非常简单，10个字符的数字，printf("%010d",row)</b>
 </li>
 </ul>
 
@@ -3240,15 +3240,14 @@ Examples:
 
 <p>
 输出结果是在counter里面，这里面row count = 2000, 占用时间为258 ms.
-</p>
-</div>
+</p></div>
 </div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-28T16:51+0800</p>
+<p class="date">Date: 2014-05-22T11:39+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

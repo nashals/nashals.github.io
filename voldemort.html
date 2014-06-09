@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="voldemort"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-19T14:34+0800"/>
+<meta name="generated" content="2014-04-15T09:13+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -144,7 +144,7 @@
 <h3 id="sec-1-1"><span class="section-number-3">1.1</span> Serving Large-scale Batch Computed Data with Project Voldemort</h3>
 <div class="outline-text-3" id="text-1-1">
 
-<p>NOTE（dirlt）：FAST2012 <a href="http://static.usenix.org/events/fast/tech/">http://static.usenix.org/events/fast/tech/</a>
+<p>note(dirlt)：FAST2012 <a href="http://static.usenix.org/events/fast/tech/">http://static.usenix.org/events/fast/tech/</a>
 </p>
 
 </div>
@@ -255,7 +255,7 @@
 </li>
 <li>InnoDB instead executes this statement with row-level locking, but experiences substantial disk space overhead for every tuple. However, to achieve MyISAM-like bulk loading performance, InnoDB prefers data or-dered by primary key.（InnoDB行级别锁表但是占用额外磁盘空间过大，并且如果希望达到MyISAM性能的话，key最好是排序的）
 </li>
-<li>Achieving fast load times with low space overhead in Berkeley DB requires several manual and non-scalable configuration changes, such as shutting down cleaner and checkpointer threads. TODO（dirlt）：什么是non-scalable configuration changes? 我的理解是BDB为了达到快速导入并且保持磁盘小的效果，修要比较麻烦的配置修改，但是这些配置修改却不太适合大量的数据导入
+<li>Achieving fast load times with low space overhead in Berkeley DB requires several manual and non-scalable configuration changes, such as shutting down cleaner and checkpointer threads. todo(dirlt)：什么是non-scalable configuration changes? 我的理解是BDB为了达到快速导入并且保持磁盘小的效果，修要比较麻烦的配置修改，但是这些配置修改却不太适合大量的数据导入
 </li>
 </ul>
 
@@ -332,7 +332,7 @@
 <div class="outline-text-5" id="text-1-1-6-1">
 
 <ul>
-<li>Many storage formats try to build data structures that keep the data memory resident in the process’s address space, ignoring the effects of the operating system’s page cache. The several orders of magnitude latency gap be-tween page cache and disk means that most of the real performance benefit by maintaining our own structure is for elements already in the page cache. In fact, this cus-tom structure may even start taking memory away from the page cache. This potential interference motivated the need for our storage engine to exploit the page cache in-stead of maintaining our own complex heap-based data structure. Because our data is immutable, Voldemort memory maps the entire index into the address space. Ad-ditionally, because Voldemort is written in Java and runs on the JVM, delegating the memory management to the operating system eases garbage collection tuning.（充分利用os page cache一方面可以简化代码而不用自己去维护比较复杂的cache结构，另外一方面因为page cache不是通过JVM来管理的所以可以缓解JVM GC的压力来提高效率） NOTE(dirlt):用JVM编写的存储系统最好不要来自己管理cache，或者由上层来管理cache，或者由JNI来间接管理cache，因为cache对JVM GC的影响会非常大
+<li>Many storage formats try to build data structures that keep the data memory resident in the process’s address space, ignoring the effects of the operating system’s page cache. The several orders of magnitude latency gap be-tween page cache and disk means that most of the real performance benefit by maintaining our own structure is for elements already in the page cache. In fact, this cus-tom structure may even start taking memory away from the page cache. This potential interference motivated the need for our storage engine to exploit the page cache in-stead of maintaining our own complex heap-based data structure. Because our data is immutable, Voldemort memory maps the entire index into the address space. Ad-ditionally, because Voldemort is written in Java and runs on the JVM, delegating the memory management to the operating system eases garbage collection tuning.（充分利用os page cache一方面可以简化代码而不用自己去维护比较复杂的cache结构，另外一方面因为page cache不是通过JVM来管理的所以可以缓解JVM GC的压力来提高效率） note(dirlt):用JVM编写的存储系统最好不要来自己管理cache，或者由上层来管理cache，或者由JNI来间接管理cache，因为cache对JVM GC的影响会非常大
 </li>
 <li>To take advantage of the parallelism in Hadoop during generation, we split the input data destined for a particular node into multiple chunk buckets, which in turn are split into multiple chunk sets. Generation of multiple chunk sets can then be done independently and in parallel.（在一个节点上的数据有若干个chunk buckets组成，而每个chunk bucket则由若干个chunk sets组成）
 </li>
@@ -407,7 +407,7 @@
 <h5 id="sec-1-1-6-4"><span class="section-number-5">1.1.6.4</span> Data Load</h5>
 <div class="outline-text-5" id="text-1-1-6-4">
 
-<p>TODO(dirlt)：原子切换是2PC实现吗？
+<p>todo(dirlt)：原子切换是2PC实现吗？
 </p>
 </div>
 
@@ -418,7 +418,7 @@
 <div class="outline-text-5" id="text-1-1-6-5">
 
 <ul>
-<li>The most time-consuming step is to search the index file. A binary search in an index of 1 million keys can result in around 20 key comparisons; if the index file is not cached, then 20 disk seeks are required to read one value. （检索最耗时的部分还是在查询index file上） NOTE（dirlt）：用bloom filter屏蔽key不存在这种最坏情况。
+<li>The most time-consuming step is to search the index file. A binary search in an index of 1 million keys can result in around 20 key comparisons; if the index file is not cached, then 20 disk seeks are required to read one value. （检索最耗时的部分还是在查询index file上） note(dirlt)：用bloom filter屏蔽key不存在这种最坏情况。
 </li>
 <li>As a small optimization, while fetching the files from HDFS, Voldemort fetches the index files after all data files to aid in keeping the index files in the page cache. <b>首先传输数据文件，然后传输index文件，来帮助index文件留在page cache里面</b>
 </li>
@@ -443,10 +443,10 @@
 <h5 id="sec-1-1-6-7"><span class="section-number-5">1.1.6.7</span> Rebalancing</h5>
 <div class="outline-text-5" id="text-1-1-6-7">
 
-<p>TODO(dirlt):membership的修改是2PC实现吗？
+<p>todo(dirlt):membership的修改是2PC实现吗？
 </p>
 <p>
-NOTE（dirlt）：因为Voldemort定位为只读数据库，所以在membership的变化下数据可以保持强一致性。而Dynamo这类读写数据库的话，在membership的变化数据只能够保持最终一致性。
+note(dirlt)：因为Voldemort定位为只读数据库，所以在membership的变化下数据可以保持强一致性。而Dynamo这类读写数据库的话，在membership的变化数据只能够保持最终一致性。
 </p>
 <ul>
 <li>Our smallest unit of rebalancing is a partition. In other words, the addition of a new node translates to giving the ownership of some partitions to that node. The rebalancing process is run by a tool that coordinates the full process.（Again，这种partition方式就是dynamo里面提到的第三种方式，好处就是在rebalance的时候不需要scan key range而只是需要移动对应的partition data file）
@@ -470,7 +470,7 @@ NOTE（dirlt）：因为Voldemort定位为只读数据库，所以在membership�
 </li>
 <li>Here it is important to note that the granularity of the bucket selected makes this process as simple as copying files. If buckets were defined on a per-node basis (that is, have multiple chunk sets on a per-node basis), the system would have had to iterate over all the keys on the node and find the keys belonging to the moving partition, finally running an extra merge step to coalesce with the live index on the stealer node’s end.
 </li>
-<li>Once the fetches are complete, the rebalancing tool updates the intermediate cluster topology on all the nodes while also running the swap operation, for all the stores on the stealer and donor nodes. <b>The entire process repeats for every batch of primary partitions.</b>  TODO（dirlt)：为什么不等待所有节点rebalance/fetch完成所有数据之后，直接通知所有节点更新到最终的membership并且做swap操作(as an atomic operation）？ 分批执行fetch可以理解是因为这样可以让这个系统平滑，可以分批更新membership就不太理解了。
+<li>Once the fetches are complete, the rebalancing tool updates the intermediate cluster topology on all the nodes while also running the swap operation, for all the stores on the stealer and donor nodes. <b>The entire process repeats for every batch of primary partitions.</b>  todo(dirlt)：为什么不等待所有节点rebalance/fetch完成所有数据之后，直接通知所有节点更新到最终的membership并且做swap操作(as an atomic operation）？ 分批执行fetch可以理解是因为这样可以让这个系统平滑，可以分批更新membership就不太理解了。
 </li>
 <li>The intermediate topology change also needs to be propagated to all the clients. Voldemort propagates this information as a lazy process where the clients still use the old metadata. If they contact a node with a request fora key in a partition that the node is no longer responsible for, a special exception is propagated, which results in a rebootstrap step along with a retry of the previous request. （上面的问题同样出现在如何通知client上。如果只是每次几个primary partition增量更新的话，那么client对于membership的更新也只能够是增量的，只能更新本次所取的key对应的partition在哪个node上这个信息。可是如果所有节点的membership是最后全量更新的话，那么client则可以选择是增量更新还是全量更新，可以知道所有的partition在哪些node上面这个信息。增量的更新可以降低延迟，但是会增大吞吐）
 </li>
@@ -509,7 +509,7 @@ NOTE（dirlt）：因为Voldemort定位为只读数据库，所以在membership�
 <p><a href="http://data.linkedin.com/blog/2009/06/building-a-terabyte-scale-data-cycle-at-linkedin-with-hadoop-and-project-voldemort">http://data.linkedin.com/blog/2009/06/building-a-terabyte-scale-data-cycle-at-linkedin-with-hadoop-and-project-voldemort</a>
 </p>
 <p>
-NOTE（dirlt）：这篇文章是2009年写的，所以相对上面那篇文章来说很多内容都过时了，比如index文件里面key使用128字节MD5存储。
+note(dirlt)：这篇文章是2009年写的，所以相对上面那篇文章来说很多内容都过时了，比如index文件里面key使用128字节MD5存储。
 </p>
 <p>
 <img src="images/voldemort-linkedin-data-cycle.png"  alt="./images/voldemort-linkedin-data-cycle.png" />   
@@ -570,8 +570,8 @@ Future work
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-19T14:34+0800</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
+<p class="date">Date: 2014-04-15T09:13+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

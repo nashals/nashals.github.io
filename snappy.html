@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="snappy"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-19T14:34+0800"/>
+<meta name="generated" content="2014-04-15T09:13+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -735,7 +735,7 @@ static inline int FindMatchLength(const char* s1,
 <p>snappy接口简单很大长度上是因为对于一个input串的话，可以根据input串估计出compress之后的串长度上限。
 然后进行压缩之前可以进行预分配，然后snappy内部的话在进行压缩时候就不进行字符越界检查了。
 通常牺牲部分内存来达到接口简单易用非常好。对于具体分析的话注释里面都写出来了，我们可以仔细分析copy以及literal带来的膨胀代价，
-但是这里并不打算仔细分析。TODO(zhangyan04):还不知道32是什么意思？但是为了放置长度在头部也确实需要几个额外字节。
+但是这里并不打算仔细分析。todo(zhangyan04):还不知道32是什么意思？但是为了放置长度在头部也确实需要几个额外字节。
 </p>
 
 
@@ -1622,8 +1622,8 @@ int main(){
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-19T14:34+0800</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
+<p class="date">Date: 2014-04-15T09:13+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

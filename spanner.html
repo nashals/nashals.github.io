@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="spanner"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-28T16:50+0800"/>
+<meta name="generated" content="2014-04-15T09:13+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -170,9 +170,9 @@
 </li>
 <li>Megastore可以解决Bigtable这个问题但是write throughput太差（使用MVCC方式造成的冲突）
 </li>
-<li>Spanner has evolved from a Bigtable-like versioned key-value store into a temporal multi-version database. <b>TODO（dirlt）：什么叫做temporal?</b>
+<li>Spanner has evolved from a Bigtable-like versioned key-value store into a temporal multi-version database. <b>todo(dirlt)：什么叫做temporal?</b>
 </li>
-<li>Data is stored in schematized semi-relational tables; 数据存放在schema化的半关系表里面 <b>NOTE（dirlt）：table是有schema的，但是table之间的关系并不像数据库table之间那么的具有关系性，可以认为是改良吧</b>
+<li>Data is stored in schematized semi-relational tables; 数据存放在schema化的半关系表里面 <b>note(dirlt)：table是有schema的，但是table之间的关系并不像数据库table之间那么的具有关系性，可以认为是改良吧</b>
 </li>
 <li>data is versioned, and each version is automati-cally timestamped with its commit time; old versions of data are subject to configurable garbage-collection poli-cies; and applications can read data at old timestamps.  （data都通过timestamp进行version，这样允许application读取历史数据，而old version数据能够被GC清除）
 </li>
@@ -265,11 +265,11 @@
 </li>
 <li>spanserver serve data
 </li>
-<li>location proxy 用来定位spanserver location <b>TODO（dirlt）：confuse with zonemaster</b>
+<li>location proxy 用来定位spanserver location <b>todo(dirlt)：confuse with zonemaster</b>
 </li>
 <li>universe master和plaecment driver都是单例
 <ul>
-<li>The universe master is primarily a console that displays status information about all the zones for inter-active debugging. （汇总信息） <b>NOTE(dirlt):包括管理schema等？</b>
+<li>The universe master is primarily a console that displays status information about all the zones for inter-active debugging. （汇总信息） <b>note(dirlt):包括管理schema等？</b>
 </li>
 <li>The placement driver handles auto-mated movement of data across zones on the timescale of minutes. （在zone之间进行分钟级别自动balance）
 </li>
@@ -306,14 +306,14 @@
 </li>
 <li>Our implementation of Paxos is pipelined, so as to improve Spanner’s throughput in the presence of WAN latencies; but writes are applied by Paxos in order 当前的paxos的write是pipeline的来降低WAN的延迟，但是对于每个write都是in order的。
 </li>
-<li>Writes must initiate the Paxos protocol at the leader; reads access state directly from the underlying tablet at any replica that is sufficiently up-to-date. The set of replicas is collectively a Paxos group.（所有对于tablet的write都是通过paxos leader来发起的，读取可以在任意的replicas上面，replicas组成一个paxos group. <b>NOTE(dirlt):使用leader模式可以有效地减少冲突</b>
+<li>Writes must initiate the Paxos protocol at the leader; reads access state directly from the underlying tablet at any replica that is sufficiently up-to-date. The set of replicas is collectively a Paxos group.（所有对于tablet的write都是通过paxos leader来发起的，读取可以在任意的replicas上面，replicas组成一个paxos group. <b>note(dirlt):使用leader模式可以有效地减少冲突</b>
 </li>
 </ul>
 
 </li>
-<li>At every replica that is a leader, each spanserver im-plements a lock table to implement concurrency control. The lock table contains the state for two-phase lock-ing: it maps ranges of keys to lock states. Operations that require synchronization, such as transactional reads, acquire locks in the lock table; other operations bypass the lock table. （在leader上面实现了一个lock table来实现并发控制，使用了2PC的方式来控制提交，存放了key-&gt;lock state的映射。对于那些需要同步的操作比如事物读的话那么需要去尝试锁表，否则其他的操作都可以绕过lock table） <b>NOTE（dirlt）：lock table主要解决一个tablet内部的事务</b>
+<li>At every replica that is a leader, each spanserver im-plements a lock table to implement concurrency control. The lock table contains the state for two-phase lock-ing: it maps ranges of keys to lock states. Operations that require synchronization, such as transactional reads, acquire locks in the lock table; other operations bypass the lock table. （在leader上面实现了一个lock table来实现并发控制，使用了2PC的方式来控制提交，存放了key-&gt;lock state的映射。对于那些需要同步的操作比如事物读的话那么需要去尝试锁表，否则其他的操作都可以绕过lock table） <b>note(dirlt)：lock table主要解决一个tablet内部的事务</b>
 </li>
-<li>At every replica that is a leader, each spanserver also implements a transaction manager to support distributed transactions. The transaction manager is used to imple-ment a participant leader. the other replicas in the group will be referred to as participant slaves （paxos group会选举出一个leader来做分布式事务，和paxos group内部的leader作用相同，主要是解决跨tablet的事务） <b>NOTE（dirlt）：这个leader是long-lived的吗？</b>
+<li>At every replica that is a leader, each spanserver also implements a transaction manager to support distributed transactions. The transaction manager is used to imple-ment a participant leader. the other replicas in the group will be referred to as participant slaves （paxos group会选举出一个leader来做分布式事务，和paxos group内部的leader作用相同，主要是解决跨tablet的事务） <b>note(dirlt)：这个leader是long-lived的吗？</b>
 <ul>
 <li>If a transac-tion involves only one Paxos group (as is the case for most transactions), it can bypass the transaction manager, since the lock table and Paxos together provide transac- tionality. （如果操作只是发生在一个paxos group上面的话，那么可以绕过transaction manager)
 </li>
@@ -361,7 +361,7 @@
 </li>
 <li>A directory is also the smallest unit whose geographic-replication properties (or placement, for short) can be specified by an application. The design of our placement-specification language separates responsibil-ities for managing replication configurations. Adminis-trators control two dimensions: the number and types of replicas, and the geographic placement of those replicas.（directory也是能够制定replication方案的最小单元，replication方案包括两个维度replicas的数目以及replicas的地理位置）
 </li>
-<li>For expository clarity we have over-simplified. In fact, Spanner will shard a directory into multiple fragments if it grows too large. Fragments may be served from different Paxos groups (and therefore different servers). Movedir actually moves fragments, and not whole direc-tories, between groups.（ <b>NOTE（dirlt）：我觉得这个是否可以理解成为directory能够自己进行分裂？因为既然directory是placement的最小单元，那似乎没有必要再引入fragement这个概念了！</b> ）
+<li>For expository clarity we have over-simplified. In fact, Spanner will shard a directory into multiple fragments if it grows too large. Fragments may be served from different Paxos groups (and therefore different servers). Movedir actually moves fragments, and not whole direc-tories, between groups.（ <b>note(dirlt)：我觉得这个是否可以理解成为directory能够自己进行分裂？因为既然directory是placement的最小单元，那似乎没有必要再引入fragement这个概念了！</b> ）
 </li>
 </ul>
 
@@ -467,7 +467,7 @@ true time api看上去非常简洁，也非常好理解。就是说请求当前�
 <p>links can result in occasional localized spikes.（但是如果出现故障的话那么超过这个锯齿装的还是可能的，比如偶尔的timemaster不可用，或者是机器和网络出现overload的情况会造成延迟加大等）
 </p>
 <p>
-<b>NOTE（dirlt）：感觉他们在设计这个的时候就是胆大心细</b>
+<b>note(dirlt)：感觉他们在设计这个的时候就是胆大心细</b>
 </p>
 </div>
 
@@ -477,7 +477,7 @@ true time api看上去非常简洁，也非常好理解。就是说请求当前�
 <h3 id="sec-1-5"><span class="section-number-3">1.5</span> Concurrency Control</h3>
 <div class="outline-text-3" id="text-1-5">
 
-<p><b>NOTE(dirlt):并发控制是关键部分，但是这个部分我没有仔细阅读，主要是对paxos没有很好的理解</b>
+<p><b>note(dirlt):并发控制是关键部分，但是这个部分我没有仔细阅读，主要是对paxos没有很好的理解</b>
 </p>
 </div>
 
@@ -569,7 +569,7 @@ true time api看上去非常简洁，也非常好理解。就是说请求当前�
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-28T16:50+0800</p>
+<p class="date">Date: 2014-04-15T09:13+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

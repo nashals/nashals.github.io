@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="mapreduce"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-28T16:50+0800"/>
+<meta name="generated" content="2014-04-15T09:14+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -216,7 +216,7 @@
 <p>
 整个工作逻辑是：
 </p><ul>
-<li>The MapReduce library in the user program first splits the input files into M pieces of typically 16 megabytes to 64 megabytes (MB) per piece (con-trollable by the user via an optional parameter). It then starts up many copies of the program on a clus-ter of machines.（根据输入文件大小，按照每个block 16-64M这个数值用户可以指定，来进行切分。这个数目就是mapper实例个数） <b>NOTE（dirlt）：这个是在启动之前预先执行的动作？</b>
+<li>The MapReduce library in the user program first splits the input files into M pieces of typically 16 megabytes to 64 megabytes (MB) per piece (con-trollable by the user via an optional parameter). It then starts up many copies of the program on a clus-ter of machines.（根据输入文件大小，按照每个block 16-64M这个数值用户可以指定，来进行切分。这个数目就是mapper实例个数） <b>note(dirlt)：这个是在启动之前预先执行的动作？</b>
 </li>
 <li>One of the copies of the program is special – the master. The rest are workers that are assigned work by the master. There are M map tasks and R reduce tasks to assign. The master picks idle workers and assigns each one a map task or a reduce task.（所有的都是worker，其中一个worker比较特殊成为master，工作是将mapper/reducer指派到worker上面去，并且监控mapper/reducer的运行情况）
 </li>
@@ -403,13 +403,13 @@
 
 
 <p>
-<b>NOTE（dirlt）：如果是这样的话，那么可以认为mapper阶段是要做排序的，不然combiner和reducer就不能够使用相同代码了。排序要是有好处的，这样在reducer排序直接使用归并排序即可。</b>
+<b>note(dirlt)：如果是这样的话，那么可以认为mapper阶段是要做排序的，不然combiner和reducer就不能够使用相同代码了。排序要是有好处的，这样在reducer排序直接使用归并排序即可。</b>
 </p>
 
 <hr/>
 
 <p>
-<b>NOTE（dirlt）：关于reduce语义问题</b>
+<b>note(dirlt)：关于reduce语义问题</b>
 </p>
 <p>
 这个多谢邓业强同学的提醒。我们假设reduce API是这样的
@@ -636,7 +636,7 @@
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-28T16:50+0800</p>
+<p class="date">Date: 2014-04-15T09:14+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

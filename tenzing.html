@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="tenzing"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-19T14:34+0800"/>
+<meta name="generated" content="2014-04-15T09:13+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -338,7 +338,7 @@ For sources which support remote lookups on index (e.g., Bigtable), Tenzing supp
 Distributed sort-merge joins are the most widely used joins in MapReduce implementations. Tenzing has an im- plementation which is most effective when the two tables being joined are roughly the same size and neither has an index on the join key.（比较通用的join算法） 
 
 <p>
-<b>NOTE(dirlt):对应在Hadoop里面就是reducer-join</b>
+<b>note(dirlt):对应在Hadoop里面就是reducer-join</b>
 </p>
 </li>
 </ul>
@@ -357,7 +357,7 @@ Distributed hash joins are frequently the most effective join method in Tenzing 
 <p>These conditions are often satisfied by OLAP queries with star joins to large dimensions, a type of query often used with Tenzing.
 </p>
 <p>
-<b>NOTE（dirlt）：对应在Hadoop里面就是mapper-join.在Mapper阶段就将两个需要join的数据按照hash进行划分，然后每个mapper都只是取相应hash的部分</b>
+<b>note(dirlt)：对应在Hadoop里面就是mapper-join.在Mapper阶段就将两个需要join的数据按照hash进行划分，然后每个mapper都只是取相应hash的部分</b>
 </p>
 </li>
 </ul>
@@ -501,7 +501,7 @@ Distributed hash joins are frequently the most effective join method in Tenzing 
 </ul>
 
 </li>
-<li>Streaming &amp; In-memory Chaining. *NOTE（dirlt）：非常类似 <a href="mapreduce-online.html">MapReduce-Online</a> 的思想*
+<li>Streaming &amp; In-memory Chaining. *note(dirlt)：非常类似 <a href="mapreduce-online.html">MapReduce-Online</a> 的思想*
 <ul>
 <li>The original im-plementation of Tenzing serialized all intermediate data to GFS. This led to poor performance for multi-MapReduce queries, such as hash joins and nested sub-selects.（中间物化代价非常高）
 </li>
@@ -509,7 +509,7 @@ Distributed hash joins are frequently the most effective join method in Tenzing 
 </li>
 <li>We subsequently im-proved performance further by using memory chaining, where the reducer of the upstream MR and the mapper of the downstream MR are co-located in the same process.（上下游pipelining）
 </li>
-<li><b>NOTE（dirlt）：这个思想相比之下，感觉可能还是spark/shark的思路会更加靠谱。很明显MapReduce方式不太适合DAG计算，与其在上面做修改不如建立一个新的framework。事实上spark/shark的扩展性也是非常好的</b>
+<li><b>note(dirlt)：这个思想相比之下，感觉可能还是spark/shark的思路会更加靠谱。很明显MapReduce方式不太适合DAG计算，与其在上面做修改不如建立一个新的framework。事实上spark/shark的扩展性也是非常好的</b>
 </li>
 </ul>
 
@@ -610,8 +610,8 @@ Distributed hash joins are frequently the most effective join method in Tenzing 
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-19T14:34+0800</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
+<p class="date">Date: 2014-04-15T09:13+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

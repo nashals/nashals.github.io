@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="impala"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-28T16:51+0800"/>
+<meta name="generated" content="2014-04-15T09:14+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -181,7 +181,7 @@ Queries executed using Impala are handled as follows:
 </li>
 <li>Impala parses the query and analyzes it to determine what tasks need to be performed by impalad instances across the cluster. Execution is planned for optimal efficiency.（query planner进行查询规划，并且通过query coordinator调度到其他机器上的impalad)
 </li>
-<li>Services such as HDFS and HBase are accessed by local impalad instances to provide data.(query exec engine访问hdfs/hbase数据） <b>NOTE（drlt）：但是应该考虑了locality</b>
+<li>Services such as HDFS and HBase are accessed by local impalad instances to provide data.(query exec engine访问hdfs/hbase数据） <b>note(dirlt): 但是应该考虑了locality</b>
 </li>
 <li>Each impalad returns data to the coordinating impalad, which sends these results to the client. 
 </li>
@@ -205,7 +205,7 @@ Queries executed using Impala are handled as follows:
 <div class="outline-text-4" id="text-1-3-1">
 
 <ul>
-<li>During join operations all data from both data sets is loaded into memory. Data sets can be very large, so ensure your hardware has sufficient memory to accommodate the joins you anticipate completing. <b>NOTE(dirlt):这有点汗，join操作都是在全内存完成的</b>
+<li>During join operations all data from both data sets is loaded into memory. Data sets can be very large, so ensure your hardware has sufficient memory to accommodate the joins you anticipate completing. <b>note(dirlt):这有点汗，join操作都是在全内存完成的</b>
 </li>
 <li>CPU - Impala uses the SSE4.2 instruction set, which is included in newer processors. Impala can use older processors, but for best performance use:
 <ul>
@@ -218,7 +218,7 @@ Queries executed using Impala are handled as follows:
 </li>
 <li>Memory - 32GB or more. Impala cannot run queries that have a working set greater than the total available ram. Note that the working set is not the size of the input.
 </li>
-<li>Storage - DataNodes with 10 or more disks each. I/O speeds are often the limiting factor for disk performance with Impala. Ensure you have sufficient disk space to store the data Impala will be querying. <b>NOTE（dirlt）：感叹未来的趋势就是拿内存当磁盘用</b>
+<li>Storage - DataNodes with 10 or more disks each. I/O speeds are often the limiting factor for disk performance with Impala. Ensure you have sufficient disk space to store the data Impala will be querying. <b>note(dirlt)：感叹未来的趋势就是拿内存当磁盘用</b>
 </li>
 </ul>
 
@@ -249,7 +249,7 @@ Queries executed using Impala are handled as follows:
 </ul>
 
 </li>
-<li>Install Hive as described in Hive Installation. As part of this process, you must configure Hive to use an external database as a metastore. 必须使用外部数据库来作为metastore <b>NOTE(dirlt):hive允许使用内嵌数据库做metastore</b>
+<li>Install Hive as described in Hive Installation. As part of this process, you must configure Hive to use an external database as a metastore. 必须使用外部数据库来作为metastore <b>note(dirlt):hive允许使用内嵌数据库做metastore</b>
 <ul>
 <li>sudo apt-get install hive
 </li>
@@ -284,7 +284,7 @@ tarball:
 
 
 <p>
-<b>NOTE(dirlt):最好不要用tarball安装</b> impala需要使用hdfs的short-circuit read的特性，这个特性需要有libhadoop.so.但是tarball没有自带native实现
+<b>note(dirlt):最好不要用tarball安装</b> impala需要使用hdfs的short-circuit read的特性，这个特性需要有libhadoop.so.但是tarball没有自带native实现
 </p>
 
 
@@ -305,7 +305,7 @@ local reads.
 <h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> Ubuntu</h4>
 <div class="outline-text-4" id="text-1-3-3">
 
-<p>source compile: <b>NOTE（dirlt）：比较麻烦</b>
+<p>source compile: <b>note(dirlt)：比较麻烦</b>
 </p><ul>
 <li>sudo apt-get install libboost-all-dev libevent1-dev automake libtool flex bison g++ libssl-dev make cmake doxygen libglib2.0-dev python-dev libzip2 subversion libsasl2-dev wget git unzip
 </li>
@@ -313,13 +313,13 @@ local reads.
 </li>
 <li>git clone <a href="https://github.com/cloudera/impala.git">https://github.com/cloudera/impala.git</a>
 </li>
-<li>cd impala &amp;&amp; . bin/impala-config.sh # <b>NOTE(dirlt):我使用oh-my-zsh似乎有问题，切换成为bash就成功</b>
+<li>cd impala &amp;&amp; . bin/impala-config.sh # <b>note(dirlt):我使用oh-my-zsh似乎有问题，切换成为bash就成功</b>
 </li>
-<li>cd thirdparty &amp;&amp; ./download_thirdparty.sh # <b>NOTE(dirlt):如果自己手动下载了hadoop和hive的话，可以修改一下脚本，因为这两个包还是比较大的</b>
+<li>cd thirdparty &amp;&amp; ./download_thirdparty.sh # <b>note(dirlt):如果自己手动下载了hadoop和hive的话，可以修改一下脚本，因为这两个包还是比较大的</b>
 </li>
 <li>cd ${IMPALA_HOME} &amp;&amp; ./build_public.sh -build_thirdparty
 </li>
-<li><b>NOTE（dirlt）：编译麻烦，我没有成功，放弃</b>
+<li><b>note(dirlt)：编译麻烦，我没有成功，放弃</b>
 </li>
 </ul>
 
@@ -438,7 +438,7 @@ E0314 16:41:13.884558 18187 impala-server.cc:575] Impala is aborted due to impro
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-28T16:51+0800</p>
+<p class="date">Date: 2014-04-15T09:14+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

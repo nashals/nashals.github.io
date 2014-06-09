@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="The Tail at Scale"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-19T14:34+0800"/>
+<meta name="generated" content="2014-04-15T09:13+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -334,7 +334,7 @@ Increased variability is also due to several hardware trends:
 </li>
 <li><b>A common source of variability is queueing delays on the server before a request begins execution.</b> For many services, once a request is actually scheduled and begins execution, the variability of its completion time goes down substantially. （延迟偏差最主要的原因还是因为queue，对于许多服务来说，一旦request进入queue之后那么偏差很快就会下来）
 </li>
-<li><a href="http://www.eecs.harvard.edu/~michaelm/postscripts/mythesis.pdf">Mitzenmacher</a> said allowing a client to choose between two servers based on queue lengths at enqueue time exponentially improves load-balancing performance over a uniform random scheme. （可以通过判断两个服务当前queue长度来选择使用） <b>NOTE（dirlt）：但是其实这样将client复杂化，client需要了解server内部情况</b>
+<li><a href="http://www.eecs.harvard.edu/~michaelm/postscripts/mythesis.pdf">Mitzenmacher</a> said allowing a client to choose between two servers based on queue lengths at enqueue time exponentially improves load-balancing performance over a uniform random scheme. （可以通过判断两个服务当前queue长度来选择使用） <b>note(dirlt)：但是其实这样将client复杂化，client需要了解server内部情况</b>
 <ul>
 <li>An alternative to the tied-request and hedged-request schemes is to probe remote queues first, then submit the request to the least-loaded server.
 </li>
@@ -458,7 +458,7 @@ Increased variability is also due to several hardware trends:
 </li>
 <li>The source of the slowness is frequently temporary phenomena like interference from unrelated networking traffic or a spike in CPU activity for another job on the machine, and the slowness tends to be noticed when the system is under greater load.（通常slowness原因都是非常类似的，所以可以根据一些现象推断出来）
 </li>
-<li>However, the system continues to issue shadow requests to these excluded servers, collecting statistics on their latency so they can be reincorporated into the service when the problem abates. This situation is somewhat peculiar, as removal of serving capacity from a live system during periods of high load actually improves latency.（系统能够不断地检测slow machine, 一旦恢复正常的话那么又可以进行服务） <b>NOTE（dirlt）：非常类似hadoop的blacklist tasktracer机制</b> 
+<li>However, the system continues to issue shadow requests to these excluded servers, collecting statistics on their latency so they can be reincorporated into the service when the problem abates. This situation is somewhat peculiar, as removal of serving capacity from a live system during periods of high load actually improves latency.（系统能够不断地检测slow machine, 一旦恢复正常的话那么又可以进行服务） <b>note(dirlt)：非常类似hadoop的blacklist tasktracer机制</b> 
 </li>
 </ul>
 
@@ -565,8 +565,8 @@ Increased variability is also due to several hardware trends:
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-19T14:34+0800</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
+<p class="date">Date: 2014-04-15T09:13+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="git"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-28T16:51+0800"/>
+<meta name="generated" content="2014-05-10T19:33+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -87,8 +87,12 @@
 </li>
 <li><a href="git.html#sec-1-2">1.2 git branch</a></li>
 <li><a href="git.html#sec-1-3">1.3 git tag</a></li>
-<li><a href="git.html#sec-1-4">1.4 git log/diff</a></li>
-<li><a href="git.html#sec-1-5">1.5 git flow</a></li>
+<li><a href="git.html#sec-1-4">1.4 git flow</a></li>
+<li><a href="git.html#sec-1-5">1.5 FAQ</a>
+<ul>
+<li><a href="git.html#sec-1-5-1">1.5.1 合并多个commit</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -103,7 +107,7 @@
 <p>
 参考资源
 </p><ul>
-<li>Git – Fast Version Control System. <a href="http://git.or.cz/index.html">http://git.or.cz/index.html</a> 
+<li>Git – Fast Version Control System. <a href="http://git.or.cz/index.html">http://git.or.cz/index.html</a>
 </li>
 <li>Git 简易指南. <a href="http://rogerdudler.github.com/git-guide/index.zh.html">http://rogerdudler.github.com/git-guide/index.zh.html</a>
 </li>
@@ -167,11 +171,17 @@
 </li>
 <li>git checkout HEAD &ndash; &lt;files&gt; 放弃本地修改，HEAD移到INDEX和WD
 </li>
-<li>git reset HEAD &lt;files&gt; 保留本地修改，取消INDEX
-</li>
 <li>git diff WD和INDEX差别
 </li>
 <li>git diff &ndash;cached INDEX和HEAD差别
+</li>
+<li>git diff &gt; {patch} / git apply [-R] {patch} # 制作patch以及应用patch. -R可以撤销patch.
+</li>
+<li>git reset HEAD &lt;files&gt; 保留本地修改，取消INDEX
+</li>
+<li>git reset &ndash;hard &lt;commit-id&gt; # 回退到某个commit-id，包括commit/index信息.
+</li>
+<li>git reset &ndash;soft &lt;commit-id&gt; # 回退到某个commit-id，只是commit不包括index.
 </li>
 <li>git rm &lt;files&gt; 从HEAD删除
 </li>
@@ -179,7 +189,7 @@
 </li>
 <li>git mv 重命名文件
 </li>
-<li>git log 察看日志   
+<li>git log 察看日志
 </li>
 </ul>
 
@@ -229,11 +239,15 @@
 </li>
 <li>git push &lt;repo&gt; &lt;branch&gt; 将本地branch HEAD信息推送到远程repo的branch
 </li>
-<li>git push &lt;repo&gt; :&lt;branch&gt; 将删除分支信息推送。 <b>NOTE(dirlt):这个可以这样理解，:之前表示null,将null推到branch相当于清空x。</b>
+<li>git push -f # 如果本地某个commit已经提交到server, 但是想修改这个commit并且重新push, 可以使用在这个命令
+</li>
+<li>git push &lt;repo&gt; :&lt;branch&gt; 将删除分支信息推送。 <b>note(dirlt):这个可以这样理解，:之前表示null,将null推到branch相当于清空x。</b>
 </li>
 <li>git pull &lt;repo&gt; 将远程repo合并到本地HEAD
 </li>
 <li>git merge &lt;branch&gt; 将本地branch进行合并
+</li>
+<li>git cherry-pick &lt;commit-id&gt; # pick commit to merge
 </li>
 <li>git fetch &lt;repo&gt; &lt;branch&gt; 将远程repo的branch拉到本地但是并不进行任何修改
 </li>
@@ -272,18 +286,8 @@
 </div>
 
 <div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> git log/diff</h3>
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> git flow</h3>
 <div class="outline-text-3" id="text-1-4">
-
-<p>TODO(dirlt):
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> git flow</h3>
-<div class="outline-text-3" id="text-1-5">
 
 <p>参考资源
 </p><ul>
@@ -299,7 +303,7 @@
 <p>
 git-flow主要推行的就是一种开发方式，然后通过工具来配合这种开发方式。git-flow分为下面几类分支：
 </p><ul>
-<li>master 线上使用版本始终都是ready状态。    
+<li>master 线上使用版本始终都是ready状态。
 </li>
 <li>develop 作为开发基线版本。
 </li>
@@ -312,7 +316,7 @@ git-flow主要推行的就是一种开发方式，然后通过工具来配合这
 </ul>
 
 
-<p>     
+<p>
 然后说说各个分支之间的关系(这个在链接里面给出的图表示非常清楚)
 </p><ul>
 <li>master
@@ -377,12 +381,44 @@ git-flow主要推行的就是一种开发方式，然后通过工具来配合这
 <p>关系还是非常清楚的(不过我这里可能描述比较混乱).
 </p>
 </div>
+
+</div>
+
+<div id="outline-container-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> FAQ</h3>
+<div class="outline-text-3" id="text-1-5">
+
+
+</div>
+
+<div id="outline-container-1-5-1" class="outline-4">
+<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> 合并多个commit</h4>
+<div class="outline-text-4" id="text-1-5-1">
+
+<p>合并两个commit
+</p>
+<p class="verse">
+$ git reset &ndash;soft HEAD^1<br/>
+$ git commit &ndash;amend<br/>
+</p>
+
+
+<p>
+合并最后n个commit
+</p>
+<p class="verse">
+$ git rebase -i HEAD~n<br/>
+&gt;&gt;&gt;&gt; 然后替换第n个pick为s保存<br/>
+</p>
+
+</div>
+</div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-28T16:51+0800</p>
+<p class="date">Date: 2014-05-10T19:33+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

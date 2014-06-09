@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="memory-barrier"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-19T14:35+0800"/>
+<meta name="generated" content="2014-06-09T08:44+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -82,6 +82,7 @@
 <li><a href="memory-barrier.html#sec-1-1">1.1 编译器内存屏障</a></li>
 <li><a href="memory-barrier.html#sec-1-2">1.2 CPU内存屏障</a></li>
 <li><a href="memory-barrier.html#sec-1-3">1.3 再谈内存屏障</a></li>
+<li><a href="memory-barrier.html#sec-1-4">1.4 C++11内存模型</a></li>
 </ul>
 </li>
 </ul>
@@ -95,13 +96,15 @@
 <ul>
 <li><a href="http://groups.google.com/group/linux.kernel/browse_thread/thread/18a59e3c9d8f6310/cdfbcb70e9c48cd0#cdfbcb70e9c48cd0">Document Linux’s memory barriers</a>
 </li>
-<li><a href="http://www.linuxforum.net/forum/printthread.php?Cat=&amp;Board=linuxK&amp;main=653778&amp;type=thread">http://www.linuxforum.net/forum/printthread.php?Cat=&amp;Board=linuxK&amp;main=653778&amp;type=thread</a>
-</li>
 <li><a href="http://www.linuxjournal.com/article/8211">Memory Ordering in Modern Microprocessors, Part I（推荐阅读）</a>
 </li>
 <li><a href="http://www.linuxjournal.com/article/8212">Memory Ordering in Modern Microprocessors, Part II（推荐阅读）</a>
 </li>
 <li><a href="http://highscalability.com/blog/2013/6/6/paper-memory-barriers-a-hardware-view-for-software-hackers.html">http://highscalability.com/blog/2013/6/6/paper-memory-barriers-a-hardware-view-for-software-hackers.html</a> Memory Barriers: A Hardware View For Software Hackers
+</li>
+<li><a href="http://mechanical-sympathy.blogspot.com/2011/07/memory-barriersfences.html">http://mechanical-sympathy.blogspot.com/2011/07/memory-barriersfences.html</a> (<a href="http://hugozhu.myalert.info/2013/03/28/22-memory-barriers-or-fences.html">http://hugozhu.myalert.info/2013/03/28/22-memory-barriers-or-fences.html</a>)
+</li>
+<li><a href="http://lwn.net/Articles/576486/">http://lwn.net/Articles/576486/</a>
 </li>
 </ul>
 
@@ -119,8 +122,8 @@
 
 
 
-<pre class="src src-C++">// #define mfence_c() __asm__ __volatile__(<span class="org-string">""</span>: : :<span class="org-string">"memory"</span>) 
-#define barrier() __asm__ __volatile__(<span class="org-string">""</span>: : :<span class="org-string">"memory"</span>) 
+<pre class="src src-C++">// #define mfence_c() __asm__ __volatile__(<span class="org-string">""</span>: : :<span class="org-string">"memory"</span>)
+#define barrier() __asm__ __volatile__(<span class="org-string">""</span>: : :<span class="org-string">"memory"</span>)
 
 </pre>
 
@@ -172,7 +175,10 @@ barrier除了上面功能（强迫编译器刷新寄存器分配）之外，wyz�
 
 
 <p>
-（首先声明我对于CPU内存屏障还不是很了解，只是有一个感性认识。）x86是有乱序写OOS(Out of Order Store)的。假设我们有两个操作A=1,B=1.对于单核情况下面一切都很好，因为所有线程都是在一个核上面这个核可以保证一个线程的写顺序和另外一个线程所看到的顺序是一致的。但是在多核下面就会存在问题。我们会假设如果执行到了B=1的话，那么这个时候必然A=1.但是因为存在OOS，所以可能这个核执行顺序是B=1,A=1所以B=1的时候，不一定A=1.（但是我也不知道A=1,B=1中间是应该加上rmb还是wmb.所以理解还不是特备深入。）另外需要注意的是，这个层面上没有必要考虑多核Cache一致性问题，因为多核Cache一致性是由MESI协议来保证的。
+首先声明我对于CPU内存屏障还不是很了解，只是有一个感性认识。x86是有乱序写OOS(Out of Order Store)的。假设我们有两个操作A=1,B=1.对于单核情况下面一切都很好，因为所有线程都是在一个核上面这个核可以保证一个线程的写顺序和另外一个线程所看到的顺序是一致的。但是在多核下面就会存在问题。我们会假设如果执行到了B=1的话，那么这个时候必然A=1.但是因为存在OOS，所以可能这个核执行顺序是B=1,A=1所以B=1的时候，不一定A=1.（但是我也不知道A=1,B=1中间是应该加上rmb还是wmb.所以理解还不是特备深入。）另外需要注意的是，这个层面上没有必要考虑多核Cache一致性问题，因为多核Cache一致性是由MESI协议来保证的。
+</p>
+<p>
+note(dirlt@20140606): 实际上这个问题对于x86来说是不存在的，因为x86内存模型保证writes before writes <a href="http://lwn.net/Articles/576486/">http://lwn.net/Articles/576486/</a> （没有乱序写OOS的问题）. 对于非x86而言，那么必须在两条语句之间添加wmb()确保两条store语句顺序。
 </p>
 <p>
 引用链接里面Document Linux’s memory barriers的文章，来解释rmb和wmb的语义是这样的。需要注意的是这个仅仅是定义发生的顺序而不是完成的顺序
@@ -191,12 +197,12 @@ barrier除了上面功能（强迫编译器刷新寄存器分配）之外，wyz�
 +There is no guarantee that any of the memory accesses specified before a memory<br/>
 +barrier will be complete by the completion of a memory barrier; the barrier can<br/>
 +be considered to draw a line in the access queue that accesses of the<br/>
-+appropriate type may not cross. <br/>
++appropriate type may not cross.<br/>
 </p>
 
 
 <p>
-关于多核Cache一致性问题的话对于programmer这一层似乎没有必要考虑。好比线程A,B（分摊在两个core和两个cpu cache上）共同操作同一个volatile bool flag.如果A将flag置为true的话，如果CPU底层不做好一致性协议的话，那么线程B可能就永远没有办法感知到这个值了（因为线程B每次都是从所在的CPU Cache来读取的，而从线程B所在CPU Cache每次读取的都是旧值）。而且如果是这样的话，对programmer负担很大，就是写完一次多核变量的话必须显示地调用Cache一致性函数（太麻烦了）。但是为了高效的话，搞不好会存在这样的CPU要求programmer显示地来控制CPU Cache以便提高效率。但是现在所接触到的Intel CPU底层都是会保证这点的。
+关于多核Cache一致性问题的话对于programmer这一层似乎没有必要考虑。好比线程A,B（分摊在两个core和两个cpu cache上）共同操作同一个volatile bool flag.如果A将flag置为true的话，如果CPU底层不做好一致性协议的话，那么线程B可能就永远没有办法感知到这个值了（因为线程B每次都是从所在的CPU Cache来读取的，而从线程B所在CPU Cache每次读取的都是旧值）。而且如果是这样的话，对programmer负担很大，就是写完一次多核变量的话必须显示地调用Cache一致性函数。 <del>但是为了高效的话，搞不好会存在这样的CPU要求programmer显示地来控制CPU Cache以便提高效率。但是现在所接触到的Intel CPU底层都是会保证这点的。</del>  <b>note(dirlt@20140606):实际上这才是CPU内存屏障的初衷。不是因为CPU乱序执行问题，而是因为SMP Cache一致性问题</b>
 </p>
 </div>
 
@@ -212,10 +218,10 @@ barrier除了上面功能（强迫编译器刷新寄存器分配）之外，wyz�
 ps:内存模型是在是一个非常深的坑。
    1.《Memory Consistency Models For Shared-Memory Multiprocessors》368pages
    2.《What Every Programmer Should Know About Memory》 114pages
-身边同学对于这个问题的理解，就好像对Paxos算法的理解一样（好像现在改善了很多），大家各执一词理解不同。
+身边同学对于这个问题的理解，就好像对Paxos算法的理解一样，大家各执一词理解不同。
 </p>
 <p>
-这篇文章从CPU Cache开始说起，然后谈到了SMP Cache一致性问题使用MESI协议来解决。然后为了提高MESI效率的话减少不必要的停顿，添加了两个设施store buffer和invalidate queue（看个一知半解吧），但是却让我明白了一个问题。 <b>所谓CPU上面的内存屏障，并不是为了解决CPU乱序执行出现的问题，而是因为SMP Cache一致性问题不完善的解决方案而导致每个CPU对于memory perspective/visibility不同</b> 。对于代码来说，会出现三种order:
+这篇文章从CPU Cache开始说起，然后谈到了SMP Cache一致性问题使用MESI协议来解决。然后为了提高MESI效率的话减少不必要的停顿，添加了两个设施store buffer和invalidate queue（看个一知半解吧），但是却让我明白了一个问题。 <b>所谓CPU上面的内存屏障，并不是为了解决CPU乱序执行出现的问题，而是因为SMP Cache一致性问题不完善的解决方案而导致每个CPU对于memory perspective/visibility不同（这就是所谓的内存模型）</b> 。对于代码来说，会出现三种order:
 </p><ol>
 <li>program order.这个就是我们programmer认为代码应该执行的顺序。
 </li>
@@ -226,6 +232,12 @@ ps:内存模型是在是一个非常深的坑。
 </ol>
 
 
+<p>
+note(dirlt@20140606): SMP Cache通过MESI协议可以解决一致性问题。MESI协议默认是实现强一致性，这对于性能影响是不可接受的。所以各种CPU想出各种办法来提高效率的同时来尽可能接近强一致性，导致这些CPU并不是在所有情况下都满足强一致性，在某些情况下面是最终一致性。可是最终一致性就会带来很多问题，好比CPU 1对A写入一个值CPU2不一定能够立刻看到，这样就导致看上去CPU乱序执行（准确的说是存储顺序发生变化）
+</p>
+<p>
+note(dirlt@20140606): 虽然问题最终并不是因为CPU乱序执行而产生的，实际上CPU乱序执行是对外不可见的，但是我们在分析的时候可以从CPU乱序执行（存储顺序）考虑，相当于参考坐标系变化. 举上面例子而言，线程1执行A=1,B=1造成在线程2看到效果是B=1,A=1, 虽然造成线程2看到这个效果原因是因为cache一致性问题，但是我们在分析问题时，却可以从CPU乱序执行出发认为，实际上线程1在执行时候因为CPU乱序所以线程1执行顺序是B=1，A=1. 这样我们才能比较容易考虑如何添加内存屏障来解决这个问题。
+</p>
 <p>
 对于perspective order这里想说一个哲学问题。其实对于user也不知道最终执行顺序是什么，而是根据内存的状态来推测最终执行顺序是什么。就好比下面这段代码，假设a=b=0
 </p>
@@ -244,18 +256,38 @@ CPU1 b=a+1
 <p class="verse">
 Many CPU architectures therefore provide weaker memory-barrier instructions that do only one or the other of these two. Roughly speaking, a “read mem-ory barrier” marks only the invalidate queue and a “write memory barrier” marks only the store buffer. while a full-fledged memory barrier does both.<br/>
 <br/>
-The effect of this is that a read memory barrier orders only loads on the CPU that executes it, so that all loads preceding the read memory barrier will appear to have completed before any load following the read memory barrier. Similarly, a write memory barrier orders only stores, again on the CPU that executes it, and again so that all stores preceding the write memory barrier will appear to have com-pleted before any store following the write memory barrier. A full-fledged memory barrier orders both loads and stores, but again only on the CPU execut-ing the memory barrier. <br/>
+The effect of this is that a read memory barrier orders only loads on the CPU that executes it, so that all loads preceding the read memory barrier will appear to have completed before any load following the read memory barrier. Similarly, a write memory barrier orders only stores, again on the CPU that executes it, and again so that all stores preceding the write memory barrier will appear to have com-pleted before any store following the write memory barrier. A full-fledged memory barrier orders both loads and stores, but again only on the CPU execut-ing the memory barrier.<br/>
 </p>
 
 
 </div>
+
+</div>
+
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> C++11内存模型</h3>
+<div class="outline-text-3" id="text-1-4">
+
+<ul>
+<li><a href="http://wilburding.github.io/blog/2013/04/07/c-plus-plus-11-atomic-and-memory-model/">http://wilburding.github.io/blog/2013/04/07/c-plus-plus-11-atomic-and-memory-model/</a>
+</li>
+<li><a href="http://en.cppreference.com/w/cpp/atomic/memory_order">http://en.cppreference.com/w/cpp/atomic/memory_order</a>
+</li>
+<li><a href="http://lwn.net/Articles/586838/">http://lwn.net/Articles/586838/</a>
+</li>
+</ul>
+
+
+<p>
+todo(dirlt)
+</p></div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-19T14:35+0800</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
+<p class="date">Date: 2014-06-09T08:44+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

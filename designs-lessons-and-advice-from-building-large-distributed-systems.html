@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Designs, Lessons and Advice from Building Large Distributed Systems"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-19T14:36+0800"/>
+<meta name="generated" content="2014-04-15T09:14+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -198,14 +198,14 @@
 <ul>
 <li>Export HTML-based status pages for easy diagnosis（输出HTML状态页面便于简单地分析） 
 </li>
-<li>Export a collection of key-value pairs via a standard interface – monitoring systems periodically collect this from running servers（通过标准接口输出kv便于收集数据） <b>NOTE（dirlt）：这点和JMX类似，但是JMX过于重量</b> 
+<li>Export a collection of key-value pairs via a standard interface – monitoring systems periodically collect this from running servers（通过标准接口输出kv便于收集数据） <b>note(dirlt)：这点和JMX类似，但是JMX过于重量</b> 
 </li>
 <li>RPC subsystem collects sample of all requests, all error requests, all requests &gt;0.0s, &gt;0.05s, &gt;0.1s, &gt;0.5s, &gt;1s, etc.（RPC收集请求采样并且统计时间分布）
 </li>
 </ul>
 
 </li>
-<li>Support low-overhead online profiling <b>NOTE（dirlt）：这点JMX也完成得非常好</b> 
+<li>Support low-overhead online profiling <b>note(dirlt)：这点JMX也完成得非常好</b> 
 <ul>
 <li>cpu profiling
 </li>
@@ -305,8 +305,8 @@
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-19T14:36+0800</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
+<p class="date">Date: 2014-04-15T09:14+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

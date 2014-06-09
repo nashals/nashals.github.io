@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="探索Google App Engine背后的奥秘"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-19T14:34+0800"/>
+<meta name="generated" content="2014-04-15T09:13+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -296,7 +296,7 @@
 </li>
 <li>优先移动计算. 处理大规模数据的时候，Google还是倾向于移动计算，而不是移动数据。
 </li>
-<li>服务模式. 在Google的系统中，服务是相当常用的，比如其核心的搜索引擎需要依赖700-1000个内部服务，而且服务这种松耦合的开发模式在测试，开发和扩展等方面都有优势，因为它适合小团队开发，并且便于测试。 <b>NOTE(dirlt):这点和amazon非常类似</b>
+<li>服务模式. 在Google的系统中，服务是相当常用的，比如其核心的搜索引擎需要依赖700-1000个内部服务，而且服务这种松耦合的开发模式在测试，开发和扩展等方面都有优势，因为它适合小团队开发，并且便于测试。 <b>note(dirlt):这点和amazon非常类似</b>
 </li>
 </ul>
 
@@ -314,11 +314,11 @@
 <ul>
 <li>三种工作负载
 <ul>
-<li>本地交互：用于在用户本地为其提供基本的Google服务，比如网页搜索等，但会将内容的生成和管理工作移交给下面的内容交付系统，比如：生成搜索所需的Index等。通过本地交互，能让用户减少延迟，从而提高用户体验，而且其对SLA要求很高，因为是直接面对客户的。 <b>NOTE（dirlt）：有点类似CDN意思</b>
+<li>本地交互：用于在用户本地为其提供基本的Google服务，比如网页搜索等，但会将内容的生成和管理工作移交给下面的内容交付系统，比如：生成搜索所需的Index等。通过本地交互，能让用户减少延迟，从而提高用户体验，而且其对SLA要求很高，因为是直接面对客户的。 <b>note(dirlt)：有点类似CDN意思</b>
 </li>
-<li>内容交付：用于为Google大多数服务提供内容的存储，生成和管理工作，比如创建搜索所需的Index，存储YouTube的视频和GMail的数据等，而且内容交互系统主要基于Google自己开发那套分布式软件栈。还有，这套系统非常重视吞吐量和成本，而不是SLA。 <b>NOTE（dirlt）：计算和存储中心</b>
+<li>内容交付：用于为Google大多数服务提供内容的存储，生成和管理工作，比如创建搜索所需的Index，存储YouTube的视频和GMail的数据等，而且内容交互系统主要基于Google自己开发那套分布式软件栈。还有，这套系统非常重视吞吐量和成本，而不是SLA。 <b>note(dirlt)：计算和存储中心</b>
 </li>
-<li>关键业务：主要包括Google一些企业级事务，比如用于企业日常运行的客户管理和人力资源等系统和赚取利润的广告系统（AdWords和AdSense），同时关键业务对SLA的要求非常高。 <b>NOTE（dirlt）：比较偏向本地化的业务</b>
+<li>关键业务：主要包括Google一些企业级事务，比如用于企业日常运行的客户管理和人力资源等系统和赚取利润的广告系统（AdWords和AdSense），同时关键业务对SLA的要求非常高。 <b>note(dirlt)：比较偏向本地化的业务</b>
 
 </li>
 </ul>
@@ -418,7 +418,7 @@
 </ul>
 
 </li>
-<li>Datastore：主要用于对信息进行持久化，并基于Google著名的BigTable技术。 <b>NOTE（dirlt）：底层应该是MegaStore</b>
+<li>Datastore：主要用于对信息进行持久化，并基于Google著名的BigTable技术。 <b>note(dirlt)：底层应该是MegaStore</b>
 <ul>
 <li>在接口方面，Python版提供了非常丰富的接口，而且还包括名为GQL的查询语言，而Java版则提供了标准的JDO和JPA这两套API。
 </li>
@@ -556,7 +556,7 @@ App Engine的免费额度表
 <p><a href="http://dbanotes.net/arch/google_app_engine-datastore.html">http://dbanotes.net/arch/google_app_engine-datastore.html</a>
 </p>
 <p>
-<b>TODO（dirlt）：说的不是很清楚，而且entity,hierarchy,以及entity group等概念在bigtable里面是没有的，只有在megastore里面才有</b>
+<b>todo(dirlt)：说的不是很清楚，而且entity,hierarchy,以及entity group等概念在bigtable里面是没有的，只有在megastore里面才有</b>
 </p>
 </div>
 
@@ -665,8 +665,8 @@ App Engine的免费额度表
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-19T14:34+0800</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
+<p class="date">Date: 2014-04-15T09:13+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="leveldb"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-28T16:51+0800"/>
+<meta name="generated" content="2014-04-15T09:14+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -612,7 +612,7 @@ leveldb还是比较麻烦的.开始阅读的时候(像我)很多策略细节就�
 和底层为了达到读取高效率不断地进行compaction有关的.关于compaction挑选以及触发这个策略的话以后可以好好研究一下.
 </p>
 <p>
-NOTE(dirlt):compaction策略没有仔细分析，但是这个部分是精髓。如何控制compaction策略来针对应用达到最好的读写平衡。另外对于Recovery部分没有仔细看代码，
+note(dirlt):compaction策略没有仔细分析，但是这个部分是精髓。如何控制compaction策略来针对应用达到最好的读写平衡。另外对于Recovery部分没有仔细看代码，
 但是我觉得这个部分倒不是很大的问题，可能学到的东西不多但是需要非常仔细地阅读才行。
 </p>
 </div>
@@ -645,7 +645,7 @@ NOTE(dirlt):compaction策略没有仔细分析，但是这个部分是精髓。�
 
 <p>
 bloom filter原理非常简单，似乎没有必要详细分析。关于代码部分的话可以看Code Analysis/Util/BloomFilter.
-至于filter在磁盘上面是如何存储的可以参看下面一节Storage/DiskTable分析。NOTE(dirlt):还是移动到这里吧.
+至于filter在磁盘上面是如何存储的可以参看下面一节Storage/DiskTable分析。note(dirlt):还是移动到这里吧.
 </p>
 <p>
 meta block存放了bloom filter信息，这样可以减少磁盘读取。关于Table内部支持bloom filter在table/filter_block.h有实现。
@@ -904,7 +904,7 @@ pros有：
 </p><ul>
 <li>如果磁盘数据发生损坏的话，那么对于数据定位的话非常简单。如果这个block出现问题的话那么直接跳过这个block即可。
 </li>
-<li>程序处理方面可以很容易地找到边界。NOTE(dirlt):这个也是相对的
+<li>程序处理方面可以很容易地找到边界。note(dirlt):这个也是相对的
 </li>
 <li>对于单条大数据处理的话我们不需要分配很大的内存来做buffer.
 </li>
@@ -985,7 +985,7 @@ seperator可以设置成为ac.seperator的生成可以参考Comparator.使用尽
 还需要，然后对比文件系统目录下面的文件就知道哪些文件不再需要，即可删除。
 </p>
 <p>
-NOTE(dirlt):这里稍微总结一下 <a href="http://leveldb.googlecode.com/svn/trunk/doc/impl.html">http://leveldb.googlecode.com/svn/trunk/doc/impl.html</a> 提到的compaction策略。可能阅读完了这些策略之后反过头来看看
+note(dirlt):这里稍微总结一下 <a href="http://leveldb.googlecode.com/svn/trunk/doc/impl.html">http://leveldb.googlecode.com/svn/trunk/doc/impl.html</a> 提到的compaction策略。可能阅读完了这些策略之后反过头来看看
 代码可能会更好，只是记得当时阅读compaction策略太痛苦了所以直接忽略了。
 </p>
 <p>
@@ -1046,11 +1046,11 @@ mutex_.Lock();
 <h3 id="sec-1-6"><span class="section-number-3">1.6</span> Recovery</h3>
 <div class="outline-text-3" id="text-1-6">
 
-<p>TODO(dirlt):too much details but basically rely on redo log.复杂原因主要是因为需要考虑snapshot和compaction.
+<p>todo(dirlt):too much details but basically rely on redo log.复杂原因主要是因为需要考虑snapshot和compaction.
 I think read through <a href="http://leveldb.googlecode.com/svn/trunk/doc/impl.html">http://leveldb.googlecode.com/svn/trunk/doc/impl.html</a> will help.
 </p>
 <p>
-NOTE(dirlt):这里稍微总结一下 <a href="http://leveldb.googlecode.com/svn/trunk/doc/impl.html">http://leveldb.googlecode.com/svn/trunk/doc/impl.html</a> 提到的关于recovery的部分。幸运的是在阅读这个文档的时候
+note(dirlt):这里稍微总结一下 <a href="http://leveldb.googlecode.com/svn/trunk/doc/impl.html">http://leveldb.googlecode.com/svn/trunk/doc/impl.html</a> 提到的关于recovery的部分。幸运的是在阅读这个文档的时候
 也让我重新仔细地思考了一下这个recovery过程可能会如何进行的。
 </p>
 <p>
@@ -1106,7 +1106,7 @@ sequence number恢复。
 <p>
 我们这里最感兴趣的东西，应该就是每个cache的kv分别是什么。对于TableCahce的k是file_number,v是Table的Iterator
 (Table::NewIterator).对于leveldb来说的话文件的file_number都是自增的所以使用file_number没有任何问题。对于BlockCache
-来说的话k是(cache_id,offset),v是Block的内存。TODO(dirlt):(对于这个cache_id现在还不是非常理解，但是个人觉得
+来说的话k是(cache_id,offset),v是Block的内存。todo(dirlt):(对于这个cache_id现在还不是非常理解，但是个人觉得
 这个cache_id可以==file_number.使用cache_id就是每次Open的时候这个cache_id都会改变)
 </p>
 <p>
@@ -1116,7 +1116,7 @@ sequence number恢复。
 Cache主要用来解决读取问题，做写穿透并且让Cache失效即可。leveldb维护BlockCache一致性并不麻烦，因为leveldb的update并不是in-place的。
 </p>
 <p>
-NOTE(dirlt):不过后来仔细想了一下觉得Record Cache还是在应用层做比较好，可以控制缓存策略比如大小失效时间。对于底层库还是在
+note(dirlt):不过后来仔细想了一下觉得Record Cache还是在应用层做比较好，可以控制缓存策略比如大小失效时间。对于底层库还是在
 做BlockCache会比较好一些.
 </p>
 </div>
@@ -1919,10 +1919,10 @@ class WritableFile {
 <div class="outline-text-5" id="text-1-10-1-5">
 
 <p>通过阅读注释还是可以很容易地了解到filter_policy提供的语义的。另外还可以看到leveldb本身提供了bloomfilter的实现。
-TODO(dirlt):这里对于bits_per_key含义不是很了解。
+todo(dirlt):这里对于bits_per_key含义不是很了解。
 </p>
 <p>
-NOTE(dirlt):所谓的bits_per_key就是希望为每个key分配多少个bits来进行检测。但是这个并不等于检测bits.在leveldb这个
+note(dirlt):所谓的bits_per_key就是希望为每个key分配多少个bits来进行检测。但是这个并不等于检测bits.在leveldb这个
 bloomfilter里面的话这个数值叫做probe.
 </p>
 
@@ -3550,7 +3550,7 @@ Status DBImpl::MakeRoomForWrite(bool force) {
     } else if (versions_-&gt;NumLevelFiles(0) &gt;= config::kL0_StopWritesTrigger) {
       // There are too many level-0 files.
       // level0&#25991;&#20214;&#20010;&#25968;&#36807;&#22810;&#30340;&#35805;&#37027;&#20040;&#31561;&#24453;compaction&#30340;&#23436;&#25104;.
-      // NOTE(dirlt):&#36825;&#20010;&#37096;&#20998;&#38750;&#24120;&#37325;&#35201;&#65292;&#36825;&#26679;&#21487;&#20197;&#38480;&#21046;&#20889;&#20837;&#36895;&#24230;&#20445;&#35777;&#31995;&#32479;balance.
+      // note(dirlt):&#36825;&#20010;&#37096;&#20998;&#38750;&#24120;&#37325;&#35201;&#65292;&#36825;&#26679;&#21487;&#20197;&#38480;&#21046;&#20889;&#20837;&#36895;&#24230;&#20445;&#35777;&#31995;&#32479;balance.
       Log(options_.info_log, <span class="org-string">"waiting...\n"</span>);
       bg_cv_.Wait();
     } else {
@@ -6317,7 +6317,7 @@ void Version::GetOverlappingInputs(
     } else {
       inputs-&gt;push_back(f);
       if (level == 0) {
-        // TODO(dirlt):&#23454;&#29616;&#19978;&#21487;&#33021;&#23384;&#22312;&#38382;&#39064;&#21543;.&#30475;&#19978;&#21435;&#23545;&#20110;level0&#30340;&#35805;&#20284;&#20046;&#22312;&#19981;&#26029;&#22320;&#36807;&#22823;&#33539;&#22260;.
+        // todo(dirlt):&#23454;&#29616;&#19978;&#21487;&#33021;&#23384;&#22312;&#38382;&#39064;&#21543;.&#30475;&#19978;&#21435;&#23545;&#20110;level0&#30340;&#35805;&#20284;&#20046;&#22312;&#19981;&#26029;&#22320;&#36807;&#22823;&#33539;&#22260;.
         // Level-0 files may overlap each other.  So check if the newly
         // added file has expanded the range.  If so, restart search.
         if (begin != NULL &amp;&amp; user_cmp-&gt;Compare(file_start, user_begin) &lt; 0) {
@@ -6514,7 +6514,7 @@ int Version::PickLevelForMemTableOutput(
   // Either an empty string, or a valid InternalKey.
   // &#23545;&#20110;&#27599;&#23618;&#30340;&#35805;&#37117;&#20250;&#35774;&#32622;&#19968;&#20010;key.&#21482;&#26377;&gt;&#36825;&#23618;&#35774;&#32622;&#30340;key&#25165;&#20801;&#35768;&#36827;&#34892;compaction.
   std::string compact_pointer_[config::kNumLevels]; // &#27599;&#20010;level&#36827;&#34892;compaction&#20351;&#29992;&#30340;internal key
-  // TODO(dirlt):&#20284;&#20046;&#27599;&#20010;level&#36827;&#34892;compaction&#37117;&#37197;&#19978;&#20102;&#19968;&#20010;internal key
+  // todo(dirlt):&#20284;&#20046;&#27599;&#20010;level&#36827;&#34892;compaction&#37117;&#37197;&#19978;&#20102;&#19968;&#20010;internal key
   // DONE(dirlt):&#35760;&#24405;&#27599;&#23618;&#30340;&#26368;&#22823;key.
 };
 </pre>
@@ -10923,7 +10923,7 @@ Iterator* TableCache::NewIterator(const ReadOptions&amp; options,
   Options options;
   Status status;
   RandomAccessFile* file;
-  uint64_t cache_id; // TODO(dirlt):&#22312;BlockReader&#37324;&#38754;&#20316;&#20026;cache key&#30340;&#19968;&#37096;&#20998;&#23384;&#22312;.
+  uint64_t cache_id; // todo(dirlt):&#22312;BlockReader&#37324;&#38754;&#20316;&#20026;cache key&#30340;&#19968;&#37096;&#20998;&#23384;&#22312;.
   // &#38382;&#39064;&#26159;&#36825;&#20010;cache_id&#20027;&#35201;&#26159;&#29992;&#26469;&#35299;&#20915;&#20160;&#20040;&#38382;&#39064;&#30340;&#21602;?
 
   BlockHandle metaindex_handle;  // Handle to metaindex_block: saved from footer
@@ -13397,7 +13397,7 @@ GetLengthPrefixedSlice从input首先取出长度，然后取出数据,并且将i
 <h5 id="sec-1-10-9-3"><span class="section-number-5">1.10.9.3</span> Histogram</h5>
 <div class="outline-text-5" id="text-1-10-9-3">
 
-<p>TODO(dirlt):
+<p>todo(dirlt):
 </p>
 </div>
 
@@ -14097,7 +14097,7 @@ inline uint32_t Unmask(uint32_t masked_crc) {
 可能应用在上层希望将filter的内存统一管理，然后一次释放。使用的时候可以选取某一个slice作为filter.
 </p>
 <p>
-NOTE(dirlt):之前可能对于filter有点错误理解.觉得这个filter没有必要存放在磁盘上而应该全部在内存上面。
+note(dirlt):之前可能对于filter有点错误理解.觉得这个filter没有必要存放在磁盘上而应该全部在内存上面。
 但是leveldb会针对若干个data block生成一个filter存放在磁盘上面。如果是这样接口就非常好理解了，
 将所有的filter全部聚合在连续的内存上面写入table.
 </p>
@@ -14281,7 +14281,7 @@ Iterator* internal_iter =
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-28T16:51+0800</p>
+<p class="date">Date: 2014-04-15T09:14+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

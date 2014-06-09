@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Dynamo: Amazon’s Highly Available Key-value Store"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-28T16:51+0800"/>
+<meta name="generated" content="2014-04-15T09:14+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -547,7 +547,7 @@ In order to provide this kind of guarantee, Dynamo treats the result of each mod
 It is important to understand that certain failure modes can potentially result in the system having not just two but several versions of the same data. Updates in the presence of network partitions and node failures can potentially result in an object having distinct version sub-histories, which the system will need to reconcile in the future. This requires us to design applications that explicitly acknowledge the possibility of multiple versions of the same data (in order to never lose any updates).
 </p>
 <p>
-Dynamo uses vector clocks in order to capture causality between different versions of the same object. A vector clock is effectively a list of (node, counter) pairs. <b>One vector clock is associated with every version of every object. One can determine whether two versions of an object are on parallel branches or have a causal ordering, by examine their vector clocks</b>. If the counters on the first object’s clock are less-than-or-equal to all of the nodes in the second clock, then the first is an ancestor of the second and can be forgotten. Otherwise, the two changes are considered to be in conflict and require reconciliation.（通过vector clock来解决版本冲突问题） <b>TODO（dirlt）：什么时候以及如何将这个解决冲突之后的版本同步到集群里面</b>
+Dynamo uses vector clocks in order to capture causality between different versions of the same object. A vector clock is effectively a list of (node, counter) pairs. <b>One vector clock is associated with every version of every object. One can determine whether two versions of an object are on parallel branches or have a causal ordering, by examine their vector clocks</b>. If the counters on the first object’s clock are less-than-or-equal to all of the nodes in the second clock, then the first is an ancestor of the second and can be forgotten. Otherwise, the two changes are considered to be in conflict and require reconciliation.（通过vector clock来解决版本冲突问题） <b>todo(dirlt)：什么时候以及如何将这个解决冲突之后的版本同步到集群里面</b>
 </p>
 <p>
 In Dynamo, when a client wishes to update an object, it must specify which version it is updating. This is done by passing the context it obtained from an earlier read operation, which contains the vector clock information. Upon processing a read request, if Dynamo has access to multiple branches that cannot be syntactically reconciled, it will return all the objects at the leaves, with the corresponding version information in the context. An update using this context is considered to have reconciled the divergent versions and the branches are collapsed into a single new version.
@@ -578,15 +578,15 @@ A possible issue with vector clocks is that the size of vector clocks may grow i
 </ul>
 
 </li>
-<li><b>A node handling a read or write operation is known as the coordinator.</b> Typically, this is the first among the top N nodes in the preference list. If the requests are received through a load balancer, requests to access a key may be routed to any random node in the ring. In this scenario, the node that receives the request will not coordinate it if the node is not in the top N of the requested key’s preference list. Instead, that node will forward the request to the first among the top N nodes in the preference list. （通常是选择perference list上的第一个节点作为coordinator来处理read/write操作. <b>如果有load balance的话，那么会选择任意preference list top N nodes里面的任意一个节点来做</b> ） NOTE（dirlt）：其实理论上可以在任意一个节点上。现在read可以在任意节点上，而write必须这些节点中的任意一个。 <b>NOTE（dirlt）：client-library也是可以内置load-balance功能的</b>
+<li><b>A node handling a read or write operation is known as the coordinator.</b> Typically, this is the first among the top N nodes in the preference list. If the requests are received through a load balancer, requests to access a key may be routed to any random node in the ring. In this scenario, the node that receives the request will not coordinate it if the node is not in the top N of the requested key’s preference list. Instead, that node will forward the request to the first among the top N nodes in the preference list. （通常是选择perference list上的第一个节点作为coordinator来处理read/write操作. <b>如果有load balance的话，那么会选择任意preference list top N nodes里面的任意一个节点来做</b> ） note(dirlt)：其实理论上可以在任意一个节点上。现在read可以在任意节点上，而write必须这些节点中的任意一个。 <b>note(dirlt)：client-library也是可以内置load-balance功能的</b>
 </li>
 <li>Read and write operations involve the first N healthy nodes in the preference list, skipping over those that are down or inaccessible. When all nodes are healthy, the top N nodes in a key’s preference list are accessed. <b>When there are node failures or network partitions, nodes that are lower ranked in the preference list are accessed.</b>
 </li>
 <li>To maintain consistency among its replicas, Dynamo uses a consistency protocol similar to those used in quorum systems. This protocol has two key configurable values: R and W. R is the minimum number of nodes that must participate in a successful read operation. W is the minimum number of nodes that must participate in a successful write operation. Setting R and W such that R + W &gt; N yields a quorum-like system. In this model, the latency of a get (or put) operation is dictated by the slowest of the R (or W) replicas. For this reason, R and W are usually configured to be less than N, to provide better latency.（从N个节点里面，至少读取R个节点，至少写入W个节点，通过满足R+W&gt;N这个条件来得到一致性）
 </li>
-<li>Upon receiving a put() request for a key, the coordinator generates the vector clock for the new version and writes the new version locally. The coordinator then sends the new version (along with the new vector clock) to the N highest-ranked reachable nodes. If at least W-1 nodes respond then the write is considered successful. <b>TODO（dirlt）：这里是同步写吗？如果是异步写并且需要处理失败的话，那么接口会很难用</b>
+<li>Upon receiving a put() request for a key, the coordinator generates the vector clock for the new version and writes the new version locally. The coordinator then sends the new version (along with the new vector clock) to the N highest-ranked reachable nodes. If at least W-1 nodes respond then the write is considered successful. <b>todo(dirlt)：这里是同步写吗？如果是异步写并且需要处理失败的话，那么接口会很难用</b>
 </li>
-<li>Similarly, for a get() request, the coordinator requests all existing versions of data for that key from the N highest-ranked reachable nodes in the preference list for that key, and then waits for R responses before returning the result to the client. If the coordinator ends up gathering multiple versions of the data, it returns all the versions it deems to be causally unrelated. <b>The divergent versions are then reconciled and the reconciled version superseding the current versions is written back.</b> TODO（dirlt）：这里不太理解是谁来触发write-back的操作的？是client-library吗？在协调完成之后将数据完全写回 NOTE（dirlt）：后面提到确实是client-library来完成的
+<li>Similarly, for a get() request, the coordinator requests all existing versions of data for that key from the N highest-ranked reachable nodes in the preference list for that key, and then waits for R responses before returning the result to the client. If the coordinator ends up gathering multiple versions of the data, it returns all the versions it deems to be causally unrelated. <b>The divergent versions are then reconciled and the reconciled version superseding the current versions is written back.</b> todo(dirlt)：这里不太理解是谁来触发write-back的操作的？是client-library吗？在协调完成之后将数据完全写回 note(dirlt)：后面提到确实是client-library来完成的
 </li>
 </ul>
 
@@ -599,10 +599,10 @@ A possible issue with vector clocks is that the size of vector clocks may grow i
 <h4 id="sec-1-5-6"><span class="section-number-4">1.5.6</span> Handling Failures: Hinted Handoff</h4>
 <div class="outline-text-4" id="text-1-5-6">
 
-<p><b>节点临时挂掉</b> TODO（dirlt）：这里还有一个问题就是，在完全去中心化的情况下面，如何判断一个节点是否挂掉
+<p><b>节点临时挂掉</b> todo(dirlt)：这里还有一个问题就是，在完全去中心化的情况下面，如何判断一个节点是否挂掉
 </p>
 <p>
-NOTE（dirlt）：按照我的理解，这个判断应该是由coordinator来判断的。coordinator来判断下面的A，D是否healthy. 而之后write-back则是D来判断A是否healthy的。也就是说在极端的情况下面，如果coordinator和D联通，但是和A不联通，D和A联通的话，那么所有的write都会以D为proxy，转发到A上。coordinator不可用的情况则是通过client来发现的。
+note(dirlt)：按照我的理解，这个判断应该是由coordinator来判断的。coordinator来判断下面的A，D是否healthy. 而之后write-back则是D来判断A是否healthy的。也就是说在极端的情况下面，如果coordinator和D联通，但是和A不联通，D和A联通的话，那么所有的write都会以D为proxy，转发到A上。coordinator不可用的情况则是通过client来发现的。
 </p>
 <ul>
 <li>If Dynamo used a traditional quorum approach it would be unavailable during server failures and network partitions, and would have reduced durability even under the simplest of failure conditions. 
@@ -627,7 +627,7 @@ NOTE（dirlt）：按照我的理解，这个判断应该是由coordinator来判
 <p><b>节点永久下线</b>
 </p>
 <p>
-NOTE（dirlt）：这样看来node不仅仅要存放key-value data，还必须维持对应的merkle tree？这个数据结构存放在什么地方？
+note(dirlt)：这样看来node不仅仅要存放key-value data，还必须维持对应的merkle tree？这个数据结构存放在什么地方？
 </p>
 <ul>
 <li>Hinted handoff works best if the system membership churn is low and node failures are transient. There are scenarios under which hinted replicas become unavailable before they can be returned to the original replica node. To handle this and other threats to durability, Dynamo implements an anti-entropy (replica synchronization) protocol to keep the replicas synchronized.
@@ -765,7 +765,7 @@ NOTE（dirlt）：这样看来node不仅仅要存放key-value data，还必须�
 
 <p>request. This optimization enables us to pick the node that has the data that was read by the preceding read operation thereby increasing the chances of getting “read-your-writes” consistency. It also reduces variability in the performance of the request handling which improves the performance at the 99.9 percentile. （read返回的context用来为之后的write服务）
 </p><ul>
-<li><b>TODO（dirlt）：not much about membership and failure detection</b>
+<li><b>todo(dirlt)：not much about membership and failure detection</b>
 </li>
 </ul>
 
@@ -849,7 +849,7 @@ This optimization has resulted in lowering the 99.9th percentile latency by a fa
 <h4 id="sec-1-7-3"><span class="section-number-4">1.7.3</span> Ensuring Uniform Load distribution</h4>
 <div class="outline-text-4" id="text-1-7-3">
 
-<p><b>NOTE（dirlt）：这里的partition不仅仅涉及到了分布均匀性的问题，还涉及到了具体实现。虽然这里的出发点分布均匀性问题</b>
+<p><b>note(dirlt)：这里的partition不仅仅涉及到了分布均匀性的问题，还涉及到了具体实现。虽然这里的出发点分布均匀性问题</b>
 </p>
 <p>
 To study the load imbalance and its correlation with request load, the total number of requests received by each node was measured for a period of 24 hours - broken down into intervals of 30 minutes. In a given time window, a node is considered to be “in- balance”, if the node’s request load deviates from the average load by a value a less than a certain threshold (here 15%). Otherwise the node was deemed “out-of-balance”. Figure 6 presents the fraction of nodes that are “out-of-balance” (henceforth, “imbalance ratio”) during this time period.（定义balance标准）
@@ -858,7 +858,7 @@ To study the load imbalance and its correlation with request load, the total num
 <img src="images/dynamo-balance.png"  alt="./images/dynamo-balance.png" />
 </p>
 <p>
-As seen in the figure, the imbalance ratio decreases with increasing load. For instance, during low loads the imbalance ratio is as high as 20% and during high loads it is close to 10%. Intuitively, this can be explained by the fact that under high loads, a large number of popular keys are accessed and due to uniform distribution of keys the load is evenly distributed. However, during low loads (where load is 1/8th of the measured peak load), fewer popular keys are accessed, resulting in a higher load imbalance.（情况是在高负载的情况下面，还是相对比较均衡的。可是在低负载的情况下，分布就不均衡了） NOTE（dirlt）：可能这个结论适合几乎所有的分布式系统
+As seen in the figure, the imbalance ratio decreases with increasing load. For instance, during low loads the imbalance ratio is as high as 20% and during high loads it is close to 10%. Intuitively, this can be explained by the fact that under high loads, a large number of popular keys are accessed and due to uniform distribution of keys the load is evenly distributed. However, during low loads (where load is 1/8th of the measured peak load), fewer popular keys are accessed, resulting in a higher load imbalance.（情况是在高负载的情况下面，还是相对比较均衡的。可是在低负载的情况下，分布就不均衡了） note(dirlt)：可能这个结论适合几乎所有的分布式系统
 </p>
 
 <hr/>
@@ -883,7 +883,7 @@ This section discusses how Dynamo’s partitioning scheme has evolved over time 
 </ul>
 
 </li>
-<li>The fundamental issue with this strategy is that the schemes for data partitioning and data placement are intertwined. For instance, in some cases, it is preferred to add more nodes to the system in order to handle an increase in request load. However, in this scenario, it is not possible to add nodes without affecting data partitioning. Ideally, it is desirable to use independent schemes for partitioning and placement. To this end, following strategies were evaluated <b>NOTE（dirlt）：以我看来最主要的问题是数据的partition或者说是range以不可预知的方式变化</b>
+<li>The fundamental issue with this strategy is that the schemes for data partitioning and data placement are intertwined. For instance, in some cases, it is preferred to add more nodes to the system in order to handle an increase in request load. However, in this scenario, it is not possible to add nodes without affecting data partitioning. Ideally, it is desirable to use independent schemes for partitioning and placement. To this end, following strategies were evaluated <b>note(dirlt)：以我看来最主要的问题是数据的partition或者说是range以不可预知的方式变化</b>
 
 </li>
 </ul>
@@ -897,7 +897,7 @@ This section discusses how Dynamo’s partitioning scheme has evolved over time 
 </li>
 <li>The primary advantages of this strategy are: (i) decoupling of partitioning and partition placement, and (ii) enabling the possibility of changing the placement scheme at runtime.
 </li>
-<li>NOTE（dirlt）：以上图为例，这些节点对应的token可能处于partition中间。这是和Strategy 3不同的地方。会导致分布不均匀的问题。
+<li>note(dirlt)：以上图为例，这些节点对应的token可能处于partition中间。这是和Strategy 3不同的地方。会导致分布不均匀的问题。
 
 </li>
 </ul>
@@ -909,7 +909,7 @@ This section discusses how Dynamo’s partitioning scheme has evolved over time 
 </li>
 <li>Moreover, each node is assigned Q/S tokens where S is the number of nodes in the system. When a node leaves the system, its tokens are randomly distributed to the remaining nodes such that these properties are preserved. Similarly, when a node joins the system it "steals" tokens from nodes in the system in a way that preserves these properties.
 </li>
-<li>NOTE（dirlt）：和strategy 2非常类似，但是这些节点对应的token都是在对应的partition point上面。相对于2来说更加容易管理和实现，而且分布更加均匀。
+<li>note(dirlt)：和strategy 2非常类似，但是这些节点对应的token都是在对应的partition point上面。相对于2来说更加容易管理和实现，而且分布更加均匀。
 </li>
 </ul>
 
@@ -991,7 +991,7 @@ As mentioned in Section 5, Dynamo has a request coordination component that uses
 
 
 <p>
-<b>NOTE（dirlt）：实际上HBase也有这个问题。我之前遇到过clock skew问题结果HBase拒绝工作。所以我觉得dynamo完全可以假设这个条件，这样任意节点都可以发起写操作了</b>
+<b>note(dirlt)：实际上HBase也有这个问题。我之前遇到过clock skew问题结果HBase拒绝工作。所以我觉得dynamo完全可以假设这个条件，这样任意节点都可以发起写操作了</b>
 </p>
 
 <p>
@@ -1007,13 +1007,13 @@ client-driven工作方式大致如下： An alternative approach to request coor
 </li>
 </ul>
 
-<p>An important advantage of the client-driven coordination approach is that a load balancer is no longer required to uniformly distribute client load. Fair load distribution is implicitly guaranteed by the near uniform assignment of keys to the storage nodes. TODO（dirlt）：？？？
+<p>An important advantage of the client-driven coordination approach is that a load balancer is no longer required to uniformly distribute client load. Fair load distribution is implicitly guaranteed by the near uniform assignment of keys to the storage nodes. todo(dirlt)：？？？
 </p>
 <p>
 Obviously, the efficiency of this scheme is dependent on how fresh the membership information is at the client. Currently clients poll a random Dynamo node every 10 seconds for membership updates. A pull based approach was chosen over a push based one as the former scales better with large number of clients and requires very little state to be maintained at servers regarding clients. However, in the worst case the client can be exposed to stale membership for duration of 10 seconds. In case, if the client detects its membership table is stale (for instance, when some members are unreachable), it will immediately refresh its membership information.（现在membership的更新方式是每隔10s和随机节点做同步，由client主动发起）
 </p>
 <p>
-Table 2 shows the latency improvements at the 99.9th  percentile and averages that were observed for a period of 24 hours using client-driven coordination compared to the server-driven approach. As seen in the table, the client-driven coordination approach reduces the latencies by at least 30 milliseconds for 99.9th percentile latencies and decreases the average by 3 to 4 milliseconds. <b>The latency improvement is because the client-driven approach eliminates the overhead of the load balancer and the extra network hop that may be incurred when a request is assigned to a random node.</b> As seen in the table, average latencies tend to be significantly lower than latencies at the 99.9th percentile. <b>This is because Dynamo’s storage engine caches and write buffer have good hit ratios.</b> Moreover, since the load balancers and network introduce additional variability to the response time, the gain in response time is higher for the 99.9th percentile than the average. <b>NOTE（dirlt）：似乎说的不错，cache是造成average和99.9%的延迟差别较大的主要原因</b>
+Table 2 shows the latency improvements at the 99.9th  percentile and averages that were observed for a period of 24 hours using client-driven coordination compared to the server-driven approach. As seen in the table, the client-driven coordination approach reduces the latencies by at least 30 milliseconds for 99.9th percentile latencies and decreases the average by 3 to 4 milliseconds. <b>The latency improvement is because the client-driven approach eliminates the overhead of the load balancer and the extra network hop that may be incurred when a request is assigned to a random node.</b> As seen in the table, average latencies tend to be significantly lower than latencies at the 99.9th percentile. <b>This is because Dynamo’s storage engine caches and write buffer have good hit ratios.</b> Moreover, since the load balancers and network introduce additional variability to the response time, the gain in response time is higher for the 99.9th percentile than the average. <b>note(dirlt)：似乎说的不错，cache是造成average和99.9%的延迟差别较大的主要原因</b>
 </p>
 <p>
 <img src="images/dynamo-client-and-server-driven.png"  alt="./images/dynamo-client-and-server-driven.png" />
@@ -1061,7 +1061,7 @@ The admission controller constantly monitors the behavior of resource accesses w
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-28T16:51+0800</p>
+<p class="date">Date: 2014-04-15T09:14+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

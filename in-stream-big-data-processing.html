@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="In-Stream Big Data Processing"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-19T14:35+0800"/>
+<meta name="generated" content="2014-04-15T09:14+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -142,7 +142,7 @@ Our goal was to equip all facilities with a new in-stream engine (shown in the b
 </li>
 <li>Interoperability with Hadoop. The engine should be able to ingest both streaming data and data from Hadoop i.e. serve as a custom query engine atop of HDFS.（和HDFS做交互）
 </li>
-<li>High performance and mobility. The system should deliver performance of tens of thousands messages per second even on clusters of minimal size. The engine should be compact and efficient, so one can deploy it in multiple datacenters on small clusters.（在小规模集群上处理到w级别的QPS，并且容易部署） <b>NOTE（dirlt）：部署和可维护性其实在很大程度上需要考虑</b>
+<li>High performance and mobility. The system should deliver performance of tens of thousands messages per second even on clusters of minimal size. The engine should be compact and efficient, so one can deploy it in multiple datacenters on small clusters.（在小规模集群上处理到w级别的QPS，并且容易部署） <b>note(dirlt)：部署和可维护性其实在很大程度上需要考虑</b>
 </li>
 </ul>
 
@@ -319,7 +319,7 @@ This simple but powerful paradigm enables centralized transaction management and
 <h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> State Checkpointing</h4>
 <div class="outline-text-4" id="text-1-2-3">
 
-<p><b>TODO(dirlt):</b>
+<p><b>todo(dirlt):</b>
 </p>
 </div>
 
@@ -345,7 +345,7 @@ This simple but powerful paradigm enables centralized transaction management and
 <h4 id="sec-1-2-5"><span class="section-number-4">1.2.5</span> Logical Time Tracking</h4>
 <div class="outline-text-4" id="text-1-2-5">
 
-<p>It is very common for in-stream computations to depend on time: aggregations and joins are often performed on sliding time windows; processing logic often depends on a time interval between events and so on. Obviously, the in-stream processing system should have a notion of application’s view of time, instead of CPU wall-clock. However, proper time tracking is not trivial because data streams and particular events can be replayed in case of failures. Each processor in a pipeline tracks the maximal timestamp it has seen in a stream and updates a global persistent clock by this timestamp if the global clock is behind. All other processors synchronize their time with the global clock. <b>TODO(dirlt):为什么需要同步这个global clock?</b>
+<p>It is very common for in-stream computations to depend on time: aggregations and joins are often performed on sliding time windows; processing logic often depends on a time interval between events and so on. Obviously, the in-stream processing system should have a notion of application’s view of time, instead of CPU wall-clock. However, proper time tracking is not trivial because data streams and particular events can be replayed in case of failures. Each processor in a pipeline tracks the maximal timestamp it has seen in a stream and updates a global persistent clock by this timestamp if the global clock is behind. All other processors synchronize their time with the global clock. <b>todo(dirlt):为什么需要同步这个global clock?</b>
 </p>
 </div>
 
@@ -361,7 +361,7 @@ This simple but powerful paradigm enables centralized transaction management and
 <img src="images/in-stream-aggregation-in-a-persistent-store.png"  alt="./images/in-stream-aggregation-in-a-persistent-store.png" />
 </p>
 <p>
-It is important to understand that such techniques can defeat the whole purpose of in-stream data processing if implemented incorrectly – writing individual events to the data store can introduce a serious performance bottleneck even for fast stores like Cassandra or Redis. On the other hand, this approach provides perfect persistence of the computational state and different performance optimizations – say, batch writes – can help to achieve acceptable performance in many use cases. <b>NOTE（dirlt）：不要当作通用技术</b>
+It is important to understand that such techniques can defeat the whole purpose of in-stream data processing if implemented incorrectly – writing individual events to the data store can introduce a serious performance bottleneck even for fast stores like Cassandra or Redis. On the other hand, this approach provides perfect persistence of the computational state and different performance optimizations – say, batch writes – can help to achieve acceptable performance in many use cases. <b>note(dirlt)：不要当作通用技术</b>
 </p>
 </div>
 
@@ -403,7 +403,7 @@ It is important to understand that such techniques can defeat the whole purpose 
 
 
 <p>
-<b>NOTE(dirlt):stream和batch之间的差异主要还是在数据量上。spark被称为stream系统但是内部还是按照batch来做处理的，只不过在实时性上spark和mapreduce区分开来。实时性一方面来源于input/output性质, 一方面来源于pipelining的中间状态是否需要保存以及如何保存</b>
+<b>note(dirlt):stream和batch之间的差异主要还是在数据量上。spark被称为stream系统但是内部还是按照batch来做处理的，只不过在实时性上spark和mapreduce区分开来。实时性一方面来源于input/output性质, 一方面来源于pipelining的中间状态是否需要保存以及如何保存</b>
 </p>
 <p>
 The two statement above imply that tunable persistence (in-memory message passing versus on-disk materialization) and reliability are the distinctive features of the imaginary query engine that provides a set of processing primitives and interfaces to the high-level
@@ -464,8 +464,8 @@ Among the emerging technologies, the following two are especially notable in the
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-19T14:35+0800</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
+<p class="date">Date: 2014-04-15T09:14+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="systemtap"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-19T14:34+0800"/>
+<meta name="generated" content="2014-05-10T19:33+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -79,7 +79,7 @@
 <ul>
 <li><a href="systemtap.html#sec-1">1 systemtap</a>
 <ul>
-<li><a href="systemtap.html#sec-1-1">1.1 Introduction</a></li>
+<li><a href="systemtap.html#sec-1-1">1.1 getting started</a></li>
 <li><a href="systemtap.html#sec-1-2">1.2 Architecture of systemtap a Linux trace probe tool</a>
 <ul>
 <li><a href="systemtap.html#sec-1-2-1">1.2.1 Motivation</a></li>
@@ -122,7 +122,7 @@
 </ul>
 
 </li>
-<li><b>NOTE（dirlt）：linux还自带perf工具也能够观察kernel行为</b>
+<li><b>note(dirlt)：linux还自带perf工具也能够观察kernel行为</b>
 </li>
 </ul>
 
@@ -131,10 +131,10 @@
 </div>
 
 <div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Introduction</h3>
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> getting started</h3>
 <div class="outline-text-3" id="text-1-1">
 
-<p>systemtap的工作原理是使用linux提供的kprobe接口 <b>TODO(dirlt):more about kprobe</b> ，将用户需要观测linux系统的行为转换成为c（使用kprobe)并且编译成为kernel object然后运行。 
+<p>systemtap的工作原理是使用linux提供的kprobe接口 <b>todo(dirlt):more about kprobe</b> ，将用户需要观测linux系统的行为转换成为c（使用kprobe)并且编译成为kernel object然后运行。
 systemtap使用一种触发式的工作方式，通过安装探针（probe）来监控系统的行为，一旦探针事件出现的话就会触发对应的代码。代码使用自己定义的语言，和C语言非常类似。
 </p>
 <p>
@@ -172,10 +172,10 @@ systemtap使用一种触发式的工作方式，通过安装探针（probe）来
 
 <pre class="example">[dirlt@umeng-ubuntu-pc] &gt;  sudo stap -ve 'probe begin { log("hello world") exit() }'
 Pass 1: parsed user script and 76 library script(s) using 92476virt/22592res/2616shr kb, in 80usr/0sys/85real ms.
-Pass 2: analyzed script: 1 probe(s), 2 function(s), 0 embed(s), 0 global(s) using 93000virt/23472res/2816shr kb, in 0usr/0sys/4real 
-ms.                                                                                                                                
+Pass 2: analyzed script: 1 probe(s), 2 function(s), 0 embed(s), 0 global(s) using 93000virt/23472res/2816shr kb, in 0usr/0sys/4real
+ms.
 Pass 3: translated to C into "/tmp/stapbx8Gpk/stap_7703b9bd08bd359932cf8da12019f6d8_813.c" using 93000virt/23628res/2964shr kb, in 0
-usr/0sys/0real ms.                                                                                                                 
+usr/0sys/0real ms.
 Pass 4: compiled C into "stap_7703b9bd08bd359932cf8da12019f6d8_813.ko" in 3240usr/510sys/4048real ms.
 Pass 5: starting run.
 hello world
@@ -183,8 +183,8 @@ Pass 5: run completed in 10usr/10sys/600real ms.
 
 [dirlt@umeng-ubuntu-pc] &gt;  sudo stap -ve 'probe begin { log("hello world") exit() }'
 Pass 1: parsed user script and 76 library script(s) using 92476virt/22592res/2616shr kb, in 80usr/10sys/85real ms.
-Pass 2: analyzed script: 1 probe(s), 2 function(s), 0 embed(s), 0 global(s) using 93000virt/23472res/2816shr kb, in 0usr/0sys/4real 
-ms.                                                                                                                                
+Pass 2: analyzed script: 1 probe(s), 2 function(s), 0 embed(s), 0 global(s) using 93000virt/23472res/2816shr kb, in 0usr/0sys/4real
+ms.
 Pass 3: using cached /home/dirlt/.systemtap/cache/77/stap_7703b9bd08bd359932cf8da12019f6d8_813.c
 Pass 4: using cached /home/dirlt/.systemtap/cache/77/stap_7703b9bd08bd359932cf8da12019f6d8_813.ko
 Pass 5: starting run.
@@ -275,11 +275,11 @@ Pass 5: run completed in 0usr/10sys/586real ms.
 <ul>
 <li>Each systemtap construct is expanded to a block of C that includes whatever locking and safety checks are necessary.
 </li>
-<li>Control-flow constructs translate to include runaway-prevention logic. <b>TODO（dirlt）：？？？</b>
+<li>Control-flow constructs translate to include runaway-prevention logic. <b>todo(dirlt)：？？？</b>
 </li>
 <li>Each variable shared amongst probes is mapped to an appropriate static declaration, and accesses are protected by locks.（全局变量生成static并且通过lock来保护）
 </li>
-<li>Each group of local variables is placed into a synthetic call frame structure that keeps them off the tiny real kernel stacks. <b>TODO(dirlt):？压缩局部变量的存储方式</b>
+<li>Each group of local variables is placed into a synthetic call frame structure that keeps them off the tiny real kernel stacks. <b>todo(dirlt):？压缩局部变量的存储方式</b>
 </li>
 </ul>
 
@@ -323,11 +323,11 @@ Pass 5: run completed in 0usr/10sys/586real ms.
 <div class="outline-text-4" id="text-1-2-3">
 
 <ul>
-<li>A systemtap script file has the suffix “.stp” 
+<li>A systemtap script file has the suffix “.stp”
 </li>
 <li>A script file is a sequence of top-level constructs, of which there are three types: 下面这些元素组成
 <ul>
-<li>probe definitions, 
+<li>probe definitions,
 </li>
 <li>auxiliary function definitions, 辅助函数定义
 </li>
@@ -354,7 +354,7 @@ Pass 5: run completed in 0usr/10sys/586real ms.
 
 <ul>
 <li id="sec-1-2-3-1">Probe points<br/>
-<b>NOTE（dirlt）：这个部分是比较重要的，说明了probe point的定义规则</b>
+<b>note(dirlt)：这个部分是比较重要的，说明了probe point的定义规则</b>
 <ul>
 <li>A probe definition gives probe points in a comma-separated list, and an associated action in the form of a statement block.（使用，分割多个probe points）
 </li>
@@ -373,7 +373,7 @@ Pass 5: run completed in 0usr/10sys/586real ms.
 </li>
 <li>function("fn@filename")
 </li>
-<li>function("fn@filename:lineno") 
+<li>function("fn@filename:lineno")
 </li>
 <li>function(0x1f) PC address located.
 </li>
@@ -384,7 +384,7 @@ Pass 5: run completed in 0usr/10sys/586real ms.
 </ul>
 
 </li>
-<li>statements <b>NOTE（dirlt）：分析执行过程</b>
+<li>statements <b>note(dirlt)：分析执行过程</b>
 <ul>
 <li>statement("fn") 函数fn入口
 </li>
@@ -622,7 +622,7 @@ trace ("OOM for pid " . string (victim_pid))
 </ul>
 
 </li>
-<li>The other candidate is netlink. <b>NOTE（dirlt）：感觉相比relayfs，这个东西似乎更加适合小需要实时展现的数据</b>
+<li>The other candidate is netlink. <b>note(dirlt)：感觉相比relayfs，这个东西似乎更加适合小需要实时展现的数据</b>
 <ul>
 <li>Netlink is included in the kernel. It allows a simple stream of data to be sent using the familiar socket APIs. It is unlikely to be as fast as relayfs.
 </li>
@@ -655,7 +655,7 @@ trace ("OOM for pid " . string (victim_pid))
 <h3 id="sec-1-3"><span class="section-number-3">1.3</span> probe</h3>
 <div class="outline-text-3" id="text-1-3">
 
-<p>TODO(dirlt):
+<p>todo(dirlt):
 </p>
 </div>
 
@@ -665,16 +665,15 @@ trace ("OOM for pid " . string (victim_pid))
 <h3 id="sec-1-4"><span class="section-number-3">1.4</span> language</h3>
 <div class="outline-text-3" id="text-1-4">
 
-<p>TODO(dirlt):
-</p>
-</div>
+<p>todo(dirlt):
+</p></div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-19T14:34+0800</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
+<p class="date">Date: 2014-05-10T19:33+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

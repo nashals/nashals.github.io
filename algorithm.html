@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="algorithm"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-28T16:51+0800"/>
+<meta name="generated" content="2014-05-22T11:39+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -97,12 +97,14 @@
 <li><a href="algorithm.html#sec-1-2-4">1.2.4 查找非重复数字问题</a></li>
 <li><a href="algorithm.html#sec-1-2-5">1.2.5 水池最大蓄水问题</a></li>
 <li><a href="algorithm.html#sec-1-2-6">1.2.6 赔率系统设计问题</a></li>
+<li><a href="algorithm.html#sec-1-2-7">1.2.7 流式计算均值和方差</a></li>
 </ul>
 </li>
 <li><a href="algorithm.html#sec-1-3">1.3 TopCoder</a>
 <ul>
 <li><a href="algorithm.html#sec-1-3-1">1.3.1 安装和配置</a></li>
 <li><a href="algorithm.html#sec-1-3-2">1.3.2 初次DIV2</a></li>
+<li><a href="algorithm.html#sec-1-3-3">1.3.3 srm div2 series</a></li>
 </ul>
 </li>
 <li><a href="algorithm.html#sec-1-4">1.4 计算机科学最重要的32个算法</a></li>
@@ -368,7 +370,7 @@ simhash算法原理非常简单：
 </li>
 <li>HyperLogLog in Practice: Algorithmic Engineering of a State of The Art Cardinality Estimation Algorithm : <a href="http://research.google.com/pubs/pub40671.html">http://research.google.com/pubs/pub40671.html</a>
 </li>
-<li><a href="https://github.com/clearspring/stream-lib">https://github.com/clearspring/stream-lib</a> <b>NOTE(dirlt):HyperLogLogPlus实现</b>
+<li><a href="https://github.com/clearspring/stream-lib">https://github.com/clearspring/stream-lib</a> <b>note(dirlt):HyperLogLogPlus实现</b>
 </li>
 </ul>
 
@@ -500,15 +502,15 @@ CONCISE针对这个部分稍微改进了一下
 <p>
 下面是一个例子， Compressed representation of the set {3, 5, 31–93, 1024, 1028, 1 040 187 422}.
 </p><ul>
-<li>The word #0 is used to represent integers in the range 0–30, 
+<li>The word #0 is used to represent integers in the range 0–30,
 </li>
 <li>word #1 for integers in 31–92, （5bit为0，说明这个31bit是完全填充。25bit=1表示后面1 * 31个bit全为1，范围就是从31到31(start) + 31 + 31 - 1 = 92.
 </li>
 <li>word #2 for integers 93–1022, （5bit为1，说明下一个31bit的第一个元素是反转的也就是93。范围从93到93(start) + 31 + 29 * 31 - 1 = 1022
 </li>
-<li>word #3 for integers 1023–1053, 
+<li>word #3 for integers 1023–1053,
 </li>
-<li>word #4 for integers 1054–1 040 187 391, 
+<li>word #4 for integers 1054–1 040 187 391,
 </li>
 <li>and word #5 for integers 1 040 187 392–1 040 187 422.
 </li>
@@ -596,20 +598,20 @@ leetcode上也有类似的题目，但是考虑上了树节点值 <a href="http:
       int rp;
       int r= side(root-&gt;right,&amp;rp);
       *path = max(r,rp);
-      return max(0,r) + root-&gt;val;      
+      return max(0,r) + root-&gt;val;
     } else if(root-&gt;right == NULL) {
       int lp;
       int l = side(root-&gt;left,&amp;lp);
       *path = max(l,lp);
       return max(0,l) + root-&gt;val;
     } else {
-      int lp,rp;    
+      int lp,rp;
       int l = side(root-&gt;left,&amp;lp);
       int r = side(root-&gt;right,&amp;rp);
       int p = max(max(l,r),max(lp,rp));
       p = max(p, max(0,l) + max(0,r) + root-&gt;val);
       *path = p;
-      return max(max(0,l), max(0,r)) + root-&gt;val;      
+      return max(max(0,l), max(0,r)) + root-&gt;val;
     }
   }
 };
@@ -650,7 +652,7 @@ leetcode上也有类似的题目，但是考虑上了树节点值 <a href="http:
 <h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> 等概率选取链表元素问题</h4>
 <div class="outline-text-4" id="text-1-2-3">
 
-<p>等概率选取未知长度的链表中的元素，要求是只能够遍历这个链表一次。下面是代码， <b>注意这里的wanted会不断地被更新</b> 
+<p>等概率选取未知长度的链表中的元素，要求是只能够遍历这个链表一次。下面是代码， <b>注意这里的wanted会不断地被更新</b>
 </p>
 
 
@@ -659,7 +661,7 @@ for ( p=list; p!=NULL; p=p-&gt;next ){
     if ( rand() % ++nmatch == 0 ){
         wanted = p;
     }
-} 
+}
 </pre>
 
 
@@ -910,7 +912,7 @@ a1 a1 a1 a2 a2 a2 &hellip; an an an X
     }
     return res;
   }
-};     
+};
 </pre>
 
 
@@ -922,7 +924,7 @@ a1 a1 a1 a2 a2 a2 &hellip; an an an X
 <h4 id="sec-1-2-6"><span class="section-number-4">1.2.6</span> 赔率系统设计问题</h4>
 <div class="outline-text-4" id="text-1-2-6">
 
-<p>NOTE（dirlt）：2012.6.14
+<p>note(dirlt)：2012.6.14
 </p>
 <p>
 昨天大家说做一个赌球赔率系统，晚上Hai教我了一些基本的东西。
@@ -977,13 +979,59 @@ a1 a1 a1 a2 a2 a2 &hellip; an an an X
 <p>
 但是现实中存在下面一些问题：
 </p><ul>
-<li>如何bootstrap呢?（设定初始赔率）。NOTE（dirlt）：我们可以首先计算出双方获胜概率p,计算出赔率1/p.为了抽水了降低赔率比如1/p*0.9.这样最后概率计算出来就会是1/0.9了。
+<li>如何bootstrap呢?（设定初始赔率）。note(dirlt)：我们可以首先计算出双方获胜概率p,计算出赔率1/p.为了抽水了降低赔率比如1/p*0.9.这样最后概率计算出来就会是1/0.9了。
 </li>
 <li>如果某一方没有压钱的话，那么相当于是庄家自己在赌博。
 </li>
 <li>现实生活中是先看到赔率然后再下手的，下手之后这笔钱对应的赔率应该是不变的。而我们设计的模型是假设钱都已经到位了之后，我们再来定义赔率。
 </li>
 </ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-7" class="outline-4">
+<h4 id="sec-1-2-7"><span class="section-number-4">1.2.7</span> 流式计算均值和方差</h4>
+<div class="outline-text-4" id="text-1-2-7">
+
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/Algorithms_for_calculating_variance">http://en.wikipedia.org/wiki/Algorithms_for_calculating_variance</a>
+</li>
+<li><a href="http://www.johndcook.com/standard_deviation.html">http://www.johndcook.com/standard_deviation.html</a>
+</li>
+</ul>
+
+
+<p>
+需要注意区分如下概念。可以参见wikipedia
+</p><ul>
+<li><a href="http://en.wikipedia.org/wiki/Standard_deviation">http://en.wikipedia.org/wiki/Standard_deviation</a>
+</li>
+<li><a href="http://baike.baidu.com/view/172036.htm">http://baike.baidu.com/view/172036.htm</a>
+</li>
+<li>标准差(standard deviation), 方差算术平方根
+</li>
+<li>方差(variance, variance of an entire population)
+</li>
+<li>样本标准差(sample standard deviation), 样本方差算术平方根
+</li>
+<li>样本方差(sample variance, unbiased estimate of the population variance)
+</li>
+</ul>
+
+
+<p>
+对方差计算可以做如下简化, 其中Xi表示第i个元素，Xe表示平均值
+</p>
+
+
+<pre class="example">th^2 * n = (X1-Xe)^2 + (X2-Xe)^2 + (X3-Xe)^2 + ... (Xi-Xe)^2 + .. (Xn-Xe)^2
+         = (X1^2 + X2^2 + ... Xi^2 + ... + Xn^2) - 2 * Xe * (X1 + X2 + ... Xi + ... Xn) + n * Xe^2
+         = (X1^2 + X2^2 + ... Xi^2 + ... + Xn^2) - 2 * Xe * n * Xe + n * Xe^2
+         = (X1^2 + X2^2 + ... Xi^2 + ... + Xn^2) - n * Xe^2
+</pre>
 
 
 </div>
@@ -1002,7 +1050,7 @@ a1 a1 a1 a2 a2 a2 &hellip; an an an X
 <h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> 安装和配置</h4>
 <div class="outline-text-4" id="text-1-3-1">
 
-<p>安装topcoder非常简单： 
+<p>安装topcoder非常简单：
 </p><ul>
 <li>确认安装好javaws，因为topcoder客户端是一个java applet
 </li>
@@ -1024,9 +1072,9 @@ a1 a1 a1 a2 a2 a2 &hellip; an an an X
 </li>
 </ul>
 
-<p>这些插件都可以在这里找到 <a href="http://community.topcoder.com/tc?module=Static&amp;d1=applet&amp;d2=plugins">http://community.topcoder.com/tc?module=Static&amp;d1=applet&amp;d2=plugins</a> 
+<p>这些插件都可以在这里找到 <a href="http://community.topcoder.com/tc?module=Static&amp;d1=applet&amp;d2=plugins">http://community.topcoder.com/tc?module=Static&amp;d1=applet&amp;d2=plugins</a>
 </p>
-<p> 
+<p>
 三个插件的下载地址分别是：
 </p><ul>
 <li><a href="http://community.topcoder.com/contest/classes/TZTester/TZTester.jar">http://community.topcoder.com/contest/classes/TZTester/TZTester.jar</a>
@@ -1043,7 +1091,7 @@ a1 a1 a1 a2 a2 a2 &hellip; an an an X
 </p><ul>
 <li>Add增加一个Editor
 </li>
-<li>EntryPoint填写 codeprocessor.EntryPoint 
+<li>EntryPoint填写 codeprocessor.EntryPoint
 </li>
 <li>ClassPath将前面三个jar选择上
 </li>
@@ -1061,9 +1109,9 @@ a1 a1 a1 a2 a2 a2 &hellip; an an an X
 <p>
 继续点击Configure选项，在General这个部分基本上没有什么需要修改的：
 </p><ul>
-<li>read/write problem to ./TopCoder/code # 将题目保存到TopCoder/code目录里面
+<li>read/write problem to ./topcoder # 将题目保存到topcoder目录里面
 </li>
-<li><b>TODO(dirlt):more</b>
+<li><b>todo(dirlt):more</b>
 </li>
 </ul>
 
@@ -1120,7 +1168,17 @@ int main() {
 <h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> 初次DIV2</h4>
 <div class="outline-text-4" id="text-1-3-2">
 
-<p><img src="images/virgin-topcoder-div2.jpg"  alt="./images/virgin-topcoder-div2.jpg" /> 
+<p><img src="images/virgin-topcoder-div2.jpg"  alt="./images/virgin-topcoder-div2.jpg" />
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-3-3" class="outline-4">
+<h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> srm div2 series</h4>
+<div class="outline-text-4" id="text-1-3-3">
+
+<p><a href="https://github.com/dirtysalt/sperm/tree/master/code/tc-srm">https://github.com/dirtysalt/sperm/tree/master/code/tc-srm</a>
 </p>
 </div>
 </div>
@@ -1134,72 +1192,71 @@ int main() {
 <p><a href="http://www.infoq.com/cn/news/2012/08/32-most-important-algorithms">http://www.infoq.com/cn/news/2012/08/32-most-important-algorithms</a>
 </p>
 <ol>
-<li>A* 搜索算法 
+<li>A* 搜索算法
 </li>
-<li>集束搜索(又名定向搜索，Beam Search) 
+<li>集束搜索(又名定向搜索，Beam Search)
 </li>
-<li>二分查找 
+<li>二分查找
 </li>
-<li>分支界定算法(Branch and Bound) 
+<li>分支界定算法(Branch and Bound)
 </li>
-<li>Buchberger算法 
+<li>Buchberger算法
 </li>
-<li>数据压缩 
+<li>数据压缩
 </li>
-<li>Diffie-Hellman密钥交换算法 
+<li>Diffie-Hellman密钥交换算法
 </li>
-<li>Dijkstra算法 
+<li>Dijkstra算法
 </li>
-<li>离散微分算法(Discrete differentiation) 
+<li>离散微分算法(Discrete differentiation)
 </li>
-<li>动态规划算法(Dynamic Programming) 
+<li>动态规划算法(Dynamic Programming)
 </li>
-<li>欧几里得算法(Euclidean algorithm) 
+<li>欧几里得算法(Euclidean algorithm)
 </li>
 <li>期望-最大算法(Expectation-maximization algorithm, EM-Training)
 </li>
-<li>快速傅里叶变换 
+<li>快速傅里叶变换
 </li>
-<li>梯度下降(Gradient descent) 
+<li>梯度下降(Gradient descent)
 </li>
-<li>哈希算法(Hashing) 
+<li>哈希算法(Hashing)
 </li>
-<li>堆排序(Heaps) 
+<li>堆排序(Heaps)
 </li>
-<li>Karatsuba乘法 
+<li>Karatsuba乘法
 </li>
-<li>LLL算法(Lenstra-Lenstra-Lovasz lattice reduction) 
+<li>LLL算法(Lenstra-Lenstra-Lovasz lattice reduction)
 </li>
-<li>最大流量算法(Maximum flow) 
+<li>最大流量算法(Maximum flow)
 </li>
-<li>合并排序(Merge Sort) 
+<li>合并排序(Merge Sort)
 </li>
-<li>牛顿法(Newton's method) 
+<li>牛顿法(Newton's method)
 </li>
-<li>Q-learning学习算法 
+<li>Q-learning学习算法
 </li>
-<li>两次筛法(Quadratic Sieve) 
+<li>两次筛法(Quadratic Sieve)
 </li>
-<li>RANSAC 
+<li>RANSAC
 </li>
-<li>RSA 
+<li>RSA
 </li>
-<li>Sch&amp;#246;nhage-Strassen算法 
+<li>Schonhage-Strassen算法
 </li>
-<li>单纯型算法(Simplex Algorithm) 
+<li>单纯型算法(Simplex Algorithm)
 </li>
-<li>奇异值分解 
+<li>奇异值分解
 </li>
-<li>求解线性方程组(Solving a system of linear equations) 
+<li>求解线性方程组(Solving a system of linear equations)
 </li>
-<li>Strukturtensor算法 
+<li>Strukturtensor算法
 </li>
-<li>合并查找算法(Union-find) 
+<li>合并查找算法(Union-find)
 </li>
-<li>维特比算法 
+<li>维特比算法
 </li>
 </ol>
-
 
 </div>
 </div>
@@ -1207,7 +1264,7 @@ int main() {
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-28T16:51+0800</p>
+<p class="date">Date: 2014-05-22T11:39+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

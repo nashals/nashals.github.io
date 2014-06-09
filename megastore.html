@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="megastore"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-19T14:35+0800"/>
+<meta name="generated" content="2014-04-15T09:14+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -169,7 +169,7 @@
 
 
 <p>
-<b>NOTE（dirlt）：table schema主要是用来描述各个表存储结构。mega使用上更类似NoSQL</b>
+<b>note(dirlt)：table schema主要是用来描述各个表存储结构。mega使用上更类似NoSQL</b>
 </p>
 </div>
 
@@ -217,7 +217,7 @@
 </li>
 <li>A novel extension to Paxos, detailed in Section 4.4.1, allows local reads at any up-to-date replica. Another extension permits single-roundtrip writes.（对于paxos进行了一些扩展，允许在任何一个up-to-date的节点上面进行local read，并且write只需要single-roundtrip）
 </li>
-<li><b>TODO（dirlt）：read paxos paper, then read this paper back</b>
+<li><b>todo(dirlt)：read paxos paper, then read this paper back</b>
 </li>
 </ul>
 
@@ -236,7 +236,7 @@
 <div class="outline-text-4" id="text-1-3-2">
 
 <ul>
-<li>To scale throughput and localize outages, we partition our data into a collection of entity groups, each indepen-dently and synchronously replicated over a wide area. The underlying data is stored in a scalable NoSQL datastore in each datacenter (see Figure 1) 划分的每个单元称为entity group. <b>后面简称EG</b> <b>NOTE(dirlt):所谓的entity group就是单位实体，在这个单位实体内所有的数据都是关联的，好比一个用户的blog，如果我们按照用户来划分entity group的话，那么这个blog里面所有的文章以及tag等数据形成一个entity group</b>
+<li>To scale throughput and localize outages, we partition our data into a collection of entity groups, each indepen-dently and synchronously replicated over a wide area. The underlying data is stored in a scalable NoSQL datastore in each datacenter (see Figure 1) 划分的每个单元称为entity group. <b>后面简称EG</b> <b>note(dirlt):所谓的entity group就是单位实体，在这个单位实体内所有的数据都是关联的，好比一个用户的blog，如果我们按照用户来划分entity group的话，那么这个blog里面所有的文章以及tag等数据形成一个entity group</b>
 <ul>
 <li>Entities within an entity group are mutated with single-phase ACID transactions (for which the commit record is replicated via Paxos).（在一个EG里面操作满足ACID，操作使用paxos来进行同步复制）
 </li>
@@ -265,7 +265,7 @@
 <ul>
 <li>We use Google’s Bigtable for scalable fault-tolerant storage within a single datacenter, allowing us to support arbitrary read and write throughput by spreading operations across multiple rows.(底层使用bigtable来作为一个datacenter的存储）
 </li>
-<li>We minimize latency and maximize throughput by let-ting applications control the placement of data: through the selection of Bigtable instances and specification of locality within an instance.（允许应用程序控制data placement来减小延迟和增大吞吐，包括选择bigtable的实例以及如何组织数据提高locality <b>主要应该就是控制entity group的存放位置</b> <b>NOTE（dirlt）：这样其实就要求客户端来决定如何防止entity group,或者是可以单独做这样的server来接受请求只不过这个和megastore本身关系比较小</b> 
+<li>We minimize latency and maximize throughput by let-ting applications control the placement of data: through the selection of Bigtable instances and specification of locality within an instance.（允许应用程序控制data placement来减小延迟和增大吞吐，包括选择bigtable的实例以及如何组织数据提高locality <b>主要应该就是控制entity group的存放位置</b> <b>note(dirlt)：这样其实就要求客户端来决定如何防止entity group,或者是可以单独做这样的server来接受请求只不过这个和megastore本身关系比较小</b> 
 <ul>
 <li>To minimize latency, applications try to keep data near users and replicas near each other. They assign each entity group to the region or continent from which it is accessed most. Within that region they assign a triplet or quintuplet of replicas to datacenters with isolated failure domains.（为了减少延迟将数据放在离user更近的位置）
 </li>
@@ -298,14 +298,14 @@
 <ul>
 <li>High-volume interactive workloads benefit more from predictable performance than from an expressive query language.（大部分查询都是已知访问模式的）
 </li>
-<li>Reads dominate writes in our target applications, so it pays to move work from read time to write time. <b>NOTE（dirlt）：so what？不理解为什么？</b>
+<li>Reads dominate writes in our target applications, so it pays to move work from read time to write time. <b>note(dirlt)：so what？不理解为什么？</b>
 </li>
 <li>Storing and querying hierarchical data is straightfor-ward in key-value stores like Bigtable. （Bigtable这种访问方式更加简单）
 </li>
 </ul>
 
 </li>
-<li>With this in mind, we designed a data model and schema language to offer fine-grained control over physical locality. Hierarchical layouts and declarative denormalization help eliminate the need for most joins. Queries specify scans or lookups against particular tables and indexes.（ <b>megastore可以帮助user来完成denormalization避免大部分的join，对于其他必须需要join的操作提供了二级索引以及一些辅助的算法</b> <b>NOTE（dirlt）：这个应该就是megastore在data model上面做的主要工作</b> ）
+<li>With this in mind, we designed a data model and schema language to offer fine-grained control over physical locality. Hierarchical layouts and declarative denormalization help eliminate the need for most joins. Queries specify scans or lookups against particular tables and indexes.（ <b>megastore可以帮助user来完成denormalization避免大部分的join，对于其他必须需要join的操作提供了二级索引以及一些辅助的算法</b> <b>note(dirlt)：这个应该就是megastore在data model上面做的主要工作</b> ）
 </li>
 </ul>
 
@@ -338,7 +338,7 @@
 <ul>
 <li>Each entity is mapped into a single Bigtable row; the primary key values are concatenated to form the Bigtable row key, and each remaining property occupies its own Bigtable column.（每一个entity占据了bigtable的一行，rowkey使用primary key拼接而成，而剩余的property则对应到bigtable的column）
 </li>
-<li>The IN TABLE User direc-tive instructs Megastore to colocate these two tables into the same Bigtable, and the key ordering ensures that Photo entities are stored adjacent to the corresponding User. This mechanism can be applied recursively to speed queries along arbitrary join depths. Thus, users can force hierarchical lay-out by manipulating the key order. （IN TABLE可以用来将child table entry紧跟在对应的root table entry之后，放置在同一个table里面， <b>NOTE（dirlt）：原因我倒是没有看明白，但是这样至少对于相关的数据存储访问是非常有利的</b> ）
+<li>The IN TABLE User direc-tive instructs Megastore to colocate these two tables into the same Bigtable, and the key ordering ensures that Photo entities are stored adjacent to the corresponding User. This mechanism can be applied recursively to speed queries along arbitrary join depths. Thus, users can force hierarchical lay-out by manipulating the key order. （IN TABLE可以用来将child table entry紧跟在对应的root table entry之后，放置在同一个table里面， <b>note(dirlt)：原因我倒是没有看明白，但是这样至少对于相关的数据存储访问是非常有利的</b> ）
 </li>
 <li>Schemas declare keys to be sorted ascending or descend-ing, or to avert sorting altogether: the SCATTER attribute in-structs Megastore to prepend a two-byte hash to each key. Encoding monotonically increasing keys this way prevents hotspots in large data sets that span Bigtable servers.（schema可以用来表示是否按照key来进行排序，或者是进行scatter，所谓scatter就是不要放key过于集中地存放，可以通过在key前面添加2个字节的hashcode来打散）
 </li>
@@ -353,7 +353,7 @@
 <h5 id="sec-1-4-2-2"><span class="section-number-5">1.4.2.2</span> Indexes</h5>
 <div class="outline-text-5" id="text-1-4-2-2">
 
-<p><b>NOTE(dirlt):索引这个部分主要突出了数据如何存放并且使之能够有效地进行存取</b>
+<p><b>note(dirlt):索引这个部分主要突出了数据如何存放并且使之能够有效地进行存取</b>
 </p>
 <ul>
 <li>Secondary indexes can be declared on any list of entity properties, as well as fields within protocol buffers. We dis-tinguish between two high-level classes of indexes: local and global (see Figure 2). （可以在任何的property包括pb的field上面建立二级索引，local和global index的一致性是不同的）
@@ -362,7 +362,7 @@
 </li>
 <li>A global index spans entity groups. It is used to find entities without knowing in advance the entity groups that contain them. Global index scans can read data owned by many entity groups but are not guaranteed to reflect all recent updates.
 </li>
-<li><b>TODO（dirlt）：关键是对于index所存放的value是什么？</b>
+<li><b>todo(dirlt)：关键是对于index所存放的value是什么？</b>
 </li>
 </ul>
 
@@ -398,7 +398,7 @@
 </li>
 <li>Within the Bigtable row for a root entity, we store the transaction and replication metadata for the entity group, including the transaction log. Storing all metadata in a single Bigtable row allows us to update it atomically through a single Bigtable transaction. (对于每个root entity会记录所有关于这个entity group的transaction log，因为一个entity group只有一个root entity。同时所有关于这个entity group的metadata信息也都是放在同一个row上面的，这样可以通过bigtable row transaction来完成更新）
 </li>
-<li>Each index entry is represented as a single Bigtable row; the row key of the cell is constructed using the indexed property values concatenated with the primary key of the indexed entity. Indexing repeated fields produces one index entry per repeated element.（对于index的row key使用的是index property values + primary key of indexed entity. <b>TODO（dirlt）：why use primary key???</b> ）
+<li>Each index entry is represented as a single Bigtable row; the row key of the cell is constructed using the indexed property values concatenated with the primary key of the indexed entity. Indexing repeated fields produces one index entry per repeated element.（对于index的row key使用的是index property values + primary key of indexed entity. <b>todo(dirlt)：why use primary key???</b> ）
 </li>
 </ul>
 
@@ -433,7 +433,7 @@
 </ul>
 
 </li>
-<li>A write transaction always begins with a current read to determine the next available log position. The commit operation gathers mutations into a log entry, assigns it a timestamp higher than any previous one, and appends it to the log using Paxos. The protocol uses optimistic con-currency: though multiple writers might be attempting to write to the same log position, only one will win. The rest will notice the victorious write, abort, and retry their op-erations. Advisory locking is available to reduce the effects of contention. Batching writes through session affinity to a particular front-end server can avoid contention altogether（对于write trasnaction的话必须使用current read读取最新的log position，然后将所有的mutation放在一个log entry里面使用一个更大的timestamp，然后使用paxos来追加。但是可能会出现冲突，如果发现冲突失败的话那么需要重试这个操作 <b>NOTE（dirlt）：我觉得这个操作可能还需要包括重新发起read以及apply logic.</b> 使用advisory lock能够减少这种冲突，或者是在提交修改时候就单独通过和这个session绑定的server来做提交 ）
+<li>A write transaction always begins with a current read to determine the next available log position. The commit operation gathers mutations into a log entry, assigns it a timestamp higher than any previous one, and appends it to the log using Paxos. The protocol uses optimistic con-currency: though multiple writers might be attempting to write to the same log position, only one will win. The rest will notice the victorious write, abort, and retry their op-erations. Advisory locking is available to reduce the effects of contention. Batching writes through session affinity to a particular front-end server can avoid contention altogether（对于write trasnaction的话必须使用current read读取最新的log position，然后将所有的mutation放在一个log entry里面使用一个更大的timestamp，然后使用paxos来追加。但是可能会出现冲突，如果发现冲突失败的话那么需要重试这个操作 <b>note(dirlt)：我觉得这个操作可能还需要包括重新发起read以及apply logic.</b> 使用advisory lock能够减少这种冲突，或者是在提交修改时候就单独通过和这个session绑定的server来做提交 ）
 
 </li>
 <li>The complete transaction lifecycle is as follows:
@@ -448,7 +448,7 @@
 </li>
 <li>Clean up: Delete data that is no longer required.
 </li>
-<li>The write operation can return to the client at any point after Commit, though it makes a best-effort attempt to wait for the nearest replica to apply.  <b>TODO（dirlt）？？？</b>
+<li>The write operation can return to the client at any point after Commit, though it makes a best-effort attempt to wait for the nearest replica to apply.  <b>todo(dirlt)？？？</b>
 </li>
 </ol>
 
@@ -466,7 +466,7 @@
 <ul>
 <li>Queues provide transactional messaging between entity groups. They can be used for cross-group operations, to batch multiple updates into a single transaction, or to de-fer work. A transaction on an entity group can atomically send or receive multiple messages in addition to updatingits entities. Each message has a single sending and receiving entity group; if they differ, delivery is asynchronous.（Queue主要用来在EG之间传递事务消息的，能够将多个mutation进行聚合成为single transaction以及延迟操作，这样对于发送者和接收者都可以原子地发送和读取transaction或者是多个消息。对于每个message有sender和receiver entity group，如果是不同的EG的话那么消息传递是异步的）
 </li>
-<li>Queues offer a way to perform operations that affect many entity groups. For example, consider a calendar application in which each calendar has a distinct entity group, and we want to send an invitation to a group of calendars. A sin-gle transaction can atomically send invitation queue mes-sages to many distinct calendars. Each calendar receiving the message will process the invitation in its own transaction which updates the invitee’s state and deletes the message.（对于日历来说，每个日历就是单独的EG。如果需要跨calendar发送invitation的话，那么inviter会将这个invitation作为一个transaction发送给其他日历，其他日历接受到了这个transaction之后的话就会更新并且删除消息） <b>NOTE（dirlt）：最终一致性</b>
+<li>Queues offer a way to perform operations that affect many entity groups. For example, consider a calendar application in which each calendar has a distinct entity group, and we want to send an invitation to a group of calendars. A sin-gle transaction can atomically send invitation queue mes-sages to many distinct calendars. Each calendar receiving the message will process the invitation in its own transaction which updates the invitee’s state and deletes the message.（对于日历来说，每个日历就是单独的EG。如果需要跨calendar发送invitation的话，那么inviter会将这个invitation作为一个transaction发送给其他日历，其他日历接受到了这个transaction之后的话就会更新并且删除消息） <b>note(dirlt)：最终一致性</b>
 </li>
 </ul>
 
@@ -495,7 +495,7 @@
 <div class="outline-text-4" id="text-1-4-4">
 
 <ul>
-<li>We have built a tight integration with Bigtable’s full-text index in which updates and searches participate in Megas-tore’s transactions and multiversion concurrency. A full-text index declared in a Megastore schema can index a table’s text or other application-generated attributes.（全文索引 <b>TODO（dirlt）：为啥我觉得这个东西没啥用途呢？</b> ）
+<li>We have built a tight integration with Bigtable’s full-text index in which updates and searches participate in Megas-tore’s transactions and multiversion concurrency. A full-text index declared in a Megastore schema can index a table’s text or other application-generated attributes.（全文索引 <b>todo(dirlt)：为啥我觉得这个东西没啥用途呢？</b> ）
 </li>
 <li>Synchronous replication is sufficient defense against the most common corruptions and accidents, but backups can be invaluable in cases of programmer or operator error. Megas-tore’s integrated backup system supports periodic full snap-shots as well as incremental backup of transaction logs. The restore process can bring back an entity group’s state to any point in time, optionally omitting selected log entries (as after accidental deletes). The backup system complies with legal and common sense principles for expiring deleted data.（内置backup systems能够定期地做snapshot或者是增量地backup transaction log）
 </li>
@@ -516,7 +516,7 @@
 <p>This section details the heart of our synchronous replica-tion scheme: a low-latency implementation of Paxos.
 </p>
 <p>
-<b>TODO（dirlt）：这个replication算法应该非常巧妙，实现paxos，要求延迟低，同时reader还要能够观察到某个transaction是否已经ack以及apply</b>
+<b>todo(dirlt)：这个replication算法应该非常巧妙，实现paxos，要求延迟低，同时reader还要能够观察到某个transaction是否已经ack以及apply</b>
 </p>
 </div>
 
@@ -529,7 +529,7 @@
 <ul>
 <li>But the most effective bug-finding tool was our network simulator: the pseudo-random test framework. It is capable of exploring the space of all possible orderings and delays of communications between simulated nodes or threads, and deterministically reproducing the same behav-ior given the same seed. Bugs were exposed by finding a problematic sequence of events triggering an assertion fail-ure (or incorrect result), often with enough log and trace information to diagnose the problem, which was then added to the suite of unit tests. While an exhaustive search of the scheduling state space is impossible, the pseudo-random simulation explores more than is practical by other means. Through running thousands of simulated hours of operation each night, the tests have found many surprising problems （伪随机测试框架可以用来枚举所有节点以及线程之间的通信顺序以及之间的延迟） 
 </li>
-<li>The term “high availability” usually signifies the ability to mask faults to make a collection of systems more reli-able than the individual systems. While fault tolerance is a highly desired goal, it comes with it its own pitfalls: it often hides persistent underlying problems. We have a saying in the group: “Fault tolerance is fault masking”. Too often, the resilience of our system coupled with insufficient vigi-lance in tracking the underlying faults leads to unexpected problems: small transient errors on top of persistent uncor-rected problems cause significantly larger problems. <b>NOTE（dirlt）：high availability有时候会掩盖很多系统本身出现的问题，不过这点也可以这么理解，所谓的fault不仅仅包含machine failure也还包含code bug。但是HA有时候会让我们忽略到code bug，而这些bug往往会导致更大的问题</b>
+<li>The term “high availability” usually signifies the ability to mask faults to make a collection of systems more reli-able than the individual systems. While fault tolerance is a highly desired goal, it comes with it its own pitfalls: it often hides persistent underlying problems. We have a saying in the group: “Fault tolerance is fault masking”. Too often, the resilience of our system coupled with insufficient vigi-lance in tracking the underlying faults leads to unexpected problems: small transient errors on top of persistent uncor-rected problems cause significantly larger problems. <b>note(dirlt)：high availability有时候会掩盖很多系统本身出现的问题，不过这点也可以这么理解，所谓的fault不仅仅包含machine failure也还包含code bug。但是HA有时候会让我们忽略到code bug，而这些bug往往会导致更大的问题</b>
 </li>
 </ul>
 
@@ -545,7 +545,7 @@
 <ul>
 <li>Recently, there has been increasing interest in NoSQL data storage systems to meet the demand of large web ap-plications. Representative work includes Bigtable, Cas-sandra, and Yahoo PNUTS. In these systems, scal-ability is achieved by sacrificing one or more properties of traditional RDBMS systems, e.g., transactions, schema sup-port, query capability. 都通过牺牲一些传统的RDBMS的特性来达到扩展性比如事务，schema，以及query能力（复杂的SQL查询以及运算等） These systems often reduce the scope of transactions to the granularity of single key access and thus place a significant hurdle to building appli-cations （事务粒度仅仅是到了row级别，这样为应用程序造成了一定的负担）Some systems extend the scope of transac-tions to multiple rows within a single table, for example the Amazon SimpleDB uses the concept of domain as the transactional unit. （而另外一些系统级别则放宽到了多列比如Amazon SimpleDB使用domain来作为事务单元） Yet such efforts are still limited because transactions cannot cross tables or scale arbitrarily.（但是依然不能够跨表来完成事务） More-over, most current scalable data storage systems lack the rich data model of an RDBMS, which increases the burden on developers. （更重要的是缺乏丰富的data model以及query能力给开发人员造成的负担）
 </li>
-<li>Data replication across geographically distributed data-centers is an indispensable means of improving availability in state-of-the-art storage systems. （使用跨地域地方来进行data replication是必要的手段） Most prevailing data storage systems use asynchronous replication schemes with a weaker consistency model. For example, Cassandra, HBase, CouchDB, and Dynamo use an eventual consistency model and PNUTS uses “timeline” consistency （使用timeline一致性 <b>TODO（dirlt）：？？？</b> ） Until recently, few have used Paxos to achieve synchronous replication. SCALARIS is one example that uses the Paxos commit protocol to implement replication for a distrib-uted hash table. Keyspace also uses Paxos to imple-ment replication on a generic key-value store.（这几个系统都使用paxos实现了数据上的replication)
+<li>Data replication across geographically distributed data-centers is an indispensable means of improving availability in state-of-the-art storage systems. （使用跨地域地方来进行data replication是必要的手段） Most prevailing data storage systems use asynchronous replication schemes with a weaker consistency model. For example, Cassandra, HBase, CouchDB, and Dynamo use an eventual consistency model and PNUTS uses “timeline” consistency （使用timeline一致性 <b>todo(dirlt)：？？？</b> ） Until recently, few have used Paxos to achieve synchronous replication. SCALARIS is one example that uses the Paxos commit protocol to implement replication for a distrib-uted hash table. Keyspace also uses Paxos to imple-ment replication on a generic key-value store.（这几个系统都使用paxos实现了数据上的replication)
 </li>
 </ul>
 
@@ -564,8 +564,8 @@
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-19T14:35+0800</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
+<p class="date">Date: 2014-04-15T09:14+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

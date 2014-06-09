@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="mongodb"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-19T14:35+0800"/>
+<meta name="generated" content="2014-04-15T09:14+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -248,12 +248,12 @@ drwxrwxr-x 4 dirlt dirlt 4.0K  6月  1 11:48 ../
 </pre>
 
 <p>
-journal功能会预分配3G文件。NOTE(dirlt):其实对这个部分的机制还不是非常了解.此外如果对于数据部分会存在这种问题的话，那么对于btree索引部分也应该会存在这个问题。
+journal功能会预分配3G文件。note(dirlt):其实对这个部分的机制还不是非常了解.此外如果对于数据部分会存在这种问题的话，那么对于btree索引部分也应该会存在这个问题。
 但是从代码上来看的话似乎没有对于索引有所journal操作。其实对于这个问题的不理解，最终是因为对于mmap造成的问题不了解。
 </p>
 <p>
 mongodb底层使用btree来进行索引.btree放在内存所以操作非常快(也是使用mmap来完成的)。对于多维索引比如k1,k2的话，从上面文章分析来看，应该是使用(k1,k2)复合key来作为主键的。
-NOTE(dirlt):应该大部分的RDBMS也是这种实现方式来实现复合索引的，本质上这种方式依然是单键索引。不能很好地解决部分匹配查询以及多键范围查询等操作。如果索引过大的话会造成频繁swap这点是需要注意的。
+note(dirlt):应该大部分的RDBMS也是这种实现方式来实现复合索引的，本质上这种方式依然是单键索引。不能很好地解决部分匹配查询以及多键范围查询等操作。如果索引过大的话会造成频繁swap这点是需要注意的。
 </p>
 <p>
 对于query的话，如果这个collection可以有多个index使用的话，那么mdb首次会针对不同的index生成多个query plan同时执行。一旦最快的plan返回的话然后取消其他的查询方案，
@@ -395,15 +395,15 @@ Within the replica set, members are interconnected with each other to exchange h
 <h3 id="sec-1-7"><span class="section-number-3">1.7</span> 代码分析</h3>
 <div class="outline-text-3" id="text-1-7">
 
-<p>TODO(dirlt):
+<p>todo(dirlt):
 </p></div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-19T14:35+0800</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
+<p class="date">Date: 2014-04-15T09:14+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

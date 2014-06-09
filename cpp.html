@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="cpp"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-28T16:51+0800"/>
+<meta name="generated" content="2014-05-07T13:17+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -199,7 +199,7 @@ OOP允许程序员用问题本身的属于来描述问题，而不是要用运�
 </li>
 <li>默认的new还进行检查以确信在传递地址给构造函数之前内存分配成功
 </li>
-<li>允许重载全局new/delete和某个类的new/delete 
+<li>允许重载全局new/delete和某个类的new/delete
 </li>
 </ul>
 
@@ -274,7 +274,7 @@ int main(){
 
 
 
-<pre class="src src-C++">void* operator new(std::size_t, const std::nothrow_t&amp;) throw(); 
+<pre class="src src-C++">void* operator new(std::size_t, const std::nothrow_t&amp;) throw();
 </pre>
 
 <p>
@@ -375,7 +375,7 @@ new_handler set_new_handler(new_handler) throw();
 当然错误信息并不是非常的优美，但是已经提供了足够多的信息了。不过这种编译断言可能只是比较适合用于简单断言比如sizeof等，对于复杂断言话可能还是需要依赖于configure这种工具比如系统是否有libunwind库。
 </p>
 <p>
-<b>NOTE（dirlt）：c++0x开始在语言层面上支持static_assert. &ndash;std=c++0x</b>
+<b>note(dirlt)：c++0x开始在语言层面上支持static_assert. &ndash;std=c++0x</b>
 </p>
 </div>
 
@@ -422,7 +422,7 @@ int main() {
 
 <pre class="example">[dirlt@localhost ~]$ ./a.out
 0xbff031b0
-0xbff031b0 
+0xbff031b0
 </pre>
 
 
@@ -473,7 +473,7 @@ int main() {
 
 <pre class="example">[dirlt@localhost ~]$ ./a.out
 o:0xbfff9aa0 pb-&gt;g:0xbfff9aa0
-c:0xbfff9a9c c.g:0xbfff9aa0 
+c:0xbfff9a9c c.g:0xbfff9aa0
 </pre>
 
 
@@ -545,7 +545,7 @@ class A{
   }
 };
 void foo(){
-  static A a;  
+  static A a;
 }
 int main(){
   foo();
@@ -570,10 +570,10 @@ _Z3foov:
 .LCFI4:
         subq    $32, %rsp
 .LCFI5:
-        cmpb    $0, _ZGVZ3foovE1a(%rip) 
+        cmpb    $0, _ZGVZ3foovE1a(%rip)
         jne     .L10
         movl    $_ZGVZ3foovE1a, %edi
-        call    __cxa_guard_acquire 
+        call    __cxa_guard_acquire
         testl   %eax, %eax
         je      .L10
         movb    $0, -1(%rbp)
@@ -582,7 +582,7 @@ _Z3foov:
         call    _ZN1AC1Ev
 .LEHE0:
         movl    $_ZGVZ3foovE1a, %edi
-        call    __cxa_guard_release 
+        call    __cxa_guard_release
         jmp     .L10
 .L19:
         movq    %rax, -24(%rbp)
@@ -625,7 +625,7 @@ _Z3foov:
 <ul>
 <li>__cyg_profile_func_enter
 </li>
-<li>__cyg_profile_func_exit 
+<li>__cyg_profile_func_exit
 </li>
 </ul>
 
@@ -685,7 +685,7 @@ extern <span class="org-string">"C"</span> {
 void* malloc(size_t size){
     write(2,<span class="org-string">"do malloc\n"</span>,strlen(<span class="org-string">"do malloc\n"</span>)+1); // &#36825;&#37324;&#19981;&#33021;&#22815;&#29992;printf,&#22240;&#20026;&#20869;&#37096;&#21487;&#33021;&#20250;&#35843;&#29992;malloc
     static void* (*pmalloc)(size_t size)=0;
-    if(!pmalloc){        
+    if(!pmalloc){
         pmalloc=(void*(*)(size_t size))(dlsym(RTLD_NEXT,<span class="org-string">"malloc"</span>));
     }
     return pmalloc(size);
@@ -693,8 +693,8 @@ void* malloc(size_t size){
 
 void free(void *p){
     write(2,<span class="org-string">"do free\n"</span>,strlen(<span class="org-string">"do free\n"</span>)+1);
-    static void (*pfree)(void* p)=0;    
-    if(!pfree){        
+    static void (*pfree)(void* p)=0;
+    if(!pfree){
         pfree=(void(*)(void* p))(dlsym(RTLD_NEXT,<span class="org-string">"free"</span>));
     }
     return pfree(p);
@@ -824,7 +824,7 @@ x.push(boost::bind(&amp;B::fun,&amp;b,_1,456));
 <h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> boost::spirit</h4>
 <div class="outline-text-4" id="text-1-5-2">
 
-<p>今天被Dr. Yang推荐使用boost::spirit，模板编程实现的语法解析器。Dr. Yang推荐我看看hypertable里面实现的hql，里面就是使用spirit实现的hql(hypertable query language)，在src/cc/Hypertable/Lib/HqlParser.h里面。粗看一下功能还是非常强大的，对于很多使用flex/bison完成的工作都可以通过spirit来完成。看上去是LALR解析器，现在不太清楚就是如果出现shift/reduce或者是reduce/reduce冲突的话spirit是怎么解决的。NOTE(dirlt):事实上是LL解析器，而且如果没有猜错应该是LL(1)解析器。
+<p>今天被Dr. Yang推荐使用boost::spirit，模板编程实现的语法解析器。Dr. Yang推荐我看看hypertable里面实现的hql，里面就是使用spirit实现的hql(hypertable query language)，在src/cc/Hypertable/Lib/HqlParser.h里面。粗看一下功能还是非常强大的，对于很多使用flex/bison完成的工作都可以通过spirit来完成。看上去是LALR解析器，现在不太清楚就是如果出现shift/reduce或者是reduce/reduce冲突的话spirit是怎么解决的。note(dirlt):事实上是LL解析器，而且如果没有猜错应该是LL(1)解析器。
 </p>
 <p>
 对于action的话需要单独编写function object来完成，operator()是这个grammar对应的字符串。定义ParserState来构建语法树是一个好主意。对于里面更多的细节现在还是不太了解，关于入门使用可以查看代码中的链接或者documentation.
@@ -873,7 +873,7 @@ x.push(boost::bind(&amp;B::fun,&amp;b,_1,456));
 
 
 <p>
-具体代码可以参考 <a href="https://github.com/dirtysalt/sperm/blob/master/code/cc/common/proto_dynamic.h">code/cc/common/proto_dynamic.h</a> 以及 <a href="https://github.com/dirtysalt/sperm/blob/master/code/cc/common/test/test_proto_dynamic.cc">code/cc/common/test/test_proto_dynamic.cc</a>
+具体代码可以参考 <a href="https://github.com/dirtysalt/sperm/blob/master/code/cc/playboard/test_proto_dynamic.cc">code/cc/playboard/test_proto_dynamic.cc</a>
 </p>
 </div>
 </div>
@@ -891,7 +891,7 @@ x.push(boost::bind(&amp;B::fun,&amp;b,_1,456));
 <h4 id="sec-1-6-1"><span class="section-number-4">1.6.1</span> 诡异的性能问题</h4>
 <div class="outline-text-4" id="text-1-6-1">
 
-<p><b>NOTE（dirlt）：现在我觉得可能是glibc的问题，而非编译器的问题</b>
+<p><b>note(dirlt)：现在我觉得可能是glibc的问题，而非编译器的问题</b>
 </p>
 <p>
 程序代码如下。程序非常简单，action是为了测试一下以string为key的map性能，action2是为了测试一下以int为key的map性能。然后我们分两组测试运行：
@@ -926,7 +926,7 @@ static const int NUMBER = 10000000;
 static const char* PREFIX = <span class="org-string">"s"</span>;
 
 static void action() {
-  double start = gettime_ms();  
+  double start = gettime_ms();
   map&lt;string, long&gt; dict;
   char buf[64];
   char buf2[64];
@@ -944,7 +944,7 @@ static void action() {
 }
 
 static void action2() {
-  double start = gettime_ms();  
+  double start = gettime_ms();
   map&lt;int, long&gt; dict;
   for(int i = 0; i &lt; NUMBER; i++) {
     dict[i] = i;
@@ -953,7 +953,7 @@ static void action2() {
     dict[i] += dict[(i + 1000) % NUMBER];
   }
   double end = gettime_ms();
-  printf(<span class="org-string">"%.2lf\n"</span>, end - start);  
+  printf(<span class="org-string">"%.2lf\n"</span>, end - start);
 }
 
 int main() {
@@ -969,12 +969,12 @@ int main() {
 </p>
 
 
-<pre class="example">➜  playboard git:(master) ✗ g++ map_perf_test.cc -O2             
-➜  playboard git:(master) ✗ ./a.out 
+<pre class="example">➜  playboard git:(master) ✗ g++ map_perf_test.cc -O2
+➜  playboard git:(master) ✗ ./a.out
 19764.38
 2957.30
 ➜  playboard git:(master) ✗ g++ map_perf_test.cc -O2
-➜  playboard git:(master) ✗ ./a.out                 
+➜  playboard git:(master) ✗ ./a.out
 8521.25
 </pre>
 
@@ -985,11 +985,11 @@ int main() {
 
 
 <pre class="example">➜  playboard git:(master) ✗ clang++ map_perf_test.cc -O2
-➜  playboard git:(master) ✗ ./a.out 
+➜  playboard git:(master) ✗ ./a.out
 19494.99
 3052.83
 ➜  playboard git:(master) ✗ clang++ map_perf_test.cc -O2
-➜  playboard git:(master) ✗ ./a.out 
+➜  playboard git:(master) ✗ ./a.out
 8495.00
 </pre>
 
@@ -1010,7 +1010,7 @@ playboard git:(master) ✗ g++ map_perf_test.cc -O2
 
 
 <p>
-<b>NOTE(dirlt):另外我让同事在其他机器上使用g++3.4.5编译运行，时间差别也非常大</b>
+<b>note(dirlt):另外我让同事在其他机器上使用g++3.4.5编译运行，时间差别也非常大</b>
 </p>
 
 <hr/>
@@ -1027,15 +1027,14 @@ playboard git:(master) ✗ g++ map_perf_test.cc -O2
 </ul>
 
 <p>改用 <a href="tcmalloc.html">tcmalloc</a> 之后没有这个问题了。tcmalloc调用brk（541次），mmap（500次）。
-</p>
-</div>
+</p></div>
 </div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-28T16:51+0800</p>
+<p class="date">Date: 2014-05-07T13:17+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

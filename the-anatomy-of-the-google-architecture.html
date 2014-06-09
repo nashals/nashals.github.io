@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="The Anatomy Of The Google Architecture"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-19T14:34+0800"/>
+<meta name="generated" content="2014-04-15T09:13+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -235,7 +235,7 @@ The Google Philosophy
 <p><img src="images/google-architecture-rack.png"  alt="./images/google-architecture-rack.png" />
 </p>
 <p>
-<b>NOTE（dirlt）：在空间以及冷却系统上面减少成本</b>
+<b>note(dirlt)：在空间以及冷却系统上面减少成本</b>
 </p><ul>
 <li>Mini Server Size
 <ul>
@@ -263,7 +263,7 @@ The Google Philosophy
 <ul>
 <li>servers have no casing - just bare boards（没有盖子）
 </li>
-<li>assist with heat dispersal issues <b>NOTE(dirlt):???</b>
+<li>assist with heat dispersal issues <b>note(dirlt):???</b>
 </li>
 </ul>
 
@@ -279,7 +279,7 @@ The Google Philosophy
 <h4 id="sec-1-1-4"><span class="section-number-4">1.1.4</span> Hardware</h4>
 <div class="outline-text-4" id="text-1-1-4">
 
-<p><b>NOTE（dirlt）：配置都非常普通</b>
+<p><b>note(dirlt)：配置都非常普通</b>
 </p><ul>
 <li>2U Low-Cost (but not slow) Commodity Servers 
 <ul>
@@ -350,7 +350,7 @@ The Google Philosophy
 </li>
 <li>Custom gPXE bootloader 
 <ul>
-<li><b>NOTE（dirlt）：open-source network booting software</b>
+<li><b>note(dirlt)：open-source network booting software</b>
 </li>
 </ul>
 
@@ -364,7 +364,7 @@ The Google Philosophy
 <ul>
 <li>tcmalloc - replaces glibc 2.3 malloc - much faster! works very well with threads&hellip;
 </li>
-<li>rpc - the rpc layer extensively modified to provide &gt; perf increase &lt; latency (52%/40%) <b>TODO（dirlt）：？？？</b>
+<li>rpc - the rpc layer extensively modified to provide &gt; perf increase &lt; latency (52%/40%) <b>todo(dirlt)：？？？</b>
 </li>
 <li>Significantly modified Kernel and Subsystems - all IPv6 enabled
 </li>
@@ -474,7 +474,7 @@ Software:
 <ul>
 <li>Increased Scalability (across Namespace/Datacenters) 
 <ul>
-<li>Tablets spread over DC s for a table but expensive (both computationally and financially!) <b>NOTE（dirlt）：对于tablet跨数据中心的话代价非常大</b>
+<li>Tablets spread over DC s for a table but expensive (both computationally and financially!) <b>note(dirlt)：对于tablet跨数据中心的话代价非常大</b>
 </li>
 </ul>
 
@@ -529,7 +529,7 @@ Software:
 </li>
 <li>Arbitrates (process priorities) Schedules, Allocates Resources, process failover, Reports status, collects results 优先级分配资源，处理failover，汇报状态
 <ul>
-<li><b>NOTE（dirlt）：这个非常类似hadoop后期要做的yarn</b>
+<li><b>note(dirlt)：这个非常类似hadoop后期要做的yarn</b>
 </li>
 </ul>
 
@@ -567,7 +567,7 @@ Software:
 </li>
 <li>Agile Methodologies Used (development iterations, teamwork, collaboration, and process adaptability throughout the life-cycle of the project) 敏捷开发？
 </li>
-<li>An infrastructure handles versioning of applications so they can be release without a fear of breaking things = roll out with minimal QA <b>NOTE（dirlt）：有专门的程序来处理程序版本之间兼容关系，持续集成？！</b>
+<li>An infrastructure handles versioning of applications so they can be release without a fear of breaking things = roll out with minimal QA <b>note(dirlt)：有专门的程序来处理程序版本之间兼容关系，持续集成？！</b>
 </li>
 </ul>
 
@@ -577,8 +577,8 @@ Software:
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-19T14:34+0800</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
+<p class="date">Date: 2014-04-15T09:13+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

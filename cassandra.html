@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="cassandra"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-19T14:36+0800"/>
+<meta name="generated" content="2014-04-15T09:14+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -164,7 +164,7 @@
 <ul>
 <li>Cassandra exposes two kinds of columns families, Simple and Super column families. 
 </li>
-<li>Super column families can be visualized as a column family within a column family. <b>NOTE（dirlt）：已经废弃了。现在data model应该是和big table完全一致了</b>
+<li>Super column families can be visualized as a column family within a column family. <b>note(dirlt)：已经废弃了。现在data model应该是和big table完全一致了</b>
 </li>
 </ul>
 
@@ -207,7 +207,7 @@
 <ul>
 <li id="sec-1-1-6-1">Partitioning<br/>
 <ul>
-<li>Cassandra partitions data across the cluster using consistent hashing but uses an <b>order pre-serving hash function</b> to do so. TODO(dirlt):???
+<li>Cassandra partitions data across the cluster using consistent hashing but uses an <b>order pre-serving hash function</b> to do so. todo(dirlt):???
 </li>
 <li>The basic consistent hashing algorithm presents some challenges.
 <ul>
@@ -224,7 +224,7 @@
 </li>
 <li>and the second is to analyze load information on the ring and have lightly loaded nodes move on the ring to alleviate heavily loaded nodes as described in. 
 </li>
-<li>Cassandra opts for the latter as it makes the design and implementation very tractable and helps to make very deterministic choices about load balanc-ing. NOTE（dirlt）：似乎第二种办法更加不靠谱）
+<li>Cassandra opts for the latter as it makes the design and implementation very tractable and helps to make very deterministic choices about load balanc-ing. note(dirlt)：似乎第二种办法更加不靠谱）
 </li>
 </ul>
 
@@ -270,7 +270,7 @@
 <ul>
 <li>When a node starts for the first time, it chooses a random token for its position in the ring. For fault tolerance, the mapping is persisted to disk locally and also in Zookeeper. The token information is then gossiped around the cluster. This is how we know about all nodes and their respective po-sitions in the ring. This enables any node to route a request for a key to the correct node in the cluster. 
 </li>
-<li>In the bootstrap case, when a node needs to join a cluster, it reads its configu-ration file which contains a list of a few contact points within the cluster. We call these initial contact points, seeds of the cluster. Seeds can also come from a configuration service like Zookeeper. TODO（dirlt）：难道这个过程不是和新加节点相同吗？为什么这里还需要有额外的seed nodes?
+<li>In the bootstrap case, when a node needs to join a cluster, it reads its configu-ration file which contains a list of a few contact points within the cluster. We call these initial contact points, seeds of the cluster. Seeds can also come from a configuration service like Zookeeper. todo(dirlt)：难道这个过程不是和新加节点相同吗？为什么这里还需要有额外的seed nodes?
 </li>
 </ul>
 
@@ -292,7 +292,7 @@
 <ul>
 <li>We have a dedicated disk on each machine for the commit log since all writes into the commit log are sequential and so we can maximize disk throughput.（有专门的硬盘来写入commit log）
 </li>
-<li>In order to prevent scanning of every column on disk we maintain column indices which allow us to jump to the right chunk on disk for column retrieval. As the columns for a given key are being serialized and written out to disk we generate indices at every 256K chunk boundary. This boundary is configurable, but we have found 256K to work well for us in our production workloads. TODO（dirlt）：不是特别理解这个实现？可能实现上和leveldb还不太一样，所以需要为column做索引
+<li>In order to prevent scanning of every column on disk we maintain column indices which allow us to jump to the right chunk on disk for column retrieval. As the columns for a given key are being serialized and written out to disk we generate indices at every 256K chunk boundary. This boundary is configurable, but we have found 256K to work well for us in our production workloads. todo(dirlt)：不是特别理解这个实现？可能实现上和leveldb还不太一样，所以需要为column做索引
 </li>
 </ul>
 
@@ -350,15 +350,15 @@
 <h3 id="sec-1-2"><span class="section-number-3">1.2</span> Facebook’s Cassandra paper, annotated and compared to Apache Cassandra 2.0</h3>
 <div class="outline-text-3" id="text-1-2">
 
-<p>TODO（dirlt）：
+<p>todo(dirlt)：
 </p></div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-19T14:36+0800</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
+<p class="date">Date: 2014-04-15T09:14+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

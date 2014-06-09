@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="MapReduce Online"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-19T14:35+0800"/>
+<meta name="generated" content="2014-04-15T09:14+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -151,7 +151,7 @@
 
 
 <p>
-<b>NOTE（dirlt）：文章后面会讲到这三个特性分别是用来做什么的，以及如何做到的</b> 
+<b>note(dirlt)：文章后面会讲到这三个特性分别是用来做什么的，以及如何做到的</b> 
 </p>
 </div>
 
@@ -354,7 +354,7 @@ While the algorithm described above is straightforward, it suffers from several 
 </li>
 <li>If a reduce task fails and a new copy of the task is started, the new reduce instance must be sent all the in- put data that was sent to the failed reduce attempt.
 </li>
-<li>Our technique for recovering from map task failure is straightforward, but places a minor limit on the reducer’s ability to merge spill files. To avoid this, we envision in- troducing a “checkpoint” concept: as a map task runs, it will periodically notify the JobTracker that it has reached offset x in its input split. 为了更快地进行failover，mapper进行bookkeep做checkpoint, 下次运行从某个offset开始运行并且只是发送增量的数据。 <b>NOTE（dirlt）：但是这样存在比较严重的问题就是，mapper是无状态的，如果是有状态的话这样是不行的。而对于framework来说是不允许这样的</b>
+<li>Our technique for recovering from map task failure is straightforward, but places a minor limit on the reducer’s ability to merge spill files. To avoid this, we envision in- troducing a “checkpoint” concept: as a map task runs, it will periodically notify the JobTracker that it has reached offset x in its input split. 为了更快地进行failover，mapper进行bookkeep做checkpoint, 下次运行从某个offset开始运行并且只是发送增量的数据。 <b>note(dirlt)：但是这样存在比较严重的问题就是，mapper是无状态的，如果是有状态的话这样是不行的。而对于framework来说是不允许这样的</b>
 </li>
 </ul>
 
@@ -406,9 +406,9 @@ We show that online aggregation has a minimal impact on job completion times, an
 </li>
 <li>Note that if there are not enough free slots to allow all the reduce tasks in a job to be scheduled, snapshots will not be available for reduce tasks that are still waiting to be executed. The user can detect this situation (e.g. by checking for the expected number of files in the HDFS snapshot directory), so there is no risk of incorrect data, but the usefulness of online aggregation will be compro- mised. （这是一个非常实际的情况，就是说如果progress已经到了25%，但是实际上只有部分reduce执行完成，部分reducer因为slot原因没有调度上，也就是说整个snapshot结果是具有偏袒性的，不能够作为全量数据的approximation。这样的话结果虽然是正确的，但是snapshot意义就不是很大）。 
 <ul>
-<li><b>NOTE（dirlt）：其实我在想，即使不是槽位问题，也有可能一些reduce执行过快一些执行过慢，实际上也还是不均匀的</b>  
+<li><b>note(dirlt)：其实我在想，即使不是槽位问题，也有可能一些reduce执行过快一些执行过慢，实际上也还是不均匀的</b>  
 </li>
-<li><b>NOTE(dirlt):可能是我理解错这里的意思了，应该是对于每个reduce来计算progress score. 如果单个reduce到达了progress score的话那么就可是计算。但是用户如果想要得到有意义的值的话，那么必须等到snaphsot中每个reduce都计算完成才有意义。</b>
+<li><b>note(dirlt):可能是我理解错这里的意思了，应该是对于每个reduce来计算progress score. 如果单个reduce到达了progress score的话那么就可是计算。但是用户如果想要得到有意义的值的话，那么必须等到snaphsot中每个reduce都计算完成才有意义。</b>
 </li>
 </ul>
 
@@ -421,7 +421,7 @@ We show that online aggregation has a minimal impact on job completion times, an
 <ul>
 <li>As each map task executes, it is assigned a progress score in the range [0,1], based on how much of its input the map task has consumed. （每个mapper根据input/output计算一个progress score)
 </li>
-<li>if a reducer is connected to 1/n of the total number of map tasks in the job, we divide the average progress score by n. （每个reducer如果只是链接上了1/n部分的mapper的话，那么progress scroe需要除以n） *NOTE(dirlt):这是非常显然的，其实reduce进度是(m1 + m2 + m3 + &hellip; mn)/n. 其中mi表示mapper i的progress.
+<li>if a reducer is connected to 1/n of the total number of map tasks in the job, we divide the average progress score by n. （每个reducer如果只是链接上了1/n部分的mapper的话，那么progress scroe需要除以n） *note(dirlt):这是非常显然的，其实reduce进度是(m1 + m2 + m3 + &hellip; mn)/n. 其中mi表示mapper i的progress.
 </li>
 </ul>
 
@@ -491,7 +491,7 @@ We show that online aggregation has a minimal impact on job completion times, an
 <h4 id="sec-1-6-2"><span class="section-number-4">1.6.2</span> Fault Tolerance</h4>
 <div class="outline-text-4" id="text-1-6-2">
 
-<p><b>NOTE（dirlt）：这里只需要考虑reduce挂掉的情况。注意方式1重跑是会带有副作用的，而方式2重跑是没有副作用的</b>
+<p><b>note(dirlt)：这里只需要考虑reduce挂掉的情况。注意方式1重跑是会带有副作用的，而方式2重跑是没有副作用的</b>
 </p>
 <ul>
 <li>However, many continu- ous reduce functions (e.g., 30-second moving average) only depend on a suffix of the history of the map stream. This common case can be supported easily, by extending the JobTracker interface to capture a rolling notion of re- ducer consumption. Map-side spill files are maintained in a ring buffer with unique IDs for spill files over time. When a reducer commits an output to HDFS, it informs the JobTracker about the run of map output records it no longer needs, identifying the run by spill file IDs and offsets within those files. The JobTracker then can tell mappers to delete the appropriate data. （对于reducer只需要过去少量时间输入就可以恢复的，那么mapper spill file可以存储为ring buffer格式，定期删除一些已经没有用的） 
@@ -567,8 +567,8 @@ We show that online aggregation has a minimal impact on job completion times, an
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-19T14:35+0800</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
+<p class="date">Date: 2014-04-15T09:14+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

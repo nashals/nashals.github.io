@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="galera"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-28T16:51+0800"/>
+<meta name="generated" content="2014-05-10T19:33+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -80,56 +80,41 @@
 <li><a href="galera.html#sec-1">1 galera</a>
 <ul>
 <li><a href="galera.html#sec-1-1">1.1 Links &amp; Abbr.</a></li>
-<li><a href="galera.html#sec-1-2">1.2 wsrep API Annotation</a>
+<li><a href="galera.html#sec-1-2">1.2 Replicator Architecture</a></li>
+<li><a href="galera.html#sec-1-3">1.3 Synchonization Mechanism</a>
 <ul>
-<li><a href="galera.html#sec-1-2-1">1.2.1 file layout</a></li>
-<li><a href="galera.html#sec-1-2-2">1.2.2 concept</a></li>
-<li><a href="galera.html#sec-1-2-3">1.2.3 wsrep_init_args</a></li>
-<li><a href="galera.html#sec-1-2-4">1.2.4 wsrep_t</a></li>
+<li><a href="galera.html#sec-1-3-1">1.3.1 Virtual Synchrony</a></li>
+<li><a href="galera.html#sec-1-3-2">1.3.2 Finite State Machine</a></li>
+<li><a href="galera.html#sec-1-3-3">1.3.3 Flow Control</a></li>
+<li><a href="galera.html#sec-1-3-4">1.3.4 Writeset Cache</a></li>
+<li><a href="galera.html#sec-1-3-5">1.3.5 Snapshot Transfer</a></li>
+<li><a href="galera.html#sec-1-3-6">1.3.6 Parallel Applying</a></li>
+<li><a href="galera.html#sec-1-3-7">1.3.7 Primary Component</a></li>
+<li><a href="galera.html#sec-1-3-8">1.3.8 Online Schema Upgrade</a></li>
 </ul>
 </li>
-<li><a href="galera.html#sec-1-3">1.3 Patched MySQL(mysql-wsrep) 5.6</a>
+<li><a href="galera.html#sec-1-4">1.4 Certification Based Replication</a>
 <ul>
-<li><a href="galera.html#sec-1-3-1">1.3.1 wsrep callbacks</a></li>
+<li><a href="galera.html#sec-1-4-1">1.4.1 Introduction</a></li>
+<li><a href="galera.html#sec-1-4-2">1.4.2 Consistent read(read causality)</a></li>
+<li><a href="galera.html#sec-1-4-3">1.4.3 Multi-Master Conflicts</a></li>
 </ul>
 </li>
-<li><a href="galera.html#sec-1-4">1.4 Replicator Architecture</a></li>
-<li><a href="galera.html#sec-1-5">1.5 Synchonization Mechanism</a>
+<li><a href="galera.html#sec-1-5">1.5 Best Backup Practices</a></li>
+<li><a href="galera.html#sec-1-6">1.6 Miscellaneous</a>
 <ul>
-<li><a href="galera.html#sec-1-5-1">1.5.1 Virtual Synchrony</a></li>
-<li><a href="galera.html#sec-1-5-2">1.5.2 Finite State Machine</a></li>
-<li><a href="galera.html#sec-1-5-3">1.5.3 Flow Control</a></li>
-<li><a href="galera.html#sec-1-5-4">1.5.4 Writeset Cache</a></li>
-<li><a href="galera.html#sec-1-5-5">1.5.5 Snapshot Transfer</a></li>
-<li><a href="galera.html#sec-1-5-6">1.5.6 Parallel Applying</a></li>
-<li><a href="galera.html#sec-1-5-7">1.5.7 Primary Component</a></li>
-<li><a href="galera.html#sec-1-5-8">1.5.8 Online Schema Upgrade</a></li>
+<li><a href="galera.html#sec-1-6-1">1.6.1 Parameters</a></li>
+<li><a href="galera.html#sec-1-6-2">1.6.2 Status Variables</a></li>
+<li><a href="galera.html#sec-1-6-3">1.6.3 Notification</a></li>
+<li><a href="galera.html#sec-1-6-4">1.6.4 Limitations</a></li>
 </ul>
 </li>
-<li><a href="galera.html#sec-1-6">1.6 Certification Based Replication</a>
+<li><a href="galera.html#sec-1-7">1.7 Related Articles</a>
 <ul>
-<li><a href="galera.html#sec-1-6-1">1.6.1 Introduction</a></li>
-<li><a href="galera.html#sec-1-6-2">1.6.2 Consistent read(read causality)</a></li>
-<li><a href="galera.html#sec-1-6-3">1.6.3 Multi-Master Conflicts</a></li>
-</ul>
-</li>
-<li><a href="galera.html#sec-1-7">1.7 Miscellaneous</a>
-<ul>
-<li><a href="galera.html#sec-1-7-1">1.7.1 Parameters</a></li>
-<li><a href="galera.html#sec-1-7-2">1.7.2 Status Variables</a></li>
-<li><a href="galera.html#sec-1-7-3">1.7.3 Configuration</a></li>
-<li><a href="galera.html#sec-1-7-4">1.7.4 Monitoring</a></li>
-<li><a href="galera.html#sec-1-7-5">1.7.5 Notification</a></li>
-<li><a href="galera.html#sec-1-7-6">1.7.6 Backup</a></li>
-<li><a href="galera.html#sec-1-7-7">1.7.7 Limitations</a></li>
-</ul>
-</li>
-<li><a href="galera.html#sec-1-8">1.8 Related Articles</a>
-<ul>
-<li><a href="galera.html#sec-1-8-1">1.8.1 Commercial</a></li>
-<li><a href="galera.html#sec-1-8-2">1.8.2 Tech Issue</a></li>
-<li><a href="galera.html#sec-1-8-3">1.8.3 Bechmark</a></li>
-<li><a href="galera.html#sec-1-8-4">1.8.4 Presentation</a></li>
+<li><a href="galera.html#sec-1-7-1">1.7.1 Commercial Story</a></li>
+<li><a href="galera.html#sec-1-7-2">1.7.2 Tech Issue</a></li>
+<li><a href="galera.html#sec-1-7-3">1.7.3 Bechmark &amp; Performance</a></li>
+<li><a href="galera.html#sec-1-7-4">1.7.4 Presentation</a></li>
 </ul>
 </li>
 </ul>
@@ -153,7 +138,11 @@
 </p><ul>
 <li><a href="https://code.launchpad.net/~codership/wsrep/trunk">https://code.launchpad.net/~codership/wsrep/trunk</a>
 </li>
-<li><a href="https://code.launchpad.net/~codership/galera/3.x">https://code.launchpad.net/~codership/galera/3.x</a>
+<li><a href="https://code.launchpad.net/~codership/galera/3.x">https://code.launchpad.net/~codership/galera/3.x</a> (on lp)
+</li>
+<li><a href="https://github.com/codership/galera">https://github.com/codership/galera</a> (on github)
+</li>
+<li><a href="https://code.launchpad.net/~codership/codership-mysql/wsrep-5.5">https://code.launchpad.net/~codership/codership-mysql/wsrep-5.5</a>
 </li>
 <li><a href="https://code.launchpad.net/~codership/codership-mysql/5.6">https://code.launchpad.net/~codership/codership-mysql/5.6</a>
 </li>
@@ -177,7 +166,7 @@ Official
 
 
 <p>
-Misc(in Chinses)
+Misc(in Chinese)
 </p><ul>
 <li><a href="http://blog.chinaunix.net/uid-25206403-id-3912291.htm">http://blog.chinaunix.net/uid-25206403-id-3912291.htm</a>
 </li>
@@ -241,7 +230,7 @@ Info.(@2012)
 </li>
 <li>FromDual
 </li>
-<li>Monty Program
+<li>MontyProgram
 </li>
 <li>Capside
 </li>
@@ -258,322 +247,8 @@ Info.(@2012)
 </div>
 
 <div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> wsrep API Annotation</h3>
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Replicator Architecture</h3>
 <div class="outline-text-3" id="text-1-2">
-
-
-</div>
-
-<div id="outline-container-1-2-1" class="outline-4">
-<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> file layout</h4>
-<div class="outline-text-4" id="text-1-2-1">
-
-<ul>
-<li>wsrep_api.h # header
-</li>
-<li>wsrep_loader # load/unload wsrep_t
-<ul>
-<li>symbol=wsrep_loader
-</li>
-<li>type=int wsrep_loader_fun(wsrep_t*)
-</li>
-</ul>
-
-</li>
-<li>wsrep_dummy # example or stub
-</li>
-<li>wsrep_uuid # uuid helper
-</li>
-<li>wsrep_gtid # gtid helper
-</li>
-<li>wsrep_listener # event dumper, helpful to get whole picture.
-<ul>
-<li><a href="http://www.codership.com/wiki/doku.php?id=notification_command">http://www.codership.com/wiki/doku.php?id=notification_command</a> # NOTE（dirlt）：helpful？
-</li>
-</ul>
-
-</li>
-</ul>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-1-2-2" class="outline-4">
-<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> concept</h4>
-<div class="outline-text-4" id="text-1-2-2">
-
-<ul>
-<li>sst(snapshot state transfer)
-</li>
-<li>ist(incremental state transfer)
-</li>
-<li>logger
-</li>
-<li>provider
-<ul>
-<li>CAP(certain provider capabilities)
-</li>
-<li>flags
-</li>
-<li>status
-</li>
-</ul>
-
-</li>
-<li>uuid/gtid
-<ul>
-<li>UUID 节点状态改变及顺序的唯一标识 NOTE（dirlt）：集群建立之初的状态标记？
-</li>
-<li>GTID Global Transaction ID, 由UUID和偏移量组成 NOTE（dirlt）：以UUID为base，每次事务通过偏移量反应
-</li>
-<li>example: 45eec521-2f34-11e0-0800-2a36050b826b:94530586304
-</li>
-<li>undefined: 00000000-0000-0000-0000-000000000000:-1
-</li>
-<li>evolve: 00295a79-9c48-11e2-bdf0-9a916cbb9294:0 =&gt; 00295a79-9c48-11e2-bdf0-9a916cbb9294:1
-</li>
-</ul>
-
-</li>
-<li>group member（节点成员信息）
-</li>
-<li>group view(视图信息，比如整个集群有多少个节点，每个节点同步进度如何？） 
-</li>
-<li>wsrep_init_args(arguments)
-</li>
-<li>wsrep_t(interface)
-</li>
-</ul>
-
-
-
-<hr/>
-
-<ul>
-<li>Replication provider library
-<ul>
-<li>load/unload
-</li>
-<li>configuration
-</li>
-<li>status
-</li>
-</ul>
-
-</li>
-<li>Write set 
-<ul>
-<li>population calls
-</li>
-<li>replication calls (at commit)
-</li>
-</ul>
-
-</li>
-<li>Prioritized transactions
-<ul>
-<li>Lock queue modified
-</li>
-<li>Aborting local victims
-</li>
-</ul>
-
-</li>
-<li>TO isolation for DDL queries
-</li>
-</ul>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-1-2-3" class="outline-4">
-<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> wsrep_init_args</h4>
-<div class="outline-text-4" id="text-1-2-3">
-
-<p><b>NOTE（dirlt）；这个应该是和上层相关的实现比如MySQL，如何apply, commit等</b>
-</p>
-<ul>
-<li>(D)app_ctx 回调使用的context
-</li>
-<li>(D)node_name 当前节点/实例名称，对应变量wsrep_node_name
-</li>
-<li>(D)node_address 当前节点/实例地址，对应变量wsrep_node_address
-</li>
-<li>(D)node_incoming 对应变量wsrep_incoming_addresses <b>可以接受连接请求的节点</b>
-</li>
-<li>(D)data_dir 当前数据库的目录，对应变量wsrep_data_home_dir
-</li>
-<li>(D)options 选项
-</li>
-<li>(D)proto_ver 协议版本
-</li>
-<li>(D)state_id 应用初始状态id
-</li>
-<li>(D)state 应用初始状态数据
-</li>
-<li>logger_cb 打印日志回调（mysql来如何打印记录）
-</li>
-<li>view_handler_cb group vier变化回调
-</li>
-<li>apply_cb 
-</li>
-<li>commit_cb 
-</li>
-<li>unordered_cb 顺序无关操作
-</li>
-<li>sst_donate_cb 开始贡献
-</li>
-<li>synced_cb 和group做同步
-</li>
-</ul>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-1-2-4" class="outline-4">
-<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> wsrep_t</h4>
-<div class="outline-text-4" id="text-1-2-4">
-
-<p><b>NOTE（dirlt）：这个应该是和下层相关的实现比如Galera，它定义了整个replication的逻辑</b>
-</p>
-<ul>
-<li>(D)version 版本
-</li>
-<li>init 初始化 wsrep_init_args
-</li>
-<li>capabilities 支持功能
-</li>
-<li>options_set 设置选项
-</li>
-<li>options_get 获取选项
-</li>
-<li>connect 建立和集群的连接
-</li>
-<li>disconnect 断开和集群的连接
-</li>
-<li>recv 开始接收replication event. 正常情况下这个函数一直运行，期间执行其他操作，如果返回的话那么表明出错或者是退出。
-</li>
-<li>pre_commit 事务提交之前 （NOTE：向集群提交验证？）
-</li>
-<li>post_commit 事务提交之后
-</li>
-<li>post_rollback 事务回滚之后
-</li>
-<li>replay_trx 回放事务（自身回放事务）
-</li>
-<li>abort_pre_commit 中断事务提交之前
-</li>
-<li>append_key 将key添加到事务ws. 修改行对应的key，可以用来检测冲突。
-</li>
-<li>append_data 将data添加到事务ws. 修改行对应的value。
-</li>
-<li>casual_read  TODO（dirlt）：
-</li>
-<li>free_connection 释放链接
-</li>
-<li>to_execute_start 开始执行total order isolation事务（上锁）
-</li>
-<li>to_execute_end 结束执行total order isolation事务（解锁）
-</li>
-<li>preordered_collect 将预先排序的event收集到ws
-</li>
-<li>preordered_commit 将收集的ws commit到集群中
-</li>
-<li>sst_sent sst sst已经发送完毕
-</li>
-<li>sst_received sst已经接收完毕
-</li>
-<li>snapshot 请求产生snapshot
-</li>
-<li>stats_get 获取统计数据
-</li>
-<li>stats_free 释放统计数据
-</li>
-<li>stats_reset 重置统计数据
-</li>
-<li>pause 停止提交
-</li>
-<li>resume 恢复提交
-</li>
-<li>desync 断开集群同步
-</li>
-<li>resync 建立集群同步
-</li>
-<li>lock 获取全局锁
-</li>
-<li>unlock 释放全局锁
-</li>
-<li>is_locked 检测全局锁
-</li>
-<li>(D)provider_name 名称
-</li>
-<li>(D)provider_version 版本
-</li>
-<li>(D)provider_vendor 厂商
-</li>
-<li>free 释放句柄
-</li>
-<li>(D)dlh dlopen句柄
-</li>
-<li>(D)ctx 私有句柄，内部使用
-</li>
-</ul>
-
-
-</div>
-</div>
-
-</div>
-
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Patched MySQL(mysql-wsrep) 5.6</h3>
-<div class="outline-text-3" id="text-1-3">
-
-<ul>
-<li>options <a href="http://www.codership.com/wiki/doku.php?id=mysql_options">http://www.codership.com/wiki/doku.php?id=mysql_options</a>
-</li>
-</ul>
-
-
-
-</div>
-
-<div id="outline-container-1-3-1" class="outline-4">
-<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> wsrep callbacks</h4>
-<div class="outline-text-4" id="text-1-3-1">
-
-<ul>
-<li>logger_cb # mysql如何打印galera日志
-</li>
-<li>view_handler_cb # 新节点加入会比较本地状态uuid和集群状态uuid. 初始同步，joiner动作
-</li>
-<li>apply_cb # mysql如何执行binlog
-</li>
-<li>commit_cb # mysql如何提交事务
-</li>
-<li>unordered_cb # NOTE（dirlt）：do nothing?
-</li>
-<li>sst_donate_cb # 初始同步，donor动作
-</li>
-<li>synced_cb # mysql启动等待状态一致之后会调用这个函数，修改变量wsrep_ready从OFF到ON
-</li>
-</ul>
-
-
-</div>
-</div>
-
-</div>
-
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Replicator Architecture</h3>
-<div class="outline-text-3" id="text-1-4">
 
 <p><img src="images/galera-overview.png"  alt="./images/galera-overview.png" /> <img src="images/galera-library.png"  alt="./images/galera-library.png" />
 </p>
@@ -603,11 +278,11 @@ Info.(@2012)
 <ul>
 <li>Group Communication层实现统一全局数据同步策略和集群内所有事务的排序，便于生成GTID。
 <ul>
-<li>Galera cluster is built on top of <b>a proprietary group communication system</b> layer which implements virtual synchrony QoS. 
+<li>Galera cluster is built on top of <b>a proprietary group communication system</b> layer which implements virtual synchrony QoS.
 </li>
-<li>Virtual synchrony unifies data delivery and cluster membership service which gives clear formalism regarding message delivery semantics. 
+<li>Virtual synchrony unifies data delivery and cluster membership service which gives clear formalism regarding message delivery semantics.
 </li>
-<li>It also provides total ordering of messages from multiple sources which is very handy in building global transaction IDs in multi-master cluster. 
+<li>It also provides total ordering of messages from multiple sources which is very handy in building global transaction IDs in multi-master cluster.
 </li>
 </ul>
 
@@ -626,7 +301,7 @@ Info.(@2012)
 <img src="images/galera-certification.png"  alt="./images/galera-certification.png" /> <img src="images/galera-certification-en.png"  alt="./images/galera-certification-en.png" />
 </p>
 <p>
-在数据库事务提交时，会使用2阶段提交方式，在ha_trans_commit中，首先会针对每一个存储引擎执行一个ht-&gt;prepare函数，而对于Galera，在内部实现也是当作一个内嵌的存储引擎使用的，所以它执行的是wsrep_prepare，这个函数的功能是将在执行过程中产生的binlog通过下面会介绍到的接口append_data传到其它节点上面去（或者没有传过去，只是将这些数据对象存储在本地，等待提交操作），然后再通过下面这个接口pre_commit去与其它节点的Galera通讯检查有没有冲突，这个过程也就是在 <b>介绍Galera的文章中说到的certification阶段</b> 。 <b>NOTE(dirlt):是在本地先提交吗？</b>
+在数据库事务提交时，会使用2阶段提交方式，在ha_trans_commit中，首先会针对每一个存储引擎执行一个ht-&gt;prepare函数，而对于Galera，在内部实现也是当作一个内嵌的存储引擎使用的，所以它执行的是wsrep_prepare，这个函数的功能是将在执行过程中产生的binlog通过下面会介绍到的接口append_data传到其它节点上面去（或者没有传过去，只是将这些数据对象存储在本地，等待提交操作），然后再通过下面这个接口pre_commit去与其它节点的Galera通讯检查有没有冲突，这个过程也就是在 <b>介绍Galera的文章中说到的certification阶段</b> 。 <b>note(dirlt):是在本地先提交吗？</b>
 </p><ul>
 <li>Transactions process independently in each cluster node
 </li>
@@ -641,16 +316,16 @@ Info.(@2012)
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Synchonization Mechanism</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Synchonization Mechanism</h3>
+<div class="outline-text-3" id="text-1-3">
 
 
 </div>
 
-<div id="outline-container-1-5-1" class="outline-4">
-<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> Virtual Synchrony</h4>
-<div class="outline-text-4" id="text-1-5-1">
+<div id="outline-container-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> Virtual Synchrony</h4>
+<div class="outline-text-4" id="text-1-3-1">
 
 <p><a href="http://en.wikipedia.org/wiki/Virtual_synchrony">http://en.wikipedia.org/wiki/Virtual_synchrony</a>
 </p>
@@ -658,9 +333,9 @@ Info.(@2012)
 
 </div>
 
-<div id="outline-container-1-5-2" class="outline-4">
-<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> Finite State Machine</h4>
-<div class="outline-text-4" id="text-1-5-2">
+<div id="outline-container-1-3-2" class="outline-4">
+<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> Finite State Machine</h4>
+<div class="outline-text-4" id="text-1-3-2">
 
 <ul>
 <li><a href="http://www.codership.com/wiki/doku.php?id=galera_node_fsm">http://www.codership.com/wiki/doku.php?id=galera_node_fsm</a>
@@ -715,9 +390,9 @@ options:
 
 </div>
 
-<div id="outline-container-1-5-3" class="outline-4">
-<h4 id="sec-1-5-3"><span class="section-number-4">1.5.3</span> Flow Control</h4>
-<div class="outline-text-4" id="text-1-5-3">
+<div id="outline-container-1-3-3" class="outline-4">
+<h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> Flow Control</h4>
+<div class="outline-text-4" id="text-1-3-3">
 
 <p><a href="http://www.codership.com/wiki/doku.php?id=flow_control">http://www.codership.com/wiki/doku.php?id=flow_control</a>
 </p>
@@ -741,14 +416,14 @@ options:
 
 </div>
 
-<div id="outline-container-1-5-4" class="outline-4">
-<h4 id="sec-1-5-4"><span class="section-number-4">1.5.4</span> Writeset Cache</h4>
-<div class="outline-text-4" id="text-1-5-4">
+<div id="outline-container-1-3-4" class="outline-4">
+<h4 id="sec-1-3-4"><span class="section-number-4">1.3.4</span> Writeset Cache</h4>
+<div class="outline-text-4" id="text-1-3-4">
 
 <p><a href="http://www.codership.com/wiki/doku.php?id=gcache">http://www.codership.com/wiki/doku.php?id=gcache</a>
 </p>
 <p>
-<b>Swap Size Requirements</b> 
+<b>Swap Size Requirements</b>
 </p>
 <p>
 During normal operation MySQL/Galera node does not consume much more memory than a regular MySQL server. Additional memory is consumed for certification index and uncommitted writesets, but normally this should not be noticeable in a typical application. There is one exception though: （维护certification index以及没有提交的writeset)
@@ -757,11 +432,11 @@ During normal operation MySQL/Galera node does not consume much more memory than
 Writeset caching during state transfer. When a node is receiving a state transfer it cannot process and apply incoming writesets because it has no state to apply them to yet. Depending on a state transfer mechanism (e.g. mysqldump) the node that sends state transfer may not be able to apply writesets as well. Thus they need to cache those writesets for a catch-up phase. Currently the writesets are cached in memory and, if the system runs out of memory either state transfer will fail or the cluster would block waiting for the state transfer to end.(在state transfer阶段，donor是不可以写入的，所以在这期间需要缓存所有到达的writeset)
 </p>
 <p>
-To control memory usage for writeset caching, check Galera parameters: <b>NOTE（dirlt）：by flow control</b>
+To control memory usage for writeset caching, check Galera parameters: <b>note(dirlt)：by flow control</b>
 </p><ul>
-<li>gcs.recv_q_hard_limit, 
+<li>gcs.recv_q_hard_limit,
 </li>
-<li>gcs.recv_q_soft_limit, 
+<li>gcs.recv_q_soft_limit,
 </li>
 <li>gcs.max_throttle.
 </li>
@@ -772,9 +447,9 @@ To control memory usage for writeset caching, check Galera parameters: <b>NOTE�
 
 </div>
 
-<div id="outline-container-1-5-5" class="outline-4">
-<h4 id="sec-1-5-5"><span class="section-number-4">1.5.5</span> Snapshot Transfer</h4>
-<div class="outline-text-4" id="text-1-5-5">
+<div id="outline-container-1-3-5" class="outline-4">
+<h4 id="sec-1-3-5"><span class="section-number-4">1.3.5</span> Snapshot Transfer</h4>
+<div class="outline-text-4" id="text-1-3-5">
 
 <p><b>(SST)State Snapshot Transfer</b>
 </p><ul>
@@ -850,7 +525,7 @@ There are two conceptually different ways to transfer a state from one MySQL ser
 </li>
 <li>Copying data files directly. This requires that the receiving server is initialized <b>after</b> the transfer. rsync, xtrabackup and other methods fall into this category. These methods a much faster than mysqldump, but they have certain limitations, like they can be used only on server startup and receiving server must be configured very similarly to the donor (e.g. innodb_file_per_table should be the same and so on). Some of these methods, e.g. xtrabackup, can be potentially made non-blocking on donor.（直接copy文件。要求transfer之后配置好？？速度比较快，但是要求配置源和目的配置相同。使用xtrabackup不会阻塞donor)
 </li>
-<li><b>Xtrabackup and rsync SST cannot be used for a running server.</b> It is not possible to copy datafiles under running InnoDB. Having wsrep_address set to a list of node addresses and starting replication on a running node can lead to node crash. <b>TODO（dirlt）：Xtrabackup需要停机处理吗？</b> <b>NOTE（dirlt）：xtrabackup不需要停机处理</b>
+<li><b>Xtrabackup and rsync SST cannot be used for a running server.</b> It is not possible to copy datafiles under running InnoDB. Having wsrep_address set to a list of node addresses and starting replication on a running node can lead to node crash. <b>todo(dirlt)：Xtrabackup需要停机处理吗？</b> <b>note(dirlt)：xtrabackup不需要停机处理</b>
 </li>
 </ul>
 
@@ -885,18 +560,18 @@ IST(Very effective)
 
 </div>
 
-<div id="outline-container-1-5-6" class="outline-4">
-<h4 id="sec-1-5-6"><span class="section-number-4">1.5.6</span> Parallel Applying</h4>
-<div class="outline-text-4" id="text-1-5-6">
+<div id="outline-container-1-3-6" class="outline-4">
+<h4 id="sec-1-3-6"><span class="section-number-4">1.3.6</span> Parallel Applying</h4>
+<div class="outline-text-4" id="text-1-3-6">
 
 <p><img src="images/galera-parallel-applying.png"  alt="./images/galera-parallel-applying.png" />
 </p>
 <ul>
-<li>Galera assigns non-conflicting WS tasks to parallel appliers 
+<li>Galera assigns non-conflicting WS tasks to parallel appliers
 </li>
 <li>Works not on database, not on table, but on row level
 </li>
-<li>Applier threads launched at MySQL startup. 
+<li>Applier threads launched at MySQL startup.
 </li>
 <li>wsrep_slave_threads=n
 </li>
@@ -916,9 +591,9 @@ IST(Very effective)
 
 </div>
 
-<div id="outline-container-1-5-7" class="outline-4">
-<h4 id="sec-1-5-7"><span class="section-number-4">1.5.7</span> Primary Component</h4>
-<div class="outline-text-4" id="text-1-5-7">
+<div id="outline-container-1-3-7" class="outline-4">
+<h4 id="sec-1-3-7"><span class="section-number-4">1.3.7</span> Primary Component</h4>
+<div class="outline-text-4" id="text-1-3-7">
 
 <ul>
 <li><a href="http://www.codership.com/wiki/doku.php?id=galera_arbitrator">http://www.codership.com/wiki/doku.php?id=galera_arbitrator</a>
@@ -931,15 +606,15 @@ IST(Very effective)
 
 
 <p>
-TODO(dirlt):
+todo(dirlt):
 </p>
 </div>
 
 </div>
 
-<div id="outline-container-1-5-8" class="outline-4">
-<h4 id="sec-1-5-8"><span class="section-number-4">1.5.8</span> Online Schema Upgrade</h4>
-<div class="outline-text-4" id="text-1-5-8">
+<div id="outline-container-1-3-8" class="outline-4">
+<h4 id="sec-1-3-8"><span class="section-number-4">1.3.8</span> Online Schema Upgrade</h4>
+<div class="outline-text-4" id="text-1-3-8">
 
 <p><a href="http://www.codership.com/wiki/doku.php?id=rolling_schema_upgrade">http://www.codership.com/wiki/doku.php?id=rolling_schema_upgrade</a>
 </p>
@@ -967,13 +642,13 @@ DDL is non-transactional, and therefore bad for replication. Galera has two meth
 
 
 <p>
-<img src="images/galera-schema-upgrade-toi.png"  alt="./images/galera-schema-upgrade-toi.png" /> 
+<img src="images/galera-schema-upgrade-toi.png"  alt="./images/galera-schema-upgrade-toi.png" />
 </p>
 <p>
 <img src="images/galera-schema-upgrade-toi2.png"  alt="./images/galera-schema-upgrade-toi2.png" />
 </p>
 <p>
-<b>Rolling Schema Upgrade</b> （节点首先desync，DDL作用在节点上之后，然后resync） 
+<b>Rolling Schema Upgrade</b> （节点首先desync，DDL作用在节点上之后，然后resync）
 </p><ul>
 <li>DDL is not replicated
 </li>
@@ -989,13 +664,13 @@ DDL is non-transactional, and therefore bad for replication. Galera has two meth
 
 
 <p>
-<img src="images/galera-schema-upgrade-rsu.png"  alt="./images/galera-schema-upgrade-rsu.png" /> 
+<img src="images/galera-schema-upgrade-rsu.png"  alt="./images/galera-schema-upgrade-rsu.png" />
 </p>
 <p>
-<img src="images/galera-schema-upgrade-rsu2.png"  alt="./images/galera-schema-upgrade-rsu2.png" /> 
+<img src="images/galera-schema-upgrade-rsu2.png"  alt="./images/galera-schema-upgrade-rsu2.png" />
 </p>
 <p>
-<img src="images/galera-schema-upgrade-rsu3.png"  alt="./images/galera-schema-upgrade-rsu3.png" /> 
+<img src="images/galera-schema-upgrade-rsu3.png"  alt="./images/galera-schema-upgrade-rsu3.png" />
 </p>
 <p>
 <img src="images/galera-schema-upgrade-rsu4.png"  alt="./images/galera-schema-upgrade-rsu4.png" />
@@ -1005,21 +680,21 @@ DDL is non-transactional, and therefore bad for replication. Galera has two meth
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Certification Based Replication</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Certification Based Replication</h3>
+<div class="outline-text-3" id="text-1-4">
 
 
 </div>
 
-<div id="outline-container-1-6-1" class="outline-4">
-<h4 id="sec-1-6-1"><span class="section-number-4">1.6.1</span> Introduction</h4>
-<div class="outline-text-4" id="text-1-6-1">
+<div id="outline-container-1-4-1" class="outline-4">
+<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> Introduction</h4>
+<div class="outline-text-4" id="text-1-4-1">
 
 <p>Certification based replication uses group communication and transaction ordering techniques to achieve synchronous replication. Transactions execute optimistically in a single node (or replica) and, at commit time, run a coordinated certification process to enforce global consistency. Global coordination is achieved with the help of a broadcast service, that establishes a global total order among concurrent transactions. (基于 <b>组通信</b> 以及 <b>事务顺序化</b> 技术来达到同步备份。事务首先是乐观地在本地执行，然后提交给其他节点做验证来保证全局一致性）
 </p>
 <p>
-Pre-requisites for certification based replication: <b>NOTE（dirlt）：that's why InnoDB is choosen？</b>
+Pre-requisites for certification based replication: <b>note(dirlt)：that's why InnoDB is choosen？</b>
 </p><ul>
 <li>database is transactional (i.e. it can rollback uncommitted changes)（数据库必须支持事务）
 </li>
@@ -1034,7 +709,7 @@ Pre-requisites for certification based replication: <b>NOTE（dirlt）：that's 
 The main idea is that a transaction is executed conventionally until the commit point, under the assumption that there will be no conflict. This is called optimistic execution. When the client issues a COMMIT command (but before the actual commit has happened), all changes made to the database by the transaction and the primary keys of changed rows are collected into a writeset. This writeset is then replicated to the rest of the nodes. After that, the writeset undergoes a deterministic certification test (using the collected primary keys) on each node (including the writeset originator node) which determines if the writeset can be applied or not. If the certification test fails, the writeset is dropped and the original transaction is rolled back. If the test succeeds, the transaction is committed and the writeset is applied on the rest of the nodes.（在本地首先乐观执行，然后在COMMIT时候将修改的writeset通过到其他节点做certification判断是否会产生冲突. 如果失败的话那么本地事务回滚而且放弃writeset, 如果成功的话那么本地事务提交并且通知将writeset作用在其他节点上）
 </p>
 <p>
-The certification test implemented in Galera depends on the global ordering of transactions. Each transaction is assigned a global ordinal sequence number during replication. Thus, when a transaction reaches the commit point, it is known what was the sequence number of the last transaction it did not conflict with. The interval between those two numbers is an uncertainty land: transactions in this interval have not seen the effects of each other. Therefore, all transactions in this interval are checked for primary key conflicts with the transaction in question. The certification test fails if a conflict is detected. Since the procedure is deterministic and all replicas receive transactions in the same order, all nodes reach the same decision about the outcome of the transaction. The node that started the transaction can then notify the client application if the transaction has been committed or not. （每个事务提交都会分配一个全局有序id。如果这个id是当前最新id的话，那么就可以直接提交，否则需要检查id+1到最新id区间的writeset和当前id是否存在冲突，那么验证会失败） <b>TODO（dirlt）：xid 和 [xid+1, lastest-id]做验证，如果冲突的话，是放弃xid还是[xid+1, lastest-id]其中冲突的部分？我觉得应该是xid!</b>
+The certification test implemented in Galera depends on the global ordering of transactions. Each transaction is assigned a global ordinal sequence number during replication. Thus, when a transaction reaches the commit point, it is known what was the sequence number of the last transaction it did not conflict with. The interval between those two numbers is an uncertainty land: transactions in this interval have not seen the effects of each other. Therefore, all transactions in this interval are checked for primary key conflicts with the transaction in question. The certification test fails if a conflict is detected. Since the procedure is deterministic and all replicas receive transactions in the same order, all nodes reach the same decision about the outcome of the transaction. The node that started the transaction can then notify the client application if the transaction has been committed or not. （每个事务提交都会分配一个全局有序id。如果这个id是当前最新id的话，那么就可以直接提交，否则需要检查id+1到最新id区间的writeset和当前id是否存在冲突，那么验证会失败） <b>todo(dirlt)：xid 和 [xid+1, lastest-id]做验证，如果冲突的话，是放弃xid还是[xid+1, lastest-id]其中冲突的部分？我觉得应该是xid!</b>
 </p>
 <p>
 Database Hot-Spots
@@ -1053,9 +728,9 @@ Certification based replication (or more precisely, certification-based conflict
 
 </div>
 
-<div id="outline-container-1-6-2" class="outline-4">
-<h4 id="sec-1-6-2"><span class="section-number-4">1.6.2</span> Consistent read(read causality)</h4>
-<div class="outline-text-4" id="text-1-6-2">
+<div id="outline-container-1-4-2" class="outline-4">
+<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> Consistent read(read causality)</h4>
+<div class="outline-text-4" id="text-1-4-2">
 
 <p><img src="images/galera-consistent-read.png"  alt="./images/galera-consistent-read.png" />
 </p>
@@ -1074,9 +749,9 @@ There is causal dependency between operations on two database connections:
 
 </div>
 
-<div id="outline-container-1-6-3" class="outline-4">
-<h4 id="sec-1-6-3"><span class="section-number-4">1.6.3</span> Multi-Master Conflicts</h4>
-<div class="outline-text-4" id="text-1-6-3">
+<div id="outline-container-1-4-3" class="outline-4">
+<h4 id="sec-1-4-3"><span class="section-number-4">1.4.3</span> Multi-Master Conflicts</h4>
+<div class="outline-text-4" id="text-1-4-3">
 
 <p>Galera uses optimistic concurrency control:
 </p><ul>
@@ -1127,124 +802,26 @@ Retry Autocommit:
 
 </div>
 
-<div id="outline-container-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Miscellaneous</h3>
-<div class="outline-text-3" id="text-1-7">
-
-
-</div>
-
-<div id="outline-container-1-7-1" class="outline-4">
-<h4 id="sec-1-7-1"><span class="section-number-4">1.7.1</span> Parameters</h4>
-<div class="outline-text-4" id="text-1-7-1">
-
-<ul>
-<li><a href="http://www.codership.com/wiki/doku.php?id=galera_parameters">http://www.codership.com/wiki/doku.php?id=galera_parameters</a>
-</li>
-<li><a href="http://www.codership.com/wiki/doku.php?id=mysql_galera_configuration">http://www.codership.com/wiki/doku.php?id=mysql_galera_configuration</a>
-</li>
-</ul>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-1-7-2" class="outline-4">
-<h4 id="sec-1-7-2"><span class="section-number-4">1.7.2</span> Status Variables</h4>
-<div class="outline-text-4" id="text-1-7-2">
-
-<p><a href="http://www.codership.com/wiki/doku.php?id=galera_status_0.8">http://www.codership.com/wiki/doku.php?id=galera_status_0.8</a> 
-</p><ul>
-<li>mysql&gt; SHOW STATUS LIKE 'wsrep_%';
-</li>
-</ul>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-1-7-3" class="outline-4">
-<h4 id="sec-1-7-3"><span class="section-number-4">1.7.3</span> Configuration</h4>
-<div class="outline-text-4" id="text-1-7-3">
-
-<p><a href="http://www.codership.com/wiki/doku.php?id=configuration_tips">http://www.codership.com/wiki/doku.php?id=configuration_tips</a>
-</p>
-<ul>
-<li>wsrep_provider # a path to Galera library.
-</li>
-<li>wsrep_cluster_address # cluster connection URL.
-</li>
-<li>binlog_format=ROW # TODO(dirlt):??
-</li>
-<li>default_storage_engine=InnoDB
-</li>
-<li>innodb_autoinc_lock_mode=2 # TODO(dirlt):??
-</li>
-<li>innodb_flush_log_at_trx_commit=2 # TODO(dirlt):??
-</li>
-<li>innodb_doublewrite=1 #TODO(dirlt):??
-</li>
-</ul>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-1-7-4" class="outline-4">
-<h4 id="sec-1-7-4"><span class="section-number-4">1.7.4</span> Monitoring</h4>
-<div class="outline-text-4" id="text-1-7-4">
-
-<p><a href="http://www.codership.com/wiki/doku.php?id=monitoring">http://www.codership.com/wiki/doku.php?id=monitoring</a> 
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-7-5" class="outline-4">
-<h4 id="sec-1-7-5"><span class="section-number-4">1.7.5</span> Notification</h4>
-<div class="outline-text-4" id="text-1-7-5">
-
-<p>Cluster can trigger notifications. Use for: 
-</p><ul>
-<li>load balancer configuration 
-</li>
-<li>monitoring
-</li>
-</ul>
-
-<p>wsrep_notify_cmd defines the script to handle notifications.
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-7-6" class="outline-4">
-<h4 id="sec-1-7-6"><span class="section-number-4">1.7.6</span> Backup</h4>
-<div class="outline-text-4" id="text-1-7-6">
+<div id="outline-container-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Best Backup Practices</h3>
+<div class="outline-text-3" id="text-1-5">
 
 <p>Best practices:
 </p><ul>
 <li>Dedicate a reference node for backups
 </li>
-<li>Assign global trx ID with the backup
+<li>Assign global trx ID with the backup # 备份GTID可以在节点加入的时候使用IST来补进度
 <ul>
 <li>Global transaction ID (GTID) marks a position in the cluster transaction stream
 </li>
 <li>Backup with known GTID make it possible to utilize IST when joining new nodes
 </li>
-<li>备份GTID可以在节点加入的时候使用IST来补进度
-</li>
 </ul>
 
 </li>
 </ul>
 
-
-<p>
-Possible methods:
+<p>Possible methods:
 </p><ol>
 <li>Disconnecting a node for backup
 </li>
@@ -1259,7 +836,7 @@ Possible methods:
 <b>Disconnecting a node for backup</b>
 </p>
 <p>
-<img src="images/galera-backup-disconnect-node.png"  alt="./images/galera-backup-disconnect-node.png" />  
+<img src="images/galera-backup-disconnect-node.png"  alt="./images/galera-backup-disconnect-node.png" />
 </p>
 <p>
 <img src="images/galera-backup-backup.png"  alt="./images/galera-backup-backup.png" />
@@ -1286,9 +863,93 @@ Possible methods:
 
 </div>
 
-<div id="outline-container-1-7-7" class="outline-4">
-<h4 id="sec-1-7-7"><span class="section-number-4">1.7.7</span> Limitations</h4>
-<div class="outline-text-4" id="text-1-7-7">
+<div id="outline-container-1-6" class="outline-3">
+<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Miscellaneous</h3>
+<div class="outline-text-3" id="text-1-6">
+
+
+</div>
+
+<div id="outline-container-1-6-1" class="outline-4">
+<h4 id="sec-1-6-1"><span class="section-number-4">1.6.1</span> Parameters</h4>
+<div class="outline-text-4" id="text-1-6-1">
+
+<ul>
+<li><a href="http://www.codership.com/wiki/doku.php?id=galera_parameters">http://www.codership.com/wiki/doku.php?id=galera_parameters</a>
+</li>
+<li><a href="http://www.codership.com/wiki/doku.php?id=mysql_galera_configuration">http://www.codership.com/wiki/doku.php?id=mysql_galera_configuration</a>
+</li>
+<li><a href="http://www.codership.com/wiki/doku.php?id=mysql_options">http://www.codership.com/wiki/doku.php?id=mysql_options</a>
+</li>
+<li><a href="http://www.codership.com/wiki/doku.php?id=configuration_tips">http://www.codership.com/wiki/doku.php?id=configuration_tips</a>
+</li>
+</ul>
+
+
+
+<hr/>
+
+<ul>
+<li>wsrep_provider # a path to Galera library.
+</li>
+<li>wsrep_cluster_address # cluster connection URL.
+</li>
+<li>binlog_format=ROW #
+</li>
+<li>default_storage_engine=InnoDB
+</li>
+<li>innodb_autoinc_lock_mode=2 # todo(dirlt):??
+</li>
+<li>innodb_flush_log_at_trx_commit=2 # todo(dirlt):??
+</li>
+<li>innodb_doublewrite=1 #todo(dirlt):??
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-6-2" class="outline-4">
+<h4 id="sec-1-6-2"><span class="section-number-4">1.6.2</span> Status Variables</h4>
+<div class="outline-text-4" id="text-1-6-2">
+
+<ul>
+<li><a href="http://www.codership.com/wiki/doku.php?id=galera_status_0.8">http://www.codership.com/wiki/doku.php?id=galera_status_0.8</a>
+</li>
+<li><a href="http://www.codership.com/wiki/doku.php?id=monitoring">http://www.codership.com/wiki/doku.php?id=monitoring</a>
+</li>
+<li>mysql&gt; SHOW STATUS LIKE 'wsrep_%';
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-6-3" class="outline-4">
+<h4 id="sec-1-6-3"><span class="section-number-4">1.6.3</span> Notification</h4>
+<div class="outline-text-4" id="text-1-6-3">
+
+<p>Cluster can trigger notifications. Use for:
+</p><ul>
+<li>load balancer configuration
+</li>
+<li>monitoring
+</li>
+</ul>
+
+<p>wsrep_notify_cmd defines the script to handle notifications.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-6-4" class="outline-4">
+<h4 id="sec-1-6-4"><span class="section-number-4">1.6.4</span> Limitations</h4>
+<div class="outline-text-4" id="text-1-6-4">
 
 <p><a href="http://www.codership.com/wiki/doku.php?id=limitations">http://www.codership.com/wiki/doku.php?id=limitations</a>
 </p>
@@ -1297,16 +958,16 @@ Possible methods:
 
 </div>
 
-<div id="outline-container-1-8" class="outline-3">
-<h3 id="sec-1-8"><span class="section-number-3">1.8</span> Related Articles</h3>
-<div class="outline-text-3" id="text-1-8">
+<div id="outline-container-1-7" class="outline-3">
+<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Related Articles</h3>
+<div class="outline-text-3" id="text-1-7">
 
 
 </div>
 
-<div id="outline-container-1-8-1" class="outline-4">
-<h4 id="sec-1-8-1"><span class="section-number-4">1.8.1</span> Commercial</h4>
-<div class="outline-text-4" id="text-1-8-1">
+<div id="outline-container-1-7-1" class="outline-4">
+<h4 id="sec-1-7-1"><span class="section-number-4">1.7.1</span> Commercial Story</h4>
+<div class="outline-text-4" id="text-1-7-1">
 
 <ul>
 <li>User Stories | Codership : <a href="http://www.codership.com/user-stories">http://www.codership.com/user-stories</a>
@@ -1322,12 +983,12 @@ Possible methods:
 
 </div>
 
-<div id="outline-container-1-8-2" class="outline-4">
-<h4 id="sec-1-8-2"><span class="section-number-4">1.8.2</span> Tech Issue</h4>
-<div class="outline-text-4" id="text-1-8-2">
+<div id="outline-container-1-7-2" class="outline-4">
+<h4 id="sec-1-7-2"><span class="section-number-4">1.7.2</span> Tech Issue</h4>
+<div class="outline-text-4" id="text-1-7-2">
 
 <ul>
-<li>Dealing with Locking Sessions | Codership : <a href="http://www.codership.com/content/dealing-locking-sessions">http://www.codership.com/content/dealing-locking-sessions</a> 
+<li>Dealing with Locking Sessions | Codership : <a href="http://www.codership.com/content/dealing-locking-sessions">http://www.codership.com/content/dealing-locking-sessions</a>
 </li>
 <li>Controlling Auto Increments | Codership : <a href="http://www.codership.com/content/controlling-auto-increments">http://www.codership.com/content/controlling-auto-increments</a>
 </li>
@@ -1343,7 +1004,7 @@ Possible methods:
 <ul>
 <li>MyISAM is supported.
 </li>
-<li>better use primary key from day one <b>TODO(dirlt): is it functional necessary or because it affects performance?</b>
+<li>better use primary key from day one <b>todo(dirlt): is it functional necessary or because it affects performance?</b>
 </li>
 <li>stay away from what you don't know(event and trigger)
 </li>
@@ -1361,9 +1022,9 @@ Possible methods:
 
 </div>
 
-<div id="outline-container-1-8-3" class="outline-4">
-<h4 id="sec-1-8-3"><span class="section-number-4">1.8.3</span> Bechmark</h4>
-<div class="outline-text-4" id="text-1-8-3">
+<div id="outline-container-1-7-3" class="outline-4">
+<h4 id="sec-1-7-3"><span class="section-number-4">1.7.3</span> Bechmark &amp; Performance</h4>
+<div class="outline-text-4" id="text-1-7-3">
 
 <ul>
 <li>How Much Can Galera Sysbench? | Codership : <a href="http://www.codership.com/content/galera-sysbench">http://www.codership.com/content/galera-sysbench</a>
@@ -1393,9 +1054,9 @@ Possible methods:
 
 </div>
 
-<div id="outline-container-1-8-4" class="outline-4">
-<h4 id="sec-1-8-4"><span class="section-number-4">1.8.4</span> Presentation</h4>
-<div class="outline-text-4" id="text-1-8-4">
+<div id="outline-container-1-7-4" class="outline-4">
+<h4 id="sec-1-7-4"><span class="section-number-4">1.7.4</span> Presentation</h4>
+<div class="outline-text-4" id="text-1-7-4">
 
 <ul>
 <li><a href="http://www.codership.com/files/presentations/UC11_galera.pdf">http://www.codership.com/files/presentations/UC11_galera.pdf</a>
@@ -1423,7 +1084,7 @@ Possible methods:
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-28T16:51+0800</p>
+<p class="date">Date: 2014-05-10T19:33+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

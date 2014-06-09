@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Distributed Algorithms in NoSQL Databases"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-19T14:36+0800"/>
+<meta name="generated" content="2014-04-15T09:14+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -153,7 +153,7 @@
 <ul>
 <li>写后读一致性。在数据项X上写操作的效果总是能够被后续的X上的读操作看见。
 </li>
-<li>读后读一致性。在一次对数据项X的读操作之后，后续对X的读操作应该返回与第一次的返回值相同或是更加新的值。 <b>NOTE（dirlt）：这是一个什么情况？，而且这个不应该算是读写一致性的范畴吧？这里没有任何写</b> <b>NOTE(dirlt):这个在后面读若干和写若干的算法中出现了</b> 
+<li>读后读一致性。在一次对数据项X的读操作之后，后续对X的读操作应该返回与第一次的返回值相同或是更加新的值。 <b>note(dirlt)：这是一个什么情况？，而且这个不应该算是读写一致性的范畴吧？这里没有任何写</b> <b>note(dirlt):这个在后面读若干和写若干的算法中出现了</b> 
 </li>
 </ul>
 
@@ -192,7 +192,7 @@
 <p>
 我们会依据一致性从弱到强把所有的技术过一遍：
 </p><ul>
-<li>（A, 反熵） 一致性最弱，基于策略如下。写操作的时候选择任意一个节点更新，在读的时候如果新数据还没有通过后台的反熵协议传递到读的那个节点，那么读到的仍然是旧数据。（下一节会详细介绍反熵协议）。这种方法的主要特点是： <b>NOTE（dirlt）：这里所谓的反熵就是指data replication. 但是在这个模型下面似乎没有规定数据是如何进行传播的</b>
+<li>（A, 反熵） 一致性最弱，基于策略如下。写操作的时候选择任意一个节点更新，在读的时候如果新数据还没有通过后台的反熵协议传递到读的那个节点，那么读到的仍然是旧数据。（下一节会详细介绍反熵协议）。这种方法的主要特点是： <b>note(dirlt)：这里所谓的反熵就是指data replication. 但是在这个模型下面似乎没有规定数据是如何进行传播的</b>
 <ul>
 <li>过高的传播延迟使它在数据同步方面不太好用，所以比较典型的用法是只作为辅助性的功能来检测和修复计划外的不一致。 <b>Cassandra就使用了反熵算法来在各节点之间传递数据库拓扑和其他一些元数据信息。</b>
 </li>
@@ -216,10 +216,10 @@
 </ul>
 
 </li>
-<li>（C） 在前一个模式中，使用提示移交技术可以更好地处理某个节点的操作失败。对于失效节点的预期更新被记录在额外的代理节点上，并且标明一旦特点节点可用就要将更新传递给该节点。这样做提高了一致性，降低了复制收敛时间。 <b>NOTE（dirlt）：这个算法似乎有点高级啊，允许做一个增量的update，但是现实需要这样吗？但是代理节点这个想法还是非常不错的</b>
+<li>（C） 在前一个模式中，使用提示移交技术可以更好地处理某个节点的操作失败。对于失效节点的预期更新被记录在额外的代理节点上，并且标明一旦特点节点可用就要将更新传递给该节点。这样做提高了一致性，降低了复制收敛时间。 <b>note(dirlt)：这个算法似乎有点高级啊，允许做一个增量的update，但是现实需要这样吗？但是代理节点这个想法还是非常不错的</b>
 
 </li>
-<li>（D, Read One Write One 一次性读写）因为提示移交的责任节点也有可能在将更新传递出去之前就已经失效，在这种情况下就有必要通过所谓的读修复来保证一致性。每个读操作都会启动一个异步过程，向存储这条数据的所有节点请求一份数据摘要（像签名或者hash），如果发现各节点返回的摘要不一致则统一各节点上的数据版本。我们用一次性读写来命名组合了A、B、C、D的技术- 他们都没有提供严格的一致性保证， <b>NOTE（dirlt）：不要考虑上面那个情况，就是说可以通过读取所有的节点找到最新的value, 来做read repair。基本上这个就是下面E算法的特例了。只不过这里W=1,所以R=N</b>
+<li>（D, Read One Write One 一次性读写）因为提示移交的责任节点也有可能在将更新传递出去之前就已经失效，在这种情况下就有必要通过所谓的读修复来保证一致性。每个读操作都会启动一个异步过程，向存储这条数据的所有节点请求一份数据摘要（像签名或者hash），如果发现各节点返回的摘要不一致则统一各节点上的数据版本。我们用一次性读写来命名组合了A、B、C、D的技术- 他们都没有提供严格的一致性保证， <b>note(dirlt)：不要考虑上面那个情况，就是说可以通过读取所有的节点找到最新的value, 来做read repair。基本上这个就是下面E算法的特例了。只不过这里W=1,所以R=N</b>
 
 </li>
 <li>（E, Read Quorum Write Quorum 读若干写若干） 上面的策略是降低了复制收敛时间的启发式增强。为了保证更强的一致性，必须牺牲可用性来保证一定的读写重叠。 通常的做法是同时写入W个副本而不是一个，读的时候也要读R个副本。
@@ -273,7 +273,7 @@
 <img src="images/anti-entropy-push-pull.png"  alt="./images/anti-entropy-push-pull.png" />
 </p>
 <p>
-<b>NOTE(dirlt):这种反熵算法都是可以自制的，也就是不需要外界干预。但是在现实生活中似乎还没有遇到过</b>
+<b>note(dirlt):这种反熵算法都是可以自制的，也就是不需要外界干预。但是在现实生活中似乎还没有遇到过</b>
 </p>
 </div>
 
@@ -325,7 +325,7 @@
 HyperDex数据库提供了一种解决方案。基本思想是把每个属性视作多维空间中的一个轴，将空间中的区域映射到物理节点上。一次查询会被对应到一个由空间中多个相邻区域组成的超平面，所以只有这些区域与该查询有关。
 </p>
 <p>
-<b>NOTE(dirlt):可以认为就是枚举各个属性的范围并且做交叉，然后将不同的交叉映射到不同的物理节点上。</b>
+<b>note(dirlt):可以认为就是枚举各个属性的范围并且做交叉，然后将不同的交叉映射到不同的物理节点上。</b>
 </p>
 </div>
 
@@ -335,7 +335,7 @@ HyperDex数据库提供了一种解决方案。基本思想是把每个属性视
 <h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> 钝化副本</h4>
 <div class="outline-text-4" id="text-1-2-4">
 
-<p><b>TODO(dirlt):不是很明白意思？</b>
+<p><b>todo(dirlt):不是很明白意思？</b>
 </p>
 </div>
 </div>
@@ -422,8 +422,8 @@ HyperDex数据库提供了一种解决方案。基本思想是把每个属性视
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-19T14:36+0800</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
+<p class="date">Date: 2014-04-15T09:14+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

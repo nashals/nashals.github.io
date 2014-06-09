@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="dbms"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-28T16:51+0800"/>
+<meta name="generated" content="2014-04-15T09:14+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -256,7 +256,7 @@
 
 
 <p>
-NOTE(dirlt):虽然并发控制和事务管理很重要，但是觉得现在了解一些背景知识不是很多，
+note(dirlt):虽然并发控制和事务管理很重要，但是觉得现在了解一些背景知识不是很多，
 并且似乎真实情况下面对于这种东西很少能够用上，大部分的时候只需要简单的事务管理和简单的并发控制即可。
 对于这方面的学习打算针对先了解一些实践方面的知识。
 </p>
@@ -576,7 +576,7 @@ SQL区分三类关系：
 
 
 <p>
-TODO(dirlt):对于chase,3NF,MVD,4NF其实都不太清楚。但是我猜想应该不会妨碍后面的阅读吧，引入这些概念无非就是指导我们如何更好地设计关系。
+todo(dirlt):对于chase,3NF,MVD,4NF其实都不太清楚。但是我猜想应该不会妨碍后面的阅读吧，引入这些概念无非就是指导我们如何更好地设计关系。
 </p>
 
 </div>
@@ -695,7 +695,7 @@ FD集合的最小基本集(Minimal Basis for a set of FD's):对于任何FD集合
 </li>
 </ul>
 
-<p>TODO(dirlt):对于chase以及如何判断无损连接性质完全没有了解.不过我觉得了解也没有太大作用。
+<p>todo(dirlt):对于chase以及如何判断无损连接性质完全没有了解.不过我觉得了解也没有太大作用。
 </p>
 <p>
 但是对于某些关系我们会发现，通过上面的分解方式(关系满足Boyce-Codd范式)，关系可能不会满足&lt;依赖的保持&gt;.所以我们这里放松条件，而这放松的条件就是"第三范式"(third normal form.3NF).
@@ -718,7 +718,7 @@ FD集合的最小基本集(Minimal Basis for a set of FD's):对于任何FD集合
 <h4 id="sec-1-3-4"><span class="section-number-4">1.3.4</span> 多值依赖</h4>
 <div class="outline-text-4" id="text-1-3-4">
 
-<p>TODO(dirlt):
+<p>todo(dirlt):
 </p>
 </div>
 
@@ -728,7 +728,7 @@ FD集合的最小基本集(Minimal Basis for a set of FD's):对于任何FD集合
 <h4 id="sec-1-3-5"><span class="section-number-4">1.3.5</span> 第四范式</h4>
 <div class="outline-text-4" id="text-1-3-5">
 
-<p>TODO(dirlt):
+<p>todo(dirlt):
 </p>
 <p>
 第四范式条件本质上是BCNF条件，但是它应用于MVD而非FD.正式定义是
@@ -777,7 +777,7 @@ FD集合的最小基本集(Minimal Basis for a set of FD's):对于任何FD集合
 通过这个过程我们建立了&lt;高级数据库模型&gt;.但是因为绝对多数的商业数据库系统使用关系模型，所以我们还需要考虑从&lt;高级数据库模型&gt;如何转换成为&lt;关系数据库模型&gt;.
 </p>
 <p>
-TODO(dirlt):我觉得这个部分的内容完全可以延后，对于了解数据库系统本质没有太大帮助。
+todo(dirlt):我觉得这个部分的内容完全可以延后，对于了解数据库系统本质没有太大帮助。
 </p>
 </div>
 
@@ -906,7 +906,7 @@ NOTICE(dirlt):其实我觉得更关注的是Datalog-&gt;关系代数的转换。
 </li>
 <li>不适用的值(value inapplicable).仅仅是占位符，这个值是没有意义的。
 </li>
-<li>保留的值(value withheld).属于某个对象但是无权知道的值。比如未公布的电话号码phone属性为NULL.TODO(dirlt):still confused.
+<li>保留的值(value withheld).属于某个对象但是无权知道的值。比如未公布的电话号码phone属性为NULL.todo(dirlt):still confused.
 </li>
 </ul>
 
@@ -939,7 +939,7 @@ NOTICE(dirlt):其实我觉得更关注的是Datalog-&gt;关系代数的转换。
 </li>
 </ul>
 
-<p>但是针对某些情况这几种解释模型都不能够很好地工作。TODO(dirlt):分析并且加以阐述。
+<p>但是针对某些情况这几种解释模型都不能够很好地工作。todo(dirlt):分析并且加以阐述。
 </p>
 </div>
 
@@ -950,7 +950,7 @@ NOTICE(dirlt):其实我觉得更关注的是Datalog-&gt;关系代数的转换。
 <div class="outline-text-4" id="text-1-6-3">
 
 <p>SQL提供了对应的包并(UNION)，交(INTERSECT)，差(EXCEPT)关系代数操作用在查询结果上面，条件是要求这些查询结果提供的关系具有相同的属性和属性类型列表。
-比如(SELECT name,address FROM MovieStar) EXCEPT (SELECT name,address FROM MovieExec). TODO(dirlt):不过好像现实中看到很少这样使用.
+比如(SELECT name,address FROM MovieStar) EXCEPT (SELECT name,address FROM MovieExec). todo(dirlt):不过好像现实中看到很少这样使用.
 </p>
 </div>
 
@@ -1096,7 +1096,7 @@ NOTICE(dirlt):其实我觉得更关注的是Datalog-&gt;关系代数的转换。
 </li>
 </ul>
 
-<p>TODO(dirlt):需要加深理解.
+<p>todo(dirlt):需要加深理解.
 </p>
 
 <hr/>
@@ -1128,8 +1128,8 @@ Transactions can be deferred, immediate, or exclusive. The default transaction b
 </p><ul>
 <li>deferred 延迟上锁。在begin transcation之后其他的连接还可以发起begin transaction. 某个连接发起读操作就创建SHARED lock（之后只是可读，并且必须比RESERVED lock先释放）, 发起写操作就创建RESERVED lock（之后可读可写，但是必须等待其他链接全部释放）
 </li>
-<li>immediate 立刻上锁。相当立刻占用RESERVED lock，其他链接可以发起begin trasnaction但是只能够获得SHARED lock，并且和之前一样，必须等待shared lock释放，reversed lock才能够释放。 <b>NOTE（dirlt）：这点非常实际，因为对于发起SHARED lock而言，肯定希望期间读取的数据不会发生变化</b>
-      <b>NOTE（dirlt）：似乎如果直接执行SQL语句相当加上immediate transaction</b>
+<li>immediate 立刻上锁。相当立刻占用RESERVED lock，其他链接可以发起begin trasnaction但是只能够获得SHARED lock，并且和之前一样，必须等待shared lock释放，reversed lock才能够释放。 <b>note(dirlt)：这点非常实际，因为对于发起SHARED lock而言，肯定希望期间读取的数据不会发生变化</b>
+      <b>note(dirlt)：似乎如果直接执行SQL语句相当加上immediate transaction</b>
 </li>
 <li>exclusive 排斥上锁。排斥其他连接发起任何transaction，相当于lock table.
 </li>
@@ -1367,7 +1367,7 @@ NOTICE(dirlt):从书中了解到物化视图可以不用立即更新，而可以
 <h3 id="sec-1-9"><span class="section-number-3">1.9</span> 服务器环境下的SQL</h3>
 <div class="outline-text-3" id="text-1-9">
 
-<p>TODO(dirlt):
+<p>todo(dirlt):
 </p>
 </div>
 
@@ -1377,7 +1377,7 @@ NOTICE(dirlt):从书中了解到物化视图可以不用立即更新，而可以
 <h3 id="sec-1-10"><span class="section-number-3">1.10</span> 关系数据库的新课题</h3>
 <div class="outline-text-3" id="text-1-10">
 
-<p>TODO(dirlt):
+<p>todo(dirlt):
 </p>
 </div>
 
@@ -1579,7 +1579,7 @@ DTD(Document Type Definition).而XML模式(XML Schema)则是另外一种为XML�
 <h3 id="sec-1-15"><span class="section-number-3">1.15</span> 数据元素表示</h3>
 <div class="outline-text-3" id="text-1-15">
 
-<p>TODO(dirlt):
+<p>todo(dirlt):
 </p>
 </div>
 
@@ -1589,7 +1589,7 @@ DTD(Document Type Definition).而XML模式(XML Schema)则是另外一种为XML�
 <h3 id="sec-1-16"><span class="section-number-3">1.16</span> 索引结构</h3>
 <div class="outline-text-3" id="text-1-16">
 
-<p>TODO(dirlt):
+<p>todo(dirlt):
 </p>
 </div>
 
@@ -1633,7 +1633,7 @@ DTD(Document Type Definition).而XML模式(XML Schema)则是另外一种为XML�
 <h3 id="sec-1-18"><span class="section-number-3">1.18</span> 查询执行</h3>
 <div class="outline-text-3" id="text-1-18">
 
-<p>TODO(dirlt):
+<p>todo(dirlt):
 </p>
 </div>
 
@@ -1643,7 +1643,7 @@ DTD(Document Type Definition).而XML模式(XML Schema)则是另外一种为XML�
 <h3 id="sec-1-19"><span class="section-number-3">1.19</span> 查询编译器</h3>
 <div class="outline-text-3" id="text-1-19">
 
-<p>TODO(dirlt):
+<p>todo(dirlt):
 </p>
 </div>
 
@@ -1720,7 +1720,7 @@ commit哪些事务存在abort。另外还有一些事务没有abort的话那么�
 <h4 id="sec-1-20-2"><span class="section-number-4">1.20.2</span> redo</h4>
 <div class="outline-text-4" id="text-1-20-2">
 
-<p>TODO(dirlt):
+<p>todo(dirlt):
 </p>
 </div>
 
@@ -1730,7 +1730,7 @@ commit哪些事务存在abort。另外还有一些事务没有abort的话那么�
 <h4 id="sec-1-20-3"><span class="section-number-4">1.20.3</span> undo/redo</h4>
 <div class="outline-text-4" id="text-1-20-3">
 
-<p>TODO(dirlt):
+<p>todo(dirlt):
 </p>
 </div>
 </div>
@@ -1741,7 +1741,7 @@ commit哪些事务存在abort。另外还有一些事务没有abort的话那么�
 <h3 id="sec-1-21"><span class="section-number-3">1.21</span> 并发控制</h3>
 <div class="outline-text-3" id="text-1-21">
 
-<p>TODO(dirlt):
+<p>todo(dirlt):
 </p>
 </div>
 
@@ -1751,7 +1751,7 @@ commit哪些事务存在abort。另外还有一些事务没有abort的话那么�
 <h3 id="sec-1-22"><span class="section-number-3">1.22</span> 再论事务管理</h3>
 <div class="outline-text-3" id="text-1-22">
 
-<p>TODO(dirlt):
+<p>todo(dirlt):
 </p>
 </div>
 
@@ -1779,7 +1779,7 @@ commit哪些事务存在abort。另外还有一些事务没有abort的话那么�
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-28T16:51+0800</p>
+<p class="date">Date: 2014-04-15T09:14+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Deconstructing Recommender Systems"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-28T16:51+0800"/>
+<meta name="generated" content="2014-04-15T09:14+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -109,7 +109,7 @@
 </li>
 <li>So most recommenders today rely on an “item-item” algorithm, which calculates the distance between each pair of books or movies or what have you according to how closely users who have rated them agree. Distances between pairs of items, which may be based on the ratings of thousands or millions of users, tend to be relatively stable over time, so recommenders can precompute distances and generate recommendations more quickly. （另外一种是item-item的算法，很多顾客对某两个东西之间联系的评价来决定两个item之间的距离。相对于user-user算法来说，因为item-item之间的关系需要参考大量的用户因此相对来说比较稳定，所以可以提前计算好）
 </li>
-<li>One problem with both user-user and item-item algorithms is the inconsistency of ratings. Users often do not rate the same item the same way if offered the chance to rate it again. Tastes change, moods change, memories fade. Researchers are trying different ways to incorporate such variables into their models; for example, some recommenders will ask users to rerate items when their original ratings seem out of sync with everything else the recommender knows about them.（但是两个算法存在共同的问题就是，对于相同item的ranting可能会变化，因为user的心情品味变化等原因。研究人员尝试多种方式将这种变化纳入模型，一些推荐系统有时候也会要求user重新对item进行rate。 <b>NOTE（dirlt）：不过感觉这种方式不太现实吧</b> ）
+<li>One problem with both user-user and item-item algorithms is the inconsistency of ratings. Users often do not rate the same item the same way if offered the chance to rate it again. Tastes change, moods change, memories fade. Researchers are trying different ways to incorporate such variables into their models; for example, some recommenders will ask users to rerate items when their original ratings seem out of sync with everything else the recommender knows about them.（但是两个算法存在共同的问题就是，对于相同item的ranting可能会变化，因为user的心情品味变化等原因。研究人员尝试多种方式将这种变化纳入模型，一些推荐系统有时候也会要求user重新对item进行rate。 <b>note(dirlt)：不过感觉这种方式不太现实吧</b> ）
 </li>
 <li>But the user-user and item-item algorithms have a bigger problem than consistency: They’re too rigid. That is, they can spot people who prefer the same item but then miss potential pairs who prefer very similar items. About a decade ago, researchers figured out a way to factor in such sets of similar items—a process called dimensionality reduction. This method is much more computationally intensive than the user-user and item-item algorithms, so its adoption has been slower. But as computers have gotten faster and cheaper, it has been gaining ground.（比一致性更大的问题在于，没有办法发现一些潜在的可能感兴趣的item，原因就是以item作为最小计算单位。设计出的另外一种办法就是降维，就是将某一类的产品归为一类，然后计算类和类之间的联系。这种算法相对来说计算更加密集，所以在当时没有被采纳。但是随着计算能力的提高又开始逐渐被采用）
 </li>
@@ -123,7 +123,7 @@
 <p>
 <b>影响推荐因素</b>
 </p><ul>
-<li>Recommenders have two other features that dramatically affect the recommendations you see: First, beyond figuring out how similar you are to other shoppers, the recommender has to figure out what you actually like. Second, the system operates according to a set of business rules that help ensure its recommendations are both helpful to you and profitable for the retailer.（另外两个因素也在影响推荐结果，一个是推荐系统除了计算你和其他顾客的相似程度，实际上还在分析你具体想购买什么东西 <b>NOTE（dirlt）：通过类似使用数据挖掘等方法，而不是协作方法完成</b> ，另外一个是使用一些商业策略（外部策略）来保证推荐内容对于你和零售商都有好处）
+<li>Recommenders have two other features that dramatically affect the recommendations you see: First, beyond figuring out how similar you are to other shoppers, the recommender has to figure out what you actually like. Second, the system operates according to a set of business rules that help ensure its recommendations are both helpful to you and profitable for the retailer.（另外两个因素也在影响推荐结果，一个是推荐系统除了计算你和其他顾客的相似程度，实际上还在分析你具体想购买什么东西 <b>note(dirlt)：通过类似使用数据挖掘等方法，而不是协作方法完成</b> ，另外一个是使用一些商业策略（外部策略）来保证推荐内容对于你和零售商都有好处）
 </li>
 </ul>
 
@@ -148,7 +148,7 @@
 </li>
 <li>Most recommender rules are more subtle, of course. When John recently searched for an action movie on Netflix, for instance, he wasn’t offered The Avengers, because the blockbuster was not yet available for rental, and so the suggestion wouldn’t have profited Netflix. Instead it steered him to Iron Man 2, which was available for streaming.（不会推荐一些还没有到货的东西）
 </li>
-<li>Other business rules prevent recommenders from suggesting loss leaders—products that sell below cost to draw people into the site—or conversely encourage them to recommend products that are overstocked.（展现一些廉价的商品以便引入流量，或者是推荐那些库存比较多的东西 <b>NOTE（dirlt）：感觉有点广告的意思</b> ）
+<li>Other business rules prevent recommenders from suggesting loss leaders—products that sell below cost to draw people into the site—or conversely encourage them to recommend products that are overstocked.（展现一些廉价的商品以便引入流量，或者是推荐那些库存比较多的东西 <b>note(dirlt)：感觉有点广告的意思</b> ）
 </li>
 <li>This kind of thing quickly gets tricky, however. A system that simply pushes high-margin products isn’t going to earn the customers’ trust. It’s like going to a restaurant where the waiter steers you toward a particular fish dish. Is it really his favorite? Or did the chef urge the staff to push out the fish before its sell-by date? To build trust, the more sophisticated recommender systems strive for some degree of transparency by giving customers an idea of why a particular item was recommended and letting them correct their profiles if they don’t like the recommendations they’re getting.（为了建立信任关系，一些比较复杂的推荐系统也会尝试对顾客透明一些，比如解释为什么给你推荐这个东西）
 </li>
@@ -183,7 +183,7 @@
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-28T16:51+0800</p>
+<p class="date">Date: 2014-04-15T09:14+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<title>galerac</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="galerac"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2014-05-10T19:33+0800"/>
+<meta name="author" content="dirtysalt"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+
+
+</head>
+<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">galerac</h1>
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="galerac.html#sec-1">1 galerac</a>
+<ul>
+<li><a href="galerac.html#sec-1-1">1.1 overview</a></li>
+<li><a href="galerac.html#sec-1-2">1.2 wsrep-api</a>
+<ul>
+<li><a href="galerac.html#sec-1-2-1">1.2.1 overview</a></li>
+<li><a href="galerac.html#sec-1-2-2">1.2.2 concept</a></li>
+<li><a href="galerac.html#sec-1-2-3">1.2.3 wsrep_init_args</a></li>
+<li><a href="galerac.html#sec-1-2-4">1.2.4 wsrep_t</a></li>
+</ul>
+</li>
+<li><a href="galerac.html#sec-1-3">1.3 tests</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> galerac</h2>
+<div class="outline-text-2" id="text-1">
+
+<p>代码整体结构示意图
+</p>
+<p>
+<img src="images/galera-code-structure.png"  alt="./images/galera-code-structure.png" />
+</p>
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> overview</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<ul>
+<li>asio # asynchronous io.
+</li>
+<li>chromium # compiler related code.
+</li>
+<li>common # common definitions.
+</li>
+<li>galera # replicator.
+</li>
+<li>galerautils # common utilities.
+</li>
+<li>garb # arbitrator
+</li>
+<li>gcache # general cache.
+</li>
+<li>gcomm # group communication.
+</li>
+<li>gcs # group control system.
+</li>
+<li>scripts
+</li>
+<li>tests
+</li>
+<li>www.evanjones.ca # crc32 implementation.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> wsrep-api</h3>
+<div class="outline-text-3" id="text-1-2">
+
+
+</div>
+
+<div id="outline-container-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> overview</h4>
+<div class="outline-text-4" id="text-1-2-1">
+
+<p>files
+</p><ul>
+<li>wsrep_api.h # header
+</li>
+<li>wsrep_loader # load/unload wsrep_t
+<ul>
+<li>symbol=wsrep_loader
+</li>
+<li>type=int wsrep_loader_fun(wsrep_t*)
+</li>
+</ul>
+
+</li>
+<li>wsrep_dummy # example or stub
+</li>
+<li>wsrep_uuid # uuid helper
+</li>
+<li>wsrep_gtid # gtid helper
+</li>
+<li>wsrep_listener # event dumper
+</li>
+</ul>
+
+
+<p>
+capabilities
+</p><ul>
+<li>Replication provider library
+<ul>
+<li>load/unload
+</li>
+<li>configuration
+</li>
+<li>status
+</li>
+</ul>
+
+</li>
+<li>Write set
+<ul>
+<li>population calls
+</li>
+<li>replication calls (at commit)
+</li>
+</ul>
+
+</li>
+<li>Prioritized transactions
+<ul>
+<li>Lock queue modified
+</li>
+<li>Aborting local victims
+</li>
+</ul>
+
+</li>
+<li>TO isolation for DDL queries
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> concept</h4>
+<div class="outline-text-4" id="text-1-2-2">
+
+<ul>
+<li>sst(snapshot state transfer)
+</li>
+<li>ist(incremental state transfer)
+</li>
+<li>logger
+</li>
+<li>provider
+<ul>
+<li>CAP(certain provider capabilities)
+</li>
+<li>flags
+</li>
+<li>status
+</li>
+</ul>
+
+</li>
+<li>uuid/gtid
+<ul>
+<li>UUID 节点状态改变及顺序的唯一标识 note(dirlt)：集群建立之初的状态标记？
+</li>
+<li>GTID Global Transaction ID, 由UUID和偏移量组成 note(dirlt)：以UUID为base，每次事务通过偏移量反应
+</li>
+<li>example: 45eec521-2f34-11e0-0800-2a36050b826b:94530586304
+</li>
+<li>undefined: 00000000-0000-0000-0000-000000000000:-1
+</li>
+<li>evolve: 00295a79-9c48-11e2-bdf0-9a916cbb9294:0 =&gt; 00295a79-9c48-11e2-bdf0-9a916cbb9294:1
+</li>
+</ul>
+
+</li>
+<li>group member（节点成员信息）
+<ul>
+<li>member_status
+</li>
+<li>memver_info
+</li>
+</ul>
+
+</li>
+<li>group view(视图信息，比如整个集群有多少个节点，每个节点同步进度如何？）
+<ul>
+<li>view_status
+</li>
+<li>view_info
+</li>
+</ul>
+
+</li>
+<li>wsrep_init_args(arguments)
+</li>
+<li>wsrep_t(interface)
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-3" class="outline-4">
+<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> wsrep_init_args</h4>
+<div class="outline-text-4" id="text-1-2-3">
+
+<p><b>note(dirlt)；这个应该是和上层相关的实现比如MySQL，如何apply, commit等</b>
+</p>
+<ul>
+<li>(D)app_ctx 回调使用的context
+</li>
+<li>(D)node_name 当前节点/实例名称，对应变量wsrep_node_name
+</li>
+<li>(D)node_address 当前节点/实例地址，对应变量wsrep_node_address
+</li>
+<li>(D)node_incoming 对应变量wsrep_incoming_addresses <b>可以接受连接请求的节点</b>
+</li>
+<li>(D)data_dir 当前数据库的目录，对应变量wsrep_data_home_dir
+</li>
+<li>(D)options 选项
+</li>
+<li>(D)proto_ver 协议版本
+</li>
+<li>(D)state_id 应用初始状态id
+</li>
+<li>(D)state 应用初始状态数据
+</li>
+<li>logger_cb # mysql如何打印galera日志
+</li>
+<li>view_handler_cb # 新节点加入会比较本地状态uuid和集群状态uuid. 初始同步，joiner动作
+</li>
+<li>apply_cb # mysql如何执行binlog
+</li>
+<li>commit_cb # mysql如何提交事务
+</li>
+<li>unordered_cb # note(dirlt)：do nothing?
+</li>
+<li>sst_donate_cb # 初始同步，donor动作
+</li>
+<li>synced_cb # mysql启动等待状态一致之后会调用这个函数，修改变量wsrep_ready从OFF到ON
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-4" class="outline-4">
+<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> wsrep_t</h4>
+<div class="outline-text-4" id="text-1-2-4">
+
+<p><b>note(dirlt)：这个应该是和下层相关的实现比如Galera，它定义了整个replication的逻辑</b>
+</p>
+<ul>
+<li>(D)version 版本
+</li>
+<li>init 初始化 wsrep_init_args
+</li>
+<li>capabilities 支持功能
+</li>
+<li>options_set 设置选项
+</li>
+<li>options_get 获取选项
+</li>
+<li>connect 建立和集群的连接
+</li>
+<li>disconnect 断开和集群的连接
+</li>
+<li>recv 开始接收replication event. 正常情况下这个函数一直运行，期间执行其他操作，如果返回的话那么表明出错或者是退出。
+</li>
+<li>pre_commit 事务提交之前
+</li>
+<li>post_commit 事务提交之后
+</li>
+<li>post_rollback 事务回滚之后
+</li>
+<li>replay_trx 回放事务(slave)
+</li>
+<li>abort_pre_commit 在事务提交之前终止
+</li>
+<li>append_key 将key添加到事务ws. 修改行对应的key，可以用来检测冲突。
+</li>
+<li>append_data 将data添加到事务ws. 修改行对应的value。
+</li>
+<li>casual_read  发起一致性读
+</li>
+<li>free_connection 释放链接
+</li>
+<li>to_execute_start 开始执行total order isolation事务（上锁）
+</li>
+<li>to_execute_end 结束执行total order isolation事务（解锁）
+</li>
+<li>preordered_collect 将预先排序的event收集到ws
+</li>
+<li>preordered_commit 将收集的ws commit到集群中
+</li>
+<li>sst_sent sst sst已经发送完毕
+</li>
+<li>sst_received sst已经接收完毕
+</li>
+<li>snapshot 请求产生snapshot
+</li>
+<li>stats_get 获取统计数据
+</li>
+<li>stats_free 释放统计数据
+</li>
+<li>stats_reset 重置统计数据
+</li>
+<li>pause 停止提交
+</li>
+<li>resume 恢复提交
+</li>
+<li>desync 断开集群同步
+</li>
+<li>resync 建立集群同步
+</li>
+<li>lock 获取全局锁
+</li>
+<li>unlock 释放全局锁
+</li>
+<li>is_locked 检测全局锁
+</li>
+<li>(D)provider_name 名称
+</li>
+<li>(D)provider_version 版本
+</li>
+<li>(D)provider_vendor 厂商
+</li>
+<li>free 释放句柄
+</li>
+<li>(D)dlh dlopen句柄
+</li>
+<li>(D)ctx 私有句柄，内部使用
+</li>
+</ul>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> tests</h3>
+<div class="outline-text-3" id="text-1-3">
+
+<ul>
+<li>conf # configure files
+</li>
+<li>regressions # according to ticket.
+</li>
+<li>scripts # start/stop/check real cluster
+</li>
+<li>tap TODO(dirlt): ???
+</li>
+<li>t # test script of tap.
+</li>
+<li>test_causal # related to trac #688.
+</li>
+<li>test_cppcheck # c/c++ static code analyzer.
+</li>
+<li>test_dbt2 # not implemented.
+</li>
+<li>test_dots # not implemented.
+</li>
+<li>test_drupal # bugs related to drupal.
+</li>
+<li>test_insert #
+<ul>
+<li>DMBS_PORT=3305 ./run.sh
+</li>
+</ul>
+
+</li>
+<li>test_memory
+<ul>
+<li>used memory between wsrep OFF and ON
+</li>
+<li>on a single node cluster
+</li>
+</ul>
+
+</li>
+<li>test_mtr # mysql test run
+</li>
+<li>test_overhead
+<ul>
+<li>insert/update time between wsrep OFF and ON
+</li>
+<li>on a single node cluster
+</li>
+</ul>
+
+</li>
+<li>test_seesaw # similar to test_stopcont.
+</li>
+<li>test_segmentation # network traffic with segmentation.
+</li>
+<li>test_sqlgen # TODO(dirlt): why tap ? obsolete now!
+</li>
+<li>test_startstop # start and stop
+</li>
+<li>test_stopcont #
+<ul>
+<li>round robin to stop/cont each node (kill -STOP/CONT)
+</li>
+<li>wait node to be synced (mysql to query status)
+</li>
+<li>then check consistency (mysqldump | md5sum)
+</li>
+<li>while sqlgen keep updating db
+</li>
+</ul>
+
+</li>
+<li>test_upgrade # rotate and upgrade nodes.
+</li>
+</ul>
+
+
+<p>
+<b>setup test environment</b>
+</p><ul>
+<li>put sqlgen(which is not open-sourced) to tests/bin
+</li>
+<li>install libgbl.so (<a href="https://github.com/codership/glb">https://github.com/codership/glb</a>) to /user/local/lib
+</li>
+<li>install mysql client.
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2014-05-10T19:33+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'galerac.html';var disqus_title = 'galerac.html';var disqus_url = 'http://dirlt.com/galerac.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+</html>

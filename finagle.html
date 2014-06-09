@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="finagle"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-19T14:36+0800"/>
+<meta name="generated" content="2014-04-15T09:14+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -266,21 +266,21 @@
 </li>
 <li>This, however, <b>creates a lot of connection churn if your application consistantly requires more than lower bound connections.</b> 
 </li>
-<li><b>NOTE(dirlt):按照上面的连接池管理逻辑，那么链接会被频繁创建和销毁</b>
+<li><b>note(dirlt):按照上面的连接池管理逻辑，那么链接会被频繁创建和销毁</b>
 </li>
 </ul>
 
 </li>
-<li>As a result, there is a separate facility for caching, with some TTL, services above the lower bound. The CachingPool caches regardless of whether there are more than lower-bound open services; it’s always caching up to (upper-bound - lower-bound) services. The cache reaches its peak value when you reach your peak concurrency (i.e. “load”), and then slowly decays, based on the TTL. <b>NOTE(dirlt):针对上面机制的补充，将这部分链接缓存起来，然后使用TTL信息来缓慢销毁</b> 
+<li>As a result, there is a separate facility for caching, with some TTL, services above the lower bound. The CachingPool caches regardless of whether there are more than lower-bound open services; it’s always caching up to (upper-bound - lower-bound) services. The cache reaches its peak value when you reach your peak concurrency (i.e. “load”), and then slowly decays, based on the TTL. <b>note(dirlt):针对上面机制的补充，将这部分链接缓存起来，然后使用TTL信息来缓慢销毁</b> 
 </li>
-<li>The DefaultClient layers both pools which amounts to maintaining the low watermark (as long as request concurrency exists), queueing requests above the high watermark, and applying a TTL for services that are between [low, high]. <b>TODO(dirlt):只是针对那些请求不频繁的service释放链接？queueing requests应该是说在这个service上有狠毒请求发生了堆积</b> 
+<li>The DefaultClient layers both pools which amounts to maintaining the low watermark (as long as request concurrency exists), queueing requests above the high watermark, and applying a TTL for services that are between [low, high]. <b>todo(dirlt):只是针对那些请求不频繁的service释放链接？queueing requests应该是说在这个service上有狠毒请求发生了堆积</b> 
 </li>
 </ul>
 
 </li>
 <li>Fail Fast
 <ul>
-<li>The FailFastFactory attempts to reduce the amount of requests dispatched to endpoints that are likely to fail. <b>NOTE(dirlt):后台检查链接健康状况</b> 
+<li>The FailFastFactory attempts to reduce the amount of requests dispatched to endpoints that are likely to fail. <b>note(dirlt):后台检查链接健康状况</b> 
 </li>
 <li>It works by marking downed hosts when a connection fails, and launching a background process that repeatedly attempts to reconnect with a given backoff schedule. 
 <ul>
@@ -380,8 +380,8 @@
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-19T14:36+0800</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
+<p class="date">Date: 2014-04-15T09:14+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

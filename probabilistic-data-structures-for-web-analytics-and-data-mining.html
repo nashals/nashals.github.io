@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Probabilistic Data Structures for Web Analytics and Data Mining"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-28T16:50+0800"/>
+<meta name="generated" content="2014-04-15T09:13+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -219,7 +219,7 @@ These formulas are very impressive. One can see that a number of buckets is rela
 It is clear that if sketch is large in comparison with the cardinality of the data set, almost each value will get an independent counter and estimation will precise. Nevertheless, this case is absolutely impractical – it is much better to simply maintain a dedicated counter for each value by using plain array or hash table. To cope with this issue, Count-Min algorithm estimates frequency of the given value as a minimum of the corresponding counters in each row because the estimation error is always positive (each occurrence of a value always increases its counters, but collisions can cause additional increments). A practical implementation of Count-Min sketch is provided in the following code snippet.
 </p>
 <p>
-<b>NOTE(dirlt):这个算法还是比较好理解的，一个value会映射到每个row上面某个column。因为对于某一个cell来说可能会有不同的value重复叠加这个单元。如果sketch比较大的，那么对应某个row来说其中的column被重复叠加的概率就比较小，而这个column的值肯定是比其他row上面对应的column要小的。所以选择最小的值有意义</b>
+<b>note(dirlt):这个算法还是比较好理解的，一个value会映射到每个row上面某个column。因为对于某一个cell来说可能会有不同的value重复叠加这个单元。如果sketch比较大的，那么对应某个row来说其中的column被重复叠加的概率就比较小，而这个column的值肯定是比其他row上面对应的column要小的。所以选择最小的值有意义</b>
 </p>
 
 
@@ -406,7 +406,7 @@ Any range query can be reduced to a number of queries to the sketches of differe
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-28T16:50+0800</p>
+<p class="date">Date: 2014-04-15T09:13+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

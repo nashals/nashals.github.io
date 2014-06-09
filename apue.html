@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="apue"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-28T16:51+0800"/>
+<meta name="generated" content="2014-04-15T09:15+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -588,7 +588,7 @@ gid和sgid存在的理由。gid就好比用户所属部门的一个编号，而s
 属于多个其他部门，这些其他部门的gid就是sgid.
 </p>
 <p>
-TODO(zhangyan04):对于附加组ID并不是很了解，而且觉得没有必要去了解。关于附加组ID主要包括下面
+todo(zhangyan04):对于附加组ID并不是很了解，而且觉得没有必要去了解。关于附加组ID主要包括下面
 这些问题，包括附加组ID在文件权限检查作用，对应系统数据什么文件这些。
 </p>
 </div>
@@ -2430,7 +2430,7 @@ tmpfs                   127628         0    127628   0% /dev/shm
 
 
 <p>
-TODO(zhangyan04):其实对于设备号这个东西还不是非常地了解，认识有待加深。
+todo(zhangyan04):其实对于设备号这个东西还不是非常地了解，认识有待加深。
 </p>
 </div>
 
@@ -2477,7 +2477,7 @@ inotify可以用于监控文件以及目录的变化，下面是inotify提供的
 
 
 <p>
-整个使用过程非常简单，首先通过init创建fd,然后将需要监控的文件添加进来/或者是移除。之后在read时候读取监控事件。 <b>NOTE（dirlt）：这个fd可以放在epoll里面进行监控</b> 。监控事件结构如下：
+整个使用过程非常简单，首先通过init创建fd,然后将需要监控的文件添加进来/或者是移除。之后在read时候读取监控事件。 <b>note(dirlt)：这个fd可以放在epoll里面进行监控</b> 。监控事件结构如下：
 </p>
 
 
@@ -2677,7 +2677,7 @@ man里面对于每个事件有详细说明
 
 
 <p>
-TODO(zhangyan04):其实对于定向问题并不是非常低了解，而且也不太确定，为什么需要使用宽字符。
+todo(zhangyan04):其实对于定向问题并不是非常低了解，而且也不太确定，为什么需要使用宽字符。
 是否使用宽字符的话，那么很多编码方面的问题就可以在标准IO层面操作而不需要上层操作呢？
 </p>
 <p>
@@ -2821,7 +2821,7 @@ int setvbuf(FILE* restrict fp,char* restrict buf,int mode,size_t size);
 在实现层面上，我们打开一个流对象，在标准IO都会进行簿记的。
 </p>
 <p>
-TODO(zhangyan04):关于行缓冲模式，包括和输入和输出，分别是什么样的行为，现在还不是很确定:(
+todo(zhangyan04):关于行缓冲模式，包括和输入和输出，分别是什么样的行为，现在还不是很确定:(
 </p>
 </div>
 
@@ -4866,7 +4866,7 @@ clock_t times(struct tms* buf); //&#36820;&#22238;wall clock time.&#20294;&#2615
 <h4 id="sec-1-9-1"><span class="section-number-4">1.9.1</span> 登录过程</h4>
 <div class="outline-text-4" id="text-1-9-1">
 
-<p>TODO(zhangyan04):这里对于终端不是很了解，所以这里没有区分是从终端登录还是网络登录，只是
+<p>todo(zhangyan04):这里对于终端不是很了解，所以这里没有区分是从终端登录还是网络登录，只是
 统一说明为登录过程。但是介绍的时候，还是区分两种登录方式的。
 </p>
 <p>
@@ -6758,7 +6758,7 @@ int pthread_setconcurrency(int level); //&#22914;&#26524;&#20026;0&#30340;&#3580
 不过这里只是提供接口，系统可以决定是否采用。
 </p>
 <p>
-TODO(zhangyan04):不太理解这里并发度想要修改什么东西，系统线程的个数呢，还是只多少个用户线程绑定到一个系统线程呢？
+todo(zhangyan04):不太理解这里并发度想要修改什么东西，系统线程的个数呢，还是只多少个用户线程绑定到一个系统线程呢？
 </p>
 </div>
 </div>
@@ -7116,7 +7116,7 @@ int pthread_kill(pthread_t thread,int signo);
 <h4 id="sec-1-11-12"><span class="section-number-4">1.11.12</span> 线程和fork</h4>
 <div class="outline-text-4" id="text-1-11-12">
 
-<p>TODO(zhangyan04):个人觉得相当无用而且异常繁琐。为了保证锁和条件变量的状态，使用到了pthread_atfork.
+<p>todo(zhangyan04):个人觉得相当无用而且异常繁琐。为了保证锁和条件变量的状态，使用到了pthread_atfork.
 </p>
 </div>
 
@@ -7224,7 +7224,7 @@ int pthread_kill(pthread_t thread,int signo);
 
 <p>inheritsched可以设置如果我们调用pthread_create创建线程的话，调度策略是自己显示设置还是继承于创建线程的线程。
 schedpolicy可以设置调度策略，而schedparam可以设置调度策略所涉及的参数，不过从现在文件里面只有priority这个参数。
-调度策略有下面这些.TODO(zhangyan04):调度策略分别是怎么样的???
+调度策略有下面这些.todo(zhangyan04):调度策略分别是怎么样的???
 </p><ul>
 <li>SCHED_FIFO
 </li>
@@ -7325,7 +7325,7 @@ system contention scope是只线程直接和系统范围内其他线程竞争，
 </li>
 <li>pthread_mutex_unlock
 </li>
-<li>pthread_mutex_getprioceiling // priority ceiling.TODO(zhangyan04):???
+<li>pthread_mutex_getprioceiling // priority ceiling.todo(zhangyan04):???
 </li>
 <li>pthread_mutex_setprioceiling
 </li>
@@ -7337,7 +7337,7 @@ system contention scope是只线程直接和系统范围内其他线程竞争，
 </li>
 <li>pthread_mutexattr_setprioceiling
 </li>
-<li>pthread_mutexattr_getprotocol // protocol.TODO(zhangyan04):???
+<li>pthread_mutexattr_getprotocol // protocol.todo(zhangyan04):???
 </li>
 <li>pthread_mutexattr_setprotocol
 </li>
@@ -7624,7 +7624,7 @@ system contention scope是只线程直接和系统范围内其他线程竞争，
 <p>getcpuclockid可以获得clock_id,每一个线程/进程都会绑定一个CPU-time clock,然后通过clock_id来区分。线程可以通过pthread_getcpuclockid获取，
 而进程可以通过clock_getcpuclockid获取。取得clock_id之后，我们可以clock_getres来获得时钟精度，clock_gettime来获得运行时间。
 还可以timer_create来创建高精度定时器。不过这些内容都是猜测从manpage里面看的，似乎没有任何一本手册提到过这些内容。这些内容都是rt(realtime)范畴的。
-TODO(zhangyan04):需要系统了解clock_id相关知识
+todo(zhangyan04):需要系统了解clock_id相关知识
 </p>
 
 
@@ -7657,7 +7657,7 @@ resolution 0.000001 ms
 
 
 <p>
-阅读代码之后发现concurrency这个实现上没有任何影响。TODO(zhangyan04):不管是概念上还是实现上都没有理解
+阅读代码之后发现concurrency这个实现上没有任何影响。todo(zhangyan04):不管是概念上还是实现上都没有理解
 </p>
 
 
@@ -8133,7 +8133,7 @@ int main(){
 如果我们加上强制锁的话那么以阻塞方式来读写的话那么就一定会阻塞，是一个硬性规定。强制锁和建议锁底层都是记录锁。
 </p>
 <p>
-TODO(zhangyan04):我们这里不谈强制锁，似乎没有太大的作用。
+todo(zhangyan04):我们这里不谈强制锁，似乎没有太大的作用。
 </p>
 <p>
 记录锁(record locking)的功能是当一个进程正在读或者是修改文件的某一个部分的话，它可以阻塞其他进程修改
@@ -9400,7 +9400,7 @@ struct semid_ds
 </li>
 <li>等待资源数目可用的进程数
 </li>
-<li>等待资源数目==0的进程数(TODO(zhangyan04):什么应用场景)
+<li>等待资源数目==0的进程数(todo(zhangyan04):什么应用场景)
 </li>
 </ul>
 
@@ -9823,7 +9823,7 @@ child about to exit
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-28T16:51+0800</p>
+<p class="date">Date: 2014-04-15T09:15+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

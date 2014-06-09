@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="scala"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-28T16:50+0800"/>
+<meta name="generated" content="2014-04-15T09:13+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -174,7 +174,7 @@
 </li>
 <li>Although underscores are legal in identifiers, they are not used that often in Scala programs, in part to be consistent with Java, but also because underscores have many other non-identifier uses in Scala code. As a result, it is best to avoid identifiers like <b>to_string, __init__, or name_</b> . （尽可能避免_) 
 </li>
-<li>"val name_:Int = 1" 会被认为是定义"name_:"，所以必须在:之前添加空格 <b>NOTE（dirlt）：词法解析足够奇葩</b> 
+<li>"val name_:Int = 1" 会被认为是定义"name_:"，所以必须在:之前添加空格 <b>note(dirlt)：词法解析足够奇葩</b> 
 </li>
 </ul>
 
@@ -195,7 +195,7 @@
 </ul>
 
 </li>
-<li>A <b>literal identifier</b> is an arbitrary string enclosed in back ticks (` . . . `). <b>NOTE（dirlt）：解决关键字问题</b>
+<li>A <b>literal identifier</b> is an arbitrary string enclosed in back ticks (` . . . `). <b>note(dirlt)：解决关键字问题</b>
 <ul>
 <li>You cannot write Thread.yield() because yield is a reserved word in Scala. However, you can still name the method in back ticks, e.g., Thread.`yield`().
 </li>
@@ -233,7 +233,7 @@ res1: scala.collection.immutable.Range.Inclusive = Range(2, 3, 4)
 
 
 <p>
-<b>NOTE(dirlt):实际上scala内部提供了隐式转换到其他类来提供扩展方法的，比如将Int-&gt;RichInt.可以学习一下这些扩展方法</b>
+<b>note(dirlt):实际上scala内部提供了隐式转换到其他类来提供扩展方法的，比如将Int-&gt;RichInt.可以学习一下这些扩展方法</b>
 </p>
 
 <hr/>
@@ -385,7 +385,7 @@ scala&gt; def foo(a:Int,b:Int)  = {
 
 
 <p>
-<b>NOTE（dirlt)：需要注意的是传入的param实际上都是以val来定义的，所以在funciton-body里面不允许做修改</b>
+<b>note(dirlt)：需要注意的是传入的param实际上都是以val来定义的，所以在funciton-body里面不允许做修改</b>
 </p>
 <p>
 所有函数都是继承于Function这个类的，比如(Int,Int) =&gt; Long那么继承于Function2[Int,Int,Long]并且实现了apply方法，所以如果想创建函数的话，实际上也可以使用创建对象方式来完成
@@ -399,7 +399,7 @@ scala&gt; def foo(a:Int,b:Int)  = {
 
 
 <p>
-NOTE(dirlt@2013-11-04):much shorter code. Function2[Int,Int,Long] = (Int,Int)=&gt;Long
+note(dirlt)@2013-11-04: much shorter code. Function2[Int,Int,Long] = (Int,Int)=&gt;Long
 </p>
 
 
@@ -487,7 +487,7 @@ println(foo(y = 1, x = 1))
 </li>
 <li>try/catch/finally # exception handling.
 </li>
-<li><b>NOTE(dirlt):没有break/continue语句</b>
+<li><b>note(dirlt):没有break/continue语句</b>
 </li>
 </ul>
 
@@ -535,7 +535,7 @@ println(x) // Vector(0, 1, 2, 3, 4)
 
 
 <p>
-<b>NOTE（dirlt）：在书中“For Expressions Revisited”这节其实可以认为for是语法糖衣，将map/filter/anonymous-function包装起来.事实上缺少break/continue这样的控制语句，将for转换成为函数式计算也相对比较简单</b>
+<b>note(dirlt)：在书中“For Expressions Revisited”这节其实可以认为for是语法糖衣，将map/filter/anonymous-function包装起来.事实上缺少break/continue这样的控制语句，将for转换成为函数式计算也相对比较简单</b>
 Coursera Reactive Programming
 </p><ul>
 <li>for(x&lt;-e1) yield e2 =&gt; e1.map(x =&gt; e2)
@@ -604,7 +604,7 @@ val y =
 
 
 <p>
-<b>NOTE（dirlt）：限制以及内部实现</b>
+<b>note(dirlt)：限制以及内部实现</b>
 </p>
 </div>
 
@@ -646,7 +646,7 @@ println(c eq b)
 </li>
 <li>a op: b -&gt; b.op(a) # If the method name ends in a colon, the method is invoked on the right operand. 
 <ul>
-<li><b>NOTE(dirlt):但是evaluation的顺序依然先是a，然后是b</b>
+<li><b>note(dirlt):但是evaluation的顺序依然先是a，然后是b</b>
 </li>
 </ul>
 
@@ -827,7 +827,7 @@ pattern总结起来大约以下几类：
 </li>
 <li>isInstanceOf[&lt;type&gt;]
 </li>
-<li><b>NOTE(dirlt):这里需要注意容器类型擦除.Array例外因为这个是java内置类型</b> 
+<li><b>note(dirlt):这里需要注意容器类型擦除.Array例外因为这个是java内置类型</b> 
 </li>
 </ul>
 
@@ -1249,7 +1249,7 @@ scala将构造函数和初始化代码融合，只是使用初始化代码来作
 </pre>
 
 <p>
-在class parameter之前添加[private|protected|override] [val|var]即可，这样既定义了类构造函数参数也定义了对应的字段。scala访问修饰符只有private/protected,默认是public. The way you make members public in Scala is by not explicitly specifying any access modifier. Put another way, where you’d say “public” in Java, you simply say nothing in Scala. Public is Scala’s default access level.  <b>NOTE(dirlt):默认是public val</b>  
+在class parameter之前添加[private|protected|override] [val|var]即可，这样既定义了类构造函数参数也定义了对应的字段。scala访问修饰符只有private/protected,默认是public. The way you make members public in Scala is by not explicitly specifying any access modifier. Put another way, where you’d say “public” in Java, you simply say nothing in Scala. Public is Scala’s default access level.  <b>note(dirlt):默认是public val</b>  
 </p>
 <p>
 如果面向对象角度相比于java，上面这种方式确实简化不少。而scala本意应该是更想到达函数式类构造效果，构造生成对象称为 <b>functional object</b> . 我们之所以想保存这些参数是因为在编写java时候这些参数只能够在构造函数中获得，而在scala里面实际上在整个类里面都是可以获得的，因此对于上面情况来说我们根本没有必要保存这些类参数。在下面closure代码里面我们实际上可以直接引用pn,pd来参与计算。
@@ -1588,7 +1588,7 @@ Because this pattern is common, Scala lets you leave out the name of this pa- ra
 
 
 <p>
-而scala代码相对简洁，并且访问squareN和doubleD更像是访问字段而不是在调用方法。 <b>NOTE(dirlt):不过从个人感觉上看，如果计算代价比较大的话，还是使用empty-paren比较好</b>
+而scala代码相对简洁，并且访问squareN和doubleD更像是访问字段而不是在调用方法。 <b>note(dirlt):不过从个人感觉上看，如果计算代价比较大的话，还是使用empty-paren比较好</b>
 </p>
 
 
@@ -1639,7 +1639,7 @@ val b = new B(10);
 </pre>
 
 <p>
-抽象类不能够用来创建实例，类必须继承实现方法才能够创建实例。 <b>NOTE(dirlt):注意对于字段和方法来说一定要给出定义，否则会认为是声明，这样就会产生抽象的字段和方法</b> 
+抽象类不能够用来创建实例，类必须继承实现方法才能够创建实例。 <b>note(dirlt):注意对于字段和方法来说一定要给出定义，否则会认为是声明，这样就会产生抽象的字段和方法</b> 
 </p>
 <p>
 与抽象类相对应的是final类，这个类不能够再被继承。同时final字段还能够用在方法和字段上面这样可以不被override.
@@ -1739,7 +1739,7 @@ By contrast, Scala encourages the use of Option to indicate an optional value. T
 <h4 id="sec-1-2-9"><span class="section-number-4">1.2.9</span> Traits</h4>
 <div class="outline-text-4" id="text-1-2-9">
 
-<p>所谓的traits就是特征，在面向对象里面就是指代这个类或者是这个对象的特征。scala trait和java interface非常相似，其引入都是为了解决多重继承的问题。 <b>trait包含方法和字段，但是没有类参数（class parameter）和构造函数。</b>  <b>NOTE（dirlt）：我觉得这点设计让trait回归到了本意，同时简化了设计和使用</b> trait的定义和class类似，mixin trait上也是通过关键字extends来完成的，如果需要mixin多个trait的话用with关键字
+<p>所谓的traits就是特征，在面向对象里面就是指代这个类或者是这个对象的特征。scala trait和java interface非常相似，其引入都是为了解决多重继承的问题。 <b>trait包含方法和字段，但是没有类参数（class parameter）和构造函数。</b>  <b>note(dirlt)：我觉得这点设计让trait回归到了本意，同时简化了设计和使用</b> trait的定义和class类似，mixin trait上也是通过关键字extends来完成的，如果需要mixin多个trait的话用with关键字
 </p>
 
 
@@ -1858,7 +1858,7 @@ class Cat extends Animal with Furry with FourLegged
 <p>所以最后的linear order为此，以此顺序调用super.
 </p>
 <p>
-<b>NOTE（dirlt）：这种动态执行的效果就是，你不能够确定super到底是哪个，取决于context.</b>
+<b>note(dirlt)：这种动态执行的效果就是，你不能够确定super到底是哪个，取决于context.</b>
 </p>
 
 <hr/>
@@ -1996,7 +1996,7 @@ scala提供的枚举类型也相对比较灵活，也可以很容易地访问整
 </p>
 
 
-<pre class="src src-Scala">for (a &lt;- X) { // TODO(dirlt): seems don't work now!.
+<pre class="src src-Scala">for (a &lt;- X) { // todo(dirlt): seems don't work now!.
   println(a)
 }
 
@@ -2023,7 +2023,7 @@ println(y.id + <span class="org-string">","</span> + y)
 <h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> 匿名函数</h4>
 <div class="outline-text-4" id="text-1-3-1">
 
-<p><b>NOTE（dirlt）：aka. function literal</b> 
+<p><b>note(dirlt)：aka. function literal</b> 
 </p>
 
 
@@ -2035,7 +2035,7 @@ println(y.id + <span class="org-string">","</span> + y)
 匿名函数不允许指定return-type，也就是说匿名函数必须通过type inference确定返回类型。
 </p>
 <p>
-<b>NOTE(dirlt):实际上匿名函数也可以指定return-type</b> 参考 <a href="http://stackoverflow.com/questions/2088524/is-it-possible-to-specify-an-anonymous-functions-return-type-in-scala">http://stackoverflow.com/questions/2088524/is-it-possible-to-specify-an-anonymous-functions-return-type-in-scala</a>
+<b>note(dirlt):实际上匿名函数也可以指定return-type</b> 参考 <a href="http://stackoverflow.com/questions/2088524/is-it-possible-to-specify-an-anonymous-functions-return-type-in-scala">http://stackoverflow.com/questions/2088524/is-it-possible-to-specify-an-anonymous-functions-return-type-in-scala</a>
 </p><ul>
 <li>syntax支持
 </li>
@@ -2054,7 +2054,7 @@ val y = new Function1[Int,Int] {
 
 
 <p>
-NOTE(dirlt@2013-11-04) 匿名函数也可以有下面的表达方式
+note(dirlt)@2013-11-04 匿名函数也可以有下面的表达方式
 </p>
 
 
@@ -2326,7 +2326,7 @@ val y:A[Any] = x;
 </pre>
 
 <p>
-<b>NOTE(dirlt):初看contravariant似乎没有太大作用，后面会说到</b>
+<b>note(dirlt):初看contravariant似乎没有太大作用，后面会说到</b>
 </p>
 <p>
 当然出了改变variance之外，还能够像java一样做强制类型转换，通过asInstanceOf,isInstanceOf来操作
@@ -2550,7 +2550,7 @@ public final class C extends java.lang.Object{
 </li>
 <li>Iterator&lt;? extends Component&gt;
 </li>
-<li><b>NOTE(dirlt):似乎只有java泛型类型这块没有对应</b>
+<li><b>note(dirlt):似乎只有java泛型类型这块没有对应</b>
 </li>
 </ul>
 
@@ -2584,7 +2584,7 @@ public final class C extends java.lang.Object{
 
 
 <p>
-<b>NOTE(dirlt):大部分时候使用不到,主要还是为了能够比较好理解compile error message</b>
+<b>note(dirlt):大部分时候使用不到,主要还是为了能够比较好理解compile error message</b>
 </p>
 
 </div>
@@ -2594,7 +2594,7 @@ public final class C extends java.lang.Object{
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-28T16:50+0800</p>
+<p class="date">Date: 2014-04-15T09:13+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

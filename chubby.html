@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="chubby"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-19T14:36+0800"/>
+<meta name="generated" content="2014-05-22T11:39+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -134,7 +134,7 @@
 </li>
 <li>author: Mike Burrows(Google Inc)
 </li>
-<li>date: 2006    
+<li>date: 2006
 </li>
 </ul>
 
@@ -206,7 +206,7 @@
 </li>
 <li>distributed asynchronous consensus solved by Paxos protocol without timeing assumptions.
 </li>
-<li>introduce clocks to ensure liveness(overcomes impossibility result of Fischer).TODO(dirlt):
+<li>introduce clocks to ensure liveness(overcomes impossibility result of Fischer).todo(dirlt):
 </li>
 <li>not research, no new algorithms and techniques, but just what we did and why.
 </li>
@@ -221,7 +221,7 @@
 <h3 id="sec-1-3"><span class="section-number-3">1.3</span> Design</h3>
 <div class="outline-text-3" id="text-1-3">
 
-<p>NOTE(dirlt):对于Abstracr以及Introduction这两节来说的话，使用原文list item的方式就可以有比较好的总结了。而对于其他部分的话，使用这种描述方法似乎就有点不太适合。
+<p>note(dirlt):对于Abstracr以及Introduction这两节来说的话，使用原文list item的方式就可以有比较好的总结了。而对于其他部分的话，使用这种描述方法似乎就有点不太适合。
 因为相对Abstracr以及Introduction来说的话，其他section信息量会相对较大。合适的方式应该任然是list item,但是不能够使用原文而应该自己总结。并且这些list item可能会
 比较长，因为需要将一些聚合性的内容放在一个item内部。当然可以在list item内部引述一些原文信息。
 </p>
@@ -278,7 +278,7 @@
 </li>
 <li>It can be advantageous to re-duce the overhead of locking by not maintaining locks across lock server failure, and the time penalty for drop-ping locks every so often is not severe because locks are held for short periods. (Clients must be prepared to lose locks during network partitions, so the loss of locks on lock server fail-over introduces no new recovery paths.)(但是可以通过一些取巧的方法来减少overhead或者是放宽一些条件，但是这些都需要client的配合)
 </li>
-<li>TODO(dirlt):如何将粗粒度锁转换成为细粒度锁
+<li>todo(dirlt):如何将粗粒度锁转换成为细粒度锁
 </li>
 </ul>
 
@@ -348,7 +348,7 @@
 </li>
 <li>每一个文件节点的元信息包含了下面4个自增的数字(id)(uint64)来使得用户可以容易地检测变化：
 <ul>
-<li>instance number. 同名节点不同实例的id.如果某个name被删除然后重新创建的话，那么id是不同的。NOTE(dirlt):但是我觉得完全可以使用节点实例id来区分的而不必同名。
+<li>instance number. 同名节点不同实例的id.如果某个name被删除然后重新创建的话，那么id是不同的。note(dirlt):但是我觉得完全可以使用节点实例id来区分的而不必同名。
 </li>
 <li>content generation number. 每次节点内容的改写都会增加这个数字。
 </li>
@@ -367,7 +367,7 @@
 </li>
 <li>sequence number.master own id.可以区分这个handle是不是属于其他session的。(比如master重新发生选举)
 </li>
-<li>mode information.如果old handle提供的话那么可以通过old handle里面的mode information,当前master可以重新构造一些状态。TODO(dirlt):???
+<li>mode information.如果old handle提供的话那么可以通过old handle里面的mode information,当前master可以重新构造一些状态。todo(dirlt):???
 </li>
 </ul>
 
@@ -394,7 +394,7 @@
 </li>
 <li>We did not wish to force users to shut down appli-cations when they needed to access locked files for debugging or administrative purposes.(如果锁是强制的话并且我们如果需要访问，那么我们必须将持有锁的应用程序关闭。这点在很多个人桌面上可以很容易地操作，但是在复杂系统中这么做的话并不现实)
 </li>
-<li>Our developers perform error checking in the conven-tional way, by writing assertions such as "lock X is held", so they benefit little from mandatory checks. Buggy or malicious processes have many opportuni-ties to corrupt data when locks are not held, so we find the extra guards provided by mandatory locking to be of no significant value.(强制锁带来的保护作用并不大)TODO(dirlt):不是非常理解.
+<li>Our developers perform error checking in the conven-tional way, by writing assertions such as "lock X is held", so they benefit little from mandatory checks. Buggy or malicious processes have many opportuni-ties to corrupt data when locks are not held, so we find the extra guards provided by mandatory locking to be of no significant value.(强制锁带来的保护作用并不大)todo(dirlt):不是非常理解.
 </li>
 </ul>
 
@@ -411,7 +411,7 @@
 </li>
 <li>之后每次请求的话都会带上这个字符串。服务器端可以通过得到这个字符串来当前lock是否有效，并且也可以根据lock generation number来进行排序。如果无效的话那么会直接拒绝client.
 </li>
-<li>The validity of a sequencer can be checked against the server's Chubby cache or, if the server does not wish to maintain a ses-sion with Chubby, against the most recent sequencer that the server has observed.(TODO(dirlt):这里的server和chubby之间的差别是什么?)
+<li>The validity of a sequencer can be checked against the server's Chubby cache or, if the server does not wish to maintain a ses-sion with Chubby, against the most recent sequencer that the server has observed.(todo(dirlt):这里的server和chubby之间的差别是什么?)
 </li>
 <li>chubby对于legacy system并没有使用sequencer方式，而是使用imperfect but easier mechanism方式来减少乱序的风险。对于正常的锁之间转移的话没有任何问题，但是如果lock holder中途挂掉的话那么会在master端有一个lease timeout.在这段时间内是不允许其他client来获取这个锁的。这样只要在lease timeout这段时间将这个lock上的操作处理完成那么就没有问题。
 </li>
@@ -444,7 +444,7 @@
 </li>
 <li>Events are delivered after the corresponding action has taken place. Thus, if a client is informed that file contents have changed, it is guaranteed to see the new data (or data that is yet more recent) if it subsequently reads the file.(event是在动作发生之后才会触发的。如果文件发生修改的话，那么在回调中读取的必然是最新的数据)
 </li>
-<li>对于最后面两个action来说的话其实完全是不需要的。对于lock acquired来说的话，我们通常不是为了知道这个primary被选举出来了，而是要知道哪个是primary并且与之通信。这点完全可以通过name service来触发。conflicting lock request可以用来辅助client进行数据cache.但是很少人使用这种用法。NOTE(dirlt):我猜想应该是自己释放了cache lock同时cache住了原来的数据，只要没有新的write lock申请的话，原来的数据就还是可以使用的。 NOTE(dirlt):关于这个信息可以在cache最后部分看到，chubby也对lock进行了cache.
+<li>对于最后面两个action来说的话其实完全是不需要的。对于lock acquired来说的话，我们通常不是为了知道这个primary被选举出来了，而是要知道哪个是primary并且与之通信。这点完全可以通过name service来触发。conflicting lock request可以用来辅助client进行数据cache.但是很少人使用这种用法。note(dirlt):我猜想应该是自己释放了cache lock同时cache住了原来的数据，只要没有新的write lock申请的话，原来的数据就还是可以使用的。 note(dirlt):关于这个信息可以在cache最后部分看到，chubby也对lock进行了cache.
 </li>
 </ul>
 
@@ -457,7 +457,7 @@
 <h4 id="sec-1-3-6"><span class="section-number-4">1.3.6</span> API</h4>
 <div class="outline-text-4" id="text-1-3-6">
 
-<p>NOTE(dirlt):API似乎和zookeeper有点不太相同。zookeeper API连接上server之后可以按照node name进行操作。对于不同的handle来说，server可以认为是不同的client.
+<p>note(dirlt):API似乎和zookeeper有点不太相同。zookeeper API连接上server之后可以按照node name进行操作。对于不同的handle来说，server可以认为是不同的client.
 </p><ul>
 <li>Open. takes a node name and return an opaque structured handle.(不允许使用current directory,在多线程中会存在问题).
 </li>
@@ -524,7 +524,7 @@
 <h4 id="sec-1-3-7"><span class="section-number-4">1.3.7</span> Caching</h4>
 <div class="outline-text-4" id="text-1-3-7">
 
-<p>NOTE(dirlt):对于cache这件事情来说非常神奇，因为我们很少会去定义一个时序。假设AB两个节点，A在t1时刻发起操作F=1,B在t2时刻读取到F=1并且cache,C在t3时刻发起操作F=2的话，
+<p>note(dirlt):对于cache这件事情来说非常神奇，因为我们很少会去定义一个时序。假设AB两个节点，A在t1时刻发起操作F=1,B在t2时刻读取到F=1并且cache,C在t3时刻发起操作F=2的话，
 B在t4如果继续读取F的，不管是读取到1还是2通常我们都是可以接受的。因为对于这种分布式系统来说，是没有一个统一时间的。t4在绝对时间上&gt;t3,但是如果考虑时间误差的话，我们也可以认为t4&lt;=t3的。
 所谓cache所约定的语义，应该是类似自己的cache存在一定的超时时间(这个时间久可以认为是各个机器的时间误差).超过这么多时间之后的话，可以从server上面重新读取数据。所以chubby提到了对待cache两种做法：
 </p><ul>
@@ -559,7 +559,7 @@ B在t4如果继续读取F的，不管是读取到1还是2通常我们都是可�
 </li>
 </ul>
 
-<p>exchange sequence numbers in all messages were con-sidered inappropriate in an environment with diverse pre-existing communication protocols. (cache主要还是从程序员使用方便角度出发的，所以拒绝使用weaker模型并且也没有暴露复杂使用方法) TODO(dirlt):何谓弱模型
+<p>exchange sequence numbers in all messages were con-sidered inappropriate in an environment with diverse pre-existing communication protocols. (cache主要还是从程序员使用方便角度出发的，所以拒绝使用weaker模型并且也没有暴露复杂使用方法) todo(dirlt):何谓弱模型
 </p><ul>
 <li>In addition to caching data and meta-data, Chubby clients cache open handles. This caching is re-stricted in minor ways so that it never affects the seman-tics observed by the client. handles on ephemeral files cannot be held open if the application has closed them; and handles that permit locking can be reused, but can-not be used concurrently by multiple application handles. This last restriction exists because the client may use Close() or Poison() for their side-effect of cancelling outstanding Acquire() calls to the master.(chubby也会对文件句柄缓存，但是缓存非常局限确保不会影响到client.比如对于临时文件上的handle在Close之后是不允许缓存的，
 </li>
@@ -601,7 +601,7 @@ B在t4如果继续读取F的，不管是读取到1还是2通常我们都是可�
 </li>
 </ul>
 
-<p>KeepAlive reply spent in flight, and the rate at which the master's clock is advancing; to maintain consistency, we require that the server's clock advance no faster than a known constant factor faster than the client's.(客户端也会维护一个本地的lease时间，这个时间可以认为是master分配lease timeout的一个大致保守估计因为需要考虑到KeepAlive传输时间以及master时间提前。为了维持一致性，服务器时间不能够比client时间提前超过某个常数比率). NOTE(dirlt):chubby依赖系统时间.
+<p>KeepAlive reply spent in flight, and the rate at which the master's clock is advancing; to maintain consistency, we require that the server's clock advance no faster than a known constant factor faster than the client's.(客户端也会维护一个本地的lease时间，这个时间可以认为是master分配lease timeout的一个大致保守估计因为需要考虑到KeepAlive传输时间以及master时间提前。为了维持一致性，服务器时间不能够比client时间提前超过某个常数比率). note(dirlt):chubby依赖系统时间.
 </p><ul>
 <li>在KeepAlive回来之前的话，如果client local lease timeout的话，client没有办法确认当前session是否已经终，那么client首先清空并且disable其cache，这个时候我们成为session in jeopardy.然后有一个grace period(默认45s).如果在grace period之间如果有KeepAlive通信的话，那么session重新开始进行cache,否则就认为这个session expired. 这样做的好处就是可以防止调用被block住。这里需要注意的就是在session in jeopardy的时候所有操作都会block住，因为这个时候很可能是因为master fail-over并且触发election.
 </li>
@@ -620,18 +620,20 @@ B在t4如果继续读取F的，不管是读取到1还是2通常我们都是可�
 <h4 id="sec-1-3-9"><span class="section-number-4">1.3.9</span> Fail-overs</h4>
 <div class="outline-text-4" id="text-1-3-9">
 
+<p><img src="images/chubby-grace-period-in-master-fail-over.png"  alt="./images/chubby-grace-period-in-master-fail-over.png" />
+</p>
 <ul>
-<li>When a master fails or otherwise loses mastership, it dis-cards its in-memory state about sessions, handles, and locks. The authoritative timer for session leases runs at the master, so until a new master is elected the session lease timer is stopped; this is legal because it is equiva-lent to extending the client’s leas.(如果master fail的话那么会丢弃内存内部的状态，其lease也会停止计时) TODO(dirlt):这里没有明白最后面这句话是什么意思。
+<li>When a master fails or otherwise loses mastership, it dis-cards its in-memory state about sessions, handles, and locks. The authoritative timer for session leases runs at the master, so until a new master is elected the session lease timer is stopped; this is legal because it is equiva-lent to extending the client’s leas.(如果master fail的话那么会丢弃内存内部的状态，其lease也会停止计时) todo(dirlt):这里没有明白最后面这句话是什么意思。
 </li>
 <li>If a master election occurs quickly, clients can contact the new master before their local (approximate) lease timers expire. If the elec-tion takes a long time, clients flush their caches and wait for the grace period while trying to find the new master. Thus the grace period allows sessions to be maintained across fail-overs that exceed the normal lease timeout.(如果master在grace period之前选举出来的话，那么client就可以在session断开之前连接上master.但是如果选举使用了很长时间的话，那么session就断开了，对于client来说的话就需要重新进行连接。因此引入grace period的意图就是为能够在master failover期间依然保持session).
 </li>
-<li>论文给出了一个master出现failover的时序图。TODO(dirlt):这里对于时序图最不能够理解的一点就是为什么需要引入master lease M3.这里的M3是一个conservative assumption.
+<li>论文给出了一个master出现failover的时序图。todo(dirlt):这里对于时序图最不能够理解的一点就是为什么需要引入master lease M3.这里的M3是一个conservative assumption.
 </li>
-<li>Once a client has contacted the new master, the client library and master co-operate to provide the illusion to the application that no failure has occurred. To achieve this, the new master must reconstruct a conservative ap-proximation of the in-memory state that the previous master had. It does this partly by reading data stored stably on disc (replicated via the normal database repli-cation protocol), partly by obtaining state from clients, and partly by conservative assumptions. The database records each session, held lock, and ephemeral file.(对于client如果在grace period之间连接上新的master的话，比如给client提供一个假象好像master没有出现failover,因此这个过程必须足够平滑并且进行一些状态的恢复。master会使用各种方式构造原来的in-memory状态，包括从磁盘读取(之前master保存的状态,包括session,lock以及临时文件),根据client状态(client之前是出于什么状态),以及conservative assumption. TODO(dirlt):what's conservative assumption???
+<li>Once a client has contacted the new master, the client library and master co-operate to provide the illusion to the application that no failure has occurred. To achieve this, the new master must reconstruct a conservative ap-proximation of the in-memory state that the previous master had. It does this partly by reading data stored stably on disc (replicated via the normal database repli-cation protocol), partly by obtaining state from clients, and partly by conservative assumptions. The database records each session, held lock, and ephemeral file.(对于client如果在grace period之间连接上新的master的话，比如给client提供一个假象好像master没有出现failover,因此这个过程必须足够平滑并且进行一些状态的恢复。master会使用各种方式构造原来的in-memory状态，包括从磁盘读取(之前master保存的状态,包括session,lock以及临时文件),根据client状态(client之前是出于什么状态),以及conservative assumption. todo(dirlt):what's conservative assumption???
 </li>
 <li>对于一个新选举出来的master需要经过下面几个步骤：
 <ul>
-<li>It first picks a new client epoch number, which clients are required to present on every call. The master rejects calls from clients using older epoch numbers, and provides the new epoch number. This ensures that the new master will not respond to a very old packet that was sent to a previous master, even one running on the same machine(首先挑选一个新epoch number.client每次和master交互都需要带上这个epoch number.因为原来client持有的epoch number和当前是不同的，因此会被拒绝掉而下次以正确的epoch number来进行发送。NOTE(dirlt):文中说可以过滤发给原来master的请求。这点对于TCP来说应该是不会存在这个问题的，因为重新更换了一次连接，但是对于UDP可能存在这个问题。另外引入这个原因我猜想是希望client library能够意识到master已经发生改变，需要做相应调整)
+<li>It first picks a new client epoch number, which clients are required to present on every call. The master rejects calls from clients using older epoch numbers, and provides the new epoch number. This ensures that the new master will not respond to a very old packet that was sent to a previous master, even one running on the same machine(首先挑选一个新epoch number.client每次和master交互都需要带上这个epoch number.因为原来client持有的epoch number和当前是不同的，因此会被拒绝掉而下次以正确的epoch number来进行发送。note(dirlt):文中说可以过滤发给原来master的请求。这点对于TCP来说应该是不会存在这个问题的，因为重新更换了一次连接，但是对于UDP可能存在这个问题。另外引入这个原因我猜想是希望client library能够意识到master已经发生改变，需要做相应调整)
 </li>
 <li>The new master may respond to master-location equests, but does not at first process incoming session-related operations.(可以相应master-location的相应但是不能够影响任何session相关的操作)
 </li>
@@ -645,7 +647,7 @@ B在t4如果继续读取F的，不管是读取到1还是2通常我们都是可�
 </li>
 <li>The master allows all operations to proceed.
 </li>
-<li>If a client uses a handle created prior to the fail-over (determined from the value of a sequence number in the handle), the master recreates the in-memory representation of the handle and honours the call. If such a recreated handle is closed, the master records it in memory so that it cannot be recreated in this master epoch; this ensures that a delayed or dupli-cated network packet cannot accidentally recreate a closed handle. A faulty client can recreate a closed handle in a future epoch, but this is harmless given that the client is already faulty. TODO(dirlt): what does that mean??? 
+<li>If a client uses a handle created prior to the fail-over (determined from the value of a sequence number in the handle), the master recreates the in-memory representation of the handle and honours the call. If such a recreated handle is closed, the master records it in memory so that it cannot be recreated in this master epoch; this ensures that a delayed or dupli-cated network packet cannot accidentally recreate a closed handle. A faulty client can recreate a closed handle in a future epoch, but this is harmless given that the client is already faulty. todo(dirlt): what does that mean???
 </li>
 <li>After some interval (a minute, say), the master deletes ephemeral files that have no open file han-dles. Clients should refresh handles on ephemeral files during this interval after a fail-over. This mech-anism has the unfortunate effect that ephemeral files may not disappear promptly if the last client on such a file loses its session during a fail-over.(过一段时间间隔之后比如1分钟，master会检查所有的临时文件是否有client所持有，如果没有的话那么就会删除。这种情况发生在如果存在client创建一个临时文件，之后master挂掉，client没有在指定时间内将session维持上，导致会存在临时文件没有立刻删除)
 </li>
@@ -654,7 +656,7 @@ B在t4如果继续读取F的，不管是读取到1还是2通常我们都是可�
 </li>
 <li>Readers will be unsurprised to learn that the fail-over code, which is exercised far less often than other parts of the system, has been a rich source of interesting bugs.(这个过程比较麻烦，而且也比较少发生所以bugs可能会非常多)
 </li>
-<li>NOTE(dirlt):这里存在grace peirod好处就是可以在这段时间内可以让master进行选举，同时让client library自动进行这些重连操作，这些对于app来说的话都将影响减少到最少(会有一些事件通知发生).但是这个grace period不能够无限长。在这个grace period时间内所有的操作都是block住的，一旦grace peirod over之后对于这些操作都会返回错误。如果grace period无限长的话那么所有操作都会block住，虽然可能超过grace period之后master就会选举出来，这也算是设计上的折衷吧，所以grace period时间选定需要考虑master election以及master recovery的时间。论文里面提到默认是45s.
+<li>note(dirlt):这里存在grace peirod好处就是可以在这段时间内可以让master进行选举，同时让client library自动进行这些重连操作，这些对于app来说的话都将影响减少到最少(会有一些事件通知发生).但是这个grace period不能够无限长。在这个grace period时间内所有的操作都是block住的，一旦grace peirod over之后对于这些操作都会返回错误。如果grace period无限长的话那么所有操作都会block住，虽然可能超过grace period之后master就会选举出来，这也算是设计上的折衷吧，所以grace period时间选定需要考虑master election以及master recovery的时间。论文里面提到默认是45s.
 </li>
 </ul>
 
@@ -692,7 +694,7 @@ B在t4如果继续读取F的，不管是读取到1还是2通常我们都是可�
 <p>chubby cell定期会使用snapshot将数据库全部dump到GFS上面进行备份。对于GFS而言的话，building A下面的GFS只会使用building A下面的chubby cell.
 这样building A下面的chubby cell会将snapshot dump到buidling B下面的GFS, building B chubby cell则dump到building A的GFS下面，交叉备份。
 使用Backup一方面是为了灾备，另外一方是为了能够方便地添加新的replicas(Backups provide both disaster recovery and a means for initializing the database of a
-newly replaced replica without placing load on replicas that are in service.TODO(dirlt):what is 'placing load on replicas'
+newly replaced replica without placing load on replicas that are in service.todo(dirlt):what is 'placing load on replicas'
 </p>
 </div>
 
@@ -832,6 +834,8 @@ newly replaced replica without placing load on replicas that are in service.TODO
 <h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> Use and behaviour</h4>
 <div class="outline-text-4" id="text-1-5-1">
 
+<p><img src="images/chubby-statistics.png"  alt="./images/chubby-statistics.png" />
+</p>
 <ul>
 <li>The following table gives statistics taken as a snapshot of a Chubby cell; the RPC rate was a seen over a ten-minute period. The numbers are typical of cells in Google. Several things can be seen:(论文中给出了一个cell使用统计情况，RPC一段时间内观察的数据):
 <ul>
@@ -914,8 +918,8 @@ newly replaced replica without placing load on replicas that are in service.TODO
 <h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> Java clients</h4>
 <div class="outline-text-4" id="text-1-5-2">
 
-<p>大部分的google inf都是使用C++编写的，但是Java编写系统也逐渐增加。对于chubby来说server,library也都是使用C++编写的，并且协议本身以及client library都比较复杂。Java最通常调用其他语言的库就是使用JNI,但是在G里面大部分程序员不太喜欢，觉得太慢并且蹩脚。因此在G里面他们将很多库都转换成为了Java版本并且维护他们。chubby C++ library大约在7k左右并且协议非常精巧，因此转换成为Java代码就必须非常仔细，如果没有cache实现的话都会加重chubby server的负担。因为他们编写了一个protocol-conversion server更加简单的协议，但是依然保持chubby类似的client API.TODO(dirlt):how protocol-conversion server works???
-NOTE(dirlt):protocol-conversion仅仅是协议转换，client首先连接protocol-conversion server,而这个server再链接chubby cell.protocol-conversion和proxy是两个不同的东西。
+<p>大部分的google inf都是使用C++编写的，但是Java编写系统也逐渐增加。对于chubby来说server,library也都是使用C++编写的，并且协议本身以及client library都比较复杂。Java最通常调用其他语言的库就是使用JNI,但是在G里面大部分程序员不太喜欢，觉得太慢并且蹩脚。因此在G里面他们将很多库都转换成为了Java版本并且维护他们。chubby C++ library大约在7k左右并且协议非常精巧，因此转换成为Java代码就必须非常仔细，如果没有cache实现的话都会加重chubby server的负担。因为他们编写了一个protocol-conversion server更加简单的协议，但是依然保持chubby类似的client API.todo(dirlt):how protocol-conversion server works???
+note(dirlt):protocol-conversion仅仅是协议转换，client首先连接protocol-conversion server,而这个server再链接chubby cell.protocol-conversion和proxy是两个不同的东西。
 </p>
 </div>
 
@@ -928,9 +932,9 @@ NOTE(dirlt):protocol-conversion仅仅是协议转换，client首先连接protoco
 <ul>
 <li>Even though Chubby was designed as a lock service, we found that its most popular use was as a name server.(虽然chubby定位为lock service,但是非常流行的用法是用来作为name server)
 </li>
-<li>DNS是通过TTL来进行更新项目的，如果在TTL时间内没有刷新(TODO(dirlt):DNS是否会主动去查找刷新呢?)的话那么DNS条目就会被自动丢弃。因此如果某个replicas挂掉但是想切换的话，那么TTL必须设置得足够小。在google里面设置60s.
+<li>DNS是通过TTL来进行更新项目的，如果在TTL时间内没有刷新(todo(dirlt):DNS是否会主动去查找刷新呢?)的话那么DNS条目就会被自动丢弃。因此如果某个replicas挂掉但是想切换的话，那么TTL必须设置得足够小。在google里面设置60s.
 </li>
-<li>对于jobs而言的话，各个节点都会相互进行通信，这样造成DNS查询是二次式的增长，加上需要DNS更新条目而超时时间很短，一个简单的jobs比如存在3k clients的话会造成DNS 150k lookup requests/s.对于large jobs的话这个问题更加突出。NOTE(dirlt):相对chubby来说的话，DNS缺少的东西就是client cache以及notification机制.
+<li>对于jobs而言的话，各个节点都会相互进行通信，这样造成DNS查询是二次式的增长，加上需要DNS更新条目而超时时间很短，一个简单的jobs比如存在3k clients的话会造成DNS 150k lookup requests/s.对于large jobs的话这个问题更加突出。note(dirlt):相对chubby来说的话，DNS缺少的东西就是client cache以及notification机制.
 </li>
 <li>而是用chubby的话，client端可以进行缓存，并且配合notification机制的话，名字更新可以非常快。2-CPU 2.6GHz Xeon Chubby master不通过proxy就可以支撑90k clients.
 </li>
@@ -956,7 +960,7 @@ NOTE(dirlt):protocol-conversion仅仅是协议转换，client首先连接protoco
 </li>
 <li>To avoid overload, the server was modified to store a session in the database not when it was first created, but instead when it attempted its first modification, lock acquisition, or open of an ephemeral file. In addition, active sessions were recorded in the database with some probability on each KeepAlive. Thus, the writes for read-only sessions were spread out in time.(为了减少压力，server并不在创建session的时候就保存到db,而是在session第一次发起写操作的时候保存到db这样就可以平压力，而对于那些只读的session来说会将写的时刻尽可能地散步开来)
 <ul>
-<li>Though it was necessary to avoid overload, this opti-mization has the undesirable effect that young read-only sessions may not be recorded in the database, and so may be discarded if a fail-over occurs.(尽管这样可以减少压力，但是会存在一些read only session的丢失)。Although such ses-sions hold no locks, this is unsafe; if all the recorded sessions were to check in with the new master before the leases of discarded sessions expired, the discarded ses-sions could then read stale data for a while. This is rare in practice; in a large system it is almost certain that some session will fail to check in, and thus force the new mas-ter to await the maximum lease time anyway. TODO(dirlt):这里解释了为什么这只读session的丢失会造成问题但是没有看懂
+<li>Though it was necessary to avoid overload, this opti-mization has the undesirable effect that young read-only sessions may not be recorded in the database, and so may be discarded if a fail-over occurs.(尽管这样可以减少压力，但是会存在一些read only session的丢失)。Although such ses-sions hold no locks, this is unsafe; if all the recorded sessions were to check in with the new master before the leases of discarded sessions expired, the discarded ses-sions could then read stale data for a while. This is rare in practice; in a large system it is almost certain that some session will fail to check in, and thus force the new mas-ter to await the maximum lease time anyway. todo(dirlt):这里解释了为什么这只读session的丢失会造成问题但是没有看懂
 </li>
 <li>Neverthe-less, we have modified the fail-over design both to avoid this effect, and to avoid a complication that the current scheme introduces to proxies.(因此我们修改了fail-over的设计方案，一方面避免这个问题，另外一方面避免当前这种方案对于proxy来说引入的复杂性)
 </li>
@@ -971,7 +975,7 @@ NOTE(dirlt):protocol-conversion仅仅是协议转换，client首先连接protoco
 
 
 <p>
-NOTE(dirlt):将session这类信息不放在磁盘上面，而全部由client自己维护。新的master上来之后所有的client都会和这个master重新recreate handles.master通过超时机制，确保所有的session要不就重新建立(和master成功连上)，要不就必然终止(因为超过grace period而client自动终止).感觉整个chubby方案强烈依赖于这种时间窗口机制。
+note(dirlt):将session这类信息不放在磁盘上面，而全部由client自己维护。新的master上来之后所有的client都会和这个master重新recreate handles.master通过超时机制，确保所有的session要不就重新建立(和master成功连上)，要不就必然终止(因为超过grace period而client自动终止).感觉整个chubby方案强烈依赖于这种时间窗口机制。
 </p>
 </div>
 
@@ -996,7 +1000,7 @@ NOTE(dirlt):将session这类信息不放在磁盘上面，而全部由client自�
 </li>
 <li>Lack of quotas. 缺少配额机制
 </li>
-<li>Publish/subscribe. 应用尝试使用chubby的event机制比如Zephyr.但是由于chubby需要对cache采用invalidation而不是update来保证一致性，导致pub/sub这种方案非常低效。NOTE(dirlt):pub/sub似乎和cache非常不match.
+<li>Publish/subscribe. 应用尝试使用chubby的event机制比如Zephyr.但是由于chubby需要对cache采用invalidation而不是update来保证一致性，导致pub/sub这种方案非常低效。note(dirlt):pub/sub似乎和cache非常不match.
 </li>
 </ul>
 
@@ -1033,7 +1037,7 @@ NOTE(dirlt):将session这类信息不放在磁盘上面，而全部由client自�
 </li>
 <li>Poor API choices have unexpected affects.
 </li>
-<li>RPC use affects transport protocols. 当网络出现拥塞KeepAlive RPC的时候TCP会出现指数退避来缓解拥塞，但是这样就会出现client lease timeout和server lease timeout不一致的情况，这样会导致client出现大量的session丢失。We were forced to send KeepAlive RPCs via UDP rather than TCP; UDP has no congestion avoidance mechanisms, so we would prefer to use UDP only when high-level time-bounds must be met. (因此我们更倾向使用UDP而不是TCP来做RPC,因为UDP没有拥塞控制机制) TODO(dirlt):high-level time-bounds ???
+<li>RPC use affects transport protocols. 当网络出现拥塞KeepAlive RPC的时候TCP会出现指数退避来缓解拥塞，但是这样就会出现client lease timeout和server lease timeout不一致的情况，这样会导致client出现大量的session丢失。We were forced to send KeepAlive RPCs via UDP rather than TCP; UDP has no congestion avoidance mechanisms, so we would prefer to use UDP only when high-level time-bounds must be met. (因此我们更倾向使用UDP而不是TCP来做RPC,因为UDP没有拥塞控制机制) todo(dirlt):high-level time-bounds ???
 </li>
 </ul>
 
@@ -1076,7 +1080,7 @@ NOTE(dirlt):将session这类信息不放在磁盘上面，而全部由client自�
 </li>
 <li>distributed consensus among a few replicas for fault tolerance, consistent client-side caching to re-duce server load while retaining simple semantics, timely notification of updates, and a familiar file system inter-face.
 </li>
-<li>We use caching, protocol-conversion servers, and simple load adaptation to allow it scale to tens of thou-sands of client processes per Chubby instance. We ex-pect to scale it further via proxies and partitioning. TODO(dirlt):I still confused with protocol-conversion server?
+<li>We use caching, protocol-conversion servers, and simple load adaptation to allow it scale to tens of thou-sands of client processes per Chubby instance. We ex-pect to scale it further via proxies and partitioning. todo(dirlt):I still confused with protocol-conversion server?
 </li>
 <li>Chubby has become Google's primary internal name service; it is a common rendezvous mechanism for sys-tems such as MapReduce ; the storage systems GFS and Bigtable use Chubby to elect a primary from redun-dant replicas; and it is a standard repository for files that require high availability, such as access control lists.(在MapReduce上面作为汇集点机制使用，在GFS以及BigTable上面的话用来作为选主机制)
 </li>
@@ -1091,15 +1095,15 @@ NOTE(dirlt):将session这类信息不放在磁盘上面，而全部由client自�
 <h3 id="sec-1-9"><span class="section-number-3">1.9</span> Q&amp;A</h3>
 <div class="outline-text-3" id="text-1-9">
 
-<p>TODO(dirlt):
+<p>todo(dirlt):
 </p></div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-19T14:36+0800</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
+<p class="date">Date: 2014-05-22T11:39+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

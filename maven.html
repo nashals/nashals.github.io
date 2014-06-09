@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="maven"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-19T14:35+0800"/>
+<meta name="generated" content="2014-04-15T09:14+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -69,7 +69,7 @@
  * @licstart  The following is the entire license notice for the
  *  JavaScript code in http://orgmode.org/mathjax/MathJax.js.
  *
- * Copyright (C) 2012  MathJax
+ * Copyright (C) 2012-2013  MathJax
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -92,7 +92,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code below.
 
-Copyright (C) 2012  Free Software Foundation, Inc.
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
 
 The JavaScript code below is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -375,9 +375,9 @@ Maven 从开源社区中汲取了十多年的项目构建管理经验。很难�
 <p>
 另外两个并不常用的坐标指标是：
 </p><ul>
-<li>packaging. jar, pom etc. <b>NOTE(dirlt):下载对象类型</b>
+<li>packaging. jar, pom etc. <b>note(dirlt):下载对象类型</b>
 </li>
-<li>classifier. javadoc, jdk15 etc. <b>NOTE（dirlt）：下载对象后缀名，比如如果jdk15的话，那么下载对象就是junit-jdk15.jar.这个可以用来区分环境</b>
+<li>classifier. javadoc, jdk15 etc. <b>note(dirlt)：下载对象后缀名，比如如果jdk15的话，那么下载对象就是junit-jdk15.jar.这个可以用来区分环境</b>
 </li>
 </ul>
 
@@ -636,10 +636,10 @@ drwxrwxr-x 3 dirlt dirlt 4096  6月 24 22:36 xml-apis
 </pre>
 
 <p>
-这里仅仅是配置了central的镜像，如果希望配置所有仓库镜像的话那么&lt;mirrorOf&gt;*&lt;/mirrorOf&gt;. 关于更加高级的镜像配置，可以参考：<a href="http://maven.apache.org/guides/mini/guide-mirror-settings.html">http://maven.apache.org/guides/mini/guide-mirror-settings.html</a>. TODO(dirlt):maven是如何在中央仓库和本地仓库，以及镜像之间选择下载工件的。
+这里仅仅是配置了central的镜像，如果希望配置所有仓库镜像的话那么&lt;mirrorOf&gt;*&lt;/mirrorOf&gt;. 关于更加高级的镜像配置，可以参考：<a href="http://maven.apache.org/guides/mini/guide-mirror-settings.html">http://maven.apache.org/guides/mini/guide-mirror-settings.html</a>. todo(dirlt):maven是如何在中央仓库和本地仓库，以及镜像之间选择下载工件的。
 </p>
 <p>
-<b>NOTE（dirlt）：seems useless</b>
+<b>note(dirlt)：seems useless</b>
 </p>
 </div>
 
@@ -756,7 +756,7 @@ drwxrwxr-x 3 dirlt dirlt 4096  6月 24 22:36 xml-apis
 </pre>
 
 <p>
-maven会自动将父项目的pom.xml包含进来。 <b>NOTE(dirlt):实际上可以在这里填写很多公共配置。</b>
+maven会自动将父项目的pom.xml包含进来。 <b>note(dirlt):实际上可以在这里填写很多公共配置。</b>
 </p>
 <p>
 完成之后执行mvn deploy即可进行部署。done!!! :)    
@@ -777,7 +777,7 @@ maven会自动将父项目的pom.xml包含进来。 <b>NOTE(dirlt):实际上可�
 </li>
 </ul>
 
-<p>NOTE(dirlt):自己维护了一下公司内部的Apache Archive看起来似乎使用并不麻烦。
+<p>note(dirlt):自己维护了一下公司内部的Apache Archive看起来似乎使用并不麻烦。
 </p>
 <p>
 nexus有下面几种repo：
@@ -851,11 +851,11 @@ nexus有下面几种repo：
 </li>
 <li>mvn package. 将编译输出打包
 </li>
-<li>mvn integration-test. 运行集成测试. TODO(dirlt):
+<li>mvn integration-test. 运行集成测试. todo(dirlt):
 </li>
-<li>mvn verify. 检查是否可以发布. TODO(dirlt):
+<li>mvn verify. 检查是否可以发布. todo(dirlt):
 </li>
-<li>mvn install. 将包安装到本地的repository. <b>NOTE（dirlt）：这个对于从github上面下载的东西非常有用</b>
+<li>mvn install. 将包安装到本地的repository. <b>note(dirlt)：这个对于从github上面下载的东西非常有用</b>
 </li>
 <li>mvn deploy. 将包部署到远程的repository.
 </li>
@@ -867,7 +867,7 @@ nexus有下面几种repo：
 </li>
 <li>mvn eclipse:clean 清除eclipse项目文件
 </li>
-<li><b>NOTE（dirlt）：自从使用了intellij就不需要这个东西了=D</b>
+<li><b>note(dirlt)：自从使用了intellij就不需要这个东西了=D</b>
 </li>
 </ul>
 
@@ -964,7 +964,7 @@ nexus有下面几种repo：
 
 
 <p>
-NOTE(dirlt):网上有很多教程如何搭建nexus maven服务器，对于企业开发的话这样的单独服务器还是非常需要的。
+note(dirlt):网上有很多教程如何搭建nexus maven服务器，对于企业开发的话这样的单独服务器还是非常需要的。
 </p>
 </div>
 </div>
@@ -973,8 +973,8 @@ NOTE(dirlt):网上有很多教程如何搭建nexus maven服务器，对于企业
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-19T14:35+0800</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
+<p class="date">Date: 2014-04-15T09:14+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

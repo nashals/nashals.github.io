@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="ubuntu"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-28T16:50+0800"/>
+<meta name="generated" content="2014-06-09T08:44+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -105,6 +105,7 @@
 <li><a href="ubuntu.html#sec-1-3-8">1.3.8 窗口常用快捷键</a></li>
 <li><a href="ubuntu.html#sec-1-3-9">1.3.9 调整字体大小</a></li>
 <li><a href="ubuntu.html#sec-1-3-10">1.3.10 调整边栏大小</a></li>
+<li><a href="ubuntu.html#sec-1-3-11">1.3.11 调整skype字体大小</a></li>
 </ul>
 </li>
 <li><a href="ubuntu.html#sec-1-4">1.4 编程环境</a>
@@ -146,7 +147,7 @@
 这样如果有什么问题的话，大家就比较容易找到解决办法，直到自己完全适应为止。推荐安装下面这些软件：
 </p>
 <ul>
-<li>sudo apt-get install vlc # 视频
+<li>#sudo apt-get install vlc # 视频
 </li>
 <li>#sudo apt-get install pidgin # 聊天
 </li>
@@ -192,7 +193,7 @@
 </li>
 <li>sudo apt-get install python-dev
 </li>
-<li>sudo apt-get install libevent-dev
+<li>#sudo apt-get install libevent-dev
 </li>
 <li>sudo apt-get install python-gevent
 </li>
@@ -204,7 +205,7 @@
 </li>
 <li>sudo apt-get install maven
 </li>
-<li>sudo apt-get install ant
+<li>#sudo apt-get install ant
 </li>
 <li>#sudo apt-get install ttyload
 </li>
@@ -270,7 +271,7 @@
 </li>
 <li>sudo apt-get install python-xlib # 需要在emacs下面调用ibus
 </li>
-<li>sudo apt-get install chromium-browser # 实验性质版本
+<li>#sudo apt-get install chromium-browser # 实验性质版本
 </li>
 <li>#sudo apt-get install google-chrome-stable # 稳定版本
 </li>
@@ -282,7 +283,11 @@
 </li>
 <li>sudo apt-get install virtualbox
 </li>
+<li>sudo apt-get install virtualbox-dkms
+</li>
 <li>sudo apt-get install virtualbox-guest-additions # 设置windows虚拟机共享文件夹
+</li>
+<li>sudo apt-get install virtualbox-guest-dkms
 </li>
 <li>sudo apt-get install ntp
 </li>
@@ -342,11 +347,11 @@
 </li>
 <li>sudo apt-get install libaio-dev
 </li>
-<li>sudo apt-get install libncurses5-dev
+<li>#sudo apt-get install libncurses5-dev
 </li>
-<li>sudo apt-get install google-mock
+<li>#sudo apt-get install google-mock
 </li>
-<li>sudo apt-get install tsocks
+<li>#sudo apt-get install tsocks
 </li>
 <li>sudo apt-get install mysql-server
 </li>
@@ -363,6 +368,14 @@
 <li>sudo apt-get install swig
 </li>
 <li>sudo apt-get install tcpdump
+</li>
+<li>sudo apt-get install python-pip
+</li>
+<li>sudo apt-get install python-sphinx
+</li>
+<li># sudo apt-get install vagrant # 版本过低
+</li>
+<li>sudo apt-get install qt4-qtconfig
 </li>
 </ul>
 
@@ -427,7 +440,7 @@ Codename:       precise
 <p>unity restart &amp;
 </p>
 <p>
-<b>NOTE（dirlt）：这种方式可以work但是似乎问题比较多，如果unity出现问题还是重启比较方便</b>
+<b>note(dirlt)：这种方式可以work但是似乎问题比较多，如果unity出现问题还是重启比较方便</b>
 </p>
 </div>
 
@@ -498,7 +511,7 @@ networks:       files
 </pre>
 
 <p>
-<b>NOTE(dirlt):可能需要重启多次</b>
+<b>note(dirlt):可能需要重启多次</b>
 </p>
 </div>
 
@@ -511,7 +524,7 @@ networks:       files
 <p>sudo hostname &lt;name&gt;
 </p>
 <p>
-<b>NOTE(dirlt):mac works too=D</b>
+<b>note(dirlt):mac works too=D</b>
 </p>
 </div>
 
@@ -524,7 +537,7 @@ networks:       files
 <p>初次启动的时候需要使用sudo passwd root来修改root密码
 </p>
 <p>
-<b>NOTE（dirlt）：it works for mac too=D</b>
+<b>note(dirlt)：it works for mac too=D</b>
 </p>
 </div>
 
@@ -610,7 +623,7 @@ doc存放位置通常在/usr/share/doc/&lt;package&gt;/下面。
 </li>
 </ul>
 
-<p>TODO（dirlt）：在Emacs里面需要安装ibus.el以及ibus-agent。但是现在不知道为什么左边的Shift键在Emacs里面一直不能使用。
+<p>todo(dirlt)：在Emacs里面需要安装ibus.el以及ibus-agent。但是现在不知道为什么左边的Shift键在Emacs里面一直不能使用。
 </p>
 </div>
 
@@ -662,7 +675,7 @@ doc存放位置通常在/usr/share/doc/&lt;package&gt;/下面。
 </li>
 <li>smtp smtp.gmail.com SSL/TLS 465 normal password
 </li>
-<li><b>NOTE(dirlt):需要确认gmail允许pop3来访问</b>
+<li><b>note(dirlt):需要确认gmail允许pop3来访问</b>
 </li>
 <li>不过似乎现在thunderbird已经非常智能了，只要输入username以及email的话就可以自动进行配置了。nice！！！（现在看起来选择iamp模式也没有什么问题）
 </li>
@@ -721,7 +734,7 @@ doc存放位置通常在/usr/share/doc/&lt;package&gt;/下面。
 
 
 <p>
-NOTE（dirlt）：其实thunderbird超过一定大小就会自动提醒是否需要压缩
+note(dirlt)：其实thunderbird超过一定大小就会自动提醒是否需要压缩
 </p>
 </div>
 
@@ -764,6 +777,28 @@ NOTE（dirlt）：其实thunderbird超过一定大小就会自动提醒是否需
 
 <p>System Settings =&gt; Appearance =&gt; Launcher icon size.
 </p>
+</div>
+
+</div>
+
+<div id="outline-container-1-3-11" class="outline-4">
+<h4 id="sec-1-3-11"><span class="section-number-4">1.3.11</span> 调整skype字体大小</h4>
+<div class="outline-text-4" id="text-1-3-11">
+
+<p><a href="http://www.mintos.org/network/modify-skype-font.html">http://www.mintos.org/network/modify-skype-font.html</a>
+</p>
+<ul>
+<li>安装qt4-config # sudo apt-get install qt4-qtconfig
+</li>
+<li>修改字体(font size=12)和外观(Clearlooks)
+</li>
+<li>点击qt4-config的菜单栏保存
+</li>
+<li>重启skype即可观察到字体修改效果
+</li>
+</ul>
+
+
 </div>
 </div>
 
@@ -819,7 +854,7 @@ GSSAPIDelegateCredentials no
 
 
 <p>
-<b>TODO(dirlt):具体为什么? sorry I have no idea!!!</b>
+<b>todo(dirlt):具体为什么? sorry I have no idea!!!</b>
 </p>
 </div>
 
@@ -839,7 +874,7 @@ GSSAPIDelegateCredentials no
 </li>
 </ol>
 
-<p><b>NOTE（dirlt）：这个密钥是可以在不同机器上面使用的，也就是说你只需要生成一次即可</b>
+<p><b>note(dirlt)：这个密钥是可以在不同机器上面使用的，也就是说你只需要生成一次即可</b>
 </p>
 <p>
 我猜想大致工作过程应该是这样的：
@@ -895,7 +930,7 @@ User dirtysalt
 这样之后通过ssh git的话就相当于ssh -l dirtysalt -p 16021 git.fm.非常方便。
 </p>
 <p>
-<b>NOTE（dirlt）：实际上第二点这个对于scp也是很必要的，因为scp没有办法指定工作端口只能使用默认的22</b>
+<b>note(dirlt)：实际上第二点这个对于scp也是很必要的，因为scp没有办法指定工作端口只能使用默认的22</b>
 </p>
 </div>
 
@@ -955,7 +990,7 @@ User dirtysalt
 </pre>
 
 <p>
-NOTE(dirlt):这里对于0 0不太清楚是什么意思，只是知道分别是dumps以及fsck check order. :(
+note(dirlt):这里对于0 0不太清楚是什么意思，只是知道分别是dumps以及fsck check order. :(
 </p>
 </div>
 
@@ -974,7 +1009,7 @@ NOTE(dirlt):这里对于0 0不太清楚是什么意思，只是知道分别是du
 或者是直接使用别人生成好的.vdi文件。vdi全称应该是virtual disk image。
 </p>
 <p>
-<b>NOTE（dirlt）：升级内核或者是重装系统的话，可能会造成内核版本与默认源的virtualbox不匹配，可以从官网下载最新版本。</b> 参考链接 <a href="https://www.virtualbox.org/wiki/Linux_Downloads">https://www.virtualbox.org/wiki/Linux_Downloads</a>
+<b>note(dirlt)：升级内核或者是重装系统的话，可能会造成内核版本与默认源的virtualbox不匹配，可以从官网下载最新版本。</b> 参考链接 <a href="https://www.virtualbox.org/wiki/Linux_Downloads">https://www.virtualbox.org/wiki/Linux_Downloads</a>
 </p>
 </div>
 
@@ -1033,7 +1068,7 @@ NOTE(dirlt):这里对于0 0不太清楚是什么意思，只是知道分别是du
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-28T16:50+0800</p>
+<p class="date">Date: 2014-06-09T08:44+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

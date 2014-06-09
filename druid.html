@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="druid"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-19T14:36+0800"/>
+<meta name="generated" content="2014-04-15T09:14+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -148,7 +148,7 @@
 </li>
 </ul>
 
-<p>As far as a comparison of systems is concerned, Druid sits in between PowerDrill and Dremel on the spectrum of functionality. It implements almost everything Dremel offers (Dremel handles arbitrary nested data structures while Druid only allows for a single level of array-based nesting) and gets into some of the interesting data layout and compression methods from PowerDrill. （druid基本提供了dremel所提到的功能，但是不允许嵌套数据结构只允许数组，而借鉴了一些powerdrill的数据存储方式和压缩算法） <b>NOTE(drirlt):druid不支持跨表查询，只是支持单表query，这点和dremel非常类似，而cloudera的impala支持join操作）</b>
+<p>As far as a comparison of systems is concerned, Druid sits in between PowerDrill and Dremel on the spectrum of functionality. It implements almost everything Dremel offers (Dremel handles arbitrary nested data structures while Druid only allows for a single level of array-based nesting) and gets into some of the interesting data layout and compression methods from PowerDrill. （druid基本提供了dremel所提到的功能，但是不允许嵌套数据结构只允许数组，而借鉴了一些powerdrill的数据存储方式和压缩算法） <b>note(dirlt): druid不支持跨表查询，只是支持单表query，这点和dremel非常类似，而cloudera的impala支持join操作）</b>
 </p>
 </div>
 
@@ -169,7 +169,7 @@ The node types that currently exist are:（有下面几种节点类型存在）
 </p><ul>
 <li>Compute nodes are the workhorses that handle storage and querying on “historical” data (non-realtime) 处理历史数据
 </li>
-<li>Realtime nodes ingest data in real-time, they are in charge of listening to a stream of incoming data and making it available immediately inside the Druid system. As data they have ingested ages, they hand it off to the compute nodes. 处理实时数据，并且能够将实时数据导入到druid系统里面供compute节点使用 <b>NOTE（dirlt）：我对realtime这个部分的数据处理还是比较好奇的，因为这个部分的数据似乎不像是使用druid描述那些方法来进行query的</b>
+<li>Realtime nodes ingest data in real-time, they are in charge of listening to a stream of incoming data and making it available immediately inside the Druid system. As data they have ingested ages, they hand it off to the compute nodes. 处理实时数据，并且能够将实时数据导入到druid系统里面供compute节点使用 <b>note(dirlt)：我对realtime这个部分的数据处理还是比较好奇的，因为这个部分的数据似乎不像是使用druid描述那些方法来进行query的</b>
 </li>
 <li>Master nodes act as coordinators. They look over the grouping of computes and make sure that data is available, replicated and in a generally “optimal” configuration. 作为协调者存在，判断节点是否挂掉，确保数据能够available以及replicated.
 </li>
@@ -189,7 +189,7 @@ The node types that currently exist are:（有下面几种节点类型存在）
 </li>
 </ul>
 
-<p><b>NOTE（dirlt）：似乎是单层的结构，但是不是非常确定</b>
+<p><b>note(dirlt)：似乎是单层的结构，但是不是非常确定</b>
 </p>
 <p>
 另外整个系统还需要依赖外部三个组组件：
@@ -235,7 +235,7 @@ The node types that currently exist are:（有下面几种节点类型存在）
 <p>The output of the indexing process is stored in a “deep storage” LOB store/file system (S3 is the currently implemented solution, HDFS is planned). Data is then loaded by compute nodes by first downloading the data to their local disk and then memory mapping it before serving queries.(输出结果保存在LOB里面，现在是使用S3存储接口今后会支持HDFS。数据的话首先会被download到本地然后进行serve）
 </p>
 <p>
-In order for a segment to exist inside of the cluster, an entry has to be added to a table in a MySQL instance. This entry is a self-describing bit of metadata about the segment, it includes things like the schema of the segment, the size, and the location on deep storage. These entries are what the Master uses to know what data should be available on the cluster. （segment的metadata会保存在MySQL里面。master会用这些信息来判断哪些信息是没有被serve的） <b>NOTE（dirlt）：个人觉得实现方式应该类似与，indexer运行不是很频繁，每次indexer对数据进行index的时候会将segment的metadata写入MySQL，完成之后通知Master来读取</b>
+In order for a segment to exist inside of the cluster, an entry has to be added to a table in a MySQL instance. This entry is a self-describing bit of metadata about the segment, it includes things like the schema of the segment, the size, and the location on deep storage. These entries are what the Master uses to know what data should be available on the cluster. （segment的metadata会保存在MySQL里面。master会用这些信息来判断哪些信息是没有被serve的） <b>note(dirlt)：个人觉得实现方式应该类似与，indexer运行不是很频繁，每次indexer对数据进行index的时候会将segment的metadata写入MySQL，完成之后通知Master来读取</b>
 </p>
 </div>
 
@@ -248,11 +248,11 @@ In order for a segment to exist inside of the cluster, an entry has to be added 
 <ul>
 <li>Compute As discussed above, if a compute node dies, another compute node can take its place and there is no fear of data loss 
 </li>
-<li>Master Can be run in a hot fail-over configuration. If no masters are running, then changes to the data topology will stop happening (no new data and no data balancing decisions), but the system will continue to run.（如果master挂掉的话那么不允许进行topology的变化，不允许新增数据以及数据的balance) <b>NOTE(dirlt):S3的存储难道没有解决balance以及replication的问题？</b>
+<li>Master Can be run in a hot fail-over configuration. If no masters are running, then changes to the data topology will stop happening (no new data and no data balancing decisions), but the system will continue to run.（如果master挂掉的话那么不允许进行topology的变化，不允许新增数据以及数据的balance) <b>note(dirlt):S3的存储难道没有解决balance以及replication的问题？</b>
 </li>
 <li>Broker Can be run in parallel or in hot fail-over.
 </li>
-<li>Realtime Depending on the semantics of the delivery stream, multiple of these can be run in parallel processing the exact same stream. They periodically checkpoint to disk and eventually push out to the Computes. Steps are taken to be able to recover from process death, but loss of access to the local disk can result in data loss if this is the only method of adding data to the system. <b>TODO（dirlt）；realtime介绍不是很多</b>
+<li>Realtime Depending on the semantics of the delivery stream, multiple of these can be run in parallel processing the exact same stream. They periodically checkpoint to disk and eventually push out to the Computes. Steps are taken to be able to recover from process death, but loss of access to the local disk can result in data loss if this is the only method of adding data to the system. <b>todo(dirlt)；realtime介绍不是很多</b>
 </li>
 <li>“deep storage” file system If this is not available, new data will not be able to enter the cluster, but the cluster will continue operating as is.
 </li>
@@ -376,7 +376,7 @@ beta data set主要包含3个部分：
 </ul>
 
 </li>
-<li>Whenever we needed to do a full table scan, for things like global counts, the queries ran slow. For example, naive benchmarks showed scanning 33 million rows took 3 seconds. （对于一些全表扫描的操作非常地慢 <b>NOTE（dirlt）：这个主要是因为没有使用并行查询的方式把？</b> ）
+<li>Whenever we needed to do a full table scan, for things like global counts, the queries ran slow. For example, naive benchmarks showed scanning 33 million rows took 3 seconds. （对于一些全表扫描的操作非常地慢 <b>note(dirlt)：这个主要是因为没有使用并行查询的方式把？</b> ）
 <ul>
 <li>We started materializing all dimensional roll-ups of a certain depth, and began routing queries to these pre-aggregated tables. We also implemented a caching layer in front of our queries. （开始通过pre roll up到一定的深度然后在这些table上面进行查询，并且在query之前假设一个cache layer）
 </li>
@@ -384,7 +384,7 @@ beta data set主要包含3个部分：
 </li>
 <li>We tried indexing our way out of it, but given that we are allowing arbitrary combinations of dimensions, we couldn’t really take advantage of composite indexes. （尝试建立二级联合索引，但是因为允许在所有的dimenson上面进行查询，所以还是不行）
 </li>
-<li>Additionally, index merge strategies are not always implemented, or only implemented for bitmap indexes, depending on the flavor of RDBMS.（另外一些RDBMS的index merge策略可能没有实现，或者只是实现了bitmap index merge策略 <b>TODO（dirlt）：不太明白什么意思？</b> ）
+<li>Additionally, index merge strategies are not always implemented, or only implemented for bitmap indexes, depending on the flavor of RDBMS.（另外一些RDBMS的index merge策略可能没有实现，或者只是实现了bitmap index merge策略 <b>todo(dirlt)：不太明白什么意思？</b> ）
 </li>
 </ul>
 
@@ -507,13 +507,13 @@ These are the requirements we used to implement Druid. The system makes a number
 </li>
 <li>To facilitate rebalancing, we take chunks of beta data and index them into segments based on time ranges.（为了能够完成rebalance，将beta dataset分片并且进行索引，根据时间范围）
 </li>
-<li>For high cardinality dimensions, distributing by time isn’t enough (we generally try to keep segments no larger than 20M rows), so we have introduced partitioning. We store metadata about segments within the query layer and partitioning logic within the segment generation code.（而对于维度比较多的内容，仅仅按照时间分布还是不够的，我们尽量让我一个segment不要超过20M rows所以需要引入partition。 <b>NOTE（dirlt）：这个partition应该是用户自己定义的</b> 然后druid将segment的metadata保存在qeury layer上面，而用户在查询的时候需要自己提供partition的code）
+<li>For high cardinality dimensions, distributing by time isn’t enough (we generally try to keep segments no larger than 20M rows), so we have introduced partitioning. We store metadata about segments within the query layer and partitioning logic within the segment generation code.（而对于维度比较多的内容，仅仅按照时间分布还是不够的，我们尽量让我一个segment不要超过20M rows所以需要引入partition。 <b>note(dirlt)：这个partition应该是用户自己定义的</b> 然后druid将segment的metadata保存在qeury layer上面，而用户在查询的时候需要自己提供partition的code）
 </li>
 <li>We persist these segments in a storage system (currently S3) that is accessible from all nodes. If a node goes down, Zookeeper coordinates the remaining live nodes to reconstitute the missing beta set.（segment数据也会在S3文件系统上面进行持久化。这样如果一个server node挂掉的，可以选举另外一个节点从S3文件系统中读取beta dataset。检测node挂掉通过zookeeper协调）
 </li>
 <li>Downstream clients of the API are insulated from this rebalancing: Druid’s query API seamlessly handles changes in cluster topology.（下游的client则不需要考虑rebalance的情况）
 </li>
-<li>Queries against the Druid cluster are perfectly horizontal. We limited the aggregation operations we support – count, mean, variance and other parametric statistics – that are inherently parallelizable. While less parallelizable operations, such as median, are not supported, this limitation is offset by rich support of histogram and higher-order moment stores. The co-location of processing with in-memory data on each node reduces network load and dramatically improves performance.（限制进行聚合的操作，确保这些操作确实可以并行完成。 如果没有并行完成的话，可以通过  <b>histogram and higher-order moment stores（高阶矩）</b> 的支持来补偿 <b>TODO（dirlt）：WTF is that?</b> 
+<li>Queries against the Druid cluster are perfectly horizontal. We limited the aggregation operations we support – count, mean, variance and other parametric statistics – that are inherently parallelizable. While less parallelizable operations, such as median, are not supported, this limitation is offset by rich support of histogram and higher-order moment stores. The co-location of processing with in-memory data on each node reduces network load and dramatically improves performance.（限制进行聚合的操作，确保这些操作确实可以并行完成。 如果没有并行完成的话，可以通过  <b>histogram and higher-order moment stores（高阶矩）</b> 的支持来补偿 <b>todo(dirlt)：WTF is that?</b> 
 </li>
 </ul>
 
@@ -542,8 +542,8 @@ These are the requirements we used to implement Druid. The system makes a number
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-19T14:36+0800</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
+<p class="date">Date: 2014-04-15T09:14+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

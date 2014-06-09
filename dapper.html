@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="dapper"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-19T14:36+0800"/>
+<meta name="generated" content="2014-04-15T09:14+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -156,7 +156,7 @@
 <h3 id="sec-1-1"><span class="section-number-3">1.1</span> Abstract</h3>
 <div class="outline-text-3" id="text-1-1">
 
-<p>Modern Internet services are often implemented as com- plex, large-scale distributed systems. These applications are constructed from collections of software modules that may be developed by different teams, perhaps in different programming languages, and could span many thousands of machines across multiple physical facili- ties. Tools that aid in understanding system behavior and reasoning about performance issues are invaluable in such an environment.（现代互联网服务底层都是复杂的，大规模的分布式系统， 由很多组件模块组成。而这些组件模块都是由不同的开发团队开发的，甚至使用不同语言完成的，并且有可能分布式很多机器上。在这样的环境下面，有工具能够帮助理解系统行为并且对性能问题进行解释分析是非常有帮助的）。 <b>NOTE（dirlt）：Dapper就是这样一个追踪系统，能够追踪到各个模块之间相互调用关系，这些调用关系可能是跨越服务，跨越机器的。通过这种追踪系统就能够在比较高的层面上分析问题和理解系统</b>
+<p>Modern Internet services are often implemented as com- plex, large-scale distributed systems. These applications are constructed from collections of software modules that may be developed by different teams, perhaps in different programming languages, and could span many thousands of machines across multiple physical facili- ties. Tools that aid in understanding system behavior and reasoning about performance issues are invaluable in such an environment.（现代互联网服务底层都是复杂的，大规模的分布式系统， 由很多组件模块组成。而这些组件模块都是由不同的开发团队开发的，甚至使用不同语言完成的，并且有可能分布式很多机器上。在这样的环境下面，有工具能够帮助理解系统行为并且对性能问题进行解释分析是非常有帮助的）。 <b>note(dirlt)：Dapper就是这样一个追踪系统，能够追踪到各个模块之间相互调用关系，这些调用关系可能是跨越服务，跨越机器的。通过这种追踪系统就能够在比较高的层面上分析问题和理解系统</b>
 </p>
 </div>
 
@@ -269,7 +269,7 @@ Two classes of solutions have been proposed to ag- gregate this information so t
 </li>
 <li>Dapper records a human-readable span name for each span, as well as a span id and parent id in order to reconstruct the causal relationships between the individual spans in a single distributed trace. （每个span上面还能够附带一个span name方便阅读，并且带上span id以及parent id这样可以方便建立起关系）Spans created without a parent id are known as root spans.
 </li>
-<li>All spans associated with a specific trace also share a com- mon trace id (not shown in the figure). All of these ids are probabilistically unique 64-bit integers.(每次trace都会带上一个概率上唯一的trace id） <b>TODO(dirlt):问题是这个trace id如何分配？</b>  <b>NOTE（dirlt）：这个直接使用类似UUID方式应该就OK，每个机器上，每个进程，每个线程，每个时间点应该是一个独立的id</b>
+<li>All spans associated with a specific trace also share a com- mon trace id (not shown in the figure). All of these ids are probabilistically unique 64-bit integers.(每次trace都会带上一个概率上唯一的trace id） <b>todo(dirlt):问题是这个trace id如何分配？</b>  <b>note(dirlt)：这个直接使用类似UUID方式应该就OK，每个机器上，每个进程，每个线程，每个时间点应该是一个独立的id</b>
 </li>
 </ul>
 
@@ -372,7 +372,7 @@ Two classes of solutions have been proposed to ag- gregate this information so t
 </li>
 <li>but the other approximately 25% of the time it can grow to be many hours.（25%时间里面，98%延迟在小时级别上）
 </li>
-<li><b>NOTE(dirlt):why？？？</b>
+<li><b>note(dirlt):why？？？</b>
 </li>
 </ul>
 
@@ -742,8 +742,8 @@ Two classes of solutions have been proposed to ag- gregate this information so t
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-19T14:36+0800</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
+<p class="date">Date: 2014-04-15T09:14+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

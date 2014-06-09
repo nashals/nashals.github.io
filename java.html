@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="java"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-28T16:51+0800"/>
+<meta name="generated" content="2014-04-15T09:14+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -200,7 +200,7 @@
 <h4 id="sec-1-1-3"><span class="section-number-4">1.1.3</span> assert</h4>
 <div class="outline-text-4" id="text-1-1-3">
 
-<p>java关键字assert可以用来进行断言，和C++一样。但是天煞的java虚拟机必须指定标记才会开启assert特性。java -ea断言才会生效。java -ea:package_name…可以指定名字空间下所有类断言打开，java -ea:classname可以指定某个类断言打开。如果不带任何参数的话那么是将所有断言打开。同样使用-da可以禁用某个特定类或者是包的断言。 <b>NOTE(dirlt):其实想想觉得这个还是很不错的，在运行时控制而不是在编译时控制，会让更多的人喜欢使用assertion.但是我觉得默认的话，应该是开启的除非显示关闭。</b>
+<p>java关键字assert可以用来进行断言，和C++一样。但是天煞的java虚拟机必须指定标记才会开启assert特性。java -ea断言才会生效。java -ea:package_name…可以指定名字空间下所有类断言打开，java -ea:classname可以指定某个类断言打开。如果不带任何参数的话那么是将所有断言打开。同样使用-da可以禁用某个特定类或者是包的断言。 <b>note(dirlt):其实想想觉得这个还是很不错的，在运行时控制而不是在编译时控制，会让更多的人喜欢使用assertion.但是我觉得默认的话，应该是开启的除非显示关闭。</b>
 </p>
 <p>
 java断言可以指定检查表达式以及出错表达式，asser 条件：表达式
@@ -577,7 +577,7 @@ location: class com.dirlt.X
 
 
 <p>
-这个import顺序intellj认为是正确的，而且只需要反转两个import的顺序就可以正常编译。 <b>NOTE（dirlt）：因此我花了比较多的时间纠结在这个问题上面，因为intellij不太可能错误把，而且问题也比较诡异</b>
+这个import顺序intellj认为是正确的，而且只需要反转两个import的顺序就可以正常编译。 <b>note(dirlt)：因此我花了比较多的时间纠结在这个问题上面，因为intellij不太可能错误把，而且问题也比较诡异</b>
 我不太理解java的导入顺序，但是猜想和C++的include非常类似，出现上面的问题可能就是循环依赖导致的问题
 </p><ul>
 <li>当我们引入com.dirlt.X.B.A的时候，javac会去分析这个文件X.java(or X.class)
@@ -601,7 +601,7 @@ location: class com.dirlt.X
 <h3 id="sec-1-3"><span class="section-number-3">1.3</span> 面向泛型</h3>
 <div class="outline-text-3" id="text-1-3">
 
-<p>TODO（dirlt）：
+<p>todo(dirlt)：
 </p>
 </div>
 
@@ -795,7 +795,7 @@ class X{
 </li>
 </ol>
 
-<p>这样就可以开始做一些反射工作了。 <b>NOTE（dirlt）：more about reflection</b>
+<p>这样就可以开始做一些反射工作了。 <b>note(dirlt)：more about reflection</b>
 </p>
 </div>
 
@@ -876,7 +876,7 @@ synchronized关键字其实有两个场景
 <p>这些方法了。其实都是相当于这个lock对应的condition本身提供的方法。
 </p>
 <p>
-volatile关键字为 <b>实例字段</b> 的同步访问提供了一种免锁机制。如果声明一个字段为volatile的话，那么编译器和虚拟机就可以知道这个字段很可能会被另外一个线程并发更新。 <b>NOTE（dirlt）：在我看来使用volatile最好是作用在基本类型上面，这里将对象指针本身也作为基本类型来看待=D</b>
+volatile关键字为 <b>实例字段</b> 的同步访问提供了一种免锁机制。如果声明一个字段为volatile的话，那么编译器和虚拟机就可以知道这个字段很可能会被另外一个线程并发更新。 <b>note(dirlt)：在我看来使用volatile最好是作用在基本类型上面，这里将对象指针本身也作为基本类型来看待=D</b>
 </p>
 <p>
 <b>為什麼抛弃stop和suspend方法？</b> 其实这点非常好理解，因为这些方法都尝试破坏线程本身正常的行为。比如A，B两个线程同时acquire一个lock，如果A成功之后，B在等待，这个之后A被stop或者是suspend的话，那么情况就变成了死锁。
@@ -889,7 +889,7 @@ volatile关键字为 <b>实例字段</b> 的同步访问提供了一种免锁机
 <h4 id="sec-1-4-9"><span class="section-number-4">1.4.9</span> Collection</h4>
 <div class="outline-text-4" id="text-1-4-9">
 
-<p>TODO（dirlt）：
+<p>todo(dirlt)：
 </p>
 </div>
 
@@ -918,7 +918,7 @@ jmx似乎是一个标准，在JDK里面有默认的实现。通过jmx可以暴�
 我大致阅读了一下代码，在server有两个比较重要的概念:agent(mbean server)和mxbean. agent(mbean server)类似server启动，mxbean则是各个data source. 但是从jdk默认的实现（ManagementFactory::getPlatformMBeanServer)里面可以看到，mxbean不是一个静态基类，而是通过反射的方式将mxbean类转换成为DynamicMBean（猜测数据传输格式应该是JPO，Java Persistent Object,也就是java对象自带序列化方式，这种方式的好处就是没有限制data source format，但是却复杂了实现）。 
 </p>
 <ul>
-<li>com.dirlt.java.playboard.SimpleJMX 例子比较简单，显示和修改数据 <b>NOTE（dirlt）：只有基本类型可以显示和修改。如果数据类型为object的话，那么不能显示和修改</b> 
+<li>com.dirlt.java.playboard.SimpleJMX 例子比较简单，显示和修改数据 <b>note(dirlt)：只有基本类型可以显示和修改。如果数据类型为object的话，那么不能显示和修改</b> 
 </li>
 <li>MXBean允许做RMI
 </li>
@@ -984,9 +984,9 @@ jmx似乎是一个标准，在JDK里面有默认的实现。通过jmx可以暴�
 </ul>
 
 </li>
-<li><b>NOTE(dirlt):我始终没有搞懂profiler和sampler两者的区别</b> ，不过从官方指南来看 Profiling Applications with VisualVM — Java.net <a href="http://visualvm.java.net/profiler.html">http://visualvm.java.net/profiler.html</a> 应该是使用profiler.
+<li><b>note(dirlt):我始终没有搞懂profiler和sampler两者的区别</b> ，不过从官方指南来看 Profiling Applications with VisualVM — Java.net <a href="http://visualvm.java.net/profiler.html">http://visualvm.java.net/profiler.html</a> 应该是使用profiler.
 <ul>
-<li><b>NOTE（dirlt）：可能对于profiler是通过在function前后加上instructment来完成的，而sampler就是纯粹的采样。</b>
+<li><b>note(dirlt)：可能对于profiler是通过在function前后加上instructment来完成的，而sampler就是纯粹的采样。</b>
 </li>
 </ul>
 
@@ -1019,7 +1019,7 @@ jmx似乎是一个标准，在JDK里面有默认的实现。通过jmx可以暴�
 <li><a href="http://docs.oracle.com/javase/7/docs/technotes/samples/hprof.html">http://docs.oracle.com/javase/7/docs/technotes/samples/hprof.html</a>
 
 </li>
-<li>HPROF is actually a JVM native agent library which is dynamically loaded through a command line option, at JVM startup, and becomes part of the JVM process. <b>TODO(dirlt):什么叫做agent library?.属于JVM进程的一个部分</b>
+<li>HPROF is actually a JVM native agent library which is dynamically loaded through a command line option, at JVM startup, and becomes part of the JVM process. <b>todo(dirlt):什么叫做agent library?.属于JVM进程的一个部分</b>
 </li>
 <li>The binary format file from HPROF can be used with tools such as <a href="https://hat.dev.java.net/">HAT</a> to browse the allocated objects in the heap. 二进制输出可以使用HAT这个工具来察看
 </li>
@@ -1029,7 +1029,7 @@ jmx似乎是一个标准，在JDK里面有默认的实现。通过jmx可以暴�
 </li>
 <li>heap allocation statistics, 
 </li>
-<li>and monitor contention profiles. <b>TODO（dirlt）：什么是monitor?</b>
+<li>and monitor contention profiles. <b>todo(dirlt)：什么是monitor?</b>
 </li>
 <li>complete heap dumps and 
 </li>
@@ -1101,22 +1101,22 @@ Warnings
 <ul>
 <li>force=y 会删除原来的文件，如果是多个VM来同时使用hprof的话那么需要使用force=n
 </li>
-<li>heap= sites能够看到所有的分配以及热点，而dump能够看到所有引用的对象，而all则能看到两个 <b>NOTE（dirlt）：dump，all能够消耗大量内存，最好别使用，而且没有太大意义</b> 
+<li>heap= sites能够看到所有的分配以及热点，而dump能够看到所有引用的对象，而all则能看到两个 <b>note(dirlt)：dump，all能够消耗大量内存，最好别使用，而且没有太大意义</b> 
 <ul>
 <li>如果不希望对heap做分析的话，那么不要指定这个选项。
 </li>
 </ul>
 
 </li>
-<li>cpu=samples采用采样方式来做分析,interval则是设置采样间隔。 <b>NOTE（dirlt）：可能比较使用于长期运行的程序profiling</b>
+<li>cpu=samples采用采样方式来做分析,interval则是设置采样间隔。 <b>note(dirlt)：可能比较使用于长期运行的程序profiling</b>
 </li>
 <li>cpu=times采用代码注入的方式在函数entry和return部分加上代码来做profile.
 </li>
-<li>thread=y 可以针对将不同线程区分开，每个线程单独进行profile. <b>NOTE（dirlt）：似乎没有太大的用途</b>
+<li>thread=y 可以针对将不同线程区分开，每个线程单独进行profile. <b>note(dirlt)：似乎没有太大的用途</b>
 </li>
 <li>depth=n 控制stacktrace的深度，加大深度可以看到更详细的调用栈。
 </li>
-<li>doe=n 在exit的时候不dump任何数据 <b>TODO（dirlt）：？这个有什么用呢</b>
+<li>doe=n 在exit的时候不dump任何数据 <b>todo(dirlt)：？这个有什么用呢</b>
 </li>
 </ul>
 
@@ -1137,7 +1137,7 @@ How Does HPROF Work?
 </li>
 <li>event callbacks from JVM TI, 
 </li>
-<li>and through Byte Code Insertion (BCI) <b>NOTE(dirlt):修改bytecode,这个用来修改class文件</b>
+<li>and through Byte Code Insertion (BCI) <b>note(dirlt):修改bytecode,这个用来修改class文件</b>
 </li>
 </ul>
 
@@ -1159,7 +1159,7 @@ How Does HPROF Work?
 <h4 id="sec-1-5-3"><span class="section-number-4">1.5.3</span> jmap</h4>
 <div class="outline-text-4" id="text-1-5-3">
 
-<p>TODO(dirlt):
+<p>todo(dirlt):
 </p>
 </div>
 
@@ -1169,7 +1169,7 @@ How Does HPROF Work?
 <h4 id="sec-1-5-4"><span class="section-number-4">1.5.4</span> BTrace</h4>
 <div class="outline-text-4" id="text-1-5-4">
 
-<p>TODO(dirlt):
+<p>todo(dirlt):
 </p>
 </div>
 </div>
@@ -1178,7 +1178,7 @@ How Does HPROF Work?
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-28T16:51+0800</p>
+<p class="date">Date: 2014-04-15T09:14+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

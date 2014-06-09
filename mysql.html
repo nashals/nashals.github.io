@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="mysql"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-19T14:35+0800"/>
+<meta name="generated" content="2014-05-22T11:39+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -182,7 +182,7 @@
 <h3 id="sec-1-1"><span class="section-number-3">1.1</span> 数据类型</h3>
 <div class="outline-text-3" id="text-1-1">
 
-<p>TODO（dirlt）：
+<p>todo(dirlt)：
 </p></div>
 
 </div>
@@ -212,7 +212,7 @@
 </li>
 <li>FULLTEXT索引（只适用于MyISAM引擎）
 </li>
-<li>SPATIAL索引（必须NOT NULL属性）     
+<li>SPATIAL索引（必须NOT NULL属性）
 </li>
 </ul>
 
@@ -325,10 +325,13 @@
 
 
 <p>
-<b>NOTE（dirlt）：better focus on MyISAM and InnoDB only</b>
+<b>note(dirlt)：better focus on MyISAM and InnoDB only</b>
 </p>
 <p>
 CREATE TABLE table(&hellip;) ENGINE = InnoDB/MyISAM optionA = &hellip; optionB = &hellip;; # 创建表格时指定存储引擎
+</p>
+<p>
+SHOW TABLE STATUS; # 可以查看表格元信息包括使用的存储引擎
 </p>
 
 </div>
@@ -388,11 +391,11 @@ CREATE TABLE table(&hellip;) ENGINE = InnoDB/MyISAM optionA = &hellip; optionB =
 <ul>
 <li>默认情况下InnoDB会把所有数据表存储在一个共享表空间里面，而不是像MyISAM引擎每个数据表创建单独文件
 </li>
-<li>表空间用类似一个虚拟文件系统方式来管理所有InnoDB数据表内容，可以由多个文件构成还可以包括原始分区，数据表的大小可以不受系统对文件最大长度的限制 <b>NOTE(dirlt):InnoDB支持原始分区！</b>
+<li>表空间用类似一个虚拟文件系统方式来管理所有InnoDB数据表内容，可以由多个文件构成还可以包括原始分区，数据表的大小可以不受系统对文件最大长度的限制 <b>note(dirlt):InnoDB支持原始分区！</b>
 </li>
 <li>允许每个数据表对应一个.ibd数据文件，但是使用这种方式数据表大小会受到文件最大长度的限制
 </li>
-<li><b>NOTE（dirlt）：即使分开存放，共享表空间还是会存放一些共享数据。因为最好不要通过操作文件系统方式来操作InnoDB数据表</b>
+<li><b>note(dirlt)：即使分开存放，共享表空间还是会存放一些共享数据。因为最好不要通过操作文件系统方式来操作InnoDB数据表</b>
 </li>
 <li>但是无论使用上面两种方式的哪一种，InnoDB都是将数据和索引内容一起组织和存放的
 </li>
@@ -490,7 +493,7 @@ InnoDB存储引擎实现的事务隔离级别机制能够让客户控制他们�
 </li>
 <li>REPEATABLE READ 如果某个事务两次执行同一个select语句，其结果是可重复的。也就是说如果两次期间如果有数据修改的话，修改是隔离的。InnoDB默认的事务隔离级别。
 <ul>
-<li>a lock-based concurrency control DBMS implementation keeps read and write locks (acquired on selected data) until the end of the transaction. However, range-locks are not managed, so the phantom reads phenomenon can occur (see below). <b>NOTE(dirlt): 没有range-locks!，只出现在SELECT&hellip;WHERE&hellip;BETWEEN&hellip;这样的语句上面，可能还是和锁模型相关</b>
+<li>a lock-based concurrency control DBMS implementation keeps read and write locks (acquired on selected data) until the end of the transaction. However, range-locks are not managed, so the phantom reads phenomenon can occur (see below). <b>note(dirlt): 没有range-locks!，只出现在SELECT&hellip;WHERE&hellip;BETWEEN&hellip;这样的语句上面，可能还是和锁模型相关</b>
 </li>
 <li>As the text above describes, phantom reads is the only problem that SERIALIZABLE is helping you avoid, otherwise SERIALIZABLE is pretty much same as REPEATABLE-READ. InnoDB has a special locking feature called gap-locking which helps you avoid the phantom reads problem. In the case of gap locking, a lock is set on the gap between index records, or on the gap before the first or after the last index record. Now all you have to do avoid phantom reads is to convert such reads to locking reads using SELECT with FOR UPDATE or LOCK IN SHARE MODE.（可以通过gap-locking来避免phantom read，这样避免使用SERIALIZABLE隔离性）
 </li>
@@ -499,7 +502,7 @@ InnoDB存储引擎实现的事务隔离级别机制能够让客户控制他们�
 </li>
 <li>SERIALIZABLE 这个隔离级别与REPEATABLE READ很相似，但对事务的隔离更加彻底，某个事务正在查看的数据行不允许其他事务修改，直到该事务完成为止。
 <ul>
-<li>With a lock-based concurrency control DBMS implementation, serializability requires read and write locks (acquired on selected data) to be released at the end of the transaction. Also range-locks must be acquired when a SELECT query uses a ranged WHERE clause, especially to avoid the <b>phantom reads</b> phenomenon (see below). <b>TODO（dirlt）；so there are read and write locks, also there are range-locks</b>
+<li>With a lock-based concurrency control DBMS implementation, serializability requires read and write locks (acquired on selected data) to be released at the end of the transaction. Also range-locks must be acquired when a SELECT query uses a ranged WHERE clause, especially to avoid the <b>phantom reads</b> phenomenon (see below). <b>todo(dirlt)；so there are read and write locks, also there are range-locks</b>
 </li>
 <li>When using non-lock based concurrency control, no locks are acquired; however, if the system detects a write collision among several concurrent transactions, only one of them is allowed to commit. See <b>snapshot isolation</b> for more details on this topic.
 </li>
@@ -543,7 +546,7 @@ InnoDB存储引擎实现的事务隔离级别机制能够让客户控制他们�
 
 <p>
 <b>Isolation Levels vs Lock Duration</b>
-In lock-based concurrency control, isolation level determines the duration that locks are held. 
+In lock-based concurrency control, isolation level determines the duration that locks are held.
 </p><ul>
 <li>"C" - Denotes that locks are held until the transaction commits.
 </li>
@@ -571,9 +574,9 @@ In lock-based concurrency control, isolation level determines the duration that 
 </p><ul>
 <li>The READ-UNCOMMITTED isolation level has the least number of locking done,
 </li>
-<li>after that comes the READ-COMMITTED isolation level which removes most of the gap-locking and hence produces fewer deadlocks, also in the case of READ-COMMITTED, locking reads only lock the index records and not the gaps before/after them. 
+<li>after that comes the READ-COMMITTED isolation level which removes most of the gap-locking and hence produces fewer deadlocks, also in the case of READ-COMMITTED, locking reads only lock the index records and not the gaps before/after them.
 </li>
-<li>REPEATABLE-READ has a higher level of locking as compared to READ-COMMITTED, UPDATE, DELETE use next-key locking, also locking reads also use next-key locking. 
+<li>REPEATABLE-READ has a higher level of locking as compared to READ-COMMITTED, UPDATE, DELETE use next-key locking, also locking reads also use next-key locking.
 </li>
 <li>SERIALIZABLE has the highest level of locking, all the simple SELECTs are automatically converted to SELECT &hellip; LOCK IN SHARE MODE, and hence all records have shared locks.
 </li>
@@ -584,7 +587,7 @@ In lock-based concurrency control, isolation level determines the duration that 
 As I have mentioned in the "Locking and the isolation levels" section, SERIALIZABLE and REPEATABLE-READ employ lots of locking and hence creating more deadlock situations, which in turn decreases performance. In fact SERIALIZABLE is the least performant of the isolation levels, as it converts even plain reads into locking reads. REPEATABLE-READ is better in terms of locking and deadlocks but READ-COMMITTED is even better because there are fewer gap-locks. But locking and deadlocks is not the only thing when considering performance, there is another issue of mutex contention that needs consideration. There is a post by Mark Callaghan comparing both REPEATABLE-READ and READ-COMMITTED in the context of mutex contention. This post can be found <a href="http://www.facebook.com/note.php?note_id=244956410932">here</a>. （随着隔离级别升高使用锁更加激进，那么死锁和带来的性能下降更加明显）
 </p>
 <p>
-The default replication type in MySQL is statement-based replication, and this replication type replicates the data changes by re-executing SQL statements on slaves that were executed on the master. This requires the isolation level to be stricter (involving more locking) so that the data changes are consistent in such a way that the same SQL when executed on the slave produces the same data changes. As mentioned above, READ-COMMITTED creates a situation of non-repeatable read, hence its not safe for statement-based replication. Hence, when using statement-based replication either use SERIALIZABLE or REPEATABLE-READ isolation level. If you have MySQL version &gt;= 5.1 then you can use READ-COMMITTED with the row-based replication, because with row-based replication you have exact information about each data row changes.（不同事务级别对于备份模型的要求） <b>NOTE（dirlt）：可以看得ROW相对STMT来说受到事务隔离性影响更小也会更加安全</b>
+The default replication type in MySQL is statement-based replication, and this replication type replicates the data changes by re-executing SQL statements on slaves that were executed on the master. This requires the isolation level to be stricter (involving more locking) so that the data changes are consistent in such a way that the same SQL when executed on the slave produces the same data changes. As mentioned above, READ-COMMITTED creates a situation of non-repeatable read, hence its not safe for statement-based replication. Hence, when using statement-based replication either use SERIALIZABLE or REPEATABLE-READ isolation level. If you have MySQL version &gt;= 5.1 then you can use READ-COMMITTED with the row-based replication, because with row-based replication you have exact information about each data row changes.（不同事务级别对于备份模型的要求） <b>note(dirlt)：可以看得ROW相对STMT来说受到事务隔离性影响更小也会更加安全</b>
 </p>
 </div>
 </div>
@@ -618,7 +621,7 @@ The default replication type in MySQL is statement-based replication, and this r
 <h4 id="sec-1-7-1"><span class="section-number-4">1.7.1</span> SHOW</h4>
 <div class="outline-text-4" id="text-1-7-1">
 
-<p>TODO(dirlt):
+<p>todo(dirlt):
 </p>
 <ul>
 <li>SHOW DATABASES;
@@ -707,7 +710,7 @@ The default replication type in MySQL is statement-based replication, and this r
 <h4 id="sec-1-7-3"><span class="section-number-4">1.7.3</span> mysql</h4>
 <div class="outline-text-4" id="text-1-7-3">
 
-<p>TODO（dirlt）：
+<p>todo(dirlt)：
 </p>
 
 
@@ -805,9 +808,9 @@ The default replication type in MySQL is statement-based replication, and this r
 </li>
 <li>服务器生成状态和日志文件。
 <ul>
-<li>HOSTNAME.err 错误日志 
+<li>HOSTNAME.err 错误日志
 </li>
-<li>HOSTNAME.log 一般查询日志 
+<li>HOSTNAME.log 一般查询日志
 </li>
 <li>HOSTNAME-bin.nnnnnn 二进制文件（修改数据语句和内容）
 </li>
@@ -873,15 +876,15 @@ The default replication type in MySQL is statement-based replication, and this r
 <div class="outline-text-4" id="text-1-10-1">
 
 <ul>
-<li><b>NOTE（dirlt）：thanks caole</b> 
+<li><b>note(dirlt)：thanks caole</b>
 </li>
-<li><b>TODO（dirlt）：如何估算disk IOPS?</b>
+<li><b>todo(dirlt)：如何估算disk IOPS?</b>
 </li>
 </ul>
 
 
 <p>
-以innodb为例，每个page(注意这里是innodb的page,不是linux page)是16K. B+Tree的话那么每层都会存放key. 假设key为16个字节的话，包括overhead 16个字节，那么一个page里面就能够存放512个节点。如果记录界级别在billion级别的话，那么深度在3-4层左右。估算出层级数目是非常有好处的，可以对query做envelope calculation. 假设不考虑page cache的话，那么查询一条记录通常需要读取3-4次。假设存在cache命中50%的话，那么读取次数在1.5-2次。如果使用MySQL没有缓存层并且都是简单查询的话，要求查询性能在2w/s. 那么要求disk IOPS必须在3w-4w/s上。所以如果性能达不到这个要求的话，那么就需要考虑分表。 <b>NOTE（dirlt）：所以分表可能会是因为性能原因，也可能会是因为存储空间原因</b>
+以innodb为例，每个page(注意这里是innodb的page,不是linux page)是16K. B+Tree的话那么每层都会存放key. 假设key为16个字节的话，包括overhead 16个字节，那么一个page里面就能够存放512个节点。如果记录界级别在billion级别的话，那么深度在3-4层左右。估算出层级数目是非常有好处的，可以对query做envelope calculation. 假设不考虑page cache的话，那么查询一条记录通常需要读取3-4次。假设存在cache命中50%的话，那么读取次数在1.5-2次。如果使用MySQL没有缓存层并且都是简单查询的话，要求查询性能在2w/s. 那么要求disk IOPS必须在3w-4w/s上。所以如果性能达不到这个要求的话，那么就需要考虑分表。 <b>note(dirlt)：所以分表可能会是因为性能原因，也可能会是因为存储空间原因</b>
 </p>
 </div>
 
@@ -918,9 +921,9 @@ The default replication type in MySQL is statement-based replication, and this r
 </li>
 <li>尽量使用数据类型相同的数据列进行比较
 </li>
-<li>使带索引的数据列在比较表达式中单独出现 
+<li>使带索引的数据列在比较表达式中单独出现
 <ul>
-<li>f(x) &lt; 4, 这样就需要遍历所有x并且作用f然后比较。所以最好是可以x &lt; f^-1(4) <b>NOTE(dirlt):逆函数</b>
+<li>f(x) &lt; 4, 这样就需要遍历所有x并且作用f然后比较。所以最好是可以x &lt; f^-1(4) <b>note(dirlt):逆函数</b>
 </li>
 </ul>
 
@@ -929,7 +932,7 @@ The default replication type in MySQL is statement-based replication, and this r
 </li>
 <li>试验各种查询的变化格式，并且需要多次运行它们
 </li>
-<li>避免过多使用MySQL的自动类型转换功能 <b>NOTE（dirlt）：隐式类型转换会可能会阻碍索引的使用</b>
+<li>避免过多使用MySQL的自动类型转换功能 <b>note(dirlt)：隐式类型转换会可能会阻碍索引的使用</b>
 </li>
 </ul>
 
@@ -987,7 +990,7 @@ t1开始没有索引，然后我们使用EXAPLAIN来察看效果
 </pre>
 
 <ul>
-<li>select_type 简单选择 TODO（dirlt）：？？？
+<li>select_type 简单选择 todo(dirlt)：？？？
 </li>
 <li>table 数据表
 </li>
@@ -1001,7 +1004,7 @@ t1开始没有索引，然后我们使用EXAPLAIN来察看效果
 </li>
 <li>row 处理多少行数据
 </li>
-<li>Extra TODO（dirlt）：？？？
+<li>Extra todo(dirlt)：？？？
 </li>
 </ul>
 
@@ -1050,7 +1053,7 @@ mysql&gt; explain SELECT * from t1 WHERE k &lt; 20 AND k &gt; 10;
 </pre>
 
 <p>
-可以看到MySQL非常智能，并没有扫描t1然后在t2中查找，而是扫描t2在t1中查找。 <b>NOTE（dirlt）：这里这里type=ref以及ref字段内容</b>
+可以看到MySQL非常智能，并没有扫描t1然后在t2中查找，而是扫描t2在t1中查找。 <b>note(dirlt)：这里这里type=ref以及ref字段内容</b>
 </p>
 </div>
 
@@ -1245,6 +1248,31 @@ binlog-format有三种选择
 </ul>
 
 
+<p>
+GTID(global trx id)(since MySQL 5.6)
+</p><ul>
+<li><a href="https://dev.mysql.com/doc/refman/5.6/en/replication-gtids.html">https://dev.mysql.com/doc/refman/5.6/en/replication-gtids.html</a>
+</li>
+<li><a href="http://www.mysqlperformanceblog.com/2013/02/08/how-to-createrestore-a-slave-using-gtid-replication-in-mysql-5-6/">http://www.mysqlperformanceblog.com/2013/02/08/how-to-createrestore-a-slave-using-gtid-replication-in-mysql-5-6/</a>
+</li>
+</ul>
+
+<p>需要使用下面参数
+</p><ul>
+<li>gtid_mode=ON
+</li>
+<li>log-bin
+</li>
+<li>log-slave-updates
+</li>
+<li>enforce-gtid-consistency=true
+</li>
+<li>server_id
+</li>
+</ul>
+
+<p><b>note(dirlt): much eaiser to handle master-slave replication and failover situation</b>
+</p>
 </div>
 </div>
 
@@ -1261,7 +1289,7 @@ binlog-format有三种选择
 </li>
 <li>[server] MySQL服务端程序选项组标记
 </li>
-<li>[mysqld] MySQL服务端程序选项组标记   
+<li>[mysqld] MySQL服务端程序选项组标记
 </li>
 <li>[mysqld-X.Y] MySQL服务端程序选项组标记，但是只有X.Y这个版本才会读取
 </li>
@@ -1455,7 +1483,7 @@ innodb_data_file_path的格式这里需要详细解释，每个文件之间通�
 </p><ul>
 <li>path:size # 文件初始大小size字节，并且不可扩展
 </li>
-<li>path:size:autoextend # 文件初始大小size字节，但是允许自动扩展 <b>NOTE（dirlt）：通常应该是留在最后的</b>
+<li>path:size:autoextend # 文件初始大小size字节，但是允许自动扩展 <b>note(dirlt)：通常应该是留在最后的</b>
 </li>
 </ul>
 
@@ -1504,7 +1532,7 @@ Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: The last pac
 </p><ul>
 <li>interactive_timeout：服务器关闭交互式连接前等待活动的秒数。交互式客户端定义为在mysql_real_connect()中使用CLIENT_INTERACTIVE选项的客户端。又见wait_timeout
 </li>
-<li>wait_timeout:服务器关闭非交互连接之前等待活动的秒数。在线程启动时，根据全局wait_timeout值或全局interactive_timeout值初始化会话wait_timeout值，取决于客户端类型(由mysql_real_connect()的连接选项CLIENT_INTERACTIVE定义)，又见interactive_timeout 
+<li>wait_timeout:服务器关闭非交互连接之前等待活动的秒数。在线程启动时，根据全局wait_timeout值或全局interactive_timeout值初始化会话wait_timeout值，取决于客户端类型(由mysql_real_connect()的连接选项CLIENT_INTERACTIVE定义)，又见interactive_timeout
 </li>
 </ul>
 
@@ -1550,7 +1578,7 @@ mysql最大连接数目可以通过参数max_connections进行配置，默认的
 +-----------------+-------+
 1 row in set (0.00 sec)
 
-mysql&gt; show status like '%connect%'; 
+mysql&gt; show status like '%connect%';
 +--------------------------+-------+
 | Variable_name            | Value |
 +--------------------------+-------+
@@ -1570,11 +1598,11 @@ mysql&gt; show status like '%connect%';
 <p>
 对于status状态来说有下面几个和connection相关的数值
 </p><ul>
-<li>Aborted_connects 尝试已经失败的MySQL服务器的连接的次数。  
+<li>Aborted_connects 尝试已经失败的MySQL服务器的连接的次数。
 </li>
 <li>Connections 试图连接MySQL服务器的次数。
 </li>
-<li>Max_used_connections 同时使用的连接的最大数目。 
+<li>Max_used_connections 同时使用的连接的最大数目。
 </li>
 <li>Threads_connected 当前打开的连接的数量。
 </li>
@@ -1618,7 +1646,7 @@ java.sql.SQLException: null,  message from server: "Can't create a new thread (e
 
 
 <p>
-问题还是出在资源限制上面，可以通过修改开辟最大的进程数目来解决。可以参考链接 <a href="http://www.mysqlperformanceblog.com/2013/02/04/cant_create_thread_errno_11/">http://www.mysqlperformanceblog.com/2013/02/04/cant_create_thread_errno_11/</a> 
+问题还是出在资源限制上面，可以通过修改开辟最大的进程数目来解决。可以参考链接 <a href="http://www.mysqlperformanceblog.com/2013/02/04/cant_create_thread_errno_11/">http://www.mysqlperformanceblog.com/2013/02/04/cant_create_thread_errno_11/</a>
 </p>
 </div>
 </div>
@@ -1647,7 +1675,7 @@ java.sql.SQLException: null,  message from server: "Can't create a new thread (e
 <tr><td class="left">scripts</td><td class="left">mysql_install_db</td></tr>
 <tr><td class="left">share</td><td class="left">Miscellaneous support files, including error messages, sample configuration files, SQL for database installation</td></tr>
 <tr><td class="left">sql-bench</td><td class="left">Benchmarks</td></tr>
-<tr><td class="left">mysql-test</td><td class="left">NOTE(dirlt): test suite</td></tr>
+<tr><td class="left">mysql-test</td><td class="left">note(dirlt): test suite</td></tr>
 <tr><td class="left">support-files</td><td class="left"></td></tr>
 </tbody>
 </table>
@@ -1677,7 +1705,7 @@ java.sql.SQLException: null,  message from server: "Can't create a new thread (e
 </li>
 <li>mysqld_safe # 启动脚本
 <ul>
-<li>&ndash;skip-grant-tables # 忽略权限表 <b>NOTE（dirlt）：可以用来重置密码</b>
+<li>&ndash;skip-grant-tables # 忽略权限表 <b>note(dirlt)：可以用来重置密码</b>
 </li>
 <li>&ndash;skip-networking # 不启动网络接口
 </li>
@@ -1957,8 +1985,8 @@ java.sql.SQLException: null,  message from server: "Can't create a new thread (e
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-19T14:35+0800</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
+<p class="date">Date: 2014-05-22T11:39+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

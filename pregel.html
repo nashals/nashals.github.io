@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="pregel"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-28T16:50+0800"/>
+<meta name="generated" content="2014-04-15T09:13+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -200,7 +200,7 @@
 </li>
 <li>The synchronicity of this model makes it easier to reason about program semantics when implementing algorithms, and ensures that Pregel programs are inherently free of dead-locks and data races common in asynchronous systems.（以同步的方式可以更好地对program进行reason，并且可以使得整个系统避免死锁）
 </li>
-<li>In principle the performance of Pregel programs should be com-petitive with that of asynchronous systems given enough parallel slack [28, 34]. Because typical graph computations have many more vertices than machines, one should be able to balance the machine loads so that the synchronization between supersteps does not add excessive latency. <b>TODO（dirlt）：怎么定义异步模式？是否如果工作异步模式的话，就没有superstep这个概念？</b> （因为节点数目远大于机器，因此整个分布式非常均匀的，因此采用同步的方式并不会带来太多的延迟，大部分节点完成时间是相同的，不会存在某个节点计算时间过长，否则采用异步方式会使得延迟更小。） <b>NOTE（dirlt）：但是异步方式会使得程序更加难懂，因为缺少一个barrier，V1可能计算到了Step3，而V2可能只是计算到Step1。此外也比较难确定一个节点什么时候需要计算下一轮，需要很多额外的描述</b>
+<li>In principle the performance of Pregel programs should be com-petitive with that of asynchronous systems given enough parallel slack [28, 34]. Because typical graph computations have many more vertices than machines, one should be able to balance the machine loads so that the synchronization between supersteps does not add excessive latency. <b>todo(dirlt)：怎么定义异步模式？是否如果工作异步模式的话，就没有superstep这个概念？</b> （因为节点数目远大于机器，因此整个分布式非常均匀的，因此采用同步的方式并不会带来太多的延迟，大部分节点完成时间是相同的，不会存在某个节点计算时间过长，否则采用异步方式会使得延迟更小。） <b>note(dirlt)：但是异步方式会使得程序更加难懂，因为缺少一个barrier，V1可能计算到了Step3，而V2可能只是计算到Step1。此外也比较难确定一个节点什么时候需要计算下一轮，需要很多额外的描述</b>
 </li>
 </ul>
 
@@ -214,11 +214,11 @@
 <div class="outline-text-3" id="text-1-3">
 
 <ul>
-<li>The input to a Pregel computation is a directed graph in which each vertex is uniquely identified by a string vertex identifier. Each vertex is associated with a modifiable, user defined value. The directed edges are associated with their source vertices, and each edge consists of a modifiable, user defined value and a target vertex identifier.（pregel的输入就是一个有向图，每个节点都有一个唯一标识，并且有一个相应的自定义可修改数据。edge对应了source和target vertex，并且上面也有自定义数据） 。 但是注意 <b>Edges are not first-class citizens in this model, having no associated computation.</b> 对于edge来说并不是first-class，pregel是vertex-centric模式，edge上面没有对应任何计算。 *NOTE（dirlt）：不过既然vertex为中心，就没有必要指定edge上的输入吧！
+<li>The input to a Pregel computation is a directed graph in which each vertex is uniquely identified by a string vertex identifier. Each vertex is associated with a modifiable, user defined value. The directed edges are associated with their source vertices, and each edge consists of a modifiable, user defined value and a target vertex identifier.（pregel的输入就是一个有向图，每个节点都有一个唯一标识，并且有一个相应的自定义可修改数据。edge对应了source和target vertex，并且上面也有自定义数据） 。 但是注意 <b>Edges are not first-class citizens in this model, having no associated computation.</b> 对于edge来说并不是first-class，pregel是vertex-centric模式，edge上面没有对应任何计算。 *note(dirlt)：不过既然vertex为中心，就没有必要指定edge上的输入吧！
 </li>
 <li>A typical Pregel computation consists of input, when the graph is initialized, followed by a sequence of supersteps sep-arated by global synchronization points until the algorithm terminates, and finishing with output.（有一个全局的同步点机制，每轮迭代都会进行同步）
 </li>
-<li>Within each superstep the vertices compute in parallel, each executing the same user-defined function that expresses the logic of a given algorithm. A vertex can modify its state or that of its outgoing edges, receive messages sent to it in the previous superstep, send messages to other vertices (to be received in the next superstep), or even mutate the topology of the graph.（在每一个superstep里面每个节点都会指定自定义函数，节点可以修改自身状态以及出口，接受上一步产生的信息并且写新的消息到其他节点，甚至修改全局拓扑）。 <b>NOTE（dirlt）：修改全局拓扑似乎是一个比较难实现的东西</b>
+<li>Within each superstep the vertices compute in parallel, each executing the same user-defined function that expresses the logic of a given algorithm. A vertex can modify its state or that of its outgoing edges, receive messages sent to it in the previous superstep, send messages to other vertices (to be received in the next superstep), or even mutate the topology of the graph.（在每一个superstep里面每个节点都会指定自定义函数，节点可以修改自身状态以及出口，接受上一步产生的信息并且写新的消息到其他节点，甚至修改全局拓扑）。 <b>note(dirlt)：修改全局拓扑似乎是一个比较难实现的东西</b>
 </li>
 <li>Algorithm termination is based on every vertex voting to halt. In superstep 0, every vertex is in the active state; all active vertices participate in the computation of any given superstep. A vertex deactivates itself by voting to halt. This means that the vertex has no further work to do unless trig-gered externally, and the Pregel framework will not execute that vertex in subsequent supersteps unless it receives a mes-sage. If reactivated by a message, a vertex must explicitly deactivate itself again. The algorithm as a whole terminates when all vertices are simultaneously inactive and there are no messages in transit.（起初每个节点都是active的，节点变为inactive需要自己vote to halt，这样节点下次就不会参与计算了。但是如果其他节点向这个节点发送消息的话，那么又会从inactive变为active状态。因此pregel的终止状态是所有节点都已经vote to halt并且没有任何message流动）
 </li>
@@ -289,9 +289,9 @@ class Vertex {
 <div class="outline-text-4" id="text-1-4-1">
 
 <ul>
-<li>When the destination vertex of any message does not ex-ist, we execute user-defined handlers. A handler could, for example, create the missing vertex or remove the dangling edge from its source vertex. <b>TODO（dirlt）：这点很重要，但是似乎做得不是很好。首先vertex应该是知道哪些节点是存在还是不存在的，不过这还是有一个问题，就是如何保证原子操作。因为可能有多个vertex会创建相同节点。另外就是这handler仅仅是在dest vertex不存在的时候才调用的，不能够主动地出发删除edge的操作</b> 
+<li>When the destination vertex of any message does not ex-ist, we execute user-defined handlers. A handler could, for example, create the missing vertex or remove the dangling edge from its source vertex. <b>todo(dirlt)：这点很重要，但是似乎做得不是很好。首先vertex应该是知道哪些节点是存在还是不存在的，不过这还是有一个问题，就是如何保证原子操作。因为可能有多个vertex会创建相同节点。另外就是这handler仅仅是在dest vertex不存在的时候才调用的，不能够主动地出发删除edge的操作</b> 
 <ul>
-<li>我的理解是直接提供添加和删除vertex的接口，但是需要考虑到有多个节点共同操作的问题。 <b>NOTE（dirlt）：不过我看论文后面也讨论了这个问题</b>
+<li>我的理解是直接提供添加和删除vertex的接口，但是需要考虑到有多个节点共同操作的问题。 <b>note(dirlt)：不过我看论文后面也讨论了这个问题</b>
 </li>
 <li>后面倒是说明白了，handler接口仅仅是为了在冲突的时候调用的，而并不是类似于回调的机制。
 </li>
@@ -359,11 +359,11 @@ class Vertex {
 </li>
 <li>所谓偏序就是定义所有操作的顺序：
 <ul>
-<li>As with messages, mutations become effective in the su-perstep after the requests were issued. <b>TODO(dirlt):是什么意思？对于所有的mutations操作都是在request发起之后都会立刻生效。</b>
+<li>As with messages, mutations become effective in the su-perstep after the requests were issued. <b>todo(dirlt):是什么意思？对于所有的mutations操作都是在request发起之后都会立刻生效。</b>
 </li>
 <li>Within that super-step removals are performed first, with edge removal before vertex removal, since removing a vertex implicitly removes all of its out-edges. Additions follow removals, with ver-tex addition before edge addition,（在一个superstep里面来说，remove首先执行，首先是edge removal，然后是vertex removal，addition后执行，首先是vertex addition，然后是edge addition）
 </li>
-<li>and all mutations precede calls to Compute(). This partial ordering yields determinis-tic results for most conflicts. <b>TODO（dirlt）：这里所说的意思是否指，本次的修改会在下次的compute之前生效。因为按照我们写程序的习惯来说，肯定是一边compute一边计算需要删除和增加哪些顶点和边的）</b>
+<li>and all mutations precede calls to Compute(). This partial ordering yields determinis-tic results for most conflicts. <b>todo(dirlt)：这里所说的意思是否指，本次的修改会在下次的compute之前生效。因为按照我们写程序的习惯来说，肯定是一边compute一边计算需要删除和增加哪些顶点和边的）</b>
 </li>
 </ul>
 
@@ -378,7 +378,7 @@ class Vertex {
 
 
 <p>
-<b>TODO（dirlt）：有个问题就是不太明白，对于修改来说到底是立刻生效，还是仅仅是通知master节点，然后下论生效？partial order是强制还是建议的？</b>
+<b>todo(dirlt)：有个问题就是不太明白，对于修改来说到底是立刻生效，还是仅仅是通知master节点，然后下论生效？partial order是强制还是建议的？</b>
 </p>
 </div>
 
@@ -413,7 +413,7 @@ class Vertex {
 <ul>
 <li>首先一个单独的进程起来作为master存在，其他worker使用name service来发现master并且汇报自己。（worker的数量就是进程数目，应该也就是partition number）
 </li>
-<li>master了解到整个partition情况之后，将输入按照partition分布到不同的worker上面去（注意每个worker可能会分配到多个partition）。每个worker都会一些节点的状态以及让这些节点进行compute，同时每个worker也会知道整个图是如何分配的（这个通过partition function也可以知道）。 <b>TODO（dirlt）：应该是为了解决底层通信问题，但是还需要考虑failover的情况。</b>
+<li>master了解到整个partition情况之后，将输入按照partition分布到不同的worker上面去（注意每个worker可能会分配到多个partition）。每个worker都会一些节点的状态以及让这些节点进行compute，同时每个worker也会知道整个图是如何分配的（这个通过partition function也可以知道）。 <b>todo(dirlt)：应该是为了解决底层通信问题，但是还需要考虑failover的情况。</b>
 <ul>
 <li>因为输入不一定能够正好分割，因此如果这个输入是remote worker的话，那么这个worker还需要通过消息通过给remote worker。
 </li>
@@ -445,7 +445,7 @@ class Vertex {
 </li>
 <li>Worker failures are detected using regular “ping” messages that the master issues to workers. If a worker does not receive a ping message after a specified interval, the worker process terminates. If the master does not hear back from a worker, the master marks that worker process as failed.（master通过和worker发送ping心跳来检测worker是否正在正常工作。如果没有检测到的话，那么就认为这个worker失败）
 </li>
-<li>When one or more workers fail, the current state of the partitions assigned to these workers is lost. The master reas-signs graph partitions to the currently available set of work-ers, and they all reload their partition state from the most recent available checkpoint at the beginning of a superstep S. That checkpoint may be several supersteps earlier than the latest superstep S completed by any partition before the failure, requiring that recovery repeat the missing su-persteps. We select checkpoint frequency based on a mean time to failure model [13, ], balancing checkpoint cost against expected recovery cost. （一旦检测到worker失败的话，那么master会将整个集群回滚。重新对graph进行partition，然后每个节点重新读取chkp，然后从那个superstep开始计算。可能这个superstep早于出现鼓掌时候的superstep）  <b>NOTE（dirlt）：这点似乎是个比较大的问题，因为只要有单个worker出现问题的话，那么整个集群就要进行回滚）</b> 
+<li>When one or more workers fail, the current state of the partitions assigned to these workers is lost. The master reas-signs graph partitions to the currently available set of work-ers, and they all reload their partition state from the most recent available checkpoint at the beginning of a superstep S. That checkpoint may be several supersteps earlier than the latest superstep S completed by any partition before the failure, requiring that recovery repeat the missing su-persteps. We select checkpoint frequency based on a mean time to failure model [13, ], balancing checkpoint cost against expected recovery cost. （一旦检测到worker失败的话，那么master会将整个集群回滚。重新对graph进行partition，然后每个节点重新读取chkp，然后从那个superstep开始计算。可能这个superstep早于出现鼓掌时候的superstep）  <b>note(dirlt)：这点似乎是个比较大的问题，因为只要有单个worker出现问题的话，那么整个集群就要进行回滚）</b> 
 </li>
 <li>Confined recovery is under development to improve the cost and latency of recovery. In addition to the basic check-points, the workers also log outgoing messages from their as-signed partitions during graph loading and supersteps. Re-covery is then confined to the lost partitions, which are re-covered from checkpoints. （限制性恢复则是对于上面情况的一个改善，能够改善恢复代价和延迟。在这个情况下面，worker会记录在graph load以及每个superstep出去的信息。这样故障恢复可以仅仅限于挂掉的部分，减少恢复的代价）
 <ul>
@@ -487,7 +487,7 @@ class Vertex {
 </li>
 <li>When Compute() requests sending a message to another vertex, the worker process first determines whether the des-tination vertex is owned by a remote worker machine, or by the same worker that owns the sender. In the remote case the message is buffered for delivery to the destination worker. When the buffer sizes reach a threshold, the largest buffers are asynchronously flushed, delivering each to its des-tination worker as a single network message. In the local case an optimization is possible: the message is placed di-rectly in the destination vertex’s incoming message queue.（发送消息的时候，pregel会确定dest vertex是否在同样一个worker上面，如果是在同一个worker的话，那么直接将消息放到队列里面即可，如果是远程节点的话，那么会进行batch然后异步发送）
 <ul>
-<li><b>NOTE（dirlt）：因为vertex id分配到partiion算法是固定的，而partition分配到那个worker却未知，因此需要有一个服务或者是master知道某个partition是在哪个worker上面的。</b>
+<li><b>note(dirlt)：因为vertex id分配到partiion算法是固定的，而partition分配到那个worker却未知，因此需要有一个服务或者是master知道某个partition是在哪个worker上面的。</b>
 </li>
 </ul>
 
@@ -526,7 +526,7 @@ class Vertex {
 <ul>
 <li>Each worker maintains a collection of ag-gregator instances, identified by a type name and instance name. When a worker executes a superstep for any partition of the graph, the worker combines all of the values supplied to an aggregator instance into a single local value: an ag-gregator that is partially reduced over all of the worker’s vertices in the partition. （每个worker上面都会维护聚合操作实例。在一个superstep执行的时候会将节点的值进行聚合/考虑到不确定哪一个vertex先完成，因此聚合操作必须满足交换律。而最后聚合操作会聚合所有worker上的value，因此也必须满足结合律）
 </li>
-<li>reduced over all of the worker’s vertices in the partition. At the end of the superstep work-ers form a tree to reduce partially reduced aggregators into global values and deliver them to the master. We use a tree-based reduction—rather than pipelining with a chain of workers—to parallelize the use of CPU during reduction. （使用tree-based reduction方式而不是pipelining方式可以减少CPU开销以及延迟） <b>TODO（dirlt）：为什么不直接将所有的value汇报给master然后让master进行聚合呢？为了减少master压力？这个tree-based reduction应该是master协调完成的</b>
+<li>reduced over all of the worker’s vertices in the partition. At the end of the superstep work-ers form a tree to reduce partially reduced aggregators into global values and deliver them to the master. We use a tree-based reduction—rather than pipelining with a chain of workers—to parallelize the use of CPU during reduction. （使用tree-based reduction方式而不是pipelining方式可以减少CPU开销以及延迟） <b>todo(dirlt)：为什么不直接将所有的value汇报给master然后让master进行聚合呢？为了减少master压力？这个tree-based reduction应该是master协调完成的</b>
 </li>
 <li>The master sends the global values to all workers at the beginning of the next superstep.（master得到这个global value之后，重新传递给所有的workers,然后进行下轮迭代）
 </li>
@@ -634,7 +634,7 @@ class Vertex {
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-28T16:50+0800</p>
+<p class="date">Date: 2014-04-15T09:13+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="gwp"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-19T14:35+0800"/>
+<meta name="generated" content="2014-04-15T09:14+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -145,7 +145,7 @@
 </li>
 <li>It’s easier and more representative to monitor datacenter applications running on live traffic. However, application owners won’t tolerate latency degradations of more than a few percent, so these tools must be nonintrusive and have minimal overhead.
 </li>
-<li>As with all profiling tools, observer distortion must be minimized to enable meaningful analysis. OProfile, a DCPI-inspired tool, collects and reports data much in the same way for a plethora of architectures, though it offers less sophisticated analysis. GWP uses OProfile (<a href="http://oprofile.sourceforge.net">http://oprofile.sourceforge.net</a>) as a profile source.（GWP底层使用oprofile来作为profiling source） <b>NOTE（dirlt）：profiling工具必须尽可能减少误差</b>
+<li>As with all profiling tools, observer distortion must be minimized to enable meaningful analysis. OProfile, a DCPI-inspired tool, collects and reports data much in the same way for a plethora of architectures, though it offers less sophisticated analysis. GWP uses OProfile (<a href="http://oprofile.sourceforge.net">http://oprofile.sourceforge.net</a>) as a profile source.（GWP底层使用oprofile来作为profiling source） <b>note(dirlt)：profiling工具必须尽可能减少误差</b>
 </li>
 <li>Sampling-based tools can bring overhead and distortion to acceptable levels, so they’re uniquely qualified for performance monitoring in the data center. （基于采样的方法可以将额外开销以及失真降低到最小程度）
 </li>
@@ -162,7 +162,7 @@
 </ul>
 
 </li>
-<li>GWP collects daily profiles from several thousand applications running on thousands of servers, and the compressed profile database grows by several Gbytes every day.（从上千台机器收集数据，每天产生GB级别的数据） <b>NOTE（dirlt）：其实不大</b>
+<li>GWP collects daily profiles from several thousand applications running on thousands of servers, and the compressed profile database grows by several Gbytes every day.（从上千台机器收集数据，每天产生GB级别的数据） <b>note(dirlt)：其实不大</b>
 </li>
 <li>Profiling at this scale presents significant challenges that don’t exist for a single machine.（集群profileing存在很多挑战）
 <ul>
@@ -485,8 +485,8 @@
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-19T14:35+0800</p>
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.2 with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 23</p>
+<p class="date">Date: 2014-04-15T09:14+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>

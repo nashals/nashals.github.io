@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="akka"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-28T16:51+0800"/>
+<meta name="generated" content="2014-04-15T09:15+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -195,7 +195,7 @@ Akka can be used in different ways:
 
 <hr/>
 <p>
-<b>NOTE(dirlt):参考akka@github的example编写的。这里使用的方式就是手工创建ActorSystem，而不是使用Akka.main指定main class来启动</b>
+<b>note(dirlt):参考akka@github的example编写的。这里使用的方式就是手工创建ActorSystem，而不是使用Akka.main指定main class来启动</b>
 </p>
 
 
@@ -363,7 +363,7 @@ An actor system manages the resources it is configured to use in order to run th
 <div class="outline-text-4" id="text-1-3-1">
 
 <ul>
-<li><b>NOTE(dirlt):ActorRef. 类似Actor对象指针，所有Actor对象操作都是通过引用来完成的。这样Actor如果重启，或者是部署在远程做通信的话，都可以以透明方式来完成</b>
+<li><b>note(dirlt):ActorRef. 类似Actor对象指针，所有Actor对象操作都是通过引用来完成的。这样Actor如果重启，或者是部署在远程做通信的话，都可以以透明方式来完成</b>
 </li>
 <li>As detailed below, an actor object needs to be shielded from the outside in order to benefit from the actor model. Therefore, actors are represented to the outside using actor references, which are objects that can be passed around freely and without restriction.
 </li>
@@ -436,9 +436,9 @@ There are two general categories to how actor references may be obtained: by cre
 <ul>
 <li>In addition, actor references may be looked up using the ActorSystem.actorSelection method. 
 </li>
-<li>The selection can be used for communicating with said actor and <b>the actor corresponding to the selection is looked up when delivering each message.</b> TODO(dirlt): cost issue?
+<li>The selection can be used for communicating with said actor and <b>the actor corresponding to the selection is looked up when delivering each message.</b> todo(dirlt): cost issue?
 </li>
-<li>*NOTE(dirlt):support relative path and wildcard. like ../sibling or ../? *
+<li>*note(dirlt):support relative path and wildcard. like ../sibling or ../? *
 </li>
 </ul>
 
@@ -464,7 +464,7 @@ Equality of ActorRef match the intention that an ActorRef corresponds to the tar
 </p><ul>
 <li>Logical Actor Paths
 <ul>
-<li><b>NOTE(dirlt):主要是强调hierarchy</b>
+<li><b>note(dirlt):主要是强调hierarchy</b>
 </li>
 <li>akka.tcp://sys@A:2552/user/parent/child
 </li>
@@ -477,7 +477,7 @@ Equality of ActorRef match the intention that an ActorRef corresponds to the tar
 </li>
 <li>Physical Actor Paths
 <ul>
-<li><b>NOTE(dirlt):主要是强调location</b>
+<li><b>note(dirlt):主要是强调location</b>
 </li>
 <li>akka.tcp://sys@B:2552/remote/sys@A:2552/user/parent/child # remote node on B.
 </li>
@@ -529,7 +529,7 @@ When an actor creates a child, the actor system’s deployer will decide whether
 <hr/>
 
 <p>
-<b>NOTE(dirlt):可以参照后面的Supervision and Monitoring来看这些path</b>
+<b>note(dirlt):可以参照后面的Supervision and Monitoring来看这些path</b>
 </p>
 <p>
 At the root of the path hierarchy resides the root guardian above which all other actors are found; its name is "/". The next level consists of the following:
@@ -548,7 +548,7 @@ At the root of the path hierarchy resides the root guardian above which all othe
 
 
 <p>
-The need to structure the name space for actors like this arises from a central and very simple design goal: everything in the hierarchy is an actor, and all actors function in the same way. Hence you can not only look up the actors you created, you can also look up the system guardian and send it a message (which it will dutifully discard in this case). This powerful principle means that there are no quirks to remember, it makes the whole system more uniform and consistent.（路径的层次化组织使得定位actor更加容易和统一） <b>TODO(dirlt):每个actor需要维护path,这个代价开销有多大？</b> 
+The need to structure the name space for actors like this arises from a central and very simple design goal: everything in the hierarchy is an actor, and all actors function in the same way. Hence you can not only look up the actors you created, you can also look up the system guardian and send it a message (which it will dutifully discard in this case). This powerful principle means that there are no quirks to remember, it makes the whole system more uniform and consistent.（路径的层次化组织使得定位actor更加容易和统一） <b>todo(dirlt):每个actor需要维护path,这个代价开销有多大？</b> 
 </p>
 </div>
 
@@ -613,9 +613,9 @@ The need to structure the name space for actors like this arises from a central 
 </ul>
 
 </li>
-<li>An important feature in which Akka differs from some other actor model implementations is that the current behavior must always handle the next dequeued message, there is no scanning the mailbox for the next matching one. Failure to handle a message will typically be treated as a failure, unless this behavior is overridden. <b>NOTE（dirlt）：和其他actor model实现有点不太类似是，没有办法对mailbox来做scan来处理匹配的项。也就是说对于mailbox里面所有的消息都需要显式处理</b>
+<li>An important feature in which Akka differs from some other actor model implementations is that the current behavior must always handle the next dequeued message, there is no scanning the mailbox for the next matching one. Failure to handle a message will typically be treated as a failure, unless this behavior is overridden. <b>note(dirlt)：和其他actor model实现有点不太类似是，没有办法对mailbox来做scan来处理匹配的项。也就是说对于mailbox里面所有的消息都需要显式处理</b>
 </li>
-<li>If an exception is thrown while a message is being processed, nothing happens to the mailbox. If the actor is restarted, the same mailbox will be there. So all messages on that mailbox will be there as well.(如果处理消息的时候发生异常，mailbox并不会受影响，并且如果actor重启的话，读取的依然是之前的mailbox里面的内容） <b>TODO（dirlt）：是否有办法清除mailbox里面的内容？</b> 
+<li>If an exception is thrown while a message is being processed, nothing happens to the mailbox. If the actor is restarted, the same mailbox will be there. So all messages on that mailbox will be there as well.(如果处理消息的时候发生异常，mailbox并不会受影响，并且如果actor重启的话，读取的依然是之前的mailbox里面的内容） <b>todo(dirlt)：是否有办法清除mailbox里面的内容？</b> 
 </li>
 </ul>
 
@@ -674,7 +674,7 @@ Initialization
 <p>
 Termination
 </p><ul>
-<li><b>NOTE（dirlt）：actor终止的时候，这个actor原来内部所有的message都会流向EventStream(another special actor)作为DeadLetters，而actor消亡之后其mailbox会重定向到system mailbox, 所有发向这个system mailbox的消息也会流向EventStream作为DeadLetters</b>
+<li><b>note(dirlt)：actor终止的时候，这个actor原来内部所有的message都会流向EventStream(another special actor)作为DeadLetters，而actor消亡之后其mailbox会重定向到system mailbox, 所有发向这个system mailbox的消息也会流向EventStream作为DeadLetters</b>
 </li>
 <li>Once an actor terminates, i.e. fails in a way which is not handled by a restart, stops itself or is stopped by its supervisor, it will free up its resources, draining all remaining messages from its mailbox into the system’s “dead letter mailbox” which will forward them to the EventStream as DeadLetters. 
 </li>
@@ -827,7 +827,7 @@ These are the rules for message sends (i.e. the tell or ! method, which also und
 </p><ul>
 <li>at-most-once delivery, i.e. no guaranteed delivery
 </li>
-<li>message ordering per sender–receiver pair <b>NOTE(dirlt):可以参考Memory Model这个部分的内容</b> 
+<li>message ordering per sender–receiver pair <b>note(dirlt):可以参考Memory Model这个部分的内容</b> 
 </li>
 </ul>
 
@@ -931,7 +931,7 @@ While constructing an ac- tor system, you can either pass in a Config object or 
 </li>
 <li>application.properties
 </li>
-<li><b>NOTE(dirlt):application允许通过config.*配置选项来修改指定</b> 
+<li><b>note(dirlt):application允许通过config.*配置选项来修改指定</b> 
 </li>
 </ul>
 
@@ -1151,7 +1151,7 @@ Routers, Routees and Senders
 </p><ul>
 <li>Sending a message to a router is easy. "router ! MyMsg". A router actor forwards messages to its routees according to its routing policy.
 </li>
-<li>The router forwards messages onto its routees without changing the original sender. When a routee replies to a routed message, the reply will be sent to the original sender, not to the router.(直接返回给sender而不会经过router） <b>NOTE（dirlt）：也有办法回复给router</b>
+<li>The router forwards messages onto its routees without changing the original sender. When a routee replies to a routed message, the reply will be sent to the original sender, not to the router.(直接返回给sender而不会经过router） <b>note(dirlt)：也有办法回复给router</b>
 </li>
 <li>When a router creates routees, they are created as the routers children. This gives each routee its own identity in the actor system.
 </li>
@@ -1289,14 +1289,14 @@ Handling for Special Messages
 <h3 id="sec-1-14"><span class="section-number-3">1.14</span> TroubleShooting</h3>
 <div class="outline-text-3" id="text-1-14">
 
-<p>TODO(dirlt):
+<p>todo(dirlt):
 </p></div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-28T16:51+0800</p>
+<p class="date">Date: 2014-04-15T09:15+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

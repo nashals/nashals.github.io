@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="gfs"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-28T16:51+0800"/>
+<meta name="generated" content="2014-04-15T09:14+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -379,7 +379,7 @@
 <ul>
 <li>First, it reduces clients' need to interact with the master because reads and writes on the same chunk require only one initial request to the master for chunk location informa-tion.
 </li>
-<li>Second, since on a large chunk, a client is more likely to perform many operations on a given chunk, it can reduce network overhead by keeping a persis-tent TCP connection to the chunkserver over an extended period of time. TODO(dirlt):这个和节省网络开销有什么关系?
+<li>Second, since on a large chunk, a client is more likely to perform many operations on a given chunk, it can reduce network overhead by keeping a persis-tent TCP connection to the chunkserver over an extended period of time. todo(dirlt):这个和节省网络开销有什么关系?
 </li>
 <li>Third, it reduces the size of the metadata stored on the master. This allows us to keep the metadata in memory,
 </li>
@@ -459,7 +459,7 @@
 
 
 <p>
-<b>NOTE(dirlt):其实一致性view还是需要通过chunkserver和master之间交互来决定。对于master来说完全可以作为作为一个cache角色存在，只是保存chunk replacement的一个cache.通过这个cache来减少问题几率。然后通过periodically来更新cache内容。</b>
+<b>note(dirlt):其实一致性view还是需要通过chunkserver和master之间交互来决定。对于master来说完全可以作为作为一个cache角色存在，只是保存chunk replacement的一个cache.通过这个cache来减少问题几率。然后通过periodically来更新cache内容。</b>
 </p>
 </div>
 
@@ -470,7 +470,7 @@
 <div class="outline-text-5" id="text-1-3-6-3">
 
 <ul>
-<li>The operation log contains a historical record of critical metadata changes. It is central to GFS. Not only is it the only persistent record of metadata, but it also serves as a logical time line that defines the order of concurrent op-erations. Files and chunks, as well as their versions (see Section 4.5), are all uniquely and eternally identified by the logical times at which they were created.(log记录了对于meta信息关键的修改，一方面可以用来持久化metadata,另外一方面也为并发操作进行排序。file以及chunk分配的version都是按照他们创建的逻辑顺序分配的。TODO(dirlt):file也需要version吗???
+<li>The operation log contains a historical record of critical metadata changes. It is central to GFS. Not only is it the only persistent record of metadata, but it also serves as a logical time line that defines the order of concurrent op-erations. Files and chunks, as well as their versions (see Section 4.5), are all uniquely and eternally identified by the logical times at which they were created.(log记录了对于meta信息关键的修改，一方面可以用来持久化metadata,另外一方面也为并发操作进行排序。file以及chunk分配的version都是按照他们创建的逻辑顺序分配的。todo(dirlt):file也需要version吗???
 </li>
 <li>Since the operation log is critical, we must store it reli-ably and not make changes visible to clients until metadata changes are made persistent. Otherwise, we effectively lose the whole file system or recent client operations even if the chunks themselves survive. Therefore, we replicate it on multiple remote machines and respond to a client opera-tion only after flushing the corresponding log record to disk both locally and remotely. The master batches several log records together before flushing thereby reducing the impact of flushing and replication on overall system throughput.
 </li>
@@ -527,7 +527,7 @@
 <hr/>
 
 <p>
-NOTE（dirlt）@Sat Aug  4 00:18:03 2012：
+note(dirlt)@Sat Aug  4 00:18:03 2012：
 </p>
 <p>
 这里对于defined理解是存在问题的。defined意思应该是，数据写入是一个完整地（A region is defined after a file data mutation if it is consistent and clients will see what the mutation writes in its entirety.）
@@ -660,7 +660,7 @@ NOTE（dirlt）@Sat Aug  4 00:18:03 2012：
 <img src="images/gfs-write-control-and-data-flow.png"  alt="./images/gfs-write-control-and-data-flow.png" />
 </p>
 <p>
-<b>NOTE(dirlt): 如果出现inconsistent的状态的话，gfs也是没有办法恢复的，这个需要app自己记录下来</b>
+<b>note(dirlt): 如果出现inconsistent的状态的话，gfs也是没有办法恢复的，这个需要app自己记录下来</b>
 </p>
 </div>
 
@@ -711,7 +711,7 @@ NOTE（dirlt）@Sat Aug  4 00:18:03 2012：
 
 
 <p>
-<b>NOTE（dirlt）：append相对于write来说处理非常简单，因为不会存在overwrite的问题。每次失败的话，要不就把写失败的地方重新覆盖掉（正常情况），要不就会追加造成重复记录和padding。对于重复记录可以通过判重过滤，对于padding可以通过record本身校验判断出来）。而对于write来说就没有这么简单了，write失败的话只有放弃整个chunk块</b>
+<b>note(dirlt)：append相对于write来说处理非常简单，因为不会存在overwrite的问题。每次失败的话，要不就把写失败的地方重新覆盖掉（正常情况），要不就会追加造成重复记录和padding。对于重复记录可以通过判重过滤，对于padding可以通过record本身校验判断出来）。而对于write来说就没有这么简单了，write失败的话只有放弃整个chunk块</b>
 </p>
 </div>
 
@@ -809,7 +809,7 @@ NOTE（dirlt）@Sat Aug  4 00:18:03 2012：
 </p><ul>
 <li>(1) We want to place new replicas on chunkservers with below-average disk space utilization. Over time this will equalize disk utilization across chunkservers. （考虑各个chunkserver上面的磁盘利用率情况）
 </li>
-<li>(2) We want to limit the number of “recent” creations on each chunkserver. Although creation itself is cheap, it reliably predicts immi-nent heavy write traffic because chunks are created when de-manded by writes, and in our append-once-read-many work-load they typically become practically read-only once they have been completely written. TODO（dirlt）：后面这个部分不是很理解。（考虑不要让一个chunkserver写的次数过于频繁，一方面这样会带来过大压力，另外一方面在read时候也会造成热点）
+<li>(2) We want to limit the number of “recent” creations on each chunkserver. Although creation itself is cheap, it reliably predicts immi-nent heavy write traffic because chunks are created when de-manded by writes, and in our append-once-read-many work-load they typically become practically read-only once they have been completely written. todo(dirlt)：后面这个部分不是很理解。（考虑不要让一个chunkserver写的次数过于频繁，一方面这样会带来过大压力，另外一方面在read时候也会造成热点）
 </li>
 <li>(3) As discussed above, we want to spread replicas of a chunk across racks.（考虑需要跨rack）
 </li>
@@ -897,7 +897,7 @@ The master re-replicates a chunk as soon as the number of available replicas fal
 
 
 <p>
-<b>NOTE（dirlt）：chunkserver应该是存有一个数据库的，每次汇报自己持有的全量chunk。如果chunk过多的话，那么可以考虑每次只是传输部分chunk</b>
+<b>note(dirlt)：chunkserver应该是存有一个数据库的，每次汇报自己持有的全量chunk。如果chunk过多的话，那么可以考虑每次只是传输部分chunk</b>
 </p>
 </div>
 
@@ -922,7 +922,7 @@ The master re-replicates a chunk as soon as the number of available replicas fal
 In our experience, the main disadvantage is that the delay sometimes hinders user effort to fine tune usage when stor-age is tight. Applications that repeatedly create and delete temporary files may not be able to reuse the storage right away.（主要缺点就是当磁盘空间比较紧缺的时候，这种延迟会阻碍用户进行调整。如果应用程序频繁地创建和删除文件的话，并不能够立刻重用空间）。 We address these issues by expediting storage recla-mation if a deleted file is explicitly deleted again. We also allow users to apply different replication and reclamation policies to different parts of the namespace.（解决这个问题的方法就是在API允许指定强制删除标记，同时为了简化可以为不同的namespace指定默认的删除策略）
 </p>
 <p>
-<b>NOTE(dirlt):似乎这里有点启发，就是对于多步骤这类事务来说，一种可以代替的方案就是让一个点做原子操作，然后通过定期检查来达到最终一致性。（可能描述得不是很好）</b>
+<b>note(dirlt):似乎这里有点启发，就是对于多步骤这类事务来说，一种可以代替的方案就是让一个点做原子操作，然后通过定期检查来达到最终一致性。（可能描述得不是很好）</b>
 </p>
 </div>
 </div>
@@ -948,7 +948,7 @@ In our experience, the main disadvantage is that the delay sometimes hinders use
 
 
 <p>
-<b>NOTE(dirlt):stale检测仅仅是为了防止某个chunkserver宕机的情况。如果某个chunkserver出现宕机的话，那么回在另外一个chunkserver上面留存一份新的chunk。而当这个老的chunkserver恢复过来的话，我们必须识别出老的chunk应该被丢弃。从这个逻辑上看，如果master需要rebalance的话，那么需要revoke这个chunk的lease，这样才可以重新分配一个chunk version number.</b>
+<b>note(dirlt):stale检测仅仅是为了防止某个chunkserver宕机的情况。如果某个chunkserver出现宕机的话，那么回在另外一个chunkserver上面留存一份新的chunk。而当这个老的chunkserver恢复过来的话，我们必须识别出老的chunk应该被丢弃。从这个逻辑上看，如果master需要rebalance的话，那么需要revoke这个chunk的lease，这样才可以重新分配一个chunk version number.</b>
 </p>
 </div>
 </div>
@@ -1106,7 +1106,7 @@ All the machines are configured with dual 1.4 GHz PIII processors, 2 GB of memor
 <img src="images/gfs-micro-benchmarks.png"  alt="./images/gfs-micro-benchmarks.png" />
 </p>
 <p>
-<b>TODO（dirlt）：这里非常好奇理论的network limit是如何估算出来的？</b>
+<b>todo(dirlt)：这里非常好奇理论的network limit是如何估算出来的？</b>
 </p>
 
 </div>
@@ -1333,7 +1333,7 @@ In another experiment, we killed two chunkservers each with roughly 16,000 chunk
 <ul>
 <li>It started with little support for things like permissions and quotas but now includes rudimentary forms of these. While production sys-tems are well disciplined and controlled, users sometimes are not. More infrastructure is required to keep users from interfering with one another（一开始权限和配额问题支持非常少但是现在也包含了。对于一个生产系统来说一定需要非常好地控制，能够将用户之间的资源进行隔离）
 </li>
-<li>Many of our disks claimed to the Linux driver that they supported a range of IDE protocol versions but in fact re-sponded reliably only to the more recent ones. but in fact re-sponded reliably only to the more recent ones. This would corrupt data silently due to problems in the kernel. This problem motivated our use of checksums to detect data cor-ruption, while concurrently we modified the kernel to handle these protocol mismatches（大部分的磁盘声称支持各种IDE协议但是却对老协议的支持不好。这样会因为kernel造成数据损坏。一方通过checksum及时发现，另外一方面修改磁盘驱动） TODO（dirlt）：这个到底是啥关系？这个只要最新的协议支持好不就行了吗？
+<li>Many of our disks claimed to the Linux driver that they supported a range of IDE protocol versions but in fact re-sponded reliably only to the more recent ones. but in fact re-sponded reliably only to the more recent ones. This would corrupt data silently due to problems in the kernel. This problem motivated our use of checksums to detect data cor-ruption, while concurrently we modified the kernel to handle these protocol mismatches（大部分的磁盘声称支持各种IDE协议但是却对老协议的支持不好。这样会因为kernel造成数据损坏。一方通过checksum及时发现，另外一方面修改磁盘驱动） todo(dirlt)：这个到底是啥关系？这个只要最新的协议支持好不就行了吗？
 </li>
 <li>Earlier we had some problems with Linux 2.2 kernels due to the cost of fsync(). Its cost is proportional to the size of the file rather than the size of the modified portion. This was a problem for our large operation logs especially before we implemented checkpointing. We worked around this for a time by using synchronous writes and eventually migrated to Linux 2.4.（对于2.2的内核来说fsync开销和文件大小是比例的，这个对于在实现checkpoint之前来说，logs是非常大的所以开销也非常大，当时通过同步写来绕过去的。升级到2.4 kernel就没有这个问题了）
 </li>
@@ -1404,7 +1404,7 @@ In another experiment, we killed two chunkservers each with roughly 16,000 chunk
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-28T16:51+0800</p>
+<p class="date">Date: 2014-04-15T09:14+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

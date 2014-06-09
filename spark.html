@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="spark"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-28T16:50+0800"/>
+<meta name="generated" content="2014-04-15T09:13+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -246,7 +246,7 @@
 </li>
 <li>By changing the persistence of an existing RDD. By default, RDDs are lazy and ephemeral. That is, par- titions of a dataset are materialized on demand when they are used in a parallel operation (e.g., by passing a block of a file through a map function), and are dis- carded from memory after use. However, a user can alter the persistence of an RDD through two actions:
 <ul>
-<li>The cache action leaves the dataset lazy, but hints that it should be kept in memory after the first time it is computed, because it will be reused. We note that our cache action is only a hint: if there is not enough memory in the cluster to cache all partitions of a dataset, Spark will recompute them when they are used. We chose this design so that Spark programs keep work- ing (at reduced performance) if nodes fail or if a dataset is too big. This idea is loosely analogous to virtual memory.(cache可以用来提示将RDD缓存在内存中，以便被后面计算重复使用。如果空间不够的话那么会丢弃而下次需要的时候重新计算，类似虚拟内存） <b>TODO（dirlt）：难道不应该swap到磁盘上更加合适吗？</b>
+<li>The cache action leaves the dataset lazy, but hints that it should be kept in memory after the first time it is computed, because it will be reused. We note that our cache action is only a hint: if there is not enough memory in the cluster to cache all partitions of a dataset, Spark will recompute them when they are used. We chose this design so that Spark programs keep work- ing (at reduced performance) if nodes fail or if a dataset is too big. This idea is loosely analogous to virtual memory.(cache可以用来提示将RDD缓存在内存中，以便被后面计算重复使用。如果空间不够的话那么会丢弃而下次需要的时候重新计算，类似虚拟内存） <b>todo(dirlt)：难道不应该swap到磁盘上更加合适吗？</b>
 </li>
 <li>The save action evaluates the dataset and writes it to a distributed filesystem such as HDFS. The saved version is used in future operations on it.（save可以用来将RDD持久化到磁盘上）
 </li>
@@ -350,7 +350,7 @@ These datasets will be stored as a chain of objects cap- turing the lineage of e
 <img src="images/spark-rdd-code-examples.png"  alt="./images/spark-rdd-code-examples.png" />
 </p>
 <p>
-<b>NOTE(dirlt):rdd = direct input + function as closure</b>
+<b>note(dirlt):rdd = direct input + function as closure</b>
 </p>
 
 <hr/>
@@ -823,7 +823,7 @@ Finally, each instance of Spark on a cluster currently has its own separate memo
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-28T16:50+0800</p>
+<p class="date">Date: 2014-04-15T09:13+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
