@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="resume"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-04-15T09:13+0800"/>
+<meta name="generated" content="2014-06-12T15:23+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -195,7 +195,7 @@ Senior Software Engineer at Umeng.
 Data Platform Team.
 </p>
 <ul>
-<li>design Umeng internal Realtime+Batch Architecture. (aka. Lambda Architecture <a href="http://nathanmarz.com/blog/how-to-beat-the-cap-theorem.html">http://nathanmarz.com/blog/how-to-beat-the-cap-theorem.html</a>) 
+<li>design Umeng internal Realtime+Batch Architecture. (aka. Lambda Architecture <a href="http://nathanmarz.com/blog/how-to-beat-the-cap-theorem.html">http://nathanmarz.com/blog/how-to-beat-the-cap-theorem.html</a>)
 
 </li>
 <li>optimize Hadoop cluster usage.
@@ -250,7 +250,7 @@ Software Engineer at Baidu.
 INF(infrastructure) COM(component) Team.
 </p>
 <ul>
-<li>Itachi, an open-source high performance asynchronous network programming framework in C++. <a href="https://github.com/dirtysalt/sperm/tree/master/code/cc/itachi">https://github.com/dirtysalt/sperm/tree/master/code/cc/itachi</a>.
+<li>Itachi, an open-source high performance asynchronous network programming framework in C++. <a href="https://github.com/dirtysalt/itachi">https://github.com/dirtysalt/itachi</a>.
 
 </li>
 <li>Comake2, an in-house build system in Python, takes advantages of some open-source build systems such as SCons, CMake, Google's GYP, Boost's Jam etc. It have been wildly used in Baidu for continuous integration.
@@ -354,7 +354,7 @@ IBase COM(component) Team.
 </ul>
 
 </li>
-<li>支持多语言访问HBase的异步高性能服务fast-hbase-rest. 传输协议使用HTTP, 数据交换格式使用protobuf来达到多语言访问目的，底层使用asynchbase对hbase进行异步访问来提高吞吐。因为hbase内部只有在block-cache而没有item-cache, 通过在服务内部使用guava编写的应用层级别LRU cache可以有效减少访问延迟。服务模块化易于扩展，支持rewrite request功能可以屏蔽底层hbase schema的变化。相比hbase rest, 传输延迟减少20%, 传输数据减少40%. 
+<li>支持多语言访问HBase的异步高性能服务fast-hbase-rest. 传输协议使用HTTP, 数据交换格式使用protobuf来达到多语言访问目的，底层使用asynchbase对hbase进行异步访问来提高吞吐。因为hbase内部只有在block-cache而没有item-cache, 通过在服务内部使用guava编写的应用层级别LRU cache可以有效减少访问延迟。服务模块化易于扩展，支持rewrite request功能可以屏蔽底层hbase schema的变化。相比hbase rest, 传输延迟减少20%, 传输数据减少40%.
 
 </li>
 <li>任务调度器usched. 通过调研一些业界已有的任务调度器比如oozie, azkaban等，然后结合友盟内部任务执行情况特点开发的任务调度器。系统定义了任务描述语言(JDL)允许指定任务之间的相互依赖关系，开始运行的时间以及一些触发条件，可以来对任务执行做精细化控制。usched通过HTTP请求提交任务和控制任务，有相对比较完善的web-console来管理，并且内置任务报警，命令运行输出重定向等功能。友盟每天运行的几百个Hadoop任务都是通过usched来进行调度的，调度延迟在5s以内。
@@ -397,7 +397,7 @@ IBase COM(component) Team.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-04-15T09:13+0800</p>
+<p class="date">Date: 2014-06-12T15:23+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

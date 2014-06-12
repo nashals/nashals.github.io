@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="mapred"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-04-15T09:14+0800"/>
+<meta name="generated" content="2014-06-12T15:23+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -187,7 +187,7 @@
 <h5 id="sec-1-1-1-1"><span class="section-number-5">1.1.1.1</span> Introducing Apache Hadoop YARN | Hortonworks</h5>
 <div class="outline-text-5" id="text-1-1-1-1">
 
-<p><a href="http://hortonworks.com/blog/introducing-apache-hadoop-yarn/">http://hortonworks.com/blog/introducing-apache-hadoop-yarn/</a> 
+<p><a href="http://hortonworks.com/blog/introducing-apache-hadoop-yarn/">http://hortonworks.com/blog/introducing-apache-hadoop-yarn/</a>
 </p>
 <p>
 看起来YARN的主要目的是将Hadoop不仅仅用于map-reduce的计算方式，还包括MPI，graph-processing，simple services等，
@@ -206,7 +206,7 @@
 <p>
 对于MR来说，最关键的一点就是lack of data motion。通过将任务放在数据所在的机器上面，而不是将数据移动到任务所在的机器上面，可以节省带宽提高计算效率。现在来说MR分为下面三个部分：
 </p><ul>
-<li>The end-user <b>MapReduce API</b> for programming the desired MapReduce application. 
+<li>The end-user <b>MapReduce API</b> for programming the desired MapReduce application.
 </li>
 <li>The <b>MapReduce framework</b>, which is the runtime implementation of various phases such as the map phase, the sort/shuffle/merge aggregation and the reduce phase. （framework做的事情是runtime的工作，比如怎么划分数据，怎么进行reducer上面的拉数据等）
 </li>
@@ -254,7 +254,7 @@ YARN主要做的工作就是在资源利用的改进上面，将资源利用已�
 </ul>
 
 
-<p>     
+<p>
 <img src="images/YARNArch.png"  alt="./images/YARNArch.png" />
 </p>
 </div>
@@ -444,7 +444,7 @@ Let’s walk through an application execution sequence (steps are illustrated in
 </ul>
 
 </li>
-<li>Components interacting with the per-application AMs 
+<li>Components interacting with the per-application AMs
 <ul>
 <li>ApplicationMasterService 用来和AM交互部分接口，AM的资源请求通过这个接口提交，然后转向YarnScheduler处理
 </li>
@@ -613,7 +613,7 @@ Number of Reduces：
 
 
 <p>
-Facebook’s solution: Corona 
+Facebook’s solution: Corona
 <img src="images/facebook-corona.jpg"  alt="./images/facebook-corona.jpg" />
 </p>
 <ul>
@@ -630,9 +630,9 @@ Facebook’s solution: Corona
 </ul>
 
 </li>
-<li>The cluster manager also has a new implementation of fair-share scheduling. 
+<li>The cluster manager also has a new implementation of fair-share scheduling.
 <ul>
-<li>This scheduler is able to provide better fairness guarantees because it has access to the full snapshot of the cluster and jobs when making scheduling decisions. 
+<li>This scheduler is able to provide better fairness guarantees because it has access to the full snapshot of the cluster and jobs when making scheduling decisions.
 </li>
 <li>It also provides better support for multi-tenant usage by providing the ability to group the scheduler pools into pool groups. 通过pool group机制来为多用户服务。
 </li>
@@ -705,7 +705,7 @@ Corona在fb部署过程是这样的
 </li>
 <li>值去重 （对唯一项计数） # 扩展排序
 </li>
-<li>互相关 
+<li>互相关
 </li>
 </ul>
 
@@ -716,7 +716,7 @@ Corona在fb部署过程是这样的
 </li>
 <li>投影（Projection）
 </li>
-<li>合并（Union） 
+<li>合并（Union）
 </li>
 <li>交集（Intersection）
 </li>
@@ -859,7 +859,7 @@ Corona在fb部署过程是这样的
 </li>
 </ul>
 
-<p>framework会比较智能地决定shuffle应该在memory还是在disk上面完成。ReduckTask:getMapOutput里面调用ramManager.canFitInMemory(decompressedLength);判断是否可以在内存里面做shuffle. 
+<p>framework会比较智能地决定shuffle应该在memory还是在disk上面完成。ReduckTask:getMapOutput里面调用ramManager.canFitInMemory(decompressedLength);判断是否可以在内存里面做shuffle.
 </p>
 <p>
 这个函数比较简单，主要是和maxSingleShuffleLimit来做对比。
@@ -867,7 +867,7 @@ Corona在fb部署过程是这样的
 
 
 <pre class="src src-Java">boolean canFitInMemory(long requestedSize) {
-        return (requestedSize &lt; Integer.MAX_VALUE &amp;&amp; 
+        return (requestedSize &lt; Integer.MAX_VALUE &amp;&amp;
                 requestedSize &lt; maxSingleShuffleLimit);
       }
 </pre>
@@ -890,7 +890,7 @@ Corona在fb部署过程是这样的
       (int)Math.min(Runtime.getRuntime().maxMemory(), Integer.MAX_VALUE))
     * maxInMemCopyUse);
   maxSingleShuffleLimit = (long)(maxSize * MAX_SINGLE_SHUFFLE_SEGMENT_FRACTION);
-  LOG.info(<span class="org-string">"ShuffleRamManager: MemoryLimit="</span> + maxSize + 
+  LOG.info(<span class="org-string">"ShuffleRamManager: MemoryLimit="</span> + maxSize +
            <span class="org-string">", MaxSingleShuffleLimit="</span> + maxSingleShuffleLimit);
 }
 </pre>
@@ -936,7 +936,7 @@ Corona在fb部署过程是这样的
 </li>
 <li>mapper没有做任何事情就是直接输出输入，没有reducer. 工作主要集中在LzoSplitInputFormat和LzoIndexOutputFormat这两个类上。
 </li>
-<li>output key = Path, output value = LongWritable，key表示输入的文件，value表示每个lzo可以decompress的起始offset. 
+<li>output key = Path, output value = LongWritable，key表示输入的文件，value表示每个lzo可以decompress的起始offset.
 </li>
 </ul>
 
@@ -1063,7 +1063,7 @@ public void initialize(InputSplit genericSplit, TaskAttemptContext taskAttemptCo
 </pre>
 
 <p>
-最后面的checksum是指，对于compressed block有几个checksum, 对于decompressed block有几个checksum. 
+最后面的checksum是指，对于compressed block有几个checksum, 对于decompressed block有几个checksum.
 </p>
 <p>
 然后是nextKeyValue代码
@@ -1554,15 +1554,15 @@ Reduce input records    321,140,243
 </p>
 
 
-<pre class="example">2013-05-13 12:23:04,575 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_33841_r_000015_0 0.01798942% reduce &gt; copy (102 of 1890 at 19.63 MB/s) &gt; 
+<pre class="example">2013-05-13 12:23:04,575 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_33841_r_000015_0 0.01798942% reduce &gt; copy (102 of 1890 at 19.63 MB/s) &gt;
 2013-05-13 12:23:04,620 INFO org.apache.hadoop.mapred.TaskTracker.clienttrace: src: 10.11.0.16:50060, dest: 10.11.0.50:29582, bytes: 28814, op: MAPRED_SHUFFLE, cliID: attempt_201301231102_33841_m_000480_0, duration: 3011431376
 2013-05-13 12:23:05,438 INFO org.apache.hadoop.mapred.TaskTracker.clienttrace: src: 10.11.0.16:50060, dest: 10.11.0.54:38101, bytes: 13541361, op: MAPRED_SHUFFLE, cliID: attempt_201301231102_33841_m_000480_0, duration: 28773030913
-2013-05-13 12:23:05,843 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_33841_m_000520_0 0.26028645% 
-2013-05-13 12:23:05,924 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_33841_m_000241_0 0.7132669% 
-2013-05-13 12:23:05,947 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_33841_m_000441_0 0.70975286% 
-2013-05-13 12:23:06,114 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_33840_m_000000_0 0.47209314% 
-2013-05-13 12:23:06,579 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_33841_m_000094_0 0.8537282% 
-2013-05-13 12:23:06,755 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_33841_m_000342_0 0.54360586% 
+2013-05-13 12:23:05,843 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_33841_m_000520_0 0.26028645%
+2013-05-13 12:23:05,924 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_33841_m_000241_0 0.7132669%
+2013-05-13 12:23:05,947 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_33841_m_000441_0 0.70975286%
+2013-05-13 12:23:06,114 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_33840_m_000000_0 0.47209314%
+2013-05-13 12:23:06,579 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_33841_m_000094_0 0.8537282%
+2013-05-13 12:23:06,755 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_33841_m_000342_0 0.54360586%
 2013-05-13 12:23:08,298 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_33841_r_000015_0 0.019400354% reduce &gt; copy (110 of 1890 at 20.45 MB/s) &gt;
 </pre>
 
@@ -1727,7 +1727,7 @@ ENOENT: No such file or directory
 </ul>
 
 </li>
-<li>编译，ant compile-native tar 
+<li>编译，ant compile-native tar
 </li>
 <li>将结果build/hadoop-lzo-0.4.14的hadoop-lzo-0.4.14.jar复制到 $HADOOP_HOME/lib，将build/hadoop-lzo-0.4.14/lib/native下的文件复制到$HADOOP_HOME/lib/native (native/Linux-amd64-64)
 <ul>
@@ -1748,7 +1748,7 @@ ENOENT: No such file or directory
 
 
 <pre class="src src-XML">&lt;property&gt;
-&lt;name&gt;io.compression.codecs&lt;/name&gt;    
+&lt;name&gt;io.compression.codecs&lt;/name&gt;
 &lt;value&gt;org.apache.hadoop.io.compress.GzipCodec,org.apache.hadoop.io.compress.DefaultCodec,com.hadoop.compression.lzo.LzoCodec,com.hadoop.compression.lzo.LzopCodec,org.apache.hadoop.io.compress.BZip2Codec&lt;/value&gt;
 &lt;/property&gt;
 &lt;property&gt;
@@ -1766,7 +1766,7 @@ ENOENT: No such file or directory
 <h5 id="sec-1-5-1-2"><span class="section-number-5">1.5.1.2</span> 使用lzo</h5>
 <div class="outline-text-5" id="text-1-5-1-2">
 
-<p>关于如何使用lzo可以参看代码示例 <a href="https://github.com/dirtysalt/sperm/blob/master/code/java/mr/src/main/java/com/dirlt/java/mr/ReadLzoInput.java">com.dirlt.java.mr.ReadLzoInput</a>. 下面几点需要说明：
+<p>关于如何使用lzo可以参看代码示例 <a href="https://github.com/dirtysalt/playboard/blob/master/java/mr/src/main/java/com/dirlt/java/mr/ReadLzoInput.java">com.dirlt.java.mr.ReadLzoInput</a>. 下面几点需要说明：
 </p><ul>
 <li>LzoTextInputFormat用来处理lzo压缩的文本文件，
 <ul>
@@ -1777,7 +1777,7 @@ ENOENT: No such file or directory
 </ul>
 
 </li>
-<li>如果使用本地测试集群的话，那么需要提供lzo encoder/decoder. 
+<li>如果使用本地测试集群的话，那么需要提供lzo encoder/decoder.
 <ul>
 <li>Configuration conf = new Configuration(); // 如果是本地测试集群的话，那么是没有读取core-site.xml的，因此也就是没有编码解码信息，需要通过下面语句提供
 </li>
@@ -1810,7 +1810,7 @@ ENOENT: No such file or directory
 <p>完成之后对于每一个lzo文件都会存在一个.index文件。如果重复运行上面命令的话，会检查.index文件是否存在，如果存在的话那么就不会重新进行索引。
 </p>
 <p>
-如果需要单独使用lzo而不是使用mapreduce来做压缩和解压缩的话，可以参考 <a href="https://github.com/dirtysalt/sperm/blob/master/code/java/mr/src/main/java/com/dirlt/java/mr/UseLzoStandadlone.java">com.dirlt.java.mr.UseLzoStandadlone</a>.
+如果需要单独使用lzo而不是使用mapreduce来做压缩和解压缩的话，可以参考 <a href="https://github.com/dirtysalt/playboard/blob/master/java/mr/src/main/java/com/dirlt/java/mr/UseLzoStandadlone.java">com.dirlt.java.mr.UseLzoStandadlone</a>.
 </p>
 </div>
 
@@ -1851,7 +1851,7 @@ message Message {
 <p>
 此外我们还需要为这个类写几个辅助类，但是索性的是辅助类并不是很复杂。
 </p><ul>
-<li>InputFormat <a href="https://github.com/dirtysalt/sperm/blob/master/code/java/mr/src/main/java/com/dirlt/java/mr/MessageLzoProtobufInputFormat.java">com.dirlt.java.mr.MessageLzoProtobufInputFormat</a>
+<li>InputFormat <a href="https://github.com/dirtysalt/playboard/blob/master/java/mr/src/main/java/com/dirlt/java/mr/MessageLzoProtobufInputFormat.java">com.dirlt.java.mr.MessageLzoProtobufInputFormat</a>
 </li>
 </ul>
 
@@ -1868,7 +1868,7 @@ message Message {
 
 
 <ul>
-<li>OutputFormat <a href="https://github.com/dirtysalt/sperm/blob/master/code/java/mr/src/main/java/com/dirlt/java/mr/MessageLzoProtobufOutputFormat.java">com.dirlt.java.mr.MessageLzoProtobufOutputFormat</a>
+<li>OutputFormat <a href="https://github.com/dirtysalt/playboard/blob/master/java/mr/src/main/java/com/dirlt/java/mr/MessageLzoProtobufOutputFormat.java">com.dirlt.java.mr.MessageLzoProtobufOutputFormat</a>
 </li>
 </ul>
 
@@ -1885,7 +1885,7 @@ message Message {
 
 
 <ul>
-<li>Writable <a href="https://github.com/dirtysalt/sperm/blob/master/code/java/mr/src/main/java/com/dirlt/java/mr/MessageLzoProtobufWritable.java">com.dirlt.java.mr.MessageLzoProtobufWritable</a>
+<li>Writable <a href="https://github.com/dirtysalt/playboard/blob/master/java/mr/src/main/java/com/dirlt/java/mr/MessageLzoProtobufWritable.java">com.dirlt.java.mr.MessageLzoProtobufWritable</a>
 </li>
 </ul>
 
@@ -1908,7 +1908,7 @@ message Message {
 
 
 <p>
-关于如何使用lzo+protobuf可以参看代码示例 <a href="https://github.com/dirtysalt/sperm/blob/master/code/java/mr/src/main/java/com/dirlt/java/mr/UseLzoProtobuf.java">com.dirlt.java.mr.UseLzoProtobuf</a>. 值得注意的是如果输入为lzo文件的话，那么类型是ProtobufWritable&lt;M&gt;（泛型），如果需要取值的话必须通过setConverter提供类信息。
+关于如何使用lzo+protobuf可以参看代码示例 <a href="https://github.com/dirtysalt/playboard/blob/master/java/mr/src/main/java/com/dirlt/java/mr/UseLzoProtobuf.java">com.dirlt.java.mr.UseLzoProtobuf</a>. 值得注意的是如果输入为lzo文件的话，那么类型是ProtobufWritable&lt;M&gt;（泛型），如果需要取值的话必须通过setConverter提供类信息。
 </p>
 </div>
 </div>
@@ -1927,7 +1927,7 @@ message Message {
 <div class="outline-text-5" id="text-1-5-2-1">
 
 <ul>
-<li>参考代码 <a href="https://github.com/dirtysalt/sperm/blob/master/code/java/mr/src/main/java/com/dirlt/java/mr/RunMultipleInputs1.java">com.dirlt.java.mr.RunMultipleInputs1</a>
+<li>参考代码 <a href="https://github.com/dirtysalt/playboard/blob/master/java/mr/src/main/java/com/dirlt/java/mr/RunMultipleInputs1.java">com.dirlt.java.mr.RunMultipleInputs1</a>
 </li>
 <li>支持一个htable和多个文件（但是对于htable不支持设置scan范围）
 </li>
@@ -1950,7 +1950,7 @@ message Message {
 </li>
 <li>DelegateInputFormat根据每个className初始化实例并且将inputPath给这个实例，这些对于FileInputFormat工作很好
 </li>
-<li>而对于TableInputFormat没有使用这个inputPath，而是直接读取configuration里面设置的TableOutputFormat.OUTPUT_TABLE这个值 
+<li>而对于TableInputFormat没有使用这个inputPath，而是直接读取configuration里面设置的TableOutputFormat.OUTPUT_TABLE这个值
 </li>
 </ul>
 
@@ -1967,9 +1967,9 @@ message Message {
 <div class="outline-text-5" id="text-1-5-2-2">
 
 <ul>
-<li>参考代码 <a href="https://github.com/dirtysalt/sperm/blob/master/code/java/mr/src/main/java/com/dirlt/java/mr/RunMultipleInputs2.java">com.dirlt.java.mr.RunMultipleInputs2</a>
+<li>参考代码 <a href="https://github.com/dirtysalt/playboard/blob/master/java/mr/src/main/java/com/dirlt/java/mr/RunMultipleInputs2.java">com.dirlt.java.mr.RunMultipleInputs2</a>
 </li>
-<li>*note(dirlt):在cdh4.3.0下面运行的代码略有变动，存放在 <a href="https://github.com/dirtysalt/sperm/blob/master/code/java/mr2/src/main/java/com/dirlt/java/mr2/RunMultipleInputs2.java">com.dirlt.java.mr2.RunMultipleInputs2</a>*
+<li>*note(dirlt):在cdh4.3.0下面运行的代码略有变动，存放在 <a href="https://github.com/dirtysalt/playboard/blob/master/java/mr2/src/main/java/com/dirlt/java/mr2/RunMultipleInputs2.java">com.dirlt.java.mr2.RunMultipleInputs2</a>*
 <ul>
 <li>需要配合MultipleInputs使用
 </li>
@@ -1982,11 +1982,11 @@ message Message {
 </li>
 <li>大致原理如下：
 <ul>
-<li>MultipleInputs底层使用Delegate模式，将inputFormat以及mapper和Path关联，然后将InputFormat实例化来对path进行切片得到InputSplit以及RecordReader.      
+<li>MultipleInputs底层使用Delegate模式，将inputFormat以及mapper和Path关联，然后将InputFormat实例化来对path进行切片得到InputSplit以及RecordReader.
 </li>
 <li>为了能够和MultipleInputs兼容使用，代码实现上将TableInput转换成为String然后表示成为Path（TableInput包括tableName以及多个scan对象）
 <ul>
-<li>string格式为 &lt;tableName&gt; ! hexString(scan) ! hexString(scan) 
+<li>string格式为 &lt;tableName&gt; ! hexString(scan) ! hexString(scan)
 </li>
 <li>从path中将TableInput字符串分离的代码是 path.toString().substring(path.getParent().toString().length() + 1); <b>todo(dirlt)：对于大部分的情况是可以正常handle的</b>
 </li>
@@ -2030,13 +2030,13 @@ message Message {
 <div class="outline-text-5" id="text-1-5-3-1">
 
 <ul>
-<li>参考代码 <a href="https://github.com/dirtysalt/sperm/blob/master/code/java/mr/src/main/java/com/dirlt/java/mr/RunMultipleOutputs.java">com.dirlt.java.mr.RunMultipleOutputs</a>
+<li>参考代码 <a href="https://github.com/dirtysalt/playboard/blob/master/java/mr/src/main/java/com/dirlt/java/mr/RunMultipleOutputs.java">com.dirlt.java.mr.RunMultipleOutputs</a>
 </li>
 <li>支持多个htable和多个文件
 </li>
 <li>如果使用write(String namedOutput, K key, V value)会写到FileOutputFormat设置的目录下面，文件附上前缀namedOutput-，
 </li>
-<li>如果使用write(String namedOutput, K key, V value, String baseOutputPath) 
+<li>如果使用write(String namedOutput, K key, V value, String baseOutputPath)
 <ul>
 <li>如果baseOutputPath以/开头的话比如/a/b/c的话，那么输出文件为/a/b/c-m-00000
 </li>
@@ -2066,7 +2066,7 @@ message Message {
 <div class="outline-text-5" id="text-1-5-3-2">
 
 <ul>
-<li>参考代码 <a href="https://github.com/dirtysalt/sperm/blob/master/code/java/mr/src/main/java/com/dirlt/java/mr/RunMultipleTableOutput.java">com.dirlt.java.mr.RunMultipleTableOutput</a>
+<li>参考代码 <a href="https://github.com/dirtysalt/playboard/blob/master/java/mr/src/main/java/com/dirlt/java/mr/RunMultipleTableOutput.java">com.dirlt.java.mr.RunMultipleTableOutput</a>
 </li>
 <li>支持多个htable
 </li>
@@ -2092,7 +2092,7 @@ message Message {
 <div class="outline-text-4" id="text-1-5-4">
 
 <ul>
-<li>参考代码 <a href="https://github.com/dirtysalt/sperm/blob/master/code/java/mr/src/main/java/com/dirlt/java/mr/ClusterSummary.java">com.dirlt.java.mr.ClusterSummary</a>
+<li>参考代码 <a href="https://github.com/dirtysalt/playboard/blob/master/java/mr/src/main/java/com/dirlt/java/mr/ClusterSummary.java">com.dirlt.java.mr.ClusterSummary</a>
 </li>
 <li>获取更多信息可以阅读JobClient API
 </li>
@@ -2128,7 +2128,7 @@ message Message {
 </li>
 <li>Make sure that the limit of open files is not reached, I had already done this by adding “mapred – nofile 65536″ in /etc/security/limits.conf.  This did not solve it. （增加文件数目限制）
 </li>
-<li>Adding the following to /etc/security/limits.conf and restarting the TaskTracker solved it "mapred – nproc 8192" （增加开辟子进程的数目） 
+<li>Adding the following to /etc/security/limits.conf and restarting the TaskTracker solved it "mapred – nproc 8192" （增加开辟子进程的数目）
 </li>
 </ul>
 
@@ -2186,15 +2186,15 @@ streaming允许用户使用脚本来编写mapper/reducer，使用stdin/stdout作
 <p>
 调用方式：hadoop $HADOOP_HOME/contrib/streaming/hadoop-streaming-*.jar &lt;OPTIONS&gt; 其中OPTIONS如下：
 </p><ul>
-<li>-input 
+<li>-input
 </li>
 <li>-output
 </li>
-<li>-mapper # 执行命令比如cat,grep等，也可以是脚本但是必须+x 
+<li>-mapper # 执行命令比如cat,grep等，也可以是脚本但是必须+x
 </li>
 <li>-reducer
 </li>
-<li>-libjars 
+<li>-libjars
 </li>
 <li>-file # 执行任务中需要的文件. 如果是运行脚本的话那么脚本必须在这里也指定，这样才能分发到所有机器上
 </li>
@@ -2216,7 +2216,7 @@ streaming允许用户使用脚本来编写mapper/reducer，使用stdin/stdout作
 </li>
 <li>-mapdebug  # Script to call when map task fails
 </li>
-<li>-reducedebug # Script to call when reduce task fails 
+<li>-reducedebug # Script to call when reduce task fails
 </li>
 </ul>
 
@@ -2230,7 +2230,7 @@ streaming允许用户使用脚本来编写mapper/reducer，使用stdin/stdout作
 </li>
 <li>stream.reduce.input.field.seperator / stream.reduce.outout.field.separator
 </li>
-<li>stream.reduce.output.key.fields 
+<li>stream.reduce.output.key.fields
 </li>
 <li>stream.non.zero.exit.is.failure = false # 默认返回0正常，但是也可以忽略
 </li>
@@ -2250,10 +2250,10 @@ streaming允许用户使用脚本来编写mapper/reducer，使用stdin/stdout作
 
 
 
-<pre class="example">2013-04-26 13:57:01,144 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_24403_r_000050_1 0.1976251% reduce &gt; copy (466 of 786 at 24.13 MB/s) &gt; 
-2013-04-26 13:57:03,595 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_24403_r_000049_1 0.1976251% reduce &gt; copy (466 of 786 at 24.40 MB/s) &gt; 
-2013-04-26 13:57:04,179 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_24403_r_000050_1 0.1976251% reduce &gt; copy (466 of 786 at 24.13 MB/s) &gt; 
-2013-04-26 13:57:09,620 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_24403_r_000049_1 0.1976251% reduce &gt; copy (466 of 786 at 24.40 MB/s) &gt; 
+<pre class="example">2013-04-26 13:57:01,144 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_24403_r_000050_1 0.1976251% reduce &gt; copy (466 of 786 at 24.13 MB/s) &gt;
+2013-04-26 13:57:03,595 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_24403_r_000049_1 0.1976251% reduce &gt; copy (466 of 786 at 24.40 MB/s) &gt;
+2013-04-26 13:57:04,179 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_24403_r_000050_1 0.1976251% reduce &gt; copy (466 of 786 at 24.13 MB/s) &gt;
+2013-04-26 13:57:09,620 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_24403_r_000049_1 0.1976251% reduce &gt; copy (466 of 786 at 24.40 MB/s) &gt;
 </pre>
 
 
@@ -2405,45 +2405,45 @@ g       at org.apache.hadoop.mapred.ReduceTask$ReduceCopier$ShuffleRamManager.wa
         at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1157)
         at org.apache.hadoop.mapred.Child.main(Child.java:264)
 
-"VM Thread" prio=10 tid=0x00007fd544082800 nid=0x33e30 runnable 
+"VM Thread" prio=10 tid=0x00007fd544082800 nid=0x33e30 runnable
 
-"GC task thread#0 (ParallelGC)" prio=10 tid=0x00007fd54401c800 nid=0x33e11 runnable 
+"GC task thread#0 (ParallelGC)" prio=10 tid=0x00007fd54401c800 nid=0x33e11 runnable
 
-"GC task thread#1 (ParallelGC)" prio=10 tid=0x00007fd54401e800 nid=0x33e13 runnable 
+"GC task thread#1 (ParallelGC)" prio=10 tid=0x00007fd54401e800 nid=0x33e13 runnable
 
-"GC task thread#2 (ParallelGC)" prio=10 tid=0x00007fd544020800 nid=0x33e15 runnable 
+"GC task thread#2 (ParallelGC)" prio=10 tid=0x00007fd544020800 nid=0x33e15 runnable
 
-"GC task thread#3 (ParallelGC)" prio=10 tid=0x00007fd544022000 nid=0x33e17 runnable 
+"GC task thread#3 (ParallelGC)" prio=10 tid=0x00007fd544022000 nid=0x33e17 runnable
 
-"GC task thread#4 (ParallelGC)" prio=10 tid=0x00007fd544024000 nid=0x33e19 runnable 
+"GC task thread#4 (ParallelGC)" prio=10 tid=0x00007fd544024000 nid=0x33e19 runnable
 
-"GC task thread#5 (ParallelGC)" prio=10 tid=0x00007fd544026000 nid=0x33e1b runnable 
+"GC task thread#5 (ParallelGC)" prio=10 tid=0x00007fd544026000 nid=0x33e1b runnable
 
-"GC task thread#6 (ParallelGC)" prio=10 tid=0x00007fd544027800 nid=0x33e1d runnable 
+"GC task thread#6 (ParallelGC)" prio=10 tid=0x00007fd544027800 nid=0x33e1d runnable
 
-"GC task thread#7 (ParallelGC)" prio=10 tid=0x00007fd544029800 nid=0x33e1f runnable 
+"GC task thread#7 (ParallelGC)" prio=10 tid=0x00007fd544029800 nid=0x33e1f runnable
 
-"GC task thread#8 (ParallelGC)" prio=10 tid=0x00007fd54402b000 nid=0x33e21 runnable 
+"GC task thread#8 (ParallelGC)" prio=10 tid=0x00007fd54402b000 nid=0x33e21 runnable
 
-"GC task thread#9 (ParallelGC)" prio=10 tid=0x00007fd54402d000 nid=0x33e23 runnable 
+"GC task thread#9 (ParallelGC)" prio=10 tid=0x00007fd54402d000 nid=0x33e23 runnable
 
-"GC task thread#10 (ParallelGC)" prio=10 tid=0x00007fd54402f000 nid=0x33e25 runnable 
+"GC task thread#10 (ParallelGC)" prio=10 tid=0x00007fd54402f000 nid=0x33e25 runnable
 
-"GC task thread#11 (ParallelGC)" prio=10 tid=0x00007fd544030800 nid=0x33e27 runnable 
+"GC task thread#11 (ParallelGC)" prio=10 tid=0x00007fd544030800 nid=0x33e27 runnable
 
-"GC task thread#12 (ParallelGC)" prio=10 tid=0x00007fd544032800 nid=0x33e29 runnable 
+"GC task thread#12 (ParallelGC)" prio=10 tid=0x00007fd544032800 nid=0x33e29 runnable
 
-"GC task thread#13 (ParallelGC)" prio=10 tid=0x00007fd544034800 nid=0x33e2a runnable 
+"GC task thread#13 (ParallelGC)" prio=10 tid=0x00007fd544034800 nid=0x33e2a runnable
 
-"GC task thread#14 (ParallelGC)" prio=10 tid=0x00007fd544036000 nid=0x33e2b runnable 
+"GC task thread#14 (ParallelGC)" prio=10 tid=0x00007fd544036000 nid=0x33e2b runnable
 
-"GC task thread#15 (ParallelGC)" prio=10 tid=0x00007fd544038000 nid=0x33e2c runnable 
+"GC task thread#15 (ParallelGC)" prio=10 tid=0x00007fd544038000 nid=0x33e2c runnable
 
-"GC task thread#16 (ParallelGC)" prio=10 tid=0x00007fd54403a000 nid=0x33e2d runnable 
+"GC task thread#16 (ParallelGC)" prio=10 tid=0x00007fd54403a000 nid=0x33e2d runnable
 
-"GC task thread#17 (ParallelGC)" prio=10 tid=0x00007fd54403b800 nid=0x33e2e runnable 
+"GC task thread#17 (ParallelGC)" prio=10 tid=0x00007fd54403b800 nid=0x33e2e runnable
 
-"VM Periodic Task Thread" prio=10 tid=0x00007fd5440c1000 nid=0x33e39 waiting on condition 
+"VM Periodic Task Thread" prio=10 tid=0x00007fd5440c1000 nid=0x33e39 waiting on condition
 
 JNI global references: 1033
 
@@ -2553,7 +2553,7 @@ Heap
 dp24 OOM
 </p>
 <p>
-dp31 
+dp31
 </p>
 
 
@@ -2651,7 +2651,7 @@ none             24G     0   24G   0% /run/shm
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-04-15T09:14+0800</p>
+<p class="date">Date: 2014-06-12T15:23+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
