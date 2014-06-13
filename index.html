@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="marathon@dirlt.com"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-06-12T15:23+0800"/>
+<meta name="generated" content="2014-06-13T14:41+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -149,9 +149,7 @@
 </ul>
 
 </li>
-<li><a href="cpu.html">CPU</a> CPU相关
-</li>
-<li><a href="simd.html">SIMD</a> SIMD(Single Instruction Muitple Data)单指令多数据。这个笔记其实是Intel Reference Manual中关于SIMD指令的总结。里面包含了一些理解SIMD指令需要的知识，以及对SIMD指令进行了分类。遗憾的是里面没有什么过多的例子，毕竟这个是结合场景来使用的。
+<li><a href="cpu.html">CPU</a> / <a href="simd.html">SIMD</a> SIMD(Single Instruction Muitple Data)单指令多数据。这个笔记其实是Intel Reference Manual中关于SIMD指令的总结。里面包含了一些理解SIMD指令需要的知识，以及对SIMD指令进行了分类。遗憾的是里面没有什么过多的例子，毕竟这个是结合场景来使用的。
 </li>
 <li><a href="unix-systems-for-modern-architectures.html">现代体系结构上的UNIX系统-内核程序员的SMP和Caching技术</a>
 </li>
@@ -169,13 +167,12 @@
 <li><a href="memory.html">Memory</a> 内存相关
 <ul>
 <li><a href="numa.html">NUMA</a> Non-Uniform Memory Access. 非一致性内存访问
-<ul>
+</li>
 <li><a href="numa-an-overview.html">NUMA An Overview</a> 一篇关于NUMA的介绍性文章
 </li>
-</ul>
-
-</li>
 <li><a href="memory-barrier.html">Memory Barrier</a> 内存屏障
+</li>
+<li><a href="memory-barriers-a-hardware-view-for-software-hackers.html">Memory Barriers: a Hardware View for Software Hackers</a>
 </li>
 <li><a href="tcmalloc.html">TCMalloc</a> Google的开源线程缓存内存分配器，解决多线程下面内存分配效率问题。
 </li>
@@ -258,13 +255,10 @@
 <li><a href="lcov.html">lcov</a> the LTP(Linux Testing Project) GCOV extension.用来完成C/C++测试覆盖。
 </li>
 <li><a href="build-system.html">BuildSystem</a> 在实现Baidu in-house的构建工具Comake2之前，做过构建系统的调研总结出来的。在语法表达上面(非常重要)借鉴了SCons,考虑了其他构建系统提供的功能。
-<ul>
+</li>
 <li><a href="maven.html">Maven</a> 主要针对Java开发的基于工程对象模型(POM, Project Object Model)构建系统，主要记录了一些使用方面的问题和解决办法。
 </li>
 <li><a href="sbt.html">SBT</a> Simple(or Scala?) Build Tool
-</li>
-</ul>
-
 </li>
 <li><a href="vagrant.html">Vagrant</a> 用来构件虚拟开发环境的工具，底层可以使用多种虚拟化技术(现在支持非常好的是VirtualBox)
 </li>
@@ -318,18 +312,12 @@
 <li><a href="data-mining.html">Data Mining</a> 了解一些数据挖掘方面的知识还是比较有帮助的。其实我们每天都在不知不觉地进行数据挖掘。
 </li>
 <li><a href="recommender-system.html">Recommender System</a> 推荐系统
-<ul>
-<li><a href="deconstructing-recommender-systems.html">Deconstructing Recommender Systems</a>
 </li>
-</ul>
-
+<li><a href="deconstructing-recommender-systems.html">Deconstructing Recommender Systems</a> 一篇关于推荐系统的介绍性文章
 </li>
 <li><a href="computational-advertising.html">Computational Advertising</a> 计算广告学
-<ul>
-<li><a href="ctr.html">CTR</a> click through rate.
 </li>
-</ul>
-
+<li><a href="ctr.html">CTR</a> click through rate.
 </li>
 </ul>
 
@@ -412,11 +400,8 @@
 
 </li>
 <li><a href="raid.html">RAID</a> Redundant Array of Inexpensive Disk. 廉价磁盘冗余阵列
-<ul>
-<li><a href="the-skinny-on-raid.html">The skinny on RAID</a> 一篇关于RAID的介绍性文章
 </li>
-</ul>
-
+<li><a href="the-skinny-on-raid.html">The skinny on RAID</a> 一篇关于RAID的介绍性文章
 </li>
 <li><a href="memcached.html">Memcached</a> an in-memory key-value store for small chunks of arbitrary data (strings, objects) 可以用来搭建分布式缓存服务，没有持久化存储。
 </li>
@@ -497,6 +482,12 @@
 <li><a href="application-resilience-in-a-service-oriented-architecture.html">Application Resilience in a Service-oriented Architecture</a>
 </li>
 <li><a href="building-data-science-teams.html">Building Data Science Teams</a>
+</li>
+<li><a href="the-hadoop-distributed-file-system.html">The Hadoop Distributed File System</a> @2010
+</li>
+<li><a href="hdfs-reliability.html">HDFS Reliability</a> @2008
+</li>
+<li><a href="hdfs-scalability-the-limits-to-growth.html">HDFS scalability: the limits to growth</a> @2010
 </li>
 </ul>
 
@@ -726,13 +717,14 @@ Here is my contact info. I think email is the easiest way to get me.
 
 <p>
 <a href="note.html">Here</a> are my some notes written casually to record my life footprint. I think it will be fun to read them when I became old. My favouritest words comes from the idea of <a href="http://www.valvesoftware.com/">Valve</a> : "Open your mind, Open your eyes" (放眼未来，自由想象), with a <a href="images/valve-logo.jpg">image</a> from its game "Half Life"
-</p></div>
+</p>
+</div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-06-12T15:23+0800</p>
+<p class="date">Date: 2014-06-13T14:41+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
