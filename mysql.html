@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="mysql"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-05-22T11:39+0800"/>
+<meta name="generated" content="2014-06-17T10:30+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -212,7 +212,7 @@
 </li>
 <li>FULLTEXT索引（只适用于MyISAM引擎）
 </li>
-<li>SPATIAL索引（必须NOT NULL属性）
+<li>SPATIAL索引（必须NOT NULL属性）     
 </li>
 </ul>
 
@@ -546,7 +546,7 @@ InnoDB存储引擎实现的事务隔离级别机制能够让客户控制他们�
 
 <p>
 <b>Isolation Levels vs Lock Duration</b>
-In lock-based concurrency control, isolation level determines the duration that locks are held.
+In lock-based concurrency control, isolation level determines the duration that locks are held. 
 </p><ul>
 <li>"C" - Denotes that locks are held until the transaction commits.
 </li>
@@ -574,9 +574,9 @@ In lock-based concurrency control, isolation level determines the duration that 
 </p><ul>
 <li>The READ-UNCOMMITTED isolation level has the least number of locking done,
 </li>
-<li>after that comes the READ-COMMITTED isolation level which removes most of the gap-locking and hence produces fewer deadlocks, also in the case of READ-COMMITTED, locking reads only lock the index records and not the gaps before/after them.
+<li>after that comes the READ-COMMITTED isolation level which removes most of the gap-locking and hence produces fewer deadlocks, also in the case of READ-COMMITTED, locking reads only lock the index records and not the gaps before/after them. 
 </li>
-<li>REPEATABLE-READ has a higher level of locking as compared to READ-COMMITTED, UPDATE, DELETE use next-key locking, also locking reads also use next-key locking.
+<li>REPEATABLE-READ has a higher level of locking as compared to READ-COMMITTED, UPDATE, DELETE use next-key locking, also locking reads also use next-key locking. 
 </li>
 <li>SERIALIZABLE has the highest level of locking, all the simple SELECTs are automatically converted to SELECT &hellip; LOCK IN SHARE MODE, and hence all records have shared locks.
 </li>
@@ -808,9 +808,9 @@ The default replication type in MySQL is statement-based replication, and this r
 </li>
 <li>服务器生成状态和日志文件。
 <ul>
-<li>HOSTNAME.err 错误日志
+<li>HOSTNAME.err 错误日志 
 </li>
-<li>HOSTNAME.log 一般查询日志
+<li>HOSTNAME.log 一般查询日志 
 </li>
 <li>HOSTNAME-bin.nnnnnn 二进制文件（修改数据语句和内容）
 </li>
@@ -876,7 +876,7 @@ The default replication type in MySQL is statement-based replication, and this r
 <div class="outline-text-4" id="text-1-10-1">
 
 <ul>
-<li><b>note(dirlt)：thanks caole</b>
+<li><b>note(dirlt)：thanks caole</b> 
 </li>
 <li><b>todo(dirlt)：如何估算disk IOPS?</b>
 </li>
@@ -921,7 +921,7 @@ The default replication type in MySQL is statement-based replication, and this r
 </li>
 <li>尽量使用数据类型相同的数据列进行比较
 </li>
-<li>使带索引的数据列在比较表达式中单独出现
+<li>使带索引的数据列在比较表达式中单独出现 
 <ul>
 <li>f(x) &lt; 4, 这样就需要遍历所有x并且作用f然后比较。所以最好是可以x &lt; f^-1(4) <b>note(dirlt):逆函数</b>
 </li>
@@ -1289,7 +1289,7 @@ GTID(global trx id)(since MySQL 5.6)
 </li>
 <li>[server] MySQL服务端程序选项组标记
 </li>
-<li>[mysqld] MySQL服务端程序选项组标记
+<li>[mysqld] MySQL服务端程序选项组标记   
 </li>
 <li>[mysqld-X.Y] MySQL服务端程序选项组标记，但是只有X.Y这个版本才会读取
 </li>
@@ -1532,7 +1532,7 @@ Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: The last pac
 </p><ul>
 <li>interactive_timeout：服务器关闭交互式连接前等待活动的秒数。交互式客户端定义为在mysql_real_connect()中使用CLIENT_INTERACTIVE选项的客户端。又见wait_timeout
 </li>
-<li>wait_timeout:服务器关闭非交互连接之前等待活动的秒数。在线程启动时，根据全局wait_timeout值或全局interactive_timeout值初始化会话wait_timeout值，取决于客户端类型(由mysql_real_connect()的连接选项CLIENT_INTERACTIVE定义)，又见interactive_timeout
+<li>wait_timeout:服务器关闭非交互连接之前等待活动的秒数。在线程启动时，根据全局wait_timeout值或全局interactive_timeout值初始化会话wait_timeout值，取决于客户端类型(由mysql_real_connect()的连接选项CLIENT_INTERACTIVE定义)，又见interactive_timeout 
 </li>
 </ul>
 
@@ -1578,7 +1578,7 @@ mysql最大连接数目可以通过参数max_connections进行配置，默认的
 +-----------------+-------+
 1 row in set (0.00 sec)
 
-mysql&gt; show status like '%connect%';
+mysql&gt; show status like '%connect%'; 
 +--------------------------+-------+
 | Variable_name            | Value |
 +--------------------------+-------+
@@ -1598,11 +1598,11 @@ mysql&gt; show status like '%connect%';
 <p>
 对于status状态来说有下面几个和connection相关的数值
 </p><ul>
-<li>Aborted_connects 尝试已经失败的MySQL服务器的连接的次数。
+<li>Aborted_connects 尝试已经失败的MySQL服务器的连接的次数。  
 </li>
 <li>Connections 试图连接MySQL服务器的次数。
 </li>
-<li>Max_used_connections 同时使用的连接的最大数目。
+<li>Max_used_connections 同时使用的连接的最大数目。 
 </li>
 <li>Threads_connected 当前打开的连接的数量。
 </li>
@@ -1646,7 +1646,7 @@ java.sql.SQLException: null,  message from server: "Can't create a new thread (e
 
 
 <p>
-问题还是出在资源限制上面，可以通过修改开辟最大的进程数目来解决。可以参考链接 <a href="http://www.mysqlperformanceblog.com/2013/02/04/cant_create_thread_errno_11/">http://www.mysqlperformanceblog.com/2013/02/04/cant_create_thread_errno_11/</a>
+问题还是出在资源限制上面，可以通过修改开辟最大的进程数目来解决。可以参考链接 <a href="http://www.mysqlperformanceblog.com/2013/02/04/cant_create_thread_errno_11/">http://www.mysqlperformanceblog.com/2013/02/04/cant_create_thread_errno_11/</a> 
 </p>
 </div>
 </div>
@@ -1985,7 +1985,7 @@ java.sql.SQLException: null,  message from server: "Can't create a new thread (e
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-05-22T11:39+0800</p>
+<p class="date">Date: 2014-06-17T10:30+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
