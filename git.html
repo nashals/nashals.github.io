@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="git"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-07-01T07:45+0800"/>
+<meta name="generated" content="2014-07-08T11:01+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -182,6 +182,11 @@
 <li>git reset &ndash;hard &lt;commit-id&gt; # 回退到某个commit-id，包括commit/index信息.
 </li>
 <li>git reset &ndash;soft &lt;commit-id&gt; # 回退到某个commit-id，只是commit不包括index.
+<ul>
+<li><b>note(dirlt):commit-id只能是本地commit. 可以使用HEAD^1这样类似游标方式</b>
+</li>
+</ul>
+
 </li>
 <li>git rm &lt;files&gt; 从HEAD删除
 </li>
@@ -229,23 +234,32 @@
 会将远程repo里面所有的分支内容全部clone到本地，维护所有版本信息以及历史文件，所以本地切换分支非常快。
 </p>
 <ul>
-<li>git branch &lt;branch&gt; 创建分支
-</li>
 <li>git checkout &lt;branch&gt; 切换分支
 </li>
-<li>git checkout -b &lt;branch&gt; 创建并且切换分支
+<li>git checkout -b &lt;branch&gt; &lt;commit-id&gt; 创建并且切换分支，可以指定这个branch以哪个commit-id为起点
+</li>
+<li>git branch -va 察看当前所有分支包括本地和远程
+</li>
+<li>git branch &lt;branch&gt; 创建分支
 </li>
 <li>git branch -d &lt;branch&gt; 删除分支 / -D &lt;branch&gt; 强制删除分支
 </li>
-<li>git push &lt;repo&gt; &lt;branch&gt; 将本地branch HEAD信息推送到远程repo的branch
+<li>git push &lt;repo&gt; &lt;branch&gt; 将本地branch HEAD信息推送到远程repo的branch.
 </li>
-<li>git push -f # 如果本地某个commit已经提交到server, 但是想修改这个commit并且重新push, 可以使用在这个命令
+<li>git push -f # 如果本地某个commit已经提交到server, 但是想修改这个commit并且重新push, 可以使用在这个命令 <b>note(dirlt):not recommended</b>
 </li>
 <li>git push &lt;repo&gt; :&lt;branch&gt; 将删除分支信息推送。 <b>note(dirlt):这个可以这样理解，:之前表示null,将null推到branch相当于清空x。</b>
 </li>
 <li>git pull &lt;repo&gt; [&lt;branch&gt;] 将远程repo合并到本地HEAD.
 </li>
 <li>git merge &lt;branch&gt; 将本地branch进行合并
+<ul>
+<li>&ndash;no-ff 将多个commit合并成为一个commit（不进行fast-forward)
+</li>
+<li>&ndash;squash 将多个commit合并在一起放在WD, 之后需要用户手动发起commit.
+</li>
+</ul>
+
 </li>
 <li>git cherry-pick &lt;commit-id&gt; # pick commit to merge
 </li>
@@ -255,7 +269,10 @@
 
 
 <p>
-如果合并过来的分支，是当前分支的child的话，那么执行fast-forward合并，否则会执行普通的合并生成一个新的node，这个node是两个分支的共同child。
+如果合并过来的分支，是当前分支的child的话，那么执行fast-forward合并（除非指定&ndash;no-ff)，否则会执行普通的合并生成一个新的node，这个node是两个分支的共同child。
+</p>
+<p>
+如果没有指定repo的话，根据上下文可能会指代当前branch所在的远程repo, 也可能会指代所有远程repo. 同理对于branch来说，根据上下文可能会指代当前所使用的branch, 也可能会指代repo下面所有的branch. 
 </p>
 </div>
 
@@ -270,13 +287,13 @@
 <ul>
 <li>git tag 列出所有的标签
 </li>
-<li>git tag -a &lt;tag-name&gt; -m &lt;comment&gt; [&lt;sha1&gt;] 添加含附注的标签
-</li>
 <li>git show &lt;tag-name&gt; 察看相应标签的版本信息
+</li>
+<li>git tag -a &lt;tag-name&gt; -m &lt;comment&gt; [&lt;sha1&gt;] 添加含附注的标签
 </li>
 <li>git tag &lt;tag-name&gt; [&lt;sha1&gt;] 添加轻量标签
 </li>
-<li>git push &lt;repo&gt; &lt;tag&gt; /&ndash;tags 推送某个标签或者是全部的标签
+<li>git push &lt;repo&gt; &lt;tag-name&gt; /&ndash;tags 推送某个标签或者是全部的标签
 </li>
 </ul>
 
@@ -418,7 +435,7 @@ $ git rebase -i HEAD~n<br/>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-07-01T07:45+0800</p>
+<p class="date">Date: 2014-07-08T11:01+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
