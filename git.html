@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="git"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-07-08T11:01+0800"/>
+<meta name="generated" content="2014-07-11T14:58+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -264,6 +264,11 @@
 <li>git cherry-pick &lt;commit-id&gt; # pick commit to merge
 </li>
 <li>git fetch &lt;repo&gt; &lt;branch&gt; 将远程repo的branch拉到本地但是并不进行任何修改
+<ul>
+<li>-p/&ndash;prune 如果远端删除分支的话，那么也删除本地分支
+</li>
+</ul>
+
 </li>
 </ul>
 
@@ -435,7 +440,7 @@ $ git rebase -i HEAD~n<br/>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-07-08T11:01+0800</p>
+<p class="date">Date: 2014-07-11T14:58+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

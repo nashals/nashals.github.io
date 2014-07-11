@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="mysql"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-07-01T07:44+0800"/>
+<meta name="generated" content="2014-07-11T14:57+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -1457,6 +1457,8 @@ binlog &amp; relaylog
 <h4 id="sec-1-13-3"><span class="section-number-4">1.13.3</span> 存储引擎</h4>
 <div class="outline-text-4" id="text-1-13-3">
 
+<p><a href="http://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html">http://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html</a>
+</p>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
@@ -1474,6 +1476,8 @@ binlog &amp; relaylog
 <tr><td class="left">innodb_log_group_home_dir</td><td class="left">事务日志文件(ib_)存放目录（默认是数据目录）</td></tr>
 <tr><td class="left">innodb_log_file_size</td><td class="left">单个事务日志文件长度</td></tr>
 <tr><td class="left">innodb_log_files_in_group</td><td class="left">事务日志文件数量（？？？）</td></tr>
+<tr><td class="left">innodb_flush_log_at_trx_commit</td><td class="left">控制事务提交刷日志方式</td></tr>
+<tr><td class="left">innodb_flush_log_at_timeout</td><td class="left">控制刷日志时间间隔</td></tr>
 </tbody>
 </table>
 
@@ -1501,6 +1505,19 @@ InnoDB可以使用未经过格式化的硬盘分区，有几个理由值得考�
 </ul>
 
 <p>但是考虑不要使用硬盘分区来构成表空间时，有个很重要的因素： <b>有许多系统备份软件只针对文件系统，不能对硬盘分区进行备份</b> 。这意味着使用硬盘分区来构成表空间将会给系统备份工作增加困难。
+</p>
+<p>
+innodb_flush_log_at_trx_commit 可以用来控制提交事务时写入磁盘的方式
+</p><ul>
+<li>0. 隔段时间log_buffer会写入log_file并且刷入磁盘
+</li>
+<li>1（默认值). 每次提交事务都会将log_buffer写入log_file并且刷入磁盘
+</li>
+<li>2. 每次提交事务都会将log_buffer写入log_file, 但是隔段时间再刷入磁盘
+</li>
+</ul>
+
+<p>间隔时间由 innodb_flush_log_at_timeout 控制，默认是1s
 </p>
 </div>
 </div>
@@ -1985,7 +2002,7 @@ java.sql.SQLException: null,  message from server: "Can't create a new thread (e
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-07-01T07:44+0800</p>
+<p class="date">Date: 2014-07-11T14:57+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
