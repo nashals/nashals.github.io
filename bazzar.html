@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
 <title>bazzar</title>
-<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="bazzar"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-07-01T07:45+0800"/>
+<meta name="generated" content="2014-07-27T10:12+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -98,16 +98,25 @@
 <hr/>
 
 <ul>
-<li>bzr branch &lt;repo&gt; # git clone
-</li>
-<li>bzr pull
-</li>
-<li>bzr push &lt;repo&gt;
+<li>bzr branch &lt;repo&gt; # git clone.
 <ul>
-<li>create-prefix # create if not exist
+<li># 每个分支都会有自己单独的revno
 </li>
 </ul>
 
+</li>
+<li>bzr pull # git pull
+</li>
+<li>bzr push &lt;repo&gt; # git push
+<ul>
+<li>&ndash;create-prefix # create if not exist
+</li>
+<li>&ndash;overwrite -rREVNO # 强制将远端回滚到此revno.
+</li>
+</ul>
+
+</li>
+<li>bzr config [parent_location|push_location|submit_branch]=&lt;URL&gt;
 </li>
 </ul>
 
@@ -116,14 +125,14 @@
 <hr/>
 
 <ul>
-<li>bzr commit -m ''
+<li>bzr commit -m 'message'
 </li>
-<li>bzr uncommit
-</li>
-<li>bzr add/remove
+<li>bzr uncommit # 撤销一个commit
 </li>
 <li>bzr revert # git checkout
 </li>
+<li>bzr merge -r[a]..[b] &lt;URL&gt; # 合并revno=[a+1,b]修改
+</li>
 </ul>
 
 
@@ -131,11 +140,13 @@
 <hr/>
 
 <ul>
-<li>bzr log/diff -r[a]..[b]
+<li>bzr log/diff -r[a]..[b] # 察看revno=[a,b]修改信息
 </li>
-<li>bzr status
+<li>bzr status/st # 当前仓库状态
 </li>
 <li>bzr revno # current revision number
+</li>
+<li>bzr info # 当前仓库情况
 </li>
 </ul>
 
@@ -144,7 +155,7 @@
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-07-01T07:45+0800</p>
+<p class="date">Date: 2014-07-27T10:12+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
