@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<title>orcfile</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="orcfile"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2014-07-30T22:45+0800"/>
+<meta name="author" content="dirtysalt"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+
+
+</head>
+<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">orcfile</h1>
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="orcfile.html#sec-1">1 orcfile</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> orcfile</h2>
+<div class="outline-text-2" id="text-1">
+
+
+<p>
+<a href="http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.0.2/ds_Hive/orcfile.html">http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.0.0.2/ds_Hive/orcfile.html</a>
+</p>
+<p>
+Compared with RCFile format, for example, ORC file format has many advantages such as:
+</p><ul>
+<li>a single file as the output of each task, which reduces the NameNode's load
+</li>
+<li>Hive type support including datetime, decimal, and the complex types (struct, list, map, and union)（复杂数据类型）
+</li>
+<li>light-weight indexes stored within the file
+<ul>
+<li>skip row groups that don't pass predicate filtering 
+</li>
+<li>seek to a given row
+</li>
+</ul>
+
+</li>
+<li>block-mode compression based on data type
+<ul>
+<li>run-length encoding for integer columns（RLE针对整数压缩效果更好）
+</li>
+<li>dictionary encoding for string columns
+</li>
+</ul>
+
+</li>
+<li>concurrent reads of the same file using separate RecordReaders
+</li>
+<li>ability to split files without scanning for markers（不使用同步标记）
+</li>
+<li>bound the amount of memory needed for reading or writing
+</li>
+<li>metadata stored using Protocol Buffers, which allows addition and removal of fields
+</li>
+</ul>
+
+
+
+<hr/>
+
+<p>
+An ORC file contains groups of row data called stripes, along with auxiliary information in a file footer. 
+</p><ul>
+<li>At the end of the file a postscript holds compression parameters and the size of the compressed footer. 
+</li>
+<li>The default stripe size is 250 MB. Large stripe sizes enable large, efficient reads from HDFS.
+</li>
+<li>The file footer contains a list of stripes in the file, the number of rows per stripe, and each column's data type. It also contains column-level aggregates count, min, max, and sum.
+</li>
+</ul>
+
+
+<p>
+note(dirlt): 文件格式和leveldb SSTable非常类似
+</p>
+<p>
+<img src="images/orcfile-layout.png"  alt="./images/orcfile-layout.png" />
+</p>
+
+<p>
+As shown in the diagram, each stripe in an ORC file holds index data, row data, and a stripe footer.
+</p><ul>
+<li>The stripe footer contains a directory of stream locations. Row data is used in table scans. (和 <a href="rcfile.html">RCFile</a> 相比row-data这个部分应该类似)
+</li>
+<li>Index data includes min and max values for each column and the row positions within each column (A bit field or bloom filter could also be included.) Row index entries provide offsets that enable eeking to the right compression block and byte within a decompressed block. (和 <a href="rcfile.html">RCFile</a> 相比，index-data应该对应的是meta-data部分。index-data包括了概要信息以及bloom filter可以用来skip整个stripe. index-data的row-position是基于compression block偏移，所以不用像rcfile一样需要解压整个column, 这样读取量会减少不少)
+</li>
+<li>Having relatively frequent row index entries enables row-skipping within a stripe for rapid reads, despite large stripe sizes. By default every 10,000 rows can be skipped.
+</li>
+<li>With the ability to skip large sets of rows based on filter predicates, you can sort a table on its secondary keys to achieve a big reduction in execution time. For example, if the primary partition is transaction date, the table can be sorted on state, zip code, and last name. Then looking for records in one state will skip the records of all other states.(可以选择性地针对column做排序)
+</li>
+</ul>
+
+
+
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2014-07-30T22:45+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'orcfile.html';var disqus_title = 'orcfile.html';var disqus_url = 'http://dirlt.com/orcfile.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+</html>

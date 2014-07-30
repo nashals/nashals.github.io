@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="leveldb"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-07-01T07:45+0800"/>
+<meta name="generated" content="2014-07-30T22:45+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -608,7 +608,7 @@ leveldb还是比较麻烦的.开始阅读的时候(像我)很多策略细节就�
 同时会读取log文件将挂掉之前操作的kv恢复.
 </p>
 <p>
-(dirlt):最近看到一篇文章比较leveldb和mysql存储引擎性能(可能是innodb).里面提到了连续插入性能的抖动很大.这可能
+note(dirlt):最近看到一篇文章比较leveldb和mysql存储引擎性能(可能是innodb).里面提到了连续插入性能的抖动很大.这可能
 和底层为了达到读取高效率不断地进行compaction有关的.关于compaction挑选以及触发这个策略的话以后可以好好研究一下.
 </p>
 <p>
@@ -845,7 +845,7 @@ lg(base)                              : 1 byte
 </li>
 <li>Log Format. <a href="http://leveldb.googlecode.com/svn/trunk/doc/log_format.txt">http://leveldb.googlecode.com/svn/trunk/doc/log_format.txt</a> block存储格式。
 </li>
-<li>LevelDB SSTable格式详解. <a href="http://vdisk.weibo.com/s/40kWC">http://vdisk.weibo.com/s/40kWC</a>
+<li>LevelDB SSTable格式详解. <a href="http://wenku.baidu.com/view/19f83f51be23482fb4da4c29.html">http://wenku.baidu.com/view/19f83f51be23482fb4da4c29.html</a>
 </li>
 </ul>
 
@@ -14281,7 +14281,7 @@ Iterator* internal_iter =
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-07-01T07:45+0800</p>
+<p class="date">Date: 2014-07-30T22:45+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
