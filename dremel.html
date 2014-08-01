@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="dremel"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-07-01T07:45+0800"/>
+<meta name="generated" content="2014-07-31T21:21+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -249,10 +249,9 @@
 </ul>
 
 <p>后面以下图为例
-<img src="images/dremel-sample-record.png"  alt="./images/dremel-sample-record.png" />
 </p>
 <p>
-<img src="images/dremel-sample-column.png"  alt="./images/dremel-sample-column.png" />
+<img src="images/dremel-sample-record.png"  alt="./images/dremel-sample-record.png" /> <img src="images/dremel-sample-column.png"  alt="./images/dremel-sample-column.png" />
 </p>
 <p>
 所谓r的意思就是说，最近包含这个value，并且repeat的field，是第几个。0表示record开始，有特殊意义。我们以Name.Language.Country为例。
@@ -286,7 +285,10 @@
 作者认为对于一个value来说，完全可以根据这个value对应的field name，以及r，d，完全构造出nested data。并且作者针对种种特性做了encoding的优化，使得column在存储上面尽可能地紧凑。
 </p>
 <p>
-<b>todo(dirlt):dive into algorithm</b>
+<b>todo(dirlt):dive into algorithm</b> 
+</p>
+<p>
+*note(dirlt):这里写的比较模糊，因为当时也没有完全理解，now see <a href="parquet.html">Parquet</a>*
 </p>
 </div>
 
@@ -399,7 +401,7 @@ The query dispatcher honors a parameter that specifies the min-imum percentage o
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-07-01T07:45+0800</p>
+<p class="date">Date: 2014-07-31T21:21+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
