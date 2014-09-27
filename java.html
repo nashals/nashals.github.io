@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="java"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-07-01T07:45+0800"/>
+<meta name="generated" content="2014-09-18T11:21+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -918,7 +918,7 @@ jmx似乎是一个标准，在JDK里面有默认的实现。通过jmx可以暴�
 我大致阅读了一下代码，在server有两个比较重要的概念:agent(mbean server)和mxbean. agent(mbean server)类似server启动，mxbean则是各个data source. 但是从jdk默认的实现（ManagementFactory::getPlatformMBeanServer)里面可以看到，mxbean不是一个静态基类，而是通过反射的方式将mxbean类转换成为DynamicMBean（猜测数据传输格式应该是JPO，Java Persistent Object,也就是java对象自带序列化方式，这种方式的好处就是没有限制data source format，但是却复杂了实现）。 
 </p>
 <ul>
-<li>com.dirlt.java.playboard.SimpleJMX 例子比较简单，显示和修改数据 <b>note(dirlt)：只有基本类型可以显示和修改。如果数据类型为object的话，那么不能显示和修改</b> 
+<li>com.dirlt.java.tomb.SimpleJMX 例子比较简单，显示和修改数据 <b>note(dirlt)：只有基本类型可以显示和修改。如果数据类型为object的话，那么不能显示和修改</b> 
 </li>
 <li>MXBean允许做RMI
 </li>
@@ -1178,7 +1178,7 @@ How Does HPROF Work?
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-07-01T07:45+0800</p>
+<p class="date">Date: 2014-09-18T11:21+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

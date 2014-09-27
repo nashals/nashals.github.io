@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="megastore"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-07-01T07:44+0800"/>
+<meta name="generated" content="2014-09-18T11:20+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -558,13 +558,16 @@
 <h3 id="sec-1-8"><span class="section-number-3">1.8</span> CONCLUSION</h3>
 <div class="outline-text-3" id="text-1-8">
 
-</div>
+
+<p>
+&lt;大规模分布式存储系统&gt;: Megastore主要创新点包括：1) 提出实体组的数据模型。通过实体组划分数据，实体组内部维持关系数据库的ACID特性，实体组之间维持类似NoSQL的弱一致性，有效地融合了SQL和NoSQL两者的优势。另外实体组的定义方式也在很大程度上规避了影响性能和可扩展性的Join操作。 2) 通过Paxos协议同时保证高可靠性和高可用性，既把数据强同步到多个机房，又做到发生故障时自动切换不影响读写服务。另外通过协调者和优化Paxos协议使得读写操作都比较高效。当然Megastore也有一些问题，其中一些问题来源于bigtable比如单副本服务，SSD支持较弱导致Megastore在线实时服务能力上有一定的改进空间，整体架构过于复杂，协调者对读写服务和运维复杂度的影响。
+</p></div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-07-01T07:44+0800</p>
+<p class="date">Date: 2014-09-18T11:20+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

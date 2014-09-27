@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="storage-system-reading"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-07-01T07:44+0800"/>
+<meta name="generated" content="2014-09-18T11:20+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -80,6 +80,7 @@
 <li><a href="storage-system-reading.html#sec-1">1 storage-system-reading</a>
 <ul>
 <li><a href="storage-system-reading.html#sec-1-1">1.1 硬盘报价</a></li>
+<li><a href="storage-system-reading.html#sec-1-2">1.2 存储系统性能</a></li>
 </ul>
 </li>
 </ul>
@@ -93,6 +94,8 @@
 
 <ul>
 <li>Readings in Database Systems <a href="http://redbook.cs.berkeley.edu/">http://redbook.cs.berkeley.edu/</a>
+</li>
+<li>Reading List - CS286 Fall 2014 : <a href="http://www.cs286.net/home/reading-list">http://www.cs286.net/home/reading-list</a>
 </li>
 </ul>
 
@@ -123,14 +126,22 @@
 
 <p>硬盘架子一个50元
 </p>
+</div>
 
 </div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 存储系统性能</h3>
+<div class="outline-text-3" id="text-1-2">
+
+<p>存储系统的性能主要包括两个维度：吞吐量和访问延迟。设计系统时要求能够在保证访问延迟的基础上，通过最低的成本实现尽可能高的吞吐量。磁盘和SSD的访问延迟差别很大，但是带宽差别不大。因此磁盘适合大块顺序访问的存储系统，SSD适合随机访问较多或者对延迟比较敏感的关键系统。二者也常常组合在一起进行混合存储，热数据（访问频繁）存储到SSD，冷数据（访问不频繁）存储到磁盘中。
+</p></div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-07-01T07:44+0800</p>
+<p class="date">Date: 2014-09-18T11:20+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

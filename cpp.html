@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="cpp"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-07-01T07:45+0800"/>
+<meta name="generated" content="2014-09-18T11:22+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -814,7 +814,7 @@ x.push(boost::bind(&amp;B::fun,&amp;b,_1,456));
 之后我在想，虽然这个方式不错消除继承完全按照基于对象的方式编程，但是如果对于对象所需要的接口非常多的话，并且虚函数本身就是语言内置的特性，相对来说使用起来会更加方便。下面是可编译的示例代码之后我在想，虽然这个方式不错消除继承完全按照基于对象的方式编程，但是如果对于对象所需要的接口非常多的话，并且虚函数本身就是语言内置的特性，相对来说使用起来会更加方便。
 </p>
 <p>
-具体代码可以参考 <a href="https://github.com/dirtysalt/playboard/blob/master/cc/test_bind.cc">playboard/cc/test_bind.cc</a>
+具体代码可以参考 <a href="https://github.com/dirtysalt/tomb/blob/master/cc/test_bind.cc">tomb/cc/test_bind.cc</a>
 </p>
 </div>
 
@@ -830,7 +830,7 @@ x.push(boost::bind(&amp;B::fun,&amp;b,_1,456));
 对于action的话需要单独编写function object来完成，operator()是这个grammar对应的字符串。定义ParserState来构建语法树是一个好主意。对于里面更多的细节现在还是不太了解，关于入门使用可以查看代码中的链接或者documentation.
 </p>
 <p>
-具体代码可以参考 <a href="https://github.com/dirtysalt/playboard/blob/master/cc/test_spirit.cc">playboard/cc/test_spirit.cc</a>
+具体代码可以参考 <a href="https://github.com/dirtysalt/tomb/blob/master/cc/test_spirit.cc">tomb/cc/test_spirit.cc</a>
 </p>
 </div>
 
@@ -873,7 +873,7 @@ x.push(boost::bind(&amp;B::fun,&amp;b,_1,456));
 
 
 <p>
-具体代码可以参考 <a href="https://github.com/dirtysalt/playboard/blob/master/cc/test_proto_dynamic.cc">playboard/cc/test_proto_dynamic.cc</a>
+具体代码可以参考 <a href="https://github.com/dirtysalt/tomb/blob/master/cc/test_proto_dynamic.cc">tomb/cc/test_proto_dynamic.cc</a>
 </p>
 </div>
 </div>
@@ -969,12 +969,12 @@ int main() {
 </p>
 
 
-<pre class="example">➜  playboard git:(master) ✗ g++ map_perf_test.cc -O2
-➜  playboard git:(master) ✗ ./a.out
+<pre class="example">➜  tomb git:(master) ✗ g++ map_perf_test.cc -O2
+➜  tomb git:(master) ✗ ./a.out
 19764.38
 2957.30
-➜  playboard git:(master) ✗ g++ map_perf_test.cc -O2
-➜  playboard git:(master) ✗ ./a.out
+➜  tomb git:(master) ✗ g++ map_perf_test.cc -O2
+➜  tomb git:(master) ✗ ./a.out
 8521.25
 </pre>
 
@@ -984,12 +984,12 @@ int main() {
 </p>
 
 
-<pre class="example">➜  playboard git:(master) ✗ clang++ map_perf_test.cc -O2
-➜  playboard git:(master) ✗ ./a.out
+<pre class="example">➜  tomb git:(master) ✗ clang++ map_perf_test.cc -O2
+➜  tomb git:(master) ✗ ./a.out
 19494.99
 3052.83
-➜  playboard git:(master) ✗ clang++ map_perf_test.cc -O2
-➜  playboard git:(master) ✗ ./a.out
+➜  tomb git:(master) ✗ clang++ map_perf_test.cc -O2
+➜  tomb git:(master) ✗ ./a.out
 8495.00
 </pre>
 
@@ -999,12 +999,12 @@ int main() {
 </p>
 
 
-<pre class="example">➜  playboard git:(master) ✗ g++ map_perf_test.cc -O2
-➜  playboard git:(master) ✗ ./a.out
+<pre class="example">➜  tomb git:(master) ✗ g++ map_perf_test.cc -O2
+➜  tomb git:(master) ✗ ./a.out
 22759.82
 4203.22
-playboard git:(master) ✗ g++ map_perf_test.cc -O2
-➜  playboard git:(master) ✗ ./a.out
+tomb git:(master) ✗ g++ map_perf_test.cc -O2
+➜  tomb git:(master) ✗ ./a.out
 4214.48
 </pre>
 
@@ -1034,7 +1034,7 @@ playboard git:(master) ✗ g++ map_perf_test.cc -O2
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-07-01T07:45+0800</p>
+<p class="date">Date: 2014-09-18T11:22+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

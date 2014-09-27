@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="hbase"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-07-01T07:45+0800"/>
+<meta name="generated" content="2014-09-18T11:21+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -309,7 +309,7 @@ scan过程大致是这样的：
 <a href="https://github.com/OpenTSDB/asynchbase/issues/72">https://github.com/OpenTSDB/asynchbase/issues/72</a>
 </p>
 <p>
-测试代码可以参考 <a href="https://github.com/dirtysalt/playboard/blob/master/java/asynchbase/src/main/java/com/dirlt/java/asynchbase/AsyncHBase.java">com.dirlt.java.asynchbase.AsyncHBase</a>, 在Get添加Callback之前会检查结果是否已经获取到。如果已经获取的话，那么会在当前的线程就执行callback
+测试代码可以参考 <a href="https://github.com/dirtysalt/tomb/blob/master/java/asynchbase/src/main/java/com/dirlt/java/asynchbase/AsyncHBase.java">com.dirlt.java.asynchbase.AsyncHBase</a>, 在Get添加Callback之前会检查结果是否已经获取到。如果已经获取的话，那么会在当前的线程就执行callback
 </p>
 <p>
 ===== Question
@@ -427,7 +427,7 @@ By default, WAL file is rolled when its size is about 95% of the HDFS block size
 针对时间这种开头的rowkey，我们可以之前加上hashcode来将连续时间row打散，这样访问就不会集中在几个region上面了。而使用这种方式的话在扫描的时候就需要input format支持传入multi scan对象。 <b>note(dirlt)：这种方式不利的地方就是用hbase shell访问的话不是很方便</b>
 </p>
 <p>
-*note(dirlt):我编写了一个 <a href="https://github.com/dirtysalt/playboard/blob/master/java/mr/src/main/java/com/dirlt/java/mr/MultipleTableInputFormat.java">com.dirlt.java.mr.MultipleTableInputFormat</a> 允许以多个table以及每个table上多个scan作为输入*
+*note(dirlt):我编写了一个 <a href="https://github.com/dirtysalt/tomb/blob/master/java/mr/src/main/java/com/dirlt/java/mr/MultipleTableInputFormat.java">com.dirlt.java.mr.MultipleTableInputFormat</a> 允许以多个table以及每个table上多个scan作为输入*
 </p>
 </div>
 
@@ -1127,7 +1127,7 @@ thrift.Thrift.TApplicationException: Invalid method name: 'scannerOpenWithScan'
 <div class="outline-text-4" id="text-1-2-7">
 
 <ul>
-<li>参考代码 <a href="https://github.com/dirtysalt/playboard/blob/master/java/hbase/src/main/java/com/dirlt/java/hbase/ClusterSummary.java">com.dirlt.java.hbase.ClusterSummary</a>
+<li>参考代码 <a href="https://github.com/dirtysalt/tomb/blob/master/java/hbase/src/main/java/com/dirlt/java/hbase/ClusterSummary.java">com.dirlt.java.hbase.ClusterSummary</a>
 </li>
 <li>HBaseAdmin可以获取节点信息
 </li>
@@ -1151,7 +1151,7 @@ thrift.Thrift.TApplicationException: Invalid method name: 'scannerOpenWithScan'
 <ul>
 <li>将输入文件转换成为HFile格式
 </li>
-<li>参考代码 <a href="https://github.com/dirtysalt/playboard/blob/master/java/mr/src/main/java/com/dirlt/java/mr/HBaseLoaderMR.java">com.dirlt.java.mr.HBaseLoaderMR</a>
+<li>参考代码 <a href="https://github.com/dirtysalt/tomb/blob/master/java/mr/src/main/java/com/dirlt/java/mr/HBaseLoaderMR.java">com.dirlt.java.mr.HBaseLoaderMR</a>
 </li>
 <li>region，reduce，output对应，也就是说有多少个region就有多少个reduce
 <ul>
@@ -3603,7 +3603,7 @@ Currently the WAL is using a Hadoop SequenceFile, which stores records as sets o
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-07-01T07:45+0800</p>
+<p class="date">Date: 2014-09-18T11:21+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

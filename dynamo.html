@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Dynamo: Amazon’s Highly Available Key-value Store"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-07-01T07:45+0800"/>
+<meta name="generated" content="2014-09-18T11:22+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -121,6 +121,7 @@
 </ul>
 </li>
 <li><a href="dynamo.html#sec-1-8">1.8 CONCLUSIONS</a></li>
+<li><a href="dynamo.html#sec-1-9">1.9 FAQ</a></li>
 </ul>
 </li>
 </ul>
@@ -1054,14 +1055,34 @@ The admission controller constantly monitors the behavior of resource accesses w
 <div class="outline-text-3" id="text-1-8">
 
 
+</div>
 
 </div>
+
+<div id="outline-container-1-9" class="outline-3">
+<h3 id="sec-1-9"><span class="section-number-3">1.9</span> FAQ</h3>
+<div class="outline-text-3" id="text-1-9">
+
+
+<hr/>
+<p>
+&lt;大规模分布式存储系统&gt;
+</p>
+<p>
+Dynamo采用无中心节点的P2P设计，增加了系统可扩展性，但是同时带来了一致性问题，影响上层应用。另外一致性问题也使得异常情况下的测试变得更加困难，由于Dynamo只保证最基本的最终一致性，多客户端并发操作的时候很难预测操作结果，也很难预测不一致的时间窗口，影响测试用例设计。
+</p>
+<p>
+总体上看，Dynamo在Amazon的使用场景有限，后续的很多系统，如SimpleDB采用其他设计思路以提供更好的一致性。主流的分布式系统一般都带有中心节点，这样能够简化设计，而且中心节点只维护少量元数据，一般不会成为性能瓶颈。
+</p>
+<p>
+从Amazon, Facebook等公司的实践经验可以得出，Dynamo及其开源实现Cassandra在实践中的关注逐渐减少，无中心节点的设计短期之内难以成为主流。另一方面，Dynamo综合使用了各种分布式技术，在实践过程中可以选择性借鉴。
+</p></div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-07-01T07:45+0800</p>
+<p class="date">Date: 2014-09-18T11:22+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

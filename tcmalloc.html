@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="tcmalloc"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-07-01T07:44+0800"/>
+<meta name="generated" content="2014-09-18T11:20+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -2657,9 +2657,9 @@ inline bool should_report_large(Length num_pages) {
   }
   if (cl != 0) { // &#22914;&#26524;&#26159;&#23567;&#23545;&#35937;&#37322;&#25918;&#30340;&#35805;
     ASSERT(!Static::pageheap()-&gt;GetDescriptor(p)-&gt;sample);
-    ThreadCache* heap = GetCacheIfPresent(); // &#37027;&#20040;&#25105;&#24471;&#21040;&#24403;&#21069;&#32447;&#31243;&#30340;heap
+    ThreadCache* heap = GetCacheIfPresent(); // &#37027;&#20040;&#33719;&#24471;&#21040;&#24403;&#21069;&#32447;&#31243;&#30340;tc
     if (heap != NULL) {
-      heap-&gt;Deallocate(ptr, cl); // &#28982;&#21518;&#20250;&#21463;&#21040;&#36825;&#20010;tc&#37324;&#38754;
+      heap-&gt;Deallocate(ptr, cl); // &#28982;&#21518;&#22238;&#25910;&#21040;&#36825;&#20010;tc&#37324;&#38754;
     } else { // &#19981;&#30693;&#36947;&#36825;&#20010;&#24773;&#20917;&#20160;&#20040;&#26102;&#20505;&#20986;&#29616;&#65292;&#22914;&#26524;&#20986;&#29616;&#30340;&#35805;&#65292;&#37027;&#20040;&#23601;&#25918;&#21040;cc&#37324;&#38754;,&#38750;&#24120;&#30452;&#25509;.
       // Delete directly into central cache
       tcmalloc::SLL_SetNext(ptr, NULL);
@@ -2863,7 +2863,7 @@ system-alloc.h:extern void* TCMalloc_SystemAlloc(size_t bytes, size_t *actual_by
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-07-01T07:44+0800</p>
+<p class="date">Date: 2014-09-18T11:20+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

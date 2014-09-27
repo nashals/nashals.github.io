@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="linux"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-07-31T21:21+0800"/>
+<meta name="generated" content="2014-09-18T11:21+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -103,15 +103,8 @@
 </li>
 <li><a href="linux.html#sec-1-1-2">1.1.2 <i>proc/&lt;pid&gt;</i></a>
 <ul>
-<li><a href="linux.html#sec-1-1-2-1">1.1.2.1 fd</a></li>
-<li><a href="linux.html#sec-1-1-2-2">1.1.2.2 io</a></li>
-<li><a href="linux.html#sec-1-1-2-3">1.1.2.3 limits</a></li>
-<li><a href="linux.html#sec-1-1-2-4">1.1.2.4 maps</a></li>
-<li><a href="linux.html#sec-1-1-2-5">1.1.2.5 mount</a></li>
-<li><a href="linux.html#sec-1-1-2-6">1.1.2.6 net</a></li>
-<li><a href="linux.html#sec-1-1-2-7">1.1.2.7 sched</a></li>
-<li><a href="linux.html#sec-1-1-2-8">1.1.2.8 status</a></li>
-<li><a href="linux.html#sec-1-1-2-9">1.1.2.9 statm</a></li>
+<li><a href="linux.html#sec-1-1-2-1">1.1.2.1 maps</a></li>
+<li><a href="linux.html#sec-1-1-2-2">1.1.2.2 statm</a></li>
 </ul>
 </li>
 <li><a href="linux.html#sec-1-1-3">1.1.3 /proc/sys</a></li>
@@ -138,8 +131,7 @@
 <li><a href="linux.html#sec-1-1-6">1.1.6 /proc/sys/fs</a>
 <ul>
 <li><a href="linux.html#sec-1-1-6-1">1.1.6.1 /proc/sys/fs/file-max</a></li>
-<li><a href="linux.html#sec-1-1-6-2">1.1.6.2 /proc/sys/fs/epoll/max_user_instances</a></li>
-<li><a href="linux.html#sec-1-1-6-3">1.1.6.3 /proc/sys/fs/epoll/max_user_watches</a></li>
+<li><a href="linux.html#sec-1-1-6-2">1.1.6.2 /proc/sys/fs/epoll/max_user_watches</a></li>
 </ul>
 </li>
 <li><a href="linux.html#sec-1-1-7">1.1.7 /proc/sys/kernel</a>
@@ -153,80 +145,103 @@
 </ul></li>
 </ul>
 </li>
-<li><a href="linux.html#sec-1-2">1.2 system utility</a>
+<li><a href="linux.html#sec-1-2">1.2 system utility</a></li>
+<li><a href="linux.html#sec-1-3">1.3 CPU utility</a>
 <ul>
-<li><a href="linux.html#sec-1-2-1">1.2.1 <i>SYS DEV</i></a></li>
-<li><a href="linux.html#sec-1-2-2">1.2.2 mpstat</a></li>
-<li><a href="linux.html#sec-1-2-3">1.2.3 vmstat</a></li>
-<li><a href="linux.html#sec-1-2-4">1.2.4 free</a></li>
-<li><a href="linux.html#sec-1-2-5">1.2.5 taskset</a></li>
-<li><a href="linux.html#sec-1-2-6">1.2.6 lsof</a></li>
-<li><a href="linux.html#sec-1-2-7">1.2.7 hdparm</a></li>
-<li><a href="linux.html#sec-1-2-8">1.2.8 pmap</a></li>
-<li><a href="linux.html#sec-1-2-9">1.2.9 strace</a></li>
-<li><a href="linux.html#sec-1-2-10">1.2.10 iostat</a></li>
-<li><a href="linux.html#sec-1-2-11">1.2.11 vmtouch</a></li>
-<li><a href="linux.html#sec-1-2-12">1.2.12 latencytop</a></li>
-<li><a href="linux.html#sec-1-2-13">1.2.13 iotop</a></li>
-<li><a href="linux.html#sec-1-2-14">1.2.14 dstat</a></li>
-<li><a href="linux.html#sec-1-2-15">1.2.15 slurm</a></li>
-<li><a href="linux.html#sec-1-2-16">1.2.16 sar</a></li>
-<li><a href="linux.html#sec-1-2-17">1.2.17 netstat</a></li>
-<li><a href="linux.html#sec-1-2-18">1.2.18 tcpdump</a></li>
-<li><a href="linux.html#sec-1-2-19">1.2.19 iftop</a></li>
-<li><a href="linux.html#sec-1-2-20">1.2.20 iftraf</a></li>
-<li><a href="linux.html#sec-1-2-21">1.2.21 rsync</a></li>
-<li><a href="linux.html#sec-1-2-22">1.2.22 iodump</a></li>
-<li><a href="linux.html#sec-1-2-23">1.2.23 iopp</a></li>
-<li><a href="linux.html#sec-1-2-24">1.2.24 nethogs</a></li>
-<li><a href="linux.html#sec-1-2-25">1.2.25 slabtop</a></li>
-<li><a href="linux.html#sec-1-2-26">1.2.26 nmon</a></li>
-<li><a href="linux.html#sec-1-2-27">1.2.27 collectl</a></li>
-<li><a href="linux.html#sec-1-2-28">1.2.28 numactl</a></li>
-<li><a href="linux.html#sec-1-2-29">1.2.29 jnettop</a></li>
-<li><a href="linux.html#sec-1-2-30">1.2.30 glances</a></li>
-<li><a href="linux.html#sec-1-2-31">1.2.31 ifconfig</a></li>
-<li><a href="linux.html#sec-1-2-32">1.2.32 ps(process snapshot)</a></li>
-<li><a href="linux.html#sec-1-2-33">1.2.33 ulimit</a></li>
-<li><a href="linux.html#sec-1-2-34">1.2.34 sysprof</a></li>
-<li><a href="linux.html#sec-1-2-35">1.2.35 ss</a></li>
-<li><a href="linux.html#sec-1-2-36">1.2.36 <i>SYS ADMIN</i></a></li>
-<li><a href="linux.html#sec-1-2-37">1.2.37 uptime</a></li>
-<li><a href="linux.html#sec-1-2-38">1.2.38 top</a></li>
-<li><a href="linux.html#sec-1-2-39">1.2.39 htop</a></li>
-<li><a href="linux.html#sec-1-2-40">1.2.40 ttyload</a></li>
-<li><a href="linux.html#sec-1-2-41">1.2.41 dmesg</a></li>
-<li><a href="linux.html#sec-1-2-42">1.2.42 quota</a></li>
-<li><a href="linux.html#sec-1-2-43">1.2.43 crontab</a></li>
-<li><a href="linux.html#sec-1-2-44">1.2.44 ntp</a></li>
-<li><a href="linux.html#sec-1-2-45">1.2.45 cssh</a></li>
-<li><a href="linux.html#sec-1-2-46">1.2.46 iptables</a></li>
-<li><a href="linux.html#sec-1-2-47">1.2.47 tc</a></li>
-<li><a href="linux.html#sec-1-2-48">1.2.48 qperf</a></li>
-<li><a href="linux.html#sec-1-2-49">1.2.49 <i>HTTP BENCH TOOL</i></a></li>
-<li><a href="linux.html#sec-1-2-50">1.2.50 httperf</a></li>
-<li><a href="linux.html#sec-1-2-51">1.2.51 ab</a></li>
-<li><a href="linux.html#sec-1-2-52">1.2.52 autobench</a></li>
+<li><a href="linux.html#sec-1-3-1">1.3.1 mpstat(DONE)</a></li>
+<li><a href="linux.html#sec-1-3-2">1.3.2 taskset(DONE)</a></li>
+<li><a href="linux.html#sec-1-3-3">1.3.3 ps(process snapshot)(DONE)</a></li>
+<li><a href="linux.html#sec-1-3-4">1.3.4 top(DONE)</a></li>
+<li><a href="linux.html#sec-1-3-5">1.3.5 htop(DONE)</a></li>
 </ul>
 </li>
-<li><a href="linux.html#sec-1-3">1.3 kernel</a>
+<li><a href="linux.html#sec-1-4">1.4 VM utility</a>
 <ul>
-<li><a href="linux.html#sec-1-3-1">1.3.1 vmlinuz</a></li>
-<li><a href="linux.html#sec-1-3-2">1.3.2 tcp IO</a></li>
-<li><a href="linux.html#sec-1-3-3">1.3.3 tcp congestion control</a></li>
-<li><a href="linux.html#sec-1-3-4">1.3.4 kernel panic</a></li>
+<li><a href="linux.html#sec-1-4-1">1.4.1 vmstat(DONE)</a></li>
+<li><a href="linux.html#sec-1-4-2">1.4.2 free(DONE)</a></li>
+<li><a href="linux.html#sec-1-4-3">1.4.3 numactl(DONE)</a></li>
+<li><a href="linux.html#sec-1-4-4">1.4.4 pmap(DONE)</a></li>
+<li><a href="linux.html#sec-1-4-5">1.4.5 vmtouch(DONE)</a></li>
 </ul>
 </li>
-<li><a href="linux.html#sec-1-4">1.4 application</a>
+<li><a href="linux.html#sec-1-5">1.5 IO utility</a>
 <ul>
-<li><a href="linux.html#sec-1-4-1">1.4.1 返回值问题</a></li>
-<li><a href="linux.html#sec-1-4-2">1.4.2 dp8网卡问题</a></li>
-<li><a href="linux.html#sec-1-4-3">1.4.3 修改资源限制</a></li>
-<li><a href="linux.html#sec-1-4-4">1.4.4 CPU温度过高</a></li>
-<li><a href="linux.html#sec-1-4-5">1.4.5 sync hangup</a></li>
-<li><a href="linux.html#sec-1-4-6">1.4.6 更换glibc</a></li>
-<li><a href="linux.html#sec-1-4-7">1.4.7 允许不从tty执行sudo</a></li>
-<li><a href="linux.html#sec-1-4-8">1.4.8 ssh proxy</a></li>
+<li><a href="linux.html#sec-1-5-1">1.5.1 hdparm(TODO)</a></li>
+<li><a href="linux.html#sec-1-5-2">1.5.2 iostat(DONE)</a></li>
+<li><a href="linux.html#sec-1-5-3">1.5.3 iotop(DONE)</a></li>
+</ul>
+</li>
+<li><a href="linux.html#sec-1-6">1.6 NET utility</a>
+<ul>
+<li><a href="linux.html#sec-1-6-1">1.6.1 ifconfig(DONE)</a></li>
+<li><a href="linux.html#sec-1-6-2">1.6.2 netstat(DONE)</a></li>
+<li><a href="linux.html#sec-1-6-3">1.6.3 ss(DONE)</a></li>
+<li><a href="linux.html#sec-1-6-4">1.6.4 iftop(DONE)</a></li>
+<li><a href="linux.html#sec-1-6-5">1.6.5 iptraf(TODO)</a></li>
+<li><a href="linux.html#sec-1-6-6">1.6.6 nethogs(TODO)</a></li>
+<li><a href="linux.html#sec-1-6-7">1.6.7 jnettop(TODO)</a></li>
+<li><a href="linux.html#sec-1-6-8">1.6.8 iperf(DONE)</a></li>
+<li><a href="linux.html#sec-1-6-9">1.6.9 netperf(TODO)</a></li>
+<li><a href="linux.html#sec-1-6-10">1.6.10 qperf(TODO)</a></li>
+<li><a href="linux.html#sec-1-6-11">1.6.11 tcptrace(TODO)</a></li>
+<li><a href="linux.html#sec-1-6-12">1.6.12 tcpdump(TODO)</a></li>
+<li><a href="linux.html#sec-1-6-13">1.6.13 tc(TODO)</a></li>
+</ul>
+</li>
+<li><a href="linux.html#sec-1-7">1.7 general utility</a>
+<ul>
+<li><a href="linux.html#sec-1-7-1">1.7.1 sar(DONE)</a></li>
+<li><a href="linux.html#sec-1-7-2">1.7.2 dstat(DONE)(*)</a></li>
+<li><a href="linux.html#sec-1-7-3">1.7.3 lsof(TODO)</a></li>
+<li><a href="linux.html#sec-1-7-4">1.7.4 strace(DONE)</a></li>
+<li><a href="linux.html#sec-1-7-5">1.7.5 latencytop(DONE)</a></li>
+<li><a href="linux.html#sec-1-7-6">1.7.6 slurm(TODO)</a></li>
+<li><a href="linux.html#sec-1-7-7">1.7.7 slabtop(TODO)</a></li>
+<li><a href="linux.html#sec-1-7-8">1.7.8 nmon(DONE)(*)</a></li>
+<li><a href="linux.html#sec-1-7-9">1.7.9 collectl(TODO)(*)</a></li>
+<li><a href="linux.html#sec-1-7-10">1.7.10 glances(DONE)(*)</a></li>
+<li><a href="linux.html#sec-1-7-11">1.7.11 ulimit(DONE)</a></li>
+<li><a href="linux.html#sec-1-7-12">1.7.12 sysprof(DONE)</a></li>
+</ul>
+</li>
+<li><a href="linux.html#sec-1-8">1.8 admin utility</a>
+<ul>
+<li><a href="linux.html#sec-1-8-1">1.8.1 rsync(DONE)</a></li>
+<li><a href="linux.html#sec-1-8-2">1.8.2 uptime(DONE)</a></li>
+<li><a href="linux.html#sec-1-8-3">1.8.3 ttyload(DONE)</a></li>
+<li><a href="linux.html#sec-1-8-4">1.8.4 dmesg(DONE)</a></li>
+<li><a href="linux.html#sec-1-8-5">1.8.5 quota(DONE)</a></li>
+<li><a href="linux.html#sec-1-8-6">1.8.6 crontab(DONE)</a></li>
+<li><a href="linux.html#sec-1-8-7">1.8.7 ntp(DONE)</a></li>
+<li><a href="linux.html#sec-1-8-8">1.8.8 cssh(TODO)</a></li>
+<li><a href="linux.html#sec-1-8-9">1.8.9 iptables(DONE)</a></li>
+</ul>
+</li>
+<li><a href="linux.html#sec-1-9">1.9 http utility</a>
+<ul>
+<li><a href="linux.html#sec-1-9-1">1.9.1 httperf(DONE)</a></li>
+<li><a href="linux.html#sec-1-9-2">1.9.2 ab(DONE)</a></li>
+<li><a href="linux.html#sec-1-9-3">1.9.3 autobench(DONE)</a></li>
+</ul>
+</li>
+<li><a href="linux.html#sec-1-10">1.10 kernel</a>
+<ul>
+<li><a href="linux.html#sec-1-10-1">1.10.1 vmlinuz</a></li>
+<li><a href="linux.html#sec-1-10-2">1.10.2 tcp IO</a></li>
+<li><a href="linux.html#sec-1-10-3">1.10.3 tcp congestion control</a></li>
+<li><a href="linux.html#sec-1-10-4">1.10.4 kernel panic</a></li>
+</ul>
+</li>
+<li><a href="linux.html#sec-1-11">1.11 application</a>
+<ul>
+<li><a href="linux.html#sec-1-11-1">1.11.1 返回值问题</a></li>
+<li><a href="linux.html#sec-1-11-2">1.11.2 dp8网卡问题</a></li>
+<li><a href="linux.html#sec-1-11-3">1.11.3 修改资源限制</a></li>
+<li><a href="linux.html#sec-1-11-4">1.11.4 CPU温度过高</a></li>
+<li><a href="linux.html#sec-1-11-5">1.11.5 sync hangup</a></li>
+<li><a href="linux.html#sec-1-11-6">1.11.6 更换glibc</a></li>
+<li><a href="linux.html#sec-1-11-7">1.11.7 允许不从tty执行sudo</a></li>
+<li><a href="linux.html#sec-1-11-8">1.11.8 ssh proxy</a></li>
 </ul>
 </li>
 </ul>
@@ -1278,40 +1293,10 @@ Node 0, zone   Normal
 </div>
 
 <div id="outline-container-1-1-2-1" class="outline-5">
-<h5 id="sec-1-1-2-1"><span class="section-number-5">1.1.2.1</span> fd</h5>
+<h5 id="sec-1-1-2-1"><span class="section-number-5">1.1.2.1</span> maps</h5>
 <div class="outline-text-5" id="text-1-1-2-1">
 
-<p>todo(zhangyan04):
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-1-2-2" class="outline-5">
-<h5 id="sec-1-1-2-2"><span class="section-number-5">1.1.2.2</span> io</h5>
-<div class="outline-text-5" id="text-1-1-2-2">
-
-<p>TODO:
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-1-2-3" class="outline-5">
-<h5 id="sec-1-1-2-3"><span class="section-number-5">1.1.2.3</span> limits</h5>
-<div class="outline-text-5" id="text-1-1-2-3">
-
-<p>TODO:
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-1-2-4" class="outline-5">
-<h5 id="sec-1-1-2-4"><span class="section-number-5">1.1.2.4</span> maps</h5>
-<div class="outline-text-5" id="text-1-1-2-4">
-
-<p>当前进程关联到的每个可执行文件和库文件在内存中的映射区域及其访问权限所组成的列表
+<p>当前进程关联到的每个可执行文件和库文件在内存中的映射区域及其访问权限所组成的列表. note(dirlt): see command 'pmap'
 </p>
 
 
@@ -1367,49 +1352,9 @@ ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsysca
 
 </div>
 
-<div id="outline-container-1-1-2-5" class="outline-5">
-<h5 id="sec-1-1-2-5"><span class="section-number-5">1.1.2.5</span> mount</h5>
-<div class="outline-text-5" id="text-1-1-2-5">
-
-<p>TODO:
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-1-2-6" class="outline-5">
-<h5 id="sec-1-1-2-6"><span class="section-number-5">1.1.2.6</span> net</h5>
-<div class="outline-text-5" id="text-1-1-2-6">
-
-<p>todo(zhangyan04):
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-1-2-7" class="outline-5">
-<h5 id="sec-1-1-2-7"><span class="section-number-5">1.1.2.7</span> sched</h5>
-<div class="outline-text-5" id="text-1-1-2-7">
-
-<p>todo(zhangyan04):
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-1-2-8" class="outline-5">
-<h5 id="sec-1-1-2-8"><span class="section-number-5">1.1.2.8</span> status</h5>
-<div class="outline-text-5" id="text-1-1-2-8">
-
-<p>TODO:
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-1-2-9" class="outline-5">
-<h5 id="sec-1-1-2-9"><span class="section-number-5">1.1.2.9</span> statm</h5>
-<div class="outline-text-5" id="text-1-1-2-9">
+<div id="outline-container-1-1-2-2" class="outline-5">
+<h5 id="sec-1-1-2-2"><span class="section-number-5">1.1.2.2</span> statm</h5>
+<div class="outline-text-5" id="text-1-1-2-2">
 
 <p>Provides information about memory usage, measured in pages. The columns are:
 </p><ul>
@@ -1471,6 +1416,8 @@ vm.swappiness = 0
 <h4 id="sec-1-1-4"><span class="section-number-4">1.1.4</span> /proc/sys/vm</h4>
 <div class="outline-text-4" id="text-1-1-4">
 
+<p><a href="https://www.kernel.org/doc/Documentation/sysctl/vm.txt">https://www.kernel.org/doc/Documentation/sysctl/vm.txt</a>
+</p>
 
 </div>
 
@@ -1676,6 +1623,8 @@ dirlt@dirlt-virtual-machine:~/github/sperm/essay$ cat /proc/sys/vm/overcommit_ra
 <div class="outline-text-5" id="text-1-1-4-3">
 
 <p>这个参数决定系统使用swap的程度。但是这个参数并没有禁止使用swap分区，而只是一个依赖于swap分区的程度。
+</p>
+<p>
 如果这个值设置成为0的话那么，那么系统会尽可能地将减少page swap in/out操作，将更多的内存操作于物理内存上面。
 </p>
 </div>
@@ -1686,30 +1635,39 @@ dirlt@dirlt-virtual-machine:~/github/sperm/essay$ cat /proc/sys/vm/overcommit_ra
 <h5 id="sec-1-1-4-4"><span class="section-number-5">1.1.4.4</span> /proc/sys/vm/dirty_*</h5>
 <div class="outline-text-5" id="text-1-1-4-4">
 
-<p>这几个参数主要是用来控制脏页刷回磁盘策略。关于脏页刷回磁盘的过程可以参看"文件IO/write"一节。
-</p>
+
+
+
+<pre class="example">➜  notes git:(master) ✗ ls /proc/sys/vm/dirty_*
+/proc/sys/vm/dirty_background_bytes  /proc/sys/vm/dirty_bytes             /proc/sys/vm/dirty_ratio
+/proc/sys/vm/dirty_background_ratio  /proc/sys/vm/dirty_expire_centisecs  /proc/sys/vm/dirty_writeback_centisecs
+</pre>
+
+
 <p>
-<b>note(dirlt)@2013-05-25: 我copy了一份内容过来</b>
-</p>
-<p>
-对于这些脏页的写回策略是：
+这几个参数主要是用来控制脏页刷回磁盘策略。如果是前台触发的话（比如主动write操作）：
 </p><ul>
-<li>首先判断脏页比例是否超过dirty_ratio.如果没有的话那么直接退出
+<li>判断脏页比例是否超过dirty_ratio.如果没有的话那么直接退出
 </li>
-<li>然后开始将脏页刷到磁盘直到比率小于dirty_ratio.（此时write会阻塞）
+<li>将脏页刷到磁盘直到比率小于dirty_ratio.（此时write会阻塞）
+</li>
+<li>todo(dirlt): /proc/sys/vm/dirty_bytes
+</li>
+</ul>
+
+<p>如果是后台pdflush daemon触发的话
+</p><ul>
+<li>每隔dirty_writeback_centisecs时间会检测
 </li>
 <li>判断脏页比例是否超过dirty_background_ratio或者是超过dirty_background_bytes.如果没有那么退出。
 </li>
-<li>如果超过的话那么就会启动pdflush daemon后台进程刷新脏页。（此时write不会阻塞）
+<li>将脏页刷到磁盘直到比率小于dirty_background_ratio或者是dirty_background_bytes.（此时write不会阻塞）
+</li>
+<li>必须将时间超过dirty_expire_centisecs的脏页刷到磁盘。
 </li>
 </ul>
 
 
-<p>
-注意到这里可能启动pdflush daemon在后台刷新脏页。另外系统每隔dirty_writeback_centisecs时间会启动
-pdflush daemon将脏页刷到磁盘上面。而pdflush daemon工作方式是这样的，检查脏页是否存在超过
-dirty_expire_centisecs时间的，如果超过的话那么就会在后台刷新这些脏页。
-</p>
 </div>
 
 </div>
@@ -1774,19 +1732,18 @@ dirty_expire_centisecs时间的，如果超过的话那么就会在后台刷新�
 
 <p>
 This enables or disables panic on out-of-memory feature.
-</p>
-<p>
-If this is set to 0, the kernel will kill some rogue process, called oom_killer.  Usually, oom_killer can kill rogue processes and system will survive.
-</p>
-<p>
-If this is set to 1, the kernel panics when out-of-memory happens. However, if a process limits using nodes by mempolicy/cpusets, and those nodes become memory exhaustion status, one process may be killed by oom-killer. No panic occurs in this case. Because other nodes' memory may be free. This means system total status may be not fatal yet.
-</p>
-<p>
-If this is set to 2, the kernel panics compulsorily even on the above-mentioned.
-</p>
-<p>
-The default value is 0. 1 and 2 are for failover of clustering. Please select either according to your policy of failover.
-</p>
+</p><ul>
+<li>If this is set to 0, the kernel will kill some rogue process, called oom_killer.  Usually, oom_killer can kill rogue processes and system will survive.
+</li>
+<li>If this is set to 1, the kernel panics when out-of-memory happens. However, if a process limits using nodes by mempolicy/cpusets, and those nodes become memory exhaustion status, one process may be killed by oom-killer. No panic occurs in this case. Because other nodes' memory may be free. This means system total status may be not fatal yet.
+</li>
+<li>If this is set to 2, the kernel panics compulsorily even on the above-mentioned.
+</li>
+<li>The default value is 0. 1 and 2 are for failover of clustering. Please select either according to your policy of failover.
+</li>
+</ul>
+
+
 <p>
 <b>note(dirlt):对于1，2不是很理解，可能是用于分布式集群Linux系统上面的策略</b>
 </p>
@@ -1799,6 +1756,8 @@ The default value is 0. 1 and 2 are for failover of clustering. Please select ei
 <h4 id="sec-1-1-5"><span class="section-number-4">1.1.5</span> /proc/sys/net</h4>
 <div class="outline-text-4" id="text-1-1-5">
 
+<p><a href="https://www.kernel.org/doc/Documentation/sysctl/net.txt">https://www.kernel.org/doc/Documentation/sysctl/net.txt</a>
+</p>
 
 </div>
 
@@ -1806,8 +1765,16 @@ The default value is 0. 1 and 2 are for failover of clustering. Please select ei
 <h5 id="sec-1-1-5-1"><span class="section-number-5">1.1.5.1</span> /proc/sys/net/ipv4/ip_local_port_range</h5>
 <div class="outline-text-5" id="text-1-1-5-1">
 
-<p>本地port分配范围.
+<p>本地port分配范围. 本地client如果没有指定连接port的话那么就从这个范围内随机分配
 </p>
+
+
+
+<pre class="example">➜  notes git:(master) ✗ cat /proc/sys/net/ipv4/ip_local_port_range
+32768   61000
+</pre>
+
+
 </div>
 
 </div>
@@ -1816,10 +1783,7 @@ The default value is 0. 1 and 2 are for failover of clustering. Please select ei
 <h5 id="sec-1-1-5-2"><span class="section-number-5">1.1.5.2</span> /proc/sys/net/ipv4/tcp_tw_reuse</h5>
 <div class="outline-text-5" id="text-1-1-5-2">
 
-<p>重复使用处于TIME_WAIT的socket.
-</p>
-<p>
-Allow  to  reuse  TIME_WAIT sockets for new connections when it is safe from protocol viewpoint.
+<p>todo(dirlt): a little bit tricky
 </p>
 </div>
 
@@ -1829,10 +1793,7 @@ Allow  to  reuse  TIME_WAIT sockets for new connections when it is safe from pro
 <h5 id="sec-1-1-5-3"><span class="section-number-5">1.1.5.3</span> /proc/sys/net/ipv4/tcp_tw_recycle</h5>
 <div class="outline-text-5" id="text-1-1-5-3">
 
-<p>快速回收处理TIME_WAIT的socket.
-</p>
-<p>
-Enable fast recycling of TIME_WAIT sockets.
+<p>todo(dirlt): a little bit tricky
 </p>
 </div>
 
@@ -1842,7 +1803,7 @@ Enable fast recycling of TIME_WAIT sockets.
 <h5 id="sec-1-1-5-4"><span class="section-number-5">1.1.5.4</span> /proc/sys/net/ipv4/tcp_max_syn_backlog</h5>
 <div class="outline-text-5" id="text-1-1-5-4">
 
-<p>等待client做ack的连接数目上限
+<p>todo(dirlt):
 </p>
 </div>
 
@@ -1852,7 +1813,7 @@ Enable fast recycling of TIME_WAIT sockets.
 <h5 id="sec-1-1-5-5"><span class="section-number-5">1.1.5.5</span> /proc/sys/net/core/somaxconn</h5>
 <div class="outline-text-5" id="text-1-1-5-5">
 
-<p>每个端口监听队列的最大长度。
+<p>todo(dirlt):
 </p>
 </div>
 
@@ -1862,7 +1823,7 @@ Enable fast recycling of TIME_WAIT sockets.
 <h5 id="sec-1-1-5-6"><span class="section-number-5">1.1.5.6</span> /proc/sys/net/core/netdev_max_backlog</h5>
 <div class="outline-text-5" id="text-1-1-5-6">
 
-<p>网络设备接收数据包的速率比内核处理这些包的速率快时，允许送到队列的数据包的最大数目。
+<p>todo(dirlt):
 </p>
 </div>
 </div>
@@ -1873,6 +1834,8 @@ Enable fast recycling of TIME_WAIT sockets.
 <h4 id="sec-1-1-6"><span class="section-number-4">1.1.6</span> /proc/sys/fs</h4>
 <div class="outline-text-4" id="text-1-1-6">
 
+<p><a href="https://www.kernel.org/doc/Documentation/sysctl/fs.txt">https://www.kernel.org/doc/Documentation/sysctl/fs.txt</a>
+</p>
 
 </div>
 
@@ -1880,36 +1843,58 @@ Enable fast recycling of TIME_WAIT sockets.
 <h5 id="sec-1-1-6-1"><span class="section-number-5">1.1.6.1</span> /proc/sys/fs/file-max</h5>
 <div class="outline-text-5" id="text-1-1-6-1">
 
-<p>所有进程允许打开文件的最大数量 <b>note(dirlt)：这个应该是和文件描述符有区别的</b>
+<p>所有进程允许打开文件的最大数量 <b>note(dirlt)：但是没有限制文件描述符上限</b>
 </p>
+
+
+
+<pre class="example">➜  notes git:(master) ✗ cat /proc/sys/fs/file-max
+793300
+➜  notes git:(master) ✗ ulimit -a
+-t: cpu time (seconds)         unlimited
+-f: file size (blocks)         unlimited
+-d: data seg size (kbytes)     unlimited
+-s: stack size (kbytes)        8192
+-c: core file size (blocks)    0
+-m: resident set size (kbytes) unlimited
+-u: processes                  62757
+-n: file descriptors           1024
+-l: locked-in-memory size (kb) 64
+-v: address space (kb)         unlimited
+-x: file locks                 unlimited
+-i: pending signals            62757
+-q: bytes in POSIX msg queues  819200
+-e: max nice                   0
+-r: max rt priority            0
+-N 15:                         unlimited
+</pre>
+
+
 </div>
 
 </div>
 
 <div id="outline-container-1-1-6-2" class="outline-5">
-<h5 id="sec-1-1-6-2"><span class="section-number-5">1.1.6.2</span> /proc/sys/fs/epoll/max_user_instances</h5>
+<h5 id="sec-1-1-6-2"><span class="section-number-5">1.1.6.2</span> /proc/sys/fs/epoll/max_user_watches</h5>
 <div class="outline-text-5" id="text-1-1-6-2">
 
-<p>单个用户使用epoll的文件描述符上限。如果超过上限会返回EMFILE错误。 <b>note(dirlt)：不过在我的文件系统下面似乎没有这个选项</b>
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-1-6-3" class="outline-5">
-<h5 id="sec-1-1-6-3"><span class="section-number-5">1.1.6.3</span> /proc/sys/fs/epoll/max_user_watches</h5>
-<div class="outline-text-5" id="text-1-1-6-3">
-
-<p>单个用户使用epoll进行watch的文件描述符上限。 <b>note(dirlt)：对于服务器应该特别有用，可以限制内存使用量</b>
+<p>单个用户使用epoll进行监控的文件描述符上限.
 </p>
 
 <p class="verse">
-This specifies a limit on the total number of file descriptors that a user can register across all epoll  instances<br/>
-on  the system.  The limit is per real user ID.  Each registered file descriptor costs roughly 90 bytes on a 32-bit<br/>
-kernel, and roughly 160 bytes on a 64-bit kernel.  Currently, the default value for max_user_watches is  1/25  (4%)<br/>
+This specifies a limit on the total number of file descriptors that a user can register across all epoll instances<br/>
+on  the system. The limit is per real user ID.  Each registered file descriptor costs roughly 90 bytes on a 32-bit<br/>
+kernel, and roughly 160 bytes on a 64-bit kernel. Currently, the default value for max_user_watches is  1/25  (4%)<br/>
 of the available low memory, divided by the registration cost in bytes.<br/>
-<br/>
 </p>
+
+
+
+
+
+<pre class="example">➜  notes git:(master) ✗ cat /proc/sys/fs/epoll/max_user_watches
+1645137
+</pre>
 
 
 </div>
@@ -1921,6 +1906,8 @@ of the available low memory, divided by the registration cost in bytes.<br/>
 <h4 id="sec-1-1-7"><span class="section-number-4">1.1.7</span> /proc/sys/kernel</h4>
 <div class="outline-text-4" id="text-1-1-7">
 
+<p><a href="https://www.kernel.org/doc/Documentation/sysctl/kernel.txt">https://www.kernel.org/doc/Documentation/sysctl/kernel.txt</a>
+</p>
 
 </div>
 
@@ -2005,7 +1992,10 @@ The JBD is the <a href="http://kerneltrap.org/node/6741">journaling block device
 <h5 id="sec-1-1-8-1"><span class="section-number-5">1.1.8.1</span> /proc/net/tcp</h5>
 <div class="outline-text-5" id="text-1-1-8-1">
 
-<p>记录所有tcp连接，netstat以及lsof都会读取这个文件. 我们遇到过一个问题就是netstat/lsof速度非常慢，通过strace发现是在读取这个文件时候非常耗时，下面两个链接给出了一些相关信息
+<p>记录所有tcp连接信息. netstat以及lsof等命令会读取这个文件.
+</p>
+<p>
+之前我们遇到过一个问题就是netstat/lsof速度非常慢，通过strace发现是在读取这个文件时候非常耗时. 下面两个链接给出了一些相关信息
 </p><ul>
 <li>[PATCH] tcp: Fix slowness in read /proc/net/tcp — Linux Network Development : <a href="http://www.spinics.net/lists/netdev/msg132186.html">http://www.spinics.net/lists/netdev/msg132186.html</a>
 </li>
@@ -2014,9 +2004,6 @@ The JBD is the <a href="http://kerneltrap.org/node/6741">journaling block device
 </ul>
 
 
-<p>
-<b>todo(dirlt):</b>
-</p>
 </div>
 </div>
 </div>
@@ -2029,20 +2016,20 @@ The JBD is the <a href="http://kerneltrap.org/node/6741">journaling block device
 
 <p><img src="images/linux-analysis-and-tools.jpg"  alt="./images/linux-analysis-and-tools.jpg" />
 </p>
-
-</div>
-
-<div id="outline-container-1-2-1" class="outline-4">
-<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> <i>SYS DEV</i></h4>
-<div class="outline-text-4" id="text-1-2-1">
-
 </div>
 
 </div>
 
-<div id="outline-container-1-2-2" class="outline-4">
-<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> mpstat</h4>
-<div class="outline-text-4" id="text-1-2-2">
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> CPU utility</h3>
+<div class="outline-text-3" id="text-1-3">
+
+
+</div>
+
+<div id="outline-container-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> mpstat(DONE)</h4>
+<div class="outline-text-4" id="text-1-3-1">
 
 <p>mpstat - Report processors related statistics.
 </p>
@@ -2109,11 +2096,137 @@ Linux 2.6.9_5-10-0-1 (tc-cm-et18.tc.baidu.com)  2011年09月20日
 
 </div>
 
-<div id="outline-container-1-2-3" class="outline-4">
-<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> vmstat</h4>
-<div class="outline-text-4" id="text-1-2-3">
+<div id="outline-container-1-3-2" class="outline-4">
+<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> taskset(DONE)</h4>
+<div class="outline-text-4" id="text-1-3-2">
+
+<p>taskset - retrieve or set a process's CPU affinity  可以用来获取和修改进程的CPU亲和性
+</p><ul>
+<li>taskset -c 1,2,3 cmd (指定在CPU #1,#2,#3上运行cmd)
+</li>
+<li>taskset -cp 1,2,3 pid (指定在CPU #1,#2,#3上运行进程pid)
+</li>
+<li>taskset -c mask cmd|pid 通过mask格式进行设置，比如0x3就是#0和#1亲和性
+</li>
+</ul>
+
+<p>如果不指定-c的话那么就是获取亲和性。程序上的话可以使用sched_setaffinity/sched_getaffinity调用来修改和获取某个进程和CPU的亲和性。
+</p>
 
 
+
+<pre class="example">taskset  is used to set or retrieve the CPU affinity of a running pro-
+cess given its PID or to launch a new COMMAND with a given CPU  affin-
+ity.  CPU affinity is a scheduler property that "bonds" a process to a
+given set of CPUs on the system.  The Linux scheduler will  honor  the
+given  CPU  affinity  and  the process will not run on any other CPUs.
+Note that the Linux scheduler also supports natural CPU affinity:  the
+scheduler  attempts to keep processes on the same CPU as long as prac-
+tical for performance reasons.   Therefore,  forcing  a  specific  CPU
+affinity is useful only in certain applications.
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3-3" class="outline-4">
+<h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> ps(process snapshot)(DONE)</h4>
+<div class="outline-text-4" id="text-1-3-3">
+
+<p>进程状态有下面几种：
+</p><ul>
+<li>D    uninterruptible sleep (usually IO)
+</li>
+<li>R    running or runnable (on run queue)
+</li>
+<li>S    interruptible sleep (waiting for an event to complete)
+</li>
+<li>T    stopped, either by a job control signal or because it is being traced.
+</li>
+<li>W    paging (not valid since the 2.6.xx kernel)
+</li>
+<li>X    dead (should never be seen)
+</li>
+<li>Z    defunct ("zombie") process, terminated but not reaped by its parent.
+</li>
+<li>&lt;    high-priority (not nice to other users)
+</li>
+<li>N    low-priority (nice to other users)
+</li>
+<li>L    has pages locked into memory (for real-time and custom IO)
+</li>
+<li>s    is a session leader
+</li>
+<li>l    is multi-threaded (using CLONE_THREAD, like NPTL pthreads do)
+</li>
+<li>+    is in the foreground process group.
+</li>
+</ul>
+
+
+
+<hr/>
+
+<p>
+在使用ubuntu的apt-get时候，可能会出现一些异常的状况，我们直接终止了apt-get。但是这个时候apt-get软件本身出于一个不正常的状态，
+导致之后不能够启动apt-get。如果观察进程的话会出现下面一些可疑的进程
+</p>
+
+
+<pre class="example">dp@dp1:~$ ps aux | grep "apt"
+root      3587  0.0  0.0  36148 22800 ?        Ds   Oct08   0:00 /usr/bin/dpkg --status-fd 50 --unpack --auto-deconfigure /var/cache/apt/archives/sgml-data_2.0.4_all.deb
+root      9579  0.0  0.0  35992 22744 ?        Ds   Oct19   0:00 /usr/bin/dpkg --status-fd 50 --unpack --auto-deconfigure /var/cache/apt/archives/iftop_0.17-16_amd64.deb
+root     25957  0.0  0.0  36120 22796 ?        Ds   Nov05   0:00 /usr/bin/dpkg --status-fd 50 --unpack --auto-deconfigure /var/cache/apt/archives/iftop_0.17-16_amd64.deb /var/cache/apt/archives/iotop_0.4-1_all.deb
+dp       30586  0.0  0.0   7628  1020 pts/2    S+   08:59   0:00 grep --color=auto apt
+</pre>
+
+<p>
+这些进程的父进程都是init进程，并且状态是uninterruptible sleep，给kill -9也没有办法终止，唯一的办法只能reboot机器来解决这个问题。关于这个问题可以看stackoverflow上面的解答 How to stop 'uninterruptible' process on Linux? - Stack Overflow <a href="http://stackoverflow.com/questions/767551/how-to-stop-uninterruptible-process-on-linux">http://stackoverflow.com/questions/767551/how-to-stop-uninterruptible-process-on-linux</a>
+</p><ul>
+<li>Simple answer: you cannot. Longer answer: the uninterruptable sleep means the process will not be woken up by signals. It can be only woken up by what it's waiting for. When I get such situations eg. with CD-ROM, I usually reset the computer by using suspend-to-disk and resuming.
+</li>
+<li>The D state basically means that the process is waiting for disk I/O, or other block I/O that can't be interrupted. Sometimes this means the kernel or device is feverishly trying to read a bad block (especially from an optical disk). Sometimes it means there's something else. The process cannot be killed until it gets out of the D state. Find out what it is waiting for and fix that. The easy way is to reboot. Sometimes removing the disk in question helps, but that can be rather dangerous: unfixable catastrophic hardware failure if you don't know what you're doing (read: smoke coming out).
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3-4" class="outline-4">
+<h4 id="sec-1-3-4"><span class="section-number-4">1.3.4</span> top(DONE)</h4>
+<div class="outline-text-4" id="text-1-3-4">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3-5" class="outline-4">
+<h4 id="sec-1-3-5"><span class="section-number-4">1.3.5</span> htop(DONE)</h4>
+<div class="outline-text-4" id="text-1-3-5">
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> VM utility</h3>
+<div class="outline-text-3" id="text-1-4">
+
+
+</div>
+
+<div id="outline-container-1-4-1" class="outline-4">
+<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> vmstat(DONE)</h4>
+<div class="outline-text-4" id="text-1-4-1">
+
+<p>vmstat - Report virtual memory statistics
+</p>
 
 
 
@@ -2140,11 +2253,11 @@ procs -----------memory---------- ---swap-- -----io---- --system-- -----cpu-----
 </li>
 <li>swpd 虚拟内存(swap)
 </li>
-<li>free 空闲内存
+<li>free 空闲内存(phy)
 </li>
-<li>buff 缓冲内存(buffers,用户缓存文件inode)
+<li>buff 缓冲内存(用于read/write等操作)(phy)
 </li>
-<li>cache 缓冲内存(cache,用户作为文件系统page-cache)
+<li>cache 缓冲内存(用于文件系统以及内存系统管理)(phy)
 </li>
 <li>前面三个参数相加才是可用内存大小
 </li>
@@ -2258,10 +2371,12 @@ nfs_write_data               69     69    704     23
 
 </div>
 
-<div id="outline-container-1-2-4" class="outline-4">
-<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> free</h4>
-<div class="outline-text-4" id="text-1-2-4">
+<div id="outline-container-1-4-2" class="outline-4">
+<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> free(DONE)</h4>
+<div class="outline-text-4" id="text-1-4-2">
 
+<p>free - Display amount of free and used memory in the system
+</p>
 
 
 
@@ -2282,9 +2397,9 @@ Total:     9212084    4519868    4692216
 </li>
 <li>shared 共享内存大小
 </li>
-<li>buffers 缓存大小包括目录inode
+<li>buffers 用于read/write等操作
 </li>
-<li>cached 用于操作文件使用缓冲[所谓cached的内容还是可以被使用的]
+<li>cached 用于文件系统以及内存系统
 </li>
 <li>- buffers/cache 表示used-buffers/cached的大小，就是应用程序已经使用内存大小
 </li>
@@ -2303,34 +2418,43 @@ Total:     9212084    4519868    4692216
 
 </div>
 
-<div id="outline-container-1-2-5" class="outline-4">
-<h4 id="sec-1-2-5"><span class="section-number-4">1.2.5</span> taskset</h4>
-<div class="outline-text-4" id="text-1-2-5">
+<div id="outline-container-1-4-3" class="outline-4">
+<h4 id="sec-1-4-3"><span class="section-number-4">1.4.3</span> numactl(DONE)</h4>
+<div class="outline-text-4" id="text-1-4-3">
 
-<p>可以用来获取和修改进程的CPU亲和性。
-</p><ul>
-<li>taskset -c 1,2,3 cmd (指定在CPU #1,#2,#3上运行cmd)
-</li>
-<li>taskset -cp 1,2,3 pid (指定在CPU #1,#2,#3上运行进程pid)
-</li>
-<li>taskset -c mask cmd|pid 通过mask格式进行设置，比如0x3就是#0和#1亲和性
-</li>
-</ul>
-
-<p>如果不指定-c的话那么就是获取亲和性。程序上的话可以使用sched_setaffinity/sched_getaffinity调用来修改和获取某个进程和CPU的亲和性。
+<p>numactl - Control NUMA policy for processes or shared memory
+</p>
+<p>
+see <a href="numa-an-overview.html">NUMA: An Overview</a>
+</p>
+<p>
+numactl [&ndash;hardware] 可以查看NUMA硬件支持情况
 </p>
 
 
+<pre class="example">➜  notes git:(master) ✗ numactl --hardware
+available: 1 nodes (0)
+node 0 cpus: 0 1 2 3 4 5 6 7
+node 0 size: 8067 MB
+node 0 free: 820 MB
+node distances:
+node   0
+  0:  10
+</pre>
 
-<pre class="example">taskset  is used to set or retrieve the CPU affinity of a running pro-
-cess given its PID or to launch a new COMMAND with a given CPU  affin-
-ity.  CPU affinity is a scheduler property that "bonds" a process to a
-given set of CPUs on the system.  The Linux scheduler will  honor  the
-given  CPU  affinity  and  the process will not run on any other CPUs.
-Note that the Linux scheduler also supports natural CPU affinity:  the
-scheduler  attempts to keep processes on the same CPU as long as prac-
-tical for performance reasons.   Therefore,  forcing  a  specific  CPU
-affinity is useful only in certain applications.
+
+<p>
+numactl [&ndash;show] 可以查看当前memory policy情况
+</p>
+
+
+<pre class="example">➜  notes git:(master) ✗ numactl --show
+policy: default
+preferred node: current
+physcpubind: 0 1 2 3 4 5 6 7
+cpubind: 0
+nodebind: 0
+membind: 0
 </pre>
 
 
@@ -2338,19 +2462,108 @@ affinity is useful only in certain applications.
 
 </div>
 
-<div id="outline-container-1-2-6" class="outline-4">
-<h4 id="sec-1-2-6"><span class="section-number-4">1.2.6</span> lsof</h4>
-<div class="outline-text-4" id="text-1-2-6">
+<div id="outline-container-1-4-4" class="outline-4">
+<h4 id="sec-1-4-4"><span class="section-number-4">1.4.4</span> pmap(DONE)</h4>
+<div class="outline-text-4" id="text-1-4-4">
 
-<p>todo(dirlt):
+<p>pmap - report memory map of a process 可以查看进程内存布局
 </p>
+<p>
+GENERAL OPTIONS
+</p><ol>
+<li>-x   extended       Show the extended format.
+</li>
+<li>-d   device         Show the device format.
+</li>
+<li>-q   quiet          Do not display some header/footer lines.
+</li>
+<li>-V   show version   Displays version of program.
+</li>
+</ol>
+
+
+
+
+
+<pre class="example">➜  notes git:(master) ✗ pmap -d 11492
+11492:   /usr/bin/emacs24
+Address           Kbytes Mode  Offset           Device    Mapping
+0000000000400000    2212 r-x-- 0000000000000000 008:00002 emacs24-x
+0000000000828000       4 r---- 0000000000228000 008:00002 emacs24-x
+0000000000829000   12160 rw--- 0000000000229000 008:00002 emacs24-x
+0000000002e02000  134156 rw--- 0000000000000000 000:00000   [ anon ]
+00007fb7821ad000     176 rw--- 0000000000000000 000:00000   [ anon ]
+00007fb7821e0000    4192 r---- 0000000000000000 008:00002 NanumGothicBold.ttf
+00007fb7825f8000    4532 r---- 0000000000000000 008:00002 NanumMyeongjoBold.ttf
+00007fb782a65000     688 rw--- 0000000000000000 000:00000   [ anon ]
+00007fb782b11000   16752 r---- 0000000000000000 008:00002 ukai.ttc
+...
+ffffffffff600000       4 r-x-- 0000000000000000 000:00000   [ anon ]
+mapped: 651672K    writeable/private: 178012K    shared: 612K
+</pre>
+
+<p>
+可以看到emacs24占用虚拟内存在651MB, 可写以及private内存在178MB. shared(?) = 612K.
+</p>
+<p>
+使用-x选项可以查看RSS以及dirty pages
+</p>
+
+
+<pre class="example">➜  notes git:(master) ✗ pmap -x 11492
+11492:   /usr/bin/emacs24
+Address           Kbytes     RSS   Dirty Mode   Mapping
+0000000000400000       0    1884       0 r-x--  emacs24-x
+0000000000828000       0       4       4 r----  emacs24-x
+0000000000829000       0   11380    8752 rw---  emacs24-x
+0000000002e02000       0  136332  136332 rw---    [ anon ]
+00007fb7821ad000       0     176     176 rw---    [ anon ]
+...
+00007fff9aef3000       0     616     616 rw---    [ stack ]
+00007fff9afff000       0       4       0 r-x--    [ anon ]
+ffffffffff600000       0       0       0 r-x--    [ anon ]
+----------------  ------  ------  ------
+total kB          653800  172416  151924
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-4-5" class="outline-4">
+<h4 id="sec-1-4-5"><span class="section-number-4">1.4.5</span> vmtouch(DONE)</h4>
+<div class="outline-text-4" id="text-1-4-5">
+
+<p><a href="https://github.com/hoytech/vmtouch">https://github.com/hoytech/vmtouch</a> note(dirlt)：可以用来warmup数据
+</p>
+<p>
+里面有一些系统调用比较值得注意和学习：
+</p><ul>
+<li>mlock/munlock 能够将一部分的内存lock住而不会切换到swap分区上面。
+</li>
+<li>mlockall/munlockall 将进程所有的内存都lock住而不会切换到swap分区上面。
+</li>
+<li>posix_fadvise 针对fd做一些访问模式的预测
+</li>
+</ul>
+
+
+</div>
 </div>
 
 </div>
 
-<div id="outline-container-1-2-7" class="outline-4">
-<h4 id="sec-1-2-7"><span class="section-number-4">1.2.7</span> hdparm</h4>
-<div class="outline-text-4" id="text-1-2-7">
+<div id="outline-container-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> IO utility</h3>
+<div class="outline-text-3" id="text-1-5">
+
+
+</div>
+
+<div id="outline-container-1-5-1" class="outline-4">
+<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> hdparm(TODO)</h4>
+<div class="outline-text-4" id="text-1-5-1">
 
 <p>hdparm - get/set hard disk parameters
 </p>
@@ -2382,37 +2595,18 @@ sunrpc on /var/lib/nfs/rpc_pipefs type rpc_pipefs (rw)
 <p>
 我们关注自己读写目录，比如通常在/home下面，这里就是使用的device就是/dev/mapper/VolGroup00-LogVol00
 </p>
+</div>
+
+</div>
+
+<div id="outline-container-1-5-2" class="outline-4">
+<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> iostat(DONE)</h4>
+<div class="outline-text-4" id="text-1-5-2">
+
+<p>iostat - Report Central Processing Unit (CPU) statistics and input/output statistics for devices and partitions.
+</p>
 <p>
-todo(dirlt):好多选项都不太清楚是什么意思.
-</p></div>
-
-</div>
-
-<div id="outline-container-1-2-8" class="outline-4">
-<h4 id="sec-1-2-8"><span class="section-number-4">1.2.8</span> pmap</h4>
-<div class="outline-text-4" id="text-1-2-8">
-
-<p>todo(dirlt):
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-2-9" class="outline-4">
-<h4 id="sec-1-2-9"><span class="section-number-4">1.2.9</span> strace</h4>
-<div class="outline-text-4" id="text-1-2-9">
-
-<p>todo(dirlt):
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-2-10" class="outline-4">
-<h4 id="sec-1-2-10"><span class="section-number-4">1.2.10</span> iostat</h4>
-<div class="outline-text-4" id="text-1-2-10">
-
-<p>iostat主要用来观察io设备的负载情况的。首先我们看看iostat的样例输出
+iostat主要用来观察io设备的负载情况的。首先我们看看iostat的样例输出
 </p>
 
 
@@ -2553,23 +2747,147 @@ sda               0.00     0.00    0.00    0.00     0.00     0.00     0.00     0
 
 </div>
 
-<div id="outline-container-1-2-11" class="outline-4">
-<h4 id="sec-1-2-11"><span class="section-number-4">1.2.11</span> vmtouch</h4>
-<div class="outline-text-4" id="text-1-2-11">
+<div id="outline-container-1-5-3" class="outline-4">
+<h4 id="sec-1-5-3"><span class="section-number-4">1.5.3</span> iotop(DONE)</h4>
+<div class="outline-text-4" id="text-1-5-3">
 
-<p><a href="https://github.com/hoytech/vmtouch">https://github.com/hoytech/vmtouch</a>
+<p>iotop - simple top-like I/O monitor 可以用来观察单独进程的IO使用状况
 </p>
 <p>
-<b>note(dirlt)：可以用来warmup数据，使用参数似乎也比较简单</b>
+iotop displays columns for the I/O bandwidth read and written by each process/thread during the sampling period. It also displays the percentage of time the thread/process spent while swapping in  and  while  waiting on I/O. For each process, its I/O priority (class/level) is shown. In addition, the total I/O bandwidth read and written during the sampling period is displayed at the top of the interface.
 </p>
 <p>
-里面有一些系统调用比较值得注意和学习：
+常用选项有下面这些：
 </p><ul>
-<li>mlock/munlock 能够将一部分的内存lock住而不会切换到swap分区上面。
+<li>-o/&ndash;only 只展现有IO活动的任务
 </li>
-<li>mlockall/munlockall 将进程所有的内存都lock住而不会切换到swap分区上面。
+<li>-P/&ndash;process 以process而非thread为单位
 </li>
-<li>posix_fadvise 针对fd做一些访问模式的预测
+<li>-a/&ndash;accumulated 将iotop启动以来IO数值累加
+</li>
+<li>-d/&ndash;delay 每隔多少秒刷新
+</li>
+<li>-b/&ndash;batch 非交互式输出
+</li>
+<li>-n/&ndash;num 输出多少次之后退出
+</li>
+<li>-t/&ndash;time 非交互式模式之前输出时间
+</li>
+<li>-q/&ndash;quiet 只针对非交互模式
+</li>
+</ul>
+
+
+<p>
+对于交互式输出来说可以动态修改参数 Use the left and right arrows to change the sorting, r to reverse the sorting order, o to toggle the &ndash;only option, p to toggle the &ndash;processes option, a  to  toggle  the  &ndash;accumulated option, q to quit or i to change the priority of a thread or a process' thread(s). Any other key will force a refresh.
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-6" class="outline-3">
+<h3 id="sec-1-6"><span class="section-number-3">1.6</span> NET utility</h3>
+<div class="outline-text-3" id="text-1-6">
+
+
+</div>
+
+<div id="outline-container-1-6-1" class="outline-4">
+<h4 id="sec-1-6-1"><span class="section-number-4">1.6.1</span> ifconfig(DONE)</h4>
+<div class="outline-text-4" id="text-1-6-1">
+
+<p>ifconfig - configure a network interface
+</p>
+<p>
+/sbin/ifconfig可以用来配置和查看network interface.不过从文档上看的话，更加推荐使用/sbin/ip这个工具
+</p>
+
+
+<pre class="example">NOTE
+       This  program is obsolete!  For replacement check ip addr and ip link.
+       For statistics use ip -s link.
+</pre>
+
+
+<p>
+这里我们不打算学习如何配置network interface只是想查看一下网卡的信息。使用/sbin/ifconfig -a可以查看所有的网卡信息，即使这个网卡关闭。
+</p>
+
+
+<pre class="example">[zhangyan04@tc-hpc-dev.tc.baidu.com]$ /sbin/ifconfig -a
+eth0      Link encap:Ethernet  HWaddr 00:1D:09:22:C9:A9
+          BROADCAST MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:0 (0.0 b)  TX bytes:0 (0.0 b)
+          Interrupt:16 Memory:f4000000-f4012800
+
+eth1      Link encap:Ethernet  HWaddr 00:1D:09:22:C9:A7
+          inet addr:10.26.140.39  Bcast:10.26.140.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:90671796 errors:0 dropped:14456 overruns:0 frame:0
+          TX packets:143541932 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000
+          RX bytes:71169282564 (66.2 GiB)  TX bytes:74096812979 (69.0 GiB)
+          Interrupt:16 Memory:f8000000-f8012800
+
+lo        Link encap:Local Loopback
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:231762640 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:231762640 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0
+          RX bytes:98089257363 (91.3 GiB)  TX bytes:98089257363 (91.3 GiB)
+</pre>
+
+<p>
+我们这里稍微仔细看看eht1的网卡信息
+</p><ul>
+<li>encap 网卡连接网络类型Ethernet(以太网)
+</li>
+<li>HWaddr 网卡物理地址
+</li>
+<li>inet_addr 绑定IP地址
+</li>
+<li>Bcast 这个IP对应的广播地址
+</li>
+<li>Mask 子网掩码
+</li>
+<li>UP(打开) BROADCAST(广播) MULTICAST(多播) RUNNING(运行)
+</li>
+<li>MTU (Maximum Transport Unit)最大传输单元，以太网一般就是1500字节
+</li>
+<li>Metric ???
+</li>
+<li>RX packets 接受packets数目
+</li>
+<li>TX packets 传输packets数目
+</li>
+<li>errors 错误packets数目
+</li>
+<li>dropped 丢弃packets数目
+</li>
+<li>overruns frame carrier ???
+</li>
+<li>collisions ???
+</li>
+<li>txqueuelen 发送packets的queue长度上限.0应该是无限
+</li>
+<li>RX bytes 接收字节
+</li>
+<li>TX bytes 发送字节
+</li>
+</ul>
+
+
+<p>
+使用ifconfig能够创建虚拟网卡绑定IP
+</p><ul>
+<li>sudo ifconfig &lt;name&gt; &lt;ip&gt;
+</li>
+<li>sudo ifconfig &lt;name&gt; down # 销毁虚拟网卡
 </li>
 </ul>
 
@@ -2578,61 +2896,659 @@ sda               0.00     0.00    0.00    0.00     0.00     0.00     0.00     0
 
 </div>
 
-<div id="outline-container-1-2-12" class="outline-4">
-<h4 id="sec-1-2-12"><span class="section-number-4">1.2.12</span> latencytop</h4>
-<div class="outline-text-4" id="text-1-2-12">
+<div id="outline-container-1-6-2" class="outline-4">
+<h4 id="sec-1-6-2"><span class="section-number-4">1.6.2</span> netstat(DONE)</h4>
+<div class="outline-text-4" id="text-1-6-2">
 
-<p>todo(dirlt): <a href="https://latencytop.org/">https://latencytop.org/</a>
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-2-13" class="outline-4">
-<h4 id="sec-1-2-13"><span class="section-number-4">1.2.13</span> iotop</h4>
-<div class="outline-text-4" id="text-1-2-13">
-
-<p>可以用来观察单独进程的IO使用状况
+<p>netstat - Print network connections, routing tables, interface statistics, masquerade connections, and multicast memberships
 </p>
 <p>
-todo(dirlt)：
+netstat可以查看很多信息，包括网络链接,路由表，网卡信息,伪装链接以及多播成员关系。但是从文档上看，一部分工作可以在/sbin/ip里面完成
 </p>
-</div>
+
+
+<pre class="example">NOTE
+       This program is obsolete.  Replacement for netstat is ss.  Replacement
+       for netstat -r is ip route.  Replacement for netstat -i is ip -s link.
+       Replacement for netstat -g is ip maddr.
+</pre>
+
+<p>
+我们这里打算对netstat使用限制在查看网络连接，以及各种协议的统计数据上.
+</p>
+
+<hr/>
+
+<p>
+首先我们看看如何查看各种协议的统计数据.
+</p>
+
+
+<pre class="example">netstat {--statistics|-s} [--tcp|-t] [--udp|-u] [--raw|-w] [delay]
+</pre>
+
+<p>
+我们可以查看和tcp,udp以及raw socket相关的数据,delay表示刷新时间。
+</p>
+
+
+
+
+<pre class="example">[zhangyan04@tc-hpc-dev.tc.baidu.com]$ netstat -s
+Ip:
+    322405625 total packets received
+    0 forwarded
+    0 incoming packets discarded
+    322405625 incoming packets delivered
+    369134846 requests sent out
+    33 dropped because of missing route
+Icmp:
+    30255 ICMP messages received
+    0 input ICMP message failed.
+    ICMP input histogram:
+        echo requests: 30170
+        echo replies: 83
+        timestamp request: 2
+    30265 ICMP messages sent
+    0 ICMP messages failed
+    ICMP output histogram:
+        destination unreachable: 10
+        echo request: 83
+        echo replies: 30170
+        timestamp replies: 2
+IcmpMsg:
+        InType0: 83
+        InType8: 30170
+        InType13: 2
+        OutType0: 30170
+        OutType3: 10
+        OutType8: 83
+        OutType14: 2
+Tcp:
+    860322 active connections openings
+    199165 passive connection openings
+    824990 failed connection attempts
+    43268 connection resets received
+    17 connections established
+    322306693 segments received
+    368937621 segments send out
+    56075 segments retransmited
+    0 bad segments received.
+    423873 resets sent
+Udp:
+    68643 packets received
+    10 packets to unknown port received.
+    0 packet receive errors
+    110838 packets sent
+UdpLite:
+TcpExt:
+    1999 invalid SYN cookies received
+    5143 resets received for embryonic SYN_RECV sockets
+    2925 packets pruned from receive queue because of socket buffer overrun
+    73337 TCP sockets finished time wait in fast timer
+    85 time wait sockets recycled by time stamp
+    4 delayed acks further delayed because of locked socket
+    Quick ack mode was activated 7106 times
+    5141 times the listen queue of a socket overflowed
+    5141 SYNs to LISTEN sockets ignored
+    81288 packets directly queued to recvmsg prequeue.
+    297394763 packets directly received from backlog
+    65102525 packets directly received from prequeue
+    180740292 packets header predicted
+    257396 packets header predicted and directly queued to user
+    5983677 acknowledgments not containing data received
+    176944382 predicted acknowledgments
+    2988 times recovered from packet loss due to SACK data
+    Detected reordering 9 times using FACK
+    Detected reordering 15 times using SACK
+    Detected reordering 179 times using time stamp
+    835 congestion windows fully recovered
+    1883 congestion windows partially recovered using Hoe heuristic
+    TCPDSACKUndo: 1806
+    1093 congestion windows recovered after partial ack
+    655 TCP data loss events
+    TCPLostRetransmit: 6
+    458 timeouts after SACK recovery
+    7 timeouts in loss state
+    3586 fast retransmits
+    178 forward retransmits
+    425 retransmits in slow start
+    51048 other TCP timeouts
+    37 sack retransmits failed
+    1610293 packets collapsed in receive queue due to low socket buffer
+    7094 DSACKs sent for old packets
+    14430 DSACKs received
+    4358 connections reset due to unexpected data
+    12564 connections reset due to early user close
+    29 connections aborted due to timeout
+    TCPDSACKIgnoredOld: 12177
+    TCPDSACKIgnoredNoUndo: 347
+    TCPSackShifted: 6421
+    TCPSackMerged: 5600
+    TCPSackShiftFallback: 119131
+IpExt:
+    InBcastPkts: 22
+    InOctets: 167720101517
+    OutOctets: 169409102263
+    InBcastOctets: 8810
+</pre>
+
+<p>
+内容非常多这里也不详细分析了。
+</p>
+
+<hr/>
+
+<p>
+然后看看连接这个部分的功能
+</p>
+
+
+<pre class="example">netstat  [address_family_options]  [--tcp|-t]  [--udp|-u]   [--raw|-w]
+[--listening|-l]       [--all|-a]      [--numeric|-n]      [--numeric-
+hosts][--numeric-ports][--numeric-ports]               [--symbolic|-N]
+[--extend|-e[--extend|-e]] [--timers|-o] [--program|-p] [--verbose|-v]
+[--continuous|-c] [delay]
+</pre>
+
+<p>
+对于address_family允许指定协议族，通常来说我们可能会使用
+</p><ul>
+<li>&ndash;unix -x unix域协议族
+</li>
+<li>&ndash;inet &ndash;ip ip协议族
+</li>
+</ul>
+
+<p>然后剩下的选项
+</p><ul>
+<li>&ndash;tcp -t tcp socket
+</li>
+<li>&ndash;udp -u udp socket
+</li>
+<li>&ndash;raw -w raw socket
+</li>
+<li>&ndash;listening -l listen socket
+</li>
+<li>&ndash;all -a listen socket和connected socket.
+</li>
+<li>&ndash;numeric -n
+</li>
+<li>&ndash;numeric-hosts
+</li>
+<li>&ndash;numeric-ports
+</li>
+<li>&ndash;numeric-users
+</li>
+<li>&ndash;symbolic -N ???
+</li>
+<li>&ndash;extend -e 扩展信息
+</li>
+<li>&ndash;timers -o 网络计时器信息(???)
+</li>
+<li>&ndash;program -p socket所属program
+</li>
+<li>&ndash;verbose -v
+</li>
+<li>&ndash;continuous -c 1s刷新
+</li>
+<li>delay 刷新时间(sec)
+</li>
+</ul>
+
+
+<p>
+我们看看一个使用的例子
+</p>
+
+
+<pre class="example">[zhangyan04@tc-hpc-dev.tc.baidu.com]$ netstat --ip --tcp -a -e -p
+(Not all processes could be identified, non-owned process info
+ will not be shown, you would have to be root to see it all.)
+Active Internet connections (servers and established)
+Proto Recv-Q Send-Q Local Address               Foreign Address             State       User       Inode      PID/Program name
+tcp        0      0 tc-hpc-dev.tc.baidu.c:19870 *:*                         LISTEN      zhangyan04 30549010   28965/echo_server
+tcp     1024      0 tc-hpc-dev.tc.baidu.c:19870 tc-com-test00.tc.baid:60746 ESTABLISHED zhangyan04 30549012   28965/echo_server
+tcp        0   1024 tc-hpc-dev.tc.baidu.c:19870 tc-com-test00.tc.baid:60745 ESTABLISHED zhangyan04 30549011   28965/echo_server
+</pre>
+
+
+<p>
+下面是对于tcp socket的字段解释.对于unix domain socket字段不同但是这里不写出来了.
+</p><ul>
+<li>Proto socket类型
+</li>
+<li>Recv-Q 在这个socket上还有多少bytes没有copy到用户态
+</li>
+<li>Send-Q 在这个socket还有多少bytes没有ack
+</li>
+<li>Local Address 本地地址
+</li>
+<li>Foreign Address 远程地址
+</li>
+<li>State 连接状态
+<ul>
+<li>ESTABLISHED
+</li>
+<li>SYN_SENT
+</li>
+<li>SYN_RECV
+</li>
+<li>FIN_WAIT1
+</li>
+<li>FIN_WAIT2
+</li>
+<li>TIME_WAIT
+</li>
+<li>CLOSED
+</li>
+<li>CLOSE_WAIT 大量状态表示服务器句柄泄露
+</li>
+<li>LAST_ACK
+</li>
+<li>LISTEN
+</li>
+<li>CLOSING
+</li>
+<li>UNKNOWN
+</li>
+</ul>
+
+</li>
+<li>User
+</li>
+<li>PID/Program name
+</li>
+</ul>
+
 
 </div>
 
-<div id="outline-container-1-2-14" class="outline-4">
-<h4 id="sec-1-2-14"><span class="section-number-4">1.2.14</span> dstat</h4>
-<div class="outline-text-4" id="text-1-2-14">
+</div>
 
-<p>todo(dirlt): <a href="https://github.com/dagwieers/dstat">https://github.com/dagwieers/dstat</a>
+<div id="outline-container-1-6-3" class="outline-4">
+<h4 id="sec-1-6-3"><span class="section-number-4">1.6.3</span> ss(DONE)</h4>
+<div class="outline-text-4" id="text-1-6-3">
+
+<p>ss - another utility to investigate sockets 可以用来观察系统所有socket情况，提供的信息和netstat类似
 </p>
 <p>
-<a href="http://weibo.com/1840408525/AdGkO3uEL">http://weibo.com/1840408525/AdGkO3uEL</a> dstat -lamps
+ss [options] [ FILTER ]
+</p>
+<p>
+选项：
+</p><ul>
+<li>-h/&ndash;help
+</li>
+<li>-n/&ndash;numeric Do not try to resolve service names.
+</li>
+<li>-r/&ndash;resolve Try to resolve numeric address/ports.
+</li>
+<li>-a/&ndash;all Display both listening and non-listening (for TCP this means established connections) sockets.
+</li>
+<li>-l/&ndash;listening Display only listening sockets (these are omitted by default).
+</li>
+<li>-o/&ndash;options Show timer information.
+</li>
+<li>-e/&ndash;extended Show detailed socket information
+</li>
+<li>-m/&ndash;memory Show socket memory usage.
+</li>
+<li>-p/&ndash;processes Show process using socket.
+</li>
+<li>-i/&ndash;info Show internal TCP information.
+</li>
+<li>-s/&ndash;summary Print summary statistics.
+</li>
+<li>-4/&ndash;ipv4
+</li>
+<li>-6/&ndash;ipv6
+</li>
+<li>-t/&ndash;tcp Display TCP sockets.
+</li>
+<li>-f/&ndash;family unix, inet, inet6, link, netlink
+</li>
+</ul>
+
+<p>选项里面提供了许多可以观察到某个socket的详细信息以及过滤功能. 相比netstat来说ss -s可以很容易地获取概括信息
 </p>
 </div>
 
 </div>
 
-<div id="outline-container-1-2-15" class="outline-4">
-<h4 id="sec-1-2-15"><span class="section-number-4">1.2.15</span> slurm</h4>
-<div class="outline-text-4" id="text-1-2-15">
+<div id="outline-container-1-6-4" class="outline-4">
+<h4 id="sec-1-6-4"><span class="section-number-4">1.6.4</span> iftop(DONE)</h4>
+<div class="outline-text-4" id="text-1-6-4">
 
-<p>Simple Linux Utility for Resource Management
-todo(dirlt): <a href="https://computing.llnl.gov/linux/slurm/">https://computing.llnl.gov/linux/slurm/</a>
+<p><a href="http://www.ex-parrot.com/~pdw/iftop/">http://www.ex-parrot.com/~pdw/iftop/</a>
+</p>
+<p>
+iftop - display bandwidth usage on an interface by host
+</p>
+<p>
+iftop -h | [-nNpblBP] [-i interface] [-f filter code] [-F net/mask] [-G net6/mask6]
+</p><ol>
+<li>-h     Print a summary of usage.
+</li>
+<li>-n     Don't do hostname lookups.
+</li>
+<li>-N     Do not resolve port number to service names
+</li>
+<li>-p     Run in promiscuous mode, so that traffic which does not pass directly through the specified interface is also counted.
+</li>
+<li>-P     Turn on port display.
+</li>
+<li>-l     Display and count datagrams addressed to or from link-local IPv6 addresses.  The default is not to display that address category.
+</li>
+<li>-b     Don't display bar graphs of traffic.
+</li>
+<li>-B     Display bandwidth rates in bytes/sec rather than bits/sec.
+</li>
+<li>-i interface   # Listen to packets on interface.
+</li>
+<li>-f filter code # Use filter code to select the packets to count. Only IP packets are ever counted, so the specified code is evaluated as (filter code) and ip.
+</li>
+<li>-F net/mask    # Specifies an IPv4 network for traffic analysis.  If specified, iftop will only include packets flowing in to or out of the given network, and packet direction is determined rela‐tive  to  the  network boundary, rather than to the interface.  You may specify mask as a dotted quad, such as //255.255.255.0, or as a single number specifying the number of bits set in the netmask, such as //24.
+</li>
+<li>-c config file # Specifies an alternate config file.  If not specified, iftop will use ~/.iftoprc if it exists.  See below for a description of config files
+</li>
+</ol>
+
+<p>其中filter code可以用来做一些过滤，比如
+</p><ul>
+<li>not ether host ff:ff:ff:ff:ff:ff  # Ignore ethernet broadcast packets.
+</li>
+<li>port http and not host webcache.example.com  # Count web traffic only, unless it is being directed through a local web cache.（这个看上去似乎特别有效）
+</li>
+</ul>
+
+<p>个人认为比较常用选项有: -n -N -P -B. 这些选项都可以写在配置文件里面
+</p>
+<p>
+When running, iftop uses the whole screen to display network usage. At the top of the display is a logarithmic scale for the bar graph which gives a visual indication of traffic. The main part of the display lists, for each pair of hosts, the rate at which data has been sent and received over the preceding 2, 10 and 40 second intervals.  The  direction of data flow is indicated by arrows, &lt;= and =&gt;. For instance,
+</p>
+
+
+<pre class="example">foo.example.com  =&gt;  bar.example.com      1Kb  500b   100b
+                 &lt;=                       2Mb    2Mb    2Mb
+</pre>
+
+<p>
+shows, on the first line, traffic from foo.example.com to bar.example.com; in the preceding 2 seconds, this averaged 1Kbit/s, around half that amount over the preceding 10s, and a fifth of that over the whole of the last 40s. During each of those intervals, the data sent in the other direction was about 2Mbit/s. On the actual display, part of each line is  inverted to give a visual indication of the 10s average of traffic.  You might expect to see something like this where host foo is making repeated HTTP requests to bar, which is sending data back which saturates a 2Mbit/s link. By default, the pairs of hosts responsible for the most traffic (10 second average) are displayed at the top of the list. At the bottom of the display, various totals are shown, including peak traffic over the last 40s, total traffic transferred (after filtering), and total transfer rates averaged over 2s, 10s and 40s. (三个数值分别表示最近2,10,40s的传输速率)
+<img src="images/iftop-illustration.png"  alt="./images/iftop-illustration.png" />
+而其中白色部分则是表示当前传输速率是多少.以上面bar显示的195kb为基准可以看到当前传输数率在100kb/s左右
+</p>
+<p>
+可以通过按键来修改展现方式
+</p><ul>
+<li>SOURCE / DEST AGGREGATION. By  pressing s or d while iftop is running, all traffic for each source or destination will be aggregated together.  This is most useful when iftop is run in promiscuous mode, or is run on a gateway machine. （展现source/dest与否）
+</li>
+<li>PORT DISPLAY. S or D toggle the display of source and destination ports respectively. p will toggle port display on/off.（展现port与否）
+</li>
+<li>DISPLAY TYPE. t cycles through the four line display modes; the default 2-line display, with sent and received traffic on separate lines, and 3 1-line displays, with sent, received, or total  traffic shown. (只显示send, 只显示receivd, 将send + recive聚合显示, 以及分开显示)
+</li>
+<li>DISPLAY ORDER. By  default, the display is ordered according to the 10s average (2nd column).  By pressing 1, 2 or 3 it is possible to sort by the 1st, 2nd or 3rd column.   By pressing &lt; or &gt; the dis‐ play will be sorted by source or destination hostname respectively. (按照第几列进行排序)
+</li>
+<li>DISPLAY FILTERING. l allows you to enter a POSIX extended regular expression that will be used to filter hostnames shown in the display.  This is a good way to quickly limit what is shown on the  display. Note that this happens at a much later stage than filter code, and does not affect what is actually captured.  Display filters DO NOT affect the totals at the bottom of the screen.（可以根据地址进行过滤）
+</li>
+<li>PAUSE DISPLAY / FREEZE ORDER. P will pause the current display. o  will  freeze the current screen order.  This has the side effect that traffic between hosts not shown on the screen at the time will not be shown at all, although it will be included in the totals at the bottom of the screen.（将当前内容固定下来）
+</li>
+<li>SCROLL DISPLAY. j and k will scroll the display of hosts.  This feature is most useful when the display order is frozen (see above).
+</li>
+<li>FILTER CODE. f allows you to edit the filter code whilst iftop running.  This can lead to some unexpected behaviour.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-6-5" class="outline-4">
+<h4 id="sec-1-6-5"><span class="section-number-4">1.6.5</span> iptraf(TODO)</h4>
+<div class="outline-text-4" id="text-1-6-5">
+
+<p><a href="http://iptraf.seul.org/">http://iptraf.seul.org/</a>
+</p>
+<p>
+iptraf - Interactive Colorful IP LAN Monitor
 </p>
 </div>
 
 </div>
 
-<div id="outline-container-1-2-16" class="outline-4">
-<h4 id="sec-1-2-16"><span class="section-number-4">1.2.16</span> sar</h4>
-<div class="outline-text-4" id="text-1-2-16">
+<div id="outline-container-1-6-6" class="outline-4">
+<h4 id="sec-1-6-6"><span class="section-number-4">1.6.6</span> nethogs(TODO)</h4>
+<div class="outline-text-4" id="text-1-6-6">
+
+<p>todo(dirlt):
+</p></div>
+
+</div>
+
+<div id="outline-container-1-6-7" class="outline-4">
+<h4 id="sec-1-6-7"><span class="section-number-4">1.6.7</span> jnettop(TODO)</h4>
+<div class="outline-text-4" id="text-1-6-7">
+
+<p>todo(dirlt):
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-6-8" class="outline-4">
+<h4 id="sec-1-6-8"><span class="section-number-4">1.6.8</span> iperf(DONE)</h4>
+<div class="outline-text-4" id="text-1-6-8">
+
+<p><a href="https://iperf.fr/">https://iperf.fr/</a>
+</p>
+<p>
+iperf - perform network throughput tests 用来测量网络吞吐
+</p>
+<p>
+GENERAL OPTIONS
+</p><ol>
+<li>-f, &ndash;format [kmKM] # format to report: Kbits, Mbits, KBytes, MBytes
+</li>
+<li>-h, &ndash;help # print a help synopsis
+</li>
+<li>-i, &ndash;interval n # pause n seconds between periodic bandwidth reports
+</li>
+<li>-l, &ndash;len n[KM] # set length read/write buffer to n (default 8 KB)
+</li>
+<li>-m, &ndash;print_mss # print TCP maximum segment size (MTU - TCP/IP header)
+</li>
+<li>-o, &ndash;output &lt;filename&gt; # output the report or error message to this specified file
+</li>
+<li>-p, &ndash;port n # set server port to listen on/connect to to n (default 5001)
+</li>
+<li>-u, &ndash;udp # use UDP rather than TCP
+</li>
+<li>-w, &ndash;window n[KM] # TCP window size (socket buffer size)
+</li>
+<li>-B, &ndash;bind &lt;host&gt; # bind to &lt;host&gt;, an interface or multicast address
+</li>
+<li>-M, &ndash;mss n # set TCP maximum segment size (MTU - 40 bytes)
+</li>
+<li>-N, &ndash;nodelay # set TCP no delay, disabling Nagle's Algorithm
+</li>
+<li>-v, &ndash;version # print version information and quit
+</li>
+</ol>
+
+
+<p>
+SERVER SPECIFIC OPTIONS
+</p><ol>
+<li>-s, &ndash;server # run in server mode
+</li>
+<li>-U, &ndash;single_udp # run in single threaded UDP mode
+</li>
+<li>-D, &ndash;daemon # run the server as a daemon
+</li>
+</ol>
+
+
+<p>
+CLIENT SPECIFIC OPTIONS
+</p><ol>
+<li>-b, &ndash;bandwidth n[KM] # set target bandwidth to n bits/sec (default 1 Mbit/sec).  This setting requires UDP (-u).
+</li>
+<li>-c, &ndash;client &lt;host&gt; # run in client mode, connecting to &lt;host&gt;
+</li>
+<li>-d, &ndash;dualtest # Do a bidirectional test simultaneously
+</li>
+<li>-n, &ndash;num n[KM] # number of bytes to transmit (instead of -t)
+</li>
+<li>-t, &ndash;time n # time in seconds to transmit for (default 10 secs)
+</li>
+<li>-F, &ndash;fileinput &lt;name&gt; # input the data to be transmitted from a file
+</li>
+<li>-L, &ndash;listenport n # port to receive bidirectional tests back on
+</li>
+<li>-P, &ndash;parallel n # number of parallel client threads to run
+</li>
+<li>-T, &ndash;ttl n # time-to-live, for multicast (default 1)
+</li>
+</ol>
+
+
+<p>
+通常来说只需要使用简单的几个参数即可. 在服务器端iperf -s -p &lt;port&gt; -B &lt;host&gt;. 然后在客户端使用iperf -c &lt;host&gt; -p &lt;port&gt;
+</p>
+
+
+<pre class="example">➜  notes git:(master) ✗ iperf -c localhost -i 1      
+------------------------------------------------------------
+Client connecting to localhost, TCP port 5001
+TCP window size:  169 KByte (default)
+------------------------------------------------------------
+[  3] local 127.0.0.1 port 58300 connected with 127.0.0.1 port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0- 1.0 sec  6.73 GBytes  57.8 Gbits/sec
+[  3]  1.0- 2.0 sec  6.69 GBytes  57.5 Gbits/sec
+[  3]  2.0- 3.0 sec  6.42 GBytes  55.2 Gbits/sec
+[  3]  3.0- 4.0 sec  6.77 GBytes  58.1 Gbits/sec
+[  3]  4.0- 5.0 sec  6.77 GBytes  58.1 Gbits/sec
+[  3]  5.0- 6.0 sec  6.63 GBytes  57.0 Gbits/sec
+[  3]  6.0- 7.0 sec  6.02 GBytes  51.7 Gbits/sec
+[  3]  7.0- 8.0 sec  6.24 GBytes  53.6 Gbits/sec
+[  3]  8.0- 9.0 sec  4.59 GBytes  39.4 Gbits/sec
+[  3]  9.0-10.0 sec  5.58 GBytes  47.9 Gbits/sec
+[  3]  0.0-10.0 sec  62.4 GBytes  53.6 Gbits/sec
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-6-9" class="outline-4">
+<h4 id="sec-1-6-9"><span class="section-number-4">1.6.9</span> netperf(TODO)</h4>
+<div class="outline-text-4" id="text-1-6-9">
+
+<p><a href="http://www.netperf.org/netperf/">http://www.netperf.org/netperf/</a>
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-6-10" class="outline-4">
+<h4 id="sec-1-6-10"><span class="section-number-4">1.6.10</span> qperf(TODO)</h4>
+<div class="outline-text-4" id="text-1-6-10">
+
+<p><a href="http://blog.yufeng.info/archives/2234">http://blog.yufeng.info/archives/2234</a>
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-6-11" class="outline-4">
+<h4 id="sec-1-6-11"><span class="section-number-4">1.6.11</span> tcptrace(TODO)</h4>
+<div class="outline-text-4" id="text-1-6-11">
+
+<p><a href="http://www.tcptrace.org/">http://www.tcptrace.org/</a>
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-6-12" class="outline-4">
+<h4 id="sec-1-6-12"><span class="section-number-4">1.6.12</span> tcpdump(TODO)</h4>
+<div class="outline-text-4" id="text-1-6-12">
+
+<p>tcpdump - dump traffic on a network
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-6-13" class="outline-4">
+<h4 id="sec-1-6-13"><span class="section-number-4">1.6.13</span> tc(TODO)</h4>
+<div class="outline-text-4" id="text-1-6-13">
+
+<p>tc - show / manipulate traffic control settings.
+</p><ul>
+<li>traffic control <a href="http://www.lartc.org/">http://www.lartc.org/</a>
+</li>
+<li><a href="http://tldp.org/HOWTO/Traffic-Control-HOWTO/index.html">http://tldp.org/HOWTO/Traffic-Control-HOWTO/index.html</a>
+</li>
+</ul>
+
+
+
+<hr/>
+
+<p>
+netem (network emulation) <a href="http://www.linuxfoundation.org/collaborate/workgroups/networking/netem">http://www.linuxfoundation.org/collaborate/workgroups/networking/netem</a>
+</p><ul>
+<li>tc qdisc [add|change] dev [DEV] root netem [specification] # 在设备上创建和修改规则
+</li>
+<li>tc qdisc del dev [DEV] root # 删除设备上定义规则
+</li>
+<li>tc qdisc show dev [DEV] # 查看设备上定义的规则
+</li>
+</ul>
+
+
+<p>
+specification
+</p><ul>
+<li>delay 100ms 10ms 25%.  延迟分布在[100-10,100+10]. next_delay = random(90,110) * 0.75 + last_delay * 0.25
+</li>
+<li>delay 100ms 10ms distribution normal 延迟正态分布[100-10,100+10]
+</li>
+<li>loss 1%       #丢包概率1%
+</li>
+<li>loss 1% 25%   #丢包概率在random(1%) * 0.75 + last_loss * 0.25
+</li>
+<li>duplicate 1%  #重复概率1%
+</li>
+<li>corrupt 1%    #坏包概率1%
+</li>
+</ul>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-7" class="outline-3">
+<h3 id="sec-1-7"><span class="section-number-3">1.7</span> general utility</h3>
+<div class="outline-text-3" id="text-1-7">
+
+
+</div>
+
+<div id="outline-container-1-7-1" class="outline-4">
+<h4 id="sec-1-7-1"><span class="section-number-4">1.7.1</span> sar(DONE)</h4>
+<div class="outline-text-4" id="text-1-7-1">
 
 <p>sar - Collect, report, or save system activity information.
 </p>
 <p>
-下面是所有的选项
+选项：
 </p><ul>
 <li>-A 相当于指定 -bBcdqrRuvwWy -I SUM  -n FULL -P ALL.
 </li>
@@ -2976,309 +3892,366 @@ todo(dirlt): <a href="https://computing.llnl.gov/linux/slurm/">https://computing
 
 </div>
 
-<div id="outline-container-1-2-17" class="outline-4">
-<h4 id="sec-1-2-17"><span class="section-number-4">1.2.17</span> netstat</h4>
-<div class="outline-text-4" id="text-1-2-17">
+<div id="outline-container-1-7-2" class="outline-4">
+<h4 id="sec-1-7-2"><span class="section-number-4">1.7.2</span> dstat(DONE)(*)</h4>
+<div class="outline-text-4" id="text-1-7-2">
 
-<p>netstat - Print network connections, routing tables, interface statistics, masquerade connections, and multicast memberships
+<p>dstat - versatile tool for generating system resource statistics
 </p>
-<p>
-netstat可以查看很多信息，包括网络链接,路由表，网卡信息,伪装链接以及多播成员关系。但是从文档上看，一部分工作可以在/sbin/ip里面完成
-</p>
-
-
-<pre class="example">NOTE
-       This program is obsolete.  Replacement for netstat is ss.  Replacement
-       for netstat -r is ip route.  Replacement for netstat -i is ip -s link.
-       Replacement for netstat -g is ip maddr.
-</pre>
-
-<p>
-我们这里打算对netstat使用限制在查看网络连接，以及各种协议的统计数据上.
-</p>
-
-<hr/>
-
-<p>
-首先我们看看如何查看各种协议的统计数据.
-</p>
-
-
-<pre class="example">netstat {--statistics|-s} [--tcp|-t] [--udp|-u] [--raw|-w] [delay]
-</pre>
-
-<p>
-我们可以查看和tcp,udp以及raw socket相关的数据,delay表示刷新时间。
-</p>
-
-
-
-
-<pre class="example">[zhangyan04@tc-hpc-dev.tc.baidu.com]$ netstat -s
-Ip:
-    322405625 total packets received
-    0 forwarded
-    0 incoming packets discarded
-    322405625 incoming packets delivered
-    369134846 requests sent out
-    33 dropped because of missing route
-Icmp:
-    30255 ICMP messages received
-    0 input ICMP message failed.
-    ICMP input histogram:
-        echo requests: 30170
-        echo replies: 83
-        timestamp request: 2
-    30265 ICMP messages sent
-    0 ICMP messages failed
-    ICMP output histogram:
-        destination unreachable: 10
-        echo request: 83
-        echo replies: 30170
-        timestamp replies: 2
-IcmpMsg:
-        InType0: 83
-        InType8: 30170
-        InType13: 2
-        OutType0: 30170
-        OutType3: 10
-        OutType8: 83
-        OutType14: 2
-Tcp:
-    860322 active connections openings
-    199165 passive connection openings
-    824990 failed connection attempts
-    43268 connection resets received
-    17 connections established
-    322306693 segments received
-    368937621 segments send out
-    56075 segments retransmited
-    0 bad segments received.
-    423873 resets sent
-Udp:
-    68643 packets received
-    10 packets to unknown port received.
-    0 packet receive errors
-    110838 packets sent
-UdpLite:
-TcpExt:
-    1999 invalid SYN cookies received
-    5143 resets received for embryonic SYN_RECV sockets
-    2925 packets pruned from receive queue because of socket buffer overrun
-    73337 TCP sockets finished time wait in fast timer
-    85 time wait sockets recycled by time stamp
-    4 delayed acks further delayed because of locked socket
-    Quick ack mode was activated 7106 times
-    5141 times the listen queue of a socket overflowed
-    5141 SYNs to LISTEN sockets ignored
-    81288 packets directly queued to recvmsg prequeue.
-    297394763 packets directly received from backlog
-    65102525 packets directly received from prequeue
-    180740292 packets header predicted
-    257396 packets header predicted and directly queued to user
-    5983677 acknowledgments not containing data received
-    176944382 predicted acknowledgments
-    2988 times recovered from packet loss due to SACK data
-    Detected reordering 9 times using FACK
-    Detected reordering 15 times using SACK
-    Detected reordering 179 times using time stamp
-    835 congestion windows fully recovered
-    1883 congestion windows partially recovered using Hoe heuristic
-    TCPDSACKUndo: 1806
-    1093 congestion windows recovered after partial ack
-    655 TCP data loss events
-    TCPLostRetransmit: 6
-    458 timeouts after SACK recovery
-    7 timeouts in loss state
-    3586 fast retransmits
-    178 forward retransmits
-    425 retransmits in slow start
-    51048 other TCP timeouts
-    37 sack retransmits failed
-    1610293 packets collapsed in receive queue due to low socket buffer
-    7094 DSACKs sent for old packets
-    14430 DSACKs received
-    4358 connections reset due to unexpected data
-    12564 connections reset due to early user close
-    29 connections aborted due to timeout
-    TCPDSACKIgnoredOld: 12177
-    TCPDSACKIgnoredNoUndo: 347
-    TCPSackShifted: 6421
-    TCPSackMerged: 5600
-    TCPSackShiftFallback: 119131
-IpExt:
-    InBcastPkts: 22
-    InOctets: 167720101517
-    OutOctets: 169409102263
-    InBcastOctets: 8810
-</pre>
-
-<p>
-内容非常多这里也不详细分析了。
-</p>
-
-<hr/>
-
-<p>
-然后看看连接这个部分的功能
-</p>
-
-
-<pre class="example">netstat  [address_family_options]  [--tcp|-t]  [--udp|-u]   [--raw|-w]
-[--listening|-l]       [--all|-a]      [--numeric|-n]      [--numeric-
-hosts][--numeric-ports][--numeric-ports]               [--symbolic|-N]
-[--extend|-e[--extend|-e]] [--timers|-o] [--program|-p] [--verbose|-v]
-[--continuous|-c] [delay]
-</pre>
-
-<p>
-对于address_family允许指定协议族，通常来说我们可能会使用
-</p><ul>
-<li>&ndash;unix -x unix域协议族
-</li>
-<li>&ndash;inet &ndash;ip ip协议族
-</li>
-</ul>
-
-<p>然后剩下的选项
-</p><ul>
-<li>&ndash;tcp -t tcp socket
-</li>
-<li>&ndash;udp -u udp socket
-</li>
-<li>&ndash;raw -w raw socket
-</li>
-<li>&ndash;listening -l listen socket
-</li>
-<li>&ndash;all -a listen socket和connected socket.
-</li>
-<li>&ndash;numeric -n
-</li>
-<li>&ndash;numeric-hosts
-</li>
-<li>&ndash;numeric-ports
-</li>
-<li>&ndash;numeric-users
-</li>
-<li>&ndash;symbolic -N ???
-</li>
-<li>&ndash;extend -e 扩展信息
-</li>
-<li>&ndash;timers -o 网络计时器信息(???)
-</li>
-<li>&ndash;program -p socket所属program
-</li>
-<li>&ndash;verbose -v
-</li>
-<li>&ndash;continuous -c 1s刷新
-</li>
-<li>delay 刷新时间(sec)
-</li>
-</ul>
-
-
-<p>
-我们看看一个使用的例子
-</p>
-
-
-<pre class="example">[zhangyan04@tc-hpc-dev.tc.baidu.com]$ netstat --ip --tcp -a -e -p
-(Not all processes could be identified, non-owned process info
- will not be shown, you would have to be root to see it all.)
-Active Internet connections (servers and established)
-Proto Recv-Q Send-Q Local Address               Foreign Address             State       User       Inode      PID/Program name
-tcp        0      0 tc-hpc-dev.tc.baidu.c:19870 *:*                         LISTEN      zhangyan04 30549010   28965/echo_server
-tcp     1024      0 tc-hpc-dev.tc.baidu.c:19870 tc-com-test00.tc.baid:60746 ESTABLISHED zhangyan04 30549012   28965/echo_server
-tcp        0   1024 tc-hpc-dev.tc.baidu.c:19870 tc-com-test00.tc.baid:60745 ESTABLISHED zhangyan04 30549011   28965/echo_server
-</pre>
-
-
-<p>
-下面是对于tcp socket的字段解释.对于unix domain socket字段不同但是这里不写出来了.
-</p><ul>
-<li>Proto socket类型
-</li>
-<li>Recv-Q 在这个socket上还有多少bytes没有copy到用户态
-</li>
-<li>Send-Q 在这个socket还有多少bytes没有ack
-</li>
-<li>Local Address 本地地址
-</li>
-<li>Foreign Address 远程地址
-</li>
-<li>State 连接状态
 <ul>
-<li>ESTABLISHED
+<li>todo(dirlt): <a href="https://github.com/dagwieers/dstat">https://github.com/dagwieers/dstat</a>
 </li>
-<li>SYN_SENT
-</li>
-<li>SYN_RECV
-</li>
-<li>FIN_WAIT1
-</li>
-<li>FIN_WAIT2
-</li>
-<li>TIME_WAIT
-</li>
-<li>CLOSED
-</li>
-<li>CLOSE_WAIT 大量状态表示服务器句柄泄露
-</li>
-<li>LAST_ACK
-</li>
-<li>LISTEN
-</li>
-<li>CLOSING
-</li>
-<li>UNKNOWN
-</li>
-</ul>
-
-</li>
-<li>User
-</li>
-<li>PID/Program name
+<li><a href="http://weibo.com/1840408525/AdGkO3uEL">http://weibo.com/1840408525/AdGkO3uEL</a> dstat -lamps
 </li>
 </ul>
 
 
-</div>
+<p>
+dstat [-afv] [options..] [delay [count]].
+</p>
+<p>
+选项：
+</p><ul>
+<li>-c/&ndash;cpu/-C 0,3,total 查看CPU状态可以指定某个CPU
+</li>
+<li>-d/&ndash;disk/-D hda,total 查看disk状态可以指定某个disk
+</li>
+<li>-g/&ndash;page 查看page状态(page in/out)
+</li>
+<li>-i/&ndash;int/-I 5,10 查看中断情况以及某个中断号情况
+</li>
+<li>-l/&ndash;load 最近1,5,15分钟的负载
+</li>
+<li>-m/&ndash;mem 内存状况(used, buffers, cache, free)
+</li>
+<li>-n/&ndash;net/-N eth0,total 网络状况(send, receive)可以指定某个网口
+</li>
+<li>-p/&ndash;proc 进程状况
+</li>
+<li>-r/&ndash;io IO请求次数
+</li>
+<li>-s/&ndash;swap/-S swap1,total swap状况(used, free)可以指定某个分区
+</li>
+<li>-t/&ndash;time/-T/&ndash;epoch 时间
+</li>
+<li>-y/&ndash;sys 系统状况(中断和cs)
+</li>
+<li>-a/&ndash;all equals -cdngy (default)
+</li>
+<li>-f/&ndash;full 可以将-C,-D,-I,-N,-S全部展开
+</li>
+<li>-v/&ndash;vmstat equals -pmgdsc -D total
+</li>
+<li>&ndash;output file 可以将结果保存为CSV格式
+</li>
+<li>&ndash;profile 退出打印dstat本身的profile信息
+</li>
+</ul>
 
-</div>
+<p>会比较有用的选项搭配是 -cdgmnpsy
+</p>
+<p>
+还有一些可选项来查看其他子系统情况
+</p><ol>
+<li>&ndash;aio  enable aio stats (asynchronous I/O)
+</li>
+<li>&ndash;fs   enable filesystem stats (open files, inodes)
+</li>
+<li>&ndash;ipc  enable ipc stats (message queue, semaphores, shared memory)
+</li>
+<li>&ndash;lock enable file lock stats (posix, flock, read, write)
+</li>
+<li>&ndash;raw  enable raw stats (raw sockets)
+</li>
+<li>&ndash;socket enable socket stats (total, tcp, udp, raw, ip-fragments)
+</li>
+<li>&ndash;tcp  enable tcp stats (listen, established, syn, time_wait, close)
+</li>
+<li>&ndash;udp  enable udp stats (listen, active)
+</li>
+<li>&ndash;unix enable unix stats (datagram, stream, listen, active)
+</li>
+<li>&ndash;vm   enable vm stats (hard pagefaults, soft pagefaults, allocated, free)
+</li>
+</ol>
 
-<div id="outline-container-1-2-18" class="outline-4">
-<h4 id="sec-1-2-18"><span class="section-number-4">1.2.18</span> tcpdump</h4>
-<div class="outline-text-4" id="text-1-2-18">
 
-<p>todo(zhangyan04):
+<p>
+另外dstat还支持一系列插件来查询其他系统状态，具体可以man dstat.
 </p>
 </div>
 
 </div>
 
-<div id="outline-container-1-2-19" class="outline-4">
-<h4 id="sec-1-2-19"><span class="section-number-4">1.2.19</span> iftop</h4>
-<div class="outline-text-4" id="text-1-2-19">
+<div id="outline-container-1-7-3" class="outline-4">
+<h4 id="sec-1-7-3"><span class="section-number-4">1.7.3</span> lsof(TODO)</h4>
+<div class="outline-text-4" id="text-1-7-3">
 
-<p>todo(dirlt): <a href="http://www.ex-parrot.com/~pdw/iftop/">http://www.ex-parrot.com/~pdw/iftop/</a>
+</div>
+
+</div>
+
+<div id="outline-container-1-7-4" class="outline-4">
+<h4 id="sec-1-7-4"><span class="section-number-4">1.7.4</span> strace(DONE)</h4>
+<div class="outline-text-4" id="text-1-7-4">
+
+<p>strace - trace system calls and signals 可以用来追踪系统调用和信号
+</p>
+<p>
+打印系统调用的方式非常容易读，包括信号处理以及其他线程触发系统调用
+</p>
+
+
+<pre class="example">open("/dev/null", O_RDONLY) = 3
+open("/foo/bar", O_RDONLY) = -1 ENOENT (No such file or directory)
+
+sigsuspend([] &lt;unfinished ...&gt;
+--- SIGINT (Interrupt) ---
++++ killed by SIGINT +++
+
+[pid 28772] select(4, [3], NULL, NULL, NULL &lt;unfinished ...&gt;
+[pid 28779] clock_gettime(CLOCK_REALTIME, {1130322148, 939977000}) = 0
+[pid 28772] &lt;... select resumed&gt; )      = 1 (in [3])
+</pre>
+
+
+<p>
+选项:
+</p><ul>
+<li>-c <b>只是</b> 在运行结束之后打印汇总信息
+</li>
+<li>-C 在运行结束之后打印汇总信息
+</li>
+<li>-d debug mode
+</li>
+<li>-h help summary
+</li>
+<li>-i 每次syscall打印instruction pointer
+</li>
+<li>-r 打印两次syscall之间时间差
+</li>
+<li>-t/tt/ttt 打印每次调用syscall时间
+</li>
+<li>-T 打印每次调用syscall耗时
+</li>
+<li>-x/xx 非ASCII字符打印成为hex
+</li>
+<li>-e trace=[syscall-list] | [qualifier] | all 只追踪部分syscall
+<ul>
+<li>file 和文件名相关
+</li>
+<li>process 和进程相关
+</li>
+<li>network 和网络相关
+</li>
+<li>signal 和信号相关
+</li>
+<li>ipc 和ipc相关
+</li>
+<li>desc 和文件描述符相关
+</li>
+</ul>
+
+</li>
+<li>-e read=[fd-list]
+</li>
+<li>-e write=[fd-list]
+</li>
+<li>-o filename 输出文件
+</li>
+<li>-p pid 追踪当前运行进程
+</li>
+<li>-s strsize[= 32] 打印的字符串最大长度
+</li>
+<li>-S [time|calls|name] 汇总信息按照某个字段排序
+</li>
+</ul>
+
+<p>会比较有用的选项是 -C -ttt -T -r
 </p>
 </div>
 
 </div>
 
-<div id="outline-container-1-2-20" class="outline-4">
-<h4 id="sec-1-2-20"><span class="section-number-4">1.2.20</span> iftraf</h4>
-<div class="outline-text-4" id="text-1-2-20">
+<div id="outline-container-1-7-5" class="outline-4">
+<h4 id="sec-1-7-5"><span class="section-number-4">1.7.5</span> latencytop(DONE)</h4>
+<div class="outline-text-4" id="text-1-7-5">
 
-<p>todo(dirlt): <a href="http://iptraf.seul.org/">http://iptraf.seul.org/</a>
+<p><a href="https://latencytop.org/">https://latencytop.org/</a>
+</p>
+<p>
+latencytop - a tool for developers to visualize system latencies
+</p>
+<p>
+能够用来发现程序在哪些地方在系统调用上延迟时间很长
 </p>
 </div>
 
 </div>
 
-<div id="outline-container-1-2-21" class="outline-4">
-<h4 id="sec-1-2-21"><span class="section-number-4">1.2.21</span> rsync</h4>
-<div class="outline-text-4" id="text-1-2-21">
+<div id="outline-container-1-7-6" class="outline-4">
+<h4 id="sec-1-7-6"><span class="section-number-4">1.7.6</span> slurm(TODO)</h4>
+<div class="outline-text-4" id="text-1-7-6">
+
+<p>Simple Linux Utility for Resource Management <a href="https://computing.llnl.gov/linux/slurm/">https://computing.llnl.gov/linux/slurm/</a>
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-7-7" class="outline-4">
+<h4 id="sec-1-7-7"><span class="section-number-4">1.7.7</span> slabtop(TODO)</h4>
+<div class="outline-text-4" id="text-1-7-7">
+
+<p>slabtop - display kernel slab cache information in real time
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-7-8" class="outline-4">
+<h4 id="sec-1-7-8"><span class="section-number-4">1.7.8</span> nmon(DONE)(*)</h4>
+<div class="outline-text-4" id="text-1-7-8">
+
+<p>nmon - systems administrator, tuner, benchmark tool.
+</p>
+<p>
+<a href="http://nmon.sourceforge.net/pmwiki.php">http://nmon.sourceforge.net/pmwiki.php</a> Nigel's performance Monitor for Linux
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-7-9" class="outline-4">
+<h4 id="sec-1-7-9"><span class="section-number-4">1.7.9</span> collectl(TODO)(*)</h4>
+<div class="outline-text-4" id="text-1-7-9">
+
+<p><a href="http://collectl.sourceforge.net/">http://collectl.sourceforge.net/</a>
+</p>
+<p>
+collectl - Collects data that describes the current system status.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-7-10" class="outline-4">
+<h4 id="sec-1-7-10"><span class="section-number-4">1.7.10</span> glances(DONE)(*)</h4>
+<div class="outline-text-4" id="text-1-7-10">
+
+<p><a href="http://nicolargo.github.io/glances/">http://nicolargo.github.io/glances/</a>
+</p>
+<p>
+glances - A cross-platform curses-based system monitoring tool
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-7-11" class="outline-4">
+<h4 id="sec-1-7-11"><span class="section-number-4">1.7.11</span> ulimit(DONE)</h4>
+<div class="outline-text-4" id="text-1-7-11">
+
+<p>ulimit [-HSTabcdefilmnpqrstuvx [limit]]
+</p>
+<p>
+Provides control over the resources available to the shell and to processes started by it, on systems that allow such control.  The -H and -S options specify  that  the  hard  or soft  limit  is  set for the given resource. A hard limit cannot be increased by a non-root user once it is set; a soft limit may be increased up to the value of the hard limit. If neither -H nor -S is specified, both the soft and hard limits are set. The value of limit can be a number in the unit specified for the resource or one of the special values hard, soft, or unlimited, which stand for the current hard limit, the current soft limit, and no limit, respectively.  If limit is omitted, the current value of the soft limit of the resource is printed, unless the -H option is given. When more than one resource is specified, the limit name and unit are printed before the value.(-H/-S可以指定hard limit和soft limit)
+</p>
+<p>
+选项：
+</p><ol>
+<li>-a     All current limits are reported
+</li>
+<li>-b     The maximum socket buffer size
+</li>
+<li>-c     The maximum size of core files created
+</li>
+<li>-d     The maximum size of a process's data segment
+</li>
+<li>-e     The maximum scheduling priority ("nice")
+</li>
+<li>-f     The maximum size of files written by the shell and its children
+</li>
+<li>-i     The maximum number of pending signals
+</li>
+<li>-l     The maximum size that may be locked into memory
+</li>
+<li>-m     The maximum resident set size (many systems do not honor this limit)
+</li>
+<li>-n     The maximum number of open file descriptors (most systems do not allow this value to be set)
+</li>
+<li>-p     The pipe size in 512-byte blocks (this may not be set)
+</li>
+<li>-q     The maximum number of bytes in POSIX message queues
+</li>
+<li>-r     The maximum real-time scheduling priority
+</li>
+<li>-s     The maximum stack size
+</li>
+<li>-t     The maximum amount of cpu time in seconds
+</li>
+<li>-u     The maximum number of processes available to a single user
+</li>
+<li>-v     The maximum amount of virtual memory available to the shell and, on some systems, to its children
+</li>
+<li>-x     The maximum number of file locks
+</li>
+<li>-T     The maximum number of threads
+</li>
+</ol>
+
+
+<p>
+If limit is given, it is the new value of the specified resource (the -a option is display only). If no option is given, then -f is assumed. Values are in 1024-byte increments, except for -t, which is in seconds, -p, which is in units of 512-byte blocks, and -T, -b, -n, and -u, which are unscaled values. The return status is 0 unless an invalid option or argument is supplied, or an error occurs while setting a new limit.
+</p>
+
+
+
+<pre class="example">➜  notes git:(master) ✗ ulimit -a
+-t: cpu time (seconds)         unlimited
+-f: file size (blocks)         unlimited
+-d: data seg size (kbytes)     unlimited
+-s: stack size (kbytes)        8192
+-c: core file size (blocks)    0
+-m: resident set size (kbytes) unlimited
+-u: processes                  62757
+-n: file descriptors           1024
+-l: locked-in-memory size (kb) 64
+-v: address space (kb)         unlimited
+-x: file locks                 unlimited
+-i: pending signals            62757
+-q: bytes in POSIX msg queues  819200
+-e: max nice                   0
+-r: max rt priority            0
+-N 15:                         unlimited
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-7-12" class="outline-4">
+<h4 id="sec-1-7-12"><span class="section-number-4">1.7.12</span> sysprof(DONE)</h4>
+<div class="outline-text-4" id="text-1-7-12">
+
+<p>Sysprof - Statistical, system-wide Profiler for Linux : <a href="http://sysprof.com/">http://sysprof.com/</a>
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-8" class="outline-3">
+<h3 id="sec-1-8"><span class="section-number-3">1.8</span> admin utility</h3>
+<div class="outline-text-3" id="text-1-8">
+
+
+</div>
+
+<div id="outline-container-1-8-1" class="outline-4">
+<h4 id="sec-1-8-1"><span class="section-number-4">1.8.1</span> rsync(DONE)</h4>
+<div class="outline-text-4" id="text-1-8-1">
 
 <p>常用选项：
 </p><ul>
@@ -3307,338 +4280,38 @@ tcp        0   1024 tc-hpc-dev.tc.baidu.c:19870 tc-com-test00.tc.baid:60745 ESTA
 
 </div>
 
-<div id="outline-container-1-2-22" class="outline-4">
-<h4 id="sec-1-2-22"><span class="section-number-4">1.2.22</span> iodump</h4>
-<div class="outline-text-4" id="text-1-2-22">
+<div id="outline-container-1-8-2" class="outline-4">
+<h4 id="sec-1-8-2"><span class="section-number-4">1.8.2</span> uptime(DONE)</h4>
+<div class="outline-text-4" id="text-1-8-2">
 
-</div>
-
-</div>
-
-<div id="outline-container-1-2-23" class="outline-4">
-<h4 id="sec-1-2-23"><span class="section-number-4">1.2.23</span> iopp</h4>
-<div class="outline-text-4" id="text-1-2-23">
-
-</div>
-
-</div>
-
-<div id="outline-container-1-2-24" class="outline-4">
-<h4 id="sec-1-2-24"><span class="section-number-4">1.2.24</span> nethogs</h4>
-<div class="outline-text-4" id="text-1-2-24">
-
-<p>todo(dirlt):
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-2-25" class="outline-4">
-<h4 id="sec-1-2-25"><span class="section-number-4">1.2.25</span> slabtop</h4>
-<div class="outline-text-4" id="text-1-2-25">
-
-<p>slabtop - display kernel slab cache information in real time
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-2-26" class="outline-4">
-<h4 id="sec-1-2-26"><span class="section-number-4">1.2.26</span> nmon</h4>
-<div class="outline-text-4" id="text-1-2-26">
-
-<p>nmon - systems administrator, tuner, benchmark tool.
+<p>uptime - Tell how long the system has been running.
 </p>
 <p>
-<a href="http://nmon.sourceforge.net/pmwiki.php">http://nmon.sourceforge.net/pmwiki.php</a> Nigel's performance Monitor for Linux
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-2-27" class="outline-4">
-<h4 id="sec-1-2-27"><span class="section-number-4">1.2.27</span> collectl</h4>
-<div class="outline-text-4" id="text-1-2-27">
-
-<p>collectl <a href="http://collectl.sourceforge.net/">http://collectl.sourceforge.net/</a> <b>todo(dirlt):似乎相当不错，将很多关键信息都做了收集和整合</b>
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-2-28" class="outline-4">
-<h4 id="sec-1-2-28"><span class="section-number-4">1.2.28</span> numactl</h4>
-<div class="outline-text-4" id="text-1-2-28">
-
-<p>todo(dirlt):
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-2-29" class="outline-4">
-<h4 id="sec-1-2-29"><span class="section-number-4">1.2.29</span> jnettop</h4>
-<div class="outline-text-4" id="text-1-2-29">
-
-<p>todo(dirlt):
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-2-30" class="outline-4">
-<h4 id="sec-1-2-30"><span class="section-number-4">1.2.30</span> glances</h4>
-<div class="outline-text-4" id="text-1-2-30">
-
-<p><a href="http://nicolargo.github.io/glances/">http://nicolargo.github.io/glances/</a>
-</p>
-<p>
-todo(dirlt):
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-2-31" class="outline-4">
-<h4 id="sec-1-2-31"><span class="section-number-4">1.2.31</span> ifconfig</h4>
-<div class="outline-text-4" id="text-1-2-31">
-
-<p>ifconfig - configure a network interface
-</p>
-<p>
-/sbin/ifconfig可以用来配置和查看network interface.不过从文档上看的话，更加推荐使用/sbin/ip这个工具
+uptime  gives a one line display of the following information.  The current time, how long the system has been running, how many users are currently logged on, and the system load aver‐ages for the past 1, 5, and 15 minutes.
 </p>
 
 
-<pre class="example">NOTE
-       This  program is obsolete!  For replacement check ip addr and ip link.
-       For statistics use ip -s link.
+
+<pre class="example">➜  notes git:(master) ✗ uptime
+ 13:50:11 up 3 days, 17:12,  4 users,  load average: 0.27, 0.29, 0.27
 </pre>
 
 
-<p>
-这里我们不打算学习如何配置network interface只是想查看一下网卡的信息。使用/sbin/ifconfig -a可以查看所有的网卡信息，即使这个网卡关闭。
-</p>
+</div>
 
+</div>
 
-<pre class="example">[zhangyan04@tc-hpc-dev.tc.baidu.com]$ /sbin/ifconfig -a
-eth0      Link encap:Ethernet  HWaddr 00:1D:09:22:C9:A9
-          BROADCAST MULTICAST  MTU:1500  Metric:1
-          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000
-          RX bytes:0 (0.0 b)  TX bytes:0 (0.0 b)
-          Interrupt:16 Memory:f4000000-f4012800
-
-eth1      Link encap:Ethernet  HWaddr 00:1D:09:22:C9:A7
-          inet addr:10.26.140.39  Bcast:10.26.140.255  Mask:255.255.255.0
-          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-          RX packets:90671796 errors:0 dropped:14456 overruns:0 frame:0
-          TX packets:143541932 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000
-          RX bytes:71169282564 (66.2 GiB)  TX bytes:74096812979 (69.0 GiB)
-          Interrupt:16 Memory:f8000000-f8012800
-
-lo        Link encap:Local Loopback
-          inet addr:127.0.0.1  Mask:255.0.0.0
-          UP LOOPBACK RUNNING  MTU:16436  Metric:1
-          RX packets:231762640 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:231762640 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:0
-          RX bytes:98089257363 (91.3 GiB)  TX bytes:98089257363 (91.3 GiB)
-</pre>
-
-<p>
-我们这里稍微仔细看看eht1的网卡信息
-</p><ul>
-<li>encap 网卡连接网络类型Ethernet(以太网)
-</li>
-<li>HWaddr 网卡物理地址
-</li>
-<li>inet_addr 绑定IP地址
-</li>
-<li>Bcast 这个IP对应的广播地址
-</li>
-<li>Mask 子网掩码
-</li>
-<li>UP(打开) BROADCAST(广播) MULTICAST(多播) RUNNING(运行)
-</li>
-<li>MTU (Maximum Transport Unit)最大传输单元，以太网一般就是1500字节
-</li>
-<li>Metric ???
-</li>
-<li>RX packets 接受packets数目
-</li>
-<li>TX packets 传输packets数目
-</li>
-<li>errors 错误packets数目
-</li>
-<li>dropped 丢弃packets数目
-</li>
-<li>overruns frame carrier ???
-</li>
-<li>collisions ???
-</li>
-<li>txqueuelen 发送packets的queue长度上限.0应该是无限
-</li>
-<li>RX bytes 接收字节
-</li>
-<li>TX bytes 发送字节
-</li>
-</ul>
-
-
-<p>
-使用ifconfig能够创建虚拟网卡绑定IP
-</p><ul>
-<li>sudo ifconfig &lt;name&gt; &lt;ip&gt;
-</li>
-<li>sudo ifconfig &lt;name&gt; down # 销毁虚拟网卡
-</li>
-</ul>
-
+<div id="outline-container-1-8-3" class="outline-4">
+<h4 id="sec-1-8-3"><span class="section-number-4">1.8.3</span> ttyload(DONE)</h4>
+<div class="outline-text-4" id="text-1-8-3">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-2-32" class="outline-4">
-<h4 id="sec-1-2-32"><span class="section-number-4">1.2.32</span> ps(process snapshot)</h4>
-<div class="outline-text-4" id="text-1-2-32">
-
-<p>进程状态有下面几种：
-</p><ul>
-<li>D    uninterruptible sleep (usually IO)
-</li>
-<li>R    running or runnable (on run queue)
-</li>
-<li>S    interruptible sleep (waiting for an event to complete)
-</li>
-<li>T    stopped, either by a job control signal or because it is being traced.
-</li>
-<li>W    paging (not valid since the 2.6.xx kernel)
-</li>
-<li>X    dead (should never be seen)
-</li>
-<li>Z    defunct ("zombie") process, terminated but not reaped by its parent.
-</li>
-<li>&lt;    high-priority (not nice to other users)
-</li>
-<li>N    low-priority (nice to other users)
-</li>
-<li>L    has pages locked into memory (for real-time and custom IO)
-</li>
-<li>s    is a session leader
-</li>
-<li>l    is multi-threaded (using CLONE_THREAD, like NPTL pthreads do)
-</li>
-<li>+    is in the foreground process group.
-</li>
-</ul>
-
-
-
-<hr/>
-
-<p>
-在使用ubuntu的apt-get时候，可能会出现一些异常的状况，我们直接终止了apt-get。但是这个时候apt-get软件本身出于一个不正常的状态，
-导致之后不能够启动apt-get。如果观察进程的话会出现下面一些可疑的进程
-</p>
-
-
-<pre class="example">dp@dp1:~$ ps aux | grep "apt"
-root      3587  0.0  0.0  36148 22800 ?        Ds   Oct08   0:00 /usr/bin/dpkg --status-fd 50 --unpack --auto-deconfigure /var/cache/apt/archives/sgml-data_2.0.4_all.deb
-root      9579  0.0  0.0  35992 22744 ?        Ds   Oct19   0:00 /usr/bin/dpkg --status-fd 50 --unpack --auto-deconfigure /var/cache/apt/archives/iftop_0.17-16_amd64.deb
-root     25957  0.0  0.0  36120 22796 ?        Ds   Nov05   0:00 /usr/bin/dpkg --status-fd 50 --unpack --auto-deconfigure /var/cache/apt/archives/iftop_0.17-16_amd64.deb /var/cache/apt/archives/iotop_0.4-1_all.deb
-dp       30586  0.0  0.0   7628  1020 pts/2    S+   08:59   0:00 grep --color=auto apt
-</pre>
-
-<p>
-这些进程的父进程都是init进程，并且状态是uninterruptible sleep，给kill -9也没有办法终止，唯一的办法只能reboot机器来解决这个问题。关于这个问题可以看stackoverflow上面的解答 How to stop 'uninterruptible' process on Linux? - Stack Overflow <a href="http://stackoverflow.com/questions/767551/how-to-stop-uninterruptible-process-on-linux">http://stackoverflow.com/questions/767551/how-to-stop-uninterruptible-process-on-linux</a>
-</p><ul>
-<li>Simple answer: you cannot. Longer answer: the uninterruptable sleep means the process will not be woken up by signals. It can be only woken up by what it's waiting for. When I get such situations eg. with CD-ROM, I usually reset the computer by using suspend-to-disk and resuming.
-</li>
-<li>The D state basically means that the process is waiting for disk I/O, or other block I/O that can't be interrupted. Sometimes this means the kernel or device is feverishly trying to read a bad block (especially from an optical disk). Sometimes it means there's something else. The process cannot be killed until it gets out of the D state. Find out what it is waiting for and fix that. The easy way is to reboot. Sometimes removing the disk in question helps, but that can be rather dangerous: unfixable catastrophic hardware failure if you don't know what you're doing (read: smoke coming out).
-</li>
-</ul>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-1-2-33" class="outline-4">
-<h4 id="sec-1-2-33"><span class="section-number-4">1.2.33</span> ulimit</h4>
-<div class="outline-text-4" id="text-1-2-33">
-
-<p>todo(dirlt)
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-2-34" class="outline-4">
-<h4 id="sec-1-2-34"><span class="section-number-4">1.2.34</span> sysprof</h4>
-<div class="outline-text-4" id="text-1-2-34">
-
-<p>Sysprof - Statistical, system-wide Profiler for Linux : <a href="http://sysprof.com/">http://sysprof.com/</a>
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-2-35" class="outline-4">
-<h4 id="sec-1-2-35"><span class="section-number-4">1.2.35</span> ss</h4>
-<div class="outline-text-4" id="text-1-2-35">
-
-
-</div>
-
-</div>
-
-<div id="outline-container-1-2-36" class="outline-4">
-<h4 id="sec-1-2-36"><span class="section-number-4">1.2.36</span> <i>SYS ADMIN</i></h4>
-<div class="outline-text-4" id="text-1-2-36">
-
-</div>
-
-</div>
-
-<div id="outline-container-1-2-37" class="outline-4">
-<h4 id="sec-1-2-37"><span class="section-number-4">1.2.37</span> uptime</h4>
-<div class="outline-text-4" id="text-1-2-37">
-
-</div>
-
-</div>
-
-<div id="outline-container-1-2-38" class="outline-4">
-<h4 id="sec-1-2-38"><span class="section-number-4">1.2.38</span> top</h4>
-<div class="outline-text-4" id="text-1-2-38">
-
-</div>
-
-</div>
-
-<div id="outline-container-1-2-39" class="outline-4">
-<h4 id="sec-1-2-39"><span class="section-number-4">1.2.39</span> htop</h4>
-<div class="outline-text-4" id="text-1-2-39">
-
-</div>
-
-</div>
-
-<div id="outline-container-1-2-40" class="outline-4">
-<h4 id="sec-1-2-40"><span class="section-number-4">1.2.40</span> ttyload</h4>
-<div class="outline-text-4" id="text-1-2-40">
-
-</div>
-
-</div>
-
-<div id="outline-container-1-2-41" class="outline-4">
-<h4 id="sec-1-2-41"><span class="section-number-4">1.2.41</span> dmesg</h4>
-<div class="outline-text-4" id="text-1-2-41">
+<div id="outline-container-1-8-4" class="outline-4">
+<h4 id="sec-1-8-4"><span class="section-number-4">1.8.4</span> dmesg(DONE)</h4>
+<div class="outline-text-4" id="text-1-8-4">
 
 <p>能够察看开机时启动信息(启动信息保存在/var/log/dmesg文件里)
 </p>
@@ -3665,15 +4338,13 @@ BIOS-provided physical RAM map:
 
 </div>
 
-<div id="outline-container-1-2-42" class="outline-4">
-<h4 id="sec-1-2-42"><span class="section-number-4">1.2.42</span> quota</h4>
-<div class="outline-text-4" id="text-1-2-42">
+<div id="outline-container-1-8-5" class="outline-4">
+<h4 id="sec-1-8-5"><span class="section-number-4">1.8.5</span> quota(DONE)</h4>
+<div class="outline-text-4" id="text-1-8-5">
 
-<p><a href="http://blog.itpub.net/post/7184/488931">http://blog.itpub.net/post/7184/488931</a>
+<p><a href="http://blog.itpub.net/post/7184/488931">http://blog.itpub.net/post/7184/488931</a> quota用来为用户编辑磁盘配额
 </p>
-<p>
-quota用来为用户编辑磁盘配额。
-</p><ul>
+<ul>
 <li>初始化磁盘配额功能
 </li>
 </ul>
@@ -3752,9 +4423,9 @@ Filesystem blocks soft hard inodes soft hard
 
 </div>
 
-<div id="outline-container-1-2-43" class="outline-4">
-<h4 id="sec-1-2-43"><span class="section-number-4">1.2.43</span> crontab</h4>
-<div class="outline-text-4" id="text-1-2-43">
+<div id="outline-container-1-8-6" class="outline-4">
+<h4 id="sec-1-8-6"><span class="section-number-4">1.8.6</span> crontab(DONE)</h4>
+<div class="outline-text-4" id="text-1-8-6">
 
 <p>crontab就是为了能够使得工作自动化在特定的时间或者是时间间隔执行特定的程序。crontab -e就可以编辑crontab配置文件，默认是vim编辑器。crontab配置文件里面可以像shell一样定义变量，之后就是任务描述，每一个任务分为6个字段: minute hour day month week command
 </p><ol>
@@ -3798,9 +4469,9 @@ Filesystem blocks soft hard inodes soft hard
 
 </div>
 
-<div id="outline-container-1-2-44" class="outline-4">
-<h4 id="sec-1-2-44"><span class="section-number-4">1.2.44</span> ntp</h4>
-<div class="outline-text-4" id="text-1-2-44">
+<div id="outline-container-1-8-7" class="outline-4">
+<h4 id="sec-1-8-7"><span class="section-number-4">1.8.7</span> ntp(DONE)</h4>
+<div class="outline-text-4" id="text-1-8-7">
 
 <ul>
 <li>ntp.org: Home of the Network Time Protocol <a href="http://www.ntp.org/">http://www.ntp.org/</a> <b>note(dirlt):这个项目应该是非常复杂的</b>
@@ -3860,19 +4531,17 @@ ntp(network time protocol)是用来做机器时间同步的，包含下面几个
 
 </div>
 
-<div id="outline-container-1-2-45" class="outline-4">
-<h4 id="sec-1-2-45"><span class="section-number-4">1.2.45</span> cssh</h4>
-<div class="outline-text-4" id="text-1-2-45">
-
-<p>todo(dirlt):
-</p>
-</div>
+<div id="outline-container-1-8-8" class="outline-4">
+<h4 id="sec-1-8-8"><span class="section-number-4">1.8.8</span> cssh(TODO)</h4>
+<div class="outline-text-4" id="text-1-8-8">
 
 </div>
 
-<div id="outline-container-1-2-46" class="outline-4">
-<h4 id="sec-1-2-46"><span class="section-number-4">1.2.46</span> iptables</h4>
-<div class="outline-text-4" id="text-1-2-46">
+</div>
+
+<div id="outline-container-1-8-9" class="outline-4">
+<h4 id="sec-1-8-9"><span class="section-number-4">1.8.9</span> iptables(DONE)</h4>
+<div class="outline-text-4" id="text-1-8-9">
 
 <p>查看当前过滤规则 iptables -L/-S
 </p>
@@ -3926,46 +4595,20 @@ target     prot opt source               destination
 </pre>
 
 </div>
-
-</div>
-
-<div id="outline-container-1-2-47" class="outline-4">
-<h4 id="sec-1-2-47"><span class="section-number-4">1.2.47</span> tc</h4>
-<div class="outline-text-4" id="text-1-2-47">
-
-<p>traffic control <a href="http://www.lartc.org/">http://www.lartc.org/</a>
-</p>
-<p>
-todo(dirlt):
-</p>
 </div>
 
 </div>
 
-<div id="outline-container-1-2-48" class="outline-4">
-<h4 id="sec-1-2-48"><span class="section-number-4">1.2.48</span> qperf</h4>
-<div class="outline-text-4" id="text-1-2-48">
+<div id="outline-container-1-9" class="outline-3">
+<h3 id="sec-1-9"><span class="section-number-3">1.9</span> http utility</h3>
+<div class="outline-text-3" id="text-1-9">
 
-<p><a href="http://blog.yufeng.info/archives/2234">http://blog.yufeng.info/archives/2234</a>
-</p>
-<p>
-todo(dirlt):
-</p>
-</div>
 
 </div>
 
-<div id="outline-container-1-2-49" class="outline-4">
-<h4 id="sec-1-2-49"><span class="section-number-4">1.2.49</span> <i>HTTP BENCH TOOL</i></h4>
-<div class="outline-text-4" id="text-1-2-49">
-
-</div>
-
-</div>
-
-<div id="outline-container-1-2-50" class="outline-4">
-<h4 id="sec-1-2-50"><span class="section-number-4">1.2.50</span> httperf</h4>
-<div class="outline-text-4" id="text-1-2-50">
+<div id="outline-container-1-9-1" class="outline-4">
+<h4 id="sec-1-9-1"><span class="section-number-4">1.9.1</span> httperf(DONE)</h4>
+<div class="outline-text-4" id="text-1-9-1">
 
 <p>download <a href="http://www.hpl.hp.com/research/linux/httperf/">http://www.hpl.hp.com/research/linux/httperf/</a>
 </p>
@@ -4181,9 +4824,9 @@ Session length histogram: 4 7 4... 3 3 240
 
 </div>
 
-<div id="outline-container-1-2-51" class="outline-4">
-<h4 id="sec-1-2-51"><span class="section-number-4">1.2.51</span> ab</h4>
-<div class="outline-text-4" id="text-1-2-51">
+<div id="outline-container-1-9-2" class="outline-4">
+<h4 id="sec-1-9-2"><span class="section-number-4">1.9.2</span> ab(DONE)</h4>
+<div class="outline-text-4" id="text-1-9-2">
 
 <p>ab(apache benchmarking)是apache httpd自带的一个HTTP Server个的工具。下面是这个工具命令行参数
 </p>
@@ -4317,9 +4960,9 @@ Percentage of the requests served within a certain time (ms)
 
 </div>
 
-<div id="outline-container-1-2-52" class="outline-4">
-<h4 id="sec-1-2-52"><span class="section-number-4">1.2.52</span> autobench</h4>
-<div class="outline-text-4" id="text-1-2-52">
+<div id="outline-container-1-9-3" class="outline-4">
+<h4 id="sec-1-9-3"><span class="section-number-4">1.9.3</span> autobench(DONE)</h4>
+<div class="outline-text-4" id="text-1-9-3">
 
 <p><a href="http://www.xenoclast.org/autobench/">http://www.xenoclast.org/autobench/</a>
 </p>
@@ -4397,16 +5040,16 @@ todo(dirlt):后续可能需要学习如何使用autobench分布式测试，因�
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> kernel</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-1-10" class="outline-3">
+<h3 id="sec-1-10"><span class="section-number-3">1.10</span> kernel</h3>
+<div class="outline-text-3" id="text-1-10">
 
 
 </div>
 
-<div id="outline-container-1-3-1" class="outline-4">
-<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> vmlinuz</h4>
-<div class="outline-text-4" id="text-1-3-1">
+<div id="outline-container-1-10-1" class="outline-4">
+<h4 id="sec-1-10-1"><span class="section-number-4">1.10.1</span> vmlinuz</h4>
+<div class="outline-text-4" id="text-1-10-1">
 
 <p>vmlinuz是可引导的、压缩的内核。“vm”代表“Virtual Memory”。Linux 支持虚拟内存，不像老的操作系统比如DOS有640KB内存的限制。Linux能够使用硬盘空间作为虚拟内存，因此得名“vm”。vmlinuz是可执行的Linux内核，它位于/boot/vmlinuz，它一般是一个软链接。vmlinux是未压缩的内核，vmlinuz是vmlinux的压缩文件。
 </p>
@@ -4420,9 +5063,9 @@ zImage(vmlinuz)和bzImage(vmlinuz)都是用gzip压缩的。它们不仅是一个
 
 </div>
 
-<div id="outline-container-1-3-2" class="outline-4">
-<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> tcp IO</h4>
-<div class="outline-text-4" id="text-1-3-2">
+<div id="outline-container-1-10-2" class="outline-4">
+<h4 id="sec-1-10-2"><span class="section-number-4">1.10.2</span> tcp IO</h4>
+<div class="outline-text-4" id="text-1-10-2">
 
 <p><a href="http://www.ece.virginia.edu/cheetah/documents/papers/TCPlinux.pdf">http://www.ece.virginia.edu/cheetah/documents/papers/TCPlinux.pdf</a>
 </p>
@@ -4523,9 +5166,9 @@ txqueuelen = 1000
 
 </div>
 
-<div id="outline-container-1-3-3" class="outline-4">
-<h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> tcp congestion control</h4>
-<div class="outline-text-4" id="text-1-3-3">
+<div id="outline-container-1-10-3" class="outline-4">
+<h4 id="sec-1-10-3"><span class="section-number-4">1.10.3</span> tcp congestion control</h4>
+<div class="outline-text-4" id="text-1-10-3">
 
 <p><img src="images/tcp-congestion-control.png"  alt="./images/tcp-congestion-control.png" />
 </p>
@@ -4545,9 +5188,9 @@ txqueuelen = 1000
 
 </div>
 
-<div id="outline-container-1-3-4" class="outline-4">
-<h4 id="sec-1-3-4"><span class="section-number-4">1.3.4</span> kernel panic</h4>
-<div class="outline-text-4" id="text-1-3-4">
+<div id="outline-container-1-10-4" class="outline-4">
+<h4 id="sec-1-10-4"><span class="section-number-4">1.10.4</span> kernel panic</h4>
+<div class="outline-text-4" id="text-1-10-4">
 
 <p>todo(dirlt):
 </p>
@@ -4559,16 +5202,16 @@ txqueuelen = 1000
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> application</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-1-11" class="outline-3">
+<h3 id="sec-1-11"><span class="section-number-3">1.11</span> application</h3>
+<div class="outline-text-3" id="text-1-11">
 
 
 </div>
 
-<div id="outline-container-1-4-1" class="outline-4">
-<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> 返回值问题</h4>
-<div class="outline-text-4" id="text-1-4-1">
+<div id="outline-container-1-11-1" class="outline-4">
+<h4 id="sec-1-11-1"><span class="section-number-4">1.11.1</span> 返回值问题</h4>
+<div class="outline-text-4" id="text-1-11-1">
 
 
 <hr/>
@@ -4634,9 +5277,9 @@ exit(code)
 
 </div>
 
-<div id="outline-container-1-4-2" class="outline-4">
-<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> dp8网卡问题</h4>
-<div class="outline-text-4" id="text-1-4-2">
+<div id="outline-container-1-11-2" class="outline-4">
+<h4 id="sec-1-11-2"><span class="section-number-4">1.11.2</span> dp8网卡问题</h4>
+<div class="outline-text-4" id="text-1-11-2">
 
 <p>当时dp8的网络流量从一个非常大的值变为非常小的值，检查/proc/net/netstat，以下几个统计数值dp8和其他机器差距较大（相差1-2个数量级）：
 </p><ul>
@@ -4706,9 +5349,9 @@ exit(code)
 
 </div>
 
-<div id="outline-container-1-4-3" class="outline-4">
-<h4 id="sec-1-4-3"><span class="section-number-4">1.4.3</span> 修改资源限制</h4>
-<div class="outline-text-4" id="text-1-4-3">
+<div id="outline-container-1-11-3" class="outline-4">
+<h4 id="sec-1-11-3"><span class="section-number-4">1.11.3</span> 修改资源限制</h4>
+<div class="outline-text-4" id="text-1-11-3">
 
 <p>临时的修改方式可以通过ulimit来进行修改，也可以通过修改文件/etc/security/limits.conf来永久修改
 </p>
@@ -4724,9 +5367,9 @@ hadoop - nproc 40960
 
 </div>
 
-<div id="outline-container-1-4-4" class="outline-4">
-<h4 id="sec-1-4-4"><span class="section-number-4">1.4.4</span> CPU温度过高</h4>
-<div class="outline-text-4" id="text-1-4-4">
+<div id="outline-container-1-11-4" class="outline-4">
+<h4 id="sec-1-11-4"><span class="section-number-4">1.11.4</span> CPU温度过高</h4>
+<div class="outline-text-4" id="text-1-11-4">
 
 <p>这个问题是我在Ubuntu PC上面遇到的，明显的感觉就是运行速度变慢。然后在syslog里面出现如下日志：
 </p>
@@ -4744,9 +5387,9 @@ May  2 18:24:21 umeng-ubuntu-pc kernel: [ 1188.717622] CPU3: Package temperature
 
 </div>
 
-<div id="outline-container-1-4-5" class="outline-4">
-<h4 id="sec-1-4-5"><span class="section-number-4">1.4.5</span> sync hangup</h4>
-<div class="outline-text-4" id="text-1-4-5">
+<div id="outline-container-1-11-5" class="outline-4">
+<h4 id="sec-1-11-5"><span class="section-number-4">1.11.5</span> sync hangup</h4>
+<div class="outline-text-4" id="text-1-11-5">
 
 <ul>
 <li>kill -KILL fails to kill process : <a href="http://lists.freebsd.org/pipermail/freebsd-questions/2008-September/182821.html">http://lists.freebsd.org/pipermail/freebsd-questions/2008-September/182821.html</a>
@@ -4760,9 +5403,9 @@ May  2 18:24:21 umeng-ubuntu-pc kernel: [ 1188.717622] CPU3: Package temperature
 
 </div>
 
-<div id="outline-container-1-4-6" class="outline-4">
-<h4 id="sec-1-4-6"><span class="section-number-4">1.4.6</span> 更换glibc</h4>
-<div class="outline-text-4" id="text-1-4-6">
+<div id="outline-container-1-11-6" class="outline-4">
+<h4 id="sec-1-11-6"><span class="section-number-4">1.11.6</span> 更换glibc</h4>
+<div class="outline-text-4" id="text-1-11-6">
 
 <ul>
 <li>linux - How to recover after deleting the symbolic link libc.so.6? - Stack Overflow : <a href="http://stackoverflow.com/questions/12249547/how-to-recover-after-deleting-the-symbolic-link-libc-so-6">http://stackoverflow.com/questions/12249547/how-to-recover-after-deleting-the-symbolic-link-libc-so-6</a>
@@ -4831,9 +5474,9 @@ A copy of the C library was found in an unexpected directory | Blog : <a href="h
 
 </div>
 
-<div id="outline-container-1-4-7" class="outline-4">
-<h4 id="sec-1-4-7"><span class="section-number-4">1.4.7</span> 允许不从tty执行sudo</h4>
-<div class="outline-text-4" id="text-1-4-7">
+<div id="outline-container-1-11-7" class="outline-4">
+<h4 id="sec-1-11-7"><span class="section-number-4">1.11.7</span> 允许不从tty执行sudo</h4>
+<div class="outline-text-4" id="text-1-11-7">
 
 <p>修改/etc/sudoers文件，注释掉
 </p>
@@ -4847,9 +5490,9 @@ A copy of the C library was found in an unexpected directory | Blog : <a href="h
 
 </div>
 
-<div id="outline-container-1-4-8" class="outline-4">
-<h4 id="sec-1-4-8"><span class="section-number-4">1.4.8</span> ssh proxy</h4>
-<div class="outline-text-4" id="text-1-4-8">
+<div id="outline-container-1-11-8" class="outline-4">
+<h4 id="sec-1-11-8"><span class="section-number-4">1.11.8</span> ssh proxy</h4>
+<div class="outline-text-4" id="text-1-11-8">
 
 <p><a href="http://serverfault.com/questions/37629/how-do-i-do-multihop-scp-transfers">http://serverfault.com/questions/37629/how-do-i-do-multihop-scp-transfers</a>
 </p><ul>
@@ -4893,7 +5536,7 @@ A copy of the C library was found in an unexpected directory | Blog : <a href="h
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-07-31T21:21+0800</p>
+<p class="date">Date: 2014-09-18T11:21+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

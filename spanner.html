@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="spanner"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-07-01T07:44+0800"/>
+<meta name="generated" content="2014-09-18T11:20+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -265,7 +265,7 @@
 </li>
 <li>spanserver serve data
 </li>
-<li>location proxy 用来定位spanserver location <b>todo(dirlt)：confuse with zonemaster</b>
+<li>location proxy 用来定位spanserver location
 </li>
 <li>universe master和plaecment driver都是单例
 <ul>
@@ -327,6 +327,9 @@
 </ul>
 
 
+<p>
+&lt;大规模分布式存储系统&gt;: 通过Paxos协议实现了跨数据中心的多个副本之间的一致性。另外每个主副本所在的spanserver还会实现一个锁表用于并发控制，读写事务操作某个子表上的目录时需要通过锁表避免多个事务之间相互干扰。除了锁表每个主副本上还有一个事务管理器，如果事务在一个Paxos组里可以绕过事务管理器，但是一旦事务跨多个Paxos组，就需要事务管理器来协调。
+</p>
 </div>
 
 </div>
@@ -469,6 +472,9 @@ true time api看上去非常简洁，也非常好理解。就是说请求当前�
 <p>
 <b>note(dirlt)：感觉他们在设计这个的时候就是胆大心细</b>
 </p>
+<p>
+&lt;大规模分布式存储系统&gt;: 为了实现并发控制，数据库需要给每个事务分配全局唯一的事务id。然而在分布式系统中很难生成全局唯一id。一种方式才哦那个percolator中的做法，专门部署一套Oracle数据库用于生成全局唯一id。虽然Oracle逻辑上是一个单点，但是实现的功能单一，因而能够做得很高效。
+</p>
 </div>
 
 </div>
@@ -569,7 +575,7 @@ true time api看上去非常简洁，也非常好理解。就是说请求当前�
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-07-01T07:44+0800</p>
+<p class="date">Date: 2014-09-18T11:20+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<title>Linux System and Performance Monitoring</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="Linux System and Performance Monitoring"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2014-09-18T11:21+0800"/>
+<meta name="author" content="dirtysalt"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+
+
+</head>
+<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Linux System and Performance Monitoring</h1>
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1">1 linux-system-and-performance-monitoring</a>
+<ul>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-1">1.1 Performance Monitoring Introduction</a>
+<ul>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-1-1">1.1.1 Determining Application Type</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-1-2">1.1.2 Determining Baseline Statistics</a></li>
+</ul>
+</li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-2">1.2 Installing Monitoring Tools</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-3">1.3 Introducing the CPU</a>
+<ul>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-3-1">1.3.1 Context Switches</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-3-2">1.3.2 The Run Queue</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-3-3">1.3.3 CPU Utilization</a></li>
+</ul>
+</li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-4">1.4 CPU Performance Monitoring</a>
+<ul>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-4-1">1.4.1 Using the vmstat Utility</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-4-2">1.4.2 Case Study: Sustained CPU Utilization</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-4-3">1.4.3 Case Study: Overloaded Scheduler</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-4-4">1.4.4 Using the mpstat Utility</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-4-5">1.4.5 Underutilized Process Load</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-4-6">1.4.6 Conclusion</a></li>
+</ul>
+</li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-5">1.5 Introducing Virtual Memory</a>
+<ul>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-5-1">1.5.1 Virtual Memory Pages</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-5-2">1.5.2 Kernel Memory Paging</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-5-3">1.5.3 The Page Frame Reclaim Algorithm (PFRA)</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-5-4">1.5.4 kswapd</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-5-5">1.5.5 Kernel Paging with pdflush</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-5-6">1.5.6 Case Study: Large Inbound I/O</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-5-7">1.5.7 Conclusion</a></li>
+</ul>
+</li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-6">1.6 Introducing I/O Monitoring</a>
+<ul>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-6-1">1.6.1 Reading and Writing Data - Memory Pages</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-6-2">1.6.2 Major and Minor Page Faults</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-6-3">1.6.3 The File Buffer Cache</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-6-4">1.6.4 Types of Memory Pages</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-6-5">1.6.5 Writing Data Pages Back to Disk</a></li>
+</ul>
+</li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-7">1.7 Monitoring I/O</a>
+<ul>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-7-1">1.7.1 Calculating IO’s Per Second</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-7-2">1.7.2 Random vs Sequential I/O</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-7-3">1.7.3 When Virtual Memory Kills I/O</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-7-4">1.7.4 Determining Application I/O Usage</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-7-5">1.7.5 Conclusion</a></li>
+</ul>
+</li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-8">1.8 Introducing Network Monitoring</a>
+<ul>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-8-1">1.8.1 Ethernet Configuration Settings</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-8-2">1.8.2 Monitoring Network Throughput</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-8-3">1.8.3 Individual Connections with tcptrace</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1-8-4">1.8.4 Conclusion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> linux-system-and-performance-monitoring</h2>
+<div class="outline-text-2" id="text-1">
+
+
+<p>
+<a href="http://www.ufsdump.org/papers/oscon2009-linux-monitoring.pdf">http://www.ufsdump.org/papers/oscon2009-linux-monitoring.pdf</a>
+</p>
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Performance Monitoring Introduction</h3>
+<div class="outline-text-3" id="text-1-1">
+
+
+</div>
+
+<div id="outline-container-1-1-1" class="outline-4">
+<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> Determining Application Type</h4>
+<div class="outline-text-4" id="text-1-1-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-1-2" class="outline-4">
+<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> Determining Baseline Statistics</h4>
+<div class="outline-text-4" id="text-1-1-2">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Installing Monitoring Tools</h3>
+<div class="outline-text-3" id="text-1-2">
+
+<p><img src="images/performance-monitoring-tools.png"  alt="./images/performance-monitoring-tools.png" />
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Introducing the CPU</h3>
+<div class="outline-text-3" id="text-1-3">
+
+<p>The following list outlines the priorities from highest to lowest:
+</p><ul>
+<li>Interrupts – Devices tell the kernel that they are done  processing. For example, a NIC delivers a packet or a hard drive provides an IO request（中断处理优先级别最高）
+</li>
+<li>Kernel (System) Processes – All kernel processing is handled at this level of priority.
+</li>
+<li>User Processes – This space is often referred to as “userland”. All software applications run in the user space. This space has the lowest priority in the kernel scheduling mechanism.
+</li>
+</ul>
+
+
+
+</div>
+
+<div id="outline-container-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> Context Switches</h4>
+<div class="outline-text-4" id="text-1-3-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3-2" class="outline-4">
+<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> The Run Queue</h4>
+<div class="outline-text-4" id="text-1-3-2">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3-3" class="outline-4">
+<h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> CPU Utilization</h4>
+<div class="outline-text-4" id="text-1-3-3">
+
+<p>Most performance monitoring tools categorize CPU utilization into the following categories:
+</p><ul>
+<li>User Time – The percentage of time a CPU spends executing process threads in the user space.
+</li>
+<li>System Time – The percentage of time the CPU spends executing kernel threads and interrupts.
+</li>
+<li>Wait IO – The percentage of time a CPU spends idle because ALL process threads are blocked waiting for IO requests to complete.
+</li>
+<li>Idle – The percentage of time a processor spends in a completely idle state.
+</li>
+</ul>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> CPU Performance Monitoring</h3>
+<div class="outline-text-3" id="text-1-4">
+
+
+</div>
+
+<div id="outline-container-1-4-1" class="outline-4">
+<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> Using the vmstat Utility</h4>
+<div class="outline-text-4" id="text-1-4-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-4-2" class="outline-4">
+<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> Case Study: Sustained CPU Utilization</h4>
+<div class="outline-text-4" id="text-1-4-2">
+
+<p>There are a high amount of interrupts (in) and a low amount of context switches. It appears that a single process is making requests to hardware devices.（触发中断次数很多但是cs很少，说明在某个进程内有很多硬件设备请求）
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-4-3" class="outline-4">
+<h4 id="sec-1-4-3"><span class="section-number-4">1.4.3</span> Case Study: Overloaded Scheduler</h4>
+<div class="outline-text-4" id="text-1-4-3">
+
+<p>The amount of context switches is higher than interrupts, suggesting that the kernel has to spend a considerable amount of time context switching threads.（cs次数远比中断次数高很多，说明内核花费了大量时间在线程切换上）
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-4-4" class="outline-4">
+<h4 id="sec-1-4-4"><span class="section-number-4">1.4.4</span> Using the mpstat Utility</h4>
+<div class="outline-text-4" id="text-1-4-4">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-4-5" class="outline-4">
+<h4 id="sec-1-4-5"><span class="section-number-4">1.4.5</span> Underutilized Process Load</h4>
+<div class="outline-text-4" id="text-1-4-5">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-4-6" class="outline-4">
+<h4 id="sec-1-4-6"><span class="section-number-4">1.4.6</span> Conclusion</h4>
+<div class="outline-text-4" id="text-1-4-6">
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Introducing Virtual Memory</h3>
+<div class="outline-text-3" id="text-1-5">
+
+
+</div>
+
+<div id="outline-container-1-5-1" class="outline-4">
+<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> Virtual Memory Pages</h4>
+<div class="outline-text-4" id="text-1-5-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-5-2" class="outline-4">
+<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> Kernel Memory Paging</h4>
+<div class="outline-text-4" id="text-1-5-2">
+
+<p>Memory paging is a normal activity not to be confused with memory swapping. Memory paging is the process of synching memory back to disk at normal intervals. Over time, applications will grow to consume all of memory. At some point, the kernel must scan memory and reclaim unused pages to be allocated to other applications.（区分于memory swapping，包括定时检查一些需要将内容写回磁盘的内存数据，以及如果内存不够时候进行内存回收。memory swapping操作是如果内存依然不够的话会将一些in-active pages置换到磁盘）
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-5-3" class="outline-4">
+<h4 id="sec-1-5-3"><span class="section-number-4">1.5.3</span> The Page Frame Reclaim Algorithm (PFRA)</h4>
+<div class="outline-text-4" id="text-1-5-3">
+
+<p>The PFRA is responsible for freeing memory. The PFRA selects which memory pages to free by page type. Page types are listed below:
+</p><ul>
+<li>Unreclaimable – locked, kernel, reserved pages（保留内存）
+</li>
+<li>Swappable – anonymous memory pages（匿名内存）
+</li>
+<li>Syncable – pages backed by a disk file（从磁盘文件读取并且发生修改，需要写回到文件）
+</li>
+<li>Discardable – static pages, discarded pages（内容可以直接从磁盘文件读取）
+</li>
+</ul>
+
+<p>All but the “unreclaimable” pages may be reclaimed by the PFRA. There are two main functions in the PFRA. These include the kswapd kernel thread and the “Low On Memory Reclaiming”(LMR) function.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-5-4" class="outline-4">
+<h4 id="sec-1-5-4"><span class="section-number-4">1.5.4</span> kswapd</h4>
+<div class="outline-text-4" id="text-1-5-4">
+
+<p>The kswapd daemon is responsible for ensuring that memory stays free. It monitors the pages_high and pages_low watermarks in the kernel. If the amount of free memory is below pages_low, the kswapd process starts a scan to attempt to free 32 pages at a time. It repeats this process until the amount of free memory is above the pages_high watermark（kswapd是一个守护进程，监控两个内核变量pages_high和pages_low. 如果当前可用内存低于pages_low的话，那么会以32pages为单位进行释放直到内存高于pages_high). The kswapd thread performs the following actions:
+</p><ul>
+<li>If the page is unmodified, it places the page on the free list.
+</li>
+<li>If the page is modified and backed by a filesystem, it writes the contents of the page to disk.
+</li>
+<li>If the page is modified and not backed up by any filesystem (anonymous), it writes the contents of the page to the swap device.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-5-5" class="outline-4">
+<h4 id="sec-1-5-5"><span class="section-number-4">1.5.5</span> Kernel Paging with pdflush</h4>
+<div class="outline-text-4" id="text-1-5-5">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-5-6" class="outline-4">
+<h4 id="sec-1-5-6"><span class="section-number-4">1.5.6</span> Case Study: Large Inbound I/O</h4>
+<div class="outline-text-4" id="text-1-5-6">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-5-7" class="outline-4">
+<h4 id="sec-1-5-7"><span class="section-number-4">1.5.7</span> Conclusion</h4>
+<div class="outline-text-4" id="text-1-5-7">
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-6" class="outline-3">
+<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Introducing I/O Monitoring</h3>
+<div class="outline-text-3" id="text-1-6">
+
+
+</div>
+
+<div id="outline-container-1-6-1" class="outline-4">
+<h4 id="sec-1-6-1"><span class="section-number-4">1.6.1</span> Reading and Writing Data - Memory Pages</h4>
+<div class="outline-text-4" id="text-1-6-1">
+
+<p>You can check the page size of your system by using the time command in verbose mode and searching for the page size:
+</p>
+
+
+<pre class="example"># /usr/bin/time -v date
+...
+Page size (bytes): 4096
+...
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-6-2" class="outline-4">
+<h4 id="sec-1-6-2"><span class="section-number-4">1.6.2</span> Major and Minor Page Faults</h4>
+<div class="outline-text-4" id="text-1-6-2">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-6-3" class="outline-4">
+<h4 id="sec-1-6-3"><span class="section-number-4">1.6.3</span> The File Buffer Cache</h4>
+<div class="outline-text-4" id="text-1-6-3">
+
+<p>The following output is taken from the /proc/meminfo file:
+</p>
+
+
+<pre class="example"># cat /proc/meminfo
+MemTotal: 2075672 kB
+lMemFree: 52528 kB
+Buffers: 24596 kB
+Cached: 1766844 kB
+...
+</pre>
+
+<p>
+The system has a total of 2 GB (MemTotal) of RAM available on it. There is currently 52 MB of RAM "free" (MemFree), 24 MB RAM that is allocated to disk write operations (Buffers), and 1.7 GB of pages read from disk in RAM (Cached).
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-6-4" class="outline-4">
+<h4 id="sec-1-6-4"><span class="section-number-4">1.6.4</span> Types of Memory Pages</h4>
+<div class="outline-text-4" id="text-1-6-4">
+
+<p>There are 3 types of memory pages in the Linux kernel. These pages are described below:
+</p><ul>
+<li>Read Pages – These are pages of data read in via disk (MPF)  that are read only and backed on disk. These pages exist in the Buffer Cache and include static files, binaries, and libraries that do not change. The Kernel will continue to page these into memory as it needs them. If memory becomes short, the kernel will "steal" these pages and put them back on the free list causing an application to have to MPF to bring them back in.
+</li>
+<li>Dirty Pages – These are pages of data that have been modified by the kernel while in memory. These pages need to be synced back to disk at some point using the pdflush daemon. In the event of a memory shortage, kswapd (along with pdflush) will write these pages to disk in order to make more room in memory.
+</li>
+<li>Anonymous Pages – These are pages of data that do belong to a process, but do not have any file or backing store associated with them. They can't be synchronized back to disk. In the event of a memory shortage, kswapd writes these to the swap device as temporary storage until more RAM is free ("swapping" pages).
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-6-5" class="outline-4">
+<h4 id="sec-1-6-5"><span class="section-number-4">1.6.5</span> Writing Data Pages Back to Disk</h4>
+<div class="outline-text-4" id="text-1-6-5">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-7" class="outline-3">
+<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Monitoring I/O</h3>
+<div class="outline-text-3" id="text-1-7">
+
+
+</div>
+
+<div id="outline-container-1-7-1" class="outline-4">
+<h4 id="sec-1-7-1"><span class="section-number-4">1.7.1</span> Calculating IO’s Per Second</h4>
+<div class="outline-text-4" id="text-1-7-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-7-2" class="outline-4">
+<h4 id="sec-1-7-2"><span class="section-number-4">1.7.2</span> Random vs Sequential I/O</h4>
+<div class="outline-text-4" id="text-1-7-2">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-7-3" class="outline-4">
+<h4 id="sec-1-7-3"><span class="section-number-4">1.7.3</span> When Virtual Memory Kills I/O</h4>
+<div class="outline-text-4" id="text-1-7-3">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-7-4" class="outline-4">
+<h4 id="sec-1-7-4"><span class="section-number-4">1.7.4</span> Determining Application I/O Usage</h4>
+<div class="outline-text-4" id="text-1-7-4">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-7-5" class="outline-4">
+<h4 id="sec-1-7-5"><span class="section-number-4">1.7.5</span> Conclusion</h4>
+<div class="outline-text-4" id="text-1-7-5">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-8" class="outline-3">
+<h3 id="sec-1-8"><span class="section-number-3">1.8</span> Introducing Network Monitoring</h3>
+<div class="outline-text-3" id="text-1-8">
+
+
+</div>
+
+<div id="outline-container-1-8-1" class="outline-4">
+<h4 id="sec-1-8-1"><span class="section-number-4">1.8.1</span> Ethernet Configuration Settings</h4>
+<div class="outline-text-4" id="text-1-8-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-8-2" class="outline-4">
+<h4 id="sec-1-8-2"><span class="section-number-4">1.8.2</span> Monitoring Network Throughput</h4>
+<div class="outline-text-4" id="text-1-8-2">
+
+</div>
+
+</div>
+
+<div id="outline-container-1-8-3" class="outline-4">
+<h4 id="sec-1-8-3"><span class="section-number-4">1.8.3</span> Individual Connections with tcptrace</h4>
+<div class="outline-text-4" id="text-1-8-3">
+
+<p>The tcptrace utility provides detailed TCP based information about specific connections. The utility uses libpcap based files to perform and an analysis of specific TCP sessions. The utility provides information that is sometimes difficult to catch in a TCP stream. This information includes:
+</p><ul>
+<li>TCP Retransmissions – the amount of packets that needed to be sent again and the total data size
+</li>
+<li>TCP Window Sizes – identify slow connections with small window sizes
+</li>
+<li>Total throughput of the connection
+</li>
+<li>Connection duration
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-8-4" class="outline-4">
+<h4 id="sec-1-8-4"><span class="section-number-4">1.8.4</span> Conclusion</h4>
+<div class="outline-text-4" id="text-1-8-4">
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2014-09-18T11:21+0800</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'linux-system-and-performance-monitoring.html';var disqus_title = 'linux-system-and-performance-monitoring.html';var disqus_url = 'http://dirlt.com/linux-system-and-performance-monitoring.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+</html>
