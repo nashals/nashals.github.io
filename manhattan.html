@@ -3,11 +3,11 @@
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
-<title>manhattan</title>
+<title>Manhattan, our real-time, multi-tenant distributed database for Twitter scale</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="manhattan"/>
+<meta name="title" content="Manhattan, our real-time, multi-tenant distributed database for Twitter scale"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:43+0800"/>
+<meta name="generated" content="2014-10-13T12:33+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -70,7 +70,7 @@
 </div>
 
 <div id="content">
-<h1 class="title">manhattan</h1>
+<h1 class="title">Manhattan, our real-time, multi-tenant distributed database for Twitter scale</h1>
 
 
 <div id="table-of-contents">
@@ -79,15 +79,14 @@
 <ul>
 <li><a href="manhattan.html#sec-1">1 manhattan</a>
 <ul>
-<li><a href="manhattan.html#sec-1-1">1.1 Manhattan, our real-time, multi-tenant distributed database for Twitter scale</a></li>
-<li><a href="manhattan.html#sec-1-2">1.2 Layers</a></li>
-<li><a href="manhattan.html#sec-1-3">1.3 Core</a></li>
-<li><a href="manhattan.html#sec-1-4">1.4 Consistency model</a></li>
-<li><a href="manhattan.html#sec-1-5">1.5 Achieving consistency</a></li>
-<li><a href="manhattan.html#sec-1-6">1.6 Storage engines</a></li>
-<li><a href="manhattan.html#sec-1-7">1.7 Storage Services</a></li>
-<li><a href="manhattan.html#sec-1-8">1.8 Interfaces</a></li>
-<li><a href="manhattan.html#sec-1-9">1.9 Multi-Tenancy and QoS (Quality of Service)</a></li>
+<li><a href="manhattan.html#sec-1-1">1.1 Layers</a></li>
+<li><a href="manhattan.html#sec-1-2">1.2 Core</a></li>
+<li><a href="manhattan.html#sec-1-3">1.3 Consistency model</a></li>
+<li><a href="manhattan.html#sec-1-4">1.4 Achieving consistency</a></li>
+<li><a href="manhattan.html#sec-1-5">1.5 Storage engines</a></li>
+<li><a href="manhattan.html#sec-1-6">1.6 Storage Services</a></li>
+<li><a href="manhattan.html#sec-1-7">1.7 Interfaces</a></li>
+<li><a href="manhattan.html#sec-1-8">1.8 Multi-Tenancy and QoS (Quality of Service)</a></li>
 </ul>
 </li>
 </ul>
@@ -98,34 +97,24 @@
 <h2 id="sec-1"><span class="section-number-2">1</span> manhattan</h2>
 <div class="outline-text-2" id="text-1">
 
+<p><a href="https://blog.twitter.com/2014/manhattan-our-real-time-multi-tenant-distributed-database-for-twitter-scale">https://blog.twitter.com/2014/manhattan-our-real-time-multi-tenant-distributed-database-for-twitter-scale</a>
+</p>
 
 </div>
 
 <div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Manhattan, our real-time, multi-tenant distributed database for Twitter scale</h3>
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Layers</h3>
 <div class="outline-text-3" id="text-1-1">
 
-<p><a href="https://blog.twitter.com/2014/manhattan-our-real-time-multi-tenant-distributed-database-for-twitter-scale">https://blog.twitter.com/2014/manhattan-our-real-time-multi-tenant-distributed-database-for-twitter-scale</a>
+<p><img src="images/twitter-manhattan-layers.png"  alt="./images/twitter-manhattan-layers.png" />
 </p>
 </div>
 
 </div>
 
 <div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Layers</h3>
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Core</h3>
 <div class="outline-text-3" id="text-1-2">
-
-
-<p>
-<img src="images/twitter-manhattan-layers.png"  alt="./images/twitter-manhattan-layers.png" />
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Core</h3>
-<div class="outline-text-3" id="text-1-3">
 
 <ul>
 <li>The core is the most critical aspect of the storage system: it is highly stable and robust. It handles failure, eventual consistency, routing, topology management, intra- and inter-datacenter replication, and conflict resolution. Within the core of the system, crucial pieces of architecture are completely pluggable so we can iterate quickly on designs and improvements, as well as unit test effectively.
@@ -141,9 +130,9 @@
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Consistency model</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Consistency model</h3>
+<div class="outline-text-3" id="text-1-3">
 
 <ul>
 <li>Many of Twitter’s applications fit very well into the eventually consistent model. We favor high availability over consistency in almost all use cases, so it was natural to build Manhattan as an eventually consistent system at its core.
@@ -157,9 +146,9 @@
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Achieving consistency</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Achieving consistency</h3>
+<div class="outline-text-3" id="text-1-4">
 
 <ul>
 <li>To achieve consistency in an eventually consistent system you need a required mechanism which we call replica reconciliation. This mechanism needs to be incremental, and an always running process that reconciles data across replicas. It helps in the face of bitrot, software bugs, missed writes (nodes going down for long periods of time) and network partitions between datacenters.
@@ -173,9 +162,9 @@
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Storage engines</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Storage engines</h3>
+<div class="outline-text-3" id="text-1-5">
 
 <ul>
 <li>seadb, our read-only file format for batch processed data from hadoop
@@ -193,13 +182,11 @@
 
 </div>
 
-<div id="outline-container-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Storage Services</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-1-6" class="outline-3">
+<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Storage Services</h3>
+<div class="outline-text-3" id="text-1-6">
 
-
-<p>
-<img src="images/twitter-manhattan-ss.png"  alt="./images/twitter-manhattan-ss.png" />
+<p><img src="images/twitter-manhattan-ss.png"  alt="./images/twitter-manhattan-ss.png" />
 </p>
 <p>
 We have created additional services that sit on top of the core of Manhattan that allow us to enable more robust features that developers might come to expect from traditional databases. Some examples are:
@@ -235,9 +222,9 @@ We have created additional services that sit on top of the core of Manhattan tha
 
 </div>
 
-<div id="outline-container-1-8" class="outline-3">
-<h3 id="sec-1-8"><span class="section-number-3">1.8</span> Interfaces</h3>
-<div class="outline-text-3" id="text-1-8">
+<div id="outline-container-1-7" class="outline-3">
+<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Interfaces</h3>
+<div class="outline-text-3" id="text-1-7">
 
 <p>The interface layer is how a customer interacts with our storage system. Currently we expose a key/value interface to our customers, and we are working on additional interfaces such as a graph based interface to interact with edges.
 </p>
@@ -245,9 +232,9 @@ We have created additional services that sit on top of the core of Manhattan tha
 
 </div>
 
-<div id="outline-container-1-9" class="outline-3">
-<h3 id="sec-1-9"><span class="section-number-3">1.9</span> Multi-Tenancy and QoS (Quality of Service)</h3>
-<div class="outline-text-3" id="text-1-9">
+<div id="outline-container-1-8" class="outline-3">
+<h3 id="sec-1-8"><span class="section-number-3">1.8</span> Multi-Tenancy and QoS (Quality of Service)</h3>
+<div class="outline-text-3" id="text-1-8">
 
 <p>Supporting multi-tenancy — allowing many different applications to share the same resources — was a key requirement from the beginning. In previous systems we managed at Twitter, we were building out clusters for every feature. This was increasing operator burden, wasting resources, and slowing customers from rolling out new features quickly.
 </p>
@@ -262,7 +249,7 @@ We monitor and, if needed, throttle resource usage across many metrics to ensure
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:43+0800</p>
+<p class="date">Date: 2014-10-13T12:33+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
