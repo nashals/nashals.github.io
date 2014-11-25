@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="ubuntu"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:42+0800"/>
+<meta name="generated" content="2014-11-21T10:07+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -175,7 +175,7 @@
 </li>
 <li>sudo apt-get install sysstat
 </li>
-<li>sudo apt-get install httperf
+<li>#sudo apt-get install httperf
 </li>
 <li>sudo apt-get install rsync
 </li>
@@ -183,11 +183,7 @@
 </li>
 <li>sudo apt-get install tcpdump
 </li>
-<li>sudo apt-get install clusterssh
-</li>
-<li>#sudo apt-get install libjs-extjs
-</li>
-<li>#sudo apt-get install libjs-extjs-doc
+<li>#sudo apt-get install clusterssh
 </li>
 <li>sudo apt-get install openssh-server
 </li>
@@ -289,7 +285,7 @@
 </li>
 <li>sudo apt-get install virtualbox-dkms
 </li>
-<li>sudo apt-get install virtualbox-guest-additions # 设置windows虚拟机共享文件夹
+<li># sudo apt-get install virtualbox-guest-additions # 设置windows虚拟机共享文件夹
 </li>
 <li>sudo apt-get install virtualbox-guest-dkms
 </li>
@@ -297,7 +293,11 @@
 </li>
 <li>sudo apt-get install systemtap
 </li>
-<li>sudo apt-get install clojure
+<li>sudo apt-get install clojure1.4
+</li>
+<li>sudo apt-get install clojure-contrib
+</li>
+<li>sudo apt-get install leiningen
 </li>
 <li>sudo apt-get install zsh
 </li>
@@ -353,10 +353,6 @@
 </li>
 <li>sudo apt-get install check
 </li>
-<li>sudo apt-get install libaio-dev
-</li>
-<li>#sudo apt-get install libncurses5-dev
-</li>
 <li>#sudo apt-get install google-mock
 </li>
 <li>#sudo apt-get install tsocks
@@ -385,7 +381,7 @@
 </li>
 <li>sudo apt-get install qt4-qtconfig
 </li>
-<li>sudo apt-get install fluxgui
+<li>#sudo apt-get install fluxgui
 </li>
 <li>sudo apt-get install iftop
 </li>
@@ -395,9 +391,9 @@
 </li>
 <li>sudo apt-get install collectl
 </li>
-<li>sudo apt-get install latencytop
+<li>#sudo apt-get install latencytop
 </li>
-<li>sudo apt-get install powertop
+<li>#sudo apt-get install powertop
 </li>
 <li>sudo apt-get install lxc-docker
 </li>
@@ -413,14 +409,6 @@
 </li>
 <li>sudo apt-get install audacity
 </li>
-<li>sudo apt-get install libbz2-dev
-</li>
-<li>sudo apt-get install libfftw3-dev
-</li>
-<li>sudo apt-get install libsndfile1-dev
-</li>
-<li>sudo apt-get install libsamplerate0-dev
-</li>
 <li>sudo apt-get install ipython
 </li>
 <li>sudo apt-get install python-numpy
@@ -429,12 +417,29 @@
 </li>
 <li>sudo apt-get install python-scipy
 </li>
-<li>sudo apt-get install python-pygame
+<li>#sudo apt-get install python-pygame
 </li>
 <li>sudo apt-get install cython
 </li>
+<li>sudo apt-get install alarm-clock-applet
+</li>
+<li>sudo apt-get install pstack
+</li>
+<li>sudo apt-get install socat
+</li>
+<li>#sudo apt-get install bzr-fastimport
+</li>
+<li>sudo apt-get install redis-server
+</li>
+<li>sudo apt-get install python-redis
+</li>
+<li>sudo apt-get install libssl-dev
+</li>
+<li>sudo apt-get install libaio-dev
+</li>
+<li>sudo apt-get install percona-xtrabackup
+</li>
 </ul>
-
 
 
 </div>
@@ -463,6 +468,21 @@ Distributor ID: Ubuntu
 Description:    Ubuntu 12.04 LTS
 Release:        12.04
 Codename:       precise
+</pre>
+
+
+<p>
+note(dirlt@2014-11-17): upgrade to 'trusty'
+</p>
+
+
+
+<pre class="example">➜  ~  lsb_release -a
+No LSB modules are available.
+Distributor ID: Ubuntu
+Description:    Ubuntu 14.04.1 LTS
+Release:        14.04
+Codename:       trusty
 </pre>
 
 
@@ -1040,7 +1060,8 @@ User dirtysalt
 </p>
 <p>
 似乎需要重启才能够生效
-</p></div>
+</p>
+</div>
 
 </div>
 
@@ -1181,7 +1202,7 @@ note(dirlt):这里对于0 0不太清楚是什么意思，只是知道分别是du
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:42+0800</p>
+<p class="date">Date: 2014-11-21T10:07+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
