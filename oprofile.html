@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="oprofile"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-11-21T10:07+0800"/>
+<meta name="generated" content="2014-12-06T18:38+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -79,26 +79,25 @@
 <ul>
 <li><a href="oprofile.html#sec-1">1 oprofile</a>
 <ul>
-<li><a href="oprofile.html#sec-1-1">1.1 OProfile简介</a></li>
-<li><a href="oprofile.html#sec-1-2">1.2 OProfile地址</a></li>
-<li><a href="oprofile.html#sec-1-3">1.3 OProfile组成部分</a>
+<li><a href="oprofile.html#sec-1-1">1.1 oprofile intro</a></li>
+<li><a href="oprofile.html#sec-1-2">1.2 oprofile blocks</a>
 <ul>
-<li><a href="oprofile.html#sec-1-3-1">1.3.1 内核驱动</a></li>
-<li><a href="oprofile.html#sec-1-3-2">1.3.2 daemon</a></li>
-<li><a href="oprofile.html#sec-1-3-3">1.3.3 附加组件</a></li>
+<li><a href="oprofile.html#sec-1-2-1">1.2.1 内核驱动</a></li>
+<li><a href="oprofile.html#sec-1-2-2">1.2.2 daemon</a></li>
+<li><a href="oprofile.html#sec-1-2-3">1.2.3 工具附件</a></li>
 </ul>
 </li>
-<li><a href="oprofile.html#sec-1-4">1.4 OProfile使用</a>
+<li><a href="oprofile.html#sec-1-3">1.3 oprofile usage</a>
 <ul>
-<li><a href="oprofile.html#sec-1-4-1">1.4.1 opcontrol</a></li>
-<li><a href="oprofile.html#sec-1-4-2">1.4.2 opreport</a></li>
-<li><a href="oprofile.html#sec-1-4-3">1.4.3 opannotate</a></li>
+<li><a href="oprofile.html#sec-1-3-1">1.3.1 opcontrol</a></li>
+<li><a href="oprofile.html#sec-1-3-2">1.3.2 opreport</a></li>
+<li><a href="oprofile.html#sec-1-3-3">1.3.3 opannotate</a></li>
 </ul>
 </li>
-<li><a href="oprofile.html#sec-1-5">1.5 OProfile脚本</a></li>
-<li><a href="oprofile.html#sec-1-6">1.6 FAQ</a>
+<li><a href="oprofile.html#sec-1-4">1.4 oprofile script</a></li>
+<li><a href="oprofile.html#sec-1-5">1.5 FAQ</a>
 <ul>
-<li><a href="oprofile.html#sec-1-6-1">1.6.1 设置time interrupt模式</a></li>
+<li><a href="oprofile.html#sec-1-5-1">1.5.1 设置time interrupt模式</a></li>
 </ul>
 </li>
 </ul>
@@ -115,29 +114,6 @@
 <p>
 note(dirlt@2014-05-08): 从主页 <a href="http://oprofile.sourceforge.net/news/">http://oprofile.sourceforge.net/news/</a> 上看，最后更新时间还是2003-07-08, 感觉这个东西应该是废弃了. 在这个工具上最蠢的一个举动就是仔细阅读了那些工具的选项但是却完全没有用上：（
 </p>
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> OProfile简介</h3>
-<div class="outline-text-3" id="text-1-1">
-
-<p><a href="http://www.ibm.com/developerworks/cn/linux/l-oprof/">http://www.ibm.com/developerworks/cn/linux/l-oprof/</a>
-</p>
-<p>
-OProfile是用于Linux的若干种评测和性能监控工具中的一种。它可以工作在不同的体系结构上，包括IA32,IA64和AMD Athlon系列。它的开销小，将被包含在(Linux)2.6版的内核中。
-</p>
-<p>
-OProfile可以帮助用户识别诸如循环的展开、高速缓存的使用率低、低效的类型转换和冗余操作、错误预测转移等问题。它收集有关处理器事件的信息，其中包括TLB的故障、停机、存储器访问、位于 DCU(数据高速缓存单元)中的总线路数、一个 DCU 故障的周期数，以及不可高速缓存的和可高速缓存的指令的获取数量。OProfile是一种细粒度的工具，可以为指令集或者为函数、系统调用或中断处理例程收集采样。OProfile通过取样来工作。使用收集到的评测数据，用户可以很容易地找出性能问题。
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> OProfile地址</h3>
-<div class="outline-text-3" id="text-1-2">
-
 <ul>
 <li>Documentation <a href="http://oprofile.sourceforge.net/doc/index.html">http://oprofile.sourceforge.net/doc/index.html</a>
 </li>
@@ -146,20 +122,35 @@ OProfile可以帮助用户识别诸如循环的展开、高速缓存的使用率
 </ul>
 
 
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> oprofile intro</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<p><a href="http://www.ibm.com/developerworks/cn/linux/l-oprof/">http://www.ibm.com/developerworks/cn/linux/l-oprof/</a>
+</p>
+<p>
+oprofile是用于Linux的若干种评测和性能监控工具中的一种。它可以工作在不同的体系结构上，包括IA32,IA64和AMD Athlon系列。它的开销小，将被包含在(Linux)2.6版的内核中。
+</p>
+<p>
+oprofile可以帮助用户识别诸如循环的展开、高速缓存的使用率低、低效的类型转换和冗余操作、错误预测转移等问题。它收集有关处理器事件的信息，其中包括TLB的故障、停机、存储器访问、位于 DCU(数据高速缓存单元)中的总线路数、一个 DCU 故障的周期数，以及不可高速缓存的和可高速缓存的指令的获取数量。oprofile是一种细粒度的工具，可以为指令集或者为函数、系统调用或中断处理例程收集采样。oprofile通过取样来工作。使用收集到的评测数据，用户可以很容易地找出性能问题。
+</p>
 </div>
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> OProfile组成部分</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> oprofile blocks</h3>
+<div class="outline-text-3" id="text-1-2">
 
 
 </div>
 
-<div id="outline-container-1-3-1" class="outline-4">
-<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> 内核驱动</h4>
-<div class="outline-text-4" id="text-1-3-1">
+<div id="outline-container-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> 内核驱动</h4>
+<div class="outline-text-4" id="text-1-2-1">
 
 <p>内核驱动工作的时候分为三种模式：
 </p><ul>
@@ -185,9 +176,9 @@ OProfile可以帮助用户识别诸如循环的展开、高速缓存的使用率
 
 </div>
 
-<div id="outline-container-1-3-2" class="outline-4">
-<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> daemon</h4>
-<div class="outline-text-4" id="text-1-3-2">
+<div id="outline-container-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> daemon</h4>
+<div class="outline-text-4" id="text-1-2-2">
 
 <p>daemon部分用于收集内核驱动采样数据，并且将采样数据dump到外部文件。可执行程序是bin/oprofiled.
 </p>
@@ -195,11 +186,11 @@ OProfile可以帮助用户识别诸如循环的展开、高速缓存的使用率
 
 </div>
 
-<div id="outline-container-1-3-3" class="outline-4">
-<h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> 附加组件</h4>
-<div class="outline-text-4" id="text-1-3-3">
+<div id="outline-container-1-2-3" class="outline-4">
+<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> 工具附件</h4>
+<div class="outline-text-4" id="text-1-2-3">
 
-<p>附加组件部分通过读取dump出来的外部文件，得到采样数据并且进行加工：
+<p>通过读取dump出来的外部文件得到采样数据进行加工：
 </p><ul>
 <li>ophelp //显示帮助信息
 </li>
@@ -217,9 +208,9 @@ OProfile可以帮助用户识别诸如循环的展开、高速缓存的使用率
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> OProfile使用</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> oprofile usage</h3>
+<div class="outline-text-3" id="text-1-3">
 
 <ul>
 <li>Installation <a href="http://oprofile.sourceforge.net/doc/install.html">http://oprofile.sourceforge.net/doc/install.html</a>
@@ -269,9 +260,9 @@ OProfile可以帮助用户识别诸如循环的展开、高速缓存的使用率
 
 </div>
 
-<div id="outline-container-1-4-1" class="outline-4">
-<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> opcontrol</h4>
-<div class="outline-text-4" id="text-1-4-1">
+<div id="outline-container-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> opcontrol</h4>
+<div class="outline-text-4" id="text-1-3-1">
 
 <p>常用命令参数如下：
 </p><ul>
@@ -354,9 +345,9 @@ OProfile可以帮助用户识别诸如循环的展开、高速缓存的使用率
 
 </div>
 
-<div id="outline-container-1-4-2" class="outline-4">
-<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> opreport</h4>
-<div class="outline-text-4" id="text-1-4-2">
+<div id="outline-container-1-3-2" class="outline-4">
+<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> opreport</h4>
+<div class="outline-text-4" id="text-1-3-2">
 
 <p>opreport包含两类参数，一类是过滤参数用于通知应用打印出关于哪些方面的信息，一类是命令参数是关于如何打印出这方面的信息。
 </p>
@@ -422,9 +413,9 @@ OProfile可以帮助用户识别诸如循环的展开、高速缓存的使用率
 
 </div>
 
-<div id="outline-container-1-4-3" class="outline-4">
-<h4 id="sec-1-4-3"><span class="section-number-4">1.4.3</span> opannotate</h4>
-<div class="outline-text-4" id="text-1-4-3">
+<div id="outline-container-1-3-3" class="outline-4">
+<h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> opannotate</h4>
+<div class="outline-text-4" id="text-1-3-3">
 
 <p>常用命令参数如下：
 </p><ul>
@@ -473,9 +464,9 @@ OProfile可以帮助用户识别诸如循环的展开、高速缓存的使用率
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> OProfile脚本</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> oprofile script</h3>
+<div class="outline-text-3" id="text-1-4">
 
 <p><b>note(dirlt):依然没有成功profile过kenerl！</b>
 </p>
@@ -500,16 +491,16 @@ OProfile可以帮助用户识别诸如循环的展开、高速缓存的使用率
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> FAQ</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> FAQ</h3>
+<div class="outline-text-3" id="text-1-5">
 
 
 </div>
 
-<div id="outline-container-1-6-1" class="outline-4">
-<h4 id="sec-1-6-1"><span class="section-number-4">1.6.1</span> 设置time interrupt模式</h4>
-<div class="outline-text-4" id="text-1-6-1">
+<div id="outline-container-1-5-1" class="outline-4">
+<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> 设置time interrupt模式</h4>
+<div class="outline-text-4" id="text-1-5-1">
 
 <p><a href="http://oprofile.sourceforge.net/doc/detailed-parameters.html#timer">http://oprofile.sourceforge.net/doc/detailed-parameters.html#timer</a>
 </p>
@@ -541,7 +532,7 @@ because OProfile is in timer mode.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-11-21T10:07+0800</p>
+<p class="date">Date: 2014-12-06T18:38+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

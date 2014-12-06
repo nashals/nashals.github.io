@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="memory"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:43+0800"/>
+<meta name="generated" content="2014-12-06T18:38+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -128,15 +128,15 @@
 <p>
 Page Fault分为两种，minor fault和major fault，触发时机都是在进程访问虚拟页面的时候。
 </p><ul>
-<li>如果访问虚拟页面时候，这个页出现在物理内存但是没有被MMU(Memory Management Unit)标记为载入的话，那么称为minor fault. 这个时候MMU只需要标记载入并且做一些操作即可。这种情况可以考虑共享内存比如glibc动态链接库：全局维护一份glibc.so的动态链接库在物理内存，可能被很多进程所映射。一个进程刚启动的话，glibc没有在虚拟内存里面，但是可能会被其他进程已经载入了物理内存。
+<li>MnPF(Minor Page Fault): 如果访问虚拟页面时候，这个页出现在物理内存但是没有被MMU(Memory Management Unit)标记为载入的话，那么称为minor fault(MnPF). 这个时候MMU只需要标记载入并且做一些操作即可。这种情况可以考虑共享内存比如glibc动态链接库：全局维护一份glibc.so的动态链接库在物理内存，可能被很多进程所映射。一个进程刚启动的话，glibc没有在虚拟内存里面，但是可能会被其他进程已经载入了物理内存。
 </li>
-<li>但是如果访问虚拟页面时候，这个页面没有出现在物理内存的话，那么可能有两种可能 a.没有从程序读入 b.之前存在但是被换出到swap. 但是无论如何都需要从磁盘读取页面，并且替换当前物理内存中的页面，这个过程就是major fault. <b>很明显major fault比minor fault要更耗时，因为major fault需要读取磁盘。</b>
+<li>MPF(Major Page Fault): 如果访问虚拟页面时候，这个页面没有出现在物理内存的话，那么可能有两种可能 a.没有从程序读入 b.之前存在但是被换出到swap. 但是无论如何都需要从磁盘读取页面，并且替换当前物理内存中的页面，这个过程就是major fault(MPF). 很明显major fault比minor fault要更耗时，因为major fault需要读取磁盘。
 </li>
 </ul>
 
 
 <p>
-如果按照磁盘读寻道延迟10ms,传输1page(4KB)耗时/60MB/s=0.05ms/page(<a href="sysperf.html">参考</a>)，相当载入页面需要耗时10ms . 而如果是minor fault的话仅仅是内存操作读写1个字节约为250ns(注意和page大小无关). <b>这就意味着耗时major fault是minor fault 40000=40K倍</b> 。改善这个情况手可以压缩内存使用，改善内存访问，然后关掉swap分区等。
+如果按照磁盘读寻道延迟10ms,传输1page(4KB)耗时/60MB/s=0.05ms/page(<a href="sysperf.html">参考</a>)，相当载入页面需要耗时10ms . 而如果是minor fault的话仅仅是内存操作读写1个字节约为250ns(注意和page大小无关). 这就意味着耗时major fault是minor fault 40000=40K倍 。改善这个情况手可以压缩内存使用，改善内存访问，然后关掉swap分区等。
 </p>
 </div>
 </div>
@@ -144,7 +144,7 @@ Page Fault分为两种，minor fault和major fault，触发时机都是在进程
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:43+0800</p>
+<p class="date">Date: 2014-12-06T18:38+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

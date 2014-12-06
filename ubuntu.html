@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="ubuntu"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-11-21T10:07+0800"/>
+<meta name="generated" content="2014-12-04T15:39+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -93,6 +93,8 @@
 <li><a href="ubuntu.html#sec-1-2-9">1.2.9 deb使用</a></li>
 <li><a href="ubuntu.html#sec-1-2-10">1.2.10 The System Running In Low Graphics Mode</a></li>
 <li><a href="ubuntu.html#sec-1-2-11">1.2.11 apt-get: Waiting for headers</a></li>
+<li><a href="ubuntu.html#sec-1-2-12">1.2.12 /sbin/insserv: No such file or directory</a></li>
+<li><a href="ubuntu.html#sec-1-2-13">1.2.13 允许/禁止服务自动启动</a></li>
 </ul>
 </li>
 <li><a href="ubuntu.html#sec-1-3">1.3 桌面应用</a>
@@ -439,6 +441,12 @@
 </li>
 <li>sudo apt-get install percona-xtrabackup
 </li>
+<li># sudo apt-get install chkconfig
+</li>
+<li>sudo apt-get install sysv-rc-conf
+</li>
+<li>sudo apt-get install nginx
+</li>
 </ul>
 
 
@@ -643,6 +651,9 @@ doc存放位置通常在/usr/share/doc/&lt;package&gt;/下面。
 
 <p>甚至可以直接调用alien -i test.rpm直接安装而不需要转换。
 </p>
+<p>
+使用dpkg &ndash;listfiles可以查看安装了哪些文件
+</p>
 </div>
 
 </div>
@@ -682,6 +693,101 @@ doc存放位置通常在/usr/share/doc/&lt;package&gt;/下面。
 </p>
 <p>
 Update Manager -&gt; Settings -&gt; Ubuntu Software -&gt; Download from Other -&gt; Select Best Server
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-2-12" class="outline-4">
+<h4 id="sec-1-2-12"><span class="section-number-4">1.2.12</span> /sbin/insserv: No such file or directory</h4>
+<div class="outline-text-4" id="text-1-2-12">
+
+<p>这个命令会在chkconfig(用于配置是否自动启动)里面用到.
+</p>
+
+
+
+<pre class="example">➜  nginx  sudo chkconfig lighttpd off
+/sbin/insserv: No such file or directory
+</pre>
+
+
+<p>
+解决办法是做个软链接 "sudo ln -s  /usr/lib/insserv/insserv /sbin/insserv"
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-2-13" class="outline-4">
+<h4 id="sec-1-2-13"><span class="section-number-4">1.2.13</span> 允许/禁止服务自动启动</h4>
+<div class="outline-text-4" id="text-1-2-13">
+
+<p>chkconfig可以用来配置服务是否自动启动 sudo chkconfig &lt;service&gt; on/off
+</p>
+<p>
+另外使用chkconfig还可以用来查看当前服务自动启动情况
+</p>
+
+
+<pre class="example">➜  nginx  chkconfig
+distcc                   on
+docker                   off
+lighttpd                 off
+mysql                    off
+nginx                    on
+ntp                      on
+ondemand                 on
+openvpn                  on
+redis-server             off
+resolvconf               off
+rsync                    on
+rsyslog                  off
+samba                    off
+samba-ad-dc              off
+saned                    on
+screen-cleanup           off
+screen-cleanup.dpkg-new  off
+sendsigs                 0
+smbd                     off
+speech-dispatcher        on
+ssh                      off
+sudo                     on
+sysstat                  on
+virtualbox               on
+virtualbox-guest-utils   on
+virtualbox-guest-x11     on
+</pre>
+
+
+<p>
+note(dirlt@2014-11-30): 但是ubuntu后期版本移除了这个组件,使用sysv-rc-conf来代替. 使用&ndash;list可以列出所有当前服务
+</p>
+
+
+<pre class="example">➜  .private  sudo sysv-rc-conf --list
+collectl     0:off1:off2:on3:on4:on5:on6:off
+distcc       0:off1:off2:on3:on4:on5:on6:off
+docker
+mysql        2:off3:off4:off5:off
+ntp          1:off2:on3:on4:on5:on
+rc.local     2:on3:on4:on5:on
+reboot       6:on
+redis-server 0:off1:off2:off3:off4:off5:off6:off
+resolvconf
+rsync        2:on3:on4:on5:on
+rsyslog
+samba
+sudo         2:on3:on4:on5:on
+sysstat      2:on3:on4:on5:on
+urandom      0:on6:onS:on
+virtualbox   0:off1:off2:on3:on4:on5:on6:off
+virtualbox-g 0:off1:off2:on3:on4:on5:on6:off
+</pre>
+
+
+<p>
+然后使用sudo sysv-rc-conf &lt;service&gt; on/off 来配置是否自动启动
 </p>
 </div>
 </div>
@@ -1202,7 +1308,7 @@ note(dirlt):这里对于0 0不太清楚是什么意思，只是知道分别是du
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-11-21T10:07+0800</p>
+<p class="date">Date: 2014-12-04T15:39+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
