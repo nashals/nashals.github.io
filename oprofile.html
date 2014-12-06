@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="oprofile"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-12-06T18:38+0800"/>
+<meta name="generated" content="2014-12-06T23:07+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -487,6 +487,39 @@ oprofile可以帮助用户识别诸如循环的展开、高速缓存的使用率
 </ul>
 
 
+
+
+
+<pre class="src src-Shell"># deprecated !!!
+easy_oprofile() {
+    if [ $# -lt 5 ]; then
+        echo <span class="org-string">"easy_oprofile image-file(ELF) command"</span>
+        exit 1
+    fi
+    local ifile=$1; shift
+    local rfile=<span class="org-string">"oprof.rpt"</span>
+    local srcdir=<span class="org-string">"."</span>
+    local afile=<span class="org-string">"oprof.asm"</span>
+    local command=$@
+    echo <span class="org-string">"Image file: $ifile"</span>
+    echo <span class="org-string">"Report file: $rfile"</span>
+    echo <span class="org-string">"Source directory: $srcdir"</span>
+    echo <span class="org-string">"Assembly file: $afile"</span>
+    echo <span class="org-string">"Command: $command"</span>
+
+    sudo opcontrol --reset
+    sudo opcontrol --no-vmlinux --separate=lib --start --image=$ifile
+    $command
+    sudo opcontrol --dump
+    sudo opcontrol --shutdown
+    sudo opreport -l image:$ifile -o $rfile
+    sudo opannotate -s --output-dir=$srcdir $ifile
+    sudo opannotate -a $ifile &gt; $afile
+}
+</pre>
+
+
+
 </div>
 
 </div>
@@ -532,7 +565,7 @@ because OProfile is in timer mode.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-12-06T18:38+0800</p>
+<p class="date">Date: 2014-12-06T23:07+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
