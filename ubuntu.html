@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="ubuntu"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-12-04T15:39+0800"/>
+<meta name="generated" content="2014-12-23T12:37+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -111,6 +111,7 @@
 <li><a href="ubuntu.html#sec-1-3-10">1.3.10 调整边栏大小</a></li>
 <li><a href="ubuntu.html#sec-1-3-11">1.3.11 调整skype字体大小</a></li>
 <li><a href="ubuntu.html#sec-1-3-12">1.3.12 vlc字幕乱码</a></li>
+<li><a href="ubuntu.html#sec-1-3-13">1.3.13 使用搜狗输入法</a></li>
 </ul>
 </li>
 <li><a href="ubuntu.html#sec-1-4">1.4 编程环境</a>
@@ -123,12 +124,23 @@
 <li><a href="ubuntu.html#sec-1-4-6">1.4.6 关闭ssh host key检查</a></li>
 </ul>
 </li>
-<li><a href="ubuntu.html#sec-1-5">1.5 虚拟机</a>
+<li><a href="ubuntu.html#sec-1-5">1.5 开发工具</a>
 <ul>
-<li><a href="ubuntu.html#sec-1-5-1">1.5.1 vmware虚拟机增加磁盘空间</a></li>
-<li><a href="ubuntu.html#sec-1-5-2">1.5.2 virtualbox安装windows虚拟机</a></li>
-<li><a href="ubuntu.html#sec-1-5-3">1.5.3 virtualbox设置共享文件夹</a></li>
-<li><a href="ubuntu.html#sec-1-5-4">1.5.4 virtualbox下使用U盾</a></li>
+<li><a href="ubuntu.html#sec-1-5-1">1.5.1 about 'screen'</a></li>
+<li><a href="ubuntu.html#sec-1-5-2">1.5.2 about 'tmux'</a></li>
+<li><a href="ubuntu.html#sec-1-5-3">1.5.3 about 'emacs'</a></li>
+<li><a href="ubuntu.html#sec-1-5-4">1.5.4 about 'eclipse'</a></li>
+<li><a href="ubuntu.html#sec-1-5-5">1.5.5 about 'intellij'</a></li>
+<li><a href="ubuntu.html#sec-1-5-6">1.5.6 about 'fvwm'</a></li>
+<li><a href="ubuntu.html#sec-1-5-7">1.5.7 about 'bzr'</a></li>
+</ul>
+</li>
+<li><a href="ubuntu.html#sec-1-6">1.6 虚拟机</a>
+<ul>
+<li><a href="ubuntu.html#sec-1-6-1">1.6.1 vmware虚拟机增加磁盘空间</a></li>
+<li><a href="ubuntu.html#sec-1-6-2">1.6.2 virtualbox安装windows虚拟机</a></li>
+<li><a href="ubuntu.html#sec-1-6-3">1.6.3 virtualbox设置共享文件夹</a></li>
+<li><a href="ubuntu.html#sec-1-6-4">1.6.4 virtualbox下使用U盾</a></li>
 </ul>
 </li>
 </ul>
@@ -446,6 +458,10 @@
 <li>sudo apt-get install sysv-rc-conf
 </li>
 <li>sudo apt-get install nginx
+</li>
+<li>sudo apt-get install fcitx
+</li>
+<li>sudo apt-get install im-switch
 </li>
 </ul>
 
@@ -817,7 +833,7 @@ virtualbox-g 0:off1:off2:on3:on4:on5:on6:off
 
 <p>在Preferences里面：
 </p><ul>
-<li>Input Method 里面添加 SubPinyin
+<li>Input Method 里面添加 SunPinyin
 </li>
 <li>然后在General里面的Keyboard Shortcuts里面设置Enable or disable设置切换按键
 <ul>
@@ -1022,6 +1038,22 @@ note(dirlt)：其实thunderbird超过一定大小就会自动提醒是否需要�
 使用默认的编码(encoding)就行，然后选择font为"WenQuanYi Micro Hei"(默认的字体应该是不能够显示中文)
 </p>
 </div>
+
+</div>
+
+<div id="outline-container-1-3-13" class="outline-4">
+<h4 id="sec-1-3-13"><span class="section-number-4">1.3.13</span> 使用搜狗输入法</h4>
+<div class="outline-text-4" id="text-1-3-13">
+
+<p>搜狗输入法依赖于fcitx框架，所以必须先安装好fcitx. 然后从搜狗输入法主页上下载deb进行安装。<a href="http://pinyin.sogou.com/linux/?r=pinyin">http://pinyin.sogou.com/linux/?r=pinyin</a>
+</p>
+<p>
+通常系统会安装多种输入法框架比如ibus/fcitx，所以我们必须配置使用什么输入法框架，这个工作可以通过im-switch/im-config来完成。
+</p>
+<p>
+因为搜狗输入法是基于云的输入法，所以输入效果相比单机输入法比如sunpinyin会好很多。
+</p>
+</div>
 </div>
 
 </div>
@@ -1190,15 +1222,291 @@ User dirtysalt
 </div>
 
 <div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> 虚拟机</h3>
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> 开发工具</h3>
 <div class="outline-text-3" id="text-1-5">
 
 
 </div>
 
 <div id="outline-container-1-5-1" class="outline-4">
-<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> vmware虚拟机增加磁盘空间</h4>
+<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> about 'screen'</h4>
 <div class="outline-text-4" id="text-1-5-1">
+
+<ul>
+<li><a href="http://www.gnu.org/software/screen/">http://www.gnu.org/software/screen/</a>
+</li>
+<li><a href="https://github.com/dirtysalt/notes/blob/master/files/.screenrc">我的配置文件</a>
+</li>
+</ul>
+
+
+<p>
+如何使用screen启动后台任务?
+</p><ul>
+<li>screen -D -R &lt;session-name&gt;
+<ul>
+<li>如果会话存在那么会连上.
+</li>
+<li>如果会话不存在那么创建.
+</li>
+<li>如果会话被其他人attach, 可以强制attach.
+</li>
+</ul>
+
+</li>
+<li>在会话里面执行命令
+</li>
+<li>C-a d从这个会话里面detach出来
+</li>
+</ul>
+
+
+<p>
+参考我的配置文件
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-5-2" class="outline-4">
+<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> about 'tmux'</h4>
+<div class="outline-text-4" id="text-1-5-2">
+
+<ul>
+<li><a href="http://tmux.sourceforge.net/">http://tmux.sourceforge.net/</a>
+</li>
+<li><a href="https://github.com/dirtysalt/notes/blob/master/files/.tmux.conf">我的配置文件</a>
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-5-3" class="outline-4">
+<h4 id="sec-1-5-3"><span class="section-number-4">1.5.3</span> about 'emacs'</h4>
+<div class="outline-text-4" id="text-1-5-3">
+
+<ul>
+<li><a href="http://www.gnu.org/software/emacs/">http://www.gnu.org/software/emacs/</a>
+</li>
+<li><a href="https://github.com/dirtysalt/notes/blob/master/files/.emacs">我的配置文件</a>
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-5-4" class="outline-4">
+<h4 id="sec-1-5-4"><span class="section-number-4">1.5.4</span> about 'eclipse'</h4>
+<div class="outline-text-4" id="text-1-5-4">
+
+<p>note(dirlt): 不要用eclipse, 用intellij吧!
+</p>
+<p>
+如何将maven项目导入eclipse?
+</p><ul>
+<li>mvn eclipse:eclipse 建立eclipse工程文件
+<ul>
+<li>mvn eclipse:clean 清除eclipse工程文件
+</li>
+</ul>
+
+</li>
+<li>在eclipse导入工程
+</li>
+<li>在preferences=》Java=》Build Path=》Classpath Variables里面添加M2_REPO，通常为/home/${USER}/.m2/repository
+</li>
+</ul>
+
+
+
+<hr/>
+
+<p>
+常用快捷键
+</p><ul>
+<li>格式化 C+S+F
+</li>
+<li>注释 C+S+C
+</li>
+<li>切换声明 F3
+</li>
+<li>跳回 Alt+(&lt;-) 跳前Alt+(-&gt;)   
+</li>
+<li>切换编辑Tab Ctrl+PageUp/Down
+</li>
+<li>跳行 Ctrl+L
+</li>
+<li>大纲 Ctrl+O
+</li>
+<li>跳转编辑Tab Ctrl+E
+</li>
+<li>定位错误 Ctrl+.
+</li>
+<li>上个编辑位置 Ctrl+Q
+</li>
+<li>类型浏览器 Ctrl+Shift+T
+</li>
+<li>资源浏览器 Ctrl+Shift+R
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-5-5" class="outline-4">
+<h4 id="sec-1-5-5"><span class="section-number-4">1.5.5</span> about 'intellij'</h4>
+<div class="outline-text-4" id="text-1-5-5">
+
+<p>常用快捷键
+</p><ul>
+<li>查找方法 Ctrl+F12
+</li>
+<li>查找类 Ctrl+N
+</li>
+<li>页面跳转 Ctrl+E
+</li>
+<li>查看声明 Ctrl+B
+</li>
+<li>察看实现 Ctrl+Alt+B
+</li>
+<li>跳回 Alt+(&lt;-) 跳前Alt+(-&gt;)   
+</li>
+<li>格式化 Ctrl+Alt+L （这个键和ubuntu的锁屏键冲突了，我修改到了Ctrl+Alt+\)
+</li>
+<li>导入某个类（光标在这个类上） Alt+Enter
+</li>
+<li>优化类的导入 Ctrl+Alt+O
+</li>
+</ul>
+
+
+
+<hr/>
+
+<ul>
+<li>编辑区域右键"maven"这个选项
+<ul>
+<li>Reimport 可以重新导入maven配置
+</li>
+<li>Generate Sources and Update Folders 重新生成sources并且更新文件夹
+</li>
+</ul>
+
+</li>
+<li>目录右键"Mark Directory As" -&gt; "Source Root" 可以将某个目录指定为源代码目录
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-5-6" class="outline-4">
+<h4 id="sec-1-5-6"><span class="section-number-4">1.5.6</span> about 'fvwm'</h4>
+<div class="outline-text-4" id="text-1-5-6">
+
+<ul>
+<li><a href="http://docs.huihoo.com/homepage/shredderyin/fvwm_frame.html">http://docs.huihoo.com/homepage/shredderyin/fvwm_frame.html</a>
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-5-7" class="outline-4">
+<h4 id="sec-1-5-7"><span class="section-number-4">1.5.7</span> about 'bzr'</h4>
+<div class="outline-text-4" id="text-1-5-7">
+
+<ul>
+<li><a href="http://bazaar.canonical.com/en/">http://bazaar.canonical.com/en/</a>
+</li>
+<li><a href="https://launchpad.net/">https://launchpad.net/</a>
+</li>
+</ul>
+
+
+
+<hr/>
+
+<ul>
+<li>bzr branch &lt;repo&gt; # git clone.
+<ul>
+<li># 每个分支都会有自己单独的revno
+</li>
+</ul>
+
+</li>
+<li>bzr pull # git pull
+</li>
+<li>bzr push &lt;repo&gt; # git push
+<ul>
+<li>&ndash;create-prefix # create if not exist
+</li>
+<li>&ndash;overwrite -rREVNO # 强制将远端回滚到此revno.
+</li>
+</ul>
+
+</li>
+<li>bzr config [parent_location|push_location|submit_branch]=&lt;URL&gt;
+</li>
+</ul>
+
+
+
+<hr/>
+
+<ul>
+<li>bzr commit -m 'message'
+</li>
+<li>bzr uncommit # 撤销一个commit
+</li>
+<li>bzr revert # git checkout
+</li>
+<li>bzr merge -r[a]..[b] &lt;URL&gt; # 合并revno=[a+1,b]修改
+</li>
+</ul>
+
+
+
+<hr/>
+
+<ul>
+<li>bzr log/diff -r[a]..[b] # 察看revno=[a,b]修改信息
+</li>
+<li>bzr status/st # 当前仓库状态
+</li>
+<li>bzr revno # current revision number
+</li>
+<li>bzr info # 当前仓库情况
+</li>
+</ul>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-1-6" class="outline-3">
+<h3 id="sec-1-6"><span class="section-number-3">1.6</span> 虚拟机</h3>
+<div class="outline-text-3" id="text-1-6">
+
+
+</div>
+
+<div id="outline-container-1-6-1" class="outline-4">
+<h4 id="sec-1-6-1"><span class="section-number-4">1.6.1</span> vmware虚拟机增加磁盘空间</h4>
+<div class="outline-text-4" id="text-1-6-1">
 
 <p>今天感觉自己的磁盘空间好像有点不够了，大部分数据都是在$HOME下面的，需要增加磁盘空间。
 </p>
@@ -1236,9 +1544,9 @@ note(dirlt):这里对于0 0不太清楚是什么意思，只是知道分别是du
 
 </div>
 
-<div id="outline-container-1-5-2" class="outline-4">
-<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> virtualbox安装windows虚拟机</h4>
-<div class="outline-text-4" id="text-1-5-2">
+<div id="outline-container-1-6-2" class="outline-4">
+<h4 id="sec-1-6-2"><span class="section-number-4">1.6.2</span> virtualbox安装windows虚拟机</h4>
+<div class="outline-text-4" id="text-1-6-2">
 
 <p>安装windows虚拟机主要是为了方便一些需要在windows下面完成的操作，比如U盾。
 另外windows下面也有一些第三方的软件在Linux下面比较匮乏比如EverBox，
@@ -1255,9 +1563,9 @@ note(dirlt):这里对于0 0不太清楚是什么意思，只是知道分别是du
 
 </div>
 
-<div id="outline-container-1-5-3" class="outline-4">
-<h4 id="sec-1-5-3"><span class="section-number-4">1.5.3</span> virtualbox设置共享文件夹</h4>
-<div class="outline-text-4" id="text-1-5-3">
+<div id="outline-container-1-6-3" class="outline-4">
+<h4 id="sec-1-6-3"><span class="section-number-4">1.6.3</span> virtualbox设置共享文件夹</h4>
+<div class="outline-text-4" id="text-1-6-3">
 
 <p>设置共享文件夹主要是为了数据可以进行同步。通过windows虚拟机，安装同步软件比如GDrive。
 然后通过共享文件夹，将GDrive的同步目录隐射到Linux文件系统上面，完成数据同步。
@@ -1281,9 +1589,9 @@ note(dirlt):这里对于0 0不太清楚是什么意思，只是知道分别是du
 
 </div>
 
-<div id="outline-container-1-5-4" class="outline-4">
-<h4 id="sec-1-5-4"><span class="section-number-4">1.5.4</span> virtualbox下使用U盾</h4>
-<div class="outline-text-4" id="text-1-5-4">
+<div id="outline-container-1-6-4" class="outline-4">
+<h4 id="sec-1-6-4"><span class="section-number-4">1.6.4</span> virtualbox下使用U盾</h4>
+<div class="outline-text-4" id="text-1-6-4">
 
 <p>首先需要在 <a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a> VirtualBox Extension Pack，双击执行。
 在Settings =》 USB选项里面勾选 Enable USB Controller 和 Enable USB2.0（EHCI） Controller。
@@ -1308,7 +1616,7 @@ note(dirlt):这里对于0 0不太清楚是什么意思，只是知道分别是du
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-12-04T15:39+0800</p>
+<p class="date">Date: 2014-12-23T12:37+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

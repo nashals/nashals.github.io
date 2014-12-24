@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="cpp"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:44+0800"/>
+<meta name="generated" content="2014-12-23T12:37+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -79,33 +79,32 @@
 <ul>
 <li><a href="cpp.html#sec-1">1 cpp</a>
 <ul>
-<li><a href="cpp.html#sec-1-1">1.1 相关资料</a></li>
-<li><a href="cpp.html#sec-1-2">1.2 TC++PL</a></li>
-<li><a href="cpp.html#sec-1-3">1.3 language</a>
+<li><a href="cpp.html#sec-1-1">1.1 TC++PL</a></li>
+<li><a href="cpp.html#sec-1-2">1.2 language</a>
 <ul>
-<li><a href="cpp.html#sec-1-3-1">1.3.1 new/delete</a></li>
-<li><a href="cpp.html#sec-1-3-2">1.3.2 static assert</a></li>
-<li><a href="cpp.html#sec-1-3-3">1.3.3 renew static_cast</a></li>
-<li><a href="cpp.html#sec-1-3-4">1.3.4 keyword</a></li>
+<li><a href="cpp.html#sec-1-2-1">1.2.1 new/delete</a></li>
+<li><a href="cpp.html#sec-1-2-2">1.2.2 static assert</a></li>
+<li><a href="cpp.html#sec-1-2-3">1.2.3 renew static_cast</a></li>
+<li><a href="cpp.html#sec-1-2-4">1.2.4 keyword</a></li>
 </ul>
 </li>
-<li><a href="cpp.html#sec-1-4">1.4 runtime</a>
+<li><a href="cpp.html#sec-1-3">1.3 runtime</a>
 <ul>
-<li><a href="cpp.html#sec-1-4-1">1.4.1 local static object</a></li>
-<li><a href="cpp.html#sec-1-4-2">1.4.2 hook function</a></li>
-<li><a href="cpp.html#sec-1-4-3">1.4.3 undefined reference to static const class member</a></li>
+<li><a href="cpp.html#sec-1-3-1">1.3.1 local static object</a></li>
+<li><a href="cpp.html#sec-1-3-2">1.3.2 hook function</a></li>
+<li><a href="cpp.html#sec-1-3-3">1.3.3 undefined reference to static const class member</a></li>
 </ul>
 </li>
-<li><a href="cpp.html#sec-1-5">1.5 library</a>
+<li><a href="cpp.html#sec-1-4">1.4 library</a>
 <ul>
-<li><a href="cpp.html#sec-1-5-1">1.5.1 boost::bind</a></li>
-<li><a href="cpp.html#sec-1-5-2">1.5.2 boost::spirit</a></li>
-<li><a href="cpp.html#sec-1-5-3">1.5.3 google::protobuf dynamic usage</a></li>
+<li><a href="cpp.html#sec-1-4-1">1.4.1 boost::bind</a></li>
+<li><a href="cpp.html#sec-1-4-2">1.4.2 boost::spirit</a></li>
+<li><a href="cpp.html#sec-1-4-3">1.4.3 google::protobuf dynamic usage</a></li>
 </ul>
 </li>
-<li><a href="cpp.html#sec-1-6">1.6 misc</a>
+<li><a href="cpp.html#sec-1-5">1.5 misc</a>
 <ul>
-<li><a href="cpp.html#sec-1-6-1">1.6.1 诡异的性能问题</a></li>
+<li><a href="cpp.html#sec-1-5-1">1.5.1 诡异的性能问题</a></li>
 </ul>
 </li>
 </ul>
@@ -117,13 +116,6 @@
 <div id="outline-container-1" class="outline-2">
 <h2 id="sec-1"><span class="section-number-2">1</span> cpp</h2>
 <div class="outline-text-2" id="text-1">
-
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 相关资料</h3>
-<div class="outline-text-3" id="text-1-1">
 
 <ul>
 <li>The C Programming Language(DMR &amp; BWK)
@@ -138,18 +130,15 @@
 </li>
 <li>TCC : Tiny C Compiler <a href="http://bellard.org/tcc/">http://bellard.org/tcc/</a>
 </li>
-<li>
-</li>
 </ul>
 
 
-</div>
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> TC++PL</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> TC++PL</h3>
+<div class="outline-text-3" id="text-1-1">
 
 <p>学习C++时，最主要的事情就是集中关注概念，不要迷失在语言的技术细节里面，学习语言的目的是成为一个更好的程序员，对于程序设计和设计技术的理解远远比语言细节重要.在实践性程序设计中，理解语言中最晦涩难懂的语言特征或者使用大量的不同特征并不能够获得什么利益:-).C++支持一种逐步推进的学习方式，就是说一开始就可以来使用C++编写实际的东西，同时C++支持多种程序设计范型，能够使得你大致线形地学习它的概念，并且在学习过程中不断收到实际效益。
 </p>
@@ -172,16 +161,16 @@ OOP允许程序员用问题本身的属于来描述问题，而不是要用运�
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> language</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> language</h3>
+<div class="outline-text-3" id="text-1-2">
 
 
 </div>
 
-<div id="outline-container-1-3-1" class="outline-4">
-<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> new/delete</h4>
-<div class="outline-text-4" id="text-1-3-1">
+<div id="outline-container-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> new/delete</h4>
+<div class="outline-text-4" id="text-1-2-1">
 
 <p>new/delete和C的内存分配有很多区别，主要的改进在进行了很多可定制化的内容:
 </p><ul>
@@ -205,7 +194,7 @@ OOP允许程序员用问题本身的属于来描述问题，而不是要用运�
 
 
 <ul>
-<li id="sec-1-3-1-1">new重载<br/>
+<li id="sec-1-2-1-1">new重载<br/>
 用户可以重载new/delete来实现全局new/delete或者是某个类的new/delete.原型有下面这些
 
 
@@ -269,7 +258,7 @@ int main(){
 </li>
 </ul>
 <ul>
-<li id="sec-1-3-1-2">new异常规格<br/>
+<li id="sec-1-2-1-2">new异常规格<br/>
 从new的异常规格可以看到，如果是普通的调用的话可能会抛出std::bad_alloc这个异常，但是原型里面还有
 
 
@@ -294,7 +283,7 @@ void* p=new (std::nothrow) int(); // &#36825;&#37324;std::nothrow&#23601;&#26159
 </li>
 </ul>
 <ul>
-<li id="sec-1-3-1-3">内存分配失败<br/>
+<li id="sec-1-2-1-3">内存分配失败<br/>
 C++来提供了内存分配失败的回调函数，但是这个只能够处理全局new分配失败的情况
 
 
@@ -310,7 +299,7 @@ new_handler set_new_handler(new_handler) throw();
 </li>
 </ul>
 <ul>
-<li id="sec-1-3-1-4">operator new与new operator<br/>
+<li id="sec-1-2-1-4">operator new与new operator<br/>
 此外在很多书籍里面会提到operator new和new operator这两个说法，这两个是不一样的概念。operator new就是我们重写运算符函数，而new operator使我们调用new这个表达式。本质上说new这个表达式调用了分配类型里面的operator new函数，同时调用这个类型的初始化构造函数。同理operator delete和delete operator差别也是一样的。通常new operator的动作是这样的:
 <ul>
 <li>void *raw=operaotor new(sizeof(A)); //使用operator new进行内存分配
@@ -337,9 +326,9 @@ new_handler set_new_handler(new_handler) throw();
 
 </div>
 
-<div id="outline-container-1-3-2" class="outline-4">
-<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> static assert</h4>
-<div class="outline-text-4" id="text-1-3-2">
+<div id="outline-container-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> static assert</h4>
+<div class="outline-text-4" id="text-1-2-2">
 
 
 
@@ -381,14 +370,14 @@ new_handler set_new_handler(new_handler) throw();
 
 </div>
 
-<div id="outline-container-1-3-3" class="outline-4">
-<h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> renew static_cast</h4>
-<div class="outline-text-4" id="text-1-3-3">
+<div id="outline-container-1-2-3" class="outline-4">
+<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> renew static_cast</h4>
+<div class="outline-text-4" id="text-1-2-3">
 
 <p>学习C的时候总是认为强转不过就是二进制层面的强转。开始学习C++之后就认为C语言的强转对应的就是reinterpret_cast.而static_cast和reinterpret_cast的差别不过就是static_cast可以做一些类型上面的检查，所以在大多数的时候都习惯使用reinterpret_cast而非static_cast.直到在编写itachi（一个异步网络编程框架）的时候，才发现并不是这么回事。下面的例子是我遇到问题的一个抽象。
 </p>
 <ul>
-<li id="sec-1-3-3-1">正确的例子<br/>
+<li id="sec-1-2-3-1">正确的例子<br/>
 
 
 
@@ -432,7 +421,7 @@ int main() {
 </li>
 </ul>
 <ul>
-<li id="sec-1-3-3-2">当处理多继承时<br/>
+<li id="sec-1-2-3-2">当处理多继承时<br/>
 处理B类型没有问题，但是处理B的子类型的话，那么上面代码可能就会出现问题。因为对于B子类型而言的话很可能在 <b>对象模型</b> 之前添加了一些字段，按照reintrepret_cast语义的话是直接二进制映射，字段没有虚方法所以是直接按照偏移来取的，因此可能存在问题。但是看看下面这个例子
 
 
@@ -483,7 +472,7 @@ c:0xbfff9a9c c.g:0xbfff9aa0
 </li>
 </ul>
 <ul>
-<li id="sec-1-3-3-3">应该怎么做<br/>
+<li id="sec-1-2-3-3">应该怎么做<br/>
 <b>因为自己也缺乏C++对象模型方面的知识，所以也没有办法从底层解释原因。</b> 但是结论我想说的就是，尽量地执行static_cast而非reinterpret_cast.reinterpret_cast对于继承方面基本没有做任何事情，而使用static_cast的话则能够检测到类型系统，然后根据类型系统来进行正确的转换。 <b>要是想对于static_cast有更多认识的话，必须看看C++对象模型的实现。</b>
 
 <p>
@@ -506,9 +495,9 @@ c:0xbfff9a9c c.g:0xbfff9aa0
 
 </div>
 
-<div id="outline-container-1-3-4" class="outline-4">
-<h4 id="sec-1-3-4"><span class="section-number-4">1.3.4</span> keyword</h4>
-<div class="outline-text-4" id="text-1-3-4">
+<div id="outline-container-1-2-4" class="outline-4">
+<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> keyword</h4>
+<div class="outline-text-4" id="text-1-2-4">
 
 <ul>
 <li>__thread 线程级别全局变量
@@ -521,16 +510,16 @@ c:0xbfff9a9c c.g:0xbfff9aa0
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> runtime</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> runtime</h3>
+<div class="outline-text-3" id="text-1-3">
 
 
 </div>
 
-<div id="outline-container-1-4-1" class="outline-4">
-<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> local static object</h4>
-<div class="outline-text-4" id="text-1-4-1">
+<div id="outline-container-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> local static object</h4>
+<div class="outline-text-4" id="text-1-3-1">
 
 <p>局部静态对象在C里面初始化只允许是常数，所以这个在编译期就可以搞定。在C++里面局部静态对象允许是一个类对象，那么就涉及到类的初始化等问题，这个是在编译期搞不定的只能够在运行期解决。
 </p>
@@ -613,14 +602,14 @@ _Z3foov:
 
 </div>
 
-<div id="outline-container-1-4-2" class="outline-4">
-<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> hook function</h4>
-<div class="outline-text-4" id="text-1-4-2">
+<div id="outline-container-1-3-2" class="outline-4">
+<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> hook function</h4>
+<div class="outline-text-4" id="text-1-3-2">
 
 <p>hook函数调用有两种方式，一种是hook我们代码内部的函数，这意味这这个函数是由我们来编译的，当然我们不能够修改需要hook的函数实现否则就没有意义了。另外一种hook函数是动态库里面的函数，静态库里面的函数因为完全进入了可执行程序，所以修改起来比较麻烦一些。我们QA写过这样的程序用libbfd库修改可执行程序本身，在函数调用之间加上跳板，但是相比本文介绍的两种方式更加复杂。（复杂就以为着容易出错，而且这种修改可执行程序应该是不值得提倡的）。
 </p>
 <ul>
-<li id="sec-1-4-2-1">hook编译时函数<br/>
+<li id="sec-1-3-2-1">hook编译时函数<br/>
 在gcc编译的时候需要加入-finstrument-functions这个选项之后，那么每个函数调用之前和之后都会调用
 <ul>
 <li>__cyg_profile_func_enter
@@ -672,7 +661,7 @@ extern <span class="org-string">"C"</span> {
 </li>
 </ul>
 <ul>
-<li id="sec-1-4-2-2">hook运行时函数<br/>
+<li id="sec-1-3-2-2">hook运行时函数<br/>
 可以使用dlopen截获函数入口，然后使用dlsym(RTLD_NEXT)来获得下一个入口.我们以截获malloc为例。
 
 
@@ -708,9 +697,9 @@ void free(void *p){
 
 </div>
 
-<div id="outline-container-1-4-3" class="outline-4">
-<h4 id="sec-1-4-3"><span class="section-number-4">1.4.3</span> undefined reference to static const class member</h4>
-<div class="outline-text-4" id="text-1-4-3">
+<div id="outline-container-1-3-3" class="outline-4">
+<h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> undefined reference to static const class member</h4>
+<div class="outline-text-4" id="text-1-3-3">
 
 <p>类型静态常量成员只允许是标量内容,而不允许是字符串数组或者是结构体等。但是下面代码会存在链接问题
 </p>
@@ -758,16 +747,16 @@ int main() {
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> library</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> library</h3>
+<div class="outline-text-3" id="text-1-4">
 
 
 </div>
 
-<div id="outline-container-1-5-1" class="outline-4">
-<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> boost::bind</h4>
-<div class="outline-text-4" id="text-1-5-1">
+<div id="outline-container-1-4-1" class="outline-4">
+<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> boost::bind</h4>
+<div class="outline-text-4" id="text-1-4-1">
 
 <p>之前看到陈硕同学在<a href="http://blog.csdn.net/solstice/">博客</a> 给出的C++工程实践推荐，使用boost::function和boost::bind代替虚函数。之所以我们需要使用虚函数，无非就是希望统一执行接口。统一接口通过虚函数是一种方法，而使用boost::function和boost::bind也可以达到相同的目的。
 </p>
@@ -820,9 +809,9 @@ x.push(boost::bind(&amp;B::fun,&amp;b,_1,456));
 
 </div>
 
-<div id="outline-container-1-5-2" class="outline-4">
-<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> boost::spirit</h4>
-<div class="outline-text-4" id="text-1-5-2">
+<div id="outline-container-1-4-2" class="outline-4">
+<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> boost::spirit</h4>
+<div class="outline-text-4" id="text-1-4-2">
 
 <p>今天被Dr. Yang推荐使用boost::spirit，模板编程实现的语法解析器。Dr. Yang推荐我看看hypertable里面实现的hql，里面就是使用spirit实现的hql(hypertable query language)，在src/cc/Hypertable/Lib/HqlParser.h里面。粗看一下功能还是非常强大的，对于很多使用flex/bison完成的工作都可以通过spirit来完成。看上去是LALR解析器，现在不太清楚就是如果出现shift/reduce或者是reduce/reduce冲突的话spirit是怎么解决的。note(dirlt):事实上是LL解析器，而且如果没有猜错应该是LL(1)解析器。
 </p>
@@ -836,9 +825,9 @@ x.push(boost::bind(&amp;B::fun,&amp;b,_1,456));
 
 </div>
 
-<div id="outline-container-1-5-3" class="outline-4">
-<h4 id="sec-1-5-3"><span class="section-number-4">1.5.3</span> google::protobuf dynamic usage</h4>
-<div class="outline-text-4" id="text-1-5-3">
+<div id="outline-container-1-4-3" class="outline-4">
+<h4 id="sec-1-4-3"><span class="section-number-4">1.4.3</span> google::protobuf dynamic usage</h4>
+<div class="outline-text-4" id="text-1-4-3">
 
 <p>使用google::protobuf如果我们不知道生成消息schema的话，那么就需要依赖于google::protobuf动态编译的能力了。google::protobuf支持动态地读取某个proto文件并且进行动态编译。其实这里说编译有点不太恰当，因为内部并没有生成native code,不过确实使得我们有能力去动态构造一个消息。
 </p>
@@ -880,16 +869,16 @@ x.push(boost::bind(&amp;B::fun,&amp;b,_1,456));
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> misc</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> misc</h3>
+<div class="outline-text-3" id="text-1-5">
 
 
 </div>
 
-<div id="outline-container-1-6-1" class="outline-4">
-<h4 id="sec-1-6-1"><span class="section-number-4">1.6.1</span> 诡异的性能问题</h4>
-<div class="outline-text-4" id="text-1-6-1">
+<div id="outline-container-1-5-1" class="outline-4">
+<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> 诡异的性能问题</h4>
+<div class="outline-text-4" id="text-1-5-1">
 
 <p><b>note(dirlt)：现在我觉得可能是glibc的问题，而非编译器的问题</b>
 </p>
@@ -1034,7 +1023,7 @@ tomb git:(master) ✗ g++ map_perf_test.cc -O2
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:44+0800</p>
+<p class="date">Date: 2014-12-23T12:37+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

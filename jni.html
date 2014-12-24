@@ -3,11 +3,11 @@
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
-<title>jni</title>
+<title>Java Native Interface: Programmer's Guide and Specification</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="jni"/>
+<meta name="title" content="Java Native Interface: Programmer's Guide and Specification"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:43+0800"/>
+<meta name="generated" content="2014-12-23T12:37+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -70,7 +70,7 @@
 </div>
 
 <div id="content">
-<h1 class="title">jni</h1>
+<h1 class="title">Java Native Interface: Programmer's Guide and Specification</h1>
 
 
 <div id="table-of-contents">
@@ -79,21 +79,29 @@
 <ul>
 <li><a href="jni.html#sec-1">1 jni</a>
 <ul>
-<li><a href="jni.html#sec-1-1">1.1 Java Native Interface: Programmer's Guide and Specification</a>
+<li><a href="jni.html#sec-1-1">1.1 Introduction</a></li>
+<li><a href="jni.html#sec-1-2">1.2 Getting Started</a>
 <ul>
-<li><a href="jni.html#sec-1-1-1">1.1.1 Introduction</a></li>
-<li><a href="jni.html#sec-1-1-2">1.1.2 Getting Started</a></li>
-<li><a href="jni.html#sec-1-1-3">1.1.3 Basic Types, Strings, and Arrays</a></li>
-<li><a href="jni.html#sec-1-1-4">1.1.4 Fields and Methods</a></li>
-<li><a href="jni.html#sec-1-1-5">1.1.5 Local and Gloabl References</a></li>
-<li><a href="jni.html#sec-1-1-6">1.1.6 Exceptions</a></li>
-<li><a href="jni.html#sec-1-1-7">1.1.7 The Invocation Interface</a></li>
-<li><a href="jni.html#sec-1-1-8">1.1.8 Additional JNI Features</a></li>
-<li><a href="jni.html#sec-1-1-9">1.1.9 Leveraging Existing Native Libraries</a></li>
-<li><a href="jni.html#sec-1-1-10">1.1.10 Traps and Pitfalls</a></li>
-<li><a href="jni.html#sec-1-1-11">1.1.11 Overview of the JNI Design</a></li>
+<li><a href="jni.html#sec-1-2-1">1.2.1 Hello.java</a></li>
+<li><a href="jni.html#sec-1-2-2">1.2.2 Hello.h</a></li>
+<li><a href="jni.html#sec-1-2-3">1.2.3 Hello.cc</a></li>
 </ul>
 </li>
+<li><a href="jni.html#sec-1-3">1.3 Basic Types, Strings, and Arrays</a></li>
+<li><a href="jni.html#sec-1-4">1.4 Fields and Methods</a></li>
+<li><a href="jni.html#sec-1-5">1.5 Local and Gloabl References</a></li>
+<li><a href="jni.html#sec-1-6">1.6 Exceptions</a></li>
+<li><a href="jni.html#sec-1-7">1.7 The Invocation Interface</a></li>
+<li><a href="jni.html#sec-1-8">1.8 Additional JNI Features</a>
+<ul>
+<li><a href="jni.html#sec-1-8-1">1.8.1 JNI and Threads</a></li>
+<li><a href="jni.html#sec-1-8-2">1.8.2 Registering Native Methods</a></li>
+<li><a href="jni.html#sec-1-8-3">1.8.3 Load and Unload Handlers</a></li>
+</ul>
+</li>
+<li><a href="jni.html#sec-1-9">1.9 Leveraging Existing Native Libraries</a></li>
+<li><a href="jni.html#sec-1-10">1.10 Traps and Pitfalls</a></li>
+<li><a href="jni.html#sec-1-11">1.11 Overview of the JNI Design</a></li>
 </ul>
 </li>
 </ul>
@@ -105,22 +113,15 @@
 <div class="outline-text-2" id="text-1">
 
 
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Java Native Interface: Programmer's Guide and Specification</h3>
-<div class="outline-text-3" id="text-1-1">
-
-
 <p>
 <a href="http://www.uni-ulm.de/fileadmin/website_uni_ulm/iui.inst.200/files/staff/domaschka/misc/jni_programmers_guide_spec.pdf">http://www.uni-ulm.de/fileadmin/website_uni_ulm/iui.inst.200/files/staff/domaschka/misc/jni_programmers_guide_spec.pdf</a>
 </p>
 
 </div>
 
-<div id="outline-container-1-1-1" class="outline-4">
-<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> Introduction</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Introduction</h3>
+<div class="outline-text-3" id="text-1-1">
 
 <p>The JNI is designed to handle situations where you need to combine Java applications with native code. As a two-way interface, the JNI can support two types of native code: native libraries and native applications. （允许相互调用）
 </p><ul>
@@ -164,9 +165,9 @@
 
 </div>
 
-<div id="outline-container-1-1-2" class="outline-4">
-<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> Getting Started</h4>
-<div class="outline-text-4" id="text-1-1-2">
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Getting Started</h3>
+<div class="outline-text-3" id="text-1-2">
 
 <p>主要介绍的是native methods编写，JVM通过so来调用native methods.这里给出一个无参native mthods例子。
 </p><ul>
@@ -184,8 +185,13 @@
 
 <p><img src="images/jni-example.png"  alt="./images/jni-example.png" />
 </p>
-<ul>
-<li id="sec-1-1-2-1">Hello.java<br/>
+
+</div>
+
+<div id="outline-container-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> Hello.java</h4>
+<div class="outline-text-4" id="text-1-2-1">
+
 
 
 
@@ -203,10 +209,14 @@ public class Hello {
 </pre>
 
 
-</li>
-</ul>
-<ul>
-<li id="sec-1-1-2-2">Hello.h<br/>
+</div>
+
+</div>
+
+<div id="outline-container-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> Hello.h</h4>
+<div class="outline-text-4" id="text-1-2-2">
+
 
 
 
@@ -235,10 +245,14 @@ JNIEXPORT void JNICALL Java_Hello_run
 </pre>
 
 
-</li>
-</ul>
-<ul>
-<li id="sec-1-1-2-3">Hello.cc<br/>
+</div>
+
+</div>
+
+<div id="outline-container-1-2-3" class="outline-4">
+<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> Hello.cc</h4>
+<div class="outline-text-4" id="text-1-2-3">
+
 
 
 
@@ -256,15 +270,14 @@ JNIEXPORT void JNICALL Java_Hello_run  (JNIEnv * env, jclass cls)
 </pre>
 
 
-</li>
-</ul>
+</div>
 </div>
 
 </div>
 
-<div id="outline-container-1-1-3" class="outline-4">
-<h4 id="sec-1-1-3"><span class="section-number-4">1.1.3</span> Basic Types, Strings, and Arrays</h4>
-<div class="outline-text-4" id="text-1-1-3">
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Basic Types, Strings, and Arrays</h3>
+<div class="outline-text-3" id="text-1-3">
 
 <ul>
 <li>The static initializer calls the System.loadLibrary method to load a native library called Prompt. 
@@ -343,9 +356,9 @@ typedef signed char jbyte;
 
 </div>
 
-<div id="outline-container-1-1-4" class="outline-4">
-<h4 id="sec-1-1-4"><span class="section-number-4">1.1.4</span> Fields and Methods</h4>
-<div class="outline-text-4" id="text-1-1-4">
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Fields and Methods</h3>
+<div class="outline-text-3" id="text-1-4">
 
 <p><b>note(dirlt)：field和method的访问接口，非常类似google::protobuf提供的reflection接口</b>
 </p>
@@ -467,9 +480,9 @@ The overhead of field access using the JNI lies in the cost of calling through t
 
 </div>
 
-<div id="outline-container-1-1-5" class="outline-4">
-<h4 id="sec-1-1-5"><span class="section-number-4">1.1.5</span> Local and Gloabl References</h4>
-<div class="outline-text-4" id="text-1-1-5">
+<div id="outline-container-1-5" class="outline-3">
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Local and Gloabl References</h3>
+<div class="outline-text-3" id="text-1-5">
 
 <p>reference和GC非常相关，决定了哪些对象作用域多大以及生命周期多长：
 </p><ul>
@@ -531,9 +544,9 @@ The overhead of field access using the JNI lies in the cost of calling through t
 
 </div>
 
-<div id="outline-container-1-1-6" class="outline-4">
-<h4 id="sec-1-1-6"><span class="section-number-4">1.1.6</span> Exceptions</h4>
-<div class="outline-text-4" id="text-1-1-6">
+<div id="outline-container-1-6" class="outline-3">
+<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Exceptions</h3>
+<div class="outline-text-3" id="text-1-6">
 
 <ul>
 <li>Throw 抛出已有异常
@@ -603,9 +616,9 @@ Calling most JNI functions with a pending exception leads to undefined results. 
 
 </div>
 
-<div id="outline-container-1-1-7" class="outline-4">
-<h4 id="sec-1-1-7"><span class="section-number-4">1.1.7</span> The Invocation Interface</h4>
-<div class="outline-text-4" id="text-1-1-7">
+<div id="outline-container-1-7" class="outline-3">
+<h3 id="sec-1-7"><span class="section-number-3">1.7</span> The Invocation Interface</h3>
+<div class="outline-text-3" id="text-1-7">
 
 <p><b>note(dirlt)：代码整个过程还是比较清晰的</b>
 </p>
@@ -699,30 +712,43 @@ Hello,World
 
 </div>
 
-<div id="outline-container-1-1-8" class="outline-4">
-<h4 id="sec-1-1-8"><span class="section-number-4">1.1.8</span> Additional JNI Features</h4>
-<div class="outline-text-4" id="text-1-1-8">
+<div id="outline-container-1-8" class="outline-3">
+<h3 id="sec-1-8"><span class="section-number-3">1.8</span> Additional JNI Features</h3>
+<div class="outline-text-3" id="text-1-8">
 
-<ul>
-<li id="sec-1-1-8-1">JNI and Threads<br/>
+
+</div>
+
+<div id="outline-container-1-8-1" class="outline-4">
+<h4 id="sec-1-8-1"><span class="section-number-4">1.8.1</span> JNI and Threads</h4>
+<div class="outline-text-4" id="text-1-8-1">
+
 <ul>
 <li>MonitorEnter/MonitorExit可以操作monitor. <b>note(dirlt):对应java里面的synchronized关键字区域</b>
 </li>
 </ul>
 
 
-</li>
-</ul>
-<ul>
-<li id="sec-1-1-8-2">Registering Native Methods<br/>
-允许动态注册native methods.
+</div>
 
-</li>
-</ul>
-<ul>
-<li id="sec-1-1-8-3">Load and Unload Handlers<br/>
-系统加载和卸载native library回调函数：
-<ul>
+</div>
+
+<div id="outline-container-1-8-2" class="outline-4">
+<h4 id="sec-1-8-2"><span class="section-number-4">1.8.2</span> Registering Native Methods</h4>
+<div class="outline-text-4" id="text-1-8-2">
+
+<p>允许动态注册native methods.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-8-3" class="outline-4">
+<h4 id="sec-1-8-3"><span class="section-number-4">1.8.3</span> Load and Unload Handlers</h4>
+<div class="outline-text-4" id="text-1-8-3">
+
+<p>系统加载和卸载native library回调函数：
+</p><ul>
 <li>JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *jvm, void *reserved); // 返回JNI版本比如 JNI_VERSION_1_6
 </li>
 <li>JNIEXPORT void JNICALL JNI_OnUnload(JavaVM *jvm, void *reserved)
@@ -745,15 +771,14 @@ load/unload工作流程是这样的：
 <p>
 <b>note(dirlt)：因此如果ClassLoader里面关键了global reference的话那么这个class loader是不会被卸载的</b>
 </p>
-</li>
-</ul>
+</div>
 </div>
 
 </div>
 
-<div id="outline-container-1-1-9" class="outline-4">
-<h4 id="sec-1-1-9"><span class="section-number-4">1.1.9</span> Leveraging Existing Native Libraries</h4>
-<div class="outline-text-4" id="text-1-1-9">
+<div id="outline-container-1-9" class="outline-3">
+<h3 id="sec-1-9"><span class="section-number-3">1.9</span> Leveraging Existing Native Libraries</h3>
+<div class="outline-text-3" id="text-1-9">
 
 <p>如何使用现有的native library：
 </p><ul>
@@ -771,9 +796,9 @@ load/unload工作流程是这样的：
 
 </div>
 
-<div id="outline-container-1-1-10" class="outline-4">
-<h4 id="sec-1-1-10"><span class="section-number-4">1.1.10</span> Traps and Pitfalls</h4>
-<div class="outline-text-4" id="text-1-1-10">
+<div id="outline-container-1-10" class="outline-3">
+<h3 id="sec-1-10"><span class="section-number-3">1.10</span> Traps and Pitfalls</h3>
+<div class="outline-text-3" id="text-1-10">
 
 <ul>
 <li>Error Checking
@@ -813,9 +838,9 @@ load/unload工作流程是这样的：
 
 </div>
 
-<div id="outline-container-1-1-11" class="outline-4">
-<h4 id="sec-1-1-11"><span class="section-number-4">1.1.11</span> Overview of the JNI Design</h4>
-<div class="outline-text-4" id="text-1-1-11">
+<div id="outline-container-1-11" class="outline-3">
+<h3 id="sec-1-11"><span class="section-number-3">1.11</span> Overview of the JNI Design</h3>
+<div class="outline-text-3" id="text-1-11">
 
 
 <hr/>
@@ -911,10 +936,9 @@ Accessing Objects
 </div>
 </div>
 </div>
-</div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:43+0800</p>
+<p class="date">Date: 2014-12-23T12:37+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

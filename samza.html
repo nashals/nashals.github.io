@@ -1,13 +1,13 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
 <title>samza</title>
-<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="samza"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:42+0800"/>
+<meta name="generated" content="2014-12-23T12:37+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -93,13 +93,56 @@
 
 
 <p>
-todo(dirlt):
+Samza is made up of three layers:
+</p><ul>
+<li>A streaming layer. <a href="kafka.html">Kafka</a>
+</li>
+<li>An execution layer. <a href="yarn.html">YARN</a> 
+</li>
+<li>A processing layer. samza-api
+</li>
+</ul>
+
+
+<p>
+samza架构和hadoop-mapreduce架构非常类似. 1)从kafka读取数据 2)经过samza-api进行处理 3)将输出写入kafka.
+</p>
+<p>
+<img src="images/samza-ecosystem.png"  alt="./images/samza-ecosystem.png" /> <img src="images/samza-hadoop.png"  alt="./images/samza-hadoop.png" /> <img src="images/samza-job.png"  alt="./images/samza-job.png" />
+</p>
+<p>
+因为samza架构借鉴了hadoop-mapreduce架构, 所以许多术语也沿用下来了.
+</p><ul>
+<li>partition # kafka内部就对message-stream进行了partition.
+</li>
+<li>job &amp; task # 一个task对应一个input partition. 所以job的task数量由kafka topic的partition数量决定.
+</li>
+<li>container # 使用yarn来对每个task进行资源管理.
+</li>
+</ul>
+
+
+
+<hr/>
+
+<p>   
+通过streaming-layer将jobs串联起来组成dataflow-graphs. 
+</p>
+<p>
+<img src="images/samza-dag.png"  alt="./images/samza-dag.png" />
+</p>
+
+
+<hr/>
+
+<p>
+关于state管理问题, samza-api层面提供了local-storage接口, 但是这个接口其实没有解决太多问题. 使用这个local-storage接口虽然可以在本地存储部分状态数据来减轻对remote-storage的压力, 但是如果task失败的话 samza并不负责这个local-data的迁移. 所以一些关键性的数据还是必须存储在remote-storage上比如当前处理的message-id等. 
 </p></div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:42+0800</p>
+<p class="date">Date: 2014-12-23T12:37+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="algorithm"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:44+0800"/>
+<meta name="generated" content="2014-12-23T12:37+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -104,7 +104,6 @@
 <ul>
 <li><a href="algorithm.html#sec-1-3-1">1.3.1 安装和配置</a></li>
 <li><a href="algorithm.html#sec-1-3-2">1.3.2 初次DIV2</a></li>
-<li><a href="algorithm.html#sec-1-3-3">1.3.3 srm div2 series</a></li>
 </ul>
 </li>
 <li><a href="algorithm.html#sec-1-4">1.4 计算机科学最重要的32个算法</a></li>
@@ -375,10 +374,8 @@ simhash算法原理非常简单：
 </ul>
 
 
-
-<hr/>
 <p>
-这个算法主要是来进行去重的，前提是在big data下面并且内存存在限制。 <b>算法的假设和原理如下</b> ：
+这个算法主要是来进行去重的，前提是在big data下面并且内存存在限制。算法的假设和原理如下：
 </p>
 <p class="verse">
 Given a random uniform distribution for likelihoods of N 0s and 1s, you can extract a probability distribution for the likelihood of a specific phenomenon.  The phenomenon we care about is the maximum index of a 1 bit.  Specifically, we expect the following to be true:<br/>
@@ -398,10 +395,8 @@ Another interesting thing about this algorithm is that it introduces two paramet
 </p>
 
 
-
-<hr/>
 <p>
-<b>算法代码如下：</b>
+下面是这个算法的一个实现：
 </p>
 
 
@@ -431,7 +426,6 @@ def estimate_cardinality(values, k):
   return 2 ** (float(sum(max_zeroes)) / num_buckets) * num_buckets * 0.79402
 </pre>
 
-
 <p>
 这个算法上面存在一些差别，就是这个算法实现是假设末尾为0的概率为0.5,末尾为10的概率为0.25，以此类推。最后的0.79402应该是调整系数。
 </p>
@@ -445,13 +439,8 @@ def estimate_cardinality(values, k):
 </ul>
 
 
-
-<hr/>
 <p>
-<b>分布式计算</b>
-</p>
-<p>
-可以让每个机器各自维护各自的bucket，最后每个机器上面属于相同的bucket index的bucket进行merge即可，so damn cool!.
+这个算法可以很容易地并行化。可以让每个机器各自维护各自的bucket，最后每个机器上面属于相同的bucket index的bucket进行merge即可。
 </p>
 </div>
 
@@ -1171,16 +1160,6 @@ int main() {
 <p><img src="images/virgin-topcoder-div2.jpg"  alt="./images/virgin-topcoder-div2.jpg" />
 </p>
 </div>
-
-</div>
-
-<div id="outline-container-1-3-3" class="outline-4">
-<h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> srm div2 series</h4>
-<div class="outline-text-4" id="text-1-3-3">
-
-<p>todo(dirlt):
-</p>
-</div>
 </div>
 
 </div>
@@ -1264,7 +1243,7 @@ int main() {
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:44+0800</p>
+<p class="date">Date: 2014-12-23T12:37+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="python"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:43+0800"/>
+<meta name="generated" content="2014-12-18T11:29+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -79,17 +79,18 @@
 <ul>
 <li><a href="python.html#sec-1">1 python</a>
 <ul>
-<li><a href="python.html#sec-1-1">1.1 语言</a>
+<li><a href="python.html#sec-1-1">1.1 language</a>
 <ul>
 <li><a href="python.html#sec-1-1-1">1.1.1 encode/decode</a></li>
 </ul>
 </li>
-<li><a href="python.html#sec-1-2">1.2 库</a>
+<li><a href="python.html#sec-1-2">1.2 library</a>
 <ul>
-<li><a href="python.html#sec-1-2-1">1.2.1 wsgi</a></li>
-<li><a href="python.html#sec-1-2-2">1.2.2 excel</a></li>
-<li><a href="python.html#sec-1-2-3">1.2.3 http</a></li>
-<li><a href="python.html#sec-1-2-4">1.2.4 date/time</a></li>
+<li><a href="python.html#sec-1-2-1">1.2.1 simple WSGI</a></li>
+<li><a href="python.html#sec-1-2-2">1.2.2 nginx + WSGI</a></li>
+<li><a href="python.html#sec-1-2-3">1.2.3 excel</a></li>
+<li><a href="python.html#sec-1-2-4">1.2.4 http</a></li>
+<li><a href="python.html#sec-1-2-5">1.2.5 date/time</a></li>
 </ul>
 </li>
 </ul>
@@ -106,7 +107,7 @@
 </div>
 
 <div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 语言</h3>
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> language</h3>
 <div class="outline-text-3" id="text-1-1">
 
 
@@ -189,17 +190,17 @@ if(sys.getdefaultencoding() !='utf8'):
 </div>
 
 <div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 库</h3>
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> library</h3>
 <div class="outline-text-3" id="text-1-2">
 
 
 </div>
 
 <div id="outline-container-1-2-1" class="outline-4">
-<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> wsgi</h4>
+<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> simple WSGI</h4>
 <div class="outline-text-4" id="text-1-2-1">
 
-<p>wsgi(web server gateway interface)定义了一个webserver的标准编程接口，对于coder来说只需要实现这个接口，然后可以选择外部其他的framework（比如gunicore），就可以将webserver运行起来了。下面是一个参考代码
+<p>WSGI(web server gateway interface)定义了一个webserver的标准编程接口，对于coder来说只需要实现这个接口，然后可以选择外部其他的framework（比如gunicore），就可以将webserver运行起来了。下面是一个参考代码
 </p>
 
 
@@ -240,7 +241,7 @@ if(sys.getdefaultencoding() !='utf8'):
 
 
 <p>
-之后我们只需要选择一个合适的框架就可以运行起来了。python内置了一个wsgi framework。这里的validator可以帮助外围做一些验证。
+之后我们只需要选择一个合适的框架就可以运行起来了。python内置了一个WSGI framework。这里的validator可以帮助外围做一些验证。
 </p>
 
 
@@ -278,8 +279,74 @@ if(sys.getdefaultencoding() !='utf8'):
 </div>
 
 <div id="outline-container-1-2-2" class="outline-4">
-<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> excel</h4>
+<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> nginx + WSGI</h4>
 <div class="outline-text-4" id="text-1-2-2">
+
+<p>python运行web大约有下面三种方式：
+</p><ol>
+<li>程序自己启动http server直接对外服务
+</li>
+<li>用WSGI编写然后使用gunicorn这样的container启动对外服务
+</li>
+<li>nginx在前端做反向代理，uwsgi做WSGI Container和nginx通信
+</li>
+</ol>
+
+
+<p>
+实践证明1这个方案因为python GIL缘故只能使用单线程处理，并且http server扩展性也不好。而方案2相对来说比较灵活，可以使用不同的container启动，并且也可以很容易地切换成为方案3，但是却不能够很好地处理子域名问题，同时部署上没有方案3灵活。
+自己搭建fantuan.dirlt.com里面就涉及到了子域名这个问题，最后还是使用方案3解决的，使用的就是nginx + uwsgi + web.py这个解决方案。所以这里简单地记录一下如何配置。
+</p>
+<p>
+在nginx/site-enables里面从default产生一份新的配置文件，修改内容
+</p>
+
+
+<pre class="example">server {
+        server_name fantuan.dirlt.com;
+        location / {
+                include uwsgi_params;
+                uwsgi_pass  127.0.0.1:8001;
+        }
+}
+</pre>
+
+<p>
+也就是说对于fantuan.dirlt.com这个请求包含uwsgi_params里面的参数全部转发到127.0.0.1:8001这个端口。
+</p>
+<p>
+然后在本地启动uwsgi绑定在127.0.0.1:8001这个端口上面，同时考虑到uwsgi支持配置文件的方式，我们首先编写配置文件
+</p>
+
+
+<pre class="example">[uwsgi]
+chdir = .
+module = server:application
+master = True
+processes = 4
+socket = 127.0.0.1:8001
+vacuum = True
+max-requests = 128
+</pre>
+
+
+<p>
+<b>todo(dirlt)：里面的字段的意思还不是清楚</b> 最重要的就是两个参数
+</p><ul>
+<li>module x:y 说明x.py里面的y对象是WSGI function对象
+</li>
+<li>socket 必须指定是127.0.0.1:8001
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2-3" class="outline-4">
+<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> excel</h4>
+<div class="outline-text-4" id="text-1-2-3">
 
 <p>分析excel文件在实际生活中还是比较常见的，通常我们的问题就是卡在读取上面（主要原因是因为我对COM接口不太熟悉，不太了解windows编程）。使用xlrd可以通过python来访问excel文件。
 </p>
@@ -367,25 +434,19 @@ for i in range(0,book.nsheets):
 
 </div>
 
-<div id="outline-container-1-2-3" class="outline-4">
-<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> http</h4>
-<div class="outline-text-4" id="text-1-2-3">
+<div id="outline-container-1-2-4" class="outline-4">
+<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> http</h4>
+<div class="outline-text-4" id="text-1-2-4">
 
-<ul>
-<li>httplib.HTTPConnection
-<ul>
-<li><b>注意构造函数的timeout是connect timeout</b>
-</li>
-<li>send/recv timeout可以通过socket.setdefaulttimeout()来设置，全局设置对所有socket有效
-</li>
-<li>对单个socket可以从过connection.sock.settimeout完成，但是必须首先connect才能够创建sock对象
-</li>
-<li><b>注意timeout单位是秒</b>
-</li>
+<p>关于httplib.HTTPConnection超时问题
+</p><ul>
 <li>python - HTTP Request Timeout - Stack Overflow : <a href="http://stackoverflow.com/questions/265720/http-request-timeout">http://stackoverflow.com/questions/265720/http-request-timeout</a>
 </li>
-</ul>
-
+<li>构造函数的timeout是connect timeout. 而不是recv/send timeout. 超时单位是秒.
+</li>
+<li>send/recv timeout可以通过socket.setdefaulttimeout()来设置，全局设置对所有socket有效.
+</li>
+<li>对单个socket可以通过设置connection.sock.settimeout完成，但是必须首先connect才能够获得sock对象.
 </li>
 </ul>
 
@@ -394,9 +455,9 @@ for i in range(0,book.nsheets):
 
 </div>
 
-<div id="outline-container-1-2-4" class="outline-4">
-<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> date/time</h4>
-<div class="outline-text-4" id="text-1-2-4">
+<div id="outline-container-1-2-5" class="outline-4">
+<h4 id="sec-1-2-5"><span class="section-number-4">1.2.5</span> date/time</h4>
+<div class="outline-text-4" id="text-1-2-5">
 
 
 
@@ -419,7 +480,7 @@ def convertTimeStampToDateTime(ts):
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:43+0800</p>
+<p class="date">Date: 2014-12-18T11:29+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="hdfs"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:43+0800"/>
+<meta name="generated" content="2014-12-18T11:29+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -79,7 +79,7 @@
 <ul>
 <li><a href="hdfs.html#sec-1">1 hdfs</a>
 <ul>
-<li><a href="hdfs.html#sec-1-1">1.1 观点</a>
+<li><a href="hdfs.html#sec-1-1">1.1 opinions</a>
 <ul>
 <li><a href="hdfs.html#sec-1-1-1">1.1.1 Under the Hood: Hadoop Distributed Filesystem reliability with Namenode and Avatarnode | Facebook</a></li>
 <li><a href="hdfs.html#sec-1-1-2">1.1.2 HA Namenode for HDFS with Hadoop 1.0 – Part 1 | Hortonworks</a></li>
@@ -89,22 +89,22 @@
 <li><a href="hdfs.html#sec-1-1-6">1.1.6 HDFS: Hadoop and Solid State Drive</a></li>
 </ul>
 </li>
-<li><a href="hdfs.html#sec-1-2">1.2 日志分析</a>
+<li><a href="hdfs.html#sec-1-2">1.2 notes</a>
 <ul>
-<li><a href="hdfs.html#sec-1-2-1">1.2.1 All datanodes are bad. Aborting</a></li>
+<li><a href="hdfs.html#sec-1-2-1">1.2.1 hdfs shell</a></li>
+<li><a href="hdfs.html#sec-1-2-2">1.2.2 Filesystem Corruption and Missing Blocks</a></li>
+<li><a href="hdfs.html#sec-1-2-3">1.2.3 文件系统API</a></li>
+<li><a href="hdfs.html#sec-1-2-4">1.2.4 一致性问题</a></li>
+<li><a href="hdfs.html#sec-1-2-5">1.2.5 读写进度</a></li>
+<li><a href="hdfs.html#sec-1-2-6">1.2.6 获取集群运行状况</a></li>
 </ul>
 </li>
-<li><a href="hdfs.html#sec-1-3">1.3 使用问题</a>
+<li><a href="hdfs.html#sec-1-3">1.3 all-about-log</a>
 <ul>
-<li><a href="hdfs.html#sec-1-3-1">1.3.1 hdfs shell</a></li>
-<li><a href="hdfs.html#sec-1-3-2">1.3.2 Filesystem Corruption and Missing Blocks</a></li>
-<li><a href="hdfs.html#sec-1-3-3">1.3.3 文件系统API</a></li>
-<li><a href="hdfs.html#sec-1-3-4">1.3.4 一致性问题</a></li>
-<li><a href="hdfs.html#sec-1-3-5">1.3.5 读写进度</a></li>
-<li><a href="hdfs.html#sec-1-3-6">1.3.6 获取集群运行状况</a></li>
+<li><a href="hdfs.html#sec-1-3-1">1.3.1 All datanodes are bad. Aborting</a></li>
 </ul>
 </li>
-<li><a href="hdfs.html#sec-1-4">1.4 代码分析</a>
+<li><a href="hdfs.html#sec-1-4">1.4 all-about-code</a>
 <ul>
 <li><a href="hdfs.html#sec-1-4-1">1.4.1 Balancer</a>
 <ul>
@@ -144,7 +144,7 @@
 </div>
 
 <div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 观点</h3>
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> opinions</h3>
 <div class="outline-text-3" id="text-1-1">
 
 
@@ -332,44 +332,15 @@ todo(dirlt):
 </div>
 
 <div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 日志分析</h3>
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> notes</h3>
 <div class="outline-text-3" id="text-1-2">
 
 
 </div>
 
 <div id="outline-container-1-2-1" class="outline-4">
-<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> All datanodes are bad. Aborting</h4>
+<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> hdfs shell</h4>
 <div class="outline-text-4" id="text-1-2-1">
-
-<p><b>note(dirlt):当时的情况是增加了datanode的处理线程数目但是没有重启regionserver.怀疑原因可能是文件句柄数量不够，重启regionserver之后恢复正常。</b>
-</p>
-
-
-
-<pre class="example">2013-06-05 03:45:16,866 FATAL org.apache.hadoop.hbase.regionserver.wal.HLog: Could not append. Requesting close of hlog
-java.io.IOException: All datanodes 10.11.0.41:50010 are bad. Aborting...
-        at org.apache.hadoop.hdfs.DFSClient$DFSOutputStream.processDatanodeError(DFSClient.java:3088)
-        at org.apache.hadoop.hdfs.DFSClient$DFSOutputStream.access$1900(DFSClient.java:2627)
-        at org.apache.hadoop.hdfs.DFSClient$DFSOutputStream$DataStreamer.run(DFSClient.java:2799)
-</pre>
-
-
-</div>
-</div>
-
-</div>
-
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> 使用问题</h3>
-<div class="outline-text-3" id="text-1-3">
-
-
-</div>
-
-<div id="outline-container-1-3-1" class="outline-4">
-<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> hdfs shell</h4>
-<div class="outline-text-4" id="text-1-3-1">
 
 <ul>
 <li>balancer
@@ -390,9 +361,9 @@ java.io.IOException: All datanodes 10.11.0.41:50010 are bad. Aborting...
 
 </div>
 
-<div id="outline-container-1-3-2" class="outline-4">
-<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> Filesystem Corruption and Missing Blocks</h4>
-<div class="outline-text-4" id="text-1-3-2">
+<div id="outline-container-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> Filesystem Corruption and Missing Blocks</h4>
+<div class="outline-text-4" id="text-1-2-2">
 
 <ul>
 <li>HadoopRecovery &lt; Storage &lt; TWiki <a href="https://www.opensciencegrid.org/bin/view/Storage/HadoopRecovery">https://www.opensciencegrid.org/bin/view/Storage/HadoopRecovery</a>
@@ -495,9 +466,9 @@ The filesystem under path '/hbase/.corrupt/dp18.umeng.com%3A60020.1349065853563'
 
 </div>
 
-<div id="outline-container-1-3-3" class="outline-4">
-<h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> 文件系统API</h4>
-<div class="outline-text-4" id="text-1-3-3">
+<div id="outline-container-1-2-3" class="outline-4">
+<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> 文件系统API</h4>
+<div class="outline-text-4" id="text-1-2-3">
 
 <p>HDFS文件系统的操作步骤主要如下：
 </p><ul>
@@ -560,9 +531,9 @@ uri = file:///
 
 </div>
 
-<div id="outline-container-1-3-4" class="outline-4">
-<h4 id="sec-1-3-4"><span class="section-number-4">1.3.4</span> 一致性问题</h4>
-<div class="outline-text-4" id="text-1-3-4">
+<div id="outline-container-1-2-4" class="outline-4">
+<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> 一致性问题</h4>
+<div class="outline-text-4" id="text-1-2-4">
 
 <ul>
 <li>hdfs一致性模型是reader不能够读取到当前被write的block，除非writer调用sync强制进行同步
@@ -589,9 +560,9 @@ uri = file:///
 
 </div>
 
-<div id="outline-container-1-3-5" class="outline-4">
-<h4 id="sec-1-3-5"><span class="section-number-4">1.3.5</span> 读写进度</h4>
-<div class="outline-text-4" id="text-1-3-5">
+<div id="outline-container-1-2-5" class="outline-4">
+<h4 id="sec-1-2-5"><span class="section-number-4">1.2.5</span> 读写进度</h4>
+<div class="outline-text-4" id="text-1-2-5">
 
 <ul>
 <li>hdfs每次将64KB数据写入datanode pipeline的时候都会调用progress.
@@ -614,9 +585,9 @@ uri = file:///
 
 </div>
 
-<div id="outline-container-1-3-6" class="outline-4">
-<h4 id="sec-1-3-6"><span class="section-number-4">1.3.6</span> 获取集群运行状况</h4>
-<div class="outline-text-4" id="text-1-3-6">
+<div id="outline-container-1-2-6" class="outline-4">
+<h4 id="sec-1-2-6"><span class="section-number-4">1.2.6</span> 获取集群运行状况</h4>
+<div class="outline-text-4" id="text-1-2-6">
 
 <ul>
 <li>参考代码 <a href="https://github.com/dirtysalt/tomb/blob/master/java/hdfs/src/main/java/com/dirlt/java/hdfs/ClusterSummary.java">com.dirlt.java.hdfs.ClusterSummary</a>
@@ -631,8 +602,37 @@ uri = file:///
 
 </div>
 
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> all-about-log</h3>
+<div class="outline-text-3" id="text-1-3">
+
+
+</div>
+
+<div id="outline-container-1-3-1" class="outline-4">
+<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> All datanodes are bad. Aborting</h4>
+<div class="outline-text-4" id="text-1-3-1">
+
+<p><b>note(dirlt):当时的情况是增加了datanode的处理线程数目但是没有重启regionserver.怀疑原因可能是文件句柄数量不够，重启regionserver之后恢复正常。</b>
+</p>
+
+
+
+<pre class="example">2013-06-05 03:45:16,866 FATAL org.apache.hadoop.hbase.regionserver.wal.HLog: Could not append. Requesting close of hlog
+java.io.IOException: All datanodes 10.11.0.41:50010 are bad. Aborting...
+        at org.apache.hadoop.hdfs.DFSClient$DFSOutputStream.processDatanodeError(DFSClient.java:3088)
+        at org.apache.hadoop.hdfs.DFSClient$DFSOutputStream.access$1900(DFSClient.java:2627)
+        at org.apache.hadoop.hdfs.DFSClient$DFSOutputStream$DataStreamer.run(DFSClient.java:2799)
+</pre>
+
+
+</div>
+</div>
+
+</div>
+
 <div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> 代码分析</h3>
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> all-about-code</h3>
 <div class="outline-text-3" id="text-1-4">
 
 
@@ -2885,7 +2885,7 @@ protected Iterator&lt;DatanodeDescriptor&gt; pickupReplicaSet(
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:43+0800</p>
+<p class="date">Date: 2014-12-18T11:29+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

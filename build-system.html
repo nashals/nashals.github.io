@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="build-system"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:44+0800"/>
+<meta name="generated" content="2014-12-23T12:37+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -98,7 +98,7 @@
 <li><a href="build-system.html#sec-1-1-7">1.1.7 总结</a></li>
 </ul>
 </li>
-<li><a href="build-system.html#sec-1-2">1.2 Scons</a>
+<li><a href="build-system.html#sec-1-2">1.2 SCons</a>
 <ul>
 <li><a href="build-system.html#sec-1-2-1">1.2.1 Make缺陷</a></li>
 <li><a href="build-system.html#sec-1-2-2">1.2.2 构建文件</a></li>
@@ -587,7 +587,7 @@ gyp虽然是构建系统，并且通常来说构建文件倾向于使用描述�
 </div>
 
 <div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Scons</h3>
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> SCons</h3>
 <div class="outline-text-3" id="text-1-2">
 
 <p>地址在<a href="http://www.scons.org/">http://www.scons.org/</a>。
@@ -1449,92 +1449,28 @@ cmake会重新生成Makefile并且进行编译的。不过因为时间有限也�
 <div class="outline-text-3" id="text-1-6">
 
 <p>关于BuildSystem一些有用的链接，在这里给出：
-</p>
-<ul>
-<li>Build Management Entry
-</li>
-</ul>
-
-<p><a href="http://www.dmoz.org/Computers/Software/Build_Management/">http://www.dmoz.org/Computers/Software/Build_Management/</a>
-这个是关于一个构建管理项目的入口，里面有很多解决构建项目遇到问题的工具和方案。
-</p>
-<ul>
-<li>Make Alternatives
-</li>
-</ul>
-
-<p><a href="http://freshmeat.net/articles/make-alternatives">http://freshmeat.net/articles/make-alternatives</a>
-Make的代替品。
-</p>
-<ul>
-<li>A.A.P
-</li>
-</ul>
-
-<p><a href="http://www.a-a-p.org/tools_build.html">http://www.a-a-p.org/tools_build.html</a>
-这是VIM作者编写的一个构建系统框架，是一个可以扩展的系统。
-</p>
-<ul>
-<li>Boost.Build
-</li>
-</ul>
-
-<p><a href="http://www.boost.org/doc/tools/build/index.html">http://www.boost.org/doc/tools/build/index.html</a>
-<a href="http://www.boost.org/boost-build2/index.html">http://www.boost.org/boost-build2/index.html</a>
-Boost使用的BuildSystem，也是旨在解决C++跨平台构建问题。
-</p>
-<ul>
-<li>Makeit
-</li>
-</ul>
-
-<p><a href="http://www.dscpl.com.au/projects/makeit/">http://www.dscpl.com.au/projects/makeit/</a>
-时间限制，没有仔细研究。
-</p>
-<ul>
-<li>Waf
-</li>
-</ul>
-
-<p><a href="http://code.google.com/p/waf/">http://code.google.com/p/waf/</a>
-基本上可以认为是和SCons的一个sibling，似乎SCons和Waf都是从某个项目分支出来的。
-语法上都采用了Python Script解决方案，但是Waf看上去似乎没有SCons简单。
-</p>
-<ul>
-<li>SDS
-</li>
-</ul>
-
-<p><a href="http://sds.sourceforge.net/index.html">http://sds.sourceforge.net/index.html</a>
-时间限制，没有仔细研究。
-</p>
-<ul>
-<li>MSBuild
-</li>
-</ul>
-
-<p><a href="http://msdn.microsoft.com/zh-cn/library/dd393574.aspx">http://msdn.microsoft.com/zh-cn/library/dd393574.aspx</a>
-M$的构建系统，时间限制没有仔细研究，并且对于Windows下面的开发环境也不是很熟悉。
-唯一了解就是MSBuild也使用XML来进行描述。
-</p>
-<ul>
-<li>Maven
-</li>
-</ul>
-
-<p><a href="http://maven.apache.org/">http://maven.apache.org/</a>
-Java项目开发最常使用的构建系统工具之一。Maven描述方法是使用XML来描述，虽然也可以描述一些过程化的内容，
-但是感觉就是没有Python Script简洁和清晰。Maven相对于之前这些构建系统，有下面几点重大改进的地方：
 </p><ul>
-<li>规范项目目录结构
+<li>Build Management Entry <a href="http://www.dmoz.org/Computers/Software/Build_Management/">http://www.dmoz.org/Computers/Software/Build_Management/</a> 这个是关于一个构建管理项目的入口，里面有很多解决构建项目遇到问题的工具和方案
 </li>
-<li>引入Maven Source Code Repository概念
+<li>Make Alternatives <a href="http://freshmeat.net/articles/make-alternatives">http://freshmeat.net/articles/make-alternatives</a> Make各种代替品
+</li>
+<li>A.A.P <a href="http://www.a-a-p.org/tools_build.html">http://www.a-a-p.org/tools_build.html</a> 这是VIM作者编写的一个构建系统框架，是一个可以扩展的系统
+</li>
+<li>Boost.Build <a href="http://www.boost.org/doc/tools/build/index.html">http://www.boost.org/doc/tools/build/index.html</a> <a href="http://www.boost.org/boost-build2/index.html">http://www.boost.org/boost-build2/index.html</a> Boost使用的BuildSystem，也是旨在解决C++跨平台构建问题
+</li>
+<li>Makeit <a href="http://www.dscpl.com.au/projects/makeit/">http://www.dscpl.com.au/projects/makeit/</a> 时间限制，没有仔细研究
+</li>
+<li>WAF <a href="http://code.google.com/p/waf/">http://code.google.com/p/waf/</a> 基本上可以认为是和SCons的一个sibling，似乎SCons和Waf都是从某个项目分支出来的。语法上都采用了Python Script解决方案，但是Waf看上去似乎没有SCons简单。
+</li>
+<li>SDS <a href="http://sds.sourceforge.net/index.html">http://sds.sourceforge.net/index.html</a> 时间限制，没有仔细研究
+</li>
+<li>MSBuild <a href="http://msdn.microsoft.com/zh-cn/library/dd393574.aspx">http://msdn.microsoft.com/zh-cn/library/dd393574.aspx</a> M$的构建系统，时间限制没有仔细研究，并且对于Windows下面的开发环境也不是很熟悉。唯一了解就是MSBuild也使用XML来进行描述。
+</li>
+<li>Maven <a href="http://maven.apache.org/">http://maven.apache.org/</a> Java项目开发最常使用的构建系统工具之一。Maven描述方法是使用XML来描述，虽然也可以描述一些过程化的内容，但是感觉就是没有Python Script简洁和清晰。Maven相对于之前这些构建系统，有下面几点重大改进的地方：1)规范项目目录结构 2) 引入Maven Source Code Repository概念. 规范目录结构使得大家开发Maven很容易，而Maven Source Code Repository使得协作开发非常简单，只要配置好Source Code Repo，然后Maven能够自动下载编译所需要的依赖模块并且进行编译，能够很好地进行多模块之间的持续集成开发。note(dirlt): 使用Java/JVM做开发还是离不开maven的, 这里有一些关于maven的<a href="maven.html">笔记</a>.
 </li>
 </ul>
 
-<p>规范目录结构使得大家开发Maven很容易，而Maven Source Code Repository使得协作开发非常简单，
-只要配置好Source Code Repo，然后Maven能够自动下载编译所需要的依赖模块并且进行编译，能够很好地进行多模块之间的持续集成开发。
-</p>
+
 </div>
 
 </div>
@@ -1622,7 +1558,7 @@ PUBLIC_UB_LIBS="../../../public/ub/output/lib/libub.a"
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:44+0800</p>
+<p class="date">Date: 2014-12-23T12:37+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

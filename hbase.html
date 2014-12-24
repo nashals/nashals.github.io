@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="hbase"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:43+0800"/>
+<meta name="generated" content="2014-12-18T11:29+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -79,7 +79,7 @@
 <ul>
 <li><a href="hbase.html#sec-1">1 hbase</a>
 <ul>
-<li><a href="hbase.html#sec-1-1">1.1 观点</a>
+<li><a href="hbase.html#sec-1-1">1.1 opinions</a>
 <ul>
 <li><a href="hbase.html#sec-1-1-1">1.1.1 dyq's hbase representation @ 2012-08-16</a></li>
 <li><a href="hbase.html#sec-1-1-2">1.1.2 asynchbase</a></li>
@@ -99,7 +99,7 @@
 <li><a href="hbase.html#sec-1-1-9">1.1.9 阿里HBase业务设计实践</a></li>
 </ul>
 </li>
-<li><a href="hbase.html#sec-1-2">1.2 使用问题</a>
+<li><a href="hbase.html#sec-1-2">1.2 notes</a>
 <ul>
 <li><a href="hbase.html#sec-1-2-1">1.2.1 单节点搭建</a></li>
 <li><a href="hbase.html#sec-1-2-2">1.2.2 table configuration</a></li>
@@ -113,8 +113,8 @@
 <li><a href="hbase.html#sec-1-2-10">1.2.10 hbase export/import</a></li>
 </ul>
 </li>
-<li><a href="hbase.html#sec-1-3">1.3 TroubleShooting</a></li>
-<li><a href="hbase.html#sec-1-4">1.4 日志分析</a>
+<li><a href="hbase.html#sec-1-3">1.3 troubleshooting</a></li>
+<li><a href="hbase.html#sec-1-4">1.4 all-about-log</a>
 <ul>
 <li><a href="hbase.html#sec-1-4-1">1.4.1 output error</a></li>
 <li><a href="hbase.html#sec-1-4-2">1.4.2 zookeeper session expired</a></li>
@@ -123,10 +123,10 @@
 <li><a href="hbase.html#sec-1-4-5">1.4.5 error block recovery</a></li>
 </ul>
 </li>
-<li><a href="hbase.html#sec-1-5">1.5 代码分析</a>
+<li><a href="hbase.html#sec-1-5">1.5 all-about-code</a>
 <ul>
-<li><a href="hbase.html#sec-1-5-1">1.5.1 put限制</a></li>
-<li><a href="hbase.html#sec-1-5-2">1.5.2 put分析</a></li>
+<li><a href="hbase.html#sec-1-5-1">1.5.1 put大小限制</a></li>
+<li><a href="hbase.html#sec-1-5-2">1.5.2 put过程分析</a></li>
 <li><a href="hbase.html#sec-1-5-3">1.5.3 HBaseConfiguration</a></li>
 </ul>
 </li>
@@ -213,7 +213,7 @@
 </div>
 
 <div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 观点</h3>
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> opinions</h3>
 <div class="outline-text-3" id="text-1-1">
 
 
@@ -927,7 +927,7 @@ fusion iomemory 是类似 ssd的东西， <b>操作速度接近DRAM，成本更�
 </div>
 
 <div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 使用问题</h3>
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> notes</h3>
 <div class="outline-text-3" id="text-1-2">
 
 
@@ -1331,7 +1331,7 @@ Exception in thread "main" java.io.IOException: Cannot initialize Cluster. Pleas
 </div>
 
 <div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> TroubleShooting</h3>
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> troubleshooting</h3>
 <div class="outline-text-3" id="text-1-3">
 
 <p>region一直assign不上，观察曾经尝试被assigned的节点出现下面的错误
@@ -1383,7 +1383,7 @@ Exception in thread "main" java.io.IOException: Cannot initialize Cluster. Pleas
 </div>
 
 <div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> 日志分析</h3>
+<h3 id="sec-1-4"><span class="section-number-3">1.4</span> all-about-log</h3>
 <div class="outline-text-3" id="text-1-4">
 
 
@@ -1679,14 +1679,14 @@ org.apache.hadoop.ipc.RemoteException: org.apache.hadoop.ipc.RemoteException: ja
 </div>
 
 <div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> 代码分析</h3>
+<h3 id="sec-1-5"><span class="section-number-3">1.5</span> all-about-code</h3>
 <div class="outline-text-3" id="text-1-5">
 
 
 </div>
 
 <div id="outline-container-1-5-1" class="outline-4">
-<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> put限制</h4>
+<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> put大小限制</h4>
 <div class="outline-text-4" id="text-1-5-1">
 
 <p>在HTable.validatePut对put大小进行了限制
@@ -1720,8 +1720,9 @@ private void validatePut(final Put put) throws IllegalArgumentException{
 </p>
 
 <hr/>
+
 <p>
-*note(dirlt):实际还是有大小限制的，可以看代码HBaseConfiguration.create
+note(dirlt):实际在server端也还是有大小限制的，可以看代码HBaseConfiguration.create
 </p>
 
 
@@ -1736,14 +1737,14 @@ private void validatePut(final Put put) throws IllegalArgumentException{
 </pre>
 
 <p>
- 可以看到加载了hbase-default.xml这个文件。这个文件是在hbase package自带的，默认值为10485760 = 10M
+可以看到加载了hbase-default.xml这个文件。这个文件是在hbase package自带的，默认值为10485760 = 10M
 </p>
 </div>
 
 </div>
 
 <div id="outline-container-1-5-2" class="outline-4">
-<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> put分析</h4>
+<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> put过程分析</h4>
 <div class="outline-text-4" id="text-1-5-2">
 
 <p>最后都走到了下面这个方法，可以看到对于每次put并不是立即去写hbase的，除非有特殊开关autoFlush. writeBuffer是一个ArrayList用来hold住所有需要write的put.默认autoFlush=false，所以会缓存到writeBufferSize大小才会commit，而大小是通过heapSize来得到的。而writeBufferSize是通过hbase.client.write.buffer这个属性配置的，默认是2097152=2M
@@ -3603,7 +3604,7 @@ Currently the WAL is using a Hadoop SequenceFile, which stores records as sets o
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:43+0800</p>
+<p class="date">Date: 2014-12-18T11:29+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 

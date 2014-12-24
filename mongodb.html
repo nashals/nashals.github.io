@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="mongodb"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:43+0800"/>
+<meta name="generated" content="2014-12-18T11:29+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -85,7 +85,6 @@
 <li><a href="mongodb.html#sec-1-4">1.4 内存占用</a></li>
 <li><a href="mongodb.html#sec-1-5">1.5 Sharding</a></li>
 <li><a href="mongodb.html#sec-1-6">1.6 HA方案</a></li>
-<li><a href="mongodb.html#sec-1-7">1.7 代码分析</a></li>
 </ul>
 </li>
 </ul>
@@ -387,22 +386,14 @@ Within the replica set, members are interconnected with each other to exchange h
 也就是说，replicas之间都会和相互检测对方的心跳，这是一个全连接图。如果节点超过一定数量的话，那么心跳处理的延迟可能会非常长，同时选举的时间也会非常长，
 最终造成如果发生切换的话，切换时间会非常长。
 </p>
-</div>
 
 </div>
-
-<div id="outline-container-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> 代码分析</h3>
-<div class="outline-text-3" id="text-1-7">
-
-<p>todo(dirlt):
-</p></div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:43+0800</p>
+<p class="date">Date: 2014-12-18T11:29+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
