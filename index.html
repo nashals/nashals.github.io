@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Yan's Home Page"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2015-01-29T23:44+0800"/>
+<meta name="generated" content="2015-01-30T00:15+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -79,9 +79,9 @@
 <ul>
 <li><a href="index.html#sec-1">1 index</a>
 <ul>
-<li><a href="index.html#sec-1-1">1.1 Operating System</a></li>
-<li><a href="index.html#sec-1-2">1.2 Tool and Desktop</a></li>
-<li><a href="index.html#sec-1-3">1.3 Algorithm Related</a></li>
+<li><a href="index.html#sec-1-1">1.1 About Algorithm</a></li>
+<li><a href="index.html#sec-1-2">1.2 Desktop and Tool</a></li>
+<li><a href="index.html#sec-1-3">1.3 Operating System</a></li>
 <li><a href="index.html#sec-1-4">1.4 Network Programming</a></li>
 <li><a href="index.html#sec-1-5">1.5 Storage System</a></li>
 <li><a href="index.html#sec-1-6">1.6 Distributed System</a></li>
@@ -103,145 +103,8 @@
 </div>
 
 <div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Operating System</h3>
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> About Algorithm</h3>
 <div class="outline-text-3" id="text-1-1">
-
-<ul>
-<li><a href="http://dirlt.com/computer-system-reading.html">Computer System Reading</a> 关于单机系统方面的一些文章以及阅读心得。
-<ul>
-<li><a href="http://dirlt.com/the-secret-to-10-million-concurrent-connections.html">The Secret To 10 Million Concurrent Connections -The Kernel Is The Problem, Not The Solution</a>
-</li>
-<li><a href="http://dirlt.com/a-tour-inside-cloudflare-latest-generation-servers.html">A Tour Inside CloudFlare's Latest Generation Servers</a>
-</li>
-<li><a href="http://dirlt.com/busting-4-modern-hardware-myths-are-memory-hdds-and-ssds-really-random-access.html">Busting 4 Modern Hardware Myths - Are Memory, HDDs, And SSDs Really Random Access?</a>
-</li>
-<li><a href="http://dirlt.com/how-long-does-it-take-to-make-context-switch.html">How long does it take to make a context switch?</a>
-</li>
-<li><a href="http://dirlt.com/the-c10m-problem.html">The C10M Problem</a>
-</li>
-</ul>
-
-</li>
-<li><a href="http://dirlt.com/apue.html">APUE</a> Unix环境高级编程(Advanced Programming Unix Environment),W. Richard Stevens的神作。笔记里面没有包含书最后的几个部分，比如终端，打印机等，因为我觉得可能大家都不太需要这个东西了。我还尝试将一些跨章节的概念整合到一起，这样比较容易从总体把握Unix编程环境。
-</li>
-<li><a href="http://dirlt.com/unix-systems-for-modern-architectures.html">现代体系结构上的UNIX系统-内核程序员的SMP和Caching技术</a>
-</li>
-<li><a href="http://dirlt.com/is-parallel-programming-hard.html">Is Parallel Programming Hard, And, If So, What Can You Do About It?</a>
-</li>
-<li><a href="http://dirlt.com/linux.html">Linux</a> 主要是介绍Linux下面一些工具使用以及和内核相关的知识。（将原来<a href="http://dirlt.com/APUE.html">APUE</a> 和 <a href="http://dirlt.com/UNP.html">UNP</a> 中的一部分内容放在这里面来了，这样可以保持这两篇内容比较稳定）
-<ul>
-<li><a href="http://dirlt.com/pic.html">pic-code</a> 分析了一下PIC位置无关代码内部的原理以及和动态库之间的关系。通过阅读&lt;深入理解计算机系统&gt;并且结合实际的例子总结出来的。
-</li>
-<li><a href="http://dirlt.com/gcc-asm.html">gcc-assembly</a> 如何编写GCC内嵌汇编，以及一些关于GCC内嵌汇编的文章，主要是参考了&lt;GCC Manual&gt;. 但是自己对这个依然不是很了解。
-</li>
-<li><a href="http://dirlt.com/encoding.html">encoding</a> 介绍了GB2312/GBK/GB18030/Unicode/UTF16/UTF32/UTF8这几种字符编码格式。还是觉得UTF8在设计以及实现上都相对更加合理。
-</li>
-</ul>
-
-</li>
-<li><a href="http://dirlt.com/cpu.html">CPU</a> / <a href="http://dirlt.com/simd.html">SIMD</a> SIMD(Single Instruction Muitple Data)单指令多数据。这个笔记其实是Intel Reference Manual中关于SIMD指令的总结。里面包含了一些理解SIMD指令需要的知识，以及对SIMD指令进行了分类。遗憾的是里面没有什么过多的例子，毕竟这个是结合场景来使用的。
-</li>
-<li><a href="http://dirlt.com/concurrency.html">concurrency</a> 并发
-<ul>
-<li><a href="http://dirlt.com/coroutine.html">coroutine</a> 协程，轻量级线程。
-</li>
-<li><a href="http://dirlt.com/lock.html">lock</a> 锁的原理与不同实现
-</li>
-<li><a href="http://dirlt.com/akka.html">akka</a> Akka is a toolkit and runtime for building highly concurrent, distributed, and fault tolerant event-driven applications on the JVM.
-</li>
-</ul>
-
-</li>
-<li><a href="http://dirlt.com/memory.html">memory</a> 内存相关
-<ul>
-<li><a href="http://dirlt.com/numa.html">NUMA</a> Non-Uniform Memory Access. 非一致性内存访问
-</li>
-<li><a href="http://dirlt.com/numa-an-overview.html">NUMA An Overview</a> 关于NUMA的介绍性文章
-</li>
-<li><a href="http://dirlt.com/memory-barrier.html">memory-barrier</a> 内存屏障
-</li>
-<li><a href="http://dirlt.com/memory-barriers-a-hardware-view-for-software-hackers.html">Memory Barriers: a Hardware View for Software Hackers</a>
-</li>
-<li><a href="http://dirlt.com/nonblocking-algorithms-and-scalable-multicore-programming.html">Nonblocking Algorithms and Scalable Multicore Programming</a>
-</li>
-<li><a href="http://dirlt.com/tcmalloc.html">TCMalloc</a> Google的开源线程缓存内存分配器，解决多线程下面内存分配效率问题。
-</li>
-</ul>
-
-</li>
-<li><a href="http://dirlt.com/sysperf.html">system-performance</a> 系统性能相关
-<ul>
-<li><a href="http://dirlt.com/oprofile.html">oprofile</a> oprofile(系统级profiler). note: obsolete!!!
-</li>
-<li><a href="http://dirlt.com/systemtap.html">systemtap</a> 通过将观察语句编译成为内核驱动，和linux内核提供的接口匹配，来深度地观察linux操作系统。
-</li>
-<li><a href="http://dirlt.com/gperftools.html">gperftools</a> Google的性能分析工具，<a href="http://dirlt.com/tcmalloc.html">TCMalloc</a> 实现也在里面。用来观察应用程序似乎是个不错的选择。
-</li>
-<li><a href="http://dirlt.com/perf.html">perf</a> Linux系统自带的性能分析工具，支持硬件以及软件事件计数器，支持profile kernel以及user code.
-</li>
-<li><a href="http://dirlt.com/optimizing-software-in-cpp.html">Optimizing software in C++</a>
-</li>
-<li><a href="http://dirlt.com/tips-for-optimizing-c-cpp-code.html">Tips for Optimizing C/C++ Code</a>
-</li>
-<li><a href="http://dirlt.com/linux-system-and-performance-monitoring.html">Linux System and Performance Monitoring</a>
-</li>
-<li><a href="http://www.brendangregg.com/linuxperf.html">Linux Performance Tools</a> by Brendan Gregg. # 工具索引入口
-</li>
-<li><a href="http://dirlt.com/thinking-clearly-about-performance.html">Thinking Clearly about Performance</a> by Cary Millsap.
-</li>
-</ul>
-
-</li>
-<li><a href="http://dirlt.com/continuation.html">continuation</a> 延续，异步编程一种实现。
-</li>
-</ul>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Tool and Desktop</h3>
-<div class="outline-text-3" id="text-1-2">
-
-<ul>
-<li><a href="http://dirlt.com/license.html">license</a> 一些常见的开源协议。不知道自己以后是否可以用得上：）
-</li>
-<li><a href="http://dirlt.com/swig.html">swig</a> C/C++多语言扩展接口生成器，使用起来非常方便(至于生成的代码没有看过效率如何). 个人觉得比较适合quick &amp; dirty的方案.
-</li>
-<li><a href="http://dirlt.com/git.html">git</a> 分布式版本控制系统(DCVS). 很多项目都在使用Git进行版本管理包括linux kernel.
-</li>
-<li><a href="http://dirlt.com/folly.html">folly</a> folly is an open-source C++ library developed and used at Facebook.
-</li>
-<li><a href="http://dirlt.com/sanitizer.html">sanitizer</a> Google的C++动态分析工具，可以检测内存泄漏，内存无效使用以及多线程数据竞争.
-</li>
-<li><a href="http://dirlt.com/build-system.html">build-system</a> 在实现Baidu in-house的构建工具Comake2之前，做过构建系统的调研总结出来的.
-</li>
-<li><a href="http://dirlt.com/maven.html">maven</a> 主要针对Java开发的基于工程对象模型(POM, Project Object Model)构建系统
-</li>
-<li><a href="http://dirlt.com/vagrant.html">vagrant</a> 用来构件虚拟开发环境的工具，底层可以使用多种虚拟化技术(现在支持相对比较好的是VirtualBox)
-</li>
-<li><a href="http://dirlt.com/docker.html">docker</a> 基于lxc(linux container)的分发应用平台
-</li>
-<li><a href="http://dirlt.com/octave.html">octave</a> GNU 'Matlab' on Linux/Mac/Windows.
-</li>
-<li><a href="http://dirlt.com/sklearn.html">sklearn</a> python scikit learn. 机器学习包.
-</li>
-<li><a href="http://dirlt.com/ubuntu.html">ubuntu</a> 如何更好地使用Ubuntu. <a href="http://dirlt.com/note/struggle-with-ubuntu.html">之前有过痛苦的经历</a> . 主要记录自己使用出现的问题.
-</li>
-<li><a href="http://dirlt.com/mac.html">macosx</a> 如何更好地使用Mac. 以前使用Windows，后来转向Ubuntu，再后来买了个MBA. 熟悉它又需要一段时间了.
-</li>
-</ul>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Algorithm Related</h3>
-<div class="outline-text-3" id="text-1-3">
 
 <ul>
 <li><a href="http://dirlt.com/algorithm.html">Algorithm</a> 算法还是非常重要的。记录的都是现实中使用到的算法或者是比较有趣的数学问题吧。
@@ -302,6 +165,143 @@
 
 </div>
 
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Desktop and Tool</h3>
+<div class="outline-text-3" id="text-1-2">
+
+<ul>
+<li><a href="http://dirlt.com/ubuntu.html">ubuntu</a> 如何更好地使用Ubuntu. <a href="http://dirlt.com/note/struggle-with-ubuntu.html">之前有过痛苦的经历</a> . 主要记录自己使用出现的问题.
+</li>
+<li><a href="http://dirlt.com/mac.html">macosx</a> 如何更好地使用Mac. 以前使用Windows，后来转向Ubuntu，再后来买了个MBA. 熟悉它又需要一段时间了.
+</li>
+<li><a href="http://dirlt.com/license.html">license</a> 一些常见的开源协议。不知道自己以后是否可以用得上：）
+</li>
+<li><a href="http://dirlt.com/swig.html">swig</a> C/C++多语言扩展接口生成器，使用起来非常方便(至于生成的代码没有看过效率如何). 个人觉得比较适合quick &amp; dirty的方案.
+</li>
+<li><a href="http://dirlt.com/build-system.html">build-system</a> 在实现Baidu in-house的构建工具Comake2之前，做过构建系统的调研总结出来的.
+</li>
+<li><a href="http://dirlt.com/git.html">git</a> 分布式版本控制系统(DCVS). 很多项目都在使用Git进行版本管理包括linux kernel.
+</li>
+<li><a href="http://dirlt.com/maven.html">maven</a> 主要针对Java开发的基于工程对象模型(POM, Project Object Model)构建系统
+</li>
+<li><a href="http://dirlt.com/vagrant.html">vagrant</a> 用来构件虚拟开发环境的工具，底层可以使用多种虚拟化技术(现在支持相对比较好的是VirtualBox)
+</li>
+<li><a href="http://dirlt.com/docker.html">docker</a> 基于lxc(linux container)的分发应用平台
+</li>
+<li><a href="http://dirlt.com/octave.html">octave</a> GNU 'Matlab' on Linux/Mac/Windows.
+</li>
+<li><a href="http://dirlt.com/sklearn.html">sklearn</a> python scikit learn. 机器学习包.
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Operating System</h3>
+<div class="outline-text-3" id="text-1-3">
+
+<ul>
+<li><a href="http://dirlt.com/computer-system-reading.html">Computer System Reading</a> 关于单机系统方面的一些文章以及阅读心得。
+<ul>
+<li><a href="http://dirlt.com/the-secret-to-10-million-concurrent-connections.html">The Secret To 10 Million Concurrent Connections -The Kernel Is The Problem, Not The Solution</a>
+</li>
+<li><a href="http://dirlt.com/a-tour-inside-cloudflare-latest-generation-servers.html">A Tour Inside CloudFlare's Latest Generation Servers</a>
+</li>
+<li><a href="http://dirlt.com/busting-4-modern-hardware-myths-are-memory-hdds-and-ssds-really-random-access.html">Busting 4 Modern Hardware Myths - Are Memory, HDDs, And SSDs Really Random Access?</a>
+</li>
+<li><a href="http://dirlt.com/how-long-does-it-take-to-make-context-switch.html">How long does it take to make a context switch?</a>
+</li>
+<li><a href="http://dirlt.com/the-c10m-problem.html">The C10M Problem</a>
+</li>
+</ul>
+
+</li>
+<li><a href="http://dirlt.com/apue.html">APUE</a> Unix环境高级编程(Advanced Programming Unix Environment),W. Richard Stevens的神作。笔记里面没有包含书最后的几个部分，比如终端，打印机等，因为我觉得可能大家都不太需要这个东西了。我还尝试将一些跨章节的概念整合到一起，这样比较容易从总体把握Unix编程环境。
+</li>
+<li><a href="http://dirlt.com/unix-systems-for-modern-architectures.html">现代体系结构上的UNIX系统-内核程序员的SMP和Caching技术</a>
+</li>
+<li><a href="http://dirlt.com/is-parallel-programming-hard.html">Is Parallel Programming Hard, And, If So, What Can You Do About It?</a>
+</li>
+<li><a href="http://dirlt.com/linux.html">Linux</a> 主要是介绍Linux下面一些工具使用以及和内核相关的知识。（将原来<a href="http://dirlt.com/APUE.html">APUE</a> 和 <a href="http://dirlt.com/UNP.html">UNP</a> 中的一部分内容放在这里面来了，这样可以保持这两篇内容比较稳定）
+<ul>
+<li><a href="http://dirlt.com/pic.html">pic-code</a> 分析了一下PIC位置无关代码内部的原理以及和动态库之间的关系。通过阅读&lt;深入理解计算机系统&gt;并且结合实际的例子总结出来的。
+</li>
+<li><a href="http://dirlt.com/gcc-asm.html">gcc-assembly</a> 如何编写GCC内嵌汇编，以及一些关于GCC内嵌汇编的文章，主要是参考了&lt;GCC Manual&gt;. 但是自己对这个依然不是很了解。
+</li>
+<li><a href="http://dirlt.com/encoding.html">encoding</a> 介绍了GB2312/GBK/GB18030/Unicode/UTF16/UTF32/UTF8这几种字符编码格式。还是觉得UTF8在设计以及实现上都相对更加合理。
+</li>
+<li><a href="http://dirlt.com/folly.html">folly</a> folly is an open-source C++ library developed and used at Facebook.
+</li>
+</ul>
+
+</li>
+<li><a href="http://dirlt.com/cpu.html">CPU</a> / <a href="http://dirlt.com/simd.html">SIMD</a> SIMD(Single Instruction Muitple Data)单指令多数据。这个笔记其实是Intel Reference Manual中关于SIMD指令的总结。里面包含了一些理解SIMD指令需要的知识，以及对SIMD指令进行了分类。遗憾的是里面没有什么过多的例子，毕竟这个是结合场景来使用的。
+</li>
+<li><a href="http://dirlt.com/concurrency.html">concurrency</a> 并发
+<ul>
+<li><a href="http://dirlt.com/coroutine.html">coroutine</a> 协程，轻量级线程。
+</li>
+<li><a href="http://dirlt.com/lock.html">lock</a> 锁的原理与不同实现
+</li>
+<li><a href="http://dirlt.com/akka.html">akka</a> Akka is a toolkit and runtime for building highly concurrent, distributed, and fault tolerant event-driven applications on the JVM.
+</li>
+</ul>
+
+</li>
+<li><a href="http://dirlt.com/memory.html">memory</a> 内存相关
+<ul>
+<li><a href="http://dirlt.com/numa.html">NUMA</a> Non-Uniform Memory Access. 非一致性内存访问
+</li>
+<li><a href="http://dirlt.com/numa-an-overview.html">NUMA An Overview</a> 关于NUMA的介绍性文章
+</li>
+<li><a href="http://dirlt.com/memory-barrier.html">memory-barrier</a> 内存屏障
+</li>
+<li><a href="http://dirlt.com/memory-barriers-a-hardware-view-for-software-hackers.html">Memory Barriers: a Hardware View for Software Hackers</a>
+</li>
+<li><a href="http://dirlt.com/nonblocking-algorithms-and-scalable-multicore-programming.html">Nonblocking Algorithms and Scalable Multicore Programming</a>
+</li>
+<li><a href="http://dirlt.com/tcmalloc.html">TCMalloc</a> Google的开源线程缓存内存分配器，解决多线程下面内存分配效率问题。
+</li>
+<li><a href="http://dirlt.com/sanitizer.html">sanitizer</a> Google的C++动态分析工具，可以检测内存泄漏，内存无效使用以及多线程数据竞争.
+</li>
+</ul>
+
+</li>
+<li><a href="http://dirlt.com/sysperf.html">system-performance</a> 系统性能相关
+<ul>
+<li><a href="http://dirlt.com/oprofile.html">oprofile</a> oprofile(系统级profiler). note: obsolete!!!
+</li>
+<li><a href="http://dirlt.com/systemtap.html">systemtap</a> 通过将观察语句编译成为内核驱动，和linux内核提供的接口匹配，来深度地观察linux操作系统。
+</li>
+<li><a href="http://dirlt.com/gperftools.html">gperftools</a> Google的性能分析工具，<a href="http://dirlt.com/tcmalloc.html">TCMalloc</a> 实现也在里面。用来观察应用程序似乎是个不错的选择。
+</li>
+<li><a href="http://dirlt.com/perf.html">perf</a> Linux系统自带的性能分析工具，支持硬件以及软件事件计数器，支持profile kernel以及user code.
+</li>
+<li><a href="http://dirlt.com/optimizing-software-in-cpp.html">Optimizing software in C++</a>
+</li>
+<li><a href="http://dirlt.com/tips-for-optimizing-c-cpp-code.html">Tips for Optimizing C/C++ Code</a>
+</li>
+<li><a href="http://dirlt.com/linux-system-and-performance-monitoring.html">Linux System and Performance Monitoring</a>
+</li>
+<li><a href="http://www.brendangregg.com/linuxperf.html">Linux Performance Tools</a> by Brendan Gregg. # 工具索引入口
+</li>
+<li><a href="http://dirlt.com/thinking-clearly-about-performance.html">Thinking Clearly about Performance</a> by Cary Millsap.
+</li>
+</ul>
+
+</li>
+<li><a href="http://dirlt.com/continuation.html">continuation</a> 延续，异步编程一种实现。
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
 <div id="outline-container-1-4" class="outline-3">
 <h3 id="sec-1-4"><span class="section-number-3">1.4</span> Network Programming</h3>
 <div class="outline-text-3" id="text-1-4">
@@ -309,7 +309,7 @@
 <ul>
 <li><a href="http://dirlt.com/unp.html">UNP</a> Unix网络编程(Unix Network Programming),W. Richard Stevens的又一神作。笔记里面只是对于TCP原理有比较详细讨论，这部分笔记也包含了TCP Illustrated v1里面和TCP相关的章节内容。对于编程方面也着重TCP socket使用，毕竟在大部分应用场景下面我们选用TCP模型更多，并且TCP里面有很多非常琐碎的知识。
 </li>
-<li><a href="https://github.com/dirtysalt/itachi">itachi</a> 自己两天时间写完的异步网络编程框架，当然有很多地方需要改进，但是内核基本稳定了。并且在上面做了asocket封装，编写网络程序非常方便。todo(dirlt):考虑写篇文章介绍一些
+<li><a href="https://github.com/dirtysalt/itachi">itachi</a> 自己两天时间写完的异步网络编程框架，当然有很多地方需要改进，但是内核基本稳定了。并且在上面做了asocket封装，编写网络程序非常方便。
 </li>
 <li><a href="http://dirlt.com/libev.html">libev</a> 开源的事件触发器。被认为是更高效的libevent. <a href="https://github.com/dirtysalt/itachi">itachi</a> 这个项目开始想自己编写事件触发器，但是发现工作比较琐碎枯燥，所以底层还是选择使用libev.
 </li>
@@ -321,9 +321,9 @@
 </li>
 <li><a href="http://dirlt.com/kylin.html">kylin</a> Baidu in-house的异步编程框架，是<a href="http://weibo.com/linshiding">linsd(百度首席架构师林仕鼎)</a>的神作，通过阅读这个框架的代码让我理解了异步编程模型。这个是我第四个阅读的网络编程框架(4th).
 </li>
-<li><a href="http://dirlt.com/zeromq.html">zeromq</a> 开源的消息传输系统。颠覆我们思考和编写网络通信程序的方式。todo(dirlt):只是阅读了文档和API，可以考虑阅读一下代码.
+<li><a href="http://dirlt.com/zeromq.html">zeromq</a> 开源的消息传输系统。颠覆我们思考和编写网络通信程序的方式。
 </li>
-<li><a href="http://dirlt.com/ace.html">ACE</a> 开源的网络编程框架。非常重量级，也被人诟病为学术产物而不是适合生产实践。todo(dirlt):只是有大概的了解，有待更深入的研究.
+<li><a href="http://dirlt.com/ace.html">ACE</a> 开源的网络编程框架。非常重量级，也被人诟病为学术产物而不是适合生产实践。
 </li>
 <li><a href="http://dirlt.com/netty.html">netty</a> an asynchronous event-driven network application framework in <b>Java</b> based on Java NIO.
 </li>
@@ -758,7 +758,7 @@ Here is my contact info. I think email is the easiest way to get me.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2015-01-29T23:44+0800</p>
+<p class="date">Date: 2015-01-30T00:15+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
