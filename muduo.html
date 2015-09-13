@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<head>
 <title>muduo</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="muduo"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:43+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,7 +62,7 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
@@ -72,46 +71,9 @@
 <div id="content">
 <h1 class="title">muduo</h1>
 
-
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="muduo.html#sec-1">1 muduo</a>
-<ul>
-<li><a href="muduo.html#sec-1-1">1.1 base</a></li>
-<li><a href="muduo.html#sec-1-2">1.2 Buffer</a></li>
-<li><a href="muduo.html#sec-1-3">1.3 Channel</a></li>
-<li><a href="muduo.html#sec-1-4">1.4 Poller</a></li>
-<li><a href="muduo.html#sec-1-5">1.5 EventLoop</a>
-<ul>
-<li><a href="muduo.html#sec-1-5-1">1.5.1 单线程单EventLoop</a></li>
-<li><a href="muduo.html#sec-1-5-2">1.5.2 跨线程激活</a></li>
-<li><a href="muduo.html#sec-1-5-3">1.5.3 跨线程任务</a></li>
-<li><a href="muduo.html#sec-1-5-4">1.5.4 定时器任务</a></li>
-<li><a href="muduo.html#sec-1-5-5">1.5.5 How it works</a></li>
-</ul>
-</li>
-<li><a href="muduo.html#sec-1-6">1.6 TimerQueue</a></li>
-<li><a href="muduo.html#sec-1-7">1.7 EventLoopThread</a></li>
-<li><a href="muduo.html#sec-1-8">1.8 Acceptor</a></li>
-<li><a href="muduo.html#sec-1-9">1.9 Connector</a></li>
-<li><a href="muduo.html#sec-1-10">1.10 TcpConnection</a></li>
-<li><a href="muduo.html#sec-1-11">1.11 TcpClient</a></li>
-<li><a href="muduo.html#sec-1-12">1.12 TcpServer</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> muduo</h2>
-<div class="outline-text-2" id="text-1">
-
-
+<p><a href="http://code.google.com/p/muduo/">http://code.google.com/p/muduo/</a>
+</p>
 <p>
-<a href="http://code.google.com/p/muduo/">http://code.google.com/p/muduo/</a>.
 在分析muduo之前必须了解一下作者的想法：<a href="http://www.cnblogs.com/Solstice/archive/2010/08/29/muduo_net_lib.html">http://www.cnblogs.com/Solstice/archive/2010/08/29/muduo_net_lib.html</a>
 </p><ul>
 <li>线程安全，支持多核多线程
@@ -148,11 +110,37 @@
 muduo将hpserver下面的event item和event handler以及handle都在一起，称之为Channel.而Reactor在这里称为EventLoop.所以可以认为相对于hpserver,类层次结构好理解多了。
 </p>
 
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="muduo.html#sec-1">1 base</a></li>
+<li><a href="muduo.html#sec-2">2 Buffer</a></li>
+<li><a href="muduo.html#sec-3">3 Channel</a></li>
+<li><a href="muduo.html#sec-4">4 Poller</a></li>
+<li><a href="muduo.html#sec-5">5 EventLoop</a>
+<ul>
+<li><a href="muduo.html#sec-5-1">5.1 单线程单EventLoop</a></li>
+<li><a href="muduo.html#sec-5-2">5.2 跨线程激活</a></li>
+<li><a href="muduo.html#sec-5-3">5.3 跨线程任务</a></li>
+<li><a href="muduo.html#sec-5-4">5.4 定时器任务</a></li>
+<li><a href="muduo.html#sec-5-5">5.5 How it works</a></li>
+</ul>
+</li>
+<li><a href="muduo.html#sec-6">6 TimerQueue</a></li>
+<li><a href="muduo.html#sec-7">7 EventLoopThread</a></li>
+<li><a href="muduo.html#sec-8">8 Acceptor</a></li>
+<li><a href="muduo.html#sec-9">9 Connector</a></li>
+<li><a href="muduo.html#sec-10">10 TcpConnection</a></li>
+<li><a href="muduo.html#sec-11">11 TcpClient</a></li>
+<li><a href="muduo.html#sec-12">12 TcpServer</a></li>
+</ul>
+</div>
 </div>
 
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> base</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> base</h3>
+<div class="outline-text-3" id="text-1">
 
 <p>base下面都是一些关于多线程编程方面需要使用的组件
 <a href="http://www.cnblogs.com/Solstice/archive/2010/08/21/muduo_thread_lib.html">http://www.cnblogs.com/Solstice/archive/2010/08/21/muduo_thread_lib.html</a>
@@ -278,9 +266,9 @@ void ThreadPool::runInThread()
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Buffer</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> Buffer</h3>
+<div class="outline-text-3" id="text-2">
 
 <p>Buffer设计的非常精巧。Buffer内部是一个std::vector&lt;char*&gt;表示的，逻辑上结构是这样的
 </p>
@@ -330,9 +318,9 @@ void ThreadPool::runInThread()
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Channel</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> Channel</h3>
+<div class="outline-text-3" id="text-3">
 
 
 
@@ -399,9 +387,9 @@ void ThreadPool::runInThread()
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Poller</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> Poller</h3>
+<div class="outline-text-3" id="text-4">
 
 <p>Poller本身也是一个抽象类，然后底层支持poll和epoll.
 </p>
@@ -433,9 +421,9 @@ poll操作的timeoutMs就是epoll_wait超时时间，而activeChannels就是活�
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> EventLoop</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> EventLoop</h3>
+<div class="outline-text-3" id="text-5">
 
 <p>和之前一样，我们还是看看EventLoop有哪些结构。对于EventLoop结构比较复杂，我们列出主要的接口和成员。
 首先我们看EventLoop有runInLoop和queueInLoop功能，虽然作者建议event loop和一个线程绑定，但是在其他线程的话依然可以调用runInLoop和
@@ -510,9 +498,9 @@ pipe来完成。然后我们还允许向EventLoop里面添加定时器任务，�
 
 </div>
 
-<div id="outline-container-1-5-1" class="outline-4">
-<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> 单线程单EventLoop</h4>
-<div class="outline-text-4" id="text-1-5-1">
+<div id="outline-container-5-1" class="outline-4">
+<h4 id="sec-5-1"><span class="section-number-4">5.1</span> 单线程单EventLoop</h4>
+<div class="outline-text-4" id="text-5-1">
 
 <p>作者建议一个线程绑定一个EventLoop,这个实现呢？其实还是使用线程局部变量。首先定义线程局部变量
 </p>
@@ -529,9 +517,9 @@ pipe来完成。然后我们还允许向EventLoop里面添加定时器任务，�
 
 </div>
 
-<div id="outline-container-1-5-2" class="outline-4">
-<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> 跨线程激活</h4>
-<div class="outline-text-4" id="text-1-5-2">
+<div id="outline-container-5-2" class="outline-4">
+<h4 id="sec-5-2"><span class="section-number-4">5.2</span> 跨线程激活</h4>
+<div class="outline-text-4" id="text-5-2">
 
 <p>首先我们看看跨线程激活是怎么操作的。在EventLoop的初始化函数内部初始化了wakeupFd并且创建了channel.但是如果不仔细阅读，
 很可能觉得的这个channel没有注册。而实际上这个channel在enableReading()就会注册的。
@@ -579,9 +567,9 @@ pipe来完成。然后我们还允许向EventLoop里面添加定时器任务，�
 
 </div>
 
-<div id="outline-container-1-5-3" class="outline-4">
-<h4 id="sec-1-5-3"><span class="section-number-4">1.5.3</span> 跨线程任务</h4>
-<div class="outline-text-4" id="text-1-5-3">
+<div id="outline-container-5-3" class="outline-4">
+<h4 id="sec-5-3"><span class="section-number-4">5.3</span> 跨线程任务</h4>
+<div class="outline-text-4" id="text-5-3">
 
 <p>runInLoop和queueInLoop就是跨线程任务。内容非常简单
 </p>
@@ -613,9 +601,9 @@ void EventLoop::queueInLoop(const Functor&amp; cb){
 
 </div>
 
-<div id="outline-container-1-5-4" class="outline-4">
-<h4 id="sec-1-5-4"><span class="section-number-4">1.5.4</span> 定时器任务</h4>
-<div class="outline-text-4" id="text-1-5-4">
+<div id="outline-container-5-4" class="outline-4">
+<h4 id="sec-5-4"><span class="section-number-4">5.4</span> 定时器任务</h4>
+<div class="outline-text-4" id="text-5-4">
 
 <p>定时器任务都是交给了TimerQueue来处理的，在TimerQueue这个部分我们会简要地分析一下
 </p>
@@ -632,9 +620,9 @@ void EventLoop::queueInLoop(const Functor&amp; cb){
 
 </div>
 
-<div id="outline-container-1-5-5" class="outline-4">
-<h4 id="sec-1-5-5"><span class="section-number-4">1.5.5</span> How it works</h4>
-<div class="outline-text-4" id="text-1-5-5">
+<div id="outline-container-5-5" class="outline-4">
+<h4 id="sec-5-5"><span class="section-number-4">5.5</span> How it works</h4>
+<div class="outline-text-4" id="text-5-5">
 
 <p>基本上和hpserver非常相似，不断地调用poller::poll方法，然后在外层不断地查看是否需要quit.poll之后会得到activeChannels.和hpserver不同的是，
 muduo没有调用器(其实也不需要，本来就没有优先级概念)，仅仅遍历这个activeChannels，并且调用内部的handleEvent方法，然后在调用pengdingFunctors
@@ -645,9 +633,9 @@ muduo没有调用器(其实也不需要，本来就没有优先级概念)，仅�
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> TimerQueue</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> TimerQueue</h3>
+<div class="outline-text-3" id="text-6">
 
 <p>TimerQueue里面最主要的方法就是addTimer.我们看看addTimer里面做了哪些事情，整个过程有点绕
 </p>
@@ -700,9 +688,9 @@ void TimerQueue::scheduleInLoop(Timer* timer)
 
 </div>
 
-<div id="outline-container-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> EventLoopThread</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-7" class="outline-3">
+<h3 id="sec-7"><span class="section-number-3">7</span> EventLoopThread</h3>
+<div class="outline-text-3" id="text-7">
 
 <p>EventLoopThread就是将一个EventLoop和Thread包装在一起的对象。这个内容到没有什么，不过觉得代码方面有点技巧。
 我们在启动startLoop这个样就会执行线程threadFunc,但是我们必须等待threadFunc将栈上面的EventLoop绑定之后才可以返回，所以这里用到了条件变量。
@@ -739,9 +727,9 @@ void EventLoopThread::threadFunc(){
 
 </div>
 
-<div id="outline-container-1-8" class="outline-3">
-<h3 id="sec-1-8"><span class="section-number-3">1.8</span> Acceptor</h3>
-<div class="outline-text-3" id="text-1-8">
+<div id="outline-container-8" class="outline-3">
+<h3 id="sec-8"><span class="section-number-3">8</span> Acceptor</h3>
+<div class="outline-text-3" id="text-8">
 
 <p>Acceptor帮助简化了搭建服务器accept这个部分的逻辑。通常这个逻辑是在单个线程里面完成的，所以抽取出来蛮有必要的。
 代码不是很麻烦，用户要做的就是编写一个回调，这个回调在新建立连接时候出发，参数分别是链接fd和连接地址。
@@ -759,9 +747,9 @@ void EventLoopThread::threadFunc(){
 
 </div>
 
-<div id="outline-container-1-9" class="outline-3">
-<h3 id="sec-1-9"><span class="section-number-3">1.9</span> Connector</h3>
-<div class="outline-text-3" id="text-1-9">
+<div id="outline-container-9" class="outline-3">
+<h3 id="sec-9"><span class="section-number-3">9</span> Connector</h3>
+<div class="outline-text-3" id="text-9">
 
 <p>Connector也是为了简化客户端编写，用户只需要提供这个逻辑即可，这个回调函数在建立链接成功的时候使用
 </p>
@@ -779,9 +767,9 @@ Connector初始化以EventLoop和服务器地址初始化，然后在start的时
 
 </div>
 
-<div id="outline-container-1-10" class="outline-3">
-<h3 id="sec-1-10"><span class="section-number-3">1.10</span> TcpConnection</h3>
-<div class="outline-text-3" id="text-1-10">
+<div id="outline-container-10" class="outline-3">
+<h3 id="sec-10"><span class="section-number-3">10</span> TcpConnection</h3>
+<div class="outline-text-3" id="text-10">
 
 <p>TcpConnection完成的工作就是当TCP连接建立之后处理socket的读写以及关闭。同样我们看看TcpConnection的结构
 </p>
@@ -844,9 +832,9 @@ TcpConnection一次最多读取64K字节的内容，然后交给上层。上层�
 
 </div>
 
-<div id="outline-container-1-11" class="outline-3">
-<h3 id="sec-1-11"><span class="section-number-3">1.11</span> TcpClient</h3>
-<div class="outline-text-3" id="text-1-11">
+<div id="outline-container-11" class="outline-3">
+<h3 id="sec-11"><span class="section-number-3">11</span> TcpClient</h3>
+<div class="outline-text-3" id="text-11">
 
 <p>一旦我们了解了TcpConnection之后的话，这个托管了建立好连接之后所需要的处理的所有事情，那么我们对于client关心的重点就是如果触发连接的建立以及连接是如何断开的。
 </p>
@@ -880,9 +868,9 @@ TcpConnection::connectEstablished,之后的所有操作都交给TcpConnection了
 
 </div>
 
-<div id="outline-container-1-12" class="outline-3">
-<h3 id="sec-1-12"><span class="section-number-3">1.12</span> TcpServer</h3>
-<div class="outline-text-3" id="text-1-12">
+<div id="outline-container-12" class="outline-3">
+<h3 id="sec-12"><span class="section-number-3">12</span> TcpServer</h3>
+<div class="outline-text-3" id="text-12">
 
 <p>从分析上我们和TcpClient一样只是关心连接是如何建立这个过程。
 </p>
@@ -940,13 +928,10 @@ TcpConnection::connectEstablished轮询地丢到每个线程里面去完成。�
 </p></div>
 </div>
 </div>
-</div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:43+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'muduo.html';var disqus_title = 'muduo.html';var disqus_url = 'http://dirlt.com/muduo.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'muduo.html';var disqus_title = 'muduo.html';var disqus_url = 'http://dirlt.com/muduo.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

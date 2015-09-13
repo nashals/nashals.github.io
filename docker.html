@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
-<title>docker</title>
+<head>
+<title>Docker</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="docker"/>
+<meta name="title" content="Docker"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-12-18T11:29+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,70 +62,59 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
 </div>
 
 <div id="content">
-<h1 class="title">docker</h1>
+<h1 class="title">Docker</h1>
+
+<ul>
+<li><a href="https://www.docker.com/">https://www.docker.com/</a>
+</li>
+<li><a href="https://docs.docker.com/userguide/">https://docs.docker.com/userguide/</a>
+</li>
+<li>LXC <a href="https://linuxcontainers.org/">https://linuxcontainers.org/</a>
+</li>
+<li>AUFS <a href="http://en.wikipedia.org/wiki/Aufs">http://en.wikipedia.org/wiki/Aufs</a>
+</li>
+</ul>
+
 
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="docker.html#sec-1">1 docker</a>
+<li><a href="docker.html#sec-1">1 Introduction</a></li>
+<li><a href="docker.html#sec-2">2 Commands</a></li>
+<li><a href="docker.html#sec-3">3 Data Container</a></li>
+<li><a href="docker.html#sec-4">4 Dockerfile</a></li>
+<li><a href="docker.html#sec-5">5 Notes</a>
 <ul>
-<li><a href="docker.html#sec-1-1">1.1 introduction</a></li>
-<li><a href="docker.html#sec-1-2">1.2 commands</a></li>
-<li><a href="docker.html#sec-1-3">1.3 docker-run</a></li>
-<li><a href="docker.html#sec-1-4">1.4 docker-inspect</a></li>
-<li><a href="docker.html#sec-1-5">1.5 Dockerfile</a></li>
-<li><a href="docker.html#sec-1-6">1.6 notes</a>
-<ul>
-<li><a href="docker.html#sec-1-6-1">1.6.1 assign static ip to container</a></li>
-</ul>
-</li>
-<li><a href="docker.html#sec-1-7">1.7 internal stuff</a>
-<ul>
-<li><a href="docker.html#sec-1-7-1">1.7.1 Understanding Docker</a></li>
-</ul>
-</li>
+<li><a href="docker.html#sec-5-1">5.1 assign static ip to container</a></li>
+<li><a href="docker.html#sec-5-2">5.2 Understanding Docker</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> docker</h2>
-<div class="outline-text-2" id="text-1">
-
-<ul>
-<li>homepage: <a href="https://www.docker.com/">https://www.docker.com/</a>
-</li>
-<li>user guide: <a href="https://docs.docker.com/userguide/">https://docs.docker.com/userguide/</a>
-</li>
-<li>史上最全Docker资料集粹 : <a href="http://special.csdncms.csdn.net/BeDocker/">http://special.csdncms.csdn.net/BeDocker/</a>
-</li>
-</ul>
-
-
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> introduction</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> Introduction</h3>
+<div class="outline-text-3" id="text-1">
 
 <ul>
 <li><a href="https://www.docker.com/tryit/">https://www.docker.com/tryit/</a>
 </li>
-<li><a href="https://code.csdn.net/u010702509/docker_ubntu">https://code.csdn.net/u010702509/docker_ubntu</a>
+<li><a href="https://code.csdn.net/u010702509/docker_ubntu">Docker教程</a>
+</li>
+<li><a href="http://special.csdncms.csdn.net/BeDocker/">史上最全Docker资料集粹</a>
 </li>
 </ul>
+
 
 
 <p>
@@ -173,7 +161,7 @@ sudo apt-get install lxc lxc-docker
 
 
 <p>
-<b>note(dirlt): 高版本docker不再使用lxc而是使用libcontainer作为默认容器格式</b>
+高版本docker不再使用lxc而是使用libcontainer作为默认容器格式
 </p>
 <p class="verse">
 Container format. Docker combines these components into a wrapper we call a container format. The default container format is called libcontainer. Docker also supports traditional Linux containers using LXC. In the future, Docker may support other container formats, for example, by integrating with BSD Jails or Solaris Zones.<br/>
@@ -201,24 +189,27 @@ docker使用cs架构，所以即使在本地运行也需要启动一个daemon的
 </li>
 </ul>
 
-<p>默认server使用unix:///var/run/docker.sock做通信，因为这个文件owner是root，所以所有docker命令必须以sudo开头。所以修改这个文件的owner为普通用户的话就可以不用sudo开头。不过如果不使用默认值的话，那么所有docker命令都要添加-H来指定通讯方式，比较繁琐. 关于docker server命令可以man docker.  <b>note(dirlt): 可以通过修改配置文件/etc/default/docker来解决这个问题。也可以通过将自己加入到docker组这样不用每次都使用sudo.</b>
+<p>默认server使用unix:///var/run/docker.sock做通信，因为这个文件owner是root，所以所有docker命令必须以sudo开头。如果修改这个文件的owner为普通用户（或将自己加入docker组）的话就可以不用sudo开头。
 </p>
 <p>
-docker大部分使用方式都是集中在client上. 每个命令都有非常多的参数可以使用，可以man docker-&lt;command&gt;比如man docker-run察看
+可以在配置文件/etc/default/docker里面修改默认通信地址，但是这样的话所有docker命令都要添加-H来指定通讯方式，比较繁琐.
+</p>
+<p>
+docker大部分使用方式都是集中在client上. 每个命令都有非常多的参数可以使用，可以man docker-&lt;command&gt;比如man docker-run. 关于docker server命令可以man docker.
 </p>
 </div>
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> commands</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> Commands</h3>
+<div class="outline-text-3" id="text-2">
 
 <p>下面是docker client所有命令。大部分命令都是自描述的。
 </p>
 
 
-<pre class="example">➜  docker  docker      
+<pre class="example">➜  docker  docker
 Usage: docker [OPTIONS] COMMAND [arg...]
  -H=[unix:///var/run/docker.sock]: tcp://host:port to bind/connect to or unix://path/to/socket to use
 
@@ -267,8 +258,8 @@ Commands:
 </p>
 
 
-<pre class="example">➜  wsrep-5.6  sudo docker ps -a                     
-[sudo] password for dirlt: 
+<pre class="example">➜  wsrep-5.6  sudo docker ps -a
+[sudo] password for dirlt:
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
 84d4b4a3ad11        ubuntu:latest       /bin/bash           5 seconds ago       Up 5 seconds                            angry_nobel
 
@@ -292,7 +283,7 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
         ],
 ......
 
-➜  wsrep-5.6  sudo docker images                    
+➜  wsrep-5.6  sudo docker images
 REPOSITORY          TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
 ubuntu              latest              c4ff7513909d        3 days ago          225.4 MB
 </pre>
@@ -305,26 +296,32 @@ comments on some commands
 </p><ul>
 <li>attach. 后台运行任务通常是非交互式的并且使用-d启动
 </li>
-<li>history. 只能够察看本地image.
+<li>history. 查看image是如何创建的
 </li>
 <li>export/import. tarball里面文件都是single-layer所以可以用来创建全新的image.
 </li>
-<li>save/load. 可以通过文件方式来传递image.
+<li>save/load. 导出和导入image.
 </li>
 <li>pull. 可以指定从远端什么地方拉取比如 sudo docker pull registry.hub.docker.com/fedora:20
+</li>
+<li>commit. 可以对container做snapshot，做成image方便后续使用
+</li>
+<li>top. 查看container进程列表
+</li>
+<li>tag. 为image指定名称
+</li>
+<li>inspect. 查看container/image配置信息
 </li>
 </ul>
 
 
-</div>
 
-</div>
-
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> docker-run</h3>
-<div class="outline-text-3" id="text-1-3">
-
-<p>Run a process in a new container. docker run starts a process with its own file system, its own networking, and its own isolated process tree. The IMAGE which starts the process may define defaults related to the process that will be run in the container, the networking to expose, and more, but docker run gives final control to the operator or administrator who starts the container from the image.  For that reason docker run has more options than any other Docker command. If the IMAGE is not already loaded then docker run will pull the IMAGE, and all image dependencies, from the repository in the same way running docker pull IMAGE, before it starts the container from that image. （用于启动容器。image本身可能已经包含了一些文件系统以及网络还有独立进程，但是用户也可以改写这些选项。如果image在本地不存在的话就会尝试从远端拉下来）
+<hr/>
+<p>
+docker-run
+</p>
+<p>
+Run a process in a new container. docker run starts a process with its own file system, its own networking, and its own isolated process tree. The IMAGE which starts the process may define defaults related to the process that will be run in the container, the networking to expose, and more, but docker run gives final control to the operator or administrator who starts the container from the image.  For that reason docker run has more options than any other Docker command. If the IMAGE is not already loaded then docker run will pull the IMAGE, and all image dependencies, from the repository in the same way running docker pull IMAGE, before it starts the container from that image. （用于启动容器。image本身可能已经包含了一些文件系统以及网络还有独立进程，但是用户也可以改写这些选项。如果image在本地不存在的话就会尝试从远端拉下来）
 </p>
 <p>
 资源限制
@@ -351,7 +348,7 @@ comments on some commands
 </li>
 <li>-d, &ndash;detach=true|false Detached mode.
 </li>
-<li>&ndash;cidfile=file Write the container ID to the file specified. 
+<li>&ndash;cidfile=file Write the container ID to the file specified.
 </li>
 <li>-e, &ndash;env=environment Set environment variables.
 </li>
@@ -393,7 +390,7 @@ comments on some commands
 </li>
 <li>&ndash;net="bridge"  Set the Network mode for the container.
 </li>
-<li>-P, &ndash;publish-all=true|false  When set to true publish all exposed ports to the host interfaces.
+<li>-P, &ndash;publish-all=true|false  When set to true publish all exposed ports to the host interfaces. # 映射出所有暴露端口
 </li>
 <li>-p, &ndash;publish=[] Publish a container's port to the host # -p &lt;host-port&gt;:&lt;container-port&gt;
 </li>
@@ -410,15 +407,13 @@ comments on some commands
 </ul>
 
 
-</div>
 
-</div>
-
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> docker-inspect</h3>
-<div class="outline-text-3" id="text-1-4">
-
-<p>inspect可以看到container和image内部具体信息。下面是一个container inspection的输出
+<hr/>
+<p>
+docker-inspect
+</p>
+<p>
+inspect可以看到container和image内部具体信息。下面是一个container inspection的输出
 </p>
 
 
@@ -508,7 +503,7 @@ comments on some commands
 </p>
 
 
-<pre class="example">➜  ~  sudo docker inspect c4f 
+<pre class="example">➜  ~  sudo docker inspect c4f
 [{
     "Architecture": "amd64",
     "Author": "",
@@ -591,9 +586,45 @@ comments on some commands
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Dockerfile</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> Data Container</h3>
+<div class="outline-text-3" id="text-3">
+
+<ul>
+<li><a href="https://docs.docker.com/userguide/dockervolumes/">https://docs.docker.com/userguide/dockervolumes/</a>
+</li>
+<li><a href="https://medium.com/@ramangupta/why-docker-data-containers-are-good-589b3c6c749e">https://medium.com/@ramangupta/why-docker-data-containers-are-good-589b3c6c749e</a>
+</li>
+</ul>
+
+
+<p>
+data-container相对直接mount本地目录作为data-volume这种方式有两个好处：
+</p><ul>
+<li>数据也可以作为独立的container分发以及部署
+</li>
+<li>解决本地目录权限问题
+</li>
+</ul>
+
+
+
+
+
+<pre class="example">➜  notes git:(master) ✗ dk run --name data-container -v /data-dir ubuntu:14.04 /bin/true
+➜  notes git:(master) ✗ docker run --rm --volumes-from data-container ubuntu:14.04 sh -c "echo hello &gt; /data-dir/hello"
+➜  notes git:(master) ✗ docker run --rm --volumes-from data-container ubuntu:14.04 sh -c "cat /data-dir/hello"
+hello
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> Dockerfile</h3>
+<div class="outline-text-3" id="text-4">
 
 <p>使用Dockerfile可以很容易地构建image. 常用命令是docker build -t &lt;image-name&gt; .
 </p>
@@ -639,16 +670,16 @@ Dockerfile格式很简单的:
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> notes</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> Notes</h3>
+<div class="outline-text-3" id="text-5">
 
 
 </div>
 
-<div id="outline-container-1-6-1" class="outline-4">
-<h4 id="sec-1-6-1"><span class="section-number-4">1.6.1</span> assign static ip to container</h4>
-<div class="outline-text-4" id="text-1-6-1">
+<div id="outline-container-5-1" class="outline-4">
+<h4 id="sec-5-1"><span class="section-number-4">5.1</span> assign static ip to container</h4>
+<div class="outline-text-4" id="text-5-1">
 
 <p>可以在启动container时候使用lxc-conf指定lxc配置来分配固定IP(必须保证容器格式是lxc)
 </p>
@@ -677,7 +708,11 @@ Dockerfile格式很简单的:
 </p><ul>
 <li>sudo brctl addbr br1 # apt-get install bridge-utils
 </li>
+<li>(sudo brctl delbr br1)
+</li>
 <li>sudo ifconfig br1 inet 192.168.16.254 netmask 255.255.255.0
+</li>
+<li>(sudo ifconfig br1 down)
 </li>
 </ul>
 
@@ -694,31 +729,19 @@ Dockerfile格式很简单的:
 
 
 </div>
-</div>
 
 </div>
 
-<div id="outline-container-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> internal stuff</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-5-2" class="outline-4">
+<h4 id="sec-5-2"><span class="section-number-4">5.2</span> Understanding Docker</h4>
+<div class="outline-text-4" id="text-5-2">
 
 <ul>
-<li>LXC <a href="https://linuxcontainers.org/">https://linuxcontainers.org/</a>
-</li>
-<li>AUFS <a href="http://en.wikipedia.org/wiki/Aufs">http://en.wikipedia.org/wiki/Aufs</a>
+<li><a href="https://docs.docker.com/introduction/understanding-docker/">https://docs.docker.com/introduction/understanding-docker/</a>
 </li>
 </ul>
 
 
-
-</div>
-
-<div id="outline-container-1-7-1" class="outline-4">
-<h4 id="sec-1-7-1"><span class="section-number-4">1.7.1</span> Understanding Docker</h4>
-<div class="outline-text-4" id="text-1-7-1">
-
-<p><a href="https://docs.docker.com/introduction/understanding-docker/">https://docs.docker.com/introduction/understanding-docker/</a>
-</p>
 <p>
 some images from "docker 原理簡介" <a href="http://blog.blackwhite.tw/2013/12/docker.html">http://blog.blackwhite.tw/2013/12/docker.html</a>
 </p>
@@ -851,19 +874,15 @@ Control groups（资源控制）. Docker also makes use of another technology ca
 Union file systems（UFS）. Union file systems, or UnionFS, are file systems that operate by creating layers, making them very lightweight and fast. Docker uses union file systems to provide the building blocks for containers. Docker can make use of several union file system variants including: AUFS, btrfs, vfs, and DeviceMapper.
 </p>
 <p>
-Container format. Docker combines these components into a wrapper we call a container format. The default container format is called libcontainer. Docker also supports traditional Linux containers using LXC. In the future, Docker may support other container formats, for example, by integrating with BSD Jails or Solaris Zones. <b>note(dirlt): docker默认不再使用lxc而是libcontainer</b>
-</p>
-</div>
-</div>
+Container format. Docker combines these components into a wrapper we call a container format. The default container format is called libcontainer. Docker also supports traditional Linux containers using LXC. In the future, Docker may support other container formats, for example, by integrating with BSD Jails or Solaris Zones. #note: docker默认不再使用lxc而是libcontainer*
+</p></div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-12-18T11:29+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'docker.html';var disqus_title = 'docker.html';var disqus_url = 'http://dirlt.com/docker.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'docker.html';var disqus_title = 'docker.html';var disqus_url = 'http://dirlt.com/docker.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

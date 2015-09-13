@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
-<title>megastore</title>
+<head>
+<title>Megastore: Providing Scalable, Highly Available Storage for Interactive Services</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="megastore"/>
+<meta name="title" content="Megastore: Providing Scalable, Highly Available Storage for Interactive Services"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:43+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,79 +62,60 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
 </div>
 
 <div id="content">
-<h1 class="title">megastore</h1>
+<h1 class="title">Megastore: Providing Scalable, Highly Available Storage for Interactive Services</h1>
 
+<p><a href="http://research.google.com/pubs/pub36971.html">http://research.google.com/pubs/pub36971.html</a> @ 2011
+</p>
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="megastore.html#sec-1">1 megastore</a>
+<li><a href="megastore.html#sec-1">1 ABSTRACT</a></li>
+<li><a href="megastore.html#sec-2">2 INTRODUCTION</a></li>
+<li><a href="megastore.html#sec-3">3 TOWARD AVAILABILITY AND SCALE</a>
 <ul>
-<li><a href="megastore.html#sec-1-1">1.1 ABSTRACT</a></li>
-<li><a href="megastore.html#sec-1-2">1.2 INTRODUCTION</a></li>
-<li><a href="megastore.html#sec-1-3">1.3 TOWARD AVAILABILITY AND SCALE</a>
-<ul>
-<li><a href="megastore.html#sec-1-3-1">1.3.1 Replication</a></li>
-<li><a href="megastore.html#sec-1-3-2">1.3.2 Partitioning and Locality</a></li>
+<li><a href="megastore.html#sec-3-1">3.1 Replication</a></li>
+<li><a href="megastore.html#sec-3-2">3.2 Partitioning and Locality</a></li>
 </ul>
 </li>
-<li><a href="megastore.html#sec-1-4">1.4 A TOUR OF MEGASTORE</a>
+<li><a href="megastore.html#sec-4">4 A TOUR OF MEGASTORE</a>
 <ul>
-<li><a href="megastore.html#sec-1-4-1">1.4.1 API Design Philosophy</a></li>
-<li><a href="megastore.html#sec-1-4-2">1.4.2 Data Model</a>
+<li><a href="megastore.html#sec-4-1">4.1 API Design Philosophy</a></li>
+<li><a href="megastore.html#sec-4-2">4.2 Data Model</a>
 <ul>
-<li><a href="megastore.html#sec-1-4-2-1">1.4.2.1 Pre-Joining with Keys</a></li>
-<li><a href="megastore.html#sec-1-4-2-2">1.4.2.2 Indexes</a></li>
-<li><a href="megastore.html#sec-1-4-2-3">1.4.2.3 Mapping to Bigtable</a></li>
+<li><a href="megastore.html#sec-4-2-1">4.2.1 Pre-Joining with Keys</a></li>
+<li><a href="megastore.html#sec-4-2-2">4.2.2 Indexes</a></li>
+<li><a href="megastore.html#sec-4-2-3">4.2.3 Mapping to Bigtable</a></li>
 </ul>
 </li>
-<li><a href="megastore.html#sec-1-4-3">1.4.3 Transactions and Concurrency Control</a>
+<li><a href="megastore.html#sec-4-3">4.3 Transactions and Concurrency Control</a>
 <ul>
-<li><a href="megastore.html#sec-1-4-3-1">1.4.3.1 Queues</a></li>
-<li><a href="megastore.html#sec-1-4-3-2">1.4.3.2 Two-Phase Commit</a></li>
+<li><a href="megastore.html#sec-4-3-1">4.3.1 Queues</a></li>
+<li><a href="megastore.html#sec-4-3-2">4.3.2 Two-Phase Commit</a></li>
 </ul>
 </li>
-<li><a href="megastore.html#sec-1-4-4">1.4.4 Other Features</a></li>
+<li><a href="megastore.html#sec-4-4">4.4 Other Features</a></li>
 </ul>
 </li>
-<li><a href="megastore.html#sec-1-5">1.5 REPLICATION</a></li>
-<li><a href="megastore.html#sec-1-6">1.6 EXPERIENCE</a></li>
-<li><a href="megastore.html#sec-1-7">1.7 RELATED WORK</a></li>
-<li><a href="megastore.html#sec-1-8">1.8 CONCLUSION</a></li>
-</ul>
-</li>
+<li><a href="megastore.html#sec-5">5 REPLICATION</a></li>
+<li><a href="megastore.html#sec-6">6 EXPERIENCE</a></li>
+<li><a href="megastore.html#sec-7">7 RELATED WORK</a></li>
+<li><a href="megastore.html#sec-8">8 CONCLUSION</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> megastore</h2>
-<div class="outline-text-2" id="text-1">
-
-<ul>
-<li>link: <a href="http://research.google.com/pubs/pub36971.html">http://research.google.com/pubs/pub36971.html</a>
-</li>
-<li>title: Megastore: Providing Scalable, Highly Available Storage for Interactive Services
-</li>
-<li>date: 2011
-</li>
-</ul>
-
-
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> ABSTRACT</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> ABSTRACT</h3>
+<div class="outline-text-3" id="text-1">
 
 <ul>
 <li>Megastore is a storage system developed to meet the re-quirements of today’s interactive online services. Megas-tore blends the scalability of a NoSQL datastore with the convenience of a traditional RDBMS in a novel way, and provides both strong consistency guarantees and high avail-ability. （只要是为了满足现在交互式在线服务的存储需求，融合了NoSQL扩展性以及RDBMS的方便性，同时提供了强一致性以及高可用性）
@@ -149,12 +129,12 @@
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> INTRODUCTION</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> INTRODUCTION</h3>
+<div class="outline-text-3" id="text-2">
 
 <ul>
-<li>We accomplish this by taking a middle ground in the RDBMS vs. NoSQL design space: we partition the data-store and replicate each partition separately, providing full ACID semantics within partitions, but only limited con-sistency guarantees across them. We provide traditional database features, such as secondary indexes, but only those features that can scale within user-tolerable latency limits, and only with the semantics that our partitioning scheme can support. 
+<li>We accomplish this by taking a middle ground in the RDBMS vs. NoSQL design space: we partition the data-store and replicate each partition separately, providing full ACID semantics within partitions, but only limited con-sistency guarantees across them. We provide traditional database features, such as secondary indexes, but only those features that can scale within user-tolerable latency limits, and only with the semantics that our partitioning scheme can support.
 <ul>
 <li>将数据进行partition，对于每个partition内部提供完全ACID语义的操作并且之间的replicate是强一致的，但是对于across partition仅仅是做到了有限的一致性（最终一致性？）
 </li>
@@ -168,16 +148,13 @@
 </ul>
 
 
-<p>
-<b>note(dirlt)：table schema主要是用来描述各个表存储结构。mega使用上更类似NoSQL</b>
-</p>
 </div>
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> TOWARD AVAILABILITY AND SCALE</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> TOWARD AVAILABILITY AND SCALE</h3>
+<div class="outline-text-3" id="text-3">
 
 <ul>
 <li>To do so, we have taken a two-pronged approach:
@@ -195,9 +172,9 @@
 
 </div>
 
-<div id="outline-container-1-3-1" class="outline-4">
-<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> Replication</h4>
-<div class="outline-text-4" id="text-1-3-1">
+<div id="outline-container-3-1" class="outline-4">
+<h4 id="sec-3-1"><span class="section-number-4">3.1</span> Replication</h4>
+<div class="outline-text-4" id="text-3-1">
 
 <ul>
 <li>For cloud storage to meet availability demands, service providers must replicate data over a wide geographic area.（对于云存储必须满足可用性的需求，服务提供商必须跨地域进行replication），We evaluated common strategies for wide-area replication：（下面几个常见的跨地域replication解决方案）
@@ -217,8 +194,6 @@
 </li>
 <li>A novel extension to Paxos, detailed in Section 4.4.1, allows local reads at any up-to-date replica. Another extension permits single-roundtrip writes.（对于paxos进行了一些扩展，允许在任何一个up-to-date的节点上面进行local read，并且write只需要single-roundtrip）
 </li>
-<li><b>todo(dirlt)：read paxos paper, then read this paper back</b>
-</li>
 </ul>
 
 </li>
@@ -231,12 +206,12 @@
 
 </div>
 
-<div id="outline-container-1-3-2" class="outline-4">
-<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> Partitioning and Locality</h4>
-<div class="outline-text-4" id="text-1-3-2">
+<div id="outline-container-3-2" class="outline-4">
+<h4 id="sec-3-2"><span class="section-number-4">3.2</span> Partitioning and Locality</h4>
+<div class="outline-text-4" id="text-3-2">
 
 <ul>
-<li>To scale throughput and localize outages, we partition our data into a collection of entity groups, each indepen-dently and synchronously replicated over a wide area. The underlying data is stored in a scalable NoSQL datastore in each datacenter (see Figure 1) 划分的每个单元称为entity group. <b>后面简称EG</b> <b>note(dirlt):所谓的entity group就是单位实体，在这个单位实体内所有的数据都是关联的，好比一个用户的blog，如果我们按照用户来划分entity group的话，那么这个blog里面所有的文章以及tag等数据形成一个entity group</b>
+<li>To scale throughput and localize outages, we partition our data into a collection of entity groups, each indepen-dently and synchronously replicated over a wide area. The underlying data is stored in a scalable NoSQL datastore in each datacenter (see Figure 1) 划分的每个单元称为entity group. <b>后面简称EG</b>  #note: 所谓的entity group就是单位实体，在这个单位实体内所有的数据都是关联的，好比一个用户的blog，如果我们按照用户来划分entity group的话，那么这个blog里面所有的文章以及tag等数据形成一个entity group
 <ul>
 <li>Entities within an entity group are mutated with single-phase ACID transactions (for which the commit record is replicated via Paxos).（在一个EG里面操作满足ACID，操作使用paxos来进行同步复制）
 </li>
@@ -265,7 +240,7 @@
 <ul>
 <li>We use Google’s Bigtable for scalable fault-tolerant storage within a single datacenter, allowing us to support arbitrary read and write throughput by spreading operations across multiple rows.(底层使用bigtable来作为一个datacenter的存储）
 </li>
-<li>We minimize latency and maximize throughput by let-ting applications control the placement of data: through the selection of Bigtable instances and specification of locality within an instance.（允许应用程序控制data placement来减小延迟和增大吞吐，包括选择bigtable的实例以及如何组织数据提高locality <b>主要应该就是控制entity group的存放位置</b> <b>note(dirlt)：这样其实就要求客户端来决定如何防止entity group,或者是可以单独做这样的server来接受请求只不过这个和megastore本身关系比较小</b> 
+<li>We minimize latency and maximize throughput by let-ting applications control the placement of data: through the selection of Bigtable instances and specification of locality within an instance.（允许应用程序控制data placement来减小延迟和增大吞吐，包括选择bigtable的实例以及如何组织数据提高locality） #note: 要求客户端来决定如何放置entity group
 <ul>
 <li>To minimize latency, applications try to keep data near users and replicas near each other. They assign each entity group to the region or continent from which it is accessed most. Within that region they assign a triplet or quintuplet of replicas to datacenters with isolated failure domains.（为了减少延迟将数据放在离user更近的位置）
 </li>
@@ -282,30 +257,30 @@
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> A TOUR OF MEGASTORE</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> A TOUR OF MEGASTORE</h3>
+<div class="outline-text-3" id="text-4">
 
 
 </div>
 
-<div id="outline-container-1-4-1" class="outline-4">
-<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> API Design Philosophy</h4>
-<div class="outline-text-4" id="text-1-4-1">
+<div id="outline-container-4-1" class="outline-4">
+<h4 id="sec-4-1"><span class="section-number-4">4.1</span> API Design Philosophy</h4>
+<div class="outline-text-4" id="text-4-1">
 
 <ul>
 <li>Normalized relational schemas rely on joins at query time to service user operations. This is not the right model for Megastore applications for several reasons:（不推荐在mega内部使用normalized relational schema这种方案）
 <ul>
 <li>High-volume interactive workloads benefit more from predictable performance than from an expressive query language.（大部分查询都是已知访问模式的）
 </li>
-<li>Reads dominate writes in our target applications, so it pays to move work from read time to write time. <b>note(dirlt)：so what？不理解为什么？</b>
+<li>Reads dominate writes in our target applications, so it pays to move work from read time to write time.
 </li>
 <li>Storing and querying hierarchical data is straightfor-ward in key-value stores like Bigtable. （Bigtable这种访问方式更加简单）
 </li>
 </ul>
 
 </li>
-<li>With this in mind, we designed a data model and schema language to offer fine-grained control over physical locality. Hierarchical layouts and declarative denormalization help eliminate the need for most joins. Queries specify scans or lookups against particular tables and indexes.（ <b>megastore可以帮助user来完成denormalization避免大部分的join，对于其他必须需要join的操作提供了二级索引以及一些辅助的算法</b> <b>note(dirlt)：这个应该就是megastore在data model上面做的主要工作</b> ）
+<li>With this in mind, we designed a data model and schema language to offer fine-grained control over physical locality. Hierarchical layouts and declarative denormalization help eliminate the need for most joins. Queries specify scans or lookups against particular tables and indexes.（ <b>megastore可以帮助user来完成denormalization避免大部分的join，对于其他必须需要join的操作提供了二级索引以及一些辅助的算法</b> ）
 </li>
 </ul>
 
@@ -314,9 +289,9 @@
 
 </div>
 
-<div id="outline-container-1-4-2" class="outline-4">
-<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> Data Model</h4>
-<div class="outline-text-4" id="text-1-4-2">
+<div id="outline-container-4-2" class="outline-4">
+<h4 id="sec-4-2"><span class="section-number-4">4.2</span> Data Model</h4>
+<div class="outline-text-4" id="text-4-2">
 
 <p><img src="images/megastore-sample-schema.png"  alt="./images/megastore-sample-schema.png" />
 </p>
@@ -331,14 +306,14 @@
 
 </div>
 
-<div id="outline-container-1-4-2-1" class="outline-5">
-<h5 id="sec-1-4-2-1"><span class="section-number-5">1.4.2.1</span> Pre-Joining with Keys</h5>
-<div class="outline-text-5" id="text-1-4-2-1">
+<div id="outline-container-4-2-1" class="outline-5">
+<h5 id="sec-4-2-1"><span class="section-number-5">4.2.1</span> Pre-Joining with Keys</h5>
+<div class="outline-text-5" id="text-4-2-1">
 
 <ul>
 <li>Each entity is mapped into a single Bigtable row; the primary key values are concatenated to form the Bigtable row key, and each remaining property occupies its own Bigtable column.（每一个entity占据了bigtable的一行，rowkey使用primary key拼接而成，而剩余的property则对应到bigtable的column）
 </li>
-<li>The IN TABLE User direc-tive instructs Megastore to colocate these two tables into the same Bigtable, and the key ordering ensures that Photo entities are stored adjacent to the corresponding User. This mechanism can be applied recursively to speed queries along arbitrary join depths. Thus, users can force hierarchical lay-out by manipulating the key order. （IN TABLE可以用来将child table entry紧跟在对应的root table entry之后，放置在同一个table里面， <b>note(dirlt)：原因我倒是没有看明白，但是这样至少对于相关的数据存储访问是非常有利的</b> ）
+<li>The IN TABLE User direc-tive instructs Megastore to colocate these two tables into the same Bigtable, and the key ordering ensures that Photo entities are stored adjacent to the corresponding User. This mechanism can be applied recursively to speed queries along arbitrary join depths. Thus, users can force hierarchical lay-out by manipulating the key order. （IN TABLE可以用来将child table entry紧跟在对应的root table entry之后，放置在同一个table里面，对相关数据的访问会非常有利）
 </li>
 <li>Schemas declare keys to be sorted ascending or descend-ing, or to avert sorting altogether: the SCATTER attribute in-structs Megastore to prepend a two-byte hash to each key. Encoding monotonically increasing keys this way prevents hotspots in large data sets that span Bigtable servers.（schema可以用来表示是否按照key来进行排序，或者是进行scatter，所谓scatter就是不要放key过于集中地存放，可以通过在key前面添加2个字节的hashcode来打散）
 </li>
@@ -349,11 +324,11 @@
 
 </div>
 
-<div id="outline-container-1-4-2-2" class="outline-5">
-<h5 id="sec-1-4-2-2"><span class="section-number-5">1.4.2.2</span> Indexes</h5>
-<div class="outline-text-5" id="text-1-4-2-2">
+<div id="outline-container-4-2-2" class="outline-5">
+<h5 id="sec-4-2-2"><span class="section-number-5">4.2.2</span> Indexes</h5>
+<div class="outline-text-5" id="text-4-2-2">
 
-<p><b>note(dirlt):索引这个部分主要突出了数据如何存放并且使之能够有效地进行存取</b>
+<p>#note: 索引这个部分主要突出了数据如何存放并且使之能够有效地进行存取
 </p>
 <ul>
 <li>Secondary indexes can be declared on any list of entity properties, as well as fields within protocol buffers. We dis-tinguish between two high-level classes of indexes: local and global (see Figure 2). （可以在任何的property包括pb的field上面建立二级索引，local和global index的一致性是不同的）
@@ -362,20 +337,18 @@
 </li>
 <li>A global index spans entity groups. It is used to find entities without knowing in advance the entity groups that contain them. Global index scans can read data owned by many entity groups but are not guaranteed to reflect all recent updates.
 </li>
-<li><b>todo(dirlt)：关键是对于index所存放的value是什么？</b>
-</li>
 </ul>
 
 </li>
 <li>By adding the STORING clause to an in-dex, applications can store additional properties from the primary table for faster access at read time.（STROING可以用来在做denormalization，在二级索引里面直接存放某些字段减少一次查询）
 </li>
-<li>Megastore provides the ability to index repeated proper-ties and protocol buffer sub-fields. Repeated indexes are a efficient alternative to child tables.（对于repeated字段也可以进行索引，对于每个repeated value都对应一个entry）   
+<li>Megastore provides the ability to index repeated proper-ties and protocol buffer sub-fields. Repeated indexes are a efficient alternative to child tables.（对于repeated字段也可以进行索引，对于每个repeated value都对应一个entry）
 </li>
 <li>Inline indexes provide a way to denormalize data from source entities into a related target entity: index entries from the source entities appear as a virtual repeated column in the target entry. （所谓的inline index就是将index内容denormalization到target entity里面，作为column存放，
 <ul>
 <li>好比之前PhotosBytTime可以inline到User里面，在User里面的column可以使用"2012-11-20 00:00:00"
 </li>
-<li>An inline index can be created on any table that has a foreign key referencing another table by using the first primary key of the target entity as the first components of the index, and physically locating the data in the same Bigtable as the target.（创建inline index的前提是要求index的foreign key的开头部分必须和target entity的primary key相同） 
+<li>An inline index can be created on any table that has a foreign key referencing another table by using the first primary key of the target entity as the first components of the index, and physically locating the data in the same Bigtable as the target.（创建inline index的前提是要求index的foreign key的开头部分必须和target entity的primary key相同）
 </li>
 <li>Inline indexes are useful for extracting slices of informa-tion from child entities and storing the data in the parent for fast access. Coupled with repeated indexes, they can also be used to implement many-to-many relationships more ef-ficiently than by maintaining a many-to-many link table.（配合repeated index可以有效地实现many-to-many link table)
 </li>
@@ -389,16 +362,16 @@
 
 </div>
 
-<div id="outline-container-1-4-2-3" class="outline-5">
-<h5 id="sec-1-4-2-3"><span class="section-number-5">1.4.2.3</span> Mapping to Bigtable</h5>
-<div class="outline-text-5" id="text-1-4-2-3">
+<div id="outline-container-4-2-3" class="outline-5">
+<h5 id="sec-4-2-3"><span class="section-number-5">4.2.3</span> Mapping to Bigtable</h5>
+<div class="outline-text-5" id="text-4-2-3">
 
 <ul>
 <li>The Bigtable column name is a concatenation of the Mega-store table name and the property name, allowing entities from different Megastore tables to be mapped into the same Bigtable row without collision. （column name使用了table name和property name的组合，这样如何映射到一行的话不会出现冲突）
 </li>
 <li>Within the Bigtable row for a root entity, we store the transaction and replication metadata for the entity group, including the transaction log. Storing all metadata in a single Bigtable row allows us to update it atomically through a single Bigtable transaction. (对于每个root entity会记录所有关于这个entity group的transaction log，因为一个entity group只有一个root entity。同时所有关于这个entity group的metadata信息也都是放在同一个row上面的，这样可以通过bigtable row transaction来完成更新）
 </li>
-<li>Each index entry is represented as a single Bigtable row; the row key of the cell is constructed using the indexed property values concatenated with the primary key of the indexed entity. Indexing repeated fields produces one index entry per repeated element.（对于index的row key使用的是index property values + primary key of indexed entity. <b>todo(dirlt)：why use primary key???</b> ）
+<li>Each index entry is represented as a single Bigtable row; the row key of the cell is constructed using the indexed property values concatenated with the primary key of the indexed entity. Indexing repeated fields produces one index entry per repeated element.（对于index的row key使用的是index property values + primary key of indexed entity.
 </li>
 </ul>
 
@@ -411,9 +384,9 @@
 
 </div>
 
-<div id="outline-container-1-4-3" class="outline-4">
-<h4 id="sec-1-4-3"><span class="section-number-4">1.4.3</span> Transactions and Concurrency Control</h4>
-<div class="outline-text-4" id="text-1-4-3">
+<div id="outline-container-4-3" class="outline-4">
+<h4 id="sec-4-3"><span class="section-number-4">4.3</span> Transactions and Concurrency Control</h4>
+<div class="outline-text-4" id="text-4-3">
 
 <ul>
 <li>Each Megastore entity group functions as a mini-database that provides serializable ACID semantics. A transaction writes its mutations into the entity group’s write-ahead log, then the mutations are applied to the data.（每个EG都类似小型的数据库满足ACID，每个transaction都先写WAL然后修改数据）
@@ -433,7 +406,7 @@
 </ul>
 
 </li>
-<li>A write transaction always begins with a current read to determine the next available log position. The commit operation gathers mutations into a log entry, assigns it a timestamp higher than any previous one, and appends it to the log using Paxos. The protocol uses optimistic con-currency: though multiple writers might be attempting to write to the same log position, only one will win. The rest will notice the victorious write, abort, and retry their op-erations. Advisory locking is available to reduce the effects of contention. Batching writes through session affinity to a particular front-end server can avoid contention altogether（对于write trasnaction的话必须使用current read读取最新的log position，然后将所有的mutation放在一个log entry里面使用一个更大的timestamp，然后使用paxos来追加。但是可能会出现冲突，如果发现冲突失败的话那么需要重试这个操作 <b>note(dirlt)：我觉得这个操作可能还需要包括重新发起read以及apply logic.</b> 使用advisory lock能够减少这种冲突，或者是在提交修改时候就单独通过和这个session绑定的server来做提交 ）
+<li>A write transaction always begins with a current read to determine the next available log position. The commit operation gathers mutations into a log entry, assigns it a timestamp higher than any previous one, and appends it to the log using Paxos. The protocol uses optimistic con-currency: though multiple writers might be attempting to write to the same log position, only one will win. The rest will notice the victorious write, abort, and retry their op-erations. Advisory locking is available to reduce the effects of contention. Batching writes through session affinity to a particular front-end server can avoid contention altogether（对于write trasnaction的话必须使用current read读取最新的log position，然后将所有的mutation放在一个log entry里面使用一个更大的timestamp，然后使用paxos来追加。但是可能会出现冲突，如果发现冲突失败的话那么需要重试这个操作。使用advisory lock能够减少这种冲突，或者是在提交修改时候就单独通过和这个session绑定的server来做提交 ）
 
 </li>
 <li>The complete transaction lifecycle is as follows:
@@ -448,7 +421,7 @@
 </li>
 <li>Clean up: Delete data that is no longer required.
 </li>
-<li>The write operation can return to the client at any point after Commit, though it makes a best-effort attempt to wait for the nearest replica to apply.  <b>todo(dirlt)？？？</b>
+<li>The write operation can return to the client at any point after Commit, though it makes a best-effort attempt to wait for the nearest replica to apply.
 </li>
 </ol>
 
@@ -459,14 +432,14 @@
 
 </div>
 
-<div id="outline-container-1-4-3-1" class="outline-5">
-<h5 id="sec-1-4-3-1"><span class="section-number-5">1.4.3.1</span> Queues</h5>
-<div class="outline-text-5" id="text-1-4-3-1">
+<div id="outline-container-4-3-1" class="outline-5">
+<h5 id="sec-4-3-1"><span class="section-number-5">4.3.1</span> Queues</h5>
+<div class="outline-text-5" id="text-4-3-1">
 
 <ul>
 <li>Queues provide transactional messaging between entity groups. They can be used for cross-group operations, to batch multiple updates into a single transaction, or to de-fer work. A transaction on an entity group can atomically send or receive multiple messages in addition to updatingits entities. Each message has a single sending and receiving entity group; if they differ, delivery is asynchronous.（Queue主要用来在EG之间传递事务消息的，能够将多个mutation进行聚合成为single transaction以及延迟操作，这样对于发送者和接收者都可以原子地发送和读取transaction或者是多个消息。对于每个message有sender和receiver entity group，如果是不同的EG的话那么消息传递是异步的）
 </li>
-<li>Queues offer a way to perform operations that affect many entity groups. For example, consider a calendar application in which each calendar has a distinct entity group, and we want to send an invitation to a group of calendars. A sin-gle transaction can atomically send invitation queue mes-sages to many distinct calendars. Each calendar receiving the message will process the invitation in its own transaction which updates the invitee’s state and deletes the message.（对于日历来说，每个日历就是单独的EG。如果需要跨calendar发送invitation的话，那么inviter会将这个invitation作为一个transaction发送给其他日历，其他日历接受到了这个transaction之后的话就会更新并且删除消息） <b>note(dirlt)：最终一致性</b>
+<li>Queues offer a way to perform operations that affect many entity groups. For example, consider a calendar application in which each calendar has a distinct entity group, and we want to send an invitation to a group of calendars. A sin-gle transaction can atomically send invitation queue mes-sages to many distinct calendars. Each calendar receiving the message will process the invitation in its own transaction which updates the invitee’s state and deletes the message.（对于日历来说，每个日历就是单独的EG。如果需要跨calendar发送invitation的话，那么inviter会将这个invitation作为一个transaction发送给其他日历，其他日历接受到了这个transaction之后的话就会更新并且删除消息）
 </li>
 </ul>
 
@@ -475,9 +448,9 @@
 
 </div>
 
-<div id="outline-container-1-4-3-2" class="outline-5">
-<h5 id="sec-1-4-3-2"><span class="section-number-5">1.4.3.2</span> Two-Phase Commit</h5>
-<div class="outline-text-5" id="text-1-4-3-2">
+<div id="outline-container-4-3-2" class="outline-5">
+<h5 id="sec-4-3-2"><span class="section-number-5">4.3.2</span> Two-Phase Commit</h5>
+<div class="outline-text-5" id="text-4-3-2">
 
 <ul>
 <li>Megastore supports two-phase commit for atomic updates across entity groups. Since these transactions have much higher latency and increase the risk of contention, we gener-ally discourage applications from using the feature in favor of queues. Nevertheless, they can be useful in simplifying application code for unique secondary key enforcement.（跨EG的操作也可以实现原子更新通过使用两阶段提交，但是延迟会非常高并且容易出现冲突）
@@ -490,12 +463,12 @@
 
 </div>
 
-<div id="outline-container-1-4-4" class="outline-4">
-<h4 id="sec-1-4-4"><span class="section-number-4">1.4.4</span> Other Features</h4>
-<div class="outline-text-4" id="text-1-4-4">
+<div id="outline-container-4-4" class="outline-4">
+<h4 id="sec-4-4"><span class="section-number-4">4.4</span> Other Features</h4>
+<div class="outline-text-4" id="text-4-4">
 
 <ul>
-<li>We have built a tight integration with Bigtable’s full-text index in which updates and searches participate in Megas-tore’s transactions and multiversion concurrency. A full-text index declared in a Megastore schema can index a table’s text or other application-generated attributes.（全文索引 <b>todo(dirlt)：为啥我觉得这个东西没啥用途呢？</b> ）
+<li>We have built a tight integration with Bigtable’s full-text index in which updates and searches participate in Megas-tore’s transactions and multiversion concurrency. A full-text index declared in a Megastore schema can index a table’s text or other application-generated attributes.
 </li>
 <li>Synchronous replication is sufficient defense against the most common corruptions and accidents, but backups can be invaluable in cases of programmer or operator error. Megas-tore’s integrated backup system supports periodic full snap-shots as well as incremental backup of transaction logs. The restore process can bring back an entity group’s state to any point in time, optionally omitting selected log entries (as after accidental deletes). The backup system complies with legal and common sense principles for expiring deleted data.（内置backup systems能够定期地做snapshot或者是增量地backup transaction log）
 </li>
@@ -509,43 +482,43 @@
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> REPLICATION</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> REPLICATION</h3>
+<div class="outline-text-3" id="text-5">
 
 <p>This section details the heart of our synchronous replica-tion scheme: a low-latency implementation of Paxos.
 </p>
-<p>
-<b>todo(dirlt)：这个replication算法应该非常巧妙，实现paxos，要求延迟低，同时reader还要能够观察到某个transaction是否已经ack以及apply</b>
-</p>
 </div>
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> EXPERIENCE</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> EXPERIENCE</h3>
+<div class="outline-text-3" id="text-6">
 
 <ul>
-<li>But the most effective bug-finding tool was our network simulator: the pseudo-random test framework. It is capable of exploring the space of all possible orderings and delays of communications between simulated nodes or threads, and deterministically reproducing the same behav-ior given the same seed. Bugs were exposed by finding a problematic sequence of events triggering an assertion fail-ure (or incorrect result), often with enough log and trace information to diagnose the problem, which was then added to the suite of unit tests. While an exhaustive search of the scheduling state space is impossible, the pseudo-random simulation explores more than is practical by other means. Through running thousands of simulated hours of operation each night, the tests have found many surprising problems （伪随机测试框架可以用来枚举所有节点以及线程之间的通信顺序以及之间的延迟） 
+<li>But the most effective bug-finding tool was our network simulator: the pseudo-random test framework. It is capable of exploring the space of all possible orderings and delays of communications between simulated nodes or threads, and deterministically reproducing the same behav-ior given the same seed. Bugs were exposed by finding a problematic sequence of events triggering an assertion fail-ure (or incorrect result), often with enough log and trace information to diagnose the problem, which was then added to the suite of unit tests. While an exhaustive search of the scheduling state space is impossible, the pseudo-random simulation explores more than is practical by other means. Through running thousands of simulated hours of operation each night, the tests have found many surprising problems （伪随机测试框架可以用来枚举所有节点以及线程之间的通信顺序以及之间的延迟）
 </li>
-<li>The term “high availability” usually signifies the ability to mask faults to make a collection of systems more reli-able than the individual systems. While fault tolerance is a highly desired goal, it comes with it its own pitfalls: it often hides persistent underlying problems. We have a saying in the group: “Fault tolerance is fault masking”. Too often, the resilience of our system coupled with insufficient vigi-lance in tracking the underlying faults leads to unexpected problems: small transient errors on top of persistent uncor-rected problems cause significantly larger problems. <b>note(dirlt)：high availability有时候会掩盖很多系统本身出现的问题，不过这点也可以这么理解，所谓的fault不仅仅包含machine failure也还包含code bug。但是HA有时候会让我们忽略到code bug，而这些bug往往会导致更大的问题</b>
+<li>The term “high availability” usually signifies the ability to mask faults to make a collection of systems more reli-able than the individual systems. While fault tolerance is a highly desired goal, it comes with it its own pitfalls: it often hides persistent underlying problems. We have a saying in the group: “Fault tolerance is fault masking”. Too often, the resilience of our system coupled with insufficient vigi-lance in tracking the underlying faults leads to unexpected problems: small transient errors on top of persistent uncor-rected problems cause significantly larger problems.
 </li>
 </ul>
 
 
+<p>
+#note: high availability有时候会掩盖很多系统本身出现的问题，不过这点也可以这么理解，所谓的fault不仅仅包含machine failure也还包含code bug。但是HA有时候会让我们忽略到code bug，而这些bug往往会导致更大的问题
+</p>
 </div>
 
 </div>
 
-<div id="outline-container-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> RELATED WORK</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-7" class="outline-3">
+<h3 id="sec-7"><span class="section-number-3">7</span> RELATED WORK</h3>
+<div class="outline-text-3" id="text-7">
 
 <ul>
 <li>Recently, there has been increasing interest in NoSQL data storage systems to meet the demand of large web ap-plications. Representative work includes Bigtable, Cas-sandra, and Yahoo PNUTS. In these systems, scal-ability is achieved by sacrificing one or more properties of traditional RDBMS systems, e.g., transactions, schema sup-port, query capability. 都通过牺牲一些传统的RDBMS的特性来达到扩展性比如事务，schema，以及query能力（复杂的SQL查询以及运算等） These systems often reduce the scope of transactions to the granularity of single key access and thus place a significant hurdle to building appli-cations （事务粒度仅仅是到了row级别，这样为应用程序造成了一定的负担）Some systems extend the scope of transac-tions to multiple rows within a single table, for example the Amazon SimpleDB uses the concept of domain as the transactional unit. （而另外一些系统级别则放宽到了多列比如Amazon SimpleDB使用domain来作为事务单元） Yet such efforts are still limited because transactions cannot cross tables or scale arbitrarily.（但是依然不能够跨表来完成事务） More-over, most current scalable data storage systems lack the rich data model of an RDBMS, which increases the burden on developers. （更重要的是缺乏丰富的data model以及query能力给开发人员造成的负担）
 </li>
-<li>Data replication across geographically distributed data-centers is an indispensable means of improving availability in state-of-the-art storage systems. （使用跨地域地方来进行data replication是必要的手段） Most prevailing data storage systems use asynchronous replication schemes with a weaker consistency model. For example, Cassandra, HBase, CouchDB, and Dynamo use an eventual consistency model and PNUTS uses “timeline” consistency （使用timeline一致性 <b>todo(dirlt)：？？？</b> ） Until recently, few have used Paxos to achieve synchronous replication. SCALARIS is one example that uses the Paxos commit protocol to implement replication for a distrib-uted hash table. Keyspace also uses Paxos to imple-ment replication on a generic key-value store.（这几个系统都使用paxos实现了数据上的replication)
+<li>Data replication across geographically distributed data-centers is an indispensable means of improving availability in state-of-the-art storage systems. （使用跨地域地方来进行data replication是必要的手段） Most prevailing data storage systems use asynchronous replication schemes with a weaker consistency model. For example, Cassandra, HBase, CouchDB, and Dynamo use an eventual consistency model and PNUTS uses “timeline” consistency （使用timeline一致性?） Until recently, few have used Paxos to achieve synchronous replication. SCALARIS is one example that uses the Paxos commit protocol to implement replication for a distrib-uted hash table. Keyspace also uses Paxos to imple-ment replication on a generic key-value store.（这几个系统都使用paxos实现了数据上的replication)
 </li>
 </ul>
 
@@ -554,23 +527,18 @@
 
 </div>
 
-<div id="outline-container-1-8" class="outline-3">
-<h3 id="sec-1-8"><span class="section-number-3">1.8</span> CONCLUSION</h3>
-<div class="outline-text-3" id="text-1-8">
+<div id="outline-container-8" class="outline-3">
+<h3 id="sec-8"><span class="section-number-3">8</span> CONCLUSION</h3>
+<div class="outline-text-3" id="text-8">
 
-
-<p>
-&lt;大规模分布式存储系统&gt;: Megastore主要创新点包括：1) 提出实体组的数据模型。通过实体组划分数据，实体组内部维持关系数据库的ACID特性，实体组之间维持类似NoSQL的弱一致性，有效地融合了SQL和NoSQL两者的优势。另外实体组的定义方式也在很大程度上规避了影响性能和可扩展性的Join操作。 2) 通过Paxos协议同时保证高可靠性和高可用性，既把数据强同步到多个机房，又做到发生故障时自动切换不影响读写服务。另外通过协调者和优化Paxos协议使得读写操作都比较高效。当然Megastore也有一些问题，其中一些问题来源于bigtable比如单副本服务，SSD支持较弱导致Megastore在线实时服务能力上有一定的改进空间，整体架构过于复杂，协调者对读写服务和运维复杂度的影响。
+<p>&lt;大规模分布式存储系统&gt;: Megastore主要创新点包括：1) 提出实体组的数据模型。通过实体组划分数据，实体组内部维持关系数据库的ACID特性，实体组之间维持类似NoSQL的弱一致性，有效地融合了SQL和NoSQL两者的优势。另外实体组的定义方式也在很大程度上规避了影响性能和可扩展性的Join操作。 2) 通过Paxos协议同时保证高可靠性和高可用性，既把数据强同步到多个机房，又做到发生故障时自动切换不影响读写服务。另外通过协调者和优化Paxos协议使得读写操作都比较高效。当然Megastore也有一些问题，其中一些问题来源于bigtable比如单副本服务，SSD支持较弱导致Megastore在线实时服务能力上有一定的改进空间，整体架构过于复杂，协调者对读写服务和运维复杂度的影响。
 </p></div>
-</div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:43+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'megastore.html';var disqus_title = 'megastore.html';var disqus_url = 'http://dirlt.com/megastore.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'megastore.html';var disqus_title = 'megastore.html';var disqus_url = 'http://dirlt.com/megastore.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

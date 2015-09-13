@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
-<title>The Hadoop Distributed File System(2010)</title>
+<head>
+<title>The Hadoop Distributed File System</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="The Hadoop Distributed File System(2010)"/>
+<meta name="title" content="The Hadoop Distributed File System"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:42+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,75 +62,60 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
 </div>
 
 <div id="content">
-<h1 class="title">The Hadoop Distributed File System(2010)</h1>
+<h1 class="title">The Hadoop Distributed File System</h1>
 
+<p><a href="http://storageconference.org/2010/Papers/MSST/Shvachko.pdf">http://storageconference.org/2010/Papers/MSST/Shvachko.pdf</a> @ 2010
+</p>
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="the-hadoop-distributed-file-system.html#sec-1">1 the-hadoop-distributed-file-system</a>
+<li><a href="the-hadoop-distributed-file-system.html#sec-1">1 INTRODUCTION AND RELATED WORK</a></li>
+<li><a href="the-hadoop-distributed-file-system.html#sec-2">2 ARCHITECTURE</a>
 <ul>
-<li><a href="the-hadoop-distributed-file-system.html#sec-1-1">1.1 INTRODUCTION AND RELATED WORK</a></li>
-<li><a href="the-hadoop-distributed-file-system.html#sec-1-2">1.2 ARCHITECTURE</a>
-<ul>
-<li><a href="the-hadoop-distributed-file-system.html#sec-1-2-1">1.2.1 NameNode</a></li>
-<li><a href="the-hadoop-distributed-file-system.html#sec-1-2-2">1.2.2 DataNode</a></li>
-<li><a href="the-hadoop-distributed-file-system.html#sec-1-2-3">1.2.3 HDFS Client</a></li>
-<li><a href="the-hadoop-distributed-file-system.html#sec-1-2-4">1.2.4 Image and Journal</a></li>
-<li><a href="the-hadoop-distributed-file-system.html#sec-1-2-5">1.2.5 CheckpointNode</a></li>
-<li><a href="the-hadoop-distributed-file-system.html#sec-1-2-6">1.2.6 BackupNode</a></li>
-<li><a href="the-hadoop-distributed-file-system.html#sec-1-2-7">1.2.7 Upgrades, File Sytsems Snapshots</a></li>
+<li><a href="the-hadoop-distributed-file-system.html#sec-2-1">2.1 NameNode</a></li>
+<li><a href="the-hadoop-distributed-file-system.html#sec-2-2">2.2 DataNode</a></li>
+<li><a href="the-hadoop-distributed-file-system.html#sec-2-3">2.3 HDFS Client</a></li>
+<li><a href="the-hadoop-distributed-file-system.html#sec-2-4">2.4 Image and Journal</a></li>
+<li><a href="the-hadoop-distributed-file-system.html#sec-2-5">2.5 CheckpointNode</a></li>
+<li><a href="the-hadoop-distributed-file-system.html#sec-2-6">2.6 BackupNode</a></li>
+<li><a href="the-hadoop-distributed-file-system.html#sec-2-7">2.7 Upgrades, File Sytsems Snapshots</a></li>
 </ul>
 </li>
-<li><a href="the-hadoop-distributed-file-system.html#sec-1-3">1.3 FILE I/O OPERATIONS AND REPLICA MANGEMENT</a>
+<li><a href="the-hadoop-distributed-file-system.html#sec-3">3 FILE I/O OPERATIONS AND REPLICA MANGEMENT</a>
 <ul>
-<li><a href="the-hadoop-distributed-file-system.html#sec-1-3-1">1.3.1 File Read and Write</a></li>
-<li><a href="the-hadoop-distributed-file-system.html#sec-1-3-2">1.3.2 Block Placement</a></li>
-<li><a href="the-hadoop-distributed-file-system.html#sec-1-3-3">1.3.3 Replication management</a></li>
-<li><a href="the-hadoop-distributed-file-system.html#sec-1-3-4">1.3.4 Balancer</a></li>
-<li><a href="the-hadoop-distributed-file-system.html#sec-1-3-5">1.3.5 Block Scanner</a></li>
-<li><a href="the-hadoop-distributed-file-system.html#sec-1-3-6">1.3.6 Decommissioing</a></li>
-<li><a href="the-hadoop-distributed-file-system.html#sec-1-3-7">1.3.7 Inter-Cluster Data Copy</a></li>
+<li><a href="the-hadoop-distributed-file-system.html#sec-3-1">3.1 File Read and Write</a></li>
+<li><a href="the-hadoop-distributed-file-system.html#sec-3-2">3.2 Block Placement</a></li>
+<li><a href="the-hadoop-distributed-file-system.html#sec-3-3">3.3 Replication management</a></li>
+<li><a href="the-hadoop-distributed-file-system.html#sec-3-4">3.4 Balancer</a></li>
+<li><a href="the-hadoop-distributed-file-system.html#sec-3-5">3.5 Block Scanner</a></li>
+<li><a href="the-hadoop-distributed-file-system.html#sec-3-6">3.6 Decommissioing</a></li>
+<li><a href="the-hadoop-distributed-file-system.html#sec-3-7">3.7 Inter-Cluster Data Copy</a></li>
 </ul>
 </li>
-<li><a href="the-hadoop-distributed-file-system.html#sec-1-4">1.4 PRACTICE AT YAHOO!</a>
+<li><a href="the-hadoop-distributed-file-system.html#sec-4">4 PRACTICE AT YAHOO!</a>
 <ul>
-<li><a href="the-hadoop-distributed-file-system.html#sec-1-4-1">1.4.1 Durability of Data</a></li>
-<li><a href="the-hadoop-distributed-file-system.html#sec-1-4-2">1.4.2 Caring for the Commons</a></li>
-<li><a href="the-hadoop-distributed-file-system.html#sec-1-4-3">1.4.3 Benchmarks</a></li>
+<li><a href="the-hadoop-distributed-file-system.html#sec-4-1">4.1 Durability of Data</a></li>
+<li><a href="the-hadoop-distributed-file-system.html#sec-4-2">4.2 Caring for the Commons</a></li>
+<li><a href="the-hadoop-distributed-file-system.html#sec-4-3">4.3 Benchmarks</a></li>
 </ul>
 </li>
-<li><a href="the-hadoop-distributed-file-system.html#sec-1-5">1.5 FUTURE WORK</a></li>
-</ul>
-</li>
+<li><a href="the-hadoop-distributed-file-system.html#sec-5">5 FUTURE WORK</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> the-hadoop-distributed-file-system</h2>
-<div class="outline-text-2" id="text-1">
-
-<ul>
-<li><a href="http://storageconference.org/2010/Papers/MSST/Shvachko.pdf">http://storageconference.org/2010/Papers/MSST/Shvachko.pdf</a>
-</li>
-</ul>
-
-
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> INTRODUCTION AND RELATED WORK</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> INTRODUCTION AND RELATED WORK</h3>
+<div class="outline-text-3" id="text-1">
 
 <ul>
 <li>Hadoop clus-ters at Yahoo! span 25 000 servers, and store 25 petabytes of application data, with the largest cluster being 3500 servers.(最大的集群有3.5k机器，所有机器共有25k，存储了25PB的数据）
@@ -143,16 +127,16 @@
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> ARCHITECTURE</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> ARCHITECTURE</h3>
+<div class="outline-text-3" id="text-2">
 
 
 </div>
 
-<div id="outline-container-1-2-1" class="outline-4">
-<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> NameNode</h4>
-<div class="outline-text-4" id="text-1-2-1">
+<div id="outline-container-2-1" class="outline-4">
+<h4 id="sec-2-1"><span class="section-number-4">2.1</span> NameNode</h4>
+<div class="outline-text-4" id="text-2-1">
 
 <ul>
 <li>The file content is split into large blocks (typically 128 megabytes, but user selectable file-by-file) and each block of the file is inde-pendently replicated at multiple DataNodes (typically three, but user selectable file-by-file). （文件内容会切块默认是128MB但是对于每个文件可选，另外副本数目对于每个文件也是可选的默认是3）
@@ -170,20 +154,20 @@
 
 </div>
 
-<div id="outline-container-1-2-2" class="outline-4">
-<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> DataNode</h4>
-<div class="outline-text-4" id="text-1-2-2">
+<div id="outline-container-2-2" class="outline-4">
+<h4 id="sec-2-2"><span class="section-number-4">2.2</span> DataNode</h4>
+<div class="outline-text-4" id="text-2-2">
 
 <ul>
 <li>Each block replica on a DataNode is represented by two files in the local host’s native file system. The first file contains the data itself and the second file is block’s metadata including checksums for the block data and the block’s generation stamp.（block存储上包含两个文件，一个是数据文件，另外一个就是checksum文件，并且包含block generation stamp。这个stamp可能就是用来标记old chunk的，类似于gfs里面的chunk version number）
 </li>
 <li>During startup each DataNode connects to the NameNode and performs a handshake. The purpose of the handshake is to verify the namespace ID and the software version of the DataNode. If either does not match that of the NameNode the DataNode automatically shuts down.（datanode启动的时候会和namenode交互，交换namespace id和software version id,如果两者不匹配的话，那么datanode就会shutdown。这个是为了处理兼容性问题，这个在从cdh3升级到cdh4时候需要考虑。兼容性问题猜想会涉及到RPC以及存储格式处理上）
 </li>
-<li>The namespace ID is assigned to the file system instance when it is formatted. The namespace ID is persistently stored on all nodes of the cluster（格式化的时候就会分配namespace id） note(dirlt)：新增的chunkserver应该也会分配到这个namespace id。这个namespace id可以首先分配在namenode以及已知的datanode上面  A DataNode that is newly initialized and without any namespace ID is permitted to join the cluster and receive the cluster’s namespace ID.
+<li>The namespace ID is assigned to the file system instance when it is formatted. The namespace ID is persistently stored on all nodes of the cluster（格式化的时候就会分配namespace id）. A DataNode that is newly initialized and without any namespace ID is permitted to join the cluster and receive the cluster’s namespace ID.  #note: 新增的chunkserver应该也会分配到这个namespace id。这个namespace id可以首先分配在namenode以及已知的datanode上面
 </li>
 <li>After the handshake the DataNode registers with the NameNode. DataNodes persistently store their unique storage IDs. The storage ID is an internal identifier of the DataNode, which makes it recognizable even if it is restarted with a differ-ent IP address or port. The storage ID is assigned to the DataNode when it registers with the NameNode for the first time and never changes after that.（对于每个新注册的datanode都会被namenode分配一个唯一的id，这个id和ip以及port都对应上了，并且以后不会改变。
 </li>
-<li>A DataNode identifies block replicas in its possession to the NameNode by sending a block report. A block report contains the block id, the generation stamp and the length for each block replica the server hosts. The first block report is sent immedi-ately after the DataNode registration. Subsequent block reports are sent every hour and provide the NameNode with an up-to-date view of where block replicas are located on the cluster.（datanode会进行block report给namenode，包括所有block的id，generation stamp，以及长度信息。第一次的block report是在启动时候，后面小时级别进行report） todo(dirlt)：这里不太理解为啥需要汇报length，是不是每个文件长度不同？难道利用二分查找offset对应的文件？ note(dirlt)；每个文件还是需要知道长度的，这样就可以知道往这个chunk上还能写多少个字节达到一个max chuk size，然后再写下一个块
+<li>A DataNode identifies block replicas in its possession to the NameNode by sending a block report. A block report contains the block id, the generation stamp and the length for each block replica the server hosts. The first block report is sent immedi-ately after the DataNode registration. Subsequent block reports are sent every hour and provide the NameNode with an up-to-date view of where block replicas are located on the cluster.（datanode会进行block report给namenode，包括所有block的id，generation stamp，以及长度信息。第一次的block report是在启动时候，后面小时级别进行report） <del>#todo: 这里不太理解为啥需要汇报length，是不是每个文件长度不同？难道利用二分查找offset对应的文件？</del>  #note: 每个文件还是需要知道长度的，这样就可以知道往这个chunk上还能写多少个字节达到一个max chuk size，然后再写下一个块
 </li>
 <li>During normal operation DataNodes send heartbeats to the NameNode to confirm that the DataNode is operating and the block replicas it hosts are available. The default heartbeat in-terval is three seconds. If the NameNode does not receive a heartbeat from a DataNode in ten minutes the NameNode con-siders the DataNode to be out of service and the block replicas hosted by that DataNode to be unavailable. The NameNode then schedules creation of new replicas of those blocks on other DataNodes.（namenode和datanode之间每隔3s会有一次heartheat检测datanode是否存活，如果10min没有任何回复的话，那么认为datanode挂掉。namenode可能需要重新扫描所有在这个datandoe上面block然后做re-replication
 </li>
@@ -209,14 +193,14 @@
 
 </div>
 
-<div id="outline-container-1-2-3" class="outline-4">
-<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> HDFS Client</h4>
-<div class="outline-text-4" id="text-1-2-3">
+<div id="outline-container-2-3" class="outline-4">
+<h4 id="sec-2-3"><span class="section-number-4">2.3</span> HDFS Client</h4>
+<div class="outline-text-4" id="text-2-3">
 
 <ul>
 <li>When an application reads a file, the HDFS client first asks the NameNode for the list of DataNodes that host replicas of the blocks of the file. It then contacts a DataNode directly and requests the transfer of the desired block. （选择任意一个datanode进行交互）
 </li>
-<li>When a client writes, it first asks the NameNode to choose DataNodes to host repli-cas of the first block of the file. The client organizes a pipeline from node-to-node and sends the data. When the first block is filled, the client requests new DataNodes to be chosen to host replicas of the next block. <b>todo(dirlt)：按照pipeline的方式写入到各个机器上面，不过从交互图上面来看的话，似乎是datanode直接告诉namenode over，而不是由client发起的。另外client似乎也没有得到ACK的消息</b>
+<li>When a client writes, it first asks the NameNode to choose DataNodes to host repli-cas of the first block of the file. The client organizes a pipeline from node-to-node and sends the data. When the first block is filled, the client requests new DataNodes to be chosen to host replicas of the next block.
 </li>
 </ul>
 
@@ -236,9 +220,9 @@
 
 </div>
 
-<div id="outline-container-1-2-4" class="outline-4">
-<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> Image and Journal</h4>
-<div class="outline-text-4" id="text-1-2-4">
+<div id="outline-container-2-4" class="outline-4">
+<h4 id="sec-2-4"><span class="section-number-4">2.4</span> Image and Journal</h4>
+<div class="outline-text-4" id="text-2-4">
 
 <ul>
 <li>During startup the NameNode ini-tializes the namespace image from the checkpoint, and then replays changes from the journal until the image is up-to-date with the last state of the file system. A new checkpoint and empty journal are written back to the storage directories before the NameNode starts serving clients.（namenode启动的时候会读取checkpoint信息并且回放journal内容，之后会生成新的checkpoint然后才开始serve client）
@@ -254,9 +238,9 @@
 
 </div>
 
-<div id="outline-container-1-2-5" class="outline-4">
-<h4 id="sec-1-2-5"><span class="section-number-4">1.2.5</span> CheckpointNode</h4>
-<div class="outline-text-4" id="text-1-2-5">
+<div id="outline-container-2-5" class="outline-4">
+<h4 id="sec-2-5"><span class="section-number-4">2.5</span> CheckpointNode</h4>
+<div class="outline-text-4" id="text-2-5">
 
 <ul>
 <li>The NameNode in HDFS, in addition to its primary role serving client requests, can alternatively execute either of two other roles, either a CheckpointNode or a BackupNode. The role is specified at the node startup.（checkpoint node和backup node是namenode一种，可以在启动的时候直接指定角色）
@@ -276,9 +260,9 @@
 
 </div>
 
-<div id="outline-container-1-2-6" class="outline-4">
-<h4 id="sec-1-2-6"><span class="section-number-4">1.2.6</span> BackupNode</h4>
-<div class="outline-text-4" id="text-1-2-6">
+<div id="outline-container-2-6" class="outline-4">
+<h4 id="sec-2-6"><span class="section-number-4">2.6</span> BackupNode</h4>
+<div class="outline-text-4" id="text-2-6">
 
 <ul>
 <li>A recently introduced feature of HDFS is the BackupNode. Like a CheckpointNode, the BackupNode is capable of creating periodic checkpoints, but in addition it maintains an in-memory, up-to-date image of the file system namespace that is always synchronized with the state of the NameNode.（backupnode和chkpnode一样会进行checkpoint，但是backupnode和namenode保持的是一致的数据，因为不需要像chkp node一样进行download）
@@ -292,9 +276,9 @@
 
 </div>
 
-<div id="outline-container-1-2-7" class="outline-4">
-<h4 id="sec-1-2-7"><span class="section-number-4">1.2.7</span> Upgrades, File Sytsems Snapshots</h4>
-<div class="outline-text-4" id="text-1-2-7">
+<div id="outline-container-2-7" class="outline-4">
+<h4 id="sec-2-7"><span class="section-number-4">2.7</span> Upgrades, File Sytsems Snapshots</h4>
+<div class="outline-text-4" id="text-2-7">
 
 <ul>
 <li>During software upgrades the possibility of corrupting the system due to software bugs or human mistakes increases. The purpose of creating snapshots in HDFS is to minimize potential damage to the data stored in the system during upgrades.（创建snapshot的原因就是为了减少系统升级带来的风险）
@@ -320,19 +304,19 @@
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> FILE I/O OPERATIONS AND REPLICA MANGEMENT</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> FILE I/O OPERATIONS AND REPLICA MANGEMENT</h3>
+<div class="outline-text-3" id="text-3">
 
 
 </div>
 
-<div id="outline-container-1-3-1" class="outline-4">
-<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> File Read and Write</h4>
-<div class="outline-text-4" id="text-1-3-1">
+<div id="outline-container-3-1" class="outline-4">
+<h4 id="sec-3-1"><span class="section-number-4">3.1</span> File Read and Write</h4>
+<div class="outline-text-4" id="text-3-1">
 
 <ul>
-<li>HDFS im-plements a single-writer, multiple-reader model. The HDFS client that opens a file for writing is granted a lease for the file; no other client can write to the file. The writ-ing client periodically renews the lease by sending a heartbeat to the NameNode. When the file is closed, the lease is revoked. The lease duration is bound by a soft limit and a hard limit. Until the soft limit expires, the writer is certain of exclusive access to the file. If the soft limit expires and the client fails to close the file or renew the lease, another client can preempt the lease. If after the hard limit expires (one hour) and the client has failed to renew the lease, HDFS assumes that the client has quit and will automatically close the file on behalf of the writer, and recover the lease. The writer's lease does not prevent other clients from reading the file; a file may have many concurrent readers.（HDFS提供的的是single-writer/multi-reader的实现，和gfs一样提供了lease机制，但是这个lease机制仅仅针对writer来说的。从功能上看，hdfs相对于gfs来说确实简单） <b>todo(dirlt)：这里似乎并没有提到是是否提供overwrite方式，还是只是允许append</b>
+<li>HDFS im-plements a single-writer, multiple-reader model. The HDFS client that opens a file for writing is granted a lease for the file; no other client can write to the file. The writ-ing client periodically renews the lease by sending a heartbeat to the NameNode. When the file is closed, the lease is revoked. The lease duration is bound by a soft limit and a hard limit. Until the soft limit expires, the writer is certain of exclusive access to the file. If the soft limit expires and the client fails to close the file or renew the lease, another client can preempt the lease. If after the hard limit expires (one hour) and the client has failed to renew the lease, HDFS assumes that the client has quit and will automatically close the file on behalf of the writer, and recover the lease. The writer's lease does not prevent other clients from reading the file; a file may have many concurrent readers.（HDFS提供的的是single-writer/multi-reader的实现，和gfs一样提供了lease机制，但是这个lease机制仅仅针对writer来说的。从功能上看，hdfs相对于gfs来说确实简单）
 </li>
 <li>An HDFS file consists of blocks. When there is a need for a new block, the NameNode allocates a block with a unique block ID and determines a list of DataNodes to host replicas of the block.（每个chunk都是通过master分配id的，并且决定那些datanodes来host这些chunk）
 </li>
@@ -345,7 +329,7 @@
 <p><img src="images/hdfs-data-pipeline.png"  alt="./images/hdfs-data-pipeline.png" />
 </p>
 <ul>
-<li>When a client opens a file to read, it fetches the list of blocks and the locations of each block replica from the NameNode. The locations of each block are ordered by their distance from the reader. When reading the content of a block, the client tries the closest replica first. If the read attempt fails, the client tries the next replica in sequence. A read may fail if the target DataNode is unavailable, the node no longer hosts a replica of the block, or the replica is found to be corrupt when checksums are tested.（client读取文件的时候会获得这个文件所有chunk的位置，从离client最近的chunkserver开始尝试） <b>note(dirlt)：为什么需要获得所有chunk的位置呢？</b>
+<li>When a client opens a file to read, it fetches the list of blocks and the locations of each block replica from the NameNode. The locations of each block are ordered by their distance from the reader. When reading the content of a block, the client tries the closest replica first. If the read attempt fails, the client tries the next replica in sequence. A read may fail if the target DataNode is unavailable, the node no longer hosts a replica of the block, or the replica is found to be corrupt when checksums are tested.（client读取文件的时候会获得这个文件所有chunk的位置，从离client最近的chunkserver开始尝试）
 </li>
 <li>HDFS permits a client to read a file that is open for writing. When reading a file open for writing, the length of the last block still being written is unknown to the NameNode. In this case, the client asks one of the replicas for the latest length be-fore starting to read its content.（如果这个文件在写的时候同时在读的话，那么client读取到最后一个chunkEOF之后，需要重新询问一个replics当前chunk的长度，这样才能够继续往前读。如果跨越chunk的话，那么可能还需要和NameNode之间进行通信。
 </li>
@@ -356,9 +340,9 @@
 
 </div>
 
-<div id="outline-container-1-3-2" class="outline-4">
-<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> Block Placement</h4>
-<div class="outline-text-4" id="text-1-3-2">
+<div id="outline-container-3-2" class="outline-4">
+<h4 id="sec-3-2"><span class="section-number-4">3.2</span> Block Placement</h4>
+<div class="outline-text-4" id="text-3-2">
 
 <ul>
 <li>HDFS estimates the network bandwidth between two nodes by their distance. The distance from a node to its parent node is assumed to be one. A distance between two nodes can be cal- culated by summing up their distances to their closest common ancestor. A shorter distance between two nodes means that the greater bandwidth they can utilize to transfer data.（node和node之间的距离用来评估之间的网络带宽。两个node距离是通常是通过计算两个点到共同祖先的距离。node到switch距离通常计算为1，这只是简单的算法）
@@ -402,9 +386,9 @@
 
 </div>
 
-<div id="outline-container-1-3-3" class="outline-4">
-<h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> Replication management</h4>
-<div class="outline-text-4" id="text-1-3-3">
+<div id="outline-container-3-3" class="outline-4">
+<h4 id="sec-3-3"><span class="section-number-4">3.3</span> Replication management</h4>
+<div class="outline-text-4" id="text-3-3">
 
 <ul>
 <li>The NameNode detects that a block has become under- or over-replicated when a block report from a DataNode arrives.
@@ -433,9 +417,9 @@
 
 </div>
 
-<div id="outline-container-1-3-4" class="outline-4">
-<h4 id="sec-1-3-4"><span class="section-number-4">1.3.4</span> Balancer</h4>
-<div class="outline-text-4" id="text-1-3-4">
+<div id="outline-container-3-4" class="outline-4">
+<h4 id="sec-3-4"><span class="section-number-4">3.4</span> Balancer</h4>
+<div class="outline-text-4" id="text-3-4">
 
 <p>在block replacement里面没有考虑磁盘利用率的情况，这样容易造成在一个节点上面过热如果这个节点是刚上来的话。但是这样也会造成inbalance的问题。
 </p>
@@ -455,9 +439,9 @@
 
 </div>
 
-<div id="outline-container-1-3-5" class="outline-4">
-<h4 id="sec-1-3-5"><span class="section-number-4">1.3.5</span> Block Scanner</h4>
-<div class="outline-text-4" id="text-1-3-5">
+<div id="outline-container-3-5" class="outline-4">
+<h4 id="sec-3-5"><span class="section-number-4">3.5</span> Block Scanner</h4>
+<div class="outline-text-4" id="text-3-5">
 
 <p>block scanner主要是用来发现corrupted chunk。每次扫描的时候，chunkserver会调整读取带宽确保可以在一定period内完成（可配）。对于在每次扫描的时候，校验的时间会记录到chunkserver的内存里面（这个作用应该是确保不会频繁地造成校验）。client如果读取一个block成功的话，也会通知datanode，这个通知也回被作为一次校验，更新校验时间。
 </p>
@@ -468,9 +452,9 @@ Whenever a read client or a block scanner detects a corrupt block, it notifies t
 
 </div>
 
-<div id="outline-container-1-3-6" class="outline-4">
-<h4 id="sec-1-3-6"><span class="section-number-4">1.3.6</span> Decommissioing</h4>
-<div class="outline-text-4" id="text-1-3-6">
+<div id="outline-container-3-6" class="outline-4">
+<h4 id="sec-3-6"><span class="section-number-4">3.6</span> Decommissioing</h4>
+<div class="outline-text-4" id="text-3-6">
 
 <p>decommission的作用主要就是为了让node下线。
 </p><ul>
@@ -487,9 +471,9 @@ Whenever a read client or a block scanner detects a corrupt block, it notifies t
 
 </div>
 
-<div id="outline-container-1-3-7" class="outline-4">
-<h4 id="sec-1-3-7"><span class="section-number-4">1.3.7</span> Inter-Cluster Data Copy</h4>
-<div class="outline-text-4" id="text-1-3-7">
+<div id="outline-container-3-7" class="outline-4">
+<h4 id="sec-3-7"><span class="section-number-4">3.7</span> Inter-Cluster Data Copy</h4>
+<div class="outline-text-4" id="text-3-7">
 
 <p>使用distcp这样的mapreduce来运行集群上面的文件copy。
 </p>
@@ -498,9 +482,9 @@ Whenever a read client or a block scanner detects a corrupt block, it notifies t
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> PRACTICE AT YAHOO!</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> PRACTICE AT YAHOO!</h3>
+<div class="outline-text-3" id="text-4">
 
 <p>Large HDFS clusters at Yahoo! include about 3500 nodes. A typical cluster node has:
 </p><ul>
@@ -522,7 +506,7 @@ Whenever a read client or a block scanner detects a corrupt block, it notifies t
 <p>
 集群配置如下：
 </p><ul>
-<li>Forty nodes in a single rack share an IP switch. The rack switches are connected to each of eight core switches. The core switches provide connectivity between racks and to out-of-cluster re-sources. <b>todo(dirlt)：这个网络拓扑是怎么配置的？</b>
+<li>Forty nodes in a single rack share an IP switch. The rack switches are connected to each of eight core switches. The core switches provide connectivity between racks and to out-of-cluster re-sources. #todo: 这个网络拓扑是怎么配置的?
 </li>
 <li>For each cluster, the NameNode and the BackupNode hosts are specially provisioned with up to 64GB RAM; applica-tion tasks are never assigned to those hosts. （nn和bn有64GB内存考虑比较吃内存，并且在这个机器上面也不分配其他程序）
 </li>
@@ -548,12 +532,12 @@ Whenever a read client or a block scanner detects a corrupt block, it notifies t
 
 </div>
 
-<div id="outline-container-1-4-1" class="outline-4">
-<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> Durability of Data</h4>
-<div class="outline-text-4" id="text-1-4-1">
+<div id="outline-container-4-1" class="outline-4">
+<h4 id="sec-4-1"><span class="section-number-4">4.1</span> Durability of Data</h4>
+<div class="outline-text-4" id="text-4-1">
 
 <ul>
-<li>for a large cluster, the prob-ability of losing a block during one year is less than .005 <b>todo(dirlt)：这个是怎么计算出来的呢？</b>
+<li>for a large cluster, the prob-ability of losing a block during one year is less than .005
 </li>
 <li>分析数据丢失
 <ul>
@@ -579,9 +563,9 @@ Whenever a read client or a block scanner detects a corrupt block, it notifies t
 
 </div>
 
-<div id="outline-container-1-4-2" class="outline-4">
-<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> Caring for the Commons</h4>
-<div class="outline-text-4" id="text-1-4-2">
+<div id="outline-container-4-2" class="outline-4">
+<h4 id="sec-4-2"><span class="section-number-4">4.2</span> Caring for the Commons</h4>
+<div class="outline-text-4" id="text-4-2">
 
 <ul>
 <li>permission
@@ -611,9 +595,9 @@ Whenever a read client or a block scanner detects a corrupt block, it notifies t
 
 </div>
 
-<div id="outline-container-1-4-3" class="outline-4">
-<h4 id="sec-1-4-3"><span class="section-number-4">1.4.3</span> Benchmarks</h4>
-<div class="outline-text-4" id="text-1-4-3">
+<div id="outline-container-4-3" class="outline-4">
+<h4 id="sec-4-3"><span class="section-number-4">4.3</span> Benchmarks</h4>
+<div class="outline-text-4" id="text-4-3">
 
 
 </div>
@@ -621,9 +605,9 @@ Whenever a read client or a block scanner detects a corrupt block, it notifies t
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> FUTURE WORK</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> FUTURE WORK</h3>
+<div class="outline-text-3" id="text-5">
 
 <ul>
 <li>NameNode的自动恢复。现在BackupNode已经算是Warm NameNode了，但是缺少block reports，所以如果切换到BackupNode的话还需要block reports比较耗时。如果BackupNode能够同时接收block reports的话，那么可以作为Hot NameNode存在。
@@ -632,18 +616,13 @@ Whenever a read client or a block scanner detects a corrupt block, it notifies t
 </li>
 </ul>
 
-
-
-</div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:42+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'the-hadoop-distributed-file-system.html';var disqus_title = 'the-hadoop-distributed-file-system.html';var disqus_url = 'http://dirlt.com/the-hadoop-distributed-file-system.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'the-hadoop-distributed-file-system.html';var disqus_title = 'the-hadoop-distributed-file-system.html';var disqus_url = 'http://dirlt.com/the-hadoop-distributed-file-system.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
-<title>simd</title>
+<head>
+<title>SIMD</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="simd"/>
+<meta name="title" content="SIMD"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:42+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,88 +62,88 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
 </div>
 
 <div id="content">
-<h1 class="title">simd</h1>
+<h1 class="title">SIMD</h1>
 
+<p>从Pentium II和Pentium MMX处理器系列开始,芯片开始支持SIMD操作.
+SIMD全称是Single Instruction Multiple Data,即单指令多数据,
+可以在一个周期内操作多个数据.
+</p>
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="simd.html#sec-1">1 simd</a>
+<li><a href="simd.html#sec-1">1 指令集</a>
 <ul>
-<li><a href="simd.html#sec-1-1">1.1 指令集</a>
-<ul>
-<li><a href="simd.html#sec-1-1-1">1.1.1 MMX</a></li>
-<li><a href="simd.html#sec-1-1-2">1.1.2 SSE.</a></li>
-<li><a href="simd.html#sec-1-1-3">1.1.3 SSE2</a></li>
-<li><a href="simd.html#sec-1-1-4">1.1.4 SSE3</a></li>
-<li><a href="simd.html#sec-1-1-5">1.1.5 SSSE3</a></li>
-<li><a href="simd.html#sec-1-1-6">1.1.6 SSE4</a></li>
-<li><a href="simd.html#sec-1-1-7">1.1.7 检测代码</a></li>
+<li><a href="simd.html#sec-1-1">1.1 MMX</a></li>
+<li><a href="simd.html#sec-1-2">1.2 SSE.</a></li>
+<li><a href="simd.html#sec-1-3">1.3 SSE2</a></li>
+<li><a href="simd.html#sec-1-4">1.4 SSE3</a></li>
+<li><a href="simd.html#sec-1-5">1.5 SSSE3</a></li>
+<li><a href="simd.html#sec-1-6">1.6 SSE4</a></li>
+<li><a href="simd.html#sec-1-7">1.7 检测代码</a></li>
 </ul>
 </li>
-<li><a href="simd.html#sec-1-2">1.2 基本概念</a>
+<li><a href="simd.html#sec-2">2 基本概念</a>
 <ul>
-<li><a href="simd.html#sec-1-2-1">1.2.1 %mm寄存器</a></li>
-<li><a href="simd.html#sec-1-2-2">1.2.2 %xmm寄存器</a></li>
-<li><a href="simd.html#sec-1-2-3">1.2.3 %mxcsr寄存器</a></li>
-<li><a href="simd.html#sec-1-2-4">1.2.4 Saturation &amp; Wraparound</a></li>
-<li><a href="simd.html#sec-1-2-5">1.2.5 General Purpose Register(GPR)</a></li>
-<li><a href="simd.html#sec-1-2-6">1.2.6 X87 FPU</a></li>
-<li><a href="simd.html#sec-1-2-7">1.2.7 Packed &amp; Scalar Instructions</a></li>
-<li><a href="simd.html#sec-1-2-8">1.2.8 Temporal &amp; NonTemporal Data</a></li>
-<li><a href="simd.html#sec-1-2-9">1.2.9 Alignment</a></li>
-<li><a href="simd.html#sec-1-2-10">1.2.10 Asymmetric &amp; Horizontal Processing</a></li>
-<li><a href="simd.html#sec-1-2-11">1.2.11 Zero Fill &amp; Truncated</a></li>
+<li><a href="simd.html#sec-2-1">2.1 %mm寄存器</a></li>
+<li><a href="simd.html#sec-2-2">2.2 %xmm寄存器</a></li>
+<li><a href="simd.html#sec-2-3">2.3 %mxcsr寄存器</a></li>
+<li><a href="simd.html#sec-2-4">2.4 Saturation &amp; Wraparound</a></li>
+<li><a href="simd.html#sec-2-5">2.5 General Purpose Register(GPR)</a></li>
+<li><a href="simd.html#sec-2-6">2.6 X87 FPU</a></li>
+<li><a href="simd.html#sec-2-7">2.7 Packed &amp; Scalar Instructions</a></li>
+<li><a href="simd.html#sec-2-8">2.8 Temporal &amp; NonTemporal Data</a></li>
+<li><a href="simd.html#sec-2-9">2.9 Alignment</a></li>
+<li><a href="simd.html#sec-2-10">2.10 Asymmetric &amp; Horizontal Processing</a></li>
+<li><a href="simd.html#sec-2-11">2.11 Zero Fill &amp; Truncated</a></li>
 </ul>
 </li>
-<li><a href="simd.html#sec-1-3">1.3 指令</a>
+<li><a href="simd.html#sec-3">3 指令</a>
 <ul>
-<li><a href="simd.html#sec-1-3-1">1.3.1 Data Transfer Instructions</a>
+<li><a href="simd.html#sec-3-1">3.1 Data Transfer Instructions</a>
 <ul>
-<li><a href="simd.html#sec-1-3-1-1">1.3.1.1 Move Mask Instructions</a></li>
-<li><a href="simd.html#sec-1-3-1-2">1.3.1.2 Move Integer Instructions</a></li>
-<li><a href="simd.html#sec-1-3-1-3">1.3.1.3 Move Float Instructions</a></li>
-<li><a href="simd.html#sec-1-3-1-4">1.3.1.4 Move Double Instructions</a></li>
-<li><a href="simd.html#sec-1-3-1-5">1.3.1.5 Move Duplication Instructions</a></li>
-<li><a href="simd.html#sec-1-3-1-6">1.3.1.6 Move NonTemporal Instructions</a></li>
+<li><a href="simd.html#sec-3-1-1">3.1.1 Move Mask Instructions</a></li>
+<li><a href="simd.html#sec-3-1-2">3.1.2 Move Integer Instructions</a></li>
+<li><a href="simd.html#sec-3-1-3">3.1.3 Move Float Instructions</a></li>
+<li><a href="simd.html#sec-3-1-4">3.1.4 Move Double Instructions</a></li>
+<li><a href="simd.html#sec-3-1-5">3.1.5 Move Duplication Instructions</a></li>
+<li><a href="simd.html#sec-3-1-6">3.1.6 Move NonTemporal Instructions</a></li>
 </ul>
 </li>
-<li><a href="simd.html#sec-1-3-2">1.3.2 Arithmetic Instructions</a>
+<li><a href="simd.html#sec-3-2">3.2 Arithmetic Instructions</a>
 <ul>
-<li><a href="simd.html#sec-1-3-2-1">1.3.2.1 ADD Instructions</a></li>
-<li><a href="simd.html#sec-1-3-2-2">1.3.2.2 SUB Instructions</a></li>
-<li><a href="simd.html#sec-1-3-2-3">1.3.2.3 MUL Instructions</a></li>
-<li><a href="simd.html#sec-1-3-2-4">1.3.2.4 DIV Instructions</a></li>
-<li><a href="simd.html#sec-1-3-2-5">1.3.2.5 M?X Instructions</a></li>
-<li><a href="simd.html#sec-1-3-2-6">1.3.2.6 Math Instructions</a></li>
+<li><a href="simd.html#sec-3-2-1">3.2.1 ADD Instructions</a></li>
+<li><a href="simd.html#sec-3-2-2">3.2.2 SUB Instructions</a></li>
+<li><a href="simd.html#sec-3-2-3">3.2.3 MUL Instructions</a></li>
+<li><a href="simd.html#sec-3-2-4">3.2.4 DIV Instructions</a></li>
+<li><a href="simd.html#sec-3-2-5">3.2.5 M?X Instructions</a></li>
+<li><a href="simd.html#sec-3-2-6">3.2.6 Math Instructions</a></li>
 </ul>
 </li>
-<li><a href="simd.html#sec-1-3-3">1.3.3 Comparison Instructions</a></li>
-<li><a href="simd.html#sec-1-3-4">1.3.4 Conversion Instructions</a></li>
-<li><a href="simd.html#sec-1-3-5">1.3.5 Insert &amp; Unpack Instructions</a></li>
-<li><a href="simd.html#sec-1-3-6">1.3.6 Logical Instructions</a></li>
-<li><a href="simd.html#sec-1-3-7">1.3.7 Shift Instructions</a></li>
-<li><a href="simd.html#sec-1-3-8">1.3.8 Shuffle Instructions</a></li>
-<li><a href="simd.html#sec-1-3-9">1.3.9 Blending Instructions</a></li>
-<li><a href="simd.html#sec-1-3-10">1.3.10 String Instructions</a></li>
-<li><a href="simd.html#sec-1-3-11">1.3.11 MISC Instructions</a>
+<li><a href="simd.html#sec-3-3">3.3 Comparison Instructions</a></li>
+<li><a href="simd.html#sec-3-4">3.4 Conversion Instructions</a></li>
+<li><a href="simd.html#sec-3-5">3.5 Insert &amp; Unpack Instructions</a></li>
+<li><a href="simd.html#sec-3-6">3.6 Logical Instructions</a></li>
+<li><a href="simd.html#sec-3-7">3.7 Shift Instructions</a></li>
+<li><a href="simd.html#sec-3-8">3.8 Shuffle Instructions</a></li>
+<li><a href="simd.html#sec-3-9">3.9 Blending Instructions</a></li>
+<li><a href="simd.html#sec-3-10">3.10 String Instructions</a></li>
+<li><a href="simd.html#sec-3-11">3.11 MISC Instructions</a>
 <ul>
-<li><a href="simd.html#sec-1-3-11-1">1.3.11.1 Cache Control Instructions</a></li>
-<li><a href="simd.html#sec-1-3-11-2">1.3.11.2 Prefetch Instructions</a></li>
-<li><a href="simd.html#sec-1-3-11-3">1.3.11.3 Memory Ordering Instructions</a></li>
-<li><a href="simd.html#sec-1-3-11-4">1.3.11.4 X87 FPU Instructions</a></li>
-<li><a href="simd.html#sec-1-3-11-5">1.3.11.5 Thread Sync Instructions</a></li>
-<li><a href="simd.html#sec-1-3-11-6">1.3.11.6 其他</a></li>
-</ul>
-</li>
+<li><a href="simd.html#sec-3-11-1">3.11.1 Cache Control Instructions</a></li>
+<li><a href="simd.html#sec-3-11-2">3.11.2 Prefetch Instructions</a></li>
+<li><a href="simd.html#sec-3-11-3">3.11.3 Memory Ordering Instructions</a></li>
+<li><a href="simd.html#sec-3-11-4">3.11.4 X87 FPU Instructions</a></li>
+<li><a href="simd.html#sec-3-11-5">3.11.5 Thread Sync Instructions</a></li>
+<li><a href="simd.html#sec-3-11-6">3.11.6 其他</a></li>
 </ul>
 </li>
 </ul>
@@ -153,29 +152,16 @@
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> simd</h2>
-<div class="outline-text-2" id="text-1">
-
-
-<p>
-从Pentium II和Pentium MMX处理器系列开始,芯片开始支持SIMD操作.
-SIMD全称是Single Instruction Multiple Data,即单指令多数据,
-可以在一个周期内操作多个数据.
-</p>
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 指令集</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> 指令集</h3>
+<div class="outline-text-3" id="text-1">
 
 
 </div>
 
-<div id="outline-container-1-1-1" class="outline-4">
-<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> MMX</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-1-1" class="outline-4">
+<h4 id="sec-1-1"><span class="section-number-4">1.1</span> MMX</h4>
+<div class="outline-text-4" id="text-1-1">
 
 <ul>
 <li>Multimedia Extensions.[PII &amp; PMMX]
@@ -189,9 +175,9 @@ SIMD全称是Single Instruction Multiple Data,即单指令多数据,
 
 </div>
 
-<div id="outline-container-1-1-2" class="outline-4">
-<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> SSE.</h4>
-<div class="outline-text-4" id="text-1-1-2">
+<div id="outline-container-1-2" class="outline-4">
+<h4 id="sec-1-2"><span class="section-number-4">1.2</span> SSE.</h4>
+<div class="outline-text-4" id="text-1-2">
 
 <ul>
 <li>Streaming SIMD Extensions.[PIII]
@@ -205,9 +191,9 @@ SIMD全称是Single Instruction Multiple Data,即单指令多数据,
 
 </div>
 
-<div id="outline-container-1-1-3" class="outline-4">
-<h4 id="sec-1-1-3"><span class="section-number-4">1.1.3</span> SSE2</h4>
-<div class="outline-text-4" id="text-1-1-3">
+<div id="outline-container-1-3" class="outline-4">
+<h4 id="sec-1-3"><span class="section-number-4">1.3</span> SSE2</h4>
+<div class="outline-text-4" id="text-1-3">
 
 <ul>
 <li>Streaming SIMD Extensions2.[P4 &amp; Xeon]
@@ -221,9 +207,9 @@ SIMD全称是Single Instruction Multiple Data,即单指令多数据,
 
 </div>
 
-<div id="outline-container-1-1-4" class="outline-4">
-<h4 id="sec-1-1-4"><span class="section-number-4">1.1.4</span> SSE3</h4>
-<div class="outline-text-4" id="text-1-1-4">
+<div id="outline-container-1-4" class="outline-4">
+<h4 id="sec-1-4"><span class="section-number-4">1.4</span> SSE3</h4>
+<div class="outline-text-4" id="text-1-4">
 
 <ul>
 <li>Streaming SIMD Extensions3.[P4(HT)]
@@ -237,9 +223,9 @@ SIMD全称是Single Instruction Multiple Data,即单指令多数据,
 
 </div>
 
-<div id="outline-container-1-1-5" class="outline-4">
-<h4 id="sec-1-1-5"><span class="section-number-4">1.1.5</span> SSSE3</h4>
-<div class="outline-text-4" id="text-1-1-5">
+<div id="outline-container-1-5" class="outline-4">
+<h4 id="sec-1-5"><span class="section-number-4">1.5</span> SSSE3</h4>
+<div class="outline-text-4" id="text-1-5">
 
 <ul>
 <li>Supplemental Stream SIMD Extensions3.[Xeon(5100) &amp; Core2]
@@ -253,9 +239,9 @@ SIMD全称是Single Instruction Multiple Data,即单指令多数据,
 
 </div>
 
-<div id="outline-container-1-1-6" class="outline-4">
-<h4 id="sec-1-1-6"><span class="section-number-4">1.1.6</span> SSE4</h4>
-<div class="outline-text-4" id="text-1-1-6">
+<div id="outline-container-1-6" class="outline-4">
+<h4 id="sec-1-6"><span class="section-number-4">1.6</span> SSE4</h4>
+<div class="outline-text-4" id="text-1-6">
 
 <ul>
 <li>Streaming SIMD Extensions4.[Xeon(5400) &amp; Core2Ex(QX9650)]
@@ -271,9 +257,9 @@ SIMD全称是Single Instruction Multiple Data,即单指令多数据,
 
 </div>
 
-<div id="outline-container-1-1-7" class="outline-4">
-<h4 id="sec-1-1-7"><span class="section-number-4">1.1.7</span> 检测代码</h4>
-<div class="outline-text-4" id="text-1-1-7">
+<div id="outline-container-1-7" class="outline-4">
+<h4 id="sec-1-7"><span class="section-number-4">1.7</span> 检测代码</h4>
+<div class="outline-text-4" id="text-1-7">
 
 
 
@@ -403,16 +389,16 @@ int main(){
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 基本概念</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> 基本概念</h3>
+<div class="outline-text-3" id="text-2">
 
 
 </div>
 
-<div id="outline-container-1-2-1" class="outline-4">
-<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> %mm寄存器</h4>
-<div class="outline-text-4" id="text-1-2-1">
+<div id="outline-container-2-1" class="outline-4">
+<h4 id="sec-2-1"><span class="section-number-4">2.1</span> %mm寄存器</h4>
+<div class="outline-text-4" id="text-2-1">
 
 <p>%mm寄存器是64bit,共有8个%mm寄存器.需要注意的是,%mm0-%mm7是X87 FPU寄存器的alias,
 分别对应%r0-%r7.所以对%mm0-%mm7的操作会覆盖X87 FPU的内容.使用%mm寄存器的时候,
@@ -461,9 +447,9 @@ EMMS指令会清除MMX的状态,将FPU tag word进行清空,表示所有的FPU r
 
 </div>
 
-<div id="outline-container-1-2-2" class="outline-4">
-<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> %xmm寄存器</h4>
-<div class="outline-text-4" id="text-1-2-2">
+<div id="outline-container-2-2" class="outline-4">
+<h4 id="sec-2-2"><span class="section-number-4">2.2</span> %xmm寄存器</h4>
+<div class="outline-text-4" id="text-2-2">
 
 <p>%xmm寄存器是128bit.
 Intel64架构下允许访问16个%xmm寄存器.
@@ -473,9 +459,9 @@ IA-32架构下只允许访问8个%xmm寄存器.
 
 </div>
 
-<div id="outline-container-1-2-3" class="outline-4">
-<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> %mxcsr寄存器</h4>
-<div class="outline-text-4" id="text-1-2-3">
+<div id="outline-container-2-3" class="outline-4">
+<h4 id="sec-2-3"><span class="section-number-4">2.3</span> %mxcsr寄存器</h4>
+<div class="outline-text-4" id="text-2-3">
 
 <p>%mxcsr是32bit.%mxcsr寄存器是在SSE指令集引入的,用来控制作用在%xmm寄存器操作的行为,
 所有的这些行为都是和浮点相关的,在某种程度上非常类似于X87 FPU tag word.
@@ -499,9 +485,9 @@ IA-32架构下只允许访问8个%xmm寄存器.
 
 </div>
 
-<div id="outline-container-1-2-4" class="outline-4">
-<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> Saturation &amp; Wraparound</h4>
-<div class="outline-text-4" id="text-1-2-4">
+<div id="outline-container-2-4" class="outline-4">
+<h4 id="sec-2-4"><span class="section-number-4">2.4</span> Saturation &amp; Wraparound</h4>
+<div class="outline-text-4" id="text-2-4">
 
 <p>在进行整数运算的时候,可能会存在out-of-range的情况,结果不能够被目标数所表示.对于
 这种溢出处理有下面3种方式.
@@ -532,9 +518,9 @@ IA-32架构下只允许访问8个%xmm寄存器.
 
 </div>
 
-<div id="outline-container-1-2-5" class="outline-4">
-<h4 id="sec-1-2-5"><span class="section-number-4">1.2.5</span> General Purpose Register(GPR)</h4>
-<div class="outline-text-4" id="text-1-2-5">
+<div id="outline-container-2-5" class="outline-4">
+<h4 id="sec-2-5"><span class="section-number-4">2.5</span> General Purpose Register(GPR)</h4>
+<div class="outline-text-4" id="text-2-5">
 
 <p>通用寄存器,包括EAX/RAX,EBX/RBX,ECX/RCX等.这些通用寄存器和%mm和%xmm之间的差别是,
 %mm和%xmm不能够用来存放地址,也就是说不能够将内存地址存放在%mm和%xmm里面然后进行引用.
@@ -543,9 +529,9 @@ IA-32架构下只允许访问8个%xmm寄存器.
 
 </div>
 
-<div id="outline-container-1-2-6" class="outline-4">
-<h4 id="sec-1-2-6"><span class="section-number-4">1.2.6</span> X87 FPU</h4>
-<div class="outline-text-4" id="text-1-2-6">
+<div id="outline-container-2-6" class="outline-4">
+<h4 id="sec-2-6"><span class="section-number-4">2.6</span> X87 FPU</h4>
+<div class="outline-text-4" id="text-2-6">
 
 <p>X87 FPU是浮点运算部件,共有8个寄存器,组织方式是堆栈.通常来说对于SIMD并不需要关心
 X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias,所以我们这里需要了解.
@@ -577,9 +563,9 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 
 </div>
 
-<div id="outline-container-1-2-7" class="outline-4">
-<h4 id="sec-1-2-7"><span class="section-number-4">1.2.7</span> Packed &amp; Scalar Instructions</h4>
-<div class="outline-text-4" id="text-1-2-7">
+<div id="outline-container-2-7" class="outline-4">
+<h4 id="sec-2-7"><span class="section-number-4">2.7</span> Packed &amp; Scalar Instructions</h4>
+<div class="outline-text-4" id="text-2-7">
 
 <p>对于SIMD提供了操作packed和scalar指令.我们假设存在两个操作数,
 假设是(f00,f01,f02,f03)和(f10,f11,f12,f13)的话,那么
@@ -616,9 +602,9 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 
 </div>
 
-<div id="outline-container-1-2-8" class="outline-4">
-<h4 id="sec-1-2-8"><span class="section-number-4">1.2.8</span> Temporal &amp; NonTemporal Data</h4>
-<div class="outline-text-4" id="text-1-2-8">
+<div id="outline-container-2-8" class="outline-4">
+<h4 id="sec-2-8"><span class="section-number-4">2.8</span> Temporal &amp; NonTemporal Data</h4>
+<div class="outline-text-4" id="text-2-8">
 
 <p>待续.需要阅读Intel Vol.3A Memory &amp; Cache Control这节.在Intel Vol.1 10.4.6.2也有介绍.
 </p>
@@ -626,9 +612,9 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 
 </div>
 
-<div id="outline-container-1-2-9" class="outline-4">
-<h4 id="sec-1-2-9"><span class="section-number-4">1.2.9</span> Alignment</h4>
-<div class="outline-text-4" id="text-1-2-9">
+<div id="outline-container-2-9" class="outline-4">
+<h4 id="sec-2-9"><span class="section-number-4">2.9</span> Alignment</h4>
+<div class="outline-text-4" id="text-2-9">
 
 <p>关于对齐方面,如果使用128bit Memory Operand必须进行16字节的对齐.但是有些例外
 </p><ul>
@@ -647,9 +633,9 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 
 </div>
 
-<div id="outline-container-1-2-10" class="outline-4">
-<h4 id="sec-1-2-10"><span class="section-number-4">1.2.10</span> Asymmetric &amp; Horizontal Processing</h4>
-<div class="outline-text-4" id="text-1-2-10">
+<div id="outline-container-2-10" class="outline-4">
+<h4 id="sec-2-10"><span class="section-number-4">2.10</span> Asymmetric &amp; Horizontal Processing</h4>
+<div class="outline-text-4" id="text-2-10">
 
 <p>分别是对称处理和水平处理.假设存在操作数(a0,a1,a2,a3)以及(b0,b1,b2,b3).
 对于大部分SIMD指令处理都是对称处理,也就是(a0 op b0,a1 op b1,a2 op b2,a3 op b3).
@@ -659,9 +645,9 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 
 </div>
 
-<div id="outline-container-1-2-11" class="outline-4">
-<h4 id="sec-1-2-11"><span class="section-number-4">1.2.11</span> Zero Fill &amp; Truncated</h4>
-<div class="outline-text-4" id="text-1-2-11">
+<div id="outline-container-2-11" class="outline-4">
+<h4 id="sec-2-11"><span class="section-number-4">2.11</span> Zero Fill &amp; Truncated</h4>
+<div class="outline-text-4" id="text-2-11">
 
 <p>对于从内存/寄存器载入到寄存器的话,如果位数不够,通常是占用寄存器的低字节,
 除非显式指定.对于寄存器中没有使用的高字节,通常是采用0填充,也就是Zero Fill.:).
@@ -675,9 +661,9 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> 指令</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> 指令</h3>
+<div class="outline-text-3" id="text-3">
 
 <p>为了方便表示,我们定义下面缩写和操作.
 </p>
@@ -773,16 +759,16 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 
 </div>
 
-<div id="outline-container-1-3-1" class="outline-4">
-<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> Data Transfer Instructions</h4>
-<div class="outline-text-4" id="text-1-3-1">
+<div id="outline-container-3-1" class="outline-4">
+<h4 id="sec-3-1"><span class="section-number-4">3.1</span> Data Transfer Instructions</h4>
+<div class="outline-text-4" id="text-3-1">
 
 
 </div>
 
-<div id="outline-container-1-3-1-1" class="outline-5">
-<h5 id="sec-1-3-1-1"><span class="section-number-5">1.3.1.1</span> Move Mask Instructions</h5>
-<div class="outline-text-5" id="text-1-3-1-1">
+<div id="outline-container-3-1-1" class="outline-5">
+<h5 id="sec-3-1-1"><span class="section-number-5">3.1.1</span> Move Mask Instructions</h5>
+<div class="outline-text-5" id="text-3-1-1">
 
 <p>对于每一个data element的MSB移到GRP.这些指令通常用于分支判定.
 </p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -803,9 +789,9 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 
 </div>
 
-<div id="outline-container-1-3-1-2" class="outline-5">
-<h5 id="sec-1-3-1-2"><span class="section-number-5">1.3.1.2</span> Move Integer Instructions</h5>
-<div class="outline-text-5" id="text-1-3-1-2">
+<div id="outline-container-3-1-2" class="outline-5">
+<h5 id="sec-3-1-2"><span class="section-number-5">3.1.2</span> Move Integer Instructions</h5>
+<div class="outline-text-5" id="text-3-1-2">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" />
@@ -831,9 +817,9 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 
 </div>
 
-<div id="outline-container-1-3-1-3" class="outline-5">
-<h5 id="sec-1-3-1-3"><span class="section-number-5">1.3.1.3</span> Move Float Instructions</h5>
-<div class="outline-text-5" id="text-1-3-1-3">
+<div id="outline-container-3-1-3" class="outline-5">
+<h5 id="sec-3-1-3"><span class="section-number-5">3.1.3</span> Move Float Instructions</h5>
+<div class="outline-text-5" id="text-3-1-3">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" />
@@ -857,9 +843,9 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 
 </div>
 
-<div id="outline-container-1-3-1-4" class="outline-5">
-<h5 id="sec-1-3-1-4"><span class="section-number-5">1.3.1.4</span> Move Double Instructions</h5>
-<div class="outline-text-5" id="text-1-3-1-4">
+<div id="outline-container-3-1-4" class="outline-5">
+<h5 id="sec-3-1-4"><span class="section-number-5">3.1.4</span> Move Double Instructions</h5>
+<div class="outline-text-5" id="text-3-1-4">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" />
@@ -881,9 +867,9 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 
 </div>
 
-<div id="outline-container-1-3-1-5" class="outline-5">
-<h5 id="sec-1-3-1-5"><span class="section-number-5">1.3.1.5</span> Move Duplication Instructions</h5>
-<div class="outline-text-5" id="text-1-3-1-5">
+<div id="outline-container-3-1-5" class="outline-5">
+<h5 id="sec-3-1-5"><span class="section-number-5">3.1.5</span> Move Duplication Instructions</h5>
+<div class="outline-text-5" id="text-3-1-5">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" />
@@ -903,9 +889,9 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 
 </div>
 
-<div id="outline-container-1-3-1-6" class="outline-5">
-<h5 id="sec-1-3-1-6"><span class="section-number-5">1.3.1.6</span> Move NonTemporal Instructions</h5>
-<div class="outline-text-5" id="text-1-3-1-6">
+<div id="outline-container-3-1-6" class="outline-5">
+<h5 id="sec-3-1-6"><span class="section-number-5">3.1.6</span> Move NonTemporal Instructions</h5>
+<div class="outline-text-5" id="text-3-1-6">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" />
@@ -931,19 +917,19 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 
 </div>
 
-<div id="outline-container-1-3-2" class="outline-4">
-<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> Arithmetic Instructions</h4>
-<div class="outline-text-4" id="text-1-3-2">
+<div id="outline-container-3-2" class="outline-4">
+<h4 id="sec-3-2"><span class="section-number-4">3.2</span> Arithmetic Instructions</h4>
+<div class="outline-text-4" id="text-3-2">
 
 
 </div>
 
-<div id="outline-container-1-3-2-1" class="outline-5">
-<h5 id="sec-1-3-2-1"><span class="section-number-5">1.3.2.1</span> ADD Instructions</h5>
-<div class="outline-text-5" id="text-1-3-2-1">
+<div id="outline-container-3-2-1" class="outline-5">
+<h5 id="sec-3-2-1"><span class="section-number-5">3.2.1</span> ADD Instructions</h5>
+<div class="outline-text-5" id="text-3-2-1">
 
 <ul>
-<li id="sec-1-3-2-1-1">对称处理<br/>
+<li id="sec-3-2-1-1">对称处理<br/>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
@@ -970,7 +956,7 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 </li>
 </ul>
 <ul>
-<li id="sec-1-3-2-1-2">水平处理<br/>
+<li id="sec-3-2-1-2">水平处理<br/>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
@@ -993,12 +979,12 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 
 </div>
 
-<div id="outline-container-1-3-2-2" class="outline-5">
-<h5 id="sec-1-3-2-2"><span class="section-number-5">1.3.2.2</span> SUB Instructions</h5>
-<div class="outline-text-5" id="text-1-3-2-2">
+<div id="outline-container-3-2-2" class="outline-5">
+<h5 id="sec-3-2-2"><span class="section-number-5">3.2.2</span> SUB Instructions</h5>
+<div class="outline-text-5" id="text-3-2-2">
 
 <ul>
-<li id="sec-1-3-2-2-1">对称处理<br/>
+<li id="sec-3-2-2-1">对称处理<br/>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
@@ -1026,7 +1012,7 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 </li>
 </ul>
 <ul>
-<li id="sec-1-3-2-2-2">水平处理<br/>
+<li id="sec-3-2-2-2">水平处理<br/>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
@@ -1049,9 +1035,9 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 
 </div>
 
-<div id="outline-container-1-3-2-3" class="outline-5">
-<h5 id="sec-1-3-2-3"><span class="section-number-5">1.3.2.3</span> MUL Instructions</h5>
-<div class="outline-text-5" id="text-1-3-2-3">
+<div id="outline-container-3-2-3" class="outline-5">
+<h5 id="sec-3-2-3"><span class="section-number-5">3.2.3</span> MUL Instructions</h5>
+<div class="outline-text-5" id="text-3-2-3">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" />
@@ -1078,9 +1064,9 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 
 </div>
 
-<div id="outline-container-1-3-2-4" class="outline-5">
-<h5 id="sec-1-3-2-4"><span class="section-number-5">1.3.2.4</span> DIV Instructions</h5>
-<div class="outline-text-5" id="text-1-3-2-4">
+<div id="outline-container-3-2-4" class="outline-5">
+<h5 id="sec-3-2-4"><span class="section-number-5">3.2.4</span> DIV Instructions</h5>
+<div class="outline-text-5" id="text-3-2-4">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" />
@@ -1101,12 +1087,12 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 
 </div>
 
-<div id="outline-container-1-3-2-5" class="outline-5">
-<h5 id="sec-1-3-2-5"><span class="section-number-5">1.3.2.5</span> M?X Instructions</h5>
-<div class="outline-text-5" id="text-1-3-2-5">
+<div id="outline-container-3-2-5" class="outline-5">
+<h5 id="sec-3-2-5"><span class="section-number-5">3.2.5</span> M?X Instructions</h5>
+<div class="outline-text-5" id="text-3-2-5">
 
 <ul>
-<li id="sec-1-3-2-5-1">MAX<br/>
+<li id="sec-3-2-5-1">MAX<br/>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
@@ -1131,7 +1117,7 @@ X87 FPU这个部件.但是因为SIMD使用的%mm寄存器是FPU寄存器的alias
 </li>
 </ul>
 <ul>
-<li id="sec-1-3-2-5-2">MIN<br/>
+<li id="sec-3-2-5-2">MIN<br/>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
@@ -1163,9 +1149,9 @@ PHMINPOSUW可以按照Unsigned Word来水平搜索最小值的位置.
 
 </div>
 
-<div id="outline-container-1-3-2-6" class="outline-5">
-<h5 id="sec-1-3-2-6"><span class="section-number-5">1.3.2.6</span> Math Instructions</h5>
-<div class="outline-text-5" id="text-1-3-2-6">
+<div id="outline-container-3-2-6" class="outline-5">
+<h5 id="sec-3-2-6"><span class="section-number-5">3.2.6</span> Math Instructions</h5>
+<div class="outline-text-5" id="text-3-2-6">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" />
@@ -1208,9 +1194,9 @@ PHMINPOSUW可以按照Unsigned Word来水平搜索最小值的位置.
 
 </div>
 
-<div id="outline-container-1-3-3" class="outline-4">
-<h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> Comparison Instructions</h4>
-<div class="outline-text-4" id="text-1-3-3">
+<div id="outline-container-3-3" class="outline-4">
+<h4 id="sec-3-3"><span class="section-number-4">3.3</span> Comparison Instructions</h4>
+<div class="outline-text-4" id="text-3-3">
 
 <p>需要注意的是,如果没有特殊说明,比较结果是直接存放在结果数里面的,
 不会影响EFLAGS这个寄存器内容.如果比较结果影响了EFLAGS寄存器的话,
@@ -1256,9 +1242,9 @@ PHMINPOSUW可以按照Unsigned Word来水平搜索最小值的位置.
 
 </div>
 
-<div id="outline-container-1-3-4" class="outline-4">
-<h4 id="sec-1-3-4"><span class="section-number-4">1.3.4</span> Conversion Instructions</h4>
-<div class="outline-text-4" id="text-1-3-4">
+<div id="outline-container-3-4" class="outline-4">
+<h4 id="sec-3-4"><span class="section-number-4">3.4</span> Conversion Instructions</h4>
+<div class="outline-text-4" id="text-3-4">
 
 <p>对于涉及到浮点数的精度取舍问题,使用%mxccsr寄存器来判断.
 </p>
@@ -1357,9 +1343,9 @@ PHMINPOSUW可以按照Unsigned Word来水平搜索最小值的位置.
 
 </div>
 
-<div id="outline-container-1-3-5" class="outline-4">
-<h4 id="sec-1-3-5"><span class="section-number-4">1.3.5</span> Insert &amp; Unpack Instructions</h4>
-<div class="outline-text-4" id="text-1-3-5">
+<div id="outline-container-3-5" class="outline-4">
+<h4 id="sec-3-5"><span class="section-number-4">3.5</span> Insert &amp; Unpack Instructions</h4>
+<div class="outline-text-4" id="text-3-5">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" />
@@ -1409,9 +1395,9 @@ PHMINPOSUW可以按照Unsigned Word来水平搜索最小值的位置.
 
 </div>
 
-<div id="outline-container-1-3-6" class="outline-4">
-<h4 id="sec-1-3-6"><span class="section-number-4">1.3.6</span> Logical Instructions</h4>
-<div class="outline-text-4" id="text-1-3-6">
+<div id="outline-container-3-6" class="outline-4">
+<h4 id="sec-3-6"><span class="section-number-4">3.6</span> Logical Instructions</h4>
+<div class="outline-text-4" id="text-3-6">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" />
@@ -1440,9 +1426,9 @@ PHMINPOSUW可以按照Unsigned Word来水平搜索最小值的位置.
 
 </div>
 
-<div id="outline-container-1-3-7" class="outline-4">
-<h4 id="sec-1-3-7"><span class="section-number-4">1.3.7</span> Shift Instructions</h4>
-<div class="outline-text-4" id="text-1-3-7">
+<div id="outline-container-3-7" class="outline-4">
+<h4 id="sec-3-7"><span class="section-number-4">3.7</span> Shift Instructions</h4>
+<div class="outline-text-4" id="text-3-7">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" />
@@ -1469,9 +1455,9 @@ PHMINPOSUW可以按照Unsigned Word来水平搜索最小值的位置.
 
 </div>
 
-<div id="outline-container-1-3-8" class="outline-4">
-<h4 id="sec-1-3-8"><span class="section-number-4">1.3.8</span> Shuffle Instructions</h4>
-<div class="outline-text-4" id="text-1-3-8">
+<div id="outline-container-3-8" class="outline-4">
+<h4 id="sec-3-8"><span class="section-number-4">3.8</span> Shuffle Instructions</h4>
+<div class="outline-text-4" id="text-3-8">
 
 <p>SHUF操作根据imm来决定,dst每个位置的element应该是由
 src的哪个位置的element来进行填充的.
@@ -1498,9 +1484,9 @@ src的哪个位置的element来进行填充的.
 
 </div>
 
-<div id="outline-container-1-3-9" class="outline-4">
-<h4 id="sec-1-3-9"><span class="section-number-4">1.3.9</span> Blending Instructions</h4>
-<div class="outline-text-4" id="text-1-3-9">
+<div id="outline-container-3-9" class="outline-4">
+<h4 id="sec-3-9"><span class="section-number-4">3.9</span> Blending Instructions</h4>
+<div class="outline-text-4" id="text-3-9">
 
 <p>BLEND操作是根据imm来决定,dst每个位置的element应该是从src里面对应位置取出,
 还是应该从dst里面对应位置取出.
@@ -1529,9 +1515,9 @@ BLENDV操作和BLEND操作过程一样的,不同的是由%xmm0来决定的而不
 
 </div>
 
-<div id="outline-container-1-3-10" class="outline-4">
-<h4 id="sec-1-3-10"><span class="section-number-4">1.3.10</span> String Instructions</h4>
-<div class="outline-text-4" id="text-1-3-10">
+<div id="outline-container-3-10" class="outline-4">
+<h4 id="sec-3-10"><span class="section-number-4">3.10</span> String Instructions</h4>
+<div class="outline-text-4" id="text-3-10">
 
 <ul>
 <li>内存操作数不要求字节对齐.
@@ -1562,16 +1548,16 @@ BLENDV操作和BLEND操作过程一样的,不同的是由%xmm0来决定的而不
 
 </div>
 
-<div id="outline-container-1-3-11" class="outline-4">
-<h4 id="sec-1-3-11"><span class="section-number-4">1.3.11</span> MISC Instructions</h4>
-<div class="outline-text-4" id="text-1-3-11">
+<div id="outline-container-3-11" class="outline-4">
+<h4 id="sec-3-11"><span class="section-number-4">3.11</span> MISC Instructions</h4>
+<div class="outline-text-4" id="text-3-11">
 
 
 </div>
 
-<div id="outline-container-1-3-11-1" class="outline-5">
-<h5 id="sec-1-3-11-1"><span class="section-number-5">1.3.11.1</span> Cache Control Instructions</h5>
-<div class="outline-text-5" id="text-1-3-11-1">
+<div id="outline-container-3-11-1" class="outline-5">
+<h5 id="sec-3-11-1"><span class="section-number-5">3.11.1</span> Cache Control Instructions</h5>
+<div class="outline-text-5" id="text-3-11-1">
 
 <ul>
 <li>CLFLUSH
@@ -1584,9 +1570,9 @@ BLENDV操作和BLEND操作过程一样的,不同的是由%xmm0来决定的而不
 
 </div>
 
-<div id="outline-container-1-3-11-2" class="outline-5">
-<h5 id="sec-1-3-11-2"><span class="section-number-5">1.3.11.2</span> Prefetch Instructions</h5>
-<div class="outline-text-5" id="text-1-3-11-2">
+<div id="outline-container-3-11-2" class="outline-5">
+<h5 id="sec-3-11-2"><span class="section-number-5">3.11.2</span> Prefetch Instructions</h5>
+<div class="outline-text-5" id="text-3-11-2">
 
 <p>对于预取指令的话不会影响程序行为,通常来说会预取32个对齐的字节,但是具体
 还是依赖于实现.对于NT数据的话,依然会尽可能地减少Cache的污染.
@@ -1620,9 +1606,9 @@ BLENDV操作和BLEND操作过程一样的,不同的是由%xmm0来决定的而不
 
 </div>
 
-<div id="outline-container-1-3-11-3" class="outline-5">
-<h5 id="sec-1-3-11-3"><span class="section-number-5">1.3.11.3</span> Memory Ordering Instructions</h5>
-<div class="outline-text-5" id="text-1-3-11-3">
+<div id="outline-container-3-11-3" class="outline-5">
+<h5 id="sec-3-11-3"><span class="section-number-5">3.11.3</span> Memory Ordering Instructions</h5>
+<div class="outline-text-5" id="text-3-11-3">
 
 <ul>
 <li>SFENCE
@@ -1647,9 +1633,9 @@ BLENDV操作和BLEND操作过程一样的,不同的是由%xmm0来决定的而不
 
 </div>
 
-<div id="outline-container-1-3-11-4" class="outline-5">
-<h5 id="sec-1-3-11-4"><span class="section-number-5">1.3.11.4</span> X87 FPU Instructions</h5>
-<div class="outline-text-5" id="text-1-3-11-4">
+<div id="outline-container-3-11-4" class="outline-5">
+<h5 id="sec-3-11-4"><span class="section-number-5">3.11.4</span> X87 FPU Instructions</h5>
+<div class="outline-text-5" id="text-3-11-4">
 
 <ul>
 <li>FISTTP
@@ -1663,9 +1649,9 @@ FISTP需要修改FPU Tag Word设置为截断处理才会有这样的效果,
 
 </div>
 
-<div id="outline-container-1-3-11-5" class="outline-5">
-<h5 id="sec-1-3-11-5"><span class="section-number-5">1.3.11.5</span> Thread Sync Instructions</h5>
-<div class="outline-text-5" id="text-1-3-11-5">
+<div id="outline-container-3-11-5" class="outline-5">
+<h5 id="sec-3-11-5"><span class="section-number-5">3.11.5</span> Thread Sync Instructions</h5>
+<div class="outline-text-5" id="text-3-11-5">
 
 <p>需要注意的是,这些指令都只能够在ring0级别下面运行,对于&lt;ring0的界别是可选运行的.
 </p><ul>
@@ -1686,9 +1672,9 @@ FISTP需要修改FPU Tag Word设置为截断处理才会有这样的效果,
 
 </div>
 
-<div id="outline-container-1-3-11-6" class="outline-5">
-<h5 id="sec-1-3-11-6"><span class="section-number-5">1.3.11.6</span> 其他</h5>
-<div class="outline-text-5" id="text-1-3-11-6">
+<div id="outline-container-3-11-6" class="outline-5">
+<h5 id="sec-3-11-6"><span class="section-number-5">3.11.6</span> 其他</h5>
+<div class="outline-text-5" id="text-3-11-6">
 
 <ul>
 <li>PAUSE
@@ -1720,13 +1706,10 @@ FISTP需要修改FPU Tag Word设置为截断处理才会有这样的效果,
 </div>
 </div>
 </div>
-</div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:42+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'simd.html';var disqus_title = 'simd.html';var disqus_url = 'http://dirlt.com/simd.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'simd.html';var disqus_title = 'simd.html';var disqus_url = 'http://dirlt.com/simd.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

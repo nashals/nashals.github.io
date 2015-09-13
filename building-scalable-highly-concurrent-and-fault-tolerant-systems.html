@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<head>
 <title>Building Scalable, Highly Concurrent &amp; Fault-Tolerant Systems: Lessons Learned</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Building Scalable, Highly Concurrent &amp; Fault-Tolerant Systems: Lessons Learned"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:44+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,7 +62,7 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
@@ -77,51 +76,24 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="building-scalable-highly-concurrent-and-fault-tolerant-systems.html#sec-1">1 building-scalable-highly-concurrent-and-fault-tolerant-systems</a>
+<li><a href="building-scalable-highly-concurrent-and-fault-tolerant-systems.html#sec-1">1 It's All Trade-offs</a></li>
+<li><a href="building-scalable-highly-concurrent-and-fault-tolerant-systems.html#sec-2">2 Go Concurrent</a></li>
+<li><a href="building-scalable-highly-concurrent-and-fault-tolerant-systems.html#sec-3">3 Go Fault-Tolerant</a></li>
+<li><a href="building-scalable-highly-concurrent-and-fault-tolerant-systems.html#sec-4">4 Go Faster &amp; Go More</a></li>
+<li><a href="building-scalable-highly-concurrent-and-fault-tolerant-systems.html#sec-5">5 Go Distributed</a></li>
+<li><a href="building-scalable-highly-concurrent-and-fault-tolerant-systems.html#sec-6">6 Go Big</a>
 <ul>
-<li><a href="building-scalable-highly-concurrent-and-fault-tolerant-systems.html#sec-1-1">1.1 It's All Trade-offs</a></li>
-<li><a href="building-scalable-highly-concurrent-and-fault-tolerant-systems.html#sec-1-2">1.2 Go Concurrent</a></li>
-<li><a href="building-scalable-highly-concurrent-and-fault-tolerant-systems.html#sec-1-3">1.3 Go Fault-Tolerant</a></li>
-<li><a href="building-scalable-highly-concurrent-and-fault-tolerant-systems.html#sec-1-4">1.4 Go Faster &amp; Go More</a></li>
-<li><a href="building-scalable-highly-concurrent-and-fault-tolerant-systems.html#sec-1-5">1.5 Go Distributed</a></li>
-<li><a href="building-scalable-highly-concurrent-and-fault-tolerant-systems.html#sec-1-6">1.6 Go Big</a>
-<ul>
-<li><a href="building-scalable-highly-concurrent-and-fault-tolerant-systems.html#sec-1-6-1">1.6.1 Data</a></li>
-<li><a href="building-scalable-highly-concurrent-and-fault-tolerant-systems.html#sec-1-6-2">1.6.2 DB</a></li>
-</ul>
-</li>
+<li><a href="building-scalable-highly-concurrent-and-fault-tolerant-systems.html#sec-6-1">6.1 Data</a></li>
+<li><a href="building-scalable-highly-concurrent-and-fault-tolerant-systems.html#sec-6-2">6.2 DB</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> building-scalable-highly-concurrent-and-fault-tolerant-systems</h2>
-<div class="outline-text-2" id="text-1">
-
-<ul>
-<li>It’s All Trade-offs
-</li>
-<li>Go Concurrent
-</li>
-<li>Go Fault-Tolerant
-</li>
-<li>Go More &amp; Go Faster 
-</li>
-<li>Go Distributed
-</li>
-<li>Go Big
-</li>
-</ul>
-
-
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> It's All Trade-offs</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> It's All Trade-offs</h3>
+<div class="outline-text-3" id="text-1">
 
 <ul>
 <li>How do I know if I have a performance problem? <b>If your system is slow for a single user</b>
@@ -139,9 +111,9 @@
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Go Concurrent</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> Go Concurrent</h3>
+<div class="outline-text-3" id="text-2">
 
 <ul>
 <li>Shared mutable state Together with threads 线程使用共享可修改状态使得代码不稳定
@@ -174,7 +146,7 @@
 </li>
 <li>You deserve better tools <b>高并发更好的工具和做法</b>
 <ul>
-<li>Dataflow Concurrency <b>基于数据流的并发 todo(dirlt)：？？？</b>
+<li>Dataflow Concurrency <b>基于数据流的并发</b>
 <ul>
 <li>Deterministic
 </li>
@@ -241,9 +213,9 @@
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Go Fault-Tolerant</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> Go Fault-Tolerant</h3>
+<div class="outline-text-3" id="text-3">
 
 <ul>
 <li>Failure management in Java/C/C# etc <b>在独立的线程里面必须进行错误处理，否则外部没有办法发现错误。这样在线程里面整个错误处理贯穿于逻辑本身</b> 
@@ -297,9 +269,9 @@
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Go Faster &amp; Go More</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> Go Faster &amp; Go More</h3>
+<div class="outline-text-3" id="text-4">
 
 <ul>
 <li>Never block
@@ -321,9 +293,9 @@
 </li>
 <li>Design reactive event-driven systems
 </li>
-<li>Use push not pull or poll  <b>push可靠性如何保证是个问题</b>
+<li>Use push not pull or poll  #note: 可靠性是个问题
 </li>
-<li>Don’t use explicit thread management <b>todo(dirlt)：？？？</b>
+<li>Don’t use explicit thread management
 </li>
 </ul>
 
@@ -348,9 +320,9 @@
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Go Distributed</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> Go Distributed</h3>
+<div class="outline-text-3" id="text-5">
 
 <p>Werner Vogels’ Misconceptions about Reliable Distributed Computing
 </p><ol>
@@ -364,7 +336,7 @@
 
 
 <p>
-<b>Worth keeping an eye on</b> <b>note(dirlt):可能值得关注一些</b>
+<b>Worth keeping an eye on</b>
 </p><ul>
 <li>The CALM Conjecture
 </li>
@@ -385,16 +357,16 @@
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Go Big</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> Go Big</h3>
+<div class="outline-text-3" id="text-6">
 
 
 </div>
 
-<div id="outline-container-1-6-1" class="outline-4">
-<h4 id="sec-1-6-1"><span class="section-number-4">1.6.1</span> Data</h4>
-<div class="outline-text-4" id="text-1-6-1">
+<div id="outline-container-6-1" class="outline-4">
+<h4 id="sec-6-1"><span class="section-number-4">6.1</span> Data</h4>
+<div class="outline-text-4" id="text-6-1">
 
 <ul>
 <li>Imperative OO programming (a la Hadoop) doesn't cut it
@@ -407,9 +379,7 @@
 </li>
 <li>Is the assembly language of MapReduce programming
 </li>
-<li>Watch “Why Big Data Needs To Be Functional” by Dean Wampler <b>todo(dirlt):maybe read it</b>
-</li>
-<li><b>问题是Hadoop和OO Programming根本就没关系啊，我理解作者的意思是想强调FP</b>
+<li>Watch “Why Big Data Needs To Be Functional” by Dean Wampler
 </li>
 </ul>
 
@@ -420,8 +390,6 @@
 </li>
 <li>Examples:Spark,Storm,GridGain,Akkaetc.
 </li>
-<li><b>根据应用场景，批量也没啥错啊</b>
-</li>
 </ul>
 
 </li>
@@ -431,9 +399,9 @@
 
 </div>
 
-<div id="outline-container-1-6-2" class="outline-4">
-<h4 id="sec-1-6-2"><span class="section-number-4">1.6.2</span> DB</h4>
-<div class="outline-text-4" id="text-1-6-2">
+<div id="outline-container-6-2" class="outline-4">
+<h4 id="sec-6-2"><span class="section-number-4">6.2</span> DB</h4>
+<div class="outline-text-4" id="text-6-2">
 
 <ul>
 <li>Scaling reads to a RDBMS is hard
@@ -447,13 +415,10 @@
 </div>
 </div>
 </div>
-</div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:44+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'building-scalable-highly-concurrent-and-fault-tolerant-systems.html';var disqus_title = 'building-scalable-highly-concurrent-and-fault-tolerant-systems.html';var disqus_url = 'http://dirlt.com/building-scalable-highly-concurrent-and-fault-tolerant-systems.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'building-scalable-highly-concurrent-and-fault-tolerant-systems.html';var disqus_title = 'building-scalable-highly-concurrent-and-fault-tolerant-systems.html';var disqus_url = 'http://dirlt.com/building-scalable-highly-concurrent-and-fault-tolerant-systems.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<head>
 <title>The Tail at Scale</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="The Tail at Scale"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:42+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,7 +62,7 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
@@ -71,47 +70,6 @@
 
 <div id="content">
 <h1 class="title">The Tail at Scale</h1>
-
-
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="tail-at-scale.html#sec-1">1 tail-at-scale</a>
-<ul>
-<li><a href="tail-at-scale.html#sec-1-1">1.1 Introduction</a></li>
-<li><a href="tail-at-scale.html#sec-1-2">1.2 Key Insights</a></li>
-<li><a href="tail-at-scale.html#sec-1-3">1.3 Why Variability Exists?</a></li>
-<li><a href="tail-at-scale.html#sec-1-4">1.4 Component-Level Variability Amplified By Scale</a></li>
-<li><a href="tail-at-scale.html#sec-1-5">1.5 Reducing Component Variability</a></li>
-<li><a href="tail-at-scale.html#sec-1-6">1.6 Living with Latency Variability</a></li>
-<li><a href="tail-at-scale.html#sec-1-7">1.7 Within Request Short-Term Adaptations</a>
-<ul>
-<li><a href="tail-at-scale.html#sec-1-7-1">1.7.1 Hedged requests</a></li>
-<li><a href="tail-at-scale.html#sec-1-7-2">1.7.2 Tied requests</a></li>
-<li><a href="tail-at-scale.html#sec-1-7-3">1.7.3 Experiments</a></li>
-</ul>
-</li>
-<li><a href="tail-at-scale.html#sec-1-8">1.8 Cross-Request Long-Term Adaptations</a>
-<ul>
-<li><a href="tail-at-scale.html#sec-1-8-1">1.8.1 Micro-partitions</a></li>
-<li><a href="tail-at-scale.html#sec-1-8-2">1.8.2 Selective replication</a></li>
-<li><a href="tail-at-scale.html#sec-1-8-3">1.8.3 Latency-induced probation</a></li>
-</ul>
-</li>
-<li><a href="tail-at-scale.html#sec-1-9">1.9 Large Information Retrieval Systems</a></li>
-<li><a href="tail-at-scale.html#sec-1-10">1.10 Mutations</a></li>
-<li><a href="tail-at-scale.html#sec-1-11">1.11 Hardware Trends and Their Effects</a></li>
-<li><a href="tail-at-scale.html#sec-1-12">1.12 Conclusion</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> tail-at-scale</h2>
-<div class="outline-text-2" id="text-1">
 
 <ul>
 <li><a href="http://cacm.acm.org/magazines/2013/2/160173-the-tail-at-scale/fulltext">http://cacm.acm.org/magazines/2013/2/160173-the-tail-at-scale/fulltext</a>
@@ -122,19 +80,49 @@
 
 
 
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="tail-at-scale.html#sec-1">1 Introduction</a></li>
+<li><a href="tail-at-scale.html#sec-2">2 Key Insights</a></li>
+<li><a href="tail-at-scale.html#sec-3">3 Why Variability Exists?</a></li>
+<li><a href="tail-at-scale.html#sec-4">4 Component-Level Variability Amplified By Scale</a></li>
+<li><a href="tail-at-scale.html#sec-5">5 Reducing Component Variability</a></li>
+<li><a href="tail-at-scale.html#sec-6">6 Living with Latency Variability</a></li>
+<li><a href="tail-at-scale.html#sec-7">7 Within Request Short-Term Adaptations</a>
+<ul>
+<li><a href="tail-at-scale.html#sec-7-1">7.1 Hedged requests</a></li>
+<li><a href="tail-at-scale.html#sec-7-2">7.2 Tied requests</a></li>
+<li><a href="tail-at-scale.html#sec-7-3">7.3 Experiments</a></li>
+</ul>
+</li>
+<li><a href="tail-at-scale.html#sec-8">8 Cross-Request Long-Term Adaptations</a>
+<ul>
+<li><a href="tail-at-scale.html#sec-8-1">8.1 Micro-partitions</a></li>
+<li><a href="tail-at-scale.html#sec-8-2">8.2 Selective replication</a></li>
+<li><a href="tail-at-scale.html#sec-8-3">8.3 Latency-induced probation</a></li>
+</ul>
+</li>
+<li><a href="tail-at-scale.html#sec-9">9 Large Information Retrieval Systems</a></li>
+<li><a href="tail-at-scale.html#sec-10">10 Mutations</a></li>
+<li><a href="tail-at-scale.html#sec-11">11 Hardware Trends and Their Effects</a></li>
+<li><a href="tail-at-scale.html#sec-12">12 Conclusion</a></li>
+</ul>
+</div>
 </div>
 
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Introduction</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> Introduction</h3>
+<div class="outline-text-3" id="text-1">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Key Insights</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> Key Insights</h3>
+<div class="outline-text-3" id="text-2">
 
 <ul>
 <li>It is challenging for service providers to keep the tail of latency distribution short for interactive services as the size and complexity of the system scales up or as overall use increases. Temporary high-latency episodes (unimportant in moderate-size systems) may come to dominate overall service performance at large scale.(大规模集群保持低延迟是一件非常具有挑战性的事情。随着集群规模扩大，原来一些临时的高延迟时间会逐渐扩大，最终影响整体性能）
@@ -150,9 +138,9 @@
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Why Variability Exists?</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> Why Variability Exists?</h3>
+<div class="outline-text-3" id="text-3">
 
 <p>Variability of response time that leads to high tail latency in individual components of a service can arise for many reasons, including:
 </p><ul>
@@ -185,9 +173,9 @@ Increased variability is also due to several hardware trends:
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Component-Level Variability Amplified By Scale</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> Component-Level Variability Amplified By Scale</h3>
+<div class="outline-text-3" id="text-4">
 
 <ul>
 <li>A common technique for reducing latency in large-scale online services is to parallelize sub-operations across many different machines, where each sub-operation is co-located with its portion of a large dataset. Parallelization happens by fanning out a request from a root to a large number of leaf servers and merging responses via a request-distribution tree. These sub-operations must all complete within a strict deadline for the service to feel responsive.（通常通过将请求并行化来减少总体延迟。整个请求的图状结构是tree，一级一级fanout出去。对于root来说需要控制好每个sub request的deadline来确保最终的响应及时） 
@@ -244,9 +232,9 @@ Increased variability is also due to several hardware trends:
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Reducing Component Variability</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> Reducing Component Variability</h3>
+<div class="outline-text-3" id="text-5">
 
 <p>Interactive response-time variability can be reduced by ensuring interactive requests are serviced in a timely manner through many small engineering decisions, including:
 </p><ul>
@@ -265,9 +253,9 @@ Increased variability is also due to several hardware trends:
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Living with Latency Variability</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> Living with Latency Variability</h3>
+<div class="outline-text-3" id="text-6">
 
 <ul>
 <li>The careful engineering techniques in the preceding section are essential for building high-performance interactive services, but the scale and complexity of modern Web services make it infeasible to eliminate all latency variability. Even if such perfect behavior could be achieved in isolated environments, systems with shared computational resources exhibit performance fluctuations beyond the control of application developers（对于large-scale系统来说本质上是不能够消除latency variability的）
@@ -288,9 +276,9 @@ Increased variability is also due to several hardware trends:
 
 </div>
 
-<div id="outline-container-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Within Request Short-Term Adaptations</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-7" class="outline-3">
+<h3 id="sec-7"><span class="section-number-3">7</span> Within Request Short-Term Adaptations</h3>
+<div class="outline-text-3" id="text-7">
 
 <ul>
 <li>A broad class of Web services deploy multiple replicas of data items to provide additional throughput capacity and maintain availability in the presence of failures.
@@ -303,9 +291,9 @@ Increased variability is also due to several hardware trends:
 
 </div>
 
-<div id="outline-container-1-7-1" class="outline-4">
-<h4 id="sec-1-7-1"><span class="section-number-4">1.7.1</span> Hedged requests</h4>
-<div class="outline-text-4" id="text-1-7-1">
+<div id="outline-container-7-1" class="outline-4">
+<h4 id="sec-7-1"><span class="section-number-4">7.1</span> Hedged requests</h4>
+<div class="outline-text-4" id="text-7-1">
 
 <ul>
 <li>A simple way to curb latency variability is to issue the same request to multiple replicas and use the results from whichever replica responds first.
@@ -325,16 +313,16 @@ Increased variability is also due to several hardware trends:
 
 </div>
 
-<div id="outline-container-1-7-2" class="outline-4">
-<h4 id="sec-1-7-2"><span class="section-number-4">1.7.2</span> Tied requests</h4>
-<div class="outline-text-4" id="text-1-7-2">
+<div id="outline-container-7-2" class="outline-4">
+<h4 id="sec-7-2"><span class="section-number-4">7.2</span> Tied requests</h4>
+<div class="outline-text-4" id="text-7-2">
 
 <ul>
 <li>The hedged-requests technique also has a window of vulnerability in which multiple servers can execute the same request unnecessarily. That extra work can be capped by waiting for the 95th-percentile expected latency before issuing the hedged request, but this approach limits the benefits to only a small fraction of requests. Permitting more aggressive use of hedged requests with moderate resource consumption requires faster cancellation of requests.（之前的方法只能够改善少量的请求效果。如果能够取消请求的话那么实际上可以采用更加激进的使用方法作用于更多数的请求）
 </li>
 <li><b>A common source of variability is queueing delays on the server before a request begins execution.</b> For many services, once a request is actually scheduled and begins execution, the variability of its completion time goes down substantially. （延迟偏差最主要的原因还是因为queue，对于许多服务来说，一旦request进入queue之后那么偏差很快就会下来）
 </li>
-<li><a href="http://www.eecs.harvard.edu/~michaelm/postscripts/mythesis.pdf">Mitzenmacher</a> said allowing a client to choose between two servers based on queue lengths at enqueue time exponentially improves load-balancing performance over a uniform random scheme. （可以通过判断两个服务当前queue长度来选择使用） <b>note(dirlt)：但是其实这样将client复杂化，client需要了解server内部情况</b>
+<li><a href="http://www.eecs.harvard.edu/~michaelm/postscripts/mythesis.pdf">Mitzenmacher</a> said allowing a client to choose between two servers based on queue lengths at enqueue time exponentially improves load-balancing performance over a uniform random scheme. （可以通过判断两个服务当前queue长度来选择使用） #note: client需要了解server内部情况. 但是可以通过适当封装对用户透明。
 <ul>
 <li>An alternative to the tied-request and hedged-request schemes is to probe remote queues first, then submit the request to the least-loaded server.
 </li>
@@ -365,9 +353,9 @@ Increased variability is also due to several hardware trends:
 
 </div>
 
-<div id="outline-container-1-7-3" class="outline-4">
-<h4 id="sec-1-7-3"><span class="section-number-4">1.7.3</span> Experiments</h4>
-<div class="outline-text-4" id="text-1-7-3">
+<div id="outline-container-7-3" class="outline-4">
+<h4 id="sec-7-3"><span class="section-number-4">7.3</span> Experiments</h4>
+<div class="outline-text-4" id="text-7-3">
 
 <p><img src="images/tail-at-scale-read-latency-comparision.png"  alt="./images/tail-at-scale-read-latency-comparision.png" />
 </p>
@@ -395,9 +383,9 @@ Increased variability is also due to several hardware trends:
 
 </div>
 
-<div id="outline-container-1-8" class="outline-3">
-<h3 id="sec-1-8"><span class="section-number-3">1.8</span> Cross-Request Long-Term Adaptations</h3>
-<div class="outline-text-3" id="text-1-8">
+<div id="outline-container-8" class="outline-3">
+<h3 id="sec-8"><span class="section-number-3">8</span> Cross-Request Long-Term Adaptations</h3>
+<div class="outline-text-3" id="text-8">
 
 <ul>
 <li>Here, we turn to techniques that are applicable for reducing latency variability caused by coarser-grain phenomena (such as service-time variations and load imbalance). (考虑一些造成延迟偏差粗粒度的影响）
@@ -417,9 +405,9 @@ Increased variability is also due to several hardware trends:
 
 </div>
 
-<div id="outline-container-1-8-1" class="outline-4">
-<h4 id="sec-1-8-1"><span class="section-number-4">1.8.1</span> Micro-partitions</h4>
-<div class="outline-text-4" id="text-1-8-1">
+<div id="outline-container-8-1" class="outline-4">
+<h4 id="sec-8-1"><span class="section-number-4">8.1</span> Micro-partitions</h4>
+<div class="outline-text-4" id="text-8-1">
 
 <ul>
 <li>To combat imbalance, many of Google's systems generate many more partitions than there are machines in the service, then do dynamic assignment and load balancing of these partitions to particular machines. Load balancing is then a matter of moving responsibility for one of these small partitions from one machine to another.（将partition size做小，这样parition number就多，load balanace只需要以partition为单位进行平衡即可）
@@ -433,9 +421,9 @@ Increased variability is also due to several hardware trends:
 
 </div>
 
-<div id="outline-container-1-8-2" class="outline-4">
-<h4 id="sec-1-8-2"><span class="section-number-4">1.8.2</span> Selective replication</h4>
-<div class="outline-text-4" id="text-1-8-2">
+<div id="outline-container-8-2" class="outline-4">
+<h4 id="sec-8-2"><span class="section-number-4">8.2</span> Selective replication</h4>
+<div class="outline-text-4" id="text-8-2">
 
 <ul>
 <li>An enhancement of the micro-partitioning scheme is to detect or even predict certain items that are likely to cause load imbalance and create additional replicas of these items.（对于hot partition可以增加replica的数量）
@@ -449,16 +437,16 @@ Increased variability is also due to several hardware trends:
 
 </div>
 
-<div id="outline-container-1-8-3" class="outline-4">
-<h4 id="sec-1-8-3"><span class="section-number-4">1.8.3</span> Latency-induced probation</h4>
-<div class="outline-text-4" id="text-1-8-3">
+<div id="outline-container-8-3" class="outline-4">
+<h4 id="sec-8-3"><span class="section-number-4">8.3</span> Latency-induced probation</h4>
+<div class="outline-text-4" id="text-8-3">
 
 <ul>
 <li>By observing the latency distribution of responses from the various machines in the system, intermediate servers sometimes detect situations where the system performs better by excluding a particularly slow machine, or putting it on probation.（检测server的运行情况，如果出现或者是推断某台server比较慢的话，那么可以将其列入黑名单）
 </li>
 <li>The source of the slowness is frequently temporary phenomena like interference from unrelated networking traffic or a spike in CPU activity for another job on the machine, and the slowness tends to be noticed when the system is under greater load.（通常slowness原因都是非常类似的，所以可以根据一些现象推断出来）
 </li>
-<li>However, the system continues to issue shadow requests to these excluded servers, collecting statistics on their latency so they can be reincorporated into the service when the problem abates. This situation is somewhat peculiar, as removal of serving capacity from a live system during periods of high load actually improves latency.（系统能够不断地检测slow machine, 一旦恢复正常的话那么又可以进行服务） <b>note(dirlt)：非常类似hadoop的blacklist tasktracer机制</b> 
+<li>However, the system continues to issue shadow requests to these excluded servers, collecting statistics on their latency so they can be reincorporated into the service when the problem abates. This situation is somewhat peculiar, as removal of serving capacity from a live system during periods of high load actually improves latency.（系统能够不断地检测slow machine, 一旦恢复正常的话那么又可以进行服务） #note: 类似hadoop的blacklist tasktracer机制
 </li>
 </ul>
 
@@ -468,9 +456,9 @@ Increased variability is also due to several hardware trends:
 
 </div>
 
-<div id="outline-container-1-9" class="outline-3">
-<h3 id="sec-1-9"><span class="section-number-3">1.9</span> Large Information Retrieval Systems</h3>
-<div class="outline-text-3" id="text-1-9">
+<div id="outline-container-9" class="outline-3">
+<h3 id="sec-9"><span class="section-number-3">9</span> Large Information Retrieval Systems</h3>
+<div class="outline-text-3" id="text-9">
 
 <ul>
 <li>In large information-retrieval (IR) systems, speed is more than a performance metric; it is a key quality metric, as returning good results quickly is better than returning the best results slowly.（速度非常重要）
@@ -511,9 +499,9 @@ Increased variability is also due to several hardware trends:
 
 </div>
 
-<div id="outline-container-1-10" class="outline-3">
-<h3 id="sec-1-10"><span class="section-number-3">1.10</span> Mutations</h3>
-<div class="outline-text-3" id="text-1-10">
+<div id="outline-container-10" class="outline-3">
+<h3 id="sec-10"><span class="section-number-3">10</span> Mutations</h3>
+<div class="outline-text-3" id="text-10">
 
 <p>The techniques we have discussed so far are most applicable for operations that do not perform critical mutations of the system's state, which covers a broad range of data-intensive services. Tolerating latency variability for operations that mutate state is somewhat easier for a number of reasons:（之前讨论的都是没有修改系统状态的操作，通常是涉及到数据密集性的服务。而对于修改状态的操作而言情况相对更加简单一些）
 </p><ul>
@@ -532,9 +520,9 @@ Increased variability is also due to several hardware trends:
 
 </div>
 
-<div id="outline-container-1-11" class="outline-3">
-<h3 id="sec-1-11"><span class="section-number-3">1.11</span> Hardware Trends and Their Effects</h3>
-<div class="outline-text-3" id="text-1-11">
+<div id="outline-container-11" class="outline-3">
+<h3 id="sec-11"><span class="section-number-3">11</span> Hardware Trends and Their Effects</h3>
+<div class="outline-text-3" id="text-11">
 
 <ul>
 <li>Variability at the hardware level is likely to be higher in the future due to more aggressive power optimizations becoming available and fabrication challenges at deep submicron levels resulting in device-level heterogeneity. Device heterogeneity combined with ever-increasing system scale will make tolerating variability through software techniques even more important over time. （设备级别本身出现延迟偏差的几率是越来越高） 
@@ -555,20 +543,17 @@ Increased variability is also due to several hardware trends:
 
 </div>
 
-<div id="outline-container-1-12" class="outline-3">
-<h3 id="sec-1-12"><span class="section-number-3">1.12</span> Conclusion</h3>
-<div class="outline-text-3" id="text-1-12">
+<div id="outline-container-12" class="outline-3">
+<h3 id="sec-12"><span class="section-number-3">12</span> Conclusion</h3>
+<div class="outline-text-3" id="text-12">
 
-</div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:42+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'tail-at-scale.html';var disqus_title = 'tail-at-scale.html';var disqus_url = 'http://dirlt.com/tail-at-scale.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'tail-at-scale.html';var disqus_title = 'tail-at-scale.html';var disqus_url = 'http://dirlt.com/tail-at-scale.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

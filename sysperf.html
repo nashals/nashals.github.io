@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<head>
 <title>sysperf</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="sysperf"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:42+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,7 +62,7 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
@@ -77,29 +76,18 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="sysperf.html#sec-1">1 sysperf</a>
-<ul>
-<li><a href="sysperf.html#sec-1-1">1.1 What Your Computer Does While You Wait</a></li>
-<li><a href="sysperf.html#sec-1-2">1.2 Numbers Everyone Should Know</a></li>
-<li><a href="sysperf.html#sec-1-3">1.3 The Joys of Real Hardware</a></li>
-<li><a href="sysperf.html#sec-1-4">1.4 延迟和带宽</a></li>
-<li><a href="sysperf.html#sec-1-5">1.5 存储系统的IOPS</a></li>
-</ul>
-</li>
+<li><a href="sysperf.html#sec-1">1 What Your Computer Does While You Wait</a></li>
+<li><a href="sysperf.html#sec-2">2 Numbers Everyone Should Know</a></li>
+<li><a href="sysperf.html#sec-3">3 The Joys of Real Hardware</a></li>
+<li><a href="sysperf.html#sec-4">4 延迟和带宽</a></li>
+<li><a href="sysperf.html#sec-5">5 存储系统的IOPS</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> sysperf</h2>
-<div class="outline-text-2" id="text-1">
-
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> What Your Computer Does While You Wait</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> What Your Computer Does While You Wait</h3>
+<div class="outline-text-3" id="text-1">
 
 <p><a href="http://duartes.org/gustavo/blog/post/what-your-computer-does-while-you-wait">http://duartes.org/gustavo/blog/post/what-your-computer-does-while-you-wait</a>
 </p>
@@ -142,9 +130,9 @@
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Numbers Everyone Should Know</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> Numbers Everyone Should Know</h3>
+<div class="outline-text-3" id="text-2">
 
 <p><a href="designs-lessons-and-advice-from-building-large-distributed-systems.html">Designs, Lessons and Advice from Building Large Distributed Systems</a> @ladis-2009 jeff dean
 </p>
@@ -182,9 +170,9 @@
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> The Joys of Real Hardware</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> The Joys of Real Hardware</h3>
+<div class="outline-text-3" id="text-3">
 
 <p><a href="designs-lessons-and-advice-from-building-large-distributed-systems.html">Designs, Lessons and Advice from Building Large Distributed Systems</a> @ladis-2009 jeff dean
 </p>
@@ -226,9 +214,9 @@ Typical first year for a new cluster:
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> 延迟和带宽</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> 延迟和带宽</h3>
+<div class="outline-text-3" id="text-4">
 
 <p>延迟指原子信息通过介质所需要的时间，带宽指信息在介质中传播的速度。如果我们以浏览Web页面为例的话，如果等待长时间才开始显示一个页面，但立刻就全部出现了，这说明网络的延迟比较大，带宽还不错。如果页面立刻开始出现，但是花了很长时间才全部显示出来，这说明网络的延迟还可以，但带宽较小。
 </p>
@@ -257,27 +245,47 @@ Typical first year for a new cluster:
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> 存储系统的IOPS</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> 存储系统的IOPS</h3>
+<div class="outline-text-3" id="text-5">
 
-<p>iops(io per second)是我们在分析存储介质时抽象出的概念，表示可以发起多少个io操作/s.  <b>因为每种存储介质工作方式是不同的，抽象出的iops则可以更好地让我们分析。</b>  好比磁盘的话我们使用转速来衡量，但是放在磁带或者是SSD上的话，那么转速这个指标就没有意义。iops可以比较好定量地分析某个存储介质的操作速度。
+<p><a href="http://rickardnobel.se/storage-performance-iops-latency-throughput/">http://rickardnobel.se/storage-performance-iops-latency-throughput/</a>
 </p>
 <p>
-如果我们考虑磁盘的话，那么iops基本上和磁盘转速相关。比如转速是7200RPM的话，那么应该是120RPS.如果一个操作磁头需要转一圈的话，那么延迟大概在8ms左右。另外考虑向某个磁道移动时间的话，我们可以大概可以认为延迟在15ms左右。 <del>这样折合计算iops大概在66-67</del>. <b>似乎这个没有太大意义，因为不可能每次读取都需要转动磁头以及移动磁道</b>
+iops(io per second)是我们在分析存储介质时抽象出的概念，表示可以发起多少个io操作/s.  <b>因为每种存储介质工作方式是不同的，抽象出的iops则可以更好地让我们分析。</b>  好比磁盘的话我们使用转速来衡量，但是放在磁带或者是SSD上的话，那么转速这个指标就没有意义。iops可以比较好定量地分析某个存储介质的操作速度。
 </p>
 <p>
-存储系统一方便受限于iops，一方便受限于磁盘带宽。通常磁盘带宽大约在80MB/s一下，50~60MB/s是比较典型的值。
-</p></div>
+<del>如果我们考虑磁盘的话，那么iops基本上和磁盘转速相关。</del> （和磁盘带宽和读写负载也有关系） 比如转速是7200RPM的话，那么应该是120RPS.如果一个操作磁头需要转一圈的话，那么延迟大概在8ms左右。另外考虑向某个磁道移动时间的话，我们可以大概可以认为延迟在15ms左右。 <del>这样折合计算iops大概在66-67</del>. (这个数值没有意义，因为不可能每次读取都需要转动磁头以及移动磁道）
+</p>
+<p>
+<del>存储系统一方便受限于iops，一方便受限于磁盘带宽 。通常磁盘带宽大约在80MB/s一下，50~60MB/s是比较典型的值。</del> （磁盘带宽取决于读写负载）
+</p>
+<p>
+note@2015-05-22: 更正一下，即使对于HDD来说iops也不仅仅和磁盘转速相关，还和磁盘带宽以及读写负载有关，所以事实上iops就是衡量存储介质和存储系统的一个独立综合指标。这也同时意味着，当我们宣称某个存储介质或者是存储系统iops是多少时，我们一定要把读写负载情况这个context也说明情况。
+</p>
+
+<hr/>
+
+<p>
+note@ 015-05-21: iops的测算非常复杂，主要是涉及到的环境配置参数非常多，比如read/write buffer size, 多少个线程来做读写，以及随机和顺序读写等。前段时间想要测量一下磁盘的iops，所以就在网上搜索了一下这方面的工具和文章：
+</p><ul>
+<li><a href="http://code.google.com/p/ioping/">http://code.google.com/p/ioping/</a> # ioping. C, 使用方便，可测读写，但是不支持多线程
+</li>
+<li>Measuring Disk Usage In Linux (%iowait vs IOPS) - Everything is a Ghetto : <a href="http://www.thattommyhall.com/2011/02/18/iops-linux-iostat/">http://www.thattommyhall.com/2011/02/18/iops-linux-iostat/</a> # 使用iostat -dx 1来查看iops
+</li>
+<li>Measuring Disk IO Performance « Benjamin Schweizer. : <a href="http://benjamin-schweizer.de/measuring-disk-io-performance.html">http://benjamin-schweizer.de/measuring-disk-io-performance.html</a> # iops. Python, 使用方便，只能测读，支持多线程
+</li>
+<li><a href="http://www.ee.pw.edu.pl/~pileckip/aix/iowait.htm">http://www.ee.pw.edu.pl/~pileckip/aix/iowait.htm</a> # 只看iowait比例是没有意义的
+</li>
+</ul>
+
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:42+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'sysperf.html';var disqus_title = 'sysperf.html';var disqus_url = 'http://dirlt.com/sysperf.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'sysperf.html';var disqus_title = 'sysperf.html';var disqus_url = 'http://dirlt.com/sysperf.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

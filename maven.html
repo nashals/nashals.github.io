@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
-<title>maven</title>
+<head>
+<title>Maven</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="maven"/>
+<meta name="title" content="Maven"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-12-18T11:29+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -153,76 +152,61 @@ for the JavaScript code below.
 /*]]>*///-->
 </script>
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
 </div>
 
 <div id="content">
-<h1 class="title">maven</h1>
+<h1 class="title">Maven</h1>
 
+<p><a href="http://maven.apache.org/">http://maven.apache.org/</a>
+</p>
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="maven.html#sec-1">1 maven</a>
+<li><a href="maven.html#sec-1">1 Introduction</a>
 <ul>
-<li><a href="maven.html#sec-1-1">1.1 introduction</a>
-<ul>
-<li><a href="maven.html#sec-1-1-1">1.1.1 maven能够用来做什么</a></li>
-<li><a href="maven.html#sec-1-1-2">1.1.2 maven模型</a></li>
-<li><a href="maven.html#sec-1-1-3">1.1.3 maven生命周期</a></li>
+<li><a href="maven.html#sec-1-1">1.1 maven能够用来做什么</a></li>
+<li><a href="maven.html#sec-1-2">1.2 maven模型</a></li>
+<li><a href="maven.html#sec-1-3">1.3 maven生命周期</a></li>
 </ul>
 </li>
-<li><a href="maven.html#sec-1-2">1.2 repository</a>
+<li><a href="maven.html#sec-2">2 Repository</a>
 <ul>
-<li><a href="maven.html#sec-1-2-1">1.2.1 本地仓库</a></li>
-<li><a href="maven.html#sec-1-2-2">1.2.2 远程仓库</a></li>
-<li><a href="maven.html#sec-1-2-3">1.2.3 分发构件至远程仓库</a></li>
-<li><a href="maven.html#sec-1-2-4">1.2.4 远程仓库搭建</a></li>
+<li><a href="maven.html#sec-2-1">2.1 本地仓库</a></li>
+<li><a href="maven.html#sec-2-2">2.2 远程仓库</a></li>
+<li><a href="maven.html#sec-2-3">2.3 分发构件至远程仓库</a></li>
+<li><a href="maven.html#sec-2-4">2.4 远程仓库搭建</a></li>
 </ul>
 </li>
-<li><a href="maven.html#sec-1-3">1.3 notes</a>
+<li><a href="maven.html#sec-3">3 Notes</a>
 <ul>
-<li><a href="maven.html#sec-1-3-1">1.3.1 安装maven</a></li>
-<li><a href="maven.html#sec-1-3-2">1.3.2 常用命令</a></li>
-<li><a href="maven.html#sec-1-3-3">1.3.3 常用插件</a></li>
-<li><a href="maven.html#sec-1-3-4">1.3.4 .m2/settings.xml</a></li>
-</ul>
-</li>
+<li><a href="maven.html#sec-3-1">3.1 安装maven</a></li>
+<li><a href="maven.html#sec-3-2">3.2 常用命令</a></li>
+<li><a href="maven.html#sec-3-3">3.3 常用插件</a></li>
+<li><a href="maven.html#sec-3-4">3.4 .m2/settings.xml</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> maven</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> Introduction</h3>
+<div class="outline-text-3" id="text-1">
 
-<ul>
-<li><a href="http://maven.apache.org/">http://maven.apache.org/</a>
-</li>
-<li><a href="http://www.ibm.com/developerworks/cn/education/java/j-mavenv2/">http://www.ibm.com/developerworks/cn/education/java/j-mavenv2/</a>
-</li>
-</ul>
-
-
+<p><a href="http://www.ibm.com/developerworks/cn/education/java/j-mavenv2/">http://www.ibm.com/developerworks/cn/education/java/j-mavenv2/</a>
+</p>
 
 </div>
 
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> introduction</h3>
-<div class="outline-text-3" id="text-1-1">
-
-
-</div>
-
-<div id="outline-container-1-1-1" class="outline-4">
-<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> maven能够用来做什么</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-1-1" class="outline-4">
+<h4 id="sec-1-1"><span class="section-number-4">1.1</span> maven能够用来做什么</h4>
+<div class="outline-text-4" id="text-1-1">
 
 <ul>
 <li>理解项目通常是如何构建的。
@@ -248,9 +232,9 @@ for the JavaScript code below.
 
 </div>
 
-<div id="outline-container-1-1-2" class="outline-4">
-<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> maven模型</h4>
-<div class="outline-text-4" id="text-1-1-2">
+<div id="outline-container-1-2" class="outline-4">
+<h4 id="sec-1-2"><span class="section-number-4">1.2</span> maven模型</h4>
+<div class="outline-text-4" id="text-1-2">
 
 <p>maven模型分为几个部分：
 </p><ul>
@@ -260,7 +244,7 @@ for the JavaScript code below.
 </li>
 <li>构建生命周期和阶段：和 POM 相关的概念是构建生命周期 和阶段。这是 Maven 2 的内嵌概念模型和现实物理世界之间的接口。使用 Maven 时，工作主要是通过插件来执行的。在构建周期中，Maven 2 通过遵循一系列定义好的阶段，将这些插件协调起来。
 </li>
-<li>插件：插件中每个认为被称为mojo（构建任务）。Maven 引擎在执行构建生命周期中相应的阶段时，执行插件中的 mojo（构建任务）。插件的 mojo 和生命周期中的阶段间的关联叫做绑定 。插件开发人员能够灵活地将一个或多个生命周期阶段和一个插件关联起来。 
+<li>插件：插件中每个认为被称为mojo（构建任务）。Maven 引擎在执行构建生命周期中相应的阶段时，执行插件中的 mojo（构建任务）。插件的 mojo 和生命周期中的阶段间的关联叫做绑定 。插件开发人员能够灵活地将一个或多个生命周期阶段和一个插件关联起来。
 </li>
 </ul>
 
@@ -269,9 +253,9 @@ for the JavaScript code below.
 
 </div>
 
-<div id="outline-container-1-1-3" class="outline-4">
-<h4 id="sec-1-1-3"><span class="section-number-4">1.1.3</span> maven生命周期</h4>
-<div class="outline-text-4" id="text-1-1-3">
+<div id="outline-container-1-3" class="outline-4">
+<h4 id="sec-1-3"><span class="section-number-4">1.3</span> maven生命周期</h4>
+<div class="outline-text-4" id="text-1-3">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" />
@@ -307,7 +291,7 @@ for the JavaScript code below.
 Maven 从开源社区中汲取了十多年的项目构建管理经验。很难找到一个构建周期不符合上表中的生命周期阶段的软件项目。启动 Maven 2 引擎后，它会按顺序经历表中的各阶段，执行可能与该阶段绑定的 mojo。每个 mojo 则可以使用 Maven 2 丰富的 POM 支持、依赖项管理，也可以访问执行这一专门任务时的构建状态信息。调用 Maven 2 引擎时，可以将一个生命周期阶段指定为命令行参数。该引擎一直执行到指定的阶段（包括该指定的阶段）。包含的阶段中所有的 mojo 都会被触发。
 
 <p>
-但是在这里有另外一个版本，大家可以参考一下 <a href="http://maven.apache.org/guides/getting-started/maven-in-five-minutes.html">http://maven.apache.org/guides/getting-started/maven-in-five-minutes.html</a> 
+但是在这里有另外一个版本，大家可以参考一下 <a href="http://maven.apache.org/guides/getting-started/maven-in-five-minutes.html">http://maven.apache.org/guides/getting-started/maven-in-five-minutes.html</a>
 </p><ul>
 <li>validate: validate the project is correct and all necessary information is available
 </li>
@@ -341,9 +325,9 @@ Maven 从开源社区中汲取了十多年的项目构建管理经验。很难�
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> repository</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> Repository</h3>
+<div class="outline-text-3" id="text-2">
 
 <p>Maven 2 仓库存储 Maven 在一个项目的依赖项解析中使用过的工件集。在本地磁盘上访问本地仓库，通过网络访问远程仓库。工件通常被打包成包含二进制库或可执行库的 JAR 文件。这被认为是工件的一个类型。但在实践中，工件也可以是 WAR、EAR 或其他代码捆绑类型。Maven 2 利用操作系统的目录结构对存储在仓库中的工件集进行快速索引。这个仓库索引系统依赖于这种能力来通过工件的坐标惟一标识工件。Maven 坐标是一组可以惟一标识工件的三元组值。坐标包含了下列三条信息：
 </p><ul>
@@ -374,9 +358,9 @@ Maven 从开源社区中汲取了十多年的项目构建管理经验。很难�
 <p>
 另外两个并不常用的坐标指标是：
 </p><ul>
-<li>packaging. jar, pom etc. <b>note(dirlt):下载对象类型</b>
+<li>packaging. jar, pom etc. #note:下载对象类型
 </li>
-<li>classifier. javadoc, jdk15 etc. <b>note(dirlt)：下载对象后缀名，比如如果jdk15的话，那么下载对象就是junit-jdk15.jar.这个可以用来区分环境</b>
+<li>classifier. javadoc, jdk15 etc. #note: 下载对象后缀名，比如如果jdk15的话，那么下载对象就是junit-jdk15.jar.这个可以用来区分环境
 </li>
 </ul>
 
@@ -400,9 +384,9 @@ Maven 从开源社区中汲取了十多年的项目构建管理经验。很难�
 
 </div>
 
-<div id="outline-container-1-2-1" class="outline-4">
-<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> 本地仓库</h4>
-<div class="outline-text-4" id="text-1-2-1">
+<div id="outline-container-2-1" class="outline-4">
+<h4 id="sec-2-1"><span class="section-number-4">2.1</span> 本地仓库</h4>
+<div class="outline-text-4" id="text-2-1">
 
 <p>maven默认设置~/.m2/repository为本地仓库。将项目所需要的依赖全部都缓存下来，这样不用每次都重新下载依赖。
 </p>
@@ -435,9 +419,9 @@ drwxrwxr-x 3 dirlt dirlt 4096  6月 24 22:36 xml-apis
 </p>
 
 
-<pre class="src src-XML">&lt;settings&gt;  
-&lt;localRepository&gt;D:\java\repository&lt;/localRepository&gt;  
-&lt;/settings&gt; 
+<pre class="src src-XML">&lt;settings&gt;
+&lt;localRepository&gt;D:\java\repository&lt;/localRepository&gt;
+&lt;/settings&gt;
 </pre>
 
 
@@ -445,9 +429,9 @@ drwxrwxr-x 3 dirlt dirlt 4096  6月 24 22:36 xml-apis
 
 </div>
 
-<div id="outline-container-1-2-2" class="outline-4">
-<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> 远程仓库</h4>
-<div class="outline-text-4" id="text-1-2-2">
+<div id="outline-container-2-2" class="outline-4">
+<h4 id="sec-2-2"><span class="section-number-4">2.2</span> 远程仓库</h4>
+<div class="outline-text-4" id="text-2-2">
 
 <p>参考资源 <a href="http://juvenshun.iteye.com/blog/359256">http://juvenshun.iteye.com/blog/359256</a>
 </p>
@@ -456,17 +440,17 @@ drwxrwxr-x 3 dirlt dirlt 4096  6月 24 22:36 xml-apis
 </p>
 
 
-<pre class="src src-XML">&lt;repositories&gt;  
-  &lt;repository&gt;  
-    &lt;id&gt;central&lt;/id&gt;  
-    &lt;name&gt;Maven Repository Switchboard&lt;/name&gt;  
-    &lt;layout&gt;default&lt;/layout&gt;  
-    &lt;url&gt;http://repo1.maven.org/maven2&lt;/url&gt;  
-    &lt;snapshots&gt;  
-      &lt;enabled&gt;false&lt;/enabled&gt;  
-    &lt;/snapshots&gt;  
-  &lt;/repository&gt;  
-&lt;/repositories&gt;  
+<pre class="src src-XML">&lt;repositories&gt;
+  &lt;repository&gt;
+    &lt;id&gt;central&lt;/id&gt;
+    &lt;name&gt;Maven Repository Switchboard&lt;/name&gt;
+    &lt;layout&gt;default&lt;/layout&gt;
+    &lt;url&gt;http://repo1.maven.org/maven2&lt;/url&gt;
+    &lt;snapshots&gt;
+      &lt;enabled&gt;false&lt;/enabled&gt;
+    &lt;/snapshots&gt;
+  &lt;/repository&gt;
+&lt;/repositories&gt;
 </pre>
 
 <p>
@@ -517,36 +501,36 @@ drwxrwxr-x 3 dirlt dirlt 4096  6月 24 22:36 xml-apis
 
 
 
-<pre class="src src-XML">&lt;project&gt;  
-  ...  
-  &lt;repositories&gt;  
-    &lt;repository&gt;  
-      &lt;id&gt;maven-net-cn&lt;/id&gt;  
-      &lt;name&gt;Maven China Mirror&lt;/name&gt;  
-      &lt;url&gt;http://maven.net.cn/content/groups/public/&lt;/url&gt;  
-      &lt;releases&gt;  
-        &lt;enabled&gt;true&lt;/enabled&gt;  
-      &lt;/releases&gt;  
-      &lt;snapshots&gt;  
-        &lt;enabled&gt;false&lt;/enabled&gt;  
-      &lt;/snapshots&gt;  
-    &lt;/repository&gt;  
-  &lt;/repositories&gt;  
-  &lt;pluginRepositories&gt;  
-    &lt;pluginRepository&gt;  
-      &lt;id&gt;maven-net-cn&lt;/id&gt;  
-      &lt;name&gt;Maven China Mirror&lt;/name&gt;  
-      &lt;url&gt;http://maven.net.cn/content/groups/public/&lt;/url&gt;  
-      &lt;releases&gt;  
-        &lt;enabled&gt;true&lt;/enabled&gt;  
-      &lt;/releases&gt;  
-      &lt;snapshots&gt;  
-        &lt;enabled&gt;false&lt;/enabled&gt;  
-      &lt;/snapshots&gt;      
-    &lt;/pluginRepository&gt;  
-  &lt;/pluginRepositories&gt;  
-  ...  
-&lt;/project&gt;  
+<pre class="src src-XML">&lt;project&gt;
+  ...
+  &lt;repositories&gt;
+    &lt;repository&gt;
+      &lt;id&gt;maven-net-cn&lt;/id&gt;
+      &lt;name&gt;Maven China Mirror&lt;/name&gt;
+      &lt;url&gt;http://maven.net.cn/content/groups/public/&lt;/url&gt;
+      &lt;releases&gt;
+        &lt;enabled&gt;true&lt;/enabled&gt;
+      &lt;/releases&gt;
+      &lt;snapshots&gt;
+        &lt;enabled&gt;false&lt;/enabled&gt;
+      &lt;/snapshots&gt;
+    &lt;/repository&gt;
+  &lt;/repositories&gt;
+  &lt;pluginRepositories&gt;
+    &lt;pluginRepository&gt;
+      &lt;id&gt;maven-net-cn&lt;/id&gt;
+      &lt;name&gt;Maven China Mirror&lt;/name&gt;
+      &lt;url&gt;http://maven.net.cn/content/groups/public/&lt;/url&gt;
+      &lt;releases&gt;
+        &lt;enabled&gt;true&lt;/enabled&gt;
+      &lt;/releases&gt;
+      &lt;snapshots&gt;
+        &lt;enabled&gt;false&lt;/enabled&gt;
+      &lt;/snapshots&gt;
+    &lt;/pluginRepository&gt;
+  &lt;/pluginRepositories&gt;
+  ...
+&lt;/project&gt;
 </pre>
 
 
@@ -578,19 +562,19 @@ drwxrwxr-x 3 dirlt dirlt 4096  6月 24 22:36 xml-apis
 
 
 
-<pre class="src src-XML">&lt;settings&gt;  
-  ...  
-  &lt;profiles&gt;  
-    &lt;profile&gt;  
-      &lt;id&gt;dev&lt;/id&gt;  
-      &lt;!-- repositories and pluginRepositories here--&gt;  
-    &lt;/profile&gt;  
-  &lt;/profiles&gt;  
-  &lt;activeProfiles&gt;  
-    &lt;activeProfile&gt;dev&lt;/activeProfile&gt;  
-  &lt;/activeProfiles&gt;  
-  ...  
-&lt;/settings&gt;  
+<pre class="src src-XML">&lt;settings&gt;
+  ...
+  &lt;profiles&gt;
+    &lt;profile&gt;
+      &lt;id&gt;dev&lt;/id&gt;
+      &lt;!-- repositories and pluginRepositories here--&gt;
+    &lt;/profile&gt;
+  &lt;/profiles&gt;
+  &lt;activeProfiles&gt;
+    &lt;activeProfile&gt;dev&lt;/activeProfile&gt;
+  &lt;/activeProfiles&gt;
+  ...
+&lt;/settings&gt;
 </pre>
 
 
@@ -620,33 +604,30 @@ drwxrwxr-x 3 dirlt dirlt 4096  6月 24 22:36 xml-apis
 
 
 
-<pre class="src src-XML">&lt;settings&gt;  
-  ...  
-  &lt;mirrors&gt;  
-    &lt;mirror&gt;  
-      &lt;id&gt;maven-net-cn&lt;/id&gt;  
-      &lt;name&gt;Maven China Mirror&lt;/name&gt;  
-      &lt;url&gt;http://maven.net.cn/content/groups/public/&lt;/url&gt;  
-      &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;  
-    &lt;/mirror&gt;  
-  &lt;/mirrors&gt;  
-  ...  
+<pre class="src src-XML">&lt;settings&gt;
+  ...
+  &lt;mirrors&gt;
+    &lt;mirror&gt;
+      &lt;id&gt;maven-net-cn&lt;/id&gt;
+      &lt;name&gt;Maven China Mirror&lt;/name&gt;
+      &lt;url&gt;http://maven.net.cn/content/groups/public/&lt;/url&gt;
+      &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;
+    &lt;/mirror&gt;
+  &lt;/mirrors&gt;
+  ...
 &lt;/settings&gt;
 </pre>
 
 <p>
-这里仅仅是配置了central的镜像，如果希望配置所有仓库镜像的话那么&lt;mirrorOf&gt;*&lt;/mirrorOf&gt;. 关于更加高级的镜像配置，可以参考：<a href="http://maven.apache.org/guides/mini/guide-mirror-settings.html">http://maven.apache.org/guides/mini/guide-mirror-settings.html</a>. todo(dirlt):maven是如何在中央仓库和本地仓库，以及镜像之间选择下载工件的。
-</p>
-<p>
-<b>note(dirlt)：seems useless</b>
+这里仅仅是配置了central的镜像，如果希望配置所有仓库镜像的话那么&lt;mirrorOf&gt;*&lt;/mirrorOf&gt;. 关于更加高级的镜像配置，可以参考：<a href="http://maven.apache.org/guides/mini/guide-mirror-settings.html">http://maven.apache.org/guides/mini/guide-mirror-settings.html</a>. #todo: maven是如何在中央仓库和本地仓库，以及镜像之间选择下载工件的。
 </p>
 </div>
 
 </div>
 
-<div id="outline-container-1-2-3" class="outline-4">
-<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> 分发构件至远程仓库</h4>
-<div class="outline-text-4" id="text-1-2-3">
+<div id="outline-container-2-3" class="outline-4">
+<h4 id="sec-2-3"><span class="section-number-4">2.3</span> 分发构件至远程仓库</h4>
+<div class="outline-text-4" id="text-2-3">
 
 <p>mvn install 会将项目生成的构件安装到本地Maven仓库，mvn deploy 用来将项目生成的构件分发到远程Maven仓库。本地Maven仓库的构件只能供当前用户使用，在分发到远程Maven仓库之后，所有能访问该仓库的用户都能使用你的构件。 <b>安装到maven本地仓库对于使用一些下载源代码并且编译的项目非常有用</b>
 </p>
@@ -701,33 +682,33 @@ drwxrwxr-x 3 dirlt dirlt 4096  6月 24 22:36 xml-apis
 
 
 
-<pre class="src src-XML">&lt;project&gt;    
-  ...    
-  &lt;distributionManagement&gt;    
-    &lt;repository&gt;    
-      &lt;id&gt;nexus-releases&lt;/id&gt;    
-      &lt;name&gt;Nexus Release Repository&lt;/name&gt;    
-      &lt;url&gt;http://127.0.0.1:8080/nexus/content/repositories/releases/&lt;/url&gt;    
-    &lt;/repository&gt;    
-    &lt;snapshotRepository&gt;    
-      &lt;id&gt;nexus-snapshots&lt;/id&gt;    
-      &lt;name&gt;Nexus Snapshot Repository&lt;/name&gt;    
-      &lt;url&gt;http://127.0.0.1:8080/nexus/content/repositories/snapshots/&lt;/url&gt;    
-    &lt;/snapshotRepository&gt;    
+<pre class="src src-XML">&lt;project&gt;
+  ...
+  &lt;distributionManagement&gt;
+    &lt;repository&gt;
+      &lt;id&gt;nexus-releases&lt;/id&gt;
+      &lt;name&gt;Nexus Release Repository&lt;/name&gt;
+      &lt;url&gt;http://127.0.0.1:8080/nexus/content/repositories/releases/&lt;/url&gt;
+    &lt;/repository&gt;
+    &lt;snapshotRepository&gt;
+      &lt;id&gt;nexus-snapshots&lt;/id&gt;
+      &lt;name&gt;Nexus Snapshot Repository&lt;/name&gt;
+      &lt;url&gt;http://127.0.0.1:8080/nexus/content/repositories/snapshots/&lt;/url&gt;
+    &lt;/snapshotRepository&gt;
   &lt;/distributionManagement&gt;
   &lt;servers&gt;
     &lt;server&gt;
       &lt;id&gt;nexus-releases&lt;/id&gt;
-      &lt;username&gt;admin&lt;/username&gt;  
+      &lt;username&gt;admin&lt;/username&gt;
       &lt;password&gt;admin123&lt;/password&gt;
     &lt;/server&gt;
-    &lt;server&gt;    
-      &lt;id&gt;nexus-snapshots&lt;/id&gt; 
+    &lt;server&gt;
+      &lt;id&gt;nexus-snapshots&lt;/id&gt;
       &lt;username&gt;admin&lt;/username&gt;
       &lt;password&gt;admin123&lt;/password&gt;
     &lt;/server&gt;
   &lt;/servers&gt;
-  ...    
+  ...
 &lt;/project&gt;
 </pre>
 
@@ -755,28 +736,31 @@ drwxrwxr-x 3 dirlt dirlt 4096  6月 24 22:36 xml-apis
 </pre>
 
 <p>
-maven会自动将父项目的pom.xml包含进来。 <b>note(dirlt):实际上可以在这里填写很多公共配置。</b>
+maven会自动将父项目的pom.xml包含进来。 #note: 可以在这里填写很多公共配置
 </p>
 <p>
-完成之后执行mvn deploy即可进行部署。done!!! :)    
+完成之后执行mvn deploy即可进行部署。done!!! :)
 </p>
 </div>
 
 </div>
 
-<div id="outline-container-1-2-4" class="outline-4">
-<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> 远程仓库搭建</h4>
-<div class="outline-text-4" id="text-1-2-4">
+<div id="outline-container-2-4" class="outline-4">
+<h4 id="sec-2-4"><span class="section-number-4">2.4</span> 远程仓库搭建</h4>
+<div class="outline-text-4" id="text-2-4">
 
-<p>参考资源 <a href="http://juvenshun.iteye.com/blog/34">http://juvenshun.iteye.com/blog/34</a>
+<p>+参考资源 <a href="http://juvenshun.iteye.com/blog/34">http://juvenshun.iteye.com/blog/34</a>+
+</p>
+<p>
+可用的maven仓库软件有:
 </p><ul>
 <li>Nexus
 </li>
-<li>Apache Archiva
+<li>Apache Archiva.
 </li>
 </ul>
 
-<p>note(dirlt):自己维护了一下公司内部的Apache Archive看起来似乎使用并不麻烦。
+<p>自己维护了一下公司内部的Apache Archiva看起来似乎使用并不麻烦, 但是还是不及Nexus好用. 所以推荐使用nexus. 至于nexus仓库搭建, 网上有相当多的这方面教程.
 </p>
 <p>
 nexus有下面几种repo：
@@ -787,27 +771,61 @@ nexus有下面几种repo：
 </li>
 <li>Group Repo(可以集合不同Repo成为一个独立Repo),
 </li>
-<li>Virtual Repo(???)
+<li>Virtual Repo(比如将maven2仓库对外暴露maven1仓库接口)
 </li>
 </ul>
 
 <p>另外如果自己将一些pom直接copy到某个repo下面的话，nexus不能够索引到，这个时候需要右击这个repo选择Update Index.(nexus依赖索引知道文件分布)
+</p>
+
+<hr/>
+
+<p>
+搭建自己的仓库似乎非常有必要, 原因有下面几点:
+</p><ol>
+<li>一些难下载到的组件只需要下载一次或者是从其他机器上拷贝过来.
+</li>
+<li>因为ivy2和mvn使用不同的本地目录和不同方式来存储组件, 所以即使用mvn下载了某个组件, 使用ivy2还需要下载一边. 但是如果有本地仓库的话, 那么下载就容易多了.
+</li>
+<li>这些组件库可以很方便地集中管理. 如果在团队里面使用的话, 大家可以共享已经下载好的组件, 加快开发速度.
+</li>
+<li>内部组件也可以放在仓库里面.
+</li>
+</ol>
+
+
+<p>
+nexus 可以从 <a href="http://www.sonatype.org/nexus/go/">这里</a> 下载到.
+</p><ul>
+<li>使用bin/nexus start来启动.
+</li>
+<li>访问<a href="http://localhost:8081">http://localhost:8081</a>(see conf/nexus.properties).
+</li>
+<li>管理员账号是admin/admin123.
+</li>
+<li>数据目录是 ../sonatype-work(see conf/nexus.properties).
+</li>
+</ul>
+
+
+<p>
+通常我们只需要多添加几个proxy repo, 然后做一个group repo将这些proxy repos包含进来. proxy repo必须设置"Download Remote Indexes"为True, 这样才可以从远程仓库上将索引拉下(如果之前为False, 然后之后要选择"repair index"来修复索引). "Administration -&gt; Scheduled Tasks"观察后台是否在做索引, 完成索引之后才能够查询和使用. (初始建立索引可能需要花费10~30分钟)
 </p>
 </div>
 </div>
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> notes</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> Notes</h3>
+<div class="outline-text-3" id="text-3">
 
 
 </div>
 
-<div id="outline-container-1-3-1" class="outline-4">
-<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> 安装maven</h4>
-<div class="outline-text-4" id="text-1-3-1">
+<div id="outline-container-3-1" class="outline-4">
+<h4 id="sec-3-1"><span class="section-number-4">3.1</span> 安装maven</h4>
+<div class="outline-text-4" id="text-3-1">
 
 <p>如果使用的是ubuntu/debian的话，可以直接使用apt-get install maven来完成。
 </p>
@@ -826,7 +844,7 @@ nexus有下面几种repo：
 </li>
 <li>export M2_HOME=/home/dirlt/utils/apache-maven-2.2.1/
 </li>
-<li>export PATH=/home/dirlt/utils/apache-maven-2.2.1/bin:$PATH 
+<li>export PATH=/home/dirlt/utils/apache-maven-2.2.1/bin:$PATH
 </li>
 <li>如果已经存在一个.m2 repository的话，那么可以直接在$M2_HOME下面做一个软链接
 </li>
@@ -837,9 +855,9 @@ nexus有下面几种repo：
 
 </div>
 
-<div id="outline-container-1-3-2" class="outline-4">
-<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> 常用命令</h4>
-<div class="outline-text-4" id="text-1-3-2">
+<div id="outline-container-3-2" class="outline-4">
+<h4 id="sec-3-2"><span class="section-number-4">3.2</span> 常用命令</h4>
+<div class="outline-text-4" id="text-3-2">
 
 <ul>
 <li>mvn validate. 验证工程是否正确，所有需要的资源是否可用
@@ -850,13 +868,13 @@ nexus有下面几种repo：
 </li>
 <li>mvn package. 将编译输出打包
 </li>
-<li>mvn integration-test. 运行集成测试. todo(dirlt):
+<li>mvn integration-test. 运行集成测试
 </li>
-<li>mvn verify. 检查是否可以发布. todo(dirlt):
+<li>mvn verify. 检查是否可以发布
 </li>
-<li>mvn install. 将包安装到本地的repository. <b>note(dirlt)：这个对于从github上面下载的东西非常有用</b>
+<li>mvn install. 将包安装到本地的repository
 </li>
-<li>mvn deploy. 将包部署到远程的repository.
+<li>mvn deploy. 将包部署到远程的repository
 </li>
 <li>mvn generate-sources 生成应用所需要的额外代码
 </li>
@@ -866,7 +884,7 @@ nexus有下面几种repo：
 </li>
 <li>mvn eclipse:clean 清除eclipse项目文件
 </li>
-<li><b>note(dirlt)：自从使用了intellij就不需要这个东西了=D</b>
+<li>#note: 自从使用了intellij就不需要这个东西了
 </li>
 </ul>
 
@@ -877,7 +895,7 @@ nexus有下面几种repo：
 <ul>
 <li>mvn test -Dtest=com.dirlt.java.mr.TestRunMultipleOutputs
 </li>
-<li>mvn test -Dtest=com.dirlt.java.mr.TestRunMultipleOutputs#testSample 
+<li>mvn test -Dtest=com.dirlt.java.mr.TestRunMultipleOutputs#testSample
 </li>
 <li>-Dmaven.test.skip=true 跳过单元测试
 </li>
@@ -920,9 +938,9 @@ nexus有下面几种repo：
 
 </div>
 
-<div id="outline-container-1-3-3" class="outline-4">
-<h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> 常用插件</h4>
-<div class="outline-text-4" id="text-1-3-3">
+<div id="outline-container-3-3" class="outline-4">
+<h4 id="sec-3-3"><span class="section-number-4">3.3</span> 常用插件</h4>
+<div class="outline-text-4" id="text-3-3">
 
 <ul>
 <li>Maven Surefire Plugin <a href="http://maven.apache.org/surefire/maven-surefire-plugin/">http://maven.apache.org/surefire/maven-surefire-plugin/</a> 单元测试
@@ -944,9 +962,9 @@ nexus有下面几种repo：
 
 </div>
 
-<div id="outline-container-1-3-4" class="outline-4">
-<h4 id="sec-1-3-4"><span class="section-number-4">1.3.4</span> .m2/settings.xml</h4>
-<div class="outline-text-4" id="text-1-3-4">
+<div id="outline-container-3-4" class="outline-4">
+<h4 id="sec-3-4"><span class="section-number-4">3.4</span> .m2/settings.xml</h4>
+<div class="outline-text-4" id="text-3-4">
 
 <ul>
 <li>utils/mvn-settings.xml
@@ -961,21 +979,15 @@ nexus有下面几种repo：
 </li>
 </ul>
 
-
-<p>
-note(dirlt):网上有很多教程如何搭建nexus maven服务器，对于企业开发的话这样的单独服务器还是非常需要的。
-</p>
-</div>
-</div>
+<p>#note: 网上有很多教程如何搭建nexus maven服务器，对于企业开发的话这样的单独服务器还是非常需要的。
+</p></div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-12-18T11:29+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'maven.html';var disqus_title = 'maven.html';var disqus_url = 'http://dirlt.com/maven.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'maven.html';var disqus_title = 'maven.html';var disqus_url = 'http://dirlt.com/maven.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

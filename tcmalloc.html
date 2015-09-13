@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<head>
 <title>tcmalloc</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="tcmalloc"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:42+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,7 +62,7 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
@@ -77,94 +76,90 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="tcmalloc.html#sec-1">1 tcmalloc</a>
+<li><a href="tcmalloc.html#sec-1">1 写在前面</a></li>
+<li><a href="tcmalloc.html#sec-2">2 函数入口</a></li>
+<li><a href="tcmalloc.html#sec-3">3 全局内存</a></li>
+<li><a href="tcmalloc.html#sec-4">4 管理对象</a>
 <ul>
-<li><a href="tcmalloc.html#sec-1-1">1.1 函数入口</a></li>
-<li><a href="tcmalloc.html#sec-1-2">1.2 全局内存</a></li>
-<li><a href="tcmalloc.html#sec-1-3">1.3 管理对象</a>
+<li><a href="tcmalloc.html#sec-4-1">4.1 TCMallocGuard</a></li>
+<li><a href="tcmalloc.html#sec-4-2">4.2 PageHeapAllocator</a></li>
+<li><a href="tcmalloc.html#sec-4-3">4.3 SizeMap</a></li>
+<li><a href="tcmalloc.html#sec-4-4">4.4 Central Cache</a>
 <ul>
-<li><a href="tcmalloc.html#sec-1-3-1">1.3.1 TCMallocGuard</a></li>
-<li><a href="tcmalloc.html#sec-1-3-2">1.3.2 PageHeapAllocator</a></li>
-<li><a href="tcmalloc.html#sec-1-3-3">1.3.3 SizeMap</a></li>
-<li><a href="tcmalloc.html#sec-1-3-4">1.3.4 Central Cache</a>
-<ul>
-<li><a href="tcmalloc.html#sec-1-3-4-1">1.3.4.1 Data Structure</a></li>
-<li><a href="tcmalloc.html#sec-1-3-4-2">1.3.4.2 Init</a></li>
-<li><a href="tcmalloc.html#sec-1-3-4-3">1.3.4.3 InsertRange</a></li>
-<li><a href="tcmalloc.html#sec-1-3-4-4">1.3.4.4 RemoveRange</a></li>
-<li><a href="tcmalloc.html#sec-1-3-4-5">1.3.4.5 Populate</a></li>
+<li><a href="tcmalloc.html#sec-4-4-1">4.4.1 Data Structure</a></li>
+<li><a href="tcmalloc.html#sec-4-4-2">4.4.2 Init</a></li>
+<li><a href="tcmalloc.html#sec-4-4-3">4.4.3 InsertRange</a></li>
+<li><a href="tcmalloc.html#sec-4-4-4">4.4.4 RemoveRange</a></li>
+<li><a href="tcmalloc.html#sec-4-4-5">4.4.5 Populate</a></li>
 </ul>
 </li>
-<li><a href="tcmalloc.html#sec-1-3-5">1.3.5 PageHeap</a>
+<li><a href="tcmalloc.html#sec-4-5">4.5 PageHeap</a>
 <ul>
-<li><a href="tcmalloc.html#sec-1-3-5-1">1.3.5.1 Data Structure</a></li>
-<li><a href="tcmalloc.html#sec-1-3-5-2">1.3.5.2 New</a></li>
-<li><a href="tcmalloc.html#sec-1-3-5-3">1.3.5.3 Carve</a></li>
-<li><a href="tcmalloc.html#sec-1-3-5-4">1.3.5.4 GrowHeap</a></li>
-<li><a href="tcmalloc.html#sec-1-3-5-5">1.3.5.5 Delete</a></li>
-<li><a href="tcmalloc.html#sec-1-3-5-6">1.3.5.6 IncrementalScavenge</a></li>
-<li><a href="tcmalloc.html#sec-1-3-5-7">1.3.5.7 ReleaseAtLeastNPages</a></li>
-<li><a href="tcmalloc.html#sec-1-3-5-8">1.3.5.8 Split</a></li>
-<li><a href="tcmalloc.html#sec-1-3-5-9">1.3.5.9 GetNextRange</a></li>
+<li><a href="tcmalloc.html#sec-4-5-1">4.5.1 Data Structure</a></li>
+<li><a href="tcmalloc.html#sec-4-5-2">4.5.2 New</a></li>
+<li><a href="tcmalloc.html#sec-4-5-3">4.5.3 Carve</a></li>
+<li><a href="tcmalloc.html#sec-4-5-4">4.5.4 GrowHeap</a></li>
+<li><a href="tcmalloc.html#sec-4-5-5">4.5.5 Delete</a></li>
+<li><a href="tcmalloc.html#sec-4-5-6">4.5.6 IncrementalScavenge</a></li>
+<li><a href="tcmalloc.html#sec-4-5-7">4.5.7 ReleaseAtLeastNPages</a></li>
+<li><a href="tcmalloc.html#sec-4-5-8">4.5.8 Split</a></li>
+<li><a href="tcmalloc.html#sec-4-5-9">4.5.9 GetNextRange</a></li>
 </ul>
 </li>
-<li><a href="tcmalloc.html#sec-1-3-6">1.3.6 TCMalloc_PageMap3</a></li>
-<li><a href="tcmalloc.html#sec-1-3-7">1.3.7 PackedCache</a></li>
-<li><a href="tcmalloc.html#sec-1-3-8">1.3.8 Thread Cache</a>
+<li><a href="tcmalloc.html#sec-4-6">4.6 TCMalloc_PageMap3</a></li>
+<li><a href="tcmalloc.html#sec-4-7">4.7 PackedCache</a></li>
+<li><a href="tcmalloc.html#sec-4-8">4.8 Thread Cache</a>
 <ul>
-<li><a href="tcmalloc.html#sec-1-3-8-1">1.3.8.1 Data Structure</a></li>
-<li><a href="tcmalloc.html#sec-1-3-8-2">1.3.8.2 InitModule</a></li>
-<li><a href="tcmalloc.html#sec-1-3-8-3">1.3.8.3 InitTSD</a></li>
-<li><a href="tcmalloc.html#sec-1-3-8-4">1.3.8.4 GetCache</a></li>
-<li><a href="tcmalloc.html#sec-1-3-8-5">1.3.8.5 CreateCacheIfNecessary</a></li>
-<li><a href="tcmalloc.html#sec-1-3-8-6">1.3.8.6 NewHeap</a></li>
-<li><a href="tcmalloc.html#sec-1-3-8-7">1.3.8.7 BecomeIdle</a></li>
-<li><a href="tcmalloc.html#sec-1-3-8-8">1.3.8.8 Init</a></li>
-<li><a href="tcmalloc.html#sec-1-3-8-9">1.3.8.9 ThreadCache::FreeList</a></li>
-<li><a href="tcmalloc.html#sec-1-3-8-10">1.3.8.10 IncreaseCacheLimitLocked</a></li>
-<li><a href="tcmalloc.html#sec-1-3-8-11">1.3.8.11 DeleteCache</a></li>
-<li><a href="tcmalloc.html#sec-1-3-8-12">1.3.8.12 Cleanup</a></li>
-<li><a href="tcmalloc.html#sec-1-3-8-13">1.3.8.13 ReleaseToCentralCache</a></li>
-<li><a href="tcmalloc.html#sec-1-3-8-14">1.3.8.14 Allocate</a></li>
-<li><a href="tcmalloc.html#sec-1-3-8-15">1.3.8.15 FetchFromCentralCache</a></li>
-<li><a href="tcmalloc.html#sec-1-3-8-16">1.3.8.16 Deallocate</a></li>
-<li><a href="tcmalloc.html#sec-1-3-8-17">1.3.8.17 ListTooLong</a></li>
-<li><a href="tcmalloc.html#sec-1-3-8-18">1.3.8.18 Scavenge</a></li>
+<li><a href="tcmalloc.html#sec-4-8-1">4.8.1 Data Structure</a></li>
+<li><a href="tcmalloc.html#sec-4-8-2">4.8.2 InitModule</a></li>
+<li><a href="tcmalloc.html#sec-4-8-3">4.8.3 InitTSD</a></li>
+<li><a href="tcmalloc.html#sec-4-8-4">4.8.4 GetCache</a></li>
+<li><a href="tcmalloc.html#sec-4-8-5">4.8.5 CreateCacheIfNecessary</a></li>
+<li><a href="tcmalloc.html#sec-4-8-6">4.8.6 NewHeap</a></li>
+<li><a href="tcmalloc.html#sec-4-8-7">4.8.7 BecomeIdle</a></li>
+<li><a href="tcmalloc.html#sec-4-8-8">4.8.8 Init</a></li>
+<li><a href="tcmalloc.html#sec-4-8-9">4.8.9 ThreadCache::FreeList</a></li>
+<li><a href="tcmalloc.html#sec-4-8-10">4.8.10 IncreaseCacheLimitLocked</a></li>
+<li><a href="tcmalloc.html#sec-4-8-11">4.8.11 DeleteCache</a></li>
+<li><a href="tcmalloc.html#sec-4-8-12">4.8.12 Cleanup</a></li>
+<li><a href="tcmalloc.html#sec-4-8-13">4.8.13 ReleaseToCentralCache</a></li>
+<li><a href="tcmalloc.html#sec-4-8-14">4.8.14 Allocate</a></li>
+<li><a href="tcmalloc.html#sec-4-8-15">4.8.15 FetchFromCentralCache</a></li>
+<li><a href="tcmalloc.html#sec-4-8-16">4.8.16 Deallocate</a></li>
+<li><a href="tcmalloc.html#sec-4-8-17">4.8.17 ListTooLong</a></li>
+<li><a href="tcmalloc.html#sec-4-8-18">4.8.18 Scavenge</a></li>
 </ul></li>
 </ul>
 </li>
-<li><a href="tcmalloc.html#sec-1-4">1.4 用户对象</a>
+<li><a href="tcmalloc.html#sec-5">5 用户对象</a>
 <ul>
-<li><a href="tcmalloc.html#sec-1-4-1">1.4.1 函数入口</a></li>
-<li><a href="tcmalloc.html#sec-1-4-2">1.4.2 分配逻辑</a></li>
-<li><a href="tcmalloc.html#sec-1-4-3">1.4.3 释放逻辑</a></li>
+<li><a href="tcmalloc.html#sec-5-1">5.1 函数入口</a></li>
+<li><a href="tcmalloc.html#sec-5-2">5.2 分配逻辑</a></li>
+<li><a href="tcmalloc.html#sec-5-3">5.3 释放逻辑</a></li>
 </ul>
 </li>
-<li><a href="tcmalloc.html#sec-1-5">1.5 扩展组件</a>
+<li><a href="tcmalloc.html#sec-6">6 扩展组件</a>
 <ul>
-<li><a href="tcmalloc.html#sec-1-5-1">1.5.1 Sampler</a></li>
-<li><a href="tcmalloc.html#sec-1-5-2">1.5.2 MallocExtension</a></li>
-<li><a href="tcmalloc.html#sec-1-5-3">1.5.3 MallocHook</a></li>
-<li><a href="tcmalloc.html#sec-1-5-4">1.5.4 HeapChecker</a></li>
-<li><a href="tcmalloc.html#sec-1-5-5">1.5.5 HeapProfiler</a></li>
-<li><a href="tcmalloc.html#sec-1-5-6">1.5.6 CPUProfiler</a></li>
+<li><a href="tcmalloc.html#sec-6-1">6.1 Sampler</a></li>
+<li><a href="tcmalloc.html#sec-6-2">6.2 MallocExtension</a></li>
+<li><a href="tcmalloc.html#sec-6-3">6.3 MallocHook</a></li>
+<li><a href="tcmalloc.html#sec-6-4">6.4 HeapChecker</a></li>
+<li><a href="tcmalloc.html#sec-6-5">6.5 HeapProfiler</a></li>
+<li><a href="tcmalloc.html#sec-6-6">6.6 CPUProfiler</a></li>
 </ul>
 </li>
-<li><a href="tcmalloc.html#sec-1-6">1.6 Discussion</a>
+<li><a href="tcmalloc.html#sec-7">7 Discussion</a>
 <ul>
-<li><a href="tcmalloc.html#sec-1-6-1">1.6.1 tcmalloc中的 MmapSysAllocator::Alloc 疑问(nwlzee)</a></li>
-</ul>
-</li>
+<li><a href="tcmalloc.html#sec-7-1">7.1 tcmalloc中的 MmapSysAllocator::Alloc 疑问(nwlzee)</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> tcmalloc</h2>
-<div class="outline-text-2" id="text-1">
-
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> 写在前面</h3>
+<div class="outline-text-3" id="text-1">
 
 <ul>
 <li>内存管理内幕 <a href="http://www.ibm.com/developerworks/cn/linux/l-memory/">http://www.ibm.com/developerworks/cn/linux/l-memory/</a>
@@ -221,12 +216,13 @@ tcmalloc如果发现thread cache内部占用率高但是使用率低的话，那
 tcmalloc代码写得相当得好，虽然很多地方没有看懂(而且我猜想有很多地方已经过时了但是没有删去，所以对于代码阅读有一定的影响).基本上阅读完tcmalloc阅读和编写代码能力会提高很多。
 看下面分析之前，还是强烈建议先阅读一次文档。
 </p>
+</div>
 
 </div>
 
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 函数入口</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> 函数入口</h3>
+<div class="outline-text-3" id="text-2">
 
 <p>tcmalloc.cc
 </p>
@@ -308,9 +304,9 @@ int tc_mallopt(int cmd, int value) __THROW ATTRIBUTE_SECTION(google_malloc);
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 全局内存</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> 全局内存</h3>
+<div class="outline-text-3" id="text-3">
 
 <p>system-alloc.h
 </p>
@@ -393,9 +389,9 @@ if (kDebugMode &amp;&amp; sizeof(void*) &gt; 4) {
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> 管理对象</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> 管理对象</h3>
+<div class="outline-text-3" id="text-4">
 
 <ul>
 <li>tcmalloc_guard.h
@@ -422,9 +418,9 @@ if (kDebugMode &amp;&amp; sizeof(void*) &gt; 4) {
 
 </div>
 
-<div id="outline-container-1-3-1" class="outline-4">
-<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> TCMallocGuard</h4>
-<div class="outline-text-4" id="text-1-3-1">
+<div id="outline-container-4-1" class="outline-4">
+<h4 id="sec-4-1"><span class="section-number-4">4.1</span> TCMallocGuard</h4>
+<div class="outline-text-4" id="text-4-1">
 
 <p>tcmalloc_guard.h
 </p>
@@ -443,7 +439,7 @@ TCMallocGuard::TCMallocGuard() {
     tc_free(tc_malloc(1));
     if (RunningOnValgrind()) { // &#20174;&#20195;&#30721;&#19978;&#30475;&#21487;&#33021;&#26159;&#20174;&#29615;&#22659;&#21464;&#37327;&#37324;&#38754;&#33719;&#21462;&#30340;&#12290;
       // Let Valgrind uses its own malloc (so don't register our extension).
-    } else { // TODO.???&#23545;&#20110;MallocExtension&#20197;&#21450;MallocHook&#36824;&#19981;&#26159;&#24456;&#20102;&#35299;
+    } else {
       MallocExtension::Register(new TCMallocImplementation);
     }
   }
@@ -473,9 +469,9 @@ TCMallocGuard::TCMallocGuard() {
 
 </div>
 
-<div id="outline-container-1-3-2" class="outline-4">
-<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> PageHeapAllocator</h4>
-<div class="outline-text-4" id="text-1-3-2">
+<div id="outline-container-4-2" class="outline-4">
+<h4 id="sec-4-2"><span class="section-number-4">4.2</span> PageHeapAllocator</h4>
+<div class="outline-text-4" id="text-4-2">
 
 <p>page_heap_allocator.h
 </p>
@@ -519,9 +515,9 @@ uint64_t metadata_system_bytes() { return metadata_system_bytes_; }
 
 </div>
 
-<div id="outline-container-1-3-3" class="outline-4">
-<h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> SizeMap</h4>
-<div class="outline-text-4" id="text-1-3-3">
+<div id="outline-container-4-3" class="outline-4">
+<h4 id="sec-4-3"><span class="section-number-4">4.3</span> SizeMap</h4>
+<div class="outline-text-4" id="text-4-3">
 
 <p>common.h
 </p>
@@ -607,18 +603,18 @@ SC   7 [       81 ..       96 ] from     8192 ; 16% maxwaste
 
 </div>
 
-<div id="outline-container-1-3-4" class="outline-4">
-<h4 id="sec-1-3-4"><span class="section-number-4">1.3.4</span> Central Cache</h4>
-<div class="outline-text-4" id="text-1-3-4">
+<div id="outline-container-4-4" class="outline-4">
+<h4 id="sec-4-4"><span class="section-number-4">4.4</span> Central Cache</h4>
+<div class="outline-text-4" id="text-4-4">
 
 <p>central_freelist.h
 </p>
 
 </div>
 
-<div id="outline-container-1-3-4-1" class="outline-5">
-<h5 id="sec-1-3-4-1"><span class="section-number-5">1.3.4.1</span> Data Structure</h5>
-<div class="outline-text-5" id="text-1-3-4-1">
+<div id="outline-container-4-4-1" class="outline-5">
+<h5 id="sec-4-4-1"><span class="section-number-5">4.4.1</span> Data Structure</h5>
+<div class="outline-text-5" id="text-4-4-1">
 
 <p>首先在static里面定义的central_cache是一个数组大小为kNumClasses，相当于和每一个thread cache里面的slab对应。
 数组每个元素是CentralFreeListPadded,在central_freelist.h里面定义的。阅读CentralFreeListPadded这个结构，就会发现，
@@ -727,9 +723,9 @@ CentralFreeList的接口非常少
 
 </div>
 
-<div id="outline-container-1-3-4-2" class="outline-5">
-<h5 id="sec-1-3-4-2"><span class="section-number-5">1.3.4.2</span> Init</h5>
-<div class="outline-text-5" id="text-1-3-4-2">
+<div id="outline-container-4-4-2" class="outline-5">
+<h5 id="sec-4-4-2"><span class="section-number-5">4.4.2</span> Init</h5>
+<div class="outline-text-5" id="text-4-4-2">
 
 <p>init主要是计算了tc(transfer cache)的max_cache_size以及cache_size,然后初始化了字段。
 我们这里暂时不关注empty以及nonempty这两个字段的数据结构
@@ -767,9 +763,9 @@ CentralFreeList的接口非常少
 
 </div>
 
-<div id="outline-container-1-3-4-3" class="outline-5">
-<h5 id="sec-1-3-4-3"><span class="section-number-5">1.3.4.3</span> InsertRange</h5>
-<div class="outline-text-5" id="text-1-3-4-3">
+<div id="outline-container-4-4-3" class="outline-5">
+<h5 id="sec-4-4-3"><span class="section-number-5">4.4.3</span> InsertRange</h5>
+<div class="outline-text-5" id="text-4-4-3">
 
 <p>这个接口就是为了回收[start,end]并且长度为N objects的内存链。首先注意它加了自选锁确保了线程安全。
 然后有一个逻辑就是判断是否可以进入tc,如果不允许进入tc的话那么挂到链上去。
@@ -847,9 +843,9 @@ CentralFreeList的接口非常少
 
 </div>
 
-<div id="outline-container-1-3-4-4" class="outline-5">
-<h5 id="sec-1-3-4-4"><span class="section-number-5">1.3.4.4</span> RemoveRange</h5>
-<div class="outline-text-5" id="text-1-3-4-4">
+<div id="outline-container-4-4-4" class="outline-5">
+<h5 id="sec-4-4-4"><span class="section-number-5">4.4.4</span> RemoveRange</h5>
+<div class="outline-text-5" id="text-4-4-4">
 
 <p>这个接口就是为了尝试分配N个objects对象，然后将首地址尾地址给start和end.同样内部逻辑会判断是否可以从tc
 中直接取出，如果可以取出的话那么分配就非常快。注意函数开始也尝试加锁了。
@@ -939,9 +935,9 @@ CentralFreeList的接口非常少
 
 </div>
 
-<div id="outline-container-1-3-4-5" class="outline-5">
-<h5 id="sec-1-3-4-5"><span class="section-number-5">1.3.4.5</span> Populate</h5>
-<div class="outline-text-5" id="text-1-3-4-5">
+<div id="outline-container-4-4-5" class="outline-5">
+<h5 id="sec-4-4-5"><span class="section-number-5">4.4.5</span> Populate</h5>
+<div class="outline-text-5" id="text-4-4-5">
 
 <p>基本上了解了调用Populate的时机，是如果cc里面nonempty里面没有span的话。代码有点长.
 这里为了减少阻塞的部分，首先进行解锁然后让全局进行分配。只是针对局部操作没有任何问题。
@@ -1004,18 +1000,18 @@ CentralFreeList的接口非常少
 
 </div>
 
-<div id="outline-container-1-3-5" class="outline-4">
-<h4 id="sec-1-3-5"><span class="section-number-4">1.3.5</span> PageHeap</h4>
-<div class="outline-text-4" id="text-1-3-5">
+<div id="outline-container-4-5" class="outline-4">
+<h4 id="sec-4-5"><span class="section-number-4">4.5</span> PageHeap</h4>
+<div class="outline-text-4" id="text-4-5">
 
 <p>page_heap.h
 </p>
 
 </div>
 
-<div id="outline-container-1-3-5-1" class="outline-5">
-<h5 id="sec-1-3-5-1"><span class="section-number-5">1.3.5.1</span> Data Structure</h5>
-<div class="outline-text-5" id="text-1-3-5-1">
+<div id="outline-container-4-5-1" class="outline-5">
+<h5 id="sec-4-5-1"><span class="section-number-5">4.5.1</span> Data Structure</h5>
+<div class="outline-text-5" id="text-4-5-1">
 
 <p>PageHeap是在page_heap.h里面定义的，主要是用来分配page的。对于PageHeap结构还是比较复杂的.阅读tcmalloc文档也会发现，
 管理page的方法和cc是一样的，也是按照page大小做成数组。每个数组的结构是这样的
@@ -1114,9 +1110,9 @@ tcmalloc代码里面kMaxPages==1 &lt;&lt; (20- kPageShift) 相同于有256种页
 
 </div>
 
-<div id="outline-container-1-3-5-2" class="outline-5">
-<h5 id="sec-1-3-5-2"><span class="section-number-5">1.3.5.2</span> New</h5>
-<div class="outline-text-5" id="text-1-3-5-2">
+<div id="outline-container-4-5-2" class="outline-5">
+<h5 id="sec-4-5-2"><span class="section-number-5">4.5.2</span> New</h5>
+<div class="outline-text-5" id="text-4-5-2">
 
 <p>New的逻辑非常简单，首先会尝试在free list里面查找，如果没有的话在lage free list里面查找，不行的话尝试要更多的内存，然后重试。
 需要注意的是，因为这个是一个全局的操作，所以前面都会加上自选锁 SpinLockHolder h(Static::pageheap_lock());
@@ -1177,9 +1173,9 @@ SearchFreeAndLargeLists相对来说还是比较简单的，但是里面Carve这�
 
 </div>
 
-<div id="outline-container-1-3-5-3" class="outline-5">
-<h5 id="sec-1-3-5-3"><span class="section-number-5">1.3.5.3</span> Carve</h5>
-<div class="outline-text-5" id="text-1-3-5-3">
+<div id="outline-container-4-5-3" class="outline-5">
+<h5 id="sec-4-5-3"><span class="section-number-5">4.5.3</span> Carve</h5>
+<div class="outline-text-5" id="text-4-5-3">
 
 <p>我们看看Carve代码，然后在里面的话会稍微粗略地提到pagemap管理span对象的细节
 </p>
@@ -1231,9 +1227,9 @@ SearchFreeAndLargeLists相对来说还是比较简单的，但是里面Carve这�
 
 </div>
 
-<div id="outline-container-1-3-5-4" class="outline-5">
-<h5 id="sec-1-3-5-4"><span class="section-number-5">1.3.5.4</span> GrowHeap</h5>
-<div class="outline-text-5" id="text-1-3-5-4">
+<div id="outline-container-4-5-4" class="outline-5">
+<h5 id="sec-4-5-4"><span class="section-number-5">4.5.4</span> GrowHeap</h5>
+<div class="outline-text-5" id="text-4-5-4">
 
 <p>GrowHeap就是需要尝试从系统中拿出更多的内存出来然后好做切分，满足本次allocate n pages的请求。
 GrowHeap里面有一些策略
@@ -1260,7 +1256,7 @@ bool PageHeap::GrowHeap(Length n) {
     if (ptr == NULL) return false;
   }
   ask = actual_size &gt;&gt; kPageShift;
-  RecordGrowth(ask &lt;&lt; kPageShift); // TODO.???
+  RecordGrowth(ask &lt;&lt; kPageShift);
 
   uint64_t old_system_bytes = stats_.system_bytes;
   stats_.system_bytes += (ask &lt;&lt; kPageShift);
@@ -1304,9 +1300,9 @@ bool PageHeap::GrowHeap(Length n) {
 
 </div>
 
-<div id="outline-container-1-3-5-5" class="outline-5">
-<h5 id="sec-1-3-5-5"><span class="section-number-5">1.3.5.5</span> Delete</h5>
-<div class="outline-text-5" id="text-1-3-5-5">
+<div id="outline-container-4-5-5" class="outline-5">
+<h5 id="sec-4-5-5"><span class="section-number-5">4.5.5</span> Delete</h5>
+<div class="outline-text-5" id="text-4-5-5">
 
 <p>Delete逻辑非常简单
 </p>
@@ -1374,9 +1370,9 @@ bool PageHeap::GrowHeap(Length n) {
 
 </div>
 
-<div id="outline-container-1-3-5-6" class="outline-5">
-<h5 id="sec-1-3-5-6"><span class="section-number-5">1.3.5.6</span> IncrementalScavenge</h5>
-<div class="outline-text-5" id="text-1-3-5-6">
+<div id="outline-container-4-5-6" class="outline-5">
+<h5 id="sec-4-5-6"><span class="section-number-5">4.5.6</span> IncrementalScavenge</h5>
+<div class="outline-text-5" id="text-4-5-6">
 
 <p>IncrementalScavenge这个意思就是增量回收，大致内容就是说将一部分的页面交回给系统内存。虽然在tcmalloc里面实现并没有完全交回给系统内存，
 而只是简单地挂在了_returned_free_list上面，但是里面的策略还是值得看看的。这里所谓的scavenge_counter_意思就是如果归还了多少内存之后，
@@ -1429,9 +1425,9 @@ bool PageHeap::GrowHeap(Length n) {
 
 </div>
 
-<div id="outline-container-1-3-5-7" class="outline-5">
-<h5 id="sec-1-3-5-7"><span class="section-number-5">1.3.5.7</span> ReleaseAtLeastNPages</h5>
-<div class="outline-text-5" id="text-1-3-5-7">
+<div id="outline-container-4-5-7" class="outline-5">
+<h5 id="sec-4-5-7"><span class="section-number-5">4.5.7</span> ReleaseAtLeastNPages</h5>
+<div class="outline-text-5" id="text-4-5-7">
 
 <p>这个函数的语义就是至少尝试释放n pages.实现方式非常简单，每次都从一种pages里面取出一个东西并且进行释放，直到全部释放为止。
 算是一种round-robin的方式吧，我猜想这样释放的方式对于后面分配的性能影响比较小，每一种大小都释放一些。
@@ -1492,9 +1488,9 @@ bool PageHeap::GrowHeap(Length n) {
 
 </div>
 
-<div id="outline-container-1-3-5-8" class="outline-5">
-<h5 id="sec-1-3-5-8"><span class="section-number-5">1.3.5.8</span> Split</h5>
-<div class="outline-text-5" id="text-1-3-5-8">
+<div id="outline-container-4-5-8" class="outline-5">
+<h5 id="sec-4-5-8"><span class="section-number-5">4.5.8</span> Split</h5>
+<div class="outline-text-5" id="text-4-5-8">
 
 <p>Split过程和Carve过程是非常相似的，只不过Split针对的是IN_USE状态的这种span.
 代码阅读到这里暂时还不知道这个Split什么时候调用:(.what a shame.
@@ -1503,9 +1499,9 @@ bool PageHeap::GrowHeap(Length n) {
 
 </div>
 
-<div id="outline-container-1-3-5-9" class="outline-5">
-<h5 id="sec-1-3-5-9"><span class="section-number-5">1.3.5.9</span> GetNextRange</h5>
-<div class="outline-text-5" id="text-1-3-5-9">
+<div id="outline-container-4-5-9" class="outline-5">
+<h5 id="sec-4-5-9"><span class="section-number-5">4.5.9</span> GetNextRange</h5>
+<div class="outline-text-5" id="text-4-5-9">
 
 <p>得到page id &gt;=start的span的具体内容。首先看看MallocRange的内容
 </p>
@@ -1574,9 +1570,9 @@ bool PageHeap::GrowHeap(Length n) {
 
 </div>
 
-<div id="outline-container-1-3-6" class="outline-4">
-<h4 id="sec-1-3-6"><span class="section-number-4">1.3.6</span> TCMalloc_PageMap3</h4>
-<div class="outline-text-4" id="text-1-3-6">
+<div id="outline-container-4-6" class="outline-4">
+<h4 id="sec-4-6"><span class="section-number-4">4.6</span> TCMalloc_PageMap3</h4>
+<div class="outline-text-4" id="text-4-6">
 
 <p>page_map.h
 </p>
@@ -1661,9 +1657,9 @@ static const int LEAF_LENGTH = 1 &lt;&lt; LEAF_BITS;
 
 </div>
 
-<div id="outline-container-1-3-7" class="outline-4">
-<h4 id="sec-1-3-7"><span class="section-number-4">1.3.7</span> PackedCache</h4>
-<div class="outline-text-4" id="text-1-3-7">
+<div id="outline-container-4-7" class="outline-4">
+<h4 id="sec-4-7"><span class="section-number-4">4.7</span> PackedCache</h4>
+<div class="outline-text-4" id="text-4-7">
 
 <p>packed-cache-inl.h
 </p>
@@ -1699,18 +1695,18 @@ class PackedCache {
 
 </div>
 
-<div id="outline-container-1-3-8" class="outline-4">
-<h4 id="sec-1-3-8"><span class="section-number-4">1.3.8</span> Thread Cache</h4>
-<div class="outline-text-4" id="text-1-3-8">
+<div id="outline-container-4-8" class="outline-4">
+<h4 id="sec-4-8"><span class="section-number-4">4.8</span> Thread Cache</h4>
+<div class="outline-text-4" id="text-4-8">
 
 <p>thread_cache.h
 </p>
 
 </div>
 
-<div id="outline-container-1-3-8-1" class="outline-5">
-<h5 id="sec-1-3-8-1"><span class="section-number-5">1.3.8.1</span> Data Structure</h5>
-<div class="outline-text-5" id="text-1-3-8-1">
+<div id="outline-container-4-8-1" class="outline-5">
+<h5 id="sec-4-8-1"><span class="section-number-5">4.8.1</span> Data Structure</h5>
+<div class="outline-text-5" id="text-4-8-1">
 
 <p>Thread Cache就是每一个线程里面管理小对象分配的cache.tcmalloc应该是假设局部线程里面通常分配的都是小对象，这样可以减少锁竞争。
 而如果是分配大对象的话，那么会直接从page heap里面进行分配。如果本地小对象不够的话，那么会尝试从central cache里面要。
@@ -1777,9 +1773,9 @@ pthread_key_t ThreadCache::heap_key_; // &#22914;&#26524;&#20351;&#29992;pthread
 
 </div>
 
-<div id="outline-container-1-3-8-2" class="outline-5">
-<h5 id="sec-1-3-8-2"><span class="section-number-5">1.3.8.2</span> InitModule</h5>
-<div class="outline-text-5" id="text-1-3-8-2">
+<div id="outline-container-4-8-2" class="outline-5">
+<h5 id="sec-4-8-2"><span class="section-number-5">4.8.2</span> InitModule</h5>
+<div class="outline-text-5" id="text-4-8-2">
 
 
 
@@ -1799,9 +1795,9 @@ pthread_key_t ThreadCache::heap_key_; // &#22914;&#26524;&#20351;&#29992;pthread
 
 </div>
 
-<div id="outline-container-1-3-8-3" class="outline-5">
-<h5 id="sec-1-3-8-3"><span class="section-number-5">1.3.8.3</span> InitTSD</h5>
-<div class="outline-text-5" id="text-1-3-8-3">
+<div id="outline-container-4-8-3" class="outline-5">
+<h5 id="sec-4-8-3"><span class="section-number-5">4.8.3</span> InitTSD</h5>
+<div class="outline-text-5" id="text-4-8-3">
 
 
 
@@ -1835,9 +1831,9 @@ pthread_key_t ThreadCache::heap_key_; // &#22914;&#26524;&#20351;&#29992;pthread
 
 </div>
 
-<div id="outline-container-1-3-8-4" class="outline-5">
-<h5 id="sec-1-3-8-4"><span class="section-number-5">1.3.8.4</span> GetCache</h5>
-<div class="outline-text-5" id="text-1-3-8-4">
+<div id="outline-container-4-8-4" class="outline-5">
+<h5 id="sec-4-8-4"><span class="section-number-5">4.8.4</span> GetCache</h5>
+<div class="outline-text-5" id="text-4-8-4">
 
 <p>关于GetCache我们也可以一起看看GetThreadHeap,GetCacheIfPresent,CreateCacheIfNecessary
 </p>
@@ -1876,9 +1872,9 @@ inline ThreadCache* ThreadCache::GetCacheIfPresent() {
 
 </div>
 
-<div id="outline-container-1-3-8-5" class="outline-5">
-<h5 id="sec-1-3-8-5"><span class="section-number-5">1.3.8.5</span> CreateCacheIfNecessary</h5>
-<div class="outline-text-5" id="text-1-3-8-5">
+<div id="outline-container-4-8-5" class="outline-5">
+<h5 id="sec-4-8-5"><span class="section-number-5">4.8.5</span> CreateCacheIfNecessary</h5>
+<div class="outline-text-5" id="text-4-8-5">
 
 <p>然后看看CreateCacheIfNecessary这个实现,看看是如何创建tc的
 </p>
@@ -1914,9 +1910,9 @@ inline ThreadCache* ThreadCache::GetCacheIfPresent() {
 
 </div>
 
-<div id="outline-container-1-3-8-6" class="outline-5">
-<h5 id="sec-1-3-8-6"><span class="section-number-5">1.3.8.6</span> NewHeap</h5>
-<div class="outline-text-5" id="text-1-3-8-6">
+<div id="outline-container-4-8-6" class="outline-5">
+<h5 id="sec-4-8-6"><span class="section-number-5">4.8.6</span> NewHeap</h5>
+<div class="outline-text-5" id="text-4-8-6">
 
 <p>NewHeap是产生一个新的tc调用Init.将这个tc插入到队列里面.注意这里NewHeap已经加了锁了。
 </p>
@@ -1946,9 +1942,9 @@ inline ThreadCache* ThreadCache::GetCacheIfPresent() {
 
 </div>
 
-<div id="outline-container-1-3-8-7" class="outline-5">
-<h5 id="sec-1-3-8-7"><span class="section-number-5">1.3.8.7</span> BecomeIdle</h5>
-<div class="outline-text-5" id="text-1-3-8-7">
+<div id="outline-container-4-8-7" class="outline-5">
+<h5 id="sec-4-8-7"><span class="section-number-5">4.8.7</span> BecomeIdle</h5>
+<div class="outline-text-5" id="text-4-8-7">
 
 <p>BecomeIdle触发条件现在还不是很清楚，但是作用是认为这个tc没有必要了可以删除。不过在大部分使用应该不会有这个调用吧。
 </p>
@@ -2009,9 +2005,9 @@ int main() {
 
 </div>
 
-<div id="outline-container-1-3-8-8" class="outline-5">
-<h5 id="sec-1-3-8-8"><span class="section-number-5">1.3.8.8</span> Init</h5>
-<div class="outline-text-5" id="text-1-3-8-8">
+<div id="outline-container-4-8-8" class="outline-5">
+<h5 id="sec-4-8-8"><span class="section-number-5">4.8.8</span> Init</h5>
+<div class="outline-text-5" id="text-4-8-8">
 
 <p>注意这里Init已经在外围的NewHeap加锁了。这个地方进行初始化。设置一下最大分配多少空间以及初始化每一个slab
 </p>
@@ -2044,7 +2040,7 @@ int main() {
 
   uint32_t sampler_seed;
   memcpy(&amp;sampler_seed, &amp;tid, sizeof(sampler_seed));
-  sampler_.Init(sampler_seed); // &#21021;&#22987;&#21270;sampler TODO.???
+  sampler_.Init(sampler_seed); // &#21021;&#22987;&#21270;sampler
 }
 </pre>
 
@@ -2055,9 +2051,9 @@ int main() {
 
 </div>
 
-<div id="outline-container-1-3-8-9" class="outline-5">
-<h5 id="sec-1-3-8-9"><span class="section-number-5">1.3.8.9</span> ThreadCache::FreeList</h5>
-<div class="outline-text-5" id="text-1-3-8-9">
+<div id="outline-container-4-8-9" class="outline-5">
+<h5 id="sec-4-8-9"><span class="section-number-5">4.8.9</span> ThreadCache::FreeList</h5>
+<div class="outline-text-5" id="text-4-8-9">
 
 <p>freelist就是对应的slab.本质上数据结构就是一个单向链表，毕竟这个分配对于顺序没有任何要求。
 </p>
@@ -2085,9 +2081,9 @@ int main() {
 
 </div>
 
-<div id="outline-container-1-3-8-10" class="outline-5">
-<h5 id="sec-1-3-8-10"><span class="section-number-5">1.3.8.10</span> IncreaseCacheLimitLocked</h5>
-<div class="outline-text-5" id="text-1-3-8-10">
+<div id="outline-container-4-8-10" class="outline-5">
+<h5 id="sec-4-8-10"><span class="section-number-5">4.8.10</span> IncreaseCacheLimitLocked</h5>
+<div class="outline-text-5" id="text-4-8-10">
 
 <p>之前说到这个函数是在计算这个tc里面最多可以分配多少内存，那么看看这个函数的实现.调用这个函数的时候必然都是已经加了自旋锁的。
 </p>
@@ -2136,9 +2132,9 @@ int main() {
 
 </div>
 
-<div id="outline-container-1-3-8-11" class="outline-5">
-<h5 id="sec-1-3-8-11"><span class="section-number-5">1.3.8.11</span> DeleteCache</h5>
-<div class="outline-text-5" id="text-1-3-8-11">
+<div id="outline-container-4-8-11" class="outline-5">
+<h5 id="sec-4-8-11"><span class="section-number-5">4.8.11</span> DeleteCache</h5>
+<div class="outline-text-5" id="text-4-8-11">
 
 <p>DeleteCache作用就是删除一个tc.大致逻辑非常简单，首先将自己持有的内存归还给central cache,然后将自己从tc的链中删除即可。
 </p>
@@ -2170,9 +2166,9 @@ int main() {
 
 </div>
 
-<div id="outline-container-1-3-8-12" class="outline-5">
-<h5 id="sec-1-3-8-12"><span class="section-number-5">1.3.8.12</span> Cleanup</h5>
-<div class="outline-text-5" id="text-1-3-8-12">
+<div id="outline-container-4-8-12" class="outline-5">
+<h5 id="sec-4-8-12"><span class="section-number-5">4.8.12</span> Cleanup</h5>
+<div class="outline-text-5" id="text-4-8-12">
 
 <p>Cleanup是在DeleteCache，会在BecomeIdle里面可以调用，也会在销毁线程局部变量里面调用。作用就是将自己持有的内存归还给系统
 </p>
@@ -2195,9 +2191,9 @@ int main() {
 
 </div>
 
-<div id="outline-container-1-3-8-13" class="outline-5">
-<h5 id="sec-1-3-8-13"><span class="section-number-5">1.3.8.13</span> ReleaseToCentralCache</h5>
-<div class="outline-text-5" id="text-1-3-8-13">
+<div id="outline-container-4-8-13" class="outline-5">
+<h5 id="sec-4-8-13"><span class="section-number-5">4.8.13</span> ReleaseToCentralCache</h5>
+<div class="outline-text-5" id="text-4-8-13">
 
 
 
@@ -2243,9 +2239,9 @@ PopRange这个语义非常简单，但是我们稍微看看这个的实现，
 
 </div>
 
-<div id="outline-container-1-3-8-14" class="outline-5">
-<h5 id="sec-1-3-8-14"><span class="section-number-5">1.3.8.14</span> Allocate</h5>
-<div class="outline-text-5" id="text-1-3-8-14">
+<div id="outline-container-4-8-14" class="outline-5">
+<h5 id="sec-4-8-14"><span class="section-number-5">4.8.14</span> Allocate</h5>
+<div class="outline-text-5" id="text-4-8-14">
 
 <p>Allocate就是从对应的slab里面分配出一个object.注意在Init时候的话每个tc里面是没有任何内容的，size_=0.FreeList也是空的。
 </p>
@@ -2269,9 +2265,9 @@ PopRange这个语义非常简单，但是我们稍微看看这个的实现，
 
 </div>
 
-<div id="outline-container-1-3-8-15" class="outline-5">
-<h5 id="sec-1-3-8-15"><span class="section-number-5">1.3.8.15</span> FetchFromCentralCache</h5>
-<div class="outline-text-5" id="text-1-3-8-15">
+<div id="outline-container-4-8-15" class="outline-5">
+<h5 id="sec-4-8-15"><span class="section-number-5">4.8.15</span> FetchFromCentralCache</h5>
+<div class="outline-text-5" id="text-4-8-15">
 
 <p>这个部分的逻辑是从cc里面取出一系列的slab对象出来。里面有很多策略，非常精巧
 </p>
@@ -2317,9 +2313,9 @@ PopRange这个语义非常简单，但是我们稍微看看这个的实现，
 
 </div>
 
-<div id="outline-container-1-3-8-16" class="outline-5">
-<h5 id="sec-1-3-8-16"><span class="section-number-5">1.3.8.16</span> Deallocate</h5>
-<div class="outline-text-5" id="text-1-3-8-16">
+<div id="outline-container-4-8-16" class="outline-5">
+<h5 id="sec-4-8-16"><span class="section-number-5">4.8.16</span> Deallocate</h5>
+<div class="outline-text-5" id="text-4-8-16">
 
 <p>释放内存部分非常简单，但是同样里面有很多策略。并且里面涉及到了tc的GC问题
 </p>
@@ -2355,9 +2351,9 @@ PopRange这个语义非常简单，但是我们稍微看看这个的实现，
 
 </div>
 
-<div id="outline-container-1-3-8-17" class="outline-5">
-<h5 id="sec-1-3-8-17"><span class="section-number-5">1.3.8.17</span> ListTooLong</h5>
-<div class="outline-text-5" id="text-1-3-8-17">
+<div id="outline-container-4-8-17" class="outline-5">
+<h5 id="sec-4-8-17"><span class="section-number-5">4.8.17</span> ListTooLong</h5>
+<div class="outline-text-5" id="text-4-8-17">
 
 <p>到这个地方必须思考一个问题，就是什么时候max_length会发生变化以及如何变化的(触发这些变化的意义是什么).
 我们可以看到Allocate里面如果从cc里面取在不断地增加max_length(存在上限).问题是我们不能够让这个部分缓存太多的内容，
@@ -2398,9 +2394,9 @@ ListTooLong是第一个确保在tc里面不会持有太多内存的机制.虽然
 
 </div>
 
-<div id="outline-container-1-3-8-18" class="outline-5">
-<h5 id="sec-1-3-8-18"><span class="section-number-5">1.3.8.18</span> Scavenge</h5>
-<div class="outline-text-5" id="text-1-3-8-18">
+<div id="outline-container-4-8-18" class="outline-5">
+<h5 id="sec-4-8-18"><span class="section-number-5">4.8.18</span> Scavenge</h5>
+<div class="outline-text-5" id="text-4-8-18">
 
 <p>同样Scavenge是第二个确保在tc里不会持有太多内存的机制。同样虽然对这个过程比较了解但是也没有从大体生了解这个策略是如何设计出来的。
 </p>
@@ -2451,18 +2447,18 @@ void ThreadCache::Scavenge() {
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> 用户对象</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> 用户对象</h3>
+<div class="outline-text-3" id="text-5">
 
 <p>tcmalloc.h
 </p>
 
 </div>
 
-<div id="outline-container-1-4-1" class="outline-4">
-<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> 函数入口</h4>
-<div class="outline-text-4" id="text-1-4-1">
+<div id="outline-container-5-1" class="outline-4">
+<h4 id="sec-5-1"><span class="section-number-4">5.1</span> 函数入口</h4>
+<div class="outline-text-4" id="text-5-1">
 
 <p>我们还是以最初的函数入门进行分析，我们只是关注tc_malloc与tc_free.
 </p>
@@ -2489,9 +2485,9 @@ extern <span class="org-string">"C"</span> PERFTOOLS_DLL_DECL void tc_free(void*
 
 </div>
 
-<div id="outline-container-1-4-2" class="outline-4">
-<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> 分配逻辑</h4>
-<div class="outline-text-4" id="text-1-4-2">
+<div id="outline-container-5-2" class="outline-4">
+<h4 id="sec-5-2"><span class="section-number-4">5.2</span> 分配逻辑</h4>
+<div class="outline-text-4" id="text-5-2">
 
 <p>我们先看看do_malloc这个过程
 </p>
@@ -2623,9 +2619,9 @@ inline bool should_report_large(Length num_pages) {
 
 </div>
 
-<div id="outline-container-1-4-3" class="outline-4">
-<h4 id="sec-1-4-3"><span class="section-number-4">1.4.3</span> 释放逻辑</h4>
-<div class="outline-text-4" id="text-1-4-3">
+<div id="outline-container-5-3" class="outline-4">
+<h4 id="sec-5-3"><span class="section-number-4">5.3</span> 释放逻辑</h4>
+<div class="outline-text-4" id="text-5-3">
 
 <p>相对分配来说，释放逻辑要稍微简单一些.
 </p>
@@ -2692,86 +2688,86 @@ inline void do_free(void* ptr) {
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> 扩展组件</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> 扩展组件</h3>
+<div class="outline-text-3" id="text-6">
 
 
 </div>
 
-<div id="outline-container-1-5-1" class="outline-4">
-<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> Sampler</h4>
-<div class="outline-text-4" id="text-1-5-1">
+<div id="outline-container-6-1" class="outline-4">
+<h4 id="sec-6-1"><span class="section-number-4">6.1</span> Sampler</h4>
+<div class="outline-text-4" id="text-6-1">
 
-<p>TODO:
+<p>#todo:
 </p>
 </div>
 
 </div>
 
-<div id="outline-container-1-5-2" class="outline-4">
-<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> MallocExtension</h4>
-<div class="outline-text-4" id="text-1-5-2">
+<div id="outline-container-6-2" class="outline-4">
+<h4 id="sec-6-2"><span class="section-number-4">6.2</span> MallocExtension</h4>
+<div class="outline-text-4" id="text-6-2">
 
-<p>TODO:
+<p>#todo:
 </p>
 </div>
 
 </div>
 
-<div id="outline-container-1-5-3" class="outline-4">
-<h4 id="sec-1-5-3"><span class="section-number-4">1.5.3</span> MallocHook</h4>
-<div class="outline-text-4" id="text-1-5-3">
+<div id="outline-container-6-3" class="outline-4">
+<h4 id="sec-6-3"><span class="section-number-4">6.3</span> MallocHook</h4>
+<div class="outline-text-4" id="text-6-3">
 
-<p>TODO:
+<p>#todo:
 </p>
 </div>
 
 </div>
 
-<div id="outline-container-1-5-4" class="outline-4">
-<h4 id="sec-1-5-4"><span class="section-number-4">1.5.4</span> HeapChecker</h4>
-<div class="outline-text-4" id="text-1-5-4">
+<div id="outline-container-6-4" class="outline-4">
+<h4 id="sec-6-4"><span class="section-number-4">6.4</span> HeapChecker</h4>
+<div class="outline-text-4" id="text-6-4">
 
-<p>TODO:
+<p>#todo:
 </p>
 </div>
 
 </div>
 
-<div id="outline-container-1-5-5" class="outline-4">
-<h4 id="sec-1-5-5"><span class="section-number-4">1.5.5</span> HeapProfiler</h4>
-<div class="outline-text-4" id="text-1-5-5">
+<div id="outline-container-6-5" class="outline-4">
+<h4 id="sec-6-5"><span class="section-number-4">6.5</span> HeapProfiler</h4>
+<div class="outline-text-4" id="text-6-5">
 
-<p>TODO:
+<p>#todo:
 </p>
 </div>
 
 </div>
 
-<div id="outline-container-1-5-6" class="outline-4">
-<h4 id="sec-1-5-6"><span class="section-number-4">1.5.6</span> CPUProfiler</h4>
-<div class="outline-text-4" id="text-1-5-6">
+<div id="outline-container-6-6" class="outline-4">
+<h4 id="sec-6-6"><span class="section-number-4">6.6</span> CPUProfiler</h4>
+<div class="outline-text-4" id="text-6-6">
 
-<p>TODO:
+<p>#todo:
 </p>
 </div>
 </div>
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Discussion</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-7" class="outline-3">
+<h3 id="sec-7"><span class="section-number-3">7</span> Discussion</h3>
+<div class="outline-text-3" id="text-7">
 
 
 </div>
 
-<div id="outline-container-1-6-1" class="outline-4">
-<h4 id="sec-1-6-1"><span class="section-number-4">1.6.1</span> tcmalloc中的 MmapSysAllocator::Alloc 疑问(nwlzee)</h4>
-<div class="outline-text-4" id="text-1-6-1">
+<div id="outline-container-7-1" class="outline-4">
+<h4 id="sec-7-1"><span class="section-number-4">7.1</span> tcmalloc中的 MmapSysAllocator::Alloc 疑问(nwlzee)</h4>
+<div class="outline-text-4" id="text-7-1">
 
-<p><b>Question</b> 
+<p><b>Question</b>
 </p>
 
 
@@ -2860,13 +2856,10 @@ system-alloc.h:extern void* TCMalloc_SystemAlloc(size_t bytes, size_t *actual_by
 </div>
 </div>
 </div>
-</div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:42+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'tcmalloc.html';var disqus_title = 'tcmalloc.html';var disqus_url = 'http://dirlt.com/tcmalloc.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'tcmalloc.html';var disqus_title = 'tcmalloc.html';var disqus_url = 'http://dirlt.com/tcmalloc.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

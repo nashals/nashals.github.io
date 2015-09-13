@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<head>
 <title>Optimizing software in C++(An optimization guide for Windows, Linux and Mac platforms)</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Optimizing software in C++(An optimization guide for Windows, Linux and Mac platforms)"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:43+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,7 +62,7 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
@@ -72,133 +71,120 @@
 <div id="content">
 <h1 class="title">Optimizing software in C++(An optimization guide for Windows, Linux and Mac platforms)</h1>
 
+<p><a href="http://www.agner.org/optimize/">http://www.agner.org/optimize/</a>
+</p>
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="optimizing-software-in-cpp.html#sec-1">1 optimizing-software-in-cpp</a>
+<li><a href="optimizing-software-in-cpp.html#sec-1">1 Introduction</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-2">2 Choosing the optimal platform</a>
 <ul>
-<li><a href="optimizing-software-in-cpp.html#sec-1-1">1.1 Introduction</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-2">1.2 Choosing the optimal platform</a>
-<ul>
-<li><a href="optimizing-software-in-cpp.html#sec-1-2-1">1.2.1 Choice of operating system</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-2-1">2.1 Choice of operating system</a></li>
 </ul>
 </li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-3">1.3 Finding the biggest time consumers</a>
+<li><a href="optimizing-software-in-cpp.html#sec-3">3 Finding the biggest time consumers</a>
 <ul>
-<li><a href="optimizing-software-in-cpp.html#sec-1-3-1">1.3.1 Use a profiler to find hot spots</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-3-1">3.1 Use a profiler to find hot spots</a></li>
 </ul>
 </li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-4">1.4 Performance and usability</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-5">1.5 Choosing the optimal algorithm</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-6">1.6 Development process</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-7">1.7 The efficiency of different C++ constructs</a>
+<li><a href="optimizing-software-in-cpp.html#sec-4">4 Performance and usability</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-5">5 Choosing the optimal algorithm</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-6">6 Development process</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-7">7 The efficiency of different C++ constructs</a>
 <ul>
-<li><a href="optimizing-software-in-cpp.html#sec-1-7-1">1.7.1 Different kinds of variable storage</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-7-2">1.7.2 Integers variables and operators</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-7-3">1.7.3 Floating point variables and operators</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-7-4">1.7.4 Function pointers</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-7-5">1.7.5 Type conversions</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-7-6">1.7.6 Branches and switch statements</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-7-7">1.7.7 Functions</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-7-1">7.1 Different kinds of variable storage</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-7-2">7.2 Integers variables and operators</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-7-3">7.3 Floating point variables and operators</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-7-4">7.4 Function pointers</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-7-5">7.5 Type conversions</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-7-6">7.6 Branches and switch statements</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-7-7">7.7 Functions</a></li>
 </ul>
 </li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-8">1.8 Optimizations in the compiler</a>
+<li><a href="optimizing-software-in-cpp.html#sec-8">8 Optimizations in the compiler</a>
 <ul>
-<li><a href="optimizing-software-in-cpp.html#sec-1-8-1">1.8.1 How compilers optimize</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-8-2">1.8.2 Comparison of different compilers</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-8-3">1.8.3 Obstacles to optimization by compiler</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-8-4">1.8.4 Obstacles to optimization by CPU</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-8-5">1.8.5 Compiler optimization options</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-8-6">1.8.6 Optimization directives</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-8-7">1.8.7 Checking what the compiler does</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-8-1">8.1 How compilers optimize</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-8-2">8.2 Comparison of different compilers</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-8-3">8.3 Obstacles to optimization by compiler</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-8-4">8.4 Obstacles to optimization by CPU</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-8-5">8.5 Compiler optimization options</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-8-6">8.6 Optimization directives</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-8-7">8.7 Checking what the compiler does</a></li>
 </ul>
 </li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-9">1.9 Optimizing memory access</a>
+<li><a href="optimizing-software-in-cpp.html#sec-9">9 Optimizing memory access</a>
 <ul>
-<li><a href="optimizing-software-in-cpp.html#sec-1-9-1">1.9.1 Caching of code and data</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-9-2">1.9.2 Cache organization</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-9-3">1.9.3 Functions that are used together should be stored together</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-9-4">1.9.4 Variables that are used together should be stored together</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-9-5">1.9.5 Alignment of data</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-9-6">1.9.6 Dynamic memory allocation</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-9-7">1.9.7 Container classes</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-9-8">1.9.8 Strings</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-9-9">1.9.9 Access data sequentially</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-9-10">1.9.10 Cache contentions in large data structures</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-9-11">1.9.11 Explicit cache control</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-9-1">9.1 Caching of code and data</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-9-2">9.2 Cache organization</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-9-3">9.3 Functions that are used together should be stored together</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-9-4">9.4 Variables that are used together should be stored together</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-9-5">9.5 Alignment of data</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-9-6">9.6 Dynamic memory allocation</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-9-7">9.7 Container classes</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-9-8">9.8 Strings</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-9-9">9.9 Access data sequentially</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-9-10">9.10 Cache contentions in large data structures</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-9-11">9.11 Explicit cache control</a></li>
 </ul>
 </li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-10">1.10 Multithreading</a>
+<li><a href="optimizing-software-in-cpp.html#sec-10">10 Multithreading</a>
 <ul>
-<li><a href="optimizing-software-in-cpp.html#sec-1-10-1">1.10.1 Hyperthreading</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-10-1">10.1 Hyperthreading</a></li>
 </ul>
 </li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-11">1.11 Out of order execution</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-12">1.12 Using vector operations</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-13">1.13 Making critical code in multiple versions for different instruction sets</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-14">1.14 Specific optimization topics</a>
+<li><a href="optimizing-software-in-cpp.html#sec-11">11 Out of order execution</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-12">12 Using vector operations</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-13">13 Making critical code in multiple versions for different instruction sets</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-14">14 Specific optimization topics</a>
 <ul>
-<li><a href="optimizing-software-in-cpp.html#sec-1-14-1">1.14.1 Use lookup tables</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-14-2">1.14.2 Bounds checking</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-14-3">1.14.3 Use bitwise operators for checking multiple values at once</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-14-4">1.14.4 Integer multiplication</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-14-5">1.14.5 Integer division</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-14-6">1.14.6 Floating point division</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-14-7">1.14.7 Don't mix float and double</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-14-8">1.14.8 Conversions between floating point numbers and integers</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-14-9">1.14.9 Using integer operations for manipulating floating point variables</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-14-10">1.14.10 Mathematical functions</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-14-11">1.14.11 Static versus dynamic libraries</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-14-12">1.14.12 Position-independent code</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-14-13">1.14.13 System programming</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-14-1">14.1 Use lookup tables</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-14-2">14.2 Bounds checking</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-14-3">14.3 Use bitwise operators for checking multiple values at once</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-14-4">14.4 Integer multiplication</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-14-5">14.5 Integer division</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-14-6">14.6 Floating point division</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-14-7">14.7 Don't mix float and double</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-14-8">14.8 Conversions between floating point numbers and integers</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-14-9">14.9 Using integer operations for manipulating floating point variables</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-14-10">14.10 Mathematical functions</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-14-11">14.11 Static versus dynamic libraries</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-14-12">14.12 Position-independent code</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-14-13">14.13 System programming</a></li>
 </ul>
 </li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-15">1.15 Metaprogramming</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-16">1.16 Testing speed</a>
+<li><a href="optimizing-software-in-cpp.html#sec-15">15 Metaprogramming</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-16">16 Testing speed</a>
 <ul>
-<li><a href="optimizing-software-in-cpp.html#sec-1-16-1">1.16.1 The pitfalls of unit-testing</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-16-2">1.16.2 Worst-case testing</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-16-1">16.1 The pitfalls of unit-testing</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-16-2">16.2 Worst-case testing</a></li>
 </ul>
 </li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-17">1.17 Optimization in embedded systems</a></li>
-<li><a href="optimizing-software-in-cpp.html#sec-1-18">1.18 Overview of compiler options</a></li>
-</ul>
-</li>
+<li><a href="optimizing-software-in-cpp.html#sec-17">17 Optimization in embedded systems</a></li>
+<li><a href="optimizing-software-in-cpp.html#sec-18">18 Overview of compiler options</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> optimizing-software-in-cpp</h2>
-<div class="outline-text-2" id="text-1">
-
-
-<p>
-<a href="http://www.agner.org/optimize/">http://www.agner.org/optimize/</a>
-</p>
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Introduction</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> Introduction</h3>
+<div class="outline-text-3" id="text-1">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Choosing the optimal platform</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> Choosing the optimal platform</h3>
+<div class="outline-text-3" id="text-2">
 
 
 </div>
 
-<div id="outline-container-1-2-1" class="outline-4">
-<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> Choice of operating system</h4>
-<div class="outline-text-4" id="text-1-2-1">
+<div id="outline-container-2-1" class="outline-4">
+<h4 id="sec-2-1"><span class="section-number-4">2.1</span> Choice of operating system</h4>
+<div class="outline-text-4" id="text-2-1">
 
 <p>64 bit systems have several advantages over 32 bit systems:
 </p><ul>
@@ -236,16 +222,16 @@
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Finding the biggest time consumers</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> Finding the biggest time consumers</h3>
+<div class="outline-text-3" id="text-3">
 
 
 </div>
 
-<div id="outline-container-1-3-1" class="outline-4">
-<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> Use a profiler to find hot spots</h4>
-<div class="outline-text-4" id="text-1-3-1">
+<div id="outline-container-3-1" class="outline-4">
+<h4 id="sec-3-1"><span class="section-number-4">3.1</span> Use a profiler to find hot spots</h4>
+<div class="outline-text-4" id="text-3-1">
 
 <p>Most compiler packages include a profiler that can tell how many times each function is
 called and how much time it uses. There are also third-party profilers such as AQtime, Intel
@@ -331,40 +317,40 @@ exceptions, etc. in this piece of code. （如果是片段代码或者是库函�
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Performance and usability</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> Performance and usability</h3>
+<div class="outline-text-3" id="text-4">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Choosing the optimal algorithm</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> Choosing the optimal algorithm</h3>
+<div class="outline-text-3" id="text-5">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Development process</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> Development process</h3>
+<div class="outline-text-3" id="text-6">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> The efficiency of different C++ constructs</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-7" class="outline-3">
+<h3 id="sec-7"><span class="section-number-3">7</span> The efficiency of different C++ constructs</h3>
+<div class="outline-text-3" id="text-7">
 
 
 </div>
 
-<div id="outline-container-1-7-1" class="outline-4">
-<h4 id="sec-1-7-1"><span class="section-number-4">1.7.1</span> Different kinds of variable storage</h4>
-<div class="outline-text-4" id="text-1-7-1">
+<div id="outline-container-7-1" class="outline-4">
+<h4 id="sec-7-1"><span class="section-number-4">7.1</span> Different kinds of variable storage</h4>
+<div class="outline-text-4" id="text-7-1">
 
 <p>The volatile keyword specifies that a variable can be changed by another thread. This
 prevents the compiler from making optimizations that rely on the assumption that the
@@ -387,9 +373,9 @@ always belong to the thread in which they are created.（线程级别变量访�
 
 </div>
 
-<div id="outline-container-1-7-2" class="outline-4">
-<h4 id="sec-1-7-2"><span class="section-number-4">1.7.2</span> Integers variables and operators</h4>
-<div class="outline-text-4" id="text-1-7-2">
+<div id="outline-container-7-2" class="outline-4">
+<h4 id="sec-7-2"><span class="section-number-4">7.2</span> Integers variables and operators</h4>
+<div class="outline-text-4" id="text-7-2">
 
 <p>In most cases, there is no difference in speed between using signed and unsigned integers.
 But there are a few cases where it matters:
@@ -419,9 +405,9 @@ speed up multiplications and divisions are given on page 139 and 140, respective
 
 </div>
 
-<div id="outline-container-1-7-3" class="outline-4">
-<h4 id="sec-1-7-3"><span class="section-number-4">1.7.3</span> Floating point variables and operators</h4>
-<div class="outline-text-4" id="text-1-7-3">
+<div id="outline-container-7-3" class="outline-4">
+<h4 id="sec-7-3"><span class="section-number-4">7.3</span> Floating point variables and operators</h4>
+<div class="outline-text-4" id="text-7-3">
 
 <p>Modern microprocessors in the x86 family have two different types of floating point registers
 and correspondingly two different types of floating point instructions. Each type has
@@ -525,9 +511,9 @@ Avoid conversions between integers and floating point variables, if possible. Se
 
 </div>
 
-<div id="outline-container-1-7-4" class="outline-4">
-<h4 id="sec-1-7-4"><span class="section-number-4">1.7.4</span> Function pointers</h4>
-<div class="outline-text-4" id="text-1-7-4">
+<div id="outline-container-7-4" class="outline-4">
+<h4 id="sec-7-4"><span class="section-number-4">7.4</span> Function pointers</h4>
+<div class="outline-text-4" id="text-7-4">
 
 <p>Calling a function through a function pointer typically takes a few clock cycles more than
 calling the function directly if the target address can be predicted. The target address is
@@ -539,9 +525,9 @@ be mispredicted, which causes a long delay.（通过函数指针调用通常会�
 
 </div>
 
-<div id="outline-container-1-7-5" class="outline-4">
-<h4 id="sec-1-7-5"><span class="section-number-4">1.7.5</span> Type conversions</h4>
-<div class="outline-text-4" id="text-1-7-5">
+<div id="outline-container-7-5" class="outline-4">
+<h4 id="sec-7-5"><span class="section-number-4">7.5</span> Type conversions</h4>
+<div class="outline-text-4" id="text-7-5">
 
 <p>Conversions between float, double and long double take no extra time when the
 floating point register stack is used. It takes between 2 and 15 clock cycles (depending on
@@ -560,7 +546,7 @@ reason is that the C/C++ standard specifies truncation so the floating point rou
 has to be changed to truncation and back again.（如果不使用SSE2的话这个转换会占用到50-100个时钟周期）
 </p>
 <p>
-<b>note(dirlt):但是如果打开的话浮点数转到整数时间应该还好，文章里面没有说到，但是我估计应该是在2-10个时钟周期左右</b>
+#note: 但是如果打开的话浮点数转到整数时间应该还好，文章里面没有说到，但是我估计应该是在2-10个时钟周期左右
 </p>
 <p>
 If there are floating point-to-integer conversions in the critical part of a code then it is
@@ -581,9 +567,9 @@ important to do something about it. Possible solutions are:
 
 </div>
 
-<div id="outline-container-1-7-6" class="outline-4">
-<h4 id="sec-1-7-6"><span class="section-number-4">1.7.6</span> Branches and switch statements</h4>
-<div class="outline-text-4" id="text-1-7-6">
+<div id="outline-container-7-6" class="outline-4">
+<h4 id="sec-7-6"><span class="section-number-4">7.6</span> Branches and switch statements</h4>
+<div class="outline-text-4" id="text-7-6">
 
 <p>A branch instruction takes typically 0 - 2 clock cycles in the case that the microprocessor
 has made the right prediction. The time it takes to recover from a branch misprediction is
@@ -594,9 +580,9 @@ misprediction penalty.（分支预测正确跳转占用0-2个时钟周期，而�
 
 </div>
 
-<div id="outline-container-1-7-7" class="outline-4">
-<h4 id="sec-1-7-7"><span class="section-number-4">1.7.7</span> Functions</h4>
-<div class="outline-text-4" id="text-1-7-7">
+<div id="outline-container-7-7" class="outline-4">
+<h4 id="sec-7-7"><span class="section-number-4">7.7</span> Functions</h4>
+<div class="outline-text-4" id="text-7-7">
 
 <p>Function calls may slow down a program for the following reasons:
 </p><ul>
@@ -649,16 +635,16 @@ difference between 32-bit Linux and 32-bit Windows in this respect.（64位系�
 
 </div>
 
-<div id="outline-container-1-8" class="outline-3">
-<h3 id="sec-1-8"><span class="section-number-3">1.8</span> Optimizations in the compiler</h3>
-<div class="outline-text-3" id="text-1-8">
+<div id="outline-container-8" class="outline-3">
+<h3 id="sec-8"><span class="section-number-3">8</span> Optimizations in the compiler</h3>
+<div class="outline-text-3" id="text-8">
 
 
 </div>
 
-<div id="outline-container-1-8-1" class="outline-4">
-<h4 id="sec-1-8-1"><span class="section-number-4">1.8.1</span> How compilers optimize</h4>
-<div class="outline-text-4" id="text-1-8-1">
+<div id="outline-container-8-1" class="outline-4">
+<h4 id="sec-8-1"><span class="section-number-4">8.1</span> How compilers optimize</h4>
+<div class="outline-text-4" id="text-8-1">
 
 <ul>
 <li>Function inlining
@@ -705,17 +691,17 @@ difference between 32-bit Linux and 32-bit Windows in this respect.（64位系�
 
 </div>
 
-<div id="outline-container-1-8-2" class="outline-4">
-<h4 id="sec-1-8-2"><span class="section-number-4">1.8.2</span> Comparison of different compilers</h4>
-<div class="outline-text-4" id="text-1-8-2">
+<div id="outline-container-8-2" class="outline-4">
+<h4 id="sec-8-2"><span class="section-number-4">8.2</span> Comparison of different compilers</h4>
+<div class="outline-text-4" id="text-8-2">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-8-3" class="outline-4">
-<h4 id="sec-1-8-3"><span class="section-number-4">1.8.3</span> Obstacles to optimization by compiler</h4>
-<div class="outline-text-4" id="text-1-8-3">
+<div id="outline-container-8-3" class="outline-4">
+<h4 id="sec-8-3"><span class="section-number-4">8.3</span> Obstacles to optimization by compiler</h4>
+<div class="outline-text-4" id="text-8-3">
 
 <ul>
 <li>Cannot optimize across modules
@@ -755,17 +741,17 @@ difference between 32-bit Linux and 32-bit Windows in this respect.（64位系�
 
 </div>
 
-<div id="outline-container-1-8-4" class="outline-4">
-<h4 id="sec-1-8-4"><span class="section-number-4">1.8.4</span> Obstacles to optimization by CPU</h4>
-<div class="outline-text-4" id="text-1-8-4">
+<div id="outline-container-8-4" class="outline-4">
+<h4 id="sec-8-4"><span class="section-number-4">8.4</span> Obstacles to optimization by CPU</h4>
+<div class="outline-text-4" id="text-8-4">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-8-5" class="outline-4">
-<h4 id="sec-1-8-5"><span class="section-number-4">1.8.5</span> Compiler optimization options</h4>
-<div class="outline-text-4" id="text-1-8-5">
+<div id="outline-container-8-5" class="outline-4">
+<h4 id="sec-8-5"><span class="section-number-4">8.5</span> Compiler optimization options</h4>
+<div class="outline-text-4" id="text-8-5">
 
 <p>Some compilers have support for whole program optimization. This works by compiling in
 two steps. All source files are first compiled to an intermediate file format instead of the
@@ -802,17 +788,17 @@ unless your program relies on exception handling.（对帧指针不分配寄存�
 
 </div>
 
-<div id="outline-container-1-8-6" class="outline-4">
-<h4 id="sec-1-8-6"><span class="section-number-4">1.8.6</span> Optimization directives</h4>
-<div class="outline-text-4" id="text-1-8-6">
+<div id="outline-container-8-6" class="outline-4">
+<h4 id="sec-8-6"><span class="section-number-4">8.6</span> Optimization directives</h4>
+<div class="outline-text-4" id="text-8-6">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-8-7" class="outline-4">
-<h4 id="sec-1-8-7"><span class="section-number-4">1.8.7</span> Checking what the compiler does</h4>
-<div class="outline-text-4" id="text-1-8-7">
+<div id="outline-container-8-7" class="outline-4">
+<h4 id="sec-8-7"><span class="section-number-4">8.7</span> Checking what the compiler does</h4>
+<div class="outline-text-4" id="text-8-7">
 
 
 </div>
@@ -820,56 +806,56 @@ unless your program relies on exception handling.（对帧指针不分配寄存�
 
 </div>
 
-<div id="outline-container-1-9" class="outline-3">
-<h3 id="sec-1-9"><span class="section-number-3">1.9</span> Optimizing memory access</h3>
-<div class="outline-text-3" id="text-1-9">
+<div id="outline-container-9" class="outline-3">
+<h3 id="sec-9"><span class="section-number-3">9</span> Optimizing memory access</h3>
+<div class="outline-text-3" id="text-9">
 
 
 </div>
 
-<div id="outline-container-1-9-1" class="outline-4">
-<h4 id="sec-1-9-1"><span class="section-number-4">1.9.1</span> Caching of code and data</h4>
-<div class="outline-text-4" id="text-1-9-1">
-
-</div>
-
-</div>
-
-<div id="outline-container-1-9-2" class="outline-4">
-<h4 id="sec-1-9-2"><span class="section-number-4">1.9.2</span> Cache organization</h4>
-<div class="outline-text-4" id="text-1-9-2">
+<div id="outline-container-9-1" class="outline-4">
+<h4 id="sec-9-1"><span class="section-number-4">9.1</span> Caching of code and data</h4>
+<div class="outline-text-4" id="text-9-1">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-9-3" class="outline-4">
-<h4 id="sec-1-9-3"><span class="section-number-4">1.9.3</span> Functions that are used together should be stored together</h4>
-<div class="outline-text-4" id="text-1-9-3">
+<div id="outline-container-9-2" class="outline-4">
+<h4 id="sec-9-2"><span class="section-number-4">9.2</span> Cache organization</h4>
+<div class="outline-text-4" id="text-9-2">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-9-4" class="outline-4">
-<h4 id="sec-1-9-4"><span class="section-number-4">1.9.4</span> Variables that are used together should be stored together</h4>
-<div class="outline-text-4" id="text-1-9-4">
+<div id="outline-container-9-3" class="outline-4">
+<h4 id="sec-9-3"><span class="section-number-4">9.3</span> Functions that are used together should be stored together</h4>
+<div class="outline-text-4" id="text-9-3">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-9-5" class="outline-4">
-<h4 id="sec-1-9-5"><span class="section-number-4">1.9.5</span> Alignment of data</h4>
-<div class="outline-text-4" id="text-1-9-5">
+<div id="outline-container-9-4" class="outline-4">
+<h4 id="sec-9-4"><span class="section-number-4">9.4</span> Variables that are used together should be stored together</h4>
+<div class="outline-text-4" id="text-9-4">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-9-6" class="outline-4">
-<h4 id="sec-1-9-6"><span class="section-number-4">1.9.6</span> Dynamic memory allocation</h4>
-<div class="outline-text-4" id="text-1-9-6">
+<div id="outline-container-9-5" class="outline-4">
+<h4 id="sec-9-5"><span class="section-number-4">9.5</span> Alignment of data</h4>
+<div class="outline-text-4" id="text-9-5">
+
+</div>
+
+</div>
+
+<div id="outline-container-9-6" class="outline-4">
+<h4 id="sec-9-6"><span class="section-number-4">9.6</span> Dynamic memory allocation</h4>
+<div class="outline-text-4" id="text-9-6">
 
 <p>A little-known alternative to using new and delete is to allocate variable-size arrays with
 alloca. This is a function that allocates memory on the stack rather than the heap. The
@@ -881,41 +867,41 @@ called. There is no need to deallocate the space explicitly when alloca is used.
 
 </div>
 
-<div id="outline-container-1-9-7" class="outline-4">
-<h4 id="sec-1-9-7"><span class="section-number-4">1.9.7</span> Container classes</h4>
-<div class="outline-text-4" id="text-1-9-7">
+<div id="outline-container-9-7" class="outline-4">
+<h4 id="sec-9-7"><span class="section-number-4">9.7</span> Container classes</h4>
+<div class="outline-text-4" id="text-9-7">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-9-8" class="outline-4">
-<h4 id="sec-1-9-8"><span class="section-number-4">1.9.8</span> Strings</h4>
-<div class="outline-text-4" id="text-1-9-8">
+<div id="outline-container-9-8" class="outline-4">
+<h4 id="sec-9-8"><span class="section-number-4">9.8</span> Strings</h4>
+<div class="outline-text-4" id="text-9-8">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-9-9" class="outline-4">
-<h4 id="sec-1-9-9"><span class="section-number-4">1.9.9</span> Access data sequentially</h4>
-<div class="outline-text-4" id="text-1-9-9">
+<div id="outline-container-9-9" class="outline-4">
+<h4 id="sec-9-9"><span class="section-number-4">9.9</span> Access data sequentially</h4>
+<div class="outline-text-4" id="text-9-9">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-9-10" class="outline-4">
-<h4 id="sec-1-9-10"><span class="section-number-4">1.9.10</span> Cache contentions in large data structures</h4>
-<div class="outline-text-4" id="text-1-9-10">
+<div id="outline-container-9-10" class="outline-4">
+<h4 id="sec-9-10"><span class="section-number-4">9.10</span> Cache contentions in large data structures</h4>
+<div class="outline-text-4" id="text-9-10">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-9-11" class="outline-4">
-<h4 id="sec-1-9-11"><span class="section-number-4">1.9.11</span> Explicit cache control</h4>
-<div class="outline-text-4" id="text-1-9-11">
+<div id="outline-container-9-11" class="outline-4">
+<h4 id="sec-9-11"><span class="section-number-4">9.11</span> Explicit cache control</h4>
+<div class="outline-text-4" id="text-9-11">
 
 <p>包括预取指令（如果不是使用常规访问模式来访问内存的话）以及”写内存但是不写缓存“指令（如果确定数据之后不会读取上来并且cache冲突严重）
 </p>
@@ -924,9 +910,9 @@ called. There is no need to deallocate the space explicitly when alloca is used.
 
 </div>
 
-<div id="outline-container-1-10" class="outline-3">
-<h3 id="sec-1-10"><span class="section-number-3">1.10</span> Multithreading</h3>
-<div class="outline-text-3" id="text-1-10">
+<div id="outline-container-10" class="outline-3">
+<h3 id="sec-10"><span class="section-number-3">10</span> Multithreading</h3>
+<div class="outline-text-3" id="text-10">
 
 <p>It is important to distinguish between coarse-grained parallelism and fine-grained parallelism
 when deciding whether it is advantageous to do things in parallel. Coarse-grained
@@ -970,9 +956,9 @@ be more (128 or 256 bytes) on future processors. （现代处理器的cache line
 
 </div>
 
-<div id="outline-container-1-10-1" class="outline-4">
-<h4 id="sec-1-10-1"><span class="section-number-4">1.10.1</span> Hyperthreading</h4>
-<div class="outline-text-4" id="text-1-10-1">
+<div id="outline-container-10-1" class="outline-4">
+<h4 id="sec-10-1"><span class="section-number-4">10.1</span> Hyperthreading</h4>
+<div class="outline-text-4" id="text-10-1">
 
 <p>Some versions of Intel microprocessors are able to run two threads in each core. For
 example, a Core i7 processor with four cores can run eight threads simultaneously. This
@@ -1021,9 +1007,9 @@ prefetching so this feature is rarely needed.（大部分情况使用默认CPU�
 
 </div>
 
-<div id="outline-container-1-11" class="outline-3">
-<h3 id="sec-1-11"><span class="section-number-3">1.11</span> Out of order execution</h3>
-<div class="outline-text-3" id="text-1-11">
+<div id="outline-container-11" class="outline-3">
+<h3 id="sec-11"><span class="section-number-3">11</span> Out of order execution</h3>
+<div class="outline-text-3" id="text-11">
 
 <p>All modern x86 CPUs can execute instructions out of order or do more than one thing at the
 same time（现在X86 cpu允许OOO来使得在同一个时间完成多项任务）
@@ -1089,19 +1075,19 @@ calculations with memory access.（除了打破dependency chain之外，还可�
 
 </div>
 
-<div id="outline-container-1-12" class="outline-3">
-<h3 id="sec-1-12"><span class="section-number-3">1.12</span> Using vector operations</h3>
-<div class="outline-text-3" id="text-1-12">
+<div id="outline-container-12" class="outline-3">
+<h3 id="sec-12"><span class="section-number-3">12</span> Using vector operations</h3>
+<div class="outline-text-3" id="text-12">
 
-<p>todo(dirlt): 之前调研过x86 simd指令集并且整理过一篇<a href="simd.html">文章</a>
+<p>#note: 之前调研过x86 simd指令集并且整理过一篇<a href="simd.html">文章</a>
 </p>
 </div>
 
 </div>
 
-<div id="outline-container-1-13" class="outline-3">
-<h3 id="sec-1-13"><span class="section-number-3">1.13</span> Making critical code in multiple versions for different instruction sets</h3>
-<div class="outline-text-3" id="text-1-13">
+<div id="outline-container-13" class="outline-3">
+<h3 id="sec-13"><span class="section-number-3">13</span> Making critical code in multiple versions for different instruction sets</h3>
+<div class="outline-text-3" id="text-13">
 
 <p>A disadvantage of using the newest instruction set is that the compatibility with older
 microprocessors is lost. This dilemma can be solved by making the most critical parts of the
@@ -1117,16 +1103,16 @@ system and choose the appropriate version of the subroutine for the critical inn
 
 </div>
 
-<div id="outline-container-1-14" class="outline-3">
-<h3 id="sec-1-14"><span class="section-number-3">1.14</span> Specific optimization topics</h3>
-<div class="outline-text-3" id="text-1-14">
+<div id="outline-container-14" class="outline-3">
+<h3 id="sec-14"><span class="section-number-3">14</span> Specific optimization topics</h3>
+<div class="outline-text-3" id="text-14">
 
 
 </div>
 
-<div id="outline-container-1-14-1" class="outline-4">
-<h4 id="sec-1-14-1"><span class="section-number-4">1.14.1</span> Use lookup tables</h4>
-<div class="outline-text-4" id="text-1-14-1">
+<div id="outline-container-14-1" class="outline-4">
+<h4 id="sec-14-1"><span class="section-number-4">14.1</span> Use lookup tables</h4>
+<div class="outline-text-4" id="text-14-1">
 
 <p>Replacing a function with a lookup table is advantageous in most cases where the number
 of possible inputs is limited and there are no cache problems. It is not advantageous to use
@@ -1148,9 +1134,9 @@ loop.（静态内存分布在不同的内存区域上，容易造成cache miss. 
 
 </div>
 
-<div id="outline-container-1-14-2" class="outline-4">
-<h4 id="sec-1-14-2"><span class="section-number-4">1.14.2</span> Bounds checking</h4>
-<div class="outline-text-4" id="text-1-14-2">
+<div id="outline-container-14-2" class="outline-4">
+<h4 id="sec-14-2"><span class="section-number-4">14.2</span> Bounds checking</h4>
+<div class="outline-text-4" id="text-14-2">
 
 
 
@@ -1174,17 +1160,17 @@ if ((unsigned int)(i - min) &lt;= (unsigned int)(max - min)) { ...
 
 </div>
 
-<div id="outline-container-1-14-3" class="outline-4">
-<h4 id="sec-1-14-3"><span class="section-number-4">1.14.3</span> Use bitwise operators for checking multiple values at once</h4>
-<div class="outline-text-4" id="text-1-14-3">
+<div id="outline-container-14-3" class="outline-4">
+<h4 id="sec-14-3"><span class="section-number-4">14.3</span> Use bitwise operators for checking multiple values at once</h4>
+<div class="outline-text-4" id="text-14-3">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-14-4" class="outline-4">
-<h4 id="sec-1-14-4"><span class="section-number-4">1.14.4</span> Integer multiplication</h4>
-<div class="outline-text-4" id="text-1-14-4">
+<div id="outline-container-14-4" class="outline-4">
+<h4 id="sec-14-4"><span class="section-number-4">14.4</span> Integer multiplication</h4>
+<div class="outline-text-4" id="text-14-4">
 
 <p>Integer multiplication takes longer time than addition and subtraction (3 - 10 clock cycles,
 depending on the processor).（整数乘法通常在3-10个时钟周期）
@@ -1216,9 +1202,9 @@ the cache then you can get very expensive cache contentions, as explained on pag
 
 </div>
 
-<div id="outline-container-1-14-5" class="outline-4">
-<h4 id="sec-1-14-5"><span class="section-number-4">1.14.5</span> Integer division</h4>
-<div class="outline-text-4" id="text-1-14-5">
+<div id="outline-container-14-5" class="outline-4">
+<h4 id="sec-14-5"><span class="section-number-4">14.5</span> Integer division</h4>
+<div class="outline-text-4" id="text-14-5">
 
 <p>Integer division takes much longer time than addition, subtraction and multiplication (27 - 80
 clock cycles for 32-bit integers, depending on the processor).（整数除法通常在27-80个时钟周期）
@@ -1239,9 +1225,9 @@ The following guidelines can be used for improving code that contains integer di
 
 </div>
 
-<div id="outline-container-1-14-6" class="outline-4">
-<h4 id="sec-1-14-6"><span class="section-number-4">1.14.6</span> Floating point division</h4>
-<div class="outline-text-4" id="text-1-14-6">
+<div id="outline-container-14-6" class="outline-4">
+<h4 id="sec-14-6"><span class="section-number-4">14.6</span> Floating point division</h4>
+<div class="outline-text-4" id="text-14-6">
 
 <p>Floating point division takes much longer time than addition, subtraction and multiplication
 (20 - 45 clock cycles). （浮点数除法在20-45个时钟周期，远超过加减乘，所以如果可以的话那么尽量使用乘法代替）
@@ -1250,9 +1236,9 @@ The following guidelines can be used for improving code that contains integer di
 
 </div>
 
-<div id="outline-container-1-14-7" class="outline-4">
-<h4 id="sec-1-14-7"><span class="section-number-4">1.14.7</span> Don't mix float and double</h4>
-<div class="outline-text-4" id="text-1-14-7">
+<div id="outline-container-14-7" class="outline-4">
+<h4 id="sec-14-7"><span class="section-number-4">14.7</span> Don't mix float and double</h4>
+<div class="outline-text-4" id="text-14-7">
 
 <p>Floating point calculations usually take the same time regardless of whether you are using
 single precision or double precision, but there is a penalty for mixing single and double
@@ -1269,9 +1255,9 @@ same precision in all operands in case the code is later ported to another platf
 
 </div>
 
-<div id="outline-container-1-14-8" class="outline-4">
-<h4 id="sec-1-14-8"><span class="section-number-4">1.14.8</span> Conversions between floating point numbers and integers</h4>
-<div class="outline-text-4" id="text-1-14-8">
+<div id="outline-container-14-8" class="outline-4">
+<h4 id="sec-14-8"><span class="section-number-4">14.8</span> Conversions between floating point numbers and integers</h4>
+<div class="outline-text-4" id="text-14-8">
 
 <p><b>Conversion from floating point to integer</b>
 </p>
@@ -1315,9 +1301,9 @@ conversion to floating point if the conversion to signed integer doesn't cause o
 
 </div>
 
-<div id="outline-container-1-14-9" class="outline-4">
-<h4 id="sec-1-14-9"><span class="section-number-4">1.14.9</span> Using integer operations for manipulating floating point variables</h4>
-<div class="outline-text-4" id="text-1-14-9">
+<div id="outline-container-14-9" class="outline-4">
+<h4 id="sec-14-9"><span class="section-number-4">14.9</span> Using integer operations for manipulating floating point variables</h4>
+<div class="outline-text-4" id="text-14-9">
 
 <p>The representation of float, double and long double reflects the floating point value
 written as (+-)2^eee * 1.fffff, where ± is the sign, eee is the exponent, and fffff is the
@@ -1390,15 +1376,15 @@ BSD, Intel-based Mac OS, etc.) have little-endian storage, but other systems may
 endian storage (e.g. PowerPC).
 </p>
 <p>
-<b>note(dirlt):比较保险的做法应该是只读取这些变量而不改写，并且需要针对大小端做判断</b>
+#note: 比较保险的做法应该是只读取这些变量而不改写，并且需要针对大小端做判断
 </p>
 </div>
 
 </div>
 
-<div id="outline-container-1-14-10" class="outline-4">
-<h4 id="sec-1-14-10"><span class="section-number-4">1.14.10</span> Mathematical functions</h4>
-<div class="outline-text-4" id="text-1-14-10">
+<div id="outline-container-14-10" class="outline-4">
+<h4 id="sec-14-10"><span class="section-number-4">14.10</span> Mathematical functions</h4>
+<div class="outline-text-4" id="text-14-10">
 
 <p>The most common mathematical functions such as logarithms, exponential functions,
 trigonometric functions, etc. are implemented in hardware in the x86 CPUs. However, a
@@ -1416,9 +1402,9 @@ precision.（软件实现较硬件实现而言，在单精度浮点上优化更�
 
 </div>
 
-<div id="outline-container-1-14-11" class="outline-4">
-<h4 id="sec-1-14-11"><span class="section-number-4">1.14.11</span> Static versus dynamic libraries</h4>
-<div class="outline-text-4" id="text-1-14-11">
+<div id="outline-container-14-11" class="outline-4">
+<h4 id="sec-14-11"><span class="section-number-4">14.11</span> Static versus dynamic libraries</h4>
+<div class="outline-text-4" id="text-14-11">
 
 <p>The advantages of using static linking rather than dynamic linking are:
 </p><ul>
@@ -1478,11 +1464,11 @@ at load time.
 
 </div>
 
-<div id="outline-container-1-14-12" class="outline-4">
-<h4 id="sec-1-14-12"><span class="section-number-4">1.14.12</span> Position-independent code</h4>
-<div class="outline-text-4" id="text-1-14-12">
+<div id="outline-container-14-12" class="outline-4">
+<h4 id="sec-14-12"><span class="section-number-4">14.12</span> Position-independent code</h4>
+<div class="outline-text-4" id="text-14-12">
 
-<p>todo(dirlt): 之前写过一篇有关于pic的<a href="pic.html">文章</a>
+<p>#note: 之前写过一篇有关于pic的<a href="pic.html">文章</a>
 </p>
 <p>
 A code that is compiled as position-independent has the following features:
@@ -1565,26 +1551,26 @@ global and one local, and use the local name for local references.（因为-fpie
 
 </div>
 
-<div id="outline-container-1-14-13" class="outline-4">
-<h4 id="sec-1-14-13"><span class="section-number-4">1.14.13</span> System programming</h4>
-<div class="outline-text-4" id="text-1-14-13">
+<div id="outline-container-14-13" class="outline-4">
+<h4 id="sec-14-13"><span class="section-number-4">14.13</span> System programming</h4>
+<div class="outline-text-4" id="text-14-13">
 
 </div>
 </div>
 
 </div>
 
-<div id="outline-container-1-15" class="outline-3">
-<h3 id="sec-1-15"><span class="section-number-3">1.15</span> Metaprogramming</h3>
-<div class="outline-text-3" id="text-1-15">
+<div id="outline-container-15" class="outline-3">
+<h3 id="sec-15"><span class="section-number-3">15</span> Metaprogramming</h3>
+<div class="outline-text-3" id="text-15">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-16" class="outline-3">
-<h3 id="sec-1-16"><span class="section-number-3">1.16</span> Testing speed</h3>
-<div class="outline-text-3" id="text-1-16">
+<div id="outline-container-16" class="outline-3">
+<h3 id="sec-16"><span class="section-number-3">16</span> Testing speed</h3>
+<div class="outline-text-3" id="text-16">
 
 <p>The measured time is interpreted in the following way. The first count is always higher than
 the subsequent counts. This is the time it takes to execute CriticalFunction when code
@@ -1615,17 +1601,17 @@ mentioned above.（如果CPU频率会自动调节的话，那么读取clock coun
 
 </div>
 
-<div id="outline-container-1-16-1" class="outline-4">
-<h4 id="sec-1-16-1"><span class="section-number-4">1.16.1</span> The pitfalls of unit-testing</h4>
-<div class="outline-text-4" id="text-1-16-1">
+<div id="outline-container-16-1" class="outline-4">
+<h4 id="sec-16-1"><span class="section-number-4">16.1</span> The pitfalls of unit-testing</h4>
+<div class="outline-text-4" id="text-16-1">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-16-2" class="outline-4">
-<h4 id="sec-1-16-2"><span class="section-number-4">1.16.2</span> Worst-case testing</h4>
-<div class="outline-text-4" id="text-1-16-2">
+<div id="outline-container-16-2" class="outline-4">
+<h4 id="sec-16-2"><span class="section-number-4">16.2</span> Worst-case testing</h4>
+<div class="outline-text-4" id="text-16-2">
 
 <p>Each of the following methods could possibly be relevant when testing worst-case
 performance:
@@ -1660,28 +1646,25 @@ performance:
 
 </div>
 
-<div id="outline-container-1-17" class="outline-3">
-<h3 id="sec-1-17"><span class="section-number-3">1.17</span> Optimization in embedded systems</h3>
-<div class="outline-text-3" id="text-1-17">
+<div id="outline-container-17" class="outline-3">
+<h3 id="sec-17"><span class="section-number-3">17</span> Optimization in embedded systems</h3>
+<div class="outline-text-3" id="text-17">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-18" class="outline-3">
-<h3 id="sec-1-18"><span class="section-number-3">1.18</span> Overview of compiler options</h3>
-<div class="outline-text-3" id="text-1-18">
+<div id="outline-container-18" class="outline-3">
+<h3 id="sec-18"><span class="section-number-3">18</span> Overview of compiler options</h3>
+<div class="outline-text-3" id="text-18">
 
-</div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:43+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'optimizing-software-in-cpp.html';var disqus_title = 'optimizing-software-in-cpp.html';var disqus_url = 'http://dirlt.com/optimizing-software-in-cpp.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'optimizing-software-in-cpp.html';var disqus_title = 'optimizing-software-in-cpp.html';var disqus_url = 'http://dirlt.com/optimizing-software-in-cpp.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

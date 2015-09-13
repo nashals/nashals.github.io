@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>nolearn</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="nolearn"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="author" content="dirtysalt"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">nolearn</h1>
+
+<ul>
+<li><a href="https://github.com/dnouri/nolearn">https://github.com/dnouri/nolearn</a>
+</li>
+<li><a href="https://github.com/Lasagne/Lasagne">https://github.com/Lasagne/Lasagne</a>
+</li>
+</ul>
+
+
+<p>
+nolearn的定位是，对已有的NN实现进行包装，提供和scikit-learn兼容的接口。从github repo下面看到的有下面这些实现：
+</p><ul>
+<li>caffe # Caffe | Deep Learning Framework : <a href="http://caffe.berkeleyvision.org/">http://caffe.berkeleyvision.org/</a>
+</li>
+<li>decaf # [1310.1531] DeCAF: A Deep Convolutional Activation Feature for Generic Visual Recognition : <a href="http://arxiv.org/abs/1310.1531">http://arxiv.org/abs/1310.1531</a>
+</li>
+<li>overfeat # code:start | CILVR Lab @ NYU : <a href="http://cilvr.nyu.edu/doku.php?id=code:start">http://cilvr.nyu.edu/doku.php?id=code:start</a>
+</li>
+<li>lasagne # <a href="https://github.com/Lasagne/Lasagne">https://github.com/Lasagne/Lasagne</a> 基于theano的NN实现. 这个实现相对其他几个更经常和nolearn一起使用，而且这个实现也不太好单独使用。
+</li>
+</ul>
+
+
+<p>
+似乎也没有什么特别好写的，有下面几个途径来学习：
+</p><ul>
+<li>这个 <a href="http://danielnouri.org/notes/2014/12/17/using-convolutional-neural-nets-to-detect-facial-keypoints-tutorial/">教程</a> 是个不错的起点，针对kaggle一道"facial keypoints detection"比赛题目来手把手教你如何使用CNN.
+</li>
+<li><a href="https://github.com/dnouri/nolearn/blob/master/nolearn/lasagne.py">https://github.com/dnouri/nolearn/blob/master/nolearn/lasagne.py</a> 阅读源代码了解它提供的接口，其实并不是特别困难
+</li>
+<li>然后再看看 <a href="https://github.com/Lasagne/Lasagne">Lasagne</a> 还提供了哪些其他特性，<a href="http://lasagne.readthedocs.org/en/latest/">文档</a> 好像做得不是特别好
+</li>
+</ul>
+
+
+<p>
+#note: 使用pip安装的nolearn或是lasagne可能会出现比较奇怪的问题，比较建议git clone然后本地编译。
+</p></div>
+
+<div id="postamble">
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+
+</div>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'nolearn.html';var disqus_title = 'nolearn.html';var disqus_url = 'http://dirlt.com/nolearn.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+</html>

@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Engineering Management</title>
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1"/>
+<meta name="title" content="Engineering Management"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="author" content="dirtysalt"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Engineering Management</h1>
+
+<p><a href="http://algeri-wong.com/yishan/engineering-management.html">http://algeri-wong.com/yishan/engineering-management.html</a>
+</p>
+<p>
+From late 2006 to early 2009, I was privileged to hold a variety of management positions in Facebook Engineering, ranging from manager of various teams to director of engineering. During that time, the engineering department grew from about 30 to around 200 engineers. It was an era that roughly spanned the launch of News Feed, Facebook Platform (the first F8 conference), the launch of our self-serve advertising system (now a major contributor to our positive cash-flow), internationalization of the site, and Facebook Connect. We went from being a niche college social network with less than 10M users in 2006 to a global phenomenon with over 250M users by early 2009. It was a period of time during which the company grew from being a small startup (under 100 employees) to a medium-sized company (800+ employees). 
+</p>
+<p>
+Coming to Facebook, it was clear that the company was likely to expand rapidly, and a great hope of mine was to play a part in influencing key developmental decisions during this critical period so that far into the future, Facebook and its engineering department would be a vibrant and enduring institution. From my time at other technology companies which had gone through this period of hyper-growth, I had formed ideas about key cultural and organizational factors that I felt contributed to creating a strong engineering environment, one that the best people would want to work in and which maximize innovation and rapid execution. Today I have returned to being a hands-on engineer, and the other day when I reflected upon how I found it quite pleasant that I was now getting to enjoy working in such a productive engineering environment, the person I was with asked me, "Well, what ARE the Yishan tenets of growing a great engineering organization?" I had never quite thought about my ideas in such a doctrinaire way (and indeed it is dangerous to do so, lest they become unnecessarily enshrined), but I'll indulge anyway and see if I can marshal them into a numbered list, so here they are: 
+</p>
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="engineering-management.html#sec-1">1 Hiring is number one</a></li>
+<li><a href="engineering-management.html#sec-2">2 Let process be implemented by those who practice it</a></li>
+<li><a href="engineering-management.html#sec-3">3 Promotion from within</a></li>
+<li><a href="engineering-management.html#sec-4">4 Tools are top priority</a></li>
+<li><a href="engineering-management.html#sec-5">5 Technical Leaders</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> Hiring is number one</h3>
+<div class="outline-text-3" id="text-1">
+
+<p>This means "make hiring your number one priority, always."
+</p>
+<p>
+This means that it needs to be your organization's first priority, it needs to be each manager's first priority, and it needs to be each engineer's first priority.
+</p>
+<p>
+Hiring is a function requiring cooperation from multiple departments and consists of multiple phases; roughly speaking: sourcing, screening, interviewing, deciding, offer-making, and closing. At each stage this means making the relevant actions the top priority of the responsible actor, e.g. it means that recruiters contact a lead immediately, and schedule an interview or follow-up conversations to occur at the first humanly-possible time slot. It means that doing an interview takes priority over other work. It means that hire/no-hire decisions are made as soon as possible upon conclusion of the interviews, and offers made with subsequent speed. Recruiters don't wait until the next day to call a candidate or schedule them for next week. Interviewers don't skip an interview because they have other things to do. Interviewers don't wait a few hours or days to give their feedback on an interview. Hiring managers coalesce the feedback, facillitate a decision, put together an offer, and begin closing the candidate immediately.
+</p>
+<p>
+The resultant execution speed of the hiring process is a side-effect and a good indicator of whether or not all parties involved are upholding this value. It happens to provide a competitive advantage in hiring certain candidates (typically <a href="http://www.happiness-project.com/happiness_project/2006/06/are_you_a_satis/">satisficers</a>), but the real benefit of consciously making hiring the top priority over everything is that it drives other behaviors, values, and results which improve the quality of people and the workplace.
+</p>
+<p>
+<b>Effects:</b>
+</p>
+<p>
+1)It creates a focus on high-quality hiring standards, and how to achieve them in practice. "Hire the best" is a well-known Silicon Valley maxim, but many companies fail to diffrentiate between "hiring the best" and "hiring the best candidate you interviewed." Successfully hiring the best is a side-effect of making hiring your top priority, because attracting the best candidates to your company, making yourself a viable employment option to them, evaluating them effectively, and then standing out among competing offers is a holistic effect that can only be achieved if everyone involved cares about it enough to do the nitty-gritty things that make all of that happen.
+</p>
+<p>
+How do you have high standards? Furthermore, how do you test if a candidate measures up to them? Since both are easier said than done, it is only once a culture of giving hiring top priority in peoples' attentions will individuals and managers naturally begin directing their energy into doing things like deciding what constitutes effective interviewing techniques, what kinds of questions are best to ask, how to effectively diffrentiate between good and bad signals in an interview, etc, and subsequently how to train the entire cadre of interviewers to be able to effectively and repeatably practice this. The willingness to do this takes an enormous amount of collective energy, and it simply can't occur until everyone is suffused in a culture that values the practice of hiring above all else. Hiring is hard; it is messy and imprecise (which technical people hate), and so you can't make anyone do all this unless they first believe it's important.
+</p>
+<p>
+2)It also means that everyone interviews (or everyone who has been at the company at least some minimum amount of time). Since hiring is everyone's top priority, there should be no one for whom interviewing (and participating in other hiring-related activities) is an optional activity. It should eliminate the occurence of the engineer who says "I just want to code; you guys do the interviewing and hiring."
+</p>
+<p>
+This has a number of effects. First, it means that more people are bought in to the candidates who eventually join, and team bonding gets a jumpstart - new people join a workplace where they have already met several people, and know that these people approve of and welcome them. Second, it puts the power of maintaining the quality of one's workplace into everyone's hands. Personnel excellence is not just something management handles off in some ivory tower, it lives and dies through the practice of individuals. A question is often asked in hyper-growth companies, "How are we ensuring that all these people we're hiring are top-notch people?" The answer, if everyone interviews, is "It's YOUR job." To each and every individual, it's your job to continually make yourself better at determining if someone is qualified to join, it's your job to test them rigorously, it's your job to say no-hire if you're just not sure about them and perhaps most importantly, it's your job to sometimes put your foot down and insist on vetoing a hire ("over my dead body") because there is just a red flag with a particular candidate that you can't let pass, because YOU TOO are a guardian of our standards and our culture.
+</p>
+<p>
+The quality of coworkers is the single greatest determinant of workplace happiness, and fully engaged participation by everyone is the primary way by which everyone exercises direct power over making their job experience better.
+</p>
+<p>
+3)It also improves your sourcing pipeline. Recruiters are not able to find and screen the best technical talent. They are not technical people. Hiring as a priority is what will motivate your best existing people to seek out and refer their best contacts, and this is what will constitute the majority of your successful candidate pipeline. Again, this is easy not to do (there is a natural reluctance to bug one's talented friend over and over again) unless everyone believes in the priority.
+</p>
+<p>
+4)You will begin to get the (objectively) best candidates. This is the obvious and desired final outcome, but only begins to happen once the priority and practice are in place. Hiring is a zero-sum game. Candidates that don't join your company will join a competitor's, and your loss will be their gain. If hiring isn't your number one priority, it's unlikely you'll be number one at hiring, which means someone else will, and the true best candidates will go to them, while you'll be left to hire the "best candidate you were able to interview."
+</p>
+<p>
+<b>Longer-term effects:</b>
+</p>
+<p>
+1)The most obvious one is that the effects of attention to hiring compounds itself. Once it's shown that it breeds success in hiring, it is easier to continue, especially as good people join the company and enthusiastically support that element of the culture in order to ensure that more good people join. These effects are felt for years to come, since having even slightly better people than the competition is a growing force multiplier as time progresses. First you work hard to hire the best, then you get the best people, then you produce the best results.
+</p>
+<p>
+2)On a broader organizational level, this also results in hiring high-quality managers and management candidates (individuals who can be later promoted internally to managers). Great managers recognize that people count, and look to find an organization where this value is reflected in practice. The presence of high-quality managers is critical to several other important aspects of operation, including effective performance management, designing and deploying effective incentive structures, and driving a culture of strong execution.
+</p>
+<p>
+3)Succesfully hiring the best people at all levels means that down the road, your internal promotion pipeline is strong. This allows you to promote more easily from within and relieves you of the need to source external candidates (always risky). This in turn means that new initiatives, organizational growth, changes in strategy, and backfilling retiring leaders - all things which potentially need new leaders to step up - can be undertaken with greater confidence and lower risk.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> Let process be implemented by those who practice it</h3>
+<div class="outline-text-3" id="text-2">
+
+<p>Here, I use process to describe both process in the sense of "the steps an individual or group follows in order to perform a function" as well as general systems of organization.
+</p>
+<p>
+As a company scales, it becomes necessary to add or codify process. The key tradeoff under consideration is always whether the drag imposed by the process is worth the gains in efficiency or effectiveness.
+</p>
+<p>
+It is difficult to assess this tradeoff since so many factors are involved, so here is one principle which may be orthogonally helpful: only allow processes to be implemented which are specifically desired and put into place by those who will be directly involved in using it. Often, managers and executives suggest process because it will help them better command, control, coordinate, or communicate. New process should never be implemented in the service of these goals, because its benefit is illusory and often highly overestimated: managers can perceive its benefits to them, but because they are at least one (or more) levels removed from the direct operation, they do not perceive its true costs.
+</p>
+<p>
+On the other hand, individuals doing hands-on work (e.g. engineers) can easily recognize when it is appropriate to add elements of organization or process, as they have a more direct ability to see how the benefits would outweigh the costs. That is the only time when a new system of organization or process should be added.
+</p>
+<p>
+Managers will need to suppress their natural fear that things are too chaotic or out of control due to the lack of visibility into details. They should focus on leading by setting accurate and informative context and goals, facillitating the natural organization that results from collaboration between technology workers (who are often not the type prone to falling into anarchy anyhow).
+</p>
+<p>
+<b>Effects:</b>
+</p>
+<p>
+A process created and implemented by the individual contributors themselves is much more tuned to optimize the real work being done. A process designed by managers at best approximates the actual flow of work that it needs to govern, optimize, or codify. This is the source of many clueless and inefficient processes.
+</p>
+<p>
+People feel greater ownership over process they create themselves, and are thus more empowered to adjust it in the future as circumstances inevitably evolve rather than allow it to calcify. Process imposed externally ("from above") is more difficult to break down and tends to be unnecessarily enshrined, thus producing extra organizational inertia.
+</p>
+<p>
+<b>On coordination and communication:</b>
+</p>
+<p>
+What about coordination and communication? Don't managers need to do that? The answer is yes; it's one of their vital functions. However, process created to serve this should be process practiced amongst managers, and not imposed on individual contributors.
+</p>
+<p>
+For example, the broadcasting of team status and project updates is a useful function to help inform others in the department or company of what's going on. This is a process that can be done entirely by managers, and does not need the direct participation of individuals on their teams, i.e. managers can compose these updates and circulate them but should not be recursively requiring them of their team members, since the manager can (and should) be aware of team operations as a result of working with them.
+</p>
+<p>
+The key is that here, we have a process that benefits managers wherein the cost is also borne by them, thus allowing them to optimize the process for their own mutual benefits. It doesn't (and shouldn't) need to involve anyone else.
+</p>
+<p>
+<b>Regarding subtle dangers of descriptive process:</b>
+</p>
+<p>
+Prescriptive process says "Here are the steps you must take in order to do X." Descriptive process says, "Let's write down the steps we're taking today when we do X." Descriptive process is, at first, a common and harmless-seeming suggestion but leads inexorably to the same unnecessary process requirements and calcified systems of organization, and therefore should be avoided with the same vigor:
+</p>
+<p>
+First, the harmless suggestion to write down "the steps we go through to do X" is taken up (where X might be "launch a product" or "take an idea from conception to delivery" or "request a new desk"), and the process is described in a document and posted onto (perhaps) an intranet page.
+</p>
+<p>
+Then one day, a new person asks, "How do we do X?" In reply, instead of an old-timer explaining to them informally how they individually might go about doing X, they are referred to the document. After all, it's easier than explaining verbally. In a fast-growing organization, new people join rapidly; soon, this new person becomes an old-timer. Another new person happens to ask them, and they in turn are referred to the document. <a href="http://www.luisprada.com/Protected/bureaucracy_in_the_planet_of_the_apes.htm">This cycle repeats merely a couple of times, and the document itself becomes viewed as the authority on how something is done. </a>
+</p>
+<p>
+The original ad-hoc process (which was adaptable, organic, and worked well because its informality allowed people to perceive it as flexible) has been replaced in the minds of most of the current people (newer people always outnumber old-timers in a hyper-growth company) by the document, which is now viewed as a overly-precise specification of Steps You Take to Do X. Subtly, operating flexibility is reduced and through the fault of no one, descriptive process has become prescriptive. This is sometimes worse, because deliberately prescriptive process usually exists under the aegis of a specific person with authority, who can be personally appealed to. A calcified originally-just-descriptive process exists under the aegis of an independent document, to which people acribe an ineffable authority akin to law, i.e. one greater than any one individual and thus even more difficult to overturn or innovate against when the need arises.
+</p>
+<p>
+<b>Long-term effects:</b>
+</p>
+<p>
+At various times I've been involved in the due diligence process of potential acquisition targets. One of the most surprising findings was that in many cases, a company that was smaller than us had more formal processes, and this was cited by its own people as a major factor as to why they moved more slowly than we did, executed on fewer ideas, and ultimately ended up in a weaker market position than we were (which was sometimes why we were considering the acqusition).
+</p>
+<p>
+At Facebook, there was a cultural resistance to process, to the point where the pattern around introducing process typically went "new process is reluctantly introduced only right before the point where things tip into chaos." Push this point as far as humanly possible, and then some, because what you receive in return is high organizational speed. If your organization has less process than another one of equivalent size, you will innovate and execute faster, taking ideas from conception to market more rapidly. Managers may need to psychologically contend with more chaos than they are comfortable with, but there is a huge difference between chaos that makes one uncomfortable and chaos that actually threatens the business. Stepping as close to the latter as possible confers one of the greatest advantages in the technology business: execution speed.
+</p>
+<p>
+Process typically builds up at a regular and roughly constant rate. Shaping this rate is therefore key to long-term efficiency. If your company has a certain amount of process at size X and it's less than other companies of size X, you're faster, and when you're much much larger you'll have less comparative bureaucracy, and the same multipliers will apply: doing things twice as fast now while you're small helps you get things done in two weeks while your competitor needs four weeks, but once you're large you'll be able to do something in two years while your competitor takes another two to catch up. Two additional years might just mean the end of them.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> Promotion from within</h3>
+<div class="outline-text-3" id="text-3">
+
+<p>Promoting your leaders from within is relatively well-known advice for building healthy long-term organizations. It is also important for small and rapidly-growing startups, but upholding a policy of internal promotion for a hyper-growth startup is both uniquely vital and difficult due to a number of reasons:
+</p>
+<p>
+1)Due to the inherent hyper-growth nature of the company, the organization is growing rapidly, so the need for new people is very high. Individual contributors can be sourced from the outside, but when finding leaders, closing off the external pipeline is therefore even more difficult and must be made as a conscious and deliberate choice.
+</p>
+<p>
+2)External sourcing is often viewed as a "magical" source of perfect candidates ("there are so many possible candidates!"), but it is not. A successful manager needs to understand core elements of the company culture and values, including what makes the startup uniquely successful and what steps it needs to take next. An impressive resume or even the memory of their performance by others who worked with them in larger companies is not a reliable indicator of their ability to do this.
+</p>
+<p>
+3)Your organization is unlikely to have enough fully-qualified internal candidates. Startups are usually populated by strong individual contributors and the leading candidates among them are typically the strongest such people, so they are (1) an immediate loss to operational capacity if promoted and (2) not guaranteed to be as skilled in management as they are at doing hands-on engineering.
+</p>
+<p>
+However, hiring managers and executives externally is undesirable:
+</p>
+<p>
+1)Hiring managers or executives is inherently very risky.
+</p>
+<p>
+All hiring is ultimately a gamble. Despite interviewing and screening well, you really have no way of knowing for sure if the candidate you hire will turn out to be a dud or a superstar. When it comes to hiring engineers, the success ratio is never better than 80%. With managers and executives, it's never better than 50%.
+</p>
+<p>
+This means that for an externally-sourced manager, you have an even chance of getting someone who might not just be no good at the job, but could be fatally bad for your organization. Getting a bad engineer is harmful, but usually not fatal - a bad manager or executive can be, and your organization may not recover.
+</p>
+<p>
+Remember that experienced managers have also engaged in hiring, so they are usually quite skilled at sounding good in an interview.
+</p>
+<p>
+2)There is a very high probability that an externally-sourced manager will slow you down.
+</p>
+<p>
+This is because the primary source of experienced managers is larger companies. Small companies cannot produce many managers (there just aren't enough people to manage, or if there are, it becomes a large company), so the vast majority of managers come from large companies. There is a low probability that external managers will understand, preserve, and strengthen the internal culture. They will tend to bring their own outside culture, which is typically that of the larger company. This is the single greatest potential force that can slow down your internal operations, usually by introducing process and methodology significantly before it is optimal to do so (the reason is usually "preparing the organization to scale").
+</p>
+<p>
+While the company or your engineering department remains below a certain size (specifically, 150-250 people, the Dunbar number), organizational culture is still nascent and is dominated heavily by the personalities of individuals and group convention. Leaders have a disproportionate effect on shaping the culture, so a single new leader can easily shift the entire organization into focusing on things which are not vital to the startup's real growth and market viability, and cause it to lose its competitive edge.
+</p>
+<p>
+More than one startup has ended up inadvertently shooting itself in the foot when, after taking funding in an A- or B-series round, decides it should now hire a professional manager or VP to "help scale up the team." Instead, what often happens is that the team gets scaled up, processes are put into place, execution slows way down, market position falters, the manager or executive is not fired quickly enough, and the company fails to make it to the next stage.
+</p>
+<p>
+Therefore, successfully implementing a policy of internal promotion is both vitally important but uniquely difficult to do. Here are some ways to do it:
+</p>
+<p>
+1)Source management candidates who are willing to join as individual contributors. While the company remains below a certain size, it's is eminently possible for highly talented technology managers to join as individual contributors and rapidly rise into positions of leadership, and they should be encouraged to do so.
+</p>
+<p>
+This is also a good sieve for finding the occasional manager who has spent time in a larger company but who can effectively manage at a small company (or be rapidly indoctrinated with enough of the culture to do so). It is also an effective acid test for technology leaders who truly possess individual technical acumen and talent (see #5: Technical Leadership, later to come), because they have the confidence to re-prove themselves over and over again. Look for people who have direct experience in a similar startup mentality, usually in the following two groups:
+</p>
+<ul>
+<li>managers who've started startups themselves but for one reason or another (e.g. acquisition) had an opportunity to learn how to be a professional manager in a larger company.
+
+</li>
+<li>managers who've worked at a startup during a phase where it was smaller than the current size of your company.
+</li>
+</ul>
+
+
+<p>
+NEVER hire a manager who has never had experience working at a company as small as yours. They will be utterly unable to comprehend how to fit into or run your operations without using the lens of "we need to do this the way we did it in my experience at a larger company." This is almost certain death for your department and, if your department is engineering, your company.
+</p>
+<p>
+2)Using either the few experienced managers you've been able to internally promote or failing that, outside executive coaches, intensely mentor your more inexperienced managers to develop their skills. Typically, because many of your management candidates were less than fully-qualified, they will demonstrate potential but still be unsure in their new roles. Until they are comfortable and practiced in their roles, both they, their peers, and their teams will exist in a state of some distress.
+</p>
+<p>
+Special attention needs to be given to new managers, primarily in addressing ways in which they need to reach a level of comfort regarding the ambiguities of their role, their people management responsibilities, and general confidence-building. Left unattended for too long and combined with the stresses of a hyper-growth startup, it can result in failure (usually demotion or self-demotion) and a morale setback to the team.
+</p>
+<p>
+The key trade-off that is being deliberately made here is that with proper and intense mentorship, an internal candidate with a deep grasp of company culture, leadership potential, and a track record of success in the service of company goals has a higher probability of success as a manager in your organization than an externally-sourced candidate whose true skillset, culture, and motivations are ultimately questionable.
+</p>
+<p>
+<b>Long-term effects:</b>
+</p>
+<p>
+Once the organization's size successfully passes the 150-200 people ("Dunbar") stage with its culture intact and inculcated into its operating conventions, it becomes self-reinforcing and outside managers can be gradually introduced directly into those positions without internal promotion (continuing to fill the majority of leadership positions via internal promotion is a good idea anyhow) in order to season the skills of the management cadre. The culture is now stronger than the influence of any one new manager, and will become a strong passive force in eliminating candidates who do not fit that culture, thus becoming self-reinforcing.
+</p>
+<p>
+There is a famous set of quotes from Jamie Zawinski that talks about the difference between people who joined Netscape in "the early days" vs those who joined later. The early people joined "to make the company great," while those who joined later did so "because the company was great" and, he felt, this was key to the later lackluster performance of the company.
+</p>
+<p>
+The motivation of those who join your company later, especially after it has achieved externally notable success (or "worse," wild financial success) are highly suspect - they are likely to be oriented around money, security, conservatism, or some combination of the three, i.e. "because the company is great" and are unlikely to share the early core values. This is undesirable, and it can be one of the things that will sap your organization's longer-term success and vitality. Executive hires prone to these motivations can be very detrimental to the types of decision your later-term company will make.
+</p>
+<p>
+The way to combat this is to have successfully promoted and earnestly developed enough of your earliest potential leaders into leadership positions, thus creating a pipeline dominated by those who joined very early on and whom you know are there "to make the company great." New people who join can be sourced into this pipeline, forming an ongoing system that indoctrinates people with the proper values before placing them into influential leadership positions.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> Tools are top priority</h3>
+<div class="outline-text-3" id="text-4">
+
+<p>The core premise of any technology-driven company is that it is providing a tool that makes human life better, faster, more effective. Driving the effectiveness of that company and especially its own technology operations is the effectiveness of its tools.
+</p>
+<p>
+Over and over, the successive waves of new startups with structurally more advanced operations (think Google with the massive compute power of its datacenters, or startups which can build an entire website with just a small team) are enabled due to an advance in tools. Computerized tools, unlike physical tools, can stack their leverage arbitrarily upon each other, compounding their leverage to enormously high levels.
+</p>
+<p>
+Hence, your operating efficiency, and thus the number of people you need to hire, and therefore your costs, are directly impacted by the ingenuity of your internal tools. This means that your tools teams should not be a back-office, after-thought function staffed with second-string players. Your most talented engineers should be working on your tools, and your culture must reflect this priority. Writing great tools and continuing to improve and replace them is more important than the next shiny feature.
+</p>
+<p>
+Example 1: At Facebook, there was a time (2005 thru mid-2006) when we hired customer service people at a constant ratio with user growth. When we had 10M users, we had less than 20 people in customer service. As we climbed towards our first 100M users, it was clear we could not just staff this up by 10x, so we charged our internal tools team with working closely with our customer service analysts to build ever more innovative tools and user interfaces to improve the efficiency of our customer service department by orders of magnitude. Today, we have only ~3x more customer service people (i.e. around 60-70), serving well over 325M users. There is no external company, off-the-shelf product, or management consulting strategy that could have yielded an order-of-magnitude gain in personnel effectiveness; it was the work of a small internal tools team that analyzed the work being done and created custom tools to streamline it by automating the parts that a computer could do quickly while optimizing the experience so that the human analyst could concentrate on what humans were best at.
+</p>
+<p>
+Example 2: Well past the time when we had hundreds of database machines (and tens of thousands of database instances spread across them), instead of hiring DBAs, we had a single database engineer who administered all of those machines by writing ever more effective tools. Today Facebook continues to manage thousands of databases with only a handful of database-oriented personnel. The original "second DBA" was even only hired because eventually our first database engineer decided she wanted someone else to cover the night shift.
+</p>
+<p>
+The quality of your tools and your ability to continue to evolve them will allow you to suppress the need to hire for operational roles, allowing each front-line individual to do more, which simultaneously improving overall coordination (fewer people means coordination is easier) and keeps costs down. Today, the results of Facebook's engineering leverage ratio means that there is one engineer for every 1.2 million users and despite our blistering user growth, the ratio is growing. While some of Facebook's best engineers work directly on front-line features, a large percentage of them work on internal abstractions and tool frameworks that end users never see, but which vastly magnify the effectiveness and power of their fellow engineers.
+</p>
+<p>
+If your culture reflects this priority, you'll have no problem getting your best engineers to work on improving tools. The best engineers tend to go where they have the greatest impact.
+</p>
+<p>
+Today, a mere decade after the first dot-com boom, the web division of the New York Times uses more advanced technology and gets more done with fewer people than many of the original titans of Web 1.0. If your technology company today is a leader in anything, it is because it was likely started with the latest in tool technology. You will not retain this position without a culture that values an ongoing first-class investment in your internal tools, because if you don't, not only will your competitors who do pass you by, so will the entire market.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> Technical Leaders</h3>
+<div class="outline-text-3" id="text-5">
+
+<p>All external management hires must be able to write code and show a high level of technical proficiency, up to and including the head of the technical department. If the company is a technology company, this should also include the CEO.
+</p>
+<p>
+There is an odd misconception that this is not a necessary requirement for an executive or manager, as though programming were just a fancy form of typing. No other specialized industry seems to feel this way: banking executives are expected to be able to read a balance sheet; an automotive executive would never be hired if they didn't know what a catalytic converter did.
+</p>
+<p>
+Alternatively, it's sometimes said that technical proficiency is impossible to test for, because a great management candidate will have likely spent the last few years managing, and not directly in touch with the technology. And besides, a great people manager can manage anything. This is false.
+</p>
+<p>
+Certainly the candidate should not be expected to build a full-scale system at the limit of current scalability technologies, or tune a chipset down at the metal, or recite obscure syntax for a particular language or framework. But it is entirely reasonable and desirable to test if a management candidate has a strong individual technical background. I refer to basic tests for skills which, if the candidate had ever been a competent technical contributor they will inevitably retain, such as coding tests involving some simple iterative or recursive algorithm, and conceptual tests involving elementary computer science concepts like pointers, hashing, and operating system fundamentals.
+</p>
+<p>
+For example, one particularly low bar includes the <a href="http://imranontech.com/2007/01/24/using-fizzbuzz-to-find-developers-who-grok-coding/">fizzbuzz</a> question. Many readers here may assume that this is a test that any programmer could pass, but this is not true. There are numerous, numerous programmers who cannot do this (not that being able to do this means you're a good programmer, but not being able to do it definitely means you're NOT) and early in their careers, they found they weren't good programmers, and because they happened to be in an organization without strong technical rigor, they were promoted because they happened to be good with people (or good at using people). Many of these people fill the ranks of technical management and executive candidates today.
+</p>
+<p>
+Furthermore, they are usually very skilled at talking a good game and sounding like they know what they're doing (or they wouldn't have gotten there). The only way to determine if a candidate has real technical competence is to either (1) subject them directly to a simple coding test of the nature I described or (2) find some open-source code they've written which you can directly evaluate. <a href="engineering-management.html#http-imranontech.com-2007-01-24-using-fizzbuzz-to-find-developers-who-grok-coding">Example</a>]
+</p>
+<p>
+Candidates who cannot pass these tests or who don't have a verifiable record of public technical work should not be hired.
+</p>
+<p>
+The reasons should be obvious, which is that management needs to be able to tell what's going on in order to make informed decisions. A skilled non-technical manager can get a pretty good idea, but all other things being equal, they will be outperformed by a similarly-skilled manager who has a technical background. Further, they will certainly not be able to provide technical leadership, and if you want your company to be a technical leader, your leaders first need to be technical.
+</p>
+<p>
+A "technical" organization whose leadership is non-technical fails in one or both of the following ways:
+</p>
+<ol>
+<li>Leaders are unable to tell when the technical staff is not performing up to snuff, because they cannot reliably differentiate between excuses for poor technical performance and true obstacles that arise when contending with difficult technical challenges. Performance management then becomes impossible, leading to mediocre work and eventually, outright and repeated project failures.
+
+</li>
+<li>Business needs cause leaders to override the suggestions or opinions of the technical staff. Today's harsh business environment requires that business leaders push their organizations continually beyond their old boundaries, and sometimes this means that a leader has to tell their staff to "damn the torpedoes" and stretch further than they are comfortable. Unfortunately, a non-technical leader has no personal ability to gauge the actual risk profile of overriding technical suggestions (i.e. shrewdly exceeding old limits in certain special situations) and is then prone to eventually overriding technical advice which should not be overridden.
+</li>
+</ol>
+
+
+<p>
+At companies other than Facebook, I have witnessed more than one large system failure that stemmed from a lack of core technical literacy in the executive staff. At Facebook, individual technical competence happens to be required of all engineering management staff and extends all the way up to the head of the department and includes the CEO (who continues to participate in <a href="http://www.facebook.com/hackathon">Hackathons</a>). This allows the company to repeatedly take daring technical risks in order to achieve significantly innovative product goals and execute at a consistently rapid pace: the more you understand the rules of the game, the better you can play it.
+</p></div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+
+</div>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'engineering-management.html';var disqus_title = 'engineering-management.html';var disqus_url = 'http://dirlt.com/engineering-management.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+</html>

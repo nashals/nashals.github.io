@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
-<title>hdfs</title>
+<head>
+<title>HDFS</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="hdfs"/>
+<meta name="title" content="HDFS"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-12-18T11:29+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,96 +62,55 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
 </div>
 
 <div id="content">
-<h1 class="title">hdfs</h1>
+<h1 class="title">HDFS</h1>
 
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="hdfs.html#sec-1">1 hdfs</a>
+<li><a href="hdfs.html#sec-1">1 Opinions</a>
 <ul>
-<li><a href="hdfs.html#sec-1-1">1.1 opinions</a>
-<ul>
-<li><a href="hdfs.html#sec-1-1-1">1.1.1 Under the Hood: Hadoop Distributed Filesystem reliability with Namenode and Avatarnode | Facebook</a></li>
-<li><a href="hdfs.html#sec-1-1-2">1.1.2 HA Namenode for HDFS with Hadoop 1.0 – Part 1 | Hortonworks</a></li>
-<li><a href="hdfs.html#sec-1-1-3">1.1.3 Why not RAID-0? It’s about Time and Snowflakes | Hortonworks</a></li>
-<li><a href="hdfs.html#sec-1-1-4">1.1.4 Hadoop I/O: Sequence, Map, Set, Array, BloomMap Files | Apache Hadoop for the Enterprise | Cloudera</a></li>
-<li><a href="hdfs.html#sec-1-1-5">1.1.5 The Truth About MapReduce Performance on SSDs | Cloudera Developer Blog</a></li>
-<li><a href="hdfs.html#sec-1-1-6">1.1.6 HDFS: Hadoop and Solid State Drive</a></li>
+<li><a href="hdfs.html#sec-1-1">1.1 Under the Hood: Hadoop Distributed Filesystem reliability with Namenode and Avatarnode</a></li>
+<li><a href="hdfs.html#sec-1-2">1.2 HA Namenode for HDFS with Hadoop 1.0</a></li>
+<li><a href="hdfs.html#sec-1-3">1.3 Why not RAID-0? It’s about Time and Snowflakes</a></li>
+<li><a href="hdfs.html#sec-1-4">1.4 Hadoop I/O: Sequence, Map, Set, Array, BloomMap Files</a></li>
+<li><a href="hdfs.html#sec-1-5">1.5 The Truth About MapReduce Performance on SSDs</a></li>
+<li><a href="hdfs.html#sec-1-6">1.6 HDFS: Hadoop and Solid State Drive</a></li>
 </ul>
 </li>
-<li><a href="hdfs.html#sec-1-2">1.2 notes</a>
+<li><a href="hdfs.html#sec-2">2 Notes</a>
 <ul>
-<li><a href="hdfs.html#sec-1-2-1">1.2.1 hdfs shell</a></li>
-<li><a href="hdfs.html#sec-1-2-2">1.2.2 Filesystem Corruption and Missing Blocks</a></li>
-<li><a href="hdfs.html#sec-1-2-3">1.2.3 文件系统API</a></li>
-<li><a href="hdfs.html#sec-1-2-4">1.2.4 一致性问题</a></li>
-<li><a href="hdfs.html#sec-1-2-5">1.2.5 读写进度</a></li>
-<li><a href="hdfs.html#sec-1-2-6">1.2.6 获取集群运行状况</a></li>
-</ul>
-</li>
-<li><a href="hdfs.html#sec-1-3">1.3 all-about-log</a>
-<ul>
-<li><a href="hdfs.html#sec-1-3-1">1.3.1 All datanodes are bad. Aborting</a></li>
-</ul>
-</li>
-<li><a href="hdfs.html#sec-1-4">1.4 all-about-code</a>
-<ul>
-<li><a href="hdfs.html#sec-1-4-1">1.4.1 Balancer</a>
-<ul>
-<li><a href="hdfs.html#sec-1-4-1-1">1.4.1.1 NNS balance iteration</a></li>
-<li><a href="hdfs.html#sec-1-4-1-2">1.4.1.2 NN balance iteration</a></li>
-<li><a href="hdfs.html#sec-1-4-1-3">1.4.1.3 Source balance iteration</a></li>
-</ul>
-</li>
-<li><a href="hdfs.html#sec-1-4-2">1.4.2 BlockPlacementPolicy</a>
-<ul>
-<li><a href="hdfs.html#sec-1-4-2-1">1.4.2.1 Interface</a></li>
-<li><a href="hdfs.html#sec-1-4-2-2">1.4.2.2 chooseTarget</a></li>
-<li><a href="hdfs.html#sec-1-4-2-3">1.4.2.3 chooseLocalNode</a></li>
-<li><a href="hdfs.html#sec-1-4-2-4">1.4.2.4 isGoodTarget</a></li>
-<li><a href="hdfs.html#sec-1-4-2-5">1.4.2.5 chooseLocalRack</a></li>
-<li><a href="hdfs.html#sec-1-4-2-6">1.4.2.6 chooseRemoteRack</a></li>
-<li><a href="hdfs.html#sec-1-4-2-7">1.4.2.7 chooseRandom</a></li>
-<li><a href="hdfs.html#sec-1-4-2-8">1.4.2.8 getPipeline</a></li>
-<li><a href="hdfs.html#sec-1-4-2-9">1.4.2.9 verifyBlockPlacement</a></li>
-<li><a href="hdfs.html#sec-1-4-2-10">1.4.2.10 chooseReplicaToDelete</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><a href="hdfs.html#sec-2-1">2.1 HDFS Shell</a></li>
+<li><a href="hdfs.html#sec-2-2">2.2 Filesystem Corruption and Missing Blocks</a></li>
+<li><a href="hdfs.html#sec-2-3">2.3 文件系统API</a></li>
+<li><a href="hdfs.html#sec-2-4">2.4 一致性问题</a></li>
+<li><a href="hdfs.html#sec-2-5">2.5 读写进度</a></li>
+<li><a href="hdfs.html#sec-2-6">2.6 获取集群运行状况</a></li>
+<li><a href="hdfs.html#sec-2-7">2.7 All datanodes are bad. Aborting</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> hdfs</h2>
-<div class="outline-text-2" id="text-1">
-
-
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> opinions</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> Opinions</h3>
+<div class="outline-text-3" id="text-1">
 
 
 </div>
 
-<div id="outline-container-1-1-1" class="outline-4">
-<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> Under the Hood: Hadoop Distributed Filesystem reliability with Namenode and Avatarnode | Facebook</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-1-1" class="outline-4">
+<h4 id="sec-1-1"><span class="section-number-4">1.1</span> Under the Hood: Hadoop Distributed Filesystem reliability with Namenode and Avatarnode</h4>
+<div class="outline-text-4" id="text-1-1">
 
 <p><a href="http://www.facebook.com/notes/facebook-engineering/under-the-hood-hadoop-distributed-filesystem-reliability-with-namenode-and-avata/10150888759153920">http://www.facebook.com/notes/facebook-engineering/under-the-hood-hadoop-distributed-filesystem-reliability-with-namenode-and-avata/10150888759153920</a>
 </p>
@@ -163,7 +121,7 @@ fb数据仓库故障有41%是源于HDFS，而如果有reliable namenode解决方
 <img src="images/hdfs-ha-namenode-avatarnode.png"  alt="./images/hdfs-ha-namenode-avatarnode.png" />
 </p>
 <p>
-如果primary NN挂掉的话那么就切换到standby NN. datanode会将自己的status report到两个NN这样standby NN可以得到最新的状态可以使得切换时间更短。切换是通过zk来完成的，两个NN都在zk上面注册节点，client会从zk上了解primary NN对primary NN进行操作。之间的数据同步是通过共享存储来完成的，比如NFS，对于standby NN只需要增量读取操作内容即可。 <b>todo(dirlt)：大家似乎对NFS的稳定性存在问题，不过我是觉得NFS上面主要是一些namenode上面一些操作的log，吞吐量不会太大而且也不会打开非常多的文件，在这个场景下面还是比较合适的</b>
+如果primary NN挂掉的话那么就切换到standby NN. datanode会将自己的status report到两个NN这样standby NN可以得到最新的状态可以使得切换时间更短。切换是通过zk来完成的，两个NN都在zk上面注册节点，client会从zk上了解primary NN对primary NN进行操作。之间的数据同步是通过共享存储来完成的，比如NFS，对于standby NN只需要增量读取操作内容即可。 #note: 大家对担心NFS的稳定性问题，不过我是觉得NFS上面主要是一些namenode上面一些操作的log，吞吐量不会太大而且也不会打开非常多的文件，在这个场景下面还是比较合适的
 </p>
 <p>
 <img src="images/hdfs-avatarnode-view.png"  alt="./images/hdfs-avatarnode-view.png" />
@@ -172,9 +130,9 @@ fb数据仓库故障有41%是源于HDFS，而如果有reliable namenode解决方
 
 </div>
 
-<div id="outline-container-1-1-2" class="outline-4">
-<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> HA Namenode for HDFS with Hadoop 1.0 – Part 1 | Hortonworks</h4>
-<div class="outline-text-4" id="text-1-1-2">
+<div id="outline-container-1-2" class="outline-4">
+<h4 id="sec-1-2"><span class="section-number-4">1.2</span> HA Namenode for HDFS with Hadoop 1.0</h4>
+<div class="outline-text-4" id="text-1-2">
 
 <p><a href="http://hortonworks.com/blog/ha-namenode-for-hdfs-with-hadoop-1-0-part-1/">http://hortonworks.com/blog/ha-namenode-for-hdfs-with-hadoop-1-0-part-1/</a>
 </p>
@@ -210,9 +168,9 @@ fb数据仓库故障有41%是源于HDFS，而如果有reliable namenode解决方
 
 </div>
 
-<div id="outline-container-1-1-3" class="outline-4">
-<h4 id="sec-1-1-3"><span class="section-number-4">1.1.3</span> Why not RAID-0? It’s about Time and Snowflakes | Hortonworks</h4>
-<div class="outline-text-4" id="text-1-1-3">
+<div id="outline-container-1-3" class="outline-4">
+<h4 id="sec-1-3"><span class="section-number-4">1.3</span> Why not RAID-0? It’s about Time and Snowflakes</h4>
+<div class="outline-text-4" id="text-1-3">
 
 <p><a href="http://hortonworks.com/blog/why-not-raid-0-its-about-time-and-snowflakes/">http://hortonworks.com/blog/why-not-raid-0-its-about-time-and-snowflakes/</a>
 </p>
@@ -244,9 +202,9 @@ fb数据仓库故障有41%是源于HDFS，而如果有reliable namenode解决方
 
 </div>
 
-<div id="outline-container-1-1-4" class="outline-4">
-<h4 id="sec-1-1-4"><span class="section-number-4">1.1.4</span> Hadoop I/O: Sequence, Map, Set, Array, BloomMap Files | Apache Hadoop for the Enterprise | Cloudera</h4>
-<div class="outline-text-4" id="text-1-1-4">
+<div id="outline-container-1-4" class="outline-4">
+<h4 id="sec-1-4"><span class="section-number-4">1.4</span> Hadoop I/O: Sequence, Map, Set, Array, BloomMap Files</h4>
+<div class="outline-text-4" id="text-1-4">
 
 <p><a href="http://blog.cloudera.com/blog/2011/01/hadoop-io-sequence-map-set-array-bloommap-files/">http://blog.cloudera.com/blog/2011/01/hadoop-io-sequence-map-set-array-bloommap-files/</a>
 </p>
@@ -289,7 +247,7 @@ Hadoop SequenceFile is the base data structure for the other types of files, lik
 <img src="images/hdfs-mapfile-index-data-bloom.png"  alt="./images/hdfs-mapfile-index-data-bloom.png" />
 </p>
 <p>
-MapFile是由两个SequenceFile组成，一个是index文件，一个是data文件。data文件里面的key是顺序存储的，index文件是data中key的部分索引. index的key和data的key相同，而value是这个record在data文件中的偏移，至于这个索引间隔可以通过setIndexInterval来设置。操作的时候会将index全部都读取到内存，然后在index里面所二分查找，然后在data文件里面做顺序查找。 <b>note(dirlt):如果data文件要压缩的话，那么这个边界必须和index对应</b>
+MapFile是由两个SequenceFile组成，一个是index文件，一个是data文件。data文件里面的key是顺序存储的，index文件是data中key的部分索引. index的key和data的key相同，而value是这个record在data文件中的偏移，至于这个索引间隔可以通过setIndexInterval来设置。操作的时候会将index全部都读取到内存，然后在index里面所二分查找，然后在data文件里面做顺序查找。 #note: 如果data文件要压缩的话，那么这个边界必须和index对应
 </p>
 <p>
 SetFile是基于MapFile完成的，只不过value = NullWritable
@@ -304,50 +262,52 @@ BloomMapFile扩展了MapFile添加了一个bloom文件，存储的是DynamicBloo
 
 </div>
 
-<div id="outline-container-1-1-5" class="outline-4">
-<h4 id="sec-1-1-5"><span class="section-number-4">1.1.5</span> The Truth About MapReduce Performance on SSDs | Cloudera Developer Blog</h4>
-<div class="outline-text-4" id="text-1-1-5">
+<div id="outline-container-1-5" class="outline-4">
+<h4 id="sec-1-5"><span class="section-number-4">1.5</span> The Truth About MapReduce Performance on SSDs</h4>
+<div class="outline-text-4" id="text-1-5">
 
 <p><a href="http://blog.cloudera.com/blog/2014/03/the-truth-about-mapreduce-performance-on-ssds/">http://blog.cloudera.com/blog/2014/03/the-truth-about-mapreduce-performance-on-ssds/</a>
 </p>
 <p>
-todo(dirlt):
+todo:
 </p>
 </div>
 
 </div>
 
-<div id="outline-container-1-1-6" class="outline-4">
-<h4 id="sec-1-1-6"><span class="section-number-4">1.1.6</span> HDFS: Hadoop and Solid State Drive</h4>
-<div class="outline-text-4" id="text-1-1-6">
+<div id="outline-container-1-6" class="outline-4">
+<h4 id="sec-1-6"><span class="section-number-4">1.6</span> HDFS: Hadoop and Solid State Drive</h4>
+<div class="outline-text-4" id="text-1-6">
 
 <p><a href="http://hadoopblog.blogspot.com/2012/05/hadoop-and-solid-state-drives.html">http://hadoopblog.blogspot.com/2012/05/hadoop-and-solid-state-drives.html</a>
 </p>
 <p>
-todo(dirlt):
+todo:
 </p>
 </div>
 </div>
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> notes</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> Notes</h3>
+<div class="outline-text-3" id="text-2">
 
 
 </div>
 
-<div id="outline-container-1-2-1" class="outline-4">
-<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> hdfs shell</h4>
-<div class="outline-text-4" id="text-1-2-1">
+<div id="outline-container-2-1" class="outline-4">
+<h4 id="sec-2-1"><span class="section-number-4">2.1</span> HDFS Shell</h4>
+<div class="outline-text-4" id="text-2-1">
 
 <ul>
 <li>balancer
 <ul>
-<li>start-balancer.sh / stop-balancer.sh
+<li>start-balancer.sh
 </li>
-<li><b>note(dirlt):可以限制比例阈值和传输带宽</b>
+<li>stop-balancer.sh
+</li>
+<li>#note: 可以限制比例阈值和传输带宽
 </li>
 </ul>
 
@@ -361,9 +321,9 @@ todo(dirlt):
 
 </div>
 
-<div id="outline-container-1-2-2" class="outline-4">
-<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> Filesystem Corruption and Missing Blocks</h4>
-<div class="outline-text-4" id="text-1-2-2">
+<div id="outline-container-2-2" class="outline-4">
+<h4 id="sec-2-2"><span class="section-number-4">2.2</span> Filesystem Corruption and Missing Blocks</h4>
+<div class="outline-text-4" id="text-2-2">
 
 <ul>
 <li>HadoopRecovery &lt; Storage &lt; TWiki <a href="https://www.opensciencegrid.org/bin/view/Storage/HadoopRecovery">https://www.opensciencegrid.org/bin/view/Storage/HadoopRecovery</a>
@@ -455,20 +415,20 @@ The filesystem under path '/hbase/.corrupt/dp18.umeng.com%3A60020.1349065853563'
 </li>
 <li>然后将这个文件的rep factor修改回3，hadoop fs -setrep 3 &lt;file&gt;
 </li>
+<li>#note: 不过很悲剧的是，即使我按照这个方法，这个block似乎也没有回复到指定的factor上面
+</li>
+<li>#note: 不是所有的hdfs file都是使用replication=3的方案的，对于mapreduce提交的jar以及libjars（在/user/&lt;user&gt;/.staging/&lt;jobid&gt;/下面）的，考虑到需要被多个tasktracker同时取到，replication的数目会偏高，通常是10
+</li>
 </ul>
 
-<p><b>note(dirlt)：不过很悲剧的是，即使我按照这个方法，这个block似乎也没有回复到指定的factor上面。等着重启看看效果吧</b>
-</p>
-<p>
-<b>note(dirlt):不是所有的hdfs file都是使用replication=3的方案的，对于mapreduce提交的jar以及libjars（在/user/&lt;user&gt;/.staging/&lt;jobid&gt;/下面）的，考虑到需要被多个tasktracker同时取到，replication的数目会偏高，通常是10</b>
-</p>
+
 </div>
 
 </div>
 
-<div id="outline-container-1-2-3" class="outline-4">
-<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> 文件系统API</h4>
-<div class="outline-text-4" id="text-1-2-3">
+<div id="outline-container-2-3" class="outline-4">
+<h4 id="sec-2-3"><span class="section-number-4">2.3</span> 文件系统API</h4>
+<div class="outline-text-4" id="text-2-3">
 
 <p>HDFS文件系统的操作步骤主要如下：
 </p><ul>
@@ -531,9 +491,9 @@ uri = file:///
 
 </div>
 
-<div id="outline-container-1-2-4" class="outline-4">
-<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> 一致性问题</h4>
-<div class="outline-text-4" id="text-1-2-4">
+<div id="outline-container-2-4" class="outline-4">
+<h4 id="sec-2-4"><span class="section-number-4">2.4</span> 一致性问题</h4>
+<div class="outline-text-4" id="text-2-4">
 
 <ul>
 <li>hdfs一致性模型是reader不能够读取到当前被write的block，除非writer调用sync强制进行同步
@@ -548,7 +508,7 @@ uri = file:///
 </li>
 <li>hsync不仅仅有hflush功能，还能够调用对应的datanode将数据刷到local fs上面。
 </li>
-<li>*note(dirlt)：但是似乎不太work.参考代码 <a href="https://github.com/dirtysalt/tomb/blob/master/java/hdfs/src/main/java/com/dirlt/java/hdfs/TestConsistency.java">com.dirlt.java.hdfs.TestConsistency</a>*
+<li>#note: 但是似乎不太work. 参考代码 <a href="https://github.com/dirtysalt/tomb/blob/master/java/hdfs/src/main/java/com/dirlt/java/hdfs/TestConsistency.java">com.dirlt.java.hdfs.TestConsistency</a>
 </li>
 </ul>
 
@@ -560,9 +520,9 @@ uri = file:///
 
 </div>
 
-<div id="outline-container-1-2-5" class="outline-4">
-<h4 id="sec-1-2-5"><span class="section-number-4">1.2.5</span> 读写进度</h4>
-<div class="outline-text-4" id="text-1-2-5">
+<div id="outline-container-2-5" class="outline-4">
+<h4 id="sec-2-5"><span class="section-number-4">2.5</span> 读写进度</h4>
+<div class="outline-text-4" id="text-2-5">
 
 <ul>
 <li>hdfs每次将64KB数据写入datanode pipeline的时候都会调用progress.
@@ -585,9 +545,9 @@ uri = file:///
 
 </div>
 
-<div id="outline-container-1-2-6" class="outline-4">
-<h4 id="sec-1-2-6"><span class="section-number-4">1.2.6</span> 获取集群运行状况</h4>
-<div class="outline-text-4" id="text-1-2-6">
+<div id="outline-container-2-6" class="outline-4">
+<h4 id="sec-2-6"><span class="section-number-4">2.6</span> 获取集群运行状况</h4>
+<div class="outline-text-4" id="text-2-6">
 
 <ul>
 <li>参考代码 <a href="https://github.com/dirtysalt/tomb/blob/master/java/hdfs/src/main/java/com/dirlt/java/hdfs/ClusterSummary.java">com.dirlt.java.hdfs.ClusterSummary</a>
@@ -598,22 +558,14 @@ uri = file:///
 
 
 </div>
-</div>
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> all-about-log</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-2-7" class="outline-4">
+<h4 id="sec-2-7"><span class="section-number-4">2.7</span> All datanodes are bad. Aborting</h4>
+<div class="outline-text-4" id="text-2-7">
 
-
-</div>
-
-<div id="outline-container-1-3-1" class="outline-4">
-<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> All datanodes are bad. Aborting</h4>
-<div class="outline-text-4" id="text-1-3-1">
-
-<p><b>note(dirlt):当时的情况是增加了datanode的处理线程数目但是没有重启regionserver.怀疑原因可能是文件句柄数量不够，重启regionserver之后恢复正常。</b>
+<p>当时的情况是增加了datanode的处理线程数目但是没有重启regionserver.怀疑原因可能是文件句柄数量不够，重启regionserver之后恢复正常。
 </p>
 
 
@@ -625,2270 +577,14 @@ java.io.IOException: All datanodes 10.11.0.41:50010 are bad. Aborting...
         at org.apache.hadoop.hdfs.DFSClient$DFSOutputStream$DataStreamer.run(DFSClient.java:2799)
 </pre>
 
-
-</div>
-</div>
-
-</div>
-
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> all-about-code</h3>
-<div class="outline-text-3" id="text-1-4">
-
-
-</div>
-
-<div id="outline-container-1-4-1" class="outline-4">
-<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> Balancer</h4>
-<div class="outline-text-4" id="text-1-4-1">
-
-<p><b>note(dirlt):hadoop-2.0.0-cdh4.3.0</b>
-</p>
-<p>
-<b>note(dirlt):名词是自己定义的方便理解</b>
-</p><ul>
-<li>NNs balance # 对于hdfs federation来说可能存在多个NN. 并且对于这些NN需要发起多轮balance迭代，每轮迭代称为NNs balance.
-</li>
-<li>NN balance # NNs balance iteration内部针对每个NN集群发起alance称为NN balance iteration. 内部会拆解成为多个source发起balance.
-</li>
-<li>Source balance # 每个source发起balance, 内部也会多次挑选block来做move. 其中Source balance内部会有多轮迭代。
-</li>
-</ul>
-
-
-<p>
-从传入参数上似乎外部没有做限速，所以限速只能够依赖于dfs.balance.bandwidthPerSec配置来做
-</p>
-
-</div>
-
-<div id="outline-container-1-4-1-1" class="outline-5">
-<h5 id="sec-1-4-1-1"><span class="section-number-5">1.4.1.1</span> NNS balance iteration</h5>
-<div class="outline-text-5" id="text-1-4-1-1">
-
-<ul>
-<li id="sec-1-4-1-1-1">main thread<br/>
-主流程大致是这样的：
-<ol>
-<li>获得所有namenodes(hdfs federation supported)
-</li>
-<li>对每个namenode进行balance(block pool or node)
-</li>
-<li>迭代直到均衡或者是出现异常为止
-</li>
-</ol>
-
-<p>针对所有NNs迭代称为 <b>NNs balance iteration</b> ，而对每个NN迭代称为 <b>NN balance iteration</b>
-</p>
-<p>
-代码如下：
-</p>
-
-
-<pre class="src src-Java">// &#36890;&#36807;&#19978;&#38754;&#35843;&#29992;&#33719;&#24471;&#25152;&#26377;namenodes.
-// final Collection&lt;URI&gt; namenodes = DFSUtil.getNsServiceRpcUris(conf);
-
-  static int run(Collection&lt;URI&gt; namenodes, final Parameters p,
-      Configuration conf) throws IOException, InterruptedException {
-    final long sleeptime = 2000*conf.getLong( // &#40664;&#35748;6s
-        DFSConfigKeys.DFS_HEARTBEAT_INTERVAL_KEY, // dfs.heartbeat.interval
-        DFSConfigKeys.DFS_HEARTBEAT_INTERVAL_DEFAULT); // 3
-    final List&lt;NameNodeConnector&gt; connectors
-        = new ArrayList&lt;NameNodeConnector&gt;(namenodes.size());
-    try {
-      for (URI uri : namenodes) {
-        connectors.add(new NameNodeConnector(uri, conf));
-      }
-
-      boolean done = false;
-      for(int iteration = 0; !done; iteration++) {
-        done = true;
-        Collections.shuffle(connectors); // &#24182;&#19981;&#26159;&#39034;&#24207;&#23545;nn&#20570;balance&#30340;
-        for(NameNodeConnector nnc : connectors) {
-          // &#21019;&#24314;Balancer&#23545;&#35937;&#65292;&#21442;&#25968;&#26159; 1.&#21644;nn&#30340;connection 2.balance parameters 3.configuration.
-          final Balancer b = new Balancer(nnc, p, conf);
-          // &#35843;&#29992;Balancer&#23545;&#35937;run&#26041;&#27861;&#36827;&#34892;balance&#65292;iteration&#21487;&#20197;&#27719;&#25253;&#24403;&#21069;&#26159;&#22810;&#23569;&#36718;&#35843;&#24230;
-          final ReturnStatus r = b.run(iteration, formatter);
-          if (r == ReturnStatus.IN_PROGRESS) {
-            done = false;
-          } else if (r != ReturnStatus.SUCCESS) {
-            //must be an error statue, return.
-            return r.code;
-          }
-        }
-
-        if (!done) {
-          Thread.sleep(sleeptime); // &#22914;&#26524;&#35843;&#24230;&#22312;&#36827;&#34892;&#30340;&#35805;&#37027;&#20040;&#19979;&#27425;&#35843;&#24230;&#35201;&#31561;&#24453;&#19968;&#27573;&#26102;&#38388;
-        }
-      }
-    } finally {
-      for(NameNodeConnector nnc : connectors) {
-        nnc.close();
-      }
-    }
-    return ReturnStatus.SUCCESS.code;
-  }
-</pre>
-
-
-<p>
-Parameters有两个控制参数
-</p><ul>
-<li>BalancingPolicy # 对Node还是Pool来做balance.默认是Node
-</li>
-<li>threshold # per node/pool disk util 和 avg disk util 百分比的差值小于多少的话停止balance过程，默认是10
-</li>
-</ul>
-
-
-</li>
-</ul>
-<ul>
-<li id="sec-1-4-1-1-2">BalancingPolicy<br/>
-定义如何计算disk util，包括计算per node/pool disk util 和 avg disk util. 根据Node和Pool不同特性有两个实现，
-
-
-
-
-<pre class="src src-Java">abstract class BalancingPolicy {
-  long totalCapacity;
-  long totalUsedSpace;
-  private double avgUtilization;
-
-  void reset() {
-    totalCapacity = 0L;
-    totalUsedSpace = 0L;
-    avgUtilization = 0.0;
-  }
-
-  /** Get the policy name. */
-  abstract String getName();
-
-  /** Accumulate used space and capacity. */
-  abstract void accumulateSpaces(DatanodeInfo d);
-
-  void initAvgUtilization() {
-    this.avgUtilization = totalUsedSpace*100.0/totalCapacity;
-  }
-  double getAvgUtilization() {
-    return avgUtilization;
-  }
-
-  /** Return the utilization of a datanode */
-  abstract double getUtilization(DatanodeInfo d);
-</pre>
-
-
-<p>
-Node实现
-</p>
-
-
-<pre class="src src-Java">static class Node extends BalancingPolicy {
-   static Node INSTANCE = new Node();
-   private Node() {}
-
-   @Override
-   String getName() {
-     return <span class="org-string">"datanode"</span>;
-   }
-
-   @Override
-   void accumulateSpaces(DatanodeInfo d) {
-     totalCapacity += d.getCapacity();
-     totalUsedSpace += d.getDfsUsed();
-   }
-
-   @Override
-   double getUtilization(DatanodeInfo d) {
-     return d.getDfsUsed()*100.0/d.getCapacity();
-   }
- }
-</pre>
-
-
-<p>
-Pool实现
-</p>
-
-
-<pre class="src src-Java">static class Pool extends BalancingPolicy {
-  static Pool INSTANCE = new Pool();
-  private Pool() {}
-
-  @Override
-  String getName() {
-    return <span class="org-string">"blockpool"</span>;
-  }
-
-  @Override
-  void accumulateSpaces(DatanodeInfo d) {
-    totalCapacity += d.getCapacity();
-    totalUsedSpace += d.getBlockPoolUsed();
-  }
-
-  @Override
-  double getUtilization(DatanodeInfo d) {
-    return d.getBlockPoolUsed()*100.0/d.getCapacity();
-  }
-}
-</pre>
-
-
-
-</li>
-</ul>
-</div>
-
-</div>
-
-<div id="outline-container-1-4-1-2" class="outline-5">
-<h5 id="sec-1-4-1-2"><span class="section-number-5">1.4.1.2</span> NN balance iteration</h5>
-<div class="outline-text-5" id="text-1-4-1-2">
-
-<ul>
-<li id="sec-1-4-1-2-1">Balancer<br/>
-Balancer数据结构
-
-
-
-
-<pre class="src src-Java">public class Balancer {
-  final private static long MAX_BLOCKS_SIZE_TO_FETCH = 2*1024*1024*1024L; //2GB // &#27599;&#27425;&#26368;&#22810;&#36873;&#20013;2GB&#22823;&#23567;&#30340;blocks&#26469;&#20570;shuffle.
-  private static long WIN_WIDTH = 5400*1000L; // 1.5 hour
-
-  /** The maximum number of concurrent blocks moves for
-   * balancing purpose at a datanode
-   */
-  public static final int MAX_NUM_CONCURRENT_MOVES = 5; // &#21333;&#20010;datanode&#26368;&#22810;&#21516;&#26102;5&#20010;block move&#21516;&#26102;&#36827;&#34892;
-
-  private final NameNodeConnector nnc; // NN&#36830;&#25509;
-  private final BalancingPolicy policy; // &#22343;&#34913;&#31574;&#30053;
-  private final double threshold; //
-
-  // all data node lists
-  // &#36825;&#20123;&#21015;&#34920;&#21547;&#20041;&#21518;&#38754;&#20250;&#35299;&#37322;
-  private Collection&lt;Source&gt; overUtilizedDatanodes
-                               = new LinkedList&lt;Source&gt;();
-  private Collection&lt;Source&gt; aboveAvgUtilizedDatanodes
-                               = new LinkedList&lt;Source&gt;();
-  private Collection&lt;BalancerDatanode&gt; belowAvgUtilizedDatanodes
-                               = new LinkedList&lt;BalancerDatanode&gt;();
-  private Collection&lt;BalancerDatanode&gt; underUtilizedDatanodes
-                               = new LinkedList&lt;BalancerDatanode&gt;();
-
-  // source&#33410;&#28857;&#21644;sink&#33410;&#28857;
-  private Collection&lt;Source&gt; sources
-                               = new HashSet&lt;Source&gt;();
-  private Collection&lt;BalancerDatanode&gt; targets
-                               = new HashSet&lt;BalancerDatanode&gt;();
-
-  // &#20445;&#23384;&#25152;&#26377;&#35843;&#24230;&#20986;&#29616;&#36807;&#30340;Block. note(dirlt)&#65306;&#20284;&#20046;&#26159;&#36951;&#30041;&#20195;&#30721;&#65292;&#27809;&#26377;&#23454;&#38469;&#29992;&#36884;
-  private Map&lt;Block, BalancerBlock&gt; globalBlockList
-                 = new HashMap&lt;Block, BalancerBlock&gt;();
-  // &#22312;&#26368;&#36817;&#19968;&#27573;&#26102;&#38388;&#20869;&#31227;&#21160;&#36807;&#30340;Block.
-  private MovedBlocks movedBlocks = new MovedBlocks();
-
-  // Map storage IDs to BalancerDatanodes
-  // &#25152;&#26377;datanodes&#65292;&#36890;&#36807;storageID&#26469;&#21306;&#20998;
-  private Map&lt;String, BalancerDatanode&gt; datanodes
-                 = new HashMap&lt;String, BalancerDatanode&gt;();
-
-  // &#38598;&#32676;&#32593;&#32476;&#25299;&#25169;&#32467;&#26500;
-  private NetworkTopology cluster = new NetworkTopology();
-
-  // &#21518;&#21488;&#32447;&#31243;&#27744;
-  final static private int MOVER_THREAD_POOL_SIZE = 1000;
-  // &#23436;&#25104;&#31227;&#21160;&#25805;&#20316;&#32447;&#31243;&#27744;
-  final private ExecutorService moverExecutor =
-    Executors.newFixedThreadPool(MOVER_THREAD_POOL_SIZE);
-  final static private int DISPATCHER_THREAD_POOL_SIZE = 200;
-  // &#23436;&#25104;&#20998;&#21457;&#25805;&#20316;&#32447;&#31243;&#27744;
-  final private ExecutorService dispatcherExecutor =
-    Executors.newFixedThreadPool(DISPATCHER_THREAD_POOL_SIZE);
-
-  // &#23454;&#38469;&#31227;&#21160;&#22810;&#23569;&#23383;&#33410;&#65292;AtomicInteger&#21253;&#35013;
-  private BytesMoved bytesMoved = new BytesMoved();
-  private int notChangedIterations = 0;
-
-  // &#27599;&#27425;&#26816;&#26597;block move&#26159;&#21542;&#23436;&#25104;&#30340;&#31561;&#24453;&#26102;&#38388;&#38388;&#38548;&#65292;30s
-  // The sleeping period before checking if block move is completed again
-  static private long blockMoveWaitTime = 30000L;
-}
-</pre>
-
-
-</li>
-</ul>
-<ul>
-<li id="sec-1-4-1-2-2">Balancer::run<br/>
-<b>NN balance iteration</b>
-<ol>
-<li>计算还有多少字节（block）需要移动，如果==0的话那么返回
-</li>
-<li>选择需要参与移动block的节点返回会移动多少字节（block），如果==0的话那么返回
-</li>
-<li>指定移动方案并且执行方案，返回最终是否发生了移动。如果5次没有变化的话那么返回
-</li>
-<li>reset数据为下轮做准备
-</li>
-</ol>
-
-
-
-
-
-<pre class="src src-Java">private ReturnStatus run(int iteration, Formatter formatter) {
-  try {
-    /* get all live datanodes of a cluster and their disk usage
-     * decide the number of bytes need to be moved
-     */
-    final long bytesLeftToMove = initNodes(nnc.client.getDatanodeReport(DatanodeReportType.LIVE)); // &#21516;&#26102;&#23384;&#20648;&#36825;&#20123;datanodes&#20449;&#24687;
-    if (bytesLeftToMove == 0) {
-      System.out.println(<span class="org-string">"The cluster is balanced. Exiting..."</span>);
-      return ReturnStatus.SUCCESS;
-    } else {
-      LOG.info( <span class="org-string">"Need to move "</span>+ StringUtils.byteDesc(bytesLeftToMove)
-          + <span class="org-string">" to make the cluster balanced."</span> );
-    }
-
-    /* Decide all the nodes that will participate in the block move and
-     * the number of bytes that need to be moved from one node to another
-     * in this iteration. Maximum bytes to be moved per node is
-     * Min(1 Band worth of bytes,  MAX_SIZE_TO_MOVE).
-     */
-    final long bytesToMove = chooseNodes(); // &#36873;&#25321;&#21442;&#19982;&#31227;&#21160;&#33410;&#28857;
-    if (bytesToMove == 0) {
-      System.out.println(<span class="org-string">"No block can be moved. Exiting..."</span>);
-      return ReturnStatus.NO_MOVE_BLOCK;
-    } else {
-      LOG.info( <span class="org-string">"Will move "</span> + StringUtils.byteDesc(bytesToMove) +
-          <span class="org-string">" in this iteration"</span>);
-    }
-
-    /* For each pair of &lt;source, target&gt;, start a thread that repeatedly
-     * decide a block to be moved and its proxy source,
-     * then initiates the move until all bytes are moved or no more block
-     * available to move.
-     * Exit no byte has been moved for 5 consecutive iterations.
-     */
-    if (dispatchBlockMoves() &gt; 0) { // &#25191;&#34892;&#31227;&#21160;&#35745;&#21010;&#26041;&#26696;
-      notChangedIterations = 0;
-    } else {
-      notChangedIterations++;
-      if (notChangedIterations &gt;= 5) {
-        System.out.println(
-            <span class="org-string">"No block has been moved for 5 iterations. Exiting..."</span>);
-        return ReturnStatus.NO_MOVE_PROGRESS;
-      }
-    }
-
-    // clean all lists
-    resetData();
-    return ReturnStatus.IN_PROGRESS;
-  } finally {
-    // shutdown thread pools
-    dispatcherExecutor.shutdownNow();
-    moverExecutor.shutdownNow();
-  }
-}
-</pre>
-
-
-</li>
-</ul>
-<ul>
-<li id="sec-1-4-1-2-3">Balancer::initNodes<br/>
-从namenode得到所有处于存活状态的datanodes.但是在处理的时候排除掉那些已经decommission以及正在decommission的节点
-<ol>
-<li>计算所有这些datanodes磁盘平均使用状况（根据Node还是Pool策略）
-</li>
-<li>根据每个datanode disk util和avg disk util的比较，放置到不同的列表里面，注意不同列表节点类型也不同
-<ol>
-<li>aboveAvgUtilizedDatanodes # du &gt; avg-du &amp;&amp; du &lt;= avg-du + threshold,类型Source
-</li>
-<li>overUtilizedDatanodes # du &gt; avg + threshold, 类型Source
-</li>
-<li>isBelowOrEqualAvgUtilized # du &lt;= avg-du &amp;&amp; du &gt; avg-du - threshood,类型BalancerDatanode
-</li>
-<li>underUtilizedDatanodes # du &lt; avg-du - threshold, 类型BalancerDatanode
-</li>
-</ol>
-
-</li>
-<li>计算需要移动多少字节才能够完全平衡
-</li>
-</ol>
-
-
-
-
-
-<pre class="src src-Java">private long initNodes(DatanodeInfo[] datanodes) {
-  // compute average utilization
-  for (DatanodeInfo datanode : datanodes) {
-    if (datanode.isDecommissioned() || datanode.isDecommissionInProgress()) {
-      continue; // ignore decommissioning or decommissioned nodes
-    }
-    policy.accumulateSpaces(datanode);
-  }
-  policy.initAvgUtilization();
-
-  /*create network topology and all data node lists:
-   * overloaded, above-average, below-average, and underloaded
-   * we alternates the accessing of the given datanodes array either by
-   * an increasing order or a decreasing order.
-   */
-  long overLoadedBytes = 0L, underLoadedBytes = 0L;
-  shuffleArray(datanodes);
-  for (DatanodeInfo datanode : datanodes) {
-    if (datanode.isDecommissioned() || datanode.isDecommissionInProgress()) {
-      continue; // ignore decommissioning or decommissioned nodes
-    }
-    cluster.add(datanode); // &#20445;&#23384;datanode&#20449;&#24687;&#21040;cluster.
-    BalancerDatanode datanodeS;
-    final double avg = policy.getAvgUtilization();
-    if (policy.getUtilization(datanode) &gt; avg) {
-      datanodeS = new Source(datanode, policy, threshold);
-      if (isAboveAvgUtilized(datanodeS)) {
-        this.aboveAvgUtilizedDatanodes.add((Source)datanodeS);
-      } else {
-        assert(isOverUtilized(datanodeS)) :
-          datanodeS.getDisplayName()+ <span class="org-string">"is not an overUtilized node"</span>;
-        this.overUtilizedDatanodes.add((Source)datanodeS);
-        overLoadedBytes += (long)((datanodeS.utilization-avg
-            -threshold)*datanodeS.datanode.getCapacity()/100.0);
-      }
-    } else {
-      datanodeS = new BalancerDatanode(datanode, policy, threshold);
-      if ( isBelowOrEqualAvgUtilized(datanodeS)) {
-        this.belowAvgUtilizedDatanodes.add(datanodeS);
-      } else {
-        assert isUnderUtilized(datanodeS) : <span class="org-string">"isUnderUtilized("</span>
-            + datanodeS.getDisplayName() + <span class="org-string">")="</span> + isUnderUtilized(datanodeS)
-            + <span class="org-string">", utilization="</span> + datanodeS.utilization;
-        this.underUtilizedDatanodes.add(datanodeS);
-        underLoadedBytes += (long)((avg-threshold-
-            datanodeS.utilization)*datanodeS.datanode.getCapacity()/100.0);
-      }
-    }
-    this.datanodes.put(datanode.getStorageID(), datanodeS);
-  }
-
-  // return number of bytes to be moved in order to make the cluster balanced
-  return Math.max(overLoadedBytes, underLoadedBytes);
-}
-</pre>
-
-
-</li>
-</ul>
-<ul>
-<li id="sec-1-4-1-2-4">Balancer::chooseNodes<br/>
-选出source和target更新到sources和targets节点
-
-
-
-
-<pre class="src src-Java">private long chooseNodes() {
-  // Match nodes on the same rack first
-  chooseNodes(true);
-  // Then match nodes on different racks
-  chooseNodes(false);
-
-  assert (datanodes.size() &gt;= sources.size()+targets.size())
-    : <span class="org-string">"Mismatched number of datanodes ("</span> +
-    datanodes.size() + <span class="org-string">" total, "</span> +
-    sources.size() + <span class="org-string">" sources, "</span> +
-    targets.size() + <span class="org-string">" targets)"</span>;
-
-  long bytesToMove = 0L;
-  for (Source src : sources) {
-    bytesToMove += src.scheduledSize; // &#35268;&#21010;src&#33410;&#28857;&#19978;&#38754;&#31227;&#21160;scheduledSize&#23383;&#33410;
-  }
-  return bytesToMove; // &#26412;&#27425;&#35268;&#21010;&#24635;&#20849;&#31227;&#21160;&#22810;&#23569;&#23383;&#33410;
-}
-</pre>
-
-
-<p>
-内部调用了chooseNodes(onRack)这个方法，参数表示是否选择nodes在相同rack的
-</p>
-
-
-<pre class="src src-Java">private void chooseNodes(boolean onRack) {
-  /* first step: match each overUtilized datanode (source) to
-   * one or more underUtilized datanodes (targets).
-   */
-  chooseTargets(underUtilizedDatanodes.iterator(), onRack); // &#20197;under util&#33410;&#28857;&#20026;target. over util&#33410;&#28857;&#20026;source.
-
-  /* match each remaining overutilized datanode (source) to
-   * below average utilized datanodes (targets).
-   * Note only overutilized datanodes that haven't had that max bytes to move
-   * satisfied in step 1 are selected
-   */
-  chooseTargets(belowAvgUtilizedDatanodes.iterator(), onRack); // &#20197;below util&#20026;target. over util&#33410;&#28857;&#20026;source.
-
-  /* match each remaining underutilized datanode to
-   * above average utilized datanodes.
-   * Note only underutilized datanodes that have not had that max bytes to
-   * move satisfied in step 1 are selected.
-   */
-  chooseSources(aboveAvgUtilizedDatanodes.iterator(), onRack); // &#20197;above util&#20026;source. under util&#20026;target.
-}
-</pre>
-
-
-</li>
-</ul>
-<ul>
-<li id="sec-1-4-1-2-5">Balancer::chooseTargets<br/>
-寻找和over util匹配的target.
-
-
-
-
-<pre class="src src-Java">private void chooseTargets(
-      Iterator&lt;BalancerDatanode&gt; targetCandidates, boolean onRackTarget ) {
-    for (Iterator&lt;Source&gt; srcIterator = overUtilizedDatanodes.iterator();
-        srcIterator.hasNext();) {
-      Source source = srcIterator.next();
-      while (chooseTarget(source, targetCandidates, onRackTarget)) {
-      }
-      if (!source.isMoveQuotaFull()) { // &#22914;&#26524;&#36825;&#20010;source&#22312;&#35268;&#21010;&#19978;&#37197;&#39069;&#28385;&#30340;&#35805;&#37027;&#20040;&#23601;&#19981;&#32771;&#34385;&#36825;&#20010;source.
-        srcIterator.remove();
-      }
-    }
-    return;
-  }
-</pre>
-
-
-</li>
-</ul>
-<ul>
-<li id="sec-1-4-1-2-6">Balancer::chooseTarget<br/>
-
-
-
-<pre class="src src-Java">private boolean chooseTarget(Source source,
-    Iterator&lt;BalancerDatanode&gt; targetCandidates, boolean onRackTarget) {
-  if (!source.isMoveQuotaFull()) { // &#22914;&#26524;source&#37197;&#39069;&#28385;&#30340;&#35805;
-    return false;
-  }
-  boolean foundTarget = false;
-  BalancerDatanode target = null;
-  while (!foundTarget &amp;&amp; targetCandidates.hasNext()) {
-    target = targetCandidates.next();
-    if (!target.isMoveQuotaFull()) {
-      targetCandidates.remove();
-      continue;
-    }
-    if (onRackTarget) {
-      // choose from on-rack nodes
-      if (cluster.isOnSameRack(source.datanode, target.datanode)) {
-        foundTarget = true;
-      }
-    } else {
-      // choose from off-rack nodes
-      if (!cluster.isOnSameRack(source.datanode, target.datanode)) {
-        foundTarget = true;
-      }
-    }
-  }
-  if (foundTarget) {
-    assert(target != null):<span class="org-string">"Choose a null target"</span>;
-    long size = Math.min(source.availableSizeToMove(),
-        target.availableSizeToMove()); // &#20004;&#32773;&#36890;&#20449;&#26368;&#22810;&#22810;&#23569;&#23383;&#33410;&#65311;
-    NodeTask nodeTask = new NodeTask(target, size);
-    source.addNodeTask(nodeTask);
-    target.incScheduledSize(nodeTask.getSize());
-    sources.add(source);
-    targets.add(target);
-    if (!target.isMoveQuotaFull()) {
-      targetCandidates.remove();
-    }
-    LOG.info(<span class="org-string">"Decided to move "</span>+StringUtils.byteDesc(size)+<span class="org-string">" bytes from "</span>
-        +source.datanode + <span class="org-string">" to "</span> + target.datanode);
-    return true;
-  }
-  return false;
-}
-</pre>
-
-
-</li>
-</ul>
-<ul>
-<li id="sec-1-4-1-2-7">Balancer::chooseSources<br/>
-寻找和under util匹配的source.
-
-
-
-
-<pre class="src src-Java">private void chooseSources(
-    Iterator&lt;Source&gt; sourceCandidates, boolean onRackSource) {
-  for (Iterator&lt;BalancerDatanode&gt; targetIterator =
-    underUtilizedDatanodes.iterator(); targetIterator.hasNext();) {
-    BalancerDatanode target = targetIterator.next();
-    while (chooseSource(target, sourceCandidates, onRackSource)) {
-    }
-    if (!target.isMoveQuotaFull()) { // &#22914;&#26524;&#36825;&#20010;target&#22312;&#35268;&#21010;&#19978;&#37197;&#39069;&#28385;&#30340;&#35805;&#37027;&#20040;&#23601;&#19981;&#32771;&#34385;&#36825;&#20010;target.
-      targetIterator.remove();
-    }
-  }
-  return;
-}
-</pre>
-
-
-</li>
-</ul>
-<ul>
-<li id="sec-1-4-1-2-8">Balancer::chooseSource<br/>
-和之前的chooseTarget非常类似
-
-
-
-
-<pre class="src src-Java">private boolean chooseSource(BalancerDatanode target,
-    Iterator&lt;Source&gt; sourceCandidates, boolean onRackSource) {
-  if (!target.isMoveQuotaFull()) {
-    return false;
-  }
-  boolean foundSource = false;
-  Source source = null;
-  while (!foundSource &amp;&amp; sourceCandidates.hasNext()) {
-    source = sourceCandidates.next();
-    if (!source.isMoveQuotaFull()) {
-      sourceCandidates.remove();
-      continue;
-    }
-    if (onRackSource) {
-      // choose from on-rack nodes
-      if ( cluster.isOnSameRack(source.getDatanode(), target.getDatanode())) {
-        foundSource = true;
-      }
-    } else {
-      // choose from off-rack nodes
-      if (!cluster.isOnSameRack(source.datanode, target.datanode)) {
-        foundSource = true;
-      }
-    }
-  }
-  if (foundSource) {
-    assert(source != null):<span class="org-string">"Choose a null source"</span>;
-    long size = Math.min(source.availableSizeToMove(),
-        target.availableSizeToMove());
-    NodeTask nodeTask = new NodeTask(target, size);
-    source.addNodeTask(nodeTask);
-    target.incScheduledSize(nodeTask.getSize());
-    sources.add(source);
-    targets.add(target);
-    if ( !source.isMoveQuotaFull()) {
-      sourceCandidates.remove();
-    }
-    LOG.info(<span class="org-string">"Decided to move "</span>+StringUtils.byteDesc(size)+<span class="org-string">" bytes from "</span>
-        +source.datanode + <span class="org-string">" to "</span> + target.datanode);
-    return true;
-  }
-  return false;
-}
-</pre>
-
-
-</li>
-</ul>
-<ul>
-<li id="sec-1-4-1-2-9">Balancer::dispatchBlockMoves<br/>
-发起block move操作
-
-
-
-
-<pre class="src src-Java">private long dispatchBlockMoves() throws InterruptedException {
-  long bytesLastMoved = bytesMoved.get(); // &#19978;&#27425;&#24635;&#20849;move&#22810;&#23569;&#23383;&#33410;
-  Future&lt;?&gt;[] futures = new Future&lt;?&gt;[sources.size()];
-  int i=0;
-  for (Source source : sources) {
-    // &#20135;&#29983;BlockMoveDispatcher&#25918;&#21040;dispatcher&#32447;&#31243;&#27744;&#25191;&#34892;
-    // &#21457;&#36215;&#32773;&#26159;source, &#22240;&#20026;&#21482;&#26377;source&#25165;&#26377;&#20449;&#24687;&#30693;&#36947;&#24212;&#35813;&#21521;&#21738;&#20123;target&#20570;move.
-    futures[i++] = dispatcherExecutor.submit(source.new BlockMoveDispatcher());
-  }
-
-  // wait for all dispatcher threads to finish
-  for (Future&lt;?&gt; future : futures) {
-    try {
-      future.get();
-    } catch (ExecutionException e) {
-      LOG.warn(<span class="org-string">"Dispatcher thread failed"</span>, e.getCause());
-    }
-  }
-
-  // &#31561;&#24453;&#23436;&#25104;
-  // wait for all block moving to be done
-  waitForMoveCompletion();
-
-  // &#26412;&#27425;move&#22810;&#23569;&#23383;&#33410;
-  return bytesMoved.get()-bytesLastMoved;
-}
-</pre>
-
-
-</li>
-</ul>
-<ul>
-<li id="sec-1-4-1-2-10">Balancer::waitForMoveCompletion<br/>
-从target的pendingQ里面可以看到整个move过程是否结束
-
-
-
-
-<pre class="src src-Java">private void waitForMoveCompletion() {
-  boolean shouldWait;
-  do {
-    shouldWait = false;
-    for (BalancerDatanode target : targets) {
-      if (!target.isPendingQEmpty()) {
-        shouldWait = true;
-      }
-    }
-    if (shouldWait) {
-      try {
-        Thread.sleep(blockMoveWaitTime); // &#40664;&#35748;30s
-      } catch (InterruptedException ignored) {
-      }
-    }
-  } while (shouldWait);
-</pre>
-
-
-</li>
-</ul>
-<ul>
-<li id="sec-1-4-1-2-11">Balancer::resetData<br/>
-清除NN balance iteration产生数据，为下轮NN balance iteration准备。
-
-
-
-
-<pre class="src src-Java">private void resetData() {
-   this.cluster = new NetworkTopology();
-   this.overUtilizedDatanodes.clear();
-   this.aboveAvgUtilizedDatanodes.clear();
-   this.belowAvgUtilizedDatanodes.clear();
-   this.underUtilizedDatanodes.clear();
-   this.datanodes.clear();
-   this.sources.clear();
-   this.targets.clear();
-   this.policy.reset();
-   cleanGlobalBlockList();
-   this.movedBlocks.cleanup();
- }
-
- /* Remove all blocks from the global block list except for the ones in the
-  * moved list.
-  */
- private void cleanGlobalBlockList() {
-   for (Iterator&lt;Block&gt; globalBlockListIterator=globalBlockList.keySet().iterator();
-   globalBlockListIterator.hasNext();) {
-     Block block = globalBlockListIterator.next();
-     if(!movedBlocks.contains(block)) {
-       globalBlockListIterator.remove();
-     }
-   }
- }
-</pre>
-
-
-</li>
-</ul>
-<ul>
-<li id="sec-1-4-1-2-12">MovedBlocks<br/>
-注释相对还是比较清晰的，类似0/1切换，触发时间在cleanup阶段
-
-
-
-
-<pre class="src src-Java">/** This window makes sure to keep blocks that have been moved within 1.5 hour.
- * Old window has blocks that are older;
- * Current window has blocks that are more recent;
- * Cleanup method triggers the check if blocks in the old window are
- * more than 1.5 hour old. If yes, purge the old window and then
- * move blocks in current window to old window.
- */
-  private long lastCleanupTime = Time.now();
-  final private static int CUR_WIN = 0;
-  final private static int OLD_WIN = 1;
-  final private static int NUM_WINS = 2;
-  final private List&lt;HashMap&lt;Block, BalancerBlock&gt;&gt; movedBlocks =
-    new ArrayList&lt;HashMap&lt;Block, BalancerBlock&gt;&gt;(NUM_WINS);
-
-  /* remove old blocks */
-  synchronized private void cleanup() {
-    long curTime = Time.now();
-    // check if old win is older than winWidth
-    if (lastCleanupTime + WIN_WIDTH &lt;= curTime) {
-      // purge the old window
-      movedBlocks.set(OLD_WIN, movedBlocks.get(CUR_WIN));
-      movedBlocks.set(CUR_WIN, new HashMap&lt;Block, BalancerBlock&gt;());
-      lastCleanupTime = curTime;
-    }
-  }
-</pre>
-
-
-
-</li>
-</ul>
-</div>
-
-</div>
-
-<div id="outline-container-1-4-1-3" class="outline-5">
-<h5 id="sec-1-4-1-3"><span class="section-number-5">1.4.1.3</span> Source balance iteration</h5>
-<div class="outline-text-5" id="text-1-4-1-3">
-
-<p><b>restriction</b>
-</p><ul>
-<li>timeout = 20min
-</li>
-<li>source sent block size = 2 * scheduledSize # scheduledSize在NN balance iteration的chooseNodes阶段设置，上限10GB
-<ul>
-<li><b>note(dirlt)：factor == 2 是为何？</b>
-</li>
-</ul>
-
-</li>
-<li>target receive block size = scheduledSize
-</li>
-</ul>
-
-
-<ul>
-<li id="sec-1-4-1-3-1">BalancerDatanode<br/>
-保存sink节点，也就是说其disk util比较低，可以接收disk util比较高的节点的数据来做平衡。
-
-
-
-
-<pre class="src src-Java">/* A class that keeps track of a datanode in Balancer */
- private static class BalancerDatanode {
-   final private static long MAX_SIZE_TO_MOVE = 10*1024*1024*1024L; //10GB
-   final DatanodeInfo datanode;
-   final double utilization; // &#26412;&#33410;&#28857;&#30913;&#30424;&#21033;&#29992;&#29575;
-   final long maxSize2Move; // &#26412;&#27425;&#31227;&#21160;&#23383;&#33410;&#37197;&#39069;
-   protected long scheduledSize = 0L; // &#26412;&#27425;&#22312;&#27492;&#33410;&#28857;&#19978;&#31227;&#21160;&#22810;&#23569;&#23383;&#33410;
-   //  blocks being moved but not confirmed yet
-   private List&lt;PendingBlockMove&gt; pendingBlocks = // pending block move&#25805;&#20316;&#38431;&#21015;
-     // source&#33410;&#28857;&#23558;&#25152;&#26377;&#25805;&#20316;&#23553;&#35013;&#25104;&#20026;PendingBlockMove&#28155;&#21152;&#21040;target&#30340;&#36825;&#20010;&#38431;&#21015;
-     // target&#38431;&#21015;&#22312;move
-     new ArrayList&lt;PendingBlockMove&gt;(MAX_NUM_CONCURRENT_MOVES);
-
-   /* Constructor
-    * Depending on avgutil &amp; threshold, calculate maximum bytes to move
-    */
-  // &#26500;&#36896;&#20989;&#25968;&#21644;Source&#26159;&#30456;&#21516;&#30340;&#65292;&#25152;&#20197;&#37324;&#38754;&#22788;&#29702;&#20102;&#20004;&#31181;&#36923;&#36753;
-   private BalancerDatanode(DatanodeInfo node, BalancingPolicy policy, double threshold) {
-     datanode = node;
-     utilization = policy.getUtilization(node);
-     final double avgUtil = policy.getAvgUtilization();
-     long maxSizeToMove;
-
-     // &#35745;&#31639;&#36825;&#20010;datanode&#19978;&#38754;&#26368;&#22810;&#33021;&#22815;&#22686;&#21152;/&#20943;&#23569;&#22810;&#23569;&#25968;&#25454;
-     if (utilization &gt;= avgUtil+threshold
-         || utilization &lt;= avgUtil-threshold) {
-       maxSizeToMove = (long)(threshold*datanode.getCapacity()/100);
-     } else {
-       maxSizeToMove =
-         (long)(Math.abs(avgUtil-utilization)*datanode.getCapacity()/100);
-     }
-     if (utilization &lt; avgUtil ) { // &#22914;&#26524;&#22686;&#21152;&#25968;&#25454;&#38656;&#35201;&#32771;&#34385;&#30913;&#30424;&#31354;&#38388;&#26159;&#21542;&#36275;&#22815;
-       maxSizeToMove = Math.min(datanode.getRemaining(), maxSizeToMove);
-     }
-     this.maxSize2Move = Math.min(MAX_SIZE_TO_MOVE, maxSizeToMove); // 10GB&#26159;&#21333;&#27425;&#31227;&#21160;&#19978;&#38480;
-   }
-
-   /** Decide if still need to move more bytes */
-   protected boolean isMoveQuotaFull() { // &#26412;&#27425;&#31227;&#21160;quota&#26159;&#21542;&#28385;&#65311;
-     return scheduledSize&lt;maxSize2Move;
-   }
- }
-</pre>
-
-
-</li>
-</ul>
-<ul>
-<li id="sec-1-4-1-3-2">BalancerBlock<br/>
-内部管理Block数据结构
-
-
-
-
-<pre class="src src-Java">static private class BalancerBlock {
-   private Block block; // the block
-   // &#36825;&#20010;block&#22312;&#21738;&#20123;datanode&#19978;&#65292;&#36890;&#24120;&#26159;3&#20221;&#12290;
-   private List&lt;BalancerDatanode&gt; locations
-           = new ArrayList&lt;BalancerDatanode&gt;(3); // its locations
- }
-</pre>
-
-
-<p>
-另外有个数据结构是BlockWithLocations也是管理block数据结构的，但是这个是直接从namenode返回的原始block结构
-</p>
-
-
-<pre class="src src-Java">public static class BlockWithLocations {
-  Block block; // block&#20449;&#24687;
-  String storageIDs[]; // &#36825;&#20010;block&#23384;&#20648;&#22312;&#21738;&#20123;datanode&#19978;&#65288;&#27599;&#20010;datanode&#26377;&#36890;&#36807;storageID&#26469;&#21306;&#20998;&#65289;
-}
-</pre>
-
-
-</li>
-</ul>
-<ul>
-<li id="sec-1-4-1-3-3">NodeTask<br/>
-<ul>
-<li>datanode # sink节点
-</li>
-<li>size # 向这个sink节点move字节数
-</li>
-</ul>
-
-
-
-
-<pre class="src src-Java">static private class NodeTask {
-  private BalancerDatanode datanode; //target node
-  private long size;  //bytes scheduled to move
-}
-</pre>
-
-
-</li>
-</ul>
-<ul>
-<li id="sec-1-4-1-3-4">Source<br/>
-Source继承BalancerDatanode. 但是感觉代码差别还是比较大的，所以单独拿出来分析仔细分析每个函数。先看看这个类数据结构
-
-
-
-
-<pre class="src src-Java">  private class Source extends BalancerDatanode {
-    private ArrayList&lt;NodeTask&gt; nodeTasks = new ArrayList&lt;NodeTask&gt;(2); // &#38656;&#35201;&#21521;&#21738;&#20123;node move block.
-    private long blocksToReceive = 0L; // &#27599;&#27425;dispatch block move&#26368;&#22810;&#21435;&#26597;&#25214;&#22810;&#23569;block&#65288;&#25353;&#29031;&#23383;&#33410;&#35745;&#31639;&#65289;
-    /* source blocks point to balancerBlocks in the global list because
-     * we want to keep one copy of a block in balancer and be aware that
-     * the locations are changing over time.
-     */
-    private List&lt;BalancerBlock&gt; srcBlockList
-            = new ArrayList&lt;BalancerBlock&gt;();
-
-    /** Add a node task */
-    private void addNodeTask(NodeTask task) {
-      assert (task.datanode != this) :
-        <span class="org-string">"Source and target are the same "</span> + datanode; // source&#21644;target&#19981;&#33021;&#22815;&#30456;&#21516;
-      incScheduledSize(task.getSize()); // &#21487;&#20197;&#35748;&#20026;&#22914;&#26524;&#36825;&#20010;block move&#25104;&#21151;&#30340;&#35805;&#65292;&#37027;&#20040;source&#35201;&#22686;&#21152;&#36825;&#20040;&#22810;scheduledSize.
-      nodeTasks.add(task);
-    }
-}
-</pre>
-
-
-</li>
-</ul>
-<ul>
-<li id="sec-1-4-1-3-5">Source::BlockMoveDispatcher<br/>
-在NN balance iteration里面dispatchBlockMoves使用了这个类，这个类非常简单直接调用dispatchBlocks方法
-
-
-
-
-<pre class="src src-Java">private class BlockMoveDispatcher implements Runnable {
-  @Override
-  public void run() {
-    dispatchBlocks();
-  }
-}
-</pre>
-
-
-</li>
-</ul>
-<ul>
-<li id="sec-1-4-1-3-6">Source::dispatchBlocks<br/>
-source如何发起block move.
-
-
-
-
-<pre class="src src-Java">/* This method iteratively does the following:
- * it first selects a block to move,
- * then sends a request to the proxy source to start the block move
- * when the source's block list falls below a threshold, it asks
- * the namenode for more blocks.
- * It terminates when it has dispatch enough block move tasks or
- * it has received enough blocks from the namenode, or
- * the elapsed time of the iteration has exceeded the max time limit.
- */
-private static final long MAX_ITERATION_TIME = 20*60*1000L; //20 mins
-private void dispatchBlocks() { // &#36825;&#20010;&#20989;&#25968;&#20855;&#20307;&#25191;&#34892;Block Move&#25805;&#20316;
-  long startTime = Time.now();
-  this.blocksToReceive = 2*scheduledSize; // &#26412;&#27425;&#36816;&#34892;&#26368;&#22810;&#26597;&#25214;&#22810;&#23569;block&#65288;&#20197;&#23383;&#33410;&#35745;&#31639;&#65289;
-  boolean isTimeUp = false;
-  while(!isTimeUp &amp;&amp; scheduledSize&gt;0 &amp;&amp;
-      (!srcBlockList.isEmpty() || blocksToReceive&gt;0)) {
-    // &#24403;&#21069;&#26159;&#21542;&#26377;blocks&#21487;&#20197;&#31227;&#21160;&#65292;&#22914;&#26524;&#23384;&#22312;&#37027;&#20040;&#36873;&#25321;block move.
-    PendingBlockMove pendingBlock = chooseNextBlockToMove();
-    if (pendingBlock != null) {
-      // move the block
-      pendingBlock.scheduleBlockMove(); // &#21457;&#36215;&#31227;&#21160;&#25805;&#20316;
-      continue;
-    }
-
-    /* Since we can not schedule any block to move,
-     * filter any moved blocks from the source block list and
-     * check if we should fetch more blocks from the namenode
-     */
-    filterMovedBlocks(); // filter already moved blocks
-    // &#22914;&#26524;&#24403;&#21069;blocks&#27604;&#36739;&#23569;&#30340;&#35805;&#65292;&#37027;&#20040;&#35831;&#27714;nn&#36820;&#22238;&#26356;&#22810;blocks.
-    if (shouldFetchMoreBlocks()) {
-      // fetch new blocks
-      try {
-        blocksToReceive -= getBlockList();
-        continue;
-      } catch (IOException e) {
-        LOG.warn(<span class="org-string">"Exception while getting block list"</span>, e);
-        return;
-      }
-    }
-
-    // check if time is up or not
-    // &#22914;&#26524;&#26102;&#38388;&#36807;&#38271;&#30340;&#35805;&#37027;&#20040;&#32456;&#27490;
-    if (Time.now()-startTime &gt; MAX_ITERATION_TIME) {
-      isTimeUp = true;
-      continue;
-    }
-
-    /* Now we can not schedule any block to move and there are
-     * no new blocks added to the source block list, so we wait.
-     */
-    try {
-      synchronized(Balancer.this) {
-        Balancer.this.wait(1000);  // wait for targets/sources to be idle
-      }
-    } catch (InterruptedException ignored) {
-    }
-  }
-}
-</pre>
-
-
-</li>
-</ul>
-<ul>
-<li id="sec-1-4-1-3-7">Source::getBlockList<br/>
-从nn获取blocks.
-
-
-
-
-<pre class="src src-Java">/* fetch new blocks of this source from namenode and
- * update this source's block list &amp; the global block list
- * Return the total size of the received blocks in the number of bytes.
- */
-private long getBlockList() throws IOException {
-  // final private static long MAX_BLOCKS_SIZE_TO_FETCH = 2*1024*1024*1024L; //2GB
-  // &#19968;&#27425;&#33719;&#21462;blocks&#19981;&#35201;&#22826;&#22810;
-  BlockWithLocations[] newBlocks = nnc.namenode.getBlocks(datanode,
-    Math.min(MAX_BLOCKS_SIZE_TO_FETCH, blocksToReceive)).getBlocks();
-  long bytesReceived = 0;
-  for (BlockWithLocations blk : newBlocks) {
-    bytesReceived += blk.getBlock().getNumBytes();
-    BalancerBlock block;
-    synchronized(globalBlockList) {
-      block = globalBlockList.get(blk.getBlock()); // todo(dirlt)&#65306;???
-      if (block==null) {
-        block = new BalancerBlock(blk.getBlock());
-        globalBlockList.put(blk.getBlock(), block);
-      } else {
-        block.clearLocations();
-      }
-
-      synchronized (block) {
-        // &#20462;&#25913;&#36825;&#20010;block&#23545;&#35937;&#37324;&#38754;&#23384;&#20648;&#20301;&#32622;
-        // update locations
-        for ( String storageID : blk.getStorageIDs() ) {
-          BalancerDatanode datanode = datanodes.get(storageID);
-          if (datanode != null) { // not an unknown datanode
-            block.addLocation(datanode);
-          }
-        }
-      }
-      if (!srcBlockList.contains(block) &amp;&amp; isGoodBlockCandidate(block)) { // &#22914;&#26524;&#36825;&#20010;block&#36275;&#22815;&#22909;&#24182;&#19988;&#27809;&#26377;&#28155;&#21152;&#36807;
-        // filter bad candidates
-        srcBlockList.add(block);
-      }
-    }
-  }
-  // &#36820;&#22238;&#26412;&#27425;&#26597;&#25214;block&#22810;&#23569;&#65288;&#20197;&#23383;&#33410;&#35745;&#31639;&#65289;
-  return bytesReceived;
-}
-</pre>
-
-
-</li>
-</ul>
-<ul>
-<li id="sec-1-4-1-3-8">Source::isGoodBlockCandidate<br/>
-决定这个block是否合适来调度
-
-
-
-
-<pre class="src src-Java">/* Decide if the given block is a good candidate to move or not */
-private boolean isGoodBlockCandidate(BalancerBlock block) {
-  for (NodeTask nodeTask : nodeTasks) {
-    if (Balancer.this.isGoodBlockCandidate(this, nodeTask.datanode, block)) {
-      return true;
-    }
-  }
-  return false;
-}
-</pre>
-
-
-<p>
-这个函数调用了另外一个方法，检查这个block,source,所有target的关系，只要存在一个OK即可
-</p>
-
-
-
-<pre class="src src-Java">/* Decide if it is OK to move the given block from source to target
- * A block is a good candidate if
- * 1. the block is not in the process of being moved/has not been moved;
- * 2. the block does not have a replica on the target;
- * 3. doing the move does not reduce the number of racks that the block has
- */
-private boolean isGoodBlockCandidate(Source source,
-    BalancerDatanode target, BalancerBlock block) {
-  // check if the block is moved or not
-  if (movedBlocks.contains(block)) { // &#36825;&#20010;block&#26159;&#21542;&#24050;&#32463;&#31227;&#21160;&#65311;
-      return false;
-  }
-  if (block.isLocatedOnDatanode(target)) { // &#26159;&#21542;&#24050;&#32463;&#22312;target&#19978;
-    return false;
-  }
-
-  boolean goodBlock = false;
-  if (cluster.isOnSameRack(source.getDatanode(), target.getDatanode())) { // source&#21644;target&#22312;&#21516;rack&#65292;&#20165;&#20165;&#26159;rack&#20869;&#24179;&#34913;&#30913;&#30424;
-    // good if source and target are on the same rack
-    goodBlock = true;
-  } else {
-    boolean notOnSameRack = true;
-    synchronized (block) {
-      for (BalancerDatanode loc : block.locations) {
-        // &#22240;&#20026;&#36825;&#20010;block&#24050;&#32463;&#22312;source&#19978;&#20102;&#65292;&#24182;&#19988;&#19978;&#38754;&#26465;&#20214;source&#21644;target&#19981;&#20877;&#19968;&#20010;rack
-        // &#19979;&#38754;&#23601;&#26159;&#35201;&#26816;&#26597;&#26159;&#20854;&#20182;&#33410;&#28857;&#21644;target&#22312;&#21516;&#19968;&#20010;rack
-        if (cluster.isOnSameRack(loc.datanode, target.datanode)) {
-          notOnSameRack = false;
-          break;
-        }
-      }
-    }
-    if (notOnSameRack) {
-      // good if target is target is not on the same rack as any replica
-      goodBlock = true;
-    } else {
-      // good if source is on the same rack as on of the replicas
-      for (BalancerDatanode loc : block.locations) {
-        if (loc != source &amp;&amp;
-            cluster.isOnSameRack(loc.datanode, source.datanode)) {
-          goodBlock = true;
-          break;
-        }
-      }
-    }
-  }
-  return goodBlock;
-}
-</pre>
-
-
-</li>
-</ul>
-<ul>
-<li id="sec-1-4-1-3-9">Source::filterMovedBlocks<br/>
-从srcBlockList里面过滤在一段时间内已经移动过的block. 实现可以参考MovedBlocks.
-
-
-
-
-<pre class="src src-Java">/* iterate all source's blocks to remove moved ones */
-private void filterMovedBlocks() {
-  for (Iterator&lt;BalancerBlock&gt; blocks=getBlockIterator();
-        blocks.hasNext();) {
-    if (movedBlocks.contains(blocks.next())) {
-      blocks.remove();
-    }
-  }
-}
-</pre>
-
-
-</li>
-</ul>
-<ul>
-<li id="sec-1-4-1-3-10">Source::shouldFetchMoreBlocks<br/>
-是否应该尝试获取更多的blocks.
-
-
-
-
-<pre class="src src-Java">// srcBlockList&#22823;&#23567;&lt;5&#24182;&#19988;&#36824;&#26377;&#20313;&#37327;&#26469;&#33719;&#21462;blocks.
-private static final int SOURCE_BLOCK_LIST_MIN_SIZE=5;
-/* Return if should fetch more blocks from namenode */
-private boolean shouldFetchMoreBlocks() {
-  return srcBlockList.size()&lt;SOURCE_BLOCK_LIST_MIN_SIZE &amp;&amp;
-             blocksToReceive&gt;0;
-}
-</pre>
-
-
-</li>
-</ul>
-<ul>
-<li id="sec-1-4-1-3-11">Source::chooseNextBlockToMove<br/>
-从srcBlockList选出block来向target发起move.
-<ol>
-<li>遍历所有NodeTask找到对应target.
-</li>
-<li>创建PendingBlockMove
-</li>
-<li>尝试将这个PendingBlockMove添加到target队列里面
-</li>
-<li>如果添加成功的话，那么设置source,target并且选择block(chooseBlockAndProxy)(应该是从source的srcBlockList里面选择）
-</li>
-<li>如果没有选择到的话那么删除这个PendingBlockMove.
-</li>
-</ol>
-
-
-
-
-<pre class="src src-Java">/* Return a block that's good for the source thread to dispatch immediately
- * The block's source, target, and proxy source are determined too.
- * When choosing proxy and target, source &amp; target throttling
- * has been considered. They are chosen only when they have the capacity
- * to support this block move.
- * The block should be dispatched immediately after this method is returned.
- */
-private PendingBlockMove chooseNextBlockToMove() {
-  for ( Iterator&lt;NodeTask&gt; tasks=nodeTasks.iterator(); tasks.hasNext(); ) {
-    NodeTask task = tasks.next();
-    BalancerDatanode target = task.getDatanode();
-    PendingBlockMove pendingBlock = new PendingBlockMove();
-    if ( target.addPendingBlock(pendingBlock) ) {
-      // target is not busy, so do a tentative block allocation
-      pendingBlock.source = this;
-      pendingBlock.target = target;
-      if ( pendingBlock.chooseBlockAndProxy() ) {
-        long blockSize = pendingBlock.block.getNumBytes();
-        scheduledSize -= blockSize; // note(dirlt):&#20854;&#23454;&#36825;&#20010;&#25805;&#20316;&#27809;&#26377;&#29992;&#65292;&#22240;&#20026;scheduledSize&#26159;&#22312;chooseNodes&#38745;&#24577;&#35745;&#31639;&#20043;&#21518;&#65292;&#22312;&#23454;&#38469;&#25805;&#20316;&#38454;&#27573;&#24182;&#19981;&#24433;&#21709;&#36923;&#36753;
-        task.size -= blockSize; // &#36825;&#20010;task&#19978;&#21521;target&#26368;&#22810;&#20256;&#36755;size.
-        if (task.size == 0) { // note(dirlt):==0&#26159;&#21542;&#20250;&#27491;&#24120;&#65311;
-          tasks.remove();
-        }
-        return pendingBlock;
-      } else {
-        // cancel the tentative move
-        target.removePendingBlock(pendingBlock);
-      }
-    }
-  }
-  return null;
-}
-</pre>
-
-
-</li>
-</ul>
-<ul>
-<li id="sec-1-4-1-3-12">PendingBlockMove<br/>
-这个用来描述BlockMove操作的，这个对象由source生成，然后在target线程池执行
-
-
-
-
-<pre class="src src-Java">private class PendingBlockMove {
-    private BalancerBlock block; // &#35201;&#31227;&#21160;&#30340;block
-    private Source source; // from where
-    private BalancerDatanode proxySource; // &#22914;&#26524;&#20854;&#20182;&#33410;&#28857;&#26377;&#30456;&#21516;block&#30340;&#35805;&#65292;&#37027;&#20040;&#21487;&#20197;&#30001;&#37027;&#20010;&#33410;&#28857;&#20195;&#20026;&#36716;&#21457;&#12290;
-    private BalancerDatanode target; // to where
-}
-</pre>
-
-
-</li>
-</ul>
-<ul>
-<li id="sec-1-4-1-3-13">PendingBlockMove::chooseBlockAndProxy<br/>
-
-
-
-<pre class="src src-Java">private boolean chooseBlockAndProxy() {
-  // iterate all source's blocks until find a good one
-  for (Iterator&lt;BalancerBlock&gt; blocks=
-    source.getBlockIterator(); blocks.hasNext();) { // &#36941;&#21382;source&#27599;&#20010;&#22359;
-    if (markMovedIfGoodBlock(blocks.next())) { // &#22914;&#26524;&#28385;&#36275;&#26465;&#20214;&#37027;&#20040;&#33719;&#21462;&#36825;&#20010;block&#24182;&#19988;&#20174;iterator&#21024;&#38500;&#36820;&#22238;
-      blocks.remove();
-      return true;
-    }
-  }
-  return false;
-}
-</pre>
-
-
-</li>
-</ul>
-<ul>
-<li id="sec-1-4-1-3-14">PendingBlockMove::markMovedIfGoodBlock<br/>
-
-
-
-<pre class="src src-Java">/* Return true if the given block is good for the tentative move;
- * If it is good, add it to the moved list to marked as <span class="org-string">"Moved"</span>.
- * A block is good if
- * 1. it is a good candidate; see isGoodBlockCandidate
- * 2. can find a proxy source that's not busy for this move
- */
-private boolean markMovedIfGoodBlock(BalancerBlock block) {
-  synchronized(block) {
-    synchronized(movedBlocks) {
-      if (isGoodBlockCandidate(source, target, block)) { // block&#26159;&#21542;good.
-        this.block = block;
-        if ( chooseProxySource() ) { // &#36873;&#25321;proxy.
-          movedBlocks.add(block);
-          if (LOG.isDebugEnabled()) {
-            LOG.debug(<span class="org-string">"Decided to move block "</span>+ block.getBlockId()
-                +<span class="org-string">" with a length of "</span>+StringUtils.byteDesc(block.getNumBytes())
-                + <span class="org-string">" bytes from "</span> + source.getDisplayName()
-                + <span class="org-string">" to "</span> + target.getDisplayName()
-                + <span class="org-string">" using proxy source "</span> + proxySource.getDisplayName() );
-          }
-          return true;
-        }
-      }
-    }
-  }
-  return false;
-}
-</pre>
-
-
-</li>
-</ul>
-<ul>
-<li id="sec-1-4-1-3-15">PendingBlockMove::chooseProxySource<br/>
-首先选择和target相同rack的节点，然后选择这个block相对来说不是很繁忙的节点。选择proxy节点好处可以节省一定开销并且做均衡。
-
-
-
-
-<pre class="src src-Java">/* Now we find out source, target, and block, we need to find a proxy
- *
- * @return true if a proxy is found; otherwise false
- */
-private boolean chooseProxySource() {
-  // check if there is replica which is on the same rack with the target
-  for (BalancerDatanode loc : block.getLocations()) {
-    if (cluster.isOnSameRack(loc.getDatanode(), target.getDatanode())) {
-      if (loc.addPendingBlock(this)) {
-        proxySource = loc;
-        return true;
-      }
-    }
-  }
-  // find out a non-busy replica
-  for (BalancerDatanode loc : block.getLocations()) {
-    if (loc.addPendingBlock(this)) {
-      proxySource = loc;
-      return true;
-    }
-  }
-  return false;
-}
-</pre>
-
-
-</li>
-</ul>
-<ul>
-<li id="sec-1-4-1-3-16">PendingBlockMove::scheduleBlockMove<br/>
-这个在Source::dispatchBlocks里面出现过，主要是发起block move操作。产生runnable对象放在moverexecutor里面执行
-
-
-
-
-<pre class="src src-Java">/* start a thread to dispatch the block move */
-private void scheduleBlockMove() {
-  moverExecutor.execute(new Runnable() {
-    @Override
-    public void run() {
-      if (LOG.isDebugEnabled()) {
-        LOG.debug(<span class="org-string">"Starting moving "</span>+ block.getBlockId() +
-            <span class="org-string">" from "</span> + proxySource.getDisplayName() + <span class="org-string">" to "</span> +
-            target.getDisplayName());
-      }
-      dispatch();
-    }
-  });
-}
-</pre>
-
-
-</li>
-</ul>
-</div>
-</div>
-
-</div>
-
-<div id="outline-container-1-4-2" class="outline-4">
-<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> BlockPlacementPolicy</h4>
-<div class="outline-text-4" id="text-1-4-2">
-
-<p><b>note(dirlt):hadoop-2.0.0-cdh4.3.0</b>
-</p>
-<p>
-就像之前论文里面提到的，block placement策略上没有考虑磁盘利用率问题，可能造成disk util上各个节点出现imbalance情况，需要靠balancer来做均衡。
-</p>
-
-</div>
-
-<div id="outline-container-1-4-2-1" class="outline-5">
-<h5 id="sec-1-4-2-1"><span class="section-number-5">1.4.2.1</span> Interface</h5>
-<div class="outline-text-5" id="text-1-4-2-1">
-
-<p>BlockPlacementPolicy负责块放置策略，本身是抽象类，有默认实现是BlockPlacementPolicyDefault。接口有下面这些，其意义注释上还是比较好理解的。
-</p>
-
-
-
-<pre class="src src-Java">/**
- * choose &lt;i&gt;numOfReplicas&lt;/i&gt; data nodes for &lt;i&gt;writer&lt;/i&gt;
- * to re-replicate a block with size &lt;i&gt;blocksize&lt;/i&gt;
- * If not, return as many as we can.
- *
- * @param srcPath the file to which this chooseTargets is being invoked.
- * @param numOfReplicas additional number of replicas wanted.
- * @param writer the writer's machine, null if not in the cluster.
- * @param chosenNodes datanodes that have been chosen as targets.
- * @param returnChosenNodes decide if the chosenNodes are returned.
- * @param excludedNodes datanodes that should not be considered as targets.
- * @param blocksize size of the data to be written.
- * @return array of DatanodeDescriptor instances chosen as target
- * and sorted as a pipeline.
- */
-public abstract DatanodeDescriptor[] chooseTarget(String srcPath,
-                                           int numOfReplicas,
-                                           DatanodeDescriptor writer,
-                                           List&lt;DatanodeDescriptor&gt; chosenNodes,
-                                           boolean returnChosenNodes,
-                                           HashMap&lt;Node, Node&gt; excludedNodes,
-                                           long blocksize);
-
-/**
- * Verify that the block is replicated on at least minRacks different racks
- * if there is more than minRacks rack in the system.
- *
- * @param srcPath the full pathname of the file to be verified
- * @param lBlk block with locations
- * @param minRacks number of racks the block should be replicated to
- * @return the difference between the required and the actual number of racks
- * the block is replicated to.
- */
-abstract public int verifyBlockPlacement(String srcPath,
-                                         LocatedBlock lBlk,
-                                         int minRacks);
-
-/**
- * Decide whether deleting the specified replica of the block still makes
- * the block conform to the configured block placement policy.
- *
- * @param srcBC block collection of file to which block-to-be-deleted belongs
- * @param block The block to be deleted
- * @param replicationFactor The required number of replicas for this block
- * @param existingReplicas The replica locations of this block that are present
-                on at least two unique racks.
- * @param moreExistingReplicas Replica locations of this block that are not
-                 listed in the previous parameter.
- * @return the replica that is the best candidate for deletion
- */
-abstract public DatanodeDescriptor chooseReplicaToDelete(BlockCollection srcBC,
-                                    Block block,
-                                    short replicationFactor,
-                                    Collection&lt;DatanodeDescriptor&gt; existingReplicas,
-                                    Collection&lt;DatanodeDescriptor&gt; moreExistingReplicas);
-</pre>
-
-
-<p>
-这里还提供了一个创建policy实例的函数
-</p>
-
-
-<pre class="src src-Java">/**
- * Get an instance of the configured Block Placement Policy based on the
- * value of the configuration paramater dfs.block.replicator.classname.
- *
- * @param conf the configuration to be used
- * @param stats an object that is used to retrieve the load on the cluster
- * @param clusterMap the network topology of the cluster
- * @return an instance of BlockPlacementPolicy
- */
-public static BlockPlacementPolicy getInstance(Configuration conf,
-                                               FSClusterStats stats,
-                                               NetworkTopology clusterMap) {
-  Class&lt;? extends BlockPlacementPolicy&gt; replicatorClass =
-                    conf.getClass(<span class="org-string">"dfs.block.replicator.classname"</span>,
-                                  BlockPlacementPolicyDefault.class,
-                                  BlockPlacementPolicy.class);
-  BlockPlacementPolicy replicator = (BlockPlacementPolicy) ReflectionUtils.newInstance(
-                                                           replicatorClass, conf);
-  replicator.initialize(conf, stats, clusterMap);
-  return replicator;
-}
-</pre>
-
-<p>
-也就是说如果我们需要替换这个policy的话，可以通过dfs.block.replicator.classname来指定。
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-4-2-2" class="outline-5">
-<h5 id="sec-1-4-2-2"><span class="section-number-5">1.4.2.2</span> chooseTarget</h5>
-<div class="outline-text-5" id="text-1-4-2-2">
-
-<p>BlockPlacementPolicyDefault实现上将srcPath忽略了，并没有对某个文件做单独处理，然后使用内部实现。
-</p>
-
-
-<pre class="src src-Java">@Override
-public DatanodeDescriptor[] chooseTarget(String srcPath,
-                                  int numOfReplicas,
-                                  DatanodeDescriptor writer,
-                                  List&lt;DatanodeDescriptor&gt; chosenNodes,
-                                  boolean returnChosenNodes,
-                                  HashMap&lt;Node, Node&gt; excludedNodes,
-                                  long blocksize) {
-  return chooseTarget(numOfReplicas, writer, chosenNodes, returnChosenNodes,
-      excludedNodes, blocksize);
-}
-</pre>
-
-
-
-<hr/>
-<p>
-每个参数含义如下
-</p><ul>
-<li>numOfReplicas # replicas数目
-</li>
-<li>writer # 发起者，如果这个发起者是client的话，那么可能是null.注意发起者和target节点没有必然联系，但是在选择算法中会优先考虑
-</li>
-<li>chosenNodes. # 已经被选中的节点
-</li>
-<li>returnChosenNodes # 是否同时返回已经选中节点
-</li>
-<li>excludedNodes # 排除选择的节点
-</li>
-<li>blockSize # block大小
-</li>
-</ul>
-
-
-
-
-<pre class="src src-Java">/** This is the implementation. */
-DatanodeDescriptor[] chooseTarget(int numOfReplicas,
-                                  DatanodeDescriptor writer,
-                                  List&lt;DatanodeDescriptor&gt; chosenNodes,
-                                  boolean returnChosenNodes,
-                                  HashMap&lt;Node, Node&gt; excludedNodes,
-                                  long blocksize) {
-  if (numOfReplicas == 0 || clusterMap.getNumOfLeaves()==0) {
-    return new DatanodeDescriptor[0];
-  }
-
-  if (excludedNodes == null) {
-    excludedNodes = new HashMap&lt;Node, Node&gt;();
-  }
-
-  int clusterSize = clusterMap.getNumOfLeaves(); // &#38598;&#32676;&#22823;&#23567;
-  int totalNumOfReplicas = chosenNodes.size()+numOfReplicas; // &#23436;&#25104;replication&#20043;&#21518;&#30340;replicas
-  if (totalNumOfReplicas &gt; clusterSize) { // &#22914;&#26524;&#27599;&#20010;&#33410;&#28857;&#19978;&#37117;&#26377;&#30340;&#35805;&#65292;&#37027;&#20040;&#27809;&#26377;&#24517;&#35201;&#20351;&#29992;numOfReplicas&#22823;&#23567;
-    numOfReplicas -= (totalNumOfReplicas-clusterSize);
-    totalNumOfReplicas = clusterSize;
-  }
-
-  int maxNodesPerRack =
-    (totalNumOfReplicas-1)/clusterMap.getNumOfRacks()+2; // note(dirlt)&#65306;&#22914;&#26524;rack&#35201;&#20998;&#24067;&#22343;&#21248;replica&#30340;&#35805;&#65292;&#37027;&#20040;&#27599;&#20010;rack&#38656;&#35201;&#30340;&#33410;&#28857;
-  // note(dirlt)&#65306;&#20294;&#26159;&#36825;&#20010;&#21517;&#23383;&#20284;&#20046;&#26377;&#28857;&#28151;&#28102;
-  // note(dirlt):&#36825;&#20010;&#20316;&#29992;&#26159;&#22914;&#26524;&#38450;&#27490;&#22312;&#36825;&#20010;rack&#19978;&#30340;replicas&#36807;&#22810;&#30340;&#35805;&#65292;&#37027;&#20040;&#21487;&#33021;&#19981;&#34987;&#35748;&#20026;&#26159;good target. &#21442;&#35265;isGoodTarget
-
-  List&lt;DatanodeDescriptor&gt; results =
-    new ArrayList&lt;DatanodeDescriptor&gt;(chosenNodes);
-  for (Node node:chosenNodes) {
-    excludedNodes.put(node, node); // &#23545;&#20110;&#24050;&#32463;&#36873;&#20013;&#33410;&#28857;&#37027;&#20040;&#20415;&#19981;&#32771;&#34385;
-  }
-
-  if (!clusterMap.contains(writer)) { // &#22914;&#26524;writer&#27809;&#26377;&#21253;&#21547;&#22312;&#38598;&#32676;&#37324;&#38754;&#30340;&#35805;&#37027;&#20040;&#35774;&#32622;&#20026;null.
-    writer=null;
-  }
-
-  // &#19981;&#32771;&#34385;&#37027;&#20123;&#24050;&#32463;stale&#30340;&#33410;&#28857;&#65292;&#25152;&#35859;stale&#30340;&#33410;&#28857;&#24212;&#35813;&#26159;&#38271;&#26399;&#27809;&#26377;&#21644;nn&#36890;&#20449;&#32780;&#22788;&#20110;&#29366;&#24577;&#30456;&#23545;&#33853;&#21518;&#30340;&#33410;&#28857;&#12290;
-  boolean avoidStaleNodes = (stats != null
-      &amp;&amp; stats.isAvoidingStaleDataNodesForWrite());
-  // &#29616;&#22312;results&#37324;&#38754;&#32500;&#25252;&#30340;&#26159;&#24050;&#32463;&#36873;&#25321;&#30340;&#33410;&#28857;&#65292;chooseTarget&#36820;&#22238;&#21457;&#36215;&#33410;&#28857;&#65292;&#36873;&#25321;&#30340;&#33410;&#28857;&#23384;&#25918;&#22312;results&#37324;&#38754;&#12290;
-  DatanodeDescriptor localNode = chooseTarget(numOfReplicas, writer,
-      excludedNodes, blocksize, maxNodesPerRack, results, avoidStaleNodes);
-  if (!returnChosenNodes) { // &#22914;&#26524;&#19981;&#36820;&#22238;&#24050;&#32463;&#36873;&#25321;&#33410;&#28857;&#30340;&#35805;&#37027;&#20040;&#21024;&#38500;&#20043;
-    results.removeAll(chosenNodes);
-  }
-
-  // sorting nodes to form a pipeline
-  // &#32452;&#21512;&#25104;&#20026;pipeline.
-  return getPipeline((writer==null)?localNode:writer,
-                     results.toArray(new DatanodeDescriptor[results.size()]));
-}
-</pre>
-
-
-
-<hr/>
-<p>
-选出一系列节点出来存放在results里面，同时返回一个发起节点
-</p>
-<p>
-<b>note(dirlt)：返回发起节点是有意义的，这样我们才能根据计算其他节点到这个发起节点的距离来做排序</b>
-</p>
-
-
-
-<pre class="src src-Java">private DatanodeDescriptor chooseTarget(int numOfReplicas,
-                                        DatanodeDescriptor writer,
-                                        HashMap&lt;Node, Node&gt; excludedNodes,
-                                        long blocksize,
-                                        int maxNodesPerRack,
-                                        List&lt;DatanodeDescriptor&gt; results,
-                                        final boolean avoidStaleNodes) {
-  if (numOfReplicas == 0 || clusterMap.getNumOfLeaves()==0) {
-    return writer;
-  }
-  int totalReplicasExpected = numOfReplicas + results.size(); //
-
-  int numOfResults = results.size();
-  boolean newBlock = (numOfResults==0); // &#26159;&#21542;&#20026;&#21021;&#27425;&#24320;&#36767;
-  if (writer == null &amp;&amp; !newBlock) { // &#22914;&#26524;&#27809;&#26377;&#21457;&#36215;&#32773;&#24182;&#19988;&#36873;&#25321;&#20986;&#26469;&#20102;&#33410;&#28857;&#30340;&#35805;&#65292;&#37027;&#20040;&#30452;&#25509;&#29992;results[0]
-    writer = results.get(0);
-  }
-
-  // Keep a copy of original excludedNodes
-  final HashMap&lt;Node, Node&gt; oldExcludedNodes = avoidStaleNodes ?
-      new HashMap&lt;Node, Node&gt;(excludedNodes) : null;
-  try {
-    if (numOfResults == 0) { // &#21021;&#27425;&#24320;&#36767;&#33410;&#28857;
-      writer = chooseLocalNode(writer, excludedNodes, blocksize,
-          maxNodesPerRack, results, avoidStaleNodes);
-      if (--numOfReplicas == 0) {
-        return writer;
-      }
-    }
-    if (numOfResults &lt;= 1) { // &#22914;&#26524;&#20043;&#21069;results &lt;= 1&#30340;&#35805;&#65292;&#37027;&#20040;&#36873;&#25321;&#19968;&#20010;&#21644;results[0]&#19981;&#21516;rack&#30340;&#33410;&#28857;
-      chooseRemoteRack(1, results.get(0), excludedNodes, blocksize,
-          maxNodesPerRack, results, avoidStaleNodes);
-      if (--numOfReplicas == 0) {
-        return writer;
-      }
-    }
-    if (numOfResults &lt;= 2) { // &#22914;&#26524;&#20043;&#21069;results &lt;= 2&#30340;&#35805;&#65292;
-      // &#22914;&#26524;&#21069;&#20004;&#20010;&#30456;&#21516;rack&#30340;&#35805;&#65292;&#37027;&#20040;&#36873;&#25321;&#19968;&#20010;results[0]&#19981;&#21516;rack&#30340;&#33410;&#28857;
-      if (clusterMap.isOnSameRack(results.get(0), results.get(1))) {
-        chooseRemoteRack(1, results.get(0), excludedNodes,
-                         blocksize, maxNodesPerRack,
-                         results, avoidStaleNodes);
-      } else if (newBlock){ // note(dirlt): &#24212;&#35813;&#19981;&#20250;&#21040;&#36798;&#36825;&#20010;&#26465;&#20214;&#30340;
-        chooseLocalRack(results.get(1), excludedNodes, blocksize,
-                        maxNodesPerRack, results, avoidStaleNodes);
-      } else { // &#20174;&#21457;&#36215;&#32773;write&#30456;&#21516;&#30340;rack&#36873;&#25321;&#19968;&#20010;&#33410;&#28857;
-        chooseLocalRack(writer, excludedNodes, blocksize, maxNodesPerRack,
-            results, avoidStaleNodes);
-      }
-      if (--numOfReplicas == 0) {
-        return writer;
-      }
-    }
-    // &#21097;&#20313;&#33410;&#28857;&#38543;&#26426;&#36873;&#25321;
-    chooseRandom(numOfReplicas, NodeBase.ROOT, excludedNodes, blocksize,
-        maxNodesPerRack, results, avoidStaleNodes);
-  } catch (NotEnoughReplicasException e) {
-    LOG.warn(<span class="org-string">"Not able to place enough replicas, still in need of "</span>
-             + (totalReplicasExpected - results.size()) + <span class="org-string">" to reach "</span>
-             + totalReplicasExpected + <span class="org-string">"\n"</span>
-             + e.getMessage());
-    // &#22914;&#26524;&#25972;&#20010;&#36807;&#31243;&#27809;&#26377;&#36873;&#25321;&#36275;&#22815;&#30340;&#35805;&#65292;&#37027;&#20040;&#32771;&#34385;stale&#33410;&#28857;&#37325;&#26032;&#21457;&#36215;&#19968;&#36718;
-    if (avoidStaleNodes) {
-      // Retry chooseTarget again, this time not avoiding stale nodes.
-
-      // excludedNodes contains the initial excludedNodes and nodes that were
-      // not chosen because they were stale, decommissioned, etc.
-      // We need to additionally exclude the nodes that were added to the
-      // result list in the successful calls to choose*() above.
-      for (Node node : results) {
-        oldExcludedNodes.put(node, node);
-      }
-      // Set numOfReplicas, since it can get out of sync with the result list
-      // if the NotEnoughReplicasException was thrown in chooseRandom().
-      numOfReplicas = totalReplicasExpected - results.size();
-      return chooseTarget(numOfReplicas, writer, oldExcludedNodes, blocksize,
-          maxNodesPerRack, results, false);
-    }
-  }
-  return writer;
-}
-</pre>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-1-4-2-3" class="outline-5">
-<h5 id="sec-1-4-2-3"><span class="section-number-5">1.4.2.3</span> chooseLocalNode</h5>
-<div class="outline-text-5" id="text-1-4-2-3">
-
-<p>选择和发起者相同的节点
-</p>
-
-
-
-<pre class="src src-Java">/* choose &lt;i&gt;localMachine&lt;/i&gt; as the target.
- * if &lt;i&gt;localMachine&lt;/i&gt; is not available,
- * choose a node on the same rack
- * @return the chosen node
- */
-protected DatanodeDescriptor chooseLocalNode(
-                                           DatanodeDescriptor localMachine,
-                                           HashMap&lt;Node, Node&gt; excludedNodes,
-                                           long blocksize,
-                                           int maxNodesPerRack,
-                                           List&lt;DatanodeDescriptor&gt; results,
-                                           boolean avoidStaleNodes)
-  throws NotEnoughReplicasException {
-  // if no local machine, randomly choose one node
-  if (localMachine == null) // &#22914;&#26524;&#27809;&#26377;&#21457;&#36215;&#32773;&#30340;&#35805;&#65292;&#37027;&#20040;&#23601;&#35201;&#38543;&#26426;&#36873;&#25321;
-    return chooseRandom(NodeBase.ROOT, excludedNodes, blocksize,
-        maxNodesPerRack, results, avoidStaleNodes);
-  if (preferLocalNode) { // &#40664;&#35748;&#20026;true
-    // otherwise try local machine first
-    Node oldNode = excludedNodes.put(localMachine, localMachine); // &#28155;&#21152;localMachine&#24182;&#19988;&#36820;&#22238;&#21407;&#26469;&#20540;&#65292;&#36825;&#37324;&#38750;&#24120;&#24039;&#22937;
-    if (oldNode == null) { // was not in the excluded list
-      if (isGoodTarget(localMachine, blocksize, maxNodesPerRack, false,
-          results, avoidStaleNodes)) { // &#26159;&#21542;&#20026;good target. &#22914;&#26524;OK, &#37027;&#20040;&#28155;&#21152;
-        results.add(localMachine);
-        return localMachine;
-      }
-    }
-  }
-  // try a node on local rack
-  return chooseLocalRack(localMachine, excludedNodes, blocksize, // &#19981;&#28982;&#36873;&#25321;&#21644;localMachine&#30456;&#21516;rack&#30340;&#33410;&#28857;
-      maxNodesPerRack, results, avoidStaleNodes);
-}
-</pre>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-1-4-2-4" class="outline-5">
-<h5 id="sec-1-4-2-4"><span class="section-number-5">1.4.2.4</span> isGoodTarget</h5>
-<div class="outline-text-5" id="text-1-4-2-4">
-
-<p>包装函数是
-</p>
-
-
-<pre class="src src-Java">private boolean isGoodTarget(DatanodeDescriptor node,
-                             long blockSize, int maxTargetPerRack,
-                             List&lt;DatanodeDescriptor&gt; results,
-                             boolean avoidStaleNodes) {
-  return isGoodTarget(node, blockSize, maxTargetPerRack, this.considerLoad,
-      results, avoidStaleNodes);
-}
-</pre>
-
-
-<p>
-其中considerLoad应该是考虑负载均衡，默认是true, 通过dfs.namenode.replication.considerLoad指定
-</p>
-
-<hr/>
-
-
-
-
-<pre class="src src-Java">/**
- * Determine if a node is a good target.
- *
- * @param node The target node
- * @param blockSize Size of block
- * @param maxTargetPerRack Maximum number of targets per rack. The value of
- *                       this parameter depends on the number of racks in
- *                       the cluster and total number of replicas for a block
- * @param considerLoad whether or not to consider load of the target node
- * @param results A list containing currently chosen nodes. Used to check if
- *                too many nodes has been chosen in the target rack.
- * @param avoidStaleNodes Whether or not to avoid choosing stale nodes
- * @return Return true if &lt;i&gt;node&lt;/i&gt; has enough space,
- *         does not have too much load,
- *         and the rack does not have too many nodes.
- */
-protected boolean isGoodTarget(DatanodeDescriptor node,
-                             long blockSize, int maxTargetPerRack,
-                             boolean considerLoad,
-                             List&lt;DatanodeDescriptor&gt; results,
-                             boolean avoidStaleNodes) {
-  // check if the node is (being) decommissed
-  if (node.isDecommissionInProgress() || node.isDecommissioned()) { // &#22914;&#26524;&#36825;&#20010;&#33410;&#28857;&#22312;&#19979;&#32447;
-    if(LOG.isDebugEnabled()) {
-      threadLocalBuilder.get().append(node.toString()).append(<span class="org-string">": "</span>)
-        .append(<span class="org-string">"Node "</span>).append(NodeBase.getPath(node))
-        .append(<span class="org-string">" is not chosen because the node is (being) decommissioned "</span>);
-    }
-    return false;
-  }
-
-  if (avoidStaleNodes) {
-    if (node.isStale(this.staleInterval)) { // &#26159;&#21542;&#38271;&#26102;&#38388;&#27809;&#26377;update&#32780;&#22788;&#20110;stale&#29366;&#24577;
-      // stale&#26102;&#38388;&#36890;&#36807;dfs.namenode.stale.datanode.interval&#25351;&#23450;&#65292;&#40664;&#35748;30s
-      if (LOG.isDebugEnabled()) {
-        threadLocalBuilder.get().append(node.toString()).append(<span class="org-string">": "</span>)
-            .append(<span class="org-string">"Node "</span>).append(NodeBase.getPath(node))
-            .append(<span class="org-string">" is not chosen because the node is stale "</span>);
-      }
-      return false;
-    }
-  }
-
-  long remaining = node.getRemaining() -  // &#21097;&#20313;&#30913;&#30424;&#31354;&#38388;
-                   (node.getBlocksScheduled() * blockSize);  // &#21487;&#33021;&#38656;&#35201;&#20889;&#20837;&#22810;&#23569;
-  // check the remaining capacity of the target machine
-  if (blockSize* HdfsConstants.MIN_BLOCKS_FOR_WRITE&gt;remaining) { // &#22914;&#26524;&#30913;&#30424;&#31354;&#38388;&#36807;&#23567;&#30340;&#35805;
-    if(LOG.isDebugEnabled()) {
-      threadLocalBuilder.get().append(node.toString()).append(<span class="org-string">": "</span>)
-        .append(<span class="org-string">"Node "</span>).append(NodeBase.getPath(node))
-        .append(<span class="org-string">" is not chosen because the node does not have enough space "</span>);
-    }
-    return false;
-  }
-
-  // check the communication traffic of the target machine
-  // load&#36890;&#36807;datanode&#19978;&#30340;active connection&#26469;&#21028;&#26029;&#65292;&#22914;&#26524;&gt;2.0 * avgLoad&#30340;&#35805;&#65292;&#37027;&#20040;&#35748;&#20026;&#27492;&#33410;&#28857;&#24403;&#21069;&#21387;&#21147;&#27604;&#36739;&#22823;
-  if (considerLoad) {
-    double avgLoad = 0;
-    int size = clusterMap.getNumOfLeaves();
-    if (size != 0 &amp;&amp; stats != null) {
-      avgLoad = (double)stats.getTotalLoad()/size;
-    }
-    if (node.getXceiverCount() &gt; (2.0 * avgLoad)) {
-      if(LOG.isDebugEnabled()) {
-        threadLocalBuilder.get().append(node.toString()).append(<span class="org-string">": "</span>)
-          .append(<span class="org-string">"Node "</span>).append(NodeBase.getPath(node))
-          .append(<span class="org-string">" is not chosen because the node is too busy "</span>);
-      }
-      return false;
-    }
-  }
-
-  // check if the target rack has chosen too many nodes
-  // &#22914;&#26524;target rack&#19978;&#38754;replicas&#25968;&#37327;&#36807;&#22810;&#30340;&#35805;
-  String rackname = node.getNetworkLocation();
-  int counter=1;
-  for(Iterator&lt;DatanodeDescriptor&gt; iter = results.iterator();
-      iter.hasNext();) {
-    Node result = iter.next();
-    if (rackname.equals(result.getNetworkLocation())) {
-      counter++;
-    }
-  }
-  if (counter&gt;maxTargetPerRack) {
-    if(LOG.isDebugEnabled()) {
-      threadLocalBuilder.get().append(node.toString()).append(<span class="org-string">": "</span>)
-        .append(<span class="org-string">"Node "</span>).append(NodeBase.getPath(node))
-        .append(<span class="org-string">" is not chosen because the rack has too many chosen nodes "</span>);
-    }
-    return false;
-  }
-  return true;
-}
-</pre>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-1-4-2-5" class="outline-5">
-<h5 id="sec-1-4-2-5"><span class="section-number-5">1.4.2.5</span> chooseLocalRack</h5>
-<div class="outline-text-5" id="text-1-4-2-5">
-
-<p>选择和某节点相同rack的节点
-</p>
-
-
-
-<pre class="src src-Java">protected DatanodeDescriptor chooseLocalRack(
-                                           DatanodeDescriptor localMachine,
-                                           HashMap&lt;Node, Node&gt; excludedNodes,
-                                           long blocksize,
-                                           int maxNodesPerRack,
-                                           List&lt;DatanodeDescriptor&gt; results,
-                                           boolean avoidStaleNodes)
-  throws NotEnoughReplicasException {
-  // no local machine, so choose a random machine
-  if (localMachine == null) { // &#22914;&#26524;localMachine == null, &#37027;&#20040;&#38543;&#26426;&#36873;&#25321;
-    return chooseRandom(NodeBase.ROOT, excludedNodes, blocksize,
-        maxNodesPerRack, results, avoidStaleNodes);
-  }
-
-  // choose one from the local rack
-  try {
-    return chooseRandom(localMachine.getNetworkLocation(), excludedNodes,
-        blocksize, maxNodesPerRack, results, avoidStaleNodes); // &#38543;&#26426;&#36873;&#25321;&#21644;localMachine&#30456;&#21516;rack&#30340;&#19968;&#20010;&#33410;&#28857;
-  } catch (NotEnoughReplicasException e1) { // &#25214;&#19981;&#21040;&#21644;&#36825;&#20010;localMachine&#30456;&#21516;rack&#30340;&#33410;&#28857;&#65292;&#37027;&#20040;&#20174;results&#37324;&#38754;&#25361;&#36873;&#31532;&#19968;&#20010;&#21644;localMachine&#19981;&#21516;&#33410;&#28857;&#26426;&#22120;
-    // &#22240;&#20026;&#24635;&#20307;&#36923;&#36753;&#30475;&#21040;&#20102;&#65292;&#31532;&#20108;&#20010;&#33410;&#28857;&#21644;&#31532;&#19968;&#20010;&#33410;&#28857;&#36890;&#24120;&#19981;&#26159;&#21516;&#19968;rack&#65292;&#25152;&#20197;&#31532;&#20108;&#20010;&#33410;&#28857;rack&#19978;&#21487;&#33021;&#33021;&#22815;&#25214;&#21040;&#21487;&#29992;&#33410;&#28857;&#12290;
-    // find the second replica
-    DatanodeDescriptor newLocal=null;
-    for(Iterator&lt;DatanodeDescriptor&gt; iter=results.iterator();
-        iter.hasNext();) {
-      DatanodeDescriptor nextNode = iter.next();
-      if (nextNode != localMachine) {
-        newLocal = nextNode;
-        break;
-      }
-    }
-    if (newLocal != null) {
-      try {
-        return chooseRandom(newLocal.getNetworkLocation(), excludedNodes, // &#22312;&#26032;&#33410;&#28857;rack&#26597;&#25214;
-            blocksize, maxNodesPerRack, results, avoidStaleNodes);
-      } catch(NotEnoughReplicasException e2) {
-        //otherwise randomly choose one from the network
-        return chooseRandom(NodeBase.ROOT, excludedNodes, blocksize, //  &#38543;&#26426;&#36873;&#25321;
-            maxNodesPerRack, results, avoidStaleNodes);
-      }
-    } else {
-      //otherwise randomly choose one from the network
-      return chooseRandom(NodeBase.ROOT, excludedNodes, blocksize, // &#38543;&#26426;&#36873;&#25321;
-          maxNodesPerRack, results, avoidStaleNodes);
-    }
-  }
-}
-</pre>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-1-4-2-6" class="outline-5">
-<h5 id="sec-1-4-2-6"><span class="section-number-5">1.4.2.6</span> chooseRemoteRack</h5>
-<div class="outline-text-5" id="text-1-4-2-6">
-
-<p>选择和localMachine不同的rack节点
-</p>
-
-
-
-<pre class="src src-Java">protected void chooseRemoteRack(int numOfReplicas,
-                              DatanodeDescriptor localMachine,
-                              HashMap&lt;Node, Node&gt; excludedNodes,
-                              long blocksize,
-                              int maxReplicasPerRack,
-                              List&lt;DatanodeDescriptor&gt; results,
-                              boolean avoidStaleNodes)
-  throws NotEnoughReplicasException {
-  int oldNumOfReplicas = results.size();
-  // randomly choose one node from remote racks
-  try {
-    chooseRandom(numOfReplicas, <span class="org-string">"~"</span> + localMachine.getNetworkLocation(), // &#39318;&#20808;&#36873;&#25321;&#20854;&#20182;rack&#33410;&#28857;. &#36825;&#20010;~&#31526;&#21495;&#26159;&#25490;&#38500;&#65292;&#21644;NetworkTopology&#20132;&#20114;
-        excludedNodes, blocksize, maxReplicasPerRack, results,
-        avoidStaleNodes);
-  } catch (NotEnoughReplicasException e) {
-    chooseRandom(numOfReplicas-(results.size()-oldNumOfReplicas), // &#22914;&#26524;replicas&#20010;&#25968;&#19981;&#22815;&#65292;&#37027;&#20040;&#21482;&#33021;&#36873;&#25321;&#30456;&#21516;rack
-                 localMachine.getNetworkLocation(), excludedNodes, blocksize,
-                 maxReplicasPerRack, results, avoidStaleNodes);
-  }
-}
-</pre>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-1-4-2-7" class="outline-5">
-<h5 id="sec-1-4-2-7"><span class="section-number-5">1.4.2.7</span> chooseRandom</h5>
-<div class="outline-text-5" id="text-1-4-2-7">
-
-<p>有两个函数实现
-   a. 从某个rack里面选择1个
-   b. 从某个rack里面选择n个，其实a = b(1) 所以这里我们只看b实现
-<b>note(dirlt)：注意这里rack可以是~排除语法，如果为ROOT的话那么就是所有rack都OK. 随机选择逻辑交给NetworkTopology来处理</b>
-</p>
-
-
-
-<pre class="src src-Java">protected void chooseRandom(int numOfReplicas,
-                          String nodes,
-                          HashMap&lt;Node, Node&gt; excludedNodes,
-                          long blocksize,
-                          int maxNodesPerRack,
-                          List&lt;DatanodeDescriptor&gt; results,
-                          boolean avoidStaleNodes)
-  throws NotEnoughReplicasException {
-
-  int numOfAvailableNodes =
-    clusterMap.countNumOfAvailableNodes(nodes, excludedNodes.keySet());
-  StringBuilder builder = null;
-  if (LOG.isDebugEnabled()) {
-    builder = threadLocalBuilder.get();
-    builder.setLength(0);
-    builder.append(<span class="org-string">"["</span>);
-  }
-  boolean badTarget = false;
-  while(numOfReplicas &gt; 0 &amp;&amp; numOfAvailableNodes &gt; 0) {
-    DatanodeDescriptor chosenNode =
-      (DatanodeDescriptor)(clusterMap.chooseRandom(nodes));
-    Node oldNode = excludedNodes.put(chosenNode, chosenNode);
-    if (oldNode == null) {
-      numOfAvailableNodes--;
-
-      if (isGoodTarget(chosenNode, blocksize,
-            maxNodesPerRack, results, avoidStaleNodes)) {
-        numOfReplicas--;
-        results.add(chosenNode);
-      } else {
-        badTarget = true;
-      }
-    }
-  }
-
-  if (numOfReplicas&gt;0) {
-    String detail = enableDebugLogging;
-    if (LOG.isDebugEnabled()) {
-      if (badTarget &amp;&amp; builder != null) {
-        detail = builder.append(<span class="org-string">"]"</span>).toString();
-        builder.setLength(0);
-      } else detail = <span class="org-string">""</span>;
-    }
-    throw new NotEnoughReplicasException(detail);
-  }
-}
-</pre>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-1-4-2-8" class="outline-5">
-<h5 id="sec-1-4-2-8"><span class="section-number-5">1.4.2.8</span> getPipeline</h5>
-<div class="outline-text-5" id="text-1-4-2-8">
-
-<p>可以看到是根据和writer距离，针对nodes做选择排序组成pipeline.
-</p>
-
-
-
-<pre class="src src-Java">/* Return a pipeline of nodes.
- * The pipeline is formed finding a shortest path that
- * starts from the writer and traverses all &lt;i&gt;nodes&lt;/i&gt;
- * This is basically a traveling salesman problem.
- */
-private DatanodeDescriptor[] getPipeline(
-                                         DatanodeDescriptor writer,
-                                         DatanodeDescriptor[] nodes) {
-  if (nodes.length==0) return nodes;
-
-  synchronized(clusterMap) {
-    int index=0;
-    if (writer == null || !clusterMap.contains(writer)) {
-      writer = nodes[0];
-    }
-    for(;index&lt;nodes.length; index++) {
-      DatanodeDescriptor shortestNode = nodes[index];
-      int shortestDistance = clusterMap.getDistance(writer, shortestNode);
-      int shortestIndex = index;
-      for(int i=index+1; i&lt;nodes.length; i++) {
-        DatanodeDescriptor currentNode = nodes[i];
-        int currentDistance = clusterMap.getDistance(writer, currentNode);
-        if (shortestDistance&gt;currentDistance) {
-          shortestDistance = currentDistance;
-          shortestNode = currentNode;
-          shortestIndex = i;
-        }
-      }
-      //switch position index &amp; shortestIndex
-      if (index != shortestIndex) {
-        nodes[shortestIndex] = nodes[index];
-        nodes[index] = shortestNode;
-      }
-      writer = shortestNode;
-    }
-  }
-  return nodes;
-}
-</pre>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-1-4-2-9" class="outline-5">
-<h5 id="sec-1-4-2-9"><span class="section-number-5">1.4.2.9</span> verifyBlockPlacement</h5>
-<div class="outline-text-5" id="text-1-4-2-9">
-
-<p>so trivial!
-</p>
-
-
-
-<pre class="src src-Java">@Override
-public int verifyBlockPlacement(String srcPath,
-                                LocatedBlock lBlk,
-                                int minRacks) {
-  DatanodeInfo[] locs = lBlk.getLocations();
-  if (locs == null)
-    locs = new DatanodeInfo[0];
-  int numRacks = clusterMap.getNumOfRacks();
-  if(numRacks &lt;= 1) // only one rack
-    return 0;
-  minRacks = Math.min(minRacks, numRacks);
-  // 1. Check that all locations are different.
-  // 2. Count locations on different racks.
-  Set&lt;String&gt; racks = new TreeSet&lt;String&gt;();
-  for (DatanodeInfo dn : locs)
-    racks.add(dn.getNetworkLocation());
-  return minRacks - racks.size();
-}
-</pre>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-1-4-2-10" class="outline-5">
-<h5 id="sec-1-4-2-10"><span class="section-number-5">1.4.2.10</span> chooseReplicaToDelete</h5>
-<div class="outline-text-5" id="text-1-4-2-10">
-
-<ul>
-<li>bc是block所属的文件block collection
-</li>
-<li>block是要删除replica的block
-</li>
-<li>replicationFactor是副本数目
-</li>
-<li>first <b>note(dirlt)：我的理解是“block所在的节点，这些节点所在的rack上至少有两个副本”，但是comment似乎不是这么说的</b>
-</li>
-<li>second #
-</li>
-</ul>
-
-
-<p>
-逻辑上可以看出
-</p><ul>
-<li>优先选择所在rack副本数目多的节点
-</li>
-<li>如果有心跳未汇报时间超过12s的话，那么选择心跳延迟最长的节点
-</li>
-<li>否则选择剩余磁盘空间最少的节点
-</li>
-</ul>
-
-
-
-
-
-<pre class="src src-Java">@Override
-public DatanodeDescriptor chooseReplicaToDelete(BlockCollection bc,
-                                               Block block,
-                                               short replicationFactor,
-                                               Collection&lt;DatanodeDescriptor&gt; first,
-                                               Collection&lt;DatanodeDescriptor&gt; second) {
-  // heartbeat = dfs.heartbeat.interval, &#40664;&#35748;3s
-  // multiplier = dfs.namenode.tolerate.heartbeat.multiplier, &#40664;&#35748;&#26159;4
-  long oldestHeartbeat =
-    now() - heartbeatInterval * tolerateHeartbeatMultiplier;
-  DatanodeDescriptor oldestHeartbeatNode = null;
-  long minSpace = Long.MAX_VALUE;
-  DatanodeDescriptor minSpaceNode = null;
-
-  // pick replica from the first Set. If first is empty, then pick replicas
-  // from second set.
-  // &#20248;&#20808;&#36873;&#25321;&#33410;&#28857;&#65292;&#36825;&#20123;&#33410;&#28857;&#25152;&#22312;rack&#21103;&#26412;&#25968;&#30446;&#22810;
-  Iterator&lt;DatanodeDescriptor&gt; iter = pickupReplicaSet(first, second);
-
-  // Pick the node with the oldest heartbeat or with the least free space,
-  // if all hearbeats are within the tolerable heartbeat interval
-  while (iter.hasNext() ) {
-    DatanodeDescriptor node = iter.next();
-    long free = node.getRemaining();
-    long lastHeartbeat = node.getLastUpdate();
-    if(lastHeartbeat &lt; oldestHeartbeat) {
-      oldestHeartbeat = lastHeartbeat;
-      oldestHeartbeatNode = node;
-    }
-    if (minSpace &gt; free) {
-      minSpace = free;
-      minSpaceNode = node;
-    }
-  }
-  //
-  return oldestHeartbeatNode != null ? oldestHeartbeatNode : minSpaceNode;
-}
-
-protected Iterator&lt;DatanodeDescriptor&gt; pickupReplicaSet(
-    Collection&lt;DatanodeDescriptor&gt; first,
-    Collection&lt;DatanodeDescriptor&gt; second) {
-  Iterator&lt;DatanodeDescriptor&gt; iter =
-      first.isEmpty() ? second.iterator() : first.iterator();
-  return iter;
-}
-</pre>
-
-</div>
-</div>
 </div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-12-18T11:29+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'hdfs.html';var disqus_title = 'hdfs.html';var disqus_url = 'http://dirlt.com/hdfs.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'hdfs.html';var disqus_title = 'hdfs.html';var disqus_url = 'http://dirlt.com/hdfs.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

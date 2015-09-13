@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<head>
 <title>Large-Scale Data and Computation: Challenges and Opportunities</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Large-Scale Data and Computation: Challenges and Opportunities"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:43+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,7 +62,7 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
@@ -77,35 +76,20 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="large-scale-data-and-computation-chanllenges-and-opportunities.html#sec-1">1 large-scale-data-and-computation-chanllenges-and-opportunities</a>
-<ul>
-<li><a href="large-scale-data-and-computation-chanllenges-and-opportunities.html#sec-1-1">1.1 Replication</a></li>
-<li><a href="large-scale-data-and-computation-chanllenges-and-opportunities.html#sec-1-2">1.2 Shared Environment</a></li>
-<li><a href="large-scale-data-and-computation-chanllenges-and-opportunities.html#sec-1-3">1.3 Tolerating Faults vs.Tolerating Variability</a></li>
-<li><a href="large-scale-data-and-computation-chanllenges-and-opportunities.html#sec-1-4">1.4 Latency Tolerating Techniques</a></li>
-<li><a href="large-scale-data-and-computation-chanllenges-and-opportunities.html#sec-1-5">1.5 Cluster-Level Services</a></li>
-</ul>
-</li>
+<li><a href="large-scale-data-and-computation-chanllenges-and-opportunities.html#sec-1">1 Replication</a></li>
+<li><a href="large-scale-data-and-computation-chanllenges-and-opportunities.html#sec-2">2 Shared Environment</a></li>
+<li><a href="large-scale-data-and-computation-chanllenges-and-opportunities.html#sec-3">3 Tolerating Faults vs.Tolerating Variability</a></li>
+<li><a href="large-scale-data-and-computation-chanllenges-and-opportunities.html#sec-4">4 Latency Tolerating Techniques</a></li>
+<li><a href="large-scale-data-and-computation-chanllenges-and-opportunities.html#sec-5">5 Cluster-Level Services</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> large-scale-data-and-computation-chanllenges-and-opportunities</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> Replication</h3>
+<div class="outline-text-3" id="text-1">
 
-
-<p>
-todo(dirlt)：Deep Learning部分没有阅读，这个部分应该就是所谓的Opportunities. 而前面的部分就是所谓的Challenges.
-</p>
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Replication</h3>
-<div class="outline-text-3" id="text-1-1">
-
-<p>replication对于large-scale system的意义 
+<p>replication对于large-scale system的意义
 </p>
 <ul>
 <li>Data loss 数据备份
@@ -115,7 +99,7 @@ todo(dirlt)：Deep Learning部分没有阅读，这个部分应该就是所谓�
 </ul>
 
 </li>
-<li>Slow machines 慢速机器 
+<li>Slow machines 慢速机器
      – replicate the computation (MapReduce)
 </li>
 <li>Too much load 负载过高
@@ -144,16 +128,16 @@ todo(dirlt)：Deep Learning部分没有阅读，这个部分应该就是所谓�
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Shared Environment</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> Shared Environment</h3>
+<div class="outline-text-3" id="text-2">
 
 <p>large-scale system都采用共享环境，有利也有弊
 </p>
 <ul>
-<li>Huge benefit: greatly increased utilization 优点是带来了比较高的集群利用率 
+<li>Huge benefit: greatly increased utilization 优点是带来了比较高的集群利用率
 </li>
-<li>&hellip; but hard to predict effects increase variability 但是变化比较大难以预测影响 
+<li>&hellip; but hard to predict effects increase variability 但是变化比较大难以预测影响
 <ul>
 <li>network congestion
 </li>
@@ -161,14 +145,14 @@ todo(dirlt)：Deep Learning部分没有阅读，这个部分应该就是所谓�
 </li>
 <li>bursts of foreground activity
 </li>
-<li>not just your jobs, but everyone else’s jobs, too 
+<li>not just your jobs, but everyone else’s jobs, too
 </li>
 <li>not static: change happening constantly
 </li>
 </ul>
 
 </li>
-<li>Exacerbated by large fanout systems 
+<li>Exacerbated by large fanout systems
 </li>
 </ul>
 
@@ -180,16 +164,16 @@ todo(dirlt)：Deep Learning部分没有阅读，这个部分应该就是所谓�
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Tolerating Faults vs.Tolerating Variability</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> Tolerating Faults vs.Tolerating Variability</h3>
+<div class="outline-text-3" id="text-3">
 
 <p>容忍错误和可变性的相似之处，都需要使用额外资源来解决。解决思路都是在unpredictable parts上面构建出predictable part. 两者的差别是时间范围，faults通常在10s/day. 而variability通常在1000s/sec.
 </p>
 <ul>
 <li>Tolerating faults:
 <ul>
-<li>rely on extra resources 
+<li>rely on extra resources
 <ul>
 <li>RAIDed disks, ECC memory, dist. system components, etc. – make a reliable whole out of unreliable parts
 </li>
@@ -210,7 +194,7 @@ todo(dirlt)：Deep Learning部分没有阅读，这个部分应该就是所谓�
 </li>
 <li>Times scales are very different:
 <ul>
-<li>variability: 1000s of disruptions/sec, scale of milliseconds 
+<li>variability: 1000s of disruptions/sec, scale of milliseconds
 </li>
 <li>faults: 10s of failures per day, scale of tens of seconds
 </li>
@@ -224,19 +208,19 @@ todo(dirlt)：Deep Learning部分没有阅读，这个部分应该就是所谓�
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Latency Tolerating Techniques</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> Latency Tolerating Techniques</h3>
+<div class="outline-text-3" id="text-4">
 
 <p>延迟容忍技术主要有下面两种,单位是request.
 </p><ul>
-<li>Cross request adaptation 一种方式是跨request的，检查最近request的行为，时间范围在10s到分钟级别 
+<li>Cross request adaptation 一种方式是跨request的，检查最近request的行为，时间范围在10s到分钟级别
 <ul>
 <li>examine recent behavior
 </li>
-<li>take action to improve latency of future requests 
+<li>take action to improve latency of future requests
 </li>
-<li>typically relate to balancing load across set of servers 
+<li>typically relate to balancing load across set of servers
 </li>
 <li>time scale: 10s of seconds to minutes
 </li>
@@ -245,7 +229,7 @@ todo(dirlt)：Deep Learning部分没有阅读，这个部分应该就是所谓�
 </li>
 <li>Within request adaptation 一种是在request内部的
 <ul>
-<li>cope with slow subsystems in context of higher level request 
+<li>cope with slow subsystems in context of higher level request
 </li>
 <li>time scale: right now, while user is waiting
 </li>
@@ -259,7 +243,7 @@ todo(dirlt)：Deep Learning部分没有阅读，这个部分应该就是所谓�
 </ul>
 
 </li>
-<li>Tied Requests 这种方式非常简单，就是同时发送request到多个replica上面，如果某个replica开始执行的话，那么这个replica直接取消其他replica上的请求。 <b>note(dirlt):实现上是否会复杂？由replica直接取消其他replica上的request感觉会复杂化设计</b>
+<li>Tied Requests 这种方式非常简单，就是同时发送request到多个replica上面，如果某个replica开始执行的话，那么这个replica直接取消其他replica上的请求。 <b>note:实现上是否会复杂？由replica直接取消其他replica上的request感觉会复杂化设计</b>
 </li>
 </ul>
 
@@ -268,14 +252,14 @@ todo(dirlt)：Deep Learning部分没有阅读，这个部分应该就是所谓�
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Cluster-Level Services</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> Cluster-Level Services</h3>
+<div class="outline-text-3" id="text-5">
 
 <p>提供cross-cluster的服务，比如spanner系统
 </p>
 <p>
-Our earliest systems made things easier within a cluster: 
+Our earliest systems made things easier within a cluster:
 </p><ul>
 <li>GFS/Colossus: reliable cluster-level file system
 </li>
@@ -303,13 +287,10 @@ Spanner:Worldwide Storage
 </p></div>
 </div>
 </div>
-</div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:43+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'large-scale-data-and-computation-chanllenges-and-opportunities.html';var disqus_title = 'large-scale-data-and-computation-chanllenges-and-opportunities.html';var disqus_url = 'http://dirlt.com/large-scale-data-and-computation-chanllenges-and-opportunities.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'large-scale-data-and-computation-chanllenges-and-opportunities.html';var disqus_title = 'large-scale-data-and-computation-chanllenges-and-opportunities.html';var disqus_url = 'http://dirlt.com/large-scale-data-and-computation-chanllenges-and-opportunities.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

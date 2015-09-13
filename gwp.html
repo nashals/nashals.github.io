@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
-<title>gwp</title>
+<head>
+<title>Google-Wide Profiling: A Continuous Profiling Infrastructure for Data Centers</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="gwp"/>
+<meta name="title" content="Google-Wide Profiling: A Continuous Profiling Infrastructure for Data Centers"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:43+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,80 +62,61 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
 </div>
 
 <div id="content">
-<h1 class="title">gwp</h1>
+<h1 class="title">Google-Wide Profiling: A Continuous Profiling Infrastructure for Data Centers</h1>
 
+<p><a href="http://research.google.com/pubs/pub36575.html">http://research.google.com/pubs/pub36575.html</a> @ 2010
+</p>
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="gwp.html#sec-1">1 gwp</a>
+<li><a href="gwp.html#sec-1">1 Introduction</a></li>
+<li><a href="gwp.html#sec-2">2 Infrastructure</a>
 <ul>
-<li><a href="gwp.html#sec-1-1">1.1 Introduction</a></li>
-<li><a href="gwp.html#sec-1-2">1.2 Infrastructure</a>
+<li><a href="gwp.html#sec-2-1">2.1 Collector</a></li>
+<li><a href="gwp.html#sec-2-2">2.2 Profiles and profiling interfaces</a></li>
+<li><a href="gwp.html#sec-2-3">2.3 Symbolization and binary storage</a></li>
+<li><a href="gwp.html#sec-2-4">2.4 Profile storage</a></li>
+<li><a href="gwp.html#sec-2-5">2.5 User interfaces</a>
 <ul>
-<li><a href="gwp.html#sec-1-2-1">1.2.1 Collector</a></li>
-<li><a href="gwp.html#sec-1-2-2">1.2.2 Profiles and profiling interfaces</a></li>
-<li><a href="gwp.html#sec-1-2-3">1.2.3 Symbolization and binary storage</a></li>
-<li><a href="gwp.html#sec-1-2-4">1.2.4 Profile storage</a></li>
-<li><a href="gwp.html#sec-1-2-5">1.2.5 User interfaces</a>
-<ul>
-<li><a href="gwp.html#sec-1-2-5-1">1.2.5.1 Query view</a></li>
-<li><a href="gwp.html#sec-1-2-5-2">1.2.5.2 Call graph view</a></li>
-<li><a href="gwp.html#sec-1-2-5-3">1.2.5.3 Source annotation</a></li>
-<li><a href="gwp.html#sec-1-2-5-4">1.2.5.4 Profile data API</a></li>
+<li><a href="gwp.html#sec-2-5-1">2.5.1 Query view</a></li>
+<li><a href="gwp.html#sec-2-5-2">2.5.2 Call graph view</a></li>
+<li><a href="gwp.html#sec-2-5-3">2.5.3 Source annotation</a></li>
+<li><a href="gwp.html#sec-2-5-4">2.5.4 Profile data API</a></li>
 </ul>
 </li>
-<li><a href="gwp.html#sec-1-2-6">1.2.6 Application-specific profiling</a></li>
+<li><a href="gwp.html#sec-2-6">2.6 Application-specific profiling</a></li>
 </ul>
 </li>
-<li><a href="gwp.html#sec-1-3">1.3 Reliability analysis</a></li>
-<li><a href="gwp.html#sec-1-4">1.4 Profile uses</a>
+<li><a href="gwp.html#sec-3">3 Reliability analysis</a></li>
+<li><a href="gwp.html#sec-4">4 Profile uses</a>
 <ul>
-<li><a href="gwp.html#sec-1-4-1">1.4.1 Cloud applications’ performance</a>
+<li><a href="gwp.html#sec-4-1">4.1 Cloud applications’ performance</a>
 <ul>
-<li><a href="gwp.html#sec-1-4-1-1">1.4.1.1 Finding the hottest shared code</a></li>
-<li><a href="gwp.html#sec-1-4-1-2">1.4.1.2 Evaluating hardware features</a></li>
+<li><a href="gwp.html#sec-4-1-1">4.1.1 Finding the hottest shared code</a></li>
+<li><a href="gwp.html#sec-4-1-2">4.1.2 Evaluating hardware features</a></li>
 </ul>
 </li>
-<li><a href="gwp.html#sec-1-4-2">1.4.2 Optimizing for application affinities</a></li>
-<li><a href="gwp.html#sec-1-4-3">1.4.3 Datacenter performance monitoring</a></li>
-<li><a href="gwp.html#sec-1-4-4">1.4.4 Feedback-directed optimization</a></li>
-</ul>
-</li>
+<li><a href="gwp.html#sec-4-2">4.2 Optimizing for application affinities</a></li>
+<li><a href="gwp.html#sec-4-3">4.3 Datacenter performance monitoring</a></li>
+<li><a href="gwp.html#sec-4-4">4.4 Feedback-directed optimization</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> gwp</h2>
-<div class="outline-text-2" id="text-1">
-
-<ul>
-<li>title: Google-Wide Profiling: A Continuous Profiling Infrastructure for Data Centers
-</li>
-<li>link: <a href="http://research.google.com/pubs/pub36575.html">http://research.google.com/pubs/pub36575.html</a>
-</li>
-<li>date: 2010
-</li>
-</ul>
-
-
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Introduction</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> Introduction</h3>
+<div class="outline-text-3" id="text-1">
 
 <ul>
 <li>As cloud-based computing grows in pervasiveness and scale, understanding datacenter applications’ performance and utilization characteristics is critically important, because even minor performance improvements translate into huge cost savings.
@@ -145,13 +125,13 @@
 </li>
 <li>It’s easier and more representative to monitor datacenter applications running on live traffic. However, application owners won’t tolerate latency degradations of more than a few percent, so these tools must be nonintrusive and have minimal overhead.
 </li>
-<li>As with all profiling tools, observer distortion must be minimized to enable meaningful analysis. OProfile, a DCPI-inspired tool, collects and reports data much in the same way for a plethora of architectures, though it offers less sophisticated analysis. GWP uses OProfile (<a href="http://oprofile.sourceforge.net">http://oprofile.sourceforge.net</a>) as a profile source.（GWP底层使用oprofile来作为profiling source） <b>note(dirlt)：profiling工具必须尽可能减少误差</b>
+<li>As with all profiling tools, observer distortion must be minimized to enable meaningful analysis. OProfile, a DCPI-inspired tool, collects and reports data much in the same way for a plethora of architectures, though it offers less sophisticated analysis. GWP uses OProfile (<a href="http://oprofile.sourceforge.net">http://oprofile.sourceforge.net</a>) as a profile source.（GWP底层使用oprofile来作为profiling source）
 </li>
 <li>Sampling-based tools can bring overhead and distortion to acceptable levels, so they’re uniquely qualified for performance monitoring in the data center. （基于采样的方法可以将额外开销以及失真降低到最小程度）
 </li>
-<li>Google-Wide Profiling can be theoretically viewed as an extension of the Digital Continuous Profiling Infrastructure (DCPI) to data centers. 
+<li>Google-Wide Profiling can be theoretically viewed as an extension of the Digital Continuous Profiling Infrastructure (DCPI) to data centers.
 <ul>
-<li>GWP is a continuous profiling infrastructure; 
+<li>GWP is a continuous profiling infrastructure;
 <ul>
 <li>it samples across machines in multiple data centers and collects various events（在多机房多机器上面收集各种事件）
 </li>
@@ -162,7 +142,7 @@
 </ul>
 
 </li>
-<li>GWP collects daily profiles from several thousand applications running on thousands of servers, and the compressed profile database grows by several Gbytes every day.（从上千台机器收集数据，每天产生GB级别的数据） <b>note(dirlt)：其实不大</b>
+<li>GWP collects daily profiles from several thousand applications running on thousands of servers, and the compressed profile database grows by several Gbytes every day.（从上千台机器收集数据，每天产生GB级别的数据）
 </li>
 <li>Profiling at this scale presents significant challenges that don’t exist for a single machine.（集群profileing存在很多挑战）
 <ul>
@@ -206,18 +186,18 @@
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Infrastructure</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> Infrastructure</h3>
+<div class="outline-text-3" id="text-2">
 
 <p><img src="images/gwp-architecture.png"  alt="./images/gwp-architecture.png" />
 </p>
 
 </div>
 
-<div id="outline-container-1-2-1" class="outline-4">
-<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> Collector</h4>
-<div class="outline-text-4" id="text-1-2-1">
+<div id="outline-container-2-1" class="outline-4">
+<h4 id="sec-2-1"><span class="section-number-4">2.1</span> Collector</h4>
+<div class="outline-text-4" id="text-2-1">
 
 <ul>
 <li>GWP samples in two dimensions. At any moment, profiling occurs only on a small subset of all machines in the fleet, and event-based sampling is used at the machine level.（采样是在两个维度上进行的，首先每次只是在一部分机器上进行采样，其次在每台机器上针对事件进行采样）。
@@ -255,14 +235,14 @@
 
 </div>
 
-<div id="outline-container-1-2-2" class="outline-4">
-<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> Profiles and profiling interfaces</h4>
-<div class="outline-text-4" id="text-1-2-2">
+<div id="outline-container-2-2" class="outline-4">
+<h4 id="sec-2-2"><span class="section-number-4">2.2</span> Profiles and profiling interfaces</h4>
+<div class="outline-text-4" id="text-2-2">
 
 <ul>
 <li>GWP collects two categories of profiles: whole-machine and per-process.
 <ul>
-<li>Whole- machine profiles capture all activities happening on the machine, including user applications, the kernel, kernel modules, daemons, and other background jobs. （收集机器上面的所有活动，包括应用程序，kernel，内核模块以及后台任务） 
+<li>Whole- machine profiles capture all activities happening on the machine, including user applications, the kernel, kernel modules, daemons, and other background jobs. （收集机器上面的所有活动，包括应用程序，kernel，内核模块以及后台任务）
 <ul>
 <li>The whole- machine profiles include hardware perfor- mance monitoring (HPM) event profiles, kernel event traces, and power measurements.
 </li>
@@ -292,9 +272,9 @@
 
 </div>
 
-<div id="outline-container-1-2-3" class="outline-4">
-<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> Symbolization and binary storage</h4>
-<div class="outline-text-4" id="text-1-2-3">
+<div id="outline-container-2-3" class="outline-4">
+<h4 id="sec-2-3"><span class="section-number-4">2.3</span> Symbolization and binary storage</h4>
+<div class="outline-text-4" id="text-2-3">
 
 <ul>
 <li>After collection, the Google File System (GFS) stores the profiles To provide mean- ingful information, the profiles must corre- late to source code. However, to save network bandwidth and disk space, applica- tions are usually deployed into data centers without any debug or symbolic information, which can make source correlation impossi- ble.(profile存储在GFS上面，但是为了节省存储空间以及带宽，没有存放符号信息因此不能够和源代码对应起来）
@@ -310,14 +290,14 @@
 
 </div>
 
-<div id="outline-container-1-2-4" class="outline-4">
-<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> Profile storage</h4>
-<div class="outline-text-4" id="text-1-2-4">
+<div id="outline-container-2-4" class="outline-4">
+<h4 id="sec-2-4"><span class="section-number-4">2.4</span> Profile storage</h4>
+<div class="outline-text-4" id="text-2-4">
 
 <ul>
 <li>To make the data useful and accessible, we load the samples into a read-only dimensional data- base that is distributed across hundreds of machines. That service is accessible to all users for ad hoc queries and to systems for automated analyses.
 </li>
-<li>The database supports a subset of SQL- like semantics. Although the dimensional database is well suited to perform queries that aggregate over the large data set, some individual queries can take tens of seconds to complete. Fortunately, most queries are seen frequently, so the profile server uses ag- gressive caching to hide the database latency.（可以通过SQL来进行聚合查询） 
+<li>The database supports a subset of SQL- like semantics. Although the dimensional database is well suited to perform queries that aggregate over the large data set, some individual queries can take tens of seconds to complete. Fortunately, most queries are seen frequently, so the profile server uses ag- gressive caching to hide the database latency.（可以通过SQL来进行聚合查询）
 </li>
 </ul>
 
@@ -326,16 +306,16 @@
 
 </div>
 
-<div id="outline-container-1-2-5" class="outline-4">
-<h4 id="sec-1-2-5"><span class="section-number-4">1.2.5</span> User interfaces</h4>
-<div class="outline-text-4" id="text-1-2-5">
+<div id="outline-container-2-5" class="outline-4">
+<h4 id="sec-2-5"><span class="section-number-4">2.5</span> User interfaces</h4>
+<div class="outline-text-4" id="text-2-5">
 
 
 </div>
 
-<div id="outline-container-1-2-5-1" class="outline-5">
-<h5 id="sec-1-2-5-1"><span class="section-number-5">1.2.5.1</span> Query view</h5>
-<div class="outline-text-5" id="text-1-2-5-1">
+<div id="outline-container-2-5-1" class="outline-5">
+<h5 id="sec-2-5-1"><span class="section-number-5">2.5.1</span> Query view</h5>
+<div class="outline-text-5" id="text-2-5-1">
 
 <p>This page supplies links that let users refine the query to more specific data. For example, the user can restrict the query to only report samples for a specific executable collected within a desired time period. Additionally, the user can modify or refine any of the parameters to the current query to create a custom profile view.
 </p>
@@ -346,25 +326,25 @@
 
 </div>
 
-<div id="outline-container-1-2-5-2" class="outline-5">
-<h5 id="sec-1-2-5-2"><span class="section-number-5">1.2.5.2</span> Call graph view</h5>
-<div class="outline-text-5" id="text-1-2-5-2">
+<div id="outline-container-2-5-2" class="outline-5">
+<h5 id="sec-2-5-2"><span class="section-number-5">2.5.2</span> Call graph view</h5>
+<div class="outline-text-5" id="text-2-5-2">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-2-5-3" class="outline-5">
-<h5 id="sec-1-2-5-3"><span class="section-number-5">1.2.5.3</span> Source annotation</h5>
-<div class="outline-text-5" id="text-1-2-5-3">
+<div id="outline-container-2-5-3" class="outline-5">
+<h5 id="sec-2-5-3"><span class="section-number-5">2.5.3</span> Source annotation</h5>
+<div class="outline-text-5" id="text-2-5-3">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-2-5-4" class="outline-5">
-<h5 id="sec-1-2-5-4"><span class="section-number-5">1.2.5.4</span> Profile data API</h5>
-<div class="outline-text-5" id="text-1-2-5-4">
+<div id="outline-container-2-5-4" class="outline-5">
+<h5 id="sec-2-5-4"><span class="section-number-5">2.5.4</span> Profile data API</h5>
+<div class="outline-text-5" id="text-2-5-4">
 
 <p>We store both raw profiles and symbolized pro- files in ProtocolBuffer formats (<a href="http://code.google.com/apis/protocolbuffers">http://code.google.com/apis/protocolbuffers</a>). Advanced users can access and reprocess them using their preferred programming language.
 </p>
@@ -373,9 +353,9 @@
 
 </div>
 
-<div id="outline-container-1-2-6" class="outline-4">
-<h4 id="sec-1-2-6"><span class="section-number-4">1.2.6</span> Application-specific profiling</h4>
-<div class="outline-text-4" id="text-1-2-6">
+<div id="outline-container-2-6" class="outline-4">
+<h4 id="sec-2-6"><span class="section-number-4">2.6</span> Application-specific profiling</h4>
+<div class="outline-text-4" id="text-2-6">
 
 <ul>
 <li>Therefore, we provide an extension to GWP for application-specific profiling on the cloud. The machine pool for applica- tion-specific profiling is usually much smaller than GWP, so we can achieve a high sampling rate on those machines for the specific application. (对于特定应用进行profiling的话，是在GWP上进行扩展完成的，选取machine pool的数量也远少于之前每次选取的machine数量，然后在这些机器上面进行高频率的采样）
@@ -390,22 +370,22 @@
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Reliability analysis</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> Reliability analysis</h3>
+<div class="outline-text-3" id="text-3">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Profile uses</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> Profile uses</h3>
+<div class="outline-text-3" id="text-4">
 
 <ul>
 <li>Note that the sample must be numeric and capable of aggregation. The associated vector contains information such as application name, function name, platform, compiler version, image name, data center, kernel information, build revi- sion, and builder’s name. Assuming that the vector contains m elements, we can rep- resent a record GWP collected as a tuple &lt;event, sample counter, m-dimension vector&gt;.（数据存储方式，每个event对应的计数上存在多个维度，包括应用程序，函数，平台，编译器版本，映像，数据中心，内核，构建版本和构建人等）
 </li>
-<li>When aggregating, GWP lets users choose k keys from the m dimensions and groups the samples by the keys. Basically, it filters the samples by imposing one or more restrictions on the rest of the dimen- sions (m􏰉k) and then projects the samples into k key dimensions. （用户选择其中k个维度，然后将剩余维度进行聚合。当然在剩余的维度里面一些数据可能是没有意义的也会被过滤掉）
+<li>When aggregating, GWP lets users choose k keys from the m dimensions and groups the samples by the keys. Basically, it filters the samples by imposing one or more restrictions on the rest of the dimen- sions (m-k) and then projects the samples into k key dimensions. （用户选择其中k个维度，然后将剩余维度进行聚合。当然在剩余的维度里面一些数据可能是没有意义的也会被过滤掉）
 </li>
 <li>GWP finally displays the sorted results to users, delivering answers to various performance queries with high confidence. Although not every query makes sense in practice, even a small subset of them are demonstrably informative in identifying performance issues and providing insights into computing resources in the cloud.
 </li>
@@ -415,24 +395,24 @@
 
 </div>
 
-<div id="outline-container-1-4-1" class="outline-4">
-<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> Cloud applications’ performance</h4>
-<div class="outline-text-4" id="text-1-4-1">
+<div id="outline-container-4-1" class="outline-4">
+<h4 id="sec-4-1"><span class="section-number-4">4.1</span> Cloud applications’ performance</h4>
+<div class="outline-text-4" id="text-4-1">
 
 
 </div>
 
-<div id="outline-container-1-4-1-1" class="outline-5">
-<h5 id="sec-1-4-1-1"><span class="section-number-5">1.4.1.1</span> Finding the hottest shared code</h5>
-<div class="outline-text-5" id="text-1-4-1-1">
+<div id="outline-container-4-1-1" class="outline-5">
+<h5 id="sec-4-1-1"><span class="section-number-5">4.1.1</span> Finding the hottest shared code</h5>
+<div class="outline-text-5" id="text-4-1-1">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-4-1-2" class="outline-5">
-<h5 id="sec-1-4-1-2"><span class="section-number-5">1.4.1.2</span> Evaluating hardware features</h5>
-<div class="outline-text-5" id="text-1-4-1-2">
+<div id="outline-container-4-1-2" class="outline-5">
+<h5 id="sec-4-1-2"><span class="section-number-5">4.1.2</span> Evaluating hardware features</h5>
+<div class="outline-text-5" id="text-4-1-2">
 
 <p>The low-level information GWP provides about how CPU cycles (and other machine resources) are spent is also used for early evaluation of new hardware features that datacenter operators might want to introduce.
 </p>
@@ -441,14 +421,14 @@
 
 </div>
 
-<div id="outline-container-1-4-2" class="outline-4">
-<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> Optimizing for application affinities</h4>
-<div class="outline-text-4" id="text-1-4-2">
+<div id="outline-container-4-2" class="outline-4">
+<h4 id="sec-4-2"><span class="section-number-4">4.2</span> Optimizing for application affinities</h4>
+<div class="outline-text-4" id="text-4-2">
 
 <ul>
 <li>Some applications run better on a partic- ular hardware platform due to sensitivity to architectural details, such as processor micro- architecture or cache size. It’s generally very hard or impossible to predict which applica- tion will fare best on which platform. In- stead, we measure an efficiency metric, CPI, for each application and platform com- bination. We can then improve job schedul- ing so that applications are scheduled on platforms where they do best, subject to availability.（一些应用程序可能在某些机器硬件上面执行效率更好，因为CPU架构或者是cache size等）
 </li>
-<li>The example in Table 1 shows how the total number of cycles needed to run a fixed number of instructions on a fixed machine capacity drops from 500 to 400 using preferential scheduling. Specifi- cally, although the application NumCrunch runs just as well on Platform1 as on Plat- form2, application MemBench does poorly on Platform2 because of the smaller L2 cache. Thus, the scheduler should give Mem- Bench preference to Platform1. 
+<li>The example in Table 1 shows how the total number of cycles needed to run a fixed number of instructions on a fixed machine capacity drops from 500 to 400 using preferential scheduling. Specifi- cally, although the application NumCrunch runs just as well on Platform1 as on Plat- form2, application MemBench does poorly on Platform2 because of the smaller L2 cache. Thus, the scheduler should give Mem- Bench preference to Platform1.
 </li>
 </ul>
 
@@ -465,30 +445,26 @@
 
 </div>
 
-<div id="outline-container-1-4-3" class="outline-4">
-<h4 id="sec-1-4-3"><span class="section-number-4">1.4.3</span> Datacenter performance monitoring</h4>
-<div class="outline-text-4" id="text-1-4-3">
+<div id="outline-container-4-3" class="outline-4">
+<h4 id="sec-4-3"><span class="section-number-4">4.3</span> Datacenter performance monitoring</h4>
+<div class="outline-text-4" id="text-4-3">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-4-4" class="outline-4">
-<h4 id="sec-1-4-4"><span class="section-number-4">1.4.4</span> Feedback-directed optimization</h4>
-<div class="outline-text-4" id="text-1-4-4">
+<div id="outline-container-4-4" class="outline-4">
+<h4 id="sec-4-4"><span class="section-number-4">4.4</span> Feedback-directed optimization</h4>
+<div class="outline-text-4" id="text-4-4">
 
-
-</div>
 </div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:43+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'gwp.html';var disqus_title = 'gwp.html';var disqus_url = 'http://dirlt.com/gwp.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'gwp.html';var disqus_title = 'gwp.html';var disqus_url = 'http://dirlt.com/gwp.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

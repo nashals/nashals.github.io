@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<head>
 <title>Dynamo: Amazon’s Highly Available Key-value Store</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Dynamo: Amazon’s Highly Available Key-value Store"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-12-18T11:29+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,7 +62,7 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
@@ -71,66 +70,6 @@
 
 <div id="content">
 <h1 class="title">Dynamo: Amazon’s Highly Available Key-value Store</h1>
-
-
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="dynamo.html#sec-1">1 dynamodb</a>
-<ul>
-<li><a href="dynamo.html#sec-1-1">1.1 ABSTRACT</a></li>
-<li><a href="dynamo.html#sec-1-2">1.2 INTRODUCTION</a></li>
-<li><a href="dynamo.html#sec-1-3">1.3 BACKGROUND</a>
-<ul>
-<li><a href="dynamo.html#sec-1-3-1">1.3.1 System Assumptions and Requirements</a></li>
-<li><a href="dynamo.html#sec-1-3-2">1.3.2 Service Level Agreements (SLA)</a></li>
-<li><a href="dynamo.html#sec-1-3-3">1.3.3 Design Considerations</a></li>
-</ul>
-</li>
-<li><a href="dynamo.html#sec-1-4">1.4 RELATED WORK</a>
-<ul>
-<li><a href="dynamo.html#sec-1-4-1">1.4.1 Peer to Peer Systems</a></li>
-<li><a href="dynamo.html#sec-1-4-2">1.4.2 Distributed File Systems and Databases</a></li>
-<li><a href="dynamo.html#sec-1-4-3">1.4.3 Discussion</a></li>
-</ul>
-</li>
-<li><a href="dynamo.html#sec-1-5">1.5 SYSTEM ARCHITECTURE</a>
-<ul>
-<li><a href="dynamo.html#sec-1-5-1">1.5.1 System Interface</a></li>
-<li><a href="dynamo.html#sec-1-5-2">1.5.2 Partitioning Algorithm</a></li>
-<li><a href="dynamo.html#sec-1-5-3">1.5.3 Replication</a></li>
-<li><a href="dynamo.html#sec-1-5-4">1.5.4 Data Versioning</a></li>
-<li><a href="dynamo.html#sec-1-5-5">1.5.5 Execution of get () and put () operations</a></li>
-<li><a href="dynamo.html#sec-1-5-6">1.5.6 Handling Failures: Hinted Handoff</a></li>
-<li><a href="dynamo.html#sec-1-5-7">1.5.7 Handling permanent failures: Replica synchronization</a></li>
-<li><a href="dynamo.html#sec-1-5-8">1.5.8 Membership and Failure Detection</a></li>
-<li><a href="dynamo.html#sec-1-5-9">1.5.9 Adding/Removing Storage Nodes</a></li>
-</ul>
-</li>
-<li><a href="dynamo.html#sec-1-6">1.6 IMPLEMENTATION</a></li>
-<li><a href="dynamo.html#sec-1-7">1.7 EXPERIENCES &amp; LESSONS LEARNED</a>
-<ul>
-<li><a href="dynamo.html#sec-1-7-1">1.7.1 Configurations</a></li>
-<li><a href="dynamo.html#sec-1-7-2">1.7.2 Balancing Performance and Durability</a></li>
-<li><a href="dynamo.html#sec-1-7-3">1.7.3 Ensuring Uniform Load distribution</a></li>
-<li><a href="dynamo.html#sec-1-7-4">1.7.4 Divergent Versions: When and How Many?</a></li>
-<li><a href="dynamo.html#sec-1-7-5">1.7.5 Client-driven or Server-driven Coordination</a></li>
-<li><a href="dynamo.html#sec-1-7-6">1.7.6 Balancing background vs. foreground tasks</a></li>
-<li><a href="dynamo.html#sec-1-7-7">1.7.7 Discussion</a></li>
-</ul>
-</li>
-<li><a href="dynamo.html#sec-1-8">1.8 CONCLUSIONS</a></li>
-<li><a href="dynamo.html#sec-1-9">1.9 NOTES</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> dynamodb</h2>
-<div class="outline-text-2" id="text-1">
 
 <ul>
 <li><a href="http://s3.amazonaws.com/AllThingsDistributed/sosp/amazon-dynamo-sosp2007.pdf">http://s3.amazonaws.com/AllThingsDistributed/sosp/amazon-dynamo-sosp2007.pdf</a>
@@ -145,14 +84,63 @@
 
 
 
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="dynamo.html#sec-1">1 ABSTRACT</a></li>
+<li><a href="dynamo.html#sec-2">2 INTRODUCTION</a></li>
+<li><a href="dynamo.html#sec-3">3 BACKGROUND</a>
+<ul>
+<li><a href="dynamo.html#sec-3-1">3.1 System Assumptions and Requirements</a></li>
+<li><a href="dynamo.html#sec-3-2">3.2 Service Level Agreements (SLA)</a></li>
+<li><a href="dynamo.html#sec-3-3">3.3 Design Considerations</a></li>
+</ul>
+</li>
+<li><a href="dynamo.html#sec-4">4 RELATED WORK</a>
+<ul>
+<li><a href="dynamo.html#sec-4-1">4.1 Peer to Peer Systems</a></li>
+<li><a href="dynamo.html#sec-4-2">4.2 Distributed File Systems and Databases</a></li>
+<li><a href="dynamo.html#sec-4-3">4.3 Discussion</a></li>
+</ul>
+</li>
+<li><a href="dynamo.html#sec-5">5 SYSTEM ARCHITECTURE</a>
+<ul>
+<li><a href="dynamo.html#sec-5-1">5.1 System Interface</a></li>
+<li><a href="dynamo.html#sec-5-2">5.2 Partitioning Algorithm</a></li>
+<li><a href="dynamo.html#sec-5-3">5.3 Replication</a></li>
+<li><a href="dynamo.html#sec-5-4">5.4 Data Versioning</a></li>
+<li><a href="dynamo.html#sec-5-5">5.5 Execution of get () and put () operations</a></li>
+<li><a href="dynamo.html#sec-5-6">5.6 Handling Failures: Hinted Handoff</a></li>
+<li><a href="dynamo.html#sec-5-7">5.7 Handling permanent failures: Replica synchronization</a></li>
+<li><a href="dynamo.html#sec-5-8">5.8 Membership and Failure Detection</a></li>
+<li><a href="dynamo.html#sec-5-9">5.9 Adding/Removing Storage Nodes</a></li>
+</ul>
+</li>
+<li><a href="dynamo.html#sec-6">6 IMPLEMENTATION</a></li>
+<li><a href="dynamo.html#sec-7">7 EXPERIENCES &amp; LESSONS LEARNED</a>
+<ul>
+<li><a href="dynamo.html#sec-7-1">7.1 Configurations</a></li>
+<li><a href="dynamo.html#sec-7-2">7.2 Balancing Performance and Durability</a></li>
+<li><a href="dynamo.html#sec-7-3">7.3 Ensuring Uniform Load distribution</a></li>
+<li><a href="dynamo.html#sec-7-4">7.4 Divergent Versions: When and How Many?</a></li>
+<li><a href="dynamo.html#sec-7-5">7.5 Client-driven or Server-driven Coordination</a></li>
+<li><a href="dynamo.html#sec-7-6">7.6 Balancing background vs. foreground tasks</a></li>
+<li><a href="dynamo.html#sec-7-7">7.7 Discussion</a></li>
+</ul>
+</li>
+<li><a href="dynamo.html#sec-8">8 CONCLUSIONS</a></li>
+<li><a href="dynamo.html#sec-9">9 NOTES</a></li>
+</ul>
+</div>
 </div>
 
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> ABSTRACT</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> ABSTRACT</h3>
+<div class="outline-text-3" id="text-1">
 
 <ul>
-<li>This paper presents the design and implementation of Dynamo, a highly available key-value storage system that some of Amazon’s core services use to provide an “always-on” experience. 
+<li>This paper presents the design and implementation of Dynamo, a highly available key-value storage system that some of Amazon’s core services use to provide an “always-on” experience.
 </li>
 <li>To achieve this level of availability, Dynamo sacrifices consistency under certain failure scenarios. It makes extensive use of object versioning and application-assisted conflict resolution in a manner that provides a novel interface for developers to use.（牺牲一致性）
 </li>
@@ -163,9 +151,9 @@
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> INTRODUCTION</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> INTRODUCTION</h3>
+<div class="outline-text-3" id="text-2">
 
 <ul>
 <li>One of the lessons our organization has learned from operating Amazon’s platform is that the reliability and scalability of a system is dependent on how its application state is managed. （可靠性和扩展性取决于如何管理应用状态）
@@ -178,7 +166,7 @@
 </li>
 <li>Dynamo provides a simple primary-key only interface to meet the requirements of these applications.（最简单的kv存储接口）
 </li>
-<li>Dynamo uses a synthesis of well known techniques to achieve scalability and availability: 
+<li>Dynamo uses a synthesis of well known techniques to achieve scalability and availability:
 <ul>
 <li>Data is partitioned and replicated using consistent hashing,（数据分片和副本使用一致性hash）
 </li>
@@ -202,16 +190,16 @@
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> BACKGROUND</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> BACKGROUND</h3>
+<div class="outline-text-3" id="text-3">
 
 
 </div>
 
-<div id="outline-container-1-3-1" class="outline-4">
-<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> System Assumptions and Requirements</h4>
-<div class="outline-text-4" id="text-1-3-1">
+<div id="outline-container-3-1" class="outline-4">
+<h4 id="sec-3-1"><span class="section-number-4">3.1</span> System Assumptions and Requirements</h4>
+<div class="outline-text-4" id="text-3-1">
 
 <ul>
 <li>Query Model: simple read and write operations to a data item that is uniquely identified by a key. State is stored as binary objects (i.e., blobs) identified by unique keys. No operations span multiple data items and there is no need for relational schema. This requirement is based on the observation that a significant portion of Amazon’s services can work with this simple query model and do not need any relational schema. Dynamo targets applications that need to store objects that are relatively small (usually less than 1 MB).
@@ -232,12 +220,12 @@
 
 </div>
 
-<div id="outline-container-1-3-2" class="outline-4">
-<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> Service Level Agreements (SLA)</h4>
-<div class="outline-text-4" id="text-1-3-2">
+<div id="outline-container-3-2" class="outline-4">
+<h4 id="sec-3-2"><span class="section-number-4">3.2</span> Service Level Agreements (SLA)</h4>
+<div class="outline-text-4" id="text-3-2">
 
 <ul>
-<li>To guarantee that the application can deliver its functionality in a bounded time, each and every dependency in the platform needs to deliver its functionality with even tighter bounds. 
+<li>To guarantee that the application can deliver its functionality in a bounded time, each and every dependency in the platform needs to deliver its functionality with even tighter bounds.
 </li>
 <li>Clients and services engage in a Service Level Agreement (SLA), a formally negotiated contract where a client and a service agree on several system-related characteristics, which most prominently include the client’s expected request rate distribution for a particular API and the expected service latency under those conditions. An example of a simple SLA is a service guaranteeing that it will provide a response within 300ms for 99.9% of its requests for a peak client load of 500 requests per second.
 </li>
@@ -252,11 +240,11 @@
 
 <hr/>
 <ul>
-<li>A common approach in the industry for forming a performance oriented SLA is to describe it using average, median and expected variance. <b>At Amazon we have found that these metrics are not good enough if the goal is to build a system where all customers have a good experience, rather than just the majority.</b> For example if extensive personalization techniques are used then customers with longer histories require more processing which impacts performance at the high-end of the distribution.     
+<li>A common approach in the industry for forming a performance oriented SLA is to describe it using average, median and expected variance. <b>At Amazon we have found that these metrics are not good enough if the goal is to build a system where all customers have a good experience, rather than just the majority.</b> For example if extensive personalization techniques are used then customers with longer histories require more processing which impacts performance at the high-end of the distribution.
 </li>
 <li>An SLA stated in terms of mean or median response times will not address the performance of this important customer segment. To address this issue, at Amazon, SLAs are expressed and measured at the 99.9th percentile of the distribution. <b>The choice for 99.9% over an even higher percentile has been made based on a cost-benefit analysis which demonstrated a significant increase in cost to improve performance that much.</b> （选择在99.9%是因为这是cost-benifit平衡点）
 </li>
-<li>Storage systems often play an important role in establishing a service’s SLA, especially if the business logic is relatively lightweight, as is the case for many Amazon services. State management then becomes the main component of a service’s SLA. <b>One of the main design considerations for Dynamo is to give services control over their system properties, such as durability and consistency, and to let services make their own tradeoffs between functionality, performance and cost-effectiveness.</b> 
+<li>Storage systems often play an important role in establishing a service’s SLA, especially if the business logic is relatively lightweight, as is the case for many Amazon services. State management then becomes the main component of a service’s SLA. <b>One of the main design considerations for Dynamo is to give services control over their system properties, such as durability and consistency, and to let services make their own tradeoffs between functionality, performance and cost-effectiveness.</b>
 </li>
 </ul>
 
@@ -265,9 +253,9 @@
 
 </div>
 
-<div id="outline-container-1-3-3" class="outline-4">
-<h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> Design Considerations</h4>
-<div class="outline-text-4" id="text-1-3-3">
+<div id="outline-container-3-3" class="outline-4">
+<h4 id="sec-3-3"><span class="section-number-4">3.3</span> Design Considerations</h4>
+<div class="outline-text-4" id="text-3-3">
 
 <ul>
 <li>For systems prone to server and network failures, availability can be increased by using optimistic replication techniques, where changes are allowed to propagate to replicas in the background, and concurrent, disconnected work is tolerated.（即使在网络分裂的情况下面也可以工作）
@@ -276,9 +264,9 @@
 <ul>
 <li>when to resolve them（在读的时候来处理冲突）
 <ul>
-<li>An important design consideration is to decide when to perform the process of resolving update conflicts, i.e., whether conflicts should be resolved during reads or writes. 
+<li>An important design consideration is to decide when to perform the process of resolving update conflicts, i.e., whether conflicts should be resolved during reads or writes.
 </li>
-<li>Many traditional data stores execute conflict resolution during writes and keep the read complexity simple. In such systems, writes may be rejected if the data store cannot reach all (or a majority of) the replicas at a given time. 
+<li>Many traditional data stores execute conflict resolution during writes and keep the read complexity simple. In such systems, writes may be rejected if the data store cannot reach all (or a majority of) the replicas at a given time.
 </li>
 <li>On the other hand, Dynamo targets the design space of an “always writeable” data store (i.e., a data store that is highly available for writes). This requirement forces us to push the complexity of conflict resolution to the reads in order to ensure that writes are never rejected.
 </li>
@@ -287,9 +275,9 @@
 </li>
 <li>and who resolves them. （client来处理冲突，允许不同的冲突解决方案）
 <ul>
-<li>The next design choice is who performs the process of conflict resolution. This can be done by the data store or the application. 
+<li>The next design choice is who performs the process of conflict resolution. This can be done by the data store or the application.
 </li>
-<li>If conflict resolution is done by the data store, its choices are rather limited. In such cases, the data store can only use simple policies, such as “last write wins”, to resolve conflicting updates. 
+<li>If conflict resolution is done by the data store, its choices are rather limited. In such cases, the data store can only use simple policies, such as “last write wins”, to resolve conflicting updates.
 </li>
 <li>On the other hand, since the application is aware of the data schema it can decide on the conflict resolution method that is best suited for its client’s experience.
 </li>
@@ -328,44 +316,44 @@
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> RELATED WORK</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> RELATED WORK</h3>
+<div class="outline-text-3" id="text-4">
 
 
 </div>
 
-<div id="outline-container-1-4-1" class="outline-4">
-<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> Peer to Peer Systems</h4>
-<div class="outline-text-4" id="text-1-4-1">
-
-</div>
-
-</div>
-
-<div id="outline-container-1-4-2" class="outline-4">
-<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> Distributed File Systems and Databases</h4>
-<div class="outline-text-4" id="text-1-4-2">
+<div id="outline-container-4-1" class="outline-4">
+<h4 id="sec-4-1"><span class="section-number-4">4.1</span> Peer to Peer Systems</h4>
+<div class="outline-text-4" id="text-4-1">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-4-3" class="outline-4">
-<h4 id="sec-1-4-3"><span class="section-number-4">1.4.3</span> Discussion</h4>
-<div class="outline-text-4" id="text-1-4-3">
+<div id="outline-container-4-2" class="outline-4">
+<h4 id="sec-4-2"><span class="section-number-4">4.2</span> Distributed File Systems and Databases</h4>
+<div class="outline-text-4" id="text-4-2">
 
-<p>Dynamo differs from the aforementioned decentralized storage systems in terms of its target requirements. 
+</div>
+
+</div>
+
+<div id="outline-container-4-3" class="outline-4">
+<h4 id="sec-4-3"><span class="section-number-4">4.3</span> Discussion</h4>
+<div class="outline-text-4" id="text-4-3">
+
+<p>Dynamo differs from the aforementioned decentralized storage systems in terms of its target requirements.
 </p><ul>
-<li>First, Dynamo is targeted mainly at applications that need an “always writeable” data store where no updates are rejected due to failures or concurrent writes. This is a crucial requirement for many Amazon applications. 
+<li>First, Dynamo is targeted mainly at applications that need an “always writeable” data store where no updates are rejected due to failures or concurrent writes. This is a crucial requirement for many Amazon applications.
 </li>
 <li>Second, as noted earlier, Dynamo is built for an infrastructure within a single administrative domain where all nodes are assumed to be trusted. （可信节点）
 </li>
-<li>Third, applications that use Dynamo do not require support for hierarchical namespaces (a norm in many file systems) or complex relational schema (supported by traditional databases). 
+<li>Third, applications that use Dynamo do not require support for hierarchical namespaces (a norm in many file systems) or complex relational schema (supported by traditional databases).
 </li>
 <li>Fourth, Dynamo is built for latency sensitive applications that require at least 99.9% of read and write operations to be performed within a few hundred milliseconds. （对于延迟要求很高，99.9%的延迟在百毫秒以下）
 <ul>
-<li>To meet these stringent latency requirements, it was imperative for us to avoid routing requests through multiple nodes (which is the typical design adopted by several distributed hash table systems such as Chord and Pastry). This is because multi-hop routing increases variability in response times, thereby increasing the latency at higher percentiles. 
+<li>To meet these stringent latency requirements, it was imperative for us to avoid routing requests through multiple nodes (which is the typical design adopted by several distributed hash table systems such as Chord and Pastry). This is because multi-hop routing increases variability in response times, thereby increasing the latency at higher percentiles.
 </li>
 <li>Dynamo can be characterized as a zero-hop DHT, where each node maintains enough routing information locally to route a request to the appropriate node directly（因此不允许multi-hop的设计，而必须是zero-hop的）
 </li>
@@ -380,31 +368,31 @@
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> SYSTEM ARCHITECTURE</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> SYSTEM ARCHITECTURE</h3>
+<div class="outline-text-3" id="text-5">
 
-<p>The architecture of a storage system that needs to operate in a production setting is complex. In addition to the actual data persistence component, the system needs to have scalable and robust solutions for 
+<p>The architecture of a storage system that needs to operate in a production setting is complex. In addition to the actual data persistence component, the system needs to have scalable and robust solutions for
 </p><ul>
-<li>load balancing, 
+<li>load balancing,
 </li>
-<li>membership and failure detection, 
+<li>membership and failure detection,
 </li>
-<li>failure recovery, 
+<li>failure recovery,
 </li>
-<li>replica synchronization, 
+<li>replica synchronization,
 </li>
-<li>overload handling,  
+<li>overload handling,
 </li>
-<li>state transfer, 
+<li>state transfer,
 </li>
-<li>concurrency 
+<li>concurrency
 </li>
-<li>and job scheduling, 
+<li>and job scheduling,
 </li>
-<li>request marshalling, 
+<li>request marshalling,
 </li>
-<li>request routing, 
+<li>request routing,
 </li>
 <li>system monitoring and alarming,
 </li>
@@ -412,17 +400,17 @@
 </li>
 </ul>
 
-<p> Describing the details of each of the solutions is not possible, so this paper focuses on the core distributed systems techniques used in Dynamo: 
+<p> Describing the details of each of the solutions is not possible, so this paper focuses on the core distributed systems techniques used in Dynamo:
 </p><ol>
-<li>partitioning, 
+<li>partitioning,
 </li>
-<li>replication, 
+<li>replication,
 </li>
-<li>versioning, 
+<li>versioning,
 </li>
-<li>membership, 
+<li>membership,
 </li>
-<li>failure handling 
+<li>failure handling
 </li>
 <li>and scaling.
 </li>
@@ -435,9 +423,9 @@
 
 </div>
 
-<div id="outline-container-1-5-1" class="outline-4">
-<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> System Interface</h4>
-<div class="outline-text-4" id="text-1-5-1">
+<div id="outline-container-5-1" class="outline-4">
+<h4 id="sec-5-1"><span class="section-number-4">5.1</span> System Interface</h4>
+<div class="outline-text-4" id="text-5-1">
 
 <p>Dynamo stores objects associated with a key through a simple interface; it exposes two operations: get() and put().
 </p><ul>
@@ -456,9 +444,9 @@
 
 </div>
 
-<div id="outline-container-1-5-2" class="outline-4">
-<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> Partitioning Algorithm</h4>
-<div class="outline-text-4" id="text-1-5-2">
+<div id="outline-container-5-2" class="outline-4">
+<h4 id="sec-5-2"><span class="section-number-4">5.2</span> Partitioning Algorithm</h4>
+<div class="outline-text-4" id="text-5-2">
 
 <p>Dynamo’s partitioning scheme relies on consistent hashing to distribute the load across multiple storage hosts.（一致性hash来解决分布问题）
 </p><ul>
@@ -482,7 +470,7 @@ The basic consistent hashing algorithm presents some challenges.（简单的一�
 <p>
 To address these issues, Dynamo uses a variant of consistent hashing (similar to the one used in [10, 20]): instead of mapping a node to a single point in the circle, each node gets assigned to multiple points in the ring. To this end, Dynamo uses the concept of “virtual nodes”.（引入虚拟节点来解决上面问题）
 </p><ul>
-<li>A virtual node looks like a single node in the system, but each node can be responsible for more than one virtual node. 
+<li>A virtual node looks like a single node in the system, but each node can be responsible for more than one virtual node.
 </li>
 <li>Effectively, when a new node is added to the system, it is assigned multiple positions (henceforth, “tokens”) in the ring.
 </li>
@@ -504,14 +492,14 @@ To address these issues, Dynamo uses a variant of consistent hashing (similar to
 
 </div>
 
-<div id="outline-container-1-5-3" class="outline-4">
-<h4 id="sec-1-5-3"><span class="section-number-4">1.5.3</span> Replication</h4>
-<div class="outline-text-4" id="text-1-5-3">
+<div id="outline-container-5-3" class="outline-4">
+<h4 id="sec-5-3"><span class="section-number-4">5.3</span> Replication</h4>
+<div class="outline-text-4" id="text-5-3">
 
 <ul>
 <li>To achieve high availability and durability, Dynamo replicates its data on multiple hosts. Each data item is replicated at N hosts, where N is a parameter configured “per-instance”.
 </li>
-<li>Each key, k, is assigned to a coordinator node (described in the previous section). The coordinator is in charge of the replication of the data items that fall within its range. 
+<li>Each key, k, is assigned to a coordinator node (described in the previous section). The coordinator is in charge of the replication of the data items that fall within its range.
 </li>
 <li>In addition to locally storing each key within its range, the coordinator replicates these keys at the N-1 clockwise successor nodes in the ring. This results in a system where each node is responsible for the region of the ring between it and its Nth predecessor.（在顺时针方向的N个节点上保存副本）
 </li>
@@ -522,7 +510,7 @@ To address these issues, Dynamo uses a variant of consistent hashing (similar to
 <img src="images/dynamo-partition-and-replication.png"  alt="./images/dynamo-partition-and-replication.png" />
 </p>
 <p>
-The list of nodes that is responsible for storing a particular key is called the <b>preference list</b>. The system is designed, as will be explained in Section 4.8, so that every node in the system can determine which nodes should be in this list for any particular key. 
+The list of nodes that is responsible for storing a particular key is called the <b>preference list</b>. The system is designed, as will be explained in Section 4.8, so that every node in the system can determine which nodes should be in this list for any particular key.
 </p><ul>
 <li>To account for node failures, preference list contains more than N nodes. Note that with the use of virtual nodes, it is possible that the first N successor positions for a particular key may be owned by less than N distinct physical nodes (i.e. a node may hold more than one of the first N positions). （因为引入了虚拟节点，所以preference list的长度会比N要大。副本必须确保在N个不同的物理机器上）
 </li>
@@ -535,9 +523,9 @@ The list of nodes that is responsible for storing a particular key is called the
 
 </div>
 
-<div id="outline-container-1-5-4" class="outline-4">
-<h4 id="sec-1-5-4"><span class="section-number-4">1.5.4</span> Data Versioning</h4>
-<div class="outline-text-4" id="text-1-5-4">
+<div id="outline-container-5-4" class="outline-4">
+<h4 id="sec-5-4"><span class="section-number-4">5.4</span> Data Versioning</h4>
+<div class="outline-text-4" id="text-5-4">
 
 <p>Dynamo provides eventual consistency, which allows for updates to be propagated to all replicas asynchronously. A put() call may return to its caller before the update has been applied at all the replicas, which can result in scenarios where a subsequent get() operation may return an object that does not have the latest updates.. If there are no failures then there is a bound on the update propagation times. However, under certain failure scenarios (e.g., server outages or network partitions), updates may not arrive at all replicas for an extended period of time.（异步replication）
 </p>
@@ -548,7 +536,7 @@ In order to provide this kind of guarantee, Dynamo treats the result of each mod
 It is important to understand that certain failure modes can potentially result in the system having not just two but several versions of the same data. Updates in the presence of network partitions and node failures can potentially result in an object having distinct version sub-histories, which the system will need to reconcile in the future. This requires us to design applications that explicitly acknowledge the possibility of multiple versions of the same data (in order to never lose any updates).
 </p>
 <p>
-Dynamo uses vector clocks in order to capture causality between different versions of the same object. A vector clock is effectively a list of (node, counter) pairs. <b>One vector clock is associated with every version of every object. One can determine whether two versions of an object are on parallel branches or have a causal ordering, by examine their vector clocks</b>. If the counters on the first object’s clock are less-than-or-equal to all of the nodes in the second clock, then the first is an ancestor of the second and can be forgotten. Otherwise, the two changes are considered to be in conflict and require reconciliation.（通过vector clock来解决版本冲突问题） <b>todo(dirlt)：什么时候以及如何将这个解决冲突之后的版本同步到集群里面</b>
+Dynamo uses vector clocks in order to capture causality between different versions of the same object. A vector clock is effectively a list of (node, counter) pairs. <b>One vector clock is associated with every version of every object. One can determine whether two versions of an object are on parallel branches or have a causal ordering, by examine their vector clocks</b>. If the counters on the first object’s clock are less-than-or-equal to all of the nodes in the second clock, then the first is an ancestor of the second and can be forgotten. Otherwise, the two changes are considered to be in conflict and require reconciliation.（通过vector clock来解决版本冲突问题）
 </p>
 <p>
 In Dynamo, when a client wishes to update an object, it must specify which version it is updating. This is done by passing the context it obtained from an earlier read operation, which contains the vector clock information. Upon processing a read request, if Dynamo has access to multiple branches that cannot be syntactically reconciled, it will return all the objects at the leaves, with the corresponding version information in the context. An update using this context is considered to have reconciled the divergent versions and the branches are collapsed into a single new version.
@@ -563,31 +551,31 @@ A possible issue with vector clocks is that the size of vector clocks may grow i
 
 </div>
 
-<div id="outline-container-1-5-5" class="outline-4">
-<h4 id="sec-1-5-5"><span class="section-number-4">1.5.5</span> Execution of get () and put () operations</h4>
-<div class="outline-text-4" id="text-1-5-5">
+<div id="outline-container-5-5" class="outline-4">
+<h4 id="sec-5-5"><span class="section-number-4">5.5</span> Execution of get () and put () operations</h4>
+<div class="outline-text-4" id="text-5-5">
 
 <ul>
-<li>Both get and put operations are invoked using Amazon’s infrastructure-specific request processing framework over HTTP. There are two strategies that a client can use to select a node: 
+<li>Both get and put operations are invoked using Amazon’s infrastructure-specific request processing framework over HTTP. There are two strategies that a client can use to select a node:
 <ul>
 <li><b>(1) route its request through a generic load balancer that will select a node based on load information, or</b> （HTTP代理）
 </li>
-<li><b>(2) use a partition-aware client library that routes requests directly to the appropriate coordinator nodes.</b> 
+<li><b>(2) use a partition-aware client library that routes requests directly to the appropriate coordinator nodes.</b>
 </li>
 <li>The advantage of the first approach is that the client does not have to link any code specific to Dynamo in its application, whereas the second strategy can achieve lower latency because it skips a potential forwarding step.
 </li>
 </ul>
 
 </li>
-<li><b>A node handling a read or write operation is known as the coordinator.</b> Typically, this is the first among the top N nodes in the preference list. If the requests are received through a load balancer, requests to access a key may be routed to any random node in the ring. In this scenario, the node that receives the request will not coordinate it if the node is not in the top N of the requested key’s preference list. Instead, that node will forward the request to the first among the top N nodes in the preference list. （通常是选择perference list上的第一个节点作为coordinator来处理read/write操作. <b>如果有load balance的话，那么会选择任意preference list top N nodes里面的任意一个节点来做</b> ） note(dirlt)：其实理论上可以在任意一个节点上。现在read可以在任意节点上，而write必须这些节点中的任意一个。 <b>note(dirlt)：client-library也是可以内置load-balance功能的</b>
+<li><b>A node handling a read or write operation is known as the coordinator.</b> Typically, this is the first among the top N nodes in the preference list. If the requests are received through a load balancer, requests to access a key may be routed to any random node in the ring. In this scenario, the node that receives the request will not coordinate it if the node is not in the top N of the requested key’s preference list. Instead, that node will forward the request to the first among the top N nodes in the preference list. （通常是选择perference list上的第一个节点作为coordinator来处理read/write操作. <b>如果有load balance的话，那么会选择任意preference list top N nodes里面的任意一个节点来做</b> , client-library可能会内置load-balance功能比如round-robin）
 </li>
 <li>Read and write operations involve the first N healthy nodes in the preference list, skipping over those that are down or inaccessible. When all nodes are healthy, the top N nodes in a key’s preference list are accessed. <b>When there are node failures or network partitions, nodes that are lower ranked in the preference list are accessed.</b>
 </li>
 <li>To maintain consistency among its replicas, Dynamo uses a consistency protocol similar to those used in quorum systems. This protocol has two key configurable values: R and W. R is the minimum number of nodes that must participate in a successful read operation. W is the minimum number of nodes that must participate in a successful write operation. Setting R and W such that R + W &gt; N yields a quorum-like system. In this model, the latency of a get (or put) operation is dictated by the slowest of the R (or W) replicas. For this reason, R and W are usually configured to be less than N, to provide better latency.（从N个节点里面，至少读取R个节点，至少写入W个节点，通过满足R+W&gt;N这个条件来得到一致性）
 </li>
-<li>Upon receiving a put() request for a key, the coordinator generates the vector clock for the new version and writes the new version locally. The coordinator then sends the new version (along with the new vector clock) to the N highest-ranked reachable nodes. If at least W-1 nodes respond then the write is considered successful. <b>todo(dirlt)：这里是同步写吗？如果是异步写并且需要处理失败的话，那么接口会很难用</b>
+<li>Upon receiving a put() request for a key, the coordinator generates the vector clock for the new version and writes the new version locally. The coordinator then sends the new version (along with the new vector clock) to the N highest-ranked reachable nodes. If at least W-1 nodes respond then the write is considered successful.
 </li>
-<li>Similarly, for a get() request, the coordinator requests all existing versions of data for that key from the N highest-ranked reachable nodes in the preference list for that key, and then waits for R responses before returning the result to the client. If the coordinator ends up gathering multiple versions of the data, it returns all the versions it deems to be causally unrelated. <b>The divergent versions are then reconciled and the reconciled version superseding the current versions is written back.</b> todo(dirlt)：这里不太理解是谁来触发write-back的操作的？是client-library吗？在协调完成之后将数据完全写回 note(dirlt)：后面提到确实是client-library来完成的
+<li>Similarly, for a get() request, the coordinator requests all existing versions of data for that key from the N highest-ranked reachable nodes in the preference list for that key, and then waits for R responses before returning the result to the client. If the coordinator ends up gathering multiple versions of the data, it returns all the versions it deems to be causally unrelated. <b>The divergent versions are then reconciled and the reconciled version superseding the current versions is written back.</b> （协调完成之后由client-library将合并后的数据写回）    
 </li>
 </ul>
 
@@ -596,17 +584,20 @@ A possible issue with vector clocks is that the size of vector clocks may grow i
 
 </div>
 
-<div id="outline-container-1-5-6" class="outline-4">
-<h4 id="sec-1-5-6"><span class="section-number-4">1.5.6</span> Handling Failures: Hinted Handoff</h4>
-<div class="outline-text-4" id="text-1-5-6">
+<div id="outline-container-5-6" class="outline-4">
+<h4 id="sec-5-6"><span class="section-number-4">5.6</span> Handling Failures: Hinted Handoff</h4>
+<div class="outline-text-4" id="text-5-6">
 
-<p><b>节点临时挂掉</b> todo(dirlt)：这里还有一个问题就是，在完全去中心化的情况下面，如何判断一个节点是否挂掉
+<p><b>节点临时挂掉</b>
 </p>
 <p>
-note(dirlt)：按照我的理解，这个判断应该是由coordinator来判断的。coordinator来判断下面的A，D是否healthy. 而之后write-back则是D来判断A是否healthy的。也就是说在极端的情况下面，如果coordinator和D联通，但是和A不联通，D和A联通的话，那么所有的write都会以D为proxy，转发到A上。coordinator不可用的情况则是通过client来发现的。
+#todo: 这里还有一个问题就是，在完全去中心化的情况下面，如何判断一个节点是否挂掉
+</p>
+<p>
+#note: 按照我的理解，这个判断应该是由coordinator来判断的。coordinator来判断下面的A，D是否healthy. 而之后write-back则是D来判断A是否healthy的。也就是说在极端的情况下面，如果coordinator和D联通，但是和A不联通，D和A联通的话，那么所有的write都会以D为proxy，转发到A上。coordinator不可用的情况则是通过client来发现的。
 </p>
 <ul>
-<li>If Dynamo used a traditional quorum approach it would be unavailable during server failures and network partitions, and would have reduced durability even under the simplest of failure conditions. 
+<li>If Dynamo used a traditional quorum approach it would be unavailable during server failures and network partitions, and would have reduced durability even under the simplest of failure conditions.
 </li>
 <li>To remedy this it does not enforce strict quorum membership and instead it uses a “sloppy quorum”; all read and write operations are performed on the first N healthy nodes from the preference list, which may not always be the first N nodes encountered while walking the consistent hashing ring.（每次读写操作不是涉及到perference list的最开始的N个节点，而应该是最开始的N个健康节点）
 </li>
@@ -621,34 +612,34 @@ note(dirlt)：按照我的理解，这个判断应该是由coordinator来判断�
 
 </div>
 
-<div id="outline-container-1-5-7" class="outline-4">
-<h4 id="sec-1-5-7"><span class="section-number-4">1.5.7</span> Handling permanent failures: Replica synchronization</h4>
-<div class="outline-text-4" id="text-1-5-7">
+<div id="outline-container-5-7" class="outline-4">
+<h4 id="sec-5-7"><span class="section-number-4">5.7</span> Handling permanent failures: Replica synchronization</h4>
+<div class="outline-text-4" id="text-5-7">
 
 <p><b>节点永久下线</b>
 </p>
 <p>
-note(dirlt)：这样看来node不仅仅要存放key-value data，还必须维持对应的merkle tree？这个数据结构存放在什么地方？
+#note：这样看来node不仅仅要存放key-value data，还必须维持对应的merkle tree？这个数据结构存放在什么地方？
 </p>
 <ul>
 <li>Hinted handoff works best if the system membership churn is low and node failures are transient. There are scenarios under which hinted replicas become unavailable before they can be returned to the original replica node. To handle this and other threats to durability, Dynamo implements an anti-entropy (replica synchronization) protocol to keep the replicas synchronized.
 </li>
 <li><b>To detect the inconsistencies between replicas faster and to minimize the amount of transferred data, Dynamo uses Merkle trees. A Merkle tree is a hash tree where leaves are hashes of the values of individual keys. Parent nodes higher in the tree are hashes of their respective children.</b>
 <ul>
-<li>The principal advantage of Merkle tree is that each branch of the tree can be checked independently without requiring nodes to download the entire tree or the entire data set. Moreover, Merkle trees help in reducing the amount of data that needs to be transferred while checking for inconsistencies among replicas. 
+<li>The principal advantage of Merkle tree is that each branch of the tree can be checked independently without requiring nodes to download the entire tree or the entire data set. Moreover, Merkle trees help in reducing the amount of data that needs to be transferred while checking for inconsistencies among replicas.
 </li>
-<li>For instance, if the hash values of the root of two trees are equal, then the values of the leaf nodes in the tree are equal and the nodes require no synchronization. If not, it implies that the values of some replicas are different. In such cases, the nodes may exchange the hash values of children and the process continues until it reaches the leaves of the trees, at which point the hosts can identify the keys that are “out of sync”. 
+<li>For instance, if the hash values of the root of two trees are equal, then the values of the leaf nodes in the tree are equal and the nodes require no synchronization. If not, it implies that the values of some replicas are different. In such cases, the nodes may exchange the hash values of children and the process continues until it reaches the leaves of the trees, at which point the hosts can identify the keys that are “out of sync”.
 </li>
 <li>Merkle trees minimize the amount of data that needs to be transferred for synchronization and reduce the number of disk reads performed during the anti-entropy process.
 </li>
 </ul>
 
 </li>
-<li>Dynamo uses Merkle trees for anti-entropy as follows: 
+<li>Dynamo uses Merkle trees for anti-entropy as follows:
 <ul>
 <li><b>Each node maintains a separate Merkle tree for each key range (the set of keys covered by a virtual node) it hosts. This allows nodes to compare whether the keys within a key range are up-to-date.</b>
 </li>
-<li>In this scheme, two nodes exchange the root of the Merkle tree corresponding to the key ranges that they host in common. Subsequently, using the tree traversal scheme described above the nodes determine if they have any differences and perform the appropriate synchronization action. 
+<li>In this scheme, two nodes exchange the root of the Merkle tree corresponding to the key ranges that they host in common. Subsequently, using the tree traversal scheme described above the nodes determine if they have any differences and perform the appropriate synchronization action.
 </li>
 <li>The disadvantage with this scheme is that many key ranges change when a node joins or leaves the system thereby requiring the tree(s) to be recalculated. This issue is addressed, however, by the refined partitioning scheme described in Section 6.2（如何快速更新Merkle Tree）
 </li>
@@ -662,14 +653,14 @@ note(dirlt)：这样看来node不仅仅要存放key-value data，还必须维持
 
 </div>
 
-<div id="outline-container-1-5-8" class="outline-4">
-<h4 id="sec-1-5-8"><span class="section-number-4">1.5.8</span> Membership and Failure Detection</h4>
-<div class="outline-text-4" id="text-1-5-8">
+<div id="outline-container-5-8" class="outline-4">
+<h4 id="sec-5-8"><span class="section-number-4">5.8</span> Membership and Failure Detection</h4>
+<div class="outline-text-4" id="text-5-8">
 
 <p><b>成员关系以及故障检测</b>
 </p>
 <ul>
-<li id="sec-1-5-8-1">Ring Membership<br/>
+<li id="sec-5-8-1">Ring Membership<br/>
 <ul>
 <li>In Amazon’s environment node outages (due to failures and maintenance tasks) are often transient but may last for extended intervals. A node outage rarely signifies a permanent departure and therefore should not result in rebalancing of the partition assignment or repair of the unreachable replicas. Similarly, manual error could result in the unintentional startup of new Dynamo nodes. （大部分情况下节点都只是暂时下线，而不是永久下线，不会造成partition发生变化）
 </li>
@@ -687,13 +678,13 @@ note(dirlt)：这样看来node不仅仅要存放key-value data，还必须维持
 </li>
 </ul>
 <ul>
-<li id="sec-1-5-8-2">External Discovery<br/>
+<li id="sec-5-8-2">External Discovery<br/>
 <ul>
 <li>The mechanism described above could temporarily result in a logically partitioned Dynamo ring. （上面这种自动化方案可能造成临时的逻辑分割）
 </li>
 <li>For example, the administrator could contact node A to join A to the ring, then contact node B to join B to the ring. In this scenario, nodes A and B would each consider itself a member of the ring, yet neither would be immediately aware of the other. （比如A，B两个节点独立上线，那么在一段时间内A，B两个节点可能都不会认为对方在这个ring上）
 </li>
-<li>To prevent logical partitions, some Dynamo nodes play the role of seeds. Seeds are nodes that are discovered via an external mechanism and are known to all nodes. Because all nodes eventually reconcile their membership with a seed, logical partitions are highly unlikely. Seeds can be obtained either from static configuration or from a configuration service. Typically seeds are fully functional nodes in the Dynamo ring. （解决办法是选择几个seed nodes，这几个seed nodes有点类似public service。节点一旦加入ring之前需要在上面注册。这样如果两个节点上线的话那么很快就会发现对方的存在） 
+<li>To prevent logical partitions, some Dynamo nodes play the role of seeds. Seeds are nodes that are discovered via an external mechanism and are known to all nodes. Because all nodes eventually reconcile their membership with a seed, logical partitions are highly unlikely. Seeds can be obtained either from static configuration or from a configuration service. Typically seeds are fully functional nodes in the Dynamo ring. （解决办法是选择几个seed nodes，这几个seed nodes有点类似public service。节点一旦加入ring之前需要在上面注册。这样如果两个节点上线的话那么很快就会发现对方的存在）
 </li>
 </ul>
 
@@ -701,13 +692,13 @@ note(dirlt)：这样看来node不仅仅要存放key-value data，还必须维持
 </li>
 </ul>
 <ul>
-<li id="sec-1-5-8-3">Failure Detection<br/>
+<li id="sec-5-8-3">Failure Detection<br/>
 <ul>
 <li>Failure detection in Dynamo is used to avoid attempts to communicate with unreachable peers during get() and put() operations and when transferring partitions and hinted replicas.
 </li>
-<li>For the purpose of avoiding failed attempts at communication, a purely local notion of failure detection is entirely sufficient: node A may consider node B failed if node B does not respond to node A’s messages (even if B is responsive to node C's messages). 
+<li>For the purpose of avoiding failed attempts at communication, a purely local notion of failure detection is entirely sufficient: node A may consider node B failed if node B does not respond to node A’s messages (even if B is responsive to node C's messages).
 </li>
-<li>In the presence of a steady rate of client requests generating inter-node communication in the Dynamo ring, a node A quickly discovers that a node B is unresponsive when B fails to respond to a message; Node A then uses alternate nodes to service requests that map to B's partitions; A periodically retries B to check for the latter's recovery. 
+<li>In the presence of a steady rate of client requests generating inter-node communication in the Dynamo ring, a node A quickly discovers that a node B is unresponsive when B fails to respond to a message; Node A then uses alternate nodes to service requests that map to B's partitions; A periodically retries B to check for the latter's recovery.
 </li>
 <li><b>In the absence of client requests to drive traffic between two nodes, neither node really needs to know whether the other is reachable and responsive.</b> （节点之间是否通常都是在外部请求的驱动下来完成的）
 </li>
@@ -720,9 +711,9 @@ note(dirlt)：这样看来node不仅仅要存放key-value data，还必须维持
 
 </div>
 
-<div id="outline-container-1-5-9" class="outline-4">
-<h4 id="sec-1-5-9"><span class="section-number-4">1.5.9</span> Adding/Removing Storage Nodes</h4>
-<div class="outline-text-4" id="text-1-5-9">
+<div id="outline-container-5-9" class="outline-4">
+<h4 id="sec-5-9"><span class="section-number-4">5.9</span> Adding/Removing Storage Nodes</h4>
+<div class="outline-text-4" id="text-5-9">
 
 <ul>
 <li>When a new node (say X) is added into the system, it gets assigned a number of tokens that are randomly scattered on the ring. For every key range that is assigned to node X, there may be a number of nodes (less than or equal to N) that are currently in charge of handling keys that fall within its token range. Due to the allocation of key ranges to X, some existing nodes no longer have to some of their keys and these nodes transfer those keys to X. When a node is removed from the system, the reallocation of keys happens in a reverse process.
@@ -737,9 +728,9 @@ note(dirlt)：这样看来node不仅仅要存放key-value data，还必须维持
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> IMPLEMENTATION</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> IMPLEMENTATION</h3>
+<div class="outline-text-3" id="text-6">
 
 <p>In Dynamo, each storage node has three main software components: request coordination, membership and failure detection, and a local persistence engine. All these components are implemented in Java.
 </p><ul>
@@ -747,9 +738,9 @@ note(dirlt)：这样看来node不仅仅要存放key-value data，还必须维持
 </li>
 <li>The request coordination component is built on top of an event-driven messaging substrate where the message processing pipeline is split into multiple stages similar to the SEDA architecture.（请求处理上采用类似event-drien的编程方式，消息处理的pipeline被分割成为多个stage，类似SEDA架构）
 <ul>
-<li>All communications are implemented using Java NIO channels. 
+<li>All communications are implemented using Java NIO channels.
 </li>
-<li>The coordinator executes the read and write requests on behalf of clients by collecting data from one or more nodes (in the case of reads) or storing data at one or more nodes (for writes). 
+<li>The coordinator executes the read and write requests on behalf of clients by collecting data from one or more nodes (in the case of reads) or storing data at one or more nodes (for writes).
 </li>
 <li>Each client request results in the creation of a state machine on the node that received the client request. The state machine contains all the logic for identifying the nodes responsible for a key, sending the requests, waiting for responses, potentially doing retries, processing the replies and packaging the response to the client. Each state machine instance handles exactly one client request.（coordinator对每个请求创建state machine, state machine是很典型的event-driven编程实现方式）
 </li>
@@ -765,26 +756,21 @@ note(dirlt)：这样看来node不仅仅要存放key-value data，还必须维持
 </ul>
 
 <p>request. This optimization enables us to pick the node that has the data that was read by the preceding read operation thereby increasing the chances of getting “read-your-writes” consistency. It also reduces variability in the performance of the request handling which improves the performance at the 99.9 percentile. （read返回的context用来为之后的write服务）
-</p><ul>
-<li><b>todo(dirlt)：not much about membership and failure detection</b>
-</li>
-</ul>
-
-
+</p>
 </div>
 
 </div>
 
-<div id="outline-container-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> EXPERIENCES &amp; LESSONS LEARNED</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-7" class="outline-3">
+<h3 id="sec-7"><span class="section-number-3">7</span> EXPERIENCES &amp; LESSONS LEARNED</h3>
+<div class="outline-text-3" id="text-7">
 
 
 </div>
 
-<div id="outline-container-1-7-1" class="outline-4">
-<h4 id="sec-1-7-1"><span class="section-number-4">1.7.1</span> Configurations</h4>
-<div class="outline-text-4" id="text-1-7-1">
+<div id="outline-container-7-1" class="outline-4">
+<h4 id="sec-7-1"><span class="section-number-4">7.1</span> Configurations</h4>
+<div class="outline-text-4" id="text-7-1">
 
 <p>Dynamo is used by several services with different configurations. These instances differ by their version reconciliation logic, and read/write quorum characteristics. The following are the main patterns in which Dynamo is used:
 </p><ul>
@@ -801,15 +787,15 @@ note(dirlt)：这样看来node不仅仅要存放key-value data，还必须维持
 The main advantage of Dynamo is that its client applications can tune the values of N, R and W to achieve their desired levels of performance, availability and durability. For instance, the value of N determines the durability of each object. A typical value of N used by Dynamo’s users is 3. The values of W and R impact object availability, durability and consistency. For instance, if W is set to 1, then the system will never reject a write request as long as there is at least one node in the system that can successfully process a write request. However, low values of W and R can increase the risk of inconsistency as write requests are deemed successful and returned to the clients even if they are not processed by a majority of the replicas. This also introduces a vulnerability window for durability when a write request is successfully returned to the client even though it has been persisted at only a small number of nodes.
 </p>
 <p>
-The common (N,R,W) configuration used by several instances of Dynamo is (3,2,2). These values are chosen to meet the necessary levels of performance, durability, consistency, and availability SLAs. All the measurements presented in this section were taken on a live system operating with a configuration of (3,2,2) and running a couple hundred nodes with homogenous hardware configurations. As mentioned earlier, each instance of Dynamo contains nodes that are located in multiple datacenters. These datacenters are typically connected through high speed network links. Recall that to generate a successful get (or put) response R (or W) nodes need to respond to the coordinator. Clearly, the network latencies between datacenters affect the response time and the nodes (and their datacenter locations) are chosen such that the applications target SLAs are met.（通过调整R，W，N来满足不同的SLA） 
+The common (N,R,W) configuration used by several instances of Dynamo is (3,2,2). These values are chosen to meet the necessary levels of performance, durability, consistency, and availability SLAs. All the measurements presented in this section were taken on a live system operating with a configuration of (3,2,2) and running a couple hundred nodes with homogenous hardware configurations. As mentioned earlier, each instance of Dynamo contains nodes that are located in multiple datacenters. These datacenters are typically connected through high speed network links. Recall that to generate a successful get (or put) response R (or W) nodes need to respond to the coordinator. Clearly, the network latencies between datacenters affect the response time and the nodes (and their datacenter locations) are chosen such that the applications target SLAs are met.（通过调整R，W，N来满足不同的SLA）
 </p>
 </div>
 
 </div>
 
-<div id="outline-container-1-7-2" class="outline-4">
-<h4 id="sec-1-7-2"><span class="section-number-4">1.7.2</span> Balancing Performance and Durability</h4>
-<div class="outline-text-4" id="text-1-7-2">
+<div id="outline-container-7-2" class="outline-4">
+<h4 id="sec-7-2"><span class="section-number-4">7.2</span> Balancing Performance and Durability</h4>
+<div class="outline-text-4" id="text-7-2">
 
 <ul>
 <li>A typical SLA required of services that use Dynamo is that 99.9% of the read and write requests execute within 300ms.
@@ -820,7 +806,7 @@ The common (N,R,W) configuration used by several instances of Dynamo is (3,2,2).
 </li>
 <li>Moreover, the write latencies are higher than read latencies obviously because write operations always results in disk access.
 </li>
-<li>Also, the 99.9th percentile latencies are around 200 ms and are an order of magnitude higher than the averages. 
+<li>Also, the 99.9th percentile latencies are around 200 ms and are an order of magnitude higher than the averages.
 </li>
 </ul>
 
@@ -831,7 +817,7 @@ The common (N,R,W) configuration used by several instances of Dynamo is (3,2,2).
 </p>
 
 <p>
-While this level of performance is acceptable for a number of services, a few customer-facing services required higher levels of performance. For these services, Dynamo provides the ability to trade-off durability guarantees for performance. In the optimization each storage node maintains an object buffer in its main memory. Each write operation is stored in the buffer and gets periodically written to storage by a writer thread. In this scheme, read operations first check if the requested key is present in the buffer. If so, the object is read from the buffer instead of the storage engine.（修改存储引擎，写入的话并没有直接写入磁盘而是写入到buffer里面，有专门的后台线程将这些数据刷出，然后read操作都去buffer内容，实现上和leveldb等非常类似） 
+While this level of performance is acceptable for a number of services, a few customer-facing services required higher levels of performance. For these services, Dynamo provides the ability to trade-off durability guarantees for performance. In the optimization each storage node maintains an object buffer in its main memory. Each write operation is stored in the buffer and gets periodically written to storage by a writer thread. In this scheme, read operations first check if the requested key is present in the buffer. If so, the object is read from the buffer instead of the storage engine.（修改存储引擎，写入的话并没有直接写入磁盘而是写入到buffer里面，有专门的后台线程将这些数据刷出，然后read操作都去buffer内容，实现上和leveldb等非常类似）
 </p>
 <p>
 Obviously, this scheme trades durability for performance. In this scheme, a server crash can result in missing writes that were queued up in the buffer. To reduce the durability risk, the write operation is refined to have the coordinator choose one out of the N replicas to perform a “durable write”. Since the coordinator waits only for W responses, the performance of the write operation is not affected by the performance of the durable write operation performed by a single replica.（可以很明显上面这个方案会影响到持久性。所以一个实现上的折衷是，要求N个replicas中至少有一个写入disk，而其他的可以只写入buffer。而因为最终只需要等待到W个节点返回成功即可，所以不会影响到写入操作的延迟）
@@ -846,20 +832,17 @@ This optimization has resulted in lowering the 99.9th percentile latency by a fa
 
 </div>
 
-<div id="outline-container-1-7-3" class="outline-4">
-<h4 id="sec-1-7-3"><span class="section-number-4">1.7.3</span> Ensuring Uniform Load distribution</h4>
-<div class="outline-text-4" id="text-1-7-3">
+<div id="outline-container-7-3" class="outline-4">
+<h4 id="sec-7-3"><span class="section-number-4">7.3</span> Ensuring Uniform Load distribution</h4>
+<div class="outline-text-4" id="text-7-3">
 
-<p><b>note(dirlt)：这里的partition不仅仅涉及到了分布均匀性的问题，还涉及到了具体实现。虽然这里的出发点分布均匀性问题</b>
-</p>
-<p>
-To study the load imbalance and its correlation with request load, the total number of requests received by each node was measured for a period of 24 hours - broken down into intervals of 30 minutes. In a given time window, a node is considered to be “in- balance”, if the node’s request load deviates from the average load by a value a less than a certain threshold (here 15%). Otherwise the node was deemed “out-of-balance”. Figure 6 presents the fraction of nodes that are “out-of-balance” (henceforth, “imbalance ratio”) during this time period.（定义balance标准）
+<p>To study the load imbalance and its correlation with request load, the total number of requests received by each node was measured for a period of 24 hours - broken down into intervals of 30 minutes. In a given time window, a node is considered to be “in- balance”, if the node’s request load deviates from the average load by a value a less than a certain threshold (here 15%). Otherwise the node was deemed “out-of-balance”. Figure 6 presents the fraction of nodes that are “out-of-balance” (henceforth, “imbalance ratio”) during this time period.（定义balance标准）
 </p>
 <p>
 <img src="images/dynamo-balance.png"  alt="./images/dynamo-balance.png" />
 </p>
 <p>
-As seen in the figure, the imbalance ratio decreases with increasing load. For instance, during low loads the imbalance ratio is as high as 20% and during high loads it is close to 10%. Intuitively, this can be explained by the fact that under high loads, a large number of popular keys are accessed and due to uniform distribution of keys the load is evenly distributed. However, during low loads (where load is 1/8th of the measured peak load), fewer popular keys are accessed, resulting in a higher load imbalance.（情况是在高负载的情况下面，还是相对比较均衡的。可是在低负载的情况下，分布就不均衡了） note(dirlt)：可能这个结论适合几乎所有的分布式系统
+As seen in the figure, the imbalance ratio decreases with increasing load. For instance, during low loads the imbalance ratio is as high as 20% and during high loads it is close to 10%. Intuitively, this can be explained by the fact that under high loads, a large number of popular keys are accessed and due to uniform distribution of keys the load is evenly distributed. However, during low loads (where load is 1/8th of the measured peak load), fewer popular keys are accessed, resulting in a higher load imbalance.（情况是在高负载的情况下面，还是相对比较均衡的。可是在低负载的情况下，分布就不均衡了） #note: 可能这个结论适合几乎所有的分布式系统
 </p>
 
 <hr/>
@@ -875,7 +858,7 @@ This section discusses how Dynamo’s partitioning scheme has evolved over time 
 <ul>
 <li>In this scheme, each node is assigned T tokens (chosen uniformly at random from the hash space). The tokens of all nodes are ordered according to their values in the hash space. Every two consecutive tokens define a range. The last token and the first token form a range that "wraps" around from the highest value to the lowest value in the hash space. Because the tokens are chosen randomly, the ranges vary in size. As nodes join and leave the system, the token set changes and consequently the ranges change. Note that the space needed to maintain the membership at each node increases linearly with the number of nodes in the system.（两个连续token定义一个range，所以如果节点发生变化的话，那么range也会发生变化）
 </li>
-<li>While using this strategy, the following problems were encountered. 
+<li>While using this strategy, the following problems were encountered.
 <ul>
 <li>First, when a new node joins the system, it needs to “steal” its key ranges from other nodes. However, the nodes handing the key ranges off to the new node have to scan their local persistence store to retrieve the appropriate set of data items. Note that performing such a scan operation on a production node is tricky as scans are highly resource intensive operations and they need to be executed in the background without affecting the customer performance. This requires us to run the bootstrapping task at the lowest priority. However, this significantly slows the bootstrapping process and during busy shopping season, when the nodes are handling millions of requests a day, the bootstrapping has taken almost a day to complete. （第一个问题是如果新增节点的话，那么会将一部分kv转移过来。可是这部分kv没有简单办法定义预先计算好，因为是根据token来定义的range来选择的。所以实现上不可避免需要扫表，只是选择处于range部分kv，转移到新的节点上。而scan操作是比较消耗资源的）
 </li>
@@ -884,7 +867,7 @@ This section discusses how Dynamo’s partitioning scheme has evolved over time 
 </ul>
 
 </li>
-<li>The fundamental issue with this strategy is that the schemes for data partitioning and data placement are intertwined. For instance, in some cases, it is preferred to add more nodes to the system in order to handle an increase in request load. However, in this scenario, it is not possible to add nodes without affecting data partitioning. Ideally, it is desirable to use independent schemes for partitioning and placement. To this end, following strategies were evaluated <b>note(dirlt)：以我看来最主要的问题是数据的partition或者说是range以不可预知的方式变化</b>
+<li>The fundamental issue with this strategy is that the schemes for data partitioning and data placement are intertwined. For instance, in some cases, it is preferred to add more nodes to the system in order to handle an increase in request load. However, in this scenario, it is not possible to add nodes without affecting data partitioning. Ideally, it is desirable to use independent schemes for partitioning and placement. To this end, following strategies were evaluated #note: 最大的挑战是数据的partition或者说是range以不可预知的方式变化*
 
 </li>
 </ul>
@@ -898,7 +881,7 @@ This section discusses how Dynamo’s partitioning scheme has evolved over time 
 </li>
 <li>The primary advantages of this strategy are: (i) decoupling of partitioning and partition placement, and (ii) enabling the possibility of changing the placement scheme at runtime.
 </li>
-<li>note(dirlt)：以上图为例，这些节点对应的token可能处于partition中间。这是和Strategy 3不同的地方。会导致分布不均匀的问题。
+<li>#note: 以上图为例，这些节点对应的token可能处于partition中间。这是和Strategy 3不同的地方。会导致分布不均匀的问题。
 
 </li>
 </ul>
@@ -906,11 +889,11 @@ This section discusses how Dynamo’s partitioning scheme has evolved over time 
 </li>
 <li>Strategy 3: Q/S tokens per node, equal-sized partitions
 <ul>
-<li>Similar to strategy 2, this strategy divides the hash space into Q equally sized partitions and the placement of partition is decoupled from the partitioning scheme. 
+<li>Similar to strategy 2, this strategy divides the hash space into Q equally sized partitions and the placement of partition is decoupled from the partitioning scheme.
 </li>
 <li>Moreover, each node is assigned Q/S tokens where S is the number of nodes in the system. When a node leaves the system, its tokens are randomly distributed to the remaining nodes such that these properties are preserved. Similarly, when a node joins the system it "steals" tokens from nodes in the system in a way that preserves these properties.
 </li>
-<li>note(dirlt)：和strategy 2非常类似，但是这些节点对应的token都是在对应的partition point上面。相对于2来说更加容易管理和实现，而且分布更加均匀。
+<li>#note: 和strategy 2非常类似，但是这些节点对应的token都是在对应的partition point上面。相对于2来说更加容易管理和实现，而且分布更加均匀。
 </li>
 </ul>
 
@@ -930,11 +913,11 @@ The results are given in Figure 8. As seen in the figure, strategy 3 achieves th
 <ul>
 <li>Compared to Strategy 1, Strategy 3 achieves better efficiency and reduces the size of membership information maintained at each node by three orders of magnitude. While storage is not a major issue the nodes gossip the membership information periodically and as such it is desirable to keep this information as compact as possible.（策略3所需要保存的信息更加简单，这样就使得gossip membership过程更加高效）
 </li>
-<li>In addition to this, strategy 3 is advantageous and simpler to deploy for the following reasons: 
+<li>In addition to this, strategy 3 is advantageous and simpler to deploy for the following reasons:
 <ul>
 <li>(i) Faster bootstrapping/recovery: Since partition ranges are fixed, they can be stored in separate files, meaning a partition can be relocated as a unit by simply transferring the file (avoiding random accesses needed to locate specific items). This simplifies the process of bootstrapping and recovery. （每个节点可以将对应的partition数据分开存放在不同的文件下面，如果发生转移的话那么整个文件转移即可）
 </li>
-<li>(ii) Ease of archival: Periodical archiving of the dataset is a mandatory requirement for most of Amazon storage services. Archiving the entire dataset stored by Dynamo is simpler in strategy 3 because the partition files can be archived separately. By contrast, in Strategy 1, the tokens are chosen randomly and, archiving the data stored in Dynamo requires retrieving the keys from individual nodes separately and is usually inefficient and slow. 
+<li>(ii) Ease of archival: Periodical archiving of the dataset is a mandatory requirement for most of Amazon storage services. Archiving the entire dataset stored by Dynamo is simpler in strategy 3 because the partition files can be archived separately. By contrast, in Strategy 1, the tokens are chosen randomly and, archiving the data stored in Dynamo requires retrieving the keys from individual nodes separately and is usually inefficient and slow.
 </li>
 </ul>
 
@@ -948,14 +931,14 @@ The results are given in Figure 8. As seen in the figure, strategy 3 achieves th
 
 </div>
 
-<div id="outline-container-1-7-4" class="outline-4">
-<h4 id="sec-1-7-4"><span class="section-number-4">1.7.4</span> Divergent Versions: When and How Many?</h4>
-<div class="outline-text-4" id="text-1-7-4">
+<div id="outline-container-7-4" class="outline-4">
+<h4 id="sec-7-4"><span class="section-number-4">7.4</span> Divergent Versions: When and How Many?</h4>
+<div class="outline-text-4" id="text-7-4">
 
 <ul>
-<li>Divergent versions of a data item arise in two scenarios. 
+<li>Divergent versions of a data item arise in two scenarios.
 <ul>
-<li>The first is when the system is facing failure scenarios such as node failures, data center failures, and network partitions. 
+<li>The first is when the system is facing failure scenarios such as node failures, data center failures, and network partitions.
 </li>
 <li>The second is when the system is handling a large number of concurrent writers to a single data item and multiple nodes end up coordinating the updates concurrently.
 </li>
@@ -973,14 +956,14 @@ The results are given in Figure 8. As seen in the figure, strategy 3 achieves th
 
 </div>
 
-<div id="outline-container-1-7-5" class="outline-4">
-<h4 id="sec-1-7-5"><span class="section-number-4">1.7.5</span> Client-driven or Server-driven Coordination</h4>
-<div class="outline-text-4" id="text-1-7-5">
+<div id="outline-container-7-5" class="outline-4">
+<h4 id="sec-7-5"><span class="section-number-4">7.5</span> Client-driven or Server-driven Coordination</h4>
+<div class="outline-text-4" id="text-7-5">
 
 <p>按照我的理解，这里的client-driven就通过partition-aware client library来操作，而server-driven就是外部节点随意请求节点，然后这个节点作为proxy将request forward到对应的处理节点上。很明显client-driven的工作方式会更加合理，但是partition-aware这个工作会将library复杂化。HTTP Proxy严格来说也不算是server-driven，但是最终效果上来看和server-driven是差不多的，所以这节的数据对比可以认为是client-library和HTTP方式的效率对比。
 </p>
 <p>
-As mentioned in Section 5, Dynamo has a request coordination component that uses a state machine to handle incoming requests. Client requests are uniformly assigned to nodes in the ring by a load balancer. 
+As mentioned in Section 5, Dynamo has a request coordination component that uses a state machine to handle incoming requests. Client requests are uniformly assigned to nodes in the ring by a load balancer.
 </p><ul>
 <li>Any Dynamo node can act as a coordinator for a read request. （理论上来说任何节点都可以相应put/get操作）
 </li>
@@ -988,33 +971,31 @@ As mentioned in Section 5, Dynamo has a request coordination component that uses
 </li>
 <li>Note that if Dynamo’s versioning scheme is based on physical timestamps, any node can coordinate a write request.（我的理解是，如果时间戳可以在所有集群上都同步的话，或者是差别比较小的话，实际上可以由任意节点来发起写操作）
 </li>
+<li>实际上HBase也有这个问题。我之前遇到过clock skew问题结果HBase拒绝工作。所以我觉得dynamo完全可以假设这个条件，这样任意节点都可以发起写操作了
+</li>
 </ul>
 
 
 <p>
-<b>note(dirlt)：实际上HBase也有这个问题。我之前遇到过clock skew问题结果HBase拒绝工作。所以我觉得dynamo完全可以假设这个条件，这样任意节点都可以发起写操作了</b>
-</p>
-
-<p>
-client-driven工作方式大致如下： An alternative approach to request coordination is to move the state machine to the client nodes. In this scheme client applications use a library to perform request coordination locally. 
+client-driven工作方式大致如下： An alternative approach to request coordination is to move the state machine to the client nodes. In this scheme client applications use a library to perform request coordination locally.
 </p><ul>
 <li>A client periodically picks a random Dynamo node and downloads its current view of Dynamo membership state. （很明显client需要得到membership信息，如何更新这个信息后面会给出解决办法）
 </li>
-<li>Using this information the client can determine which set of nodes form the preference list for any given key. 
+<li>Using this information the client can determine which set of nodes form the preference list for any given key.
 </li>
-<li>Read requests can be coordinated at the client node thereby avoiding the extra network hop that is incurred if the request were assigned to a random Dynamo node by the load balancer. 
+<li>Read requests can be coordinated at the client node thereby avoiding the extra network hop that is incurred if the request were assigned to a random Dynamo node by the load balancer.
 </li>
 <li>Writes will either be forwarded to a node in the key’s preference list or can be coordinated locally if Dynamo is using timestamps based versioning.
 </li>
 </ul>
 
-<p>An important advantage of the client-driven coordination approach is that a load balancer is no longer required to uniformly distribute client load. Fair load distribution is implicitly guaranteed by the near uniform assignment of keys to the storage nodes. todo(dirlt)：？？？
+<p>An important advantage of the client-driven coordination approach is that a load balancer is no longer required to uniformly distribute client load. Fair load distribution is implicitly guaranteed by the near uniform assignment of keys to the storage nodes.
 </p>
 <p>
 Obviously, the efficiency of this scheme is dependent on how fresh the membership information is at the client. Currently clients poll a random Dynamo node every 10 seconds for membership updates. A pull based approach was chosen over a push based one as the former scales better with large number of clients and requires very little state to be maintained at servers regarding clients. However, in the worst case the client can be exposed to stale membership for duration of 10 seconds. In case, if the client detects its membership table is stale (for instance, when some members are unreachable), it will immediately refresh its membership information.（现在membership的更新方式是每隔10s和随机节点做同步，由client主动发起）
 </p>
 <p>
-Table 2 shows the latency improvements at the 99.9th  percentile and averages that were observed for a period of 24 hours using client-driven coordination compared to the server-driven approach. As seen in the table, the client-driven coordination approach reduces the latencies by at least 30 milliseconds for 99.9th percentile latencies and decreases the average by 3 to 4 milliseconds. <b>The latency improvement is because the client-driven approach eliminates the overhead of the load balancer and the extra network hop that may be incurred when a request is assigned to a random node.</b> As seen in the table, average latencies tend to be significantly lower than latencies at the 99.9th percentile. <b>This is because Dynamo’s storage engine caches and write buffer have good hit ratios.</b> Moreover, since the load balancers and network introduce additional variability to the response time, the gain in response time is higher for the 99.9th percentile than the average. <b>note(dirlt)：似乎说的不错，cache是造成average和99.9%的延迟差别较大的主要原因</b>
+Table 2 shows the latency improvements at the 99.9th  percentile and averages that were observed for a period of 24 hours using client-driven coordination compared to the server-driven approach. As seen in the table, the client-driven coordination approach reduces the latencies by at least 30 milliseconds for 99.9th percentile latencies and decreases the average by 3 to 4 milliseconds. <b>The latency improvement is because the client-driven approach eliminates the overhead of the load balancer and the extra network hop that may be incurred when a request is assigned to a random node.</b> As seen in the table, average latencies tend to be significantly lower than latencies at the 99.9th percentile. <b>This is because Dynamo’s storage engine caches and write buffer have good hit ratios.</b> Moreover, since the load balancers and network introduce additional variability to the response time, the gain in response time is higher for the 99.9th percentile than the average. #note: 似乎说的不错，cache是造成average和99.9%的延迟差别较大的主要原因
 </p>
 <p>
 <img src="images/dynamo-client-and-server-driven.png"  alt="./images/dynamo-client-and-server-driven.png" />
@@ -1023,9 +1004,9 @@ Table 2 shows the latency improvements at the 99.9th  percentile and averages th
 
 </div>
 
-<div id="outline-container-1-7-6" class="outline-4">
-<h4 id="sec-1-7-6"><span class="section-number-4">1.7.6</span> Balancing background vs. foreground tasks</h4>
-<div class="outline-text-4" id="text-1-7-6">
+<div id="outline-container-7-6" class="outline-4">
+<h4 id="sec-7-6"><span class="section-number-4">7.6</span> Balancing background vs. foreground tasks</h4>
+<div class="outline-text-4" id="text-7-6">
 
 <p>Each node performs different kinds of background tasks for replica synchronization and data handoff (either due to hinting or adding/removing nodes) in addition to its normal foreground put/get operations. In early production settings, these background tasks triggered the problem of resource contention and affected the performance of the regular put and get operations. Hence, it became necessary to ensure that background tasks ran only when the regular critical operations are not affected significantly.（后台任务会影响到前台任务，而很明显前台任务的优先级更高）
 </p>
@@ -1033,15 +1014,15 @@ Table 2 shows the latency improvements at the 99.9th  percentile and averages th
 To this end, the background tasks were integrated with an admission control mechanism. Each of the background tasks uses this controller to reserve runtime slices of the resource (e.g. database), shared across all background tasks. A feedback mechanism based on the monitored performance of the foreground tasks is employed to change the number of slices that are available to the background tasks.（通过反馈系统来调节后台任务运行时间片，减少后台任务对于前台任务的影响）
 </p>
 <p>
-The admission controller constantly monitors the behavior of resource accesses while executing a "foreground" put/get operation. <b>Monitored aspects include latencies for disk operations, failed database accesses due to lock-contention and transaction timeouts, and request queue wait times. This information is used to check whether the percentiles of latencies (or failures) in a given trailing time window are close to a desired threshold.</b> For example, the background controller checks to see how close the 99th percentile database read latency (over the last 60 seconds) is to a preset threshold (say 50ms). The controller uses such comparisons to assess the resource availability for the foreground operations. Subsequently, it decides on how many time slices will be available to background tasks, thereby using the feedback loop to limit the intrusiveness of the background activities. 
+The admission controller constantly monitors the behavior of resource accesses while executing a "foreground" put/get operation. <b>Monitored aspects include latencies for disk operations, failed database accesses due to lock-contention and transaction timeouts, and request queue wait times. This information is used to check whether the percentiles of latencies (or failures) in a given trailing time window are close to a desired threshold.</b> For example, the background controller checks to see how close the 99th percentile database read latency (over the last 60 seconds) is to a preset threshold (say 50ms). The controller uses such comparisons to assess the resource availability for the foreground operations. Subsequently, it decides on how many time slices will be available to background tasks, thereby using the feedback loop to limit the intrusiveness of the background activities.
 </p>
 </div>
 
 </div>
 
-<div id="outline-container-1-7-7" class="outline-4">
-<h4 id="sec-1-7-7"><span class="section-number-4">1.7.7</span> Discussion</h4>
-<div class="outline-text-4" id="text-1-7-7">
+<div id="outline-container-7-7" class="outline-4">
+<h4 id="sec-7-7"><span class="section-number-4">7.7</span> Discussion</h4>
+<div class="outline-text-4" id="text-7-7">
 
 <p>In particular, applications have received successful responses (without timing out) for 99.9995% of its requests and no data loss event has occurred to date.
 </p>
@@ -1050,18 +1031,18 @@ The admission controller constantly monitors the behavior of resource accesses w
 
 </div>
 
-<div id="outline-container-1-8" class="outline-3">
-<h3 id="sec-1-8"><span class="section-number-3">1.8</span> CONCLUSIONS</h3>
-<div class="outline-text-3" id="text-1-8">
+<div id="outline-container-8" class="outline-3">
+<h3 id="sec-8"><span class="section-number-3">8</span> CONCLUSIONS</h3>
+<div class="outline-text-3" id="text-8">
 
 
 </div>
 
 </div>
 
-<div id="outline-container-1-9" class="outline-3">
-<h3 id="sec-1-9"><span class="section-number-3">1.9</span> NOTES</h3>
-<div class="outline-text-3" id="text-1-9">
+<div id="outline-container-9" class="outline-3">
+<h3 id="sec-9"><span class="section-number-3">9</span> NOTES</h3>
+<div class="outline-text-3" id="text-9">
 
 
 <hr/>
@@ -1079,13 +1060,10 @@ Dynamo采用无中心节点的P2P设计，增加了系统可扩展性，但是�
 </p></div>
 </div>
 </div>
-</div>
 
 <div id="postamble">
-<p class="date">Date: 2014-12-18T11:29+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'dynamo.html';var disqus_title = 'dynamo.html';var disqus_url = 'http://dirlt.com/dynamo.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'dynamo.html';var disqus_title = 'dynamo.html';var disqus_url = 'http://dirlt.com/dynamo.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

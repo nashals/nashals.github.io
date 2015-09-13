@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
-<title>parquet</title>
+<head>
+<title>Parquet</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="parquet"/>
+<meta name="title" content="Parquet"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:43+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,29 +62,14 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
 </div>
 
 <div id="content">
-<h1 class="title">parquet</h1>
-
-
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="parquet.html#sec-1">1 parquet</a></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> parquet</h2>
-<div class="outline-text-2" id="text-1">
-
+<h1 class="title">Parquet</h1>
 
 <ul>
 <li><a href="http://parquet.io/">http://parquet.io/</a>
@@ -185,7 +169,7 @@ File Metadata
 
 
 <p>
-下图表示如何使用这个文件 note(dirlt): 注意这里repetition level和definition level是单独存放的。因为它们都是相对较小的整数所以可以使用RLE或者是bit-pack来达到非常高的压缩比。
+下图表示如何使用这个文件 #note: 注意这里repetition level和definition level是单独存放的。因为它们都是相对较小的整数所以可以使用RLE或者是bit-pack来达到非常高的压缩比。
 </p>
 <p>
 <img src="images/parquet-file-format.gif"  alt="./images/parquet-file-format.gif" />
@@ -197,7 +181,7 @@ There are three types of metadata: file metadata, column (chunk) metadata and pa
 <img src="images/parquet-metadata.gif"  alt="./images/parquet-metadata.gif" />
 </p>
 <p>
-note(dirlt): 我觉得在DataPageHeader里面还应该存放num_rows，表示这个page里面到底有多少个record. 这样我们才能够提过一些page读取到某个record. 或许这个信息已经存放在IndexPageHeader里面了？这里DictionaryPageHeader是为后面提到的Encoding使用的。
+#note: 我觉得在DataPageHeader里面还应该存放num_rows，表示这个page里面到底有多少个record. 这样我们才能够提过一些page读取到某个record. 或许这个信息已经存放在IndexPageHeader里面了？这里DictionaryPageHeader是为后面提到的Encoding使用的。
 </p>
 
 <hr/>
@@ -333,7 +317,7 @@ Each block contains
 
 
 <p>
-note(dirlt): 每个minblocks应该都可以被向量指令处理，min-delta引入是为了处理正数加快速度。而为每个minblocks引入不同的bitwidth可以有效减少存储空间。
+#note: 每个minblocks应该都可以被向量指令处理，min-delta引入是为了处理正数加快速度。而为每个minblocks引入不同的bitwidth可以有效减少存储空间。
 </p>
 <p>
 <b>Delta-length byte array: (DELTA_LENGTH_BYTE_ARRAY = 6)</b>
@@ -350,14 +334,10 @@ This is also known as incremental encoding or front compression: for each elemen
 <p>
 举个例子"AB", "ABC", "ABCD", 前缀压缩之后成为&lt;0&gt;"AB", &lt;2&gt;"C", &lt;3&gt;"D". 最终压缩结果是DeltaEncoding(0,2,3) DeltaEncoding(2,1,1) "ABCD".
 </p></div>
-</div>
-</div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:43+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'parquet.html';var disqus_title = 'parquet.html';var disqus_url = 'http://dirlt.com/parquet.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'parquet.html';var disqus_title = 'parquet.html';var disqus_url = 'http://dirlt.com/parquet.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

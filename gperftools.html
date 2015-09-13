@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<head>
 <title>gperftools</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="gperftools"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:43+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,7 +62,7 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
@@ -72,40 +71,25 @@
 <div id="content">
 <h1 class="title">gperftools</h1>
 
+<p><a href="https://code.google.com/p/gperftools">https://code.google.com/p/gperftools</a>
+</p>
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="gperftools.html#sec-1">1 gperftools</a>
-<ul>
-<li><a href="gperftools.html#sec-1-1">1.1 tcmalloc</a></li>
-<li><a href="gperftools.html#sec-1-2">1.2 heap checker</a></li>
-<li><a href="gperftools.html#sec-1-3">1.3 heap profiler</a></li>
-<li><a href="gperftools.html#sec-1-4">1.4 cpu profiler</a></li>
-<li><a href="gperftools.html#sec-1-5">1.5 google pprof</a></li>
-</ul>
-</li>
+<li><a href="gperftools.html#sec-1">1 tcmalloc</a></li>
+<li><a href="gperftools.html#sec-2">2 heap checker</a></li>
+<li><a href="gperftools.html#sec-3">3 heap profiler</a></li>
+<li><a href="gperftools.html#sec-4">4 cpu profiler</a></li>
+<li><a href="gperftools.html#sec-5">5 google pprof</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> gperftools</h2>
-<div class="outline-text-2" id="text-1">
-
-<ul>
-<li><a href="https://code.google.com/p/gperftools">https://code.google.com/p/gperftools</a>
-</li>
-</ul>
-
-
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> tcmalloc</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> tcmalloc</h3>
+<div class="outline-text-3" id="text-1">
 
 <p>see <a href="tcmalloc.html">TCMalloc</a>
 </p>
@@ -113,35 +97,22 @@
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> heap checker</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> heap checker</h3>
+<div class="outline-text-3" id="text-2">
 
 <p><a href="http://gperftools.googlecode.com/svn/trunk/doc/heap_checker.html">http://gperftools.googlecode.com/svn/trunk/doc/heap_checker.html</a>
 </p>
 <p>
-这个组件是用来检查内存泄漏的，<a href="sanitizer.html">这里</a> 还有一个google的组件也是做类似事情。
+用来检查内存泄漏的，<a href="sanitizer.html">这里</a> 还有一个google的组件也是做类似事情。
 </p>
-<p>
-note(dirlt): 没有继续研究下去. 因为没有成功运行测试程序。并且程序最后还一直hang着不退出。
-</p>
-
-
-<pre class="example">➜  ~  g++ main.cc -ltcmalloc_and_profiler
-➜  ~  HEAPCHECK=normal ./a.out
-WARNING: Perftools heap leak checker is active -- Performance may suffer
-(nil), -1243309312
-Check failed: !do_main_heap_check: should have done it
-</pre>
-
-
 </div>
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> heap profiler</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> heap profiler</h3>
+<div class="outline-text-3" id="text-3">
 
 <p><a href="http://gperftools.googlecode.com/svn/trunk/doc/heapprofile.html">http://gperftools.googlecode.com/svn/trunk/doc/heapprofile.html</a>
 </p>
@@ -167,7 +138,7 @@ This is the heap profiler we use at Google, to explore how C++ programs manage m
 </li>
 </ul>
 
-<p>下面是一些控制行为的环境变量. 分配量超过某个阈值/使用量超过某个阈值/定时器都会触发dump. 
+<p>下面是一些控制行为的环境变量. 分配量超过某个阈值/使用量超过某个阈值/定时器都会触发dump.
 </p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" /><col class="left" />
 </colgroup>
@@ -198,7 +169,7 @@ HEAP_PROFILE_MMAP = NOTE: this causes the profiler to profile calls internal to 
 </pre>
 
 <p>
-可以挑选其中一个来看.也可以挑选其中两个比如A,B, 将B作为base(&ndash;base=), 然后从A中减去B得到的profile. 
+可以挑选其中一个来看.也可以挑选其中两个比如A,B, 将B作为base(&ndash;base=), 然后从A中减去B得到的profile.
 </p>
 <p>
 下面是一个图形输出样例
@@ -257,14 +228,11 @@ A few explanations:
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> cpu profiler</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> cpu profiler</h3>
+<div class="outline-text-3" id="text-4">
 
 <p><a href="http://gperftools.googlecode.com/svn/trunk/doc/cpuprofile.html">http://gperftools.googlecode.com/svn/trunk/doc/cpuprofile.html</a>
-</p>
-<p>
-note(dirlt): 这个组件值得好好研究一下. 这里有profile文件输出格式 <a href="http://gperftools.googlecode.com/svn/trunk/doc/cpuprofile-fileformat.html">http://gperftools.googlecode.com/svn/trunk/doc/cpuprofile-fileformat.html</a> heap-profiler用的应该也是这个格式
 </p>
 <p>
 有三种调用方式：
@@ -290,15 +258,15 @@ note(dirlt): 这个组件值得好好研究一下. 这里有profile文件输出�
 <p>
 每个字段含义分别是：（其中第三个字段含义和heap-profiler文本输出中第三个字段含义是相同的）
 </p><ul>
-<li>Number of profiling samples in this function
+<li>Number of profiling samples in this function # 当前函数采样次数
 </li>
-<li>Percentage of profiling samples in this function
+<li>Percentage of profiling samples in this function # 采样百分比
 </li>
-<li>Percentage of profiling samples in the functions printed so far
+<li>Percentage of profiling samples in the functions printed so far # 看heapprofiler中的解释，第k行值是前面k行的采样百分比总和
 </li>
-<li>Number of profiling samples in this function and its callees
+<li>Number of profiling samples in this function and its callees # 当前函数（包括子调用）累积采样次数
 </li>
-<li>Percentage of profiling samples in this function and its callees
+<li>Percentage of profiling samples in this function and its callees # 累积采样百分比
 </li>
 <li>Function name
 </li>
@@ -324,7 +292,7 @@ note(dirlt): 这个组件值得好好研究一下. 这里有profile文件输出�
 </li>
 </ul>
 
-<p>local/cum中数值是指采样到的次数。如果采样率是100的话，那么每次采样可以认为是0.01s. 这里有必要也看看header信息
+<p>local/cum中数值是指采样到的次数。如果采样率是100的话，那么每次采样可以认为是0.01s. header信息中
 </p>
 
 
@@ -336,7 +304,7 @@ note(dirlt): 这个组件值得好好研究一下. 这里有profile文件输出�
 </pre>
 
 <p>
-说明采样202次，并且也全部展示出来(focus).丢弃采样&lt;=1的节点
+说明采样202次，并且全部展示出来(focus = 202)，同时丢弃采样&lt;=1的节点
 </p>
 <p>
 最后一种是输出为callgrind格式，可以使用kcallgrind工具来查看
@@ -366,11 +334,11 @@ The cost is specified in 'hits', i.e. how many times a function appears in the r
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> google pprof</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> google pprof</h3>
+<div class="outline-text-3" id="text-5">
 
-<p>heap-profiler以及cpu-profiler输出文件都需要pprof来查看.
+<p>heap-profiler以及cpu-profiler输出文件都需要pprof来查看. profile文件输出格式 <a href="http://gperftools.googlecode.com/svn/trunk/doc/cpuprofile-fileformat.html">http://gperftools.googlecode.com/svn/trunk/doc/cpuprofile-fileformat.html</a>
 </p>
 <p>
 pprof requires perl5 to be installed to run. It also requires dot to be installed for any of the graphical output routines, and gv to be installed for &ndash;gv mode (described below). Here are some ways to call pprof. These are described in more detail below.
@@ -399,116 +367,77 @@ pprof requires perl5 to be installed to run. It also requires dot to be installe
 
 
 <p>
-输出格式选项 Output type:
-</p><ol>
-<li>&ndash;text     Produces a textual listing. (Note: If you have an X display, and dot and gv installed, you will probably be happier with the &ndash;gv output.)
+输出格式选项(Output type):
+</p><ul>
+<li>&ndash;text # Produces a textual listing. (Note: If you have an X display, and dot and gv installed, you will probably be happier with the &ndash;gv output.)
 </li>
-<li>&ndash;gv       Generates annotated call-graph, converts to postscript, and displays via gv (requres dot and gv be installed).
+<li>&ndash;gv # Generates annotated call-graph, converts to postscript, and displays via gv (requres dot and gv be installed).
 </li>
-<li>&ndash;dot      Generates the annotated call-graph in dot format and emits to stdout (requres dot be installed).
+<li>&ndash;dot # Generates the annotated call-graph in dot format and emits to stdout (requres dot be installed).
 </li>
-<li>&ndash;ps       Generates the annotated call-graph in Postscript format and emits to stdout (requres dot be installed).
+<li>&ndash;ps # Generates the annotated call-graph in Postscript format and emits to stdout (requres dot be installed).
 </li>
-<li>&ndash;pdf      Generates the annotated call-graph in PDF format and emits to stdout (requires dot and ps2pdf be installed).
+<li>&ndash;pdf # Generates the annotated call-graph in PDF format and emits to stdout (requires dot and ps2pdf be installed).
 </li>
-<li>&ndash;gif      Generates the annotated call-graph in GIF format and emits to stdout (requres dot be installed).
+<li>&ndash;gif # Generates the annotated call-graph in GIF format and emits to stdout (requres dot be installed).
 </li>
-<li>&ndash;list=&lt;regexp&gt;    Outputs source-code listing of routines whose name matches &lt;regexp&gt;. Each line in the listing is annotated with flat and cumulative sample counts. In the presence of inlined calls, the samples associated with inlined code tend to get assigned to a line that follows the location of the inlined call. A more precise accounting can be obtained by disassembling the routine using the &ndash;disasm flag.
+<li>&ndash;list=&lt;regexp&gt; # Outputs source-code listing of routines whose name matches &lt;regexp&gt;. Each line in the listing is annotated with flat and cumulative sample counts. In the presence of inlined calls, the samples associated with inlined code tend to get assigned to a line that follows the location of the inlined call. A more precise accounting can be obtained by disassembling the routine using the &ndash;disasm flag.
 </li>
-<li>&ndash;disasm=&lt;regexp&gt;   Generates disassembly of routines that match &lt;regexp&gt;, annotated with flat and cumulative sample counts and emits to stdout.
+<li>&ndash;disasm=&lt;regexp&gt; # Generates disassembly of routines that match &lt;regexp&gt;, annotated with flat and cumulative sample counts and emits to stdout.
 </li>
-</ol>
-
-
-
-
-<pre class="example">Output type:
-   --text              Generate text report
-   --callgrind         Generate callgrind format to stdout
-   --gv                Generate Postscript and display
-   --evince            Generate PDF and display
-   --web               Generate SVG and display
-   --list=&lt;regexp&gt;     Generate source listing of matching routines
-   --disasm=&lt;regexp&gt;   Generate disassembly of matching routines
-   --symbols           Print demangled symbol names found at given addresses
-   --dot               Generate DOT file to stdout
-   --ps                Generate Postcript to stdout
-   --pdf               Generate PDF to stdout
-   --svg               Generate SVG to stdout
-   --gif               Generate GIF to stdout
-   --raw               Generate symbolized pprof data (useful with remote fetch)
-</pre>
+</ul>
 
 
 <p>
-展现粒度选项 Reporting Granularity [函数级别粒度正好]
-</p><ol>
-<li>&ndash;addresses        Produce one node per program address.
+展现粒度选项(Reporting Granularity) # 函数级别粒度恰好
+</p><ul>
+<li>&ndash;addresses # Produce one node per program address.
 </li>
-<li>&ndash;lines    Produce one node per source line.
+<li>&ndash;lines # Produce one node per source line.
 </li>
-<li>&ndash;functions        Produce one node per function (this is the default).
+<li>&ndash;functions # Produce one node per function (this is the default).
 </li>
-<li>&ndash;files    Produce one node per source file.
+<li>&ndash;files # Produce one node per source file.
 </li>
-</ol>
+</ul>
 
 
 <p>
-调用关系图选项. 可以选择只展示部分图. 其中focus/ignore可以选择只展示涉及到某个regexp的调用路径。
-</p><ol>
-<li>&ndash;nodecount=&lt;n&gt;    This option controls the number of displayed nodes. The nodes are first sorted by decreasing cumulative count, and then only the top N nodes are kept. The default value is 80.
+调用关系图选项(Call-graph Options). 可以选择只展示部分图. focus/ignore可以选择只展示涉及到某个regexp的调用路径。
+</p><ul>
+<li>&ndash;nodecount=&lt;n&gt; # This option controls the number of displayed nodes. The nodes are first sorted by decreasing cumulative count, and then only the top N nodes are kept. The default value is 80.
 </li>
-<li>&ndash;nodefraction=&lt;f&gt;         This option provides another mechanism for discarding nodes from the display. If the cumulative count for a node is less than this option's value multiplied by the total count for the profile, the node is dropped. The default value is 0.005; i.e. nodes that account for less than half a percent of the total time are dropped. A node is dropped if either this condition is satisfied, or the &ndash;nodecount condition is satisfied.
+<li>&ndash;nodefraction=&lt;f&gt; # This option provides another mechanism for discarding nodes from the display. If the cumulative count for a node is less than this option's value multiplied by the total count for the profile, the node is dropped. The default value is 0.005; i.e. nodes that account for less than half a percent of the total time are dropped. A node is dropped if either this condition is satisfied, or the &ndash;nodecount condition is satisfied.
 </li>
-<li>&ndash;edgefraction=&lt;f&gt;         This option controls the number of displayed edges. First of all, an edge is dropped if either its source or destination node is dropped. Otherwise, the edge is dropped if the sample count along the edge is less than this option's value multiplied by the total count for the profile. The default value is 0.001; i.e., edges that account for less than 0.1% of the total time are dropped.
+<li>&ndash;edgefraction=&lt;f&gt; # This option controls the number of displayed edges. First of all, an edge is dropped if either its source or destination node is dropped. Otherwise, the edge is dropped if the sample count along the edge is less than this option's value multiplied by the total count for the profile. The default value is 0.001; i.e., edges that account for less than 0.1% of the total time are dropped.
 </li>
-<li>&ndash;focus=&lt;re&gt;       This option controls what region of the graph is displayed based on the regular expression supplied with the option. For any path in the callgraph, we check all nodes in the path against the supplied regular expression. If none of the nodes match, the path is dropped from the output.
+<li>&ndash;focus=&lt;re&gt; # This option controls what region of the graph is displayed based on the regular expression supplied with the option. For any path in the callgraph, we check all nodes in the path against the supplied regular expression. If none of the nodes match, the path is dropped from the output.
 </li>
-<li>&ndash;ignore=&lt;re&gt;      This option controls what region of the graph is displayed based on the regular expression supplied with the option. For any path in the callgraph, we check all nodes in the path against the supplied regular expression. If any of the nodes match, the path is dropped from the output.
+<li>&ndash;ignore=&lt;re&gt; # This option controls what region of the graph is displayed based on the regular expression supplied with the option. For any path in the callgraph, we check all nodes in the path against the supplied regular expression. If any of the nodes match, the path is dropped from the output.
 </li>
-</ol>
-
-
-
-
-<pre class="example">Call-graph Options:
-   --nodecount=&lt;n&gt;     Show at most so many nodes [default=80]
-   --nodefraction=&lt;f&gt;  Hide nodes below &lt;f&gt;*total [default=.005]
-   --edgefraction=&lt;f&gt;  Hide edges below &lt;f&gt;*total [default=.001]
-   --maxdegree=&lt;n&gt;     Max incoming/outgoing edges per node [default=8]
-   --focus=&lt;regexp&gt;    Focus on nodes matching &lt;regexp&gt;
-   --ignore=&lt;regexp&gt;   Ignore nodes matching &lt;regexp&gt;
-   --scale=&lt;n&gt;         Set GV scaling [default=0]
-   --heapcheck         Make nodes with non-0 object counts
-                       (i.e. direct leak generators) more visible
-</pre>
+</ul>
 
 
 <p>
-heap-profiler选项. 可以显示开辟/使用空间大小，也可以显示开辟/使用对象数量
-</p>
+heap-profiler选项(Heap-Profile Options). 可以显示开辟/使用空间大小，也可以显示开辟/使用对象数量
+</p><ul>
+<li>&ndash;inuse_space # Display the number of in-use megabytes (i.e. space that has been allocated but not freed). This is the default.
+</li>
+<li>&ndash;inuse_objects # Display the number of in-use objects (i.e. number of objects that have been allocated but not freed).
+</li>
+<li>&ndash;alloc_space # Display the number of allocated megabytes. This includes the space that has since been de-allocated. Use this if you want to find the main allocation sites in the program.
+</li>
+<li>&ndash;alloc_objects # Display the number of allocated objects. This includes the objects that have since been de-allocated. Use this if you want to find the main allocation sites in the program.
+</li>
+</ul>
 
-
-<pre class="example">Heap-Profile Options:
-   --inuse_space       Display in-use (mega)bytes [default]
-   --inuse_objects     Display in-use objects
-   --alloc_space       Display allocated (mega)bytes
-   --alloc_objects     Display allocated objects
-   --show_bytes        Display space in bytes
-   --drop_negative     Ignore negative differences
-</pre>
-
-</div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:43+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'gperftools.html';var disqus_title = 'gperftools.html';var disqus_url = 'http://dirlt.com/gperftools.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'gperftools.html';var disqus_title = 'gperftools.html';var disqus_url = 'http://dirlt.com/gperftools.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

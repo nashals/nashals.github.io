@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
-<title>mapreduce</title>
+<head>
+<title>MapReduce: Simplified Data Processing on Large Clusters</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="mapreduce"/>
+<meta name="title" content="MapReduce: Simplified Data Processing on Large Clusters"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:43+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,96 +62,75 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
 </div>
 
 <div id="content">
-<h1 class="title">mapreduce</h1>
+<h1 class="title">MapReduce: Simplified Data Processing on Large Clusters</h1>
 
+<p><a href="http://research.google.com/archive/mapreduce.html">http://research.google.com/archive/mapreduce.html</a> @ 2004
+</p>
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="mapreduce.html#sec-1">1 mapreduce</a>
+<li><a href="mapreduce.html#sec-1">1 Abstract</a></li>
+<li><a href="mapreduce.html#sec-2">2 Introduction</a></li>
+<li><a href="mapreduce.html#sec-3">3 Programming Model</a></li>
+<li><a href="mapreduce.html#sec-4">4 Implementation</a>
 <ul>
-<li><a href="mapreduce.html#sec-1-1">1.1 Abstract</a></li>
-<li><a href="mapreduce.html#sec-1-2">1.2 Introduction</a></li>
-<li><a href="mapreduce.html#sec-1-3">1.3 Programming Model</a></li>
-<li><a href="mapreduce.html#sec-1-4">1.4 Implementation</a>
+<li><a href="mapreduce.html#sec-4-1">4.1 Execution Overview</a></li>
+<li><a href="mapreduce.html#sec-4-2">4.2 Master Data Structures</a></li>
+<li><a href="mapreduce.html#sec-4-3">4.3 Fault Tolerance</a></li>
+<li><a href="mapreduce.html#sec-4-4">4.4 Locality</a></li>
+<li><a href="mapreduce.html#sec-4-5">4.5 Task Granularity</a></li>
+<li><a href="mapreduce.html#sec-4-6">4.6 Backup Tasks</a></li>
+</ul>
+</li>
+<li><a href="mapreduce.html#sec-5">5 Refinements</a>
 <ul>
-<li><a href="mapreduce.html#sec-1-4-1">1.4.1 Execution Overview</a></li>
-<li><a href="mapreduce.html#sec-1-4-2">1.4.2 Master Data Structures</a></li>
-<li><a href="mapreduce.html#sec-1-4-3">1.4.3 Fault Tolerance</a></li>
-<li><a href="mapreduce.html#sec-1-4-4">1.4.4 Locality</a></li>
-<li><a href="mapreduce.html#sec-1-4-5">1.4.5 Task Granularity</a></li>
-<li><a href="mapreduce.html#sec-1-4-6">1.4.6 Backup Tasks</a></li>
+<li><a href="mapreduce.html#sec-5-1">5.1 Partitioning Function</a></li>
+<li><a href="mapreduce.html#sec-5-2">5.2 Ordering Guarantees</a></li>
+<li><a href="mapreduce.html#sec-5-3">5.3 Combiner Function</a></li>
+<li><a href="mapreduce.html#sec-5-4">5.4 Input and Output Types</a></li>
+<li><a href="mapreduce.html#sec-5-5">5.5 Side-effects</a></li>
+<li><a href="mapreduce.html#sec-5-6">5.6 Skipping Bad Records</a></li>
+<li><a href="mapreduce.html#sec-5-7">5.7 Local Execution</a></li>
+<li><a href="mapreduce.html#sec-5-8">5.8 Status Information</a></li>
+<li><a href="mapreduce.html#sec-5-9">5.9 Counters</a></li>
 </ul>
 </li>
-<li><a href="mapreduce.html#sec-1-5">1.5 Refinements</a>
-<ul>
-<li><a href="mapreduce.html#sec-1-5-1">1.5.1 Partitioning Function</a></li>
-<li><a href="mapreduce.html#sec-1-5-2">1.5.2 Ordering Guarantees</a></li>
-<li><a href="mapreduce.html#sec-1-5-3">1.5.3 Combiner Function</a></li>
-<li><a href="mapreduce.html#sec-1-5-4">1.5.4 Input and Output Types</a></li>
-<li><a href="mapreduce.html#sec-1-5-5">1.5.5 Side-effects</a></li>
-<li><a href="mapreduce.html#sec-1-5-6">1.5.6 Skipping Bad Records</a></li>
-<li><a href="mapreduce.html#sec-1-5-7">1.5.7 Local Execution</a></li>
-<li><a href="mapreduce.html#sec-1-5-8">1.5.8 Status Information</a></li>
-<li><a href="mapreduce.html#sec-1-5-9">1.5.9 Counters</a></li>
-</ul>
-</li>
-<li><a href="mapreduce.html#sec-1-6">1.6 Performance</a></li>
-<li><a href="mapreduce.html#sec-1-7">1.7 Experience</a></li>
-<li><a href="mapreduce.html#sec-1-8">1.8 Related Work</a></li>
-<li><a href="mapreduce.html#sec-1-9">1.9 Conclusions</a></li>
-</ul>
-</li>
+<li><a href="mapreduce.html#sec-6">6 Performance</a></li>
+<li><a href="mapreduce.html#sec-7">7 Experience</a></li>
+<li><a href="mapreduce.html#sec-8">8 Related Work</a></li>
+<li><a href="mapreduce.html#sec-9">9 Conclusions</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> mapreduce</h2>
-<div class="outline-text-2" id="text-1">
-
-<ul>
-<li>link: <a href="http://research.google.com/archive/mapreduce.html">http://research.google.com/archive/mapreduce.html</a>
-</li>
-<li>title: MapReduce: Simplified Data Processing on Large Clusters 
-</li>
-<li>author: Jeffrey Dean and Sanjay Ghemawat
-</li>
-<li>date: 2004
-</li>
-</ul>
-
-
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Abstract</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> Abstract</h3>
+<div class="outline-text-3" id="text-1">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Introduction</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> Introduction</h3>
+<div class="outline-text-3" id="text-2">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Programming Model</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> Programming Model</h3>
+<div class="outline-text-3" id="text-3">
 
 <ul>
 <li>用户指定map以及reduce函数，其中map函数处理每个key/value pair,而reduce函数处理同一个key对应的所有values.
@@ -168,9 +146,9 @@
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Implementation</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> Implementation</h3>
+<div class="outline-text-3" id="text-4">
 
 <ul>
 <li>Many different implementations of the MapReduce in-terface are possible. The right choice depends on the environment. For example, one implementation may be suitable for a small shared-memory machine, another for a large NUMA multi-processor, and yet another for an even larger collection of networked machines.（mapreduce可以有很多实现，这个取决于环境。）
@@ -197,9 +175,9 @@
 
 </div>
 
-<div id="outline-container-1-4-1" class="outline-4">
-<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> Execution Overview</h4>
-<div class="outline-text-4" id="text-1-4-1">
+<div id="outline-container-4-1" class="outline-4">
+<h4 id="sec-4-1"><span class="section-number-4">4.1</span> Execution Overview</h4>
+<div class="outline-text-4" id="text-4-1">
 
 <ul>
 <li>The Map invocations are distributed across multiple machines by automatically partitioning the input data into a set of M splits. The input splits can be pro-cessed in parallel by different machines. （框架自动将输入数据拆分成为M份，每个mapper实例处理一份，分布在各个机器上面且可以同时运行。对于这个M没有办法指定）
@@ -216,7 +194,7 @@
 <p>
 整个工作逻辑是：
 </p><ul>
-<li>The MapReduce library in the user program first splits the input files into M pieces of typically 16 megabytes to 64 megabytes (MB) per piece (con-trollable by the user via an optional parameter). It then starts up many copies of the program on a clus-ter of machines.（根据输入文件大小，按照每个block 16-64M这个数值用户可以指定，来进行切分。这个数目就是mapper实例个数） <b>note(dirlt)：这个是在启动之前预先执行的动作？</b>
+<li>The MapReduce library in the user program first splits the input files into M pieces of typically 16 megabytes to 64 megabytes (MB) per piece (con-trollable by the user via an optional parameter). It then starts up many copies of the program on a clus-ter of machines.（根据输入文件大小，按照每个block 16-64M这个数值用户可以指定，来进行切分。这个数目就是mapper实例个数）
 </li>
 <li>One of the copies of the program is special – the master. The rest are workers that are assigned work by the master. There are M map tasks and R reduce tasks to assign. The master picks idle workers and assigns each one a map task or a reduce task.（所有的都是worker，其中一个worker比较特殊成为master，工作是将mapper/reducer指派到worker上面去，并且监控mapper/reducer的运行情况）
 </li>
@@ -239,9 +217,9 @@
 
 </div>
 
-<div id="outline-container-1-4-2" class="outline-4">
-<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> Master Data Structures</h4>
-<div class="outline-text-4" id="text-1-4-2">
+<div id="outline-container-4-2" class="outline-4">
+<h4 id="sec-4-2"><span class="section-number-4">4.2</span> Master Data Structures</h4>
+<div class="outline-text-4" id="text-4-2">
 
 <p>master维护的数据结构之需要包括
 </p><ul>
@@ -256,12 +234,12 @@
 
 </div>
 
-<div id="outline-container-1-4-3" class="outline-4">
-<h4 id="sec-1-4-3"><span class="section-number-4">1.4.3</span> Fault Tolerance</h4>
-<div class="outline-text-4" id="text-1-4-3">
+<div id="outline-container-4-3" class="outline-4">
+<h4 id="sec-4-3"><span class="section-number-4">4.3</span> Fault Tolerance</h4>
+<div class="outline-text-4" id="text-4-3">
 
 <ul>
-<li id="sec-1-4-3-1">Worker Failure<br/>
+<li id="sec-4-3-1">Worker Failure<br/>
 <ul>
 <li>检测worker故障是通过周期性ping来完成的。
 </li>
@@ -282,13 +260,13 @@
 </li>
 </ul>
 <ul>
-<li id="sec-1-4-3-2">Master Failure<br/>
+<li id="sec-4-3-2">Master Failure<br/>
 对于master来说可以定时地做chkp来记录自己的信息，如果挂掉的话那么可以重启来恢复之前执行情况。但是考虑到job只有一个master，挂掉几率非常小，因为可以简单地abort job，通知用户重新执行。
 
 </li>
 </ul>
 <ul>
-<li id="sec-1-4-3-3">Semantics in the Presence of Failures<br/>
+<li id="sec-4-3-3">Semantics in the Presence of Failures<br/>
 当mapper完成时候会一次将所有的R个输出文件通知给master。因为mapper是写本地文件，所以如果有两个相同mapper运行且同时完成，master只取其中一份即可。对于reducer来说的话，
 因为是将输出写到gfs上面，所以需要提供文件写原子操作。实现上可以让reducer写临时文件，然后使用提供的atomic rename操作重命名。
 
@@ -309,9 +287,9 @@
 
 </div>
 
-<div id="outline-container-1-4-4" class="outline-4">
-<h4 id="sec-1-4-4"><span class="section-number-4">1.4.4</span> Locality</h4>
-<div class="outline-text-4" id="text-1-4-4">
+<div id="outline-container-4-4" class="outline-4">
+<h4 id="sec-4-4"><span class="section-number-4">4.4</span> Locality</h4>
+<div class="outline-text-4" id="text-4-4">
 
 <p>master在选择mapper启动位置的话，会优先考虑将mapper启动到离input data近的机器上面（如果是本地的话就可以节省网络带宽）。
 </p>
@@ -319,17 +297,17 @@
 
 </div>
 
-<div id="outline-container-1-4-5" class="outline-4">
-<h4 id="sec-1-4-5"><span class="section-number-4">1.4.5</span> Task Granularity</h4>
-<div class="outline-text-4" id="text-1-4-5">
+<div id="outline-container-4-5" class="outline-4">
+<h4 id="sec-4-5"><span class="section-number-4">4.5</span> Task Granularity</h4>
+<div class="outline-text-4" id="text-4-5">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-4-6" class="outline-4">
-<h4 id="sec-1-4-6"><span class="section-number-4">1.4.6</span> Backup Tasks</h4>
-<div class="outline-text-4" id="text-1-4-6">
+<div id="outline-container-4-6" class="outline-4">
+<h4 id="sec-4-6"><span class="section-number-4">4.6</span> Backup Tasks</h4>
+<div class="outline-text-4" id="text-4-6">
 
 <ul>
 <li>One of the common causes that lengthens the total time taken for a MapReduce operation is a “straggler”: a ma-chine that takes an unusually long time to complete one of the last few map or reduce tasks in the computation.（straggler表示有某一个机器花去非常多的时间完成了最后一个mapper或者是reducer任务，使得整个任务运行时间延长）
@@ -357,24 +335,24 @@
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Refinements</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> Refinements</h3>
+<div class="outline-text-3" id="text-5">
 
 
 </div>
 
-<div id="outline-container-1-5-1" class="outline-4">
-<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> Partitioning Function</h4>
-<div class="outline-text-4" id="text-1-5-1">
+<div id="outline-container-5-1" class="outline-4">
+<h4 id="sec-5-1"><span class="section-number-4">5.1</span> Partitioning Function</h4>
+<div class="outline-text-4" id="text-5-1">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-5-2" class="outline-4">
-<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> Ordering Guarantees</h4>
-<div class="outline-text-4" id="text-1-5-2">
+<div id="outline-container-5-2" class="outline-4">
+<h4 id="sec-5-2"><span class="section-number-4">5.2</span> Ordering Guarantees</h4>
+<div class="outline-text-4" id="text-5-2">
 
 <ul>
 <li>We guarantee that within a given partition, the interme-diate key/value pairs are processed in increasing key or-der. （确保产生的key/value pairs都是按照key进行排序的）
@@ -386,14 +364,14 @@
 
 </div>
 
-<div id="outline-container-1-5-3" class="outline-4">
-<h4 id="sec-1-5-3"><span class="section-number-4">1.5.3</span> Combiner Function</h4>
-<div class="outline-text-4" id="text-1-5-3">
+<div id="outline-container-5-3" class="outline-4">
+<h4 id="sec-5-3"><span class="section-number-4">5.3</span> Combiner Function</h4>
+<div class="outline-text-4" id="text-5-3">
 
 <p>combiner可以使得在mapper本地就进行一些reducer操作。通常这些操作可以使得输出减少很多，这样reducer可以节省带宽。
 </p>
 <ul>
-<li>The Combiner function is executed on each machine that performs a map task. 
+<li>The Combiner function is executed on each machine that performs a map task.
 </li>
 <li>Typically the same code is used to implement both the combiner and the reduce func-tions. （combiner和reducer使用相同的reduce代码）
 </li>
@@ -402,15 +380,8 @@
 </ul>
 
 
-<p>
-<b>note(dirlt)：如果是这样的话，那么可以认为mapper阶段是要做排序的，不然combiner和reducer就不能够使用相同代码了。排序要是有好处的，这样在reducer排序直接使用归并排序即可。</b>
-</p>
 
 <hr/>
-
-<p>
-<b>note(dirlt)：关于reduce语义问题</b>
-</p>
 <p>
 这个多谢邓业强同学的提醒。我们假设reduce API是这样的
 </p>
@@ -434,9 +405,9 @@
 
 </div>
 
-<div id="outline-container-1-5-4" class="outline-4">
-<h4 id="sec-1-5-4"><span class="section-number-4">1.5.4</span> Input and Output Types</h4>
-<div class="outline-text-4" id="text-1-5-4">
+<div id="outline-container-5-4" class="outline-4">
+<h4 id="sec-5-4"><span class="section-number-4">5.4</span> Input and Output Types</h4>
+<div class="outline-text-4" id="text-5-4">
 
 <p>允许用户自定义reader/writer
 </p>
@@ -444,9 +415,9 @@
 
 </div>
 
-<div id="outline-container-1-5-5" class="outline-4">
-<h4 id="sec-1-5-5"><span class="section-number-4">1.5.5</span> Side-effects</h4>
-<div class="outline-text-4" id="text-1-5-5">
+<div id="outline-container-5-5" class="outline-4">
+<h4 id="sec-5-5"><span class="section-number-4">5.5</span> Side-effects</h4>
+<div class="outline-text-4" id="text-5-5">
 
 <p>如果程序有side-effect的话，那么需要保证这个side-effect是原子并且是幂等的。
 </p>
@@ -454,9 +425,9 @@
 
 </div>
 
-<div id="outline-container-1-5-6" class="outline-4">
-<h4 id="sec-1-5-6"><span class="section-number-4">1.5.6</span> Skipping Bad Records</h4>
-<div class="outline-text-4" id="text-1-5-6">
+<div id="outline-container-5-6" class="outline-4">
+<h4 id="sec-5-6"><span class="section-number-4">5.6</span> Skipping Bad Records</h4>
+<div class="outline-text-4" id="text-5-6">
 
 <p>实现方法非常巧妙：
 </p><ul>
@@ -475,9 +446,9 @@
 
 </div>
 
-<div id="outline-container-1-5-7" class="outline-4">
-<h4 id="sec-1-5-7"><span class="section-number-4">1.5.7</span> Local Execution</h4>
-<div class="outline-text-4" id="text-1-5-7">
+<div id="outline-container-5-7" class="outline-4">
+<h4 id="sec-5-7"><span class="section-number-4">5.7</span> Local Execution</h4>
+<div class="outline-text-4" id="text-5-7">
 
 <p>方便调试以及测试。
 </p>
@@ -485,9 +456,9 @@
 
 </div>
 
-<div id="outline-container-1-5-8" class="outline-4">
-<h4 id="sec-1-5-8"><span class="section-number-4">1.5.8</span> Status Information</h4>
-<div class="outline-text-4" id="text-1-5-8">
+<div id="outline-container-5-8" class="outline-4">
+<h4 id="sec-5-8"><span class="section-number-4">5.8</span> Status Information</h4>
+<div class="outline-text-4" id="text-5-8">
 
 <p>提供http接口返回当前master状态，信息包括下面这些：
 </p><ul>
@@ -505,11 +476,11 @@
 </li>
 <li>processing rates, etc.（处理速率）
 </li>
-<li>The pages also contain links to the standard error and standard output files gen-erated by each task.（标准输出和错误） 
+<li>The pages also contain links to the standard error and standard output files gen-erated by each task.（标准输出和错误）
 </li>
 <li>The user can use this data to pre-dict how long the computation will take, and whether or not more resources should be added to the computation.These pages can also be used to figure out when the com-putation is much slower than expected. （用户可以分析出计算大概需要多长时间完成，是否需要添加新的资源，以及找出计算慢的原因）
 </li>
-<li>In addition, the top-level status page shows 
+<li>In addition, the top-level status page shows
 <ul>
 <li>which workers have failed, and （哪些worker失败）
 </li>
@@ -530,9 +501,9 @@
 
 </div>
 
-<div id="outline-container-1-5-9" class="outline-4">
-<h4 id="sec-1-5-9"><span class="section-number-4">1.5.9</span> Counters</h4>
-<div class="outline-text-4" id="text-1-5-9">
+<div id="outline-container-5-9" class="outline-4">
+<h4 id="sec-5-9"><span class="section-number-4">5.9</span> Counters</h4>
+<div class="outline-text-4" id="text-5-9">
 
 <ul>
 <li>The counter values from individual worker machines are periodically propagated to the master (piggybacked on the ping response).（关于这些counter信息都是在ping response时候捎带回去给master的）
@@ -549,17 +520,17 @@
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Performance</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> Performance</h3>
+<div class="outline-text-3" id="text-6">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Experience</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-7" class="outline-3">
+<h3 id="sec-7"><span class="section-number-3">7</span> Experience</h3>
+<div class="outline-text-3" id="text-7">
 
 <ul>
 <li>We wrote the first version of the MapReduce library in February of 2003, and made significant enhancements to it in August of 2003, including the locality optimization, dynamic load balancing of task execution across worker machines, etc. （03年二月份完成，03年8月份将本地优化，动态负载均衡加入）
@@ -607,17 +578,17 @@
 
 </div>
 
-<div id="outline-container-1-8" class="outline-3">
-<h3 id="sec-1-8"><span class="section-number-3">1.8</span> Related Work</h3>
-<div class="outline-text-3" id="text-1-8">
+<div id="outline-container-8" class="outline-3">
+<h3 id="sec-8"><span class="section-number-3">8</span> Related Work</h3>
+<div class="outline-text-3" id="text-8">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-9" class="outline-3">
-<h3 id="sec-1-9"><span class="section-number-3">1.9</span> Conclusions</h3>
-<div class="outline-text-3" id="text-1-9">
+<div id="outline-container-9" class="outline-3">
+<h3 id="sec-9"><span class="section-number-3">9</span> Conclusions</h3>
+<div class="outline-text-3" id="text-9">
 
 <p>We have learned several things from this work.（从中得到的经验）：
 </p><ul>
@@ -629,17 +600,13 @@
 </li>
 </ul>
 
-
-</div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:43+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'mapreduce.html';var disqus_title = 'mapreduce.html';var disqus_url = 'http://dirlt.com/mapreduce.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'mapreduce.html';var disqus_title = 'mapreduce.html';var disqus_url = 'http://dirlt.com/mapreduce.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

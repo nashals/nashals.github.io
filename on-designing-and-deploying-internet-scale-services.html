@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<head>
 <title>On Designing and Deploying Internet-Scale Services</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="On Designing and Deploying Internet-Scale Services"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:43+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,7 +62,7 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
@@ -72,48 +71,38 @@
 <div id="content">
 <h1 class="title">On Designing and Deploying Internet-Scale Services</h1>
 
+<ul>
+<li><a href="http://duanple.blog.163.com/blog/static/70971767201352105348729/">http://duanple.blog.163.com/blog/static/70971767201352105348729/</a>
+</li>
+<li><a href="http://www.mvdirona.com/jrh/TalksAndPapers/JamesRH_Lisa.pdf">http://www.mvdirona.com/jrh/TalksAndPapers/JamesRH_Lisa.pdf</a>
+</li>
+</ul>
+
+
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="on-designing-and-deploying-internet-scale-services.html#sec-1">1 on-designing-and-deploying-internet-scale-services</a>
-<ul>
-<li><a href="on-designing-and-deploying-internet-scale-services.html#sec-1-1">1.1 Introduction</a></li>
-<li><a href="on-designing-and-deploying-internet-scale-services.html#sec-1-2">1.2 Recommendations</a></li>
-<li><a href="on-designing-and-deploying-internet-scale-services.html#sec-1-3">1.3 Overall Application Design</a></li>
-<li><a href="on-designing-and-deploying-internet-scale-services.html#sec-1-4">1.4 Automatic Management and Provisioning</a></li>
-<li><a href="on-designing-and-deploying-internet-scale-services.html#sec-1-5">1.5 Dependency Management</a></li>
-<li><a href="on-designing-and-deploying-internet-scale-services.html#sec-1-6">1.6 Release Cycle and Testing</a></li>
-<li><a href="on-designing-and-deploying-internet-scale-services.html#sec-1-7">1.7 Hardware Selection and Standardization</a></li>
-<li><a href="on-designing-and-deploying-internet-scale-services.html#sec-1-8">1.8 Operations and Capacity Planning</a></li>
-<li><a href="on-designing-and-deploying-internet-scale-services.html#sec-1-9">1.9 Auditing, Monitoring and Alerting</a></li>
-<li><a href="on-designing-and-deploying-internet-scale-services.html#sec-1-10">1.10 Graceful Degradation and Admission Control</a></li>
-<li><a href="on-designing-and-deploying-internet-scale-services.html#sec-1-11">1.11 Customer and Press Communication Plan</a></li>
-<li><a href="on-designing-and-deploying-internet-scale-services.html#sec-1-12">1.12 Customer Self-Provisioning and Self-Help</a></li>
-</ul>
-</li>
+<li><a href="on-designing-and-deploying-internet-scale-services.html#sec-1">1 Introduction</a></li>
+<li><a href="on-designing-and-deploying-internet-scale-services.html#sec-2">2 Recommendations</a></li>
+<li><a href="on-designing-and-deploying-internet-scale-services.html#sec-3">3 Overall Application Design</a></li>
+<li><a href="on-designing-and-deploying-internet-scale-services.html#sec-4">4 Automatic Management and Provisioning</a></li>
+<li><a href="on-designing-and-deploying-internet-scale-services.html#sec-5">5 Dependency Management</a></li>
+<li><a href="on-designing-and-deploying-internet-scale-services.html#sec-6">6 Release Cycle and Testing</a></li>
+<li><a href="on-designing-and-deploying-internet-scale-services.html#sec-7">7 Hardware Selection and Standardization</a></li>
+<li><a href="on-designing-and-deploying-internet-scale-services.html#sec-8">8 Operations and Capacity Planning</a></li>
+<li><a href="on-designing-and-deploying-internet-scale-services.html#sec-9">9 Auditing, Monitoring and Alerting</a></li>
+<li><a href="on-designing-and-deploying-internet-scale-services.html#sec-10">10 Graceful Degradation and Admission Control</a></li>
+<li><a href="on-designing-and-deploying-internet-scale-services.html#sec-11">11 Customer and Press Communication Plan</a></li>
+<li><a href="on-designing-and-deploying-internet-scale-services.html#sec-12">12 Customer Self-Provisioning and Self-Help</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> on-designing-and-deploying-internet-scale-services</h2>
-<div class="outline-text-2" id="text-1">
-
-
-<p>
-<a href="http://duanple.blog.163.com/blog/static/70971767201352105348729/">http://duanple.blog.163.com/blog/static/70971767201352105348729/</a>
-</p>
-<p>
-<a href="http://www.mvdirona.com/jrh/TalksAndPapers/JamesRH_Lisa.pdf">http://www.mvdirona.com/jrh/TalksAndPapers/JamesRH_Lisa.pdf</a>
-</p>
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Introduction</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> Introduction</h3>
+<div class="outline-text-3" id="text-1">
 
 <p>a set of three simple tenets worth considering up front:
 </p><ol>
@@ -130,17 +119,17 @@
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Recommendations</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> Recommendations</h3>
+<div class="outline-text-3" id="text-2">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Overall Application Design</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> Overall Application Design</h3>
+<div class="outline-text-3" id="text-3">
 
 <p>Throughout the sections that follow, a consensus emerges that firm separation of development, test, and operations isn’t the most effective approach in the ser-vices world. The trend we’ve seen when looking across many services is that low-cost administration correlates highly with how closely the development, test, and operations teams work together.
 </p>
@@ -220,9 +209,9 @@ More specific best practices for designing opera-tions-friendly services are:
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Automatic Management and Provisioning</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> Automatic Management and Provisioning</h3>
+<div class="outline-text-3" id="text-4">
 
 <p>Automating administration of a service after de-sign and deployment can be very difficult. Successful automation requires simplicity and clear, easy-to-make operational decisions. This in turn depends on a care-ful service design that, when necessary, sacrifices some latency and throughput to ease automation. The trade-off is often difficult to make, but the administra-tive savings can be more than an order of magnitude in high-scale services. In fact, the current spread be-tween the most manual and the most automated ser-vice we’ve looked at is a full two orders of magnitude in people costs.(为了更加容易自动化可能会牺牲一些延迟和吞吐，但是能够节省不止一个量级的运维管理成本)
 </p>
@@ -256,9 +245,9 @@ Best practices in designing for automation include:
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Dependency Management</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> Dependency Management</h3>
+<div class="outline-text-3" id="text-5">
 
 <p>Dependencies do make sense when
 </p><ol>
@@ -292,9 +281,9 @@ some best practices for manag-ing them are:
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Release Cycle and Testing</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> Release Cycle and Testing</h3>
+<div class="outline-text-3" id="text-6">
 
 <p>We instead recommend taking new service re-leases through standard unit, functional, and produc-tion test lab testing and then going into limited pro-duction as the final test phase. Clearly we don’t want software going into production that doesn’t work or puts data integrity at risk, so this has to be done care-fully. The following rules must be followed:（整个新服务部署是过渡地完成的，在期间必须遵循一下几点）
 </p><ol>
@@ -347,9 +336,9 @@ Some best practices for release cycle and testing include:
 
 </div>
 
-<div id="outline-container-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Hardware Selection and Standardization</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-7" class="outline-3">
+<h3 id="sec-7"><span class="section-number-3">7</span> Hardware Selection and Standardization</h3>
+<div class="outline-text-3" id="text-7">
 
 <p>The usual argument for SKU standardization is that bulk purchases can save considerable money. This is inarguably true. The larger need for hardware stan-dardization is that it allows for faster service deploy-ment and growth. If each service is purchasing their own private infrastructure, then each service has to
 </p><ol>
@@ -381,9 +370,9 @@ Best practices for hardware selection include:
 
 </div>
 
-<div id="outline-container-1-8" class="outline-3">
-<h3 id="sec-1-8"><span class="section-number-3">1.8</span> Operations and Capacity Planning</h3>
-<div class="outline-text-3" id="text-1-8">
+<div id="outline-container-8" class="outline-3">
+<h3 id="sec-8"><span class="section-number-3">8</span> Operations and Capacity Planning</h3>
+<div class="outline-text-3" id="text-8">
 
 <p>The recovery scripts need to be tested in produc-tion. <b>The general rule is that nothing works if it isn’t tested frequently so don’t implement anything the team doesn’t have the courage to use. If testing in pro- duction is too risky, the script isn’t ready or safe for use in an emergency.</b> The key point here is that disas-ters happen and it’s amazing how frequently a small disaster becomes a big disaster as a consequence of a recovery step that doesn’t work as expected. Antici-pate these events and engineer automated actions to get the service back on line without further loss of da-ta or up time.
 </p><ul>
@@ -404,9 +393,9 @@ Best practices for hardware selection include:
 
 </div>
 
-<div id="outline-container-1-9" class="outline-3">
-<h3 id="sec-1-9"><span class="section-number-3">1.9</span> Auditing, Monitoring and Alerting</h3>
-<div class="outline-text-3" id="text-1-9">
+<div id="outline-container-9" class="outline-3">
+<h3 id="sec-9"><span class="section-number-3">9</span> Auditing, Monitoring and Alerting</h3>
+<div class="outline-text-3" id="text-9">
 
 <p>Any time there is a configuration change, the ex-act change, who did it, and when it was done needs to be logged in the audit log. When production problems begin, the first question to answer is what changes have been made recently. Without a configuration au-dit trail, the answer is always ‘‘nothing’’ has changed and it’s almost always the case that what was forgotten was the change that led to the question.
 </p>
@@ -467,9 +456,9 @@ To get alerting levels correct, two metrics can help and are worth tracking: 1) 
 
 </div>
 
-<div id="outline-container-1-10" class="outline-3">
-<h3 id="sec-1-10"><span class="section-number-3">1.10</span> Graceful Degradation and Admission Control</h3>
-<div class="outline-text-3" id="text-1-10">
+<div id="outline-container-10" class="outline-3">
+<h3 id="sec-10"><span class="section-number-3">10</span> Graceful Degradation and Admission Control</h3>
+<div class="outline-text-3" id="text-10">
 
 <ul>
 <li>Support a ‘‘big red switch.’’The concept of a big red switch is to keep the vi-tal processing progressing while shedding or de-laying some non-critical workload. By design, this should never happen but it’s good to have recourse when it does. Trying to figure these out when the service is on fire is risky. If there is some load that can be queued and processed lat-er, it’s a candidate for a big red switch. If it’s possible to continue to operate the transaction system while disabling advance querying, that’s also a good candidate. The key thing is deter-mining what is minimally required if the system is in trouble, and implementing and testing the option to shut off the non-essential services when that happens. Note that a correct big red switch is reversible. Resetting the switch should be tested to ensure that the full service returns to operation, including all batch jobs and other pre-viously halted non-critical work.（关闭或者是延迟响应部分高级或者是non-critical功能来应对workload）
@@ -485,9 +474,9 @@ To get alerting levels correct, two metrics can help and are worth tracking: 1) 
 
 </div>
 
-<div id="outline-container-1-11" class="outline-3">
-<h3 id="sec-1-11"><span class="section-number-3">1.11</span> Customer and Press Communication Plan</h3>
-<div class="outline-text-3" id="text-1-11">
+<div id="outline-container-11" class="outline-3">
+<h3 id="sec-11"><span class="section-number-3">11</span> Customer and Press Communication Plan</h3>
+<div class="outline-text-3" id="text-11">
 
 <p>Systems fail, and there will be times when laten-cy or other issues must be communicated to cus-tomers. Communications should be made available through multiple channels in an opt-in basis: RSS, web, instant messages, email, etc. For those services with clients, the ability for the service to communicate with the user through the client can be very useful. The client can be asked to back off until some specific time or for some duration. The client can be asked to run in disconnected, cached mode if supported. The client can show the user the system status and when full functionality is expected to be available again.（client可以返回当前服务状态信息，如果服务状态异常的话可以back off一段时间或者是工作在离线模式，并且可以让用户知道大约在什么时候可以恢复）
 </p>
@@ -501,21 +490,18 @@ Certain types of events will bring press coverage. The service will be much bett
 
 </div>
 
-<div id="outline-container-1-12" class="outline-3">
-<h3 id="sec-1-12"><span class="section-number-3">1.12</span> Customer Self-Provisioning and Self-Help</h3>
-<div class="outline-text-3" id="text-1-12">
+<div id="outline-container-12" class="outline-3">
+<h3 id="sec-12"><span class="section-number-3">12</span> Customer Self-Provisioning and Self-Help</h3>
+<div class="outline-text-3" id="text-12">
 
 <p>Customer self-provisioning substantially reduces costs and also increases customer satisfaction. If a cus-tomer can go to the web, enter the needed data and just start using the service, they are happier than if they had to waste time in a call processing queue. We’ve always felt that the major cell phone carriers miss an opportunity to both save and improve cus-tomer satisfaction by not allowing self-service for those that don’t want to call the customer support group.（客户可以通过自助服务来提出自己需求启动服务）
 </p></div>
 </div>
 </div>
-</div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:43+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'on-designing-and-deploying-internet-scale-services.html';var disqus_title = 'on-designing-and-deploying-internet-scale-services.html';var disqus_url = 'http://dirlt.com/on-designing-and-deploying-internet-scale-services.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'on-designing-and-deploying-internet-scale-services.html';var disqus_title = 'on-designing-and-deploying-internet-scale-services.html';var disqus_url = 'http://dirlt.com/on-designing-and-deploying-internet-scale-services.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

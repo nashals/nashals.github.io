@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<head>
 <title>Data Structures and Algorithms for Big Databases</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Data Structures and Algorithms for Big Databases"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:44+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,7 +62,7 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
@@ -77,41 +76,39 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="data-structures-and-algorithms-for-big-databases.html#sec-1">1 data-structures-and-algorithms-for-big-databases.org</a>
+<li><a href="data-structures-and-algorithms-for-big-databases.html#sec-1">1 Overview</a></li>
+<li><a href="data-structures-and-algorithms-for-big-databases.html#sec-2">2 I/O Model and Cache-Oblivious</a>
 <ul>
-<li><a href="data-structures-and-algorithms-for-big-databases.html#sec-1-1">1.1 I/O Model and Cache-Oblivious</a>
-<ul>
-<li><a href="data-structures-and-algorithms-for-big-databases.html#sec-1-1-1">1.1.1 Modeling I/O Using the Disk Access Model</a></li>
-<li><a href="data-structures-and-algorithms-for-big-databases.html#sec-1-1-2">1.1.2 Cache-Oblivious Analysis</a></li>
+<li><a href="data-structures-and-algorithms-for-big-databases.html#sec-2-1">2.1 Modeling I/O Using the Disk Access Model</a></li>
+<li><a href="data-structures-and-algorithms-for-big-databases.html#sec-2-2">2.2 Cache-Oblivious Analysis</a></li>
 </ul>
 </li>
-<li><a href="data-structures-and-algorithms-for-big-databases.html#sec-1-2">1.2 Write-Optimized Data Structures</a></li>
-<li><a href="data-structures-and-algorithms-for-big-databases.html#sec-1-3">1.3 TokuFS&ndash;How to Make a Write-Optimized File System</a></li>
-<li><a href="data-structures-and-algorithms-for-big-databases.html#sec-1-4">1.4 Paging</a></li>
-<li><a href="data-structures-and-algorithms-for-big-databases.html#sec-1-5">1.5 What to Index</a></li>
-<li><a href="data-structures-and-algorithms-for-big-databases.html#sec-1-6">1.6 Log Structured Merge Trees</a></li>
-<li><a href="data-structures-and-algorithms-for-big-databases.html#sec-1-7">1.7 Bloom Filters</a></li>
-<li><a href="data-structures-and-algorithms-for-big-databases.html#sec-1-8">1.8 Closing Words</a></li>
-</ul>
-</li>
+<li><a href="data-structures-and-algorithms-for-big-databases.html#sec-3">3 Write-Optimized Data Structures</a></li>
+<li><a href="data-structures-and-algorithms-for-big-databases.html#sec-4">4 TokuFS&ndash;How to Make a Write-Optimized File System</a></li>
+<li><a href="data-structures-and-algorithms-for-big-databases.html#sec-5">5 Paging</a></li>
+<li><a href="data-structures-and-algorithms-for-big-databases.html#sec-6">6 What to Index</a></li>
+<li><a href="data-structures-and-algorithms-for-big-databases.html#sec-7">7 Log Structured Merge Trees</a></li>
+<li><a href="data-structures-and-algorithms-for-big-databases.html#sec-8">8 Bloom Filters</a></li>
+<li><a href="data-structures-and-algorithms-for-big-databases.html#sec-9">9 Closing Words</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> data-structures-and-algorithms-for-big-databases.org</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> Overview</h3>
+<div class="outline-text-3" id="text-1">
 
 <ul>
 <li>Michael A. Bender @ Stony Brook &amp; Tokutek 
 </li>
 <li>Bradley C. Kuszmaul @ MIT &amp; Tokutek
 </li>
-<li><b>TokuDB author</b>
+</ul>
 
-</li>
-<li>Funny tradeoff in ingestion, querying, freshness
-<ul>
+
+<p>
+Funny tradeoff in ingestion, querying, freshness
+</p><ul>
 <li>“I'm trying to create indexes on a table with 308 million rows. It took ~20 minutes to load the table but 10 days to build indexes on it.”
 </li>
 <li>“Select queries were slow until I added an index onto the timestamp field&hellip;Adding the index really helped our reporting, BUT now the inserts are taking forever.”
@@ -122,9 +119,10 @@
 </li>
 </ul>
 
-</li>
-<li>What we mean by Big Data
-<ul>
+
+<p>
+What we mean by Big Data
+</p><ul>
 <li>We don’t define Big Data in terms of TB, PB, EB. <b>不以数据量来定义大数据</b> 
 </li>
 <li>By Big Data, we mean
@@ -136,16 +134,16 @@
 <li>Words like “index” or “metadata” suggest that there are underlying data structures
 </li>
 <li>These data structures are also too big to fit in main memory.
-
 </li>
 </ul>
 
 </li>
 </ul>
 
-</li>
-<li>Topics and Outline for this Tutorial
-<ul>
+
+<p>
+Topics and Outline for this Tutorial
+</p><ul>
 <li>I/O model and cache-oblivious analysis. IO模型和cache-oblivious分析
 </li>
 <li>Write-optimized data structures. 写优化数据结构
@@ -162,23 +160,21 @@
 </li>
 </ul>
 
-</li>
-</ul>
 
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> I/O Model and Cache-Oblivious</h3>
+<div class="outline-text-3" id="text-2">
 
 
 </div>
 
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> I/O Model and Cache-Oblivious</h3>
-<div class="outline-text-3" id="text-1-1">
-
-
-</div>
-
-<div id="outline-container-1-1-1" class="outline-4">
-<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> Modeling I/O Using the Disk Access Model</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-2-1" class="outline-4">
+<h4 id="sec-2-1"><span class="section-number-4">2.1</span> Modeling I/O Using the Disk Access Model</h4>
+<div class="outline-text-4" id="text-2-1">
 
 <ul>
 <li>How computation works:
@@ -227,9 +223,9 @@ merge-sort analysis非常精辟，每次merge run是M/B. 这点非常重要，�
 
 </div>
 
-<div id="outline-container-1-1-2" class="outline-4">
-<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> Cache-Oblivious Analysis</h4>
-<div class="outline-text-4" id="text-1-1-2">
+<div id="outline-container-2-2" class="outline-4">
+<h4 id="sec-2-2"><span class="section-number-4">2.2</span> Cache-Oblivious Analysis</h4>
+<div class="outline-text-4" id="text-2-2">
 
 <ul>
 <li>Cache-oblivious analysis:
@@ -247,7 +243,7 @@ merge-sort analysis非常精辟，每次merge run是M/B. 这点非常重要，�
 </li>
 <li>It’s better to optimize approximately for all B, M than to pick the best B and M.
 </li>
-<li><b>note(dirlt)：所谓的cache-oblivious就是忘记B，M这些参数，算法的优化不要依赖B，M这些参数的组合，而必须使得所有任意的B，M组合都足够好</b>
+<li>#note: 所谓的cache-oblivious就是忘记B，M这些参数，算法的优化不要依赖B，M这些参数的组合，而必须使得所有任意的B，M组合都足够好
 </li>
 </ul>
 
@@ -257,16 +253,16 @@ merge-sort analysis非常精辟，每次merge run是M/B. 这点非常重要，�
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Write-Optimized Data Structures</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> Write-Optimized Data Structures</h3>
+<div class="outline-text-3" id="text-3">
 
 <ul>
 <li>Data structures: [O'Neil,Cheng, Gawlick, O'Neil 96], [Buchsbaum, Goldwasser, Venkatasubramanian, Westbrook 00], [Argel 03], [Graefe 03], [Brodal, Fagerberg 03], [Bender, Farach,Fineman,Fogel, Kuszmaul, Nelson’07], [Brodal, Demaine, Fineman, Iacono, Langerman, Munro 10], [Spillane, Shetty, Zadok, Archak, Dixit 11].
 </li>
 <li>Systems: BigTable, Cassandra, H-Base, LevelDB, TokuDB.
 </li>
-<li><b>note(dirlt):大部分都是LSM实现</b>
+<li>#note: 大部分都是LSM实现
 </li>
 </ul>
 
@@ -324,9 +320,9 @@ Optimal read-write tradeoff: Easy Full featured: Hard 实现需要考虑如下�
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> TokuFS&ndash;How to Make a Write-Optimized File System</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> TokuFS&ndash;How to Make a Write-Optimized File System</h3>
+<div class="outline-text-3" id="text-4">
 
 <ul>
 <li>Microdata is the Problem 重点解决元数据存储问题
@@ -338,9 +334,9 @@ Optimal read-write tradeoff: Easy Full featured: Hard 实现需要考虑如下�
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Paging</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> Paging</h3>
+<div class="outline-text-3" id="text-5">
 
 <ul>
 <li>Paging Algorithms
@@ -365,9 +361,9 @@ Optimal read-write tradeoff: Easy Full featured: Hard 实现需要考虑如下�
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> What to Index</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> What to Index</h3>
+<div class="outline-text-3" id="text-6">
 
 <ul>
 <li>Indexes provide query performance
@@ -407,11 +403,11 @@ Optimal read-write tradeoff: Easy Full featured: Hard 实现需要考虑如下�
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Log Structured Merge Trees</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-7" class="outline-3">
+<h3 id="sec-7"><span class="section-number-3">7</span> Log Structured Merge Trees</h3>
+<div class="outline-text-3" id="text-7">
 
-<p><b>todo(dirlt):LSM algorithm analysis</b>
+<p>#todo: LSM algorithm analysis
 </p>
 <ul>
 <li>Log structured merge trees are write-optimized data structures developed in the 90s.
@@ -456,9 +452,9 @@ Optimal read-write tradeoff: Easy Full featured: Hard 实现需要考虑如下�
 
 </div>
 
-<div id="outline-container-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Bloom Filters</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-8" class="outline-3">
+<h3 id="sec-8"><span class="section-number-3">8</span> Bloom Filters</h3>
+<div class="outline-text-3" id="text-8">
 
 <ul>
 <li>If n items are in an array of size m, then the chances of getting a YES answer on an element that is not there is 1 - e<sup>(-n /m)</sup>
@@ -476,9 +472,9 @@ Optimal read-write tradeoff: Easy Full featured: Hard 实现需要考虑如下�
 
 </div>
 
-<div id="outline-container-1-8" class="outline-3">
-<h3 id="sec-1-8"><span class="section-number-3">1.8</span> Closing Words</h3>
-<div class="outline-text-3" id="text-1-8">
+<div id="outline-container-9" class="outline-3">
+<h3 id="sec-9"><span class="section-number-3">9</span> Closing Words</h3>
+<div class="outline-text-3" id="text-9">
 
 <ul>
 <li>Big Data Epigrams
@@ -499,13 +495,10 @@ Optimal read-write tradeoff: Easy Full featured: Hard 实现需要考虑如下�
 </div>
 </div>
 </div>
-</div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:44+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'data-structures-and-algorithms-for-big-databases.html';var disqus_title = 'data-structures-and-algorithms-for-big-databases.html';var disqus_url = 'http://dirlt.com/data-structures-and-algorithms-for-big-databases.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'data-structures-and-algorithms-for-big-databases.html';var disqus_title = 'data-structures-and-algorithms-for-big-databases.html';var disqus_url = 'http://dirlt.com/data-structures-and-algorithms-for-big-databases.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

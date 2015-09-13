@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
-<title>python</title>
+<head>
+<title>Python</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="python"/>
+<meta name="title" content="Python"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-12-18T11:29+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,59 +62,147 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
 </div>
 
 <div id="content">
-<h1 class="title">python</h1>
+<h1 class="title">Python</h1>
+
+<ul>
+<li><a href="http://learnpythonthehardway.org/">Learn Python The Hard Way</a> (<a href="clip/learn-py-the-hard-way/index.html">中文</a>)
+</li>
+<li><a href="http://itlab.idcquan.com/linux/manual/python_chinese/">A Byte of Python</a>
+</li>
+</ul>
+
 
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="python.html#sec-1">1 python</a>
+<li><a href="python.html#sec-1">1 language</a>
 <ul>
-<li><a href="python.html#sec-1-1">1.1 language</a>
-<ul>
-<li><a href="python.html#sec-1-1-1">1.1.1 encode/decode</a></li>
+<li><a href="python.html#sec-1-1">1.1 philosophy</a></li>
+<li><a href="python.html#sec-1-2">1.2 基础知识</a></li>
+<li><a href="python.html#sec-1-3">1.3 命名惯例</a></li>
+<li><a href="python.html#sec-1-4">1.4 字符编码</a></li>
+<li><a href="python.html#sec-1-5">1.5 import and reload</a></li>
+<li><a href="python.html#sec-1-6">1.6 list comprehension</a></li>
+<li><a href="python.html#sec-1-7">1.7 可变参数和字典参数</a></li>
+<li><a href="python.html#sec-1-8">1.8 generator(生成器)</a></li>
+<li><a href="python.html#sec-1-9">1.9 decorator(装饰器)</a></li>
 </ul>
 </li>
-<li><a href="python.html#sec-1-2">1.2 library</a>
+<li><a href="python.html#sec-2">2 library</a>
 <ul>
-<li><a href="python.html#sec-1-2-1">1.2.1 simple WSGI</a></li>
-<li><a href="python.html#sec-1-2-2">1.2.2 nginx + WSGI</a></li>
-<li><a href="python.html#sec-1-2-3">1.2.3 excel</a></li>
-<li><a href="python.html#sec-1-2-4">1.2.4 http</a></li>
-<li><a href="python.html#sec-1-2-5">1.2.5 date/time</a></li>
+<li><a href="python.html#sec-2-1">2.1 native WSGI</a></li>
+<li><a href="python.html#sec-2-2">2.2 nginx WSGI</a></li>
+<li><a href="python.html#sec-2-3">2.3 xlrd</a></li>
+<li><a href="python.html#sec-2-4">2.4 httplib</a></li>
+<li><a href="python.html#sec-2-5">2.5 datetime</a></li>
+<li><a href="python.html#sec-2-6">2.6 pip(python package index)</a></li>
+<li><a href="python.html#sec-2-7">2.7 logging</a></li>
 </ul>
 </li>
 </ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> language</h3>
+<div class="outline-text-3" id="text-1">
+
+
+</div>
+
+<div id="outline-container-1-1" class="outline-4">
+<h4 id="sec-1-1"><span class="section-number-4">1.1</span> philosophy</h4>
+<div class="outline-text-4" id="text-1-1">
+
+
+<p class="verse">
+&gt;&gt;&gt; import this<br/>
+The Zen of Python, by Tim Peters<br/>
+<br/>
+Beautiful is better than ugly.<br/>
+Explicit is better than implicit.<br/>
+Simple is better than complex.<br/>
+Complex is better than complicated.<br/>
+Flat is better than nested.<br/>
+Sparse is better than dense.<br/>
+Readability counts.<br/>
+Special cases aren't special enough to break the rules.<br/>
+Although practicality beats purity.<br/>
+Errors should never pass silently.<br/>
+Unless explicitly silenced.<br/>
+In the face of ambiguity, refuse the temptation to guess.<br/>
+There should be one&ndash; and preferably only one &ndash;obvious way to do it.<br/>
+Although that way may not be obvious at first unless you're Dutch.<br/>
+Now is better than never.<br/>
+Although never is often better than <b>right</b> now.<br/>
+If the implementation is hard to explain, it's a bad idea.<br/>
+If the implementation is easy to explain, it may be a good idea.<br/>
+Namespaces are one honking great idea &ndash; let's do more of those!<br/>
+</p>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-4">
+<h4 id="sec-1-2"><span class="section-number-4">1.2</span> 基础知识</h4>
+<div class="outline-text-4" id="text-1-2">
+
+<ul>
+<li>str vs. repr # str是字符串表示，repr是code-form.
+</li>
+<li>a is b # 判断是否为同一对象
+</li>
+<li>copy.copy/deepcopy # 来做对象拷贝/深拷贝
+</li>
+<li>r'&hellip;' # raw-string. 对字符串不做任何转义
+</li>
+<li>except (E1, E2, &hellip;) as e # 捕获多种类型异常
+</li>
+<li>PYTHONPATH环境变量可以控制模块搜索路径
+</li>
+<li>__init.py__ 文件中变量__all__(列表)可以控制"from X import *"导入的名字
 </li>
 </ul>
-</div>
-</div>
-
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> python</h2>
-<div class="outline-text-2" id="text-1">
 
 
 </div>
 
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> language</h3>
-<div class="outline-text-3" id="text-1-1">
+</div>
+
+<div id="outline-container-1-3" class="outline-4">
+<h4 id="sec-1-3"><span class="section-number-4">1.3</span> 命名惯例</h4>
+<div class="outline-text-4" id="text-1-3">
+
+<ul>
+<li>以单一下划线开头的变量名( _X )不会被from module import *语句导入
+</li>
+<li>前后有两个下划线的变量名( __X__ )是系统定义的变量名，对解释器有特殊意义
+</li>
+<li>以两下划线开头，但是结尾没有两个下划线的变量名(__X)是类的私有变量
+</li>
+<li>通过交互模式运行，只有单个下划线的变量名(_)会保存左后表达式的结果
+</li>
+</ul>
 
 
 </div>
 
-<div id="outline-container-1-1-1" class="outline-4">
-<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> encode/decode</h4>
-<div class="outline-text-4" id="text-1-1-1">
+</div>
+
+<div id="outline-container-1-4" class="outline-4">
+<h4 id="sec-1-4"><span class="section-number-4">1.4</span> 字符编码</h4>
+<div class="outline-text-4" id="text-1-4">
 
 <p>python字符串是unicode类型，二进制是str类型。
 </p><ul>
@@ -141,8 +228,7 @@ u'\u4e2d\u56fd'
 
 
 <p>
-这里一个比较难处理的问题就是字符编码的识别，现在处理的办法就是尝试全部转换成为utf8来进行处理。实现办法就是首先尝试转换到gb18030,如果转换失败的话那么转换成为utf8（当然这不是最好的，使用chardet这样的模块似乎是更合理的选择），
-这样的操作对于我们中国大陆用户来说基本上应该OK，就我所知道的系统XP都是GB2312编码，linux/mac通常设置成为utf8，而cygwin这样架在windows上面的系统通常也是gb2312。
+这里一个比较难处理的问题就是字符编码的识别，现在处理的办法就是尝试全部转换成为utf8来进行处理。实现办法就是首先尝试转换到gb18030, 如果转换失败的话那么转换成为utf8（当然这不是最好的，使用chardet这样的模块似乎是更合理的选择），这样的操作对于我们中国大陆用户来说基本上应该OK。就我所知道的系统XP都是GB2312编码，linux/mac通常设置成为utf8，而cygwin这样架在windows上面的系统通常也是gb2312。
 </p>
 
 
@@ -165,15 +251,13 @@ def toLocal(s):
 </pre>
 
 <p>
-对于从本地转换出去的话，我们首先尝试使用gb2312进行decode，如果失败的话那么就认为是utf8编码，当然这里会有一定的错误机率（但是不大）。
-转换到本地的话，我们唯一不确定的就是本地是utf8格式还是gb2312格式。可以通过尝试打开一个文件来判断，其中22是errno.EINVAL的错误编码。
-如果字符编码错误的话，那么返回的就是invalid argument的错误，同样会存在一定错误机率（但是不大）。出现错误几率的原因就是这些码点，使用
-gb2312可以正常解释，使用utf8也可以正常解释。
+对于从本地转换出去的话，我们首先尝试使用gb2312进行decode，如果失败的话那么就认为是utf8编码，当然这里会有一定的错误机率（但是不大）。转换到本地的话，我们唯一不确定的就是本地是utf8格式还是gb2312格式。可以通过尝试打开一个文件来判断，其中22是errno.EINVAL的错误编码。如果字符编码错误的话，那么返回的就是invalid argument的错误，同样会存在一定错误机率（但是不大）。出现错误几率的原因就是这些码点，使用gb2312可以正常解释，使用utf8也可以正常解释。
 </p>
 
 <hr/>
+
 <p>
-note(dirlt)：最近修改饭团系统的时候，使用sqlitedb还出现了字符编码问题。系统似乎默认使用ascii来进行编码解码，可以修改系统默认的编码解码方式为utf8。
+最近修改饭团系统的时候，使用sqlitedb还出现了字符编码问题。系统似乎默认使用ascii来进行编码解码，可以修改系统默认的编码解码方式为utf8。
 </p>
 
 
@@ -185,26 +269,267 @@ if(sys.getdefaultencoding() !='utf8'):
 
 
 </div>
+
+</div>
+
+<div id="outline-container-1-5" class="outline-4">
+<h4 id="sec-1-5"><span class="section-number-4">1.5</span> import and reload</h4>
+<div class="outline-text-4" id="text-1-5">
+
+<ul>
+<li>import &lt;module&gt; # 模块只有首次import时候会被执行。模块名字&lt;module&gt;拷贝到本模块。
+</li>
+<li>from &lt;module&gt; import &lt;name&gt; # 和import过程类似，但是仅仅将模块内部名字&lt;name&gt;拷贝到本模块。
+</li>
+<li>reload(&lt;module&gt;) # reload是函数而不是语句。之前必须确保模块被import过，reload重新执行模块内容。
+</li>
+</ul>
+
+
+
+
+
+<pre class="src src-Python">#!/usr/bin/env python
+#coding:utf-8
+#Copyright (C) dirlt
+
+import mod
+<span class="org-string">"""</span>
+<span class="org-string"># mod.py</span>
+<span class="org-string">ls = [1,2,3,4]</span>
+<span class="org-string">ss = 'hello, world'</span>
+<span class="org-string">"""</span>
+print mod.ls, mod.ss
+
+# &#23558;ls&#21644;ss&#25335;&#36125;&#36827;&#26469;
+from mod import ls as ls1, ss as ss1
+mod.ls = []
+mod.ss = 'hello, main'
+print ls1, ss1 # [1,2,3,4], 'hello, world'
+
+# &#37325;&#26032;&#25335;&#36125;&#19968;&#20221;
+from mod import ls as ls1, ss as ss1
+print ls1, ss1 # [], 'hello, main'
+
+# &#20877;&#27425;&#25335;&#36125;&#20294;&#26159;&#37325;&#26032;&#25191;&#34892;mod
+reload(mod)
+from mod import ls as ls1, ss as ss1
+print ls1, ss1 # [1,2,3,4], 'hello, world'
+</pre>
+
+
 </div>
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> library</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-1-6" class="outline-4">
+<h4 id="sec-1-6"><span class="section-number-4">1.6</span> list comprehension</h4>
+<div class="outline-text-4" id="text-1-6">
+
+<p>iterator可以是字符串，列表，元组，set/dict, 文件等各种迭代器（可迭代对象）
+</p><ul>
+<li>[(generate x) for x in iterator if (filter x)] # 列表
+</li>
+<li>{(generate x) for x in iterator if (filter x)} # 集合
+</li>
+<li>{(gen-key x):(gen-value x) for x in iterator if (filter x)} # 字典
+</li>
+</ul>
+
+
+
+
+
+<pre class="src src-Python">f = open('main.py')
+s = [len(x) for x in f if x] # &#25991;&#20214;&#20316;&#20026;&#36845;&#20195;&#22120;
+d = {x:x for x in xrange(0, 10)} # xrange&#36820;&#22238;&#36845;&#20195;&#22120;
+s = {'%d:%d'%(k, d[k]) for k in d} # &#23383;&#20856;&#20316;&#20026;&#36845;&#20195;&#22120;
+s = {x for x in s} # &#38598;&#21512;&#20316;&#20026;&#36845;&#20195;&#22120;
+</pre>
 
 
 </div>
 
-<div id="outline-container-1-2-1" class="outline-4">
-<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> simple WSGI</h4>
-<div class="outline-text-4" id="text-1-2-1">
+</div>
 
-<p>WSGI(web server gateway interface)定义了一个webserver的标准编程接口，对于coder来说只需要实现这个接口，然后可以选择外部其他的framework（比如gunicore），就可以将webserver运行起来了。下面是一个参考代码
+<div id="outline-container-1-7" class="outline-4">
+<h4 id="sec-1-7"><span class="section-number-4">1.7</span> 可变参数和字典参数</h4>
+<div class="outline-text-4" id="text-1-7">
+
+<p>可变参数是以*开头标识的参数，字典参数是以**开头标识的参数。可变参数得到的是一个tuple, 而字典参数得到的是一个dict.
 </p>
 
 
-<pre class="src src-Python">def logic(environ,start_response):    
+<pre class="src src-Python">def foo(a, b, c, *args, **kwargs):
+    print 'a = {}, b = {}, c = {}, args = {}, kwargs = {}'.format(
+        a, b, c, args, kwargs)
+    if a == 0: return
+    foo(a - 1, b, c, *(1, 2, 3), **{'e':1, 'f':2})
+
+foo(2, 4, 5, *(1, 2), **{'x': '??'})
+</pre>
+
+
+<p>
+输出结果是
+</p>
+
+
+<pre class="example">a = 2, b = 4, c = 5, args = (1, 2), kwargs = {'x': '??'}
+a = 1, b = 4, c = 5, args = (1, 2, 3), kwargs = {'e': 1, 'f': 2}
+a = 0, b = 4, c = 5, args = (1, 2, 3), kwargs = {'e': 1, 'f': 2}
+</pre>
+
+
+<p>
+如果要将tuple/dict显式地传递作为可变/字典参数的话，需要在变量开头加上*和**
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-8" class="outline-4">
+<h4 id="sec-1-8"><span class="section-number-4">1.8</span> generator(生成器)</h4>
+<div class="outline-text-4" id="text-1-8">
+
+<p>可以把生成器认为是一个有状态的，具有迭代接口(next)的对象。定义生成器有两种方法，一种是使用list comprehension, 另外一种则是在函数中用yield.
+</p>
+
+
+
+<pre class="src src-Python">a = [1,2,3,4]
+b = (x + 1 for x in a if x % 2 == 0) # list comprehension
+print b.next()
+print b.next()
+
+def fib():
+    a = 0
+    b = 1
+    while True:
+        yield b
+        (a, b) = (b, a + b)
+f = fib()
+for i in range(0, 10):
+    print f.next()
+</pre>
+
+
+<p>
+函数生成器还可以当做协程来使用。具体地，yield可以有一个返回值。如果调用next()的话，那么返回值是None. send(value)的话那么返回值是value.
+</p>
+
+
+<pre class="src src-Python">def process_request():
+    res = None
+    while True:
+        req = yield res
+        res = req + 1
+
+def io_loop():
+    pr = process_request()
+    pr.send(None)
+    # pr.next()
+    res = pr.send(10)
+    print res
+    res = pr.send(20)
+    print res
+
+io_loop()
+</pre>
+
+<p>
+注意如果要使用send的话，必须使用send(None)/next来初始化.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-9" class="outline-4">
+<h4 id="sec-1-9"><span class="section-number-4">1.9</span> decorator(装饰器)</h4>
+<div class="outline-text-4" id="text-1-9">
+
+<p>装饰器是一种设计模式，在原有的对象上或者是函数上，在外部做一些处理。python里面的装饰器是函数，装饰的对象也是函数。
+</p>
+<p>
+通常装饰器输入参数是一个函数A，输出参数就是装饰过后的A. 当然也可以使用偏函数的方式让装饰器传入自定义参数
+</p>
+
+
+<pre class="src src-Python">#!/usr/bin/env python
+#coding:utf-8
+#Copyright (C) dirlt
+
+import functools
+def foo(f):
+    @functools.wraps(f)
+    def wrapper(*args, **kwargs):
+        print '&gt;&gt;&gt;&gt;&gt;'
+        f(*args, **kwargs)
+        print '&lt;&lt;&lt;&lt;&lt;'
+    return wrapper
+
+def foo2(text):
+    def bar(f):
+        @functools.wraps(f)
+        def wrapper(*args, **kwargs):
+            print '&gt;&gt;&gt;&gt;', text
+            f(*args, **kwargs)
+            print '&lt;&lt;&lt;&lt;&lt;', text
+        return wrapper
+    return bar
+
+@foo
+def func():
+    print 'hello, world'
+
+@foo2('????')
+def func2():
+    print 'hello, world'
+
+func()
+func2()
+print func.__name__
+print func2.__name__
+</pre>
+
+
+<p>
+使用functools.wraps这个装饰器是为了可以继续使用原有函数的名称，否则最后两个输出均为'wrapper'
+</p>
+
+
+<pre class="example">&gt;&gt;&gt;&gt;&gt;
+hello, world
+&lt;&lt;&lt;&lt;&lt;
+&gt;&gt;&gt;&gt; ????
+hello, world
+&lt;&lt;&lt;&lt;&lt; ????
+wrapper
+wrapper
+</pre>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> library</h3>
+<div class="outline-text-3" id="text-2">
+
+
+</div>
+
+<div id="outline-container-2-1" class="outline-4">
+<h4 id="sec-2-1"><span class="section-number-4">2.1</span> native WSGI</h4>
+<div class="outline-text-4" id="text-2-1">
+
+<p>WSGI(web server gateway interface)定义了一个web server的标准编程接口。开发着只需要按照这个接口来实现应用，然后将模块运行在标准化的container上，就实现了一个web server.
+</p>
+
+
+<pre class="src src-Python">def logic(environ,start_response):
     start_response('200 OK', # status code
                    [('Content-type','text/plain')]) # header
     return (<span class="org-string">"OK"</span>,)
@@ -219,7 +544,7 @@ if(sys.getdefaultencoding() !='utf8'):
 </li>
 <li>REQUEST_METHOD // 请求方法 GET/POST
 </li>
-<li>CONTENT_LENGTH // 
+<li>CONTENT_LENGTH //
 </li>
 <li>QUERY_STRING // path后面接的query，可以使用cgi.parse_qs来进行解析
 <ul>
@@ -241,7 +566,7 @@ if(sys.getdefaultencoding() !='utf8'):
 
 
 <p>
-之后我们只需要选择一个合适的框架就可以运行起来了。python内置了一个WSGI framework。这里的validator可以帮助外围做一些验证。
+之后我们只需要选择一个合适的框架或者容器就可以运行起来了。python内置了一个WSGI framework。这里的validator可以帮助外围做一些验证。
 </p>
 
 
@@ -253,7 +578,7 @@ if(sys.getdefaultencoding() !='utf8'):
 
 
 <p>
-内置framework使用的是单进程启动模式，但是我们也可以很容易地修改成为多进程模式。不过更好的方式就是利用已有的webserver framework比如gunicore。假设上面的文件为x.py,那么使用下面方式启动即可
+内置framework使用的是单进程启动模式，我们也可以修改成为多进程模式。更好的方式是利用已有的webserver framework比如gunicorn。假设上面的文件为x.py, 那么使用下面方式启动即可
 </p>
 
 
@@ -274,28 +599,57 @@ if(sys.getdefaultencoding() !='utf8'):
 </pre>
 
 
+
+<hr/>
+
+<p>
+如果上面WSGI程序修改成为下面的话，那么在访问web页面的时候会出现如下错误 "Error code: ERR_INCOMPLETE_CHUNKED_ENCODING".
+</p>
+
+
+<pre class="src src-Python">def run(environ,start_response):
+    start_response('200 OK', # status code
+                   [('Content-type','text/plain')]) # header
+    s = <span class="org-string">"OK"</span>.decode('utf-8')
+    return (s,)
+</pre>
+
+<p>
+当时这个错误是以非常诡异的方式呈现的，而不是像我示例代码一样，当时s是从sqlite3读取的类型为TEXT的某个字段。WSGI要求返回对象必须是str类型而不能是unicode类型。
+</p>
 </div>
 
 </div>
 
-<div id="outline-container-1-2-2" class="outline-4">
-<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> nginx + WSGI</h4>
-<div class="outline-text-4" id="text-1-2-2">
+<div id="outline-container-2-2" class="outline-4">
+<h4 id="sec-2-2"><span class="section-number-4">2.2</span> nginx WSGI</h4>
+<div class="outline-text-4" id="text-2-2">
 
 <p>python运行web大约有下面三种方式：
-</p><ol>
+</p><ul>
 <li>程序自己启动http server直接对外服务
 </li>
-<li>用WSGI编写然后使用gunicorn这样的container启动对外服务
+<li>用WSGI编写然后使用gunicorn这样的HTTP Container启动对外服务
 </li>
-<li>nginx在前端做反向代理，uwsgi做WSGI Container和nginx通信
+<li>nginx在前端做反向代理，和WSGI Container(uwsgi)或HTTP Container(gunicorn)通信
 </li>
-</ol>
+</ul>
 
 
 <p>
-实践证明1这个方案因为python GIL缘故只能使用单线程处理，并且http server扩展性也不好。而方案2相对来说比较灵活，可以使用不同的container启动，并且也可以很容易地切换成为方案3，但是却不能够很好地处理子域名问题，同时部署上没有方案3灵活。
-自己搭建fantuan.dirlt.com里面就涉及到了子域名这个问题，最后还是使用方案3解决的，使用的就是nginx + uwsgi + web.py这个解决方案。所以这里简单地记录一下如何配置。
+各自优缺点分别是：
+</p><ul>
+<li>方案1 <del>因为python GIL缘故只能使用单线程处理，并且http server扩展性也不好</del> 只能用单进程工作，可以通过开辟多线程或者是gevent协程来处理并发。但是想要部署多进程不方便，并且也没有使用container带来的一些功能（比如配置升级以及二进制升级等）
+</li>
+<li>方案2相对来说比较灵活，可以使用不同的container启动，并且也可以很容易地切换成为方案3，可是不能处理子域名。
+</li>
+<li>方案3可以让nginx处理好慢连接(比如使用proxy buffering), 然后在把请求交给container来处理，性能上有保证，同时支持子域名。
+</li>
+</ul>
+
+
+<p>
+因为自己搭建fantuan.dirlt.com使用到了子域名，所以最终使用方案3(nginx + uwsgi + web.py). 配置步骤如下：
 </p>
 <p>
 在nginx/site-enables里面从default产生一份新的配置文件，修改内容
@@ -315,7 +669,7 @@ if(sys.getdefaultencoding() !='utf8'):
 也就是说对于fantuan.dirlt.com这个请求包含uwsgi_params里面的参数全部转发到127.0.0.1:8001这个端口。
 </p>
 <p>
-然后在本地启动uwsgi绑定在127.0.0.1:8001这个端口上面，同时考虑到uwsgi支持配置文件的方式，我们首先编写配置文件
+然后在本地启动uwsgi绑定在127.0.0.1:8001这个端口上面。uwsgi支持配置文件：
 </p>
 
 
@@ -329,11 +683,8 @@ vacuum = True
 max-requests = 128
 </pre>
 
-
-<p>
-<b>todo(dirlt)：里面的字段的意思还不是清楚</b> 最重要的就是两个参数
-</p><ul>
-<li>module x:y 说明x.py里面的y对象是WSGI function对象
+<ul>
+<li>module x:y 说明使用x.py里面y(WSGI function)对象
 </li>
 <li>socket 必须指定是127.0.0.1:8001
 </li>
@@ -344,9 +695,9 @@ max-requests = 128
 
 </div>
 
-<div id="outline-container-1-2-3" class="outline-4">
-<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> excel</h4>
-<div class="outline-text-4" id="text-1-2-3">
+<div id="outline-container-2-3" class="outline-4">
+<h4 id="sec-2-3"><span class="section-number-4">2.3</span> xlrd</h4>
+<div class="outline-text-4" id="text-2-3">
 
 <p>分析excel文件在实际生活中还是比较常见的，通常我们的问题就是卡在读取上面（主要原因是因为我对COM接口不太熟悉，不太了解windows编程）。使用xlrd可以通过python来访问excel文件。
 </p>
@@ -366,7 +717,7 @@ max-requests = 128
 从文档里面可以看到它是直接分析excel文件的，通过阅读OpenOffice的关于M$ Excel文件格式文档编写的。
 </p>
 <p class="verse">
-Development of this module would not have been possible without the document “OpenOffice.org’s Documentation of the Microsoft Excel File Format” (“OOo docs” for short). The latest version is available from OpenOffice.org in PDF format and XML format. Small portions of the OOo docs are reproduced in this document. A study of the OOo docs is recommended for those who wish a deeper understanding of the Excel file layout than the xlrd docs can provide. <br/>
+Development of this module would not have been possible without the document “OpenOffice.org’s Documentation of the Microsoft Excel File Format” (“OOo docs” for short). The latest version is available from OpenOffice.org in PDF format and XML format. Small portions of the OOo docs are reproduced in this document. A study of the OOo docs is recommended for those who wish a deeper understanding of the Excel file layout than the xlrd docs can provide.<br/>
 </p>
 
 
@@ -388,7 +739,7 @@ Features:<br/>
 3.Extracts all data (including Booleans and error-values)<br/>
 4.Extracts named references<br/>
 5.Extracts formatting information for cells (number format, font, alignment, borders, backgrounds, protection) and rows/columns (default height/width, etc). This effort was funded by Simplistix Ltd.<br/>
-6.Further information: APIs, README, HISTORY <br/>
+6.Further information: APIs, README, HISTORY<br/>
 </p>
 
 
@@ -400,12 +751,12 @@ Exclusions: xlrd will not attempt to decode password-protected (encrypted) files
 1.Charts, Macros, Pictures, any other embedded object. WARNING: currently this includes embedded worksheets.<br/>
 2.Visual Basic (VBA) modules<br/>
 3.Formulas (results of formula calculations are extracted, of course)<br/>
-4.Comments and hyperlinks <br/>
+4.Comments and hyperlinks<br/>
 </p>
 
 
 <p>
-下面是一个相对简单的例子（但是大部分时候应该足够了）。
+来个简单的例子：
 </p>
 
 
@@ -434,9 +785,9 @@ for i in range(0,book.nsheets):
 
 </div>
 
-<div id="outline-container-1-2-4" class="outline-4">
-<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> http</h4>
-<div class="outline-text-4" id="text-1-2-4">
+<div id="outline-container-2-4" class="outline-4">
+<h4 id="sec-2-4"><span class="section-number-4">2.4</span> httplib</h4>
+<div class="outline-text-4" id="text-2-4">
 
 <p>关于httplib.HTTPConnection超时问题
 </p><ul>
@@ -455,35 +806,169 @@ for i in range(0,book.nsheets):
 
 </div>
 
-<div id="outline-container-1-2-5" class="outline-4">
-<h4 id="sec-1-2-5"><span class="section-number-4">1.2.5</span> date/time</h4>
-<div class="outline-text-4" id="text-1-2-5">
+<div id="outline-container-2-5" class="outline-4">
+<h4 id="sec-2-5"><span class="section-number-4">2.5</span> datetime</h4>
+<div class="outline-text-4" id="text-2-5">
+
+<p>日期时间和时间戳之间的转化
+</p>
 
 
-
-
-<pre class="src src-Python">def convertDateTimeToTimeStamp(s):
+<pre class="src src-Python">def dt2ts(s):
     st = time.strptime(s,'%Y-%m-%d %H:%M:%S')
     return int(time.mktime(st))
 
-def convertTimeStampToDateTime(ts):
+def ts2dt(ts):
     # in seconds.
     st = time.localtime(int(ts))
     return time.strftime('%Y-%m-%d %H:%M:%S',st)
 </pre>
 
 
+<p>
+其中strptime是非常耗时的（12.9us），所以应该尽量避免这种parse的方法。
+</p>
+
+
+<pre class="example">In [8]: timeit time.strptime('2015-01-02 22:21:01', '%Y-%m-%d %H:%M:%S')
+100000 loops, best of 3: 12.9 µs per loop
+
+In [9]: mk = time.strptime('2015-01-02 22:21:01', '%Y-%m-%d %H:%M:%S')
+
+In [10]: timeit time.mktime(mk)
+1000000 loops, best of 3: 1.7 µs per loop
+
+In [11]: timeit time.localtime(1421974014)
+1000000 loops, best of 3: 1.71 µs per loop
+
+In [12]: st = time.localtime(1421974014)
+
+In [13]: timeit time.strftime('%Y-%m-%d %H:%M:%S', st)
+1000000 loops, best of 3: 631 ns per loop
+</pre>
+
+
+<p>
+为了加快速度，一个办法是可以自己解析字符串。使用下面这个方法来代替strptime，平均耗时在(4.16us)
+</p>
+
+
+<pre class="src src-Python">def f(s):
+    (d,t) = s.split(' ')
+    # (yr, mon, dy) = map(lambda x: int(x), d.split('-'))
+    # (hr, min, sec) = map(lambda x: int(x), t.split(':'))
+    # dt = datetime.datetime(yr, mon, dy, hr, min, sec)
+    (yr, mon, dy) = d.split('-')
+    (hr, mn, sec) = t.split(':')
+    dt = datetime.datetime(int(yr), int(mon), int(dy), int(hr), int(mn), int(sec))
+    st = dt.timetuple()
+    return st
+</pre>
+
+
 </div>
+
+</div>
+
+<div id="outline-container-2-6" class="outline-4">
+<h4 id="sec-2-6"><span class="section-number-4">2.6</span> pip(python package index)</h4>
+<div class="outline-text-4" id="text-2-6">
+
+<p>python模块管理工具
+</p><ul>
+<li><a href="https://github.com/pypa/pip/">https://github.com/pypa/pip/</a>
+</li>
+<li><a href="https://pip.pypa.io/en/stable/installing.html">https://pip.pypa.io/en/stable/installing.html</a>
+</li>
+</ul>
+
+
+<p>
+可以使用pip单独安装某个模块，也可以通过描述文件(requirements.txt)来安装一系列模块（对于setup environment非常有用）
+</p><ul>
+<li>pip freeze # 以requirements.txt格式，输出本地所有安装的python模块
+</li>
+<li>pip install -r requirements.txt &ndash;download=`pwd`/pycache # 安装python模块并且将下载文件缓存起来
+</li>
+<li>pip install &ndash;no-index &ndash;find-links=<a href="file:////`pwd`/pycache">//`pwd`/pycache</a> -r requirements.txt # 从缓存目录安装python模块
+</li>
+<li>pip wheel -r requirements.txt &ndash;wheel-dir=`pwd`/pywheel &ndash;find-links=<a href="file:////`pwd`/pycache">//`pwd`/pycache</a> # 将python模块编译称为wheel格式（二进制格式，利于分发安装）
+</li>
+<li>pip install &ndash;no-index &ndash;find-links=<a href="file:////`pwd`/pywheel">//`pwd`/pywheel</a> -r requirements.txt # 从缓存目录安装python模块 (note: 发现有些依赖却没有安装，所以推荐下面一种方式)
+</li>
+<li>pip install &ndash;force-reinstall &ndash;ignore-installed &ndash;upgrade &ndash;no-index &ndash;no-deps `pwd`/pywheel/*.whl # 安装所有列举的python模块
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-2-7" class="outline-4">
+<h4 id="sec-2-7"><span class="section-number-4">2.7</span> logging</h4>
+<div class="outline-text-4" id="text-2-7">
+
+<p>python logging主要有下面几个类
+</p><ul>
+<li>Loggers expose the interface that application code directly uses.
+</li>
+<li>Handlers send the log records (created by loggers) to the appropriate destination.
+</li>
+<li>Filters provide a finer grained facility for determining which log records to output.
+</li>
+<li>Formatters specify the layout of log records in the final output.
+</li>
+<li>LogRecord 用来描述单条日志的各种信息
+</li>
+</ul>
+
+
+<p>
+Logger支持层次结构，层次结构是根据name来判断的。比如a就是a.b, a.c, a.d的父logger. 通常来说子logger打印日志都会传递到上层logger(也可以通过disable propagate来关闭), 带来的好处是用户只需要在最上层设置一次handler, format, filter之后，子logger就都可以使用它们而不必单独设置。下图是logging流程
+</p>
+<p>
+<img src="images/python-logging-flow.png"  alt="./images/python-logging-flow.png" />
+</p>
+<p>
+内置的FileHandler只能够正确地处理一个解释器中多个线程向一个文件打印的情况，但是却不能解决多个进程向同一个文件打印。社区有一些Handler实现来解决这个问题比如 <a href="https://github.com/jruere/multiprocessing-logging">这个</a> 和 <a href="https://pypi.python.org/pypi/ConcurrentLogHandler/0.8.3">这个</a>
+</p>
+<p>
+logging配置可以从文件载入 `logging.config.fileConfig('logging.cfg')`
+</p>
+
+
+<pre class="example">[loggers]
+keys = root
+
+[handlers]
+keys = h0
+
+[formatters]
+keys = f0
+
+[logger_root]
+level = DEBUG
+handlers = h0
+
+[handler_h0]
+level = DEBUG
+class = FileHandler
+formatter = f0
+args = ('svr.log',)
+
+[formatter_f0]
+format= [%(asctime)s][%(levelname)s]%(name)s@%(funcName)s: %(msg)s
+class=logging.Formatter
+</pre>
+
 </div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-12-18T11:29+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'python.html';var disqus_title = 'python.html';var disqus_url = 'http://dirlt.com/python.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'python.html';var disqus_title = 'python.html';var disqus_url = 'http://dirlt.com/python.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

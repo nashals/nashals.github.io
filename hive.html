@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
-<title>hive</title>
+<head>
+<title>Hive</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="hive"/>
+<meta name="title" content="Hive"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:43+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,69 +62,55 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
 </div>
 
 <div id="content">
-<h1 class="title">hive</h1>
+<h1 class="title">Hive</h1>
+
+<ul>
+<li><a href="http://hive.apache.org/index.html">http://hive.apache.org/index.html</a>
+</li>
+<li><a href="https://cwiki.apache.org/confluence/display/Hive/Home">https://cwiki.apache.org/confluence/display/Hive/Home</a>
+</li>
+</ul>
+
 
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="hive.html#sec-1">1 hive</a>
+<li><a href="hive.html#sec-1">1 Getting Started</a>
 <ul>
-<li><a href="hive.html#sec-1-1">1.1 Getting Started</a>
-<ul>
-<li><a href="hive.html#sec-1-1-1">1.1.1 Configuration</a></li>
-<li><a href="hive.html#sec-1-1-2">1.1.2 Local Mode</a></li>
-<li><a href="hive.html#sec-1-1-3">1.1.3 Metadata Store</a></li>
-<li><a href="hive.html#sec-1-1-4">1.1.4 Example</a></li>
-<li><a href="hive.html#sec-1-1-5">1.1.5 TroubleShooting</a></li>
-</ul>
-</li>
+<li><a href="hive.html#sec-1-1">1.1 Configuration</a></li>
+<li><a href="hive.html#sec-1-2">1.2 Local Mode</a></li>
+<li><a href="hive.html#sec-1-3">1.3 Metadata Store</a></li>
+<li><a href="hive.html#sec-1-4">1.4 Example</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> hive</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> Getting Started</h3>
+<div class="outline-text-3" id="text-1">
 
-<ul>
-<li>Home - Apache Hive - Apache Software Foundation <a href="https://cwiki.apache.org/confluence/display/Hive/Home">https://cwiki.apache.org/confluence/display/Hive/Home</a>
-</li>
-</ul>
-
-
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Getting Started</h3>
-<div class="outline-text-3" id="text-1-1">
-
-<ul>
-<li><a href="https://cwiki.apache.org/confluence/display/Hive/GettingStarted">https://cwiki.apache.org/confluence/display/Hive/GettingStarted</a>
-</li>
-</ul>
-
-
+<p><a href="https://cwiki.apache.org/confluence/display/Hive/GettingStarted">https://cwiki.apache.org/confluence/display/Hive/GettingStarted</a>
+</p>
 <p>
-首先配置hdfs/mapred/hbase,然后配置hive.过程不是很麻烦。
+首先配置好hdfs/mapred(spark), 然后配置hive. hive使用hdfs做文件存储, 使用mapred(spark)做计算引擎
 </p>
 
 </div>
 
-<div id="outline-container-1-1-1" class="outline-4">
-<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> Configuration</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-1-1" class="outline-4">
+<h4 id="sec-1-1"><span class="section-number-4">1.1</span> Configuration</h4>
+<div class="outline-text-4" id="text-1-1">
 
 <ul>
 <li>默认配置文件是 &lt;install-dir&gt;/conf/hive-default.xml
@@ -147,9 +132,9 @@
 
 </div>
 
-<div id="outline-container-1-1-2" class="outline-4">
-<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> Local Mode</h4>
-<div class="outline-text-4" id="text-1-1-2">
+<div id="outline-container-1-2" class="outline-4">
+<h4 id="sec-1-2"><span class="section-number-4">1.2</span> Local Mode</h4>
+<div class="outline-text-4" id="text-1-2">
 
 <p>这里所谓的local-mode主要是指运行的mapreduce是在local node上面完成的，至于数据源还是和hdfs/hbase本身配置相关。可以通过设置 SET mapred.job.tracker=local; 强制修改mapreduce本地完成。
 </p>
@@ -169,16 +154,12 @@ hive0.7以后提供自动切换local-mode功能，设置 hive&gt; SET hive.exec.
 
 </div>
 
-<div id="outline-container-1-1-3" class="outline-4">
-<h4 id="sec-1-1-3"><span class="section-number-4">1.1.3</span> Metadata Store</h4>
-<div class="outline-text-4" id="text-1-1-3">
+<div id="outline-container-1-3" class="outline-4">
+<h4 id="sec-1-3"><span class="section-number-4">1.3</span> Metadata Store</h4>
+<div class="outline-text-4" id="text-1-3">
 
-<ul>
-<li><a href="https://cwiki.apache.org/confluence/display/Hive/AdminManual+MetastoreAdmin">https://cwiki.apache.org/confluence/display/Hive/AdminManual+MetastoreAdmin</a> <b>note(dirlt)：配置remote server</b>
-</li>
-</ul>
-
-
+<p><a href="https://cwiki.apache.org/confluence/display/Hive/AdminManual+MetastoreAdmin">https://cwiki.apache.org/confluence/display/Hive/AdminManual+MetastoreAdmin</a>
+</p>
 <p>
 metadata store主要是用来存储数据库的一些元数据信息，有下面相关的配置参数：
 </p><ul>
@@ -188,16 +169,15 @@ metadata store主要是用来存储数据库的一些元数据信息，有下面
 </li>
 </ul>
 
-<p>默认实现是在本地的derby db，默认存储位置是./metastore_db. metastore其他实现需要支持JPO（Java Persistent Object） Metastore can be stored in any database that is supported by JPOX. The database schema is defined in JDO metadata annotations file package.jdo at src/contrib/hive/metastore/src/model.
-</p>
-
-<hr/>
 
 <p>
-<b>配置remote server</b>
+默认实现是在本地的derby db，默认存储位置是./metastore_db. metastore其他实现需要支持JPO（Java Persistent Object） Metastore can be stored in any database that is supported by JPOX. The database schema is defined in JDO metadata annotations file package.jdo at src/contrib/hive/metastore/src/model.
 </p>
 <p>
-remote metadata store server和client之间交互是通过thrift完成的，thrift server通过jdbc连接到mysql或者是其他数据库上。 <b>note(dirlt):之所以需要这个主要是因为impala要求metastore必须是remote的</b>
+当然也可以将这些数据存储在远程数据库上。remote metadata store server和client之间交互是通过thrift完成的，thrift server通过jdbc连接到mysql或者是其他数据库上。
+</p>
+<p>
+If you are using MySQL as the datastore for metadata, put MySQL client libraries in HIVE_HOME/lib before starting Hive Client or HiveMetastore Server. 或者如果使用ubuntu的话，可以直接使用 sudo apt-get install libmysql-java 安装，然后jar都在/usr/share/java下面。
 </p>
 <p>
 Server Configuration Parameters
@@ -218,9 +198,6 @@ Server Configuration Parameters
 
 
 <p>
-If you are using MySQL as the datastore for metadata, put MySQL client libraries in HIVE_HOME/lib before starting Hive Client or HiveMetastore Server. 如果使用ubuntu的话，可以直接使用 sudo apt-get install libmysql-java 安装，然后jar都在/usr/share/java下面。
-</p>
-<p>
 Client Configuration Parameters
 </p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" /><col class="left" />
@@ -237,7 +214,7 @@ Client Configuration Parameters
 
 
 <p>
-thrift server 通过 hive &ndash;service metastore 启动，port在9083上面. 环境变量METASTORE_PORT来配置。 <b>note(dirlt)：hive-env.sh里面可以设置</b>
+thrift server 通过 hive &ndash;service metastore 启动，port在9083上面. 端口可以通过-p选项来指定, 或是从环境变量METASTORE_PORT来获得(hive-env.sh里面可以设置).
 </p>
 
 
@@ -248,20 +225,62 @@ thrift server 通过 hive &ndash;service metastore 启动，port在9083上面. �
 </pre>
 
 
-</div>
+<p>
+配置文件如下
+</p>
+
+
+<pre class="example">&lt;configuration&gt;
+  &lt;property&gt;
+    &lt;name&gt;javax.jdo.option.ConnectionURL&lt;/name&gt;
+    &lt;value&gt;jdbc:mysql://localhost/hivemeta?createDatabaseIfNotExist=true&lt;/value&gt;
+    &lt;description&gt;JDBC connect string for a JDBC metastore&lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;javax.jdo.option.ConnectionDriverName&lt;/name&gt;
+    &lt;value&gt;com.mysql.jdbc.Driver&lt;/value&gt;
+    &lt;description&gt;Driver class name for a JDBC metastore&lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;javax.jdo.option.ConnectionUserName&lt;/name&gt;
+    &lt;value&gt;root&lt;/value&gt;
+    &lt;description&gt;username to use against metastore database&lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;javax.jdo.option.ConnectionPassword&lt;/name&gt;
+    &lt;value&gt;123456&lt;/value&gt;
+    &lt;description&gt;password to use against metastore database&lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;hive.metastore.warehouse.dir&lt;/name&gt;
+    &lt;value&gt;/user/hive/warehouse&lt;/value&gt;
+    &lt;description&gt;location of default database for the warehouse&lt;/description&gt;
+  &lt;/property&gt;
+
+  &lt;property&gt;
+    &lt;name&gt;hive.metastore.uris&lt;/name&gt;
+    &lt;value&gt;thrift://localhost:9083&lt;/value&gt;
+    &lt;description&gt;Thrift URI for the remote metastore. Used by metastore client to connect to remote metastore.&lt;/description&gt;
+  &lt;/property&gt;
+
+&lt;/configuration&gt;
+</pre>
+
 
 </div>
 
-<div id="outline-container-1-1-4" class="outline-4">
-<h4 id="sec-1-1-4"><span class="section-number-4">1.1.4</span> Example</h4>
-<div class="outline-text-4" id="text-1-1-4">
+</div>
 
-<ul>
-<li>数据默认是使用ctrl-a来做分割 <b>note(dirlt)：how wierd:(</b>
-</li>
-</ul>
+<div id="outline-container-1-4" class="outline-4">
+<h4 id="sec-1-4"><span class="section-number-4">1.4</span> Example</h4>
+<div class="outline-text-4" id="text-1-4">
 
-
+<p>数据默认是使用ctrl-a来做分割
+</p>
 
 
 
@@ -280,7 +299,7 @@ Loading data to table default.kv
 Moved to trash: hdfs://localhost:9000/home/dirlt/hive/warehouse/kv
 OK
 Time taken: 0.225 seconds
-hive&gt; SELECT * from kv WHERE k = 417; 
+hive&gt; SELECT * from kv WHERE k = 417;
 Total MapReduce jobs = 1
 Launching Job 1 out of 1
 Number of reduce tasks is set to 0 since there's no reduce operator
@@ -297,79 +316,32 @@ OK
 Time taken: 5.787 seconds
 </pre>
 
-<ul>
+
+<p>
+整个流程下来分为四个部分：
+</p><ul>
 <li>copy to hdfs
 </li>
 <li>create table.
 </li>
 <li>load data.
 </li>
-<li>do select <b>note(dirlt):可以看到这里运行了mr任务</b>
+<li>do select （看到这里运行了mr任务）
 </li>
 </ul>
 
 
-
-</div>
-
-</div>
-
-<div id="outline-container-1-1-5" class="outline-4">
-<h4 id="sec-1-1-5"><span class="section-number-4">1.1.5</span> TroubleShooting</h4>
-<div class="outline-text-4" id="text-1-1-5">
-
-
-<hr/>
 <p>
-调用SQL select count(*) from kv, hive出现下面问题（CDH4.2.0有，CDH3u3没有）
+上面例子是使用文本数据. 这里有个 <a href="https://github.com/dirtysalt/tomb/tree/master/misc/hive-avro">例子</a> 如何使用avro数据.
 </p>
-
-
-<pre class="example">java.io.FileNotFoundException: File does not exist: hdfs://localhost:9000/home/dirlt/utils/hive-0.10.0-cdh4.2.0/lib/hive-builtins-0.10.0-cdh4.2.0.jar
-        at org.apache.hadoop.hdfs.DistributedFileSystem.getFileStatus(DistributedFileSystem.java:807)
-        at org.apache.hadoop.mapreduce.filecache.ClientDistributedCacheManager.getFileStatus(ClientDistributedCacheManager.java:288)
-        at org.apache.hadoop.mapreduce.filecache.ClientDistributedCacheManager.getFileStatus(ClientDistributedCacheManager.java:224)
-        at org.apache.hadoop.mapreduce.filecache.ClientDistributedCacheManager.determineTimestamps(ClientDistributedCacheManager.java:93)
-        at org.apache.hadoop.mapreduce.filecache.ClientDistributedCacheManager.determineTimestampsAndCacheVisibilities(ClientDistributedCacheManager.java:57)
-        at org.apache.hadoop.mapreduce.JobSubmitter.copyAndConfigureFiles(JobSubmitter.java:254)
-        at org.apache.hadoop.mapreduce.JobSubmitter.copyAndConfigureFiles(JobSubmitter.java:290)
-        at org.apache.hadoop.mapreduce.JobSubmitter.submitJobInternal(JobSubmitter.java:361)
-        at org.apache.hadoop.mapreduce.Job$11.run(Job.java:1218)
-        at org.apache.hadoop.mapreduce.Job$11.run(Job.java:1215)
-        at java.security.AccessController.doPrivileged(Native Method)
-        at javax.security.auth.Subject.doAs(Subject.java:416)
-        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1408)
-        at org.apache.hadoop.mapreduce.Job.submit(Job.java:1215)
-        at org.apache.hadoop.mapred.JobClient$1.run(JobClient.java:617)
-        at org.apache.hadoop.mapred.JobClient$1.run(JobClient.java:612)
-        at java.security.AccessController.doPrivileged(Native Method)
-        at javax.security.auth.Subject.doAs(Subject.java:416)
-        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1408)
-        at org.apache.hadoop.mapred.JobClient.submitJob(JobClient.java:612)
-        at org.apache.hadoop.hive.ql.exec.ExecDriver.execute(ExecDriver.java:447)
-        at org.apache.hadoop.hive.ql.exec.ExecDriver.main(ExecDriver.java:689)
-        at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-        at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-        at java.lang.reflect.Method.invoke(Method.java:616)
-        at org.apache.hadoop.util.RunJar.main(RunJar.java:208)
-Job Submission failed with exception 'java.io.FileNotFoundException(File does not exist: hdfs://localhost:9000/home/dirlt/utils/hive-0.10.0-cdh4.2.0/lib/hive-builtins-0.10.0-cdh4.2.0.jar)'
-</pre>
-
-
-<p>
-这个问题我猜想应该Hive CDH4之后使用lean jar的方式，要求依赖jar文件存放在hdfs上面，运行时候然后下载到本地执行。把hive/lib下面的jar全部上传到HDFS上面之后这个问题解决。
-</p></div>
 </div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:43+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'hive.html';var disqus_title = 'hive.html';var disqus_url = 'http://dirlt.com/hive.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'hive.html';var disqus_title = 'hive.html';var disqus_url = 'http://dirlt.com/hive.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

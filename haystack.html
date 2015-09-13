@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
-<title>haystack</title>
+<head>
+<title>Finding a needle in Haystack: Facebook’s photo storage</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="haystack"/>
+<meta name="title" content="Finding a needle in Haystack: Facebook’s photo storage"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-12-23T12:37+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,67 +62,45 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
 </div>
 
 <div id="content">
-<h1 class="title">haystack</h1>
+<h1 class="title">Finding a needle in Haystack: Facebook’s photo storage</h1>
 
+<p><a href="https://www.usenix.org/legacy/event/osdi10/tech/full_papers/Beaver.pdf">https://www.usenix.org/legacy/event/osdi10/tech/full_papers/Beaver.pdf</a> @ 2010 # 解决存储大量静态小文件问题
+</p>
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="haystack.html#sec-1">1 haystack</a>
+<li><a href="haystack.html#sec-1">1 Abstract</a></li>
+<li><a href="haystack.html#sec-2">2 Introduction</a></li>
+<li><a href="haystack.html#sec-3">3 Background &amp; Previous Design</a></li>
+<li><a href="haystack.html#sec-4">4 Design &amp; Implementation</a>
 <ul>
-<li><a href="haystack.html#sec-1-1">1.1 Abstract</a></li>
-<li><a href="haystack.html#sec-1-2">1.2 Introduction</a></li>
-<li><a href="haystack.html#sec-1-3">1.3 Background &amp; Previous Design</a></li>
-<li><a href="haystack.html#sec-1-4">1.4 Design &amp; Implementation</a>
-<ul>
-<li><a href="haystack.html#sec-1-4-1">1.4.1 Overview</a></li>
-<li><a href="haystack.html#sec-1-4-2">1.4.2 Haystack Directory</a></li>
-<li><a href="haystack.html#sec-1-4-3">1.4.3 Haystack Cache</a></li>
-<li><a href="haystack.html#sec-1-4-4">1.4.4 Haystack Store</a></li>
-<li><a href="haystack.html#sec-1-4-5">1.4.5 Recovery from failures</a></li>
-<li><a href="haystack.html#sec-1-4-6">1.4.6 Optimizations</a></li>
+<li><a href="haystack.html#sec-4-1">4.1 Overview</a></li>
+<li><a href="haystack.html#sec-4-2">4.2 Haystack Directory</a></li>
+<li><a href="haystack.html#sec-4-3">4.3 Haystack Cache</a></li>
+<li><a href="haystack.html#sec-4-4">4.4 Haystack Store</a></li>
+<li><a href="haystack.html#sec-4-5">4.5 Recovery from failures</a></li>
+<li><a href="haystack.html#sec-4-6">4.6 Optimizations</a></li>
 </ul>
 </li>
-<li><a href="haystack.html#sec-1-5">1.5 Evaluation</a></li>
-<li><a href="haystack.html#sec-1-6">1.6 Related Work</a></li>
-<li><a href="haystack.html#sec-1-7">1.7 Conclusion</a></li>
-</ul>
-</li>
+<li><a href="haystack.html#sec-5">5 Evaluation</a></li>
+<li><a href="haystack.html#sec-6">6 Related Work</a></li>
+<li><a href="haystack.html#sec-7">7 Conclusion</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> haystack</h2>
-<div class="outline-text-2" id="text-1">
-
-<ul>
-<li><a href="https://www.usenix.org/legacy/event/osdi10/tech/full_papers/Beaver.pdf">https://www.usenix.org/legacy/event/osdi10/tech/full_papers/Beaver.pdf</a>
-</li>
-<li>title: Finding a needle in Haystack: Facebook’s photo storage
-</li>
-<li>date: 2010
-</li>
-</ul>
-
-
-<p>
-note(dirlt): 如何存储大量静态小文件
-</p>
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Abstract</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> Abstract</h3>
+<div class="outline-text-3" id="text-1">
 
 <ul>
 <li>Facebook currently stores over 260 billion images, which translates to over 20 petabytes of data. Users up-load one billion new photos (∼60 terabytes) each week and Facebook serves over one million images per sec-ond at peak. # 260G张图片, 20PB数据(~= 20 * 1024 * 1024 * 1.024 ^ 3 / 260 = 84k bytes). 每周上传1G张图片~60TB(~= 60 * 1024 * 1.024 ^ 3 / 1 = 64k bytes). 高峰1000k QPS.
@@ -141,17 +118,17 @@ note(dirlt): 如何存储大量静态小文件
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Introduction</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> Introduction</h3>
+<div class="outline-text-3" id="text-2">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Background &amp; Previous Design</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> Background &amp; Previous Design</h3>
+<div class="outline-text-3" id="text-3">
 
 <p>下面是图片服务的典型设计图. 这个设计存在个问题就是, 图片访问呈现长尾趋势, 有大量的不那么popular的图片访问量加起来造成的traffic巨大. CDN容量有限只能缓存那些非常popular的那些, 对那些长尾却没有办法缓存. 所以这些图片的访问全部落在了photo-storage部分.
 </p>
@@ -168,16 +145,16 @@ note(dirlt): 如何存储大量静态小文件
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Design &amp; Implementation</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> Design &amp; Implementation</h3>
+<div class="outline-text-3" id="text-4">
 
 
 </div>
 
-<div id="outline-container-1-4-1" class="outline-4">
-<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> Overview</h4>
-<div class="outline-text-4" id="text-1-4-1">
+<div id="outline-container-4-1" class="outline-4">
+<h4 id="sec-4-1"><span class="section-number-4">4.1</span> Overview</h4>
+<div class="outline-text-4" id="text-4-1">
 
 <p>Recall that storing a single photo per file resulted in more filesystem metadata than could be reasonably cached. Haystack takes a straight-forward approach: it stores multiple photos in a single file and therefore maintains very large files. # 将许多图片存储在一个文件里面来减少metadata.
 </p>
@@ -230,18 +207,18 @@ The Haystack architecture consists of 3 core compo-nents:
 
 </div>
 
-<div id="outline-container-1-4-2" class="outline-4">
-<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> Haystack Directory</h4>
-<div class="outline-text-4" id="text-1-4-2">
+<div id="outline-container-4-2" class="outline-4">
+<h4 id="sec-4-2"><span class="section-number-4">4.2</span> Haystack Directory</h4>
+<div class="outline-text-4" id="text-4-2">
 
-<p>note(dirlt): 不知道是否支持副本自动迁移
+<p>#note: 不知道是否支持副本自动迁移
 </p>
 <p>
 The Directory serves four main functions.
 </p><ul>
 <li>First, it pro-vides a mapping from logical volumes to physical vol-umes. Web servers use this mapping when uploading photos and also when constructing the image URLs for a page request. # 映射关系
 </li>
-<li>Second, the Directory load balances writes across logical volumes and reads across physi-cal volumes. # 在各个节点以及volumes之间平衡. note(dirlt): 策略?
+<li>Second, the Directory load balances writes across logical volumes and reads across physi-cal volumes. # 在各个节点以及volumes之间平衡.
 </li>
 <li>Third, the Directory determines whether a photo request should be handled by the CDN or by the Cache. This functionality lets us adjust our depen-dence on CDNs. # 系统灵活性
 </li>
@@ -249,15 +226,15 @@ The Directory serves four main functions.
 </li>
 </ul>
 
-<p>The Directory is a relatively straight-forward compo-nent that stores its information in a replicated database accessed via a PHP interface that leverages memcache. In the event that we lose the data on a Store machine we remove the corresponding entry in the mapping and replace it when a new Store machine is brought online. # 数据存储在replicated database前面有memcache. note(dirlt): 似乎没有办法进行自动迁移.
+<p>The Directory is a relatively straight-forward compo-nent that stores its information in a replicated database accessed via a PHP interface that leverages memcache. In the event that we lose the data on a Store machine we remove the corresponding entry in the mapping and replace it when a new Store machine is brought online. # 数据存储在replicated database前面有memcache. (#note: 似乎没有办法进行自动迁移)
 </p>
 </div>
 
 </div>
 
-<div id="outline-container-1-4-3" class="outline-4">
-<h4 id="sec-1-4-3"><span class="section-number-4">1.4.3</span> Haystack Cache</h4>
-<div class="outline-text-4" id="text-1-4-3">
+<div id="outline-container-4-3" class="outline-4">
+<h4 id="sec-4-3"><span class="section-number-4">4.3</span> Haystack Cache</h4>
+<div class="outline-text-4" id="text-4-3">
 
 <p>We now highlight an important behavioral aspect of the Cache. It caches a photo only if two conditions are met:
 </p><ul>
@@ -284,9 +261,9 @@ The Directory serves four main functions.
 
 </div>
 
-<div id="outline-container-1-4-4" class="outline-4">
-<h4 id="sec-1-4-4"><span class="section-number-4">1.4.4</span> Haystack Store</h4>
-<div class="outline-text-4" id="text-1-4-4">
+<div id="outline-container-4-4" class="outline-4">
+<h4 id="sec-4-4"><span class="section-number-4">4.4</span> Haystack Store</h4>
+<div class="outline-text-4" id="text-4-4">
 
 <p>Each Store machine manages multiple physical vol-umes. Each volume holds millions of photos. For concreteness, the reader can think of a physical vol-ume as simply a very large file (100 GB) saved as '/hay/haystack_&lt;logical volume id&gt;'. # 一个logical volumn在一台机器上只有一个对应的physical volume. 这是redundancy的需要, 同时也简化了文件组织.
 </p>
@@ -322,11 +299,11 @@ index文件是在追加store-file时候异步写入的. 那么这里有个问题
 
 </div>
 
-<div id="outline-container-1-4-5" class="outline-4">
-<h4 id="sec-1-4-5"><span class="section-number-4">1.4.5</span> Recovery from failures</h4>
-<div class="outline-text-4" id="text-1-4-5">
+<div id="outline-container-4-5" class="outline-4">
+<h4 id="sec-4-5"><span class="section-number-4">4.5</span> Recovery from failures</h4>
+<div class="outline-text-4" id="text-4-5">
 
-<p>note(dirlt): 自动检测, 人工修复.
+<p>#note: 自动检测, 人工修复.
 </p>
 <p>
 To proactively find Store machines that are having problems, we maintain a background task, dubbed pitch-fork, that periodically checks the health of each Store machine. Pitchfork remotely tests the connection to each Store machine, checks the availability of each vol-ume file, and attempts to read data from the Store ma-chine. If pitchfork determines that a Store machine con-sistently fails these health checks then pitchfork auto-matically marks all logical volumes that reside on that Store machine as read-only. We manually address the underlying cause for the failed checks offline. # 后台任务pitchfork检查每个store machine的状态. 一旦发现存在问题那么立刻将这个machine上所有的logica volumes标记为read-only. 然后人工线下来分析原因
@@ -338,9 +315,9 @@ Once diagnosed, we may be able to fix the prob-lem quickly. Occasionally, the si
 
 </div>
 
-<div id="outline-container-1-4-6" class="outline-4">
-<h4 id="sec-1-4-6"><span class="section-number-4">1.4.6</span> Optimizations</h4>
-<div class="outline-text-4" id="text-1-4-6">
+<div id="outline-container-4-6" class="outline-4">
+<h4 id="sec-4-6"><span class="section-number-4">4.6</span> Optimizations</h4>
+<div class="outline-text-4" id="text-4-6">
 
 <ul>
 <li>Compaction
@@ -357,36 +334,33 @@ Once diagnosed, we may be able to fix the prob-lem quickly. Occasionally, the si
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Evaluation</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> Evaluation</h3>
+<div class="outline-text-3" id="text-5">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Related Work</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> Related Work</h3>
+<div class="outline-text-3" id="text-6">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Conclusion</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-7" class="outline-3">
+<h3 id="sec-7"><span class="section-number-3">7</span> Conclusion</h3>
+<div class="outline-text-3" id="text-7">
 
-</div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-12-23T12:37+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'haystack.html';var disqus_title = 'haystack.html';var disqus_url = 'http://dirlt.com/haystack.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'haystack.html';var disqus_title = 'haystack.html';var disqus_url = 'http://dirlt.com/haystack.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

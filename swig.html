@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<head>
 <title>swig</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="swig"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-12-18T11:29+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,7 +62,7 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
@@ -72,44 +71,29 @@
 <div id="content">
 <h1 class="title">swig</h1>
 
+<p>SWIG(Simple Wrapper Interface Generator)是一个C/C++多语言扩展接口生成器。
+</p>
+<p>
+#note: boost::python可以更容易地使用C++来编写Python扩展
+</p>
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="swig.html#sec-1">1 swig</a>
-<ul>
-<li><a href="swig.html#sec-1-1">1.1 how it works</a></li>
-<li><a href="swig.html#sec-1-2">1.2 a simple example</a></li>
-<li><a href="swig.html#sec-1-3">1.3 options</a></li>
-<li><a href="swig.html#sec-1-4">1.4 instructions</a></li>
-<li><a href="swig.html#sec-1-5">1.5 about types</a>
-<ul>
-<li><a href="swig.html#sec-1-5-1">1.5.1 二进制</a></li>
-<li><a href="swig.html#sec-1-5-2">1.5.2 异常</a></li>
-</ul>
-</li>
-<li><a href="swig.html#sec-1-6">1.6 python extension</a></li>
-</ul>
-</li>
+<li><a href="swig.html#sec-1">1 how it works</a></li>
+<li><a href="swig.html#sec-2">2 a simple example</a></li>
+<li><a href="swig.html#sec-3">3 options</a></li>
+<li><a href="swig.html#sec-4">4 instructions</a></li>
+<li><a href="swig.html#sec-5">5 about types</a></li>
+<li><a href="swig.html#sec-6">6 python extension</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> swig</h2>
-<div class="outline-text-2" id="text-1">
-
-
-<p>
-SWIG(Simple Wrapper Interface Generator)是一个C/C++多语言扩展接口生成器。个人对于SWIG并不是非常熟悉，但是觉得这个东西确实很好使用能够很快地写出扩展。整理的文档只是常用内容，只为抛砖引玉。
-</p>
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> how it works</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> how it works</h3>
+<div class="outline-text-3" id="text-1">
 
 <p>首先我们需要编写一个输入文件里面有我们需要包装的C++类或者是函数的声明并且加上一些特殊的标记，然后SWIG内部有一个C++解析器能够解析这些标记以及C++
 的类或者是函数的声明，然后生成包装代码。这个C++解析器来支持预处理的过程，能够处理宏并且进行#include头文件。如果在SWIG预处理处理的时候，那么会定义
@@ -119,9 +103,9 @@ SWIG(Simple Wrapper Interface Generator)是一个C/C++多语言扩展接口生�
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> a simple example</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> a simple example</h3>
+<div class="outline-text-3" id="text-2">
 
 
 
@@ -217,9 +201,9 @@ swig -Wall -python -c++ -I/usr/include -includeall pycompack.swg
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> options</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> options</h3>
+<div class="outline-text-3" id="text-3">
 
 <ul>
 <li>-c++ // 使用C++编写扩展
@@ -235,9 +219,9 @@ swig -Wall -python -c++ -I/usr/include -includeall pycompack.swg
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> instructions</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> instructions</h3>
+<div class="outline-text-3" id="text-4">
 
 <ul>
 <li>%rename(x) y; // 能够将y重名为x
@@ -251,9 +235,9 @@ swig -Wall -python -c++ -I/usr/include -includeall pycompack.swg
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> about types</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> about types</h3>
+<div class="outline-text-3" id="text-5">
 
 <p>默认情况下面的话SWIG只是支持几个C/C++类型比如char,unsigned char,int,unsigned int等，而对于其他类型都认为是opaque pointer.我们经常遇到的问题就是
 我们使用int64_t这样的类型，但是SWIG认为这个是一个pointer.当然我们可以使用typedef来进行类型定义，显示地告诉SWIG这个是一个基本类型，比如
@@ -268,13 +252,9 @@ swig -Wall -python -c++ -I/usr/include -includeall pycompack.swg
 然后返回python这个指针对象，通常这样来说就会造成内存泄露，所以我们最好还是不要返回非基本类型。这里有必要说明的就是C++引用和指针对于SWIG是相同的。
 </p>
 
-</div>
-
-<div id="outline-container-1-5-1" class="outline-4">
-<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> 二进制</h4>
-<div class="outline-text-4" id="text-1-5-1">
-
-<p>传入二进制的话我们可以使用swig的typemap搞定
+<hr/>
+<p>
+二进制参数. 传入二进制的话我们可以使用swig的typemap搞定
 </p>
 
 
@@ -293,15 +273,10 @@ swig -Wall -python -c++ -I/usr/include -includeall pycompack.swg
 </pre>
 
 
-</div>
 
-</div>
-
-<div id="outline-container-1-5-2" class="outline-4">
-<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> 异常</h4>
-<div class="outline-text-4" id="text-1-5-2">
-
-<p>首先我们必须构造异常。构造异常非常简单就是编写一个类，但是需要注意的是必须在public下面定义构造和析构函数，不然在抛出异常时候会出现内存泄露问题。
+<hr/>
+<p>
+传递异常. 首先我们必须构造异常。构造异常非常简单就是编写一个类，但是需要注意的是必须在public下面定义构造和析构函数，不然在抛出异常时候会出现内存泄露问题。
 然后使用异常的时候只需要在函数声明部分加上throw即可。
 </p>
 
@@ -321,13 +296,12 @@ void foo() throw (bsl::Excption);
 
 
 </div>
-</div>
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> python extension</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> python extension</h3>
+<div class="outline-text-3" id="text-6">
 
 <p>python本身提供了非常简单的方式来编译扩展，使用内置的distutils模块即可搞定。我们编写setup.py内容如下：
 </p>
@@ -362,13 +336,10 @@ setup(name='pycompack', # &#27169;&#22359;&#21517;&#31216;
 </p></div>
 </div>
 </div>
-</div>
 
 <div id="postamble">
-<p class="date">Date: 2014-12-18T11:29+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'swig.html';var disqus_title = 'swig.html';var disqus_url = 'http://dirlt.com/swig.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'swig.html';var disqus_title = 'swig.html';var disqus_url = 'http://dirlt.com/swig.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

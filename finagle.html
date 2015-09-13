@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
-<title>finagle</title>
+<head>
+<title>Finagle</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="finagle"/>
+<meta name="title" content="Finagle"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:43+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,74 +62,64 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
 </div>
 
 <div id="content">
-<h1 class="title">finagle</h1>
-
-
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="finagle.html#sec-1">1 finagle</a>
-<ul>
-<li><a href="finagle.html#sec-1-1">1.1 User's Guide</a>
-<ul>
-<li><a href="finagle.html#sec-1-1-1">1.1.1 Quickstart</a></li>
-<li><a href="finagle.html#sec-1-1-2">1.1.2 Concurrent Programming with Futures</a></li>
-<li><a href="finagle.html#sec-1-1-3">1.1.3 Services &amp; Filters</a></li>
-<li><a href="finagle.html#sec-1-1-4">1.1.4 Anatomy of a Server</a></li>
-<li><a href="finagle.html#sec-1-1-5">1.1.5 Anatomy of a Client</a></li>
-<li><a href="finagle.html#sec-1-1-6">1.1.6 Client Stack</a></li>
-<li><a href="finagle.html#sec-1-1-7">1.1.7 Metrics</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> finagle</h2>
-<div class="outline-text-2" id="text-1">
+<h1 class="title">Finagle</h1>
 
 <ul>
 <li><a href="https://github.com/twitter/finagle">https://github.com/twitter/finagle</a>
 </li>
 <li><a href="http://twitter.github.io/finagle/">http://twitter.github.io/finagle/</a>
 </li>
-<li><a href="your-server-as-a-function.html">Your Server As A Function</a>
+<li><a href="http://twitter.github.io/scala_school/zh_cn/finagle.html">Scala School上的例子</a>
 </li>
 </ul>
 
 
 
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="finagle.html#sec-1">1 User's Guide</a>
+<ul>
+<li><a href="finagle.html#sec-1-1">1.1 Quickstart</a></li>
+<li><a href="finagle.html#sec-1-2">1.2 Concurrent Programming with Futures</a></li>
+<li><a href="finagle.html#sec-1-3">1.3 Services &amp; Filters</a></li>
+<li><a href="finagle.html#sec-1-4">1.4 Anatomy of a Server</a></li>
+<li><a href="finagle.html#sec-1-5">1.5 Anatomy of a Client</a></li>
+<li><a href="finagle.html#sec-1-6">1.6 Client Stack</a></li>
+<li><a href="finagle.html#sec-1-7">1.7 Metrics</a></li>
+</ul>
+</li>
+<li><a href="finagle.html#sec-2">2 Your Server As A Function</a></li>
+</ul>
+</div>
 </div>
 
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> User's Guide</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> User's Guide</h3>
+<div class="outline-text-3" id="text-1">
 
 
 </div>
 
-<div id="outline-container-1-1-1" class="outline-4">
-<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> Quickstart</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-1-1" class="outline-4">
+<h4 id="sec-1-1"><span class="section-number-4">1.1</span> Quickstart</h4>
+<div class="outline-text-4" id="text-1-1">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-1-2" class="outline-4">
-<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> Concurrent Programming with Futures</h4>
-<div class="outline-text-4" id="text-1-1-2">
+<div id="outline-container-1-2" class="outline-4">
+<h4 id="sec-1-2"><span class="section-number-4">1.2</span> Concurrent Programming with Futures</h4>
+<div class="outline-text-4" id="text-1-2">
 
 <ul>
 <li>Finagle uses futures to encapsulate and compose concurrent operations such as network RPCs. <b>Futures are directly analogous to threads — they provide independent and overlapping threads of control — and can be thought of as featherweight threads.</b> They are cheap in construction, so the economies of traditional threads do not apply. <b>It is no problem to maintain millions of outstanding concurrent operations when they are represented by futures.</b> 
@@ -179,9 +168,9 @@
 
 </div>
 
-<div id="outline-container-1-1-3" class="outline-4">
-<h4 id="sec-1-1-3"><span class="section-number-4">1.1.3</span> Services &amp; Filters</h4>
-<div class="outline-text-4" id="text-1-1-3">
+<div id="outline-container-1-3" class="outline-4">
+<h4 id="sec-1-3"><span class="section-number-4">1.3</span> Services &amp; Filters</h4>
+<div class="outline-text-4" id="text-1-3">
 
 <ul>
 <li>Services and filters consitute the core abstractions with which clients and servers are constructed with the Finagle network library. They are very simple, but also quite versatile. Most of Finagle’s internals are structured around Services and Filters.
@@ -223,25 +212,25 @@
 
 </div>
 
-<div id="outline-container-1-1-4" class="outline-4">
-<h4 id="sec-1-1-4"><span class="section-number-4">1.1.4</span> Anatomy of a Server</h4>
-<div class="outline-text-4" id="text-1-1-4">
+<div id="outline-container-1-4" class="outline-4">
+<h4 id="sec-1-4"><span class="section-number-4">1.4</span> Anatomy of a Server</h4>
+<div class="outline-text-4" id="text-1-4">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-1-5" class="outline-4">
-<h4 id="sec-1-1-5"><span class="section-number-4">1.1.5</span> Anatomy of a Client</h4>
-<div class="outline-text-4" id="text-1-1-5">
+<div id="outline-container-1-5" class="outline-4">
+<h4 id="sec-1-5"><span class="section-number-4">1.5</span> Anatomy of a Client</h4>
+<div class="outline-text-4" id="text-1-5">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-1-6" class="outline-4">
-<h4 id="sec-1-1-6"><span class="section-number-4">1.1.6</span> Client Stack</h4>
-<div class="outline-text-4" id="text-1-1-6">
+<div id="outline-container-1-6" class="outline-4">
+<h4 id="sec-1-6"><span class="section-number-4">1.6</span> Client Stack</h4>
+<div class="outline-text-4" id="text-1-6">
 
 <p>Client implementations are encouraged to provide sensible defaults and leave room for application specific behavior to be built on top of the base layer via filters or synchronization mechanisms.
 </p><ul>
@@ -266,21 +255,21 @@
 </li>
 <li>This, however, <b>creates a lot of connection churn if your application consistantly requires more than lower bound connections.</b> 
 </li>
-<li><b>note(dirlt):按照上面的连接池管理逻辑，那么链接会被频繁创建和销毁</b>
+<li>#note: 按照上面的连接池管理逻辑，那么链接会被频繁创建和销毁
 </li>
 </ul>
 
 </li>
-<li>As a result, there is a separate facility for caching, with some TTL, services above the lower bound. The CachingPool caches regardless of whether there are more than lower-bound open services; it’s always caching up to (upper-bound - lower-bound) services. The cache reaches its peak value when you reach your peak concurrency (i.e. “load”), and then slowly decays, based on the TTL. <b>note(dirlt):针对上面机制的补充，将这部分链接缓存起来，然后使用TTL信息来缓慢销毁</b> 
+<li>As a result, there is a separate facility for caching, with some TTL, services above the lower bound. The CachingPool caches regardless of whether there are more than lower-bound open services; it’s always caching up to (upper-bound - lower-bound) services. The cache reaches its peak value when you reach your peak concurrency (i.e. “load”), and then slowly decays, based on the TTL. #note: 针对上面机制的补充，将这部分链接缓存起来，然后使用TTL信息来缓慢销毁
 </li>
-<li>The DefaultClient layers both pools which amounts to maintaining the low watermark (as long as request concurrency exists), queueing requests above the high watermark, and applying a TTL for services that are between [low, high]. <b>todo(dirlt):只是针对那些请求不频繁的service释放链接？queueing requests应该是说在这个service上有狠毒请求发生了堆积</b> 
+<li>The DefaultClient layers both pools which amounts to maintaining the low watermark (as long as request concurrency exists), queueing requests above the high watermark, and applying a TTL for services that are between [low, high].
 </li>
 </ul>
 
 </li>
 <li>Fail Fast
 <ul>
-<li>The FailFastFactory attempts to reduce the amount of requests dispatched to endpoints that are likely to fail. <b>note(dirlt):后台检查链接健康状况</b> 
+<li>The FailFastFactory attempts to reduce the amount of requests dispatched to endpoints that are likely to fail. #note: 后台检查链接健康状况
 </li>
 <li>It works by marking downed hosts when a connection fails, and launching a background process that repeatedly attempts to reconnect with a given backoff schedule. 
 <ul>
@@ -326,9 +315,9 @@
 
 </div>
 
-<div id="outline-container-1-1-7" class="outline-4">
-<h4 id="sec-1-1-7"><span class="section-number-4">1.1.7</span> Metrics</h4>
-<div class="outline-text-4" id="text-1-1-7">
+<div id="outline-container-1-7" class="outline-4">
+<h4 id="sec-1-7"><span class="section-number-4">1.7</span> Metrics</h4>
+<div class="outline-text-4" id="text-1-7">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" />
@@ -375,15 +364,20 @@
 
 </div>
 </div>
+
+</div>
+
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> <a href="your-server-as-a-function.html">Your Server As A Function</a></h3>
+<div class="outline-text-3" id="text-2">
+
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:43+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'finagle.html';var disqus_title = 'finagle.html';var disqus_url = 'http://dirlt.com/finagle.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'finagle.html';var disqus_title = 'finagle.html';var disqus_url = 'http://dirlt.com/finagle.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<head>
 <title>design-reading</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="design-reading"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:44+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,7 +62,7 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
@@ -77,27 +76,29 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="design-reading.html#sec-1">1 design-reading</a>
-<ul>
-<li><a href="design-reading.html#sec-1-1">1.1 T11的文艺模型</a></li>
-<li><a href="design-reading.html#sec-1-2">1.2 T11的浅谈架构</a></li>
-<li><a href="design-reading.html#sec-1-3">1.3 如何定义软件稳定</a></li>
+<li><a href="design-reading.html#sec-1">1 名人名言;)</a></li>
+<li><a href="design-reading.html#sec-2">2 T11的文艺模型</a></li>
+<li><a href="design-reading.html#sec-3">3 T11的浅谈架构</a></li>
+<li><a href="design-reading.html#sec-4">4 如何定义软件稳定</a></li>
+<li><a href="design-reading.html#sec-5">5 Concurrent Programming for Scalable Web Architectures</a></li>
+<li><a href="design-reading.html#sec-6">6 Producing Open Source Software</a></li>
 </ul>
-</li>
-</ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> design-reading</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> 名人名言;)</h3>
+<div class="outline-text-3" id="text-1">
 
+<p>"you can divide our industry into two kinds of people: those who want to go work for a company to make it successful, and those who want to go work for a successful company. " - <a href="http://www.jwz.org/gruntle/nomo.html">jwz</a>
+</p>
+</div>
 
 </div>
 
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> T11的文艺模型</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> T11的文艺模型</h3>
+<div class="outline-text-3" id="text-2">
 
 <p>当年12306订票系统在春运时候挂掉，引起了IT界的广泛讨论。当时T11就针对这个问题提出了文艺模型。当时自己没有太多感悟，后来同学和我解释一下之后，才感慨颇多。
 </p>
@@ -114,9 +115,9 @@ T11确实是一个看过同时做过很多的人。这是他空间的一篇文�
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> T11的浅谈架构</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> T11的浅谈架构</h3>
+<div class="outline-text-3" id="text-3">
 
 <p><a href="http://qing.weibo.com/2244218960/85c4105033000bwp.html">http://qing.weibo.com/2244218960/85c4105033000bwp.html</a>
 </p>
@@ -137,9 +138,9 @@ T11确实是一个看过同时做过很多的人。这是他空间的一篇文�
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> 如何定义软件稳定</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> 如何定义软件稳定</h3>
+<div class="outline-text-3" id="text-4">
 
 <p>@2012-8-30 redis作者在自己的文章里面提到了如何定义软件到达了production-ready（我理解就是stable）状态 <a href="http://antirez.com/post/redis-26-sentinel-update.html">http://antirez.com/post/redis-26-sentinel-update.html</a>
 </p>
@@ -156,7 +157,7 @@ In this context a critical bug is a bug that corrupts data, that crashes the ser
 <p>
 在作者看来，一个稳定的版本意味着：
 </p><ul>
-<li>不会有影响到现有功能的修改 <b>note(dirlt)：一般来说也不会增加feature</b>
+<li>不会有影响到现有功能的修改
 </li>
 <li>在过去8周内没有严重的bug（比如宕机或者是数据损坏等），但是不考虑一些非常极端的case
 </li>
@@ -164,15 +165,37 @@ In this context a critical bug is a bug that corrupts data, that crashes the ser
 
 
 </div>
+
+</div>
+
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> Concurrent Programming for Scalable Web Architectures</h3>
+<div class="outline-text-3" id="text-5">
+
+
+<p>
+<a href="http://berb.github.io/diploma-thesis/community/index.html">http://berb.github.io/diploma-thesis/community/index.html</a>
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> Producing Open Source Software</h3>
+<div class="outline-text-3" id="text-6">
+
+
+<p>
+<a href="http://producingoss.com/">http://producingoss.com/</a>
+</p>
+
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:44+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'design-reading.html';var disqus_title = 'design-reading.html';var disqus_url = 'http://dirlt.com/design-reading.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'design-reading.html';var disqus_title = 'design-reading.html';var disqus_url = 'http://dirlt.com/design-reading.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
-<title>tenzing</title>
+<head>
+<title>Tenzing A SQL Implementation On The MapReduce Framework</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="tenzing"/>
+<meta name="title" content="Tenzing A SQL Implementation On The MapReduce Framework"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-12-23T12:37+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,93 +62,77 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
 </div>
 
 <div id="content">
-<h1 class="title">tenzing</h1>
+<h1 class="title">Tenzing A SQL Implementation On The MapReduce Framework</h1>
 
+<ul>
+<li><a href="http://research.google.com/pubs/pub37200.html">http://research.google.com/pubs/pub37200.html</a> @ 2011
+</li>
+<li><a href="http://duanple.blog.163.com/blog/static/70971767201192484915767/">http://duanple.blog.163.com/blog/static/70971767201192484915767/</a>
+</li>
+</ul>
+
+
+<p>
+这个MR框架实现和Hadoop还不太一样。这里的worker是常驻的，实现上应该是接收master的指令并被通知输入位置，完成之后通知master完成计算以及输出位置，但是计算上还是Map+Reduce实现方式，多轮迭代应该也是通过多轮的mapreduce来完成的。可以减少mapper/reducer启动带来的额外开销和延迟，并且最终给出的是一个通用框架。
+</p>
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="tenzing.html#sec-1">1 tenzing</a>
+<li><a href="tenzing.html#sec-1">1 ABSTRACT</a></li>
+<li><a href="tenzing.html#sec-2">2 INTRODUCTION</a></li>
+<li><a href="tenzing.html#sec-3">3 HISTORY AND MOTIVATION</a></li>
+<li><a href="tenzing.html#sec-4">4 IMPLEMENTATION OVERVIEW</a></li>
+<li><a href="tenzing.html#sec-5">5 SQL FEATURES</a>
 <ul>
-<li><a href="tenzing.html#sec-1-1">1.1 ABSTRACT</a></li>
-<li><a href="tenzing.html#sec-1-2">1.2 INTRODUCTION</a></li>
-<li><a href="tenzing.html#sec-1-3">1.3 HISTORY AND MOTIVATION</a></li>
-<li><a href="tenzing.html#sec-1-4">1.4 IMPLEMENTATION OVERVIEW</a></li>
-<li><a href="tenzing.html#sec-1-5">1.5 SQL FEATURES</a>
+<li><a href="tenzing.html#sec-5-1">5.1 Projection And Filtering</a></li>
+<li><a href="tenzing.html#sec-5-2">5.2 Aggregation</a></li>
+<li><a href="tenzing.html#sec-5-3">5.3 Joins</a></li>
+<li><a href="tenzing.html#sec-5-4">5.4 Analytic Functions</a></li>
+<li><a href="tenzing.html#sec-5-5">5.5 OLAP Extensions</a></li>
+<li><a href="tenzing.html#sec-5-6">5.6 Set Operations</a></li>
+<li><a href="tenzing.html#sec-5-7">5.7 Nested Queries And Subqueries</a></li>
+<li><a href="tenzing.html#sec-5-8">5.8 Handling Structured Data</a></li>
+<li><a href="tenzing.html#sec-5-9">5.9 Views</a></li>
+<li><a href="tenzing.html#sec-5-10">5.10 DML</a></li>
+<li><a href="tenzing.html#sec-5-11">5.11 DDL</a></li>
+<li><a href="tenzing.html#sec-5-12">5.12 Table Valued Functions</a></li>
+<li><a href="tenzing.html#sec-5-13">5.13 Data Formats</a></li>
+</ul>
+</li>
+<li><a href="tenzing.html#sec-6">6 PERFORMANCE</a>
 <ul>
-<li><a href="tenzing.html#sec-1-5-1">1.5.1 Projection And Filtering</a></li>
-<li><a href="tenzing.html#sec-1-5-2">1.5.2 Aggregation</a></li>
-<li><a href="tenzing.html#sec-1-5-3">1.5.3 Joins</a></li>
-<li><a href="tenzing.html#sec-1-5-4">1.5.4 Analytic Functions</a></li>
-<li><a href="tenzing.html#sec-1-5-5">1.5.5 OLAP Extensions</a></li>
-<li><a href="tenzing.html#sec-1-5-6">1.5.6 Set Operations</a></li>
-<li><a href="tenzing.html#sec-1-5-7">1.5.7 Nested Queries And Subqueries</a></li>
-<li><a href="tenzing.html#sec-1-5-8">1.5.8 Handling Structured Data</a></li>
-<li><a href="tenzing.html#sec-1-5-9">1.5.9 Views</a></li>
-<li><a href="tenzing.html#sec-1-5-10">1.5.10 DML</a></li>
-<li><a href="tenzing.html#sec-1-5-11">1.5.11 DDL</a></li>
-<li><a href="tenzing.html#sec-1-5-12">1.5.12 Table Valued Functions</a></li>
-<li><a href="tenzing.html#sec-1-5-13">1.5.13 Data Formats</a></li>
+<li><a href="tenzing.html#sec-6-1">6.1 MapReduce Enhancements</a></li>
+<li><a href="tenzing.html#sec-6-2">6.2 Scalability</a></li>
+<li><a href="tenzing.html#sec-6-3">6.3 System Benchmarks</a></li>
+<li><a href="tenzing.html#sec-6-4">6.4 Experimental LLVM Query Engine</a></li>
 </ul>
 </li>
-<li><a href="tenzing.html#sec-1-6">1.6 PERFORMANCE</a>
-<ul>
-<li><a href="tenzing.html#sec-1-6-1">1.6.1 MapReduce Enhancements</a></li>
-<li><a href="tenzing.html#sec-1-6-2">1.6.2 Scalability</a></li>
-<li><a href="tenzing.html#sec-1-6-3">1.6.3 System Benchmarks</a></li>
-<li><a href="tenzing.html#sec-1-6-4">1.6.4 Experimental LLVM Query Engine</a></li>
-</ul>
-</li>
-<li><a href="tenzing.html#sec-1-7">1.7 RELATED WORK</a></li>
-<li><a href="tenzing.html#sec-1-8">1.8 CONCLUSION</a></li>
-</ul>
-</li>
+<li><a href="tenzing.html#sec-7">7 RELATED WORK</a></li>
+<li><a href="tenzing.html#sec-8">8 CONCLUSION</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> tenzing</h2>
-<div class="outline-text-2" id="text-1">
-
-<ul>
-<li>link: <a href="http://research.google.com/pubs/pub37200.html">http://research.google.com/pubs/pub37200.html</a>
-</li>
-<li>title: Tenzing A SQL Implementation On The MapReduce Framework
-</li>
-<li>date: 2011
-</li>
-</ul>
-
-
-<p>
-这个MR框架实现和Hadoop还不太一样。这里的worker是常驻的，实现上应该是接收master的指令并被通知输入位置，完成之后通知master完成计算以及输出位置，但是计算上还是Map+Reduce实现方式，多轮迭代应该也是通过多轮的mapreduce来完成的。
-</p>
-<p>
-<a href="http://duanple.blog.163.com/blog/static/70971767201192484915767/">http://duanple.blog.163.com/blog/static/70971767201192484915767/</a>
-</p>
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> ABSTRACT</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> ABSTRACT</h3>
+<div class="outline-text-3" id="text-1">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> INTRODUCTION</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> INTRODUCTION</h3>
+<div class="outline-text-3" id="text-2">
 
 <ul>
 <li>In this paper, we describe Tenzing, a SQL query execution engine built on top of MapReduce.
@@ -167,9 +150,9 @@
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> HISTORY AND MOTIVATION</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> HISTORY AND MOTIVATION</h3>
+<div class="outline-text-3" id="text-3">
 
 <ul>
 <li>At the end of 2008, the data warehouse for Google Ads data was implemented on top of a proprietary third-party database appliance henceforth referred to as DBMS-X. While it was working reasonably well, we faced the following issues:
@@ -206,9 +189,9 @@
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> IMPLEMENTATION OVERVIEW</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> IMPLEMENTATION OVERVIEW</h3>
+<div class="outline-text-3" id="text-4">
 
 <p><img src="images/tenzing-architecture.png"  alt="./images/tenzing-architecture.png" />
 </p>
@@ -275,35 +258,35 @@ A typical Tenzing query goes through the following steps:
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> SQL FEATURES</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> SQL FEATURES</h3>
+<div class="outline-text-3" id="text-5">
 
 
 </div>
 
-<div id="outline-container-1-5-1" class="outline-4">
-<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> Projection And Filtering</h4>
-<div class="outline-text-4" id="text-1-5-1">
-
-</div>
-
-</div>
-
-<div id="outline-container-1-5-2" class="outline-4">
-<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> Aggregation</h4>
-<div class="outline-text-4" id="text-1-5-2">
+<div id="outline-container-5-1" class="outline-4">
+<h4 id="sec-5-1"><span class="section-number-4">5.1</span> Projection And Filtering</h4>
+<div class="outline-text-4" id="text-5-1">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-5-3" class="outline-4">
-<h4 id="sec-1-5-3"><span class="section-number-4">1.5.3</span> Joins</h4>
-<div class="outline-text-4" id="text-1-5-3">
+<div id="outline-container-5-2" class="outline-4">
+<h4 id="sec-5-2"><span class="section-number-4">5.2</span> Aggregation</h4>
+<div class="outline-text-4" id="text-5-2">
+
+</div>
+
+</div>
+
+<div id="outline-container-5-3" class="outline-4">
+<h4 id="sec-5-3"><span class="section-number-4">5.3</span> Joins</h4>
+<div class="outline-text-4" id="text-5-3">
 
 <ul>
-<li id="sec-1-5-3-1">BROADCAST JOINS<br/>
+<li id="sec-5-3-1">BROADCAST JOINS<br/>
 <ul>
 <li>If small enough, the secondary table is pulled into the memory of each mapper / reducer process for in- memory lookups, which typically is the fastest method for joining.
 <ul>
@@ -328,22 +311,22 @@ A typical Tenzing query goes through the following steps:
 </li>
 </ul>
 <ul>
-<li id="sec-1-5-3-2">REMOTE LOOKUP JOINS<br/>
+<li id="sec-5-3-2">REMOTE LOOKUP JOINS<br/>
 For sources which support remote lookups on index (e.g., Bigtable), Tenzing supports remote lookup joins on the key (or a prefix of the key). We employ an asynchronous batch lookup technique combined with a local LRU cache in order to improve performance. The optimizer can intelligently switch table order to enable this if needed.（通过聚合批量以及异步的方式进行查询）
 
 </li>
 </ul>
 <ul>
-<li id="sec-1-5-3-3">DISTRIBUTED SORT-MERGE JOINS<br/>
+<li id="sec-5-3-3">DISTRIBUTED SORT-MERGE JOINS<br/>
 Distributed sort-merge joins are the most widely used joins in MapReduce implementations. Tenzing has an im- plementation which is most effective when the two tables being joined are roughly the same size and neither has an index on the join key.（比较通用的join算法）
 
 <p>
-<b>note(dirlt):对应在Hadoop里面就是reducer-join</b>
+#note: 对应在Hadoop里面就是reducer-join
 </p>
 </li>
 </ul>
 <ul>
-<li id="sec-1-5-3-4">DISTRIBUTED HASH JOINS<br/>
+<li id="sec-5-3-4">DISTRIBUTED HASH JOINS<br/>
 Distributed hash joins are frequently the most effective join method in Tenzing when:
 <ul>
 <li>Neither table fits completely in memory,
@@ -357,7 +340,7 @@ Distributed hash joins are frequently the most effective join method in Tenzing 
 <p>These conditions are often satisfied by OLAP queries with star joins to large dimensions, a type of query often used with Tenzing.
 </p>
 <p>
-<b>note(dirlt)：对应在Hadoop里面就是mapper-join.在Mapper阶段就将两个需要join的数据按照hash进行划分，然后每个mapper都只是取相应hash的部分</b>
+#note: 对应在Hadoop里面就是mapper-join.在Mapper阶段就将两个需要join的数据按照hash进行划分，然后每个mapper都只是取相应hash的部分
 </p>
 </li>
 </ul>
@@ -365,73 +348,73 @@ Distributed hash joins are frequently the most effective join method in Tenzing 
 
 </div>
 
-<div id="outline-container-1-5-4" class="outline-4">
-<h4 id="sec-1-5-4"><span class="section-number-4">1.5.4</span> Analytic Functions</h4>
-<div class="outline-text-4" id="text-1-5-4">
+<div id="outline-container-5-4" class="outline-4">
+<h4 id="sec-5-4"><span class="section-number-4">5.4</span> Analytic Functions</h4>
+<div class="outline-text-4" id="text-5-4">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-5-5" class="outline-4">
-<h4 id="sec-1-5-5"><span class="section-number-4">1.5.5</span> OLAP Extensions</h4>
-<div class="outline-text-4" id="text-1-5-5">
+<div id="outline-container-5-5" class="outline-4">
+<h4 id="sec-5-5"><span class="section-number-4">5.5</span> OLAP Extensions</h4>
+<div class="outline-text-4" id="text-5-5">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-5-6" class="outline-4">
-<h4 id="sec-1-5-6"><span class="section-number-4">1.5.6</span> Set Operations</h4>
-<div class="outline-text-4" id="text-1-5-6">
+<div id="outline-container-5-6" class="outline-4">
+<h4 id="sec-5-6"><span class="section-number-4">5.6</span> Set Operations</h4>
+<div class="outline-text-4" id="text-5-6">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-5-7" class="outline-4">
-<h4 id="sec-1-5-7"><span class="section-number-4">1.5.7</span> Nested Queries And Subqueries</h4>
-<div class="outline-text-4" id="text-1-5-7">
+<div id="outline-container-5-7" class="outline-4">
+<h4 id="sec-5-7"><span class="section-number-4">5.7</span> Nested Queries And Subqueries</h4>
+<div class="outline-text-4" id="text-5-7">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-5-8" class="outline-4">
-<h4 id="sec-1-5-8"><span class="section-number-4">1.5.8</span> Handling Structured Data</h4>
-<div class="outline-text-4" id="text-1-5-8">
+<div id="outline-container-5-8" class="outline-4">
+<h4 id="sec-5-8"><span class="section-number-4">5.8</span> Handling Structured Data</h4>
+<div class="outline-text-4" id="text-5-8">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-5-9" class="outline-4">
-<h4 id="sec-1-5-9"><span class="section-number-4">1.5.9</span> Views</h4>
-<div class="outline-text-4" id="text-1-5-9">
+<div id="outline-container-5-9" class="outline-4">
+<h4 id="sec-5-9"><span class="section-number-4">5.9</span> Views</h4>
+<div class="outline-text-4" id="text-5-9">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-5-10" class="outline-4">
-<h4 id="sec-1-5-10"><span class="section-number-4">1.5.10</span> DML</h4>
-<div class="outline-text-4" id="text-1-5-10">
+<div id="outline-container-5-10" class="outline-4">
+<h4 id="sec-5-10"><span class="section-number-4">5.10</span> DML</h4>
+<div class="outline-text-4" id="text-5-10">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-5-11" class="outline-4">
-<h4 id="sec-1-5-11"><span class="section-number-4">1.5.11</span> DDL</h4>
-<div class="outline-text-4" id="text-1-5-11">
+<div id="outline-container-5-11" class="outline-4">
+<h4 id="sec-5-11"><span class="section-number-4">5.11</span> DDL</h4>
+<div class="outline-text-4" id="text-5-11">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-5-12" class="outline-4">
-<h4 id="sec-1-5-12"><span class="section-number-4">1.5.12</span> Table Valued Functions</h4>
-<div class="outline-text-4" id="text-1-5-12">
+<div id="outline-container-5-12" class="outline-4">
+<h4 id="sec-5-12"><span class="section-number-4">5.12</span> Table Valued Functions</h4>
+<div class="outline-text-4" id="text-5-12">
 
 <ul>
 <li>Tenzing supports both scalar and table-valued user-defined functions, implemented by embedding a Sawzall interpreter in the Tenzing execution engine. The framework is designed such that other languages can also be easily integrated. In- tegration of Lua and R has been proposed, and work is in progress.（UDF使用swazall实现然后通过内嵌的swazall解释器来运行。同时框架设计上也允许其他语言比如Lua和R来编写UDF）
@@ -445,9 +428,9 @@ Distributed hash joins are frequently the most effective join method in Tenzing 
 
 </div>
 
-<div id="outline-container-1-5-13" class="outline-4">
-<h4 id="sec-1-5-13"><span class="section-number-4">1.5.13</span> Data Formats</h4>
-<div class="outline-text-4" id="text-1-5-13">
+<div id="outline-container-5-13" class="outline-4">
+<h4 id="sec-5-13"><span class="section-number-4">5.13</span> Data Formats</h4>
+<div class="outline-text-4" id="text-5-13">
 
 <p>Tenzing supports direct querying of, loading data from, and downloading data into many formats. Various options can be specified to tweak the exact form of input / output.
 </p><ul>
@@ -471,16 +454,16 @@ Distributed hash joins are frequently the most effective join method in Tenzing 
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> PERFORMANCE</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> PERFORMANCE</h3>
+<div class="outline-text-3" id="text-6">
 
 
 </div>
 
-<div id="outline-container-1-6-1" class="outline-4">
-<h4 id="sec-1-6-1"><span class="section-number-4">1.6.1</span> MapReduce Enhancements</h4>
-<div class="outline-text-4" id="text-1-6-1">
+<div id="outline-container-6-1" class="outline-4">
+<h4 id="sec-6-1"><span class="section-number-4">6.1</span> MapReduce Enhancements</h4>
+<div class="outline-text-4" id="text-6-1">
 
 <p>Tenzing is tightly integrated with the Google MapReduce implementation, and we made several enhancements to the MapReduce framework to increase throughput, decrease la-tency and make SQL operators more efficient.（在MapReduce实现上做了一些修改来减少延迟和提高吞吐，以及使得SQL算子操作更有效率）
 </p><ul>
@@ -501,7 +484,7 @@ Distributed hash joins are frequently the most effective join method in Tenzing 
 </ul>
 
 </li>
-<li>Streaming &amp; In-memory Chaining. *note(dirlt)：非常类似 <a href="mapreduce-online.html">MapReduce-Online</a> 的思想*
+<li>Streaming &amp; In-memory Chaining. #note: 类似 <a href="mapreduce-online.html">MapReduce-Online</a> 中提到的做法
 <ul>
 <li>The original im-plementation of Tenzing serialized all intermediate data to GFS. This led to poor performance for multi-MapReduce queries, such as hash joins and nested sub-selects.（中间物化代价非常高）
 </li>
@@ -509,7 +492,7 @@ Distributed hash joins are frequently the most effective join method in Tenzing 
 </li>
 <li>We subsequently im-proved performance further by using memory chaining, where the reducer of the upstream MR and the mapper of the downstream MR are co-located in the same process.（上下游pipelining）
 </li>
-<li><b>note(dirlt)：这个思想相比之下，感觉可能还是spark/shark的思路会更加靠谱。很明显MapReduce方式不太适合DAG计算，与其在上面做修改不如建立一个新的framework。事实上spark/shark的扩展性也是非常好的</b>
+<li>#note: 感觉可能还是spark/shark架构会更加合适，很明显MapReduce方式不太适合DAG计算
 </li>
 </ul>
 
@@ -550,25 +533,25 @@ Distributed hash joins are frequently the most effective join method in Tenzing 
 
 </div>
 
-<div id="outline-container-1-6-2" class="outline-4">
-<h4 id="sec-1-6-2"><span class="section-number-4">1.6.2</span> Scalability</h4>
-<div class="outline-text-4" id="text-1-6-2">
+<div id="outline-container-6-2" class="outline-4">
+<h4 id="sec-6-2"><span class="section-number-4">6.2</span> Scalability</h4>
+<div class="outline-text-4" id="text-6-2">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-6-3" class="outline-4">
-<h4 id="sec-1-6-3"><span class="section-number-4">1.6.3</span> System Benchmarks</h4>
-<div class="outline-text-4" id="text-1-6-3">
+<div id="outline-container-6-3" class="outline-4">
+<h4 id="sec-6-3"><span class="section-number-4">6.3</span> System Benchmarks</h4>
+<div class="outline-text-4" id="text-6-3">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-6-4" class="outline-4">
-<h4 id="sec-1-6-4"><span class="section-number-4">1.6.4</span> Experimental LLVM Query Engine</h4>
-<div class="outline-text-4" id="text-1-6-4">
+<div id="outline-container-6-4" class="outline-4">
+<h4 id="sec-6-4"><span class="section-number-4">6.4</span> Experimental LLVM Query Engine</h4>
+<div class="outline-text-4" id="text-6-4">
 
 <ul>
 <li>Our execution engine has gone through multiple itera- tions to achieve single-node efficiency close to commercial DBMS.
@@ -590,28 +573,25 @@ Distributed hash joins are frequently the most effective join method in Tenzing 
 
 </div>
 
-<div id="outline-container-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> RELATED WORK</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-7" class="outline-3">
+<h3 id="sec-7"><span class="section-number-3">7</span> RELATED WORK</h3>
+<div class="outline-text-3" id="text-7">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-8" class="outline-3">
-<h3 id="sec-1-8"><span class="section-number-3">1.8</span> CONCLUSION</h3>
-<div class="outline-text-3" id="text-1-8">
+<div id="outline-container-8" class="outline-3">
+<h3 id="sec-8"><span class="section-number-3">8</span> CONCLUSION</h3>
+<div class="outline-text-3" id="text-8">
 
-</div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-12-23T12:37+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'tenzing.html';var disqus_title = 'tenzing.html';var disqus_url = 'http://dirlt.com/tenzing.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'tenzing.html';var disqus_title = 'tenzing.html';var disqus_url = 'http://dirlt.com/tenzing.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

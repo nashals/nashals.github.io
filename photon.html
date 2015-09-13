@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
-<title>photon</title>
+<head>
+<title>Photon: Fault-tolerant and Scalable Joining of Continuous Data Streams</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="photon"/>
+<meta name="title" content="Photon: Fault-tolerant and Scalable Joining of Continuous Data Streams"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-12-23T12:37+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,59 +62,40 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
 </div>
 
 <div id="content">
-<h1 class="title">photon</h1>
+<h1 class="title">Photon: Fault-tolerant and Scalable Joining of Continuous Data Streams</h1>
 
+<p><a href="http://research.google.com/pubs/pub41318.html">http://research.google.com/pubs/pub41318.html</a> @ 2013
+</p>
+<p>
+#note: 虽然photon也是流式处理系统, 但是并不是通用的流式处理系统, 它只是流式地完成query/click之间的join操作, 应用范围相对有限. <a href="millwheel.html">MillWheel</a> 才是google的通用流式系统.
+</p>
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="photon.html#sec-1">1 photon</a>
-<ul>
-<li><a href="photon.html#sec-1-1">1.1 Abstract</a></li>
-<li><a href="photon.html#sec-1-2">1.2 Introduction</a></li>
-<li><a href="photon.html#sec-1-3">1.3 Paxos-Based ID Registry</a></li>
-<li><a href="photon.html#sec-1-4">1.4 Single Datacenter Pipeline</a></li>
-<li><a href="photon.html#sec-1-5">1.5 Performance Results</a></li>
-<li><a href="photon.html#sec-1-6">1.6 Design Lessons</a></li>
-<li><a href="photon.html#sec-1-7">1.7 Related Work</a></li>
-<li><a href="photon.html#sec-1-8">1.8 Conclusions and Future Work</a></li>
-</ul>
-</li>
+<li><a href="photon.html#sec-1">1 Abstract</a></li>
+<li><a href="photon.html#sec-2">2 Introduction</a></li>
+<li><a href="photon.html#sec-3">3 Paxos-Based ID Registry</a></li>
+<li><a href="photon.html#sec-4">4 Single Datacenter Pipeline</a></li>
+<li><a href="photon.html#sec-5">5 Performance Results</a></li>
+<li><a href="photon.html#sec-6">6 Design Lessons</a></li>
+<li><a href="photon.html#sec-7">7 Related Work</a></li>
+<li><a href="photon.html#sec-8">8 Conclusions and Future Work</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> photon</h2>
-<div class="outline-text-2" id="text-1">
-
-<ul>
-<li><a href="http://research.google.com/pubs/pub41318.html">http://research.google.com/pubs/pub41318.html</a>
-</li>
-<li>title: Photon: Fault-tolerant and Scalable Joining of Continuous Data Streams
-</li>
-<li>date: 2013
-</li>
-</ul>
-
-
-<p>
-note(dirlt): 虽然photon也是流式处理系统, 但是并不是通用的流式处理系统, 它只是流式地完成query/click之间的join操作, 应用范围相对有限. <a href="millwheel.html">MillWheel</a> 才是google的通用流式系统.
-</p>
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Abstract</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> Abstract</h3>
+<div class="outline-text-3" id="text-1">
 
 <ul>
 <li>Photon is deployed within Google Advertising System to join data streams such as web search queries and user clicks on advertisements. # 在google广告系统中将搜索和点击关联起来
@@ -133,9 +113,9 @@ note(dirlt): 虽然photon也是流式处理系统, 但是并不是通用的流�
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Introduction</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> Introduction</h3>
+<div class="outline-text-3" id="text-2">
 
 <p>photon user-case大致是这样的:
 </p><ul>
@@ -174,9 +154,9 @@ While building Photon to join continuous data streams, we face these challenges:
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Paxos-Based ID Registry</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> Paxos-Based ID Registry</h3>
+<div class="outline-text-3" id="text-3">
 
 <ul>
 <li>The simplest way to achieve fault-tolerance on commodity hardware is through replication. Extending this prin-ciple to a large collection of machines, we can withstand datacenter-level outage by running the same system in mul-tiple datacenters in parallel. # 通过replication可以达到fault-tolerance的目的. 通过将这个原理扩展到大部分机器的话, 那么我们可以通过在多个datacenters并行运行系统来应对datacenter级别的故障.
@@ -194,7 +174,7 @@ While building Photon to join continuous data streams, we face these challenges:
 <ul>
 <li>The critical state shared between the workers consists of the set of event ids (e.g. click id) that have already been joined in the last N days. This state is stored in the IdRegistry. The constant N is determined by evaluating the trade-off between the cost of storage, and the cost of dropping events that are delayed by more than N days. # 这个shared-state就是IdRegistry. 然后我们设置N, 超过N天的被记录的click-id会被discarded(存储问题).
 </li>
-<li>Before writing a joined event to output, each worker veri-fies whether the event id already exists in the IdRegistry. If the identifier exists, the worker skips processing the event. Otherwise, the worker attempts to write the event id into the IdRegistry. The worker must successfully insert the event id into the IdRegistry before it can write the joined event to output the logs. The IdRegistry must guarantee that once an event id is written to it, subsequent requests to write the same identifier will fail. # note(dirlt): 这个逻辑优化一下应该是在join之前就应该先查询. 如果已经存在就skip. 否则再处理. 处理完成之后在尝试插入. 如果插入成功就输出. 很明显IdRegistry必须支持trx. 此外IdRegistry还必须能够在多个datanceter之间备份.
+<li>Before writing a joined event to output, each worker veri-fies whether the event id already exists in the IdRegistry. If the identifier exists, the worker skips processing the event. Otherwise, the worker attempts to write the event id into the IdRegistry. The worker must successfully insert the event id into the IdRegistry before it can write the joined event to output the logs. The IdRegistry must guarantee that once an event id is written to it, subsequent requests to write the same identifier will fail. #note: 这个逻辑优化一下应该是在join之前就应该先查询. 如果已经存在就skip. 否则再处理. 处理完成之后在尝试插入. 如果插入成功就输出. 很明显IdRegistry必须支持trx. 此外IdRegistry还必须能够在多个datanceter之间备份.
 </li>
 </ul>
 
@@ -250,9 +230,9 @@ While building Photon to join continuous data streams, we face these challenges:
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Single Datacenter Pipeline</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> Single Datacenter Pipeline</h3>
+<div class="outline-text-3" id="text-4">
 
 
 <p>
@@ -265,7 +245,7 @@ While building Photon to join continuous data streams, we face these challenges:
 <img src="images/photon-pipeline2.png"  alt="./images/photon-pipeline2.png" />
 </p>
 <ul>
-<li>logs. note(dirlt): logs存储在GFS上. 但是似乎这里使用file形式并不太自然, message-system会更好些比如kafka
+<li>logs. #note: logs存储在GFS上. 但是似乎这里使用file形式并不太自然, message-system会更好些比如kafka
 <ul>
 <li>如何生成event_id(query_event and click_event) ? (server_ip + process_id + timestamp + id). timestamp通过TrueTime定时同步.
 </li>
@@ -334,44 +314,41 @@ Verification and Recovery
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Performance Results</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> Performance Results</h3>
+<div class="outline-text-3" id="text-5">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Design Lessons</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> Design Lessons</h3>
+<div class="outline-text-3" id="text-6">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Related Work</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-7" class="outline-3">
+<h3 id="sec-7"><span class="section-number-3">7</span> Related Work</h3>
+<div class="outline-text-3" id="text-7">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-8" class="outline-3">
-<h3 id="sec-1-8"><span class="section-number-3">1.8</span> Conclusions and Future Work</h3>
-<div class="outline-text-3" id="text-1-8">
+<div id="outline-container-8" class="outline-3">
+<h3 id="sec-8"><span class="section-number-3">8</span> Conclusions and Future Work</h3>
+<div class="outline-text-3" id="text-8">
 
-</div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-12-23T12:37+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'photon.html';var disqus_title = 'photon.html';var disqus_url = 'http://dirlt.com/photon.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'photon.html';var disqus_title = 'photon.html';var disqus_url = 'http://dirlt.com/photon.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

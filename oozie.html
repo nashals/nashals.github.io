@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
-<title>oozie</title>
+<head>
+<title>Oozie</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="oozie"/>
+<meta name="title" content="Oozie"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:43+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,46 +62,34 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
 </div>
 
 <div id="content">
-<h1 class="title">oozie</h1>
+<h1 class="title">Oozie</h1>
 
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="oozie.html#sec-1">1 oozie</a>
+<li><a href="oozie.html#sec-1">1 Overview</a></li>
+<li><a href="oozie.html#sec-2">2 Deployment</a></li>
+<li><a href="oozie.html#sec-3">3 Workflow</a></li>
+<li><a href="oozie.html#sec-4">4 Coordinator</a></li>
+<li><a href="oozie.html#sec-5">5 Alternatives</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> Overview</h3>
+<div class="outline-text-3" id="text-1">
+
 <ul>
-<li><a href="oozie.html#sec-1-1">1.1 overview</a></li>
-<li><a href="oozie.html#sec-1-2">1.2 deployment</a></li>
-<li><a href="oozie.html#sec-1-3">1.3 workflow</a></li>
-<li><a href="oozie.html#sec-1-4">1.4 coordinator</a></li>
-<li><a href="oozie.html#sec-1-5">1.5 azkaban</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> oozie</h2>
-<div class="outline-text-2" id="text-1">
-
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> overview</h3>
-<div class="outline-text-3" id="text-1-1">
-
-<p>一些链接：
-</p><ul>
 <li><a href="http://www.infoq.com/cn/articles/introductionOozie">http://www.infoq.com/cn/articles/introductionOozie</a> oozie简介
 </li>
 <li><a href="http://incubator.apache.org/oozie/">http://incubator.apache.org/oozie/</a> homepage
@@ -126,7 +113,7 @@
 
 
 <p>
-<b>note(dirlt):我只是粗略地使用了一下，直觉上觉得这个东西很烂。推荐大家可以考虑一下azkaban</b> 
+#note: 我只是粗略地使用了一下，直觉上觉得这个东西很烂。推荐大家可以考虑一下azkaban
 </p>
 <p>
 oozie工作方式也是启动一个mapper任务（这个任务启动真正任务）放在cluster上面运行。大致上来看的话需要几个文件：
@@ -177,9 +164,9 @@ oozie执行分为三种模式：
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> deployment</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> Deployment</h3>
+<div class="outline-text-3" id="text-2">
 
 <p>关于部署的话可以参考这个链接 <a href="http://localhost/utils/oozie-2.3.2-cdh3u3/docs/DG_QuickStart.html">http://localhost/utils/oozie-2.3.2-cdh3u3/docs/DG_QuickStart.html</a>
 </p><ul>
@@ -254,9 +241,9 @@ oozie执行分为三种模式：
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> workflow</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> Workflow</h3>
+<div class="outline-text-3" id="text-3">
 
 <p>对于workflow来说，最主要关注下面几个部分：
 </p><ul>
@@ -264,7 +251,7 @@ oozie执行分为三种模式：
 <ul>
 <li>control flow node // 控制流节点，决定这个DAG。
 </li>
-<li>action node // 动作节点。todo(dirlt)：这里不是很明白streaming和pipe方式之间的差别。
+<li>action node // 动作节点。#todo: 这里不是很明白streaming和pipe方式之间的差别。
 </li>
 </ul>
 
@@ -275,7 +262,7 @@ oozie执行分为三种模式：
 
 <p>下面是一些具体细节：
 </p><ul>
-<li>action有两个状态ok/error <a href="http://localhost/utils/oozie-2.3.2-cdh3u3/docs/WorkflowFunctionalSpec.html#a3.2.1.3_Actions_Have_2_Transitions_ok_and_error">http://localhost/utils/oozie-2.3.2-cdh3u3/docs/WorkflowFunctionalSpec.html#a3.2.1.3_Actions_Have_2_Transitions_ok_and_error</a> 
+<li>action有两个状态ok/error <a href="http://localhost/utils/oozie-2.3.2-cdh3u3/docs/WorkflowFunctionalSpec.html#a3.2.1.3_Actions_Have_2_Transitions_ok_and_error">http://localhost/utils/oozie-2.3.2-cdh3u3/docs/WorkflowFunctionalSpec.html#a3.2.1.3_Actions_Have_2_Transitions_ok_and_error</a>
 <ul>
 <li>对于error而言的话，需要提供error-code以及error-message，这样可以方便下面的决策。
 </li>
@@ -309,7 +296,7 @@ oozie执行分为三种模式：
 </li>
 <li>这个job和原来的job使用同一个jobID
 </li>
-<li>todo(dirlt)；文档似乎没有写明如何具体提交！
+<li>#todo: 文档似乎没有写明如何具体提交
 </li>
 </ul>
 
@@ -455,9 +442,9 @@ hadoop fs -put workflow.xml /user/dirlt/examples/apps/map-reduce/
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> coordinator</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> Coordinator</h3>
+<div class="outline-text-3" id="text-4">
 
 <p>对于coordinator来说，有几个比较重要的概念：
 </p><ul>
@@ -465,7 +452,7 @@ hadoop fs -put workflow.xml /user/dirlt/examples/apps/map-reduce/
 </li>
 <li>sync dataset // 可以用来指定各个workflow之间的相互数据依赖 <a href="http://localhost/utils/oozie-2.3.2-cdh3u3/docs/CoordinatorFunctionalSpec.html#a5.1._Synchronous_Datasets">http://localhost/utils/oozie-2.3.2-cdh3u3/docs/CoordinatorFunctionalSpec.html#a5.1._Synchronous_Datasets</a>
 <ul>
-<li>input events       
+<li>input events
 </li>
 <li>output events
 </li>
@@ -476,7 +463,7 @@ hadoop fs -put workflow.xml /user/dirlt/examples/apps/map-reduce/
 </ul>
 
 </li>
-<li>coord application 
+<li>coord application
 <ul>
 <li>coord job // app的instance <a href="http://localhost/utils/oozie-2.3.2-cdh3u3/docs/CoordinatorFunctionalSpec.html#a6.1.2._Coordinator_Job">http://localhost/utils/oozie-2.3.2-cdh3u3/docs/CoordinatorFunctionalSpec.html#a6.1.2._Coordinator_Job</a>
 <ul>
@@ -509,7 +496,7 @@ hadoop fs -put workflow.xml /user/dirlt/examples/apps/map-reduce/
 并且在先面会存在一个_SUCCESS的文件（当然你也可以指定其他文件名，如果没有指定的话那么就以目录是否存在作为依据），来表示任务完成。各个任务之间可以通过这种方式来做数据流之间的依赖。
 </p>
 <p>
-note(dirlt)：关于coordinator的文档非常少，而且使用起来有诸多不便。比如时区设置难以设置正确，以及在webconsole下面不方便察看killed掉workflow的原因。
+#note: 关于coordinator的文档非常少，而且使用起来有诸多不便。比如时区设置难以设置正确，以及在webconsole下面不方便察看killed掉workflow的原因。
 另外如果想做一些定制化执行策略的话，还需要通过使用一些workaround的方法才可以OK。
 </p>
 <p>
@@ -535,7 +522,7 @@ note(dirlt)：关于coordinator的文档非常少，而且使用起来有诸多�
     &lt;timeout&gt;-1&lt;/timeout&gt;
     &lt;concurrency&gt;2&lt;/concurrency&gt;
     &lt;execution&gt;FIFO&lt;/execution&gt;
-  &lt;/controls&gt;     
+  &lt;/controls&gt;
 
   &lt;datasets&gt;
     &lt;dataset name=<span class="org-string">"ds"</span> frequency=<span class="org-string">"${coord:hours(1)}"</span>
@@ -580,7 +567,7 @@ note(dirlt)：关于coordinator的文档非常少，而且使用起来有诸多�
           &lt;name&gt;outputData&lt;/name&gt;
           &lt;value&gt;${coord:dataOut('output')}&lt;/value&gt;
           &lt;!-- &lt;value&gt;${outputData}&lt;/value&gt; --&gt;
-        &lt;/property&gt;        
+        &lt;/property&gt;
       &lt;/configuration&gt;
     &lt;/workflow&gt;
   &lt;/action&gt;
@@ -617,7 +604,7 @@ oozie.coord.application.path=${nameNode}/user/${user.name}/${examplesRoot}/apps/
 比较郁闷的就是，不能够察看每一个action具体的情况，这点是非常不利于调试的。
 </p>
 <p>
-note(dirlt)：不过后来测试了一下之后，发现其实是可以观察coordinator jobs里面对应的workflow的。在coord job info里面对应每个action都有一个ext id
+#note: 不过后来测试了一下之后，发现其实是可以观察coordinator jobs里面对应的workflow的。在coord job info里面对应每个action都有一个ext id
 </p>
 <p>
 <img src="images/oozie-coord-job-info.png"  alt="./images/oozie-coord-job-info.png" />
@@ -632,9 +619,9 @@ note(dirlt)：不过后来测试了一下之后，发现其实是可以观察coo
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> azkaban</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> Alternatives</h3>
+<div class="outline-text-3" id="text-5">
 
 <ul>
 <li>Azkaban <a href="http://sna-projects.com/azkaban/">http://sna-projects.com/azkaban/</a>
@@ -644,8 +631,13 @@ note(dirlt)：不过后来测试了一下之后，发现其实是可以观察coo
 <li>Documentation <a href="http://sna-projects.com/azkaban/documentation.php">http://sna-projects.com/azkaban/documentation.php</a>
 </li>
 <li>Workflow Engines for Hadoop <a href="http://www.crobak.org/2012/07/workflow-engines-for-hadoop/">http://www.crobak.org/2012/07/workflow-engines-for-hadoop/</a>
-
 </li>
+</ul>
+
+
+<p>
+azkaban一些说明：
+</p><ul>
 <li>azkaban是twitter出的一个任务调度系统。从Quick Start以及Documentation来看的话，确实比oozie要简单很多而且非常直观。
 </li>
 <li>任务之间的依赖，不能够指定部分完成（比如我们希望任务A依赖于B，但是并不是B完全执行完成A才可以启动，而是B的某个阶段完成的话就可以启动A）。
@@ -654,20 +646,15 @@ note(dirlt)：不过后来测试了一下之后，发现其实是可以观察coo
 </li>
 <li>azkaban对于每一个command单独fork出一个单元来监视这个command完成情况（猜想应该是判断是否返回值为0确定是否成功执行，但是对于MR这样的任务来说的话，如果forker挂掉的话任务本身也依然是在执行的，这样下次重启的话就会重复启动多个任务）。
 </li>
-<li>todo(dirlt)：不确定是否可以删除任务或者修改任务？
-</li>
 </ul>
 
 </div>
 </div>
 </div>
-</div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:43+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'oozie.html';var disqus_title = 'oozie.html';var disqus_url = 'http://dirlt.com/oozie.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'oozie.html';var disqus_title = 'oozie.html';var disqus_url = 'http://dirlt.com/oozie.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

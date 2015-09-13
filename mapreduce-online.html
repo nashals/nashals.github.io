@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<head>
 <title>MapReduce Online</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="MapReduce Online"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:43+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,7 +62,7 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
@@ -77,89 +76,77 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="mapreduce-online.html#sec-1">1 mapreduce-online</a>
+<li><a href="mapreduce-online.html#sec-1">1 Abstract</a></li>
+<li><a href="mapreduce-online.html#sec-2">2 Introduction</a></li>
+<li><a href="mapreduce-online.html#sec-3">3 Background</a>
 <ul>
-<li><a href="mapreduce-online.html#sec-1-1">1.1 Abstract</a></li>
-<li><a href="mapreduce-online.html#sec-1-2">1.2 Introduction</a></li>
-<li><a href="mapreduce-online.html#sec-1-3">1.3 Background</a>
-<ul>
-<li><a href="mapreduce-online.html#sec-1-3-1">1.3.1 Programming Model</a></li>
-<li><a href="mapreduce-online.html#sec-1-3-2">1.3.2 Hadoop Architecture</a></li>
-<li><a href="mapreduce-online.html#sec-1-3-3">1.3.3 Map Task Execution</a></li>
-<li><a href="mapreduce-online.html#sec-1-3-4">1.3.4 Reduce Task Execution</a></li>
+<li><a href="mapreduce-online.html#sec-3-1">3.1 Programming Model</a></li>
+<li><a href="mapreduce-online.html#sec-3-2">3.2 Hadoop Architecture</a></li>
+<li><a href="mapreduce-online.html#sec-3-3">3.3 Map Task Execution</a></li>
+<li><a href="mapreduce-online.html#sec-3-4">3.4 Reduce Task Execution</a></li>
 </ul>
 </li>
-<li><a href="mapreduce-online.html#sec-1-4">1.4 Pipelined MapReduce</a>
+<li><a href="mapreduce-online.html#sec-4">4 Pipelined MapReduce</a>
 <ul>
-<li><a href="mapreduce-online.html#sec-1-4-1">1.4.1 Pipelining Within A Job</a></li>
-<li><a href="mapreduce-online.html#sec-1-4-2">1.4.2 Pipelining Between Jobs</a></li>
-<li><a href="mapreduce-online.html#sec-1-4-3">1.4.3 Fault Tolerance</a></li>
-<li><a href="mapreduce-online.html#sec-1-4-4">1.4.4 Task Scheduling</a></li>
-<li><a href="mapreduce-online.html#sec-1-4-5">1.4.5 Performance Evaluation</a></li>
+<li><a href="mapreduce-online.html#sec-4-1">4.1 Pipelining Within A Job</a></li>
+<li><a href="mapreduce-online.html#sec-4-2">4.2 Pipelining Between Jobs</a></li>
+<li><a href="mapreduce-online.html#sec-4-3">4.3 Fault Tolerance</a></li>
+<li><a href="mapreduce-online.html#sec-4-4">4.4 Task Scheduling</a></li>
+<li><a href="mapreduce-online.html#sec-4-5">4.5 Performance Evaluation</a></li>
 </ul>
 </li>
-<li><a href="mapreduce-online.html#sec-1-5">1.5 Online Aggregation</a>
+<li><a href="mapreduce-online.html#sec-5">5 Online Aggregation</a>
 <ul>
-<li><a href="mapreduce-online.html#sec-1-5-1">1.5.1 Single-Job Online Aggregation</a></li>
-<li><a href="mapreduce-online.html#sec-1-5-2">1.5.2 Multi-Job Online Aggregation</a></li>
+<li><a href="mapreduce-online.html#sec-5-1">5.1 Single-Job Online Aggregation</a></li>
+<li><a href="mapreduce-online.html#sec-5-2">5.2 Multi-Job Online Aggregation</a></li>
 </ul>
 </li>
-<li><a href="mapreduce-online.html#sec-1-6">1.6 Continuous Queries</a>
+<li><a href="mapreduce-online.html#sec-6">6 Continuous Queries</a>
 <ul>
-<li><a href="mapreduce-online.html#sec-1-6-1">1.6.1 Continuous MapReduce Jobs</a></li>
-<li><a href="mapreduce-online.html#sec-1-6-2">1.6.2 Fault Tolerance</a></li>
-<li><a href="mapreduce-online.html#sec-1-6-3">1.6.3 Prototype Monitoring System</a></li>
-<li><a href="mapreduce-online.html#sec-1-6-4">1.6.4 Evaluation</a></li>
+<li><a href="mapreduce-online.html#sec-6-1">6.1 Continuous MapReduce Jobs</a></li>
+<li><a href="mapreduce-online.html#sec-6-2">6.2 Fault Tolerance</a></li>
+<li><a href="mapreduce-online.html#sec-6-3">6.3 Prototype Monitoring System</a></li>
+<li><a href="mapreduce-online.html#sec-6-4">6.4 Evaluation</a></li>
 </ul>
 </li>
-<li><a href="mapreduce-online.html#sec-1-7">1.7 Related Work</a>
+<li><a href="mapreduce-online.html#sec-7">7 Related Work</a>
 <ul>
-<li><a href="mapreduce-online.html#sec-1-7-1">1.7.1 Parallel Dataflow</a></li>
-<li><a href="mapreduce-online.html#sec-1-7-2">1.7.2 Online Aggregation</a></li>
-<li><a href="mapreduce-online.html#sec-1-7-3">1.7.3 Continuous Queries</a></li>
+<li><a href="mapreduce-online.html#sec-7-1">7.1 Parallel Dataflow</a></li>
+<li><a href="mapreduce-online.html#sec-7-2">7.2 Online Aggregation</a></li>
+<li><a href="mapreduce-online.html#sec-7-3">7.3 Continuous Queries</a></li>
 </ul>
 </li>
-<li><a href="mapreduce-online.html#sec-1-8">1.8 Conclusion and Future Work</a></li>
-</ul>
-</li>
+<li><a href="mapreduce-online.html#sec-8">8 Conclusion and Future Work</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> mapreduce-online</h2>
-<div class="outline-text-2" id="text-1">
-
-
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Abstract</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> Abstract</h3>
+<div class="outline-text-3" id="text-1">
 
 <ul>
 <li>In this pa- per, we propose a modified MapReduce architecture that allows data to be <b>pipelined between operators</b>. This ex- tends the MapReduce programming model beyond batch processing, and can reduce completion times and im- prove system utilization for batch jobs as well.
 </li>
-<li>We present a modified version of the Hadoop MapReduce framework that supports <b>online aggregation</b> , which al- lows users to see “early returns” from a job as it is being computed. 
+<li>We present a modified version of the Hadoop MapReduce framework that supports <b>online aggregation</b> , which al- lows users to see “early returns” from a job as it is being computed.
 </li>
-<li>Our Hadoop Online Prototype (HOP) also supports <b>continuous queries</b>, which enable MapReduce programs to be written for applications such as event monitoring and stream processing. 
+<li>Our Hadoop Online Prototype (HOP) also supports <b>continuous queries</b>, which enable MapReduce programs to be written for applications such as event monitoring and stream processing.
 </li>
-<li>HOP retains the fault tolerance properties of Hadoop, and can run unmodified user-defined MapReduce programs. 不需要修改MapReduce代码完全在framework层面上完成。 
+<li>HOP retains the fault tolerance properties of Hadoop, and can run unmodified user-defined MapReduce programs. 不需要修改MapReduce代码完全在framework层面上完成。
 </li>
 </ul>
 
 
 <p>
-<b>note(dirlt)：文章后面会讲到这三个特性分别是用来做什么的，以及如何做到的</b> 
+#note: 文章后面会讲到这三个特性分别是用来做什么的，以及如何做到的
 </p>
 </div>
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Introduction</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> Introduction</h3>
+<div class="outline-text-3" id="text-2">
 
 <p>Pipelining provides several important advantages to a MapReduce framework, but also raises new design chal- lenges. We highlight the potential advantages first:
 </p><ul>
@@ -188,40 +175,40 @@ Pipelining raises several design challenges.
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Background</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> Background</h3>
+<div class="outline-text-3" id="text-3">
 
 
 </div>
 
-<div id="outline-container-1-3-1" class="outline-4">
-<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> Programming Model</h4>
-<div class="outline-text-4" id="text-1-3-1">
-
-</div>
-
-</div>
-
-<div id="outline-container-1-3-2" class="outline-4">
-<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> Hadoop Architecture</h4>
-<div class="outline-text-4" id="text-1-3-2">
+<div id="outline-container-3-1" class="outline-4">
+<h4 id="sec-3-1"><span class="section-number-4">3.1</span> Programming Model</h4>
+<div class="outline-text-4" id="text-3-1">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-3-3" class="outline-4">
-<h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> Map Task Execution</h4>
-<div class="outline-text-4" id="text-1-3-3">
+<div id="outline-container-3-2" class="outline-4">
+<h4 id="sec-3-2"><span class="section-number-4">3.2</span> Hadoop Architecture</h4>
+<div class="outline-text-4" id="text-3-2">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-3-4" class="outline-4">
-<h4 id="sec-1-3-4"><span class="section-number-4">1.3.4</span> Reduce Task Execution</h4>
-<div class="outline-text-4" id="text-1-3-4">
+<div id="outline-container-3-3" class="outline-4">
+<h4 id="sec-3-3"><span class="section-number-4">3.3</span> Map Task Execution</h4>
+<div class="outline-text-4" id="text-3-3">
+
+</div>
+
+</div>
+
+<div id="outline-container-3-4" class="outline-4">
+<h4 id="sec-3-4"><span class="section-number-4">3.4</span> Reduce Task Execution</h4>
+<div class="outline-text-4" id="text-3-4">
 
 
 </div>
@@ -229,23 +216,23 @@ Pipelining raises several design challenges.
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Pipelined MapReduce</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> Pipelined MapReduce</h3>
+<div class="outline-text-3" id="text-4">
 
 <p><img src="images/hop-pipelining.png"  alt="./images/hop-pipelining.png" />
 </p>
 
 </div>
 
-<div id="outline-container-1-4-1" class="outline-4">
-<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> Pipelining Within A Job</h4>
-<div class="outline-text-4" id="text-1-4-1">
+<div id="outline-container-4-1" class="outline-4">
+<h4 id="sec-4-1"><span class="section-number-4">4.1</span> Pipelining Within A Job</h4>
+<div class="outline-text-4" id="text-4-1">
 
 <p>To sup- port pipelining, we modified the map task to instead push data to reducers as it is produced.
 </p>
 <ul>
-<li id="sec-1-4-1-1">Naive Pipelining<br/>
+<li id="sec-4-1-1">Naive Pipelining<br/>
 <ul>
 <li>For purposes of discus- sion, let us assume that there are enough free slots to as- sign all the tasks for each job. <b>这个假设非常重要，就是假设有足够的槽位每个task都能够正常启动</b>
 </li>
@@ -253,7 +240,7 @@ Pipelining raises several design challenges.
 </li>
 <li>As each map output record is produced, the mapper determines which partition (reduce task) the record should be sent to, and immediately sends it via the appropriate socket. （mapper产生输出立刻就进行发送，注意这个地方没有做排序什么工作，所以对reduce压力可能回比较大）
 </li>
-<li>A reduce task accepts the pipelined data it receives from each map task and stores it an in-memory buffer, spilling sorted runs of the buffer to disk as needed.（reducer接收之后进行排序必要的话spill到磁盘上面） 
+<li>A reduce task accepts the pipelined data it receives from each map task and stores it an in-memory buffer, spilling sorted runs of the buffer to disk as needed.（reducer接收之后进行排序必要的话spill到磁盘上面）
 </li>
 <li>Once the reduce task learns that every map task has completed, it performs a final merge of all its sorted runs and applies the user-defined reduce function as normal, writing the output to HDFS.
 </li>
@@ -263,7 +250,7 @@ Pipelining raises several design challenges.
 </li>
 </ul>
 <ul>
-<li id="sec-1-4-1-2">Refinements<br/>
+<li id="sec-4-1-2">Refinements<br/>
 While the algorithm described above is straightforward, it suffers from several practical problems.
 <ul>
 <li>First, it is possible that there will not be enough slots available to schedule every task in a new job.
@@ -273,14 +260,14 @@ While the algorithm described above is straightforward, it suffers from several 
 </ul>
 
 </li>
-<li>Opening a socket be- tween every map and reduce task also requires a large number of TCP connections. 
+<li>Opening a socket be- tween every map and reduce task also requires a large number of TCP connections.
 <ul>
 <li>To reduce the num- ber of concurrent TCP connections, each reducer can be configured to pipeline data from a bounded number of mappers at once; the reducer will pull data from the re- maining map tasks in the traditional Hadoop manner.（对于大量连接数目的解决办法也是一样的，限定使用pipelining的mapper数量）
 </li>
 </ul>
 
 </li>
-<li>the user-defined map function was invoked by the same thread that wrote output records to the pipeline sockets. This meant that if a network I/O blocked (e.g. because the reducer was over-utilized), the mapper was prevented from doing useful work. 
+<li>the user-defined map function was invoked by the same thread that wrote output records to the pipeline sockets. This meant that if a network I/O blocked (e.g. because the reducer was over-utilized), the mapper was prevented from doing useful work.
 <ul>
 <li>We solved this problem by running the map function in a separate thread that stores its output in an in-memory buffer, and then having another thread pe- riodically send the contents of the buffer to the pipelining reducers.（这个问题的解决就是将输出数据存放在一个in-memory buffer里面，单独开辟发送线程将buffer data异步地发送出去）
 </li>
@@ -293,13 +280,13 @@ While the algorithm described above is straightforward, it suffers from several 
 </li>
 </ul>
 <ul>
-<li id="sec-1-4-1-3">Granularity of Map Output<br/>
+<li id="sec-4-1-3">Granularity of Map Output<br/>
 <ul>
 <li>Another problem with the naive design is that it eagerly sends each record as soon as it is produced, which pre- vents the use of map-side combiners. By eagerly pipelining each record as it is produced, there is no op- portunity for the map task to apply a combiner function.（map side不能够执行combiner）
 </li>
 <li>A related problem is that eager pipelining moves some of the sorting work from the mapper to the reducer. （reducer现在需要完全地进行sort和group）
 </li>
-<li>We addressed these issues by modifying the in- memory buffer 
+<li>We addressed these issues by modifying the in- memory buffer
 <ul>
 <li>In- stead of sending the buffer contents to reducers directly, we instead wait for the buffer to grow to a threshold size. （in-memory buffer本地会先缓存然后发送）
 </li>
@@ -328,9 +315,9 @@ While the algorithm described above is straightforward, it suffers from several 
 
 </div>
 
-<div id="outline-container-1-4-2" class="outline-4">
-<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> Pipelining Between Jobs</h4>
-<div class="outline-text-4" id="text-1-4-2">
+<div id="outline-container-4-2" class="outline-4">
+<h4 id="sec-4-2"><span class="section-number-4">4.2</span> Pipelining Between Jobs</h4>
+<div class="outline-text-4" id="text-4-2">
 
 <p>Unfortunately, the computation of the reduce function from the previous job and the map function of the next job cannot be overlapped: the fi- nal result of the reduce step cannot be produced until all map tasks have completed, which prevents effective pipelining.
 </p>
@@ -338,9 +325,9 @@ While the algorithm described above is straightforward, it suffers from several 
 
 </div>
 
-<div id="outline-container-1-4-3" class="outline-4">
-<h4 id="sec-1-4-3"><span class="section-number-4">1.4.3</span> Fault Tolerance</h4>
-<div class="outline-text-4" id="text-1-4-3">
+<div id="outline-container-4-3" class="outline-4">
+<h4 id="sec-4-3"><span class="section-number-4">4.3</span> Fault Tolerance</h4>
+<div class="outline-text-4" id="text-4-3">
 
 <ul>
 <li>To recover from map task failures, we added some bookkeeping to the reduce task to record which map task produced each pipelined spill file.
@@ -354,7 +341,7 @@ While the algorithm described above is straightforward, it suffers from several 
 </li>
 <li>If a reduce task fails and a new copy of the task is started, the new reduce instance must be sent all the in- put data that was sent to the failed reduce attempt.
 </li>
-<li>Our technique for recovering from map task failure is straightforward, but places a minor limit on the reducer’s ability to merge spill files. To avoid this, we envision in- troducing a “checkpoint” concept: as a map task runs, it will periodically notify the JobTracker that it has reached offset x in its input split. 为了更快地进行failover，mapper进行bookkeep做checkpoint, 下次运行从某个offset开始运行并且只是发送增量的数据。 <b>note(dirlt)：但是这样存在比较严重的问题就是，mapper是无状态的，如果是有状态的话这样是不行的。而对于framework来说是不允许这样的</b>
+<li>Our technique for recovering from map task failure is straightforward, but places a minor limit on the reducer’s ability to merge spill files. To avoid this, we envision in- troducing a “checkpoint” concept: as a map task runs, it will periodically notify the JobTracker that it has reached offset x in its input split. 为了更快地进行failover，mapper进行bookkeep做checkpoint, 下次运行从某个offset开始运行并且只是发送增量的数据。
 </li>
 </ul>
 
@@ -363,17 +350,17 @@ While the algorithm described above is straightforward, it suffers from several 
 
 </div>
 
-<div id="outline-container-1-4-4" class="outline-4">
-<h4 id="sec-1-4-4"><span class="section-number-4">1.4.4</span> Task Scheduling</h4>
-<div class="outline-text-4" id="text-1-4-4">
+<div id="outline-container-4-4" class="outline-4">
+<h4 id="sec-4-4"><span class="section-number-4">4.4</span> Task Scheduling</h4>
+<div class="outline-text-4" id="text-4-4">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-4-5" class="outline-4">
-<h4 id="sec-1-4-5"><span class="section-number-4">1.4.5</span> Performance Evaluation</h4>
-<div class="outline-text-4" id="text-1-4-5">
+<div id="outline-container-4-5" class="outline-4">
+<h4 id="sec-4-5"><span class="section-number-4">4.5</span> Performance Evaluation</h4>
+<div class="outline-text-4" id="text-4-5">
 
 
 </div>
@@ -381,9 +368,9 @@ While the algorithm described above is straightforward, it suffers from several 
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Online Aggregation</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> Online Aggregation</h3>
+<div class="outline-text-3" id="text-5">
 
 <p>Traditional MapReduce implementations provide a poor interface for interactive data analysis, because they do not emit any output until the job has been executed to completion. However, in many cases, an interactive user would prefer a “quick and dirty” approximation over a correct answer that takes much longer to compute.
 </p>
@@ -393,9 +380,9 @@ We show that online aggregation has a minimal impact on job completion times, an
 
 </div>
 
-<div id="outline-container-1-5-1" class="outline-4">
-<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> Single-Job Online Aggregation</h4>
-<div class="outline-text-4" id="text-1-5-1">
+<div id="outline-container-5-1" class="outline-4">
+<h4 id="sec-5-1"><span class="section-number-4">5.1</span> Single-Job Online Aggregation</h4>
+<div class="outline-text-4" id="text-5-1">
 
 <ul>
 <li>We can support online aggregation by sim- ply applying the reduce function to the data that a reduce task has received so far. We call the output of such an intermediate reduce operation a snapshot.（主要就是针对pipelining过程中reducer接收到的部分数据做一个snapshot, 然后根据部分数据计算结果。而实际上计算这个snapshot结果很大程度上和计算全量数据存在关联）
@@ -404,24 +391,17 @@ We show that online aggregation has a minimal impact on job completion times, an
 </li>
 <li>Snapshots are computed periodically, as new data ar- rives at each reducer. The user specifies how often snap- shots should be computed, using the progress metric as the unit of measure. The user may also specify whether to include data from tentative (unfinished) map tasks.（用户自己来决定到progress都什么地方可以做一次online aggregation，并且可以选择tentative mapper输出）
 </li>
-<li>Note that if there are not enough free slots to allow all the reduce tasks in a job to be scheduled, snapshots will not be available for reduce tasks that are still waiting to be executed. The user can detect this situation (e.g. by checking for the expected number of files in the HDFS snapshot directory), so there is no risk of incorrect data, but the usefulness of online aggregation will be compro- mised. （这是一个非常实际的情况，就是说如果progress已经到了25%，但是实际上只有部分reduce执行完成，部分reducer因为slot原因没有调度上，也就是说整个snapshot结果是具有偏袒性的，不能够作为全量数据的approximation。这样的话结果虽然是正确的，但是snapshot意义就不是很大）。 
-<ul>
-<li><b>note(dirlt)：其实我在想，即使不是槽位问题，也有可能一些reduce执行过快一些执行过慢，实际上也还是不均匀的</b>  
-</li>
-<li><b>note(dirlt):可能是我理解错这里的意思了，应该是对于每个reduce来计算progress score. 如果单个reduce到达了progress score的话那么就可是计算。但是用户如果想要得到有意义的值的话，那么必须等到snaphsot中每个reduce都计算完成才有意义。</b>
-</li>
-</ul>
-
+<li>Note that if there are not enough free slots to allow all the reduce tasks in a job to be scheduled, snapshots will not be available for reduce tasks that are still waiting to be executed. The user can detect this situation (e.g. by checking for the expected number of files in the HDFS snapshot directory), so there is no risk of incorrect data, but the usefulness of online aggregation will be compro- mised. （这是一个非常实际的情况，就是说如果progress已经到了25%，但是实际上只有部分reduce执行完成，部分reducer因为slot原因没有调度上，也就是说整个snapshot结果是具有偏袒性的，不能够作为全量数据的approximation。这样的话结果虽然是正确的，但是snapshot意义就不是很大）。
 </li>
 </ul>
 
 
 <ul>
-<li id="sec-1-5-1-1">Progress Metric<br/>
+<li id="sec-5-1-1">Progress Metric<br/>
 <ul>
 <li>As each map task executes, it is assigned a progress score in the range [0,1], based on how much of its input the map task has consumed. （每个mapper根据input/output计算一个progress score)
 </li>
-<li>if a reducer is connected to 1/n of the total number of map tasks in the job, we divide the average progress score by n. （每个reducer如果只是链接上了1/n部分的mapper的话，那么progress scroe需要除以n） *note(dirlt):这是非常显然的，其实reduce进度是(m1 + m2 + m3 + &hellip; mn)/n. 其中mi表示mapper i的progress.
+<li>if a reducer is connected to 1/n of the total number of map tasks in the job, we divide the average progress score by n. （每个reducer如果只是链接上了1/n部分的mapper的话，那么progress scroe需要除以n）
 </li>
 </ul>
 
@@ -429,7 +409,7 @@ We show that online aggregation has a minimal impact on job completion times, an
 </li>
 </ul>
 <ul>
-<li id="sec-1-5-1-2">Evaluation<br/>
+<li id="sec-5-1-2">Evaluation<br/>
 
 </li>
 </ul>
@@ -437,12 +417,12 @@ We show that online aggregation has a minimal impact on job completion times, an
 
 </div>
 
-<div id="outline-container-1-5-2" class="outline-4">
-<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> Multi-Job Online Aggregation</h4>
-<div class="outline-text-4" id="text-1-5-2">
+<div id="outline-container-5-2" class="outline-4">
+<h4 id="sec-5-2"><span class="section-number-4">5.2</span> Multi-Job Online Aggregation</h4>
+<div class="outline-text-4" id="text-5-2">
 
 <ul>
-<li id="sec-1-5-2-1">Evaluation<br/>
+<li id="sec-5-2-1">Evaluation<br/>
 
 </li>
 </ul>
@@ -451,18 +431,18 @@ We show that online aggregation has a minimal impact on job completion times, an
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Continuous Queries</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> Continuous Queries</h3>
+<div class="outline-text-3" id="text-6">
 
 <p>Our pipelined version of Hadoop allows an alternative architecture: MapReduce jobs that run continuously, ac- cepting new data as it becomes available and analyzing it immediately. This allows for near-real-time analysis of data streams, and thus allows the MapReduce program- ming model to be applied to domains such as environ- ment monitoring and real-time fraud detection.
 </p>
 
 </div>
 
-<div id="outline-container-1-6-1" class="outline-4">
-<h4 id="sec-1-6-1"><span class="section-number-4">1.6.1</span> Continuous MapReduce Jobs</h4>
-<div class="outline-text-4" id="text-1-6-1">
+<div id="outline-container-6-1" class="outline-4">
+<h4 id="sec-6-1"><span class="section-number-4">6.1</span> Continuous MapReduce Jobs</h4>
+<div class="outline-text-4" id="text-6-1">
 
 <ul>
 <li>A bare-bones implementation of continuous MapReduce jobs is easy to implement using pipelining. No changes are needed to implement continuous map tasks: map out- put is already delivered to the appropriate reduce task shortly after it is generated. （一旦实现pipelining的话，那么实现continuous query就非常简单）
@@ -471,9 +451,9 @@ We show that online aggregation has a minimal impact on job completion times, an
 </li>
 <li>To support continuous reduce tasks, the user-defined reduce function must be periodically invoked on the map output available at that reducer. Applications will have different requirements for how frequently the re- duce function should be invoked: possible choices in- clude periods based on （framework定期调用reduce函数来进行处理，对于这个周期可以使用下面三个指标进行指定）：
 <ul>
-<li>wall-clock time, 
+<li>wall-clock time,
 </li>
-<li>logical time (e.g. the value of a field in the map task output), 
+<li>logical time (e.g. the value of a field in the map task output),
 </li>
 <li>and the num- ber of input rows delivered to the reducer.
 </li>
@@ -487,14 +467,14 @@ We show that online aggregation has a minimal impact on job completion times, an
 
 </div>
 
-<div id="outline-container-1-6-2" class="outline-4">
-<h4 id="sec-1-6-2"><span class="section-number-4">1.6.2</span> Fault Tolerance</h4>
-<div class="outline-text-4" id="text-1-6-2">
+<div id="outline-container-6-2" class="outline-4">
+<h4 id="sec-6-2"><span class="section-number-4">6.2</span> Fault Tolerance</h4>
+<div class="outline-text-4" id="text-6-2">
 
-<p><b>note(dirlt)：这里只需要考虑reduce挂掉的情况。注意方式1重跑是会带有副作用的，而方式2重跑是没有副作用的</b>
+<p>#note: 这里只需要考虑reduce挂掉的情况。注意方式1重跑是会带有副作用的，而方式2重跑是没有副作用的
 </p>
 <ul>
-<li>However, many continu- ous reduce functions (e.g., 30-second moving average) only depend on a suffix of the history of the map stream. This common case can be supported easily, by extending the JobTracker interface to capture a rolling notion of re- ducer consumption. Map-side spill files are maintained in a ring buffer with unique IDs for spill files over time. When a reducer commits an output to HDFS, it informs the JobTracker about the run of map output records it no longer needs, identifying the run by spill file IDs and offsets within those files. The JobTracker then can tell mappers to delete the appropriate data. （对于reducer只需要过去少量时间输入就可以恢复的，那么mapper spill file可以存储为ring buffer格式，定期删除一些已经没有用的） 
+<li>However, many continu- ous reduce functions (e.g., 30-second moving average) only depend on a suffix of the history of the map stream. This common case can be supported easily, by extending the JobTracker interface to capture a rolling notion of re- ducer consumption. Map-side spill files are maintained in a ring buffer with unique IDs for spill files over time. When a reducer commits an output to HDFS, it informs the JobTracker about the run of map output records it no longer needs, identifying the run by spill file IDs and offsets within those files. The JobTracker then can tell mappers to delete the appropriate data. （对于reducer只需要过去少量时间输入就可以恢复的，那么mapper spill file可以存储为ring buffer格式，定期删除一些已经没有用的）
 
 </li>
 <li>In principle, complex reducers may depend on very long (or infinite) histories of map records to accurately reconstruct their internal state. In that case, deleting spill files from the map-side ring buffer will result in poten- tially inaccurate recovery after faults. Such scenarios can be handled by having reducers checkpoint internal state to HDFS, along with markers for the mapper off- sets at which the internal state was checkpointed. The MapReduce framework can be extended with APIs to help with state serialization and offset management, but it still presents a programming burden on the user to cor- rectly identify the sensitive internal state.（对于reducer需要过去很长时间输入才能够恢复的，那么就需要考虑通过做checkpoint保存状态来回滚）
@@ -506,71 +486,67 @@ We show that online aggregation has a minimal impact on job completion times, an
 
 </div>
 
-<div id="outline-container-1-6-3" class="outline-4">
-<h4 id="sec-1-6-3"><span class="section-number-4">1.6.3</span> Prototype Monitoring System</h4>
-<div class="outline-text-4" id="text-1-6-3">
+<div id="outline-container-6-3" class="outline-4">
+<h4 id="sec-6-3"><span class="section-number-4">6.3</span> Prototype Monitoring System</h4>
+<div class="outline-text-4" id="text-6-3">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-6-4" class="outline-4">
-<h4 id="sec-1-6-4"><span class="section-number-4">1.6.4</span> Evaluation</h4>
-<div class="outline-text-4" id="text-1-6-4">
+<div id="outline-container-6-4" class="outline-4">
+<h4 id="sec-6-4"><span class="section-number-4">6.4</span> Evaluation</h4>
+<div class="outline-text-4" id="text-6-4">
 
-
-</div>
-</div>
-
-</div>
-
-<div id="outline-container-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Related Work</h3>
-<div class="outline-text-3" id="text-1-7">
-
-
-</div>
-
-<div id="outline-container-1-7-1" class="outline-4">
-<h4 id="sec-1-7-1"><span class="section-number-4">1.7.1</span> Parallel Dataflow</h4>
-<div class="outline-text-4" id="text-1-7-1">
-
-</div>
-
-</div>
-
-<div id="outline-container-1-7-2" class="outline-4">
-<h4 id="sec-1-7-2"><span class="section-number-4">1.7.2</span> Online Aggregation</h4>
-<div class="outline-text-4" id="text-1-7-2">
-
-</div>
-
-</div>
-
-<div id="outline-container-1-7-3" class="outline-4">
-<h4 id="sec-1-7-3"><span class="section-number-4">1.7.3</span> Continuous Queries</h4>
-<div class="outline-text-4" id="text-1-7-3">
 
 </div>
 </div>
 
 </div>
 
-<div id="outline-container-1-8" class="outline-3">
-<h3 id="sec-1-8"><span class="section-number-3">1.8</span> Conclusion and Future Work</h3>
-<div class="outline-text-3" id="text-1-8">
+<div id="outline-container-7" class="outline-3">
+<h3 id="sec-7"><span class="section-number-3">7</span> Related Work</h3>
+<div class="outline-text-3" id="text-7">
 
 
 </div>
+
+<div id="outline-container-7-1" class="outline-4">
+<h4 id="sec-7-1"><span class="section-number-4">7.1</span> Parallel Dataflow</h4>
+<div class="outline-text-4" id="text-7-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-7-2" class="outline-4">
+<h4 id="sec-7-2"><span class="section-number-4">7.2</span> Online Aggregation</h4>
+<div class="outline-text-4" id="text-7-2">
+
+</div>
+
+</div>
+
+<div id="outline-container-7-3" class="outline-4">
+<h4 id="sec-7-3"><span class="section-number-4">7.3</span> Continuous Queries</h4>
+<div class="outline-text-4" id="text-7-3">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-8" class="outline-3">
+<h3 id="sec-8"><span class="section-number-3">8</span> Conclusion and Future Work</h3>
+<div class="outline-text-3" id="text-8">
+
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:43+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'mapreduce-online.html';var disqus_title = 'mapreduce-online.html';var disqus_url = 'http://dirlt.com/mapreduce-online.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'mapreduce-online.html';var disqus_title = 'mapreduce-online.html';var disqus_url = 'http://dirlt.com/mapreduce-online.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

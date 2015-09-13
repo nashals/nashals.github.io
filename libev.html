@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<head>
 <title>libev</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="libev"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:43+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,7 +62,7 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
@@ -72,51 +71,41 @@
 <div id="content">
 <h1 class="title">libev</h1>
 
+<p><a href="http://software.schmorp.de/pkg/libev.html">http://software.schmorp.de/pkg/libev.html</a>
+</p>
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="libev.html#sec-1">1 libev</a>
+<li><a href="libev.html#sec-1">1 Overview</a></li>
+<li><a href="libev.html#sec-2">2 EventLoop</a></li>
+<li><a href="libev.html#sec-3">3 Watcher</a></li>
+<li><a href="libev.html#sec-4">4 How it works</a>
 <ul>
-<li><a href="libev.html#sec-1-1">1.1 About The Code</a></li>
-<li><a href="libev.html#sec-1-2">1.2 EventLoop</a></li>
-<li><a href="libev.html#sec-1-3">1.3 Watcher</a></li>
-<li><a href="libev.html#sec-1-4">1.4 How it works</a>
-<ul>
-<li><a href="libev.html#sec-1-4-1">1.4.1 ev_run</a></li>
-<li><a href="libev.html#sec-1-4-2">1.4.2 fd_reify</a></li>
-<li><a href="libev.html#sec-1-4-3">1.4.3 backend_poll</a></li>
-<li><a href="libev.html#sec-1-4-4">1.4.4 timers_reify</a></li>
-<li><a href="libev.html#sec-1-4-5">1.4.5 EV_INVOKE_PENDING</a></li>
+<li><a href="libev.html#sec-4-1">4.1 ev_run</a></li>
+<li><a href="libev.html#sec-4-2">4.2 fd_reify</a></li>
+<li><a href="libev.html#sec-4-3">4.3 backend_poll</a></li>
+<li><a href="libev.html#sec-4-4">4.4 timers_reify</a></li>
+<li><a href="libev.html#sec-4-5">4.5 EV_INVOKE_PENDING</a></li>
 </ul>
 </li>
-<li><a href="libev.html#sec-1-5">1.5 Example</a>
+<li><a href="libev.html#sec-5">5 Example</a>
 <ul>
-<li><a href="libev.html#sec-1-5-1">1.5.1 common.h</a></li>
-<li><a href="libev.html#sec-1-5-2">1.5.2 echo-client.cc</a></li>
-<li><a href="libev.html#sec-1-5-3">1.5.3 echo-server.cc</a></li>
-</ul>
-</li>
+<li><a href="libev.html#sec-5-1">5.1 common.h</a></li>
+<li><a href="libev.html#sec-5-2">5.2 echo-client.cc</a></li>
+<li><a href="libev.html#sec-5-3">5.3 echo-server.cc</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> libev</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> Overview</h3>
+<div class="outline-text-3" id="text-1">
 
-
-<p>
-主页<a href="http://software.schmorp.de/pkg/libev.html">http://software.schmorp.de/pkg/libev.html</a>
-</p>
-<p>
-文档<a href="http://software.schmorp.de/pkg/libev.html">http://software.schmorp.de/pkg/libev.html</a>
-</p>
-<p>
-libev所实现的功能就是一个强大的reactor,可能notify事件主要包括下面这些：
+<p>libev所实现的功能就是一个强大的reactor, 可以notify的事件主要包括下面这些：
 </p><ul>
 <li>ev_io // IO可读可写
 </li>
@@ -138,7 +127,7 @@ libev所实现的功能就是一个强大的reactor,可能notify事件主要包�
 </li>
 <li>ev_idle // 每次event loop空闲触发事件
 </li>
-<li>ev_embed // todo(zhangyan04):I have no idea.
+<li>ev_embed // ???
 </li>
 <li>ev_prepare // 每次event loop之前事件
 </li>
@@ -147,14 +136,8 @@ libev所实现的功能就是一个强大的reactor,可能notify事件主要包�
 </ul>
 
 
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> About The Code</h3>
-<div class="outline-text-3" id="text-1-1">
-
-<p>代码风格相当严谨而且排版也非常工整，并且从域名看出作者是德国人。但是内部使用了大量的宏造成阅读代码并不是非常方便。
+<p>
+代码风格相当严谨而且排版也非常工整，并且从域名看出作者是德国人。但是内部使用了大量的宏造成阅读代码并不是非常方便。
 并且从代码角度分析，应该是一开始支持有一个默认的event_loop,但是随着多核产生实际应用中可能会使用到多个event_loop,
 猜想作者应该是为了方便的话使用了很多宏进行替换。允许使用多个event_loop的宏是EV_MULTIPLICITY.比如下面这段代码
 </p>
@@ -215,9 +198,9 @@ ev_io_start (EV_P_ ev_io *w)
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> EventLoop</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> EventLoop</h3>
+<div class="outline-text-3" id="text-2">
 
 <p>首先我们关注一下reactor本身。在libev下面reactor对象称为event_loop.event_loop允许动态创建和销毁，并且允许绑定自定义数据
 </p>
@@ -317,9 +300,9 @@ void ev_set_timeout_collect_interval (EV_P_ ev_tstamp interval);
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Watcher</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> Watcher</h3>
+<div class="outline-text-3" id="text-3">
 
 <p>然后我们关心一下EventHandler.在libev下面watcher相当于EventHandler这么一个概念，通常里面会绑定fd回调函数以及我们需要关注的事件。
 然后一旦触发事件之后会触发我们使用的回调函数，回调函数参数通常有reactor,watcher以及触发的事件。这里不打算重复文档里面的watcher
@@ -360,16 +343,16 @@ wacther的状态有下面这么几种：
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> How it works</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> How it works</h3>
+<div class="outline-text-3" id="text-4">
 
 
 </div>
 
-<div id="outline-container-1-4-1" class="outline-4">
-<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> ev_run</h4>
-<div class="outline-text-4" id="text-1-4-1">
+<div id="outline-container-4-1" class="outline-4">
+<h4 id="sec-4-1"><span class="section-number-4">4.1</span> ev_run</h4>
+<div class="outline-text-4" id="text-4-1">
 
 <p>最主要的还是看看ev_run这个部分代码。我们不打算仔细阅读只是看看梗概然后大体分析一下数据结构应该怎么样的
 </p>
@@ -482,9 +465,9 @@ ev_run (EV_P_ int flags)
 
 </div>
 
-<div id="outline-container-1-4-2" class="outline-4">
-<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> fd_reify</h4>
-<div class="outline-text-4" id="text-1-4-2">
+<div id="outline-container-4-2" class="outline-4">
+<h4 id="sec-4-2"><span class="section-number-4">4.2</span> fd_reify</h4>
+<div class="outline-text-4" id="text-4-2">
 
 <p>下面是fd_reify代码片段.可以看出，这个部分就是在修改fd关注的events。
 </p>
@@ -574,9 +557,9 @@ fd_change (EV_P_ int fd, int flags)
 
 </div>
 
-<div id="outline-container-1-4-3" class="outline-4">
-<h4 id="sec-1-4-3"><span class="section-number-4">1.4.3</span> backend_poll</h4>
-<div class="outline-text-4" id="text-1-4-3">
+<div id="outline-container-4-3" class="outline-4">
+<h4 id="sec-4-3"><span class="section-number-4">4.3</span> backend_poll</h4>
+<div class="outline-text-4" id="text-4-3">
 
 <p>backend_poll底层支持很多poll实现，我们这里仅仅看ev_epoll.c就可以.代码在这里面我们不列举了，
 如果某个fd触发事件的话那么最终会调用fd_event(EV_A_,fd,event)来进行通知。所以我们看看fd_event.
@@ -624,9 +607,9 @@ ev_feed_event (EV_P_ void *w, int revents)
 
 </div>
 
-<div id="outline-container-1-4-4" class="outline-4">
-<h4 id="sec-1-4-4"><span class="section-number-4">1.4.4</span> timers_reify</h4>
-<div class="outline-text-4" id="text-1-4-4">
+<div id="outline-container-4-4" class="outline-4">
+<h4 id="sec-4-4"><span class="section-number-4">4.4</span> timers_reify</h4>
+<div class="outline-text-4" id="text-4-4">
 
 <p>其中HEAP0就是最小堆下标。如果repeat的话说明需要重复发生，那么就会重新调整时间戳，如果不是repeat的话，
 那么内部会调用ev_timer_stop这个方法将这个计时器移除。所有的定时任务都通过feed_reverse添加。feed_reverse
@@ -677,9 +660,9 @@ timers_reify (EV_P)
 
 </div>
 
-<div id="outline-container-1-4-5" class="outline-4">
-<h4 id="sec-1-4-5"><span class="section-number-4">1.4.5</span> EV_INVOKE_PENDING</h4>
-<div class="outline-text-4" id="text-1-4-5">
+<div id="outline-container-4-5" class="outline-4">
+<h4 id="sec-4-5"><span class="section-number-4">4.5</span> EV_INVOKE_PENDING</h4>
+<div class="outline-text-4" id="text-4-5">
 
 <p>这个宏最终调用的函数就是下面这个，遍历所有的pendings事件并且逐一触发。
 </p>
@@ -708,18 +691,18 @@ ev_invoke_pending (EV_P)
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Example</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> Example</h3>
+<div class="outline-text-3" id="text-5">
 
 <p>尝试编写一个简单的带有超时的echo-server和echo-client就发现其实还有非常多的其他的工作量，比如buffer的管理状态机实现等。
 所以我没有写出一个完整的example,只是简单地写了假设echo-client连接上server的话就简单地打印链接信息并且关闭。
 </p>
 </div>
 
-<div id="outline-container-1-5-1" class="outline-4">
-<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> common.h</h4>
-<div class="outline-text-4" id="text-1-5-1">
+<div id="outline-container-5-1" class="outline-4">
+<h4 id="sec-5-1"><span class="section-number-4">5.1</span> common.h</h4>
+<div class="outline-text-4" id="text-5-1">
 
 
 
@@ -803,9 +786,9 @@ static int new_tcp_client(const char* ip,int port){
 
 </div>
 
-<div id="outline-container-1-5-2" class="outline-4">
-<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> echo-client.cc</h4>
-<div class="outline-text-4" id="text-1-5-2">
+<div id="outline-container-5-2" class="outline-4">
+<h4 id="sec-5-2"><span class="section-number-4">5.2</span> echo-client.cc</h4>
+<div class="outline-text-4" id="text-5-2">
 
 
 
@@ -837,9 +820,9 @@ int main(){
 
 </div>
 
-<div id="outline-container-1-5-3" class="outline-4">
-<h4 id="sec-1-5-3"><span class="section-number-4">1.5.3</span> echo-server.cc</h4>
-<div class="outline-text-4" id="text-1-5-3">
+<div id="outline-container-5-3" class="outline-4">
+<h4 id="sec-5-3"><span class="section-number-4">5.3</span> echo-server.cc</h4>
+<div class="outline-text-4" id="text-5-3">
 
 
 
@@ -873,13 +856,10 @@ int main(){
 </div>
 </div>
 </div>
-</div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:43+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'libev.html';var disqus_title = 'libev.html';var disqus_url = 'http://dirlt.com/libev.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'libev.html';var disqus_title = 'libev.html';var disqus_url = 'http://dirlt.com/libev.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

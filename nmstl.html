@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<head>
 <title>nmstl</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="nmstl"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:43+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,7 +62,7 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
@@ -72,49 +71,45 @@
 <div id="content">
 <h1 class="title">nmstl</h1>
 
+<p><a href="http://sourceforge.net/projects/nmstl/">http://sourceforge.net/projects/nmstl/</a>
+</p>
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="nmstl.html#sec-1">1 nmstl</a>
+<li><a href="nmstl.html#sec-1">1 Overview</a></li>
+<li><a href="nmstl.html#sec-2">2 SEDA</a></li>
+<li><a href="nmstl.html#sec-3">3 动态线程池</a>
 <ul>
-<li><a href="nmstl.html#sec-1-1">1.1 SEDA</a></li>
-<li><a href="nmstl.html#sec-1-2">1.2 动态线程池</a>
-<ul>
-<li><a href="nmstl.html#sec-1-2-1">1.2.1 增加线程</a></li>
-<li><a href="nmstl.html#sec-1-2-2">1.2.2 回收线程</a></li>
-<li><a href="nmstl.html#sec-1-2-3">1.2.3 逻辑总结</a></li>
-</ul>
-</li>
+<li><a href="nmstl.html#sec-3-1">3.1 增加线程</a></li>
+<li><a href="nmstl.html#sec-3-2">3.2 回收线程</a></li>
+<li><a href="nmstl.html#sec-3-3">3.3 逻辑总结</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> nmstl</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> Overview</h3>
+<div class="outline-text-3" id="text-1">
 
-
-<p>
-<a href="http://sourceforge.net/projects/nmstl/">http://sourceforge.net/projects/nmstl/</a>.
-代码非常精简大概6000多行，但是完成不是一个库而是一个框架的功能。代码非常飘逸清爽，并且很好地被注释了。
-里面也使用了很多C++的特性但是却没有滥用，所以不管是从代码实现角度还是从设计思想角度，都是值得阅读的。
-整体思想和muduo非常相似，唯一不同的地方就是工作线程有策略地动态进程调整。这也是特色的地方，我们将这个特色
-地方，称之为SEDA并且在后面分析。
+<p>代码非常精简大概6000多行，但是完成不是一个库而是一个框架的功能。代码非常飘逸清爽，并且很好地被注释了。
 </p>
 <p>
-NMSTL和Asio一样都是template-heavy code,大部分都是头文件。NMSTL设计者考虑到使用这种东西编写C++代码出错的话，
-很容易在模板的错误中迷失，所以在bin目录下面用perl编写了一个wtf工具，可以将g++编译错误信息很好地表现出来。
-使用也非常简单，分析效果比原来的g++错误信息好多了。
+里面也使用了很多C++的特性但是却没有滥用，所以不管是从代码实现角度还是从设计思想角度，都是值得阅读的。
+</p>
+<p>
+整体思想和muduo非常相似，唯一不同的地方就是工作线程有策略地动态进程调整。这也是特色的地方，我们将这个特色地方，称之为SEDA并且在后面分析。
+</p>
+<p>
+NMSTL和Asio一样都是template-heavy code,大部分都是头文件。NMSTL设计者考虑到使用这种东西编写C++代码出错的话，很容易在模板的错误中迷失，所以在bin目录下面用perl编写了一个wtf工具，可以将g++编译错误信息很好地表现出来。使用也非常简单，分析效果比原来的g++错误信息好多了。
 </p>
 
 
 <pre class="example">./bin/wtf g++ &lt;command&gt;
 </pre>
-
 
 
 <p>
@@ -155,19 +150,18 @@ NMSTL和Asio一样都是template-heavy code,大部分都是头文件。NMSTL设�
 </ul>
 
 
+</div>
 
 </div>
 
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> SEDA</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> SEDA</h3>
+<div class="outline-text-3" id="text-2">
 
 <p><a href="http://www.eecs.harvard.edu/~mdw/proj/seda/">http://www.eecs.harvard.edu/~mdw/proj/seda/</a>.
 </p>
 <p>
-SEDA并不是NMSTL提出的，SEDA主要思想就是提出动态线程池这个概念。动态线程池可以在吞吐和响应上平衡，而划分成为stage的话可以让整个设计更加灵活，
-甚至一个stage都可以使用block方式处理(如果异步编写比较麻烦的话)通过线程来支持，当然一个stage推荐还是使用nonblock方式处理。我们这里看看NMSTL怎么实现动态线程池的。
-首先看看SEDAStage这么一个概念。在NMSTL里面定义是这样的
+SEDA并不是NMSTL提出的，SEDA主要思想就是提出动态线程池这个概念。动态线程池可以在吞吐和响应上平衡，而划分成为stage的话可以让整个设计更加灵活，甚至一个stage都可以使用block方式处理(如果异步编写比较麻烦的话)通过线程来支持，当然一个stage推荐还是使用nonblock方式处理。我们这里看看NMSTL怎么实现动态线程池的。首先看看SEDAStage这么一个概念。在NMSTL里面定义是这样的
 </p>
 
 
@@ -177,9 +171,7 @@ class SEDAStage;
 
 
 <p>
-一个SEDAStage和一个In/Out类型绑定形成一个stage.这个stage允许不断地插入In对象，实现起来内部能够非常高效地处理
-这些In对象生成Out对象。然后一个stage可能后面会挂上一个next stage,这个next stage接收Out对象然后不断地继续。
-对于这里的高效处理就是使用异步队列+线程池模型来处理了，我们可以看看处理这个部分的代码
+一个SEDAStage和一个In/Out类型绑定形成一个stage.这个stage允许不断地插入In对象，实现起来内部能够非常高效地处理这些In对象生成Out对象。然后一个stage可能后面会挂上一个next stage,这个next stage接收Out对象然后不断地继续。对于这里的高效处理就是使用异步队列+线程池模型来处理了，我们可以看看处理这个部分的代码
 </p>
 
 
@@ -252,9 +244,9 @@ class SEDAStage : public SEDAStage&lt;In, void&gt; {
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 动态线程池</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> 动态线程池</h3>
+<div class="outline-text-3" id="text-3">
 
 <p>首先SEDAStage对于动态线程池有三个指标
 </p><ul>
@@ -271,9 +263,9 @@ class SEDAStage : public SEDAStage&lt;In, void&gt; {
 
 </div>
 
-<div id="outline-container-1-2-1" class="outline-4">
-<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> 增加线程</h4>
-<div class="outline-text-4" id="text-1-2-1">
+<div id="outline-container-3-1" class="outline-4">
+<h4 id="sec-3-1"><span class="section-number-4">3.1</span> 增加线程</h4>
+<div class="outline-text-4" id="text-3-1">
 
 
 
@@ -340,9 +332,9 @@ void waiter_pending() {
 
 </div>
 
-<div id="outline-container-1-2-2" class="outline-4">
-<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> 回收线程</h4>
-<div class="outline-text-4" id="text-1-2-2">
+<div id="outline-container-3-2" class="outline-4">
+<h4 id="sec-3-2"><span class="section-number-4">3.2</span> 回收线程</h4>
+<div class="outline-text-4" id="text-3-2">
 
 <p>然后我们还是回来看看导致线程减少的这部分逻辑
 </p>
@@ -444,9 +436,9 @@ void scan() {
 
 </div>
 
-<div id="outline-container-1-2-3" class="outline-4">
-<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> 逻辑总结</h4>
-<div class="outline-text-4" id="text-1-2-3">
+<div id="outline-container-3-3" class="outline-4">
+<h4 id="sec-3-3"><span class="section-number-4">3.3</span> 逻辑总结</h4>
+<div class="outline-text-4" id="text-3-3">
 
 <p>如果当前可用线程数目小于queue tasks数目的时候，那么就会添加线程并且将rc置零。然后后端会启动线程每隔5s会将rc++.
 如果rc&gt;=6的话并且当前线程个数大于最小线程个数的话，那么就会销毁一个线程。可以看出回收线程至少要达到30s以后才会操作，
@@ -456,13 +448,10 @@ void scan() {
 </div>
 </div>
 </div>
-</div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:43+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'nmstl.html';var disqus_title = 'nmstl.html';var disqus_url = 'http://dirlt.com/nmstl.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'nmstl.html';var disqus_title = 'nmstl.html';var disqus_url = 'http://dirlt.com/nmstl.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

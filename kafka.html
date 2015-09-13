@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
-<title>kafka</title>
+<head>
+<title>Kafka</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="kafka"/>
+<meta name="title" content="Kafka"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:43+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,77 +62,58 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
 </div>
 
 <div id="content">
-<h1 class="title">kafka</h1>
+<h1 class="title">Kafka</h1>
 
+<p><a href="http://incubator.apache.org/kafka/">http://incubator.apache.org/kafka/</a>
+</p>
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="kafka.html#sec-1">1 kafka</a>
+<li><a href="kafka.html#sec-1">1 Kafka: a Distributed Messaging System for Log Processing</a>
 <ul>
-<li><a href="kafka.html#sec-1-1">1.1 Kafka: a Distributed Messaging System for Log Processing</a>
-<ul>
-<li><a href="kafka.html#sec-1-1-1">1.1.1 ABSTRACT</a></li>
-<li><a href="kafka.html#sec-1-1-2">1.1.2 Introduction</a></li>
-<li><a href="kafka.html#sec-1-1-3">1.1.3 Related Work</a></li>
-<li><a href="kafka.html#sec-1-1-4">1.1.4 Kafka Architecture and Design Principles</a></li>
-<li><a href="kafka.html#sec-1-1-5">1.1.5 Kafka Usage at LinkedIn</a></li>
-<li><a href="kafka.html#sec-1-1-6">1.1.6 Experimental Results</a></li>
-<li><a href="kafka.html#sec-1-1-7">1.1.7 Conclusion and Future Works</a></li>
+<li><a href="kafka.html#sec-1-1">1.1 ABSTRACT</a></li>
+<li><a href="kafka.html#sec-1-2">1.2 Introduction</a></li>
+<li><a href="kafka.html#sec-1-3">1.3 Related Work</a></li>
+<li><a href="kafka.html#sec-1-4">1.4 Kafka Architecture and Design Principles</a></li>
+<li><a href="kafka.html#sec-1-5">1.5 Kafka Usage at LinkedIn</a></li>
+<li><a href="kafka.html#sec-1-6">1.6 Experimental Results</a></li>
+<li><a href="kafka.html#sec-1-7">1.7 Conclusion and Future Works</a></li>
 </ul>
 </li>
-</ul>
-</li>
+<li><a href="kafka.html#sec-2">2 Replication Since 0.8</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> kafka</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> Kafka: a Distributed Messaging System for Log Processing</h3>
+<div class="outline-text-3" id="text-1">
 
-<ul>
-<li>Apache Kafka <a href="http://incubator.apache.org/kafka/">http://incubator.apache.org/kafka/</a>
-</li>
-<li>Kafka: a Distributed Messaging System for Log Processing 
-<ul>
-<li><a href="http://research.microsoft.com/en-us/um/people/srikanth/netdb11/netdb11papers/netdb11-final12.pdf">http://research.microsoft.com/en-us/um/people/srikanth/netdb11/netdb11papers/netdb11-final12.pdf</a>
-</li>
-</ul>
-
-</li>
-</ul>
-
-
+<p><a href="http://research.microsoft.com/en-us/um/people/srikanth/netdb11/netdb11papers/netdb11-final12.pdf">http://research.microsoft.com/en-us/um/people/srikanth/netdb11/netdb11papers/netdb11-final12.pdf</a>
+</p>
 
 </div>
 
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Kafka: a Distributed Messaging System for Log Processing</h3>
-<div class="outline-text-3" id="text-1-1">
-
-
-</div>
-
-<div id="outline-container-1-1-1" class="outline-4">
-<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> ABSTRACT</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-1-1" class="outline-4">
+<h4 id="sec-1-1"><span class="section-number-4">1.1</span> ABSTRACT</h4>
+<div class="outline-text-4" id="text-1-1">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-1-2" class="outline-4">
-<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> Introduction</h4>
-<div class="outline-text-4" id="text-1-1-2">
+<div id="outline-container-1-2" class="outline-4">
+<h4 id="sec-1-2"><span class="section-number-4">1.2</span> Introduction</h4>
+<div class="outline-text-4" id="text-1-2">
 
 <ul>
 <li>Many early systems for processing this kind of data relied on physically scraping log files off production servers for analysis. In recent years, several specialized distributed log aggregators have been built, including Facebook’s Scribe , Yahoo’s Data Highway , and Cloudera’s Flume. Those systems are primarily designed for collecting and loading the log data into a data warehouse or Hadoop for offline consumption. （一些现有的日志系统都是非实时系统，将数据导入到数据仓库或是Hadoop做离线处理）
@@ -154,9 +134,9 @@
 
 </div>
 
-<div id="outline-container-1-1-3" class="outline-4">
-<h4 id="sec-1-1-3"><span class="section-number-4">1.1.3</span> Related Work</h4>
-<div class="outline-text-4" id="text-1-1-3">
+<div id="outline-container-1-3" class="outline-4">
+<h4 id="sec-1-3"><span class="section-number-4">1.3</span> Related Work</h4>
+<div class="outline-text-4" id="text-1-3">
 
 <ul>
 <li>Traditional enterprise messaging systems have existed for a long time and often play a critical role as an event bus for processing asynchronous data flows. However, there are a few reasons why they tend not to be a good fit for log processing. （传统的消息系统不适合做日志处理）
@@ -196,9 +176,9 @@
 
 </div>
 
-<div id="outline-container-1-1-4" class="outline-4">
-<h4 id="sec-1-1-4"><span class="section-number-4">1.1.4</span> Kafka Architecture and Design Principles</h4>
-<div class="outline-text-4" id="text-1-1-4">
+<div id="outline-container-1-4" class="outline-4">
+<h4 id="sec-1-4"><span class="section-number-4">1.4</span> Kafka Architecture and Design Principles</h4>
+<div class="outline-text-4" id="text-1-4">
 
 <ul>
 <li>We first introduce the basic concepts in Kafka
@@ -237,8 +217,8 @@ Producer Code
 
 
 <pre class="src src-Java">producer = new Producer(...);
-message = new Message(&#8220;test message str&#8221;.getBytes()); 
-set = new MessageSet(message); 
+message = new Message(&#8220;test message str&#8221;.getBytes());
+set = new MessageSet(message);
 producer.send(&#8220;topic1&#8221;, set);
 </pre>
 
@@ -257,13 +237,13 @@ for (message : streams[0]) {
 
 
 <ul>
-<li id="sec-1-1-4-1">Efficiency on a Single Partition<br/>
+<li id="sec-1-4-1">Efficiency on a Single Partition<br/>
 <ul>
 <li>Simple storage
 <ul>
 <li>Each partition of a topic corresponds to a logical log. Physically, a log is implemented as a set of segment files of approximately the same size (e.g., 1GB).(每个partition对应一个logical log, 每个logical log对应多个segment file，这些文件都近似大小） Every time a producer publishes a message to a partition, the broker simply appends the message to the last segment file.（每个追加到最后一个segment file上）
 </li>
-<li>For better performance, we flush the segment files to disk only after a configurable number of messages have been published or a certain amount of time has elapsed. A message is only exposed to the consumers after it is flushed.（积累到一定的数据量才会进行刷新） 
+<li>For better performance, we flush the segment files to disk only after a configurable number of messages have been published or a certain amount of time has elapsed. A message is only exposed to the consumers after it is flushed.（积累到一定的数据量才会进行刷新）
 </li>
 <li>Unlike typical messaging systems, a message stored in Kafka doesn’t have an explicit message id. Instead, each message is addressed by its logical offset in the log. This avoids the overhead of maintaining auxiliary, seek-intensive random-access index structures that map the message ids to the actual message locations. （没有messageid, 但是可以通过logical offset来定位log. 这样可以免去从message id对应到message这个过程，因为这个过程需要mapping需要random access index. 这样的message id自然不是连续的，但是却是递增的）
 </li>
@@ -310,7 +290,7 @@ for (message : streams[0]) {
 </li>
 </ul>
 <ul>
-<li id="sec-1-1-4-2">Distributed Coordination<br/>
+<li id="sec-1-4-2">Distributed Coordination<br/>
 <ul>
 <li>Each producer can publish a message to either a randomly selected partition or a partition semantically determined by a partitioning key and a partitioning function.（procuder可以根据指定partition算法或者是随机选择发送到哪个partition. 就现在来说每个partition只能够在某一个broker上面）
 </li>
@@ -332,7 +312,7 @@ for (message : streams[0]) {
 </li>
 <li>Each consumer group is associated with an ownership registry and an offset registry in Zookeeper.
 <ul>
-<li>The ownership registry has one path for every subscribed partition and the path value is the id of the consumer currently consuming from this partition（每个订阅partition是一个path, path value是这个consumer id, 这个consumer来消费这个partition的） 
+<li>The ownership registry has one path for every subscribed partition and the path value is the id of the consumer currently consuming from this partition（每个订阅partition是一个path, path value是这个consumer id, 这个consumer来消费这个partition的）
 </li>
 <li>The offset registry stores for each subscribed partition, the offset of the last consumed message in the partition.（记录订阅partition的最后一个offset）
 </li>
@@ -370,7 +350,7 @@ for (message : streams[0]) {
 </li>
 </ul>
 <ul>
-<li id="sec-1-1-4-3">Delivery Guarantees<br/>
+<li id="sec-1-4-3">Delivery Guarantees<br/>
 <ul>
 <li>In general, Kafka only guarantees at-least-once delivery. Exactly- once delivery typically requires two-phase commits and is not necessary for our applications.（至少保证一次投递）
 </li>
@@ -380,7 +360,7 @@ for (message : streams[0]) {
 </li>
 <li>To avoid log corruption, Kafka stores a CRC for each message in the log. If there is any I/O error on the broker, Kafka runs a recovery process to remove those messages with inconsistent CRCs. Having the CRC at the message level also allows us to check network errors after a message is produced or consumed.（使用CRC做读取和传输校验）
 </li>
-<li>If a broker goes down, any message stored on it not yet consumed becomes unavailable. If the storage system on a broker is permanently damaged, any unconsumed message is lost forever. In the future, we plan to add built-in replication in Kafka to redundantly store each message on multiple brokers.（现在broker没有做replication, 也就是说如果down的话那么上面数据读取不到，如果磁盘坏的话那么数据就发生丢失） 
+<li>If a broker goes down, any message stored on it not yet consumed becomes unavailable. If the storage system on a broker is permanently damaged, any unconsumed message is lost forever. In the future, we plan to add built-in replication in Kafka to redundantly store each message on multiple brokers.（现在broker没有做replication, 也就是说如果down的话那么上面数据读取不到，如果磁盘坏的话那么数据就发生丢失）
 </li>
 </ul>
 
@@ -391,16 +371,16 @@ for (message : streams[0]) {
 
 </div>
 
-<div id="outline-container-1-1-5" class="outline-4">
-<h4 id="sec-1-1-5"><span class="section-number-4">1.1.5</span> Kafka Usage at LinkedIn</h4>
-<div class="outline-text-4" id="text-1-1-5">
+<div id="outline-container-1-5" class="outline-4">
+<h4 id="sec-1-5"><span class="section-number-4">1.5</span> Kafka Usage at LinkedIn</h4>
+<div class="outline-text-4" id="text-1-5">
 
 <p><img src="images/kafka-deployment.png"  alt="./images/kafka-deployment.png" />
 </p>
 <ul>
 <li>We rely on a hardware load-balancer to distribute the publish requests to the set of Kafka brokers evenly. （硬件负载均衡）
 </li>
-<li>We also deploy a cluster of Kafka in a separate datacenter for offline analysis, located geographically close to our Hadoop cluster and other data warehouse infrastructure. Without too much tuning, the end-to-end latency for the complete pipeline is about 10 seconds on average, good enough for our requirements.（跨机房数据延迟在10s以内） 
+<li>We also deploy a cluster of Kafka in a separate datacenter for offline analysis, located geographically close to our Hadoop cluster and other data warehouse infrastructure. Without too much tuning, the end-to-end latency for the complete pipeline is about 10 seconds on average, good enough for our requirements.（跨机房数据延迟在10s以内）
 </li>
 <li>Our tracking also includes an auditing system to verify that there is no data loss along the whole pipeline.（检验数据是否丢失）
 <ul>
@@ -420,17 +400,17 @@ for (message : streams[0]) {
 
 </div>
 
-<div id="outline-container-1-1-6" class="outline-4">
-<h4 id="sec-1-1-6"><span class="section-number-4">1.1.6</span> Experimental Results</h4>
-<div class="outline-text-4" id="text-1-1-6">
+<div id="outline-container-1-6" class="outline-4">
+<h4 id="sec-1-6"><span class="section-number-4">1.6</span> Experimental Results</h4>
+<div class="outline-text-4" id="text-1-6">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-1-7" class="outline-4">
-<h4 id="sec-1-1-7"><span class="section-number-4">1.1.7</span> Conclusion and Future Works</h4>
-<div class="outline-text-4" id="text-1-1-7">
+<div id="outline-container-1-7" class="outline-4">
+<h4 id="sec-1-7"><span class="section-number-4">1.7</span> Conclusion and Future Works</h4>
+<div class="outline-text-4" id="text-1-7">
 
 <p>There are a number of directions that we’d like to pursue in the future.
 </p><ul>
@@ -449,17 +429,43 @@ for (message : streams[0]) {
 </li>
 </ul>
 
+
 </div>
 </div>
+
+</div>
+
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> Replication Since 0.8</h3>
+<div class="outline-text-3" id="text-2">
+
+<p>据说从0.8开始支持replication. 粗略地阅读了一下主页上的 <a href="http://kafka.apache.org/documentation.html">documentation</a> , 把一些比较关键东西记录下来。
+</p>
+<p>
+除了replication之外，提供了两个高级功能：a. Consumer Offset Tracking（记录consumer当前消费位置） b. Log Compaction.（将日志文件中相同key的message进行合并压缩）
+</p>
+<p>
+replication实现方式大致是这样的：
+</p><ol>
+<li>在0.8之前一个topic/partition是由一个broker来进行管理的。这个broker就是master, 它没有任何followers
+</li>
+<li>在0.8之后每个topic/partition除了master之外还有followers. 生产者提交数据给主broker, 主broker写入数据后会将数据交给followers. 消费者也是从主brokers来拿数据的。所以这些slaves实际上都是inactive的。
+</li>
+<li>producers写入数据时候可以指定说，是否写入master就返回，还是必须等待写入k个followers才返回，还是不需要等待master的ack就返回。策略牵扯到latency和durabilityz之间的tradeoff.
+</li>
+<li>常见quorum要求，如果集群节点数量为2f+1的话，那么必须得到f+1个节点的相同认定（容忍f个节点失效）。但是kafka quorum不是这样做的，kafka会在保存一个ISR(in-sync replicas)到可能是zookeeper上，这个集合代表当前有哪些节点是处于in-sync状态的。在进行quorum时候只允许ISR里面节点进行投票。和微软 <a href="http://research.microsoft.com/apps/pubs/default.aspx?id=66814">PacificA</a> 一致性协议比较类似，和常见quorum协议差别就在于在更新状态时候保存了ISR。如果节点数量为2f+1的话，那么可以容忍2f个节点失效。
+</li>
+<li>如果一个broker挂掉的话，迁移决策过程是由另外一个broker来代理完成的，这个broker称为controller.
+</li>
+</ol>
+
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:43+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'kafka.html';var disqus_title = 'kafka.html';var disqus_url = 'http://dirlt.com/kafka.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'kafka.html';var disqus_title = 'kafka.html';var disqus_url = 'http://dirlt.com/kafka.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

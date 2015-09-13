@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<head>
 <title>Java Native Interface: Programmer's Guide and Specification</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Java Native Interface: Programmer's Guide and Specification"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-12-23T12:37+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,7 +62,7 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
@@ -72,56 +71,43 @@
 <div id="content">
 <h1 class="title">Java Native Interface: Programmer's Guide and Specification</h1>
 
+<p><a href="http://www.uni-ulm.de/fileadmin/website_uni_ulm/iui.inst.200/files/staff/domaschka/misc/jni_programmers_guide_spec.pdf">http://www.uni-ulm.de/fileadmin/website_uni_ulm/iui.inst.200/files/staff/domaschka/misc/jni_programmers_guide_spec.pdf</a>
+</p>
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="jni.html#sec-1">1 jni</a>
+<li><a href="jni.html#sec-1">1 Introduction</a></li>
+<li><a href="jni.html#sec-2">2 Getting Started</a>
 <ul>
-<li><a href="jni.html#sec-1-1">1.1 Introduction</a></li>
-<li><a href="jni.html#sec-1-2">1.2 Getting Started</a>
-<ul>
-<li><a href="jni.html#sec-1-2-1">1.2.1 Hello.java</a></li>
-<li><a href="jni.html#sec-1-2-2">1.2.2 Hello.h</a></li>
-<li><a href="jni.html#sec-1-2-3">1.2.3 Hello.cc</a></li>
+<li><a href="jni.html#sec-2-1">2.1 Hello.java</a></li>
+<li><a href="jni.html#sec-2-2">2.2 Hello.h</a></li>
+<li><a href="jni.html#sec-2-3">2.3 Hello.cc</a></li>
 </ul>
 </li>
-<li><a href="jni.html#sec-1-3">1.3 Basic Types, Strings, and Arrays</a></li>
-<li><a href="jni.html#sec-1-4">1.4 Fields and Methods</a></li>
-<li><a href="jni.html#sec-1-5">1.5 Local and Gloabl References</a></li>
-<li><a href="jni.html#sec-1-6">1.6 Exceptions</a></li>
-<li><a href="jni.html#sec-1-7">1.7 The Invocation Interface</a></li>
-<li><a href="jni.html#sec-1-8">1.8 Additional JNI Features</a>
+<li><a href="jni.html#sec-3">3 Basic Types, Strings, and Arrays</a></li>
+<li><a href="jni.html#sec-4">4 Fields and Methods</a></li>
+<li><a href="jni.html#sec-5">5 Local and Gloabl References</a></li>
+<li><a href="jni.html#sec-6">6 Exceptions</a></li>
+<li><a href="jni.html#sec-7">7 The Invocation Interface</a></li>
+<li><a href="jni.html#sec-8">8 Additional JNI Features</a>
 <ul>
-<li><a href="jni.html#sec-1-8-1">1.8.1 JNI and Threads</a></li>
-<li><a href="jni.html#sec-1-8-2">1.8.2 Registering Native Methods</a></li>
-<li><a href="jni.html#sec-1-8-3">1.8.3 Load and Unload Handlers</a></li>
+<li><a href="jni.html#sec-8-1">8.1 JNI and Threads</a></li>
+<li><a href="jni.html#sec-8-2">8.2 Registering Native Methods</a></li>
+<li><a href="jni.html#sec-8-3">8.3 Load and Unload Handlers</a></li>
 </ul>
 </li>
-<li><a href="jni.html#sec-1-9">1.9 Leveraging Existing Native Libraries</a></li>
-<li><a href="jni.html#sec-1-10">1.10 Traps and Pitfalls</a></li>
-<li><a href="jni.html#sec-1-11">1.11 Overview of the JNI Design</a></li>
-</ul>
-</li>
+<li><a href="jni.html#sec-9">9 Leveraging Existing Native Libraries</a></li>
+<li><a href="jni.html#sec-10">10 Traps and Pitfalls</a></li>
+<li><a href="jni.html#sec-11">11 Overview of the JNI Design</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> jni</h2>
-<div class="outline-text-2" id="text-1">
-
-
-<p>
-<a href="http://www.uni-ulm.de/fileadmin/website_uni_ulm/iui.inst.200/files/staff/domaschka/misc/jni_programmers_guide_spec.pdf">http://www.uni-ulm.de/fileadmin/website_uni_ulm/iui.inst.200/files/staff/domaschka/misc/jni_programmers_guide_spec.pdf</a>
-</p>
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Introduction</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> Introduction</h3>
+<div class="outline-text-3" id="text-1">
 
 <p>The JNI is designed to handle situations where you need to combine Java applications with native code. As a two-way interface, the JNI can support two types of native code: native libraries and native applications. （允许相互调用）
 </p><ul>
@@ -136,7 +122,7 @@
 <img src="images/role-of-the-jni.png"  alt="./images/role-of-the-jni.png" />
 </p>
 <p>
-下面是一些JNI的代替方案 <b>note(dirlt)：主要都是通过进程间通信来完成的</b>
+下面是一些JNI的代替方案 #note: 主要都是通过进程间通信来完成的
 </p><ul>
 <li>A Java application may communicate with a native application through a TCP/IP connection or through other inter-process communication (IPC) mechanisms.
 </li>
@@ -165,9 +151,9 @@
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Getting Started</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> Getting Started</h3>
+<div class="outline-text-3" id="text-2">
 
 <p>主要介绍的是native methods编写，JVM通过so来调用native methods.这里给出一个无参native mthods例子。
 </p><ul>
@@ -177,7 +163,7 @@
 </li>
 <li>编写 Hello.cc 使用 Hello.h 生成 libHello.so # g++ Hello.cc -fPIC -o libHello.so -shared -I$JAVA_HOME/include
 </li>
-<li>将 libHello.so 加入到library path. 
+<li>将 libHello.so 加入到library path.
 </li>
 <li>然后 java Hello 启动
 </li>
@@ -188,9 +174,9 @@
 
 </div>
 
-<div id="outline-container-1-2-1" class="outline-4">
-<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> Hello.java</h4>
-<div class="outline-text-4" id="text-1-2-1">
+<div id="outline-container-2-1" class="outline-4">
+<h4 id="sec-2-1"><span class="section-number-4">2.1</span> Hello.java</h4>
+<div class="outline-text-4" id="text-2-1">
 
 
 
@@ -213,9 +199,9 @@ public class Hello {
 
 </div>
 
-<div id="outline-container-1-2-2" class="outline-4">
-<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> Hello.h</h4>
-<div class="outline-text-4" id="text-1-2-2">
+<div id="outline-container-2-2" class="outline-4">
+<h4 id="sec-2-2"><span class="section-number-4">2.2</span> Hello.h</h4>
+<div class="outline-text-4" id="text-2-2">
 
 
 
@@ -249,9 +235,9 @@ JNIEXPORT void JNICALL Java_Hello_run
 
 </div>
 
-<div id="outline-container-1-2-3" class="outline-4">
-<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> Hello.cc</h4>
-<div class="outline-text-4" id="text-1-2-3">
+<div id="outline-container-2-3" class="outline-4">
+<h4 id="sec-2-3"><span class="section-number-4">2.3</span> Hello.cc</h4>
+<div class="outline-text-4" id="text-2-3">
 
 
 
@@ -275,12 +261,12 @@ JNIEXPORT void JNICALL Java_Hello_run  (JNIEnv * env, jclass cls)
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Basic Types, Strings, and Arrays</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> Basic Types, Strings, and Arrays</h3>
+<div class="outline-text-3" id="text-3">
 
 <ul>
-<li>The static initializer calls the System.loadLibrary method to load a native library called Prompt. 
+<li>The static initializer calls the System.loadLibrary method to load a native library called Prompt.
 <ul>
 <li>使用System.loadLibrary来载入动态库
 </li>
@@ -294,23 +280,23 @@ JNIEXPORT void JNICALL Java_Hello_run  (JNIEnv * env, jclass cls)
 </ul>
 
 </li>
-<li>The name of the C function is formed by concatenating the “Java_” prefix, the class name, and the method name. 
+<li>The name of the C function is formed by concatenating the “Java_” prefix, the class name, and the method name.
 <ul>
 <li>Java_作为前缀，然后是class name,然后是method_name
 </li>
 </ul>
 
 </li>
-<li>The first parameter, the JNIEnv interface pointer, points to a location that contains a pointer to a function table. 
+<li>The first parameter, the JNIEnv interface pointer, points to a location that contains a pointer to a function table.
 <ul>
 <li>JNIEnv定义了JNI所有可以访问JVM对象的接口方法
 </li>
-<li><b>note(dirlt)：这个接口在$JAVA_HOME/include/jni.h里面有定义</b>
+<li>#note: 这个接口在$JAVA_HOME/include/jni.h里面有定义
 </li>
 </ul>
 
 </li>
-<li>The second argument to an instance native method is a reference to the object on which the method is invoked, similar to the this pointer in C++. The second argument to a static native method is a reference to the class in which the method is defined. 
+<li>The second argument to an instance native method is a reference to the object on which the method is invoked, similar to the this pointer in C++. The second argument to a static native method is a reference to the class in which the method is defined.
 <ul>
 <li>如果是static方法的话，那么参数是指class对象
 </li>
@@ -324,11 +310,13 @@ JNIEXPORT void JNICALL Java_Hello_run  (JNIEnv * env, jclass cls)
 
 <p>
 <img src="images/jnienv-interface-pointer.png"  alt="./images/jnienv-interface-pointer.png" />
-<b>note(dirlt):可以看到在pointer下面还有一个internal VM数据块，这个是线程级别的私有数据跟在pointer之后，可以通过指针偏移进行访问</b>
+</p>
+<p>
+#note: 可以看到在pointer下面还有一个internal VM数据块，这个是线程级别的私有数据跟在pointer之后，可以通过指针偏移进行访问
 </p>
 <p>
 对于类型还说分为primitive和reference两种类型，reference type都是opaque pointer获取数据必须通过JNIEnv接口提供的方法才能够获得。
-至于具体类型是pritmitive还是reference的话，可以通过阅读jni.h和jni_md.h来判断。primitive type只有下面几种 <b>note(dirlt):in jni_md.h</b>
+至于具体类型是pritmitive还是reference的话，可以通过阅读jni.h和jni_md.h来判断。primitive type只有下面几种 #note: in jni_md.h
 </p>
 
 
@@ -356,20 +344,20 @@ typedef signed char jbyte;
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Fields and Methods</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> Fields and Methods</h3>
+<div class="outline-text-3" id="text-4">
 
-<p><b>note(dirlt)：field和method的访问接口，非常类似google::protobuf提供的reflection接口</b>
+<p><b>note：field和method的访问接口，非常类似google::protobuf提供的reflection接口</b>
 </p>
 <p>
 Field操作：
 </p><ul>
 <li>GetObjectClass获取object所属的class对象，类型是jclass
 <ul>
-<li>如果是本地静态方法的话，那么传入参数应该就是class对象 <b>note(dirlt)：FindClass</b>
+<li>如果是本地静态方法的话，那么传入参数应该就是class对象
 </li>
-<li><b>note(dirlt)：应该也可以通过类加载器来获取</b>
+<li>#note: FindClass. 应该也可以通过类加载器来获取
 </li>
 </ul>
 
@@ -471,22 +459,19 @@ Let us start by comparing the cost of Java/native calls with the cost of Java/Ja
 
 
 <p>
-The overhead of field access using the JNI lies in the cost of calling through the JNIEnv. Rather than directly dereferencing objects, the native code has to per- form a C function call which in turn dereferences the object. The function call is necessary because it isolates the native code from the internal object representa-tion maintained by the virtual machine implementation. The JNI field access over-head is typically negligible because a function call takes only a few cycles.（字段访问开销主要是通过一次得到ID间接访问造成的，但是这样带来的收益是能够将内部object表示不暴露出来，但是索性的是带来的开销并不大）
-</p>
-<p>
-<b>note(dirlt)：我理解这里的意思主要是说在调用和字段访问方面，Java/native calls的开销更大，但是native methods本身在运行速度上可能会带来更大的收益</b>
+The overhead of field access using the JNI lies in the cost of calling through the JNIEnv. Rather than directly dereferencing objects, the native code has to per- form a C function call which in turn dereferences the object. The function call is necessary because it isolates the native code from the internal object representa-tion maintained by the virtual machine implementation. The JNI field access over-head is typically negligible because a function call takes only a few cycles.（字段访问开销主要是通过一次得到ID间接访问造成的，但是这样带来的收益是能够将内部object表示不暴露出来，索性的是带来的开销并不大）
 </p>
 </div>
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Local and Gloabl References</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> Local and Gloabl References</h3>
+<div class="outline-text-3" id="text-5">
 
 <p>reference和GC非常相关，决定了哪些对象作用域多大以及生命周期多长：
 </p><ul>
-<li>The JNI supports three kinds of opaque references: local references, global references, and weak global references. 
+<li>The JNI supports three kinds of opaque references: local references, global references, and weak global references.
 </li>
 <li>Local and global references have different lifetimes. Local references are automatically freed, whereas global and weak global references remain valid until they are freed by the programmer.
 </li>
@@ -498,17 +483,17 @@ The overhead of field access using the JNI lies in the cost of calling through t
 </p><ul>
 <li>local 对象超过函数作用域之后就会自动释放
 <ul>
-<li>Why do you want to delete local references explicitly if the virtual machine automatically frees them after native methods return? A local reference keeps the referenced object from being garbage collected until the local reference is invali-dated. 
+<li>Why do you want to delete local references explicitly if the virtual machine automatically frees them after native methods return? A local reference keeps the referenced object from being garbage collected until the local reference is invali-dated.
 </li>
-<li>但是也可以显示标记不需要这个对象，这样可以减少无用对象的持有。使用DeleteLocalRef来标记。*note(dirlt)：似乎对于每一个native method最多支持16个local reference.
+<li>但是也可以显示标记不需要这个对象，这样可以减少无用对象的持有。使用DeleteLocalRef来标记。#note: 似乎对于每一个native method最多支持16个local reference.
 </li>
 <li>NewLocalRef/DeleteLocalRef.
 </li>
-<li>JDK1.2以上有另外的方法支持很多local reference <b>note(dirlt):不过似乎没有什么太大的意思</b>
+<li>JDK1.2以上有另外的方法支持很多local reference
 <ul>
 <li>EnsureLocalCapacity 确保这个frame至少之后可以分配多少个local ref
 </li>
-<li>PushLocalFrame/PopLocalFrame 新建和释放一个local frame.这样可以开辟更多的local ref. 
+<li>PushLocalFrame/PopLocalFrame 新建和释放一个local frame.这样可以开辟更多的local ref.
 </li>
 </ul>
 
@@ -544,9 +529,9 @@ The overhead of field access using the JNI lies in the cost of calling through t
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Exceptions</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> Exceptions</h3>
+<div class="outline-text-3" id="text-6">
 
 <ul>
 <li>Throw 抛出已有异常
@@ -616,12 +601,10 @@ Calling most JNI functions with a pending exception leads to undefined results. 
 
 </div>
 
-<div id="outline-container-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> The Invocation Interface</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-7" class="outline-3">
+<h3 id="sec-7"><span class="section-number-3">7</span> The Invocation Interface</h3>
+<div class="outline-text-3" id="text-7">
 
-<p><b>note(dirlt)：代码整个过程还是比较清晰的</b>
-</p>
 
 
 
@@ -643,9 +626,9 @@ void destroy() {
   jvm-&gt;DestroyJavaVM();
 }
 
-int main() {  
+int main() {
   JavaVMInitArgs vm_args;
-  JavaVMOption options[1];  
+  JavaVMOption options[1];
   options[0].optionString = <span class="org-string">"-Djava.class.path=."</span>;
   vm_args.version = JNI_VERSION_1_6;
   vm_args.options = options;
@@ -692,8 +675,8 @@ int main() {
 <pre class="example">➜  ~  g++ Hello.cc -I$JAVA_HOME/include -L$JAVA_HOME/jre/lib/amd64/server -ljvm
 Hello.cc: In function ‘int main()’:
 Hello.cc:22:29: warning: deprecated conversion from string constant to ‘char*’ [-Wwrite-strings]
-➜  ~  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$JAVA_HOME/jre/lib/amd64/server  
-➜  ~  ./a.out                                                                  
+➜  ~  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$JAVA_HOME/jre/lib/amd64/server
+➜  ~  ./a.out
 Hello,World
 </pre>
 
@@ -712,19 +695,21 @@ Hello,World
 
 </div>
 
-<div id="outline-container-1-8" class="outline-3">
-<h3 id="sec-1-8"><span class="section-number-3">1.8</span> Additional JNI Features</h3>
-<div class="outline-text-3" id="text-1-8">
+<div id="outline-container-8" class="outline-3">
+<h3 id="sec-8"><span class="section-number-3">8</span> Additional JNI Features</h3>
+<div class="outline-text-3" id="text-8">
 
 
 </div>
 
-<div id="outline-container-1-8-1" class="outline-4">
-<h4 id="sec-1-8-1"><span class="section-number-4">1.8.1</span> JNI and Threads</h4>
-<div class="outline-text-4" id="text-1-8-1">
+<div id="outline-container-8-1" class="outline-4">
+<h4 id="sec-8-1"><span class="section-number-4">8.1</span> JNI and Threads</h4>
+<div class="outline-text-4" id="text-8-1">
 
 <ul>
-<li>MonitorEnter/MonitorExit可以操作monitor. <b>note(dirlt):对应java里面的synchronized关键字区域</b>
+<li>MonitorEnter/MonitorExit可以操作monitor. 
+</li>
+<li>#note: 对应java里面的synchronized关键字区域
 </li>
 </ul>
 
@@ -733,9 +718,9 @@ Hello,World
 
 </div>
 
-<div id="outline-container-1-8-2" class="outline-4">
-<h4 id="sec-1-8-2"><span class="section-number-4">1.8.2</span> Registering Native Methods</h4>
-<div class="outline-text-4" id="text-1-8-2">
+<div id="outline-container-8-2" class="outline-4">
+<h4 id="sec-8-2"><span class="section-number-4">8.2</span> Registering Native Methods</h4>
+<div class="outline-text-4" id="text-8-2">
 
 <p>允许动态注册native methods.
 </p>
@@ -743,9 +728,9 @@ Hello,World
 
 </div>
 
-<div id="outline-container-1-8-3" class="outline-4">
-<h4 id="sec-1-8-3"><span class="section-number-4">1.8.3</span> Load and Unload Handlers</h4>
-<div class="outline-text-4" id="text-1-8-3">
+<div id="outline-container-8-3" class="outline-4">
+<h4 id="sec-8-3"><span class="section-number-4">8.3</span> Load and Unload Handlers</h4>
+<div class="outline-text-4" id="text-8-3">
 
 <p>系统加载和卸载native library回调函数：
 </p><ul>
@@ -761,44 +746,42 @@ load/unload工作流程是这样的：
 </p><ul>
 <li>The virtual machine associates each native library with the class loader L of the class C that issues the System.loadLibrary call. // 每次加载的时候创建ClassLoader,并且记录这个ClassLoader关联了哪些对象。
 </li>
-<li>The virtual machine calls the JNI_OnUnload handler and unloads the native library after it determines that the class loader L is no longer a live object. Because a class loader refers to all the classes it defines, this implies that C can be unloaded as well. // 如果ClassLoader里面没有任何live object的话，那么就会被GC 
+<li>The virtual machine calls the JNI_OnUnload handler and unloads the native library after it determines that the class loader L is no longer a live object. Because a class loader refers to all the classes it defines, this implies that C can be unloaded as well. // 如果ClassLoader里面没有任何live object的话，那么就会被GC
 </li>
 <li>The JNI_OnUnload handler runs in a finalizer, and is either invoked synchro-niously by java.lang.System.runFinalization or invoked asynchro-nously by the virtual machine. // unload可能会被同步调用也可能会被异步调用。
+</li>
+<li>#note: 因此如果ClassLoader里面包含在global reference的话，那么这个class loader是不会被卸载的
 </li>
 </ul>
 
 
-<p>
-<b>note(dirlt)：因此如果ClassLoader里面关键了global reference的话那么这个class loader是不会被卸载的</b>
-</p>
 </div>
 </div>
 
 </div>
 
-<div id="outline-container-1-9" class="outline-3">
-<h3 id="sec-1-9"><span class="section-number-3">1.9</span> Leveraging Existing Native Libraries</h3>
-<div class="outline-text-3" id="text-1-9">
+<div id="outline-container-9" class="outline-3">
+<h3 id="sec-9"><span class="section-number-3">9</span> Leveraging Existing Native Libraries</h3>
+<div class="outline-text-3" id="text-9">
 
 <p>如何使用现有的native library：
 </p><ul>
 <li>one-to-one mapping. 针对每个函数做一个包装，外部做类型转换.
 </li>
-<li>shared stubs. 做一个dispatcher函数，根据所传参数包装成为合适的C++类型，然后直接传给C++函数。但是调用C++函数这个部分需要自己实现函数调用栈 *note(dirlt)：文章里面是asm_dispatch)
+<li>shared stubs. 做一个dispatcher函数，根据所传参数包装成为合适的C++类型，然后直接传给C++函数。但是调用C++函数这个部分需要自己实现函数调用栈。
+</li>
+<li>#note: 个人觉得one-to-one mapping虽然实现比较麻烦，可是用起来比较简单，而shared stubs则相反。自己完全可以实现一些简单的common library来简化编写过程。
 </li>
 </ul>
 
 
-<p>
-<b>note(dirlt):个人觉得one-to-one mapping虽然实现比较麻烦，可是用起来比较简单，而shared stubs则相反。自己完全可以实现一些简单的common library来简化编写过程</b>
-</p>
 </div>
 
 </div>
 
-<div id="outline-container-1-10" class="outline-3">
-<h3 id="sec-1-10"><span class="section-number-3">1.10</span> Traps and Pitfalls</h3>
-<div class="outline-text-3" id="text-1-10">
+<div id="outline-container-10" class="outline-3">
+<h3 id="sec-10"><span class="section-number-3">10</span> Traps and Pitfalls</h3>
+<div class="outline-text-3" id="text-10">
 
 <ul>
 <li>Error Checking
@@ -838,9 +821,9 @@ load/unload工作流程是这样的：
 
 </div>
 
-<div id="outline-container-1-11" class="outline-3">
-<h3 id="sec-1-11"><span class="section-number-3">1.11</span> Overview of the JNI Design</h3>
-<div class="outline-text-3" id="text-1-11">
+<div id="outline-container-11" class="outline-3">
+<h3 id="sec-11"><span class="section-number-3">11</span> Overview of the JNI Design</h3>
+<div class="outline-text-3" id="text-11">
 
 
 <hr/>
@@ -931,17 +914,13 @@ Accessing Objects
 </li>
 </ul>
 
-
-</div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-12-23T12:37+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'jni.html';var disqus_title = 'jni.html';var disqus_url = 'http://dirlt.com/jni.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'jni.html';var disqus_title = 'jni.html';var disqus_url = 'http://dirlt.com/jni.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<head>
 <title>In-Stream Big Data Processing</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="In-Stream Big Data Processing"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:43+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,7 +62,7 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
@@ -72,46 +71,7 @@
 <div id="content">
 <h1 class="title">In-Stream Big Data Processing</h1>
 
-
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="in-stream-big-data-processing.html#sec-1">1 in-stream-big-data-processing</a>
-<ul>
-<li><a href="in-stream-big-data-processing.html#sec-1-1">1.1 Basics of Distributed Query Processing</a>
-<ul>
-<li><a href="in-stream-big-data-processing.html#sec-1-1-1">1.1.1 Partitioning and Shuffling</a></li>
-<li><a href="in-stream-big-data-processing.html#sec-1-1-2">1.1.2 Pipelining</a></li>
-</ul>
-</li>
-<li><a href="in-stream-big-data-processing.html#sec-1-2">1.2 In-Stream Processing Patterns</a>
-<ul>
-<li><a href="in-stream-big-data-processing.html#sec-1-2-1">1.2.1 Stream Replay</a></li>
-<li><a href="in-stream-big-data-processing.html#sec-1-2-2">1.2.2 Lineage Tracking</a></li>
-<li><a href="in-stream-big-data-processing.html#sec-1-2-3">1.2.3 State Checkpointing</a></li>
-<li><a href="in-stream-big-data-processing.html#sec-1-2-4">1.2.4 Additive State and Sketches</a></li>
-<li><a href="in-stream-big-data-processing.html#sec-1-2-5">1.2.5 Logical Time Tracking</a></li>
-<li><a href="in-stream-big-data-processing.html#sec-1-2-6">1.2.6 Aggregation in a Persistent Store</a></li>
-<li><a href="in-stream-big-data-processing.html#sec-1-2-7">1.2.7 Aggregation on a Sliding Window</a></li>
-</ul>
-</li>
-<li><a href="in-stream-big-data-processing.html#sec-1-3">1.3 Query Processing Pipeline: Storm, Cassandra, Kafka</a></li>
-<li><a href="in-stream-big-data-processing.html#sec-1-4">1.4 Towards Unified Big Data Processing</a></li>
-<li><a href="in-stream-big-data-processing.html#sec-1-5">1.5 References</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> in-stream-big-data-processing</h2>
-<div class="outline-text-2" id="text-1">
-
-
-<p>
-<a href="http://highlyscalable.wordpress.com/2013/08/20/in-stream-big-data-processing/">http://highlyscalable.wordpress.com/2013/08/20/in-stream-big-data-processing/</a>
+<p><a href="http://highlyscalable.wordpress.com/2013/08/20/in-stream-big-data-processing/">http://highlyscalable.wordpress.com/2013/08/20/in-stream-big-data-processing/</a>
 </p>
 <p>
 In recent years, this idea got a lot of traction and a whole bunch of solutions like <b>Twitter’s Storm,  Yahoo’s S4, Cloudera’s Impala, Apache Spark, and Apache Tez</b> appeared and joined the army of Big Data and NoSQL systems. This article is an effort to 
@@ -142,26 +102,52 @@ Our goal was to equip all facilities with a new in-stream engine (shown in the b
 </li>
 <li>Interoperability with Hadoop. The engine should be able to ingest both streaming data and data from Hadoop i.e. serve as a custom query engine atop of HDFS.（和HDFS做交互）
 </li>
-<li>High performance and mobility. The system should deliver performance of tens of thousands messages per second even on clusters of minimal size. The engine should be compact and efficient, so one can deploy it in multiple datacenters on small clusters.（在小规模集群上处理到w级别的QPS，并且容易部署） <b>note(dirlt)：部署和可维护性其实在很大程度上需要考虑</b>
+<li>High performance and mobility. The system should deliver performance of tens of thousands messages per second even on clusters of minimal size. The engine should be compact and efficient, so one can deploy it in multiple datacenters on small clusters.（在小规模集群上处理到w级别的QPS，并且容易部署） #note: 部署和可维护性其实在很大程度上需要考虑
 </li>
 </ul>
 
 
 
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="in-stream-big-data-processing.html#sec-1">1 Basics of Distributed Query Processing</a>
+<ul>
+<li><a href="in-stream-big-data-processing.html#sec-1-1">1.1 Partitioning and Shuffling</a></li>
+<li><a href="in-stream-big-data-processing.html#sec-1-2">1.2 Pipelining</a></li>
+</ul>
+</li>
+<li><a href="in-stream-big-data-processing.html#sec-2">2 In-Stream Processing Patterns</a>
+<ul>
+<li><a href="in-stream-big-data-processing.html#sec-2-1">2.1 Stream Replay</a></li>
+<li><a href="in-stream-big-data-processing.html#sec-2-2">2.2 Lineage Tracking</a></li>
+<li><a href="in-stream-big-data-processing.html#sec-2-3">2.3 State Checkpointing</a></li>
+<li><a href="in-stream-big-data-processing.html#sec-2-4">2.4 Additive State and Sketches</a></li>
+<li><a href="in-stream-big-data-processing.html#sec-2-5">2.5 Logical Time Tracking</a></li>
+<li><a href="in-stream-big-data-processing.html#sec-2-6">2.6 Aggregation in a Persistent Store</a></li>
+<li><a href="in-stream-big-data-processing.html#sec-2-7">2.7 Aggregation on a Sliding Window</a></li>
+</ul>
+</li>
+<li><a href="in-stream-big-data-processing.html#sec-3">3 Query Processing Pipeline: Storm, Cassandra, Kafka</a></li>
+<li><a href="in-stream-big-data-processing.html#sec-4">4 Towards Unified Big Data Processing</a></li>
+<li><a href="in-stream-big-data-processing.html#sec-5">5 References</a></li>
+</ul>
+</div>
 </div>
 
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Basics of Distributed Query Processing</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> Basics of Distributed Query Processing</h3>
+<div class="outline-text-3" id="text-1">
 
 <p>It is clear that distributed in-stream data processing has something to do with query processing in distributed relational databases. Many standard query processing techniques can be employed by in-stream processing engine, so it is extremely useful to understand classical algorithms of distributed query processing and see how it all relates to in-stream processing and other popular paradigms like MapReduce.
 </p>
 
 </div>
 
-<div id="outline-container-1-1-1" class="outline-4">
-<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> Partitioning and Shuffling</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-1-1" class="outline-4">
+<h4 id="sec-1-1"><span class="section-number-4">1.1</span> Partitioning and Shuffling</h4>
+<div class="outline-text-4" id="text-1-1">
 
 <p>Although optimal partitioning for selection and projection operations can be tricky (e.g. for range queries),  <b>we can assume that for in-stream data filtering it is practically enough to distribute data among the processors using a hash-based partitioning.</b>
 </p>
@@ -192,9 +178,9 @@ The divide and broadcast join algorithm is illustrated in the figure below. This
 
 </div>
 
-<div id="outline-container-1-1-2" class="outline-4">
-<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> Pipelining</h4>
-<div class="outline-text-4" id="text-1-1-2">
+<div id="outline-container-1-2" class="outline-4">
+<h4 id="sec-1-2"><span class="section-number-4">1.2</span> Pipelining</h4>
+<div class="outline-text-4" id="text-1-2">
 
 <p>all operators in a query should be chained in such a way that the data flows smoothly through the entire pipeline i.e. neither operation should block processing by waiting for a large piece of input data without producing any output or by writing intermediate results
 on disk.  <b>Some operations like sorting are inherently incompatible with this concept (obviously, a sorting block cannot produce any output until the entire input is ingested), but in many cases pipelining algorithms are applicable.</b> （虽然一些算法需要等待到全量数据到达，但是大部分算法还是可以in-stream处理的。对于这类需要全量数据的算法其实应该考虑提供时间窗口，比如10s内数据作为一个batch来处理这样，maybe） A typical example of pipelining is shown below: （下面以hash join为例）
@@ -222,18 +208,18 @@ As a tuple comes in, the joiner first looks it up in the hash table of the other
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> In-Stream Processing Patterns</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> In-Stream Processing Patterns</h3>
+<div class="outline-text-3" id="text-2">
 
 <p>In this section, we discuss a number of techniques that are used by streaming systems to provide message delivery guarantees and some other patterns that are not typical for standard query processing.
 </p>
 
 </div>
 
-<div id="outline-container-1-2-1" class="outline-4">
-<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> Stream Replay</h4>
-<div class="outline-text-4" id="text-1-2-1">
+<div id="outline-container-2-1" class="outline-4">
+<h4 id="sec-2-1"><span class="section-number-4">2.1</span> Stream Replay</h4>
+<div class="outline-text-4" id="text-2-1">
 
 <p><img src="images/in-stream-stream-replay.png"  alt="./images/in-stream-stream-replay.png" />
 </p>
@@ -241,9 +227,9 @@ As a tuple comes in, the joiner first looks it up in the hash table of the other
 
 </div>
 
-<div id="outline-container-1-2-2" class="outline-4">
-<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> Lineage Tracking</h4>
-<div class="outline-text-4" id="text-1-2-2">
+<div id="outline-container-2-2" class="outline-4">
+<h4 id="sec-2-2"><span class="section-number-4">2.2</span> Lineage Tracking</h4>
+<div class="outline-text-4" id="text-2-2">
 
 <p>In a streaming system, events flow through a chain of processors until the result reaches the final destination (like an external database). Each input event produces a directed graph of descendant events (lineage) that ends by the final results. To guarantee reliable data processing, it is necessary to ensure that the entire graph was processed successfully and to restart processing in case of failures. （所谓lineage tracking就是，追踪output对应的input以及对应的pipelines. 如果output失败的话那么可以从input开始重新构建这个output)
 </p><ul>
@@ -255,7 +241,7 @@ As a tuple comes in, the joiner first looks it up in the hash table of the other
 
 
 <ul>
-<li id="sec-1-2-2-1">storm lineage tracking<br/>
+<li id="sec-2-2-1">storm lineage tracking<br/>
 这个算法比较fancy，有一定的概率会造成数据丢失但是没有重传，不过概率非常小。
 <ul>
 <li>每个消息分配一个ID和签名sig
@@ -300,7 +286,7 @@ As a tuple comes in, the joiner first looks it up in the hash table of the other
 </li>
 </ul>
 <ul>
-<li id="sec-1-2-2-2">spark lineage tracking<br/>
+<li id="sec-2-2-2">spark lineage tracking<br/>
 The idea is to consider the final result as a function of the incoming data. To simplify lineage tracking, the framework processes events in batches, so the result is a sequence of batches where each batch is a function of the input batches. Resulting batches can be computed in parallel and if some computation fails, the framework simply reruns it. The framework considers the incoming streams not as streams, but as set of batches. Each batch has an ID and the framework can fetch it by the ID at any moment of time. So, stream processing can be represented as a bunch of transactions where each transaction takes a group of input batches, transforms them using a processing function, and persists a result. 这点和Spark本身有关系。spark使用function来描述dataflow，batch作为input, 所以很自然lineage就可以使用这种function来描述。
 
 <p>
@@ -315,19 +301,19 @@ This simple but powerful paradigm enables centralized transaction management and
 
 </div>
 
-<div id="outline-container-1-2-3" class="outline-4">
-<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> State Checkpointing</h4>
-<div class="outline-text-4" id="text-1-2-3">
+<div id="outline-container-2-3" class="outline-4">
+<h4 id="sec-2-3"><span class="section-number-4">2.3</span> State Checkpointing</h4>
+<div class="outline-text-4" id="text-2-3">
 
-<p><b>todo(dirlt):</b>
+<p>#todo:
 </p>
 </div>
 
 </div>
 
-<div id="outline-container-1-2-4" class="outline-4">
-<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> Additive State and Sketches</h4>
-<div class="outline-text-4" id="text-1-2-4">
+<div id="outline-container-2-4" class="outline-4">
+<h4 id="sec-2-4"><span class="section-number-4">2.4</span> Additive State and Sketches</h4>
+<div class="outline-text-4" id="text-2-4">
 
 <ul>
 <li>Additivity of intermediate and final computational results is an important property that drastically simplifies design, implementation, maintenance, and recovery of in-stream data processing systems. Additivity means that the computational result for a larger time range or a larger data partition can be calculated as a combination of results for smaller time ranges or smaller partitions.
@@ -341,19 +327,19 @@ This simple but powerful paradigm enables centralized transaction management and
 
 </div>
 
-<div id="outline-container-1-2-5" class="outline-4">
-<h4 id="sec-1-2-5"><span class="section-number-4">1.2.5</span> Logical Time Tracking</h4>
-<div class="outline-text-4" id="text-1-2-5">
+<div id="outline-container-2-5" class="outline-4">
+<h4 id="sec-2-5"><span class="section-number-4">2.5</span> Logical Time Tracking</h4>
+<div class="outline-text-4" id="text-2-5">
 
-<p>It is very common for in-stream computations to depend on time: aggregations and joins are often performed on sliding time windows; processing logic often depends on a time interval between events and so on. Obviously, the in-stream processing system should have a notion of application’s view of time, instead of CPU wall-clock. However, proper time tracking is not trivial because data streams and particular events can be replayed in case of failures. Each processor in a pipeline tracks the maximal timestamp it has seen in a stream and updates a global persistent clock by this timestamp if the global clock is behind. All other processors synchronize their time with the global clock. <b>todo(dirlt):为什么需要同步这个global clock?</b>
+<p>It is very common for in-stream computations to depend on time: aggregations and joins are often performed on sliding time windows; processing logic often depends on a time interval between events and so on. Obviously, the in-stream processing system should have a notion of application’s view of time, instead of CPU wall-clock. However, proper time tracking is not trivial because data streams and particular events can be replayed in case of failures. Each processor in a pipeline tracks the maximal timestamp it has seen in a stream and updates a global persistent clock by this timestamp if the global clock is behind. All other processors synchronize their time with the global clock.#todo: 为什么需要同步这个global clock?
 </p>
 </div>
 
 </div>
 
-<div id="outline-container-1-2-6" class="outline-4">
-<h4 id="sec-1-2-6"><span class="section-number-4">1.2.6</span> Aggregation in a Persistent Store</h4>
-<div class="outline-text-4" id="text-1-2-6">
+<div id="outline-container-2-6" class="outline-4">
+<h4 id="sec-2-6"><span class="section-number-4">2.6</span> Aggregation in a Persistent Store</h4>
+<div class="outline-text-4" id="text-2-6">
 
 <p>Instead of maintaining in-memory event buffers, one can simply save all incoming events from all data streams to Casandra using a join key as row key, as it shown in the figure below. On the other side, the second process traverses the records periodically, assembles and emits joined events, and evicts the events that fell out of the time window. Cassandra even can facilitate this activity by sorting events according to their timestamps.
 </p>
@@ -361,15 +347,15 @@ This simple but powerful paradigm enables centralized transaction management and
 <img src="images/in-stream-aggregation-in-a-persistent-store.png"  alt="./images/in-stream-aggregation-in-a-persistent-store.png" />
 </p>
 <p>
-It is important to understand that such techniques can defeat the whole purpose of in-stream data processing if implemented incorrectly – writing individual events to the data store can introduce a serious performance bottleneck even for fast stores like Cassandra or Redis. On the other hand, this approach provides perfect persistence of the computational state and different performance optimizations – say, batch writes – can help to achieve acceptable performance in many use cases. <b>note(dirlt)：不要当作通用技术</b>
+It is important to understand that such techniques can defeat the whole purpose of in-stream data processing if implemented incorrectly – writing individual events to the data store can introduce a serious performance bottleneck even for fast stores like Cassandra or Redis. On the other hand, this approach provides perfect persistence of the computational state and different performance optimizations – say, batch writes – can help to achieve acceptable performance in many use cases. #note: 不要当作通用技术使用
 </p>
 </div>
 
 </div>
 
-<div id="outline-container-1-2-7" class="outline-4">
-<h4 id="sec-1-2-7"><span class="section-number-4">1.2.7</span> Aggregation on a Sliding Window</h4>
-<div class="outline-text-4" id="text-1-2-7">
+<div id="outline-container-2-7" class="outline-4">
+<h4 id="sec-2-7"><span class="section-number-4">2.7</span> Aggregation on a Sliding Window</h4>
+<div class="outline-text-4" id="text-2-7">
 
 <p><b>Incremental computations</b> over sliding windows is a group of techniques that are widely used in digital signal processing, in both software and hardware. 
 </p>
@@ -381,17 +367,17 @@ It is important to understand that such techniques can defeat the whole purpose 
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Query Processing Pipeline: Storm, Cassandra, Kafka</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> Query Processing Pipeline: Storm, Cassandra, Kafka</h3>
+<div class="outline-text-3" id="text-3">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Towards Unified Big Data Processing</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> Towards Unified Big Data Processing</h3>
+<div class="outline-text-3" id="text-4">
 
 <p>The key observation is that relational query processing, MapReduce, and in-stream processing could be implemented using exactly the same concepts and techniques like shuffling and pipelining. At the same time:
 </p><ul>
@@ -403,7 +389,7 @@ It is important to understand that such techniques can defeat the whole purpose 
 
 
 <p>
-<b>note(dirlt):stream和batch之间的差异主要还是在数据量上。spark被称为stream系统但是内部还是按照batch来做处理的，只不过在实时性上spark和mapreduce区分开来。实时性一方面来源于input/output性质, 一方面来源于pipelining的中间状态是否需要保存以及如何保存</b>
+#note: stream和batch之间的差异主要还是在数据量上。spark被称为stream系统但是内部还是按照batch来做处理的，只不过在实时性上spark和mapreduce区分开来。实时性一方面来源于input/output性质, 一方面来源于pipelining的中间状态是否需要保存以及如何保存
 </p>
 <p>
 The two statement above imply that tunable persistence (in-memory message passing versus on-disk materialization) and reliability are the distinctive features of the imaginary query engine that provides a set of processing primitives and interfaces to the high-level
@@ -430,9 +416,9 @@ Among the emerging technologies, the following two are especially notable in the
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> References</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> References</h3>
+<div class="outline-text-3" id="text-5">
 
 <ul>
 <li>A. Wilschut and P. Apers, “Dataflow Query Execution in a Parallel Main-Memory Environment “
@@ -461,13 +447,10 @@ Among the emerging technologies, the following two are especially notable in the
 </div>
 </div>
 </div>
-</div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:43+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'in-stream-big-data-processing.html';var disqus_title = 'in-stream-big-data-processing.html';var disqus_url = 'http://dirlt.com/in-stream-big-data-processing.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'in-stream-big-data-processing.html';var disqus_title = 'in-stream-big-data-processing.html';var disqus_url = 'http://dirlt.com/in-stream-big-data-processing.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

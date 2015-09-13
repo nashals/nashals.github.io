@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
-<title>percolator</title>
+<head>
+<title>Large-scale Incremental Processing Using Distributed Transactions and Notifications</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="percolator"/>
+<meta name="title" content="Large-scale Incremental Processing Using Distributed Transactions and Notifications"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:43+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,64 +62,43 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
 </div>
 
 <div id="content">
-<h1 class="title">percolator</h1>
+<h1 class="title">Large-scale Incremental Processing Using Distributed Transactions and Notifications</h1>
 
+<p><a href="http://research.google.com/pubs/pub36726.html">http://research.google.com/pubs/pub36726.html</a> @ 2010
+</p>
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="percolator.html#sec-1">1 percolator</a>
+<li><a href="percolator.html#sec-1">1 Abstract</a></li>
+<li><a href="percolator.html#sec-2">2 Introduction</a></li>
+<li><a href="percolator.html#sec-3">3 Design</a>
 <ul>
-<li><a href="percolator.html#sec-1-1">1.1 Abstract</a></li>
-<li><a href="percolator.html#sec-1-2">1.2 Introduction</a></li>
-<li><a href="percolator.html#sec-1-3">1.3 Design</a>
-<ul>
-<li><a href="percolator.html#sec-1-3-1">1.3.1 Bigtable overview</a></li>
-<li><a href="percolator.html#sec-1-3-2">1.3.2 Transactions</a></li>
-<li><a href="percolator.html#sec-1-3-3">1.3.3 Timestamps</a></li>
-<li><a href="percolator.html#sec-1-3-4">1.3.4 Notifications</a></li>
-<li><a href="percolator.html#sec-1-3-5">1.3.5 Discussion</a></li>
+<li><a href="percolator.html#sec-3-1">3.1 Bigtable overview</a></li>
+<li><a href="percolator.html#sec-3-2">3.2 Transactions</a></li>
+<li><a href="percolator.html#sec-3-3">3.3 Timestamps</a></li>
+<li><a href="percolator.html#sec-3-4">3.4 Notifications</a></li>
+<li><a href="percolator.html#sec-3-5">3.5 Discussion</a></li>
 </ul>
 </li>
-<li><a href="percolator.html#sec-1-4">1.4 Evaluation</a></li>
-<li><a href="percolator.html#sec-1-5">1.5 Related Work</a></li>
-<li><a href="percolator.html#sec-1-6">1.6 Conclusion and Future Work</a></li>
-</ul>
-</li>
+<li><a href="percolator.html#sec-4">4 Evaluation</a></li>
+<li><a href="percolator.html#sec-5">5 Related Work</a></li>
+<li><a href="percolator.html#sec-6">6 Conclusion and Future Work</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> percolator</h2>
-<div class="outline-text-2" id="text-1">
-
-<ul>
-<li>link: <a href="http://research.google.com/pubs/pub36726.html">http://research.google.com/pubs/pub36726.html</a>
-</li>
-<li>title: Large-scale Incremental Processing Using Distributed Transactions and Notifications
-</li>
-<li>author: dpeng@google.com, fdabek@google.com
-</li>
-<li>date: 2010
-</li>
-</ul>
-
-
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Abstract</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> Abstract</h3>
+<div class="outline-text-3" id="text-1">
 
 <ul>
 <li>Updating an index of the web as documents are crawled requires continuously transforming a large repository of existing documents as new documents ar-rive. This task is one example of a class of data pro-cessing tasks that transform a large repository of data via small, independent mutations. These tasks lie in a gap between the capabilities of existing infrastructure.(主要解决的问题就是，在非常大的base repository上面有少量的mutation应该如何进行处理？就现有的基础设施并没有很好地解决这个问题）
@@ -131,7 +109,7 @@
 </li>
 <li>We have built Percolator, a system for incrementally processing updates to a large data set, and deployed it to create the Google web search index. （percolator能够处理大数据集合下面的增量修改，并且现在已经使用在google的搜索引擎上面了）
 </li>
-<li>By replacing a batch-based indexing system with an indexing system based on incremental processing using Percolator, we process the same number of documents per day, while reducing the average age of documents in Google search results by 50%.（每天处理相同量数据的documents，但是每个文档的平均年龄减少了50%。这个平均年龄应该是指从crawl下来到进入index system的时间？） <b>todo(dirlt)：这个我就不知道如何理解了，既然每天能够处理相同数据的文档，为什么年龄会减少呢？按照道理说应该是一样的才对</b>
+<li>By replacing a batch-based indexing system with an indexing system based on incremental processing using Percolator, we process the same number of documents per day, while reducing the average age of documents in Google search results by 50%.（每天处理相同量数据的documents，但是每个文档的平均年龄减少了50%。这个平均年龄应该是指从crawl下来到进入index system的时间？） #todo: 每天能够处理相同数据的文档，为什么年龄会减少呢？
 </li>
 </ul>
 
@@ -140,9 +118,9 @@
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Introduction</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> Introduction</h3>
+<div class="outline-text-3" id="text-2">
 
 <ul>
 <li>Consider the task of building an index of the web that can be used to answer search queries. The indexing sys- tem starts by crawling every page on the web and pro- cessing them while maintaining a set of invariants on the index.（在indexing system里需要维护索引一些不变量）
@@ -176,7 +154,7 @@
 <p>
 The remainder of this paper describes a particular in-cremental processing system: Percolator.
 </p><ul>
-<li>Percolator pro-vides the user with random access to a multi-PB reposi-tory. Random access allows us to process documents in-dividually, avoiding the global scans of the repository that MapReduce requires. To achieve high throughput, many threads on many machines need to transform the repository concurrently, so Percolator provides ACID-compliant transactions to make it easier for programmers to reason about the state of the repository; we currently implement snapshot isolation semantics.（提供随即访问PB级别repo的能力，允许对数据进行随机访问。为了达到高并发在多个机器上面使用多个线程同时对repo进行更新，因此percolator也提供了ACID兼容的事务实现来满足维持不变量这个需求，事务实现是snapshot isolation的语义） <b>todo(dirlt)：snapshot isolation wikipedia？</b>
+<li>Percolator pro-vides the user with random access to a multi-PB reposi-tory. Random access allows us to process documents in-dividually, avoiding the global scans of the repository that MapReduce requires. To achieve high throughput, many threads on many machines need to transform the repository concurrently, so Percolator provides ACID-compliant transactions to make it easier for programmers to reason about the state of the repository; we currently implement snapshot isolation semantics.（提供随即访问PB级别repo的能力，允许对数据进行随机访问。为了达到高并发在多个机器上面使用多个线程同时对repo进行更新，因此percolator也提供了ACID兼容的事务实现来满足维持不变量这个需求，事务实现是snapshot isolation的语义）
 </li>
 <li>In addition to reasoning about concurrency, program-mers of an incremental system need to keep track of the state of the incremental computation. To assist them in this task, Percolator provides observers: pieces of code that are invoked by the system whenever a user-specified column changes. Percolator applications are structured as a series of observers; each observer completes a task and creates more work for “downstream” observers by writing to the table. An external process triggers the first observer in the chain by writing initial data into the table.（为了能够追踪到哪些修改，percolator提供了observer，就是event-driven意思。percolator提供会监控哪些cell存在变化，如果存在变化就会调用关注这些cell的observer。这种效应是会不断触发的。而第一个触发通常是通过外部程序修改table来启动的）
 </li>
@@ -195,9 +173,9 @@ The remainder of this paper describes a particular in-cremental processing syste
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Design</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> Design</h3>
+<div class="outline-text-3" id="text-3">
 
 <ul>
 <li>Percolator provides two main abstractions for per-forming incremental processing at large scale: （为增量处理提供了两种抽象）
@@ -230,7 +208,7 @@ The remainder of this paper describes a particular in-cremental processing syste
 </li>
 <li>This delay would not be acceptable in a DBMS running OLTP tasks, but it is tolerable in an incremental processing system building an index of the web.（这种延迟对于在DBMS上面运行OLTP的人物是不能够接受的）
 </li>
-<li>Percola-tor has no central location for transaction management; in particular, it lacks a global deadlock detector. This in-creases the latency of conflicting transactions but allows the system to scale to thousands of machines.（percolator没有中央位置来管理事务，尤其是没有全局死锁检测器 <b>todo(dirlt)：会发生死锁吗？</b> 但是这种设计可以扩展到上千台机器）
+<li>Percola-tor has no central location for transaction management; in particular, it lacks a global deadlock detector. This in-creases the latency of conflicting transactions but allows the system to scale to thousands of machines.（percolator没有中央位置来管理事务，尤其是没有全局死锁检测器，但是这种设计可以扩展到上千台机器）
 </li>
 </ul>
 
@@ -242,9 +220,9 @@ The remainder of this paper describes a particular in-cremental processing syste
 
 </div>
 
-<div id="outline-container-1-3-1" class="outline-4">
-<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> Bigtable overview</h4>
-<div class="outline-text-4" id="text-1-3-1">
+<div id="outline-container-3-1" class="outline-4">
+<h4 id="sec-3-1"><span class="section-number-4">3.1</span> Bigtable overview</h4>
+<div class="outline-text-4" id="text-3-1">
 
 <p>percolator API封装了对于bigtable的访问，但是和bigtable api非常类似。封装主要原因一方面是底层可以更好地优化bigtable访问模式，另外主要的一方面是为了能够在bigtable上面实现multirow transactions，通过在原来的table schema上面增加了几个辅助的column：
 </p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
@@ -281,9 +259,9 @@ The remainder of this paper describes a particular in-cremental processing syste
 
 </div>
 
-<div id="outline-container-1-3-2" class="outline-4">
-<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> Transactions</h4>
-<div class="outline-text-4" id="text-1-3-2">
+<div id="outline-container-3-2" class="outline-4">
+<h4 id="sec-3-2"><span class="section-number-4">3.2</span> Transactions</h4>
+<div class="outline-text-4" id="text-3-2">
 
 <p>下面是使用percolator transactions功能一个example code
 </p>
@@ -308,9 +286,6 @@ The remainder of this paper describes a particular in-cremental processing syste
 </p>
 
 <hr/>
-<p>
-<b>todo(dirlt)：timestamp snapshot isolation？理解这个语义还是比较重要的，因为按照这种语义实现的逻辑和我们想象的还不太一样？</b>
-</p>
 <p>
 关于snapshot isolation wikipedia上有专门的页面介绍 Snapshot isolation - Wikipedia, the free encyclopedia <a href="http://en.wikipedia.org/wiki/Snapshot_isolation">http://en.wikipedia.org/wiki/Snapshot_isolation</a>
 </p>
@@ -357,7 +332,7 @@ write skew的意思是指，如果两个事务同时写两个不同变量（但�
 wikipedia最后面还提到了使用snapshot isolation转换成为serializability的实现方式，并且PostgreSQL里面就已经这么实现了。
 </p>
 <p class="verse">
-With additional communication between transactions, the anomalies that snapshot isolation normally allows can be blocked by aborting one of the transactions involved, turning a snapshot isolation implementation into a full serializability guarantee<sup><a class="footref" name="fnr-.1" href="percolator.html#fn-.1">1</a></sup>. This implementation of serializability is well-suited to multiversion concurrency control databases, and has been adopted in PostgreSQL 9.1<sup><a class="footref" name="fnr-.2" href="percolator.html#fn-.2">2</a></sup>, where it is referred to as "Serializable Snapshot Isolation", abbreviated to SSI. When used consistently, this eliminates the need for the above workarounds. The downside over snapshot isolation is an increase in aborted transactions. This can perform better or worse than snapshot isolation with the above workarounds, depending on workload.<br/>
+With additional communication between transactions, the anomalies that snapshot isolation normally allows can be blocked by aborting one of the transactions involved, turning a snapshot isolation implementation into a full serializability guarantee. This implementation of serializability is well-suited to multiversion concurrency control databases, and has been adopted in PostgreSQL 9.1, where it is referred to as "Serializable Snapshot Isolation", abbreviated to SSI. When used consistently, this eliminates the need for the above workarounds. The downside over snapshot isolation is an increase in aborted transactions. This can perform better or worse than snapshot isolation with the above workarounds, depending on workload.<br/>
 </p>
 
 
@@ -365,7 +340,7 @@ With additional communication between transactions, the anomalies that snapshot 
 <hr/>
 
 <p>
-<b>todo(dirlt)：事务失败如何处理？如果是因为和server断开的话，那么就应该重新尝试。相反如果是因为其他transaction造成冲突的话，那么是否重试就应该根据应用来判断了。感觉这种增量处理还是没有MR简洁</b>
+#note: 事务失败如何处理？如果是因为和server断开的话，那么就应该重新尝试。相反如果是因为其他transaction造成冲突的话，那么是否重试就应该根据应用来判断。
 </p>
 <p>
 Snapshot isolation does not provide serializability，这个问题以下面的pseduo code来说明还是比较清楚的：
@@ -386,13 +361,8 @@ Snapshot isolation does not provide serializability，这个问题以下面的ps
 </p>
 
 <p>
-下面是Transaction具体实现，关于一些说明会以注释的形式标记在代码上面。 <b>todo(dirlt)：似乎还是有挺多问题的</b> ：
-</p><ul>
-<li>BackoffAndMaybeCleanupLock如何实现？
-</li>
-</ul>
-
-
+下面是Transaction具体实现，关于一些说明会以注释的形式标记在代码上面。 #todo: BackoffAndMaybeCleanupLock如何实现？
+</p>
 
 
 <pre class="src src-C++">class Transaction {
@@ -403,7 +373,7 @@ Snapshot isolation does not provide serializability，这个问题以下面的ps
   void Set(Write w) { writes .push back(w); } // &#25152;&#26377;&#30340;&#20889;&#37117;&#20250;&#32531;&#23384;&#19979;&#26469;&#65292;&#32780;&#19981;&#26159;&#31435;&#21051;&#20889;&#20837;table
   bool Get(Row row, Column c, string* value) {
     while (true) {
-      bigtable::Txn T = bigtable::StartRowTransaction(row); // todo(dirlt):??
+      bigtable::Txn T = bigtable::StartRowTransaction(row); // todo:??
       // Check for locks that signal concurrent writes.
       if (T.Read(row, c+<span class="org-string">"lock"</span>, [0, start ts ])) { // &#22914;&#26524;&#22312;&#36825;&#20010;timestamp&#20043;&#21069;&#23384;&#22312;lock,&#35828;&#26126;&#22312;&#36825;&#20010;ts&#20043;&#21069;&#32943;&#23450;&#23384;&#22312;commit&#20294;&#26159;&#36824;&#27809;&#26377;&#25552;&#20132;&#25104;&#21151;&#65288;&#21487;&#33021;&#22312;&#36816;&#34892;&#65292;&#20063;&#21487;&#33021;&#30452;&#25509;fail&#65289;
         // There is a pending lock; try to clean it and wait
@@ -464,7 +434,7 @@ Snapshot isolation does not provide serializability，这个问题以下面的ps
 
 
 <p>
-<b>todo(dirlt)：page5-page6这个部分的异常处理没有看懂！！！WTF！</b>
+#todo: page5,6这个部分的异常处理没有太看懂
 </p>
 
 <hr/>
@@ -494,9 +464,9 @@ Snapshot isolation does not provide serializability，这个问题以下面的ps
 
 </div>
 
-<div id="outline-container-1-3-3" class="outline-4">
-<h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> Timestamps</h4>
-<div class="outline-text-4" id="text-1-3-3">
+<div id="outline-container-3-3" class="outline-4">
+<h4 id="sec-3-3"><span class="section-number-4">3.3</span> Timestamps</h4>
+<div class="outline-text-4" id="text-3-3">
 
 <ul>
 <li>The timestamp oracle is a server that hands out times-tamps in strictly increasing order. Since every transaction requires contacting the timestamp oracle twice, this ser-vice must scale well. （因为每个transaction都需要和oracle通信两次，所以扩展性是非常重要的）
@@ -507,7 +477,7 @@ Snapshot isolation does not provide serializability，这个问题以下面的ps
 
 <p>jump forward to the maximum allocated timestamp (but will never go backwards).（oracle每次都会分配一个范围的timestamp，然后将这个最高的timestamp记录下来。这样如果下次oracle重启的话直接从最大的编号开始分配即可。这种分配方式保证了递增但是没有保证连续）
 </p><ul>
-<li>To save RPC overhead (at the cost of increasing transaction latency) each Percolator worker batches timestamp requests across transactions by maintaining only one pending RPC to the oracle. As the oracle becomes more loaded, the batching naturally increases to compensate. Batching increases the scalabil-ity of the oracle but does not affect the timestamp guar-antees. （同时为了减少RPC overhead，对于ts的请求会进行batch。 <b>todo(dirlt)：注意这里说的是worker进行batch，but how？</b> ）
+<li>To save RPC overhead (at the cost of increasing transaction latency) each Percolator worker batches timestamp requests across transactions by maintaining only one pending RPC to the oracle. As the oracle becomes more loaded, the batching naturally increases to compensate. Batching increases the scalabil-ity of the oracle but does not affect the timestamp guar-antees. （同时为了减少RPC overhead，对于ts的请求会进行batch）
 </li>
 <li>Our oracle serves around 2 million timestamps per second from a single machine.（单个机器可以支撑到2millions/s请求）
 </li>
@@ -518,9 +488,9 @@ Snapshot isolation does not provide serializability，这个问题以下面的ps
 
 </div>
 
-<div id="outline-container-1-3-4" class="outline-4">
-<h4 id="sec-1-3-4"><span class="section-number-4">1.3.4</span> Notifications</h4>
-<div class="outline-text-4" id="text-1-3-4">
+<div id="outline-container-3-4" class="outline-4">
+<h4 id="sec-3-4"><span class="section-number-4">3.4</span> Notifications</h4>
+<div class="outline-text-4" id="text-3-4">
 
 <ul>
 <li>In Percolator, the user writes code (“observers”) to be triggered by changes to the ta-ble, and we link all the observers into a binary running alongside every tablet server in the system. Each ob-server registers a function and a set of columns with Per-colator, and Percolator invokes the function after data is written to one of those columns in any row.（observer在实现上是link进入worker的binary里面的。observer会将一个function和一组columns关联起来，如果column内容变化的话就会触发observer）
@@ -531,15 +501,15 @@ Snapshot isolation does not provide serializability，这个问题以下面的ps
 </li>
 <li>Notifications are similar to database triggers or events in active databases , but unlike database triggers, they cannot be used to maintain database invariants. In particular, the triggered observer runs in a separate trans-action from the triggering write, so the triggering write and the triggered observer’s writes are not atomic. No-tifications are intended to help structure an incremental computation rather than to help maintain data integrity.（notifaction本身和数据库的触发器非常类似，但是它的作用仅仅是为了提供增量处理这个机制而并不是为了帮助维护数据一致性）
 </li>
-<li>We do provide one guarantee: at most one observer’s transaction will commit for each change of an observed column. The converse is not true, however: multiple writes to an observed column may cause the correspond-ing observer to be invoked only once. We call this feature message collapsing, since it helps avoid computation by amortizing the cost of responding to many notifications. For example, it is sufficient for <a href="http://google.com">http://google.com</a> to be reprocessed periodically rather than every time we discover a new link pointing to it.Note that if Percolator accidentally starts two transac-tions concurrently for a particular notification, they will both see the dirty notification and run the observer, but one will abort because they will conflict on the acknowl-edgment column. We promise that at most one observer will commit for each notification. <b>todo(dirlt)：这里我不太理解的一点是，这里at most one observer‘transaction will commit的意思是，如果这个cell下面挂了O1和O2，是只有O1/O2其中一个执行呢？还是说如果两个O1在不同线程触发，只有一个O1实例会成功提交？</b> 另外对于一个column如果存在多次写的话，那么会将这些触发消息聚合在一起，仅仅触发observer一次。这点还是非常现实的，好比google这么大规模的网站可能经常会更新，如果每次更新都频繁触发的话代价还是非常大的。
+<li>We do provide one guarantee: at most one observer’s transaction will commit for each change of an observed column. The converse is not true, however: multiple writes to an observed column may cause the correspond-ing observer to be invoked only once. We call this feature message collapsing, since it helps avoid computation by amortizing the cost of responding to many notifications. For example, it is sufficient for <a href="http://google.com">http://google.com</a> to be reprocessed periodically rather than every time we discover a new link pointing to it.Note that if Percolator accidentally starts two transac-tions concurrently for a particular notification, they will both see the dirty notification and run the observer, but one will abort because they will conflict on the acknowl-edgment column. We promise that at most one observer will commit for each notification. （#todo: 这里我不太理解的一点是，这里at most one observer‘transaction will commit的意思是，如果这个cell下面挂了O1和O2，是只有O1/O2其中一个执行呢？还是说如果两个O1在不同线程触发，只有一个O1实例会成功提交？）另外如果一个column存在多次写的话，那么会将这些触发消息聚合在一起，仅仅触发observer一次。这点还是非常现实的，好比google这么大规模的网站可能经常会更新，如果每次更新都频繁触发的话代价还是非常大的。
 </li>
-<li>To provide these semantics for notifications, each ob-served column has an accompanying “acknowledgment” column for each observer, containing the latest start timestamp at which the observer ran. When the observed column is written, Percolator starts a transaction to pro- cess the notification. The transaction reads the observed column and its corresponding acknowledgment column. If the observed column was written after its last acknowl-edgment, then we run the observer and set the acknowl-edgment column to our start timestamp. Otherwise, the observer has already been run, so we do not run it again.（每个column都会带上一个ack字段，表示这个observer最后一次run的时间。percolator会对比这个column write字段和ack字段，如果发现write字段更大的话，那么说明最近存在一次write行为，因此有必要调用observer代码并且修改ack） <b>note(dirlt)：我始终不明白这段和后面一段和notify字段的关系。我的理解是使用这种方式需要读取很多不相关的内容，不能够有效地发现dirty cell，而使用notify则相对可以提高效率</b>
+<li>To provide these semantics for notifications, each ob-served column has an accompanying “acknowledgment” column for each observer, containing the latest start timestamp at which the observer ran. When the observed column is written, Percolator starts a transaction to pro- cess the notification. The transaction reads the observed column and its corresponding acknowledgment column. If the observed column was written after its last acknowl-edgment, then we run the observer and set the acknowl-edgment column to our start timestamp. Otherwise, the observer has already been run, so we do not run it again.（每个column都会带上一个ack字段，表示这个observer最后一次run的时间。percolator会对比这个column write字段和ack字段，如果发现write字段更大的话，那么说明最近存在一次write行为，因此有必要调用observer代码并且修改ack） #note: 不太明白这段和后面一段中notify字段的关系。我的理解是使用这种方式需要读取很多不相关的内容，不能够有效地发现dirty cell，而使用notify则相对可以提高效率
 </li>
 <li>To identify dirty cells, Percolator maintains a special “notify” Bigtable column, containing an entry for each dirty cell. When a transaction writes an observed cell, it also sets the corresponding notify cell. The workers perform a distributed scan over the notify column to find dirty cells. After the observer is triggered and the transac-tion commits, we remove the notify cell. Since the notify column is just a Bigtable column, not a Percolator col-umn, it has no transactional properties and serves only as a hint to the scanner to check the acknowledgment col-umn to determine if the observer should be run.（使用notify字段的话，可以在每次修改cell时候同时写如notify这个字段，而这些notify字段可以作为一个column family存在。这样worker在进行scan的时候就可以很快。当observer被触发之后，那么这个notify字段就可以被移除了）
 </li>
 <li>To make this scan efficient, Percolator stores the notify column in a separate Bigtable locality group so that scan-ning over the column requires reading only the millions of dirty cells rather than the trillions of total data cells. Each Percolator worker dedicates several threads to the scan. For each thread, the worker chooses a portion of the table to scan by first picking a random Bigtable tablet, then picking a random key in the tablet, and finally scan-ning the table from that position. （通过将notify作为一个column family存放在一起可以使得扫描更有效率。worker是多线程进行扫描的，每个线程都会随机从bigtable随机选择一个table，然后从这个table随机选择一个范围进行扫描）
 </li>
-<li>Since each worker is scanning a random region of the table, we worry about two workers running observers on the same row con-currently. While this behavior will not cause correctness problems due to the transactional nature of notifications, it is inefficient. To avoid this, each worker acquires a lock from a lightweight lock service before scanning the row. This lock server need not persist state since it is advisory and thus is very scalable.（但是如果让worker随即选择范围的话，那么对于同一个column可能会被两个worker扫描到，那么这样就会出现问题在两个地方有相同的observer运行，虽然这不是什么问题因为最后会因为transaction冲突失败，但是这样是没有效率的。为了避免这种情况，需要worker在lock service上面进行注册， <b>note(dirlt)：我猜想每个worker都选择好了table的某个部分，这样来避免冲突，但是如果这样理解的话，又不好理解下面这段话了，这篇文章写得很乱</b>
+<li>Since each worker is scanning a random region of the table, we worry about two workers running observers on the same row con-currently. While this behavior will not cause correctness problems due to the transactional nature of notifications, it is inefficient. To avoid this, each worker acquires a lock from a lightweight lock service before scanning the row. This lock server need not persist state since it is advisory and thus is very scalable.（但是如果让worker随即选择范围的话，那么对于同一个column可能会被两个worker扫描到，那么这样就会出现问题在两个地方有相同的observer运行，虽然这不是什么问题因为最后会因为transaction冲突失败，但是这样是没有效率的。为了避免这种情况，需要worker在lock service上面进行注册）
 </li>
 <li>The random-scanning approach requires one addi-tional tweak: when it was first deployed we noticed that scanning threads would tend to clump together in a few regions of the table, effectively reducing the parallelism of the scan.（如果实现random-scanning的方法话，会出现clump现象，这种现象在现实生活中很常见，作者后面还打了比方。好比有公交车1，2，3，公交车1有点慢，虽然提前开出来但是很快在被2，3都追上了，但是公交车1必须在前面走，这就使得整个车队都非常慢）
 </li>
@@ -552,9 +522,9 @@ Snapshot isolation does not provide serializability，这个问题以下面的ps
 
 </div>
 
-<div id="outline-container-1-3-5" class="outline-4">
-<h4 id="sec-1-3-5"><span class="section-number-4">1.3.5</span> Discussion</h4>
-<div class="outline-text-4" id="text-1-3-5">
+<div id="outline-container-3-5" class="outline-4">
+<h4 id="sec-3-5"><span class="section-number-4">3.5</span> Discussion</h4>
+<div class="outline-text-4" id="text-3-5">
 
 <ul>
 <li>One of the inefficiencies of Percolator relative to a MapReduce-based system is the number of RPCs sent per work-unit. While MapReduce does a single large read to GFS and obtains all of the data for 10s or 100s of web pages, Percolator performs around 50 individual Bigtable operations to process a single document.（percolator在数量上面相对于MR多许多，MR从GFS一次读取就可以得到10-100个webpage所需要的全部信息，而percolator处理单个文档就需要调用50个bigtable操作）
@@ -565,64 +535,50 @@ Snapshot isolation does not provide serializability，这个问题以下面的ps
 </li>
 <li>We also perform the same batching when reading from the table: every read operation is delayed to give it a chance to form a batch with other reads to the same tablet server. This delays each read, potentially greatly increasing transaction latency. （为了提高读取效率，也进行了batch read，但是增加了延迟）
 </li>
-<li>A final optimization miti-gates this effect, however: prefetching. Prefetching takes advantage of the fact that reading two or more values in the same row is essentially the same cost as reading one value. In either case, Bigtable must read the entire SSTable block from the file system and decompress it. Percolator attempts to predict, each time a column is read, what other columns in a row will be read later in the transaction. This prediction is made based on past be-havior. Prefetching, combined with a cache of items that have already been read, reduces the number of Bigtable reads the system would otherwise do by a factor of 10.（最终的read优化解决方案是使用prefetch。prefetch是根据过去的行为来进行预测的，并且因为bigtable底层使用的sstable格式本身就是将很多字段紧凑地存放在一起的，因此overhead相对较小。通过preftech并且配合cache，将读取bigtable的次数减少到了1/10. <b>note(dirlt)：非常客观</b> ）
+<li>A final optimization miti-gates this effect, however: prefetching. Prefetching takes advantage of the fact that reading two or more values in the same row is essentially the same cost as reading one value. In either case, Bigtable must read the entire SSTable block from the file system and decompress it. Percolator attempts to predict, each time a column is read, what other columns in a row will be read later in the transaction. This prediction is made based on past be-havior. Prefetching, combined with a cache of items that have already been read, reduces the number of Bigtable reads the system would otherwise do by a factor of 10.（最终的read优化解决方案是使用prefetch。prefetch是根据过去的行为来进行预测的，并且因为bigtable底层使用的sstable格式本身就是将很多字段紧凑地存放在一起的，因此overhead相对较小。通过preftech并且配合cache，将读取bigtable的次数减少到了1/10）
 </li>
 <li>Early in the implementation of Percolator, we decided to make all API calls blocking and rely on running thou-sands of threads per machine to provide enough par-allelism to maintain good CPU utilization. We chose this thread-per-request model mainly to make application code easier to write, compared to the event-driven model. Forcing users to bundle up their state each of the (many) times they fetched a data item from the table would have made application development much more difficult. Our experience with thread-per-request was, on the whole, positive: application code is simple, we achieve good uti-lization on many-core machines, and crash debugging is simplified by meaningful and complete stack traces. We encountered fewer race conditions in application code than we feared. （使用线程阻塞方式来充分使用CPU，相对于使用event-driven model，是一个正确的选择，开发和调试相对更加容易）
 </li>
-<li>The biggest drawbacks of the approach were scalability issues in the Linux kernel and Google infrastructure related to high thread counts. Our in-house kernel development team was able to deploy fixes to ad-dress the kernel issues. （最大的限制就在于扩展性因为线程数量的问题，但是很明显google自己的kernel development可以做优化来解决这个问题。 <b>todo(dirlt)：但是真的需要那么多的线程吗？</b> ）
+<li>The biggest drawbacks of the approach were scalability issues in the Linux kernel and Google infrastructure related to high thread counts. Our in-house kernel development team was able to deploy fixes to ad-dress the kernel issues. （最大的限制就在于扩展性因为线程数量的问题，但是很明显google自己的kernel development可以做优化来解决这个问题）
 </li>
 </ul>
 
 
 <p>
-<b>note(dirlt)：在提高分布式系统底层效率的时候，减少RPC数量，batch RPC请求，以及prefetch+cache data都是比较有效且常用的手段</b>
+#note: 在提高分布式系统底层效率的时候，减少RPC数量，batch RPC请求，以及prefetch+cache data都是比较有效且常用的手段
 </p>
 </div>
 </div>
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Evaluation</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> Evaluation</h3>
+<div class="outline-text-3" id="text-4">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Related Work</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> Related Work</h3>
+<div class="outline-text-3" id="text-5">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Conclusion and Future Work</h3>
-<div class="outline-text-3" id="text-1-6">
-
-
-<div id="footnotes">
-<h2 class="footnotes">Footnotes: </h2>
-<div id="text-footnotes">
-<p class="footnote"><sup><a class="footnum" name="fn-.1" href="percolator.html#fnr-.1">1</a></sup> DEFINITION NOT FOUND: 8
-</p>
-
-<p class="footnote"><sup><a class="footnum" name="fn-.2" href="percolator.html#fnr-.2">2</a></sup> DEFINITION NOT FOUND: 6
-</p></div>
-</div>
-</div>
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> Conclusion and Future Work</h3>
+<div class="outline-text-3" id="text-6">
 
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:43+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'percolator.html';var disqus_title = 'percolator.html';var disqus_url = 'http://dirlt.com/percolator.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'percolator.html';var disqus_title = 'percolator.html';var disqus_url = 'http://dirlt.com/percolator.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

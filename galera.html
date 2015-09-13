@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<head>
 <title>galera</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="galera"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-12-18T11:29+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,7 +62,7 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
@@ -77,63 +76,52 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="galera.html#sec-1">1 galera</a>
+<li><a href="galera.html#sec-1">1 Links &amp; Abbr.</a></li>
+<li><a href="galera.html#sec-2">2 Replicator Architecture</a></li>
+<li><a href="galera.html#sec-3">3 Synchonization Mechanism</a>
 <ul>
-<li><a href="galera.html#sec-1-1">1.1 Links &amp; Abbr.</a></li>
-<li><a href="galera.html#sec-1-2">1.2 Replicator Architecture</a></li>
-<li><a href="galera.html#sec-1-3">1.3 Synchonization Mechanism</a>
-<ul>
-<li><a href="galera.html#sec-1-3-1">1.3.1 Virtual Synchrony</a></li>
-<li><a href="galera.html#sec-1-3-2">1.3.2 Finite State Machine</a></li>
-<li><a href="galera.html#sec-1-3-3">1.3.3 Flow Control</a></li>
-<li><a href="galera.html#sec-1-3-4">1.3.4 Writeset Cache</a></li>
-<li><a href="galera.html#sec-1-3-5">1.3.5 Snapshot Transfer</a></li>
-<li><a href="galera.html#sec-1-3-6">1.3.6 Parallel Applying</a></li>
-<li><a href="galera.html#sec-1-3-7">1.3.7 Primary Component</a></li>
-<li><a href="galera.html#sec-1-3-8">1.3.8 Online Schema Upgrade</a></li>
+<li><a href="galera.html#sec-3-1">3.1 Virtual Synchrony</a></li>
+<li><a href="galera.html#sec-3-2">3.2 Finite State Machine</a></li>
+<li><a href="galera.html#sec-3-3">3.3 Flow Control</a></li>
+<li><a href="galera.html#sec-3-4">3.4 Writeset Cache</a></li>
+<li><a href="galera.html#sec-3-5">3.5 Snapshot Transfer</a></li>
+<li><a href="galera.html#sec-3-6">3.6 Parallel Applying</a></li>
+<li><a href="galera.html#sec-3-7">3.7 Primary Component</a></li>
+<li><a href="galera.html#sec-3-8">3.8 Online Schema Upgrade</a></li>
 </ul>
 </li>
-<li><a href="galera.html#sec-1-4">1.4 Certification Based Replication</a>
+<li><a href="galera.html#sec-4">4 Certification Based Replication</a>
 <ul>
-<li><a href="galera.html#sec-1-4-1">1.4.1 Introduction</a></li>
-<li><a href="galera.html#sec-1-4-2">1.4.2 Consistent read(read causality)</a></li>
-<li><a href="galera.html#sec-1-4-3">1.4.3 Multi-Master Conflicts</a></li>
+<li><a href="galera.html#sec-4-1">4.1 Introduction</a></li>
+<li><a href="galera.html#sec-4-2">4.2 Consistent read(read causality)</a></li>
+<li><a href="galera.html#sec-4-3">4.3 Multi-Master Conflicts</a></li>
 </ul>
 </li>
-<li><a href="galera.html#sec-1-5">1.5 Best Backup Practices</a></li>
-<li><a href="galera.html#sec-1-6">1.6 Miscellaneous</a>
+<li><a href="galera.html#sec-5">5 Best Backup Practices</a></li>
+<li><a href="galera.html#sec-6">6 Miscellaneous</a>
 <ul>
-<li><a href="galera.html#sec-1-6-1">1.6.1 Parameters</a></li>
-<li><a href="galera.html#sec-1-6-2">1.6.2 Status Variables</a></li>
-<li><a href="galera.html#sec-1-6-3">1.6.3 Notification</a></li>
-<li><a href="galera.html#sec-1-6-4">1.6.4 Limitations</a></li>
+<li><a href="galera.html#sec-6-1">6.1 Parameters</a></li>
+<li><a href="galera.html#sec-6-2">6.2 Status Variables</a></li>
+<li><a href="galera.html#sec-6-3">6.3 Notification</a></li>
+<li><a href="galera.html#sec-6-4">6.4 Limitations</a></li>
 </ul>
 </li>
-<li><a href="galera.html#sec-1-7">1.7 Related Articles</a>
+<li><a href="galera.html#sec-7">7 Related Articles</a>
 <ul>
-<li><a href="galera.html#sec-1-7-1">1.7.1 Commercial Story</a></li>
-<li><a href="galera.html#sec-1-7-2">1.7.2 Tech Issue</a></li>
-<li><a href="galera.html#sec-1-7-3">1.7.3 Bechmark &amp; Performance</a></li>
-<li><a href="galera.html#sec-1-7-4">1.7.4 Presentation</a></li>
+<li><a href="galera.html#sec-7-1">7.1 Commercial Story</a></li>
+<li><a href="galera.html#sec-7-2">7.2 Tech Issue</a></li>
+<li><a href="galera.html#sec-7-3">7.3 Bechmark &amp; Performance</a></li>
+<li><a href="galera.html#sec-7-4">7.4 Presentation</a></li>
 </ul>
 </li>
-<li><a href="galera.html#sec-1-8">1.8 All-About-Code</a></li>
-</ul>
-</li>
+<li><a href="galera.html#sec-8">8 Reading Code</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> galera</h2>
-<div class="outline-text-2" id="text-1">
-
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Links &amp; Abbr.</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> Links &amp; Abbr.</h3>
+<div class="outline-text-3" id="text-1">
 
 <p>Code
 </p><ul>
@@ -247,9 +235,9 @@ Info.(@2012)
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Replicator Architecture</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> Replicator Architecture</h3>
+<div class="outline-text-3" id="text-2">
 
 <p><img src="images/galera-overview.png"  alt="./images/galera-overview.png" /> <img src="images/galera-library.png"  alt="./images/galera-library.png" />
 </p>
@@ -302,7 +290,7 @@ Info.(@2012)
 <img src="images/galera-certification.png"  alt="./images/galera-certification.png" /> <img src="images/galera-certification-en.png"  alt="./images/galera-certification-en.png" />
 </p>
 <p>
-在数据库事务提交时，会使用2阶段提交方式，在ha_trans_commit中，首先会针对每一个存储引擎执行一个ht-&gt;prepare函数，而对于Galera，在内部实现也是当作一个内嵌的存储引擎使用的，所以它执行的是wsrep_prepare，这个函数的功能是将在执行过程中产生的binlog通过下面会介绍到的接口append_data传到其它节点上面去（或者没有传过去，只是将这些数据对象存储在本地，等待提交操作），然后再通过下面这个接口pre_commit去与其它节点的Galera通讯检查有没有冲突，这个过程也就是在 <b>介绍Galera的文章中说到的certification阶段</b> 。 <b>note(dirlt):是在本地先提交吗？</b>
+在数据库事务提交时，会使用2阶段提交方式，在ha_trans_commit中，首先会针对每一个存储引擎执行一个ht-&gt;prepare函数，而对于Galera，在内部实现也是当作一个内嵌的存储引擎使用的，所以它执行的是wsrep_prepare，这个函数的功能是将在执行过程中产生的binlog通过下面会介绍到的接口append_data传到其它节点上面去（或者没有传过去，只是将这些数据对象存储在本地，等待提交操作），然后再通过下面这个接口pre_commit去与其它节点的Galera通讯检查有没有冲突，这个过程也就是在 <b>介绍Galera的文章中说到的certification阶段</b> 。 <b>note:是在本地先提交吗？</b>
 </p><ul>
 <li>Transactions process independently in each cluster node
 </li>
@@ -317,16 +305,16 @@ Info.(@2012)
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Synchonization Mechanism</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> Synchonization Mechanism</h3>
+<div class="outline-text-3" id="text-3">
 
 
 </div>
 
-<div id="outline-container-1-3-1" class="outline-4">
-<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> Virtual Synchrony</h4>
-<div class="outline-text-4" id="text-1-3-1">
+<div id="outline-container-3-1" class="outline-4">
+<h4 id="sec-3-1"><span class="section-number-4">3.1</span> Virtual Synchrony</h4>
+<div class="outline-text-4" id="text-3-1">
 
 <p><a href="http://en.wikipedia.org/wiki/Virtual_synchrony">http://en.wikipedia.org/wiki/Virtual_synchrony</a>
 </p>
@@ -334,9 +322,9 @@ Info.(@2012)
 
 </div>
 
-<div id="outline-container-1-3-2" class="outline-4">
-<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> Finite State Machine</h4>
-<div class="outline-text-4" id="text-1-3-2">
+<div id="outline-container-3-2" class="outline-4">
+<h4 id="sec-3-2"><span class="section-number-4">3.2</span> Finite State Machine</h4>
+<div class="outline-text-4" id="text-3-2">
 
 <ul>
 <li><a href="http://www.codership.com/wiki/doku.php?id=galera_node_fsm">http://www.codership.com/wiki/doku.php?id=galera_node_fsm</a>
@@ -391,9 +379,9 @@ options:
 
 </div>
 
-<div id="outline-container-1-3-3" class="outline-4">
-<h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> Flow Control</h4>
-<div class="outline-text-4" id="text-1-3-3">
+<div id="outline-container-3-3" class="outline-4">
+<h4 id="sec-3-3"><span class="section-number-4">3.3</span> Flow Control</h4>
+<div class="outline-text-4" id="text-3-3">
 
 <p><a href="http://www.codership.com/wiki/doku.php?id=flow_control">http://www.codership.com/wiki/doku.php?id=flow_control</a>
 </p>
@@ -417,9 +405,9 @@ options:
 
 </div>
 
-<div id="outline-container-1-3-4" class="outline-4">
-<h4 id="sec-1-3-4"><span class="section-number-4">1.3.4</span> Writeset Cache</h4>
-<div class="outline-text-4" id="text-1-3-4">
+<div id="outline-container-3-4" class="outline-4">
+<h4 id="sec-3-4"><span class="section-number-4">3.4</span> Writeset Cache</h4>
+<div class="outline-text-4" id="text-3-4">
 
 <p><a href="http://www.codership.com/wiki/doku.php?id=gcache">http://www.codership.com/wiki/doku.php?id=gcache</a>
 </p>
@@ -433,7 +421,7 @@ During normal operation MySQL/Galera node does not consume much more memory than
 Writeset caching during state transfer. When a node is receiving a state transfer it cannot process and apply incoming writesets because it has no state to apply them to yet. Depending on a state transfer mechanism (e.g. mysqldump) the node that sends state transfer may not be able to apply writesets as well. Thus they need to cache those writesets for a catch-up phase. Currently the writesets are cached in memory and, if the system runs out of memory either state transfer will fail or the cluster would block waiting for the state transfer to end.(在state transfer阶段，donor是不可以写入的，所以在这期间需要缓存所有到达的writeset)
 </p>
 <p>
-To control memory usage for writeset caching, check Galera parameters: <b>note(dirlt)：by flow control</b>
+To control memory usage for writeset caching, check Galera parameters: <b>note：by flow control</b>
 </p><ul>
 <li>gcs.recv_q_hard_limit,
 </li>
@@ -448,9 +436,9 @@ To control memory usage for writeset caching, check Galera parameters: <b>note(d
 
 </div>
 
-<div id="outline-container-1-3-5" class="outline-4">
-<h4 id="sec-1-3-5"><span class="section-number-4">1.3.5</span> Snapshot Transfer</h4>
-<div class="outline-text-4" id="text-1-3-5">
+<div id="outline-container-3-5" class="outline-4">
+<h4 id="sec-3-5"><span class="section-number-4">3.5</span> Snapshot Transfer</h4>
+<div class="outline-text-4" id="text-3-5">
 
 <p><b>(SST)State Snapshot Transfer</b>
 </p><ul>
@@ -526,7 +514,7 @@ There are two conceptually different ways to transfer a state from one MySQL ser
 </li>
 <li>Copying data files directly. This requires that the receiving server is initialized <b>after</b> the transfer. rsync, xtrabackup and other methods fall into this category. These methods a much faster than mysqldump, but they have certain limitations, like they can be used only on server startup and receiving server must be configured very similarly to the donor (e.g. innodb_file_per_table should be the same and so on). Some of these methods, e.g. xtrabackup, can be potentially made non-blocking on donor.（直接copy文件。要求transfer之后配置好？？速度比较快，但是要求配置源和目的配置相同。使用xtrabackup不会阻塞donor)
 </li>
-<li><b>Xtrabackup and rsync SST cannot be used for a running server.</b> It is not possible to copy datafiles under running InnoDB. Having wsrep_address set to a list of node addresses and starting replication on a running node can lead to node crash. <b>todo(dirlt)：Xtrabackup需要停机处理吗？</b> <b>note(dirlt)：xtrabackup不需要停机处理</b>
+<li><b>Xtrabackup and rsync SST cannot be used for a running server.</b> It is not possible to copy datafiles under running InnoDB. Having wsrep_address set to a list of node addresses and starting replication on a running node can lead to node crash. <del>#todo: Xtrabackup需要停机处理吗？</del>  #note: xtrabackup不需要停机处理
 </li>
 </ul>
 
@@ -561,9 +549,9 @@ IST(Very effective)
 
 </div>
 
-<div id="outline-container-1-3-6" class="outline-4">
-<h4 id="sec-1-3-6"><span class="section-number-4">1.3.6</span> Parallel Applying</h4>
-<div class="outline-text-4" id="text-1-3-6">
+<div id="outline-container-3-6" class="outline-4">
+<h4 id="sec-3-6"><span class="section-number-4">3.6</span> Parallel Applying</h4>
+<div class="outline-text-4" id="text-3-6">
 
 <p><img src="images/galera-parallel-applying.png"  alt="./images/galera-parallel-applying.png" />
 </p>
@@ -592,9 +580,9 @@ IST(Very effective)
 
 </div>
 
-<div id="outline-container-1-3-7" class="outline-4">
-<h4 id="sec-1-3-7"><span class="section-number-4">1.3.7</span> Primary Component</h4>
-<div class="outline-text-4" id="text-1-3-7">
+<div id="outline-container-3-7" class="outline-4">
+<h4 id="sec-3-7"><span class="section-number-4">3.7</span> Primary Component</h4>
+<div class="outline-text-4" id="text-3-7">
 
 <ul>
 <li><a href="http://www.codership.com/wiki/doku.php?id=galera_arbitrator">http://www.codership.com/wiki/doku.php?id=galera_arbitrator</a>
@@ -607,15 +595,15 @@ IST(Very effective)
 
 
 <p>
-todo(dirlt):
+#todo:
 </p>
 </div>
 
 </div>
 
-<div id="outline-container-1-3-8" class="outline-4">
-<h4 id="sec-1-3-8"><span class="section-number-4">1.3.8</span> Online Schema Upgrade</h4>
-<div class="outline-text-4" id="text-1-3-8">
+<div id="outline-container-3-8" class="outline-4">
+<h4 id="sec-3-8"><span class="section-number-4">3.8</span> Online Schema Upgrade</h4>
+<div class="outline-text-4" id="text-3-8">
 
 <p><a href="http://www.codership.com/wiki/doku.php?id=rolling_schema_upgrade">http://www.codership.com/wiki/doku.php?id=rolling_schema_upgrade</a>
 </p>
@@ -681,21 +669,21 @@ DDL is non-transactional, and therefore bad for replication. Galera has two meth
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Certification Based Replication</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> Certification Based Replication</h3>
+<div class="outline-text-3" id="text-4">
 
 
 </div>
 
-<div id="outline-container-1-4-1" class="outline-4">
-<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> Introduction</h4>
-<div class="outline-text-4" id="text-1-4-1">
+<div id="outline-container-4-1" class="outline-4">
+<h4 id="sec-4-1"><span class="section-number-4">4.1</span> Introduction</h4>
+<div class="outline-text-4" id="text-4-1">
 
 <p>Certification based replication uses group communication and transaction ordering techniques to achieve synchronous replication. Transactions execute optimistically in a single node (or replica) and, at commit time, run a coordinated certification process to enforce global consistency. Global coordination is achieved with the help of a broadcast service, that establishes a global total order among concurrent transactions. (基于 <b>组通信</b> 以及 <b>事务顺序化</b> 技术来达到同步备份。事务首先是乐观地在本地执行，然后提交给其他节点做验证来保证全局一致性）
 </p>
 <p>
-Pre-requisites for certification based replication: <b>note(dirlt)：that's why InnoDB is choosen？</b>
+Pre-requisites for certification based replication: <b>note：that's why InnoDB is choosen？</b>
 </p><ul>
 <li>database is transactional (i.e. it can rollback uncommitted changes)（数据库必须支持事务）
 </li>
@@ -710,7 +698,7 @@ Pre-requisites for certification based replication: <b>note(dirlt)：that's why 
 The main idea is that a transaction is executed conventionally until the commit point, under the assumption that there will be no conflict. This is called optimistic execution. When the client issues a COMMIT command (but before the actual commit has happened), all changes made to the database by the transaction and the primary keys of changed rows are collected into a writeset. This writeset is then replicated to the rest of the nodes. After that, the writeset undergoes a deterministic certification test (using the collected primary keys) on each node (including the writeset originator node) which determines if the writeset can be applied or not. If the certification test fails, the writeset is dropped and the original transaction is rolled back. If the test succeeds, the transaction is committed and the writeset is applied on the rest of the nodes.（在本地首先乐观执行，然后在COMMIT时候将修改的writeset通过到其他节点做certification判断是否会产生冲突. 如果失败的话那么本地事务回滚而且放弃writeset, 如果成功的话那么本地事务提交并且通知将writeset作用在其他节点上）
 </p>
 <p>
-The certification test implemented in Galera depends on the global ordering of transactions. Each transaction is assigned a global ordinal sequence number during replication. Thus, when a transaction reaches the commit point, it is known what was the sequence number of the last transaction it did not conflict with. The interval between those two numbers is an uncertainty land: transactions in this interval have not seen the effects of each other. Therefore, all transactions in this interval are checked for primary key conflicts with the transaction in question. The certification test fails if a conflict is detected. Since the procedure is deterministic and all replicas receive transactions in the same order, all nodes reach the same decision about the outcome of the transaction. The node that started the transaction can then notify the client application if the transaction has been committed or not. （每个事务提交都会分配一个全局有序id。如果这个id是当前最新id的话，那么就可以直接提交，否则需要检查id+1到最新id区间的writeset和当前id是否存在冲突，那么验证会失败） <b>todo(dirlt)：xid 和 [xid+1, lastest-id]做验证，如果冲突的话，是放弃xid还是[xid+1, lastest-id]其中冲突的部分？我觉得应该是xid!</b>
+The certification test implemented in Galera depends on the global ordering of transactions. Each transaction is assigned a global ordinal sequence number during replication. Thus, when a transaction reaches the commit point, it is known what was the sequence number of the last transaction it did not conflict with. The interval between those two numbers is an uncertainty land: transactions in this interval have not seen the effects of each other. Therefore, all transactions in this interval are checked for primary key conflicts with the transaction in question. The certification test fails if a conflict is detected. Since the procedure is deterministic and all replicas receive transactions in the same order, all nodes reach the same decision about the outcome of the transaction. The node that started the transaction can then notify the client application if the transaction has been committed or not. （每个事务提交都会分配一个全局有序id。如果这个id是当前最新id的话，那么就可以直接提交，否则需要检查id+1到最新id区间的writeset和当前id是否存在冲突，那么验证会失败）
 </p>
 <p>
 Database Hot-Spots
@@ -729,9 +717,9 @@ Certification based replication (or more precisely, certification-based conflict
 
 </div>
 
-<div id="outline-container-1-4-2" class="outline-4">
-<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> Consistent read(read causality)</h4>
-<div class="outline-text-4" id="text-1-4-2">
+<div id="outline-container-4-2" class="outline-4">
+<h4 id="sec-4-2"><span class="section-number-4">4.2</span> Consistent read(read causality)</h4>
+<div class="outline-text-4" id="text-4-2">
 
 <p><img src="images/galera-consistent-read.png"  alt="./images/galera-consistent-read.png" />
 </p>
@@ -750,9 +738,9 @@ There is causal dependency between operations on two database connections:
 
 </div>
 
-<div id="outline-container-1-4-3" class="outline-4">
-<h4 id="sec-1-4-3"><span class="section-number-4">1.4.3</span> Multi-Master Conflicts</h4>
-<div class="outline-text-4" id="text-1-4-3">
+<div id="outline-container-4-3" class="outline-4">
+<h4 id="sec-4-3"><span class="section-number-4">4.3</span> Multi-Master Conflicts</h4>
+<div class="outline-text-4" id="text-4-3">
 
 <p>Galera uses optimistic concurrency control:
 </p><ul>
@@ -803,9 +791,9 @@ Retry Autocommit:
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Best Backup Practices</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> Best Backup Practices</h3>
+<div class="outline-text-3" id="text-5">
 
 <p>Best practices:
 </p><ul>
@@ -864,16 +852,16 @@ Retry Autocommit:
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Miscellaneous</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> Miscellaneous</h3>
+<div class="outline-text-3" id="text-6">
 
 
 </div>
 
-<div id="outline-container-1-6-1" class="outline-4">
-<h4 id="sec-1-6-1"><span class="section-number-4">1.6.1</span> Parameters</h4>
-<div class="outline-text-4" id="text-1-6-1">
+<div id="outline-container-6-1" class="outline-4">
+<h4 id="sec-6-1"><span class="section-number-4">6.1</span> Parameters</h4>
+<div class="outline-text-4" id="text-6-1">
 
 <ul>
 <li><a href="http://www.codership.com/wiki/doku.php?id=galera_parameters">http://www.codership.com/wiki/doku.php?id=galera_parameters</a>
@@ -899,11 +887,11 @@ Retry Autocommit:
 </li>
 <li>default_storage_engine=InnoDB
 </li>
-<li>innodb_autoinc_lock_mode=2 # todo(dirlt):??
+<li>innodb_autoinc_lock_mode=2 #todo: ??
 </li>
-<li>innodb_flush_log_at_trx_commit=2 # todo(dirlt):??
+<li>innodb_flush_log_at_trx_commit=2 #todo: ??
 </li>
-<li>innodb_doublewrite=1 #todo(dirlt):??
+<li>innodb_doublewrite=1 #todo: ??
 </li>
 </ul>
 
@@ -912,9 +900,9 @@ Retry Autocommit:
 
 </div>
 
-<div id="outline-container-1-6-2" class="outline-4">
-<h4 id="sec-1-6-2"><span class="section-number-4">1.6.2</span> Status Variables</h4>
-<div class="outline-text-4" id="text-1-6-2">
+<div id="outline-container-6-2" class="outline-4">
+<h4 id="sec-6-2"><span class="section-number-4">6.2</span> Status Variables</h4>
+<div class="outline-text-4" id="text-6-2">
 
 <ul>
 <li><a href="http://www.codership.com/wiki/doku.php?id=galera_status_0.8">http://www.codership.com/wiki/doku.php?id=galera_status_0.8</a>
@@ -930,9 +918,9 @@ Retry Autocommit:
 
 </div>
 
-<div id="outline-container-1-6-3" class="outline-4">
-<h4 id="sec-1-6-3"><span class="section-number-4">1.6.3</span> Notification</h4>
-<div class="outline-text-4" id="text-1-6-3">
+<div id="outline-container-6-3" class="outline-4">
+<h4 id="sec-6-3"><span class="section-number-4">6.3</span> Notification</h4>
+<div class="outline-text-4" id="text-6-3">
 
 <p>Cluster can trigger notifications. Use for:
 </p><ul>
@@ -948,9 +936,9 @@ Retry Autocommit:
 
 </div>
 
-<div id="outline-container-1-6-4" class="outline-4">
-<h4 id="sec-1-6-4"><span class="section-number-4">1.6.4</span> Limitations</h4>
-<div class="outline-text-4" id="text-1-6-4">
+<div id="outline-container-6-4" class="outline-4">
+<h4 id="sec-6-4"><span class="section-number-4">6.4</span> Limitations</h4>
+<div class="outline-text-4" id="text-6-4">
 
 <p><a href="http://www.codership.com/wiki/doku.php?id=limitations">http://www.codership.com/wiki/doku.php?id=limitations</a>
 </p>
@@ -959,16 +947,16 @@ Retry Autocommit:
 
 </div>
 
-<div id="outline-container-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Related Articles</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-7" class="outline-3">
+<h3 id="sec-7"><span class="section-number-3">7</span> Related Articles</h3>
+<div class="outline-text-3" id="text-7">
 
 
 </div>
 
-<div id="outline-container-1-7-1" class="outline-4">
-<h4 id="sec-1-7-1"><span class="section-number-4">1.7.1</span> Commercial Story</h4>
-<div class="outline-text-4" id="text-1-7-1">
+<div id="outline-container-7-1" class="outline-4">
+<h4 id="sec-7-1"><span class="section-number-4">7.1</span> Commercial Story</h4>
+<div class="outline-text-4" id="text-7-1">
 
 <ul>
 <li>User Stories | Codership : <a href="http://www.codership.com/user-stories">http://www.codership.com/user-stories</a>
@@ -984,9 +972,9 @@ Retry Autocommit:
 
 </div>
 
-<div id="outline-container-1-7-2" class="outline-4">
-<h4 id="sec-1-7-2"><span class="section-number-4">1.7.2</span> Tech Issue</h4>
-<div class="outline-text-4" id="text-1-7-2">
+<div id="outline-container-7-2" class="outline-4">
+<h4 id="sec-7-2"><span class="section-number-4">7.2</span> Tech Issue</h4>
+<div class="outline-text-4" id="text-7-2">
 
 <ul>
 <li>Dealing with Locking Sessions | Codership : <a href="http://www.codership.com/content/dealing-locking-sessions">http://www.codership.com/content/dealing-locking-sessions</a>
@@ -1005,7 +993,7 @@ Retry Autocommit:
 <ul>
 <li>MyISAM is supported.
 </li>
-<li>better use primary key from day one <b>todo(dirlt): is it functional necessary or because it affects performance?</b>
+<li>better use primary key from day one
 </li>
 <li>stay away from what you don't know(event and trigger)
 </li>
@@ -1023,9 +1011,9 @@ Retry Autocommit:
 
 </div>
 
-<div id="outline-container-1-7-3" class="outline-4">
-<h4 id="sec-1-7-3"><span class="section-number-4">1.7.3</span> Bechmark &amp; Performance</h4>
-<div class="outline-text-4" id="text-1-7-3">
+<div id="outline-container-7-3" class="outline-4">
+<h4 id="sec-7-3"><span class="section-number-4">7.3</span> Bechmark &amp; Performance</h4>
+<div class="outline-text-4" id="text-7-3">
 
 <ul>
 <li>How Much Can Galera Sysbench? | Codership : <a href="http://www.codership.com/content/galera-sysbench">http://www.codership.com/content/galera-sysbench</a>
@@ -1055,9 +1043,9 @@ Retry Autocommit:
 
 </div>
 
-<div id="outline-container-1-7-4" class="outline-4">
-<h4 id="sec-1-7-4"><span class="section-number-4">1.7.4</span> Presentation</h4>
-<div class="outline-text-4" id="text-1-7-4">
+<div id="outline-container-7-4" class="outline-4">
+<h4 id="sec-7-4"><span class="section-number-4">7.4</span> Presentation</h4>
+<div class="outline-text-4" id="text-7-4">
 
 <ul>
 <li><a href="http://www.codership.com/files/presentations/UC11_galera.pdf">http://www.codership.com/files/presentations/UC11_galera.pdf</a>
@@ -1083,20 +1071,22 @@ Retry Autocommit:
 
 </div>
 
-<div id="outline-container-1-8" class="outline-3">
-<h3 id="sec-1-8"><span class="section-number-3">1.8</span> <a href="galerac.html">All-About-Code</a></h3>
-<div class="outline-text-3" id="text-1-8">
+<div id="outline-container-8" class="outline-3">
+<h3 id="sec-8"><span class="section-number-3">8</span> <a href="galerac.html">Reading Code</a></h3>
+<div class="outline-text-3" id="text-8">
 
-</div>
+<p>代码整体结构
+</p>
+<p>
+<img src="images/galera-code-structure.png"  alt="./images/galera-code-structure.png" />
+</p>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-12-18T11:29+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'galera.html';var disqus_title = 'galera.html';var disqus_url = 'http://dirlt.com/galera.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'galera.html';var disqus_title = 'galera.html';var disqus_url = 'http://dirlt.com/galera.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

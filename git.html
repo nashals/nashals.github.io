@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<head>
 <title>git</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="git"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-12-18T11:29+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,7 +62,7 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
@@ -77,36 +76,21 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="git.html#sec-1">1 git</a>
-<ul>
-<li><a href="git.html#sec-1-1">1.1 git repo</a>
-<ul>
-<li><a href="git.html#sec-1-1-1">1.1.1 local</a></li>
-<li><a href="git.html#sec-1-1-2">1.1.2 remote</a></li>
-</ul>
-</li>
-<li><a href="git.html#sec-1-2">1.2 git branch</a></li>
-<li><a href="git.html#sec-1-3">1.3 git tag</a></li>
-<li><a href="git.html#sec-1-4">1.4 git flow</a></li>
-<li><a href="git.html#sec-1-5">1.5 notes</a>
-<ul>
-<li><a href="git.html#sec-1-5-1">1.5.1 合并多个commit</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><a href="git.html#sec-1">1 links</a></li>
+<li><a href="git.html#sec-2">2 git repo</a></li>
+<li><a href="git.html#sec-3">3 git branch</a></li>
+<li><a href="git.html#sec-4">4 git tag</a></li>
+<li><a href="git.html#sec-5">5 git flow</a></li>
+<li><a href="git.html#sec-6">6 notes</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> git</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> links</h3>
+<div class="outline-text-3" id="text-1">
 
-
-<p>
-参考资源
-</p><ul>
+<ul>
 <li>Git – Fast Version Control System. <a href="http://git.or.cz/index.html">http://git.or.cz/index.html</a>
 </li>
 <li>Git 简易指南. <a href="http://rogerdudler.github.com/git-guide/index.zh.html">http://rogerdudler.github.com/git-guide/index.zh.html</a>
@@ -124,25 +108,22 @@
 </ul>
 
 
+</div>
 
 </div>
 
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> git repo</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> git repo</h3>
+<div class="outline-text-3" id="text-2">
 
 <p>git分为远程仓库和本地仓库。可以从不同的远程仓库拉下内容到本地仓库，并且也可以推送本地仓库到不同的远程仓库去。
 可以通过git remote add origin <a href="https://github.com/dirtysalt/sperm">https://github.com/dirtysalt/sperm</a> 来为仓库建立别名。在pull或者是push的时候就
 可以指定远程仓库。
 </p>
 
-</div>
-
-<div id="outline-container-1-1-1" class="outline-4">
-<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> local</h4>
-<div class="outline-text-4" id="text-1-1-1">
-
-<p>git本地仓库由下面三棵树构成：
+<hr/>
+<p>
+本地仓库. git本地仓库由下面三棵树构成：
 </p><ul>
 <li>工作目录(working directory/WD).我们实际持有的文件。分为untracked和tracked两类。
 </li>
@@ -182,11 +163,8 @@
 <li>git reset &ndash;hard &lt;commit-id&gt; # 回退到某个commit-id，包括commit/index信息.
 </li>
 <li>git reset &ndash;soft &lt;commit-id&gt; # 回退到某个commit-id，只是commit不包括index.
-<ul>
-<li><b>note(dirlt):commit-id只能是本地commit. 可以使用HEAD^1这样类似游标方式</b>
 </li>
-</ul>
-
+<li>#note: commit-id只能是本地commit. 可以使用HEAD^1这样类似游标方式
 </li>
 <li>git rm &lt;files&gt; 从HEAD删除
 </li>
@@ -199,15 +177,11 @@
 </ul>
 
 
-</div>
 
-</div>
-
-<div id="outline-container-1-1-2" class="outline-4">
-<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> remote</h4>
-<div class="outline-text-4" id="text-1-1-2">
-
-<ul>
+<hr/>
+<p>
+远程仓库
+</p><ul>
 <li>git remote -v 显示远程仓库信息（本地信息）
 </li>
 <li>git remote add &lt;alias&gt; &lt;path&gt; 添加远程仓库
@@ -222,13 +196,12 @@
 
 
 </div>
-</div>
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> git branch</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> git branch</h3>
+<div class="outline-text-3" id="text-3">
 
 <p>默认来说git包含一个master分支，也可以很容易地创建和删除分支。当从远程clone到本地的时候，
 会将远程repo里面所有的分支内容全部clone到本地，维护所有版本信息以及历史文件，所以本地切换分支非常快。
@@ -246,9 +219,9 @@
 </li>
 <li>git push &lt;repo&gt; &lt;branch&gt; 将本地branch HEAD信息推送到远程repo的branch.
 </li>
-<li>git push -f # 如果本地某个commit已经提交到server, 但是想修改这个commit并且重新push, 可以使用在这个命令 <b>note(dirlt):not recommended</b>
+<li>git push -f # 如果本地某个commit已经提交到server, 但是想修改这个commit并且重新push, 可以使用在这个命令. not recommended
 </li>
-<li>git push &lt;repo&gt; :&lt;branch&gt; 将删除分支信息推送。 <b>note(dirlt):这个可以这样理解，:之前表示null,将null推到branch相当于清空x。</b>
+<li>git push &lt;repo&gt; :&lt;branch&gt; 将删除分支信息推送。 #note: 这个可以这样理解，:之前表示null,将null推到branch相当于清空x。
 </li>
 <li>git pull &lt;repo&gt; [&lt;branch&gt;] 将远程repo合并到本地HEAD.
 </li>
@@ -277,15 +250,15 @@
 如果合并过来的分支，是当前分支的child的话，那么执行fast-forward合并（除非指定&ndash;no-ff)，否则会执行普通的合并生成一个新的node，这个node是两个分支的共同child。
 </p>
 <p>
-如果没有指定repo的话，根据上下文可能会指代当前branch所在的远程repo, 也可能会指代所有远程repo. 同理对于branch来说，根据上下文可能会指代当前所使用的branch, 也可能会指代repo下面所有的branch. 
+如果没有指定repo的话，根据上下文可能会指代当前branch所在的远程repo, 也可能会指代所有远程repo. 同理对于branch来说，根据上下文可能会指代当前所使用的branch, 也可能会指代repo下面所有的branch.
 </p>
 </div>
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> git tag</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> git tag</h3>
+<div class="outline-text-3" id="text-4">
 
 <p>Git使用的标签有两种类型：轻量级的（lightweight）和含附注的（annotated）。轻量级标签就像是个不会变化的分支，实际上它就是个指向特 定提交对象的引用。而含附注标签，实际上是存储在仓库中的一个独立对象，它有自身的校验和信息，包含着标签的名字，电子邮件地址和日期，以及标签说明，标签本身也允许使用 GNU Privacy Guard (GPG) 来签署或验证。一般我们都建议使用含附注型的标签，以便保留相关信息；当然，如果只是临时性加注标签，或者不需要旁注额外信息，用轻量级标签也没问题。
 </p>
@@ -307,9 +280,9 @@
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> git flow</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> git flow</h3>
+<div class="outline-text-3" id="text-5">
 
 <p>参考资源
 </p><ul>
@@ -406,18 +379,17 @@ git-flow主要推行的就是一种开发方式，然后通过工具来配合这
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> notes</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> notes</h3>
+<div class="outline-text-3" id="text-6">
 
 
-</div>
-
-<div id="outline-container-1-5-1" class="outline-4">
-<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> 合并多个commit</h4>
-<div class="outline-text-4" id="text-1-5-1">
-
-<p>合并两个commit
+<hr/>
+<p>
+如何合并多个commit?
+</p>
+<p>
+合并两个commit
 </p>
 <p class="verse">
 $ git reset &ndash;soft HEAD^1<br/>
@@ -436,14 +408,10 @@ $ git rebase -i HEAD~n<br/>
 </div>
 </div>
 </div>
-</div>
-</div>
 
 <div id="postamble">
-<p class="date">Date: 2014-12-18T11:29+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'git.html';var disqus_title = 'git.html';var disqus_url = 'http://dirlt.com/git.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'git.html';var disqus_title = 'git.html';var disqus_url = 'http://dirlt.com/git.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

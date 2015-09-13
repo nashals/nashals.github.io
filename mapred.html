@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<head>
 <title>mapred</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="mapred"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-12-18T11:29+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,7 +62,7 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
@@ -77,72 +76,65 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="mapred.html#sec-1">1 mapred</a>
+<li><a href="mapred.html#sec-1">1 Opinions</a>
 <ul>
-<li><a href="mapred.html#sec-1-1">1.1 opinions</a>
-<ul>
-<li><a href="mapred.html#sec-1-1-1">1.1.1 HowManyMapsAndReduces - Hadoop Wiki</a></li>
-<li><a href="mapred.html#sec-1-1-2">1.1.2 7 Tips for Improving MapReduce Performance | Apache Hadoop for the Enterprise | Cloudera</a></li>
-<li><a href="mapred.html#sec-1-1-3">1.1.3 MapReduce Patterns, Algorithms, and Use Cases | Highly Scalable Blog</a></li>
+<li><a href="mapred.html#sec-1-1">1.1 HowManyMapsAndReduces - Hadoop Wiki</a></li>
+<li><a href="mapred.html#sec-1-2">1.2 7 Tips for Improving MapReduce Performance | Apache Hadoop for the Enterprise | Cloudera</a></li>
+<li><a href="mapred.html#sec-1-3">1.3 MapReduce Patterns, Algorithms, and Use Cases | Highly Scalable Blog</a></li>
 </ul>
 </li>
-<li><a href="mapred.html#sec-1-2">1.2 scheduler</a></li>
-<li><a href="mapred.html#sec-1-3">1.3 notes</a>
+<li><a href="mapred.html#sec-2">2 Scheduler</a></li>
+<li><a href="mapred.html#sec-3">3 Notes</a>
 <ul>
-<li><a href="mapred.html#sec-1-3-1">1.3.1 hadoop-lzo</a>
+<li><a href="mapred.html#sec-3-1">3.1 hadoop-lzo</a>
 <ul>
-<li><a href="mapred.html#sec-1-3-1-1">1.3.1.1 安装配置</a></li>
-<li><a href="mapred.html#sec-1-3-1-2">1.3.1.2 使用lzo</a></li>
-<li><a href="mapred.html#sec-1-3-1-3">1.3.1.3 配合protobuf</a></li>
+<li><a href="mapred.html#sec-3-1-1">3.1.1 安装配置</a></li>
+<li><a href="mapred.html#sec-3-1-2">3.1.2 使用lzo</a></li>
+<li><a href="mapred.html#sec-3-1-3">3.1.3 配合protobuf</a></li>
 </ul>
 </li>
-<li><a href="mapred.html#sec-1-3-2">1.3.2 多路输入</a>
+<li><a href="mapred.html#sec-3-2">3.2 多路输入</a>
 <ul>
-<li><a href="mapred.html#sec-1-3-2-1">1.3.2.1 MultipleInputs</a></li>
-<li><a href="mapred.html#sec-1-3-2-2">1.3.2.2 MultipleTableInputFormat</a></li>
+<li><a href="mapred.html#sec-3-2-1">3.2.1 MultipleInputs</a></li>
+<li><a href="mapred.html#sec-3-2-2">3.2.2 MultipleTableInputFormat</a></li>
 </ul>
 </li>
-<li><a href="mapred.html#sec-1-3-3">1.3.3 多路输出</a>
+<li><a href="mapred.html#sec-3-3">3.3 多路输出</a>
 <ul>
-<li><a href="mapred.html#sec-1-3-3-1">1.3.3.1 MultipleOutputs</a></li>
-<li><a href="mapred.html#sec-1-3-3-2">1.3.3.2 MultipleTableOutputFormat</a></li>
+<li><a href="mapred.html#sec-3-3-1">3.3.1 MultipleOutputs</a></li>
+<li><a href="mapred.html#sec-3-3-2">3.3.2 MultipleTableOutputFormat</a></li>
 </ul>
 </li>
-<li><a href="mapred.html#sec-1-3-4">1.3.4 获取集群运行状况</a></li>
-<li><a href="mapred.html#sec-1-3-5">1.3.5 OutOfMemoryError</a></li>
-<li><a href="mapred.html#sec-1-3-6">1.3.6 topology rack awareness</a></li>
-<li><a href="mapred.html#sec-1-3-7">1.3.7 streaming</a></li>
-<li><a href="mapred.html#sec-1-3-8">1.3.8 Too many fetch-failures</a></li>
-<li><a href="mapred.html#sec-1-3-9">1.3.9 blacklist</a></li>
-<li><a href="mapred.html#sec-1-3-10">1.3.10 磁盘空间</a></li>
+<li><a href="mapred.html#sec-3-4">3.4 获取集群运行状况</a></li>
+<li><a href="mapred.html#sec-3-5">3.5 OutOfMemoryError</a></li>
+<li><a href="mapred.html#sec-3-6">3.6 topology rack awareness</a></li>
+<li><a href="mapred.html#sec-3-7">3.7 streaming</a></li>
+<li><a href="mapred.html#sec-3-8">3.8 Too many fetch-failures</a></li>
+<li><a href="mapred.html#sec-3-9">3.9 blacklist</a></li>
+<li><a href="mapred.html#sec-3-10">3.10 磁盘空间</a></li>
+<li><a href="mapred.html#sec-3-11">3.11 getMapOutput failed</a>
+<ul>
+<li><a href="mapred.html#sec-3-11-1">3.11.1 normal case</a></li>
+<li><a href="mapred.html#sec-3-11-2">3.11.2 bas case</a></li>
 </ul>
 </li>
-<li><a href="mapred.html#sec-1-4">1.4 all-about-code</a>
+<li><a href="mapred.html#sec-3-12">3.12 Error initializing</a>
 <ul>
-<li><a href="mapred.html#sec-1-4-1">1.4.1 task heartbeat</a></li>
-<li><a href="mapred.html#sec-1-4-2">1.4.2 Partitioner</a></li>
-<li><a href="mapred.html#sec-1-4-3">1.4.3 shuffle in memory</a></li>
-<li><a href="mapred.html#sec-1-4-4">1.4.4 lzo index format</a>
-<ul>
-<li><a href="mapred.html#sec-1-4-4-1">1.4.4.1 DistributedLzoIndexer</a></li>
-<li><a href="mapred.html#sec-1-4-4-2">1.4.4.2 LzoTextInputFormat</a></li>
-</ul></li>
+<li><a href="mapred.html#sec-3-12-1">3.12.1 No such file or directory</a></li>
 </ul>
 </li>
-<li><a href="mapred.html#sec-1-5">1.5 all-about-log</a>
-<ul>
-<li><a href="mapred.html#sec-1-5-1">1.5.1 getMapOutput failed</a>
-<ul>
-<li><a href="mapred.html#sec-1-5-1-1">1.5.1.1 normal case</a></li>
-<li><a href="mapred.html#sec-1-5-1-2">1.5.1.2 bas case</a></li>
+<li><a href="mapred.html#sec-3-13">3.13 shuffleInMemory OutOfMemoryError</a></li>
 </ul>
 </li>
-<li><a href="mapred.html#sec-1-5-2">1.5.2 Error initializing</a>
+<li><a href="mapred.html#sec-4">4 ReadingCode</a>
 <ul>
-<li><a href="mapred.html#sec-1-5-2-1">1.5.2.1 No such file or directory</a></li>
-</ul>
-</li>
-<li><a href="mapred.html#sec-1-5-3">1.5.3 shuffleInMemory OutOfMemoryError</a></li>
+<li><a href="mapred.html#sec-4-1">4.1 task heartbeat</a></li>
+<li><a href="mapred.html#sec-4-2">4.2 Partitioner</a></li>
+<li><a href="mapred.html#sec-4-3">4.3 shuffle in memory</a></li>
+<li><a href="mapred.html#sec-4-4">4.4 lzo index format</a>
+<ul>
+<li><a href="mapred.html#sec-4-4-1">4.4.1 DistributedLzoIndexer</a></li>
+<li><a href="mapred.html#sec-4-4-2">4.4.2 LzoTextInputFormat</a></li>
 </ul>
 </li>
 </ul>
@@ -151,23 +143,16 @@
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> mapred</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> Opinions</h3>
+<div class="outline-text-3" id="text-1">
 
 
 </div>
 
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> opinions</h3>
-<div class="outline-text-3" id="text-1-1">
-
-
-</div>
-
-<div id="outline-container-1-1-1" class="outline-4">
-<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> HowManyMapsAndReduces - Hadoop Wiki</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-1-1" class="outline-4">
+<h4 id="sec-1-1"><span class="section-number-4">1.1</span> HowManyMapsAndReduces - Hadoop Wiki</h4>
+<div class="outline-text-4" id="text-1-1">
 
 <p><a href="http://wiki.apache.org/hadoop/HowManyMapsAndReduces">http://wiki.apache.org/hadoop/HowManyMapsAndReduces</a>
 </p>
@@ -199,9 +184,9 @@ Number of Reduces：
 
 </div>
 
-<div id="outline-container-1-1-2" class="outline-4">
-<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> 7 Tips for Improving MapReduce Performance | Apache Hadoop for the Enterprise | Cloudera</h4>
-<div class="outline-text-4" id="text-1-1-2">
+<div id="outline-container-1-2" class="outline-4">
+<h4 id="sec-1-2"><span class="section-number-4">1.2</span> 7 Tips for Improving MapReduce Performance | Apache Hadoop for the Enterprise | Cloudera</h4>
+<div class="outline-text-4" id="text-1-2">
 
 <p><a href="http://blog.cloudera.com/blog/2009/12/7-tips-for-improving-mapreduce-performance/">http://blog.cloudera.com/blog/2009/12/7-tips-for-improving-mapreduce-performance/</a>
 </p>
@@ -259,9 +244,9 @@ Number of Reduces：
 
 </div>
 
-<div id="outline-container-1-1-3" class="outline-4">
-<h4 id="sec-1-1-3"><span class="section-number-4">1.1.3</span> MapReduce Patterns, Algorithms, and Use Cases | Highly Scalable Blog</h4>
-<div class="outline-text-4" id="text-1-1-3">
+<div id="outline-container-1-3" class="outline-4">
+<h4 id="sec-1-3"><span class="section-number-4">1.3</span> MapReduce Patterns, Algorithms, and Use Cases | Highly Scalable Blog</h4>
+<div class="outline-text-4" id="text-1-3">
 
 <p><a href="http://highlyscalable.wordpress.com/2012/02/01/mapreduce-patterns/">http://highlyscalable.wordpress.com/2012/02/01/mapreduce-patterns/</a>
 </p>
@@ -346,9 +331,9 @@ Number of Reduces：
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> scheduler</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> Scheduler</h3>
+<div class="outline-text-3" id="text-2">
 
 <ul>
 <li>Fair Scheduler Guide <a href="http://archive.cloudera.com/cdh/3/hadoop/fair_scheduler.html">http://archive.cloudera.com/cdh/3/hadoop/fair_scheduler.html</a>
@@ -370,23 +355,23 @@ Number of Reduces：
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> notes</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> Notes</h3>
+<div class="outline-text-3" id="text-3">
 
 
 </div>
 
-<div id="outline-container-1-3-1" class="outline-4">
-<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> hadoop-lzo</h4>
-<div class="outline-text-4" id="text-1-3-1">
+<div id="outline-container-3-1" class="outline-4">
+<h4 id="sec-3-1"><span class="section-number-4">3.1</span> hadoop-lzo</h4>
+<div class="outline-text-4" id="text-3-1">
 
 
 </div>
 
-<div id="outline-container-1-3-1-1" class="outline-5">
-<h5 id="sec-1-3-1-1"><span class="section-number-5">1.3.1.1</span> 安装配置</h5>
-<div class="outline-text-5" id="text-1-3-1-1">
+<div id="outline-container-3-1-1" class="outline-5">
+<h5 id="sec-3-1-1"><span class="section-number-5">3.1.1</span> 安装配置</h5>
+<div class="outline-text-5" id="text-3-1-1">
 
 <ul>
 <li>安装liblzo2库，sudo apt-get install liblzo2-2(liblzo2-dev)
@@ -444,9 +429,9 @@ Number of Reduces：
 
 </div>
 
-<div id="outline-container-1-3-1-2" class="outline-5">
-<h5 id="sec-1-3-1-2"><span class="section-number-5">1.3.1.2</span> 使用lzo</h5>
-<div class="outline-text-5" id="text-1-3-1-2">
+<div id="outline-container-3-1-2" class="outline-5">
+<h5 id="sec-3-1-2"><span class="section-number-5">3.1.2</span> 使用lzo</h5>
+<div class="outline-text-5" id="text-3-1-2">
 
 <p>关于如何使用lzo可以参看代码示例 <a href="https://github.com/dirtysalt/tomb/blob/master/java/mr/src/main/java/com/dirlt/java/mr/ReadLzoInput.java">com.dirlt.java.mr.ReadLzoInput</a>. 下面几点需要说明：
 </p><ul>
@@ -498,9 +483,9 @@ Number of Reduces：
 
 </div>
 
-<div id="outline-container-1-3-1-3" class="outline-5">
-<h5 id="sec-1-3-1-3"><span class="section-number-5">1.3.1.3</span> 配合protobuf</h5>
-<div class="outline-text-5" id="text-1-3-1-3">
+<div id="outline-container-3-1-3" class="outline-5">
+<h5 id="sec-3-1-3"><span class="section-number-5">3.1.3</span> 配合protobuf</h5>
+<div class="outline-text-5" id="text-3-1-3">
 
 <p>elephant-bird实现了protobuf+lzo组合使用方式。
 </p>
@@ -597,16 +582,16 @@ message Message {
 
 </div>
 
-<div id="outline-container-1-3-2" class="outline-4">
-<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> 多路输入</h4>
-<div class="outline-text-4" id="text-1-3-2">
+<div id="outline-container-3-2" class="outline-4">
+<h4 id="sec-3-2"><span class="section-number-4">3.2</span> 多路输入</h4>
+<div class="outline-text-4" id="text-3-2">
 
 
 </div>
 
-<div id="outline-container-1-3-2-1" class="outline-5">
-<h5 id="sec-1-3-2-1"><span class="section-number-5">1.3.2.1</span> MultipleInputs</h5>
-<div class="outline-text-5" id="text-1-3-2-1">
+<div id="outline-container-3-2-1" class="outline-5">
+<h5 id="sec-3-2-1"><span class="section-number-5">3.2.1</span> MultipleInputs</h5>
+<div class="outline-text-5" id="text-3-2-1">
 
 <ul>
 <li>参考代码 <a href="https://github.com/dirtysalt/tomb/blob/master/java/mr/src/main/java/com/dirlt/java/mr/RunMultipleInputs1.java">com.dirlt.java.mr.RunMultipleInputs1</a>
@@ -644,14 +629,14 @@ message Message {
 
 </div>
 
-<div id="outline-container-1-3-2-2" class="outline-5">
-<h5 id="sec-1-3-2-2"><span class="section-number-5">1.3.2.2</span> MultipleTableInputFormat</h5>
-<div class="outline-text-5" id="text-1-3-2-2">
+<div id="outline-container-3-2-2" class="outline-5">
+<h5 id="sec-3-2-2"><span class="section-number-5">3.2.2</span> MultipleTableInputFormat</h5>
+<div class="outline-text-5" id="text-3-2-2">
 
 <ul>
 <li>参考代码 <a href="https://github.com/dirtysalt/tomb/blob/master/java/mr/src/main/java/com/dirlt/java/mr/RunMultipleInputs2.java">com.dirlt.java.mr.RunMultipleInputs2</a>
 </li>
-<li>*note(dirlt):在cdh4.3.0下面运行的代码略有变动，存放在 <a href="https://github.com/dirtysalt/tomb/blob/master/java/mr2/src/main/java/com/dirlt/java/mr2/RunMultipleInputs2.java">com.dirlt.java.mr2.RunMultipleInputs2</a>*
+<li>#note: 在cdh4.3.0下面运行的代码略有变动，存放在 <a href="https://github.com/dirtysalt/tomb/blob/master/java/mr2/src/main/java/com/dirlt/java/mr2/RunMultipleInputs2.java">com.dirlt.java.mr2.RunMultipleInputs2</a>
 <ul>
 <li>需要配合MultipleInputs使用
 </li>
@@ -670,7 +655,7 @@ message Message {
 <ul>
 <li>string格式为 &lt;tableName&gt; ! hexString(scan) ! hexString(scan)
 </li>
-<li>从path中将TableInput字符串分离的代码是 path.toString().substring(path.getParent().toString().length() + 1); <b>todo(dirlt)：对于大部分的情况是可以正常handle的</b>
+<li>从path中将TableInput字符串分离的代码是 path.toString().substring(path.getParent().toString().length() + 1);
 </li>
 </ul>
 
@@ -700,16 +685,16 @@ message Message {
 
 </div>
 
-<div id="outline-container-1-3-3" class="outline-4">
-<h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> 多路输出</h4>
-<div class="outline-text-4" id="text-1-3-3">
+<div id="outline-container-3-3" class="outline-4">
+<h4 id="sec-3-3"><span class="section-number-4">3.3</span> 多路输出</h4>
+<div class="outline-text-4" id="text-3-3">
 
 
 </div>
 
-<div id="outline-container-1-3-3-1" class="outline-5">
-<h5 id="sec-1-3-3-1"><span class="section-number-5">1.3.3.1</span> MultipleOutputs</h5>
-<div class="outline-text-5" id="text-1-3-3-1">
+<div id="outline-container-3-3-1" class="outline-5">
+<h5 id="sec-3-3-1"><span class="section-number-5">3.3.1</span> MultipleOutputs</h5>
+<div class="outline-text-5" id="text-3-3-1">
 
 <ul>
 <li>参考代码 <a href="https://github.com/dirtysalt/tomb/blob/master/java/mr/src/main/java/com/dirlt/java/mr/RunMultipleOutputs.java">com.dirlt.java.mr.RunMultipleOutputs</a>
@@ -743,9 +728,9 @@ message Message {
 
 </div>
 
-<div id="outline-container-1-3-3-2" class="outline-5">
-<h5 id="sec-1-3-3-2"><span class="section-number-5">1.3.3.2</span> MultipleTableOutputFormat</h5>
-<div class="outline-text-5" id="text-1-3-3-2">
+<div id="outline-container-3-3-2" class="outline-5">
+<h5 id="sec-3-3-2"><span class="section-number-5">3.3.2</span> MultipleTableOutputFormat</h5>
+<div class="outline-text-5" id="text-3-3-2">
 
 <ul>
 <li>参考代码 <a href="https://github.com/dirtysalt/tomb/blob/master/java/mr/src/main/java/com/dirlt/java/mr/RunMultipleTableOutput.java">com.dirlt.java.mr.RunMultipleTableOutput</a>
@@ -769,9 +754,9 @@ message Message {
 
 </div>
 
-<div id="outline-container-1-3-4" class="outline-4">
-<h4 id="sec-1-3-4"><span class="section-number-4">1.3.4</span> 获取集群运行状况</h4>
-<div class="outline-text-4" id="text-1-3-4">
+<div id="outline-container-3-4" class="outline-4">
+<h4 id="sec-3-4"><span class="section-number-4">3.4</span> 获取集群运行状况</h4>
+<div class="outline-text-4" id="text-3-4">
 
 <ul>
 <li>参考代码 <a href="https://github.com/dirtysalt/tomb/blob/master/java/mr/src/main/java/com/dirlt/java/mr/ClusterSummary.java">com.dirlt.java.mr.ClusterSummary</a>
@@ -785,18 +770,18 @@ message Message {
 
 </div>
 
-<div id="outline-container-1-3-5" class="outline-4">
-<h4 id="sec-1-3-5"><span class="section-number-4">1.3.5</span> OutOfMemoryError</h4>
-<div class="outline-text-4" id="text-1-3-5">
+<div id="outline-container-3-5" class="outline-4">
+<h4 id="sec-3-5"><span class="section-number-4">3.5</span> OutOfMemoryError</h4>
+<div class="outline-text-4" id="text-3-5">
 
 <ul>
-<li>hadoop的mapreduce作业中经常出现Java heap space解决方案 <a href="http://blog.sina.com.cn/s/blog_6345041c01011bjq.html">http://blog.sina.com.cn/s/blog_6345041c01011bjq.html</a>
+<li>hadoop的mapreduce作业中经常出现Java heap space解决方案 <a href="http://blog.sina.com.cn/s/blog_6345041c01011bjq.html">http://blog.sina.com.cn/s/blog_6345041c01011bjq.html</a>
 </li>
 <li>Hadoop troubleshooting <a href="http://ww2.cs.fsu.edu/~czhang/errors.html">http://ww2.cs.fsu.edu/~czhang/errors.html</a>
 </li>
 <li>Thomas Jungblut's Blog: Dealing with "OutOfMemoryError" in Hadoop <a href="http://codingwiththomas.blogspot.jp/2011/07/dealing-with-outofmemoryerror-in-hadoop.html">http://codingwiththomas.blogspot.jp/2011/07/dealing-with-outofmemoryerror-in-hadoop.html</a>
 </li>
-<li>NoSQL | Hadoop <a href="http://www.nosql.se/tags/hadoop/">http://www.nosql.se/tags/hadoop/</a>
+<li>NoSQL | Hadoop <a href="http://www.nosql.se/tags/hadoop/">http://www.nosql.se/tags/hadoop/</a>
 </li>
 </ul>
 
@@ -819,9 +804,9 @@ message Message {
 
 </div>
 
-<div id="outline-container-1-3-6" class="outline-4">
-<h4 id="sec-1-3-6"><span class="section-number-4">1.3.6</span> topology rack awareness</h4>
-<div class="outline-text-4" id="text-1-3-6">
+<div id="outline-container-3-6" class="outline-4">
+<h4 id="sec-3-6"><span class="section-number-4">3.6</span> topology rack awareness</h4>
+<div class="outline-text-4" id="text-3-6">
 
 <p>有两种方式实现，主要是实现DNS-name/IP到network path映射，network path是如下格式的字符串
 </p><ul>
@@ -846,15 +831,15 @@ message Message {
 <p>
 但是存在另外一种更好的办法就是ScriptBasedMapping，这个是DNSToSwichMapping的一个实现，可以通过配置脚本来做映射。
 将属性topology.script.filename设置成为脚本，脚本输入names，然后返回结果是按照空格或者是回车分隔的列表即可。
-<b>note(dirlt):内部使用StringTokenizer来拆分结果</b>
+#note: 内部使用StringTokenizer来拆分结果
 </p>
 </div>
 
 </div>
 
-<div id="outline-container-1-3-7" class="outline-4">
-<h4 id="sec-1-3-7"><span class="section-number-4">1.3.7</span> streaming</h4>
-<div class="outline-text-4" id="text-1-3-7">
+<div id="outline-container-3-7" class="outline-4">
+<h4 id="sec-3-7"><span class="section-number-4">3.7</span> streaming</h4>
+<div class="outline-text-4" id="text-3-7">
 
 <ul>
 <li>Hadoop Streaming <a href="http://hadoop.apache.org/docs/r1.1.2/streaming.html">http://hadoop.apache.org/docs/r1.1.2/streaming.html</a>
@@ -863,7 +848,7 @@ message Message {
 
 
 <p>
-streaming允许用户使用脚本来编写mapper/reducer，使用stdin/stdout作为通信接口。tasktracker spwan一个特殊的task, 这个task将mapper/reducer数据通过pipe传递给脚本。 <b>note(dirlt):hadoop pipes则是使用unix socket和C++处理程序通信，基本思想是相同的</b>
+streaming允许用户使用脚本来编写mapper/reducer，使用stdin/stdout作为通信接口。tasktracker spwan一个特殊的task, 这个task将mapper/reducer数据通过pipe传递给脚本。 #note: hadoop pipes则是使用unix socket和C++处理程序通信，基本思想是相同的
 </p>
 <p>
 调用方式：hadoop $HADOOP_HOME/contrib/streaming/hadoop-streaming-*.jar &lt;OPTIONS&gt; 其中OPTIONS如下：
@@ -923,9 +908,9 @@ streaming允许用户使用脚本来编写mapper/reducer，使用stdin/stdout作
 
 </div>
 
-<div id="outline-container-1-3-8" class="outline-4">
-<h4 id="sec-1-3-8"><span class="section-number-4">1.3.8</span> Too many fetch-failures</h4>
-<div class="outline-text-4" id="text-1-3-8">
+<div id="outline-container-3-8" class="outline-4">
+<h4 id="sec-3-8"><span class="section-number-4">3.8</span> Too many fetch-failures</h4>
+<div class="outline-text-4" id="text-3-8">
 
 <p>集群中出现job中少数几个任务卡在reduce的copy阶段，并且这几个任务都是在同一个机器执行。tasktracker log日志如下： <b>可以看到有两个task,49和50</b>
 </p>
@@ -1148,15 +1133,12 @@ Heap
 
 </div>
 
-<div id="outline-container-1-3-9" class="outline-4">
-<h4 id="sec-1-3-9"><span class="section-number-4">1.3.9</span> blacklist</h4>
-<div class="outline-text-4" id="text-1-3-9">
+<div id="outline-container-3-9" class="outline-4">
+<h4 id="sec-3-9"><span class="section-number-4">3.9</span> blacklist</h4>
+<div class="outline-text-4" id="text-3-9">
 
 <ul>
 <li><a href="http://www.mapr.com/doc/display/MapR/TaskTracker+Blacklisting">http://www.mapr.com/doc/display/MapR/TaskTracker+Blacklisting</a>
-</li>
-<li><b>note(dirlt):blacklist是一个策略问题，会经常变动</b>
-
 </li>
 <li>Per-Job Blacklisting
 <ul>
@@ -1216,9 +1198,9 @@ Heap
 
 </div>
 
-<div id="outline-container-1-3-10" class="outline-4">
-<h4 id="sec-1-3-10"><span class="section-number-4">1.3.10</span> 磁盘空间</h4>
-<div class="outline-text-4" id="text-1-3-10">
+<div id="outline-container-3-10" class="outline-4">
+<h4 id="sec-3-10"><span class="section-number-4">3.10</span> 磁盘空间</h4>
+<div class="outline-text-4" id="text-3-10">
 
 <p>随着我们以5T/day数据量曾长，很多机器磁盘都已经出现饱和情况（可能是某个data目录已经饱和），对我们的tasktracker也造成了一定的影响。我抽取了了今天所有挂掉的tt来做post-mortem. 结果是这样的。其中有几个tt前几天已经是被blacklist的。这些机器有 dp24,dp31,dp34,dp36,dp41. 我们后续对磁盘规划的话，一定需要预留一部分磁盘空间出来给tt（不知道现在是否预留足够），另外一个就是我们调研一下如何tt是否可以强制清理，自己腾出一部分磁盘空间。
 </p>
@@ -1327,20 +1309,359 @@ none             24G     0   24G   0% /run/shm
 </pre>
 
 </div>
+
+</div>
+
+<div id="outline-container-3-11" class="outline-4">
+<h4 id="sec-3-11"><span class="section-number-4">3.11</span> getMapOutput failed</h4>
+<div class="outline-text-4" id="text-3-11">
+
+<ul>
+<li><a href="http://stackoverflow.com/questions/10799143/hadoop-mapreduce-getmapoutput-failed">http://stackoverflow.com/questions/10799143/hadoop-mapreduce-getmapoutput-failed</a> (bad case)
+</li>
+<li><a href="https://issues.apache.org/jira/browse/MAPREDUCE-5">https://issues.apache.org/jira/browse/MAPREDUCE-5</a> (bad case)
+</li>
+</ul>
+
+
+
+</div>
+
+<div id="outline-container-3-11-1" class="outline-5">
+<h5 id="sec-3-11-1"><span class="section-number-5">3.11.1</span> normal case</h5>
+<div class="outline-text-5" id="text-3-11-1">
+
+<p>dp41上面出现如下错误日志，可以看到dp41在作为map output server时候，dp16从这些取数据但是失败，并且可以分析
+</p><ul>
+<li>map task attempt_201301231102_33841_m_000331_0
+</li>
+<li>reduce task id = 15
+</li>
+</ul>
+
+
+
+
+<pre class="example">2013-05-13 12:23:06,708 WARN org.apache.hadoop.mapred.TaskTracker: getMapOutput(attempt_201301231102_33841_m_000331_0,15) failed :
+org.mortbay.jetty.EofException
+        at org.mortbay.jetty.HttpGenerator.flush(HttpGenerator.java:791)
+        at org.mortbay.jetty.AbstractGenerator$Output.blockForOutput(AbstractGenerator.java:551)
+        at org.mortbay.jetty.AbstractGenerator$Output.flush(AbstractGenerator.java:572)
+        at org.mortbay.jetty.HttpConnection$Output.flush(HttpConnection.java:1012)
+        at org.mortbay.jetty.AbstractGenerator$Output.write(AbstractGenerator.java:651)
+        at org.mortbay.jetty.AbstractGenerator$Output.write(AbstractGenerator.java:580)
+        at org.apache.hadoop.mapred.TaskTracker$MapOutputServlet.doGet(TaskTracker.java:4061)
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:707)
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:820)
+        at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:511)
+        at org.mortbay.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1221)
+        at org.apache.hadoop.http.HttpServer$QuotingInputFilter.doFilter(HttpServer.java:829)
+        at org.mortbay.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1212)
+        at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:399)
+        at org.mortbay.jetty.security.SecurityHandler.handle(SecurityHandler.java:216)
+        at org.mortbay.jetty.servlet.SessionHandler.handle(SessionHandler.java:182)
+        at org.mortbay.jetty.handler.ContextHandler.handle(ContextHandler.java:766)
+        at org.mortbay.jetty.webapp.WebAppContext.handle(WebAppContext.java:450)
+        at org.mortbay.jetty.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:230)
+        at org.mortbay.jetty.handler.HandlerWrapper.handle(HandlerWrapper.java:152)
+        at org.mortbay.jetty.Server.handle(Server.java:326)
+        at org.mortbay.jetty.HttpConnection.handleRequest(HttpConnection.java:542)
+        at org.mortbay.jetty.HttpConnection$RequestHandler.headerComplete(HttpConnection.java:928)
+        at org.mortbay.jetty.HttpParser.parseNext(HttpParser.java:549)
+        at org.mortbay.jetty.HttpParser.parseAvailable(HttpParser.java:212)
+        at org.mortbay.jetty.HttpConnection.handle(HttpConnection.java:404)
+        at org.mortbay.io.nio.SelectChannelEndPoint.run(SelectChannelEndPoint.java:410)
+        at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:582)
+Caused by: java.io.IOException: Broken pipe
+        at sun.nio.ch.FileDispatcher.write0(Native Method)
+        at sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:29)
+        at sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:69)
+        at sun.nio.ch.IOUtil.write(IOUtil.java:40)
+        at sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:336)
+        at org.mortbay.io.nio.ChannelEndPoint.flush(ChannelEndPoint.java:171)
+        at org.mortbay.io.nio.SelectChannelEndPoint.flush(SelectChannelEndPoint.java:221)
+        at org.mortbay.jetty.HttpGenerator.flush(HttpGenerator.java:725)
+        ... 27 more
+
+2013-05-13 12:23:06,708 WARN org.mortbay.log: Committed before 410 getMapOutput(attempt_201301231102_33841_m_000331_0,15) failed :
+org.mortbay.jetty.EofException
+        at org.mortbay.jetty.HttpGenerator.flush(HttpGenerator.java:791)
+        at org.mortbay.jetty.AbstractGenerator$Output.blockForOutput(AbstractGenerator.java:551)
+        at org.mortbay.jetty.AbstractGenerator$Output.flush(AbstractGenerator.java:572)
+        at org.mortbay.jetty.HttpConnection$Output.flush(HttpConnection.java:1012)
+        at org.mortbay.jetty.AbstractGenerator$Output.write(AbstractGenerator.java:651)
+        at org.mortbay.jetty.AbstractGenerator$Output.write(AbstractGenerator.java:580)
+        at org.apache.hadoop.mapred.TaskTracker$MapOutputServlet.doGet(TaskTracker.java:4061)
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:707)
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:820)
+
+        at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:511)
+        at org.mortbay.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1221)
+        at org.apache.hadoop.http.HttpServer$QuotingInputFilter.doFilter(HttpServer.java:829)
+        at org.mortbay.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1212)
+        at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:399)
+        at org.mortbay.jetty.security.SecurityHandler.handle(SecurityHandler.java:216)
+        at org.mortbay.jetty.servlet.SessionHandler.handle(SessionHandler.java:182)
+        at org.mortbay.jetty.handler.ContextHandler.handle(ContextHandler.java:766)
+        at org.mortbay.jetty.webapp.WebAppContext.handle(WebAppContext.java:450)
+        at org.mortbay.jetty.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:230)
+        at org.mortbay.jetty.handler.HandlerWrapper.handle(HandlerWrapper.java:152)
+        at org.mortbay.jetty.Server.handle(Server.java:326)
+        at org.mortbay.jetty.HttpConnection.handleRequest(HttpConnection.java:542)
+        at org.mortbay.jetty.HttpConnection$RequestHandler.headerComplete(HttpConnection.java:928)
+        at org.mortbay.jetty.HttpParser.parseNext(HttpParser.java:549)
+        at org.mortbay.jetty.HttpParser.parseAvailable(HttpParser.java:212)
+        at org.mortbay.jetty.HttpConnection.handle(HttpConnection.java:404)
+        at org.mortbay.io.nio.SelectChannelEndPoint.run(SelectChannelEndPoint.java:410)
+        at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:582)
+Caused by: java.io.IOException: Broken pipe
+        at sun.nio.ch.FileDispatcher.write0(Native Method)
+        at sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:29)
+        at sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:69)
+        at sun.nio.ch.IOUtil.write(IOUtil.java:40)
+        at sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:336)
+        at org.mortbay.io.nio.ChannelEndPoint.flush(ChannelEndPoint.java:171)
+        at org.mortbay.io.nio.SelectChannelEndPoint.flush(SelectChannelEndPoint.java:221)
+        at org.mortbay.jetty.HttpGenerator.flush(HttpGenerator.java:725)
+        ... 27 more
+
+2013-05-13 12:23:06,708 INFO org.apache.hadoop.mapred.TaskTracker.clienttrace: src: 10.11.0.41:50060, dest: 10.11.0.16:3294, bytes: 0, op: MAPRED_SHUFFLE, cliID: attempt_201301231102_33841_m_000331_0, duration: 19292379
+2013-05-13 12:23:06,709 ERROR org.mortbay.log: /mapOutput
+java.lang.IllegalStateException: Committed
+        at org.mortbay.jetty.Response.resetBuffer(Response.java:1023)
+        at org.mortbay.jetty.Response.sendError(Response.java:240)
+        at org.apache.hadoop.mapred.TaskTracker$MapOutputServlet.doGet(TaskTracker.java:4094)
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:707)
+        at javax.servlet.http.HttpServlet.service(HttpServlet.java:820)
+        at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:511)
+        at org.mortbay.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1221)
+        at org.apache.hadoop.http.HttpServer$QuotingInputFilter.doFilter(HttpServer.java:829)
+        at org.mortbay.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1212)
+        at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:399)
+        at org.mortbay.jetty.security.SecurityHandler.handle(SecurityHandler.java:216)
+        at org.mortbay.jetty.servlet.SessionHandler.handle(SessionHandler.java:182)
+        at org.mortbay.jetty.handler.ContextHandler.handle(ContextHandler.java:766)
+        at org.mortbay.jetty.webapp.WebAppContext.handle(WebAppContext.java:450)
+        at org.mortbay.jetty.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:230)
+        at org.mortbay.jetty.handler.HandlerWrapper.handle(HandlerWrapper.java:152)
+        at org.mortbay.jetty.Server.handle(Server.java:326)
+        at org.mortbay.jetty.HttpConnection.handleRequest(HttpConnection.java:542)
+        at org.mortbay.jetty.HttpConnection$RequestHandler.headerComplete(HttpConnection.java:928)
+        at org.mortbay.jetty.HttpParser.parseNext(HttpParser.java:549)
+        at org.mortbay.jetty.HttpParser.parseAvailable(HttpParser.java:212)
+        at org.mortbay.jetty.HttpConnection.handle(HttpConnection.java:404)
+        at org.mortbay.io.nio.SelectChannelEndPoint.run(SelectChannelEndPoint.java:410)
+        at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:582)
+</pre>
+
+
+<p>
+然后察看这个job两个task情况，性能数据如下：
+</p>
+<p>
+==mapper in dp41==
+</p>
+
+
+<pre class="example">monitor
+by pass counter 2,557,788
+
+FileSystemCounters
+FILE_BYTES_READ 223,919,205
+HDFS_BYTES_READ 1,229,397,574
+FILE_BYTES_WRITTEN      445,249,847
+
+Map-Reduce Framework
+Combine output records  0
+Map input records       3,155,527
+Physical memory (bytes) snapshot        1,076,948,992
+Spilled Records 4,781,912
+Map output bytes        523,441,900
+Total committed heap usage (bytes)      1,214,513,152
+CPU time spent (ms)     104,400
+Virtual memory (bytes) snapshot 3,522,392,064
+SPLIT_RAW_BYTES 321
+Map output records      2,390,956
+Combine input records   0
+
+LzoBlocks of com.umeng.analytics.proto.DailyLaunchProtos4$DailyLaunchInfo
+Errors  0
+Records Read    3,155,527
+</pre>
+
+
+<p>
+==reducer in dp16==
+</p>
+
+
+<pre class="example">FileSystemCounters
+FILE_BYTES_READ 28,468,696,830
+FILE_BYTES_WRITTEN      28,468,769,783
+
+Map-Reduce Framework
+Reduce input groups     7
+Combine output records  0
+Reduce shuffle bytes    28,332,344,050
+Physical memory (bytes) snapshot        2,283,491,328
+Reduce output records   11
+Spilled Records 339,962,329
+Total committed heap usage (bytes)      1,863,778,304
+CPU time spent (ms)     3,031,800
+Virtual memory (bytes) snapshot 3,255,595,008
+Combine input records   0
+Reduce input records    321,140,243
+</pre>
+
+
+<p>
+性能数据非常正常. 然后察看dp16对应时刻的日志，发现这个getMapOutput只不过是一个偶然的失败。但是其实从dp16上面的日志来看，可能只是取map output部分block没有成功，但是后续还是成功的，观察 <b>attempt_201301231102_33841_r_000015_0</b> 传输百分比和block数目。
+</p>
+
+
+<pre class="example">2013-05-13 12:23:04,575 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_33841_r_000015_0 0.01798942% reduce &gt; copy (102 of 1890 at 19.63 MB/s) &gt;
+2013-05-13 12:23:04,620 INFO org.apache.hadoop.mapred.TaskTracker.clienttrace: src: 10.11.0.16:50060, dest: 10.11.0.50:29582, bytes: 28814, op: MAPRED_SHUFFLE, cliID: attempt_201301231102_33841_m_000480_0, duration: 3011431376
+2013-05-13 12:23:05,438 INFO org.apache.hadoop.mapred.TaskTracker.clienttrace: src: 10.11.0.16:50060, dest: 10.11.0.54:38101, bytes: 13541361, op: MAPRED_SHUFFLE, cliID: attempt_201301231102_33841_m_000480_0, duration: 28773030913
+2013-05-13 12:23:05,843 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_33841_m_000520_0 0.26028645%
+2013-05-13 12:23:05,924 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_33841_m_000241_0 0.7132669%
+2013-05-13 12:23:05,947 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_33841_m_000441_0 0.70975286%
+2013-05-13 12:23:06,114 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_33840_m_000000_0 0.47209314%
+2013-05-13 12:23:06,579 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_33841_m_000094_0 0.8537282%
+2013-05-13 12:23:06,755 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_33841_m_000342_0 0.54360586%
+2013-05-13 12:23:08,298 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_33841_r_000015_0 0.019400354% reduce &gt; copy (110 of 1890 at 20.45 MB/s) &gt;
+</pre>
+
+
 </div>
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> all-about-code</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-3-11-2" class="outline-5">
+<h5 id="sec-3-11-2"><span class="section-number-5">3.11.2</span> bas case</h5>
+<div class="outline-text-5" id="text-3-11-2">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3-12" class="outline-4">
+<h4 id="sec-3-12"><span class="section-number-4">3.12</span> Error initializing</h4>
+<div class="outline-text-4" id="text-3-12">
 
 
 </div>
 
-<div id="outline-container-1-4-1" class="outline-4">
-<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> task heartbeat</h4>
-<div class="outline-text-4" id="text-1-4-1">
+<div id="outline-container-3-12-1" class="outline-5">
+<h5 id="sec-3-12-1"><span class="section-number-5">3.12.1</span> No such file or directory</h5>
+<div class="outline-text-5" id="text-3-12-1">
+
+<p>dp31出现如下日志，这个过程是非常诡异的。从stacktrace上面可以看到过程是在创建job directory时候正要修改权限，但是文件找不到了。从dp31的df -h可以看到剩余磁盘空间如下
+</p>
+
+
+<pre class="example">/dev/sdf1       1.8T  1.7T  904M 100% /data/data5
+/dev/sdb1       1.8T  1.7T  681M 100% /data/data1
+/dev/sdc1       1.8T  1.7T  902M 100% /data/data2
+/dev/sdd1       1.8T  1.7T  1.7G 100% /data/data3
+/dev/sdg1       1.8T  1.7T 1004M 100% /data/data6
+/dev/sdh1       1.8T  1.7T  1.1G 100% /data/data7
+/dev/sde1       1.8T  346G  1.4T  20% /data/data4
+</pre>
+
+<p>
+所以我怀疑是因为磁盘过满出现的一些诡异问题。 #note: 容易造成node被blacklisted.
+</p>
+
+
+
+<pre class="example">2013-05-14 00:20:56,266 INFO org.apache.hadoop.mapred.TaskTracker: LaunchTaskAction (registerTask): attempt_201301231102_34166_m_000000_0 task's state:UNASSIGNED
+2013-05-14 00:20:56,266 INFO org.apache.hadoop.mapred.TaskTracker: Trying to launch : attempt_201301231102_34166_m_000000_0 which needs 1 slots
+2013-05-14 00:20:56,266 INFO org.apache.hadoop.mapred.TaskTracker: In TaskLauncher, current free slots : 12 and trying to launch attempt_201301231102_34166_m_000000_0 which needs 1 slots
+2013-05-14 00:20:56,312 WARN org.apache.hadoop.conf.Configuration: /data/data5/mapred/local/ttprivate/taskTracker/xiarong/jobcache/job_201301231102_34166/job.xml:a attempt to override final parameter: mapred.submit.replication;  Ignoring.
+2013-05-14 00:20:56,327 INFO org.apache.hadoop.mapred.JobLocalizer: Initializing user xiarong on this TT.
+2013-05-14 00:20:56,334 WARN org.apache.hadoop.mapred.TaskTracker: Exception while localization ENOENT: No such file or directory
+        at org.apache.hadoop.io.nativeio.NativeIO.chmod(Native Method)
+        at org.apache.hadoop.fs.RawLocalFileSystem.setPermission(RawLocalFileSystem.java:521)
+        at org.apache.hadoop.fs.RawLocalFileSystem.mkdirs(RawLocalFileSystem.java:344)
+        at org.apache.hadoop.mapred.JobLocalizer.createJobDirs(JobLocalizer.java:222)
+        at org.apache.hadoop.mapred.DefaultTaskController.initializeJob(DefaultTaskController.java:204)
+        at org.apache.hadoop.mapred.TaskTracker$4.run(TaskTracker.java:1352)
+        at java.security.AccessController.doPrivileged(Native Method)
+        at javax.security.auth.Subject.doAs(Subject.java:396)
+        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1157)
+        at org.apache.hadoop.mapred.TaskTracker.initializeJob(TaskTracker.java:1327)
+        at org.apache.hadoop.mapred.TaskTracker.localizeJob(TaskTracker.java:1242)
+        at org.apache.hadoop.mapred.TaskTracker.startNewTask(TaskTracker.java:2563)
+        at org.apache.hadoop.mapred.TaskTracker$TaskLauncher.run(TaskTracker.java:2527)
+
+2013-05-14 00:20:56,334 ERROR org.apache.hadoop.security.UserGroupInformation: PriviledgedActionException as:xiarong (auth:SIMPLE) cause:ENOENT: No such file or directory
+2013-05-14 00:20:56,334 WARN org.apache.hadoop.mapred.TaskTracker: Error initializing attempt_201301231102_34166_m_000000_0:
+ENOENT: No such file or directory
+        at org.apache.hadoop.io.nativeio.NativeIO.chmod(Native Method)
+        at org.apache.hadoop.fs.RawLocalFileSystem.setPermission(RawLocalFileSystem.java:521)
+        at org.apache.hadoop.fs.RawLocalFileSystem.mkdirs(RawLocalFileSystem.java:344)
+        at org.apache.hadoop.mapred.JobLocalizer.createJobDirs(JobLocalizer.java:222)
+        at org.apache.hadoop.mapred.DefaultTaskController.initializeJob(DefaultTaskController.java:204)
+        at org.apache.hadoop.mapred.TaskTracker$4.run(TaskTracker.java:1352)
+        at java.security.AccessController.doPrivileged(Native Method)
+        at javax.security.auth.Subject.doAs(Subject.java:396)
+        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1157)
+        at org.apache.hadoop.mapred.TaskTracker.initializeJob(TaskTracker.java:1327)
+        at org.apache.hadoop.mapred.TaskTracker.localizeJob(TaskTracker.java:1242)
+        at org.apache.hadoop.mapred.TaskTracker.startNewTask(TaskTracker.java:2563)
+        at org.apache.hadoop.mapred.TaskTracker$TaskLauncher.run(TaskTracker.java:2527)
+
+2013-05-14 00:20:56,334 ERROR org.apache.hadoop.mapred.TaskStatus: Trying to set finish time for task attempt_201301231102_34166_m_000000_0 when no start time is set, stackTrace is : java.lang.Exception
+        at org.apache.hadoop.mapred.TaskStatus.setFinishTime(TaskStatus.java:185)
+        at org.apache.hadoop.mapred.TaskTracker$TaskInProgress.kill(TaskTracker.java:3280)
+        at org.apache.hadoop.mapred.TaskTracker.startNewTask(TaskTracker.java:2573)
+        at org.apache.hadoop.mapred.TaskTracker$TaskLauncher.run(TaskTracker.java:2527)
+</pre>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3-13" class="outline-4">
+<h4 id="sec-3-13"><span class="section-number-4">3.13</span> shuffleInMemory OutOfMemoryError</h4>
+<div class="outline-text-4" id="text-3-13">
+
+<ul>
+<li>Users - Shuffle In Memory OutOfMemoryError : <a href="http://hadoop-common.472056.n3.nabble.com/Shuffle-In-Memory-OutOfMemoryError-td433197.html">http://hadoop-common.472056.n3.nabble.com/Shuffle-In-Memory-OutOfMemoryError-td433197.html</a>
+</li>
+</ul>
+
+
+
+
+<pre class="example">2013-06-19 07:16:17,180 FATAL org.apache.hadoop.mapred.Task: attempt_201306141608_1574_r_009039_0 : Map output copy failure : java.lang.OutOfMemoryError: Java heap space
+        at org.apache.hadoop.mapred.ReduceTask$ReduceCopier$MapOutputCopier.shuffleInMemory(ReduceTask.java:1612)
+        at org.apache.hadoop.mapred.ReduceTask$ReduceCopier$MapOutputCopier.getMapOutput(ReduceTask.java:1472)
+        at org.apache.hadoop.mapred.ReduceTask$ReduceCopier$MapOutputCopier.copyOutput(ReduceTask.java:1321)
+        at org.apache.hadoop.mapred.ReduceTask$ReduceCopier$MapOutputCopier.run(ReduceTask.java:1253)
+</pre>
+
+
+<p>
+将参数mapred.job.shuffle.input.buffer.percent设置成为0.2或者是更小。关于这个问题实际上应该是一个bug，framework应该是能够智能决定shuffle在memory还是在disk上面的。可以参考代码分析一节的shuffle in memory.
+</p></div>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> ReadingCode</h3>
+<div class="outline-text-3" id="text-4">
+
+
+</div>
+
+<div id="outline-container-4-1" class="outline-4">
+<h4 id="sec-4-1"><span class="section-number-4">4.1</span> task heartbeat</h4>
+<div class="outline-text-4" id="text-4-1">
 
 <ul>
 <li>task不管是mapper还是reducer，和mr框架相关的内容都包含在了Context里面。
@@ -1361,9 +1682,9 @@ none             24G     0   24G   0% /run/shm
 
 </div>
 
-<div id="outline-container-1-4-2" class="outline-4">
-<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> Partitioner</h4>
-<div class="outline-text-4" id="text-1-4-2">
+<div id="outline-container-4-2" class="outline-4">
+<h4 id="sec-4-2"><span class="section-number-4">4.2</span> Partitioner</h4>
+<div class="outline-text-4" id="text-4-2">
 
 <p>将kv分配到哪个reduce上，接口是
 </p>
@@ -1396,9 +1717,9 @@ none             24G     0   24G   0% /run/shm
 
 </div>
 
-<div id="outline-container-1-4-3" class="outline-4">
-<h4 id="sec-1-4-3"><span class="section-number-4">1.4.3</span> shuffle in memory</h4>
-<div class="outline-text-4" id="text-1-4-3">
+<div id="outline-container-4-3" class="outline-4">
+<h4 id="sec-4-3"><span class="section-number-4">4.3</span> shuffle in memory</h4>
+<div class="outline-text-4" id="text-4-3">
 
 <ul>
 <li>Users - Shuffle In Memory OutOfMemoryError : <a href="http://hadoop-common.472056.n3.nabble.com/Shuffle-In-Memory-OutOfMemoryError-td433197.html">http://hadoop-common.472056.n3.nabble.com/Shuffle-In-Memory-OutOfMemoryError-td433197.html</a>
@@ -1455,9 +1776,9 @@ none             24G     0   24G   0% /run/shm
 
 </div>
 
-<div id="outline-container-1-4-4" class="outline-4">
-<h4 id="sec-1-4-4"><span class="section-number-4">1.4.4</span> lzo index format</h4>
-<div class="outline-text-4" id="text-1-4-4">
+<div id="outline-container-4-4" class="outline-4">
+<h4 id="sec-4-4"><span class="section-number-4">4.4</span> lzo index format</h4>
+<div class="outline-text-4" id="text-4-4">
 
 <p>主要分析elephant-bird的lzo index方面的代码，了解原理之后就可以做一些简单的扩展或者以此为参考做一些索引工作。分析包含几个实现文件
 </p><ul>
@@ -1471,9 +1792,9 @@ none             24G     0   24G   0% /run/shm
 
 </div>
 
-<div id="outline-container-1-4-4-1" class="outline-5">
-<h5 id="sec-1-4-4-1"><span class="section-number-5">1.4.4.1</span> DistributedLzoIndexer</h5>
-<div class="outline-text-5" id="text-1-4-4-1">
+<div id="outline-container-4-4-1" class="outline-5">
+<h5 id="sec-4-4-1"><span class="section-number-5">4.4.1</span> DistributedLzoIndexer</h5>
+<div class="outline-text-5" id="text-4-4-1">
 
 <ul>
 <li>调用walkPath尝试得到所有的输入文件，使用nonTemporaryFilter来过滤临时文件，然后添加到job输入路径里面。
@@ -1558,10 +1879,11 @@ public void close(TaskAttemptContext taskAttemptContext) throws IOException, Int
 </li>
 <li>nextKeyValue. 这个函数则用input stream来读数据。但是注意实际上它只是在寻找split point，也就是block boundary. 这个算法和lzo压缩格式本身相关。
 </li>
+<li>#note: 注意这个input format是unsplitable的
+</li>
 </ul>
 
-<p><b>note(dirlt):注意这个input format是unsplitable的！</b>
-</p>
+
 
 
 <pre class="src src-Java">@Override
@@ -1697,9 +2019,9 @@ public LongWritable getCurrentValue() {
 
 </div>
 
-<div id="outline-container-1-4-4-2" class="outline-5">
-<h5 id="sec-1-4-4-2"><span class="section-number-5">1.4.4.2</span> LzoTextInputFormat</h5>
-<div class="outline-text-5" id="text-1-4-4-2">
+<div id="outline-container-4-4-2" class="outline-5">
+<h5 id="sec-4-4-2"><span class="section-number-5">4.4.2</span> LzoTextInputFormat</h5>
+<div class="outline-text-5" id="text-4-4-2">
 
 <p>首先说明一下大致逻辑
 </p><ul>
@@ -1877,358 +2199,8 @@ public List&lt;InputSplit&gt; getSplits(JobContext job) throws IOException {
 <p>
 整个过程就非常清晰了。fileSplit.getStart()和fileSplit.getLength()是原始分片，如果按照这个信息是不能够解压缩的。但是在LzoIndex的帮助下面定位到了lzoStart和lzoEnd, 这个区间内的数据是可以自解压缩的。
 </p>
-</div>
-</div>
-</div>
 
-</div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> all-about-log</h3>
-<div class="outline-text-3" id="text-1-5">
-
-
-</div>
-
-<div id="outline-container-1-5-1" class="outline-4">
-<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> getMapOutput failed</h4>
-<div class="outline-text-4" id="text-1-5-1">
-
-<ul>
-<li><a href="http://stackoverflow.com/questions/10799143/hadoop-mapreduce-getmapoutput-failed">http://stackoverflow.com/questions/10799143/hadoop-mapreduce-getmapoutput-failed</a> (bad case)
-</li>
-<li><a href="https://issues.apache.org/jira/browse/MAPREDUCE-5">https://issues.apache.org/jira/browse/MAPREDUCE-5</a> (bad case)
-</li>
-</ul>
-
-
-
-</div>
-
-<div id="outline-container-1-5-1-1" class="outline-5">
-<h5 id="sec-1-5-1-1"><span class="section-number-5">1.5.1.1</span> normal case</h5>
-<div class="outline-text-5" id="text-1-5-1-1">
-
-<p>dp41上面出现如下错误日志，可以看到dp41在作为map output server时候，dp16从这些取数据但是失败，并且可以分析
-</p><ul>
-<li>map task attempt_201301231102_33841_m_000331_0
-</li>
-<li>reduce task id = 15
-</li>
-</ul>
-
-
-
-
-<pre class="example">2013-05-13 12:23:06,708 WARN org.apache.hadoop.mapred.TaskTracker: getMapOutput(attempt_201301231102_33841_m_000331_0,15) failed :
-org.mortbay.jetty.EofException
-        at org.mortbay.jetty.HttpGenerator.flush(HttpGenerator.java:791)
-        at org.mortbay.jetty.AbstractGenerator$Output.blockForOutput(AbstractGenerator.java:551)
-        at org.mortbay.jetty.AbstractGenerator$Output.flush(AbstractGenerator.java:572)
-        at org.mortbay.jetty.HttpConnection$Output.flush(HttpConnection.java:1012)
-        at org.mortbay.jetty.AbstractGenerator$Output.write(AbstractGenerator.java:651)
-        at org.mortbay.jetty.AbstractGenerator$Output.write(AbstractGenerator.java:580)
-        at org.apache.hadoop.mapred.TaskTracker$MapOutputServlet.doGet(TaskTracker.java:4061)
-        at javax.servlet.http.HttpServlet.service(HttpServlet.java:707)
-        at javax.servlet.http.HttpServlet.service(HttpServlet.java:820)
-        at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:511)
-        at org.mortbay.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1221)
-        at org.apache.hadoop.http.HttpServer$QuotingInputFilter.doFilter(HttpServer.java:829)
-        at org.mortbay.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1212)
-        at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:399)
-        at org.mortbay.jetty.security.SecurityHandler.handle(SecurityHandler.java:216)
-        at org.mortbay.jetty.servlet.SessionHandler.handle(SessionHandler.java:182)
-        at org.mortbay.jetty.handler.ContextHandler.handle(ContextHandler.java:766)
-        at org.mortbay.jetty.webapp.WebAppContext.handle(WebAppContext.java:450)
-        at org.mortbay.jetty.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:230)
-        at org.mortbay.jetty.handler.HandlerWrapper.handle(HandlerWrapper.java:152)
-        at org.mortbay.jetty.Server.handle(Server.java:326)
-        at org.mortbay.jetty.HttpConnection.handleRequest(HttpConnection.java:542)
-        at org.mortbay.jetty.HttpConnection$RequestHandler.headerComplete(HttpConnection.java:928)
-        at org.mortbay.jetty.HttpParser.parseNext(HttpParser.java:549)
-        at org.mortbay.jetty.HttpParser.parseAvailable(HttpParser.java:212)
-        at org.mortbay.jetty.HttpConnection.handle(HttpConnection.java:404)
-        at org.mortbay.io.nio.SelectChannelEndPoint.run(SelectChannelEndPoint.java:410)
-        at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:582)
-Caused by: java.io.IOException: Broken pipe
-        at sun.nio.ch.FileDispatcher.write0(Native Method)
-        at sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:29)
-        at sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:69)
-        at sun.nio.ch.IOUtil.write(IOUtil.java:40)
-        at sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:336)
-        at org.mortbay.io.nio.ChannelEndPoint.flush(ChannelEndPoint.java:171)
-        at org.mortbay.io.nio.SelectChannelEndPoint.flush(SelectChannelEndPoint.java:221)
-        at org.mortbay.jetty.HttpGenerator.flush(HttpGenerator.java:725)
-        ... 27 more
-
-2013-05-13 12:23:06,708 WARN org.mortbay.log: Committed before 410 getMapOutput(attempt_201301231102_33841_m_000331_0,15) failed :
-org.mortbay.jetty.EofException
-        at org.mortbay.jetty.HttpGenerator.flush(HttpGenerator.java:791)
-        at org.mortbay.jetty.AbstractGenerator$Output.blockForOutput(AbstractGenerator.java:551)
-        at org.mortbay.jetty.AbstractGenerator$Output.flush(AbstractGenerator.java:572)
-        at org.mortbay.jetty.HttpConnection$Output.flush(HttpConnection.java:1012)
-        at org.mortbay.jetty.AbstractGenerator$Output.write(AbstractGenerator.java:651)
-        at org.mortbay.jetty.AbstractGenerator$Output.write(AbstractGenerator.java:580)
-        at org.apache.hadoop.mapred.TaskTracker$MapOutputServlet.doGet(TaskTracker.java:4061)
-        at javax.servlet.http.HttpServlet.service(HttpServlet.java:707)
-        at javax.servlet.http.HttpServlet.service(HttpServlet.java:820)
-
-        at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:511)
-        at org.mortbay.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1221)
-        at org.apache.hadoop.http.HttpServer$QuotingInputFilter.doFilter(HttpServer.java:829)
-        at org.mortbay.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1212)
-        at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:399)
-        at org.mortbay.jetty.security.SecurityHandler.handle(SecurityHandler.java:216)
-        at org.mortbay.jetty.servlet.SessionHandler.handle(SessionHandler.java:182)
-        at org.mortbay.jetty.handler.ContextHandler.handle(ContextHandler.java:766)
-        at org.mortbay.jetty.webapp.WebAppContext.handle(WebAppContext.java:450)
-        at org.mortbay.jetty.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:230)
-        at org.mortbay.jetty.handler.HandlerWrapper.handle(HandlerWrapper.java:152)
-        at org.mortbay.jetty.Server.handle(Server.java:326)
-        at org.mortbay.jetty.HttpConnection.handleRequest(HttpConnection.java:542)
-        at org.mortbay.jetty.HttpConnection$RequestHandler.headerComplete(HttpConnection.java:928)
-        at org.mortbay.jetty.HttpParser.parseNext(HttpParser.java:549)
-        at org.mortbay.jetty.HttpParser.parseAvailable(HttpParser.java:212)
-        at org.mortbay.jetty.HttpConnection.handle(HttpConnection.java:404)
-        at org.mortbay.io.nio.SelectChannelEndPoint.run(SelectChannelEndPoint.java:410)
-        at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:582)
-Caused by: java.io.IOException: Broken pipe
-        at sun.nio.ch.FileDispatcher.write0(Native Method)
-        at sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:29)
-        at sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:69)
-        at sun.nio.ch.IOUtil.write(IOUtil.java:40)
-        at sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:336)
-        at org.mortbay.io.nio.ChannelEndPoint.flush(ChannelEndPoint.java:171)
-        at org.mortbay.io.nio.SelectChannelEndPoint.flush(SelectChannelEndPoint.java:221)
-        at org.mortbay.jetty.HttpGenerator.flush(HttpGenerator.java:725)
-        ... 27 more
-
-2013-05-13 12:23:06,708 INFO org.apache.hadoop.mapred.TaskTracker.clienttrace: src: 10.11.0.41:50060, dest: 10.11.0.16:3294, bytes: 0, op: MAPRED_SHUFFLE, cliID: attempt_201301231102_33841_m_000331_0, duration: 19292379
-2013-05-13 12:23:06,709 ERROR org.mortbay.log: /mapOutput
-java.lang.IllegalStateException: Committed
-        at org.mortbay.jetty.Response.resetBuffer(Response.java:1023)
-        at org.mortbay.jetty.Response.sendError(Response.java:240)
-        at org.apache.hadoop.mapred.TaskTracker$MapOutputServlet.doGet(TaskTracker.java:4094)
-        at javax.servlet.http.HttpServlet.service(HttpServlet.java:707)
-        at javax.servlet.http.HttpServlet.service(HttpServlet.java:820)
-        at org.mortbay.jetty.servlet.ServletHolder.handle(ServletHolder.java:511)
-        at org.mortbay.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1221)
-        at org.apache.hadoop.http.HttpServer$QuotingInputFilter.doFilter(HttpServer.java:829)
-        at org.mortbay.jetty.servlet.ServletHandler$CachedChain.doFilter(ServletHandler.java:1212)
-        at org.mortbay.jetty.servlet.ServletHandler.handle(ServletHandler.java:399)
-        at org.mortbay.jetty.security.SecurityHandler.handle(SecurityHandler.java:216)
-        at org.mortbay.jetty.servlet.SessionHandler.handle(SessionHandler.java:182)
-        at org.mortbay.jetty.handler.ContextHandler.handle(ContextHandler.java:766)
-        at org.mortbay.jetty.webapp.WebAppContext.handle(WebAppContext.java:450)
-        at org.mortbay.jetty.handler.ContextHandlerCollection.handle(ContextHandlerCollection.java:230)
-        at org.mortbay.jetty.handler.HandlerWrapper.handle(HandlerWrapper.java:152)
-        at org.mortbay.jetty.Server.handle(Server.java:326)
-        at org.mortbay.jetty.HttpConnection.handleRequest(HttpConnection.java:542)
-        at org.mortbay.jetty.HttpConnection$RequestHandler.headerComplete(HttpConnection.java:928)
-        at org.mortbay.jetty.HttpParser.parseNext(HttpParser.java:549)
-        at org.mortbay.jetty.HttpParser.parseAvailable(HttpParser.java:212)
-        at org.mortbay.jetty.HttpConnection.handle(HttpConnection.java:404)
-        at org.mortbay.io.nio.SelectChannelEndPoint.run(SelectChannelEndPoint.java:410)
-        at org.mortbay.thread.QueuedThreadPool$PoolThread.run(QueuedThreadPool.java:582)
-</pre>
-
-
-<p>
-<b>note(dirlt)：开始我以为会存在什么问题，所以仔细分析了两个task的情况</b>
-</p>
-<p>
-然后察看这个job两个task情况，性能数据如下：
-</p>
-<p>
-mapper in dp41
-</p>
-
-
-<pre class="example">monitor
-by pass counter 2,557,788
-
-FileSystemCounters
-FILE_BYTES_READ 223,919,205
-HDFS_BYTES_READ 1,229,397,574
-FILE_BYTES_WRITTEN      445,249,847
-
-Map-Reduce Framework
-Combine output records  0
-Map input records       3,155,527
-Physical memory (bytes) snapshot        1,076,948,992
-Spilled Records 4,781,912
-Map output bytes        523,441,900
-Total committed heap usage (bytes)      1,214,513,152
-CPU time spent (ms)     104,400
-Virtual memory (bytes) snapshot 3,522,392,064
-SPLIT_RAW_BYTES 321
-Map output records      2,390,956
-Combine input records   0
-
-LzoBlocks of com.umeng.analytics.proto.DailyLaunchProtos4$DailyLaunchInfo
-Errors  0
-Records Read    3,155,527
-</pre>
-
-
-<p>
-reducer in dp16
-</p>
-
-
-<pre class="example">FileSystemCounters
-FILE_BYTES_READ 28,468,696,830
-FILE_BYTES_WRITTEN      28,468,769,783
-
-Map-Reduce Framework
-Reduce input groups     7
-Combine output records  0
-Reduce shuffle bytes    28,332,344,050
-Physical memory (bytes) snapshot        2,283,491,328
-Reduce output records   11
-Spilled Records 339,962,329
-Total committed heap usage (bytes)      1,863,778,304
-CPU time spent (ms)     3,031,800
-Virtual memory (bytes) snapshot 3,255,595,008
-Combine input records   0
-Reduce input records    321,140,243
-</pre>
-
-
-<p>
-性能数据非常正常. 然后察看dp16对应时刻的日志，发现这个getMapOutput只不过是一个偶然的失败。但是其实从dp16上面的日志来看，可能只是取map output部分block没有成功，但是后续还是成功的，观察 <b>attempt_201301231102_33841_r_000015_0</b> 传输百分比和block数目。
-</p>
-
-
-<pre class="example">2013-05-13 12:23:04,575 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_33841_r_000015_0 0.01798942% reduce &gt; copy (102 of 1890 at 19.63 MB/s) &gt;
-2013-05-13 12:23:04,620 INFO org.apache.hadoop.mapred.TaskTracker.clienttrace: src: 10.11.0.16:50060, dest: 10.11.0.50:29582, bytes: 28814, op: MAPRED_SHUFFLE, cliID: attempt_201301231102_33841_m_000480_0, duration: 3011431376
-2013-05-13 12:23:05,438 INFO org.apache.hadoop.mapred.TaskTracker.clienttrace: src: 10.11.0.16:50060, dest: 10.11.0.54:38101, bytes: 13541361, op: MAPRED_SHUFFLE, cliID: attempt_201301231102_33841_m_000480_0, duration: 28773030913
-2013-05-13 12:23:05,843 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_33841_m_000520_0 0.26028645%
-2013-05-13 12:23:05,924 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_33841_m_000241_0 0.7132669%
-2013-05-13 12:23:05,947 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_33841_m_000441_0 0.70975286%
-2013-05-13 12:23:06,114 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_33840_m_000000_0 0.47209314%
-2013-05-13 12:23:06,579 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_33841_m_000094_0 0.8537282%
-2013-05-13 12:23:06,755 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_33841_m_000342_0 0.54360586%
-2013-05-13 12:23:08,298 INFO org.apache.hadoop.mapred.TaskTracker: attempt_201301231102_33841_r_000015_0 0.019400354% reduce &gt; copy (110 of 1890 at 20.45 MB/s) &gt;
-</pre>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-1-5-1-2" class="outline-5">
-<h5 id="sec-1-5-1-2"><span class="section-number-5">1.5.1.2</span> bas case</h5>
-<div class="outline-text-5" id="text-1-5-1-2">
-
-</div>
-</div>
-
-</div>
-
-<div id="outline-container-1-5-2" class="outline-4">
-<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> Error initializing</h4>
-<div class="outline-text-4" id="text-1-5-2">
-
-
-</div>
-
-<div id="outline-container-1-5-2-1" class="outline-5">
-<h5 id="sec-1-5-2-1"><span class="section-number-5">1.5.2.1</span> No such file or directory</h5>
-<div class="outline-text-5" id="text-1-5-2-1">
-
-<p>dp31出现如下日志，这个过程是非常诡异的。从stacktrace上面可以看到过程是在创建job directory时候正要修改权限，但是文件找不到了。从dp31的df -h可以看到剩余磁盘空间如下
-</p>
-
-
-<pre class="example">/dev/sdf1       1.8T  1.7T  904M 100% /data/data5
-/dev/sdb1       1.8T  1.7T  681M 100% /data/data1
-/dev/sdc1       1.8T  1.7T  902M 100% /data/data2
-/dev/sdd1       1.8T  1.7T  1.7G 100% /data/data3
-/dev/sdg1       1.8T  1.7T 1004M 100% /data/data6
-/dev/sdh1       1.8T  1.7T  1.1G 100% /data/data7
-/dev/sde1       1.8T  346G  1.4T  20% /data/data4
-</pre>
-
-<p>
-所以我怀疑是因为磁盘过满出现的一些诡异问题。 <b>note(dirlt)：容易造成node被cross job的blacklist</b>
-</p>
-
-
-
-<pre class="example">2013-05-14 00:20:56,266 INFO org.apache.hadoop.mapred.TaskTracker: LaunchTaskAction (registerTask): attempt_201301231102_34166_m_000000_0 task's state:UNASSIGNED
-2013-05-14 00:20:56,266 INFO org.apache.hadoop.mapred.TaskTracker: Trying to launch : attempt_201301231102_34166_m_000000_0 which needs 1 slots
-2013-05-14 00:20:56,266 INFO org.apache.hadoop.mapred.TaskTracker: In TaskLauncher, current free slots : 12 and trying to launch attempt_201301231102_34166_m_000000_0 which needs 1 slots
-2013-05-14 00:20:56,312 WARN org.apache.hadoop.conf.Configuration: /data/data5/mapred/local/ttprivate/taskTracker/xiarong/jobcache/job_201301231102_34166/job.xml:a attempt to override final parameter: mapred.submit.replication;  Ignoring.
-2013-05-14 00:20:56,327 INFO org.apache.hadoop.mapred.JobLocalizer: Initializing user xiarong on this TT.
-2013-05-14 00:20:56,334 WARN org.apache.hadoop.mapred.TaskTracker: Exception while localization ENOENT: No such file or directory
-        at org.apache.hadoop.io.nativeio.NativeIO.chmod(Native Method)
-        at org.apache.hadoop.fs.RawLocalFileSystem.setPermission(RawLocalFileSystem.java:521)
-        at org.apache.hadoop.fs.RawLocalFileSystem.mkdirs(RawLocalFileSystem.java:344)
-        at org.apache.hadoop.mapred.JobLocalizer.createJobDirs(JobLocalizer.java:222)
-        at org.apache.hadoop.mapred.DefaultTaskController.initializeJob(DefaultTaskController.java:204)
-        at org.apache.hadoop.mapred.TaskTracker$4.run(TaskTracker.java:1352)
-        at java.security.AccessController.doPrivileged(Native Method)
-        at javax.security.auth.Subject.doAs(Subject.java:396)
-        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1157)
-        at org.apache.hadoop.mapred.TaskTracker.initializeJob(TaskTracker.java:1327)
-        at org.apache.hadoop.mapred.TaskTracker.localizeJob(TaskTracker.java:1242)
-        at org.apache.hadoop.mapred.TaskTracker.startNewTask(TaskTracker.java:2563)
-        at org.apache.hadoop.mapred.TaskTracker$TaskLauncher.run(TaskTracker.java:2527)
-
-2013-05-14 00:20:56,334 ERROR org.apache.hadoop.security.UserGroupInformation: PriviledgedActionException as:xiarong (auth:SIMPLE) cause:ENOENT: No such file or directory
-2013-05-14 00:20:56,334 WARN org.apache.hadoop.mapred.TaskTracker: Error initializing attempt_201301231102_34166_m_000000_0:
-ENOENT: No such file or directory
-        at org.apache.hadoop.io.nativeio.NativeIO.chmod(Native Method)
-        at org.apache.hadoop.fs.RawLocalFileSystem.setPermission(RawLocalFileSystem.java:521)
-        at org.apache.hadoop.fs.RawLocalFileSystem.mkdirs(RawLocalFileSystem.java:344)
-        at org.apache.hadoop.mapred.JobLocalizer.createJobDirs(JobLocalizer.java:222)
-        at org.apache.hadoop.mapred.DefaultTaskController.initializeJob(DefaultTaskController.java:204)
-        at org.apache.hadoop.mapred.TaskTracker$4.run(TaskTracker.java:1352)
-        at java.security.AccessController.doPrivileged(Native Method)
-        at javax.security.auth.Subject.doAs(Subject.java:396)
-        at org.apache.hadoop.security.UserGroupInformation.doAs(UserGroupInformation.java:1157)
-        at org.apache.hadoop.mapred.TaskTracker.initializeJob(TaskTracker.java:1327)
-        at org.apache.hadoop.mapred.TaskTracker.localizeJob(TaskTracker.java:1242)
-        at org.apache.hadoop.mapred.TaskTracker.startNewTask(TaskTracker.java:2563)
-        at org.apache.hadoop.mapred.TaskTracker$TaskLauncher.run(TaskTracker.java:2527)
-
-2013-05-14 00:20:56,334 ERROR org.apache.hadoop.mapred.TaskStatus: Trying to set finish time for task attempt_201301231102_34166_m_000000_0 when no start time is set, stackTrace is : java.lang.Exception
-        at org.apache.hadoop.mapred.TaskStatus.setFinishTime(TaskStatus.java:185)
-        at org.apache.hadoop.mapred.TaskTracker$TaskInProgress.kill(TaskTracker.java:3280)
-        at org.apache.hadoop.mapred.TaskTracker.startNewTask(TaskTracker.java:2573)
-        at org.apache.hadoop.mapred.TaskTracker$TaskLauncher.run(TaskTracker.java:2527)
-</pre>
-
-
-</div>
-</div>
-
-</div>
-
-<div id="outline-container-1-5-3" class="outline-4">
-<h4 id="sec-1-5-3"><span class="section-number-4">1.5.3</span> shuffleInMemory OutOfMemoryError</h4>
-<div class="outline-text-4" id="text-1-5-3">
-
-<ul>
-<li>Users - Shuffle In Memory OutOfMemoryError : <a href="http://hadoop-common.472056.n3.nabble.com/Shuffle-In-Memory-OutOfMemoryError-td433197.html">http://hadoop-common.472056.n3.nabble.com/Shuffle-In-Memory-OutOfMemoryError-td433197.html</a>
-</li>
-</ul>
-
-
-
-
-<pre class="example">2013-06-19 07:16:17,180 FATAL org.apache.hadoop.mapred.Task: attempt_201306141608_1574_r_009039_0 : Map output copy failure : java.lang.OutOfMemoryError: Java heap space
-        at org.apache.hadoop.mapred.ReduceTask$ReduceCopier$MapOutputCopier.shuffleInMemory(ReduceTask.java:1612)
-        at org.apache.hadoop.mapred.ReduceTask$ReduceCopier$MapOutputCopier.getMapOutput(ReduceTask.java:1472)
-        at org.apache.hadoop.mapred.ReduceTask$ReduceCopier$MapOutputCopier.copyOutput(ReduceTask.java:1321)
-        at org.apache.hadoop.mapred.ReduceTask$ReduceCopier$MapOutputCopier.run(ReduceTask.java:1253)
-</pre>
-
-
-<p>
-将参数mapred.job.shuffle.input.buffer.percent设置成为0.2或者是更小。关于这个问题实际上应该是一个bug，framework应该是能够智能决定shuffle在memory还是在disk上面的。可以参考代码分析一节的shuffle in memory.
-</p>
 </div>
 </div>
 </div>
@@ -2236,10 +2208,8 @@ ENOENT: No such file or directory
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-12-18T11:29+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'mapred.html';var disqus_title = 'mapred.html';var disqus_url = 'http://dirlt.com/mapred.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'mapred.html';var disqus_title = 'mapred.html';var disqus_url = 'http://dirlt.com/mapred.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

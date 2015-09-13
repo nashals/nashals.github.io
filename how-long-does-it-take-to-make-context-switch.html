@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<head>
 <title>How long does it take to make a context switch?</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="How long does it take to make a context switch?"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:43+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,7 +62,7 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
@@ -72,23 +71,7 @@
 <div id="content">
 <h1 class="title">How long does it take to make a context switch?</h1>
 
-
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="how-long-does-it-take-to-make-context-switch.html#sec-1">1 how-long-does-it-take-to-make-context-switch</a></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> how-long-does-it-take-to-make-context-switch</h2>
-<div class="outline-text-2" id="text-1">
-
-
-<p>
-<a href="http://blog.tsunanet.net/2010/11/how-long-does-it-take-to-make-context.html">http://blog.tsunanet.net/2010/11/how-long-does-it-take-to-make-context.html</a>
+<p><a href="http://blog.tsunanet.net/2010/11/how-long-does-it-take-to-make-context.html">http://blog.tsunanet.net/2010/11/how-long-does-it-take-to-make-context.html</a>
 </p>
 <p>
 作者使用多款CPU来做测试，为了方便我们只看下面这款性能数据。因为主频是在2GHz，所以一个cycle是0.5ns
@@ -162,7 +145,7 @@ Also possible is the event where one thread is running on a core, and the next t
 <img src="images/cs-w-affinity-on-5150.png"  alt="./images/cs-w-affinity-on-5150.png" />
 </p>
 <p>
-其中5150参数是(5150: L1i &amp; L1d = 32K each, L2 = 4M). note(dirlt): 我没有办法解释为什么出现这些拐点
+其中5150参数是(5150: L1i &amp; L1d = 32K each, L2 = 4M). note: 我没有办法解释为什么出现这些拐点
 </p>
 <p>
 cs开销在虚拟机里面是在物理机的2.5-3倍，对此解释是guest OS没有办法自己更新page table, 只能让交给hypervisor来处理，这样增加了两次context switch. Intel在Nehalem架构CPU里面增加EPT(Extended Page Table)特性主要就是解决这个问题，可以让guest OS自己更新page table.
@@ -182,14 +165,10 @@ Context switching is expensive. My rule of thumb is that it'll cost you about 30
 设想scheduler为每个task分配10ms的时间片，但是每个task只运行了其中0.03ms就被切换出去。而一旦切换就会产生context switch, 话费在0.03ms上。也就是说整个CPU只有50%时间在做真正的工作，而剩下50%时间在cs. 而async就是希望每个task一旦被分配到时间片就可以完全利用，这样cs时间比率就在0.3%上。将线程数目限制和hardware threads相等的话，还可以减少对cache &amp; TLB hit rate带来的影响提升性能。
 </p>
 </div>
-</div>
-</div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:43+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'how-long-does-it-take-to-make-context-switch.html';var disqus_title = 'how-long-does-it-take-to-make-context-switch.html';var disqus_url = 'http://dirlt.com/how-long-does-it-take-to-make-context-switch.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'how-long-does-it-take-to-make-context-switch.html';var disqus_title = 'how-long-does-it-take-to-make-context-switch.html';var disqus_url = 'http://dirlt.com/how-long-does-it-take-to-make-context-switch.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

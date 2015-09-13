@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<head>
 <title>Linux System and Performance Monitoring</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Linux System and Performance Monitoring"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-12-06T18:38+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,7 +62,7 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
@@ -72,40 +71,30 @@
 <div id="content">
 <h1 class="title">Linux System and Performance Monitoring</h1>
 
+<p><a href="http://www.ufsdump.org/papers/oscon2009-linux-monitoring.pdf">http://www.ufsdump.org/papers/oscon2009-linux-monitoring.pdf</a>
+</p>
+<p>
+a.k.a "Extreme Linux Performance Monitoring and Tuning"
+</p>
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="linux-system-and-performance-monitoring.html#sec-1">1 linux-system-and-performance-monitoring</a>
-<ul>
-<li><a href="linux-system-and-performance-monitoring.html#sec-1-1">1.1 Performance Monitoring Introduction</a></li>
-<li><a href="linux-system-and-performance-monitoring.html#sec-1-2">1.2 Installing Monitoring Tools</a></li>
-<li><a href="linux-system-and-performance-monitoring.html#sec-1-3">1.3 Introducing the CPU</a></li>
-<li><a href="linux-system-and-performance-monitoring.html#sec-1-4">1.4 Introducing Virtual Memory</a></li>
-<li><a href="linux-system-and-performance-monitoring.html#sec-1-5">1.5 Introducing I/O Monitoring</a></li>
-<li><a href="linux-system-and-performance-monitoring.html#sec-1-6">1.6 Monitoring I/O</a></li>
-<li><a href="linux-system-and-performance-monitoring.html#sec-1-7">1.7 Introducing Network Monitoring</a></li>
-</ul>
-</li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-1">1 Performance Monitoring Introduction</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-2">2 Installing Monitoring Tools</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-3">3 Introducing the CPU</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-4">4 Introducing Virtual Memory</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-5">5 Introducing I/O Monitoring</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-6">6 Monitoring I/O</a></li>
+<li><a href="linux-system-and-performance-monitoring.html#sec-7">7 Introducing Network Monitoring</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> linux-system-and-performance-monitoring</h2>
-<div class="outline-text-2" id="text-1">
-
-
-<p>
-<a href="http://www.ufsdump.org/papers/oscon2009-linux-monitoring.pdf">http://www.ufsdump.org/papers/oscon2009-linux-monitoring.pdf</a>
-</p>
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Performance Monitoring Introduction</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> Performance Monitoring Introduction</h3>
+<div class="outline-text-3" id="text-1">
 
 <ul>
 <li>sub-systems: CPU, Memory, IO, Network
@@ -119,9 +108,9 @@
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Installing Monitoring Tools</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> Installing Monitoring Tools</h3>
+<div class="outline-text-3" id="text-2">
 
 <p><img src="images/performance-monitoring-tools.png"  alt="./images/performance-monitoring-tools.png" />
 </p>
@@ -129,17 +118,21 @@
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Introducing the CPU</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> Introducing the CPU</h3>
+<div class="outline-text-3" id="text-3">
 
-<p>The following list outlines the priorities from highest to lowest: # 调度优先级别
+<p>The following list outlines the priorities from highest to lowest: # 调度优先级别，从高到低
 </p><ul>
-<li>Interrupts – Devices tell the kernel that they are done  processing. For example, a NIC delivers a packet or a hard drive provides an IO request（中断处理优先级别最高）
+<li>Hard Interrupts – Devices tell the kernel that they are done  processing. For example, a NIC delivers a packet or a hard drive provides an IO request（硬中断）
 </li>
-<li>Kernel (System) Processes – All kernel processing is handled at this level of priority.
+<li>Soft Interrupts – These are kernel software interrupts that have to do with maintenance of the kernel. For example, the kernel clock tick thread is a soft interrupt. It checks to make sure a process has not passed its allotted time on a processor.（软中断）
 </li>
-<li>User Processes – This space is often referred to as “userland”. All software applications run in the user space. This space has the lowest priority in the kernel scheduling mechanism.
+<li>Real Time Processes – Real time processes have more priority than the kernel itself. A real time process may come on the CPU and preempt (or “kick off”) the kernel. The Linux 2.4 kernel is NOT a fully preemptable kernel, making it not ideal for real time application programming.（实时进程，会抢占其他非实时进程时间片）
+</li>
+<li>Kernel (System) Processes – All kernel processing is handled at this level of priority. （内核进程）
+</li>
+<li>User Processes – This space is often referred to as “userland”. All software applications run in the user space. This space has the lowest priority in the kernel scheduling mechanism.（用户进程）
 </li>
 </ul>
 
@@ -184,9 +177,9 @@ Case Study
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Introducing Virtual Memory</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> Introducing Virtual Memory</h3>
+<div class="outline-text-3" id="text-4">
 
 <p>Kernel Memory Paging. Memory paging is a normal activity not to be confused with memory swapping. Memory paging is the process of synching memory back to disk at normal intervals. Over time, applications will grow to consume all of memory. At some point, the kernel must scan memory and reclaim unused pages to be allocated to other applications. # memory paging和memory swapping不同的是, paging是系统的正常行为. 系统会定时将部分内存刷到磁盘上, 释放这部分内存出来分配给其他进程, 确保所有进程都把所有内存都用上
 </p>
@@ -224,9 +217,9 @@ The pdflush daemon is responsible for synchronizing any pages associated with a 
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Introducing I/O Monitoring</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> Introducing I/O Monitoring</h3>
+<div class="outline-text-3" id="text-5">
 
 <p>There are 3 types of memory pages in the Linux kernel. These pages are described below:
 </p><ul>
@@ -243,28 +236,25 @@ The pdflush daemon is responsible for synchronizing any pages associated with a 
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Monitoring I/O</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> Monitoring I/O</h3>
+<div class="outline-text-3" id="text-6">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Introducing Network Monitoring</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-7" class="outline-3">
+<h3 id="sec-7"><span class="section-number-3">7</span> Introducing Network Monitoring</h3>
+<div class="outline-text-3" id="text-7">
 
-</div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-12-06T18:38+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'linux-system-and-performance-monitoring.html';var disqus_title = 'linux-system-and-performance-monitoring.html';var disqus_url = 'http://dirlt.com/linux-system-and-performance-monitoring.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'linux-system-and-performance-monitoring.html';var disqus_title = 'linux-system-and-performance-monitoring.html';var disqus_url = 'http://dirlt.com/linux-system-and-performance-monitoring.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

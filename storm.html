@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<head>
 <title>storm</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="storm"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-12-23T12:37+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,7 +62,7 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
@@ -71,28 +70,6 @@
 
 <div id="content">
 <h1 class="title">storm</h1>
-
-
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="storm.html#sec-1">1 storm</a>
-<ul>
-<li><a href="storm.html#sec-1-1">1.1 overview</a></li>
-<li><a href="storm.html#sec-1-2">1.2 grouping</a></li>
-<li><a href="storm.html#sec-1-3">1.3 distributed-RPC</a></li>
-<li><a href="storm.html#sec-1-4">1.4 parallelism</a></li>
-<li><a href="storm.html#sec-1-5">1.5 reliability</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> storm</h2>
-<div class="outline-text-2" id="text-1">
 
 <ul>
 <li>Documentation · nathanmarz/storm Wiki <a href="https://github.com/nathanmarz/storm/wiki/Documentation">https://github.com/nathanmarz/storm/wiki/Documentation</a>
@@ -104,12 +81,35 @@
 </ul>
 
 
+<p>
+#note: storm文档还不是特别好，使用storm时候可以参考下面三个链接
+</p><ul>
+<li><a href="http://ifeve.com/wp-content/uploads/2014/03/Getting-Started-With-Storm-Jonathan-Leibiusky-Gabriel-E_1276.pdf">Getting Started With Storm</a>
+</li>
+<li>通常storm都是和kafka对接的，<a href="https://github.com/miguno/kafka-storm-starter">这个项目</a> 可以作为参考 
+</li>
+<li>另外storm还支持multilang, 我这里也做了一个 <a href="https://github.com/dirtysalt/tomb/tree/master/scala/kafka-streaming">demo</a>
+</li>
+</ul>
 
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="storm.html#sec-1">1 overview</a></li>
+<li><a href="storm.html#sec-2">2 grouping</a></li>
+<li><a href="storm.html#sec-3">3 distributed-RPC</a></li>
+<li><a href="storm.html#sec-4">4 parallelism</a></li>
+<li><a href="storm.html#sec-5">5 reliability</a></li>
+</ul>
+</div>
 </div>
 
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> overview</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> overview</h3>
+<div class="outline-text-3" id="text-1">
 
 <ul>
 <li><a href="http://storm.apache.org/documentation/Tutorial.html">http://storm.apache.org/documentation/Tutorial.html</a>
@@ -138,9 +138,9 @@ storm集群由三个部分组成: 1) master(nimbus) 2) coordinator(zookeeper) 3 
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> grouping</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> grouping</h3>
+<div class="outline-text-3" id="text-2">
 
 <p>输入输出数据模型是key-value model. 其中key可以用来进行grouping. 所以grouping就是决定数据如何向下面一层分发. storm提供下面几种grouping方式
 </p><ul>
@@ -152,7 +152,7 @@ storm集群由三个部分组成: 1) master(nimbus) 2) coordinator(zookeeper) 3 
 </li>
 <li>global grouping. 只传给某一个task. 通常来说是编号最小的那个.
 </li>
-<li>direct grouping. producer指定传给某个task. note(dirlt): 破坏透明性
+<li>direct grouping. producer指定传给某个task. #note: 破坏透明性
 </li>
 </ul>
 
@@ -161,9 +161,9 @@ storm集群由三个部分组成: 1) master(nimbus) 2) coordinator(zookeeper) 3 
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> distributed-RPC</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> distributed-RPC</h3>
+<div class="outline-text-3" id="text-3">
 
 <p>用storm可以很容易实现DRPC. 似乎这个功能非常有用, 但是我现在还没有想到一个比较合适的场景.
 </p>
@@ -174,9 +174,9 @@ storm集群由三个部分组成: 1) master(nimbus) 2) coordinator(zookeeper) 3 
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> parallelism</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> parallelism</h3>
+<div class="outline-text-3" id="text-4">
 
 <p>storm parallelism有三个概念 1) worker process 2) executor 3) task. 下面这张图解释了三者之间的关系
 </p>
@@ -197,9 +197,9 @@ storm集群由三个部分组成: 1) master(nimbus) 2) coordinator(zookeeper) 3 
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> reliability</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> reliability</h3>
+<div class="outline-text-3" id="text-5">
 
 <p>如何保证每条消息能够都被处理? 我们需要先来定义"消息被完全处理". 在流式系统中一个input tuple到最后结束可能会产生许多tuples并且中途也会有很多tuples生成. 如果我们将这些生成关系画成树的话
 </p>
@@ -207,7 +207,7 @@ storm集群由三个部分组成: 1) master(nimbus) 2) coordinator(zookeeper) 3 
 <img src="images/storm-tuple-tree.png"  alt="./images/storm-tuple-tree.png" />
 </p>
 <p>
-一个input-tuple产生许多中间tuples. bolts只有对input-tuple以及每个中间输入消息给予确认的话, 才能认为这个input-tuple被完全处理. 当然某些应用只要求第一个bolt处理了input-tuple就OK了. 如果input-tuple在某段时间内没有被确认的话, 那么这个input-tuple会重发. <b>note(dirlt):out-of-order!</b> 
+一个input-tuple产生许多中间tuples. bolts只有对input-tuple以及每个中间输入消息给予确认的话, 才能认为这个input-tuple被完全处理. 当然某些应用只要求第一个bolt处理了input-tuple就OK了. 如果input-tuple在某段时间内没有被确认的话, 那么这个input-tuple会重发. #note: out-of-order
 </p>
 <p>
 如何将中间消息和input-tuple关联起来? storm API提供了 <b>anchoring</b> 接口. anchoring就是将某个output-input和input-tuple关联起来. 这样output-tuple里面其实带上了input-tuple id. 如果我们ack output-tuple时, storm会从output-tuple里面抽取input-tuple id并且ack这个input-tuple. storm API来提供了 <b>multiple-anchoring</b> 接口允许某个output-tuple和多个input-tuple关联起来.
@@ -220,9 +220,9 @@ storm如何实现消息确认? storm会为每个output-tuple分配一个random 6
 </p><ul>
 <li>当spout从某个输入源读取tuple的时候, 会为这个tuple生成一个tuple-id. 这个tuple-id要求能够回放. 也就是如果spout拿到这个tuple-id的话, 还可以从输入源读取这个tuple.
 </li>
-<li>当spout/bolt处理tuple的时候, spout/bolt会向acker发送(tuple-id, input-tuple-id, output-tuple-id) <b>note(dirlt): tuple-id是spout分配的id, input-tuple-id是上一层过来的tuple id.</b>
+<li>当spout/bolt处理tuple的时候, spout/bolt会向acker发送(tuple-id, input-tuple-id, output-tuple-id) #note: tuple-id是spout分配的id, input-tuple-id是上一层过来的tuple id.
 </li>
-<li>acker处理逻辑是: note(dirlt): 我的推断
+<li>acker处理逻辑是:（个人推断）
 <ul>
 <li>初始化  hashmap[tuple-id] = (spout-task-id, val[default = 0]) # 这里spout-task-id追踪是为了知道要那个spout-task重发tuple.
 </li>
@@ -269,13 +269,10 @@ storm如何实现消息确认? storm会为每个output-tuple分配一个random 6
 </p></div>
 </div>
 </div>
-</div>
 
 <div id="postamble">
-<p class="date">Date: 2014-12-23T12:37+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'storm.html';var disqus_title = 'storm.html';var disqus_url = 'http://dirlt.com/storm.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'storm.html';var disqus_title = 'storm.html';var disqus_url = 'http://dirlt.com/storm.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
-<title>algorithm</title>
+<head>
+<title>Algorithm</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="algorithm"/>
+<meta name="title" content="Algorithm"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-12-23T12:37+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,74 +62,58 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
 </div>
 
 <div id="content">
-<h1 class="title">algorithm</h1>
+<h1 class="title">Algorithm</h1>
 
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="algorithm.html#sec-1">1 algorithm</a>
+<li><a href="algorithm.html#sec-1">1 工程算法</a>
 <ul>
-<li><a href="algorithm.html#sec-1-1">1.1 工程算法</a>
-<ul>
-<li><a href="algorithm.html#sec-1-1-1">1.1.1 strlen in glibc</a></li>
-<li><a href="algorithm.html#sec-1-1-2">1.1.2 consistent hashing</a></li>
-<li><a href="algorithm.html#sec-1-1-3">1.1.3 rsync core algorithm</a></li>
-<li><a href="algorithm.html#sec-1-1-4">1.1.4 simhash core algorithm</a></li>
-<li><a href="algorithm.html#sec-1-1-5">1.1.5 HyperLogLog</a></li>
-<li><a href="algorithm.html#sec-1-1-6">1.1.6 CONCISE</a></li>
+<li><a href="algorithm.html#sec-1-1">1.1 strlen in glibc</a></li>
+<li><a href="algorithm.html#sec-1-2">1.2 consistent hashing</a></li>
+<li><a href="algorithm.html#sec-1-3">1.3 rsync core algorithm</a></li>
+<li><a href="algorithm.html#sec-1-4">1.4 simhash core algorithm</a></li>
+<li><a href="algorithm.html#sec-1-5">1.5 HyperLogLog</a></li>
+<li><a href="algorithm.html#sec-1-6">1.6 CONCISE</a></li>
 </ul>
 </li>
-<li><a href="algorithm.html#sec-1-2">1.2 面试算法</a>
+<li><a href="algorithm.html#sec-2">2 面试算法</a>
 <ul>
-<li><a href="algorithm.html#sec-1-2-1">1.2.1 树最长距离问题</a></li>
-<li><a href="algorithm.html#sec-1-2-2">1.2.2 开门抽奖问题</a></li>
-<li><a href="algorithm.html#sec-1-2-3">1.2.3 等概率选取链表元素问题</a></li>
-<li><a href="algorithm.html#sec-1-2-4">1.2.4 查找非重复数字问题</a></li>
-<li><a href="algorithm.html#sec-1-2-5">1.2.5 水池最大蓄水问题</a></li>
-<li><a href="algorithm.html#sec-1-2-6">1.2.6 赔率系统设计问题</a></li>
-<li><a href="algorithm.html#sec-1-2-7">1.2.7 流式计算均值和方差</a></li>
+<li><a href="algorithm.html#sec-2-1">2.1 链接资源</a></li>
+<li><a href="algorithm.html#sec-2-2">2.2 配置topcoder</a></li>
+<li><a href="algorithm.html#sec-2-3">2.3 树最长距离问题</a></li>
+<li><a href="algorithm.html#sec-2-4">2.4 开门抽奖问题(Monty Hall Problem)</a></li>
+<li><a href="algorithm.html#sec-2-5">2.5 等概率选取链表元素问题</a></li>
+<li><a href="algorithm.html#sec-2-6">2.6 查找非重复数字问题</a></li>
+<li><a href="algorithm.html#sec-2-7">2.7 水池最大蓄水问题</a></li>
+<li><a href="algorithm.html#sec-2-8">2.8 赔率系统设计问题</a></li>
+<li><a href="algorithm.html#sec-2-9">2.9 流式计算均值和方差</a></li>
 </ul>
 </li>
-<li><a href="algorithm.html#sec-1-3">1.3 TopCoder</a>
-<ul>
-<li><a href="algorithm.html#sec-1-3-1">1.3.1 安装和配置</a></li>
-<li><a href="algorithm.html#sec-1-3-2">1.3.2 初次DIV2</a></li>
-</ul>
-</li>
-<li><a href="algorithm.html#sec-1-4">1.4 计算机科学最重要的32个算法</a></li>
-</ul>
-</li>
+<li><a href="algorithm.html#sec-3">3 计算机科学最重要的32个算法</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> algorithm</h2>
-<div class="outline-text-2" id="text-1">
-
-
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 工程算法</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> 工程算法</h3>
+<div class="outline-text-3" id="text-1">
 
 
 </div>
 
-<div id="outline-container-1-1-1" class="outline-4">
-<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> strlen in glibc</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-1-1" class="outline-4">
+<h4 id="sec-1-1"><span class="section-number-4">1.1</span> strlen in glibc</h4>
+<div class="outline-text-4" id="text-1-1">
 
 <p>参考链接 <a href="http://www.kuqin.com/language/20071113/2308.html">http://www.kuqin.com/language/20071113/2308.html</a>. 这里和链接有点不太一样的就是，这个版本glibc实现考虑了非ASCII字符。
 </p>
@@ -231,9 +214,9 @@ const char *str;
 
 </div>
 
-<div id="outline-container-1-1-2" class="outline-4">
-<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> consistent hashing</h4>
-<div class="outline-text-4" id="text-1-1-2">
+<div id="outline-container-1-2" class="outline-4">
+<h4 id="sec-1-2"><span class="section-number-4">1.2</span> consistent hashing</h4>
+<div class="outline-text-4" id="text-1-2">
 
 <ul>
 <li><a href="http://en.wikipedia.org/wiki/Consistent_hash">http://en.wikipedia.org/wiki/Consistent_hash</a>
@@ -263,9 +246,9 @@ The basic idea behind the consistent hashing algorithm is to hash both objects a
 
 </div>
 
-<div id="outline-container-1-1-3" class="outline-4">
-<h4 id="sec-1-1-3"><span class="section-number-4">1.1.3</span> rsync core algorithm</h4>
-<div class="outline-text-4" id="text-1-1-3">
+<div id="outline-container-1-3" class="outline-4">
+<h4 id="sec-1-3"><span class="section-number-4">1.3</span> rsync core algorithm</h4>
+<div class="outline-text-4" id="text-1-3">
 
 <ul>
 <li><a href="http://coolshell.cn/articles/7425.html">http://coolshell.cn/articles/7425.html</a>
@@ -302,9 +285,9 @@ The basic idea behind the consistent hashing algorithm is to hash both objects a
 
 </div>
 
-<div id="outline-container-1-1-4" class="outline-4">
-<h4 id="sec-1-1-4"><span class="section-number-4">1.1.4</span> simhash core algorithm</h4>
-<div class="outline-text-4" id="text-1-1-4">
+<div id="outline-container-1-4" class="outline-4">
+<h4 id="sec-1-4"><span class="section-number-4">1.4</span> simhash core algorithm</h4>
+<div class="outline-text-4" id="text-1-4">
 
 <ul>
 <li><a href="http://blog.csdn.net/lgnlgn/article/details/6008498">http://blog.csdn.net/lgnlgn/article/details/6008498</a>
@@ -346,15 +329,15 @@ simhash算法原理非常简单：
 </li>
 </ol>
 
-<p>不过话说回来，文档近似判断应该k很小在{1,2}左右。C(64,k)={64,2016}应该并不算太大的值吧。
+<p>不过话说回来，文档近似判断应该k很小在{1,2}左右, 对应的C(64,k)={64,2016}
 </p>
 </div>
 
 </div>
 
-<div id="outline-container-1-1-5" class="outline-4">
-<h4 id="sec-1-1-5"><span class="section-number-4">1.1.5</span> HyperLogLog</h4>
-<div class="outline-text-4" id="text-1-1-5">
+<div id="outline-container-1-5" class="outline-4">
+<h4 id="sec-1-5"><span class="section-number-4">1.5</span> HyperLogLog</h4>
+<div class="outline-text-4" id="text-1-5">
 
 <ul>
 <li><a href="http://algo.inria.fr/flajolet/Publications/FlFuGaMe07.pdf">http://algo.inria.fr/flajolet/Publications/FlFuGaMe07.pdf</a>
@@ -369,7 +352,7 @@ simhash算法原理非常简单：
 </li>
 <li>HyperLogLog in Practice: Algorithmic Engineering of a State of The Art Cardinality Estimation Algorithm : <a href="http://research.google.com/pubs/pub40671.html">http://research.google.com/pubs/pub40671.html</a>
 </li>
-<li><a href="https://github.com/clearspring/stream-lib">https://github.com/clearspring/stream-lib</a> <b>note(dirlt):HyperLogLogPlus实现</b>
+<li><a href="https://github.com/clearspring/stream-lib">https://github.com/clearspring/stream-lib</a> #note: HyperLogLogPlus实现
 </li>
 </ul>
 
@@ -446,9 +429,9 @@ def estimate_cardinality(values, k):
 
 </div>
 
-<div id="outline-container-1-1-6" class="outline-4">
-<h4 id="sec-1-1-6"><span class="section-number-4">1.1.6</span> CONCISE</h4>
-<div class="outline-text-4" id="text-1-1-6">
+<div id="outline-container-1-6" class="outline-4">
+<h4 id="sec-1-6"><span class="section-number-4">1.6</span> CONCISE</h4>
+<div class="outline-text-4" id="text-1-6">
 
 <ul>
 <li>Maximum Performance with Minimum Storage: Data Compression in Druid | Metamarkets <a href="http://metamarkets.com/2012/druid-bitmap-compression/">http://metamarkets.com/2012/druid-bitmap-compression/</a>
@@ -457,7 +440,9 @@ def estimate_cardinality(values, k):
 </li>
 </ul>
 
-<p>这个算法主要是解决如何压缩一个可组合的整数集合，或者可以是认为如何压缩一个稀疏的bitmap. 链接1主要是介绍了一下背景，在他们的系统里面需要保存一个稀疏bitmap。链接2是原始论文，想了解具体内容还是看看这个比较好。
+
+<p>
+这个算法主要是解决如何压缩一个可组合的整数集合，或者可以是认为如何压缩一个稀疏的bitmap. 链接1主要是介绍了一下背景，在他们的系统里面需要保存一个稀疏bitmap。链接2是原始论文，想了解具体内容还是看看这个比较好。
 </p>
 <p>
 这个算法应该是在WAH（Word Aligned Hybrid）上改进的。下面是WAH的简单描述
@@ -515,16 +500,212 @@ CONCISE针对这个部分稍微改进了一下
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 面试算法</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> 面试算法</h3>
+<div class="outline-text-3" id="text-2">
 
 
 </div>
 
-<div id="outline-container-1-2-1" class="outline-4">
-<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> 树最长距离问题</h4>
-<div class="outline-text-4" id="text-1-2-1">
+<div id="outline-container-2-1" class="outline-4">
+<h4 id="sec-2-1"><span class="section-number-4">2.1</span> 链接资源</h4>
+<div class="outline-text-4" id="text-2-1">
+
+<p>Jobs:
+</p><ul>
+<li><a href="http://careers.stackoverflow.com/jobs/">http://careers.stackoverflow.com/jobs/</a>
+</li>
+<li><a href="http://recruiting.jobvite.com/">http://recruiting.jobvite.com/</a>
+</li>
+<li><a href="http://www.mercurynews.com/jobs">http://www.mercurynews.com/jobs</a>
+</li>
+</ul>
+
+
+<p>
+Coding Problem:
+</p><ul>
+<li><a href="http://www.careercup.com/">http://www.careercup.com/</a>
+</li>
+<li><a href="http://codility.com/">http://codility.com/</a>
+</li>
+<li><a href="http://leetcode.com/">http://leetcode.com/</a>
+</li>
+<li><a href="http://community.topcoder.com/">http://community.topcoder.com/</a>
+</li>
+</ul>
+
+
+<p>
+Online Editor:
+</p><ul>
+<li><a href="http://collabedit.com/">http://collabedit.com/</a>
+</li>
+<li><a href="https://codinghire.com/">https://codinghire.com/</a>
+</li>
+<li><a href="https://code.stypi.com/deuukwa6">https://code.stypi.com/deuukwa6</a>
+</li>
+</ul>
+
+
+<p>
+Resources:
+</p><ul>
+<li><a href="cracking-the-coding-interview.html">Cracking The Coding Interview</a>
+</li>
+<li><a href="http://www.mitbbs.com/bbsdoc/JobHunting.html">http://www.mitbbs.com/bbsdoc/JobHunting.html</a>
+</li>
+<li><a href="http://www.glassdoor.com/index.htm">http://www.glassdoor.com/index.htm</a>
+</li>
+</ul>
+
+
+<p>
+行为型问题:
+</p><ul>
+<li>So tell me about yourself.
+</li>
+<li>What is your greatest weakness?
+</li>
+<li>Have you ever had a conflict with a co-worker? How did you solve it?
+</li>
+<li>What is your most challenging/interesting project?
+</li>
+<li>Where do you see yourself in five years?
+</li>
+</ul>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2-2" class="outline-4">
+<h4 id="sec-2-2"><span class="section-number-4">2.2</span> 配置topcoder</h4>
+<div class="outline-text-4" id="text-2-2">
+
+<p>安装topcoder非常简单：
+</p><ul>
+<li>确认安装好javaws，因为topcoder客户端是一个java applet
+</li>
+<li>下载topcoder的客户端 # wget  <a href="http://www.topcoder.com/contest/arena/ContestAppletProd.jnlp">http://www.topcoder.com/contest/arena/ContestAppletProd.jnlp</a>
+</li>
+<li>启动这个applet之后就就可以进入arena了。
+</li>
+</ul>
+
+
+<p>
+为了方便地使用topcoder（比如将一些testcase下载下来的话），可以使用一些插件。个人觉得下面这个组合不错
+</p><ul>
+<li>code processor
+</li>
+<li>file edit
+</li>
+<li>TZTester
+</li>
+</ul>
+
+<p>这些插件都可以在这里找到 <a href="http://community.topcoder.com/tc?module=Static&amp;d1=applet&amp;d2=plugins">http://community.topcoder.com/tc?module=Static&amp;d1=applet&amp;d2=plugins</a>
+</p>
+<p>
+三个插件的下载地址分别是：
+</p><ul>
+<li><a href="http://community.topcoder.com/contest/classes/TZTester/TZTester.jar">http://community.topcoder.com/contest/classes/TZTester/TZTester.jar</a>
+</li>
+<li><a href="http://community.topcoder.com/contest/classes/CodeProcessor/CodeProcessor.jar">http://community.topcoder.com/contest/classes/CodeProcessor/CodeProcessor.jar</a>
+</li>
+<li><a href="http://community.topcoder.com/contest/classes/FileEdit/FileEdit.jar">http://community.topcoder.com/contest/classes/FileEdit/FileEdit.jar</a>
+</li>
+</ul>
+
+
+<p>
+下载完成之后在topcoder客户端里面的options-&gt;Editor里面进行配置
+</p><ul>
+<li>Add增加一个Editor
+</li>
+<li>EntryPoint填写 codeprocessor.EntryPoint
+</li>
+<li>ClassPath将前面三个jar选择上
+</li>
+<li>然后选择这个为Default Editor
+</li>
+<li>然后点击Configure
+</li>
+<li>EntryPoint填写 fileedit.EntryPoint
+</li>
+<li>processor class填写 tangentz.TZTester
+</li>
+</ul>
+
+
+<p>
+继续点击Configure选项，在General这个部分基本上没有什么需要修改的：
+</p><ul>
+<li>read/write problem to ./topcoder # 将题目保存到topcoder目录里面
+</li>
+<li>#todo: more?
+</li>
+</ul>
+
+<p>然后就是配置Code Template。如果使用C++的话，那么可以考虑使用下面的模板
+</p>
+
+
+<pre class="src src-C++">/* coding:utf-8
+ * Copyright (C) dirlt
+ */
+#include &lt;cstdlib&gt;
+#include &lt;cctype&gt;
+#include &lt;cstring&gt;
+#include &lt;cstdio&gt;
+#include &lt;cmath&gt;
+#include &lt;ctime&gt;
+#include &lt;iostream&gt;
+#include &lt;sstream&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+#include &lt;map&gt;
+#include &lt;set&gt;
+#include &lt;algorithm&gt;
+#include &lt;queue&gt;
+#include &lt;stack&gt;
+using namespace std;
+typedef long long ll;
+
+class $CLASSNAME$ {
+ public:
+  $RC$ $METHODNAME$($METHODPARMS$) {
+  }
+  $TESTCODE$
+};
+
+// BEGIN CUT HERE
+int main() {
+  $CLASSNAME$ ___test;
+  ___test.run_test(-1);
+  return 0;
+}
+// END CUT HERE
+</pre>
+
+
+<p>
+以后每次打开题目都会在本地保存一份代码，并且里面附带测试用例，本地完成之后直接load即可保存到远程。nice!!!
+</p>
+<p>
+这是我第一次做div2的成绩，留个念
+</p>
+<p>
+<img src="images/virgin-topcoder-div2.jpg"  alt="./images/virgin-topcoder-div2.jpg" />
+</p></div>
+
+</div>
+
+<div id="outline-container-2-3" class="outline-4">
+<h4 id="sec-2-3"><span class="section-number-4">2.3</span> 树最长距离问题</h4>
+<div class="outline-text-4" id="text-2-3">
 
 <p>树的最长距离定义为任意两个节点之间距离的最大值。咋一看这个问题，似乎就是根节点左子树高度和右子树高度之和，但是实际上可能对于子树里面可能会存在更长的距离。对于最长距离的话应该仅存在于这两者之间。
 </p>
@@ -611,9 +792,9 @@ leetcode上也有类似的题目，但是考虑上了树节点值 <a href="http:
 
 </div>
 
-<div id="outline-container-1-2-2" class="outline-4">
-<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> 开门抽奖问题</h4>
-<div class="outline-text-4" id="text-1-2-2">
+<div id="outline-container-2-4" class="outline-4">
+<h4 id="sec-2-4"><span class="section-number-4">2.4</span> 开门抽奖问题(Monty Hall Problem)</h4>
+<div class="outline-text-4" id="text-2-4">
 
 <p>原题是有三扇门，一扇门后面是一辆汽车，后面两扇门没有东西。主持人首先让你选择一扇门，之后主持人打开一扇后面没有任何东西的门，然后主持人问你是否需要更换你的选择？扩展一下这个问题，如果扩展到N(N&gt;=3)扇门的话，那么之前和之后中奖概率分别是多少？
 </p>
@@ -633,13 +814,16 @@ leetcode上也有类似的题目，但是考虑上了树节点值 <a href="http:
 <p>
 思考的关键在于，主持人这个行为对你当前选择的概率是没有任何影响的。因为无论如何主持人都可以打开一扇空门出来。
 </p>
+<p>
+#note(20150908): 这个问题是 <a href="https://en.wikipedia.org/wiki/Monty_Hall_problem">Monty Hall Problem</a>, 可以通过 <a href="https://github.com/dirtysalt/tomb/blob/master/py/stats/monty_hall.py">模拟</a> 来计算结果
+</p>
 </div>
 
 </div>
 
-<div id="outline-container-1-2-3" class="outline-4">
-<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> 等概率选取链表元素问题</h4>
-<div class="outline-text-4" id="text-1-2-3">
+<div id="outline-container-2-5" class="outline-4">
+<h4 id="sec-2-5"><span class="section-number-4">2.5</span> 等概率选取链表元素问题</h4>
+<div class="outline-text-4" id="text-2-5">
 
 <p>等概率选取未知长度的链表中的元素，要求是只能够遍历这个链表一次。下面是代码， <b>注意这里的wanted会不断地被更新</b>
 </p>
@@ -669,9 +853,9 @@ for ( p=list; p!=NULL; p=p-&gt;next ){
 
 </div>
 
-<div id="outline-container-1-2-4" class="outline-4">
-<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> 查找非重复数字问题</h4>
-<div class="outline-text-4" id="text-1-2-4">
+<div id="outline-container-2-6" class="outline-4">
+<h4 id="sec-2-6"><span class="section-number-4">2.6</span> 查找非重复数字问题</h4>
+<div class="outline-text-4" id="text-2-6">
 
 
 <hr/>
@@ -776,9 +960,9 @@ a1 a1 a1 a2 a2 a2 &hellip; an an an X
 
 </div>
 
-<div id="outline-container-1-2-5" class="outline-4">
-<h4 id="sec-1-2-5"><span class="section-number-4">1.2.5</span> 水池最大蓄水问题</h4>
-<div class="outline-text-4" id="text-1-2-5">
+<div id="outline-container-2-7" class="outline-4">
+<h4 id="sec-2-7"><span class="section-number-4">2.7</span> 水池最大蓄水问题</h4>
+<div class="outline-text-4" id="text-2-7">
 
 <p>考虑一个二维直方图平面，X轴单位为1，Y轴是直方图高度。假设向这个直方图里面灌水，请问这个直方图能够容纳多少水。
 </p>
@@ -909,11 +1093,11 @@ a1 a1 a1 a2 a2 a2 &hellip; an an an X
 
 </div>
 
-<div id="outline-container-1-2-6" class="outline-4">
-<h4 id="sec-1-2-6"><span class="section-number-4">1.2.6</span> 赔率系统设计问题</h4>
-<div class="outline-text-4" id="text-1-2-6">
+<div id="outline-container-2-8" class="outline-4">
+<h4 id="sec-2-8"><span class="section-number-4">2.8</span> 赔率系统设计问题</h4>
+<div class="outline-text-4" id="text-2-8">
 
-<p>note(dirlt)：2012.6.14
+<p>#note@2012.6.14
 </p>
 <p>
 昨天大家说做一个赌球赔率系统，晚上Hai教我了一些基本的东西。
@@ -968,7 +1152,7 @@ a1 a1 a1 a2 a2 a2 &hellip; an an an X
 <p>
 但是现实中存在下面一些问题：
 </p><ul>
-<li>如何bootstrap呢?（设定初始赔率）。note(dirlt)：我们可以首先计算出双方获胜概率p,计算出赔率1/p.为了抽水了降低赔率比如1/p*0.9.这样最后概率计算出来就会是1/0.9了。
+<li>如何bootstrap呢?（设定初始赔率）。#note: 我们可以首先计算出双方获胜概率p,计算出赔率1/p.为了抽水了降低赔率比如1/p*0.9.这样最后概率计算出来就会是1/0.9了。
 </li>
 <li>如果某一方没有压钱的话，那么相当于是庄家自己在赌博。
 </li>
@@ -981,9 +1165,9 @@ a1 a1 a1 a2 a2 a2 &hellip; an an an X
 
 </div>
 
-<div id="outline-container-1-2-7" class="outline-4">
-<h4 id="sec-1-2-7"><span class="section-number-4">1.2.7</span> 流式计算均值和方差</h4>
-<div class="outline-text-4" id="text-1-2-7">
+<div id="outline-container-2-9" class="outline-4">
+<h4 id="sec-2-9"><span class="section-number-4">2.9</span> 流式计算均值和方差</h4>
+<div class="outline-text-4" id="text-2-9">
 
 <ul>
 <li><a href="http://en.wikipedia.org/wiki/Algorithms_for_calculating_variance">http://en.wikipedia.org/wiki/Algorithms_for_calculating_variance</a>
@@ -1028,145 +1212,9 @@ a1 a1 a1 a2 a2 a2 &hellip; an an an X
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> TopCoder</h3>
-<div class="outline-text-3" id="text-1-3">
-
-
-</div>
-
-<div id="outline-container-1-3-1" class="outline-4">
-<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> 安装和配置</h4>
-<div class="outline-text-4" id="text-1-3-1">
-
-<p>安装topcoder非常简单：
-</p><ul>
-<li>确认安装好javaws，因为topcoder客户端是一个java applet
-</li>
-<li>下载topcoder的客户端 # wget  <a href="http://www.topcoder.com/contest/arena/ContestAppletProd.jnlp">http://www.topcoder.com/contest/arena/ContestAppletProd.jnlp</a>
-</li>
-<li>启动这个applet之后就就可以进入arena了。
-</li>
-</ul>
-
-
-<p>
-为了方便地使用topcoder（比如将一些testcase下载下来的话），可以使用一些插件。个人觉得下面这个组合不错
-</p><ul>
-<li>code processor
-</li>
-<li>file edit
-</li>
-<li>TZTester
-</li>
-</ul>
-
-<p>这些插件都可以在这里找到 <a href="http://community.topcoder.com/tc?module=Static&amp;d1=applet&amp;d2=plugins">http://community.topcoder.com/tc?module=Static&amp;d1=applet&amp;d2=plugins</a>
-</p>
-<p>
-三个插件的下载地址分别是：
-</p><ul>
-<li><a href="http://community.topcoder.com/contest/classes/TZTester/TZTester.jar">http://community.topcoder.com/contest/classes/TZTester/TZTester.jar</a>
-</li>
-<li><a href="http://community.topcoder.com/contest/classes/CodeProcessor/CodeProcessor.jar">http://community.topcoder.com/contest/classes/CodeProcessor/CodeProcessor.jar</a>
-</li>
-<li><a href="http://community.topcoder.com/contest/classes/FileEdit/FileEdit.jar">http://community.topcoder.com/contest/classes/FileEdit/FileEdit.jar</a>
-</li>
-</ul>
-
-
-<p>
-下载完成之后在topcoder客户端里面的options-&gt;Editor里面进行配置
-</p><ul>
-<li>Add增加一个Editor
-</li>
-<li>EntryPoint填写 codeprocessor.EntryPoint
-</li>
-<li>ClassPath将前面三个jar选择上
-</li>
-<li>然后选择这个为Default Editor
-</li>
-<li>然后点击Configure
-</li>
-<li>EntryPoint填写 fileedit.EntryPoint
-</li>
-<li>processor class填写 tangentz.TZTester
-</li>
-</ul>
-
-
-<p>
-继续点击Configure选项，在General这个部分基本上没有什么需要修改的：
-</p><ul>
-<li>read/write problem to ./topcoder # 将题目保存到topcoder目录里面
-</li>
-<li><b>todo(dirlt):more</b>
-</li>
-</ul>
-
-<p>然后就是配置Code Template。如果使用C++的话，那么可以考虑使用下面的模板
-</p>
-
-
-<pre class="src src-C++">/* coding:utf-8
- * Copyright (C) dirlt
- */
-#include &lt;cstdlib&gt;
-#include &lt;cctype&gt;
-#include &lt;cstring&gt;
-#include &lt;cstdio&gt;
-#include &lt;cmath&gt;
-#include &lt;ctime&gt;
-#include &lt;iostream&gt;
-#include &lt;sstream&gt;
-#include &lt;vector&gt;
-#include &lt;string&gt;
-#include &lt;map&gt;
-#include &lt;set&gt;
-#include &lt;algorithm&gt;
-#include &lt;queue&gt;
-#include &lt;stack&gt;
-using namespace std;
-typedef long long ll;
-
-class $CLASSNAME$ {
- public:
-  $RC$ $METHODNAME$($METHODPARMS$) {
-  }
-  $TESTCODE$
-};
-
-// BEGIN CUT HERE
-int main() {
-  $CLASSNAME$ ___test;
-  ___test.run_test(-1);
-  return 0;
-}
-// END CUT HERE
-</pre>
-
-
-<p>
-以后每次打开题目都会在本地保存一份代码，并且里面附带测试用例，本地完成之后直接load即可保存到远程。nice!!!
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-3-2" class="outline-4">
-<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> 初次DIV2</h4>
-<div class="outline-text-4" id="text-1-3-2">
-
-<p><img src="images/virgin-topcoder-div2.jpg"  alt="./images/virgin-topcoder-div2.jpg" />
-</p>
-</div>
-</div>
-
-</div>
-
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> 计算机科学最重要的32个算法</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> 计算机科学最重要的32个算法</h3>
+<div class="outline-text-3" id="text-3">
 
 <p><a href="http://www.infoq.com/cn/news/2012/08/32-most-important-algorithms">http://www.infoq.com/cn/news/2012/08/32-most-important-algorithms</a>
 </p>
@@ -1175,13 +1223,13 @@ int main() {
 </li>
 <li>集束搜索(又名定向搜索，Beam Search)
 </li>
-<li>二分查找
+<li>二分查找(Binary Search)
 </li>
 <li>分支界定算法(Branch and Bound)
 </li>
 <li>Buchberger算法
 </li>
-<li>数据压缩
+<li>数据压缩(Data Compression)
 </li>
 <li>Diffie-Hellman密钥交换算法
 </li>
@@ -1195,7 +1243,7 @@ int main() {
 </li>
 <li>期望-最大算法(Expectation-maximization algorithm, EM-Training)
 </li>
-<li>快速傅里叶变换
+<li>快速傅里叶变换(FFT, Fast Fourier Transform)
 </li>
 <li>梯度下降(Gradient descent)
 </li>
@@ -1225,7 +1273,7 @@ int main() {
 </li>
 <li>单纯型算法(Simplex Algorithm)
 </li>
-<li>奇异值分解
+<li>奇异值分解(SVD, Singular Value Decomsition)
 </li>
 <li>求解线性方程组(Solving a system of linear equations)
 </li>
@@ -1233,20 +1281,17 @@ int main() {
 </li>
 <li>合并查找算法(Union-find)
 </li>
-<li>维特比算法
+<li>维特比算法(Viterbi)
 </li>
 </ol>
 
 </div>
 </div>
 </div>
-</div>
 
 <div id="postamble">
-<p class="date">Date: 2014-12-23T12:37+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'algorithm.html';var disqus_title = 'algorithm.html';var disqus_url = 'http://dirlt.com/algorithm.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'algorithm.html';var disqus_title = 'algorithm.html';var disqus_url = 'http://dirlt.com/algorithm.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

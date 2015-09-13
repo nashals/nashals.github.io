@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
-<title>gcc-asm</title>
+<head>
+<title>GCC内嵌汇编</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="gcc-asm"/>
+<meta name="title" content="GCC内嵌汇编"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:43+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,73 +62,61 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
 </div>
 
 <div id="content">
-<h1 class="title">gcc-asm</h1>
+<h1 class="title">GCC内嵌汇编</h1>
 
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="gcc-asm.html#sec-1">1 gcc-asm</a>
+<li><a href="gcc-asm.html#sec-1">1 基本形式</a></li>
+<li><a href="gcc-asm.html#sec-2">2 约束符</a></li>
+<li><a href="gcc-asm.html#sec-3">3 修饰符</a></li>
+<li><a href="gcc-asm.html#sec-4">4 注意事项</a>
 <ul>
-<li><a href="gcc-asm.html#sec-1-1">1.1 基本形式</a></li>
-<li><a href="gcc-asm.html#sec-1-2">1.2 约束符</a></li>
-<li><a href="gcc-asm.html#sec-1-3">1.3 修饰符</a></li>
-<li><a href="gcc-asm.html#sec-1-4">1.4 注意事项</a>
-<ul>
-<li><a href="gcc-asm.html#sec-1-4-1">1.4.1 值类型</a></li>
-<li><a href="gcc-asm.html#sec-1-4-2">1.4.2 跳转标签</a></li>
-<li><a href="gcc-asm.html#sec-1-4-3">1.4.3 输入/输出使用同一个寄存器</a></li>
-<li><a href="gcc-asm.html#sec-1-4-4">1.4.4 内存访问</a></li>
-<li><a href="gcc-asm.html#sec-1-4-5">1.4.5 指令顺序调整</a></li>
-<li><a href="gcc-asm.html#sec-1-4-6">1.4.6 关于Condition Code</a></li>
-<li><a href="gcc-asm.html#sec-1-4-7">1.4.7 关于asm大小</a></li>
+<li><a href="gcc-asm.html#sec-4-1">4.1 值类型</a></li>
+<li><a href="gcc-asm.html#sec-4-2">4.2 跳转标签</a></li>
+<li><a href="gcc-asm.html#sec-4-3">4.3 输入/输出使用同一个寄存器</a></li>
+<li><a href="gcc-asm.html#sec-4-4">4.4 内存访问</a></li>
+<li><a href="gcc-asm.html#sec-4-5">4.5 指令顺序调整</a></li>
+<li><a href="gcc-asm.html#sec-4-6">4.6 关于Condition Code</a></li>
+<li><a href="gcc-asm.html#sec-4-7">4.7 关于asm大小</a></li>
 </ul>
 </li>
-<li><a href="gcc-asm.html#sec-1-5">1.5 其他文章</a>
+<li><a href="gcc-asm.html#sec-5">5 其他文章</a>
 <ul>
-<li><a href="gcc-asm.html#sec-1-5-1">1.5.1 gcc内嵌汇编码1</a></li>
-<li><a href="gcc-asm.html#sec-1-5-2">1.5.2 gcc内嵌汇编码2</a></li>
-<li><a href="gcc-asm.html#sec-1-5-3">1.5.3 关于gcc的行内汇编</a>
+<li><a href="gcc-asm.html#sec-5-1">5.1 gcc内嵌汇编码1</a></li>
+<li><a href="gcc-asm.html#sec-5-2">5.2 gcc内嵌汇编码2</a></li>
+<li><a href="gcc-asm.html#sec-5-3">5.3 关于gcc的行内汇编</a>
 <ul>
-<li><a href="gcc-asm.html#sec-1-5-3-1">1.5.3.1 关于gcc的行内汇编(1)</a></li>
-<li><a href="gcc-asm.html#sec-1-5-3-2">1.5.3.2 关于gcc的行内汇编(2)</a></li>
-<li><a href="gcc-asm.html#sec-1-5-3-3">1.5.3.3 关于gcc的行内汇编(3)</a></li>
-<li><a href="gcc-asm.html#sec-1-5-3-4">1.5.3.4 关于gcc的行内汇编(4)</a></li>
+<li><a href="gcc-asm.html#sec-5-3-1">5.3.1 关于gcc的行内汇编(1)</a></li>
+<li><a href="gcc-asm.html#sec-5-3-2">5.3.2 关于gcc的行内汇编(2)</a></li>
+<li><a href="gcc-asm.html#sec-5-3-3">5.3.3 关于gcc的行内汇编(3)</a></li>
+<li><a href="gcc-asm.html#sec-5-3-4">5.3.4 关于gcc的行内汇编(4)</a></li>
 </ul></li>
 </ul>
 </li>
-<li><a href="gcc-asm.html#sec-1-6">1.6 x86-64寄存器约定</a>
+<li><a href="gcc-asm.html#sec-6">6 x86-64寄存器约定</a>
 <ul>
-<li><a href="gcc-asm.html#sec-1-6-1">1.6.1 各个寄存器作用</a></li>
-<li><a href="gcc-asm.html#sec-1-6-2">1.6.2 寄存器保存约定</a></li>
-<li><a href="gcc-asm.html#sec-1-6-3">1.6.3 传参数寄存器选择</a></li>
+<li><a href="gcc-asm.html#sec-6-1">6.1 各个寄存器作用</a></li>
+<li><a href="gcc-asm.html#sec-6-2">6.2 寄存器保存约定</a></li>
+<li><a href="gcc-asm.html#sec-6-3">6.3 传参数寄存器选择</a></li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> gcc-asm</h2>
-<div class="outline-text-2" id="text-1">
-
-
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 基本形式</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> 基本形式</h3>
+<div class="outline-text-3" id="text-1">
 
 
 
@@ -189,9 +176,9 @@
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 约束符</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> 约束符</h3>
+<div class="outline-text-3" id="text-2">
 
 <p>约束符影响的内容包括
 </p><ul>
@@ -292,9 +279,9 @@
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> 修饰符</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> 修饰符</h3>
+<div class="outline-text-3" id="text-3">
 
 <p>修饰符包括[还有一些不是很理解]
 </p><ul>
@@ -326,16 +313,16 @@
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> 注意事项</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> 注意事项</h3>
+<div class="outline-text-3" id="text-4">
 
 
 </div>
 
-<div id="outline-container-1-4-1" class="outline-4">
-<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> 值类型</h4>
-<div class="outline-text-4" id="text-1-4-1">
+<div id="outline-container-4-1" class="outline-4">
+<h4 id="sec-4-1"><span class="section-number-4">4.1</span> 值类型</h4>
+<div class="outline-text-4" id="text-4-1">
 
 <p>值的类型会影响寄存器的分配.比如这里"r"((long long)N).本来N是一个int类型的,
 如果存放位置是r的话,那么gcc可能会分配%ebx,%ecx这样的32位寄存器,
@@ -346,9 +333,9 @@
 
 </div>
 
-<div id="outline-container-1-4-2" class="outline-4">
-<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> 跳转标签</h4>
-<div class="outline-text-4" id="text-1-4-2">
+<div id="outline-container-4-2" class="outline-4">
+<h4 id="sec-4-2"><span class="section-number-4">4.2</span> 跳转标签</h4>
+<div class="outline-text-4" id="text-4-2">
 
 <p>对于跳转标签我们可以使用1,2,3来命名,然后在跳转的时候,需要在后面加上后缀.
 b表示backward,f表示foreward.比如jnz 1b.使用1,2,3来命名的标签都是局部标签.
@@ -357,9 +344,9 @@ b表示backward,f表示foreward.比如jnz 1b.使用1,2,3来命名的标签都是
 
 </div>
 
-<div id="outline-container-1-4-3" class="outline-4">
-<h4 id="sec-1-4-3"><span class="section-number-4">1.4.3</span> 输入/输出使用同一个寄存器</h4>
-<div class="outline-text-4" id="text-1-4-3">
+<div id="outline-container-4-3" class="outline-4">
+<h4 id="sec-4-3"><span class="section-number-4">4.3</span> 输入/输出使用同一个寄存器</h4>
+<div class="outline-text-4" id="text-4-3">
 
 <p>如果想输入和输出使用同一个寄存器的话,存在两种方式.
 </p>
@@ -381,9 +368,9 @@ __asm__ __volatile__ (<span class="org-string">"cpuid"</span>:<span class="org-s
 
 </div>
 
-<div id="outline-container-1-4-4" class="outline-4">
-<h4 id="sec-1-4-4"><span class="section-number-4">1.4.4</span> 内存访问</h4>
-<div class="outline-text-4" id="text-1-4-4">
+<div id="outline-container-4-4" class="outline-4">
+<h4 id="sec-4-4"><span class="section-number-4">4.4</span> 内存访问</h4>
+<div class="outline-text-4" id="text-4-4">
 
 <p>如果在指令中存在某种不可以预见的访问内存方式的话,那么最好在clobber部分写上"memory".
 不可预见的访问内存方式是相对于gcc来说的,如果我们指令里面某些操作如果会影响到外部内存
@@ -404,9 +391,9 @@ __asm__ __volatile__ (<span class="org-string">"cpuid"</span>:<span class="org-s
 
 </div>
 
-<div id="outline-container-1-4-5" class="outline-4">
-<h4 id="sec-1-4-5"><span class="section-number-4">1.4.5</span> 指令顺序调整</h4>
-<div class="outline-text-4" id="text-1-4-5">
+<div id="outline-container-4-5" class="outline-4">
+<h4 id="sec-4-5"><span class="section-number-4">4.5</span> 指令顺序调整</h4>
+<div class="outline-text-4" id="text-4-5">
 
 <p>即使对于一条__asm__指令的话,可能被调整执行顺序.如果希望不被调整执行顺序的话,那么应该把
 这些指令放在一个asm指令内部.
@@ -415,9 +402,9 @@ __asm__ __volatile__ (<span class="org-string">"cpuid"</span>:<span class="org-s
 
 </div>
 
-<div id="outline-container-1-4-6" class="outline-4">
-<h4 id="sec-1-4-6"><span class="section-number-4">1.4.6</span> 关于Condition Code</h4>
-<div class="outline-text-4" id="text-1-4-6">
+<div id="outline-container-4-6" class="outline-4">
+<h4 id="sec-4-6"><span class="section-number-4">4.6</span> 关于Condition Code</h4>
+<div class="outline-text-4" id="text-4-6">
 
 <p>如果load和store会改写的Condition Code的话,那么在刚进入asm第一条指令以及刚出asm第一条指令
 的时候,可能看到的不是一个正确的Condition Code.因为在进入asm之前需要load数据而在出asm之后
@@ -428,9 +415,9 @@ __asm__ __volatile__ (<span class="org-string">"cpuid"</span>:<span class="org-s
 
 </div>
 
-<div id="outline-container-1-4-7" class="outline-4">
-<h4 id="sec-1-4-7"><span class="section-number-4">1.4.7</span> 关于asm大小</h4>
-<div class="outline-text-4" id="text-1-4-7">
+<div id="outline-container-4-7" class="outline-4">
+<h4 id="sec-4-7"><span class="section-number-4">4.7</span> 关于asm大小</h4>
+<div class="outline-text-4" id="text-4-7">
 
 <p>asm大小是根据指令数量*最长指令来计算大小*的.所以如果内部使用macro来编写的话,可能会造成
 asm大小计算错误,影响产生的代码.
@@ -440,16 +427,16 @@ asm大小计算错误,影响产生的代码.
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> 其他文章</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> 其他文章</h3>
+<div class="outline-text-3" id="text-5">
 
 
 </div>
 
-<div id="outline-container-1-5-1" class="outline-4">
-<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> gcc内嵌汇编码1</h4>
-<div class="outline-text-4" id="text-1-5-1">
+<div id="outline-container-5-1" class="outline-4">
+<h4 id="sec-5-1"><span class="section-number-4">5.1</span> gcc内嵌汇编码1</h4>
+<div class="outline-text-4" id="text-5-1">
 
 
 
@@ -851,9 +838,9 @@ AT&amp;T格式的汇编语言中，寄存器名以“%”作为前缀，为了�
 
 </div>
 
-<div id="outline-container-1-5-2" class="outline-4">
-<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> gcc内嵌汇编码2</h4>
-<div class="outline-text-4" id="text-1-5-2">
+<div id="outline-container-5-2" class="outline-4">
+<h4 id="sec-5-2"><span class="section-number-4">5.2</span> gcc内嵌汇编码2</h4>
+<div class="outline-text-4" id="text-5-2">
 
 
 
@@ -1019,16 +1006,16 @@ AT&amp;T格式的汇编语言中，寄存器名以“%”作为前缀，为了�
 
 </div>
 
-<div id="outline-container-1-5-3" class="outline-4">
-<h4 id="sec-1-5-3"><span class="section-number-4">1.5.3</span> 关于gcc的行内汇编</h4>
-<div class="outline-text-4" id="text-1-5-3">
+<div id="outline-container-5-3" class="outline-4">
+<h4 id="sec-5-3"><span class="section-number-4">5.3</span> 关于gcc的行内汇编</h4>
+<div class="outline-text-4" id="text-5-3">
 
 
 </div>
 
-<div id="outline-container-1-5-3-1" class="outline-5">
-<h5 id="sec-1-5-3-1"><span class="section-number-5">1.5.3.1</span> 关于gcc的行内汇编(1)</h5>
-<div class="outline-text-5" id="text-1-5-3-1">
+<div id="outline-container-5-3-1" class="outline-5">
+<h5 id="sec-5-3-1"><span class="section-number-5">5.3.1</span> 关于gcc的行内汇编(1)</h5>
+<div class="outline-text-5" id="text-5-3-1">
 
 
 
@@ -1105,9 +1092,9 @@ Intel:        [ebx + eax*8 + _array]
 
 </div>
 
-<div id="outline-container-1-5-3-2" class="outline-5">
-<h5 id="sec-1-5-3-2"><span class="section-number-5">1.5.3.2</span> 关于gcc的行内汇编(2)</h5>
-<div class="outline-text-5" id="text-1-5-3-2">
+<div id="outline-container-5-3-2" class="outline-5">
+<h5 id="sec-5-3-2"><span class="section-number-5">5.3.2</span> 关于gcc的行内汇编(2)</h5>
+<div class="outline-text-5" id="text-5-3-2">
 
 
 
@@ -1156,9 +1143,9 @@ asm("movl $0,_booga);
 
 </div>
 
-<div id="outline-container-1-5-3-3" class="outline-5">
-<h5 id="sec-1-5-3-3"><span class="section-number-5">1.5.3.3</span> 关于gcc的行内汇编(3)</h5>
-<div class="outline-text-5" id="text-1-5-3-3">
+<div id="outline-container-5-3-3" class="outline-5">
+<h5 id="sec-5-3-3"><span class="section-number-5">5.3.3</span> 关于gcc的行内汇编(3)</h5>
+<div class="outline-text-5" id="text-5-3-3">
 
 
 
@@ -1256,9 +1243,9 @@ asm("leal (%%ebx,%%ebx,4),%0"
 
 </div>
 
-<div id="outline-container-1-5-3-4" class="outline-5">
-<h5 id="sec-1-5-3-4"><span class="section-number-5">1.5.3.4</span> 关于gcc的行内汇编(4)</h5>
-<div class="outline-text-5" id="text-1-5-3-4">
+<div id="outline-container-5-3-4" class="outline-5">
+<h5 id="sec-5-3-4"><span class="section-number-5">5.3.4</span> 关于gcc的行内汇编(4)</h5>
+<div class="outline-text-5" id="text-5-3-4">
 
 
 
@@ -1307,18 +1294,18 @@ return -1; \
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> x86-64寄存器约定</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> x86-64寄存器约定</h3>
+<div class="outline-text-3" id="text-6">
 
-<p>note(dirlt):很早之前整理的，不知道现在是否还正确。基本上开发是使用不到寄存器约定的，除非自己开发编译器。
+<p>#note: 很早之前整理的，不知道现在是否还正确。基本上开发是使用不到寄存器约定的，除非自己开发编译器。
 </p>
 
 </div>
 
-<div id="outline-container-1-6-1" class="outline-4">
-<h4 id="sec-1-6-1"><span class="section-number-4">1.6.1</span> 各个寄存器作用</h4>
-<div class="outline-text-4" id="text-1-6-1">
+<div id="outline-container-6-1" class="outline-4">
+<h4 id="sec-6-1"><span class="section-number-4">6.1</span> 各个寄存器作用</h4>
+<div class="outline-text-4" id="text-6-1">
 
 <ul>
 <li>%eax 返回使用的SSE寄存器的个数的上限，1th返回值的寄存器
@@ -1372,9 +1359,9 @@ return -1; \
 
 </div>
 
-<div id="outline-container-1-6-2" class="outline-4">
-<h4 id="sec-1-6-2"><span class="section-number-4">1.6.2</span> 寄存器保存约定</h4>
-<div class="outline-text-4" id="text-1-6-2">
+<div id="outline-container-6-2" class="outline-4">
+<h4 id="sec-6-2"><span class="section-number-4">6.2</span> 寄存器保存约定</h4>
+<div class="outline-text-4" id="text-6-2">
 
 <p>函数调用的时候分为调用函数的保存寄存器组(caller saved)和被调函数的保存寄存器组(callee saved)。对于callee saved保存的寄存器组有下面这些(这些都是如果被调函数需要使用的话那么需要自己进行保存):
 </p><ul>
@@ -1400,9 +1387,9 @@ return -1; \
 
 </div>
 
-<div id="outline-container-1-6-3" class="outline-4">
-<h4 id="sec-1-6-3"><span class="section-number-4">1.6.3</span> 传参数寄存器选择</h4>
-<div class="outline-text-4" id="text-1-6-3">
+<div id="outline-container-6-3" class="outline-4">
+<h4 id="sec-6-3"><span class="section-number-4">6.3</span> 传参数寄存器选择</h4>
+<div class="outline-text-4" id="text-6-3">
 
 <p>确定了传入参数使用哪一类型寄存器之后，然后必须确定需要传入哪一个寄存器
 </p><ul>
@@ -1422,13 +1409,10 @@ return -1; \
 </div>
 </div>
 </div>
-</div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:43+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'gcc-asm.html';var disqus_title = 'gcc-asm.html';var disqus_url = 'http://dirlt.com/gcc-asm.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'gcc-asm.html';var disqus_title = 'gcc-asm.html';var disqus_url = 'http://dirlt.com/gcc-asm.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

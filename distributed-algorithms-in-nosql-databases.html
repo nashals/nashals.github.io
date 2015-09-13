@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<head>
 <title>Distributed Algorithms in NoSQL Databases</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Distributed Algorithms in NoSQL Databases"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:44+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,7 +62,7 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
@@ -71,38 +70,6 @@
 
 <div id="content">
 <h1 class="title">Distributed Algorithms in NoSQL Databases</h1>
-
-
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="distributed-algorithms-in-nosql-databases.html#sec-1">1 distributed-algorithms-in-nosql-databases</a>
-<ul>
-<li><a href="distributed-algorithms-in-nosql-databases.html#sec-1-1">1.1 数据一致性</a></li>
-<li><a href="distributed-algorithms-in-nosql-databases.html#sec-1-2">1.2 数据放置</a>
-<ul>
-<li><a href="distributed-algorithms-in-nosql-databases.html#sec-1-2-1">1.2.1 均衡数据</a></li>
-<li><a href="distributed-algorithms-in-nosql-databases.html#sec-1-2-2">1.2.2 动态环境中的数据分片和复制</a></li>
-<li><a href="distributed-algorithms-in-nosql-databases.html#sec-1-2-3">1.2.3 按照多个属性的数据分片</a></li>
-<li><a href="distributed-algorithms-in-nosql-databases.html#sec-1-2-4">1.2.4 钝化副本</a></li>
-</ul>
-</li>
-<li><a href="distributed-algorithms-in-nosql-databases.html#sec-1-3">1.3 系统协调</a>
-<ul>
-<li><a href="distributed-algorithms-in-nosql-databases.html#sec-1-3-1">1.3.1 故障检测</a></li>
-<li><a href="distributed-algorithms-in-nosql-databases.html#sec-1-3-2">1.3.2 协调者竞选</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> distributed-algorithms-in-nosql-databases</h2>
-<div class="outline-text-2" id="text-1">
 
 <ul>
 <li><a href="http://highlyscalable.wordpress.com/2012/09/18/distributed-algorithms-in-nosql-databases/">http://highlyscalable.wordpress.com/2012/09/18/distributed-algorithms-in-nosql-databases/</a>
@@ -112,9 +79,36 @@
 </ul>
 
 
-<p>
-接下来我们将研究一些分布式策略，比如故障检测中的复制，这些策略用黑体字标出，被分为三段：
-</p><ul>
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="distributed-algorithms-in-nosql-databases.html#sec-1">1 引言</a></li>
+<li><a href="distributed-algorithms-in-nosql-databases.html#sec-2">2 数据一致性</a></li>
+<li><a href="distributed-algorithms-in-nosql-databases.html#sec-3">3 数据放置</a>
+<ul>
+<li><a href="distributed-algorithms-in-nosql-databases.html#sec-3-1">3.1 均衡数据</a></li>
+<li><a href="distributed-algorithms-in-nosql-databases.html#sec-3-2">3.2 动态环境中的数据分片和复制</a></li>
+<li><a href="distributed-algorithms-in-nosql-databases.html#sec-3-3">3.3 按照多个属性的数据分片</a></li>
+<li><a href="distributed-algorithms-in-nosql-databases.html#sec-3-4">3.4 钝化副本</a></li>
+</ul>
+</li>
+<li><a href="distributed-algorithms-in-nosql-databases.html#sec-4">4 系统协调</a>
+<ul>
+<li><a href="distributed-algorithms-in-nosql-databases.html#sec-4-1">4.1 故障检测</a></li>
+<li><a href="distributed-algorithms-in-nosql-databases.html#sec-4-2">4.2 协调者竞选</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> 引言</h3>
+<div class="outline-text-3" id="text-1">
+
+<ul>
 <li>数据一致性。NoSQL需要在分布式系统的一致性，容错性和性能，低延迟及高可用之间作出权衡，一般来说，数据一致性是一个必选项，所以这一节主要是关于数据复制和数据恢复。
 </li>
 <li>数据放置。一个数据库产品应该能够应对不同的数据分布，集群拓扑和硬件配置。在这一节我们将讨论如何分布以及调整数据分布才能够能够及时解决故障，提供持久化保证，高效查询和保证集群中的资源（如内存和硬盘空间）得到均衡使用。
@@ -124,12 +118,13 @@
 </ul>
 
 
+</div>
 
 </div>
 
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 数据一致性</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> 数据一致性</h3>
+<div class="outline-text-3" id="text-2">
 
 <p>我们注意到分布式系统的一致性问题是由数据隔离和复制引起的，所以我们将从研究复制的特点开始：
 </p><ul>
@@ -146,14 +141,14 @@
 </ul>
 
 
-<p> 
+<p>
 一致性。一致性比前面几个特性都要复杂得多，我们需要详细讨论一下几种不同的观点。 但是我们不会涉及过多的一致性理论和并发模型，因为这已经超出了本文的范畴，我只会使用一些简单特点构成的精简体系。
 </p><ul>
 <li>读写一致性。从读写的观点来看，数据库的基本目标是使副本趋同的时间尽可能短（即更新传递到所有副本的时间），保证最终一致性。除了这个较弱的保证，还有一些更强的一致性特点：
 <ul>
 <li>写后读一致性。在数据项X上写操作的效果总是能够被后续的X上的读操作看见。
 </li>
-<li>读后读一致性。在一次对数据项X的读操作之后，后续对X的读操作应该返回与第一次的返回值相同或是更加新的值。 <b>note(dirlt)：这是一个什么情况？，而且这个不应该算是读写一致性的范畴吧？这里没有任何写</b> <b>note(dirlt):这个在后面读若干和写若干的算法中出现了</b> 
+<li>读后读一致性。在一次对数据项X的读操作之后，后续对X的读操作应该返回与第一次的返回值相同或是更加新的值。
 </li>
 </ul>
 
@@ -192,7 +187,7 @@
 <p>
 我们会依据一致性从弱到强把所有的技术过一遍：
 </p><ul>
-<li>（A, 反熵） 一致性最弱，基于策略如下。写操作的时候选择任意一个节点更新，在读的时候如果新数据还没有通过后台的反熵协议传递到读的那个节点，那么读到的仍然是旧数据。（下一节会详细介绍反熵协议）。这种方法的主要特点是： <b>note(dirlt)：这里所谓的反熵就是指data replication. 但是在这个模型下面似乎没有规定数据是如何进行传播的</b>
+<li>（A, 反熵） 一致性最弱，基于策略如下。写操作的时候选择任意一个节点更新，在读的时候如果新数据还没有通过后台的反熵协议传递到读的那个节点，那么读到的仍然是旧数据。（下一节会详细介绍反熵协议）。这种方法的主要特点是： #note: 这里所谓的反熵就是指data replication. 但是在这个模型下面似乎没有规定数据是如何进行传播的
 <ul>
 <li>过高的传播延迟使它在数据同步方面不太好用，所以比较典型的用法是只作为辅助性的功能来检测和修复计划外的不一致。 <b>Cassandra就使用了反熵算法来在各节点之间传递数据库拓扑和其他一些元数据信息。</b>
 </li>
@@ -206,7 +201,7 @@
 </ul>
 
 </li>
-<li>（B） 对上面模式的一个改进是在任意一个节点收到更新数据请求的同时异步的发送更新给所有可用节点。这也被认为是定向的反熵。 
+<li>（B） 对上面模式的一个改进是在任意一个节点收到更新数据请求的同时异步的发送更新给所有可用节点。这也被认为是定向的反熵。
 <ul>
 <li>与纯粹的反熵相比，这种做法只用一点小小的性能牺牲就极大地提高了一致性。然而，正式一致性和持久性保持不变。
 </li>
@@ -216,10 +211,10 @@
 </ul>
 
 </li>
-<li>（C） 在前一个模式中，使用提示移交技术可以更好地处理某个节点的操作失败。对于失效节点的预期更新被记录在额外的代理节点上，并且标明一旦特点节点可用就要将更新传递给该节点。这样做提高了一致性，降低了复制收敛时间。 <b>note(dirlt)：这个算法似乎有点高级啊，允许做一个增量的update，但是现实需要这样吗？但是代理节点这个想法还是非常不错的</b>
+<li>（C） 在前一个模式中，使用提示移交技术可以更好地处理某个节点的操作失败。对于失效节点的预期更新被记录在额外的代理节点上，并且标明一旦特点节点可用就要将更新传递给该节点。这样做提高了一致性，降低了复制收敛时间。
 
 </li>
-<li>（D, Read One Write One 一次性读写）因为提示移交的责任节点也有可能在将更新传递出去之前就已经失效，在这种情况下就有必要通过所谓的读修复来保证一致性。每个读操作都会启动一个异步过程，向存储这条数据的所有节点请求一份数据摘要（像签名或者hash），如果发现各节点返回的摘要不一致则统一各节点上的数据版本。我们用一次性读写来命名组合了A、B、C、D的技术- 他们都没有提供严格的一致性保证， <b>note(dirlt)：不要考虑上面那个情况，就是说可以通过读取所有的节点找到最新的value, 来做read repair。基本上这个就是下面E算法的特例了。只不过这里W=1,所以R=N</b>
+<li>（D, Read One Write One 一次性读写）因为提示移交的责任节点也有可能在将更新传递出去之前就已经失效，在这种情况下就有必要通过所谓的读修复来保证一致性。每个读操作都会启动一个异步过程，向存储这条数据的所有节点请求一份数据摘要（像签名或者hash），如果发现各节点返回的摘要不一致则统一各节点上的数据版本。我们用一次性读写来命名组合了A、B、C、D的技术- 他们都没有提供严格的一致性保证。
 
 </li>
 <li>（E, Read Quorum Write Quorum 读若干写若干） 上面的策略是降低了复制收敛时间的启发式增强。为了保证更强的一致性，必须牺牲可用性来保证一定的读写重叠。 通常的做法是同时写入W个副本而不是一个，读的时候也要读R个副本。
@@ -272,23 +267,20 @@
 <p>
 <img src="images/anti-entropy-push-pull.png"  alt="./images/anti-entropy-push-pull.png" />
 </p>
-<p>
-<b>note(dirlt):这种反熵算法都是可以自制的，也就是不需要外界干预。但是在现实生活中似乎还没有遇到过</b>
-</p>
 </div>
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 数据放置</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> 数据放置</h3>
+<div class="outline-text-3" id="text-3">
 
 
 </div>
 
-<div id="outline-container-1-2-1" class="outline-4">
-<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> 均衡数据</h4>
-<div class="outline-text-4" id="text-1-2-1">
+<div id="outline-container-3-1" class="outline-4">
+<h4 id="sec-3-1"><span class="section-number-4">3.1</span> 均衡数据</h4>
+<div class="outline-text-4" id="text-3-1">
 
 <p>尽管数据库能够监控到每一条记录，包括MongoDB, Oracle Coherence, 和还在开发中的 Redis Cluster 在内的许多系统仍然使用的是自动均衡技术。也即，将数据分片并把每个数据分片作为迁移的最小单位，这是基于效率的考虑。很明显分片数会比节点数多，数据分片可以在各节点间平均分布。按照一种简单的协议即可实现无缝数据迁移，这个协议可以在迁移数据分片的时候重定向客户的数据迁出节点和迁入节点。
 </p>
@@ -296,9 +288,9 @@
 
 </div>
 
-<div id="outline-container-1-2-2" class="outline-4">
-<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> 动态环境中的数据分片和复制</h4>
-<div class="outline-text-4" id="text-1-2-2">
+<div id="outline-container-3-2" class="outline-4">
+<h4 id="sec-3-2"><span class="section-number-4">3.2</span> 动态环境中的数据分片和复制</h4>
+<div class="outline-text-4" id="text-3-2">
 
 <p>们关注的另一个问题是怎么把记录映射到物理节点。比较直接的方法是用一张表来记录每个范围的key与节点的映射关系，一个范围的key对应到一个节点，或者用key的hash值与节点数取模得到的值作为节点ID。但是hash取模的方法在集群发生更改的情况下就不是很好用，因为增加或者减少节点都会引起集群内的数据彻底重排。导致很难进行复制和故障恢复。
 </p>
@@ -312,9 +304,9 @@
 
 </div>
 
-<div id="outline-container-1-2-3" class="outline-4">
-<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> 按照多个属性的数据分片</h4>
-<div class="outline-text-4" id="text-1-2-3">
+<div id="outline-container-3-3" class="outline-4">
+<h4 id="sec-3-3"><span class="section-number-4">3.3</span> 按照多个属性的数据分片</h4>
+<div class="outline-text-4" id="text-3-3">
 
 <p>当只需要通过主键来访问数据的时候，一致性hash的数据放置策略很有效，但是当需要按照多个属性来查询的时候事情就会复杂得多。一种简单的做法（MongoDB使用的）是用主键来分布数据而不考虑其他属性。这样做的结果是依据主键的查询可以被路由到接个合适的节点上，但是对其他查询的处理就要遍历集群的所有节点。查询效率的不均衡造成下面的问题：
 </p>
@@ -325,26 +317,26 @@
 HyperDex数据库提供了一种解决方案。基本思想是把每个属性视作多维空间中的一个轴，将空间中的区域映射到物理节点上。一次查询会被对应到一个由空间中多个相邻区域组成的超平面，所以只有这些区域与该查询有关。
 </p>
 <p>
-<b>note(dirlt):可以认为就是枚举各个属性的范围并且做交叉，然后将不同的交叉映射到不同的物理节点上。</b>
+#note: 可以认为就是枚举各个属性的范围并且做交叉，然后将不同的交叉映射到不同的物理节点上。
 </p>
 </div>
 
 </div>
 
-<div id="outline-container-1-2-4" class="outline-4">
-<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> 钝化副本</h4>
-<div class="outline-text-4" id="text-1-2-4">
+<div id="outline-container-3-4" class="outline-4">
+<h4 id="sec-3-4"><span class="section-number-4">3.4</span> 钝化副本</h4>
+<div class="outline-text-4" id="text-3-4">
 
-<p><b>todo(dirlt):不是很明白意思？</b>
+<p>#todo: 不是很明白
 </p>
 </div>
 </div>
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> 系统协调</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> 系统协调</h3>
+<div class="outline-text-3" id="text-4">
 
 <p>在这部分我们将讨论与系统协调相关的两种技术。分布式协调是一个比较大的领域，数十年以来有很多人对此进行了深入的研究。这篇文章里只涉及两种已经投入实用的技术。关于分布式锁，consensus协议以及其他一些基础技术的内容可以在很多书或者网络资源中找到，也可以去看参考资料
 </p><ul>
@@ -364,9 +356,9 @@ HyperDex数据库提供了一种解决方案。基本思想是把每个属性视
 
 </div>
 
-<div id="outline-container-1-3-1" class="outline-4">
-<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> 故障检测</h4>
-<div class="outline-text-4" id="text-1-3-1">
+<div id="outline-container-4-1" class="outline-4">
+<h4 id="sec-4-1"><span class="section-number-4">4.1</span> 故障检测</h4>
+<div class="outline-text-4" id="text-4-1">
 
 <ul>
 <li>N. Hayashibara, A. Cherif, T. Katayama. Failure Detectors for Large-Scale Distributed Systems <a href="http://ddg.jaist.ac.jp/pub/HCK02.pdf">http://ddg.jaist.ac.jp/pub/HCK02.pdf</a>
@@ -407,9 +399,9 @@ HyperDex数据库提供了一种解决方案。基本思想是把每个属性视
 
 </div>
 
-<div id="outline-container-1-3-2" class="outline-4">
-<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> 协调者竞选</h4>
-<div class="outline-text-4" id="text-1-3-2">
+<div id="outline-container-4-2" class="outline-4">
+<h4 id="sec-4-2"><span class="section-number-4">4.2</span> 协调者竞选</h4>
+<div class="outline-text-4" id="text-4-2">
 
 <p>协调者竞选是用于强一致性数据库的一个重要技术。首先，它可以组织主从结构的系统中主节点的故障恢复。其次，在网络隔离的情况下，它可以断开处于少数的那部分节点，以避免写冲突。
 </p>
@@ -419,13 +411,10 @@ HyperDex数据库提供了一种解决方案。基本思想是把每个属性视
 </div>
 </div>
 </div>
-</div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:44+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'distributed-algorithms-in-nosql-databases.html';var disqus_title = 'distributed-algorithms-in-nosql-databases.html';var disqus_url = 'http://dirlt.com/distributed-algorithms-in-nosql-databases.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'distributed-algorithms-in-nosql-databases.html';var disqus_title = 'distributed-algorithms-in-nosql-databases.html';var disqus_url = 'http://dirlt.com/distributed-algorithms-in-nosql-databases.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

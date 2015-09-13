@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
-<title>encoding</title>
+<head>
+<title>字符编码</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="encoding"/>
+<meta name="title" content="字符编码"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:43+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,45 +62,14 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
 </div>
 
 <div id="content">
-<h1 class="title">encoding</h1>
-
-
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="encoding.html#sec-1">1 encoding</a>
-<ul>
-<li><a href="encoding.html#sec-1-1">1.1 参考文献</a></li>
-<li><a href="encoding.html#sec-1-2">1.2 切换编码考虑</a></li>
-<li><a href="encoding.html#sec-1-3">1.3 GB2312-80/GBK/GB18030</a></li>
-<li><a href="encoding.html#sec-1-4">1.4 Unicode</a></li>
-<li><a href="encoding.html#sec-1-5">1.5 UTF16/UTF32</a></li>
-<li><a href="encoding.html#sec-1-6">1.6 UTF8</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> encoding</h2>
-<div class="outline-text-2" id="text-1">
-
-
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 参考文献</h3>
-<div class="outline-text-3" id="text-1-1">
+<h1 class="title">字符编码</h1>
 
 <ul>
 <li><a href="http://tech.idv2.com/2008/02/21/unicode-intro/">http://tech.idv2.com/2008/02/21/unicode-intro/</a>
@@ -111,13 +79,23 @@
 </ul>
 
 
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="encoding.html#sec-1">1 切换编码考虑</a></li>
+<li><a href="encoding.html#sec-2">2 GB2312-80/GBK/GB18030</a></li>
+<li><a href="encoding.html#sec-3">3 Unicode</a></li>
+<li><a href="encoding.html#sec-4">4 UTF16/UTF32</a></li>
+<li><a href="encoding.html#sec-5">5 UTF8</a></li>
+</ul>
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> 切换编码考虑</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> 切换编码考虑</h3>
+<div class="outline-text-3" id="text-1">
 
 <ul>
 <li>数据容量
@@ -137,9 +115,9 @@
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> GB2312-80/GBK/GB18030</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> GB2312-80/GBK/GB18030</h3>
+<div class="outline-text-3" id="text-2">
 
 <p>编码方式都是2字节,对于GB18030也有4字节表示.
 </p><ul>
@@ -177,9 +155,9 @@
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Unicode</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> Unicode</h3>
+<div class="outline-text-3" id="text-3">
 
 <p>Unicode是为了整合全世界所有的语言文字而诞生的.任何文字在Unicode中都对应一个值,这个值称为码点(code point).文字和码点之间对应关系如果是2个字节表示一个文字的话,那么就是UCS(Unicode Character Set)-2关系,如果是4个字节的话那么就是UCS-4关系.表达是U+XXXX.,U+XXXXXXXX这样来写.但是UCS-2,UCS-4只是规定和对应的关系但是却没有规定如何存储.关于存储方面应用较多的就是UTF(Unicode Transformation Format)
 </p>
@@ -214,9 +192,9 @@ Unicode全角和半角转换 uch&gt;=0xFF00 &amp;&amp; uch&lt;=0xFF5E =&gt; (uch
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> UTF16/UTF32</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> UTF16/UTF32</h3>
+<div class="outline-text-3" id="text-4">
 
 <p>UTF使用2个字节来表示一个码点.很明显UTF16对应UCS-2关系.但是UTF16是一种具体的编码所以需要考虑大小端问题[Little-Endian和Big-Endian的关系].所以UTF16实际上包含3种编码方式
 </p><ul>
@@ -234,9 +212,9 @@ Unicode全角和半角转换 uch&gt;=0xFF00 &amp;&amp; uch&lt;=0xFF5E =&gt; (uch
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> UTF8</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> UTF8</h3>
+<div class="outline-text-3" id="text-5">
 
 <p>UTF8和UTF16/UTF32是两种不同的编码方法.16/32属于定长编码而utf8属于变长编码.使用字节长度从1~4不等.同时UTF8不需要考虑大端和小端问题.对应方式如下:
 </p>
@@ -262,13 +240,10 @@ U-04000000 - U-7FFFFFFF: 1111110x 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx
 </div>
 </div>
 </div>
-</div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:43+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'encoding.html';var disqus_title = 'encoding.html';var disqus_url = 'http://dirlt.com/encoding.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'encoding.html';var disqus_title = 'encoding.html';var disqus_url = 'http://dirlt.com/encoding.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

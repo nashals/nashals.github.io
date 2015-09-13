@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<head>
 <title>Probabilistic Data Structures for Web Analytics and Data Mining</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Probabilistic Data Structures for Web Analytics and Data Mining"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:43+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,7 +62,7 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
@@ -72,45 +71,29 @@
 <div id="content">
 <h1 class="title">Probabilistic Data Structures for Web Analytics and Data Mining</h1>
 
+<p><a href="http://highlyscalable.wordpress.com/2012/05/01/probabilistic-structures-web-analytics-data-mining/">http://highlyscalable.wordpress.com/2012/05/01/probabilistic-structures-web-analytics-data-mining/</a>
+</p>
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="probabilistic-data-structures-for-web-analytics-and-data-mining.html#sec-1">1 probabilistic-data-structures-for-web-analytics-and-data-mining</a>
-<ul>
-<li><a href="probabilistic-data-structures-for-web-analytics-and-data-mining.html#sec-1-1">1.1 Introduction</a></li>
-<li><a href="probabilistic-data-structures-for-web-analytics-and-data-mining.html#sec-1-2">1.2 Cardinality Estimation: Linear Counting</a></li>
-<li><a href="probabilistic-data-structures-for-web-analytics-and-data-mining.html#sec-1-3">1.3 Cardinality Estimation: Loglog Counting</a></li>
-<li><a href="probabilistic-data-structures-for-web-analytics-and-data-mining.html#sec-1-4">1.4 Frequency Estimation: Count-Min Sketch</a></li>
-<li><a href="probabilistic-data-structures-for-web-analytics-and-data-mining.html#sec-1-5">1.5 Frequency Estimation: Count-Mean-Min Sketch</a></li>
-<li><a href="probabilistic-data-structures-for-web-analytics-and-data-mining.html#sec-1-6">1.6 Heavy Hitters: Count-Min Sketch</a></li>
-<li><a href="probabilistic-data-structures-for-web-analytics-and-data-mining.html#sec-1-7">1.7 Heavy Hitters: Stream-Summary</a></li>
-<li><a href="probabilistic-data-structures-for-web-analytics-and-data-mining.html#sec-1-8">1.8 Range Query: Array of Count-Min Sketches</a></li>
-<li><a href="probabilistic-data-structures-for-web-analytics-and-data-mining.html#sec-1-9">1.9 Membership Query: Bloom Filter</a></li>
-</ul>
-</li>
+<li><a href="probabilistic-data-structures-for-web-analytics-and-data-mining.html#sec-1">1 Introduction</a></li>
+<li><a href="probabilistic-data-structures-for-web-analytics-and-data-mining.html#sec-2">2 Cardinality Estimation: Linear Counting</a></li>
+<li><a href="probabilistic-data-structures-for-web-analytics-and-data-mining.html#sec-3">3 Cardinality Estimation: Loglog Counting</a></li>
+<li><a href="probabilistic-data-structures-for-web-analytics-and-data-mining.html#sec-4">4 Frequency Estimation: Count-Min Sketch</a></li>
+<li><a href="probabilistic-data-structures-for-web-analytics-and-data-mining.html#sec-5">5 Frequency Estimation: Count-Mean-Min Sketch</a></li>
+<li><a href="probabilistic-data-structures-for-web-analytics-and-data-mining.html#sec-6">6 Heavy Hitters: Count-Min Sketch</a></li>
+<li><a href="probabilistic-data-structures-for-web-analytics-and-data-mining.html#sec-7">7 Heavy Hitters: Stream-Summary</a></li>
+<li><a href="probabilistic-data-structures-for-web-analytics-and-data-mining.html#sec-8">8 Range Query: Array of Count-Min Sketches</a></li>
+<li><a href="probabilistic-data-structures-for-web-analytics-and-data-mining.html#sec-9">9 Membership Query: Bloom Filter</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> probabilistic-data-structures-for-web-analytics-and-data-mining</h2>
-<div class="outline-text-2" id="text-1">
-
-
-<ul>
-<li><a href="http://highlyscalable.wordpress.com/2012/05/01/probabilistic-structures-web-analytics-data-mining/">http://highlyscalable.wordpress.com/2012/05/01/probabilistic-structures-web-analytics-data-mining/</a>
-</li>
-</ul>
-
-
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Introduction</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> Introduction</h3>
+<div class="outline-text-3" id="text-1">
 
 <p>Let us start with a simple example that illustrates capabilities of probabilistic data structures:
 </p>
@@ -159,9 +142,9 @@ For some structures like Loglog Counter or Bloom filter, there exist simple and 
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Cardinality Estimation: Linear Counting</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> Cardinality Estimation: Linear Counting</h3>
+<div class="outline-text-3" id="text-2">
 
 <p>这个算法比较简单。首先维护一个全0的bitset, 之后对每个value做hash，映射到bitset对应的bit并且置1。处理完所有的value之后统计这个bitset有多少个bit置1，这个数目就是cardinality.
 </p>
@@ -187,9 +170,9 @@ The following table contains key formulas that allow one to estimate cardinality
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Cardinality Estimation: Loglog Counting</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> Cardinality Estimation: Loglog Counting</h3>
+<div class="outline-text-3" id="text-3">
 
 <p>这个算法 <a href="algorithm.html">之前(HyperLogLog这节)</a> 分析过
 </p>
@@ -206,9 +189,9 @@ These formulas are very impressive. One can see that a number of buckets is rela
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Frequency Estimation: Count-Min Sketch</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> Frequency Estimation: Count-Min Sketch</h3>
+<div class="outline-text-3" id="text-4">
 
 <p>The basic idea of Count-Min Sketch is quite simple and somehow similar to Linear Counting. Count-Min sketch is simply a two-dimensional array (d x w) of integer counters. When a value arrives, it is mapped to one position at each of d rows using d different and preferably independent hash functions. Counters on each position are incremented. This process is shown in the figure below:
 </p>
@@ -219,7 +202,7 @@ These formulas are very impressive. One can see that a number of buckets is rela
 It is clear that if sketch is large in comparison with the cardinality of the data set, almost each value will get an independent counter and estimation will precise. Nevertheless, this case is absolutely impractical – it is much better to simply maintain a dedicated counter for each value by using plain array or hash table. To cope with this issue, Count-Min algorithm estimates frequency of the given value as a minimum of the corresponding counters in each row because the estimation error is always positive (each occurrence of a value always increases its counters, but collisions can cause additional increments). A practical implementation of Count-Min sketch is provided in the following code snippet.
 </p>
 <p>
-<b>note(dirlt):这个算法还是比较好理解的，一个value会映射到每个row上面某个column。因为对于某一个cell来说可能会有不同的value重复叠加这个单元。如果sketch比较大的，那么对应某个row来说其中的column被重复叠加的概率就比较小，而这个column的值肯定是比其他row上面对应的column要小的。所以选择最小的值有意义</b>
+一个value会映射到每个row上面某个column。因为对于某一个cell来说可能会有不同的value重复叠加这个单元。如果sketch比较大的，那么对应某个row来说其中的column被重复叠加的概率就比较小，而这个column的值肯定是比其他row上面对应的column要小的。
 </p>
 
 
@@ -285,9 +268,9 @@ One can see that result is more accurate, at least for the most frequent items. 
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Frequency Estimation: Count-Mean-Min Sketch</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> Frequency Estimation: Count-Mean-Min Sketch</h3>
+<div class="outline-text-3" id="text-5">
 
 <p>对于low or moderately skewed dataset来说，hash冲突比较严重所以会导致结果偏差比较大。我们可以通过去除相互影响的噪音来解决这个问题。
 </p>
@@ -323,9 +306,9 @@ This enhancement can significantly improve accuracy of the Count-Min structure. 
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Heavy Hitters: Count-Min Sketch</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> Heavy Hitters: Count-Min Sketch</h3>
+<div class="outline-text-3" id="text-6">
 
 <p>Count-Min sketches are applicable to the following problem: Find all elements in the data set with the frequencies greater than k percent of the total number of elements in the data set.（获取频率大于k%的元素总数，使用heap作为辅助） The algorithm is straightforward:（
 </p><ul>
@@ -352,9 +335,9 @@ In general, the top-k problem makes sense only for skewed data, so usage of Coun
 
 </div>
 
-<div id="outline-container-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Heavy Hitters: Stream-Summary</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-7" class="outline-3">
+<h3 id="sec-7"><span class="section-number-3">7</span> Heavy Hitters: Stream-Summary</h3>
+<div class="outline-text-3" id="text-7">
 
 <p>这个算法还是比较好理解的。数据结构里面保留一定数目的槽位，添加value的时候增加其frequency counter. 如果达到槽位上限的话，那么就删除frequency counter最低的元素。
 </p>
@@ -368,9 +351,9 @@ The estimation procedure for most frequent elements and corresponding frequencie
 
 </div>
 
-<div id="outline-container-1-8" class="outline-3">
-<h3 id="sec-1-8"><span class="section-number-3">1.8</span> Range Query: Array of Count-Min Sketches</h3>
-<div class="outline-text-3" id="text-1-8">
+<div id="outline-container-8" class="outline-3">
+<h3 id="sec-8"><span class="section-number-3">8</span> Range Query: Array of Count-Min Sketches</h3>
+<div class="outline-text-3" id="text-8">
 
 <p>In theory, one can process a range query (something like SELECT count(v) WHERE v &gt;= c1 AND v &lt; c2) using a Count-Min sketch  enumerating all points within a range and summing estimates for corresponding frequencies. However, this approach is impractical because the number of points within a range can be very high and accuracy also tends to be inacceptable because of cumulative error of the sum.（对于范围查询可以枚举[c1,c2)所有的value，然后使用count-min sketch来得到count. 但是这个算法并不实际因为这个range可能非常大并且误差也很大，因为全部存放在一个sketch上面）
 </p>
@@ -390,9 +373,9 @@ Any range query can be reduced to a number of queries to the sketches of differe
 
 </div>
 
-<div id="outline-container-1-9" class="outline-3">
-<h3 id="sec-1-9"><span class="section-number-3">1.9</span> Membership Query: Bloom Filter</h3>
-<div class="outline-text-3" id="text-1-9">
+<div id="outline-container-9" class="outline-3">
+<h3 id="sec-9"><span class="section-number-3">9</span> Membership Query: Bloom Filter</h3>
+<div class="outline-text-3" id="text-9">
 
 <p>The following table contains formulas that allow one to calculate parameters of the Bloom filter as functions of error probability and capacity:
 </p>
@@ -403,13 +386,10 @@ Any range query can be reduced to a number of queries to the sketches of differe
 </div>
 </div>
 </div>
-</div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:43+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'probabilistic-data-structures-for-web-analytics-and-data-mining.html';var disqus_title = 'probabilistic-data-structures-for-web-analytics-and-data-mining.html';var disqus_url = 'http://dirlt.com/probabilistic-data-structures-for-web-analytics-and-data-mining.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'probabilistic-data-structures-for-web-analytics-and-data-mining.html';var disqus_title = 'probabilistic-data-structures-for-web-analytics-and-data-mining.html';var disqus_url = 'http://dirlt.com/probabilistic-data-structures-for-web-analytics-and-data-mining.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

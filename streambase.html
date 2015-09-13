@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
+<head>
 <title>streambase</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="streambase"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-12-23T12:37+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,7 +62,7 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
@@ -72,63 +71,7 @@
 <div id="content">
 <h1 class="title">streambase</h1>
 
-
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="streambase.html#sec-1">1 streambase</a>
-<ul>
-<li><a href="streambase.html#sec-1-1">1.1 Development</a></li>
-<li><a href="streambase.html#sec-1-2">1.2 Framework</a></li>
-<li><a href="streambase.html#sec-1-3">1.3 Application</a>
-<ul>
-<li><a href="streambase.html#sec-1-3-1">1.3.1 client</a></li>
-<li><a href="streambase.html#sec-1-3-2">1.3.2 细微差别</a></li>
-</ul>
-</li>
-<li><a href="streambase.html#sec-1-4">1.4 Container</a>
-<ul>
-<li><a href="streambase.html#sec-1-4-1">1.4.1 URI</a></li>
-<li><a href="streambase.html#sec-1-4-2">1.4.2 Stream</a>
-<ul>
-<li><a href="streambase.html#sec-1-4-2-1">1.4.2.1 Adapter</a></li>
-<li><a href="streambase.html#sec-1-4-2-2">1.4.2.2 Connection</a></li>
-</ul>
-</li>
-<li><a href="streambase.html#sec-1-4-3">1.4.3 System Container</a></li>
-<li><a href="streambase.html#sec-1-4-4">1.4.4 HA Container</a></li>
-<li><a href="streambase.html#sec-1-4-5">1.4.5 Monitor</a></li>
-</ul>
-</li>
-<li><a href="streambase.html#sec-1-5">1.5 QueryTable</a></li>
-<li><a href="streambase.html#sec-1-6">1.6 Clustering</a>
-<ul>
-<li><a href="streambase.html#sec-1-6-1">1.6.1 Fault Tolerance</a>
-<ul>
-<li><a href="streambase.html#sec-1-6-1-1">1.6.1.1 Hot-Hot Server Pair Template</a></li>
-<li><a href="streambase.html#sec-1-6-1-2">1.6.1.2 Hot-Warm Server Pair Template</a></li>
-<li><a href="streambase.html#sec-1-6-1-3">1.6.1.3 Shared Disk Template</a></li>
-<li><a href="streambase.html#sec-1-6-1-4">1.6.1.4 Fast Restart Template</a></li>
-</ul>
-</li>
-<li><a href="streambase.html#sec-1-6-2">1.6.2 Disaster Recovery</a></li>
-<li><a href="streambase.html#sec-1-6-3">1.6.3 Scalability</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> streambase</h2>
-<div class="outline-text-2" id="text-1">
-
-
-<p>
-StreamBase是一款商业流式计算系统，被一些金融行业和政府部门使用。
+<p>StreamBase是一款商业流式计算系统，被一些金融行业和政府部门使用。
 </p><ul>
 <li>金融行业：<a href="http://www.mittrchinese.com/single.php?p=67643">http://www.mittrchinese.com/single.php?p=67643</a>
 </li>
@@ -141,11 +84,54 @@ StreamBase是一款商业流式计算系统，被一些金融行业和政府部�
 StreamBase是一个商业应用软件，但是提供了develop edition.相对于付费使用的enterprise edition功能更少，但是不妨碍我们从外部使用和API接口来对StreamBase本身进行分析。文档还是比较丰富的，但是因为时间和精力限制我们不能够针对里面每个部件进行仔细分析，并且很多功能并没有试用。
 </p>
 
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="streambase.html#sec-1">1 Development</a></li>
+<li><a href="streambase.html#sec-2">2 Framework</a></li>
+<li><a href="streambase.html#sec-3">3 Application</a>
+<ul>
+<li><a href="streambase.html#sec-3-1">3.1 client</a></li>
+<li><a href="streambase.html#sec-3-2">3.2 细微差别</a></li>
+</ul>
+</li>
+<li><a href="streambase.html#sec-4">4 Container</a>
+<ul>
+<li><a href="streambase.html#sec-4-1">4.1 URI</a></li>
+<li><a href="streambase.html#sec-4-2">4.2 Stream</a>
+<ul>
+<li><a href="streambase.html#sec-4-2-1">4.2.1 Adapter</a></li>
+<li><a href="streambase.html#sec-4-2-2">4.2.2 Connection</a></li>
+</ul>
+</li>
+<li><a href="streambase.html#sec-4-3">4.3 System Container</a></li>
+<li><a href="streambase.html#sec-4-4">4.4 HA Container</a></li>
+<li><a href="streambase.html#sec-4-5">4.5 Monitor</a></li>
+</ul>
+</li>
+<li><a href="streambase.html#sec-5">5 QueryTable</a></li>
+<li><a href="streambase.html#sec-6">6 Clustering</a>
+<ul>
+<li><a href="streambase.html#sec-6-1">6.1 Fault Tolerance</a>
+<ul>
+<li><a href="streambase.html#sec-6-1-1">6.1.1 Hot-Hot Server Pair Template</a></li>
+<li><a href="streambase.html#sec-6-1-2">6.1.2 Hot-Warm Server Pair Template</a></li>
+<li><a href="streambase.html#sec-6-1-3">6.1.3 Shared Disk Template</a></li>
+<li><a href="streambase.html#sec-6-1-4">6.1.4 Fast Restart Template</a></li>
+</ul>
+</li>
+<li><a href="streambase.html#sec-6-2">6.2 Disaster Recovery</a></li>
+<li><a href="streambase.html#sec-6-3">6.3 Scalability</a></li>
+</ul>
+</li>
+</ul>
+</div>
 </div>
 
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Development</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> Development</h3>
+<div class="outline-text-3" id="text-1">
 
 <p>StreamBase本身是使用Java编写的，IDE称为StreamBase Studuo.IDE是基于Eclipse来进行二次开发的，所以IDE本身功能是非常强大的。但是StreamBase的IDE并不仅仅限于编写代码方便这一层。StreamBase本身提供了相当多operator,functor以及组件来帮助构建应用程序，用户本身在IDE上面可能只需要拖拖控件，然后相关联一些，设置好传输的schema并且设置一下控件计算过程，就可以编译出一个高效处理的流式计算应用程序了。同时StreamBase本身提供了类SQL来表达计算过程。
 </p>
@@ -156,9 +142,9 @@ StreamBase是一个商业应用软件，但是提供了develop edition.相对于
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Framework</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> Framework</h3>
+<div class="outline-text-3" id="text-2">
 
 <p><a href="http://streambase.com/developers/docs/latest/admin/ha-designing.html#d0e13346">http://streambase.com/developers/docs/latest/admin/ha-designing.html#d0e13346</a>
 </p>
@@ -200,9 +186,9 @@ class Container{
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Application</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> Application</h3>
+<div class="outline-text-3" id="text-3">
 
 <p>这里所谓的Application就是一个Process Entity.在StreamBase里面Application分为三类：
 </p><ul>
@@ -219,9 +205,9 @@ class Container{
 
 </div>
 
-<div id="outline-container-1-3-1" class="outline-4">
-<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> client</h4>
-<div class="outline-text-4" id="text-1-3-1">
+<div id="outline-container-3-1" class="outline-4">
+<h4 id="sec-3-1"><span class="section-number-4">3.1</span> client</h4>
+<div class="outline-text-4" id="text-3-1">
 
 <p>仔细看看client是如何实现的。StreamBase提供了编写一个client的基类，我们只需要实现里面特定的方法即可。具体编写方法可以参考这里 <a href="http://streambase.com/developers/docs/latest/apiguide/clientwizd.html">http://streambase.com/developers/docs/latest/apiguide/clientwizd.html</a>
 </p>
@@ -247,9 +233,9 @@ class Container{
 
 </div>
 
-<div id="outline-container-1-3-2" class="outline-4">
-<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> 细微差别</h4>
-<div class="outline-text-4" id="text-1-3-2">
+<div id="outline-container-3-2" class="outline-4">
+<h4 id="sec-3-2"><span class="section-number-4">3.2</span> 细微差别</h4>
+<div class="outline-text-4" id="text-3-2">
 
 <p>对于client来说的话是一个standalone的app,不需要放在container下面运行，因为内部实际上已经处理了输入和输出，并且仔细阅读生成代码，就是对于client来说的话入口函数就是main了。在main里面我们需要自己编写client,自己进行链接然后读取然后输出。而operator,function不同，这两个类没有main入口，只是关注处理部分而没有关注连接，实际上连接是StreamBase编译器已经帮你做好的部分。并且对于operator,function只允许在一台机器上面，没有和ip/port绑定，它所处的ip/port和自己所在container相关。
 </p>
@@ -258,18 +244,18 @@ class Container{
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Container</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> Container</h3>
+<div class="outline-text-3" id="text-4">
 
 <p>所谓容器就是一个Application运行的环境。我们重新回头考虑operator和function的编写，对于operator/function编写的话只是关心处理流程，那么container就必须托管连接消息传输等内容，这个部分是由Stream管理的。除此之外container还可以接受外部到来的命令来控制input/output并且可以对application或者是system进行数据统计等信息。从设计角度来看这是一个非常好的设计，用户关心处理外层关心传输和信息监控等，非常好的流式处理系统的框架。container对于部署者来说可以配置在任何机器上面，以StreamBase定义URI来作为定位。
 </p>
 
 </div>
 
-<div id="outline-container-1-4-1" class="outline-4">
-<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> URI</h4>
-<div class="outline-text-4" id="text-1-4-1">
+<div id="outline-container-4-1" class="outline-4">
+<h4 id="sec-4-1"><span class="section-number-4">4.1</span> URI</h4>
+<div class="outline-text-4" id="text-4-1">
 
 <p>StreamBase的URI相对来说比较简单而且也很好理解，格式如下：
 </p>
@@ -285,18 +271,18 @@ class Container{
 
 </div>
 
-<div id="outline-container-1-4-2" class="outline-4">
-<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> Stream</h4>
-<div class="outline-text-4" id="text-1-4-2">
+<div id="outline-container-4-2" class="outline-4">
+<h4 id="sec-4-2"><span class="section-number-4">4.2</span> Stream</h4>
+<div class="outline-text-4" id="text-4-2">
 
 <p>一个container可以有多个input stream和一个output stream.但是用户看不见，所以我们只能够从外部表现来分析了。container可以绑定到一个或者是多个URI上面起多份实例来做HA方案。这里我们从功能角度而言的话只考虑container绑定在一个URI上面。一旦绑定到一个URI的话那么output stream也就绑定了。
 </p>
 
 </div>
 
-<div id="outline-container-1-4-2-1" class="outline-5">
-<h5 id="sec-1-4-2-1"><span class="section-number-5">1.4.2.1</span> Adapter</h5>
-<div class="outline-text-5" id="text-1-4-2-1">
+<div id="outline-container-4-2-1" class="outline-5">
+<h5 id="sec-4-2-1"><span class="section-number-5">4.2.1</span> Adapter</h5>
+<div class="outline-text-5" id="text-4-2-1">
 
 <p>我们必须让流式系统从某个地方接收数据，这样最外层contiainer的话input stream必须接收很多异构源。同理流式系统最终需要输出，那么输出的话可能目的地也是异构的。对于这些源或者是目的地的话可能有下面这些：
 </p><ul>
@@ -318,9 +304,9 @@ class Container{
 
 </div>
 
-<div id="outline-container-1-4-2-2" class="outline-5">
-<h5 id="sec-1-4-2-2"><span class="section-number-5">1.4.2.2</span> Connection</h5>
-<div class="outline-text-5" id="text-1-4-2-2">
+<div id="outline-container-4-2-2" class="outline-5">
+<h5 id="sec-4-2-2"><span class="section-number-5">4.2.2</span> Connection</h5>
+<div class="outline-text-5" id="text-4-2-2">
 
 <p><a href="http://streambase.com/developers/docs/latest/admin/container-jms.html">http://streambase.com/developers/docs/latest/admin/container-jms.html</a>
 Container和Container之间的话可以通过TCP进行直连来进行传输，对于Stream的话本身会进行缓冲并且定时会发送心跳。但是如果直接使用TCP直连的话那么
@@ -331,9 +317,9 @@ Container和Container之间的话可以通过TCP进行直连来进行传输，�
 
 </div>
 
-<div id="outline-container-1-4-3" class="outline-4">
-<h4 id="sec-1-4-3"><span class="section-number-4">1.4.3</span> System Container</h4>
-<div class="outline-text-4" id="text-1-4-3">
+<div id="outline-container-4-3" class="outline-4">
+<h4 id="sec-4-3"><span class="section-number-4">4.3</span> System Container</h4>
+<div class="outline-text-4" id="text-4-3">
 
 <p><a href="http://streambase.com/developers/docs/latest/admin/container-overview.html#container-overview_system">http://streambase.com/developers/docs/latest/admin/container-overview.html#container-overview_system</a>
 </p>
@@ -358,9 +344,9 @@ Container和Container之间的话可以通过TCP进行直连来进行传输，�
 
 </div>
 
-<div id="outline-container-1-4-4" class="outline-4">
-<h4 id="sec-1-4-4"><span class="section-number-4">1.4.4</span> HA Container</h4>
-<div class="outline-text-4" id="text-1-4-4">
+<div id="outline-container-4-4" class="outline-4">
+<h4 id="sec-4-4"><span class="section-number-4">4.4</span> HA Container</h4>
+<div class="outline-text-4" id="text-4-4">
 
 <p><a href="http://streambase.com/developers/docs/latest/admin/ha-designing.html#d0e13346">http://streambase.com/developers/docs/latest/admin/ha-designing.html#d0e13346</a>
 </p>
@@ -379,9 +365,9 @@ Container和Container之间的话可以通过TCP进行直连来进行传输，�
 
 </div>
 
-<div id="outline-container-1-4-5" class="outline-4">
-<h4 id="sec-1-4-5"><span class="section-number-4">1.4.5</span> Monitor</h4>
-<div class="outline-text-4" id="text-1-4-5">
+<div id="outline-container-4-5" class="outline-4">
+<h4 id="sec-4-5"><span class="section-number-4">4.5</span> Monitor</h4>
+<div class="outline-text-4" id="text-4-5">
 
 <p><a href="http://streambase.com/developers/docs/latest/admin/ha-overview.html#ha-overview_useeventprocessing">http://streambase.com/developers/docs/latest/admin/ha-overview.html#ha-overview_useeventprocessing</a>
 </p>
@@ -393,9 +379,9 @@ Monitor完成的工作非常简单，就是从System Container和HA Container中
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> QueryTable</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> QueryTable</h3>
+<div class="outline-text-3" id="text-5">
 
 <p><a href="http://streambase.com/developers/docs/latest/authoring/querytab-overview.html">http://streambase.com/developers/docs/latest/authoring/querytab-overview.html</a>
 </p>
@@ -436,9 +422,9 @@ QueryTable也支持进行Replication. <a href="http://streambase.com/developers/
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Clustering</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> Clustering</h3>
+<div class="outline-text-3" id="text-6">
 
 <p>使用StreamBase开发的应用程序本身就是通过连接StreamBase提供的组件并且进行配置来完成的，相对于编写代码来说的话有局限性。但是StreamBase提出了很多基于这种开发衍生的很多模式用来构建cluster.实现cluster主要目的包括下面这些：
 </p><ul>
@@ -456,18 +442,18 @@ QueryTable也支持进行Replication. <a href="http://streambase.com/developers/
 
 </div>
 
-<div id="outline-container-1-6-1" class="outline-4">
-<h4 id="sec-1-6-1"><span class="section-number-4">1.6.1</span> Fault Tolerance</h4>
-<div class="outline-text-4" id="text-1-6-1">
+<div id="outline-container-6-1" class="outline-4">
+<h4 id="sec-6-1"><span class="section-number-4">6.1</span> Fault Tolerance</h4>
+<div class="outline-text-4" id="text-6-1">
 
 <p>对于出错容忍的话，StreamBase提出了下面4模板策略解决方案。 <a href="http://streambase.com/developers/docs/latest/admin/ha-overview.html#ha-overview_templates">http://streambase.com/developers/docs/latest/admin/ha-overview.html#ha-overview_templates</a>
 </p>
 
 </div>
 
-<div id="outline-container-1-6-1-1" class="outline-5">
-<h5 id="sec-1-6-1-1"><span class="section-number-5">1.6.1.1</span> Hot-Hot Server Pair Template</h5>
-<div class="outline-text-5" id="text-1-6-1-1">
+<div id="outline-container-6-1-1" class="outline-5">
+<h5 id="sec-6-1-1"><span class="section-number-5">6.1.1</span> Hot-Hot Server Pair Template</h5>
+<div class="outline-text-5" id="text-6-1-1">
 
 <p>这种方式的话primary和secondary server都在同时进行计算，并且将计算结果交给下游。优点是primary server如果失败的话那么secondary server依然能够工作，几乎没有任何切换时间。并且下游的话只需要选取首先到来的tuple就可以处理了，可以保证处理速度最快。缺点就是浪费计算和网络资源。
 </p>
@@ -478,9 +464,9 @@ QueryTable也支持进行Replication. <a href="http://streambase.com/developers/
 
 </div>
 
-<div id="outline-container-1-6-1-2" class="outline-5">
-<h5 id="sec-1-6-1-2"><span class="section-number-5">1.6.1.2</span> Hot-Warm Server Pair Template</h5>
-<div class="outline-text-5" id="text-1-6-1-2">
+<div id="outline-container-6-1-2" class="outline-5">
+<h5 id="sec-6-1-2"><span class="section-number-5">6.1.2</span> Hot-Warm Server Pair Template</h5>
+<div class="outline-text-5" id="text-6-1-2">
 
 <p>这种方式的话primary和secondary server都在同时计算，但是只有primary server将计算结果交给下游。优点是primary server如果失败的话，那么secondary server可以很快地就切换上来而不需要任何恢复状态工作，但是相对于Hot-Hot方式时间稍微长一些，但是没有Hot-Hot那么耗费网络资源，但是也浪费了计算资源。
 </p>
@@ -491,9 +477,9 @@ QueryTable也支持进行Replication. <a href="http://streambase.com/developers/
 
 </div>
 
-<div id="outline-container-1-6-1-3" class="outline-5">
-<h5 id="sec-1-6-1-3"><span class="section-number-5">1.6.1.3</span> Shared Disk Template</h5>
-<div class="outline-text-5" id="text-1-6-1-3">
+<div id="outline-container-6-1-3" class="outline-5">
+<h5 id="sec-6-1-3"><span class="section-number-5">6.1.3</span> Shared Disk Template</h5>
+<div class="outline-text-5" id="text-6-1-3">
 
 <p>这种方式的话primary server在计算之后，将计算的一些中间关键状态存储到磁盘或者是SAN(Storage Area Network)或者认为是一个可靠的存储介质上面。如果primary server failover的话，那么secondary server会从介质中读取出关键状态然后接着进行计算。优点是没有浪费任何计算和网路资源，但是恢复时间的话依据状态多少而定，相对于前面两种的话恢复时间可能会稍长。
 </p>
@@ -504,9 +490,9 @@ QueryTable也支持进行Replication. <a href="http://streambase.com/developers/
 
 </div>
 
-<div id="outline-container-1-6-1-4" class="outline-5">
-<h5 id="sec-1-6-1-4"><span class="section-number-5">1.6.1.4</span> Fast Restart Template</h5>
-<div class="outline-text-5" id="text-1-6-1-4">
+<div id="outline-container-6-1-4" class="outline-5">
+<h5 id="sec-6-1-4"><span class="section-number-5">6.1.4</span> Fast Restart Template</h5>
+<div class="outline-text-5" id="text-6-1-4">
 
 <p>最后一种限定了应用场景，就是stateless或者是near stateless的application.对于无状态的话那么我们方案可以非常简单，只要primary server failover的话，那么secondary server立即启动并且接上上面的流进行计算即可。因为无状态，所以我们可以这么做。
 </p>
@@ -518,9 +504,9 @@ QueryTable也支持进行Replication. <a href="http://streambase.com/developers/
 
 </div>
 
-<div id="outline-container-1-6-2" class="outline-4">
-<h4 id="sec-1-6-2"><span class="section-number-4">1.6.2</span> Disaster Recovery</h4>
-<div class="outline-text-4" id="text-1-6-2">
+<div id="outline-container-6-2" class="outline-4">
+<h4 id="sec-6-2"><span class="section-number-4">6.2</span> Disaster Recovery</h4>
+<div class="outline-text-4" id="text-6-2">
 
 <p>To implement a disaster recover scenario, an offsite implementation can combine the hot-warm and shared disk templates. The disaster recovery site would run an identical deployment, with shared storage implemented over a network connection using either SAN or relational database storage. <a href="http://streambase.com/developers/docs/latest/admin/ha-overview.html#ha-overview_disasterrecovery">http://streambase.com/developers/docs/latest/admin/ha-overview.html#ha-overview_disasterrecovery</a>
 </p>
@@ -531,9 +517,9 @@ QueryTable也支持进行Replication. <a href="http://streambase.com/developers/
 
 </div>
 
-<div id="outline-container-1-6-3" class="outline-4">
-<h4 id="sec-1-6-3"><span class="section-number-4">1.6.3</span> Scalability</h4>
-<div class="outline-text-4" id="text-1-6-3">
+<div id="outline-container-6-3" class="outline-4">
+<h4 id="sec-6-3"><span class="section-number-4">6.3</span> Scalability</h4>
+<div class="outline-text-4" id="text-6-3">
 
 <p>You can use clustering techniques to implement scaling of your StreamBase Server implementation from one to multiple servers. With planning, the same parallel code and data techniques allow you to add new servers to a stream processing cluster to meet higher load demands. <a href="http://streambase.com/developers/docs/latest/admin/ha-overview.html#ha-overview_scalability">http://streambase.com/developers/docs/latest/admin/ha-overview.html#ha-overview_scalability</a>
 </p>
@@ -543,13 +529,10 @@ QueryTable也支持进行Replication. <a href="http://streambase.com/developers/
 </div>
 </div>
 </div>
-</div>
 
 <div id="postamble">
-<p class="date">Date: 2014-12-23T12:37+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'streambase.html';var disqus_title = 'streambase.html';var disqus_url = 'http://dirlt.com/streambase.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'streambase.html';var disqus_title = 'streambase.html';var disqus_url = 'http://dirlt.com/streambase.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
-<title>zeromq</title>
+<head>
+<title>ZeroMQ</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="zeromq"/>
+<meta name="title" content="ZeroMQ"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:42+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,278 +62,67 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
 </div>
 
 <div id="content">
-<h1 class="title">zeromq</h1>
+<h1 class="title">ZeroMQ</h1>
 
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="zeromq.html#sec-1">1 zeromq</a>
+<li><a href="zeromq.html#sec-1">1 Introduction</a>
 <ul>
-<li><a href="zeromq.html#sec-1-1">1.1 Philosophy</a>
+<li><a href="zeromq.html#sec-1-1">1.1 Example</a></li>
+<li><a href="zeromq.html#sec-1-2">1.2 Protocol</a></li>
+<li><a href="zeromq.html#sec-1-3">1.3 Message</a></li>
+<li><a href="zeromq.html#sec-1-4">1.4 Identity</a></li>
+<li><a href="zeromq.html#sec-1-5">1.5 Device</a></li>
+<li><a href="zeromq.html#sec-1-6">1.6 Congestion</a></li>
+</ul>
+</li>
+<li><a href="zeromq.html#sec-2">2 Exclusive-Pair</a></li>
+<li><a href="zeromq.html#sec-3">3 Publish-Subscribe</a>
 <ul>
-<li><a href="zeromq.html#sec-1-1-1">1.1.1 Fixing the World</a></li>
-<li><a href="zeromq.html#sec-1-1-2">1.1.2 Programming with ZMQ</a></li>
-<li><a href="zeromq.html#sec-1-1-3">1.1.3 Why We Needed ZMQ</a></li>
-<li><a href="zeromq.html#sec-1-1-4">1.1.4 The Zen of Zero</a></li>
-<li><a href="zeromq.html#sec-1-1-5">1.1.5 Handling Errors and ETERM</a></li>
-<li><a href="zeromq.html#sec-1-1-6">1.1.6 Multithreading with ZMQ</a></li>
+<li><a href="zeromq.html#sec-3-1">3.1 Missing Message</a></li>
+<li><a href="zeromq.html#sec-3-2">3.2 Congestion Control</a></li>
 </ul>
 </li>
-<li><a href="zeromq.html#sec-1-2">1.2 Introduction</a>
+<li><a href="zeromq.html#sec-4">4 Push-Pull</a></li>
+<li><a href="zeromq.html#sec-5">5 Request-Reply</a></li>
+<li><a href="zeromq.html#sec-6">6 API</a>
 <ul>
-<li><a href="zeromq.html#sec-1-2-1">1.2.1 Example</a></li>
-<li><a href="zeromq.html#sec-1-2-2">1.2.2 Protocol</a></li>
-<li><a href="zeromq.html#sec-1-2-3">1.2.3 Message</a></li>
-<li><a href="zeromq.html#sec-1-2-4">1.2.4 Identity</a></li>
-<li><a href="zeromq.html#sec-1-2-5">1.2.5 Device</a></li>
-<li><a href="zeromq.html#sec-1-2-6">1.2.6 Congestion</a></li>
+<li><a href="zeromq.html#sec-6-1">6.1 Description</a></li>
+<li><a href="zeromq.html#sec-6-2">6.2 Context</a></li>
+<li><a href="zeromq.html#sec-6-3">6.3 Messages</a></li>
+<li><a href="zeromq.html#sec-6-4">6.4 Sockets</a></li>
+<li><a href="zeromq.html#sec-6-5">6.5 Options</a></li>
+<li><a href="zeromq.html#sec-6-6">6.6 Transports</a></li>
+<li><a href="zeromq.html#sec-6-7">6.7 Devices</a></li>
 </ul>
 </li>
-<li><a href="zeromq.html#sec-1-3">1.3 Exclusive-Pair</a></li>
-<li><a href="zeromq.html#sec-1-4">1.4 Publish-Subscribe</a>
+<li><a href="zeromq.html#sec-7">7 Philosophy</a>
 <ul>
-<li><a href="zeromq.html#sec-1-4-1">1.4.1 Missing Message</a></li>
-<li><a href="zeromq.html#sec-1-4-2">1.4.2 Congestion Control</a></li>
-</ul>
-</li>
-<li><a href="zeromq.html#sec-1-5">1.5 Push-Pull</a></li>
-<li><a href="zeromq.html#sec-1-6">1.6 Request-Reply</a></li>
-<li><a href="zeromq.html#sec-1-7">1.7 API</a>
-<ul>
-<li><a href="zeromq.html#sec-1-7-1">1.7.1 Description</a></li>
-<li><a href="zeromq.html#sec-1-7-2">1.7.2 Context</a></li>
-<li><a href="zeromq.html#sec-1-7-3">1.7.3 Messages</a></li>
-<li><a href="zeromq.html#sec-1-7-4">1.7.4 Sockets</a></li>
-<li><a href="zeromq.html#sec-1-7-5">1.7.5 Options</a></li>
-<li><a href="zeromq.html#sec-1-7-6">1.7.6 Transports</a></li>
-<li><a href="zeromq.html#sec-1-7-7">1.7.7 Devices</a></li>
-</ul>
-</li>
+<li><a href="zeromq.html#sec-7-1">7.1 Fixing the World</a></li>
+<li><a href="zeromq.html#sec-7-2">7.2 Programming with ZMQ</a></li>
+<li><a href="zeromq.html#sec-7-3">7.3 Why We Needed ZMQ</a></li>
+<li><a href="zeromq.html#sec-7-4">7.4 The Zen of Zero</a></li>
+<li><a href="zeromq.html#sec-7-5">7.5 Handling Errors and ETERM</a></li>
+<li><a href="zeromq.html#sec-7-6">7.6 Multithreading with ZMQ</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> zeromq</h2>
-<div class="outline-text-2" id="text-1">
-
-
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Philosophy</h3>
-<div class="outline-text-3" id="text-1-1">
-
-
-</div>
-
-<div id="outline-container-1-1-1" class="outline-4">
-<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> Fixing the World</h4>
-<div class="outline-text-4" id="text-1-1-1">
-
-<p>Programming is a science dressed up as art, because most of us don't understand the physics of software, and it's rarely if ever taught. The physics of software is not algorithms, data structures, languages and abstractions. These are just tools we make, use, throw away. The real physics of software is the physics of people.
-</p>
-<p>
-Specifically, our limitations when it comes to complexity, and our desire to work together to solve large problems in pieces. This is the science of programming: make building blocks that people can understand and use easily, and people will work together to solve the very largest problems.
-</p>
-<p>
-We live in a connected world, and modern software has to navigate this world. So the building blocks for tomorrow's very largest solutions are connected and massively parallel. It's not enough for code to be "strong and silent" any more. Code has to talk to code. Code has to be chatty, sociable, well-connected. Code has to run like the human brain, trillions of individual neurons firing off messages to each other, a massively parallel network with no central control, no single point of failure, yet able to solve immensely difficult problems. And it's no accident that the future of code looks like the human brain, because the endpoints of every network are, at some level, human brains.
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-1-2" class="outline-4">
-<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> Programming with ZMQ</h4>
-<div class="outline-text-4" id="text-1-1-2">
-
-<p>Having seen some examples, you're eager to start using ZMQ in some apps. Before you start that, take a deep breath, chillax, and reflect on some basic advice that will save you stress and confusion.
-</p><ul>
-<li>Learn ZMQ step by step. It's just one simple API but it hides a world of possibilities. Take the possibilities slowly, master each one.
-</li>
-<li>Write nice code. Ugly code hides problems and makes it hard for others to help you. You might get used to meaningless variable names, but people reading your code won't. Use names that are real words, that say something other than "I'm too careless to tell you what this variable is really for". Use consistent indentation, clean layout. Write nice code and your world will be more comfortable.
-</li>
-<li>Test what you make as you make it. When your program doesn't work, you should know what five lines are to blame. This is especially true when you do ZMQ magic, which just won't work the first times you try it.
-</li>
-<li>When you find that things don't work as expected, break your code into pieces, test each one, see which one is not working. ZMQ lets you make essentially modular code, use that to your advantage.
-</li>
-<li>Make abstractions (classes, methods, whatever) as you need them. If you copy/paste a lot of code you're going to copy/paste errors too.
-</li>
-</ul>
-
-
-<p>
-In the ZMQ universe, sockets are clever multithreaded applications that manage a whole set of connections automagically for you. You can't see, work with, open, close, or attach state to these connections. Whether you use blocking send or receive, or poll, all you can talk to is the socket, not the connections it manages for you. The connections are private and invisible, and this is the key to ZMQ's scalability.
-</p>
-<p>
-Because your code, talking to a socket, can then handle any number of connections across whatever network protocols are around, without change. A messaging pattern sitting in ZMQ can scale more cheaply than a messaging pattern sitting in your application code.
-</p>
-<p>
-So the general assumption no longer applies. As you read the code examples, your brain will try to map them to what you know. You will read "socket" and think "ah, that represents a connection to another node". That is wrong. You will read "thread" and your brain will again think, "ah, a thread represents a connection to another node", and again your brain will be wrong.
-</p>
-<p>
-If you're reading this Guide for the first time, realize that until you actually write ZMQ code for a day or two (and maybe three or four days), you may feel confused, especially by how simple ZMQ makes things for you, and you may try to impose that general assumption on ZMQ, and it won't work. And then you will experience your moment of enlightenment and trust, that zap-pow-kaboom satori paradigm-shift moment when it all becomes clear.
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-1-3" class="outline-4">
-<h4 id="sec-1-1-3"><span class="section-number-4">1.1.3</span> Why We Needed ZMQ</h4>
-<div class="outline-text-4" id="text-1-1-3">
-
-<p>Many applications these days consist of components that stretch across some kind of network, either a LAN or the Internet. So many application developers end up doing some kind of messaging. Some developers use message queuing products, but most of the time they do it themselves, using TCP or UDP. These protocols are not hard to use, but there is a great difference between sending a few bytes from A to B, and doing messaging in any kind of reliable way.
-</p>
-<p>
-Let's look at the typical problems we face when we start to connect pieces using raw TCP. Any reusable messaging layer would need to solve all or most these:
-</p><ul>
-<li>How do we handle I/O? Does our application block, or do we handle I/O in the background? This is a key design decision. Blocking I/O creates architectures that do not scale well. But background I/O can be very hard to do right.
-</li>
-<li>How do we handle dynamic components, i.e. pieces that go away temporarily? Do we formally split components into "clients" and "servers" and mandate that servers cannot disappear? What then if we want to connect servers to servers? Do we try to reconnect every few seconds?
-</li>
-<li>How do we represent a message on the wire? How do we frame data so it's easy to write and read, safe from buffer overflows, efficient for small messages, yet adequate for the very largest videos of dancing cats wearing party hats?
-</li>
-<li>How do we handle messages that we can't deliver immediately? Particularly, if we're waiting for a component to come back on-line? Do we discard messages, put them into a database, or into a memory queue?
-</li>
-<li>Where do we store message queues? What happens if the component reading from a queue is very slow, and causes our queues to build up? What's our strategy then?
-</li>
-<li>How do we handle lost messages? Do we wait for fresh data, request a resend, or do we build some kind of reliability layer that ensures messages cannot be lost? What if that layer itself crashes?
-</li>
-<li>What if we need to use a different network transport. Say, multicast instead of TCP unicast? Or IPv6? Do we need to rewrite the applications, or is the transport abstracted in some layer?
-</li>
-<li>How do we route messages? Can we send the same message to multiple peers? Can we send replies back to an original requester?
-</li>
-<li>How do we write an API for another language? Do we re-implement a wire-level protocol or do we repackage a library? If the former, how can we guarantee efficient and stable stacks? If the latter, how can we guarantee interoperability?
-</li>
-<li>How do we represent data so that it can be read between different architectures? Do we enforce a particular encoding for data types? How far is this the job of the messaging system rather than a higher layer?
-</li>
-<li>How do we handle network errors? Do we wait and retry, ignore them silently, or abort?
-</li>
-</ul>
-
-
-<p>
-早期需要设计可靠消息系统比如AMQP.但是这种方式引入了single-point broker。对于需要这种可靠消息系统的应用来说，需要在broker上面做相当多的事情确保可靠性以及性能。但是这样对于中小应用陷入了尴尬，为了使用这种方便的消息系统他们需要引入broker这么东西是不能够忍受的。我们需要的一种简单方便的消息传输系统，没有任何附加代价(比如所有数据都流经broker)，这就是ZeroMQ设计初衷。
-</p>
-<p>
-It turns out that building reusable messaging systems is really difficult, which is why few FOSS projects ever tried, and why commercial messaging products are complex, expensive, inflexible, and brittle. In 2006 iMatix designed AMQP which started to give FOSS developers perhaps the first reusable recipe for a messaging system. AMQP works better than many other designs but remains relatively complex, expensive, and brittle. It takes weeks to learn to use, and months to create stable architectures that don't crash when things get hairy.
-</p>
-<p>
-Most messaging projects, like AMQP, that try to solve this long list of problems in a reusable way do so by inventing a new concept, the "broker", that does addressing, routing, and queuing. This results in a client-server protocol or a set of APIs on top of some undocumented protocol, that let applications speak to this broker. Brokers are an excellent thing in reducing the complexity of large networks. But adding broker-based messaging to a product like Zookeeper would make it worse, not better. It would mean adding an additional big box, and a new single point of failure. A broker rapidly becomes a bottleneck and a new risk to manage. If the software supports it, we can add a second, third, fourth broker and make some fail-over scheme. People do this. It creates more moving pieces, more complexity, more things to break.
-</p>
-<p>
-And a broker-centric set-up needs its own operations team. You literally need to watch the brokers day and night, and beat them with a stick when they start misbehaving. You need boxes, and you need backup boxes, and you need people to manage those boxes. It is only worth doing for large applications with many moving pieces, built by several teams of people, over several years.
-</p>
-<p>
-So small to medium application developers are trapped. Either they avoid network programming, and make monolithic applications that do not scale. Or they jump into network programming and make brittle, complex applications that are hard to maintain. Or they bet on a messaging product, and end up with scalable applications that depend on expensive, easily broken technology. There has been no really good choice, which is maybe why messaging is largely stuck in the last century and stirs strong emotions. Negative ones for users, gleeful joy for those selling support and licenses.
-</p>
-<p>
-What we need is something that does the job of messaging but does it in such a simple and cheap way that it can work in any application, with close to zero cost. It should be a library that you just link with, without any other dependencies. No additional moving pieces, so no additional risk. It should run on any OS and work with any programming language.
-</p>
-<p>
-And this is ZMQ: an efficient, embeddable library that solves most of the problems an application needs to become nicely elastic across a network, without much cost. Specifically:
-</p><ul>
-<li>It handles I/O asynchronously, in background threads. These communicate with application threads using lock-free data structures, so ZMQ applications need no locks, semaphores, or other wait states.
-</li>
-<li>Components can come and go dynamically and ZMQ will automatically reconnect. This means you can start components in any order. You can create "service-oriented architectures" (SOAs) where services can join and leave the network at any time.
-</li>
-<li>It queues messages automatically when needed. It does this intelligently, pushing messages to as close as possible to the receiver before queuing them.
-</li>
-<li>It has ways of dealing with over-full queues (called "high water mark"). When a queue is full, ZMQ automatically blocks senders, or throws away messages, depending on the kind of messaging you are doing (the so-called "pattern").
-</li>
-<li>It lets your applications talk to each other over arbitrary transports: TCP, multicast, in-process, inter-process. You don't need to change your code to use a different transport.
-</li>
-<li>It handles slow/blocked readers safely, using different strategies that depend on the messaging pattern.
-</li>
-<li>It lets you route messages using a variety of patterns such as request-reply and publish-subscribe. These patterns are how you create the topology, the structure of your network.
-</li>
-<li>It lets you place pattern-extending "devices" (small brokers) in the network when you need to reduce the complexity of interconnecting many pieces.
-</li>
-<li>It delivers whole messages exactly as they were sent, using a simple framing on the wire. If you write a 10k message, you will receive a 10k message.
-</li>
-<li>It does not impose any format on messages. They are blobs of zero to gigabytes large. When you want to represent data you choose some other product on top, such as Google's protocol buffers, XDR, and others.
-</li>
-<li>It handles network errors intelligently. Sometimes it retries, sometimes it tells you an operation failed.
-</li>
-<li>It reduces your carbon footprint. Doing more with less CPU means your boxes use less power, and you can keep your old boxes in use for longer. Al Gore would love ZMQ.
-</li>
-</ul>
-
-
-<p>
-ZMQ为我们在编写网络应用程序上面带了颠覆性的效果。表面上看是一系列socket API但是当应用规模不断变大开始以消息传输为中心的时候，ZMQ的优势就会凸显出来。
-</p>
-<p>
-Actually ZMQ does rather more than this. It has a subversive effect on how you develop network-capable applications. Superficially it's just a socket API on which you do zmq_recv(3) and zmq_send(3). But message processing rapidly becomes the central loop, and your application soon breaks down into a set of message processing tasks. It is elegant and natural. And it scales: each of these tasks maps to a node, and the nodes talk to each other across arbitrary transports. Two nodes in one process (node is a thread), two nodes on one box (node is a process), two boxes on one network (node is a box). With no application code changes.
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-1-4" class="outline-4">
-<h4 id="sec-1-1-4"><span class="section-number-4">1.1.4</span> The Zen of Zero</h4>
-<div class="outline-text-4" id="text-1-1-4">
-
-<p>Originally the zero in ZMQ was meant as "zero broker" and (as close to) "zero latency" (as possible). In the meantime it has come to cover different goals: zero administration, zero cost, zero waste. More generally, "zero" refers to the culture of minimalism that permeates the project. We add power by removing complexity rather than exposing new functionality.
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-1-5" class="outline-4">
-<h4 id="sec-1-1-5"><span class="section-number-4">1.1.5</span> Handling Errors and ETERM</h4>
-<div class="outline-text-4" id="text-1-1-5">
-
-<p>ZMQ's error handling philosophy is a mix of fail-fast and resilience. Processes, we believe, should be as vulnerable as possible to internal errors, and as robust as possible against external attacks and errors. To give an analogy, a living cell will self-destruct if it detects a single internal error, yet it will resist attack from the outside by all means possible. Assertions, which pepper the ZMQ code, are absolutely vital to robust code, they just have to be on the right side of the cellular wall. And there should be such a wall. If it is unclear whether a fault is internal or external, that is a design flaw that needs to be fixed.
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-1-6" class="outline-4">
-<h4 id="sec-1-1-6"><span class="section-number-4">1.1.6</span> Multithreading with ZMQ</h4>
-<div class="outline-text-4" id="text-1-1-6">
-
-<p>To make utterly perfect MT programs (and I mean that literally) we don't need mutexes, locks, or any other form of inter-thread communication except messages sent across ZMQ sockets.
-</p>
-<p>
-By "perfect" MT programs I mean code that's easy to write and understand, that works with one technology in any language and on any operating system, and that scales across any number of CPUs with zero wait states and no point of diminishing returns.
-</p>
-<p>
-如果有一件事情是我从30多年的并发编程经验所总结出来的话，那么就是永远不要共享状态。
-</p>
-<p>
-If you've spent years learning tricks to make your MT code work at all, let alone rapidly, with locks and semaphores and critical sections, you will be disgusted when you realize it was all for nothing. If there's one lesson we've learned from 30+ years of concurrent programming it is: just don't share state. It's like two drunkards trying to share a beer. It doesn't matter if they're good buddies. Sooner or later they're going to get into a fight. And the more drunkards you add to the pavement, the more they fight each other over the beer. The tragic majority of MT applications look like drunken bar fights.
-</p>
-<p>
-The list of weird problems that you need to fight as you write classic shared-state MT code would be hillarious if it didn't translate directly into stress and risk, as code that seems to work suddenly fails under pressure. Here is a list of "11 Likely Problems In Your Multithreaded Code" from a large firm with world-beating experience in buggy code: forgotten synchronization, incorrect granularity, read and write tearing, lock-free reordering, lock convoys, two-step dance, and priority inversion.
-</p>
-<p>
-Yeah, we also counted seven, not eleven. That's not the point though. The point is, do you really want that code running the power grid or stock market to start getting two-step lock convoys at 3pm on a busy Thursday? Who cares what the terms actually mean. This is not what turned us on to programming, fighting ever more complex side-effects with ever more complex hacks.
-</p>
-<p>
-Some widely used metaphors, despite being the basis for billion-dollar industries, are fundamentally broken, and shared state concurrency is one of them. Code that wants to scale without limit does it like the Internet does, by sending messages and sharing nothing except a common contempt for broken programming metaphors.
-</p>
-</div>
-</div>
-
-</div>
-
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Introduction</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> Introduction</h3>
+<div class="outline-text-3" id="text-1">
 
 <p>ZMQ希望用户在编写应用程序方面，更加关心消息通信而不是socket连接。在内部已经使用异步方式帮用户处理好了网络IO读写以及数据成帧，使得用户在处理的时候只需要关注消息本身。
 ZMQ所支持的消息传输模型有很多种，比如push-pull,pub-sub,request-reply以及exclusive-pair,应该可以涵盖应用层面所有的消息通讯方式。同时ZMQ本身可以底层允许选择不同的通信协议，
@@ -353,6 +141,8 @@ ZMQ (ZeroMQ, 0MQ, zmq) looks like an embeddable networking library but acts like
 <li><a href="http://api.zeromq.org/2-1:_start">http://api.zeromq.org/2-1:_start</a>
 </li>
 <li><a href="http://www.zeromq.org/whitepapers:multithreading-magic">http://www.zeromq.org/whitepapers:multithreading-magic</a>
+</li>
+<li>python binding: <a href="http://zeromq.github.io/pyzmq/">http://zeromq.github.io/pyzmq/</a>
 </li>
 </ul>
 
@@ -381,9 +171,9 @@ What this means is that you should always think in terms of "servers" as stable 
 
 </div>
 
-<div id="outline-container-1-2-1" class="outline-4">
-<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> Example</h4>
-<div class="outline-text-4" id="text-1-2-1">
+<div id="outline-container-1-1" class="outline-4">
+<h4 id="sec-1-1"><span class="section-number-4">1.1</span> Example</h4>
+<div class="outline-text-4" id="text-1-1">
 
 <p>首先我们看看ZMQ的使用情况。我们以简单的Request-Reply消息模型为例。所谓Request-Reply模型就是client发送一个消息然后等待回应，而server接收到消息然后立刻回复。
 这是一个lockstep的过程，就是说中途不能够切换做另外的事情，比如client发送消息之后就不能够再发送必须等待回应，而server接收到消息之后必须立刻恢复而不能够再次接收。
@@ -491,9 +281,9 @@ int main() {
 
 </div>
 
-<div id="outline-container-1-2-2" class="outline-4">
-<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> Protocol</h4>
-<div class="outline-text-4" id="text-1-2-2">
+<div id="outline-container-1-2" class="outline-4">
+<h4 id="sec-1-2"><span class="section-number-4">1.2</span> Protocol</h4>
+<div class="outline-text-4" id="text-1-2">
 
 <p>我们从上面的Example里面看到，在进行zmq_bind/zmq_connect的时候指定了通信地址，而通信地址上面还附带了通信协议"tcp".ZMQ本身是允许工作在多种通信协议上面的：
 </p><ul>
@@ -536,9 +326,9 @@ Change: 2011-09-26 14:02:44.000000000 +0800
 
 </div>
 
-<div id="outline-container-1-2-3" class="outline-4">
-<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> Message</h4>
-<div class="outline-text-4" id="text-1-2-3">
+<div id="outline-container-1-3" class="outline-4">
+<h4 id="sec-1-3"><span class="section-number-4">1.3</span> Message</h4>
+<div class="outline-text-4" id="text-1-3">
 
 <p>我们从上面的Example可以看到，ZMQ内部有一个默认的成帧策略，也就是说我们使用zmq_recv/zmq_send这样写成的webserver是不能够正常工作的，
 因为zmq_recv/zmq_send只能够处理内置的消息格式，而不能够处理http请求这种字节流，按照文档的说法"ZMQ is not a neutral carrier".
@@ -645,9 +435,9 @@ s_dump (void *socket)
 
 </div>
 
-<div id="outline-container-1-2-4" class="outline-4">
-<h4 id="sec-1-2-4"><span class="section-number-4">1.2.4</span> Identity</h4>
-<div class="outline-text-4" id="text-1-2-4">
+<div id="outline-container-1-4" class="outline-4">
+<h4 id="sec-1-4"><span class="section-number-4">1.4</span> Identity</h4>
+<div class="outline-text-4" id="text-1-4">
 
 <p>Identity可以用来表示一个socket的身份，对于ZMQ是非常有用途的，现在能够总结到的作用有下面这些：
 </p><ul>
@@ -672,9 +462,9 @@ Identity的实现非常简单，就是整个message开头加上一个特殊的fr
 
 </div>
 
-<div id="outline-container-1-2-5" class="outline-4">
-<h4 id="sec-1-2-5"><span class="section-number-4">1.2.5</span> Device</h4>
-<div class="outline-text-4" id="text-1-2-5">
+<div id="outline-container-1-5" class="outline-4">
+<h4 id="sec-1-5"><span class="section-number-4">1.5</span> Device</h4>
+<div class="outline-text-4" id="text-1-5">
 
 <p>一旦通信节点超过一定数量的话，那么最好需要一个转发节点或者是中间节点，不然通信费用以及管理复杂度都会急剧上升。作为一个转发节点来说的话，
 逻辑非常简单，从一个socket读取数据，然后向另外一个socket里面写数据，可以认为类似于pipe这样的机制。在ZMQ里面称这样的节点为Device.
@@ -842,9 +632,9 @@ ZMQ Guide里面提到了不要将不同Device和socket进行混用. If you're li
 
 </div>
 
-<div id="outline-container-1-2-6" class="outline-4">
-<h4 id="sec-1-2-6"><span class="section-number-4">1.2.6</span> Congestion</h4>
-<div class="outline-text-4" id="text-1-2-6">
+<div id="outline-container-1-6" class="outline-4">
+<h4 id="sec-1-6"><span class="section-number-4">1.6</span> Congestion</h4>
+<div class="outline-text-4" id="text-1-6">
 
 <p>ZMQ可以通过控制HWM(high-water mark)来控制拥塞。内部实现上每一个socket有关联了buffer,HWM可以控制buffer大小
 </p><ul>
@@ -880,9 +670,9 @@ Some notes on using the HWM option:
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Exclusive-Pair</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> Exclusive-Pair</h3>
+<div class="outline-text-3" id="text-2">
 
 <p>Exclusive-Pair是最简单的1:1通信模式，你可以认为就是一个TCPConnection.我们依然需要写bind和connect,但是server只能够接受一个连接。
 数据可以进行双向连接，没有类似于REQ-REP的lockstep这样的要求。例子中我们连续发送了两个message,然后使用了inproc协议的socket.
@@ -950,9 +740,9 @@ int main(){
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Publish-Subscribe</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> Publish-Subscribe</h3>
+<div class="outline-text-3" id="text-3">
 
 <p>Pub-Sub模式非常简单，Pub不断地发布消息而Sub那么就不断地接收消息。因为消息的流向是单向的，所以相对于来说比较简单。subscriber可以订阅多个publisher,
 多个publisher的消息会交替地到达。关于例子的话可以参考 <a href="http://zguide.zeromq.org/page:all#Getting-the-Message-Out">http://zguide.zeromq.org/page:all#Getting-the-Message-Out</a> .
@@ -974,9 +764,9 @@ In the current versions of ZMQ, filtering happens at the subscriber side, not th
 
 </div>
 
-<div id="outline-container-1-4-1" class="outline-4">
-<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> Missing Message</h4>
-<div class="outline-text-4" id="text-1-4-1">
+<div id="outline-container-3-1" class="outline-4">
+<h4 id="sec-3-1"><span class="section-number-4">3.1</span> Missing Message</h4>
+<div class="outline-text-4" id="text-3-1">
 
 <p>我们看下面一个例子.为了简单起见我们想让subscriber首先运行起来，然后让publisher运行起来。因为如果我们首先将publisher连接起来的话，
 那么subscriber在进行连接的话就会丢失很多记录了。
@@ -1086,9 +876,9 @@ A more robust model could be:
 
 </div>
 
-<div id="outline-container-1-4-2" class="outline-4">
-<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> Congestion Control</h4>
-<div class="outline-text-4" id="text-1-4-2">
+<div id="outline-container-3-2" class="outline-4">
+<h4 id="sec-3-2"><span class="section-number-4">3.2</span> Congestion Control</h4>
+<div class="outline-text-4" id="text-3-2">
 
 <p>之前我们提到拥塞控制，对于PUB来说的话如果达到了HWM的话那么会直接进行丢弃。我们简单地修改一下上面的代码，让subscriber连接上但是不进行处理，而publisher不断地发送消息。
 </p>
@@ -1174,9 +964,9 @@ zmq_setsockopt (publisher, ZMQ_SWAP, &amp;swap, sizeof (swap));
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Push-Pull</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> Push-Pull</h3>
+<div class="outline-text-3" id="text-4">
 
 <p>Push-Pull相对于Pub-Sub模式更加简单。Push-Pull模型工作方式是Divide-And-Conquer，会保证选择一个并且只有一个client来处理消息，而不像Pub-Sub一样会尝试让所有的client都获得消息。
 关于例子的话可以直接参考链接 <a href="http://zguide.zeromq.org/page:all#Divide-and-Conquer">http://zguide.zeromq.org/page:all#Divide-and-Conquer</a> . 对于ZMQ的Push-Pull实现的话，server端会不断地发现新增的client连接，然后再进行消息分发的时候，
@@ -1186,9 +976,9 @@ zmq_setsockopt (publisher, ZMQ_SWAP, &amp;swap, sizeof (swap));
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Request-Reply</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> Request-Reply</h3>
+<div class="outline-text-3" id="text-5">
 
 <p>我们返回来再看Example.在Example里面的话虽然server可以维护很多连接，但是读写方式是同步的，但是ZMQ是提供了异步的Request-Reply的通信模型的。
 这节我们主要看看异步的Request-Reply在ZMQ里面是如何做到的。
@@ -1283,18 +1073,18 @@ int main (void) {
 
 </div>
 
-<div id="outline-container-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> API</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> API</h3>
+<div class="outline-text-3" id="text-6">
 
 <p>关于API这一节的话提供的都是从ZeroMQ的代码文档里面得到的非常详细。但是我想针对里面一些具体的函数说一些或者是记下一些自己的体会，因为里面有坑或者是有思想。
 </p>
 
 </div>
 
-<div id="outline-container-1-7-1" class="outline-4">
-<h4 id="sec-1-7-1"><span class="section-number-4">1.7.1</span> Description</h4>
-<div class="outline-text-4" id="text-1-7-1">
+<div id="outline-container-6-1" class="outline-4">
+<h4 id="sec-6-1"><span class="section-number-4">6.1</span> Description</h4>
+<div class="outline-text-4" id="text-6-1">
 
 <p>0MQ是一个轻量级的消息传递内核，扩展了socket接口。同时内置了很多新的特性，比如异步队列，多消息，消息订阅和过滤，不同transport的兼容等。
 </p>
@@ -1323,9 +1113,9 @@ The 0MQ lightweight messaging kernel is a library which extends the standard soc
 
 </div>
 
-<div id="outline-container-1-7-2" class="outline-4">
-<h4 id="sec-1-7-2"><span class="section-number-4">1.7.2</span> Context</h4>
-<div class="outline-text-4" id="text-1-7-2">
+<div id="outline-container-6-2" class="outline-4">
+<h4 id="sec-6-2"><span class="section-number-4">6.2</span> Context</h4>
+<div class="outline-text-4" id="text-6-2">
 
 <p>我理解context对于0MQ来说就好比是epoll线程的句柄，然后之后所有的建立的socket都会在这个线程里面进行监听。当然整个app通常来说只需要创建一次就可以了，然后在app之前等待结束即可。
 </p>
@@ -1390,9 +1180,9 @@ Context termination is performed in the following steps:
 
 </div>
 
-<div id="outline-container-1-7-3" class="outline-4">
-<h4 id="sec-1-7-3"><span class="section-number-4">1.7.3</span> Messages</h4>
-<div class="outline-text-4" id="text-1-7-3">
+<div id="outline-container-6-3" class="outline-4">
+<h4 id="sec-6-3"><span class="section-number-4">6.3</span> Messages</h4>
+<div class="outline-text-4" id="text-6-3">
 
 <p>对于Messages而言的话，就是ZMQ传输的消息单元体。通过message得到内容有两种方法
 </p><ul>
@@ -1528,9 +1318,9 @@ int zmq_msg_init_data (zmq_msg_t *msg_, void *data_, size_t size_,
 
 </div>
 
-<div id="outline-container-1-7-4" class="outline-4">
-<h4 id="sec-1-7-4"><span class="section-number-4">1.7.4</span> Sockets</h4>
-<div class="outline-text-4" id="text-1-7-4">
+<div id="outline-container-6-4" class="outline-4">
+<h4 id="sec-6-4"><span class="section-number-4">6.4</span> Sockets</h4>
+<div class="outline-text-4" id="text-6-4">
 
 <p>使用zmq_socket和zmq_close就可以创建和销毁socket.对于socket具体的类型的话可以参看文档，写得非常的详细。
 </p>
@@ -1659,9 +1449,9 @@ int zmq_poll (zmq_pollitem_t *items, int nitems, long timeout); // -1&#34920;&#3
 
 </div>
 
-<div id="outline-container-1-7-5" class="outline-4">
-<h4 id="sec-1-7-5"><span class="section-number-4">1.7.5</span> Options</h4>
-<div class="outline-text-4" id="text-1-7-5">
+<div id="outline-container-6-5" class="outline-4">
+<h4 id="sec-6-5"><span class="section-number-4">6.5</span> Options</h4>
+<div class="outline-text-4" id="text-6-5">
 
 <p>允许获取和设置的options并不是一样的，所以这里列出所有的options.获取的话标记R,设置的话标记W
 </p>
@@ -1734,9 +1524,9 @@ int zmq_setsockopt (void *socket, int option_name, const void *option_value, siz
 
 </div>
 
-<div id="outline-container-1-7-6" class="outline-4">
-<h4 id="sec-1-7-6"><span class="section-number-4">1.7.6</span> Transports</h4>
-<div class="outline-text-4" id="text-1-7-6">
+<div id="outline-container-6-6" class="outline-4">
+<h4 id="sec-6-6"><span class="section-number-4">6.6</span> Transports</h4>
+<div class="outline-text-4" id="text-6-6">
 
 <p>transport是指zeromq的传输层在载体，一共有下面4种.
 </p><ul>
@@ -1804,9 +1594,9 @@ int zmq_setsockopt (void *socket, int option_name, const void *option_value, siz
 
 </div>
 
-<div id="outline-container-1-7-7" class="outline-4">
-<h4 id="sec-1-7-7"><span class="section-number-4">1.7.7</span> Devices</h4>
-<div class="outline-text-4" id="text-1-7-7">
+<div id="outline-container-6-7" class="outline-4">
+<h4 id="sec-6-7"><span class="section-number-4">6.7</span> Devices</h4>
+<div class="outline-text-4" id="text-6-7">
 
 <p>关于Device的实现，虽然文档强调device必须配合frontend和backend，但是实际上代码只是使用一套。
 </p>
@@ -1921,15 +1711,210 @@ int zmq_device (int device, const void *frontend, const void *backend);
 
 </div>
 </div>
+
+</div>
+
+<div id="outline-container-7" class="outline-3">
+<h3 id="sec-7"><span class="section-number-3">7</span> Philosophy</h3>
+<div class="outline-text-3" id="text-7">
+
+
+</div>
+
+<div id="outline-container-7-1" class="outline-4">
+<h4 id="sec-7-1"><span class="section-number-4">7.1</span> Fixing the World</h4>
+<div class="outline-text-4" id="text-7-1">
+
+<p>Programming is a science dressed up as art, because most of us don't understand the physics of software, and it's rarely if ever taught. The physics of software is not algorithms, data structures, languages and abstractions. These are just tools we make, use, throw away. The real physics of software is the physics of people.
+</p>
+<p>
+Specifically, our limitations when it comes to complexity, and our desire to work together to solve large problems in pieces. This is the science of programming: make building blocks that people can understand and use easily, and people will work together to solve the very largest problems.
+</p>
+<p>
+We live in a connected world, and modern software has to navigate this world. So the building blocks for tomorrow's very largest solutions are connected and massively parallel. It's not enough for code to be "strong and silent" any more. Code has to talk to code. Code has to be chatty, sociable, well-connected. Code has to run like the human brain, trillions of individual neurons firing off messages to each other, a massively parallel network with no central control, no single point of failure, yet able to solve immensely difficult problems. And it's no accident that the future of code looks like the human brain, because the endpoints of every network are, at some level, human brains.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-7-2" class="outline-4">
+<h4 id="sec-7-2"><span class="section-number-4">7.2</span> Programming with ZMQ</h4>
+<div class="outline-text-4" id="text-7-2">
+
+<p>Having seen some examples, you're eager to start using ZMQ in some apps. Before you start that, take a deep breath, chillax, and reflect on some basic advice that will save you stress and confusion.
+</p><ul>
+<li>Learn ZMQ step by step. It's just one simple API but it hides a world of possibilities. Take the possibilities slowly, master each one.
+</li>
+<li>Write nice code. Ugly code hides problems and makes it hard for others to help you. You might get used to meaningless variable names, but people reading your code won't. Use names that are real words, that say something other than "I'm too careless to tell you what this variable is really for". Use consistent indentation, clean layout. Write nice code and your world will be more comfortable.
+</li>
+<li>Test what you make as you make it. When your program doesn't work, you should know what five lines are to blame. This is especially true when you do ZMQ magic, which just won't work the first times you try it.
+</li>
+<li>When you find that things don't work as expected, break your code into pieces, test each one, see which one is not working. ZMQ lets you make essentially modular code, use that to your advantage.
+</li>
+<li>Make abstractions (classes, methods, whatever) as you need them. If you copy/paste a lot of code you're going to copy/paste errors too.
+</li>
+</ul>
+
+
+<p>
+In the ZMQ universe, sockets are clever multithreaded applications that manage a whole set of connections automagically for you. You can't see, work with, open, close, or attach state to these connections. Whether you use blocking send or receive, or poll, all you can talk to is the socket, not the connections it manages for you. The connections are private and invisible, and this is the key to ZMQ's scalability.
+</p>
+<p>
+Because your code, talking to a socket, can then handle any number of connections across whatever network protocols are around, without change. A messaging pattern sitting in ZMQ can scale more cheaply than a messaging pattern sitting in your application code.
+</p>
+<p>
+So the general assumption no longer applies. As you read the code examples, your brain will try to map them to what you know. You will read "socket" and think "ah, that represents a connection to another node". That is wrong. You will read "thread" and your brain will again think, "ah, a thread represents a connection to another node", and again your brain will be wrong.
+</p>
+<p>
+If you're reading this Guide for the first time, realize that until you actually write ZMQ code for a day or two (and maybe three or four days), you may feel confused, especially by how simple ZMQ makes things for you, and you may try to impose that general assumption on ZMQ, and it won't work. And then you will experience your moment of enlightenment and trust, that zap-pow-kaboom satori paradigm-shift moment when it all becomes clear.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-7-3" class="outline-4">
+<h4 id="sec-7-3"><span class="section-number-4">7.3</span> Why We Needed ZMQ</h4>
+<div class="outline-text-4" id="text-7-3">
+
+<p>Many applications these days consist of components that stretch across some kind of network, either a LAN or the Internet. So many application developers end up doing some kind of messaging. Some developers use message queuing products, but most of the time they do it themselves, using TCP or UDP. These protocols are not hard to use, but there is a great difference between sending a few bytes from A to B, and doing messaging in any kind of reliable way.
+</p>
+<p>
+Let's look at the typical problems we face when we start to connect pieces using raw TCP. Any reusable messaging layer would need to solve all or most these:
+</p><ul>
+<li>How do we handle I/O? Does our application block, or do we handle I/O in the background? This is a key design decision. Blocking I/O creates architectures that do not scale well. But background I/O can be very hard to do right.
+</li>
+<li>How do we handle dynamic components, i.e. pieces that go away temporarily? Do we formally split components into "clients" and "servers" and mandate that servers cannot disappear? What then if we want to connect servers to servers? Do we try to reconnect every few seconds?
+</li>
+<li>How do we represent a message on the wire? How do we frame data so it's easy to write and read, safe from buffer overflows, efficient for small messages, yet adequate for the very largest videos of dancing cats wearing party hats?
+</li>
+<li>How do we handle messages that we can't deliver immediately? Particularly, if we're waiting for a component to come back on-line? Do we discard messages, put them into a database, or into a memory queue?
+</li>
+<li>Where do we store message queues? What happens if the component reading from a queue is very slow, and causes our queues to build up? What's our strategy then?
+</li>
+<li>How do we handle lost messages? Do we wait for fresh data, request a resend, or do we build some kind of reliability layer that ensures messages cannot be lost? What if that layer itself crashes?
+</li>
+<li>What if we need to use a different network transport. Say, multicast instead of TCP unicast? Or IPv6? Do we need to rewrite the applications, or is the transport abstracted in some layer?
+</li>
+<li>How do we route messages? Can we send the same message to multiple peers? Can we send replies back to an original requester?
+</li>
+<li>How do we write an API for another language? Do we re-implement a wire-level protocol or do we repackage a library? If the former, how can we guarantee efficient and stable stacks? If the latter, how can we guarantee interoperability?
+</li>
+<li>How do we represent data so that it can be read between different architectures? Do we enforce a particular encoding for data types? How far is this the job of the messaging system rather than a higher layer?
+</li>
+<li>How do we handle network errors? Do we wait and retry, ignore them silently, or abort?
+</li>
+</ul>
+
+
+<p>
+早期需要设计可靠消息系统比如AMQP.但是这种方式引入了single-point broker。对于需要这种可靠消息系统的应用来说，需要在broker上面做相当多的事情确保可靠性以及性能。但是这样对于中小应用陷入了尴尬，为了使用这种方便的消息系统他们需要引入broker这么东西是不能够忍受的。我们需要的一种简单方便的消息传输系统，没有任何附加代价(比如所有数据都流经broker)，这就是ZeroMQ设计初衷。
+</p>
+<p>
+It turns out that building reusable messaging systems is really difficult, which is why few FOSS projects ever tried, and why commercial messaging products are complex, expensive, inflexible, and brittle. In 2006 iMatix designed AMQP which started to give FOSS developers perhaps the first reusable recipe for a messaging system. AMQP works better than many other designs but remains relatively complex, expensive, and brittle. It takes weeks to learn to use, and months to create stable architectures that don't crash when things get hairy.
+</p>
+<p>
+Most messaging projects, like AMQP, that try to solve this long list of problems in a reusable way do so by inventing a new concept, the "broker", that does addressing, routing, and queuing. This results in a client-server protocol or a set of APIs on top of some undocumented protocol, that let applications speak to this broker. Brokers are an excellent thing in reducing the complexity of large networks. But adding broker-based messaging to a product like Zookeeper would make it worse, not better. It would mean adding an additional big box, and a new single point of failure. A broker rapidly becomes a bottleneck and a new risk to manage. If the software supports it, we can add a second, third, fourth broker and make some fail-over scheme. People do this. It creates more moving pieces, more complexity, more things to break.
+</p>
+<p>
+And a broker-centric set-up needs its own operations team. You literally need to watch the brokers day and night, and beat them with a stick when they start misbehaving. You need boxes, and you need backup boxes, and you need people to manage those boxes. It is only worth doing for large applications with many moving pieces, built by several teams of people, over several years.
+</p>
+<p>
+So small to medium application developers are trapped. Either they avoid network programming, and make monolithic applications that do not scale. Or they jump into network programming and make brittle, complex applications that are hard to maintain. Or they bet on a messaging product, and end up with scalable applications that depend on expensive, easily broken technology. There has been no really good choice, which is maybe why messaging is largely stuck in the last century and stirs strong emotions. Negative ones for users, gleeful joy for those selling support and licenses.
+</p>
+<p>
+What we need is something that does the job of messaging but does it in such a simple and cheap way that it can work in any application, with close to zero cost. It should be a library that you just link with, without any other dependencies. No additional moving pieces, so no additional risk. It should run on any OS and work with any programming language.
+</p>
+<p>
+And this is ZMQ: an efficient, embeddable library that solves most of the problems an application needs to become nicely elastic across a network, without much cost. Specifically:
+</p><ul>
+<li>It handles I/O asynchronously, in background threads. These communicate with application threads using lock-free data structures, so ZMQ applications need no locks, semaphores, or other wait states.
+</li>
+<li>Components can come and go dynamically and ZMQ will automatically reconnect. This means you can start components in any order. You can create "service-oriented architectures" (SOAs) where services can join and leave the network at any time.
+</li>
+<li>It queues messages automatically when needed. It does this intelligently, pushing messages to as close as possible to the receiver before queuing them.
+</li>
+<li>It has ways of dealing with over-full queues (called "high water mark"). When a queue is full, ZMQ automatically blocks senders, or throws away messages, depending on the kind of messaging you are doing (the so-called "pattern").
+</li>
+<li>It lets your applications talk to each other over arbitrary transports: TCP, multicast, in-process, inter-process. You don't need to change your code to use a different transport.
+</li>
+<li>It handles slow/blocked readers safely, using different strategies that depend on the messaging pattern.
+</li>
+<li>It lets you route messages using a variety of patterns such as request-reply and publish-subscribe. These patterns are how you create the topology, the structure of your network.
+</li>
+<li>It lets you place pattern-extending "devices" (small brokers) in the network when you need to reduce the complexity of interconnecting many pieces.
+</li>
+<li>It delivers whole messages exactly as they were sent, using a simple framing on the wire. If you write a 10k message, you will receive a 10k message.
+</li>
+<li>It does not impose any format on messages. They are blobs of zero to gigabytes large. When you want to represent data you choose some other product on top, such as Google's protocol buffers, XDR, and others.
+</li>
+<li>It handles network errors intelligently. Sometimes it retries, sometimes it tells you an operation failed.
+</li>
+<li>It reduces your carbon footprint. Doing more with less CPU means your boxes use less power, and you can keep your old boxes in use for longer. Al Gore would love ZMQ.
+</li>
+</ul>
+
+
+<p>
+ZMQ为我们在编写网络应用程序上面带了颠覆性的效果。表面上看是一系列socket API但是当应用规模不断变大开始以消息传输为中心的时候，ZMQ的优势就会凸显出来。
+</p>
+<p>
+Actually ZMQ does rather more than this. It has a subversive effect on how you develop network-capable applications. Superficially it's just a socket API on which you do zmq_recv(3) and zmq_send(3). But message processing rapidly becomes the central loop, and your application soon breaks down into a set of message processing tasks. It is elegant and natural. And it scales: each of these tasks maps to a node, and the nodes talk to each other across arbitrary transports. Two nodes in one process (node is a thread), two nodes on one box (node is a process), two boxes on one network (node is a box). With no application code changes.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-7-4" class="outline-4">
+<h4 id="sec-7-4"><span class="section-number-4">7.4</span> The Zen of Zero</h4>
+<div class="outline-text-4" id="text-7-4">
+
+<p>Originally the zero in ZMQ was meant as "zero broker" and (as close to) "zero latency" (as possible). In the meantime it has come to cover different goals: zero administration, zero cost, zero waste. More generally, "zero" refers to the culture of minimalism that permeates the project. We add power by removing complexity rather than exposing new functionality.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-7-5" class="outline-4">
+<h4 id="sec-7-5"><span class="section-number-4">7.5</span> Handling Errors and ETERM</h4>
+<div class="outline-text-4" id="text-7-5">
+
+<p>ZMQ's error handling philosophy is a mix of fail-fast and resilience. Processes, we believe, should be as vulnerable as possible to internal errors, and as robust as possible against external attacks and errors. To give an analogy, a living cell will self-destruct if it detects a single internal error, yet it will resist attack from the outside by all means possible. Assertions, which pepper the ZMQ code, are absolutely vital to robust code, they just have to be on the right side of the cellular wall. And there should be such a wall. If it is unclear whether a fault is internal or external, that is a design flaw that needs to be fixed.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-7-6" class="outline-4">
+<h4 id="sec-7-6"><span class="section-number-4">7.6</span> Multithreading with ZMQ</h4>
+<div class="outline-text-4" id="text-7-6">
+
+<p>To make utterly perfect MT programs (and I mean that literally) we don't need mutexes, locks, or any other form of inter-thread communication except messages sent across ZMQ sockets.
+</p>
+<p>
+By "perfect" MT programs I mean code that's easy to write and understand, that works with one technology in any language and on any operating system, and that scales across any number of CPUs with zero wait states and no point of diminishing returns.
+</p>
+<p>
+如果有一件事情是我从30多年的并发编程经验所总结出来的话，那么就是永远不要共享状态。
+</p>
+<p>
+If you've spent years learning tricks to make your MT code work at all, let alone rapidly, with locks and semaphores and critical sections, you will be disgusted when you realize it was all for nothing. If there's one lesson we've learned from 30+ years of concurrent programming it is: just don't share state. It's like two drunkards trying to share a beer. It doesn't matter if they're good buddies. Sooner or later they're going to get into a fight. And the more drunkards you add to the pavement, the more they fight each other over the beer. The tragic majority of MT applications look like drunken bar fights.
+</p>
+<p>
+The list of weird problems that you need to fight as you write classic shared-state MT code would be hillarious if it didn't translate directly into stress and risk, as code that seems to work suddenly fails under pressure. Here is a list of "11 Likely Problems In Your Multithreaded Code" from a large firm with world-beating experience in buggy code: forgotten synchronization, incorrect granularity, read and write tearing, lock-free reordering, lock convoys, two-step dance, and priority inversion.
+</p>
+<p>
+Yeah, we also counted seven, not eleven. That's not the point though. The point is, do you really want that code running the power grid or stock market to start getting two-step lock convoys at 3pm on a busy Thursday? Who cares what the terms actually mean. This is not what turned us on to programming, fighting ever more complex side-effects with ever more complex hacks.
+</p>
+<p>
+Some widely used metaphors, despite being the basis for billion-dollar industries, are fundamentally broken, and shared state concurrency is one of them. Code that wants to scale without limit does it like the Internet does, by sending messages and sharing nothing except a common contempt for broken programming metaphors.
+</p></div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:42+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'zeromq.html';var disqus_title = 'zeromq.html';var disqus_url = 'http://dirlt.com/zeromq.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'zeromq.html';var disqus_title = 'zeromq.html';var disqus_url = 'http://dirlt.com/zeromq.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
-<title>akka</title>
+<head>
+<title>Akka</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="akka"/>
+<meta name="title" content="Akka"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-10-12T22:44+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,77 +62,62 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
 </div>
 
 <div id="content">
-<h1 class="title">akka</h1>
+<h1 class="title">Akka</h1>
 
+<p><a href="http://akka.io/">http://akka.io/</a>
+</p>
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="akka.html#sec-1">1 akka</a>
+<li><a href="akka.html#sec-1">1 Introduction</a></li>
+<li><a href="akka.html#sec-2">2 Actor System</a></li>
+<li><a href="akka.html#sec-3">3 Actor Concept</a>
 <ul>
-<li><a href="akka.html#sec-1-1">1.1 Introduction</a></li>
-<li><a href="akka.html#sec-1-2">1.2 Actor System</a></li>
-<li><a href="akka.html#sec-1-3">1.3 Actor Concept</a>
-<ul>
-<li><a href="akka.html#sec-1-3-1">1.3.1 Reference</a></li>
-<li><a href="akka.html#sec-1-3-2">1.3.2 Path</a></li>
-<li><a href="akka.html#sec-1-3-3">1.3.3 State</a></li>
-<li><a href="akka.html#sec-1-3-4">1.3.4 Behavior</a></li>
-<li><a href="akka.html#sec-1-3-5">1.3.5 Mailbox</a></li>
-<li><a href="akka.html#sec-1-3-6">1.3.6 in Akka</a></li>
+<li><a href="akka.html#sec-3-1">3.1 Reference</a></li>
+<li><a href="akka.html#sec-3-2">3.2 Path</a></li>
+<li><a href="akka.html#sec-3-3">3.3 State</a></li>
+<li><a href="akka.html#sec-3-4">3.4 Behavior</a></li>
+<li><a href="akka.html#sec-3-5">3.5 Mailbox</a></li>
+<li><a href="akka.html#sec-3-6">3.6 in Akka</a></li>
 </ul>
 </li>
-<li><a href="akka.html#sec-1-4">1.4 Actor Lifecycle</a></li>
-<li><a href="akka.html#sec-1-5">1.5 Supervision And Monitoring</a></li>
-<li><a href="akka.html#sec-1-6">1.6 Message Order and Delivery Guarantees</a></li>
-<li><a href="akka.html#sec-1-7">1.7 Location Transparency</a></li>
-<li><a href="akka.html#sec-1-8">1.8 Configuration</a></li>
-<li><a href="akka.html#sec-1-9">1.9 Dispatcher</a></li>
-<li><a href="akka.html#sec-1-10">1.10 Mailboxes</a></li>
-<li><a href="akka.html#sec-1-11">1.11 Routing</a></li>
-<li><a href="akka.html#sec-1-12">1.12 Transactors</a></li>
-<li><a href="akka.html#sec-1-13">1.13 Enhancement</a>
+<li><a href="akka.html#sec-4">4 Actor Lifecycle</a></li>
+<li><a href="akka.html#sec-5">5 Supervision And Monitoring</a></li>
+<li><a href="akka.html#sec-6">6 Message Order and Delivery Guarantees</a></li>
+<li><a href="akka.html#sec-7">7 Location Transparency</a></li>
+<li><a href="akka.html#sec-8">8 Configuration</a></li>
+<li><a href="akka.html#sec-9">9 Dispatcher</a></li>
+<li><a href="akka.html#sec-10">10 Mailboxes</a></li>
+<li><a href="akka.html#sec-11">11 Routing</a></li>
+<li><a href="akka.html#sec-12">12 Transactors</a></li>
+<li><a href="akka.html#sec-13">13 Enhancement</a>
 <ul>
-<li><a href="akka.html#sec-1-13-1">1.13.1 Typed Channel</a></li>
-<li><a href="akka.html#sec-1-13-2">1.13.2 Typed Actor</a></li>
-<li><a href="akka.html#sec-1-13-3">1.13.3 FSM</a></li>
-<li><a href="akka.html#sec-1-13-4">1.13.4 Futures</a></li>
-<li><a href="akka.html#sec-1-13-5">1.13.5 Dataflow Concurrency</a></li>
-<li><a href="akka.html#sec-1-13-6">1.13.6 STM</a></li>
-<li><a href="akka.html#sec-1-13-7">1.13.7 Agents</a></li>
+<li><a href="akka.html#sec-13-1">13.1 Typed Channel</a></li>
+<li><a href="akka.html#sec-13-2">13.2 Typed Actor</a></li>
+<li><a href="akka.html#sec-13-3">13.3 FSM</a></li>
+<li><a href="akka.html#sec-13-4">13.4 Futures</a></li>
+<li><a href="akka.html#sec-13-5">13.5 Dataflow Concurrency</a></li>
+<li><a href="akka.html#sec-13-6">13.6 STM</a></li>
+<li><a href="akka.html#sec-13-7">13.7 Agents</a></li>
 </ul>
 </li>
-<li><a href="akka.html#sec-1-14">1.14 TroubleShooting</a></li>
-</ul>
-</li>
+<li><a href="akka.html#sec-14">14 TroubleShooting</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> akka</h2>
-<div class="outline-text-2" id="text-1">
-
-<ul>
-<li>Akka : <a href="http://akka.io/">http://akka.io/</a>
-</li>
-</ul>
-
-
-
-</div>
-
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Introduction</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> Introduction</h3>
+<div class="outline-text-3" id="text-1">
 
 <p>Akka implements a unique hybrid
 </p><ul>
@@ -195,7 +179,7 @@ Akka can be used in different ways:
 
 <hr/>
 <p>
-<b>note(dirlt):参考akka@github的example编写的。这里使用的方式就是手工创建ActorSystem，而不是使用Akka.main指定main class来启动</b>
+#note: 参考akka@github的example编写的。这里使用的方式就是手工创建ActorSystem，而不是使用Akka.main指定main class来启动
 </p>
 
 
@@ -241,9 +225,9 @@ class Worker extends Actor {
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Actor System</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> Actor System</h3>
+<div class="outline-text-3" id="text-2">
 
 <p>Related Terminology, Concepts
 </p><ul>
@@ -349,21 +333,21 @@ An actor system manages the resources it is configured to use in order to run th
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Actor Concept</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> Actor Concept</h3>
+<div class="outline-text-3" id="text-3">
 
 <p><img src="images/akka-actor-system.png"  alt="./images/akka-actor-system.png" />
 </p>
 
 </div>
 
-<div id="outline-container-1-3-1" class="outline-4">
-<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> Reference</h4>
-<div class="outline-text-4" id="text-1-3-1">
+<div id="outline-container-3-1" class="outline-4">
+<h4 id="sec-3-1"><span class="section-number-4">3.1</span> Reference</h4>
+<div class="outline-text-4" id="text-3-1">
 
 <ul>
-<li><b>note(dirlt):ActorRef. 类似Actor对象指针，所有Actor对象操作都是通过引用来完成的。这样Actor如果重启，或者是部署在远程做通信的话，都可以以透明方式来完成</b>
+<li>#note: ActorRef. 类似Actor对象指针，所有Actor对象操作都是通过引用来完成的。这样Actor如果重启，或者是部署在远程做通信的话，都可以以透明方式来完成
 </li>
 <li>As detailed below, an actor object needs to be shielded from the outside in order to benefit from the actor model. Therefore, actors are represented to the outside using actor references, which are objects that can be passed around freely and without restriction.
 </li>
@@ -395,7 +379,7 @@ There are several different types of actor references that are supported dependi
 <ul>
 <li><b>PromiseActorRef</b> is the special representation of a Promise for the purpose of being completed by the response from an actor. akka.pattern.ask creates this actor reference. （对于ask不是产生Future吗？）
 </li>
-<li><b>DeadLetterActorRef</b> is the default implementation of the dead letters service to which Akka routes all messages whose destinations are shut down or non-existent.（对于已经消亡的actor，向这些actor发送的消息都会转发到这里） 
+<li><b>DeadLetterActorRef</b> is the default implementation of the dead letters service to which Akka routes all messages whose destinations are shut down or non-existent.（对于已经消亡的actor，向这些actor发送的消息都会转发到这里）
 </li>
 <li><b>EmptyLocalActorRef</b> is what Akka returns when looking up a non-existent local actor path: it is equivalent to a DeadLetterActorRef, but it retains its path so that Akka can send it over the network and compare it to other existing actor references for that path, some of which might have been obtained before the actor died.（没有对应path的actor）
 </li>
@@ -423,9 +407,9 @@ There are several different types of actor references that are supported dependi
 <p>
 There are two general categories to how actor references may be obtained: by creating actors or by looking them up, where the latter functionality comes in the two flavours of creating actor references from concrete actor paths and querying the logical actor hierarchy.（创建actor reference有两种方式，一种是创建，一种是查找）
 </p><ul>
-<li>Creating Actors. 
+<li>Creating Actors.
 <ul>
-<li>An actor system is typically started by creating actors beneath the guardian actor using the ActorSystem.actorOf method and then using ActorContext.actorOf from within the created actors to spawn the actor tree. 
+<li>An actor system is typically started by creating actors beneath the guardian actor using the ActorSystem.actorOf method and then using ActorContext.actorOf from within the created actors to spawn the actor tree.
 </li>
 <li>These methods return a reference to the newly created actor. Each actor has direct access (through its ActorContext) to references for its parent, itself and its children. These references may be sent within messages to other actors, enabling those to reply directly.
 </li>
@@ -434,11 +418,11 @@ There are two general categories to how actor references may be obtained: by cre
 </li>
 <li>Looking up Actors by Concrete Path
 <ul>
-<li>In addition, actor references may be looked up using the ActorSystem.actorSelection method. 
+<li>In addition, actor references may be looked up using the ActorSystem.actorSelection method.
 </li>
-<li>The selection can be used for communicating with said actor and <b>the actor corresponding to the selection is looked up when delivering each message.</b> todo(dirlt): cost issue?
+<li>The selection can be used for communicating with said actor and <b>the actor corresponding to the selection is looked up when delivering each message.</b>
 </li>
-<li>*note(dirlt):support relative path and wildcard. like ../sibling or ../? *
+<li>#note: support relative path and wildcard. like ../sibling or ../?
 </li>
 </ul>
 
@@ -456,19 +440,19 @@ Equality of ActorRef match the intention that an ActorRef corresponds to the tar
 
 </div>
 
-<div id="outline-container-1-3-2" class="outline-4">
-<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> Path</h4>
-<div class="outline-text-4" id="text-1-3-2">
+<div id="outline-container-3-2" class="outline-4">
+<h4 id="sec-3-2"><span class="section-number-4">3.2</span> Path</h4>
+<div class="outline-text-4" id="text-3-2">
 
 <p>Since actors are created in a strictly hierarchical fashion, there exists a unique sequence of actor names given by recursively following the supervision links between child and parent down towards the root of the actor system. This sequence can be seen as enclosing folders in a file system, hence we adopted the name “path” to refer to it.（非常类似文件系统）
 </p><ul>
 <li>Logical Actor Paths
 <ul>
-<li><b>note(dirlt):主要是强调hierarchy</b>
+<li>#note: 主要是强调hierarchy
 </li>
 <li>akka.tcp://sys@A:2552/user/parent/child
 </li>
-<li>The unique path obtained by following the parental supervision links towards the root guardian is called the logical actor path. 
+<li>The unique path obtained by following the parental supervision links towards the root guardian is called the logical actor path.
 </li>
 <li>This path matches exactly the creation ancestry of an actor, so it is completely deterministic as soon as the actor system’s remoting configuration (and with it the address component of the path) is set.
 </li>
@@ -477,11 +461,11 @@ Equality of ActorRef match the intention that an ActorRef corresponds to the tar
 </li>
 <li>Physical Actor Paths
 <ul>
-<li><b>note(dirlt):主要是强调location</b>
+<li>#note: 主要是强调location
 </li>
 <li>akka.tcp://sys@B:2552/remote/sys@A:2552/user/parent/child # remote node on B.
 </li>
-<li>One important aspect is that a physical actor path never spans multiple actor systems or JVMs. 
+<li>One important aspect is that a physical actor path never spans multiple actor systems or JVMs.
 </li>
 <li>This means that the logical path (supervision hierarchy) and the physical path (actor deployment) of an actor may diverge if one of its ancestors is remotely supervised.
 </li>
@@ -490,7 +474,7 @@ Equality of ActorRef match the intention that an ActorRef corresponds to the tar
 </li>
 <li>Virtual Actor Paths
 <ul>
-<li>In order to be able to replicate and migrate actors across a cluster of Akka nodes, another level of indirection has to be introduced. 
+<li>In order to be able to replicate and migrate actors across a cluster of Akka nodes, another level of indirection has to be introduced.
 </li>
 <li>The cluster component therefore provides a translation from virtual paths to physical paths which may change in reaction to node failures, cluster rebalancing, etc.
 </li>
@@ -529,7 +513,7 @@ When an actor creates a child, the actor system’s deployer will decide whether
 <hr/>
 
 <p>
-<b>note(dirlt):可以参照后面的Supervision and Monitoring来看这些path</b>
+#note: 可以参照后面的Supervision and Monitoring来看这些path
 </p>
 <p>
 At the root of the path hierarchy resides the root guardian above which all other actors are found; its name is "/". The next level consists of the following:
@@ -548,15 +532,15 @@ At the root of the path hierarchy resides the root guardian above which all othe
 
 
 <p>
-The need to structure the name space for actors like this arises from a central and very simple design goal: everything in the hierarchy is an actor, and all actors function in the same way. Hence you can not only look up the actors you created, you can also look up the system guardian and send it a message (which it will dutifully discard in this case). This powerful principle means that there are no quirks to remember, it makes the whole system more uniform and consistent.（路径的层次化组织使得定位actor更加容易和统一） <b>todo(dirlt):每个actor需要维护path,这个代价开销有多大？</b> 
+The need to structure the name space for actors like this arises from a central and very simple design goal: everything in the hierarchy is an actor, and all actors function in the same way. Hence you can not only look up the actors you created, you can also look up the system guardian and send it a message (which it will dutifully discard in this case). This powerful principle means that there are no quirks to remember, it makes the whole system more uniform and consistent.（路径的层次化组织使得定位actor更加容易和统一）
 </p>
 </div>
 
 </div>
 
-<div id="outline-container-1-3-3" class="outline-4">
-<h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> State</h4>
-<div class="outline-text-4" id="text-1-3-3">
+<div id="outline-container-3-3" class="outline-4">
+<h4 id="sec-3-3"><span class="section-number-4">3.3</span> State</h4>
+<div class="outline-text-4" id="text-3-3">
 
 <ul>
 <li>Behind the scenes Akka will run sets of actors on sets of real threads, where typically many actors share one thread, and subsequent invocations of one actor may end up being processed on different threads. Akka ensures that this implementation detail does not affect the single-threadedness of handling the actor’s state.（多个Actor对象可能会共享一个线程，并且Actor每次执行可能是在不同的线程上执行）
@@ -570,18 +554,18 @@ The need to structure the name space for actors like this arises from a central 
 
 </div>
 
-<div id="outline-container-1-3-4" class="outline-4">
-<h4 id="sec-1-3-4"><span class="section-number-4">1.3.4</span> Behavior</h4>
-<div class="outline-text-4" id="text-1-3-4">
+<div id="outline-container-3-4" class="outline-4">
+<h4 id="sec-3-4"><span class="section-number-4">3.4</span> Behavior</h4>
+<div class="outline-text-4" id="text-3-4">
 
 <ul>
-<li>Every time a message is processed, it is matched against the current behavior of the actor. Behavior means a function which defines the actions to be taken in reaction to the message at that point in time, say forward a request if the client is authorized, deny it otherwise. 
+<li>Every time a message is processed, it is matched against the current behavior of the actor. Behavior means a function which defines the actions to be taken in reaction to the message at that point in time, say forward a request if the client is authorized, deny it otherwise.
 </li>
 <li>If the current actor behavior does not match a received message, unhandled is called, which by default publishes anakka.actor.UnhandledMessage(message, sender, recipient)on the actor system’s event stream (set configuration item akka.actor.debug.unhandled to on to have them converted into actual Debug messages).（以现在Akka API来说如果某个消息没有处理的话，那么会由unhandle函数来处理，默认则是发送到系统的EventStream）
 </li>
 <li>These changes are achieved by either encoding them in state variables which are read from the behavior logic, or the function itself may be swapped out at runtime, see the become and unbecome operations.（Akka对FSM支持非常好而不只是简单的become/unbecome函数）
 </li>
-<li>However, the initial behavior defined during construction of the actor object is special in the sense that a restart of the actor will reset its behavior to this initial one. (需要注意，如果重启的话，那么状态会恢复到最初） 
+<li>However, the initial behavior defined during construction of the actor object is special in the sense that a restart of the actor will reset its behavior to this initial one. (需要注意，如果重启的话，那么状态会恢复到最初）
 </li>
 </ul>
 
@@ -590,12 +574,12 @@ The need to structure the name space for actors like this arises from a central 
 
 </div>
 
-<div id="outline-container-1-3-5" class="outline-4">
-<h4 id="sec-1-3-5"><span class="section-number-4">1.3.5</span> Mailbox</h4>
-<div class="outline-text-4" id="text-1-3-5">
+<div id="outline-container-3-5" class="outline-4">
+<h4 id="sec-3-5"><span class="section-number-4">3.5</span> Mailbox</h4>
+<div class="outline-text-4" id="text-3-5">
 
 <ul>
-<li>The piece which connects sender and receiver is the actor’s mailbox: each actor has exactly one mailbox to which all senders enqueue their messages. 
+<li>The piece which connects sender and receiver is the actor’s mailbox: each actor has exactly one mailbox to which all senders enqueue their messages.
 <ul>
 <li>Enqueuing happens in the time-order of send operations, which means that messages sent from different actors may not have a defined order at runtime due to the apparent randomness of distributing actors across threads. （不同sender发向同一个target到达消息的顺序不确定）
 </li>
@@ -613,9 +597,9 @@ The need to structure the name space for actors like this arises from a central 
 </ul>
 
 </li>
-<li>An important feature in which Akka differs from some other actor model implementations is that the current behavior must always handle the next dequeued message, there is no scanning the mailbox for the next matching one. Failure to handle a message will typically be treated as a failure, unless this behavior is overridden. <b>note(dirlt)：和其他actor model实现有点不太类似是，没有办法对mailbox来做scan来处理匹配的项。也就是说对于mailbox里面所有的消息都需要显式处理</b>
+<li>An important feature in which Akka differs from some other actor model implementations is that the current behavior must always handle the next dequeued message, there is no scanning the mailbox for the next matching one. Failure to handle a message will typically be treated as a failure, unless this behavior is overridden. #note: 和其他actor model实现有点不太类似是，没有办法对mailbox来做scan来处理匹配的项。也就是说对于mailbox里面所有的消息都需要显式处理
 </li>
-<li>If an exception is thrown while a message is being processed, nothing happens to the mailbox. If the actor is restarted, the same mailbox will be there. So all messages on that mailbox will be there as well.(如果处理消息的时候发生异常，mailbox并不会受影响，并且如果actor重启的话，读取的依然是之前的mailbox里面的内容） <b>todo(dirlt)：是否有办法清除mailbox里面的内容？</b> 
+<li>If an exception is thrown while a message is being processed, nothing happens to the mailbox. If the actor is restarted, the same mailbox will be there. So all messages on that mailbox will be there as well.(如果处理消息的时候发生异常，mailbox并不会受影响，并且如果actor重启的话，读取的依然是之前的mailbox里面的内容） #todo: 是否有办法清除mailbox里面的内容?
 </li>
 </ul>
 
@@ -624,9 +608,9 @@ The need to structure the name space for actors like this arises from a central 
 
 </div>
 
-<div id="outline-container-1-3-6" class="outline-4">
-<h4 id="sec-1-3-6"><span class="section-number-4">1.3.6</span> in Akka</h4>
-<div class="outline-text-4" id="text-1-3-6">
+<div id="outline-container-3-6" class="outline-4">
+<h4 id="sec-3-6"><span class="section-number-4">3.6</span> in Akka</h4>
+<div class="outline-text-4" id="text-3-6">
 
 <p>Akka实现的Actor对象内部包括了下面几个比较重要的字段和方法
 </p><ul>
@@ -653,9 +637,9 @@ The need to structure the name space for actors like this arises from a central 
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Actor Lifecycle</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> Actor Lifecycle</h3>
+<div class="outline-text-3" id="text-4">
 
 <p><img src="images/akka-actor-lifecycle.png"  alt="./images/akka-actor-lifecycle.png" />
 </p>
@@ -664,7 +648,7 @@ Initialization
 </p><ul>
 <li>constructor. 每次创建对象都会调用。注意重启创建incarnation的时候也是创建新对象。
 </li>
-<li>preStart. 每次创建第一个对象的时候会调用。 
+<li>preStart. 每次创建第一个对象的时候会调用。
 </li>
 <li>first communication. 第一次通信的时候触发。
 </li>
@@ -674,9 +658,9 @@ Initialization
 <p>
 Termination
 </p><ul>
-<li><b>note(dirlt)：actor终止的时候，这个actor原来内部所有的message都会流向EventStream(another special actor)作为DeadLetters，而actor消亡之后其mailbox会重定向到system mailbox, 所有发向这个system mailbox的消息也会流向EventStream作为DeadLetters</b>
+<li>#note: actor终止的时候，这个actor原来内部所有的message都会流向EventStream(another special actor)作为DeadLetters，而actor消亡之后其mailbox会重定向到system mailbox, 所有发向这个system mailbox的消息也会流向EventStream作为DeadLetters
 </li>
-<li>Once an actor terminates, i.e. fails in a way which is not handled by a restart, stops itself or is stopped by its supervisor, it will free up its resources, draining all remaining messages from its mailbox into the system’s “dead letter mailbox” which will forward them to the EventStream as DeadLetters. 
+<li>Once an actor terminates, i.e. fails in a way which is not handled by a restart, stops itself or is stopped by its supervisor, it will free up its resources, draining all remaining messages from its mailbox into the system’s “dead letter mailbox” which will forward them to the EventStream as DeadLetters.
 </li>
 <li>The mailbox is then replaced within the actor reference with a system mailbox, redirecting all new messages to the EventStream as DeadLetters. This is done on a best effort basis, though, so do not rely on it in order to construct “guaranteed delivery”.
 </li>
@@ -687,15 +671,15 @@ Termination
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Supervision And Monitoring</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> Supervision And Monitoring</h3>
+<div class="outline-text-3" id="text-5">
 
 <p>Akka implements a specific form called <b>“parental supervision”.</b>
 </p><ul>
-<li>Actors can only be created by other actors— <b>where the top-level actor is provided by the library</b> —and each created actor is supervised by its parent. 
+<li>Actors can only be created by other actors— <b>where the top-level actor is provided by the library</b> —and each created actor is supervised by its parent.
 </li>
-<li>Each actor is potentially a supervisor: if it creates children for delegating sub-tasks, it will automatically supervise them. 
+<li>Each actor is potentially a supervisor: if it creates children for delegating sub-tasks, it will automatically supervise them.
 </li>
 <li>The list of children is maintained within the actor’s context and the actor has access to it.
 </li>
@@ -739,9 +723,9 @@ An actor system will during its creation start at least three actors, shown in t
 </p><ul>
 <li>/user: The Guardian Actor
 <ul>
-<li>The actor which is probably most interacted with is the parent of all user-created actors, the guardian named "/user". 
+<li>The actor which is probably most interacted with is the parent of all user-created actors, the guardian named "/user".
 </li>
-<li>Actors created using <b>system.actorOf()</b> are children of this actor. This means that when this guardian terminates, all normal actors in the system will be shutdown, too. 
+<li>Actors created using <b>system.actorOf()</b> are children of this actor. This means that when this guardian terminates, all normal actors in the system will be shutdown, too.
 </li>
 <li>It also means that this guardian’s supervisor strategy determines how the top-level normal actors are supervised. Since Akka 2.1 it is possible to configure this using the setting akka.actor.guardian-supervisor-strategy, which takes the fully-qualified class-name of a SupervisorStrategyConfigurator.（可以配置这个guardian的策略）
 </li>
@@ -761,7 +745,7 @@ An actor system will during its creation start at least three actors, shown in t
 </li>
 <li>/: The Root Guardian
 <ul>
-<li>Since every real actor has a supervisor, the supervisor of the root guardian cannot be a real actor. And because this means that it is “outside of the bubble”, it is called the “bubble-walker”. 
+<li>Since every real actor has a supervisor, the supervisor of the root guardian cannot be a real actor. And because this means that it is “outside of the bubble”, it is called the “bubble-walker”.
 </li>
 <li><b>This is a synthetic ActorRef which in effect stops its child upon the first sign of trouble</b> and sets the actor system’s isTerminated status to true as soon as the root guardian is fully terminated (all children recursively stopped)
 </li>
@@ -809,9 +793,9 @@ The AllForOneStrategy is applicable in cases where the ensemble of children has 
 
 </div>
 
-<div id="outline-container-1-6" class="outline-3">
-<h3 id="sec-1-6"><span class="section-number-3">1.6</span> Message Order and Delivery Guarantees</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> Message Order and Delivery Guarantees</h3>
+<div class="outline-text-3" id="text-6">
 
 <p>Messages are sent to an Actor through one of the following methods.（两种方式来进行消息发送）
 </p><ul>
@@ -823,11 +807,11 @@ The AllForOneStrategy is applicable in cases where the ensemble of children has 
 
 
 <p>
-These are the rules for message sends (i.e. the tell or ! method, which also underlies the ask pattern): 
+These are the rules for message sends (i.e. the tell or ! method, which also underlies the ask pattern):
 </p><ul>
 <li>at-most-once delivery, i.e. no guaranteed delivery
 </li>
-<li>message ordering per sender–receiver pair <b>note(dirlt):可以参考Memory Model这个部分的内容</b> 
+<li>message ordering per sender–receiver pair #note: 可以参考Memory Model这个部分的内容
 </li>
 </ul>
 
@@ -861,7 +845,7 @@ A local tell operation can however fail for the same reasons as a normal method 
 <hr/>
 
 <p>
-Supervision related parent-child communication happens by special system messages that have their own mailboxes separate from user messages. This implies that supervision related events are not deter-ministically ordered relative to ordinary messages. In general, the user cannot influence the order of normal messages and failure notifications.（对于正常消息和监控消息是分开存放的，这也意味着监控消息和正常消息会混合在一起，并且以一种用户不能够确定的顺序出现） 
+Supervision related parent-child communication happens by special system messages that have their own mailboxes separate from user messages. This implies that supervision related events are not deter-ministically ordered relative to ordinary messages. In general, the user cannot influence the order of normal messages and failure notifications.（对于正常消息和监控消息是分开存放的，这也意味着监控消息和正常消息会混合在一起，并且以一种用户不能够确定的顺序出现）
 </p>
 
 <hr/>
@@ -882,14 +866,14 @@ The main use of this facility is for debugging, especially if an actor send does
 
 </div>
 
-<div id="outline-container-1-7" class="outline-3">
-<h3 id="sec-1-7"><span class="section-number-3">1.7</span> Location Transparency</h3>
-<div class="outline-text-3" id="text-1-7">
+<div id="outline-container-7" class="outline-3">
+<h3 id="sec-7"><span class="section-number-3">7</span> Location Transparency</h3>
+<div class="outline-text-3" id="text-7">
 
 <p>Everything in Akka is designed to work in a distributed setting: all interactions of actors use purely message passing and everything is asynchronous. This effort has been undertaken to ensure that all functions are available equally when running within a single JVM or on a cluster of hundreds of machines. The key for enabling this is to go from remote to local by way of optimization instead of trying to go from local to remote by way of generalization. See <a href="http://doc.akka.io/docs/misc/smli_tr-94-29.pdf">this classic paper</a> for a detailed discussion on why the second approach is bound to fail.(将local特化成为一种remote形式才是正确处理分布式的方法。所有消息之间通信包括远程通信都是异步的）
 </p>
 <p>
-What is true of Akka need not be true of the application which uses it, since designing for distributed execution poses some restrictions on what is possible. The most obvious one is that all messages sent over the wire must be serializable. While being a little less obvious this includes closures which are used as actor factories (i.e. within Props) if the actor is to be created on a remote node.(所有对象都需要能够序列化？开销？） 
+What is true of Akka need not be true of the application which uses it, since designing for distributed execution poses some restrictions on what is possible. The most obvious one is that all messages sent over the wire must be serializable. While being a little less obvious this includes closures which are used as actor factories (i.e. within Props) if the actor is to be created on a remote node.(所有对象都需要能够序列化？开销？）
 </p>
 <p>
 Another consequence is that everything needs to be aware of all interactions being fully asynchronous, which in a computer network might mean that it may take several minutes for a message to reach its recipient (depending on configuration). It also means that the probability for a message to be lost is much higher than within one JVM, where it is close to zero (still: no hard guarantee!).（消息到达传递时间不一定是瞬时的）
@@ -901,13 +885,13 @@ We took the idea of transparency to the limit in that there is nearly no API for
 
 </div>
 
-<div id="outline-container-1-8" class="outline-3">
-<h3 id="sec-1-8"><span class="section-number-3">1.8</span> Configuration</h3>
-<div class="outline-text-3" id="text-1-8">
+<div id="outline-container-8" class="outline-3">
+<h3 id="sec-8"><span class="section-number-3">8</span> Configuration</h3>
+<div class="outline-text-3" id="text-8">
 
 <p>You can start using Akka without defining any configuration, since sensible default values are provided. Later on you might need to amend the settings to change the default behavior or adapt for specific runtime environments. Typical examples of settings that you might amend:
 </p><ul>
-<li>log level and logger backend 
+<li>log level and logger backend
 </li>
 <li>enable remoting
 </li>
@@ -931,7 +915,7 @@ While constructing an ac- tor system, you can either pass in a Config object or 
 </li>
 <li>application.properties
 </li>
-<li><b>note(dirlt):application允许通过config.*配置选项来修改指定</b> 
+<li>#note: application允许通过config.*配置选项来修改指定
 </li>
 </ul>
 
@@ -944,9 +928,9 @@ Akka’s configuration approach relies heavily on the notion of every module/jar
 
 </div>
 
-<div id="outline-container-1-9" class="outline-3">
-<h3 id="sec-1-9"><span class="section-number-3">1.9</span> Dispatcher</h3>
-<div class="outline-text-3" id="text-1-9">
+<div id="outline-container-9" class="outline-3">
+<h3 id="sec-9"><span class="section-number-3">9</span> Dispatcher</h3>
+<div class="outline-text-3" id="text-9">
 
 <p>An Akka MessageDispatcher is what makes Akka Actors “tick”, it is the engine of the machine so to speak. All MessageDispatcher implementations are also an ExecutionContext, which means that they can be used to execute arbitrary code, for instance Futures.(Dispatcher让整个Akka运行起来）。There are 4 different types of message dispatchers：
 </p><ul>
@@ -1029,9 +1013,9 @@ Akka’s configuration approach relies heavily on the notion of every module/jar
 
 </div>
 
-<div id="outline-container-1-10" class="outline-3">
-<h3 id="sec-1-10"><span class="section-number-3">1.10</span> Mailboxes</h3>
-<div class="outline-text-3" id="text-1-10">
+<div id="outline-container-10" class="outline-3">
+<h3 id="sec-10"><span class="section-number-3">10</span> Mailboxes</h3>
+<div class="outline-text-3" id="text-10">
 
 <p>Akka comes shipped with a number of mailbox implementations:
 </p><ul>
@@ -1114,15 +1098,15 @@ Akka’s configuration approach relies heavily on the notion of every module/jar
 
 </div>
 
-<div id="outline-container-1-11" class="outline-3">
-<h3 id="sec-1-11"><span class="section-number-3">1.11</span> Routing</h3>
-<div class="outline-text-3" id="text-1-11">
+<div id="outline-container-11" class="outline-3">
+<h3 id="sec-11"><span class="section-number-3">11</span> Routing</h3>
+<div class="outline-text-3" id="text-11">
 
 <p>A Router is an actor that receives messages and efficiently routes them to other actors, known as its routees. Different routing strategies can be used, according to your application’s needs. Akka comes with several useful routing strategies right out of the box. But, as you will see in this chapter, it is also possible to create your own. The routers shipped with Akka are:
 </p><ul>
 <li>akka.routing.RoundRobinRouter. Routes in a round-robin fashion to its routees.
 </li>
-<li>akka.routing.RandomRouter. As the name implies this router type selects one of its routees randomly and forwards the message it receives to this routee. 
+<li>akka.routing.RandomRouter. As the name implies this router type selects one of its routees randomly and forwards the message it receives to this routee.
 </li>
 <li>akka.routing.SmallestMailboxRouter. A Router that tries to send to the non-suspended routee with fewest messages in mailbox. The selection is done in this order:
 <ul>
@@ -1151,7 +1135,7 @@ Routers, Routees and Senders
 </p><ul>
 <li>Sending a message to a router is easy. "router ! MyMsg". A router actor forwards messages to its routees according to its routing policy.
 </li>
-<li>The router forwards messages onto its routees without changing the original sender. When a routee replies to a routed message, the reply will be sent to the original sender, not to the router.(直接返回给sender而不会经过router） <b>note(dirlt)：也有办法回复给router</b>
+<li>The router forwards messages onto its routees without changing the original sender. When a routee replies to a routed message, the reply will be sent to the original sender, not to the router.(直接返回给sender而不会经过router，也没有办法回复router）
 </li>
 <li>When a router creates routees, they are created as the routers children. This gives each routee its own identity in the actor system.
 </li>
@@ -1174,9 +1158,9 @@ Handling for Special Messages
 
 </div>
 
-<div id="outline-container-1-12" class="outline-3">
-<h3 id="sec-1-12"><span class="section-number-3">1.12</span> Transactors</h3>
-<div class="outline-text-3" id="text-1-12">
+<div id="outline-container-12" class="outline-3">
+<h3 id="sec-12"><span class="section-number-3">12</span> Transactors</h3>
+<div class="outline-text-3" id="text-12">
 
 <p>Memory Model
 </p><ul>
@@ -1189,7 +1173,7 @@ Handling for Special Messages
 </ul>
 
 </li>
-<li>Actor 
+<li>Actor
 <ul>
 <li>The actor send rule: the send of the message to an actor happens before the receive of that message by the same actor.
 </li>
@@ -1221,85 +1205,81 @@ Handling for Special Messages
 
 </div>
 
-<div id="outline-container-1-13" class="outline-3">
-<h3 id="sec-1-13"><span class="section-number-3">1.13</span> Enhancement</h3>
-<div class="outline-text-3" id="text-1-13">
+<div id="outline-container-13" class="outline-3">
+<h3 id="sec-13"><span class="section-number-3">13</span> Enhancement</h3>
+<div class="outline-text-3" id="text-13">
 
 
 </div>
 
-<div id="outline-container-1-13-1" class="outline-4">
-<h4 id="sec-1-13-1"><span class="section-number-4">1.13.1</span> Typed Channel</h4>
-<div class="outline-text-4" id="text-1-13-1">
-
-</div>
-
-</div>
-
-<div id="outline-container-1-13-2" class="outline-4">
-<h4 id="sec-1-13-2"><span class="section-number-4">1.13.2</span> Typed Actor</h4>
-<div class="outline-text-4" id="text-1-13-2">
+<div id="outline-container-13-1" class="outline-4">
+<h4 id="sec-13-1"><span class="section-number-4">13.1</span> Typed Channel</h4>
+<div class="outline-text-4" id="text-13-1">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-13-3" class="outline-4">
-<h4 id="sec-1-13-3"><span class="section-number-4">1.13.3</span> FSM</h4>
-<div class="outline-text-4" id="text-1-13-3">
+<div id="outline-container-13-2" class="outline-4">
+<h4 id="sec-13-2"><span class="section-number-4">13.2</span> Typed Actor</h4>
+<div class="outline-text-4" id="text-13-2">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-13-4" class="outline-4">
-<h4 id="sec-1-13-4"><span class="section-number-4">1.13.4</span> Futures</h4>
-<div class="outline-text-4" id="text-1-13-4">
+<div id="outline-container-13-3" class="outline-4">
+<h4 id="sec-13-3"><span class="section-number-4">13.3</span> FSM</h4>
+<div class="outline-text-4" id="text-13-3">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-13-5" class="outline-4">
-<h4 id="sec-1-13-5"><span class="section-number-4">1.13.5</span> Dataflow Concurrency</h4>
-<div class="outline-text-4" id="text-1-13-5">
+<div id="outline-container-13-4" class="outline-4">
+<h4 id="sec-13-4"><span class="section-number-4">13.4</span> Futures</h4>
+<div class="outline-text-4" id="text-13-4">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-13-6" class="outline-4">
-<h4 id="sec-1-13-6"><span class="section-number-4">1.13.6</span> STM</h4>
-<div class="outline-text-4" id="text-1-13-6">
+<div id="outline-container-13-5" class="outline-4">
+<h4 id="sec-13-5"><span class="section-number-4">13.5</span> Dataflow Concurrency</h4>
+<div class="outline-text-4" id="text-13-5">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-13-7" class="outline-4">
-<h4 id="sec-1-13-7"><span class="section-number-4">1.13.7</span> Agents</h4>
-<div class="outline-text-4" id="text-1-13-7">
+<div id="outline-container-13-6" class="outline-4">
+<h4 id="sec-13-6"><span class="section-number-4">13.6</span> STM</h4>
+<div class="outline-text-4" id="text-13-6">
+
+</div>
+
+</div>
+
+<div id="outline-container-13-7" class="outline-4">
+<h4 id="sec-13-7"><span class="section-number-4">13.7</span> Agents</h4>
+<div class="outline-text-4" id="text-13-7">
 
 </div>
 </div>
 
 </div>
 
-<div id="outline-container-1-14" class="outline-3">
-<h3 id="sec-1-14"><span class="section-number-3">1.14</span> TroubleShooting</h3>
-<div class="outline-text-3" id="text-1-14">
+<div id="outline-container-14" class="outline-3">
+<h3 id="sec-14"><span class="section-number-3">14</span> TroubleShooting</h3>
+<div class="outline-text-3" id="text-14">
 
-<p>todo(dirlt):
-</p></div>
 </div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-10-12T22:44+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'akka.html';var disqus_title = 'akka.html';var disqus_url = 'http://dirlt.com/akka.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'akka.html';var disqus_title = 'akka.html';var disqus_url = 'http://dirlt.com/akka.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

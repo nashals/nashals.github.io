@@ -2,12 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-<head><!-- <meta name="baidu-site-verification" content="707024a76f8f40b549f07f478abab237"/> -->
-<title>hadoop</title>
+<head>
+<title>Hadoop</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="hadoop"/>
+<meta name="title" content="Hadoop"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-12-18T11:29+0800"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -63,105 +62,97 @@
 
 
 </head>
-<body><!-- <div id="bdshare" class="bdshare_t bds_tools_32 get-codes-bdshare"><a class="bds_tsina"></a><span class="bds_more"></span><a class="shareCount"></a></div> --><!-- Place this tag where you want the +1 button to render --><!-- <g:plusone annotation="inline"></g:plusone> -->
+<body>
 
 <div id="preamble">
 
 </div>
 
 <div id="content">
-<h1 class="title">hadoop</h1>
+<h1 class="title">Hadoop</h1>
 
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="hadoop.html#sec-1">1 hadoop</a>
+<li><a href="hadoop.html#sec-1">1 Introduction</a>
 <ul>
-<li><a href="hadoop.html#sec-1-1">1.1 Introduction</a>
+<li><a href="hadoop.html#sec-1-1">1.1 Hadoop可以用来做什么</a></li>
+<li><a href="hadoop.html#sec-1-2">1.2 Hadoop包括哪些组件</a></li>
+<li><a href="hadoop.html#sec-1-3">1.3 CDH和Apache Hadoop的关系</a></li>
+<li><a href="hadoop.html#sec-1-4">1.4 CDH产品组件构成</a></li>
+<li><a href="hadoop.html#sec-1-5">1.5 CDH产品组件端口分布和配置</a>
 <ul>
-<li><a href="hadoop.html#sec-1-1-1">1.1.1 Hadoop可以用来做什么</a></li>
-<li><a href="hadoop.html#sec-1-1-2">1.1.2 Hadoop包括哪些组件</a></li>
-<li><a href="hadoop.html#sec-1-1-3">1.1.3 CDH和Apache Hadoop的关系</a></li>
-<li><a href="hadoop.html#sec-1-1-4">1.1.4 CDH产品组件构成</a></li>
-<li><a href="hadoop.html#sec-1-1-5">1.1.5 CDH产品组件端口分布和配置</a>
-<ul>
-<li><a href="hadoop.html#sec-1-1-5-1">1.1.5.1 Hadoop HDFS</a></li>
-<li><a href="hadoop.html#sec-1-1-5-2">1.1.5.2 Hadoop MRv1</a></li>
-<li><a href="hadoop.html#sec-1-1-5-3">1.1.5.3 Hadoop YARN</a></li>
-<li><a href="hadoop.html#sec-1-1-5-4">1.1.5.4 HBase</a></li>
-<li><a href="hadoop.html#sec-1-1-5-5">1.1.5.5 Hive</a></li>
-<li><a href="hadoop.html#sec-1-1-5-6">1.1.5.6 Sqoop</a></li>
-<li><a href="hadoop.html#sec-1-1-5-7">1.1.5.7 Zookeeper</a></li>
-<li><a href="hadoop.html#sec-1-1-5-8">1.1.5.8 Hue</a></li>
-<li><a href="hadoop.html#sec-1-1-5-9">1.1.5.9 Ozzie</a></li>
-<li><a href="hadoop.html#sec-1-1-5-10">1.1.5.10 Ganglia</a></li>
-<li><a href="hadoop.html#sec-1-1-5-11">1.1.5.11 Kerberos</a></li>
+<li><a href="hadoop.html#sec-1-5-1">1.5.1 Hadoop HDFS</a></li>
+<li><a href="hadoop.html#sec-1-5-2">1.5.2 Hadoop MRv1</a></li>
+<li><a href="hadoop.html#sec-1-5-3">1.5.3 Hadoop YARN</a></li>
+<li><a href="hadoop.html#sec-1-5-4">1.5.4 HBase</a></li>
+<li><a href="hadoop.html#sec-1-5-5">1.5.5 Hive</a></li>
+<li><a href="hadoop.html#sec-1-5-6">1.5.6 Sqoop</a></li>
+<li><a href="hadoop.html#sec-1-5-7">1.5.7 Zookeeper</a></li>
+<li><a href="hadoop.html#sec-1-5-8">1.5.8 Hue</a></li>
+<li><a href="hadoop.html#sec-1-5-9">1.5.9 Ozzie</a></li>
+<li><a href="hadoop.html#sec-1-5-10">1.5.10 Ganglia</a></li>
+<li><a href="hadoop.html#sec-1-5-11">1.5.11 Kerberos</a></li>
 </ul></li>
 </ul>
 </li>
-<li><a href="hadoop.html#sec-1-2">1.2 Opinions</a>
+<li><a href="hadoop.html#sec-2">2 Opinions</a>
 <ul>
-<li><a href="hadoop.html#sec-1-2-1">1.2.1 Hadoop即将过时了吗？</a></li>
-<li><a href="hadoop.html#sec-1-2-2">1.2.2 Best Practices for Selecting Apache Hadoop Hardware</a></li>
-<li><a href="hadoop.html#sec-1-2-3">1.2.3 The dark side of Hadoop - BackType Technology</a></li>
+<li><a href="hadoop.html#sec-2-1">2.1 Hadoop即将过时了吗？</a></li>
+<li><a href="hadoop.html#sec-2-2">2.2 Best Practices for Selecting Apache Hadoop Hardware</a></li>
+<li><a href="hadoop.html#sec-2-3">2.3 The dark side of Hadoop - BackType Technology</a></li>
 </ul>
 </li>
-<li><a href="hadoop.html#sec-1-3">1.3 Notes</a>
+<li><a href="hadoop.html#sec-3">3 Notes</a>
 <ul>
-<li><a href="hadoop.html#sec-1-3-1">1.3.1 CDH3u3搭建单节点集群</a></li>
-<li><a href="hadoop.html#sec-1-3-2">1.3.2 CDH4.2.0搭建单节点集群</a></li>
-<li><a href="hadoop.html#sec-1-3-3">1.3.3 CDH4.3.0</a></li>
-<li><a href="hadoop.html#sec-1-3-4">1.3.4 Configuration</a>
+<li><a href="hadoop.html#sec-3-1">3.1 CDH3u3搭建单节点集群</a></li>
+<li><a href="hadoop.html#sec-3-2">3.2 CDH4.2.0搭建单节点集群</a></li>
+<li><a href="hadoop.html#sec-3-3">3.3 CDH4.3.0搭建单节点集群</a></li>
+<li><a href="hadoop.html#sec-3-4">3.4 Configuration</a>
 <ul>
-<li><a href="hadoop.html#sec-1-3-4-1">1.3.4.1 .bash_profile</a></li>
-<li><a href="hadoop.html#sec-1-3-4-2">1.3.4.2 core-site.xml</a></li>
-<li><a href="hadoop.html#sec-1-3-4-3">1.3.4.3 hdfs-site.xml</a></li>
-<li><a href="hadoop.html#sec-1-3-4-4">1.3.4.4 mapred-site.xml</a></li>
-<li><a href="hadoop.html#sec-1-3-4-5">1.3.4.5 hadoop-env.sh</a></li>
-<li><a href="hadoop.html#sec-1-3-4-6">1.3.4.6 hbase-site.xml</a></li>
-<li><a href="hadoop.html#sec-1-3-4-7">1.3.4.7 hbase-env.sh</a></li>
+<li><a href="hadoop.html#sec-3-4-1">3.4.1 core-site.xml</a></li>
+<li><a href="hadoop.html#sec-3-4-2">3.4.2 hdfs-site.xml</a></li>
+<li><a href="hadoop.html#sec-3-4-3">3.4.3 mapred-site.xml</a></li>
+<li><a href="hadoop.html#sec-3-4-4">3.4.4 hadoop-env.sh</a></li>
+<li><a href="hadoop.html#sec-3-4-5">3.4.5 hbase-site.xml</a></li>
+<li><a href="hadoop.html#sec-3-4-6">3.4.6 hbase-env.sh</a></li>
 </ul></li>
 </ul>
 </li>
-<li><a href="hadoop.html#sec-1-4">1.4 Hadoop权威指南</a>
+<li><a href="hadoop.html#sec-4">4 Hadoop权威指南</a>
 <ul>
-<li><a href="hadoop.html#sec-1-4-1">1.4.1 初识Hadoop</a></li>
-<li><a href="hadoop.html#sec-1-4-2">1.4.2 关于MapReduce</a></li>
-<li><a href="hadoop.html#sec-1-4-3">1.4.3 Hadoop分布式文件系统</a></li>
-<li><a href="hadoop.html#sec-1-4-4">1.4.4 Hadoop IO</a></li>
-<li><a href="hadoop.html#sec-1-4-5">1.4.5 MapReduce应用开发</a></li>
-<li><a href="hadoop.html#sec-1-4-6">1.4.6 MapReduce的工作机制</a></li>
-<li><a href="hadoop.html#sec-1-4-7">1.4.7 MapReduce的类型与格式</a></li>
-<li><a href="hadoop.html#sec-1-4-8">1.4.8 MapReduce的特性</a></li>
-<li><a href="hadoop.html#sec-1-4-9">1.4.9 构建Hadoop集群</a></li>
-<li><a href="hadoop.html#sec-1-4-10">1.4.10 管理Hadoop</a></li>
+<li><a href="hadoop.html#sec-4-1">4.1 初识Hadoop</a></li>
+<li><a href="hadoop.html#sec-4-2">4.2 关于MapReduce</a></li>
+<li><a href="hadoop.html#sec-4-3">4.3 Hadoop分布式文件系统</a></li>
+<li><a href="hadoop.html#sec-4-4">4.4 Hadoop IO</a></li>
+<li><a href="hadoop.html#sec-4-5">4.5 MapReduce应用开发</a></li>
+<li><a href="hadoop.html#sec-4-6">4.6 MapReduce的工作机制</a></li>
+<li><a href="hadoop.html#sec-4-7">4.7 MapReduce的类型与格式</a></li>
+<li><a href="hadoop.html#sec-4-8">4.8 MapReduce的特性</a></li>
+<li><a href="hadoop.html#sec-4-9">4.9 构建Hadoop集群</a></li>
+<li><a href="hadoop.html#sec-4-10">4.10 管理Hadoop</a></li>
 </ul>
 </li>
-<li><a href="hadoop.html#sec-1-5">1.5 Benchmark</a>
+<li><a href="hadoop.html#sec-5">5 Benchmark</a>
 <ul>
-<li><a href="hadoop.html#sec-1-5-1">1.5.1 TestDFSIO</a></li>
-<li><a href="hadoop.html#sec-1-5-2">1.5.2 TeraSort</a></li>
-<li><a href="hadoop.html#sec-1-5-3">1.5.3 nnbench</a></li>
-<li><a href="hadoop.html#sec-1-5-4">1.5.4 mrbench</a></li>
-<li><a href="hadoop.html#sec-1-5-5">1.5.5 hbase.PerformanceEvaluation</a></li>
-</ul>
-</li>
+<li><a href="hadoop.html#sec-5-1">5.1 TestDFSIO</a></li>
+<li><a href="hadoop.html#sec-5-2">5.2 TeraSort</a></li>
+<li><a href="hadoop.html#sec-5-3">5.3 nnbench</a></li>
+<li><a href="hadoop.html#sec-5-4">5.4 mrbench</a></li>
+<li><a href="hadoop.html#sec-5-5">5.5 hbase.PerformanceEvaluation</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> hadoop</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1"><span class="section-number-3">1</span> Introduction</h3>
+<div class="outline-text-3" id="text-1">
 
-
-<p>
-参考资源
-</p><ul>
+<ul>
 <li>Cloudera <a href="http://www.cloudera.com/">http://www.cloudera.com/</a>
 </li>
 <li>Apache Hadoop <a href="http://hadoop.apache.org/">http://hadoop.apache.org/</a>
@@ -182,21 +173,11 @@
 
 </div>
 
-<div id="outline-container-1-1" class="outline-3">
-<h3 id="sec-1-1"><span class="section-number-3">1.1</span> Introduction</h3>
-<div class="outline-text-3" id="text-1-1">
-
-
-</div>
-
-<div id="outline-container-1-1-1" class="outline-4">
-<h4 id="sec-1-1-1"><span class="section-number-4">1.1.1</span> Hadoop可以用来做什么</h4>
-<div class="outline-text-4" id="text-1-1-1">
+<div id="outline-container-1-1" class="outline-4">
+<h4 id="sec-1-1"><span class="section-number-4">1.1</span> Hadoop可以用来做什么</h4>
+<div class="outline-text-4" id="text-1-1">
 
 <p>Why Hadoop? <a href="http://www.cloudera.com/why-hadoop/">http://www.cloudera.com/why-hadoop/</a>
-</p>
-<p>
-todo(dirlt):translate it!!!
 </p>
 <p>
 Simply put, Hadoop can transform the way you store and process data throughout your enterprise. According to analysts, about 80% of the data in the world is unstructured, and until Hadoop, it was essentially unusable in any systematic way. With Hadoop, for the first time you can combine all your data and look at it as one.
@@ -214,14 +195,11 @@ Simply put, Hadoop can transform the way you store and process data throughout y
 
 </div>
 
-<div id="outline-container-1-1-2" class="outline-4">
-<h4 id="sec-1-1-2"><span class="section-number-4">1.1.2</span> Hadoop包括哪些组件</h4>
-<div class="outline-text-4" id="text-1-1-2">
+<div id="outline-container-1-2" class="outline-4">
+<h4 id="sec-1-2"><span class="section-number-4">1.2</span> Hadoop包括哪些组件</h4>
+<div class="outline-text-4" id="text-1-2">
 
-<p>todo(dirlt):translate it!!!
-</p>
-<p>
-Apache Hadoop包括了下面这些组件：
+<p>Apache Hadoop包括了下面这些组件：
 </p><ul>
 <li><a href="http://hadoop.apache.org/common/">Hadoop Common</a> The common utilities that support the other Hadoop subprojects.
 </li>
@@ -256,14 +234,11 @@ Apache Hadoop包括了下面这些组件：
 
 </div>
 
-<div id="outline-container-1-1-3" class="outline-4">
-<h4 id="sec-1-1-3"><span class="section-number-4">1.1.3</span> CDH和Apache Hadoop的关系</h4>
-<div class="outline-text-4" id="text-1-1-3">
+<div id="outline-container-1-3" class="outline-4">
+<h4 id="sec-1-3"><span class="section-number-4">1.3</span> CDH和Apache Hadoop的关系</h4>
+<div class="outline-text-4" id="text-1-3">
 
 <p>CDH Hadoop FAQ <a href="https://ccp.cloudera.com/display/SUPPORT/Hadoop+FAQ">https://ccp.cloudera.com/display/SUPPORT/Hadoop+FAQ</a>
-</p>
-<p>
-todo(dirlt):translate it!!!
 </p>
 <ul>
 <li>What exactly is included in CDH? / Cloudera's Distribution Including Apache Hadoop (CDH) is a certified release of Apache Hadoop. We include some stable patches scheduled to be included in future releases, as well as some patches we have developed for our supported customers, and are in the process of contributing back to Apache.
@@ -281,9 +256,9 @@ todo(dirlt):translate it!!!
 
 </div>
 
-<div id="outline-container-1-1-4" class="outline-4">
-<h4 id="sec-1-1-4"><span class="section-number-4">1.1.4</span> CDH产品组件构成</h4>
-<div class="outline-text-4" id="text-1-1-4">
+<div id="outline-container-1-4" class="outline-4">
+<h4 id="sec-1-4"><span class="section-number-4">1.4</span> CDH产品组件构成</h4>
+<div class="outline-text-4" id="text-1-4">
 
 <p><a href="http://www.cloudera.com/content/cloudera/en/products/cdh.html">http://www.cloudera.com/content/cloudera/en/products/cdh.html</a>
 </p>
@@ -297,18 +272,18 @@ todo(dirlt):translate it!!!
 
 </div>
 
-<div id="outline-container-1-1-5" class="outline-4">
-<h4 id="sec-1-1-5"><span class="section-number-4">1.1.5</span> CDH产品组件端口分布和配置</h4>
-<div class="outline-text-4" id="text-1-1-5">
+<div id="outline-container-1-5" class="outline-4">
+<h4 id="sec-1-5"><span class="section-number-4">1.5</span> CDH产品组件端口分布和配置</h4>
+<div class="outline-text-4" id="text-1-5">
 
 <p>The CDH4 components, and third parties such as Kerberos, use the ports listed in the tables that follow. Before you deploy CDH4, make sure these ports are open on each system.
 </p>
 
 </div>
 
-<div id="outline-container-1-1-5-1" class="outline-5">
-<h5 id="sec-1-1-5-1"><span class="section-number-5">1.1.5.1</span> Hadoop HDFS</h5>
-<div class="outline-text-5" id="text-1-1-5-1">
+<div id="outline-container-1-5-1" class="outline-5">
+<h5 id="sec-1-5-1"><span class="section-number-5">1.5.1</span> Hadoop HDFS</h5>
+<div class="outline-text-5" id="text-1-5-1">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" /><col class="right" /><col class="left" /><col class="left" /><col class="left" /><col class="left" />
@@ -337,9 +312,9 @@ todo(dirlt):translate it!!!
 
 </div>
 
-<div id="outline-container-1-1-5-2" class="outline-5">
-<h5 id="sec-1-1-5-2"><span class="section-number-5">1.1.5.2</span> Hadoop MRv1</h5>
-<div class="outline-text-5" id="text-1-1-5-2">
+<div id="outline-container-1-5-2" class="outline-5">
+<h5 id="sec-1-5-2"><span class="section-number-5">1.5.2</span> Hadoop MRv1</h5>
+<div class="outline-text-5" id="text-1-5-2">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" /><col class="right" /><col class="left" /><col class="left" /><col class="left" /><col class="left" />
@@ -361,9 +336,9 @@ todo(dirlt):translate it!!!
 
 </div>
 
-<div id="outline-container-1-1-5-3" class="outline-5">
-<h5 id="sec-1-1-5-3"><span class="section-number-5">1.1.5.3</span> Hadoop YARN</h5>
-<div class="outline-text-5" id="text-1-1-5-3">
+<div id="outline-container-1-5-3" class="outline-5">
+<h5 id="sec-1-5-3"><span class="section-number-5">1.5.3</span> Hadoop YARN</h5>
+<div class="outline-text-5" id="text-1-5-3">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" /><col class="right" /><col class="left" /><col class="left" /><col class="left" /><col class="left" />
@@ -390,9 +365,9 @@ todo(dirlt):translate it!!!
 
 </div>
 
-<div id="outline-container-1-1-5-4" class="outline-5">
-<h5 id="sec-1-1-5-4"><span class="section-number-5">1.1.5.4</span> HBase</h5>
-<div class="outline-text-5" id="text-1-1-5-4">
+<div id="outline-container-1-5-4" class="outline-5">
+<h5 id="sec-1-5-4"><span class="section-number-5">1.5.4</span> HBase</h5>
+<div class="outline-text-5" id="text-1-5-4">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" /><col class="right" /><col class="left" /><col class="left" /><col class="left" /><col class="left" />
@@ -419,9 +394,9 @@ todo(dirlt):translate it!!!
 
 </div>
 
-<div id="outline-container-1-1-5-5" class="outline-5">
-<h5 id="sec-1-1-5-5"><span class="section-number-5">1.1.5.5</span> Hive</h5>
-<div class="outline-text-5" id="text-1-1-5-5">
+<div id="outline-container-1-5-5" class="outline-5">
+<h5 id="sec-1-5-5"><span class="section-number-5">1.5.5</span> Hive</h5>
+<div class="outline-text-5" id="text-1-5-5">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" /><col class="right" /><col class="left" /><col class="left" /><col class="left" /><col class="left" />
@@ -440,9 +415,9 @@ todo(dirlt):translate it!!!
 
 </div>
 
-<div id="outline-container-1-1-5-6" class="outline-5">
-<h5 id="sec-1-1-5-6"><span class="section-number-5">1.1.5.6</span> Sqoop</h5>
-<div class="outline-text-5" id="text-1-1-5-6">
+<div id="outline-container-1-5-6" class="outline-5">
+<h5 id="sec-1-5-6"><span class="section-number-5">1.5.6</span> Sqoop</h5>
+<div class="outline-text-5" id="text-1-5-6">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" /><col class="right" /><col class="left" /><col class="left" /><col class="left" /><col class="left" />
@@ -461,9 +436,9 @@ todo(dirlt):translate it!!!
 
 </div>
 
-<div id="outline-container-1-1-5-7" class="outline-5">
-<h5 id="sec-1-1-5-7"><span class="section-number-5">1.1.5.7</span> Zookeeper</h5>
-<div class="outline-text-5" id="text-1-1-5-7">
+<div id="outline-container-1-5-7" class="outline-5">
+<h5 id="sec-1-5-7"><span class="section-number-5">1.5.7</span> Zookeeper</h5>
+<div class="outline-text-5" id="text-1-5-7">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" /><col class="right" /><col class="left" /><col class="left" /><col class="left" /><col class="left" />
@@ -490,9 +465,9 @@ As JMX port, ZooKeeper will also use another randomly selected port for RMI. In 
 
 </div>
 
-<div id="outline-container-1-1-5-8" class="outline-5">
-<h5 id="sec-1-1-5-8"><span class="section-number-5">1.1.5.8</span> Hue</h5>
-<div class="outline-text-5" id="text-1-1-5-8">
+<div id="outline-container-1-5-8" class="outline-5">
+<h5 id="sec-1-5-8"><span class="section-number-5">1.5.8</span> Hue</h5>
+<div class="outline-text-5" id="text-1-5-8">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" /><col class="right" /><col class="left" /><col class="left" /><col class="left" /><col class="left" />
@@ -512,9 +487,9 @@ As JMX port, ZooKeeper will also use another randomly selected port for RMI. In 
 
 </div>
 
-<div id="outline-container-1-1-5-9" class="outline-5">
-<h5 id="sec-1-1-5-9"><span class="section-number-5">1.1.5.9</span> Ozzie</h5>
-<div class="outline-text-5" id="text-1-1-5-9">
+<div id="outline-container-1-5-9" class="outline-5">
+<h5 id="sec-1-5-9"><span class="section-number-5">1.5.9</span> Ozzie</h5>
+<div class="outline-text-5" id="text-1-5-9">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" /><col class="right" /><col class="left" /><col class="left" /><col class="left" /><col class="left" />
@@ -533,9 +508,9 @@ As JMX port, ZooKeeper will also use another randomly selected port for RMI. In 
 
 </div>
 
-<div id="outline-container-1-1-5-10" class="outline-5">
-<h5 id="sec-1-1-5-10"><span class="section-number-5">1.1.5.10</span> Ganglia</h5>
-<div class="outline-text-5" id="text-1-1-5-10">
+<div id="outline-container-1-5-10" class="outline-5">
+<h5 id="sec-1-5-10"><span class="section-number-5">1.5.10</span> Ganglia</h5>
+<div class="outline-text-5" id="text-1-5-10">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" /><col class="right" /><col class="left" /><col class="left" /><col class="left" /><col class="left" />
@@ -554,9 +529,9 @@ As JMX port, ZooKeeper will also use another randomly selected port for RMI. In 
 
 </div>
 
-<div id="outline-container-1-1-5-11" class="outline-5">
-<h5 id="sec-1-1-5-11"><span class="section-number-5">1.1.5.11</span> Kerberos</h5>
-<div class="outline-text-5" id="text-1-1-5-11">
+<div id="outline-container-1-5-11" class="outline-5">
+<h5 id="sec-1-5-11"><span class="section-number-5">1.5.11</span> Kerberos</h5>
+<div class="outline-text-5" id="text-1-5-11">
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" /><col class="right" /><col class="left" /><col class="left" /><col class="left" /><col class="left" />
@@ -577,16 +552,16 @@ As JMX port, ZooKeeper will also use another randomly selected port for RMI. In 
 
 </div>
 
-<div id="outline-container-1-2" class="outline-3">
-<h3 id="sec-1-2"><span class="section-number-3">1.2</span> Opinions</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> Opinions</h3>
+<div class="outline-text-3" id="text-2">
 
 
 </div>
 
-<div id="outline-container-1-2-1" class="outline-4">
-<h4 id="sec-1-2-1"><span class="section-number-4">1.2.1</span> Hadoop即将过时了吗？</h4>
-<div class="outline-text-4" id="text-1-2-1">
+<div id="outline-container-2-1" class="outline-4">
+<h4 id="sec-2-1"><span class="section-number-4">2.1</span> Hadoop即将过时了吗？</h4>
+<div class="outline-text-4" id="text-2-1">
 
 <p><a href="http://www.kuqin.com/database/20120715/322528.html">http://www.kuqin.com/database/20120715/322528.html</a>
 </p>
@@ -606,9 +581,9 @@ google提出的三个东西都是解决hadoop的软肋，最终目的还是需�
 
 </div>
 
-<div id="outline-container-1-2-2" class="outline-4">
-<h4 id="sec-1-2-2"><span class="section-number-4">1.2.2</span> Best Practices for Selecting Apache Hadoop Hardware</h4>
-<div class="outline-text-4" id="text-1-2-2">
+<div id="outline-container-2-2" class="outline-4">
+<h4 id="sec-2-2"><span class="section-number-4">2.2</span> Best Practices for Selecting Apache Hadoop Hardware</h4>
+<div class="outline-text-4" id="text-2-2">
 
 <p><a href="http://hortonworks.com/blog/best-practices-for-selecting-apache-hadoop-hardware/">http://hortonworks.com/blog/best-practices-for-selecting-apache-hadoop-hardware/</a>
 </p>
@@ -637,9 +612,9 @@ RAID cards, redundant power supplies and other per-component reliability feature
 
 </div>
 
-<div id="outline-container-1-2-3" class="outline-4">
-<h4 id="sec-1-2-3"><span class="section-number-4">1.2.3</span> The dark side of Hadoop - BackType Technology</h4>
-<div class="outline-text-4" id="text-1-2-3">
+<div id="outline-container-2-3" class="outline-4">
+<h4 id="sec-2-3"><span class="section-number-4">2.3</span> The dark side of Hadoop - BackType Technology</h4>
+<div class="outline-text-4" id="text-2-3">
 
 <p><a href="http://web.archive.org/web/20110510125644/http://tech.backtype.com/the-dark-side-of-hadoop">http://web.archive.org/web/20110510125644/http://tech.backtype.com/the-dark-side-of-hadoop</a>
 </p>
@@ -652,7 +627,7 @@ RAID cards, redundant power supplies and other per-component reliability feature
 <ul>
 <li>Thomas Jungblut's Blog: Dealing with "OutOfMemoryError" in Hadoop <a href="http://codingwiththomas.blogspot.jp/2011/07/dealing-with-outofmemoryerror-in-hadoop.html">http://codingwiththomas.blogspot.jp/2011/07/dealing-with-outofmemoryerror-in-hadoop.html</a> 作者给出的解决办法就是修改hadoop的代码，通过调用Java API而不是使用ProcessBuilder来解决。
 </li>
-<li><b>note(dirlt):出现OOM的话必须区分JVM还是Linux System本身的OOM。JVM出现OOM是抛出异常，而Linux出现OOM是会触发OOM killer</b>
+<li>#note: 出现OOM的话必须区分JVM还是Linux System本身的OOM。JVM出现OOM是抛出异常，而Linux出现OOM是会触发OOM killer
 </li>
 </ul>
 
@@ -670,16 +645,16 @@ Making Hadoop easy to deploy, use, and operate should be the #1 priority for the
 
 </div>
 
-<div id="outline-container-1-3" class="outline-3">
-<h3 id="sec-1-3"><span class="section-number-3">1.3</span> Notes</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> Notes</h3>
+<div class="outline-text-3" id="text-3">
 
 
 </div>
 
-<div id="outline-container-1-3-1" class="outline-4">
-<h4 id="sec-1-3-1"><span class="section-number-4">1.3.1</span> CDH3u3搭建单节点集群</h4>
-<div class="outline-text-4" id="text-1-3-1">
+<div id="outline-container-3-1" class="outline-4">
+<h4 id="sec-3-1"><span class="section-number-4">3.1</span> CDH3u3搭建单节点集群</h4>
+<div class="outline-text-4" id="text-3-1">
 
 <p>搭建单节点集群允许我们在单机做一些模拟或者是测试，还是非常有意义的。如何操作的话可以参考链接 <a href="http://localhost/utils/hadoop-0.20.2-cdh3u3/docs/single_node_setup.html">http://localhost/utils/hadoop-0.20.2-cdh3u3/docs/single_node_setup.html</a>
 </p>
@@ -763,9 +738,9 @@ Making Hadoop easy to deploy, use, and operate should be the #1 priority for the
 
 </div>
 
-<div id="outline-container-1-3-2" class="outline-4">
-<h4 id="sec-1-3-2"><span class="section-number-4">1.3.2</span> CDH4.2.0搭建单节点集群</h4>
-<div class="outline-text-4" id="text-1-3-2">
+<div id="outline-container-3-2" class="outline-4">
+<h4 id="sec-3-2"><span class="section-number-4">3.2</span> CDH4.2.0搭建单节点集群</h4>
+<div class="outline-text-4" id="text-3-2">
 
 <p>基本流程和CDH3u3是相同的，但是有一些差异我记录下来。
 </p><ul>
@@ -773,15 +748,15 @@ Making Hadoop easy to deploy, use, and operate should be the #1 priority for the
 <ul>
 <li>配置文件在etc/hadoop，包括环境配置脚本比如hadoop-env.sh
 </li>
-<li>bin/sbin目录下面有hadoop集群启动停止工具 <b>note(dirlt)：不要使用它们</b>
+<li>bin/sbin目录下面有hadoop集群启动停止工具 #note: 不要使用它们
 </li>
 <li>libexec目录下面是公用的配置脚本
 </li>
-<li>mapred-site.xml中jobtracker地址配置key修改为 mapred.jobtracker.address <b>note(dirlt):this for yarn.如果是mr1那么不用修改,依然是mapred.job.tracker</b>
+<li>mapred-site.xml中jobtracker地址配置key修改为 mapred.jobtracker.address #note: for yarn.如果是mr1那么不用修改,依然是mapred.job.tracker
 </li>
 <li><del>hadoop-daemons.sh会使用/sbin/slaves.sh来在各个节点启动，但是 *不知道什么原因，很多环境变量没有设置* ，所以在slaves.sh执行ssh命令部分最开始增加了 source ~/.shrc; 来强制设置我的环境变量</del>
 </li>
-<li><b>note(dirlt):不要使用shell脚本来启动，而是直接使用类似hadoop namenode这种方式来启动单个机器上的实例</b>
+<li>#note: 不要使用shell脚本来启动，而是直接使用类似hadoop namenode这种方式来启动单个机器上的实例
 </li>
 </ul>
 
@@ -822,9 +797,9 @@ Making Hadoop easy to deploy, use, and operate should be the #1 priority for the
 
 </div>
 
-<div id="outline-container-1-3-3" class="outline-4">
-<h4 id="sec-1-3-3"><span class="section-number-4">1.3.3</span> CDH4.3.0</h4>
-<div class="outline-text-4" id="text-1-3-3">
+<div id="outline-container-3-3" class="outline-4">
+<h4 id="sec-3-3"><span class="section-number-4">3.3</span> CDH4.3.0搭建单节点集群</h4>
+<div class="outline-text-4" id="text-3-3">
 
 <p>基本流程和CDH4.2.0是相同的，但是存在一些差异我记录下来的。从4.3.0开始将mr1和mr2分开存放，还是一个比较大的区别的。这里我以使用mr1为例。
 </p><ul>
@@ -836,23 +811,23 @@ Making Hadoop easy to deploy, use, and operate should be the #1 priority for the
 </li>
 <li>bin目录，bin and bin-mapreduce1
 </li>
-<li>lib目录。如果需要使用mr1的话，那么cp -r share/hadoop/mapreduce1/ . <b>note(dirlt):不要更改软链接</b>
+<li>lib目录。如果需要使用mr1的话，那么cp -r share/hadoop/mapreduce1/ . #note: 不要用软链接
 <ul>
-<li><b>note(dirlt)：似乎只需要最顶层的一些jar文件即可</b>
+<li>#note：似乎只需要最顶层的一些jar文件即可
 </li>
-<li><b>note(dirlt): 似乎只需要hadoop-core-.jar文件即可</b>
+<li>#note: 似乎只需要hadoop-core-.jar文件即可
 </li>
 </ul>
 
 </li>
-<li>webapps目录。如果需要使用mr1的话，那么cp -r share/hadoop/mapreduce1/webapps . <b>note(dirlt):不然不能够访问JobTracker WebUI</b>
+<li>webapps目录。如果需要使用mr1的话，那么cp -r share/hadoop/mapreduce1/webapps . 不然不能够访问JobTracker WebUI
 </li>
 </ul>
 
 </li>
 <li><del>在bin/hadoop-config.sh添加source ~/.shrc 来强制设置环境变量。</del>
 </li>
-<li><b>note(dirlt)：不要使用start-dfs.sh这些脚本启动，似乎这些脚本会去读取master,slaves这些文件然后逐个上去ssh启动。直接使用hadoop namenode这种方式可以只启动单个机器上的实例</b>
+<li>#note: 不要使用start-dfs.sh这些脚本启动，似乎这些脚本会去读取master,slaves这些文件然后逐个上去ssh启动。直接使用hadoop namenode这种方式可以只启动单个机器上的实例
 </li>
 </ul>
 
@@ -861,39 +836,16 @@ Making Hadoop easy to deploy, use, and operate should be the #1 priority for the
 
 </div>
 
-<div id="outline-container-1-3-4" class="outline-4">
-<h4 id="sec-1-3-4"><span class="section-number-4">1.3.4</span> Configuration</h4>
-<div class="outline-text-4" id="text-1-3-4">
+<div id="outline-container-3-4" class="outline-4">
+<h4 id="sec-3-4"><span class="section-number-4">3.4</span> Configuration</h4>
+<div class="outline-text-4" id="text-3-4">
 
 
 </div>
 
-<div id="outline-container-1-3-4-1" class="outline-5">
-<h5 id="sec-1-3-4-1"><span class="section-number-5">1.3.4.1</span> .bash_profile</h5>
-<div class="outline-text-5" id="text-1-3-4-1">
-
-
-
-
-<pre class="src src-Shell">export HADOOP_HOME=$HOME/dirlt/hadoop-2.0.0-cdh4.3.0/
-export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
-export HBASE_HOME=/home/alium_zhanyinan/dirlt/hbase-0.94.6-cdh4.3.0
-export HBASE_CLASSPATH=$HBASE_HOME/hbase-0.94.6-cdh4.3.0-security.jar:$HBASE_HOME/conf
-export ZK_HOME=/home/alium_zhanyinan/dirlt/zookeeper-3.4.5-cdh4.3.0
-export ZK_CLASSPATH=$ZK_HOME/zookeeper-3.4.5-cdh4.3.0.jar
-export HADOOP_CLASSPATH=$HADOOP_CLASSPATH:$HBASE_CLASSPATH:$ZK_CLASSPATH
-#export JAVA_HOME=/usr/java/default/
-export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HBASE_HOME/bin:$ZK_HOME/bin
-</pre>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-1-3-4-2" class="outline-5">
-<h5 id="sec-1-3-4-2"><span class="section-number-5">1.3.4.2</span> core-site.xml</h5>
-<div class="outline-text-5" id="text-1-3-4-2">
+<div id="outline-container-3-4-1" class="outline-5">
+<h5 id="sec-3-4-1"><span class="section-number-5">3.4.1</span> core-site.xml</h5>
+<div class="outline-text-5" id="text-3-4-1">
 
 
 
@@ -917,9 +869,9 @@ export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HBASE_HOME/bin:$ZK_HOME/bin
 
 </div>
 
-<div id="outline-container-1-3-4-3" class="outline-5">
-<h5 id="sec-1-3-4-3"><span class="section-number-5">1.3.4.3</span> hdfs-site.xml</h5>
-<div class="outline-text-5" id="text-1-3-4-3">
+<div id="outline-container-3-4-2" class="outline-5">
+<h5 id="sec-3-4-2"><span class="section-number-5">3.4.2</span> hdfs-site.xml</h5>
+<div class="outline-text-5" id="text-3-4-2">
 
 
 
@@ -1013,9 +965,9 @@ export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HBASE_HOME/bin:$ZK_HOME/bin
 
 </div>
 
-<div id="outline-container-1-3-4-4" class="outline-5">
-<h5 id="sec-1-3-4-4"><span class="section-number-5">1.3.4.4</span> mapred-site.xml</h5>
-<div class="outline-text-5" id="text-1-3-4-4">
+<div id="outline-container-3-4-3" class="outline-5">
+<h5 id="sec-3-4-3"><span class="section-number-5">3.4.3</span> mapred-site.xml</h5>
+<div class="outline-text-5" id="text-3-4-3">
 
 
 
@@ -1099,9 +1051,9 @@ export PATH=$PATH:$JAVA_HOME/bin:$HADOOP_HOME/bin:$HBASE_HOME/bin:$ZK_HOME/bin
 
 </div>
 
-<div id="outline-container-1-3-4-5" class="outline-5">
-<h5 id="sec-1-3-4-5"><span class="section-number-5">1.3.4.5</span> hadoop-env.sh</h5>
-<div class="outline-text-5" id="text-1-3-4-5">
+<div id="outline-container-3-4-4" class="outline-5">
+<h5 id="sec-3-4-4"><span class="section-number-5">3.4.4</span> hadoop-env.sh</h5>
+<div class="outline-text-5" id="text-3-4-4">
 
 
 
@@ -1125,9 +1077,9 @@ export HADOOP_JOBTRACKER_OPTS=<span class="org-string">"-Xmx12000m $HADOOP_JOBTR
 
 </div>
 
-<div id="outline-container-1-3-4-6" class="outline-5">
-<h5 id="sec-1-3-4-6"><span class="section-number-5">1.3.4.6</span> hbase-site.xml</h5>
-<div class="outline-text-5" id="text-1-3-4-6">
+<div id="outline-container-3-4-5" class="outline-5">
+<h5 id="sec-3-4-5"><span class="section-number-5">3.4.5</span> hbase-site.xml</h5>
+<div class="outline-text-5" id="text-3-4-5">
 
 
 
@@ -1216,9 +1168,9 @@ export HADOOP_JOBTRACKER_OPTS=<span class="org-string">"-Xmx12000m $HADOOP_JOBTR
 
 </div>
 
-<div id="outline-container-1-3-4-7" class="outline-5">
-<h5 id="sec-1-3-4-7"><span class="section-number-5">1.3.4.7</span> hbase-env.sh</h5>
-<div class="outline-text-5" id="text-1-3-4-7">
+<div id="outline-container-3-4-6" class="outline-5">
+<h5 id="sec-3-4-6"><span class="section-number-5">3.4.6</span> hbase-env.sh</h5>
+<div class="outline-text-5" id="text-3-4-6">
 
 
 
@@ -1242,16 +1194,16 @@ export HBASE_OPTS=<span class="org-string">"-ea -XX:+UseParNewGC -XX:+UseConcMar
 
 </div>
 
-<div id="outline-container-1-4" class="outline-3">
-<h3 id="sec-1-4"><span class="section-number-3">1.4</span> Hadoop权威指南</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> Hadoop权威指南</h3>
+<div class="outline-text-3" id="text-4">
 
 
 </div>
 
-<div id="outline-container-1-4-1" class="outline-4">
-<h4 id="sec-1-4-1"><span class="section-number-4">1.4.1</span> 初识Hadoop</h4>
-<div class="outline-text-4" id="text-1-4-1">
+<div id="outline-container-4-1" class="outline-4">
+<h4 id="sec-4-1"><span class="section-number-4">4.1</span> 初识Hadoop</h4>
+<div class="outline-text-4" id="text-4-1">
 
 <p>古代，人们用牛来拉中午，当一头牛拉不动一根圆木的时候，他们不曾想过培育更大更壮的牛。同样，我们也不需要尝试开发超级计算机，而应试着结合使用更多计算机系统。
 </p>
@@ -1259,9 +1211,9 @@ export HBASE_OPTS=<span class="org-string">"-ea -XX:+UseParNewGC -XX:+UseConcMar
 
 </div>
 
-<div id="outline-container-1-4-2" class="outline-4">
-<h4 id="sec-1-4-2"><span class="section-number-4">1.4.2</span> 关于MapReduce</h4>
-<div class="outline-text-4" id="text-1-4-2">
+<div id="outline-container-4-2" class="outline-4">
+<h4 id="sec-4-2"><span class="section-number-4">4.2</span> 关于MapReduce</h4>
+<div class="outline-text-4" id="text-4-2">
 
 <ul>
 <li>设置HADOOP_CLASSPATH就可以直接使用hadoop CLASSNAME来在本地运行mapreduce程序。
@@ -1269,8 +1221,6 @@ export HBASE_OPTS=<span class="org-string">"-ea -XX:+UseParNewGC -XX:+UseConcMar
 <li>hadoop jar $HADOOP_HOME/contrib/streaming/hadoop-streaming-0.20.2-cdh3u3.jar 可以用来启动streaming任务
 <ul>
 <li>使用stdin/stdout来作为输入和输出
-</li>
-<li><b>note(dirlt)：倒是可以探索一下如何使用，但是觉得能力有限</b>
 <ul>
 <li>Input/Output Format
 </li>
@@ -1290,7 +1240,7 @@ export HBASE_OPTS=<span class="org-string">"-ea -XX:+UseParNewGC -XX:+UseConcMar
 </li>
 <li>使用Unix Domain Socket来作为输入和输出
 </li>
-<li><b>note(dirlt)：可能使用上面还是没有native mr或者是streaming方式方便</b>
+<li>#note: 可能使用上面还是没有native mr或者是streaming方式方便
 </li>
 </ul>
 
@@ -1302,9 +1252,9 @@ export HBASE_OPTS=<span class="org-string">"-ea -XX:+UseParNewGC -XX:+UseConcMar
 
 </div>
 
-<div id="outline-container-1-4-3" class="outline-4">
-<h4 id="sec-1-4-3"><span class="section-number-4">1.4.3</span> Hadoop分布式文件系统</h4>
-<div class="outline-text-4" id="text-1-4-3">
+<div id="outline-container-4-3" class="outline-4">
+<h4 id="sec-4-3"><span class="section-number-4">4.3</span> Hadoop分布式文件系统</h4>
+<div class="outline-text-4" id="text-4-3">
 
 <ul>
 <li>使用hadoop archive能够将大量小文档打包，存档文件之能够只读访问
@@ -1343,9 +1293,9 @@ export HBASE_OPTS=<span class="org-string">"-ea -XX:+UseParNewGC -XX:+UseConcMar
 
 </div>
 
-<div id="outline-container-1-4-4" class="outline-4">
-<h4 id="sec-1-4-4"><span class="section-number-4">1.4.4</span> Hadoop IO</h4>
-<div class="outline-text-4" id="text-1-4-4">
+<div id="outline-container-4-4" class="outline-4">
+<h4 id="sec-4-4"><span class="section-number-4">4.4</span> Hadoop IO</h4>
+<div class="outline-text-4" id="text-4-4">
 
 
 <hr/>
@@ -1363,11 +1313,8 @@ export HBASE_OPTS=<span class="org-string">"-ea -XX:+UseParNewGC -XX:+UseConcMar
 <li>读取文件如果出现错误的话，那么会抛出ChecksumException
 </li>
 <li>考虑到存在多副本的情况，如果读取某个副本出错的话，期间那么会调用reportChecksumFailure方法
-<ul>
-<li><b>note(dirlt)：这个部分的代码不太好读，非常绕</b>
 </li>
-</ul>
-
+<li>#note: 这个部分的代码不太好读，非常绕
 </li>
 </ul>
 
@@ -1463,9 +1410,9 @@ export HBASE_OPTS=<span class="org-string">"-ea -XX:+UseParNewGC -XX:+UseConcMar
 </li>
 <li>mapred.output.compress.type = BLOCK/RECORD 如果输出格式为SequenceFile的话，那么这个参数可以控制是块压缩还是记录压缩
 </li>
-<li><b>note(dirlt)：我现在强烈感觉MR的中间结果存储格式为SequenceFile</b>
+<li>#note: 感觉MR的中间结果存储格式为SequenceFile
 </li>
-<li><b>note(dirlt)：应该是IFile，但是是否共享了这个配置呢？</b>
+<li>#note: 应该是IFile，但是是否共享了这个配置呢
 </li>
 <li>mapred.compress.map.output = true 将map结果做压缩
 </li>
@@ -1522,7 +1469,7 @@ export HBASE_OPTS=<span class="org-string">"-ea -XX:+UseParNewGC -XX:+UseConcMar
 </ul>
 
 </li>
-<li>MapFile 也是用来存储KV数据结构，但是可以认为已经按照了Key进行排序 <b>note(dirlt)：要求添加顺序就按照Key排序</b>
+<li>MapFile 也是用来存储KV数据结构，但是可以认为已经按照了Key进行排序 #note: 要求添加顺序就按照Key排序
 <ul>
 <li>存储格式实际上也是SequenceFile，data，index都是。
 </li>
@@ -1557,9 +1504,9 @@ export HBASE_OPTS=<span class="org-string">"-ea -XX:+UseParNewGC -XX:+UseConcMar
 
 </div>
 
-<div id="outline-container-1-4-5" class="outline-4">
-<h4 id="sec-1-4-5"><span class="section-number-4">1.4.5</span> MapReduce应用开发</h4>
-<div class="outline-text-4" id="text-1-4-5">
+<div id="outline-container-4-5" class="outline-4">
+<h4 id="sec-4-5"><span class="section-number-4">4.5</span> MapReduce应用开发</h4>
+<div class="outline-text-4" id="text-4-5">
 
 
 <hr/>
@@ -1587,7 +1534,7 @@ export HBASE_OPTS=<span class="org-string">"-ea -XX:+UseParNewGC -XX:+UseConcMar
 <ul>
 <li>standalone 使用单个JVM进程来模拟
 <ul>
-<li>如果不进行任何配置的话默认使用这个模式 <b>note(dirlt)：这个模式确实不错</b>
+<li>如果不进行任何配置的话默认使用这个模式
 </li>
 <li>fs.default.name = file 本地文件系统
 </li>
@@ -1663,14 +1610,12 @@ export HBASE_OPTS=<span class="org-string">"-ea -XX:+UseParNewGC -XX:+UseConcMar
 </li>
 <li>MiniZooKeeperClutser
 </li>
-<li><b>note(dirlt):都称为Mini???Cluster？</b>
-</li>
 </ul>
 
-<p>另外还有自带的ClusterMapReduceTestCase以及HBaseTestingUtility来帮助进行mapreduce的testcase. 这些类散步在hadoop,hbase,hadoop-test以及hbase-test里面。
+<p>另外还有自带的ClusterMapReduceTestCase以及HBaseTestingUtility来帮助进行mapreduce的testcase. 这些类散布在hadoop,hbase,hadoop-test以及hbase-test里面。
 </p>
 <p>
-<b>note(dirlt)：但是个人觉得可能还是没有本地测试方便，不过倒是可以试试</b>
+#note: 个人觉得可能还是没有本地测试方便
 </p>
 
 <hr/>
@@ -1754,8 +1699,10 @@ job，task and attempt
 </li>
 <li>分析任务
 <ul>
-<li>JobConf允许设置profile参数 <b>note(dirlt)：新的接口里面JobConf-&gt;JobContext-&gt;Job，Job没有这些接口，但是可以通过Configuration来设置</b>
+<li>JobConf允许设置profile参数 
 <ul>
+<li>#note: 新的接口里面JobConf-&gt;JobContext-&gt;Job，Job没有这些接口，但是可以通过Configuration来设置
+</li>
 <li>setProfileEnabled 打开profile功能，默认false，属性 mapred.task.profile
 </li>
 <li>setProfileParams 设置profile参数
@@ -1766,7 +1713,7 @@ job，task and attempt
 </li>
 <li>其中%s会替换成为profile输出文件
 </li>
-<li><b>note(dirlt)：其实这里似乎也可以设置成为jmxremote来通过jvisualvm来调试</b>
+<li>#note: 其实这里似乎也可以设置成为jmxremote来通过jvisualvm来调试
 </li>
 </ul>
 
@@ -1815,9 +1762,9 @@ job，task and attempt
 
 </div>
 
-<div id="outline-container-1-4-6" class="outline-4">
-<h4 id="sec-1-4-6"><span class="section-number-4">1.4.6</span> MapReduce的工作机制</h4>
-<div class="outline-text-4" id="text-1-4-6">
+<div id="outline-container-4-6" class="outline-4">
+<h4 id="sec-4-6"><span class="section-number-4">4.6</span> MapReduce的工作机制</h4>
+<div class="outline-text-4" id="text-4-6">
 
 
 <hr/>
@@ -1987,7 +1934,7 @@ shuffle和排序
 <img src="images/mapreduce-shuffle-sort-2.png"  alt="./images/mapreduce-shuffle-sort-2.png" />
 </p>
 <p>
- 有下面这些参数控制shuffle和sort的过程 <b>note(dirlt)：书上倒是有很多参数，但是好多还是不太理解</b>
+ 有下面这些参数控制shuffle和sort的过程 #note: 书上倒是有很多参数，但是好多还是不太理解
 </p><ul>
 <li>io.sort.mb map输出缓存空间大小，默认是100MB. 建议设置10* io.sort.factor.
 </li>
@@ -2004,7 +1951,7 @@ shuffle和排序
 </li>
 <li>io.sort.factor 多路归并的数量，默认是10. 建议设置在25-32.
 <ul>
-<li>在map阶段，因为最终会存在多个spill文件，所以需要做多路归并。 <b>todo(dirlt)：如果归并数量少的话是否可能会多次merge？</b>
+<li>在map阶段，因为最终会存在多个spill文件，所以需要做多路归并。#note: 如果归并数量少的话需要多次merge.
 </li>
 <li>在reduce阶段的话，因为可能存在多路map输出的结果，所以需要做多路归并。
 </li>
@@ -2017,9 +1964,9 @@ shuffle和排序
 </li>
 <li>mapred.reduce.parallel.copies reduce启动多少个线程去请求map输出，默认为5。 <b>reducer as client</b>
 <ul>
-<li><b>note(dirlt):如果reduce和每个map都使用一个线程去请求输出结果的话，只要shuffle阶段没有出现network congestion，那么提高线程数量是有效果的</b>
+<li>#note: 如果reduce和每个map都使用一个线程去请求输出结果的话，只要shuffle阶段没有出现network congestion，那么提高线程数量是有效果的
 </li>
-<li><b>note(dirlt)：可以设置到15-50</b>
+<li>#note: 通常可以设置到15-50
 </li>
 </ul>
 
@@ -2067,11 +2014,6 @@ shuffle和排序
 <li>程序自身可以知道执行环境对于开发还是比较有帮助的
 </li>
 <li>这些属性对于streaming可以通过环境变量获得
-<ul>
-<li><b>对于streaming来说.替换成为_</b>
-</li>
-</ul>
-
 </li>
 <li>mapred.job.id string jobID
 </li>
@@ -2088,7 +2030,7 @@ shuffle和排序
 </ul>
 
 </li>
-<li>杂项 <b>note(dirlt)：from misc articles</b>
+<li>杂项
 <ul>
 <li>mapred.job.map.capacity  # 最大同时运行map数量
 </li>
@@ -2106,9 +2048,9 @@ shuffle和排序
 
 </div>
 
-<div id="outline-container-1-4-7" class="outline-4">
-<h4 id="sec-1-4-7"><span class="section-number-4">1.4.7</span> MapReduce的类型与格式</h4>
-<div class="outline-text-4" id="text-1-4-7">
+<div id="outline-container-4-7" class="outline-4">
+<h4 id="sec-4-7"><span class="section-number-4">4.7</span> MapReduce的类型与格式</h4>
+<div class="outline-text-4" id="text-4-7">
 
 
 <hr/>
@@ -2142,7 +2084,7 @@ public void run(Context context) throws IOException, InterruptedException {
 </pre>
 
 <p>
-<b>note(dirlt)：觉得这个特性不是特别有用</b>
+#note: 觉得这个特性不是特别有用
 </p><ul>
 <li>mapred.input.format.class setInputFormat
 </li>
@@ -2300,7 +2242,7 @@ public abstract class RecordReader&lt;KEYIN, VALUEIN&gt; implements Closeable {
 </li>
 <li>RecordReader使用org.apache.hadoop.streaming.StreamXmlRecordReader
 </li>
-<li><b>note(dirlt)：也有现成的XmlInputFormat的实现</b>
+<li>#note: 也有现成的XmlInputFormat的实现
 </li>
 </ul>
 
@@ -2314,7 +2256,7 @@ public abstract class RecordReader&lt;KEYIN, VALUEIN&gt; implements Closeable {
 </ul>
 
 </li>
-<li>SequenceFileAsBinaryInputFormat <b>note(dirlt)：似乎没有什么用！</b>
+<li>SequenceFileAsBinaryInputFormat #note: 似乎没有什么用
 </li>
 <li>MultipleInputs
 </li>
@@ -2343,7 +2285,7 @@ public abstract class RecordReader&lt;KEYIN, VALUEIN&gt; implements Closeable {
 </li>
 <li>SequenceFileOutputFormat
 </li>
-<li>SequenceFileAsBinaryOutpuFormat <b>note(dirlt)：似乎没有什么用！</b>
+<li>SequenceFileAsBinaryOutpuFormat #note: 似乎没有什么用
 </li>
 <li>MapFileOutputFormat
 </li>
@@ -2365,9 +2307,9 @@ public abstract class RecordReader&lt;KEYIN, VALUEIN&gt; implements Closeable {
 
 </div>
 
-<div id="outline-container-1-4-8" class="outline-4">
-<h4 id="sec-1-4-8"><span class="section-number-4">1.4.8</span> MapReduce的特性</h4>
-<div class="outline-text-4" id="text-1-4-8">
+<div id="outline-container-4-8" class="outline-4">
+<h4 id="sec-4-8"><span class="section-number-4">4.8</span> MapReduce的特性</h4>
+<div class="outline-text-4" id="text-4-8">
 
 <ul>
 <li>计数器
@@ -2392,7 +2334,7 @@ public abstract class RecordReader&lt;KEYIN, VALUEIN&gt; implements Closeable {
 </li>
 <li>使用CompositeInputFormat来运行map端连接。
 </li>
-<li><b>note(dirlt)；不过我稍微看了一下代码，实现上其实也是针对输入文件对每条记录读取，然后进行join包括inner或者是outer。感觉场景会有限，而且效率不会太高</b>
+<li>#note: 稍微看了一下代码，实现上其实也是针对输入文件对每条记录读取，然后进行join包括inner或者是outer。感觉场景会有限，而且效率不会太高
 </li>
 </ul>
 
@@ -2446,7 +2388,7 @@ public abstract class RecordReader&lt;KEYIN, VALUEIN&gt; implements Closeable {
 </li>
 <li>最终达到的效果就是 M+ -&gt; R -&gt; M* （1个或者是多个mapper, 一个reducer，然后0个或者是多个mapper)
 </li>
-<li><b>todo(dirlt):这样做倒是可以将各个mapper组合起来用作adapter.</b>
+<li>#todo: 这样做倒是可以将各个mapper组合起来用作adapter.
 </li>
 </ul>
 
@@ -2461,9 +2403,9 @@ public abstract class RecordReader&lt;KEYIN, VALUEIN&gt; implements Closeable {
 
 </div>
 
-<div id="outline-container-1-4-9" class="outline-4">
-<h4 id="sec-1-4-9"><span class="section-number-4">1.4.9</span> 构建Hadoop集群</h4>
-<div class="outline-text-4" id="text-1-4-9">
+<div id="outline-container-4-9" class="outline-4">
+<h4 id="sec-4-9"><span class="section-number-4">4.9</span> 构建Hadoop集群</h4>
+<div class="outline-text-4" id="text-4-9">
 
 <ul>
 <li>很多教程说hadoop集群需要配置ssh,但是配置这个前提是你希望使用start-all.sh这个脚本来启动集群
@@ -2485,27 +2427,15 @@ public abstract class RecordReader&lt;KEYIN, VALUEIN&gt; implements Closeable {
 </li>
 <li>mapred-site.xml mapred进程配置比如jobtracker以及tasktracker
 </li>
-<li>masters 运行namenode（secondary namenode)的机器列表，每行一个, <b>无需分发到各个节点</b>
-<ul>
-<li><b>在本地启动primary namenode</b>
+<li>masters 运行namenode（secondary namenode)的机器列表，每行一个, <b>无需分发到各个节点，在本地启动primary namenode</b>
 </li>
-</ul>
-
-</li>
-<li>slaves 运行datanode以及tasktracker的机器列表，每行一个 <b>无需分发到各个节点</b>
-<ul>
-<li><b>在本地启动jobtracker</b>
-</li>
-</ul>
-
+<li>slaves 运行datanode以及tasktracker的机器列表，每行一个 <b>无需分发到各个节点，在本地启动jobtracker</b>
 </li>
 <li>hadoop-metrics.properties 对hadoop做监控的配置文件
 </li>
 <li>log4j.properties 日志配置文件
 </li>
 <li>这些文件在conf目录下面有，如果想使用不同的文件也可以使用-config来另行指定
-</li>
-<li><b>note(dirlt):所以从上面这个脚本来看，还是具有一定的局限性的</b>
 </li>
 </ul>
 
@@ -2572,18 +2502,20 @@ public abstract class RecordReader&lt;KEYIN, VALUEIN&gt; implements Closeable {
 </li>
 <li>fs.trash.interval 单位分钟，如果不为0的话，那么删除文件会移动到回收站，超过这个单位时间的文件才会完全删除。
 <ul>
-<li>回收站位置/home/${user]/.Trash <b>note(dirlt):回收站这个功能只是对fs shell有效。fs shell remove时候会构造Trash这个类来处理删除文件的请求。如果调用Java API的话那么会直接删除文件</b>
+<li>回收站位置/home/${user]/.Trash 
+</li>
+<li>#note: 回收站这个功能只是对fs shell有效。fs shell remove时候会构造Trash这个类来处理删除文件的请求。如果调用Java API的话那么会直接删除文件
 </li>
 <li>haddop fs -expunge 强制删除
 </li>
-<li><b>note(dirlt)：grep代码发现只有NameNode在TrashEmptier里面构造了Trash这个类，因此这个配置之需要在nn上配置即可，决定多久定期删除垃圾文件</b>
+<li>#note: grep代码发现只有NameNode在TrashEmptier里面构造了Trash这个类，因此这个配置之需要在nn上配置即可，决定多久定期删除垃圾文件
 </li>
 </ul>
 
 </li>
 <li>fs.trash.checkpoint.interval 单位分钟，namenode多久检查一次文件是否需要删除。
 <ul>
-<li><b>note(dirlt)：似乎没有这个参数。如果没有这个参数的话，那么两次检查时长应该是由参数fs.trasn.interval来决定</b>
+<li>#note: 似乎没有这个参数。如果没有这个参数的话，那么两次检查时长应该是由参数fs.trasn.interval来决定
 </li>
 </ul>
 
@@ -2607,13 +2539,13 @@ public abstract class RecordReader&lt;KEYIN, VALUEIN&gt; implements Closeable {
 </li>
 <li>mapred.child.ulimit 单个tasktracker允许子进程占用的最大内存空间。通常为2-3* mapred.child.java.opts.
 </li>
-<li>mapred.child.java.opts = -Xmx200m 每个子JVM进程200M. <b>note(dirlt)：这个是在提交机器上面设置的，而不是每个tasktracker上面设置的，每个job可以不同</b>
+<li>mapred.child.java.opts = -Xmx200m 每个子JVM进程200M. #note: 这个是在提交机器上面设置的，而不是每个tasktracker上面设置的，每个job可以不同
 <ul>
 <li>不一定支持将map/reduce的jvm参数分开设置 <a href="http://hadoop-common.472056.n3.nabble.com/separate-JVM-flags-for-map-and-reduce-tasks-td743351.html">http://hadoop-common.472056.n3.nabble.com/separate-JVM-flags-for-map-and-reduce-tasks-td743351.html</a>
 </li>
-<li><b>note(dirlt)：个人折中思路是限制内存大小为1G，然后大内存机器允许同时执行map/reduce数量上限提高，通过增加job的map/reduce数量来提高并发增加性能</b>
+<li>#note: 个人折中思路是限制内存大小为1G，然后大内存机器允许同时执行map/reduce数量上限提高，通过增加job的map/reduce数量来提高并发增加性能
 </li>
-<li><b>note(dirlt)：我grep了一下cdh3u3的代码，应该是将map/reduce的jvm参数分开进行了设置</b>
+<li>#note: 我grep了一下cdh3u3的代码，应该是将map/reduce的jvm参数分开进行了设置
 <ul>
 <li>mapred.map.child.java.opts
 </li>
@@ -2643,7 +2575,7 @@ public abstract class RecordReader&lt;KEYIN, VALUEIN&gt; implements Closeable {
 </ul>
 
 </li>
-<li>Hadoop Benchmark <b>note(dirlt)：try it out</b>
+<li>Hadoop Benchmark
 <ul>
 <li>在hadoop安装目录下面有jar可以来做基准测试
 </li>
@@ -2665,9 +2597,9 @@ public abstract class RecordReader&lt;KEYIN, VALUEIN&gt; implements Closeable {
 
 </div>
 
-<div id="outline-container-1-4-10" class="outline-4">
-<h4 id="sec-1-4-10"><span class="section-number-4">1.4.10</span> 管理Hadoop</h4>
-<div class="outline-text-4" id="text-1-4-10">
+<div id="outline-container-4-10" class="outline-4">
+<h4 id="sec-4-10"><span class="section-number-4">4.10</span> 管理Hadoop</h4>
+<div class="outline-text-4" id="text-4-10">
 
 <ul>
 <li>永久性数据结构
@@ -2768,7 +2700,7 @@ public abstract class RecordReader&lt;KEYIN, VALUEIN&gt; implements Closeable {
 </li>
 <li>可以通过页面访问每个datanode的block情况 <a href="http://localhost:50075/blockScannerReport">http://localhost:50075/blockScannerReport</a>
 </li>
-<li>加上listblocks参数可以看每个block情况 <a href="http://localhost:50075/blockScannerReport?listblocks">http://localhost:50075/blockScannerReport?listblocks</a> <b>note(dirlt)：可能会很大</b>
+<li>加上listblocks参数可以看每个block情况 <a href="http://localhost:50075/blockScannerReport?listblocks">http://localhost:50075/blockScannerReport?listblocks</a> #note: 结果会很大
 </li>
 </ul>
 
@@ -2841,9 +2773,9 @@ public abstract class RecordReader&lt;KEYIN, VALUEIN&gt; implements Closeable {
 
 </div>
 
-<div id="outline-container-1-5" class="outline-3">
-<h3 id="sec-1-5"><span class="section-number-3">1.5</span> Benchmark</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> Benchmark</h3>
+<div class="outline-text-3" id="text-5">
 
 <ul>
 <li>Benchmarking and Stress Testing an Hadoop Cluster with TeraSort, TestDFSIO &amp; Co. - Michael G. Noll <a href="http://www.michael-noll.com/blog/2011/04/09/benchmarking-and-stress-testing-an-hadoop-cluster-with-terasort-testdfsio-nnbench-mrbench/">http://www.michael-noll.com/blog/2011/04/09/benchmarking-and-stress-testing-an-hadoop-cluster-with-terasort-testdfsio-nnbench-mrbench/</a>
@@ -2864,9 +2796,9 @@ public abstract class RecordReader&lt;KEYIN, VALUEIN&gt; implements Closeable {
 
 </div>
 
-<div id="outline-container-1-5-1" class="outline-4">
-<h4 id="sec-1-5-1"><span class="section-number-4">1.5.1</span> TestDFSIO</h4>
-<div class="outline-text-4" id="text-1-5-1">
+<div id="outline-container-5-1" class="outline-4">
+<h4 id="sec-5-1"><span class="section-number-4">5.1</span> TestDFSIO</h4>
+<div class="outline-text-4" id="text-5-1">
 
 <p>测试hdfs吞吐
 </p>
@@ -2930,9 +2862,9 @@ Average IO rate mb/sec: 28.125
 
 </div>
 
-<div id="outline-container-1-5-2" class="outline-4">
-<h4 id="sec-1-5-2"><span class="section-number-4">1.5.2</span> TeraSort</h4>
-<div class="outline-text-4" id="text-1-5-2">
+<div id="outline-container-5-2" class="outline-4">
+<h4 id="sec-5-2"><span class="section-number-4">5.2</span> TeraSort</h4>
+<div class="outline-text-4" id="text-5-2">
 
 <p>通过排序测试MR执行效率 <b>我看了一下代码map/reduce都有CPU操作，并且这个也非常依靠shuffle/copy.因此这个测试应该会是比较全面的</b>
 </p>
@@ -2984,9 +2916,9 @@ Average IO rate mb/sec: 28.125
 
 </div>
 
-<div id="outline-container-1-5-3" class="outline-4">
-<h4 id="sec-1-5-3"><span class="section-number-4">1.5.3</span> nnbench</h4>
-<div class="outline-text-4" id="text-1-5-3">
+<div id="outline-container-5-3" class="outline-4">
+<h4 id="sec-5-3"><span class="section-number-4">5.3</span> nnbench</h4>
+<div class="outline-text-4" id="text-5-3">
 
 <p>测试nn负载能力
 </p>
@@ -3112,9 +3044,9 @@ Avg exec time (ms): Create/Write/Close: 26.526666666666667
 
 </div>
 
-<div id="outline-container-1-5-4" class="outline-4">
-<h4 id="sec-1-5-4"><span class="section-number-4">1.5.4</span> mrbench</h4>
-<div class="outline-text-4" id="text-1-5-4">
+<div id="outline-container-5-4" class="outline-4">
+<h4 id="sec-5-4"><span class="section-number-4">5.4</span> mrbench</h4>
+<div class="outline-text-4" id="text-5-4">
 
 <p>测试运行small mr jobs执行效率，主要关注响应时间。
 </p>
@@ -3165,9 +3097,9 @@ DataLines       Maps    Reduces AvgTime (milliseconds)
 
 </div>
 
-<div id="outline-container-1-5-5" class="outline-4">
-<h4 id="sec-1-5-5"><span class="section-number-4">1.5.5</span> hbase.PerformanceEvaluation</h4>
-<div class="outline-text-4" id="text-1-5-5">
+<div id="outline-container-5-5" class="outline-4">
+<h4 id="sec-5-5"><span class="section-number-4">5.5</span> hbase.PerformanceEvaluation</h4>
+<div class="outline-text-4" id="text-5-5">
 
 
 
@@ -3224,7 +3156,7 @@ Examples:
 </li>
 <li>seqWrite 顺序地写入每个key
 </li>
-<li><b>note(dirlt):这里的key都非常简单，10个字符的数字，printf("%010d",row)</b>
+<li>#note: 这里的key都非常简单，10个字符的数字，printf("%010d",row)
 </li>
 </ul>
 
@@ -3244,13 +3176,10 @@ Examples:
 </div>
 </div>
 </div>
-</div>
 
 <div id="postamble">
-<p class="date">Date: 2014-12-18T11:29+0800</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
 
 </div>
-<!-- Baidu Analytics BEGIN --><script type="text/javascript">var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F54a700ad7035f6e485eaf2300641e7e9' type='text/javascript'%3E%3C/script%3E"));</script><!-- Baidu Analytics END --><!-- Google Analytics BEGIN --><!-- <script type="text/javascript">  var _gaq = _gaq || [];  _gaq.push(['_setAccount', 'UA-31377772-1']);  _gaq.push(['_trackPageview']);  (function() {    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);  })();</script> --><!-- Google Analytics END --><!-- Baidu Button BEGIN --><!-- <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6762177" ></script><script type="text/javascript" id="bdshell_js"></script><script type="text/javascript"> document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)</script> --><!-- Baidu Button END --><!-- G+ BEGIN --><!-- Place this render call where appropriate --><!-- <script type="text/javascript">  (function() {    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;    po.src = 'https://apis.google.com/js/plusone.js';    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);  })();</script> --><!-- G+ END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'hadoop.html';var disqus_title = 'hadoop.html';var disqus_url = 'http://dirlt.com/hadoop.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'hadoop.html';var disqus_title = 'hadoop.html';var disqus_url = 'http://dirlt.com/hadoop.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>
