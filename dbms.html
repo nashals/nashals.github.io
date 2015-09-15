@@ -80,14 +80,7 @@
 <li><a href="dbms.html#sec-2">2 数据库系统世界</a>
 <ul>
 <li><a href="dbms.html#sec-2-1">2.1 DBMS功能</a></li>
-<li><a href="dbms.html#sec-2-2">2.2 DBMS组成</a>
-<ul>
-<li><a href="dbms.html#sec-2-2-1">2.2.1 组件概览</a></li>
-<li><a href="dbms.html#sec-2-2-2">2.2.2 组件交互</a></li>
-<li><a href="dbms.html#sec-2-2-3">2.2.3 查询编译器</a></li>
-<li><a href="dbms.html#sec-2-2-4">2.2.4 事务处理器</a></li>
-</ul>
-</li>
+<li><a href="dbms.html#sec-2-2">2.2 DBMS组成</a></li>
 <li><a href="dbms.html#sec-2-3">2.3 事务性质</a></li>
 <li><a href="dbms.html#sec-2-4">2.4 本书概览</a></li>
 </ul>
@@ -103,13 +96,7 @@
 <li><a href="dbms.html#sec-4">4 关系数据库设计理论</a>
 <ul>
 <li><a href="dbms.html#sec-4-1">4.1 函数依赖</a></li>
-<li><a href="dbms.html#sec-4-2">4.2 关系数据库模式设计</a>
-<ul>
-<li><a href="dbms.html#sec-4-2-1">4.2.1 异常</a></li>
-<li><a href="dbms.html#sec-4-2-2">4.2.2 分解关系</a></li>
-<li><a href="dbms.html#sec-4-2-3">4.2.3 Boyce-Codd范式</a></li>
-</ul>
-</li>
+<li><a href="dbms.html#sec-4-2">4.2 关系数据库模式设计</a></li>
 <li><a href="dbms.html#sec-4-3">4.3 第三范式</a></li>
 <li><a href="dbms.html#sec-4-4">4.4 多值依赖</a></li>
 <li><a href="dbms.html#sec-4-5">4.5 第四范式</a></li>
@@ -134,10 +121,8 @@
 <li><a href="dbms.html#sec-7-5">7.5 关系连接</a></li>
 <li><a href="dbms.html#sec-7-6">7.6 全关系操作</a></li>
 <li><a href="dbms.html#sec-7-7">7.7 数据库更新</a></li>
-<li><a href="dbms.html#sec-7-8">7.8 SQL中的事务</a>
-<ul>
-<li><a href="dbms.html#sec-7-8-1">7.8.1 事务隔离层次</a></li>
-</ul></li>
+<li><a href="dbms.html#sec-7-8">7.8 SQL中的事务</a></li>
+<li><a href="dbms.html#sec-7-9">7.9 事务隔离层次</a></li>
 </ul>
 </li>
 <li><a href="dbms.html#sec-8">8 约束与触发器</a>
@@ -287,14 +272,18 @@
 <h4 id="sec-2-2"><span class="section-number-4">2.2</span> DBMS组成</h4>
 <div class="outline-text-4" id="text-2-2">
 
-
-</div>
-
-<div id="outline-container-2-2-1" class="outline-5">
-<h5 id="sec-2-2-1"><span class="section-number-5">2.2.1</span> 组件概览</h5>
-<div class="outline-text-5" id="text-2-2-1">
-
-<p>在书里面有"数据库管理系统组成"的一个架构图，但是因为不方便贴过来所以这里大致描述一下。不过倒也不用过于依赖这个架构图，架构图只不过是一个意思。
+<p><b>组件概览</b>
+</p>
+<p>
+<del>在书里面有"数据库管理系统组成"的一个架构图，但是因为不方便贴过来所以这里大致描述一下。不过倒也不用过于依赖这个架构图，架构图只不过是一个意思。</del>
+</p>
+<p>
+update@201509: 还是加上架构图吧, 一图胜千言. 那个时候没有智能手机, 不方便拍照. 科技进步了许多 ;)
+</p>
+<p>
+<img src="images/dbms-arch-in-simple.jpg"  alt="./images/dbms-arch-in-simple.jpg" />
+</p>
+<p>
 我觉得到没有必要从理解逻辑流的角度来看每个部件，而应该看看每个部件提供的功能分别是什么，然后反过来来看逻辑流。
 </p><ul>
 <li>查询编译器
@@ -318,15 +307,11 @@
 </ul>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-2-2-2" class="outline-5">
-<h5 id="sec-2-2-2"><span class="section-number-5">2.2.2</span> 组件交互</h5>
-<div class="outline-text-5" id="text-2-2-2">
-
-<p>各个组件之间可能需要的信息种类包括下面这些：
+<p>
+<b>组件交互</b>
+</p>
+<p>
+各个组件之间可能需要的信息种类包括下面这些：
 </p><ul>
 <li>数据。数据库本身内容。
 </li>
@@ -341,15 +326,11 @@
 </ul>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-2-2-3" class="outline-5">
-<h5 id="sec-2-2-3"><span class="section-number-5">2.2.3</span> 查询编译器</h5>
-<div class="outline-text-5" id="text-2-2-3">
-
-<p>对于查询编译器需要将查询转换称为查询计划(query plan)的内部形式(对于query plan我们可以使用关系代数来理解).主要由下面三个模块组成:
+<p>
+<b>查询编译器</b>
+</p>
+<p>
+对于查询编译器需要将查询转换称为查询计划(query plan)的内部形式(对于query plan我们可以使用关系代数来理解).主要由下面三个模块组成:
 </p><ul>
 <li>查询分析器(query parser).从查询的文本结构构造一个查询树状结构
 </li>
@@ -360,15 +341,11 @@
 </ul>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-2-2-4" class="outline-5">
-<h5 id="sec-2-2-4"><span class="section-number-5">2.2.4</span> 事务处理器</h5>
-<div class="outline-text-5" id="text-2-2-4">
-
-<p>对于事务处理器来说一般会执行下面这些任务：
+<p>
+<b>事务处理器</b>
+</p>
+<p>
+对于事务处理器来说一般会执行下面这些任务：
 </p><ul>
 <li>日志记录(logging).为了保证持久性，数据库的每一个变化都会单独地记录在磁盘上面。而日志管理器可以在事务失败的时候来完成回滚。
 </li>
@@ -379,7 +356,6 @@
 </ul>
 
 
-</div>
 </div>
 
 </div>
@@ -617,14 +593,11 @@ FD集合的最小基本集(Minimal Basis for a set of FD's):对于任何FD集合
 </ul>
 
 
-
-</div>
-
-<div id="outline-container-4-2-1" class="outline-5">
-<h5 id="sec-4-2-1"><span class="section-number-5">4.2.1</span> 异常</h5>
-<div class="outline-text-5" id="text-4-2-1">
-
-<p>当试图在一个关系中包含过多信息时，产生的问题（如冗余）称为异常(anomaly).异常就是数据库模式存在的问题。通常异常的基本类型有：
+<p>
+<b>异常</b>
+</p>
+<p>
+当试图在一个关系中包含过多信息时，产生的问题（如冗余）称为异常(anomaly).异常就是数据库模式存在的问题。通常异常的基本类型有：
 </p><ul>
 <li>冗余(redundancy).信息没有必要地在多个元组中重复。
 </li>
@@ -634,27 +607,19 @@ FD集合的最小基本集(Minimal Basis for a set of FD's):对于任何FD集合
 </li>
 </ul>
 
-<p>:不过个人感觉主要的问题还是存在数据的redundancy,导致更新会发生不一致的情况).
+<p>不过个人感觉主要的问题还是存在数据的redundancy,导致更新会发生不一致的情况.
 </p>
-</div>
-
-</div>
-
-<div id="outline-container-4-2-2" class="outline-5">
-<h5 id="sec-4-2-2"><span class="section-number-5">4.2.2</span> 分解关系</h5>
-<div class="outline-text-5" id="text-4-2-2">
-
-<p>:分解可以将关系拆分称为若干个更小的关系，而关系之间通过函数依赖(键)来相互关联。但是分解上我们必须确保关系信息没有任何丢失。
+<p>
+<b>分解关系</b>
 </p>
-</div>
-
-</div>
-
-<div id="outline-container-4-2-3" class="outline-5">
-<h5 id="sec-4-2-3"><span class="section-number-5">4.2.3</span> Boyce-Codd范式</h5>
-<div class="outline-text-5" id="text-4-2-3">
-
-<p>分解的目的就是将一个关系用于多个不存在异常的关系替换。也就是说，在一个简单的条件下面保证前面讨论的异常不存在，这个条件就是Boyce-Codd范式.
+<p>
+分解可以将关系拆分称为若干个更小的关系，而关系之间通过函数依赖(键)来相互关联。但是分解上我们必须确保关系信息没有任何丢失。
+</p>
+<p>
+<b>Boyce-Codd范式</b>
+</p>
+<p>
+分解的目的就是将一个关系用于多个不存在异常的关系替换。也就是说，在一个简单的条件下面保证前面讨论的异常不存在，这个条件就是Boyce-Codd范式.
 </p>
 
 
@@ -662,9 +627,8 @@ FD集合的最小基本集(Minimal Basis for a set of FD's):对于任何FD集合
 </pre>
 
 <p>
-因此BCNF的一个等价描述就是，每个非平凡FD的左边必须包含键。:这个似乎有点难于用一种好理解的方式表达出来:(.
+因此BCNF的一个等价描述就是，每个非平凡FD的左边必须包含键。这个似乎有点难于用一种好理解的方式表达出来:(.
 </p>
-</div>
 </div>
 
 </div>
@@ -776,8 +740,7 @@ FD集合的最小基本集(Minimal Basis for a set of FD's):对于任何FD集合
 <div class="outline-text-3" id="text-6">
 
 <p>首先我们将操作对象从&lt;集合&gt;扩展到&lt;包&gt;,然后给出基于&lt;包&gt;上的更多的关系代数操作。引入一种逻辑描述语言Datalog,允许用户用描述期望的结果形式地
-表达查询，而不是像关系代数那样使用算法计算结果。NOTICE:实际上你会发现，Datalog基本上就是我们所希望的SQL，而关系代数就是SQL
-转换成为的底层执行表达式。
+表达查询，而不是像关系代数那样使用算法计算结果。实际上你会发现，Datalog基本上就是我们所希望的SQL，而关系代数就是SQL转换成为的底层执行表达式。
 </p>
 
 </div>
@@ -845,8 +808,7 @@ FD集合的最小基本集(Minimal Basis for a set of FD's):对于任何FD集合
 </li>
 </ul>
 
-<p>NOTICE:NOT的安全性问题仅仅是对于理论上讨论Datalog有意义，而在我们实际数据库系统中不需要考虑这个问题。因为我们数据库系统元组都是固定的。
-但是在接触到流式计算系统则会发现，NOT这个问题又会出现。在stream processing里面的话，我们可以认为一个时间段的window就是所有数据来解决这个问题。
+<p>NOT的安全性问题仅仅是对于理论上讨论Datalog有意义，而在我们实际数据库系统中不需要考虑这个问题。因为我们数据库系统元组都是固定的。 但是在接触到流式计算系统则会发现，NOT这个问题又会出现。在stream processing里面的话，我们可以认为一个时间段的window就是所有数据来解决这个问题。
 </p>
 </div>
 
@@ -857,7 +819,6 @@ FD集合的最小基本集(Minimal Basis for a set of FD's):对于任何FD集合
 <div class="outline-text-4" id="text-6-4">
 
 <p>这节主要是阐述了关系代数和Datalog之间能力比较。Datalog可以表达递归而关系代数不能得到相应的定义，关系代数有一些扩展操作Datalog没有办法表达。
-NOTICE:其实我觉得更关注的是Datalog-&gt;关系代数的转换。如果Datalog没有表达递归并且是安全的话，那么是可以使用关系代数来定义的。
 </p>
 </div>
 </div>
@@ -916,7 +877,9 @@ NOTICE:其实我觉得更关注的是Datalog-&gt;关系代数的转换。如果D
 <h4 id="sec-7-2"><span class="section-number-4">7.2</span> 多关系查询</h4>
 <div class="outline-text-4" id="text-7-2">
 
-<p>多关系查询相当于联合多个关系来做查询。如果遇到关系的字段同名的话，我们可以通过rename或者是显示地写上qualified name来消除歧义。
+<p>多关系查询相当于联合多个关系来做查询。如果遇到关系的字段同名的话，我们可以通过rename或者是显示地写上qualified name来消除歧义。see "关系连接"
+</p>
+<p>
 对于多关系查询解释模型的话有下面三种：
 </p><ul>
 <li>嵌套循环
@@ -927,7 +890,7 @@ NOTICE:其实我觉得更关注的是Datalog-&gt;关系代数的转换。如果D
 </li>
 </ul>
 
-<p>但是针对某些情况这几种解释模型都不能够很好地工作。#todo: 分析并且加以阐述。
+<p>但是针对某些情况这几种解释模型都不能够很好地工作。
 </p>
 </div>
 
@@ -937,7 +900,10 @@ NOTICE:其实我觉得更关注的是Datalog-&gt;关系代数的转换。如果D
 <h4 id="sec-7-3"><span class="section-number-4">7.3</span> 关系代数操作</h4>
 <div class="outline-text-4" id="text-7-3">
 
-<p>SQL提供了对应的包并(UNION)，交(INTERSECT)，差(EXCEPT)关系代数操作用在查询结果上面，条件是要求这些查询结果提供的关系具有相同的属性和属性类型列表。
+<p>update@201509: 不常用
+</p>
+<p>
+SQL提供了对应的包并(UNION)，交(INTERSECT)，差(EXCEPT)关系代数操作用在查询结果上面，条件是要求这些查询结果提供的关系具有相同的属性和属性类型列表。
 比如(SELECT name,address FROM MovieStar) EXCEPT (SELECT name,address FROM MovieExec).
 </p>
 </div>
@@ -948,7 +914,10 @@ NOTICE:其实我觉得更关注的是Datalog-&gt;关系代数的转换。如果D
 <h4 id="sec-7-4"><span class="section-number-4">7.4</span> 子查询</h4>
 <div class="outline-text-4" id="text-7-4">
 
-<p>在SQL中，一个查询可以通过不同的方式被用来计算另外一个查询。当某个查询时另外一个查询的部分时，称之为子查询(subquery).
+<p>update@201509: 不常用. 大部分应用都可以使用JOIN表来完成, 而可读性更好.
+</p>
+<p>
+在SQL中，一个查询可以通过不同的方式被用来计算另外一个查询。当某个查询时另外一个查询的部分时，称之为子查询(subquery).
 </p><ul>
 <li>子查询可以返回单个常量，这个常量能在WHERE子句和另外一个常量进行比较。
 </li>
@@ -967,6 +936,8 @@ NOTICE:其实我觉得更关注的是Datalog-&gt;关系代数的转换。如果D
 <h4 id="sec-7-5"><span class="section-number-4">7.5</span> 关系连接</h4>
 <div class="outline-text-4" id="text-7-5">
 
+<p>update@201509: 关系操作产生新的关系, 比如`(A JOIN B ON A.id == B.id AND A.f1 &gt; 100 AND B.f2 &lt; 200) AS R`. 然后使用普通查询语句作用在关系R上如`SELECT A.f1, B.f2 FROM R`.
+</p>
 <ul>
 <li>A CROSS JOIN B.等同于&lt;笛卡尔积&gt;
 </li>
@@ -1005,9 +976,9 @@ NOTICE:其实我觉得更关注的是Datalog-&gt;关系代数的转换。如果D
 </li>
 <li>聚集.AVG(x),SUM(x).通常和分组共同使用。
 </li>
-<li>分组.GROUP BY X.(只能够接一个属性).然后在select属性的话对于非分组属性必须添加聚集操作符(这点显而易见).
+<li>分组.GROUP BY X. 然后在select属性的话对于非分组属性必须添加聚集操作符.
 </li>
-<li>HAVING子句。对于HAVING表达式属性必须和分组SELECT属性满足相同性质，HAVING自己用于选择分组中的部分元组。
+<li>HAVING子句。对于HAVING表达式属性必须和分组SELECT属性满足相同性质，HAVING自己用于选择分组中的部分元组。(对群组做筛选)
 </li>
 </ul>
 
@@ -1017,7 +988,7 @@ NOTICE:其实我觉得更关注的是Datalog-&gt;关系代数的转换。如果D
 </p><ul>
 <li>空值NULL在任何聚集操作中都被忽视。
 </li>
-<li>在分组的时候，空值NULL被作为一般值对待。NOTICE:应该是所有的NULL在一起吧?!
+<li>在分组的时候，空值NULL被作为一般值对待。
 </li>
 <li>除了计数之外，对于空包执行的聚集操作结果为NULL,而COUNT为0.这点和1相关，假设SUM([NULL])的话，因为NULL被忽视所以为空包，那么返回结果是NULL.
 </li>
@@ -1064,12 +1035,13 @@ NOTICE:其实我觉得更关注的是Datalog-&gt;关系代数的转换。如果D
 <p>另外SQL允许我们告诉系统接下来执行的事务是只读事务，SQL系统可以利用这点提高并发。通常多个访问同一数据的只读事务可以并行执行，
 但是多个写统一数据的事务不能并行执行。默认情况的话都是SET TRANSACTION READ WRITE(读写事务).SET TRANSACTION READ ONLY(只读事务).
 </p>
+</div>
 
 </div>
 
-<div id="outline-container-7-8-1" class="outline-5">
-<h5 id="sec-7-8-1"><span class="section-number-5">7.8.1</span> 事务隔离层次</h5>
-<div class="outline-text-5" id="text-7-8-1">
+<div id="outline-container-7-9" class="outline-4">
+<h4 id="sec-7-9"><span class="section-number-4">7.9</span> 事务隔离层次</h4>
+<div class="outline-text-4" id="text-7-9">
 
 <p>事务的隔离层次会影响到该事务可以看到的数据。如果事务T在串行化层次上面执行的话，那么T的执行必须看起来好像所有其他事务要么完全在T
 之前运行，要么完全在T之后运行。但是如果一些事务正运行在其他的隔离层次上的话，可以看到的数据是不同的。首先看看几种隔离层次(isolation level)：
@@ -1085,9 +1057,26 @@ NOTICE:其实我觉得更关注的是Datalog-&gt;关系代数的转换。如果D
 </ul>
 
 
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" /><col class="left" /><col class="left" /><col class="left" />
+</colgroup>
+<thead>
+<tr><th scope="col" class="left">隔离级别</th><th scope="col" class="left">脏读</th><th scope="col" class="left">不可重复读取</th><th scope="col" class="left">幻影数据行</th></tr>
+</thead>
+<tbody>
+<tr><td class="left">READ UNCOMMITED</td><td class="left">Y</td><td class="left">Y</td><td class="left">Y</td></tr>
+<tr><td class="left">READ COMMITED</td><td class="left">N</td><td class="left">Y</td><td class="left">Y</td></tr>
+<tr><td class="left">REPEATABLE READ</td><td class="left">N</td><td class="left">N</td><td class="left">Y</td></tr>
+<tr><td class="left">SERIALIZABLE</td><td class="left">N</td><td class="left">N</td><td class="left">N</td></tr>
+</tbody>
+</table>
+
+
 
 <hr/>
-
+<p>
+update@201509: sqlite中的事务级别和这里说的事务隔离级别还有点区别. sqlite事务级别是按照实现而不是语义来定义的.
+</p>
 <p>
 <a href="http://www.sqlite.org/lang_transaction.html">http://www.sqlite.org/lang_transaction.html</a>
 </p>
@@ -1096,7 +1085,7 @@ NOTICE:其实我觉得更关注的是Datalog-&gt;关系代数的转换。如果D
 </p><ul>
 <li>begin &lt;description&gt; transcation
 </li>
-<li>deferred 
+<li>deferred
 </li>
 <li>immediate
 </li>
@@ -1106,7 +1095,7 @@ NOTICE:其实我觉得更关注的是Datalog-&gt;关系代数的转换。如果D
 
 
 <p class="verse">
-Transactions can be deferred, immediate, or exclusive. The default transaction behavior is deferred. Deferred means that no locks are acquired on the database until the database is first accessed. Thus with a deferred transaction, the BEGIN statement itself does nothing to the filesystem. Locks are not acquired until the first read or write operation. The first read operation against a database creates a SHARED lock and the first write operation creates a RESERVED lock. Because the acquisition of locks is deferred until they are needed, it is possible that another thread or process could create a separate transaction and write to the database after the BEGIN on the current thread has executed. If the transaction is immediate, then RESERVED locks are acquired on all databases as soon as the BEGIN command is executed, without waiting for the database to be used. After a BEGIN IMMEDIATE, no other database connection will be able to write to the database or do a BEGIN IMMEDIATE or BEGIN EXCLUSIVE. Other processes can continue to read from the database, however. An exclusive transaction causes EXCLUSIVE locks to be acquired on all databases. After a BEGIN EXCLUSIVE, no other database connection except for read_uncommitted connections will be able to read the database and no other connection without exception will be able to write the database until the transaction is complete. <br/>
+Transactions can be deferred, immediate, or exclusive. The default transaction behavior is deferred. Deferred means that no locks are acquired on the database until the database is first accessed. Thus with a deferred transaction, the BEGIN statement itself does nothing to the filesystem. Locks are not acquired until the first read or write operation. The first read operation against a database creates a SHARED lock and the first write operation creates a RESERVED lock. Because the acquisition of locks is deferred until they are needed, it is possible that another thread or process could create a separate transaction and write to the database after the BEGIN on the current thread has executed. If the transaction is immediate, then RESERVED locks are acquired on all databases as soon as the BEGIN command is executed, without waiting for the database to be used. After a BEGIN IMMEDIATE, no other database connection will be able to write to the database or do a BEGIN IMMEDIATE or BEGIN EXCLUSIVE. Other processes can continue to read from the database, however. An exclusive transaction causes EXCLUSIVE locks to be acquired on all databases. After a BEGIN EXCLUSIVE, no other database connection except for read_uncommitted connections will be able to read the database and no other connection without exception will be able to write the database until the transaction is complete.<br/>
 </p>
 
 
@@ -1123,7 +1112,6 @@ Transactions can be deferred, immediate, or exclusive. The default transaction b
 </ul>
 
 
-</div>
 </div>
 </div>
 
@@ -1275,7 +1263,7 @@ CHECK约束仅仅是针对某一个关系的而不是针对于数据库的。如
 </li>
 </ul>
 
-<p>通过一个例子来稍微分析一下吧.NOTICE:触发器这个概念比较好理解，但是具体使用的话应该有比较多的细节。
+<p>通过一个例子来稍微分析一下吧.
 </p>
 
 
@@ -1316,8 +1304,7 @@ WHEN (OldTuple.y &gt; NewTuple.y) # 如果想执行多条语句的话那么需�
 
 <p>虚拟视图是由其他关系上的查询所定义的一种关系。虚拟视图并不在数据库中进行存储，但是可以对其进行查询，就好像它确实被存在数据库总一样。
 查询处理器也会在执行查询时用视图的定义来替换视图。CREATE VIEW &lt;name&gt; AS &lt;视图定义&gt;可以用来创建视图。视图看上去像是table所以用户可能想进行insert/update/delete.
-不过因为视图本身就是一个虚拟table,所以进行更新操作陷阱会比较多.NOTICE:虽然书上面给出了在视图上面的更新操作，
-但是我觉得为了简化我们的理解以及使用最好就先定视图只允许查询。当然我们可以删除视图DROP VIEW &lt;name&gt;.另外大部分情况下面如果我们确实想更新视图的话，
+不过因为视图本身就是一个虚拟table,所以进行更新操作陷阱会比较多. 但是我觉得为了简化我们的理解以及使用最好就先定视图只允许查询。当然我们可以删除视图DROP VIEW &lt;name&gt;.另外大部分情况下面如果我们确实想更新视图的话，
 其实只是想更新真实表，我们可以使用触发器INSTEAD OF来截获对于视图本身的修改。
 </p>
 </div>
@@ -1330,8 +1317,7 @@ WHEN (OldTuple.y &gt; NewTuple.y) # 如果想执行多条语句的话那么需�
 
 <p>接着我们来看看物化视图(materialize view)这个概念。对于虚拟视图而言的话，每次查询底层查询解释器都会翻译称为子查询，效率无疑很低。
 如果我们可以将这个虚拟视图存储下来，并且维护好这个视图和原始table之间的关系，那么就能够提高效率了。所谓的物化就是在任何时间都保存它的值，
-当基本表发生变化时，每次必须重新计算部分物化视图，因此维护物化视图也需要一定的代价。
-NOTICE:从书中了解到物化视图可以不用立即更新，而可以推迟更新时间。同时不用全量更新只需要增量更新。
+当基本表发生变化时，每次必须重新计算部分物化视图，因此维护物化视图也需要一定的代价。对于某些场景我们可以选择不去立即更新物化视图, 可以推迟积累一段时间变化batch地更新.
 </p>
 </div>
 
@@ -1341,7 +1327,10 @@ NOTICE:从书中了解到物化视图可以不用立即更新，而可以推迟�
 <h4 id="sec-9-3"><span class="section-number-4">9.3</span> 索引</h4>
 <div class="outline-text-4" id="text-9-3">
 
-<p>索引就是一种特殊的物化视图，使用索引可以使得查询速度加快。但是不像普通的物化视图一样我们需要显式地区使用，DBMS会自动使用索引。创建索引
+<p>update@201509: 区分索引的键和关系的键. 索引键是用来指定索引的, 而关系的键是用作唯一标识的.
+</p>
+<p>
+索引就是一种特殊的物化视图，使用索引可以使得查询速度加快。但是不像普通的物化视图一样我们需要显式地区使用，DBMS会自动使用索引。创建索引
 非常简单CREATE INDEX &lt;name&gt; ON R(f1,f2).而删除索引的话DROP INDEX &lt;name&gt;.通常来说我们倾向于在关系的键上面创建索引。对于索引来说，
 我们需要考虑到索引带来的性价比，因为索引本身通常也会存放在磁盘上面。因此正确地选择索引对于优化查询是非常重要的。
 </p>
@@ -1408,6 +1397,7 @@ DTD(Document Type Definition).而XML模式(XML Schema)则是另外一种为XML�
 <li>XLST(Extensible Stylesheet Language Transformations)允许对XML文档进行转换。
 </li>
 </ul>
+
 
 </div>
 
@@ -1522,7 +1512,7 @@ DTD(Document Type Definition).而XML模式(XML Schema)则是另外一种为XML�
 </li>
 <li>在几个较小的磁盘上分派数据，而不是集中在一个大的磁盘上。使用更多的可独立访问块的磁头组合。
 </li>
-<li>"镜像"磁盘.NOTICE:这个需要磁盘控制器和调度算法的配合才能加快读写速度。
+<li>"镜像"磁盘. 需要磁盘控制器和调度算法的配合才能加快读写速度。
 </li>
 <li>修改磁盘调度算法.
 </li>
@@ -1757,8 +1747,6 @@ commit哪些事务存在abort。另外还有一些事务没有abort的话那么�
 <li>Mediation.将用户的查询翻译成为多个数据源的查询然后将结果整合。
 </li>
 </ul>
-
-
 
 </div>
 </div>
