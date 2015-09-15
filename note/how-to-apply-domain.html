@@ -71,9 +71,11 @@
 <div id="content">
 <h1 class="title">如何申请域名</h1>
 
-<p>#note@2013-10-30: 不知道是什么时候写的这篇文章，不过从whois的记录来看应该是在2011.12. Godaddy页面布局发生了很多变化，里面一些步骤和现在会不大一致, 大家见谅将就看看。
+<p>update@20131030: 不知道是什么时候写的这篇文章，不过从whois的记录来看应该是在2011.12. Godaddy页面布局发生了很多变化，里面一些步骤和现在会不大一致, 大家见谅将就看看。
 </p>
-<ul>
+<p>
+按照下面几步来申请:
+</p><ul>
 <li>选择域名提供商和域名。域名提供商godaddy是同事xuchaoqian推荐的，不过最近godaddy因为支持SOPA很多注册域名少了很多并且部分站长集体转移域名。GoDaddy支持SOPA 一天痛失2.1万域名 GoDaddy支持SOPA遭抗议站长集体转移域。注册账户，然后回到godaddy主页就可以申请域名了。选择域名的同时会显示响应费用。选择合适的域名添加到购物车，接着就可以转入结算的流程了。(continue to registration.如果不打算注册其他域名的话，那么就no thanks了)
 </li>
 <li>填写域名相关信息。这个还是非常重要的，如果域名出现问题或者是有人想收购你的域名的话，那么可以通过whois服务查找到这个域名的相关信息，就可以直接联系了。付费的大家可以找找godaddy优惠码，可能便宜20%~30%.普通域名差不多就是12$然后加上其他费用差不多人民币80~90左右，便宜20~30%之后的话差不多就是60-70左右/year吧。国内用户允许使用支付宝致富还是比较方便的。搞定之后查看My Account -&gt; My Products里面。通常来说很快就会生效的。如果没有生效的话，那么可以发一封信到support@godaddy.com写明自己的Customer(客户号）和订单号(Order).如果生效之后的话那么就可以开始进行配置了。这个相关信息后续也可以在My Account -&gt; Settings里面做修改。
@@ -202,10 +204,10 @@ Registrant:<br/>
 
 <hr/>
 <p>
-#note@2013-10-30
+update@20131030:
 </p>
 <p>
-域名申请下来之后还需要配置DNS。以我现在配置来说
+域名申请下来之后还需要配置DNS. 我使用了dnspod这个免费域名解析服务. 以我现在配置来说
 </p><ul>
 <li>nameserver. 这个一般不需要修改
 <ul>
@@ -216,29 +218,19 @@ Registrant:<br/>
 </ul>
 
 </li>
-<li>@ A 204.232.175.78 # 主域名和IP绑定.
-<ul>
-<li>@ 直接解析主域名 dirlt.com
+<li>@ CNAME dirtysalt.github.io # 主页是静态页面, 托管在了 <a href="https://help.github.com/categories/github-pages-basics/">Github Pages</a> 上.
 </li>
-<li>A 地址记录，用来指定域名的IPv4地址（如：8.8.8.8），如果需要将域名指向一个IP地址，就需要添加A记录。
+<li>vps A 66.175.222.39 # vps.dirlt.com解析为VPS地址
 </li>
 </ul>
 
-</li>
-<li>* CNAME dirtysalt.github.com. # 子域名和其他域名绑定.
-<ul>
-<li>* 泛解析，匹配其他所有域名 *.dirlt.com
-</li>
-<li>CNAME 如果需要将域名指向另一个域名，再由另一个域名提供ip地址，就需要添加CNAME记录。
-</li>
-</ul>
 
-</li>
-<li>vps A 66.175.222.39 # 部分子域名可以做其他策略.
-</li>
-</ul>
-
-</div>
+<p>
+update@201509:
+</p>
+<p>
+当然如果你选择了dnspod话, 也需要在godaddy.com修改nameserver, 指向dnspod的两个nameserver. 教程看 <a href="https://support.dnspod.cn/Kb/showarticle/?qtype=功能介绍及使用教程&amp;tsid=42">这里</a>
+</p></div>
 
 <div id="postamble">
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
