@@ -80,7 +80,8 @@
 <li><a href="sysperf.html#sec-2">2 Numbers Everyone Should Know</a></li>
 <li><a href="sysperf.html#sec-3">3 The Joys of Real Hardware</a></li>
 <li><a href="sysperf.html#sec-4">4 延迟和带宽</a></li>
-<li><a href="sysperf.html#sec-5">5 存储系统的IOPS</a></li>
+<li><a href="sysperf.html#sec-5">5 存储系统IOPS</a></li>
+<li><a href="sysperf.html#sec-6">6 存储系统性能</a></li>
 </ul>
 </div>
 </div>
@@ -246,7 +247,7 @@ Typical first year for a new cluster:
 </div>
 
 <div id="outline-container-5" class="outline-3">
-<h3 id="sec-5"><span class="section-number-3">5</span> 存储系统的IOPS</h3>
+<h3 id="sec-5"><span class="section-number-3">5</span> 存储系统IOPS</h3>
 <div class="outline-text-3" id="text-5">
 
 <p><a href="http://rickardnobel.se/storage-performance-iops-latency-throughput/">http://rickardnobel.se/storage-performance-iops-latency-throughput/</a>
@@ -280,6 +281,15 @@ note@ 015-05-21: iops的测算非常复杂，主要是涉及到的环境配置�
 </ul>
 
 </div>
+
+</div>
+
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> 存储系统性能</h3>
+<div class="outline-text-3" id="text-6">
+
+<p>存储系统的性能主要包括两个维度：吞吐量和访问延迟。设计系统时要求能够在保证访问延迟的基础上，通过最低的成本实现尽可能高的吞吐量。磁盘和SSD的访问延迟差别很大，但是带宽差别不大。因此磁盘适合大块顺序访问的存储系统，SSD适合随机访问较多或者对延迟比较敏感的关键系统。二者也常常组合在一起进行混合存储，热数据（访问频繁）存储到SSD，冷数据（访问不频繁）存储到磁盘中。
+</p></div>
 </div>
 </div>
 
