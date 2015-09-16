@@ -132,12 +132,13 @@
 <li><a href="ubuntu.html#sec-5-4">5.4 bzr</a></li>
 </ul>
 </li>
-<li><a href="ubuntu.html#sec-6">6 虚拟机</a>
+<li><a href="ubuntu.html#sec-6">6 image-magick</a></li>
+<li><a href="ubuntu.html#sec-7">7 虚拟机</a>
 <ul>
-<li><a href="ubuntu.html#sec-6-1">6.1 vmware虚拟机增加磁盘空间</a></li>
-<li><a href="ubuntu.html#sec-6-2">6.2 virtualbox安装windows虚拟机</a></li>
-<li><a href="ubuntu.html#sec-6-3">6.3 virtualbox设置共享文件夹</a></li>
-<li><a href="ubuntu.html#sec-6-4">6.4 virtualbox下使用U盾</a></li>
+<li><a href="ubuntu.html#sec-7-1">7.1 vmware虚拟机增加磁盘空间</a></li>
+<li><a href="ubuntu.html#sec-7-2">7.2 virtualbox安装windows虚拟机</a></li>
+<li><a href="ubuntu.html#sec-7-3">7.3 virtualbox设置共享文件夹</a></li>
+<li><a href="ubuntu.html#sec-7-4">7.4 virtualbox下使用U盾</a></li>
 </ul>
 </li>
 </ul>
@@ -1379,15 +1380,35 @@ Generation complete.
 </div>
 
 <div id="outline-container-6" class="outline-3">
-<h3 id="sec-6"><span class="section-number-3">6</span> 虚拟机</h3>
+<h3 id="sec-6"><span class="section-number-3">6</span> image-magick</h3>
 <div class="outline-text-3" id="text-6">
+
+<p><a href="http://www.imagemagick.org/script/index.php">http://www.imagemagick.org/script/index.php</a>
+</p>
+<ul>
+<li>调整图像大小比例 convert -resize 50%x50% input output
+</li>
+<li>垂直合并图片 convert -append input&hellip; output
+</li>
+<li>水平合并图片 convert +append input&hellip; output
+</li>
+</ul>
 
 
 </div>
 
-<div id="outline-container-6-1" class="outline-4">
-<h4 id="sec-6-1"><span class="section-number-4">6.1</span> vmware虚拟机增加磁盘空间</h4>
-<div class="outline-text-4" id="text-6-1">
+</div>
+
+<div id="outline-container-7" class="outline-3">
+<h3 id="sec-7"><span class="section-number-3">7</span> 虚拟机</h3>
+<div class="outline-text-3" id="text-7">
+
+
+</div>
+
+<div id="outline-container-7-1" class="outline-4">
+<h4 id="sec-7-1"><span class="section-number-4">7.1</span> vmware虚拟机增加磁盘空间</h4>
+<div class="outline-text-4" id="text-7-1">
 
 <p>今天感觉自己的磁盘空间好像有点不够了，大部分数据都是在$HOME下面的，需要增加磁盘空间。
 </p>
@@ -1423,9 +1444,9 @@ Generation complete.
 
 </div>
 
-<div id="outline-container-6-2" class="outline-4">
-<h4 id="sec-6-2"><span class="section-number-4">6.2</span> virtualbox安装windows虚拟机</h4>
-<div class="outline-text-4" id="text-6-2">
+<div id="outline-container-7-2" class="outline-4">
+<h4 id="sec-7-2"><span class="section-number-4">7.2</span> virtualbox安装windows虚拟机</h4>
+<div class="outline-text-4" id="text-7-2">
 
 <p>安装windows虚拟机主要是为了方便一些需要在windows下面完成的操作，比如U盾。
 另外windows下面也有一些第三方的软件在Linux下面比较匮乏比如EverBox，
@@ -1442,9 +1463,9 @@ Generation complete.
 
 </div>
 
-<div id="outline-container-6-3" class="outline-4">
-<h4 id="sec-6-3"><span class="section-number-4">6.3</span> virtualbox设置共享文件夹</h4>
-<div class="outline-text-4" id="text-6-3">
+<div id="outline-container-7-3" class="outline-4">
+<h4 id="sec-7-3"><span class="section-number-4">7.3</span> virtualbox设置共享文件夹</h4>
+<div class="outline-text-4" id="text-7-3">
 
 <p>设置共享文件夹主要是为了数据可以进行同步。通过windows虚拟机，安装同步软件比如GDrive。
 然后通过共享文件夹，将GDrive的同步目录隐射到Linux文件系统上面，完成数据同步。
@@ -1468,9 +1489,9 @@ Generation complete.
 
 </div>
 
-<div id="outline-container-6-4" class="outline-4">
-<h4 id="sec-6-4"><span class="section-number-4">6.4</span> virtualbox下使用U盾</h4>
-<div class="outline-text-4" id="text-6-4">
+<div id="outline-container-7-4" class="outline-4">
+<h4 id="sec-7-4"><span class="section-number-4">7.4</span> virtualbox下使用U盾</h4>
+<div class="outline-text-4" id="text-7-4">
 
 <p>首先需要在 <a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a> VirtualBox Extension Pack，双击执行。
 在Settings =》 USB选项里面勾选 Enable USB Controller 和 Enable USB2.0（EHCI） Controller。
