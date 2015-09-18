@@ -219,6 +219,13 @@
 
 </li>
 <li><a href="concurrency.html">concurrency</a> / <a href="coroutine.html">coroutine</a> / <a href="lock.html">lock</a> / <a href="continuation.html">continuation</a>
+<ul>
+<li><a href="concurrency-hazards.html">Concurrency Hazards: Solving 11 Likely Problems In Your Multithreaded Code</a>
+</li>
+<li><a href="images/single-multi-thread-event-driven.jpg">One picture explain Single-Thread, Multiple-Thread, Event-Driven</a>
+</li>
+</ul>
+
 </li>
 </ul>
 
@@ -363,10 +370,6 @@
 </li>
 <li><a href="large-scale-data-and-computation-chanllenges-and-opportunities.html">Large-Scale Data and Computation: Challenges and Opportunities</a> @Stanford-2013 Jeff Dean
 </li>
-<li><a href="mapreduce-online.html">MapReduce Online</a>
-</li>
-<li><a href="apache-hadoop-goes-realtime-at-facebook.html">Apache Hadoop Goes Realtime at Facebook</a>
-</li>
 <li><a href="designs-lessons-and-advice-from-building-large-distributed-systems.html">Designs, Lessons and Advice from Building Large Distributed Systems</a> @LADIS-2009 Jeff Dean
 </li>
 <li><a href="tail-at-scale.html">The Tail at Scale</a> @2013 CACM Jeff Dean
@@ -386,12 +389,6 @@
 <li><a href="application-resilience-in-a-service-oriented-architecture.html">Application Resilience in a Service-oriented Architecture</a>
 </li>
 <li><a href="building-data-science-teams.html">Building Data Science Teams</a>
-</li>
-<li><a href="the-hadoop-distributed-file-system.html">The Hadoop Distributed File System</a> @2010
-</li>
-<li><a href="hdfs-reliability.html">HDFS Reliability</a> @2008
-</li>
-<li><a href="hdfs-scalability-the-limits-to-growth.html">HDFS scalability: the limits to growth</a> @2010
 </li>
 <li><a href="on-designing-and-deploying-internet-scale-services.html">On Designing and Deploying Internet-Scale Services</a> @2007
 </li>
@@ -413,7 +410,7 @@
 </li>
 <li><a href="lessons-learned-while-working-on-large-scale-server-softwarre.html">Lessons Learned while Working on Large-Scale Server Software</a>
 </li>
-<li><a href="questioning-the-lambda-architecture.html">Questioning the Lambda Architecture</a>
+<li><a href="questioning-the-lambda-architecture.html">Questioning the Lambda Architecture</a> @2014
 </li>
 <li><a href="service-disoriented-architecture.html">Service-Disoriented Architecture</a> 对SOA(和microservices)的反思
 </li>
@@ -425,7 +422,7 @@
 </li>
 <li><a href="what-it-takes-to-run-stack-overflow.html">What it takes to run Stack Overflow</a> @2013.11
 </li>
-<li><a href="mesos-omega-borg-a-survey.html">mesos, omega, borg: a survey</a>
+<li><a href="mesos-omega-borg-a-survey.html">mesos, omega, borg: a survey</a> @2015
 </li>
 <li><a href="what-does-it-take-to-make-google-work-at-scale.html">What does it take to make Google work at scale?</a> @2015
 </li>
@@ -450,13 +447,71 @@
 </li>
 <li><a href="bigtable.html">BigTable</a> Google分布式基础架构的分布式表格系统。
 </li>
-<li><a href="hadoop.html">Hadoop</a> Apache的分布式系统基础架构。Hadoop是这个项目的总称下面包含很多子项目。
+<li><a href="hadoop.html">Hadoop</a> Apache的分布式系统基础架构总称，下面包含许多子项目。
 <ul>
+<li><a href="hadoop-overview.html">Hadoop Overview</a> @ 2012
+</li>
+<li><a href="hadoop-benchmark.html">Hadoop Benchmark</a>
+</li>
+<li><a href="hadoop-definitive-guide.html">Hadoop权威指南(笔记)</a>
+</li>
+<li><a href="best-practices-for-selecting-apache-hadoop-hardware.html">Best Practices for Selecting Apache Hadoop Hardware</a> @2011
+</li>
+<li><a href="the-dark-side-of-hadoop.html">The dark side of Hadoop - BackType Technology</a> @2011
+</li>
+<li><a href="apache-hadoop-goes-realtime-at-facebook.html">Apache Hadoop Goes Realtime at Facebook</a> @2011
+</li>
+<li><a href="is-hadoop-out-of-date.html">Hadoop即将过时了吗？</a> @2012
+</li>
+</ul>
+
+</li>
 <li><a href="hdfs.html">HDFS</a> Apache Hadoop项目的分布式文件系统，<a href="gfs.html">GFS</a> 的开源实现。
+<ul>
+<li><a href="the-hadoop-distributed-file-system.html">The Hadoop Distributed File System</a> @2010
+</li>
+<li><a href="hdfs-reliability.html">HDFS Reliability</a> @2008
+</li>
+<li><a href="hdfs-scalability-the-limits-to-growth.html">HDFS scalability: the limits to growth</a> @2010
+</li>
+<li><a href="hdfs-reliability-with-namenode-and-avatarnode.html">Hadoop Distributed Filesystem reliability with Namenode and Avatarnode</a> @2012
+</li>
+<li><a href="ha-namenode-for-hdfs-with-hadoop1.html">HA Namenode for HDFS with Hadoop 1.0</a> @2012
+</li>
+<li><a href="hadoop-io-files.html">Hadoop I/O: Sequence, Map, Set, Array, BloomMap Files</a> @2011
+</li>
+<li><a href="why-not-raid0-in-hdfs.html">Why not RAID-0? It’s about Time and Snowflakes</a> @2012
+</li>
+</ul>
+
 </li>
 <li><a href="hbase.html">HBase</a> Apache Hadoop项目的分布式表格系统，<a href="bigtable.html">BigTable</a> 的开源实现。
+<ul>
+<li><a href="hbase-definitive-guide.html">HBase权威指南(笔记)</a>
+</li>
+<li><a href="hbase-configuration.html">Apache HBase Configuration</a>
+</li>
+<li><a href="hbase-write-path.html">HBase Write Path</a> @ 2012
+</li>
+<li><a href="hbase-log-splitting.html">HBase Log Splitting</a> @2012
+</li>
+<li><a href="alibaba-hbase-practice.html">阿里HBase业务设计实践</a> @ 2012
+</li>
+<li><a href="using-hbase-with-iomemory.html">Using HBase with ioMemory</a> by fusion-io
+</li>
+</ul>
+
 </li>
 <li><a href="mapred.html">MapReduce</a> Apache Hadoop项目的分布式计算系统，<a href="mapreduce.html">MapReduce</a> 的开源实现。
+<ul>
+<li><a href="mapreduce-online.html">MapReduce Online</a> @2010
+</li>
+<li><a href="7-tips-for-improving-mapreduce-performance.html">7 Tips for Improving MapReduce Performance</a> @2009
+</li>
+<li><a href="mapreduce-patterns-algos-and-use-cases.html">MapReduce Patterns, Algorithms, and Use Cases</a> @2012
+</li>
+</ul>
+
 </li>
 <li><a href="zookeeper.html">ZooKeeper</a> Apache Hadoop项目的分布式锁服务，<a href="chubby.html">Chubby</a> 的开源实现。
 </li>
@@ -466,14 +521,23 @@
 </li>
 <li><a href="pig.html">Pig</a> Apache Hadoop项目的计算语言，用于简化MapReduce任务的编写。事实上底层可以很多其他的计算引擎比如Spark等。
 </li>
-</ul>
-
-</li>
 <li><a href="dremel.html">Dremel</a> Google针对大数据查询的交互式系统，传说可以在3秒内搞定PB级别的数据。
 </li>
 <li><a href="impala.html">Impala</a> Cloudera的大规模数据实时查询系统，可以认为是Google的 <a href="dremel.html">Dremel</a> 的开源实现。
+<ul>
+<li><a href="cloudera-impala-real-time-queries-in-apache-hadoop-for-real.html">Cloudera Impala: Real-Time Queries in Apache Hadoop, For Real</a> @2012
+</li>
+</ul>
+
 </li>
 <li><a href="druid.html">Druid</a> MetaMarket的大规模数据实时查询系统，可以认为是Google的 <a href="dremel.html">Dremel</a> 的开源实现。
+<ul>
+<li><a href="intro-druid-real-time-analytics-at-a-billion-rows-per-second.html">Introducing Druid: Real-Time Analytics at a Billion Rows Per Second</a> @2011
+</li>
+<li><a href="druid-part-deux-three-principles-for-fast-dist-olap.html">Druid, Part Deux: Three Principles for Fast, Distributed OLAP</a> @2011
+</li>
+</ul>
+
 </li>
 <li><a href="power-drill.html">PowerDrill</a> Google有一个数据实时查询系统，针对的数据规模比 <a href="dremel.html">Dremel</a> 要小但是处理速度更快。
 </li>

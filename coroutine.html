@@ -74,13 +74,25 @@
 <ul>
 <li><a href="http://en.wikipedia.org/wiki/Coroutine">Wikipedia Coroutine</a>
 </li>
-<li><a href="http://en.wikipedia.org/wiki/Continuation">Wikipedia Continuation</a>
+<li><a href="http://en.wikipedia.org/wiki/Green_threads">Wikipedia Green Threads</a>
 </li>
-<li><a href="http://en.wikipedia.org/wiki/Green_threads">Wikipedia Green Threads（绿色线程）</a>
+<li><a href="http://www.csl.mtu.edu/cs4411.ck/www/NOTES/non-local-goto/coroutine.html">coroutine过程演示</a>
 </li>
-<li><a href="http://www.gnu.org/software/pth/">GNU portable thread（比较重）</a>
+<li><a href="http://blog.rethinkdb.com/improving-a-large-c-project-with-coroutines">Improving a large C++ project with coroutines</a>
 </li>
-<li><a href="http://www.xmailserver.org/libpcl.html">portable coroutine library(个人比较推荐）</a>
+<li><a href="http://www.csl.mtu.edu/cs4411.ck/www/NOTES/non-local-goto/coroutine.html">Building Coroutines</a>
+</li>
+</ul>
+
+
+
+<hr/>
+<p>
+一些实现
+</p><ul>
+<li><a href="http://www.gnu.org/software/pth/">GNU portable thread</a>
+</li>
+<li><a href="http://www.xmailserver.org/libpcl.html">portable coroutine library</a>
 </li>
 <li><a href="http://software.schmorp.de/pkg/libcoro.html">libcoro</a>
 </li>
@@ -88,21 +100,12 @@
 </li>
 <li><a href="http://code.google.com/p/libconcurrency/">libconcurrency</a>
 </li>
-<li><a href="http://swtch.com/libtask/">libtask（封装了阻塞接口配合coroutine）</a>
+<li><a href="http://swtch.com/libtask/">libtask</a>
 </li>
 <li><a href="http://www.dekorte.com/projects/opensource/libcoroutine/">libcoroutine</a>
 </li>
-<li><a href="http://www.csl.mtu.edu/cs4411.ck/www/NOTES/non-local-goto/coroutine.html">coroutine过程演示（推荐阅读）</a>
-</li>
-<li><a href="http://blog.rethinkdb.com/improving-a-large-c-project-with-coroutines">Improving a large C++ project with coroutines（如何使用coroutine实践）</a>
-</li>
-<li>Building Coroutines <a href="http://www.csl.mtu.edu/cs4411.ck/www/NOTES/non-local-goto/coroutine.html">http://www.csl.mtu.edu/cs4411.ck/www/NOTES/non-local-goto/coroutine.html</a>
-</li>
 </ul>
 
-
-
-<hr/>
 
 <p>
 libpcl里面的co_exit/co_exit_to/co_resume里面存放了caller和restarget这两个变量，表示调用者和应该恢复到的coroutine.但是一旦使用这种实现的话，那么调用者只能够按照stack的方式来调用coroutine,不然函数调用完成返回之后是会存在问题的，但是这样也就失去了coroutine意义了。而co_call还使用了co_exit这个函数，导致整个libpcl可以说不是很可用。不过里面设计上考虑了多线程环境使用了specific,并且使用了co_runner来做trampoline,这个在实现上面是非常巧妙的。此外文档也说了在处理线程的时候需要调用sigaltstack不然信号处理部分可能会和和你的coroutine的stack重合。其实只需要pth里面这些接口即可，create/delete/switch/exit(这个语义通知另外一个coroutine选择另外一个coroutine执行).pth可以看看但是比较大但是仅仅是覆盖thread部分内容(第三推荐)，而libtask涵盖了线程IO网络各个部分也可以看看(第二推荐)。

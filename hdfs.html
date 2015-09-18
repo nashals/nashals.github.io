@@ -76,254 +76,36 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="hdfs.html#sec-1">1 Opinions</a>
-<ul>
-<li><a href="hdfs.html#sec-1-1">1.1 Under the Hood: Hadoop Distributed Filesystem reliability with Namenode and Avatarnode</a></li>
-<li><a href="hdfs.html#sec-1-2">1.2 HA Namenode for HDFS with Hadoop 1.0</a></li>
-<li><a href="hdfs.html#sec-1-3">1.3 Why not RAID-0? It’s about Time and Snowflakes</a></li>
-<li><a href="hdfs.html#sec-1-4">1.4 Hadoop I/O: Sequence, Map, Set, Array, BloomMap Files</a></li>
-<li><a href="hdfs.html#sec-1-5">1.5 The Truth About MapReduce Performance on SSDs</a></li>
-<li><a href="hdfs.html#sec-1-6">1.6 HDFS: Hadoop and Solid State Drive</a></li>
-</ul>
-</li>
-<li><a href="hdfs.html#sec-2">2 Notes</a>
-<ul>
-<li><a href="hdfs.html#sec-2-1">2.1 HDFS Shell</a></li>
-<li><a href="hdfs.html#sec-2-2">2.2 Filesystem Corruption and Missing Blocks</a></li>
-<li><a href="hdfs.html#sec-2-3">2.3 文件系统API</a></li>
-<li><a href="hdfs.html#sec-2-4">2.4 一致性问题</a></li>
-<li><a href="hdfs.html#sec-2-5">2.5 读写进度</a></li>
-<li><a href="hdfs.html#sec-2-6">2.6 获取集群运行状况</a></li>
-<li><a href="hdfs.html#sec-2-7">2.7 All datanodes are bad. Aborting</a></li>
-</ul>
-</li>
+<li><a href="hdfs.html#sec-1">1 HDFS Shell</a></li>
+<li><a href="hdfs.html#sec-2">2 Filesystem Corruption and Missing Blocks</a></li>
+<li><a href="hdfs.html#sec-3">3 文件系统API</a></li>
+<li><a href="hdfs.html#sec-4">4 一致性问题</a></li>
+<li><a href="hdfs.html#sec-5">5 读写进度</a></li>
+<li><a href="hdfs.html#sec-6">6 获取集群运行状况</a></li>
+<li><a href="hdfs.html#sec-7">7 All datanodes are bad. Aborting</a></li>
 </ul>
 </div>
 </div>
 
 <div id="outline-container-1" class="outline-3">
-<h3 id="sec-1"><span class="section-number-3">1</span> Opinions</h3>
+<h3 id="sec-1"><span class="section-number-3">1</span> HDFS Shell</h3>
 <div class="outline-text-3" id="text-1">
 
-
-</div>
-
-<div id="outline-container-1-1" class="outline-4">
-<h4 id="sec-1-1"><span class="section-number-4">1.1</span> Under the Hood: Hadoop Distributed Filesystem reliability with Namenode and Avatarnode</h4>
-<div class="outline-text-4" id="text-1-1">
-
-<p><a href="http://www.facebook.com/notes/facebook-engineering/under-the-hood-hadoop-distributed-filesystem-reliability-with-namenode-and-avata/10150888759153920">http://www.facebook.com/notes/facebook-engineering/under-the-hood-hadoop-distributed-filesystem-reliability-with-namenode-and-avata/10150888759153920</a>
-</p>
-<p>
-fb数据仓库故障有41%是源于HDFS，而如果有reliable namenode解决方案的话那么其中有90%是可以避免的。
-</p>
-<p>
-<img src="images/hdfs-ha-namenode-avatarnode.png"  alt="./images/hdfs-ha-namenode-avatarnode.png" />
-</p>
-<p>
-如果primary NN挂掉的话那么就切换到standby NN. datanode会将自己的status report到两个NN这样standby NN可以得到最新的状态可以使得切换时间更短。切换是通过zk来完成的，两个NN都在zk上面注册节点，client会从zk上了解primary NN对primary NN进行操作。之间的数据同步是通过共享存储来完成的，比如NFS，对于standby NN只需要增量读取操作内容即可。 #note: 大家对担心NFS的稳定性问题，不过我是觉得NFS上面主要是一些namenode上面一些操作的log，吞吐量不会太大而且也不会打开非常多的文件，在这个场景下面还是比较合适的
-</p>
-<p>
-<img src="images/hdfs-avatarnode-view.png"  alt="./images/hdfs-avatarnode-view.png" />
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-2" class="outline-4">
-<h4 id="sec-1-2"><span class="section-number-4">1.2</span> HA Namenode for HDFS with Hadoop 1.0</h4>
-<div class="outline-text-4" id="text-1-2">
-
-<p><a href="http://hortonworks.com/blog/ha-namenode-for-hdfs-with-hadoop-1-0-part-1/">http://hortonworks.com/blog/ha-namenode-for-hdfs-with-hadoop-1-0-part-1/</a>
-</p>
-<p>
-<b>Hadoop1 NameNode HA code failover with LinuxHA</b>
-</p>
-<p>
-<img src="images/hdfs-ha-namenode-cold-failover.png"  alt="./images/hdfs-ha-namenode-cold-failover.png" />
-</p>
 <ul>
-<li>Failover Times and Cold versus Hot Failover
-<ul>
-<li>The failover time of a high available system with active-passive failover is the sum of (1) time to detect that the active service has failed, (2) time to elect a leader and/or for the leader to make a failover decision and communicate to the other party, and (3) the time to transition the standby service to active.
+<li>balancer 可以限制比例阈值和传输带宽
 </li>
-<li>The first and second items are the same for cold or hot failover: they both rely on heartbeat timeouts, monitoring probe timeouts, etc. We have observed that total combined time for failure detection and leader election to range from 30 seconds to 2.5 minutes depending on the kind of failure; the lowest times are typical when the active server’s host or host operating system fails; hung processes take longer due to the grace period needed to be confident that the process is not blocked during Garbage Collection.
-</li>
-<li>For the third item, the time to transition the standby service to active, Hadoop 1 requires starting a second NameNode and for the NameNode to get out of safe mode. In our experiments we have observed the following times:
-<ul>
-<li>A 60 node cluster with 6 million blocks using 300TB raw storage, and 100K files: 30 seconds. Hence total failover time ranges from 1-3 minutes.
-</li>
-<li>A 200 node cluster with 20 million blocks occupying 1PB raw storage and 1 million files: 110 seconds. Hence total failover time ranges from 2.5 to 4.5 minutes.
-</li>
-</ul>
-
-</li>
-</ul>
-
+<li>fsck 检查hdfs文件系统并作修复
 </li>
 </ul>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-1-3" class="outline-4">
-<h4 id="sec-1-3"><span class="section-number-4">1.3</span> Why not RAID-0? It’s about Time and Snowflakes</h4>
-<div class="outline-text-4" id="text-1-3">
-
-<p><a href="http://hortonworks.com/blog/why-not-raid-0-its-about-time-and-snowflakes/">http://hortonworks.com/blog/why-not-raid-0-its-about-time-and-snowflakes/</a>
-</p>
-<ul>
-<li>Reliability
-<ul>
-<li>Before panicking – disk failures are rare. Google’s 2007 paper, Failure Trends in a Large Disk Drive Population, reported that in their datacenters, 1.7% of disks failed in the first year of their life, while three-year-old disks were failing at a rate of 8.6%. About 9% isn’t a good number.（超过三年的硬盘发生问题的概率在9%） 8块超过3年的磁盘同时使用出现问题的概率在1-（1-0.086）^8 = 0.513，这个几率还是相当高的。这个还不是主要的问题，因为JBOD: Just a Box of Disks也会遇到这个问题。
-</li>
-<li>主要问题是，如果一旦一块磁盘出现问题的话，那么所有的磁盘上的数据都需要进行replication.因为RAID0是strip存储的，每个disk上面可能存储一个small block（64KB），而HDFS使用64MB作为block。这就意味着1个HDFS block在10 RAID0 disks上面的话会分摊在10个disk上面，如果一个disk出现问题的话，那么所有的HDFS block都发生损坏就都要进行replication
-</li>
-</ul>
-
-</li>
-<li>Every Disk is a Unique Snowflake
-<ul>
-<li>On RAID-0 Storage the disk accesses go at the rate of the slowest disk. RAID0带宽瓶颈限制在slowest disk上面
-</li>
-<li>The 2011 paper, <a href="http://static.usenix.org/event/hotos11/tech/final_files/Krevat.pdf">Disks Are Like Snowflakes: No Two Are Alike</a>, measured the performance of modern disk drives, and discovered that they can vary in data IO rates by 20%, even when they are all writing to same part of the hard disk.
-</li>
-<li>if you have eight disks, some will be faster than the others, right from day one. And your RAID-0 storage will deliver the performance of the slowest disk right from the day you unpack it from its box and switch it on.
-</li>
-</ul>
-
-</li>
-</ul>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-1-4" class="outline-4">
-<h4 id="sec-1-4"><span class="section-number-4">1.4</span> Hadoop I/O: Sequence, Map, Set, Array, BloomMap Files</h4>
-<div class="outline-text-4" id="text-1-4">
-
-<p><a href="http://blog.cloudera.com/blog/2011/01/hadoop-io-sequence-map-set-array-bloommap-files/">http://blog.cloudera.com/blog/2011/01/hadoop-io-sequence-map-set-array-bloommap-files/</a>
-</p>
-<p>
-SequenceFile存储格式如下
-<img src="images/hdfs-sequence-file-format.png"  alt="./images/hdfs-sequence-file-format.png" />
-</p>
-<p>
-内部有三种可选的存储格式：
-</p><ol>
-<li>“Uncompressed” format
-</li>
-<li>“Record Compressed” format
-</li>
-<li>“Block-Compressed” format
-</li>
-</ol>
-
-
-<p>
-然后使用哪种格式以及元信息是在Header里面标记的
-<img src="images/hdfs-sequence-file-header.png"  alt="./images/hdfs-sequence-file-header.png" />
-</p>
-<p>
-其中metadata部分可以存储这个文件的一些元信息，存储格式也非常简单。key和value只是允许Text格式，并且在创建的时候就需要指定
-<img src="images/hdfs-sequence-file-metadata.png"  alt="./images/hdfs-sequence-file-metadata.png" />
-</p>
-<p>
-至于里面的record/block存储格式如下
-<img src="images/hdfs-sequence-file-record.png"  alt="./images/hdfs-sequence-file-record.png" /> <img src="images/hdfs-sequence-file-block.png"  alt="./images/hdfs-sequence-file-block.png" />
-至于Compress算法，这个在Header里面的Compress Codec Class Name里面就指定了。
-</p>
-
-<hr/>
-
-<p>
-Hadoop SequenceFile is the base data structure for the other types of files, like MapFile, SetFile, ArrayFile and BloomMapFile.
-</p>
-<p>
-<img src="images/hdfs-mapfile-index-data-bloom.png"  alt="./images/hdfs-mapfile-index-data-bloom.png" />
-</p>
-<p>
-MapFile是由两个SequenceFile组成，一个是index文件，一个是data文件。data文件里面的key是顺序存储的，index文件是data中key的部分索引. index的key和data的key相同，而value是这个record在data文件中的偏移，至于这个索引间隔可以通过setIndexInterval来设置。操作的时候会将index全部都读取到内存，然后在index里面所二分查找，然后在data文件里面做顺序查找。 #note: 如果data文件要压缩的话，那么这个边界必须和index对应
-</p>
-<p>
-SetFile是基于MapFile完成的，只不过value = NullWritable
-</p>
-<p>
-ArrayFile也是基于MapFile完成的，只不过key = LongWriatble，然后每次写入都会+1
-</p>
-<p>
-BloomMapFile扩展了MapFile添加了一个bloom文件，存储的是DynamicBloomFilter序列化内容。在判断key是否在MapFile之前，先走BloomFilter.
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-5" class="outline-4">
-<h4 id="sec-1-5"><span class="section-number-4">1.5</span> The Truth About MapReduce Performance on SSDs</h4>
-<div class="outline-text-4" id="text-1-5">
-
-<p><a href="http://blog.cloudera.com/blog/2014/03/the-truth-about-mapreduce-performance-on-ssds/">http://blog.cloudera.com/blog/2014/03/the-truth-about-mapreduce-performance-on-ssds/</a>
-</p>
-<p>
-todo:
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-1-6" class="outline-4">
-<h4 id="sec-1-6"><span class="section-number-4">1.6</span> HDFS: Hadoop and Solid State Drive</h4>
-<div class="outline-text-4" id="text-1-6">
-
-<p><a href="http://hadoopblog.blogspot.com/2012/05/hadoop-and-solid-state-drives.html">http://hadoopblog.blogspot.com/2012/05/hadoop-and-solid-state-drives.html</a>
-</p>
-<p>
-todo:
-</p>
-</div>
 </div>
 
 </div>
 
 <div id="outline-container-2" class="outline-3">
-<h3 id="sec-2"><span class="section-number-3">2</span> Notes</h3>
+<h3 id="sec-2"><span class="section-number-3">2</span> Filesystem Corruption and Missing Blocks</h3>
 <div class="outline-text-3" id="text-2">
-
-
-</div>
-
-<div id="outline-container-2-1" class="outline-4">
-<h4 id="sec-2-1"><span class="section-number-4">2.1</span> HDFS Shell</h4>
-<div class="outline-text-4" id="text-2-1">
-
-<ul>
-<li>balancer
-<ul>
-<li>start-balancer.sh
-</li>
-<li>stop-balancer.sh
-</li>
-<li>#note: 可以限制比例阈值和传输带宽
-</li>
-</ul>
-
-</li>
-<li>fsck
-</li>
-</ul>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-2-2" class="outline-4">
-<h4 id="sec-2-2"><span class="section-number-4">2.2</span> Filesystem Corruption and Missing Blocks</h4>
-<div class="outline-text-4" id="text-2-2">
 
 <ul>
 <li>HadoopRecovery &lt; Storage &lt; TWiki <a href="https://www.opensciencegrid.org/bin/view/Storage/HadoopRecovery">https://www.opensciencegrid.org/bin/view/Storage/HadoopRecovery</a>
@@ -426,9 +208,9 @@ The filesystem under path '/hbase/.corrupt/dp18.umeng.com%3A60020.1349065853563'
 
 </div>
 
-<div id="outline-container-2-3" class="outline-4">
-<h4 id="sec-2-3"><span class="section-number-4">2.3</span> 文件系统API</h4>
-<div class="outline-text-4" id="text-2-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> 文件系统API</h3>
+<div class="outline-text-3" id="text-3">
 
 <p>HDFS文件系统的操作步骤主要如下：
 </p><ul>
@@ -491,9 +273,9 @@ uri = file:///
 
 </div>
 
-<div id="outline-container-2-4" class="outline-4">
-<h4 id="sec-2-4"><span class="section-number-4">2.4</span> 一致性问题</h4>
-<div class="outline-text-4" id="text-2-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> 一致性问题</h3>
+<div class="outline-text-3" id="text-4">
 
 <ul>
 <li>hdfs一致性模型是reader不能够读取到当前被write的block，除非writer调用sync强制进行同步
@@ -520,9 +302,9 @@ uri = file:///
 
 </div>
 
-<div id="outline-container-2-5" class="outline-4">
-<h4 id="sec-2-5"><span class="section-number-4">2.5</span> 读写进度</h4>
-<div class="outline-text-4" id="text-2-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> 读写进度</h3>
+<div class="outline-text-3" id="text-5">
 
 <ul>
 <li>hdfs每次将64KB数据写入datanode pipeline的时候都会调用progress.
@@ -545,9 +327,9 @@ uri = file:///
 
 </div>
 
-<div id="outline-container-2-6" class="outline-4">
-<h4 id="sec-2-6"><span class="section-number-4">2.6</span> 获取集群运行状况</h4>
-<div class="outline-text-4" id="text-2-6">
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> 获取集群运行状况</h3>
+<div class="outline-text-3" id="text-6">
 
 <ul>
 <li>参考代码 <a href="https://github.com/dirtysalt/tomb/blob/master/java/hdfs/src/main/java/com/dirlt/java/hdfs/ClusterSummary.java">com.dirlt.java.hdfs.ClusterSummary</a>
@@ -561,9 +343,9 @@ uri = file:///
 
 </div>
 
-<div id="outline-container-2-7" class="outline-4">
-<h4 id="sec-2-7"><span class="section-number-4">2.7</span> All datanodes are bad. Aborting</h4>
-<div class="outline-text-4" id="text-2-7">
+<div id="outline-container-7" class="outline-3">
+<h3 id="sec-7"><span class="section-number-3">7</span> All datanodes are bad. Aborting</h3>
+<div class="outline-text-3" id="text-7">
 
 <p>当时的情况是增加了datanode的处理线程数目但是没有重启regionserver.怀疑原因可能是文件句柄数量不够，重启regionserver之后恢复正常。
 </p>
@@ -577,7 +359,6 @@ java.io.IOException: All datanodes 10.11.0.41:50010 are bad. Aborting...
         at org.apache.hadoop.hdfs.DFSClient$DFSOutputStream$DataStreamer.run(DFSClient.java:2799)
 </pre>
 
-</div>
 </div>
 </div>
 </div>

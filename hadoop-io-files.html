@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Hadoop I/O: Sequence, Map, Set, Array, BloomMap Files</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="Hadoop I/O: Sequence, Map, Set, Array, BloomMap Files"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="author" content="dirtysalt"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Hadoop I/O: Sequence, Map, Set, Array, BloomMap Files</h1>
+
+<p><a href="http://blog.cloudera.com/blog/2011/01/hadoop-io-sequence-map-set-array-bloommap-files/">http://blog.cloudera.com/blog/2011/01/hadoop-io-sequence-map-set-array-bloommap-files/</a>
+</p>
+<p>
+SequenceFile存储格式如下
+</p>
+<p>
+<img src="images/hdfs-sequence-file-format.png"  alt="./images/hdfs-sequence-file-format.png" />
+</p>
+<p>
+内部有三种可选的存储格式：
+</p><ol>
+<li>“Uncompressed” format
+</li>
+<li>“Record Compressed” format
+</li>
+<li>“Block-Compressed” format
+</li>
+</ol>
+
+
+<p>
+然后使用哪种格式以及元信息是在Header里面标记的
+</p>
+<p>
+<img src="images/hdfs-sequence-file-header.png"  alt="./images/hdfs-sequence-file-header.png" />
+</p>
+<p>
+其中metadata部分可以存储这个文件的一些元信息，存储格式也非常简单。key和value只是允许Text格式，并且在创建的时候就需要指定
+</p>
+<p>
+<img src="images/hdfs-sequence-file-metadata.png"  alt="./images/hdfs-sequence-file-metadata.png" />
+</p>
+<p>
+至于里面的record/block存储格式如下
+</p>
+<p>
+<img src="images/hdfs-sequence-file-record.png"  alt="./images/hdfs-sequence-file-record.png" /> <img src="images/hdfs-sequence-file-block.png"  alt="./images/hdfs-sequence-file-block.png" />
+</p>
+<p>
+至于Compress算法，这个在Header里面的Compress Codec Class Name里面就指定了。
+</p>
+
+<hr/>
+
+<p>
+Hadoop SequenceFile is the base data structure for the other types of files, like MapFile, SetFile, ArrayFile and BloomMapFile.
+</p>
+<p>
+<img src="images/hdfs-mapfile-index-data-bloom.png"  alt="./images/hdfs-mapfile-index-data-bloom.png" />
+</p>
+<p>
+MapFile是由两个SequenceFile组成，一个是index文件，一个是data文件。data文件里面的key是顺序存储的，index文件是data中key的部分索引. index的key和data的key相同，而value是这个record在data文件中的偏移，至于这个索引间隔可以通过setIndexInterval来设置。操作的时候会将index全部都读取到内存，然后在index里面所二分查找，然后在data文件里面做顺序查找。 #note: 如果data文件要压缩的话，那么这个边界必须和index对应
+</p>
+<p>
+SetFile是基于MapFile完成的，只不过value = NullWritable
+</p>
+<p>
+ArrayFile也是基于MapFile完成的，只不过key = LongWriatble，然后每次写入都会+1
+</p>
+<p>
+BloomMapFile扩展了MapFile添加了一个bloom文件，存储的是DynamicBloomFilter序列化内容。在判断key是否在MapFile之前，先走BloomFilter.
+</p></div>
+
+<div id="postamble">
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+
+</div>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'hadoop-io-files.html';var disqus_title = 'hadoop-io-files.html';var disqus_url = 'http://dirlt.com/hadoop-io-files.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
+</html>

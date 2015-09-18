@@ -3,9 +3,9 @@
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>Kafka</title>
+<title>Kafka: a Distributed Messaging System for Log Processing</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="Kafka"/>
+<meta name="title" content="Kafka: a Distributed Messaging System for Log Processing"/>
 <meta name="generator" content="Org-mode"/>
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
@@ -69,51 +69,50 @@
 </div>
 
 <div id="content">
-<h1 class="title">Kafka</h1>
+<h1 class="title">Kafka: a Distributed Messaging System for Log Processing</h1>
 
-<p><a href="http://incubator.apache.org/kafka/">http://incubator.apache.org/kafka/</a>
-</p>
+<ul>
+<li><a href="http://incubator.apache.org/kafka/">http://incubator.apache.org/kafka/</a>
+</li>
+<li><a href="http://research.microsoft.com/en-us/um/people/srikanth/netdb11/netdb11papers/netdb11-final12.pdf">http://research.microsoft.com/en-us/um/people/srikanth/netdb11/netdb11papers/netdb11-final12.pdf</a>
+</li>
+</ul>
+
+
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="kafka.html#sec-1">1 Kafka: a Distributed Messaging System for Log Processing</a>
+<li><a href="kafka.html#sec-1">1 ABSTRACT</a></li>
+<li><a href="kafka.html#sec-2">2 Introduction</a></li>
+<li><a href="kafka.html#sec-3">3 Related Work</a></li>
+<li><a href="kafka.html#sec-4">4 Kafka Architecture and Design Principles</a>
 <ul>
-<li><a href="kafka.html#sec-1-1">1.1 ABSTRACT</a></li>
-<li><a href="kafka.html#sec-1-2">1.2 Introduction</a></li>
-<li><a href="kafka.html#sec-1-3">1.3 Related Work</a></li>
-<li><a href="kafka.html#sec-1-4">1.4 Kafka Architecture and Design Principles</a></li>
-<li><a href="kafka.html#sec-1-5">1.5 Kafka Usage at LinkedIn</a></li>
-<li><a href="kafka.html#sec-1-6">1.6 Experimental Results</a></li>
-<li><a href="kafka.html#sec-1-7">1.7 Conclusion and Future Works</a></li>
+<li><a href="kafka.html#sec-4-1">4.1 Efficiency on a Single Partition</a></li>
+<li><a href="kafka.html#sec-4-2">4.2 Distributed Coordination</a></li>
+<li><a href="kafka.html#sec-4-3">4.3 Delivery Guarantees</a></li>
 </ul>
 </li>
-<li><a href="kafka.html#sec-2">2 Replication Since 0.8</a></li>
+<li><a href="kafka.html#sec-5">5 Kafka Usage at LinkedIn</a></li>
+<li><a href="kafka.html#sec-6">6 Experimental Results</a></li>
+<li><a href="kafka.html#sec-7">7 Conclusion and Future Works</a></li>
+<li><a href="kafka.html#sec-8">8 Replication Since 0.8</a></li>
 </ul>
 </div>
 </div>
 
 <div id="outline-container-1" class="outline-3">
-<h3 id="sec-1"><span class="section-number-3">1</span> Kafka: a Distributed Messaging System for Log Processing</h3>
+<h3 id="sec-1"><span class="section-number-3">1</span> ABSTRACT</h3>
 <div class="outline-text-3" id="text-1">
 
-<p><a href="http://research.microsoft.com/en-us/um/people/srikanth/netdb11/netdb11papers/netdb11-final12.pdf">http://research.microsoft.com/en-us/um/people/srikanth/netdb11/netdb11papers/netdb11-final12.pdf</a>
-</p>
-
-</div>
-
-<div id="outline-container-1-1" class="outline-4">
-<h4 id="sec-1-1"><span class="section-number-4">1.1</span> ABSTRACT</h4>
-<div class="outline-text-4" id="text-1-1">
-
 </div>
 
 </div>
 
-<div id="outline-container-1-2" class="outline-4">
-<h4 id="sec-1-2"><span class="section-number-4">1.2</span> Introduction</h4>
-<div class="outline-text-4" id="text-1-2">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> Introduction</h3>
+<div class="outline-text-3" id="text-2">
 
 <ul>
 <li>Many early systems for processing this kind of data relied on physically scraping log files off production servers for analysis. In recent years, several specialized distributed log aggregators have been built, including Facebook’s Scribe , Yahoo’s Data Highway , and Cloudera’s Flume. Those systems are primarily designed for collecting and loading the log data into a data warehouse or Hadoop for offline consumption. （一些现有的日志系统都是非实时系统，将数据导入到数据仓库或是Hadoop做离线处理）
@@ -134,9 +133,9 @@
 
 </div>
 
-<div id="outline-container-1-3" class="outline-4">
-<h4 id="sec-1-3"><span class="section-number-4">1.3</span> Related Work</h4>
-<div class="outline-text-4" id="text-1-3">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> Related Work</h3>
+<div class="outline-text-3" id="text-3">
 
 <ul>
 <li>Traditional enterprise messaging systems have existed for a long time and often play a critical role as an event bus for processing asynchronous data flows. However, there are a few reasons why they tend not to be a good fit for log processing. （传统的消息系统不适合做日志处理）
@@ -176,9 +175,9 @@
 
 </div>
 
-<div id="outline-container-1-4" class="outline-4">
-<h4 id="sec-1-4"><span class="section-number-4">1.4</span> Kafka Architecture and Design Principles</h4>
-<div class="outline-text-4" id="text-1-4">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> Kafka Architecture and Design Principles</h3>
+<div class="outline-text-3" id="text-4">
 
 <ul>
 <li>We first introduce the basic concepts in Kafka
@@ -236,8 +235,13 @@ for (message : streams[0]) {
 </pre>
 
 
-<ul>
-<li id="sec-1-4-1">Efficiency on a Single Partition<br/>
+
+</div>
+
+<div id="outline-container-4-1" class="outline-4">
+<h4 id="sec-4-1"><span class="section-number-4">4.1</span> Efficiency on a Single Partition</h4>
+<div class="outline-text-4" id="text-4-1">
+
 <ul>
 <li>Simple storage
 <ul>
@@ -287,10 +291,14 @@ for (message : streams[0]) {
 </ul>
 
 
-</li>
-</ul>
-<ul>
-<li id="sec-1-4-2">Distributed Coordination<br/>
+</div>
+
+</div>
+
+<div id="outline-container-4-2" class="outline-4">
+<h4 id="sec-4-2"><span class="section-number-4">4.2</span> Distributed Coordination</h4>
+<div class="outline-text-4" id="text-4-2">
+
 <ul>
 <li>Each producer can publish a message to either a randomly selected partition or a partition semantically determined by a partitioning key and a partitioning function.（procuder可以根据指定partition算法或者是随机选择发送到哪个partition. 就现在来说每个partition只能够在某一个broker上面）
 </li>
@@ -347,10 +355,14 @@ for (message : streams[0]) {
 <p>
 <img src="images/kafka-coordination-algorithm.png"  alt="./images/kafka-coordination-algorithm.png" />
 </p>
-</li>
-</ul>
-<ul>
-<li id="sec-1-4-3">Delivery Guarantees<br/>
+</div>
+
+</div>
+
+<div id="outline-container-4-3" class="outline-4">
+<h4 id="sec-4-3"><span class="section-number-4">4.3</span> Delivery Guarantees</h4>
+<div class="outline-text-4" id="text-4-3">
+
 <ul>
 <li>In general, Kafka only guarantees at-least-once delivery. Exactly- once delivery typically requires two-phase commits and is not necessary for our applications.（至少保证一次投递）
 </li>
@@ -365,15 +377,14 @@ for (message : streams[0]) {
 </ul>
 
 
-</li>
-</ul>
+</div>
 </div>
 
 </div>
 
-<div id="outline-container-1-5" class="outline-4">
-<h4 id="sec-1-5"><span class="section-number-4">1.5</span> Kafka Usage at LinkedIn</h4>
-<div class="outline-text-4" id="text-1-5">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> Kafka Usage at LinkedIn</h3>
+<div class="outline-text-3" id="text-5">
 
 <p><img src="images/kafka-deployment.png"  alt="./images/kafka-deployment.png" />
 </p>
@@ -400,17 +411,17 @@ for (message : streams[0]) {
 
 </div>
 
-<div id="outline-container-1-6" class="outline-4">
-<h4 id="sec-1-6"><span class="section-number-4">1.6</span> Experimental Results</h4>
-<div class="outline-text-4" id="text-1-6">
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> Experimental Results</h3>
+<div class="outline-text-3" id="text-6">
 
 </div>
 
 </div>
 
-<div id="outline-container-1-7" class="outline-4">
-<h4 id="sec-1-7"><span class="section-number-4">1.7</span> Conclusion and Future Works</h4>
-<div class="outline-text-4" id="text-1-7">
+<div id="outline-container-7" class="outline-3">
+<h3 id="sec-7"><span class="section-number-3">7</span> Conclusion and Future Works</h3>
+<div class="outline-text-3" id="text-7">
 
 <p>There are a number of directions that we’d like to pursue in the future.
 </p><ul>
@@ -431,15 +442,16 @@ for (message : streams[0]) {
 
 
 </div>
-</div>
 
 </div>
 
-<div id="outline-container-2" class="outline-3">
-<h3 id="sec-2"><span class="section-number-3">2</span> Replication Since 0.8</h3>
-<div class="outline-text-3" id="text-2">
+<div id="outline-container-8" class="outline-3">
+<h3 id="sec-8"><span class="section-number-3">8</span> Replication Since 0.8</h3>
+<div class="outline-text-3" id="text-8">
 
-<p>据说从0.8开始支持replication. 粗略地阅读了一下主页上的 <a href="http://kafka.apache.org/documentation.html">documentation</a> , 把一些比较关键东西记录下来。
+
+<p>
+据说从0.8开始支持replication. 粗略地阅读了一下主页上的 <a href="http://kafka.apache.org/documentation.html">documentation</a> , 把一些比较关键东西记录下来。
 </p>
 <p>
 除了replication之外，提供了两个高级功能：a. Consumer Offset Tracking（记录consumer当前消费位置） b. Log Compaction.（将日志文件中相同key的message进行合并压缩）
@@ -458,6 +470,7 @@ replication实现方式大致是这样的：
 <li>如果一个broker挂掉的话，迁移决策过程是由另外一个broker来代理完成的，这个broker称为controller.
 </li>
 </ol>
+
 
 </div>
 </div>

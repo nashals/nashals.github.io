@@ -76,264 +76,53 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="mapred.html#sec-1">1 Opinions</a>
+<li><a href="mapred.html#sec-1">1 Scheduler</a></li>
+<li><a href="mapred.html#sec-2">2 hadoop-lzo</a>
 <ul>
-<li><a href="mapred.html#sec-1-1">1.1 HowManyMapsAndReduces - Hadoop Wiki</a></li>
-<li><a href="mapred.html#sec-1-2">1.2 7 Tips for Improving MapReduce Performance | Apache Hadoop for the Enterprise | Cloudera</a></li>
-<li><a href="mapred.html#sec-1-3">1.3 MapReduce Patterns, Algorithms, and Use Cases | Highly Scalable Blog</a></li>
+<li><a href="mapred.html#sec-2-1">2.1 安装配置</a></li>
+<li><a href="mapred.html#sec-2-2">2.2 使用lzo</a></li>
+<li><a href="mapred.html#sec-2-3">2.3 配合protobuf</a></li>
 </ul>
 </li>
-<li><a href="mapred.html#sec-2">2 Scheduler</a></li>
-<li><a href="mapred.html#sec-3">3 Notes</a>
+<li><a href="mapred.html#sec-3">3 多路输入</a>
 <ul>
-<li><a href="mapred.html#sec-3-1">3.1 hadoop-lzo</a>
-<ul>
-<li><a href="mapred.html#sec-3-1-1">3.1.1 安装配置</a></li>
-<li><a href="mapred.html#sec-3-1-2">3.1.2 使用lzo</a></li>
-<li><a href="mapred.html#sec-3-1-3">3.1.3 配合protobuf</a></li>
+<li><a href="mapred.html#sec-3-1">3.1 MultipleInputs</a></li>
+<li><a href="mapred.html#sec-3-2">3.2 MultipleTableInputFormat</a></li>
 </ul>
 </li>
-<li><a href="mapred.html#sec-3-2">3.2 多路输入</a>
+<li><a href="mapred.html#sec-4">4 多路输出</a>
 <ul>
-<li><a href="mapred.html#sec-3-2-1">3.2.1 MultipleInputs</a></li>
-<li><a href="mapred.html#sec-3-2-2">3.2.2 MultipleTableInputFormat</a></li>
+<li><a href="mapred.html#sec-4-1">4.1 MultipleOutputs</a></li>
+<li><a href="mapred.html#sec-4-2">4.2 MultipleTableOutputFormat</a></li>
 </ul>
 </li>
-<li><a href="mapred.html#sec-3-3">3.3 多路输出</a>
+<li><a href="mapred.html#sec-5">5 获取集群运行状况</a></li>
+<li><a href="mapred.html#sec-6">6 OutOfMemoryError</a></li>
+<li><a href="mapred.html#sec-7">7 topology rack awareness</a></li>
+<li><a href="mapred.html#sec-8">8 streaming</a></li>
+<li><a href="mapred.html#sec-9">9 Too many fetch-failures</a></li>
+<li><a href="mapred.html#sec-10">10 blacklist</a></li>
+<li><a href="mapred.html#sec-11">11 磁盘空间</a></li>
+<li><a href="mapred.html#sec-12">12 getMapOutput failed</a>
 <ul>
-<li><a href="mapred.html#sec-3-3-1">3.3.1 MultipleOutputs</a></li>
-<li><a href="mapred.html#sec-3-3-2">3.3.2 MultipleTableOutputFormat</a></li>
+<li><a href="mapred.html#sec-12-1">12.1 normal case</a></li>
+<li><a href="mapred.html#sec-12-2">12.2 bas case</a></li>
 </ul>
 </li>
-<li><a href="mapred.html#sec-3-4">3.4 获取集群运行状况</a></li>
-<li><a href="mapred.html#sec-3-5">3.5 OutOfMemoryError</a></li>
-<li><a href="mapred.html#sec-3-6">3.6 topology rack awareness</a></li>
-<li><a href="mapred.html#sec-3-7">3.7 streaming</a></li>
-<li><a href="mapred.html#sec-3-8">3.8 Too many fetch-failures</a></li>
-<li><a href="mapred.html#sec-3-9">3.9 blacklist</a></li>
-<li><a href="mapred.html#sec-3-10">3.10 磁盘空间</a></li>
-<li><a href="mapred.html#sec-3-11">3.11 getMapOutput failed</a>
+<li><a href="mapred.html#sec-13">13 Error initializing</a>
 <ul>
-<li><a href="mapred.html#sec-3-11-1">3.11.1 normal case</a></li>
-<li><a href="mapred.html#sec-3-11-2">3.11.2 bas case</a></li>
+<li><a href="mapred.html#sec-13-1">13.1 No such file or directory</a></li>
 </ul>
 </li>
-<li><a href="mapred.html#sec-3-12">3.12 Error initializing</a>
-<ul>
-<li><a href="mapred.html#sec-3-12-1">3.12.1 No such file or directory</a></li>
-</ul>
-</li>
-<li><a href="mapred.html#sec-3-13">3.13 shuffleInMemory OutOfMemoryError</a></li>
-</ul>
-</li>
-<li><a href="mapred.html#sec-4">4 ReadingCode</a>
-<ul>
-<li><a href="mapred.html#sec-4-1">4.1 task heartbeat</a></li>
-<li><a href="mapred.html#sec-4-2">4.2 Partitioner</a></li>
-<li><a href="mapred.html#sec-4-3">4.3 shuffle in memory</a></li>
-<li><a href="mapred.html#sec-4-4">4.4 lzo index format</a>
-<ul>
-<li><a href="mapred.html#sec-4-4-1">4.4.1 DistributedLzoIndexer</a></li>
-<li><a href="mapred.html#sec-4-4-2">4.4.2 LzoTextInputFormat</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><a href="mapred.html#sec-14">14 shuffleInMemory OutOfMemoryError</a></li>
+<li><a href="mapred.html#sec-15">15 HowManyMapsAndReduces</a></li>
 </ul>
 </div>
 </div>
 
 <div id="outline-container-1" class="outline-3">
-<h3 id="sec-1"><span class="section-number-3">1</span> Opinions</h3>
+<h3 id="sec-1"><span class="section-number-3">1</span> Scheduler</h3>
 <div class="outline-text-3" id="text-1">
-
-
-</div>
-
-<div id="outline-container-1-1" class="outline-4">
-<h4 id="sec-1-1"><span class="section-number-4">1.1</span> HowManyMapsAndReduces - Hadoop Wiki</h4>
-<div class="outline-text-4" id="text-1-1">
-
-<p><a href="http://wiki.apache.org/hadoop/HowManyMapsAndReduces">http://wiki.apache.org/hadoop/HowManyMapsAndReduces</a>
-</p>
-<p>
-Number of Maps：
-</p><ul>
-<li>The number of maps is usually driven by the number of DFS blocks in the input files. Although that causes people to adjust their DFS block size to adjust the number of maps. (map数量通常都是由输入文件的blocks决定的，因此可以通过调整blocksize来调整map的数量）
-</li>
-<li>The right level of parallelism for maps seems to be around 10-100 maps/node, although we have taken it up to 300 or so for very cpu-light map tasks. Task setup takes awhile, so it is best if the maps take at least a minute to execute. （因为map启动需要花费一些时间，因此map执行时间最好至少1min不然overhead太高。通常map数量是在10-100/node但是如果cpu-light的话那么可以设置到300左右）
-</li>
-<li>The number of map tasks can also be increased manually using the JobConf's conf.setNumMapTasks(int num). This can be used to increase the number of map tasks, but will not set the number below that which Hadoop determines via splitting the input data. （使用API可以增加map数量但是却不能够减少）
-</li>
-</ul>
-
-
-<p>
-Number of Reduces：
-</p><ul>
-<li>The right number of reduces seems to be 0.95 or 1.75 * (nodes * mapred.tasktracker.tasks.maximum). At 0.95 all of the reduces can launch immediately and start transfering map outputs as the maps finish. At 1.75 the faster nodes will finish their first round of reduces and launch a second round of reduces doing a much better job of load balancing. （将reduce数量设置在允许同时运行最大reduce数量的0.95/1.75. 0.95可以让map完成之后所有reduce都可以理解启动就传输数据，而1.75的话可以让比较快的节点在第一轮就运算完成，而在第二轮做更好的load-balance)
-</li>
-<li>The number of reduces also controls the number of output files in the output directory, but usually that is not important because the next map/reduce step will split them into even smaller splits for the maps. (虽然reduce数量会影响到输出文件的数量，但是通常并不重要）
-</li>
-<li>The number of reduce tasks can also be increased in the same way as the map tasks, via JobConf's conf.setNumReduceTasks(int num). （可以设置reduce数目）
-</li>
-</ul>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-1-2" class="outline-4">
-<h4 id="sec-1-2"><span class="section-number-4">1.2</span> 7 Tips for Improving MapReduce Performance | Apache Hadoop for the Enterprise | Cloudera</h4>
-<div class="outline-text-4" id="text-1-2">
-
-<p><a href="http://blog.cloudera.com/blog/2009/12/7-tips-for-improving-mapreduce-performance/">http://blog.cloudera.com/blog/2009/12/7-tips-for-improving-mapreduce-performance/</a>
-</p>
-<ul>
-<li>Configure your cluster correctly
-<ul>
-<li>文件系统取消 noatime 属性。
-</li>
-<li>使用JBOD而不是用RAID或者是LVM，尤其是在TT和DN上。
-</li>
-<li>mapred.local.dir and dfs.data.dir
-</li>
-<li>If you find that a particular TaskTracker becomes blacklisted on many job invocations, it may have a failing drive.
-</li>
-<li>If you see swap being used, reduce the amount of RAM allocated to each task in mapred.child.java.opts.
-</li>
-</ul>
-
-</li>
-<li>Use LZO Compression
-</li>
-<li>Tune the number of map and reduce tasks appropriately
-<ul>
-<li>distcp -Ddfs.block.size=$[256*1024*1024] /path/to/inputdata /path/to/inputdata-with-largeblocks 可以修改block size.
-</li>
-</ul>
-
-</li>
-<li>Write a Combiner
-<ul>
-<li>A job performs aggregation of some sort, and the Reduce input groups counter is significantly smaller than the Reduce input records counter. 这个场景非常适合使用combiner. input records非常多但是groups非常少。
-</li>
-<li>The number of spilled records is many times larger than the number of map output records as seen in the Job counters.
-</li>
-</ul>
-
-</li>
-<li>Use the most appropriate and compact Writable type for your data
-</li>
-<li>Reuse Writables 重用序列化对象
-<ul>
-<li>Add -verbose:gc -XX:+PrintGCDetails to mapred.child.java.opts. Then inspect the logs for some tasks. If garbage collection is frequent and represents a lot of time, you may be allocating unnecessary objects. 观察GC情况
-</li>
-<li>it may not bring you a gain for every job, but if you’re low on memory it can make a huge difference. 重用序列化对象可以减少内存分配次数，显著改善GC带来的影响
-</li>
-</ul>
-
-</li>
-<li>Use “Poor Man’s Profiling” to see what your tasks are doing
-</li>
-</ul>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-1-3" class="outline-4">
-<h4 id="sec-1-3"><span class="section-number-4">1.3</span> MapReduce Patterns, Algorithms, and Use Cases | Highly Scalable Blog</h4>
-<div class="outline-text-4" id="text-1-3">
-
-<p><a href="http://highlyscalable.wordpress.com/2012/02/01/mapreduce-patterns/">http://highlyscalable.wordpress.com/2012/02/01/mapreduce-patterns/</a>
-</p>
-<p>
-<a href="http://blog.nosqlfan.com/html/4179.html">http://blog.nosqlfan.com/html/4179.html</a>
-</p>
-<ul>
-<li>基本MapReduce模式
-<ul>
-<li>计数与求和 # 在mapper里面使用hashmap以及使用combiner来减少传输数据量
-</li>
-<li>整理归类 # 类似倒排索引性质
-</li>
-<li>过滤 (文本查找)，解析和校验 # 每个mapper单独处理
-</li>
-<li>分布式任务执行 # mapper处理小任务使用一个reducer做汇总
-</li>
-<li>排序 # 使用CompositeKey,Group来做扩展
-</li>
-</ul>
-
-</li>
-<li>非基本MapReduce模式
-<ul>
-<li>迭代消息传递 (图处理) # 多轮迭代物化每轮中间结果
-</li>
-<li>值去重 （对唯一项计数） # 扩展排序
-</li>
-<li>互相关
-</li>
-</ul>
-
-</li>
-<li>用MapReduce表达关系模式
-<ul>
-<li>筛选（Selection）
-</li>
-<li>投影（Projection）
-</li>
-<li>合并（Union）
-</li>
-<li>交集（Intersection）
-</li>
-<li>差异（Difference）
-</li>
-<li>分组聚合（GroupBy and Aggregation）
-</li>
-<li>连接（Joining）
-<ul>
-<li>分配后连接 （Reduce端连接,排序-合并连接）
-</li>
-<li>复制链接Replicated Join （Mapper端连接, Hash 连接） # 一路数据作为hashmap存放在mapper里面做连接
-</li>
-<li><a href="http://www.inf.ed.ac.uk/publications/thesis/online/IM100859.pdf">Join Algorithms using Map/Reduce</a>
-</li>
-<li><a href="mapred.html#Optimizing-Joins-in-a-MapReduce-Environment">Optimizing Joins in a MapReduce Environment</a>
-</li>
-</ul>
-
-</li>
-</ul>
-
-</li>
-<li>reference
-<ul>
-<li>C. T. Chu et al provides an excellent description of  machine learning algorithms for MapReduce in the article Map-Reduce for Machine Learning on Multicore.
-</li>
-<li>FFT using MapReduce:  <a href="http://www.slideshare.net/hortonworks/large-scale-math-with-hadoop-mapreduce">http://www.slideshare.net/hortonworks/large-scale-math-with-hadoop-mapreduce</a>
-</li>
-<li>MapReduce for integer factorization: <a href="http://www.javiertordable.com/files/MapreduceForIntegerFactorization.pdf">http://www.javiertordable.com/files/MapreduceForIntegerFactorization.pdf</a>
-</li>
-<li>Matrix multiplication with MapReduce: <a href="http://csl.skku.edu/papers/CS-TR-2010-330.pdf">http://csl.skku.edu/papers/CS-TR-2010-330.pdf</a> and <a href="http://www.norstad.org/matrix-multiply/index.html">http://www.norstad.org/matrix-multiply/index.html</a>
-</li>
-</ul>
-
-</li>
-</ul>
-
-
-</div>
-</div>
-
-</div>
-
-<div id="outline-container-2" class="outline-3">
-<h3 id="sec-2"><span class="section-number-3">2</span> Scheduler</h3>
-<div class="outline-text-3" id="text-2">
 
 <ul>
 <li>Fair Scheduler Guide <a href="http://archive.cloudera.com/cdh/3/hadoop/fair_scheduler.html">http://archive.cloudera.com/cdh/3/hadoop/fair_scheduler.html</a>
@@ -355,23 +144,16 @@ Number of Reduces：
 
 </div>
 
-<div id="outline-container-3" class="outline-3">
-<h3 id="sec-3"><span class="section-number-3">3</span> Notes</h3>
-<div class="outline-text-3" id="text-3">
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2"><span class="section-number-3">2</span> hadoop-lzo</h3>
+<div class="outline-text-3" id="text-2">
 
 
 </div>
 
-<div id="outline-container-3-1" class="outline-4">
-<h4 id="sec-3-1"><span class="section-number-4">3.1</span> hadoop-lzo</h4>
-<div class="outline-text-4" id="text-3-1">
-
-
-</div>
-
-<div id="outline-container-3-1-1" class="outline-5">
-<h5 id="sec-3-1-1"><span class="section-number-5">3.1.1</span> 安装配置</h5>
-<div class="outline-text-5" id="text-3-1-1">
+<div id="outline-container-2-1" class="outline-4">
+<h4 id="sec-2-1"><span class="section-number-4">2.1</span> 安装配置</h4>
+<div class="outline-text-4" id="text-2-1">
 
 <ul>
 <li>安装liblzo2库，sudo apt-get install liblzo2-2(liblzo2-dev)
@@ -429,9 +211,9 @@ Number of Reduces：
 
 </div>
 
-<div id="outline-container-3-1-2" class="outline-5">
-<h5 id="sec-3-1-2"><span class="section-number-5">3.1.2</span> 使用lzo</h5>
-<div class="outline-text-5" id="text-3-1-2">
+<div id="outline-container-2-2" class="outline-4">
+<h4 id="sec-2-2"><span class="section-number-4">2.2</span> 使用lzo</h4>
+<div class="outline-text-4" id="text-2-2">
 
 <p>关于如何使用lzo可以参看代码示例 <a href="https://github.com/dirtysalt/tomb/blob/master/java/mr/src/main/java/com/dirlt/java/mr/ReadLzoInput.java">com.dirlt.java.mr.ReadLzoInput</a>. 下面几点需要说明：
 </p><ul>
@@ -483,9 +265,9 @@ Number of Reduces：
 
 </div>
 
-<div id="outline-container-3-1-3" class="outline-5">
-<h5 id="sec-3-1-3"><span class="section-number-5">3.1.3</span> 配合protobuf</h5>
-<div class="outline-text-5" id="text-3-1-3">
+<div id="outline-container-2-3" class="outline-4">
+<h4 id="sec-2-3"><span class="section-number-4">2.3</span> 配合protobuf</h4>
+<div class="outline-text-4" id="text-2-3">
 
 <p>elephant-bird实现了protobuf+lzo组合使用方式。
 </p>
@@ -582,16 +364,16 @@ message Message {
 
 </div>
 
-<div id="outline-container-3-2" class="outline-4">
-<h4 id="sec-3-2"><span class="section-number-4">3.2</span> 多路输入</h4>
-<div class="outline-text-4" id="text-3-2">
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3"><span class="section-number-3">3</span> 多路输入</h3>
+<div class="outline-text-3" id="text-3">
 
 
 </div>
 
-<div id="outline-container-3-2-1" class="outline-5">
-<h5 id="sec-3-2-1"><span class="section-number-5">3.2.1</span> MultipleInputs</h5>
-<div class="outline-text-5" id="text-3-2-1">
+<div id="outline-container-3-1" class="outline-4">
+<h4 id="sec-3-1"><span class="section-number-4">3.1</span> MultipleInputs</h4>
+<div class="outline-text-4" id="text-3-1">
 
 <ul>
 <li>参考代码 <a href="https://github.com/dirtysalt/tomb/blob/master/java/mr/src/main/java/com/dirlt/java/mr/RunMultipleInputs1.java">com.dirlt.java.mr.RunMultipleInputs1</a>
@@ -629,9 +411,9 @@ message Message {
 
 </div>
 
-<div id="outline-container-3-2-2" class="outline-5">
-<h5 id="sec-3-2-2"><span class="section-number-5">3.2.2</span> MultipleTableInputFormat</h5>
-<div class="outline-text-5" id="text-3-2-2">
+<div id="outline-container-3-2" class="outline-4">
+<h4 id="sec-3-2"><span class="section-number-4">3.2</span> MultipleTableInputFormat</h4>
+<div class="outline-text-4" id="text-3-2">
 
 <ul>
 <li>参考代码 <a href="https://github.com/dirtysalt/tomb/blob/master/java/mr/src/main/java/com/dirlt/java/mr/RunMultipleInputs2.java">com.dirlt.java.mr.RunMultipleInputs2</a>
@@ -685,16 +467,16 @@ message Message {
 
 </div>
 
-<div id="outline-container-3-3" class="outline-4">
-<h4 id="sec-3-3"><span class="section-number-4">3.3</span> 多路输出</h4>
-<div class="outline-text-4" id="text-3-3">
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> 多路输出</h3>
+<div class="outline-text-3" id="text-4">
 
 
 </div>
 
-<div id="outline-container-3-3-1" class="outline-5">
-<h5 id="sec-3-3-1"><span class="section-number-5">3.3.1</span> MultipleOutputs</h5>
-<div class="outline-text-5" id="text-3-3-1">
+<div id="outline-container-4-1" class="outline-4">
+<h4 id="sec-4-1"><span class="section-number-4">4.1</span> MultipleOutputs</h4>
+<div class="outline-text-4" id="text-4-1">
 
 <ul>
 <li>参考代码 <a href="https://github.com/dirtysalt/tomb/blob/master/java/mr/src/main/java/com/dirlt/java/mr/RunMultipleOutputs.java">com.dirlt.java.mr.RunMultipleOutputs</a>
@@ -728,9 +510,9 @@ message Message {
 
 </div>
 
-<div id="outline-container-3-3-2" class="outline-5">
-<h5 id="sec-3-3-2"><span class="section-number-5">3.3.2</span> MultipleTableOutputFormat</h5>
-<div class="outline-text-5" id="text-3-3-2">
+<div id="outline-container-4-2" class="outline-4">
+<h4 id="sec-4-2"><span class="section-number-4">4.2</span> MultipleTableOutputFormat</h4>
+<div class="outline-text-4" id="text-4-2">
 
 <ul>
 <li>参考代码 <a href="https://github.com/dirtysalt/tomb/blob/master/java/mr/src/main/java/com/dirlt/java/mr/RunMultipleTableOutput.java">com.dirlt.java.mr.RunMultipleTableOutput</a>
@@ -754,9 +536,9 @@ message Message {
 
 </div>
 
-<div id="outline-container-3-4" class="outline-4">
-<h4 id="sec-3-4"><span class="section-number-4">3.4</span> 获取集群运行状况</h4>
-<div class="outline-text-4" id="text-3-4">
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="section-number-3">5</span> 获取集群运行状况</h3>
+<div class="outline-text-3" id="text-5">
 
 <ul>
 <li>参考代码 <a href="https://github.com/dirtysalt/tomb/blob/master/java/mr/src/main/java/com/dirlt/java/mr/ClusterSummary.java">com.dirlt.java.mr.ClusterSummary</a>
@@ -770,9 +552,9 @@ message Message {
 
 </div>
 
-<div id="outline-container-3-5" class="outline-4">
-<h4 id="sec-3-5"><span class="section-number-4">3.5</span> OutOfMemoryError</h4>
-<div class="outline-text-4" id="text-3-5">
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> OutOfMemoryError</h3>
+<div class="outline-text-3" id="text-6">
 
 <ul>
 <li>hadoop的mapreduce作业中经常出现Java heap space解决方案 <a href="http://blog.sina.com.cn/s/blog_6345041c01011bjq.html">http://blog.sina.com.cn/s/blog_6345041c01011bjq.html</a>
@@ -804,9 +586,9 @@ message Message {
 
 </div>
 
-<div id="outline-container-3-6" class="outline-4">
-<h4 id="sec-3-6"><span class="section-number-4">3.6</span> topology rack awareness</h4>
-<div class="outline-text-4" id="text-3-6">
+<div id="outline-container-7" class="outline-3">
+<h3 id="sec-7"><span class="section-number-3">7</span> topology rack awareness</h3>
+<div class="outline-text-3" id="text-7">
 
 <p>有两种方式实现，主要是实现DNS-name/IP到network path映射，network path是如下格式的字符串
 </p><ul>
@@ -837,9 +619,9 @@ message Message {
 
 </div>
 
-<div id="outline-container-3-7" class="outline-4">
-<h4 id="sec-3-7"><span class="section-number-4">3.7</span> streaming</h4>
-<div class="outline-text-4" id="text-3-7">
+<div id="outline-container-8" class="outline-3">
+<h3 id="sec-8"><span class="section-number-3">8</span> streaming</h3>
+<div class="outline-text-3" id="text-8">
 
 <ul>
 <li>Hadoop Streaming <a href="http://hadoop.apache.org/docs/r1.1.2/streaming.html">http://hadoop.apache.org/docs/r1.1.2/streaming.html</a>
@@ -908,9 +690,9 @@ streaming允许用户使用脚本来编写mapper/reducer，使用stdin/stdout作
 
 </div>
 
-<div id="outline-container-3-8" class="outline-4">
-<h4 id="sec-3-8"><span class="section-number-4">3.8</span> Too many fetch-failures</h4>
-<div class="outline-text-4" id="text-3-8">
+<div id="outline-container-9" class="outline-3">
+<h3 id="sec-9"><span class="section-number-3">9</span> Too many fetch-failures</h3>
+<div class="outline-text-3" id="text-9">
 
 <p>集群中出现job中少数几个任务卡在reduce的copy阶段，并且这几个任务都是在同一个机器执行。tasktracker log日志如下： <b>可以看到有两个task,49和50</b>
 </p>
@@ -1133,9 +915,9 @@ Heap
 
 </div>
 
-<div id="outline-container-3-9" class="outline-4">
-<h4 id="sec-3-9"><span class="section-number-4">3.9</span> blacklist</h4>
-<div class="outline-text-4" id="text-3-9">
+<div id="outline-container-10" class="outline-3">
+<h3 id="sec-10"><span class="section-number-3">10</span> blacklist</h3>
+<div class="outline-text-3" id="text-10">
 
 <ul>
 <li><a href="http://www.mapr.com/doc/display/MapR/TaskTracker+Blacklisting">http://www.mapr.com/doc/display/MapR/TaskTracker+Blacklisting</a>
@@ -1198,9 +980,9 @@ Heap
 
 </div>
 
-<div id="outline-container-3-10" class="outline-4">
-<h4 id="sec-3-10"><span class="section-number-4">3.10</span> 磁盘空间</h4>
-<div class="outline-text-4" id="text-3-10">
+<div id="outline-container-11" class="outline-3">
+<h3 id="sec-11"><span class="section-number-3">11</span> 磁盘空间</h3>
+<div class="outline-text-3" id="text-11">
 
 <p>随着我们以5T/day数据量曾长，很多机器磁盘都已经出现饱和情况（可能是某个data目录已经饱和），对我们的tasktracker也造成了一定的影响。我抽取了了今天所有挂掉的tt来做post-mortem. 结果是这样的。其中有几个tt前几天已经是被blacklist的。这些机器有 dp24,dp31,dp34,dp36,dp41. 我们后续对磁盘规划的话，一定需要预留一部分磁盘空间出来给tt（不知道现在是否预留足够），另外一个就是我们调研一下如何tt是否可以强制清理，自己腾出一部分磁盘空间。
 </p>
@@ -1312,9 +1094,9 @@ none             24G     0   24G   0% /run/shm
 
 </div>
 
-<div id="outline-container-3-11" class="outline-4">
-<h4 id="sec-3-11"><span class="section-number-4">3.11</span> getMapOutput failed</h4>
-<div class="outline-text-4" id="text-3-11">
+<div id="outline-container-12" class="outline-3">
+<h3 id="sec-12"><span class="section-number-3">12</span> getMapOutput failed</h3>
+<div class="outline-text-3" id="text-12">
 
 <ul>
 <li><a href="http://stackoverflow.com/questions/10799143/hadoop-mapreduce-getmapoutput-failed">http://stackoverflow.com/questions/10799143/hadoop-mapreduce-getmapoutput-failed</a> (bad case)
@@ -1327,9 +1109,9 @@ none             24G     0   24G   0% /run/shm
 
 </div>
 
-<div id="outline-container-3-11-1" class="outline-5">
-<h5 id="sec-3-11-1"><span class="section-number-5">3.11.1</span> normal case</h5>
-<div class="outline-text-5" id="text-3-11-1">
+<div id="outline-container-12-1" class="outline-4">
+<h4 id="sec-12-1"><span class="section-number-4">12.1</span> normal case</h4>
+<div class="outline-text-4" id="text-12-1">
 
 <p>dp41上面出现如下错误日志，可以看到dp41在作为map output server时候，dp16从这些取数据但是失败，并且可以分析
 </p><ul>
@@ -1536,25 +1318,25 @@ Reduce input records    321,140,243
 
 </div>
 
-<div id="outline-container-3-11-2" class="outline-5">
-<h5 id="sec-3-11-2"><span class="section-number-5">3.11.2</span> bas case</h5>
-<div class="outline-text-5" id="text-3-11-2">
+<div id="outline-container-12-2" class="outline-4">
+<h4 id="sec-12-2"><span class="section-number-4">12.2</span> bas case</h4>
+<div class="outline-text-4" id="text-12-2">
 
 </div>
 </div>
 
 </div>
 
-<div id="outline-container-3-12" class="outline-4">
-<h4 id="sec-3-12"><span class="section-number-4">3.12</span> Error initializing</h4>
-<div class="outline-text-4" id="text-3-12">
+<div id="outline-container-13" class="outline-3">
+<h3 id="sec-13"><span class="section-number-3">13</span> Error initializing</h3>
+<div class="outline-text-3" id="text-13">
 
 
 </div>
 
-<div id="outline-container-3-12-1" class="outline-5">
-<h5 id="sec-3-12-1"><span class="section-number-5">3.12.1</span> No such file or directory</h5>
-<div class="outline-text-5" id="text-3-12-1">
+<div id="outline-container-13-1" class="outline-4">
+<h4 id="sec-13-1"><span class="section-number-4">13.1</span> No such file or directory</h4>
+<div class="outline-text-4" id="text-13-1">
 
 <p>dp31出现如下日志，这个过程是非常诡异的。从stacktrace上面可以看到过程是在创建job directory时候正要修改权限，但是文件找不到了。从dp31的df -h可以看到剩余磁盘空间如下
 </p>
@@ -1625,9 +1407,9 @@ ENOENT: No such file or directory
 
 </div>
 
-<div id="outline-container-3-13" class="outline-4">
-<h4 id="sec-3-13"><span class="section-number-4">3.13</span> shuffleInMemory OutOfMemoryError</h4>
-<div class="outline-text-4" id="text-3-13">
+<div id="outline-container-14" class="outline-3">
+<h3 id="sec-14"><span class="section-number-3">14</span> shuffleInMemory OutOfMemoryError</h3>
+<div class="outline-text-3" id="text-14">
 
 <ul>
 <li>Users - Shuffle In Memory OutOfMemoryError : <a href="http://hadoop-common.472056.n3.nabble.com/Shuffle-In-Memory-OutOfMemoryError-td433197.html">http://hadoop-common.472056.n3.nabble.com/Shuffle-In-Memory-OutOfMemoryError-td433197.html</a>
@@ -1648,561 +1430,39 @@ ENOENT: No such file or directory
 <p>
 将参数mapred.job.shuffle.input.buffer.percent设置成为0.2或者是更小。关于这个问题实际上应该是一个bug，framework应该是能够智能决定shuffle在memory还是在disk上面的。可以参考代码分析一节的shuffle in memory.
 </p></div>
-</div>
 
 </div>
 
-<div id="outline-container-4" class="outline-3">
-<h3 id="sec-4"><span class="section-number-3">4</span> ReadingCode</h3>
-<div class="outline-text-3" id="text-4">
+<div id="outline-container-15" class="outline-3">
+<h3 id="sec-15"><span class="section-number-3">15</span> HowManyMapsAndReduces</h3>
+<div class="outline-text-3" id="text-15">
 
-
-</div>
-
-<div id="outline-container-4-1" class="outline-4">
-<h4 id="sec-4-1"><span class="section-number-4">4.1</span> task heartbeat</h4>
-<div class="outline-text-4" id="text-4-1">
-
-<ul>
-<li>task不管是mapper还是reducer，和mr框架相关的内容都包含在了Context里面。
-</li>
-<li>Context初始化里面需要传入一个Reporter类，这个类主要用来和tasktracker汇报信息。Reporter本身是一个抽象类，一个具体实现类有TaskReporter
-</li>
-<li>TaskReporter本身实现了一个run方法，代码里面可以看到在和tasktracker通信。如果任务每个完成的话，那么会不断检查sendProgress这个标志位，这个标志位也被progress方法设置.
-</li>
-<li>在MapTask以及ReduceTask里面的run方法，首先会创建reporter对象并且启动（startCommunicationThread），然后执行具体的map或者是reduce过程。（runNewMapper/runNewReducer） ，最后回到了Context.run
-</li>
-<li>在Context.run里面本质工作是在不断地读取kv然后交给appcode来进行处理，在每次调用nextKeyValue里面，实际上调用了report.progress方法。
-</li>
-</ul>
-
-<p>简单地来说，有单独的汇报线程，然后在mapper以及reducer里面每次读取一个kv的话都会调用progress，之后汇报线程就可以向tasktracker汇报状态。因此如果自己某个任务耗时过长的话，可以调用context.progress().
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-4-2" class="outline-4">
-<h4 id="sec-4-2"><span class="section-number-4">4.2</span> Partitioner</h4>
-<div class="outline-text-4" id="text-4-2">
-
-<p>将kv分配到哪个reduce上，接口是
-</p>
-
-
-<pre class="src src-Java">public abstract int getPartition(KEY key, VALUE value, int numPartitions);
-</pre>
-
-<ul>
-<li>key/value是输入的kv
-</li>
-<li>numPartitions是有总共多少reduce
-</li>
-</ul>
-
-
-<p>
-通常我们可能不设置这个partitioner,所以我们需要知道默认实现是HashPartitioner
-</p>
-
-
-<pre class="src src-Java">public int getPartition(K key, V value,
-                        int numReduceTasks) {
-  return (key.hashCode() &amp; Integer.MAX_VALUE) % numReduceTasks;
-}
-</pre>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-4-3" class="outline-4">
-<h4 id="sec-4-3"><span class="section-number-4">4.3</span> shuffle in memory</h4>
-<div class="outline-text-4" id="text-4-3">
-
-<ul>
-<li>Users - Shuffle In Memory OutOfMemoryError : <a href="http://hadoop-common.472056.n3.nabble.com/Shuffle-In-Memory-OutOfMemoryError-td433197.html">http://hadoop-common.472056.n3.nabble.com/Shuffle-In-Memory-OutOfMemoryError-td433197.html</a>
-</li>
-</ul>
-
-<p>framework会比较智能地决定shuffle应该在memory还是在disk上面完成。ReduckTask:getMapOutput里面调用ramManager.canFitInMemory(decompressedLength);判断是否可以在内存里面做shuffle.
+<p><a href="http://wiki.apache.org/hadoop/HowManyMapsAndReduces">http://wiki.apache.org/hadoop/HowManyMapsAndReduces</a>
 </p>
 <p>
-这个函数比较简单，主要是和maxSingleShuffleLimit来做对比。
-</p>
-
-
-<pre class="src src-Java">boolean canFitInMemory(long requestedSize) {
-        return (requestedSize &lt; Integer.MAX_VALUE &amp;&amp;
-                requestedSize &lt; maxSingleShuffleLimit);
-      }
-</pre>
-
-
-<p>
-这个值的计算代码如下
-</p>
-
-
-<pre class="src src-Java">public ShuffleRamManager(Configuration conf) throws IOException {
-  final float maxInMemCopyUse =
-    conf.getFloat(<span class="org-string">"mapred.job.shuffle.input.buffer.percent"</span>, 0.70f);
-  if (maxInMemCopyUse &gt; 1.0 || maxInMemCopyUse &lt; 0.0) {
-    throw new IOException(<span class="org-string">"mapred.job.shuffle.input.buffer.percent"</span> +
-                          maxInMemCopyUse);
-  }
-  // Allow unit tests to fix Runtime memory
-  maxSize = (int)(conf.getInt(<span class="org-string">"mapred.job.reduce.total.mem.bytes"</span>,
-      (int)Math.min(Runtime.getRuntime().maxMemory(), Integer.MAX_VALUE))
-    * maxInMemCopyUse);
-  maxSingleShuffleLimit = (long)(maxSize * MAX_SINGLE_SHUFFLE_SEGMENT_FRACTION);
-  LOG.info(<span class="org-string">"ShuffleRamManager: MemoryLimit="</span> + maxSize +
-           <span class="org-string">", MaxSingleShuffleLimit="</span> + maxSingleShuffleLimit);
-}
-</pre>
-
-<ul>
-<li>maxInMemCopyUse shuffle占用内存的比率
-</li>
-<li>maxSize 单个shuffle允许使用内存上限
-</li>
-<li>maxSingleShuffleLimit 考虑到多个shuffle并行，所以需要乘一个比率  MAX_SINGLE_SHUFFLE_SEGMENT_FRACTION = 0.25f
-</li>
-</ul>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-4-4" class="outline-4">
-<h4 id="sec-4-4"><span class="section-number-4">4.4</span> lzo index format</h4>
-<div class="outline-text-4" id="text-4-4">
-
-<p>主要分析elephant-bird的lzo index方面的代码，了解原理之后就可以做一些简单的扩展或者以此为参考做一些索引工作。分析包含几个实现文件
+Number of Maps：
 </p><ul>
-<li>DistributedLzoIndexer // 在lzo文件上建立索引index文件，是一个MapReduce任务。因为lzo本身是不可切割的，建立索引文件之后就可以切分开了。
+<li>The number of maps is usually driven by the number of DFS blocks in the input files. Although that causes people to adjust their DFS block size to adjust the number of maps. (map数量通常都是由输入文件的blocks决定的，因此可以通过调整blocksize来调整map的数量）
 </li>
-<li>LzoTextInputFormat // 如何配合index文件来读取lzo文件。相对LzoProtobufBlockInputFormat这些实现来说，LzoTextInputFormat比较简单，但是原理是类似的，差别就是判断使用什么类型来进一步做反序列化。
+<li>The right level of parallelism for maps seems to be around 10-100 maps/node, although we have taken it up to 300 or so for very cpu-light map tasks. Task setup takes awhile, so it is best if the maps take at least a minute to execute. （因为map启动需要花费一些时间，因此map执行时间最好至少1min不然overhead太高。通常map数量是在10-100/node但是如果cpu-light的话那么可以设置到300左右）
 </li>
-</ul>
-
-
-
-</div>
-
-<div id="outline-container-4-4-1" class="outline-5">
-<h5 id="sec-4-4-1"><span class="section-number-5">4.4.1</span> DistributedLzoIndexer</h5>
-<div class="outline-text-5" id="text-4-4-1">
-
-<ul>
-<li>调用walkPath尝试得到所有的输入文件，使用nonTemporaryFilter来过滤临时文件，然后添加到job输入路径里面。
-</li>
-<li>mapred.map.tasks.speculative.execution = false 关闭预测执行。
-</li>
-<li>mapper没有做任何事情就是直接输出输入，没有reducer. 工作主要集中在LzoSplitInputFormat和LzoIndexOutputFormat这两个类上。
-</li>
-<li>output key = Path, output value = LongWritable，key表示输入的文件，value表示每个lzo可以decompress的起始offset.
+<li>The number of map tasks can also be increased manually using the JobConf's conf.setNumMapTasks(int num). This can be used to increase the number of map tasks, but will not set the number below that which Hadoop determines via splitting the input data. （使用API可以增加map数量但是却不能够减少）
 </li>
 </ul>
 
 
-
-<hr/>
 <p>
-先说说LzoIndexOutputFormat这个类，writer是LzoIndexRecordWriter。这个writer没有做什么特别的事情.在开始的时候建立临时的index文件，
-</p>
-
-
-<pre class="src src-Java">private FSDataOutputStream setupOutputFile(Path path) throws IOException {
-  fs = path.getFileSystem(context.getConfiguration());
-  inputPath = path;
-
-  // For /a/b/c.lzo, tmpIndexPath = /a/b/c.lzo.index.tmp,
-  // and it is moved to realIndexPath = /a/b/c.lzo.index upon completion.
-  tmpIndexPath = path.suffix(LzoIndex.LZO_TMP_INDEX_SUFFIX);
-  realIndexPath = path.suffix(LzoIndex.LZO_INDEX_SUFFIX);
-
-  // Delete the old index files if they exist.
-  fs.delete(tmpIndexPath, false);
-  fs.delete(realIndexPath, false);
-
-  return fs.create(tmpIndexPath, false);
-}
-</pre>
-
-
-<p>
-然后不断地写入offset
-</p>
-
-
-<pre class="src src-Java">@Override
-public void write(Path path, LongWritable offset) throws IOException, InterruptedException {
-  if (outputStream == null) {
-    // Set up the output file on the first record.
-    LOG.info(<span class="org-string">"Setting up output stream to write index file for "</span> + path);
-    outputStream = setupOutputFile(path);
-  }
-  offset.write(outputStream);
-}
-
-</pre>
-
-
-<p>
-销毁的时候rename成为index文件
-</p>
-
-
-<pre class="src src-Java">@Override
-public void close(TaskAttemptContext taskAttemptContext) throws IOException, InterruptedException {
-  if (outputStream != null) {
-    // Close the output stream so that the tmp file is synced, then move it.
-    outputStream.close();
-
-    LOG.info(<span class="org-string">"In close, now renaming "</span> + tmpIndexPath + <span class="org-string">" to final location "</span> + realIndexPath);
-    // Rename, indexing completed.
-    fs.rename(tmpIndexPath, realIndexPath);
-  }
-}
-</pre>
-
-
-
-<hr/>
-<p>
-主要工作还是在LzoSplitInputFormat上面。记住这个input format给出的key是Path，value是offset. 主要工作也是LzoSplitRecordReader完成的。从代码上来看，主要的两个函数分别是
+Number of Reduces：
 </p><ul>
-<li>initialize. 这个函数会初始化lzo decompressor input stream用来准备读数据，并且首先读取一些元信息。
+<li>The right number of reduces seems to be 0.95 or 1.75 * (nodes * mapred.tasktracker.tasks.maximum). At 0.95 all of the reduces can launch immediately and start transfering map outputs as the maps finish. At 1.75 the faster nodes will finish their first round of reduces and launch a second round of reduces doing a much better job of load balancing. （将reduce数量设置在允许同时运行最大reduce数量的0.95/1.75. 0.95可以让map完成之后所有reduce都可以理解启动就传输数据，而1.75的话可以让比较快的节点在第一轮就运算完成，而在第二轮做更好的load-balance)
 </li>
-<li>nextKeyValue. 这个函数则用input stream来读数据。但是注意实际上它只是在寻找split point，也就是block boundary. 这个算法和lzo压缩格式本身相关。
+<li>The number of reduces also controls the number of output files in the output directory, but usually that is not important because the next map/reduce step will split them into even smaller splits for the maps. (虽然reduce数量会影响到输出文件的数量，但是通常并不重要）
 </li>
-<li>#note: 注意这个input format是unsplitable的
-</li>
-</ul>
-
-
-
-
-<pre class="src src-Java">@Override
-protected boolean isSplitable(JobContext context, Path filename) {
-  // Force the files to be unsplittable, because indexing requires seeing all the
-  // compressed blocks in succession.
-  return false;
-}
-</pre>
-
-
-<p>
-先看initialize代码
-</p>
-
-
-<pre class="src src-Java">@Override
-public void initialize(InputSplit genericSplit, TaskAttemptContext taskAttemptContext) throws IOException {
-  context = taskAttemptContext;
-  FileSplit fileSplit = (FileSplit)genericSplit;
-  lzoFile = fileSplit.getPath();
-  // The LzoSplitInputFormat is not splittable, so the split length is the whole file.
-  totalFileSize = fileSplit.getLength();
-
-  // Jump through some hoops to create the lzo codec.
-  Configuration conf = context.getConfiguration();
-  CompressionCodecFactory factory = new CompressionCodecFactory(conf);
-  CompressionCodec codec = factory.getCodec(lzoFile);
-  ((Configurable)codec).setConf(conf);
-
-  LzopDecompressor lzopDecompressor = (LzopDecompressor)codec.createDecompressor();
-  FileSystem fs = lzoFile.getFileSystem(conf);
-  rawInputStream = fs.open(lzoFile);
-
-  // Creating the LzopInputStream here just reads the lzo header for us, nothing more.
-  // We do the rest of our input off of the raw stream is.
-  codec.createInputStream(rawInputStream, lzopDecompressor);
-
-  // This must be called AFTER createInputStream is called, because createInputStream
-  // is what reads the header, which has the checksum information.  Otherwise getChecksumsCount
-  // erroneously returns zero, and all block offsets will be wrong.
-  numCompressedChecksums = lzopDecompressor.getCompressedChecksumsCount();
-  numDecompressedChecksums = lzopDecompressor.getDecompressedChecksumsCount();
-}
-</pre>
-
-<p>
-最后面的checksum是指，对于compressed block有几个checksum, 对于decompressed block有几个checksum.
-</p>
-<p>
-然后是nextKeyValue代码
-</p>
-
-
-<pre class="src src-Java">@Override
-public boolean nextKeyValue() throws IOException {
-  int uncompressedBlockSize = rawInputStream.readInt();
-  if (uncompressedBlockSize == 0) {
-    // An uncompressed block size of zero means end of file.
-    return false;
-  } else if (uncompressedBlockSize &lt; 0) {
-    throw new EOFException(<span class="org-string">"Could not read uncompressed block size at position "</span> +
-                           rawInputStream.getPos() + <span class="org-string">" in file "</span> + lzoFile);
-  }
-
-  int compressedBlockSize = rawInputStream.readInt();
-  if (compressedBlockSize &lt;= 0) {
-    throw new EOFException(<span class="org-string">"Could not read compressed block size at position "</span> +
-                           rawInputStream.getPos() + <span class="org-string">" in file "</span> + lzoFile);
-  }
-
-  // See LzopInputStream.getCompressedData
-  boolean isUncompressedBlock = (uncompressedBlockSize == compressedBlockSize);
-  int numChecksumsToSkip = isUncompressedBlock ?
-          numDecompressedChecksums : numDecompressedChecksums + numCompressedChecksums;
-
-  // Get the current position.  Since we've read two ints, the current block started 8 bytes ago.
-  long pos = rawInputStream.getPos();
-  curValue.set(pos - 8);
-  // Seek beyond the checksums and beyond the block data to the beginning of the next block.
-  rawInputStream.seek(pos + compressedBlockSize + (4 * numChecksumsToSkip));
-  ++numBlocksRead;
-
-  // Log some progress every so often.
-  if (numBlocksRead % LOG_EVERY_N_BLOCKS == 0) {
-    LOG.info(<span class="org-string">"Reading block "</span> + numBlocksRead + <span class="org-string">" at pos "</span> + pos + <span class="org-string">" of "</span> + totalFileSize + <span class="org-string">". Read is "</span> +
-             (100.0 * getProgress()) + <span class="org-string">"% done. "</span>);
-  }
-
-  return true;
-}
-</pre>
-
-<p>
-从代码里面可以推测格式了
-</p><ul>
-<li>未压缩大小（4字节）
-</li>
-<li>压缩大小（4字节）
-</li>
-<li>数据 + checksum count
-<ul>
-<li>如果未压缩大小 == 压缩大小，那么checksum count == numDecompressedChecksums
-</li>
-<li>如果未压缩大小 != 压缩大小，那么checksum count == numDecompressedChecksums + numCompressedChecksums
-</li>
-<li>每个checksum是4字节
-</li>
-</ul>
-
+<li>The number of reduce tasks can also be increased in the same way as the map tasks, via JobConf's conf.setNumReduceTasks(int num). （可以设置reduce数目）
 </li>
 </ul>
 
 
-<p>
-提供key和value函数就是
-</p>
-
-
-<pre class="src src-Java">@Override
-public Path getCurrentKey() {
-  return lzoFile;
-}
-
-@Override
-public LongWritable getCurrentValue() {
-  return curValue;
-}
-</pre>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-4-4-2" class="outline-5">
-<h5 id="sec-4-4-2"><span class="section-number-5">4.4.2</span> LzoTextInputFormat</h5>
-<div class="outline-text-5" id="text-4-4-2">
-
-<p>首先说明一下大致逻辑
-</p><ul>
-<li>初始化的时候会尝试读取输入lzo文件对应的index,保存在map里面。key是Path,value是LzoIndex对象。
-</li>
-<li>尝试判断文件是否可分割的时候，判断Path是否有对应的LzoIndex对象。如果有的话说明有对应的index文件，那么就是可切割的，否则就不可切割。
-</li>
-<li>getSplits阶段首先调用TextInputFormat根据splitsize来对文件切分。很明显就这个切分来说不一定能够完全解压缩。得到这个切分之后查询LzoIndex对象，round到可以切割的offset.
-</li>
-<li>得到可以自解压缩的block之后，使用LzoLineRecordReader创建decompressor input stream就可以输入了。
-</li>
-</ul>
-
-
-<p>
-后面结合代码看看。首先初始化阶段调用listStatus预处理所有的输入文件
-</p>
-
-
-<pre class="src src-Java">private final Map&lt;Path, LzoIndex&gt; indexes = new HashMap&lt;Path, LzoIndex&gt;();
-
-@Override
-protected List&lt;FileStatus&gt; listStatus(JobContext job) throws IOException {
-  List&lt;FileStatus&gt; files = super.listStatus(job);
-
-  Configuration conf = job.getConfiguration();
-  boolean ignoreNonLzo = LzoInputFormatCommon.getIgnoreNonLzoProperty(conf);
-
-  for (Iterator&lt;FileStatus&gt; iterator = files.iterator(); iterator.hasNext();) {
-    FileStatus fileStatus = iterator.next();
-    Path file = fileStatus.getPath();
-    FileSystem fs = file.getFileSystem(conf);
-
-    if (!LzoInputFormatCommon.isLzoFile(file.toString())) {
-      // Get rid of non-LZO files, unless the conf explicitly tells us to
-      // keep them.
-      // However, always skip over files that end with <span class="org-string">".lzo.index"</span>, since
-      // they are not part of the input.
-      if (ignoreNonLzo || LzoInputFormatCommon.isLzoIndexFile(file.toString())) {
-        iterator.remove();
-      }
-    } else {
-      //read the index file
-      LzoIndex index = LzoIndex.readIndex(fs, file);
-      indexes.put(file, index);
-    }
-  }
-
-  return files;
-}
-</pre>
-
-<p>
-可以看到LzoIndex.readIndex会读取对应的index文件。具体LzoIndex里面存储是什么东西呢？其实里面存储的就是顺序排列的offset. 这个类里面最重要的两个方法是下面两个，可以用来round到可切割的offset.
-</p>
-
-
-<pre class="src src-Java">/**
- * Nudge a given file slice start to the nearest LZO block start no earlier than
- * the current slice start.
- *
- * @param start The current slice start
- * @param end The current slice end
- * @return The smallest block offset in the index between [start, end), or
- *         NOT_FOUND if there is none such.
- */
-public long alignSliceStartToIndex(long start, long end) {
-  if (start != 0) {
-    // find the next block position from
-    // the start of the split
-    long newStart = findNextPosition(start);
-    if (newStart == NOT_FOUND || newStart &gt;= end) {
-      return NOT_FOUND;
-    }
-    start = newStart;
-  }
-  return start;
-}
-
-/**
- * Nudge a given file slice end to the nearest LZO block end no earlier than
- * the current slice end.
- *
- * @param end The current slice end
- * @param fileSize The size of the file, i.e. the max end position.
- * @return The smallest block offset in the index between [end, fileSize].
- */
-public long alignSliceEndToIndex(long end, long fileSize) {
-  long newEnd = findNextPosition(end);
-  if (newEnd != NOT_FOUND) {
-    end = newEnd;
-  } else {
-    // didn't find the next position
-    // we have hit the end of the file
-    end = fileSize;
-  }
-  return end;
-}
-
-/**
- * Find the next lzo block start from the given position.
- *
- * @param pos The position to start looking from.
- * @return Either the start position of the block or -1 if it couldn't be found.
- */
-public long findNextPosition(long pos) {
-  int block = Arrays.binarySearch(blockPositions_, pos);
-
-  if (block &gt;= 0) {
-    // direct hit on a block start position
-    return blockPositions_[block];
-  } else {
-    block = Math.abs(block) - 1;
-    if (block &gt; blockPositions_.length - 1) {
-      return NOT_FOUND;
-    }
-    return blockPositions_[block];
-  }
-}
-</pre>
-
-
-<p>
-然后看看getSplits代码
-</p>
-
-
-<pre class="src src-Java">@Override
-public List&lt;InputSplit&gt; getSplits(JobContext job) throws IOException {
-  List&lt;InputSplit&gt; splits = super.getSplits(job);
-  Configuration conf = job.getConfiguration();
-  // find new start/ends of the filesplit that aligns
-  // with the lzo blocks
-
-  List&lt;InputSplit&gt; result = new ArrayList&lt;InputSplit&gt;();
-
-  for (InputSplit genericSplit : splits) {
-    FileSplit fileSplit = (FileSplit) genericSplit;
-    Path file = fileSplit.getPath();
-    FileSystem fs = file.getFileSystem(conf);
-
-    if (!LzoInputFormatCommon.isLzoFile(file.toString())) {
-      // non-LZO file, keep the input split as is.
-      result.add(fileSplit);
-      continue;
-    }
-
-    // LZO file, try to split if the .index file was found
-    LzoIndex index = indexes.get(file);
-    if (index == null) {
-      throw new IOException(<span class="org-string">"Index not found for "</span> + file);
-    }
-
-    if (index.isEmpty()) {
-      // empty index, keep as is
-      result.add(fileSplit);
-      continue;
-    }
-
-    long start = fileSplit.getStart();
-    long end = start + fileSplit.getLength();
-
-    long lzoStart = index.alignSliceStartToIndex(start, end);
-    long lzoEnd = index.alignSliceEndToIndex(end, fs.getFileStatus(file).getLen());
-
-    if (lzoStart != LzoIndex.NOT_FOUND  &amp;&amp; lzoEnd != LzoIndex.NOT_FOUND) {
-      result.add(new FileSplit(file, lzoStart, lzoEnd - lzoStart, fileSplit.getLocations()));
-    }
-  }
-
-  return result;
-}
-</pre>
-
-<p>
-整个过程就非常清晰了。fileSplit.getStart()和fileSplit.getLength()是原始分片，如果按照这个信息是不能够解压缩的。但是在LzoIndex的帮助下面定位到了lzoStart和lzoEnd, 这个区间内的数据是可以自解压缩的。
-</p>
-
-
-</div>
-</div>
 </div>
 </div>
 </div>
