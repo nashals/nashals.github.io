@@ -86,7 +86,8 @@
 <ul>
 <li><a href="vagrant.html#sec-1">1 Getting Started</a></li>
 <li><a href="vagrant.html#sec-2">2 启动多台虚拟机</a></li>
-<li><a href="vagrant.html#sec-3">3 Troubleshooting</a></li>
+<li><a href="vagrant.html#sec-3">3 invalid byte sequence in UTF-8 (Argument Error)</a></li>
+<li><a href="vagrant.html#sec-4">4 Connection timeout. Retrying</a></li>
 </ul>
 </div>
 </div>
@@ -164,14 +165,10 @@ end
 </div>
 
 <div id="outline-container-3" class="outline-3">
-<h3 id="sec-3"><span class="section-number-3">3</span> Troubleshooting</h3>
+<h3 id="sec-3"><span class="section-number-3">3</span> invalid byte sequence in UTF-8 (Argument Error)</h3>
 <div class="outline-text-3" id="text-3">
 
-
-<hr/>
-
-<p>
-添加box时候出现如下错误
+<p>添加box时候出现如下错误
 </p>
 
 
@@ -220,11 +217,15 @@ end
 <p>
 解决办法是删除~/.vagrant.d/目录（或者是删除里面部分文件应该也行）
 </p>
+</div>
 
-<hr/>
+</div>
 
-<p>
-启动box时候出现如下错误，说明虚拟机一直没有成功启动
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4"><span class="section-number-3">4</span> Connection timeout. Retrying</h3>
+<div class="outline-text-3" id="text-4">
+
+<p>启动box时候出现如下错误，说明虚拟机一直没有成功启动
 </p>
 
 

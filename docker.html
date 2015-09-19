@@ -89,15 +89,11 @@
 <div id="text-table-of-contents">
 <ul>
 <li><a href="docker.html#sec-1">1 Introduction</a></li>
-<li><a href="docker.html#sec-2">2 Commands</a></li>
+<li><a href="docker.html#sec-2">2 Command</a></li>
 <li><a href="docker.html#sec-3">3 Data Container</a></li>
 <li><a href="docker.html#sec-4">4 Dockerfile</a></li>
-<li><a href="docker.html#sec-5">5 Notes</a>
-<ul>
-<li><a href="docker.html#sec-5-1">5.1 assign static ip to container</a></li>
-<li><a href="docker.html#sec-5-2">5.2 Understanding Docker</a></li>
-</ul>
-</li>
+<li><a href="docker.html#sec-5">5 assign static ip to container</a></li>
+<li><a href="docker.html#sec-6">6 Understanding Docker</a></li>
 </ul>
 </div>
 </div>
@@ -116,25 +112,15 @@
 </ul>
 
 
-
 <p>
-简单地说docker就是允许将应用运行所需要的环境打包，这样可以很容易地对应用进行分发以及部署。
+docker允许将应用运行所需要的环境打包，这样可以很容易地对应用进行分发以及部署。
 </p>
 <p>
-docker有三种方式运行:
-</p><ul>
-<li>作为一个守护进程来管理你的linux主机上的LXC容器（sudo docker -d）
-</li>
-<li>作为一个命令行的方式来告诉docker进程的程序接口来做什么（docker run &hellip;）
-</li>
-<li>作为一个仓库的客户端让你分享你搭建的环境(docker pull,docker commit)
-</li>
-</ul>
-
-
-
-<hr/>
-
+docker使用cs架构，所以即使在本地运行也需要启动一个daemon server进程 `sudo service docker [command]` 或者是 `sudo docker -d &amp;`. 然后docker大部分使用方式都是集中在client上.
+</p>
+<p>
+默认server使用unix:///var/run/docker.sock做通信，因为这个文件owner是root，所以所有docker命令必须以sudo开头。如果修改这个文件的owner为普通用户(或将自己加入docker组)的话就可以不用sudo开头。我们虽然可以在配置文件/etc/default/docker里面修改默认通信地址，但是这样的话所有docker命令都要添加-H来指定通讯方式，比较繁琐.
+</p>
 <p>
 docker底层可以使用virtualbox(开销大，可以使用其他内核), 也可以使用lxc(轻量，必须使用本地内核). 如果使用lxc的话必须确保linux内核支持，使用下面命令来升级内核
 </p>
@@ -142,7 +128,6 @@ docker底层可以使用virtualbox(开销大，可以使用其他内核), 也可
 
 <pre class="example">#安装内核
 sudo apt-get install linux-image-generic-lts-raring linux-headers-generic-lts-raring
-
 #重启
 sudo reboot
 </pre>
@@ -177,35 +162,18 @@ Container format. Docker combines these components into a wrapper we call a cont
 </pre>
 
 
-
-<hr/>
-
-<p>
-docker使用cs架构，所以即使在本地运行也需要启动一个daemon的docker server进程
-</p><ul>
-<li>sudo service docker [command]
-</li>
-<li>sudo docker -d &amp;
-</li>
-</ul>
-
-<p>默认server使用unix:///var/run/docker.sock做通信，因为这个文件owner是root，所以所有docker命令必须以sudo开头。如果修改这个文件的owner为普通用户（或将自己加入docker组）的话就可以不用sudo开头。
-</p>
-<p>
-可以在配置文件/etc/default/docker里面修改默认通信地址，但是这样的话所有docker命令都要添加-H来指定通讯方式，比较繁琐.
-</p>
-<p>
-docker大部分使用方式都是集中在client上. 每个命令都有非常多的参数可以使用，可以man docker-&lt;command&gt;比如man docker-run. 关于docker server命令可以man docker.
-</p>
 </div>
 
 </div>
 
 <div id="outline-container-2" class="outline-3">
-<h3 id="sec-2"><span class="section-number-3">2</span> Commands</h3>
+<h3 id="sec-2"><span class="section-number-3">2</span> Command</h3>
 <div class="outline-text-3" id="text-2">
 
-<p>下面是docker client所有命令。大部分命令都是自描述的。
+<p><b>overview</b>
+</p>
+<p>
+下面是docker client所有命令。大部分命令都是自描述的。
 </p>
 
 
@@ -315,10 +283,8 @@ comments on some commands
 </ul>
 
 
-
-<hr/>
 <p>
-docker-run
+<b>docker-run</b>
 </p>
 <p>
 Run a process in a new container. docker run starts a process with its own file system, its own networking, and its own isolated process tree. The IMAGE which starts the process may define defaults related to the process that will be run in the container, the networking to expose, and more, but docker run gives final control to the operator or administrator who starts the container from the image.  For that reason docker run has more options than any other Docker command. If the IMAGE is not already loaded then docker run will pull the IMAGE, and all image dependencies, from the repository in the same way running docker pull IMAGE, before it starts the container from that image. （用于启动容器。image本身可能已经包含了一些文件系统以及网络还有独立进程，但是用户也可以改写这些选项。如果image在本地不存在的话就会尝试从远端拉下来）
@@ -407,10 +373,8 @@ Run a process in a new container. docker run starts a process with its own file 
 </ul>
 
 
-
-<hr/>
 <p>
-docker-inspect
+<b>docker-inspect</b>
 </p>
 <p>
 inspect可以看到container和image内部具体信息。下面是一个container inspection的输出
@@ -599,15 +563,8 @@ inspect可以看到container和image内部具体信息。下面是一个containe
 
 
 <p>
-data-container相对直接mount本地目录作为data-volume这种方式有两个好处：
-</p><ul>
-<li>数据也可以作为独立的container分发以及部署
-</li>
-<li>解决本地目录权限问题
-</li>
-</ul>
-
-
+data-container相对直接mount本地目录作为data-volume这种方式有两个好处：1. 数据可以作为独立的container分发以及部署. 2 解决本地目录权限问题
+</p>
 
 
 
@@ -640,7 +597,9 @@ Dockerfile格式很简单的:
 <p>
 指令是不区分大小写的, 然而约定是大写的以便区分其他的参数。Docker会读测试Dockerfile中的指令，第一条命令必须是'FROM'来指定你正在构建的基本镜像。
 </p>
-<ul>
+<p>
+常用指令有下面这些:
+</p><ul>
 <li>FROM &lt;image-name&gt; # 基本镜像
 </li>
 <li>MAINTAINER &lt;name&gt; # 作者信息
@@ -666,20 +625,16 @@ Dockerfile格式很简单的:
 </ul>
 
 
+<p>
+可以参考创建 <a href="https://github.com/dirtysalt/tomb/blob/master/misc/dockerfiles/mysql/Dockerfile">mysql</a> 和 <a href="https://github.com/dirtysalt/tomb/blob/master/misc/dockerfiles/redis/Dockerfile">redis</a> 镜像的Dockerfile.
+</p>
 </div>
 
 </div>
 
 <div id="outline-container-5" class="outline-3">
-<h3 id="sec-5"><span class="section-number-3">5</span> Notes</h3>
+<h3 id="sec-5"><span class="section-number-3">5</span> assign static ip to container</h3>
 <div class="outline-text-3" id="text-5">
-
-
-</div>
-
-<div id="outline-container-5-1" class="outline-4">
-<h4 id="sec-5-1"><span class="section-number-4">5.1</span> assign static ip to container</h4>
-<div class="outline-text-4" id="text-5-1">
 
 <p>可以在启动container时候使用lxc-conf指定lxc配置来分配固定IP(必须保证容器格式是lxc)
 </p>
@@ -732,16 +687,12 @@ Dockerfile格式很简单的:
 
 </div>
 
-<div id="outline-container-5-2" class="outline-4">
-<h4 id="sec-5-2"><span class="section-number-4">5.2</span> Understanding Docker</h4>
-<div class="outline-text-4" id="text-5-2">
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6"><span class="section-number-3">6</span> Understanding Docker</h3>
+<div class="outline-text-3" id="text-6">
 
-<ul>
-<li><a href="https://docs.docker.com/introduction/understanding-docker/">https://docs.docker.com/introduction/understanding-docker/</a>
-</li>
-</ul>
-
-
+<p><a href="https://docs.docker.com/introduction/understanding-docker/">https://docs.docker.com/introduction/understanding-docker/</a>
+</p>
 <p>
 some images from "docker 原理簡介" <a href="http://blog.blackwhite.tw/2013/12/docker.html">http://blog.blackwhite.tw/2013/12/docker.html</a>
 </p>
@@ -773,9 +724,6 @@ To understand Docker's internals, you need to know about three components:
 </ul>
 
 
-
-<hr/>
-
 <p>
 <b>How does a Docker Image work?</b>
 </p>
@@ -791,18 +739,12 @@ Docker usually gets these base images from <a href="https://hub.docker.com/">Doc
 <p>
 <img src="images/docker-filesystems-multilayer.png"  alt="./images/docker-filesystems-multilayer.png" />
 </p>
-
-<hr/>
-
 <p>
 <b>How does a container work?</b>
 </p>
 <p>
 A container consists of an operating system, user-added files, and meta-data. As we've seen, each container is built from an image. That image tells Docker what the container holds, what process to run when the container is launched, and a variety of other configuration data. The Docker image is read-only. When Docker runs a container from an image, it adds a read-write layer on top of the image (using a union file system as we saw earlier) in which your application can then run.（container包括操作系统，用户添加文件，以及元信息。创建container就是在image上面添加一层rw layer）
 </p>
-
-<hr/>
-
 <p>
 <b>What happens when you run a container?</b>
 </p>
@@ -842,9 +784,6 @@ Let's break down this command. The Docker client is launched using the docker bi
 </ul>
 
 
-
-<hr/>
-
 <p>
 <b>The underlying technology</b>
 </p>
@@ -876,7 +815,6 @@ Union file systems（UFS）. Union file systems, or UnionFS, are file systems th
 <p>
 Container format. Docker combines these components into a wrapper we call a container format. The default container format is called libcontainer. Docker also supports traditional Linux containers using LXC. In the future, Docker may support other container formats, for example, by integrating with BSD Jails or Solaris Zones. #note: docker默认不再使用lxc而是libcontainer*
 </p></div>
-</div>
 </div>
 </div>
 

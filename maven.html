@@ -60,97 +60,7 @@
   /*]]>*/-->
 </style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
-<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js">
-/**
- *
- * @source: http://orgmode.org/mathjax/MathJax.js
- *
- * @licstart  The following is the entire license notice for the
- *  JavaScript code in http://orgmode.org/mathjax/MathJax.js.
- *
- * Copyright (C) 2012-2013  MathJax
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- * @licend  The above is the entire license notice
- * for the JavaScript code in http://orgmode.org/mathjax/MathJax.js.
- *
- */
 
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code below.
-
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
-
-The JavaScript code below is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code below.
-*/
-<!--/*--><![CDATA[/*><!--*/
-    MathJax.Hub.Config({
-        // Only one of the two following lines, depending on user settings
-        // First allows browser-native MathML display, second forces HTML/CSS
-        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
-            jax: ["input/TeX", "output/HTML-CSS"],
-        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
-                     "TeX/noUndefined.js"],
-        tex2jax: {
-            inlineMath: [ ["\\(","\\)"] ],
-            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
-            skipTags: ["script","noscript","style","textarea","pre","code"],
-            ignoreClass: "tex2jax_ignore",
-            processEscapes: false,
-            processEnvironments: true,
-            preview: "TeX"
-        },
-        showProcessingMessages: true,
-        displayAlign: "center",
-        displayIndent: "2em",
-
-        "HTML-CSS": {
-             scale: 100,
-             availableFonts: ["STIX","TeX"],
-             preferredFont: "TeX",
-             webFont: "TeX",
-             imageFont: "TeX",
-             showMathMenu: true,
-        },
-        MMLorHTML: {
-             prefer: {
-                 MSIE:    "MML",
-                 Firefox: "MML",
-                 Opera:   "HTML",
-                 other:   "HTML"
-             }
-        }
-    });
-/*]]>*///-->
-</script>
 </head>
 <body>
 
@@ -183,14 +93,7 @@ for the JavaScript code below.
 <li><a href="maven.html#sec-2-4">2.4 远程仓库搭建</a></li>
 </ul>
 </li>
-<li><a href="maven.html#sec-3">3 Notes</a>
-<ul>
-<li><a href="maven.html#sec-3-1">3.1 安装maven</a></li>
-<li><a href="maven.html#sec-3-2">3.2 常用命令</a></li>
-<li><a href="maven.html#sec-3-3">3.3 常用插件</a></li>
-<li><a href="maven.html#sec-3-4">3.4 .m2/settings.xml</a></li>
-</ul>
-</li>
+<li><a href="maven.html#sec-3">3 Getting Started</a></li>
 </ul>
 </div>
 </div>
@@ -629,10 +532,7 @@ drwxrwxr-x 3 dirlt dirlt 4096  6月 24 22:36 xml-apis
 <h4 id="sec-2-3"><span class="section-number-4">2.3</span> 分发构件至远程仓库</h4>
 <div class="outline-text-4" id="text-2-3">
 
-<p>mvn install 会将项目生成的构件安装到本地Maven仓库，mvn deploy 用来将项目生成的构件分发到远程Maven仓库。本地Maven仓库的构件只能供当前用户使用，在分发到远程Maven仓库之后，所有能访问该仓库的用户都能使用你的构件。 <b>安装到maven本地仓库对于使用一些下载源代码并且编译的项目非常有用</b>
-</p>
-<p>
-我们可以在pom.xml里面指定maven分发构件位置。注意这里我们通常将release和snapshot区分开来放在不同的repo下面。
+<p>mvn install 会将项目生成的构件安装到本地Maven仓库，mvn deploy 用来将项目生成的构件分发到远程Maven仓库。本地Maven仓库的构件只能供当前用户使用，在分发到远程Maven仓库之后，所有能访问该仓库的用户都能使用你的构件。 <b>安装到maven本地仓库对于使用一些下载源代码并且编译的项目非常有用</b>. 我们可以在pom.xml里面指定maven分发构件位置。注意这里我们通常将release和snapshot区分开来放在不同的repo下面。
 </p><ul>
 <li>distributionManagement
 <ul>
@@ -777,9 +677,6 @@ nexus有下面几种repo：
 
 <p>另外如果自己将一些pom直接copy到某个repo下面的话，nexus不能够索引到，这个时候需要右击这个repo选择Update Index.(nexus依赖索引知道文件分布)
 </p>
-
-<hr/>
-
 <p>
 搭建自己的仓库似乎非常有必要, 原因有下面几点:
 </p><ol>
@@ -817,21 +714,16 @@ nexus 可以从 <a href="http://www.sonatype.org/nexus/go/">这里</a> 下载到
 </div>
 
 <div id="outline-container-3" class="outline-3">
-<h3 id="sec-3"><span class="section-number-3">3</span> Notes</h3>
+<h3 id="sec-3"><span class="section-number-3">3</span> Getting Started</h3>
 <div class="outline-text-3" id="text-3">
 
-
-</div>
-
-<div id="outline-container-3-1" class="outline-4">
-<h4 id="sec-3-1"><span class="section-number-4">3.1</span> 安装maven</h4>
-<div class="outline-text-4" id="text-3-1">
-
-<p>如果使用的是ubuntu/debian的话，可以直接使用apt-get install maven来完成。
+<p><b>安装maven</b>
 </p>
 <p>
-<b>maven3和maven2之间有不兼容的地方，不仅是语法还有插件</b>. 之前安装cobertura时候发现运行不了，最后确定问题在于使用的是maven3。
-当时系统安装的是maven3所以自己需要手动安装一个maven2，这种情况应该还是比较多的，所以这也就是单独编写这节的原因。下面是通过binary-package手动安装的过程：
+如果使用的是ubuntu/debian的话，可以直接使用apt-get install maven来完成. 可是有时候还是需要使用binary-package方式来安装. 比如系统上已经有maven3但是希望安装一个maven2.
+</p>
+<p>
+maven3和maven2之间有不兼容的地方，不仅是语法还有插件. 之前安装cobertura时候发现运行不了，最后确定问题在于使用的是maven3。当时系统安装的是maven3所以自己需要手动安装一个maven2，这种情况应该还是比较多的，所以这也就是单独编写这节的原因。下面是通过binary-package手动安装的过程：
 </p><ul>
 <li>下载binary package
 <ul>
@@ -851,15 +743,9 @@ nexus 可以从 <a href="http://www.sonatype.org/nexus/go/">这里</a> 下载到
 </ul>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-3-2" class="outline-4">
-<h4 id="sec-3-2"><span class="section-number-4">3.2</span> 常用命令</h4>
-<div class="outline-text-4" id="text-3-2">
-
-<ul>
+<p>
+<b>常用命令</b>
+</p><ul>
 <li>mvn validate. 验证工程是否正确，所有需要的资源是否可用
 </li>
 <li>mvn compile. 编译项目源代码
@@ -878,13 +764,11 @@ nexus 可以从 <a href="http://www.sonatype.org/nexus/go/">这里</a> 下载到
 </li>
 <li>mvn generate-sources 生成应用所需要的额外代码
 </li>
-<li>mvn eclipse
+<li>mvn eclipse # 自从使用了intellij就不需要这个东西了. intellij可以自动导入pom.xml.
 <ul>
 <li>mvn eclipse:eclipse 生成eclipse项目文件
 </li>
 <li>mvn eclipse:clean 清除eclipse项目文件
-</li>
-<li>#note: 自从使用了intellij就不需要这个东西了
 </li>
 </ul>
 
@@ -909,13 +793,6 @@ nexus 可以从 <a href="http://www.sonatype.org/nexus/go/">这里</a> 下载到
 <li>mvn dependency:copy-dependencies 将依赖的jar copy到target/dependency目录下面
 </li>
 <li>mvn dependency:unpack-dependencies 和上面一样但是会unpack这些jar
-<ul>
-<li>有时候上面这个命令可能不work因为可能会将一些pom引入，这样的话可以通过下面命令来解决
-</li>
-<li>mvn dependency:copy-dependencies ; cd ./target/dependency ; for x in *.jar ; do echo "jar xf $$x ..." ; jar xf $$x ; done
-</li>
-</ul>
-
 </li>
 </ul>
 
@@ -934,15 +811,9 @@ nexus 可以从 <a href="http://www.sonatype.org/nexus/go/">这里</a> 下载到
 </ul>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-3-3" class="outline-4">
-<h4 id="sec-3-3"><span class="section-number-4">3.3</span> 常用插件</h4>
-<div class="outline-text-4" id="text-3-3">
-
-<ul>
+<p>
+<b>常用插件</b>
+</p><ul>
 <li>Maven Surefire Plugin <a href="http://maven.apache.org/surefire/maven-surefire-plugin/">http://maven.apache.org/surefire/maven-surefire-plugin/</a> 单元测试
 </li>
 <li>Maven Assembly plugin <a href="http://maven.apache.org/plugins/maven-assembly-plugin/">http://maven.apache.org/plugins/maven-assembly-plugin/</a> 项目打包
@@ -957,30 +828,6 @@ nexus 可以从 <a href="http://www.sonatype.org/nexus/go/">这里</a> 下载到
 </li>
 </ul>
 
-
-</div>
-
-</div>
-
-<div id="outline-container-3-4" class="outline-4">
-<h4 id="sec-3-4"><span class="section-number-4">3.4</span> .m2/settings.xml</h4>
-<div class="outline-text-4" id="text-3-4">
-
-<ul>
-<li>utils/mvn-settings.xml
-</li>
-<li>我们使用了nexus来搭建个人maven服务器，对于umeng.public将很多外网的repo都做了proxy并且进行了group
-</li>
-<li>我们只需要使用umeng.public来作为依赖以及插件的repo即可，非常方便。
-</li>
-<li>这里存在存在releases和snapshots的id server.主要是为了部署使用的。
-</li>
-<li>这里使用了nexus自定义域名，需要自己修改/etc/hosts来添加对应的ip。
-</li>
-</ul>
-
-<p>#note: 网上有很多教程如何搭建nexus maven服务器，对于企业开发的话这样的单独服务器还是非常需要的。
-</p></div>
 </div>
 </div>
 </div>
