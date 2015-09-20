@@ -930,7 +930,7 @@ Logger支持层次结构，层次结构是根据name来判断的。比如a就是
 <img src="images/python-logging-flow.png"  alt="./images/python-logging-flow.png" />
 </p>
 <p>
-内置的FileHandler只能够正确地处理一个解释器中多个线程向一个文件打印的情况，但是却不能解决多个进程向同一个文件打印。社区有一些Handler实现来解决这个问题比如 <a href="https://github.com/jruere/multiprocessing-logging">这个</a> 和 <a href="https://pypi.python.org/pypi/ConcurrentLogHandler/0.8.3">这个</a>
+内置的FileHandler只能够正确地处理一个解释器中多个线程向一个文件打印的情况，但是却不能解决多个进程向同一个文件打印。社区有一些Handler实现来解决这个问题比如 <a href="https://github.com/jruere/multiprocessing-logging">multiprocessing-logging</a> 和 <a href="https://pypi.python.org/pypi/ConcurrentLogHandler/0.8.3">ConcurrentLogHandler</a>.
 </p>
 <p>
 logging配置可以从文件载入 `logging.config.fileConfig('logging.cfg')`
