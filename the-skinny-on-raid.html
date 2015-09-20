@@ -71,239 +71,146 @@
 <div id="content">
 <h1 class="title">The skinny on RAID </h1>
 
-
-<div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="the-skinny-on-raid.html#sec-1">1 RAID0</a></li>
-<li><a href="the-skinny-on-raid.html#sec-2">2 RAID1</a></li>
-<li><a href="the-skinny-on-raid.html#sec-3">3 RAID2</a></li>
-<li><a href="the-skinny-on-raid.html#sec-4">4 RAID3</a></li>
-<li><a href="the-skinny-on-raid.html#sec-5">5 RAID4</a></li>
-<li><a href="the-skinny-on-raid.html#sec-6">6 RAID5</a></li>
-<li><a href="the-skinny-on-raid.html#sec-7">7 RAID7</a></li>
-<li><a href="the-skinny-on-raid.html#sec-8">8 RAID10</a></li>
-<li><a href="the-skinny-on-raid.html#sec-9">9 RAID53</a></li>
-<li><a href="the-skinny-on-raid.html#sec-10">10 RAIDxy</a></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-1" class="outline-3">
-<h3 id="sec-1"><span class="section-number-3">1</span> RAID0</h3>
-<div class="outline-text-3" id="text-1">
-
 <p><a href="http://arstechnica.com/features/2000/05/raid/">http://arstechnica.com/features/2000/05/raid/</a>
+</p>
+<p>
+评价一个RAID系统使用下面三个指标:
+</p><ul>
+<li>capacity. 容量相对N个盘总和变化多少.
+</li>
+<li>redundancy. 容错性怎么样.
+</li>
+<li>performance. 读写性能上提升多少.
+</li>
+</ul>
+
+
+<p>
+<b>RAID0</b>
 </p>
 <p>
 <img src="images/raid0.gif"  alt="./images/raid0.gif" />
 </p>
-<p>
-可以看到RAID0有下面特点：
-</p><ul>
-<li>磁盘控制器配置合理通过并行读那么可以提高读写性能。
+<ul>
+<li>容量上没有任何损失.
 </li>
-<li>没有实现redudant.如果一块磁盘损坏的话那么数据就损坏。
+<li>没有实现redudancy.
 </li>
-<li>可以按照block方式在每个disk上面存储。
+<li>通过并行可提升读写性能.
 </li>
 </ul>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-2" class="outline-3">
-<h3 id="sec-2"><span class="section-number-3">2</span> RAID1</h3>
-<div class="outline-text-3" id="text-2">
-
-<p><a href="http://arstechnica.com/features/2000/05/raid/2/">http://arstechnica.com/features/2000/05/raid/2/</a>
+<p>
+<b>RAID1</b>
 </p>
 <p>
 <img src="images/raid1.gif"  alt="./images/raid1.gif" />
 </p>
-<p>
-可以看到RAID1有下面特点：
-</p><ul>
-<li>简单地说RAID1就是Mirror.Mirror就是一定程度上的Redudant.
+<ul>
+<li>因为mirror所以容量减半.
 </li>
-<li>磁盘控制器配置合理通过读取不同的disk来提到读性能。
+<li>用mirror来实现redundancy.
 </li>
-<li>如果写mirror是由disk controller完成的话，那么写性能和单磁盘效果一样。但是如果不是的话，那么相当于写mirror是需要由CPU控制的，这样写性能就会更差。
+<li>通过并行可提升读性能; 写性能和单块磁盘差不多.
 </li>
 </ul>
 
 
-</div>
+<p>
+写两块磁盘时, 可能会出现不一致的情况. 软件解决方案通常是WAL, 但是这对于RAID硬件系统来说性能是不可接受的. 为此通常RAID1会内置内存以及电池备份, 来确保两份数据一致写入.
+</p>
 
-</div>
+<p class="verse">
+One last note: because logging to disk on every write is prohibitively<br/>
+expensive, most RAID hardware includes a small amount of non-volatile<br/>
+RAM (e.g., battery-backed) where it performs this type of logging. Thus,<br/>
+consistent update is provided without the high cost of logging to disk.<br/>
+</p>
 
-<div id="outline-container-3" class="outline-3">
-<h3 id="sec-3"><span class="section-number-3">3</span> RAID2</h3>
-<div class="outline-text-3" id="text-3">
 
-<p><a href="http://arstechnica.com/features/2000/05/raid/3/">http://arstechnica.com/features/2000/05/raid/3/</a>
+<p>
+<b>RAID2</b>
 </p>
 <p>
-从RAID2开始就实现了ECC(Error Checking/Correction)。但是检查(check)和correct(纠正)之间在实现上还是存在很大差异的：对于检查我们只需要判断数据是否正确即可，如果数据错误那么直接报错，而纠正的话在数据出现错误的时候还需要尝试恢复。
+从RAID2开始就实现了ECC(Error Checking Correction)。检查(check)和correct(纠正)在实现上存在很大差异：对于检查我们只需要判断数据是否正确即可，如果数据错误那么直接报错，而纠正的话在数据出现错误的时候还需要尝试恢复。
 </p>
 <p>
-我们以RAID1为例，如果两个disk数据不一致的话那么即检查到错误，但是我们却没有办法纠正数据。对于RAID1来说即使我们有3个或者是更多disk的话，依然没有办法纠正数据(如果AB一致，和C不同的话，我们也不能说AB就是正确的)
+以RAID1为例，如果两个disk数据不一致的话那么即检查到错误，但是我们却没有办法纠正数据。对于RAID1来说即使我们有3个或者是更多disk的话，依然没有办法纠正数据(如果AB一致，和C不同的话，我们也不能说AB就是正确的)
 </p>
 <p>
-后面会提到两种ECC实现:1)Hamming Code.2)XOR ECC. (其实自己对Hamming Code也不是很了解，但是hamming code是可以用来纠正数据错误的)下面是4bit数据的hamming code.
+两种ECC实现:1)Hamming Code.2)XOR ECC. 下面是4bit数据的hamming code.
 </p>
 <p>
 <img src="images/hamming-code.gif"  alt="./images/hamming-code.gif" />
 </p>
 <p>
-似乎有点开窍了.对于简单的奇偶校验位的话，我们其实是没有对新产生的奇偶校验位来做奇偶校验的，因为导致我们只能够对数据出现1bit flip进行检测而不能够恢复。而hamming code需要完成的就是这个工作，通过对奇偶校验位也做奇偶校验，就可以完成1bit flip的恢复。不知道是否可以检测和恢复2bit flip，直觉上应该是可以的但是需要更长的hamming code
+对于简单的奇偶校验位的话，我们其实是没有对新产生的奇偶校验位来做奇偶校验的，导致我们只能够对数据出现1bit flip进行检测而不能够恢复。而hamming code需要完成的就是这个工作，通过对奇偶校验位也做奇偶校验，就可以完成1bit flip的恢复。要检测和恢复2bit flip的话, 那么则需要更长的hamming code.
 </p>
 <p>
 <img src="images/raid2.gif"  alt="./images/raid2.gif" />
 </p>
-<p>
-可以看到RAID2有下面特点：
-</p><ul>
-<li>redudant是通过hamming code来完成的.并且hamming code带来的开销还是比较大的.
+<ul>
+<li>容量上有ECC block开销, 并且这个开销还比较大.
 </li>
-<li>相对于RAID1 duplicate更小但是本质上RAID1是可以用来提高读速度的。
+<li>redudancy通过ECC block来完成.
 </li>
-<li>hamming code开销相对较大还不是最主要的问题，而是本质上hamming code是在bit中穿插的，因为必须每一个disk保存1个bit.对于最小单位是64-bit data的话，那么我们需要64 disks.并且parity占用8bit,因此需要多余8 disks.主要问题还是，hamming code这种redudant方式不合适(奇偶校验位一样也有这个问题)
+<li>通过并行提升读性能.
+</li>
+<li>因为每次更新data disk都会更新ECC disk, 所以最终瓶颈会在ECC disk限制扩展性.
 </li>
 </ul>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-4" class="outline-3">
-<h3 id="sec-4"><span class="section-number-3">4</span> RAID3</h3>
-<div class="outline-text-3" id="text-4">
-
-<p><a href="http://arstechnica.com/features/2000/05/raid/4/">http://arstechnica.com/features/2000/05/raid/4/</a>
+<p>
+<b>RAID3</b>
 </p>
+<p>
+update@201509: RAID2的ECC应该是特指类似Hamming Code这种具有纠错功能的编码. RAID3和RAID2一样, 但是使用XOR ECC, 只能检错但是不能纠错. 这是在容错性和成本上的trade-off.
+</p>
+
 <p>
 <img src="images/raid3.gif"  alt="./images/raid3.gif" />
 </p>
+
 <p>
-可以看到RAID3有下面特点：
-</p><ul>
-<li>使用了XOR方式来做check/correction.相对RAID3 hamming code开销更大.
-</li>
-<li>但是相比RAID3而言的话，不管是存储方式还是check/correct逻辑更加简单.对于存储方式而言的话可以按照block来存储，通常一个block占用32-512bytes.
-</li>
-<li>对于parity disk会有很大的压力。另外读写时候会造成多余的读写因为需要读写parity.但是如果block划分合理并且disk controller支持的话，一次写可能可以写到多个磁盘上面，同时计算parity写到disk上面，速度可能并不会比RAID0差很多。
-</li>
-</ul>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-5" class="outline-3">
-<h3 id="sec-5"><span class="section-number-3">5</span> RAID4</h3>
-<div class="outline-text-3" id="text-5">
-
-<p><a href="http://arstechnica.com/features/2000/05/raid/4/">http://arstechnica.com/features/2000/05/raid/4/</a>
+<b>RAID5</b>
 </p>
 <p>
-RAID4和RAID3非常像。只不过RAID4不是按照block划分而是按照file来划分的(这个应该就需要OS的支持了).如果在磁盘上同时读取多个文件的话那么是可以并行的。但是我觉得并不是一个好方法，
-</p><ul>
-<li>1)需要OS支持这就使得RAID4本身设计会很复杂.
-</li>
-<li>2)相对于RAID3来说的话，block划分并不比file划分差，因为一个文件可能会划分成为多个block,对于单个文件读取的话完全是可以并行的.
-</li>
-<li>3)因为不是连续写block的，这就意味着在写parity的时候可能需要将其他文件读出重新计算写parity.
-</li>
-</ul>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-6" class="outline-3">
-<h3 id="sec-6"><span class="section-number-3">6</span> RAID5</h3>
-<div class="outline-text-3" id="text-6">
-
-<p><a href="http://arstechnica.com/features/2000/05/raid/5/">http://arstechnica.com/features/2000/05/raid/5/</a>
+RAID3中每次写data block都会更新parity block, 而这些更新全部落在parity disk上, 影响performance. 
 </p>
 <p>
-RAID3的parity disk的大压力可能会限制其performance.RAID5就是要来解决这个问题的。
+RAID5通过将parity block分摊到各个disk上面来解决这个问题. 速度上基本可以达到RAID0.
 </p>
 <p>
 <img src="images/raid5.gif"  alt="./images/raid5.gif" />
 </p>
 <p>
-通过将parity分摊到各个disk上面的话可以避免parity操作出现bottleneck,速度上的话基本可以达到RAID0水平.RAID6相比RAID5而言的话多加了一个parity disk(就是RAID3的单独parity disk)
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-7" class="outline-3">
-<h3 id="sec-7"><span class="section-number-3">7</span> RAID7</h3>
-<div class="outline-text-3" id="text-7">
-
-<p><a href="http://arstechnica.com/features/2000/05/raid/6/">http://arstechnica.com/features/2000/05/raid/6/</a>
+RAID5在市场上基本完全代替了RAID4, 因为在大部分应用场景下RAID5要好过RAID4. 
 </p>
 <p>
-RAID7是在RAID3上面做的改进，主要是规范一些数据存取方式以及硬件规格等。a package deal or to say it’s proprietary solution.
+但是在一些几乎全部是large-writes的系统里还会使用RAID4, 这种场景下RAID4和RAID5性能相当, 而RAID4在搭建上比RAID5要容易.
 </p>
-</div>
 
-</div>
+<p class="verse">
+Because RAID-5 is basically identical to RAID-4 except in the few cases<br/>
+where it is better, it has almost completely replaced RAID-4 in the marketplace.<br/>
+The only place where it has not is in systems that know they will<br/>
+never perform anything other than a large write, thus avoiding the smallwrite<br/>
+problem altogether [HLM94]; in those cases, RAID-4 is sometimes<br/>
+used as it is slightly simpler to build.<br/>
+</p>
 
-<div id="outline-container-8" class="outline-3">
-<h3 id="sec-8"><span class="section-number-3">8</span> RAID10</h3>
-<div class="outline-text-3" id="text-8">
 
-<p><a href="http://arstechnica.com/features/2000/05/raid/6/">http://arstechnica.com/features/2000/05/raid/6/</a>
+<p>
+<b>RAID10</b>
 </p>
 <p>
-RAID10就是RAID1+0.数据是strip方式存储的并且有mirror.
+RAID10=RAID1+0. 数据在多个disk上按照strip方式存储, 每个disk都有mirror disk.
 </p>
 <p>
 <img src="images/raid10.gif"  alt="./images/raid10.gif" />
-</p>
-<p>
-可以看到并不容易扩展
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-9" class="outline-3">
-<h3 id="sec-9"><span class="section-number-3">9</span> RAID53</h3>
-<div class="outline-text-3" id="text-9">
-
-<p><a href="http://arstechnica.com/features/2000/05/raid/7/">http://arstechnica.com/features/2000/05/raid/7/</a>
-</p>
-<p>
-RAID53从名字上看更加适合叫做RAID03.总体来看是RAID0的解决方案，而每个disk而言内部按照RAID3来配置.
-</p>
-</div>
-
-</div>
-
-<div id="outline-container-10" class="outline-3">
-<h3 id="sec-10"><span class="section-number-3">10</span> RAIDxy</h3>
-<div class="outline-text-3" id="text-10">
-
-<p><a href="http://arstechnica.com/features/2000/05/raid/7/">http://arstechnica.com/features/2000/05/raid/7/</a>
-</p>
-<p>
-对于RAIDxy这样而言的话，基本上都是使用了RAIDx方案，内部也有RAIDy方案影子。但是无论如何，RAID基本思想就是：data striping, mirror, parity
-</p>
-
-</div>
-</div>
-</div>
+</p></div>
 
 <div id="postamble">
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>

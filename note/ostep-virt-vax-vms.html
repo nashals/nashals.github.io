@@ -77,7 +77,6 @@
 kernel会被映射到用户地址空间?! 对于每个进程来说, 高地址虚拟内存中都是同样的内容(kernel image). kernel使用的物理内存也由VMS来管理, 这样一来: 1. kernel和userspace交换数据更加方便, 都是在同一个虚拟地址空间下进行 2. kernel可以获得VMS带来的各种好处比如可以使用大于物理内存的空间(来管理各种数据结构比如page table)而不要手动swap.
 </p>
 <p>
-```
 Perhaps more importantly, the kernel virtual address space (i.e., its
 data structures and code) is a part of each user address space. On a context
 switch, the OS changes the P0 and P1 registers to point to the appropriate
