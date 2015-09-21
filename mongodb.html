@@ -1,135 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>MongoDB</title>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="MongoDB"/>
-<meta name="generator" content="Org-mode"/>
-<meta name="author" content="dirtysalt"/>
-<meta name="description" content=""/>
-<meta name="keywords" content=""/>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="dirtysalt" />
 <link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
-
-
 </head>
 <body>
-
-<div id="preamble">
-
-</div>
-
 <div id="content">
 <h1 class="title">MongoDB</h1>
-
-
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="mongodb.html#sec-1">1 简介</a></li>
-<li><a href="mongodb.html#sec-2">2 网络模型</a></li>
-<li><a href="mongodb.html#sec-3">3 单机存储</a></li>
-<li><a href="mongodb.html#sec-4">4 内存占用</a></li>
-<li><a href="mongodb.html#sec-5">5 Sharding</a></li>
-<li><a href="mongodb.html#sec-6">6 HA方案</a></li>
+<li><a href="mongodb.html#orgheadline1">1. 简介</a></li>
+<li><a href="mongodb.html#orgheadline2">2. 网络模型</a></li>
+<li><a href="mongodb.html#orgheadline3">3. 单机存储</a></li>
+<li><a href="mongodb.html#orgheadline4">4. 内存占用</a></li>
+<li><a href="mongodb.html#orgheadline5">5. Sharding</a></li>
+<li><a href="mongodb.html#orgheadline6">6. HA方案</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-3">
-<h3 id="sec-1"><span class="section-number-3">1</span> 简介</h3>
-<div class="outline-text-3" id="text-1">
-
-<p>主页是<a href="http://www.mongodb.org/">http://www.mongodb.org/</a>. mongdb有下面这些特点：
-</p><ul>
-<li>可扩展，高性能，开源NoSQL数据库系统。Written in C++. Mongo is from "humongous".
-</li>
-<li>面向文档存储。这个和面向key-value存储区别，有点类似于RDBMS的面向记录存储。
-</li>
-<li>Schema Free.对于文档而言没有固定的schema,不需要像RDBMS一样定义table schema.文档使用BSON(<a href="http://bsonspec.org/">http://bsonspec.org/</a>)来表示和存储。
-</li>
-<li>全索引支持。全索引的支持可以让功能上就可以和key-value存储系统匹敌。
-</li>
-<li>Auto-Sharding.可以很好且很容易地做到负载均衡和水平扩展。
-</li>
-<li>完整的HA方案。提供了两种HA方案master-slave(ms,deprecated)和replica-set(rs,recommended).
-</li>
-<li>MapReduce.可以在MongoDB上面进行MapReduce操作，使得mdb成为支持服务端计算的存储系统。
-</li>
-<li>GridFS.规定如何基于MongoDB来进行大文件存储的specification.
-</li>
-<li>丰富的客户端支持。C++,Java,Python,Ruby,PHP,JavaScript,Scala等。
-</li>
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1"><span class="section-number-2">1</span> 简介</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+主页是<a href="http://www.mongodb.org/">http://www.mongodb.org/</a>. mongdb有下面这些特点：
+</p>
+<ul class="org-ul">
+<li>可扩展，高性能，开源NoSQL数据库系统。Written in C++. Mongo is from "humongous".</li>
+<li>面向文档存储。这个和面向key-value存储区别，有点类似于RDBMS的面向记录存储。</li>
+<li>Schema Free.对于文档而言没有固定的schema,不需要像RDBMS一样定义table schema.文档使用BSON(<a href="http://bsonspec.org/">http://bsonspec.org/</a>)来表示和存储。</li>
+<li>全索引支持。全索引的支持可以让功能上就可以和key-value存储系统匹敌。</li>
+<li>Auto-Sharding.可以很好且很容易地做到负载均衡和水平扩展。</li>
+<li>完整的HA方案。提供了两种HA方案master-slave(ms,deprecated)和replica-set(rs,recommended).</li>
+<li>MapReduce.可以在MongoDB上面进行MapReduce操作，使得mdb成为支持服务端计算的存储系统。</li>
+<li>GridFS.规定如何基于MongoDB来进行大文件存储的specification.</li>
+<li>丰富的客户端支持。C++,Java,Python,Ruby,PHP,JavaScript,Scala等。</li>
 </ul>
-
 
 <p>
 这里有一些关于MongoDB的介绍和架构的文章.
-</p><ul>
-<li>MongoDb Architecture. <a href="http://horicky.blogspot.jp/2012/04/mongodb-architecture.html">http://horicky.blogspot.jp/2012/04/mongodb-architecture.html</a> (需骑墙)
-</li>
-<li>mongoDB - the good to begin links. <a href="http://poplink.blogspot.in/2012/05/mongodb-pandora-links.html">http://poplink.blogspot.in/2012/05/mongodb-pandora-links.html</a> (需骑墙)
-</li>
-<li>MongoDB构架图分享. <a href="http://blog.nosqlfan.com/html/3887.html">http://blog.nosqlfan.com/html/3887.html</a>
-</li>
-<li>MongoDB资料汇总专题. <a href="http://blog.nosqlfan.com/html/3548.html">http://blog.nosqlfan.com/html/3548.html</a>
-</li>
-<li>MongoDB和其他几种数据库的对比. <a href="http://kkovacs.eu/cassandra-vs-mongodb-vs-couchdb-vs-redis">http://kkovacs.eu/cassandra-vs-mongodb-vs-couchdb-vs-redis</a>
-</li>
-<li>MongoDB FAQ. <a href="http://cn.docs.mongodb.org/manual/faq/fundamentals/">http://cn.docs.mongodb.org/manual/faq/fundamentals/</a>
-</li>
+</p>
+<ul class="org-ul">
+<li>MongoDb Architecture. <a href="http://horicky.blogspot.jp/2012/04/mongodb-architecture.html">http://horicky.blogspot.jp/2012/04/mongodb-architecture.html</a> (需骑墙)</li>
+<li>mongoDB - the good to begin links. <a href="http://poplink.blogspot.in/2012/05/mongodb-pandora-links.html">http://poplink.blogspot.in/2012/05/mongodb-pandora-links.html</a> (需骑墙)</li>
+<li>MongoDB构架图分享. <a href="http://blog.nosqlfan.com/html/3887.html">http://blog.nosqlfan.com/html/3887.html</a></li>
+<li>MongoDB资料汇总专题. <a href="http://blog.nosqlfan.com/html/3548.html">http://blog.nosqlfan.com/html/3548.html</a></li>
+<li>MongoDB和其他几种数据库的对比. <a href="http://kkovacs.eu/cassandra-vs-mongodb-vs-couchdb-vs-redis">http://kkovacs.eu/cassandra-vs-mongodb-vs-couchdb-vs-redis</a></li>
+<li>MongoDB FAQ. <a href="http://cn.docs.mongodb.org/manual/faq/fundamentals/">http://cn.docs.mongodb.org/manual/faq/fundamentals/</a></li>
 </ul>
-
-
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-2" class="outline-3">
-<h3 id="sec-2"><span class="section-number-3">2</span> 网络模型</h3>
-<div class="outline-text-3" id="text-2">
-
-<p>mongodb采用一个线程处理一个请求的模型，不太确定mongodb是否限制了并发连接数。
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2"><span class="section-number-2">2</span> 网络模型</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+mongodb采用一个线程处理一个请求的模型，不太确定mongodb是否限制了并发连接数。
 如果没有限制的话，那么如果活跃连接数过多的话会导致上下文切换开销严重，导致mongodb挂掉。
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-3" class="outline-3">
-<h3 id="sec-3"><span class="section-number-3">3</span> 单机存储</h3>
-<div class="outline-text-3" id="text-3">
-
-<p>这里有一些关于MongoDB单机存储方面的文章.
-</p><ul>
-<li>深入MongoDB内部结构. <a href="http://blog.nosqlfan.com/html/2079.html">http://blog.nosqlfan.com/html/2079.html</a>
-</li>
-<li>MongoDB的索引使用及索引机制. <a href="http://blog.nosqlfan.com/html/758.html">http://blog.nosqlfan.com/html/758.html</a>
-</li>
-<li>MongoDB Indexing: The Details <a href="http://www.slideshare.net/mongodb/mongodb-indexing-the-details">http://www.slideshare.net/mongodb/mongodb-indexing-the-details</a>
-</li>
-<li>代码分析-查询 <a href="http://www.cnblogs.com/daizhj/archive/2011/03/18/1988288.html">http://www.cnblogs.com/daizhj/archive/2011/03/18/1988288.html</a>
-</li>
-<li>代码分析-插入记录和btree构建 <a href="http://www.cnblogs.com/daizhj/archive/2011/03/30/1999699.html">http://www.cnblogs.com/daizhj/archive/2011/03/30/1999699.html</a>
-</li>
-<li>代码分析-更新记录 <a href="http://www.cnblogs.com/daizhj/archive/2011/04/11/mongodb_update_recode_source_code.html">http://www.cnblogs.com/daizhj/archive/2011/04/11/mongodb_update_recode_source_code.html</a>
-</li>
-<li>代码分析-删除记录 <a href="http://www.cnblogs.com/daizhj/archive/2011/04/06/mongodb_delete_recode_source_code.html">http://www.cnblogs.com/daizhj/archive/2011/04/06/mongodb_delete_recode_source_code.html</a>
-</li>
-<li>代码分析-日志持久化 <a href="http://www.cnblogs.com/daizhj/archive/2011/03/21/1990344.html">http://www.cnblogs.com/daizhj/archive/2011/03/21/1990344.html</a>
-</li>
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3"><span class="section-number-2">3</span> 单机存储</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+这里有一些关于MongoDB单机存储方面的文章.
+</p>
+<ul class="org-ul">
+<li>深入MongoDB内部结构. <a href="http://blog.nosqlfan.com/html/2079.html">http://blog.nosqlfan.com/html/2079.html</a></li>
+<li>MongoDB的索引使用及索引机制. <a href="http://blog.nosqlfan.com/html/758.html">http://blog.nosqlfan.com/html/758.html</a></li>
+<li>MongoDB Indexing: The Details <a href="http://www.slideshare.net/mongodb/mongodb-indexing-the-details">http://www.slideshare.net/mongodb/mongodb-indexing-the-details</a></li>
+<li>代码分析-查询 <a href="http://www.cnblogs.com/daizhj/archive/2011/03/18/1988288.html">http://www.cnblogs.com/daizhj/archive/2011/03/18/1988288.html</a></li>
+<li>代码分析-插入记录和btree构建 <a href="http://www.cnblogs.com/daizhj/archive/2011/03/30/1999699.html">http://www.cnblogs.com/daizhj/archive/2011/03/30/1999699.html</a></li>
+<li>代码分析-更新记录 <a href="http://www.cnblogs.com/daizhj/archive/2011/04/11/mongodb_update_recode_source_code.html">http://www.cnblogs.com/daizhj/archive/2011/04/11/mongodb_update_recode_source_code.html</a></li>
+<li>代码分析-删除记录 <a href="http://www.cnblogs.com/daizhj/archive/2011/04/06/mongodb_delete_recode_source_code.html">http://www.cnblogs.com/daizhj/archive/2011/04/06/mongodb_delete_recode_source_code.html</a></li>
+<li>代码分析-日志持久化 <a href="http://www.cnblogs.com/daizhj/archive/2011/03/21/1990344.html">http://www.cnblogs.com/daizhj/archive/2011/03/21/1990344.html</a></li>
 </ul>
-
 
 <p>
 文件组织上每个database使用一个文件前缀，每个databses里面可以存在多个namespace.然后在多个namespace下面可以有多个collection.
 对于一个collection而言的话就是一个bson文档。
 </p>
-
-
-<pre class="example">dirlt@dirlt-virtual-machine:~/utils/mongodb/data/db$ ll -h
+<pre class="example">
+dirlt@dirlt-virtual-machine:~/utils/mongodb/data/db$ ll -h
 total 209M
 drwxrwxr-x 4 dirlt dirlt 4.0K  6月  1 11:48 ./
 drwxrwxr-x 3 dirlt dirlt 4.0K  5月 31 06:36 ../
@@ -140,7 +102,6 @@ drwxrwxr-x 2 dirlt dirlt 4.0K  6月  1 11:47 journal/
 -rw------- 1 dirlt dirlt  16M  6月  1 11:48 test.ns
 drwxrwxr-x 2 dirlt dirlt 4.0K  6月  1 11:48 _tmp/
 </pre>
-
 <p>
 这里database是test.初始文件是64MB,然后后面每个文件翻倍直到2GB，文件里面存放了数据和索引。test.ns是名字空间文件内部存放了数据库名字空间信息。
 每个数据文件会被分成一个一个的数据块，块与块之间用双向链表连接。对每一个块来说，其头部包含了一些块的元数据，比如自己的位置，上一个和下一个块的位置以及块中第一条和最后一条记录的位置指针。
@@ -148,35 +109,37 @@ drwxrwxr-x 2 dirlt dirlt 4.0K  6月  1 11:48 _tmp/
 在名字空间文件中，保存的是一个hash table，保存了每个名字空间的存储信息元数据，包括其大小，块数，第一块位置，最后一块位置，被删除的块的链表以及索引信息。
 关于位置信息都是通过DiskLoc数据结构进行存储，存储了数据文件编号和块在文件中的位置。
 </p>
+<div class="org-src-container">
 
-
-<pre class="src src-C++">struct DiskLoc {
-  int fileNum; // &#25991;&#20214;&#32534;&#21495;
-  int offset; // &#25991;&#20214;&#20559;&#31227;
+<pre class="src src-C++"><span class="org-keyword">struct</span> <span class="org-type">DiskLoc</span> {
+  <span class="org-type">int</span> <span class="org-variable-name">fileNum</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">&#25991;&#20214;&#32534;&#21495;</span>
+  <span class="org-type">int</span> <span class="org-variable-name">offset</span>; <span class="org-comment-delimiter">// </span><span class="org-comment">&#25991;&#20214;&#20559;&#31227;</span>
 };
 </pre>
-
+</div>
 <p>
 mdb提供了compaction功能来做压缩，否则时间长了会出现文件空洞，使得读操作更加随机降低性能，同时占用更多的磁盘。
 </p>
+
 <p>
 mongodb所有的数据修改都是in-place的，这样的random write对于普通磁盘是不利的。对于读取数据的话应该是首先尝试读取索引，然后读取对应的磁盘块，
 但是磁盘块本身也不是有序的，所以对于read来说也是random的。不过对于mongodb这种面向文档的数据库系统也不好做LSM.所以mongodb最好还是使用SSD.
 关于mongodb使用SSD可以参看官方的文章 <a href="http://www.mongodb.org/display/DOCS/SSD">http://www.mongodb.org/display/DOCS/SSD</a>
 </p>
+
 <p>
 但是mongodb针对这个问题解决方法就是直接使用mmap来做文件块缓存。所有的文件读写都通过mmap到内存，然后直接操作内存即可。使用mmap在一定程度上
 可以很容易地解决缓冲问题，但是也造成了failure情况下面数据不一致的问题，因为mdb里面没有显示地控制mmap写回时机。好比mmap两块内存，先修改A然后
 修改B,但是结果可能B比A先写回磁盘然后crash,或者是A写回磁盘然后crash,这些都会造成数据不一致。可以看看这篇文章"Redis新的存储模式diskstore" <a href="http://timyang.net/data/redis-diskstore/">http://timyang.net/data/redis-diskstore/</a>
 </p>
+
 <p>
 虽然mdb倡导"MongoDB is not designed around single-server durability, but rather multi-server durability."这个哲学，但是依然在后期版本加入了journal机制。
 mdb引入journal机制来做system crash recovery.如果不适用journal的话那么如果databases出现crash的话，那么需要适用database repairs(类似于fsck)或者是数据全copy.
 journal机制就是redo log.启动之后如果发现存在journal的话那么就会做redo,期间所有的操作都是journal.当mdb正常退出的话，会将这些journal删除。journal功能会预分配3G文件。
 </p>
-
-
-<pre class="example">dirlt@dirlt-virtual-machine:~/utils/mongodb/data/db/journal$ ll -h
+<pre class="example">
+dirlt@dirlt-virtual-machine:~/utils/mongodb/data/db/journal$ ll -h
 total 3.1G
 drwxrwxr-x 2 dirlt dirlt 4.0K  6月  1 11:47 ./
 drwxrwxr-x 4 dirlt dirlt 4.0K  6月  1 11:48 ../
@@ -184,31 +147,28 @@ drwxrwxr-x 4 dirlt dirlt 4.0K  6月  1 11:48 ../
 -rw------- 1 dirlt dirlt 1.0G  6月  1 11:47 prealloc.1
 -rw------- 1 dirlt dirlt 1.0G  6月  1 11:47 prealloc.2
 </pre>
-
 <p>
 mongodb底层使用btree来进行索引.btree放在内存所以操作非常快(也是使用mmap来完成的)。对于多维索引比如k1,k2的话，从上面文章分析来看，应该是使用(k1,k2)复合key来作为主键的。 
 #note: 应该大部分的RDBMS也是这种实现方式来实现复合索引的，本质上这种方式依然是单键索引。不能很好地解决部分匹配查询以及多键范围查询等操作。如果索引过大的话会造成频繁swap这点是需要注意的。
 </p>
+
 <p>
 对于query的话，如果这个collection可以有多个index使用的话，那么mdb首次会针对不同的index生成多个query plan同时执行。一旦最快的plan返回的话然后取消其他的查询方案，
 然后接下来的几次collection query都会使用这个index来进行query,直到针对这个collection发生了多次的update.
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-4" class="outline-3">
-<h3 id="sec-4"><span class="section-number-3">4</span> 内存占用</h3>
-<div class="outline-text-3" id="text-4">
-
-<p>这里有一些关于MongoDB内存使用和Linux内存方面的文章.
-</p><ul>
-<li>MongoDB与内存. <a href="http://blog.nosqlfan.com/html/2865.html">http://blog.nosqlfan.com/html/2865.html</a>
-</li>
-<li>Linux虚拟内存实现原理. <a href="http://blog.nosqlfan.com/html/2956.html">http://blog.nosqlfan.com/html/2956.html</a>
-</li>
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4"><span class="section-number-2">4</span> 内存占用</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+这里有一些关于MongoDB内存使用和Linux内存方面的文章.
+</p>
+<ul class="org-ul">
+<li>MongoDB与内存. <a href="http://blog.nosqlfan.com/html/2865.html">http://blog.nosqlfan.com/html/2865.html</a></li>
+<li>Linux虚拟内存实现原理. <a href="http://blog.nosqlfan.com/html/2956.html">http://blog.nosqlfan.com/html/2956.html</a></li>
 </ul>
-
 
 <p>
 MongoDB不管是索引还是数据文件都强烈依赖于mmap.但是这里有必要区分虚拟内存和物理内存。mongdb虽然将文件都映射到内存，
@@ -217,116 +177,95 @@ MongoDB不管是索引还是数据文件都强烈依赖于mmap.但是这里有�
 即使被换出去也不会占用swap分区而是直接写回数据文件而已。
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-5" class="outline-3">
-<h3 id="sec-5"><span class="section-number-3">5</span> Sharding</h3>
-<div class="outline-text-3" id="text-5">
-
-<p>mdb可以通过指定shard key来做auto-sharding.对于sharding的话需要三个组件
-</p><ul>
-<li>mongod.存储服务器
-</li>
-<li>mongos.路由服务器
-</li>
-<li>config server.配置服务器.
-</li>
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5"><span class="section-number-2">5</span> Sharding</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+mdb可以通过指定shard key来做auto-sharding.对于sharding的话需要三个组件
+</p>
+<ul class="org-ul">
+<li>mongod.存储服务器</li>
+<li>mongos.路由服务器</li>
+<li>config server.配置服务器.</li>
 </ul>
-
-<p>这里需要配置服务器的原因主要是用来记录shard key partition方案的。根据shard key parition方案，对于所有的文档
+<p>
+这里需要配置服务器的原因主要是用来记录shard key partition方案的。根据shard key parition方案，对于所有的文档
 会形成不同的chunk落在不同的mongod上面。mongos一旦检测到某个chunk过大的话那么就会进行分裂，这样会形成新的shard key parition方案。
 </p>
+
 <p>
 不过auto-sharding也有问题，比较出名的就是这个"Foursquare长达11小时的宕机" <a href="http://www.dbanotes.net/arch/foursquare_outage.html">http://www.dbanotes.net/arch/foursquare_outage.html</a>.
 然后又同学跳出来也批评了一下"auto-sharding 无用论：auto-sharding vs. manual-sharding" <a href="http://blog.nosqlfan.com/html/841.html">http://blog.nosqlfan.com/html/841.html</a>.
 auto-sharding有三个需要考虑的问题：
-</p><ul>
-<li>sharding算法
-</li>
-<li>自动在线迁移数据代价
-</li>
-<li>数据迁移造成的碎片.(这个应该算是mongodb的问题).
-</li>
+</p>
+<ul class="org-ul">
+<li>sharding算法</li>
+<li>自动在线迁移数据代价</li>
+<li>数据迁移造成的碎片.(这个应该算是mongodb的问题).</li>
 </ul>
-
-<p>不过我不是很认同作者的一个观点就是"冷数据不冷"。首先必须考虑我们为什么需要增加节点，是CPU还是Memory还是IO出现了问题，否则完全没有必要增加节点。
+<p>
+不过我不是很认同作者的一个观点就是"冷数据不冷"。首先必须考虑我们为什么需要增加节点，是CPU还是Memory还是IO出现了问题，否则完全没有必要增加节点。
 对于mdb说是通常是memory出现了问题，那么完全可以在mdb单机上着手解决而不是auto-sharding的问题。既然增加了机器，那么就就希望CPU memory以及IO都可以充分利用起来。
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-6" class="outline-3">
-<h3 id="sec-6"><span class="section-number-3">6</span> HA方案</h3>
-<div class="outline-text-3" id="text-6">
-
-<p>对于HA方案来说的话，mdb有两种解决方案
-</p><ul>
-<li>master/slave(ms)
-</li>
-<li>replica-sets(rs)
-</li>
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="orgheadline6"><span class="section-number-2">6</span> HA方案</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+对于HA方案来说的话，mdb有两种解决方案
+</p>
+<ul class="org-ul">
+<li>master/slave(ms)</li>
+<li>replica-sets(rs)</li>
 </ul>
-
 
 <p>
 ms并不是一个推荐的方式，因为相对rs来说工作方式没有那么灵活。ms需要指定master和slave节点，之间数据的同步类似于mysql relaylog工作方式，
 relaylog是异步发送的，所以数据没有强一致性只有最终一致性。但是如果master节点挂掉的话，需要人工介入(human intervention)，整个系统陷入read-only状态。
 rs相对来说好一些就是可以自动选主并且切换，并且rs不需要client指定具体哪一个是master。rs来说也需要几个组件
-</p><ul>
-<li>mongod.存储服务器
-</li>
-<li>mongos.路由服务器
-</li>
-<li>config server.配置服务器
-</li>
-<li>arbiter.仲裁者.
-</li>
-</ul>
-
-<p>mongod会进行voting，而arbiter也会进行voting但是却不会用来作为存储，也就是说arbiter不会作为主节点选出。rs也是通过异步传输relaylog来进行数据同步的。
 </p>
+<ul class="org-ul">
+<li>mongod.存储服务器</li>
+<li>mongos.路由服务器</li>
+<li>config server.配置服务器</li>
+<li>arbiter.仲裁者.</li>
+</ul>
+<p>
+mongod会进行voting，而arbiter也会进行voting但是却不会用来作为存储，也就是说arbiter不会作为主节点选出。rs也是通过异步传输relaylog来进行数据同步的。
+</p>
+
 <p>
 这里官方给出了一些HA方案的数据。
-</p><ul>
-<li>对于primary检测到自己不是主，或者是其他secondary发现primary inaccessible大约在10-30s.
-</li>
-<li>secondary之间进行election大约也在10-30s.
-</li>
-<li>所以对于出现故障来说切换时间大约在1min.
-</li>
-<li>relaylog在局域网上的传输在ms级别上。
-</li>
+</p>
+<ul class="org-ul">
+<li>对于primary检测到自己不是主，或者是其他secondary发现primary inaccessible大约在10-30s.</li>
+<li>secondary之间进行election大约也在10-30s.</li>
+<li>所以对于出现故障来说切换时间大约在1min.</li>
+<li>relaylog在局域网上的传输在ms级别上。</li>
 </ul>
-
 
 <p>
 但是官方文档里面也提到了
 </p>
 <p class="verse">
-Replica sets are the preferred replication mechanism in MongoDB. However, if your deployment requires more than 12 nodes, you must use master/slave replication.<br/>
+Replica sets are the preferred replication mechanism in MongoDB. However, if your deployment requires more than 12 nodes, you must use master/slave replication.<br  />
 </p>
-
-
 <p>
 如果部署超过12个节点的话，那么必须使用master/slave模式。原因我觉得可能是这个。
 </p>
 <p class="verse">
-Within the replica set, members are interconnected with each other to exchange heartbeat message. A crashed server with missing heartbeat will be detected by other members and removed from the replica set membership.<br/>
+Within the replica set, members are interconnected with each other to exchange heartbeat message. A crashed server with missing heartbeat will be detected by other members and removed from the replica set membership.<br  />
 </p>
-
-
 <p>
 也就是说，replicas之间都会和相互检测对方的心跳，这是一个全连接图。如果节点超过一定数量的话，那么心跳处理的延迟可能会非常长，同时选举的时间也会非常长，
 最终造成如果发生切换的话，切换时间会非常长。
-</p></div>
+</p>
 </div>
 </div>
-
-<div id="postamble">
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-
 </div>
 <!-- BA BEGIN --><script>var _hmt = _hmt || [];(function() {  var hm = document.createElement("script");  hm.src = "//hm.baidu.com/hm.js?4f82bfcb8e6f2283f7e7eebae990bc80";  var s = document.getElementsByTagName("script")[0];  s.parentNode.insertBefore(hm, s);})();</script><!-- BA END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'mongodb.html';var disqus_title = 'mongodb.html';var disqus_url = 'http://dirlt.com/mongodb.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

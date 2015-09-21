@@ -1,38 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>OSTEP / Concurrency-Lock</title>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="OSTEP / Concurrency-Lock"/>
-<meta name="generator" content="Org-mode"/>
-<meta name="author" content="dirtysalt"/>
-<meta name="description" content=""/>
-<meta name="keywords" content=""/>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="dirtysalt" />
 <link rel="shortcut icon" href="../css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="../css/site.css" />
-
-
 </head>
 <body>
-
-<div id="preamble">
-
-</div>
-
 <div id="content">
 <h1 class="title">OSTEP / Concurrency-Lock</h1>
-
-<p>[OSTEP](<a href="http://pages.cs.wisc.edu/~remzi/OSTEP/">http://pages.cs.wisc.edu/~remzi/OSTEP/</a>)
+<p>
+[OSTEP](<a href="http://pages.cs.wisc.edu/~remzi/OSTEP/">http://pages.cs.wisc.edu/~remzi/OSTEP/</a>)
 </p>
+
 <p>
 使用xchg/cmpxchg等原子指令就可以实现spinlock原型。但是spinlock有两个主要问题: 1. fairness(公平性) 2. performance(性能). 公平性是因为，如果有多个线程同时竞争一个spinlock的话，有可能部分线程一直抢不到锁，或者是某些线程相比另外一些线程有更低概率拿到锁。通常地，低优先级线程可能一直就拿不到锁。性能原因是因为，其他线程在争抢这个锁时是空转的，一直耗费着CPU. 所以会看到CPU util很高，但是程序运行却很慢。
 </p>
+
 <p>
 ticket lock是一种spinlock实现，解决了公平性问题。可以确保即使低优先级线程可以拿到锁。原理上是，为每个争抢者分配一个token, 而这个spinlock有一个ticket。这些争抢者拿自己token和ticket比较，如果相等就抢到了，等到释放锁时ticket+1, 交给下一个争抢者。
 </p>
 
-
+<div class="org-src-container">
 
 <pre class="src src-C"><span class="org-keyword">typedef</span> <span class="org-keyword">struct</span> <span class="org-type">__lock_t</span> {
   <span class="org-type">int</span> <span class="org-variable-name">ticket</span>;
@@ -54,16 +47,17 @@ ticket lock是一种spinlock实现，解决了公平性问题。可以确保即�
   FetchAndAdd(&amp;lock-&gt;turn);
 }
 </pre>
-
+</div>
 
 <p>
 如果争抢者在一定时间内抢占不到的话，不如放弃CPU让其他进程/线程处理，这样可以在一定程度上改进性能，避免CPU空转。实现上只要在spin部分加上sched_yield即可，非常简单。可是这没有完全解决性能问题，设想如果有100个线程抢占同一个spinlock的话，那么99个线程都会调用sched_yield，然后把控制权交出，造成99次cs(context switch), 而这些cs是完全无用的。
 </p>
+
 <p>
 为了彻底解决性能问题，正确做法应该是将这些线程挂起进入block状态。下面是书中给出的实现。每一个lock上会有一个Q, 上面挂着有哪些因为竞争这个lock而block住的线程。注意在lock的park()和unlock的unpark()会有race condition，这个和park/unpark实现相关，或者在m-&gt;guard=0之前加上set_park()设置park标记。
 </p>
 
-
+<div class="org-src-container">
 
 <pre class="src src-C"><span class="org-keyword">typedef</span> <span class="org-keyword">struct</span> <span class="org-type">__lock_t</span> {
     <span class="org-type">int</span> <span class="org-variable-name">flag</span>;
@@ -100,21 +94,20 @@ ticket lock是一种spinlock实现，解决了公平性问题。可以确保即�
     m-&gt;guard = 0;
 }
 </pre>
-
+</div>
 
 <p>
 linux下lock实现依赖于futex. 这里介绍两个调用：
-</p><ul>
-<li>futex_wait(address, value). 如果*address == value, 那么就等待直到其他线程调用futex_wake(address)，然后继续比较。
-</li>
-<li>futex_wake(address). 唤醒在这个address上等待的线程。
-</li>
+</p>
+<ul class="org-ul">
+<li>futex_wait(address, value). 如果*address == value, 那么就等待直到其他线程调用futex_wake(address)，然后继续比较。</li>
+<li>futex_wake(address). 唤醒在这个address上等待的线程。</li>
 </ul>
-
-<p>书中给了一个使用futex实现mutex的例子。这个mutex最高位表示是否lock, 而剩余31位表示有多少个waiter.
+<p>
+书中给了一个使用futex实现mutex的例子。这个mutex最高位表示是否lock, 而剩余31位表示有多少个waiter.
 </p>
 
-
+<div class="org-src-container">
 
 <pre class="src src-C"><span class="org-type">void</span> <span class="org-function-name">mutex_lock</span> (<span class="org-type">int</span> *<span class="org-variable-name">mutex</span>) {
     <span class="org-type">int</span> <span class="org-variable-name">v</span>;
@@ -147,12 +140,7 @@ linux下lock实现依赖于futex. 这里介绍两个调用：
     futex_wake (mutex);
 }
 </pre>
-
 </div>
-
-<div id="postamble">
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-
 </div>
 <!-- BA BEGIN --><script>var _hmt = _hmt || [];(function() {  var hm = document.createElement("script");  hm.src = "//hm.baidu.com/hm.js?4f82bfcb8e6f2283f7e7eebae990bc80";  var s = document.getElementsByTagName("script")[0];  s.parentNode.insertBefore(hm, s);})();</script><!-- BA END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'note/ostep-con-lock.html';var disqus_title = 'note/ostep-con-lock.html';var disqus_url = 'http://dirlt.com/note/ostep-con-lock.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

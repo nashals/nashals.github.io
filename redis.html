@@ -1,189 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>redis</title>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="redis"/>
-<meta name="generator" content="Org-mode"/>
-<meta name="author" content="dirtysalt"/>
-<meta name="description" content=""/>
-<meta name="keywords" content=""/>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="dirtysalt" />
 <link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
-
-
 </head>
 <body>
-
-<div id="preamble">
-
-</div>
-
 <div id="content">
 <h1 class="title">redis</h1>
-
-
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="redis.html#sec-1">1 简介</a></li>
-<li><a href="redis.html#sec-2">2 数据结构</a></li>
-<li><a href="redis.html#sec-3">3 命令</a></li>
-<li><a href="redis.html#sec-4">4 虚拟内存</a></li>
-<li><a href="redis.html#sec-5">5 磁盘存储</a></li>
-<li><a href="redis.html#sec-6">6 网络服务</a></li>
-<li><a href="redis.html#sec-7">7 HA方案</a></li>
-<li><a href="redis.html#sec-8">8 sentinel</a></li>
+<li><a href="redis.html#orgheadline1">1. 简介</a></li>
+<li><a href="redis.html#orgheadline2">2. 数据结构</a></li>
+<li><a href="redis.html#orgheadline3">3. 命令</a></li>
+<li><a href="redis.html#orgheadline4">4. 虚拟内存</a></li>
+<li><a href="redis.html#orgheadline5">5. 磁盘存储</a></li>
+<li><a href="redis.html#orgheadline6">6. 网络服务</a></li>
+<li><a href="redis.html#orgheadline7">7. HA方案</a></li>
+<li><a href="redis.html#orgheadline8">8. sentinel</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-1" class="outline-3">
-<h3 id="sec-1"><span class="section-number-3">1</span> 简介</h3>
-<div class="outline-text-3" id="text-1">
-
-<p>主页是<a href="http://redis.io/">http://redis.io/</a>. redis(REmote DIctionary Server)是kv数据库，对于k来说的话允许是binary,而对于v来说的话可以支持很多数据结构。
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1"><span class="section-number-2">1</span> 简介</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+主页是<a href="http://redis.io/">http://redis.io/</a>. redis(REmote DIctionary Server)是kv数据库，对于k来说的话允许是binary,而对于v来说的话可以支持很多数据结构。
 作者的主页是<a href="http://antirez.com/">http://antirez.com/</a>, <a href="http://invece.org/">http://invece.org/</a>. github是<a href="https://github.com/antirez/">https://github.com/antirez/</a>. 推荐这些的原因主要是因为作者真的是非常非常强的人。
 redis的代码在2w左右，但是包含的内容非常多包括精巧的数据结构设计，主从同步，虚拟内存控制，网络服务，事务支持等等。代码使用C进行开发，
 基本上没有任何封装，作者所写的代码都是用来直接解决具体问题的。针对redis从下面几个方面入手：
-</p><ul>
-<li>data-type.数据结构
-</li>
-<li>command.命令
-</li>
-<li>virtual-memory.虚拟内存
-</li>
-<li>disk-storage.磁盘存储
-</li>
-<li>network-server.网络服务
-</li>
-<li>high-availability.HA
-</li>
+</p>
+<ul class="org-ul">
+<li>data-type.数据结构</li>
+<li>command.命令</li>
+<li>virtual-memory.虚拟内存</li>
+<li>disk-storage.磁盘存储</li>
+<li>network-server.网络服务</li>
+<li>high-availability.HA</li>
 </ul>
-
-<p>了解了上面几个方面的知识之后看代码的话会比较方便(至少是有头绪).通过如果大家想尝试redis的话甚至可以不用搭建redis server,
+<p>
+了解了上面几个方面的知识之后看代码的话会比较方便(至少是有头绪).通过如果大家想尝试redis的话甚至可以不用搭建redis server,
 这里有个website可以尝试在线使用<a href="http://try.redis-db.com/">http://try.redis-db.com/</a>. 界面和交互效果非常漂亮。另外这里有一些参考资源的汇总<a href="http://blog.nosqlfan.com/html/3537.html">http://blog.nosqlfan.com/html/3537.html</a>.
 不过我觉得redis本身就不是非常复杂，所以阅读文档足够了解其功能以及大致的内部实现。
 </p>
+
 <p>
 #note: redis可能是单CPU线程程序。之所以猜测这点主要是从事务以及scripting(完成事务)的实现考虑的。如果scripting需要完成事务的话，
 外围是没有办法来进行log的。但是又需要保证scripting是原子操作完成的话，那么只能够是单CPU线程来实现。不过好像之前也记得同学提到过这个问题，
 对于并发的话redis是通过进程来完成的。不过其实这非常现实，多线程来操作对象让每个对象上面都带上一把mutex的话，无疑会让代码更加混乱。bravo,antirez.
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-2" class="outline-3">
-<h3 id="sec-2"><span class="section-number-3">2</span> 数据结构</h3>
-<div class="outline-text-3" id="text-2">
-
-<p>相关资源：
-</p><ul>
-<li>Data types. <a href="http://redis.io/topics/data-types">http://redis.io/topics/data-types</a>
-</li>
-<li>A fifteen minute introduction to Redis data types. <a href="http://redis.io/topics/data-types-intro">http://redis.io/topics/data-types-intro</a>
-</li>
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2"><span class="section-number-2">2</span> 数据结构</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+相关资源：
+</p>
+<ul class="org-ul">
+<li>Data types. <a href="http://redis.io/topics/data-types">http://redis.io/topics/data-types</a></li>
+<li>A fifteen minute introduction to Redis data types. <a href="http://redis.io/topics/data-types-intro">http://redis.io/topics/data-types-intro</a></li>
 </ul>
-
 
 <p>
 redis本身是kv数据库，k来说的话支持string(not c-style string.可以支持binary).而对于v来说的话支持下面几种数据结构：
-</p><ul>
-<li>string.上限521M，可以从来当做bitmap使用。但是命令上支持整数操作比如INCR只要string内容本身可以被解析为整数。
-</li>
-<li>list.提供的接口和linked-list类似，不支持遍历也没有索引，对于value只允许是string.可以push/pop/slice.
-</li>
-<li>hash.对于kv也都必须是string，不支持遍历。
-</li>
-<li>set.对于value只允许是string.命令上支持集合之间的并交叉运算(union/intersect/diff).
-</li>
-<li>sorted-set.和set差不多但是对于每个value来说还有一个float number的attribute(score).这样对于value来说可以进行排序，同时针对score进行范围查询。
-</li>
+</p>
+<ul class="org-ul">
+<li>string.上限521M，可以从来当做bitmap使用。但是命令上支持整数操作比如INCR只要string内容本身可以被解析为整数。</li>
+<li>list.提供的接口和linked-list类似，不支持遍历也没有索引，对于value只允许是string.可以push/pop/slice.</li>
+<li>hash.对于kv也都必须是string，不支持遍历。</li>
+<li>set.对于value只允许是string.命令上支持集合之间的并交叉运算(union/intersect/diff).</li>
+<li>sorted-set.和set差不多但是对于每个value来说还有一个float number的attribute(score).这样对于value来说可以进行排序，同时针对score进行范围查询。</li>
 </ul>
-
-<p>对于每种数据结构，redis仅仅是规定其语义但是内部实现的话却非常灵活，因为redis为了尽可能地将内容存放到内存中，针对这些数据结构实现做了内存大小优化(同时在性能上不会牺牲很多).
+<p>
+对于每种数据结构，redis仅仅是规定其语义但是内部实现的话却非常灵活，因为redis为了尽可能地将内容存放到内存中，针对这些数据结构实现做了内存大小优化(同时在性能上不会牺牲很多).
 这里有必要提一下sorted-set实现，将score放在skip-list里面，将value放在hashtable里面。这样可以针对value进行去重和查找，同时可以针对score进行范围查询和扫描。
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-3" class="outline-3">
-<h3 id="sec-3"><span class="section-number-3">3</span> 命令</h3>
-<div class="outline-text-3" id="text-3">
-
-<p>Commands. <a href="http://redis.io/commands">http://redis.io/commands</a> official very comprehensive.
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3"><span class="section-number-2">3</span> 命令</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Commands. <a href="http://redis.io/commands">http://redis.io/commands</a> official very comprehensive.
 </p>
+
 <p>
 命令包括下面几个部分：
-</p><ul>
-<li>key操作
-</li>
-<li>数据结构操作
-</li>
-<li>pub/sub
-</li>
-<li>transaction
-</li>
-<li>scripting
-</li>
-<li>connection
-</li>
-<li>server
-</li>
+</p>
+<ul class="org-ul">
+<li>key操作</li>
+<li>数据结构操作</li>
+<li>pub/sub</li>
+<li>transaction</li>
+<li>scripting</li>
+<li>connection</li>
+<li>server</li>
 </ul>
 
-
-
-<hr/>
+<hr  />
 <p>
 key操作
-</p><ul>
-<li>DEL key. 删除key.
-</li>
-<li>KEYS pattern. 返回匹配pattern的所有key.
-</li>
-<li>PEXPIRE key millseconds. 设置key的毫秒超时时间。
-</li>
-<li>RENAMENX key newkey. 重命名key为newkey如果newkey不存在的话。这里NX(Not eXist).
-</li>
-<li>DUMP key. 返回key所对应的object二进制表示
-</li>
-<li>MIGRATE host port key dest-db timeout. 迁移key到另外机器的db上。
-</li>
-<li>PEXPIREAT key millseconds-timestamp. 设置key的毫秒超时时间点。
-</li>
-<li>RESTORE key ttl serialized-value. 其中serialized-value为DUMP产生的内容，来恢复/创建key并且设置超时时间。
-</li>
-<li>EXISTS key. key是否存在
-</li>
-<li>MOVE key db. 将key移到db
-</li>
-<li>PTTL key. key剩余存活时间(in millseconds).
-</li>
-<li>SORT key [&hellip;]. key对应的value只允许是list,set和sorted-set，针对value按照不同策略进行排序。
-</li>
-<li>EXPIRE key. 设置key的秒级超时时间。
-</li>
-<li>OBJECT subcommand [&hellip;] 查看key对应object的meta信息。
-</li>
-<li>RANDOMKEY 从keyspace返回一个随机key.
-</li>
-<li>TTL key. key剩余存活时间(in seconds).
-</li>
-<li>EXPIREAT key timestamp. 设置key的秒级超时时间点。
-</li>
-<li>PERSIST key. 取消key超时。
-</li>
-<li>RENAME key newkey. 重命名key为newkey.
-</li>
-<li>TYPE key. key对应object的类型。
-</li>
+</p>
+<ul class="org-ul">
+<li>DEL key. 删除key.</li>
+<li>KEYS pattern. 返回匹配pattern的所有key.</li>
+<li>PEXPIRE key millseconds. 设置key的毫秒超时时间。</li>
+<li>RENAMENX key newkey. 重命名key为newkey如果newkey不存在的话。这里NX(Not eXist).</li>
+<li>DUMP key. 返回key所对应的object二进制表示</li>
+<li>MIGRATE host port key dest-db timeout. 迁移key到另外机器的db上。</li>
+<li>PEXPIREAT key millseconds-timestamp. 设置key的毫秒超时时间点。</li>
+<li>RESTORE key ttl serialized-value. 其中serialized-value为DUMP产生的内容，来恢复/创建key并且设置超时时间。</li>
+<li>EXISTS key. key是否存在</li>
+<li>MOVE key db. 将key移到db</li>
+<li>PTTL key. key剩余存活时间(in millseconds).</li>
+<li>SORT key [&#x2026;]. key对应的value只允许是list,set和sorted-set，针对value按照不同策略进行排序。</li>
+<li>EXPIRE key. 设置key的秒级超时时间。</li>
+<li>OBJECT subcommand [&#x2026;] 查看key对应object的meta信息。</li>
+<li>RANDOMKEY 从keyspace返回一个随机key.</li>
+<li>TTL key. key剩余存活时间(in seconds).</li>
+<li>EXPIREAT key timestamp. 设置key的秒级超时时间点。</li>
+<li>PERSIST key. 取消key超时。</li>
+<li>RENAME key newkey. 重命名key为newkey.</li>
+<li>TYPE key. key对应object的类型。</li>
 </ul>
-
 
 <p>
 我们这里稍微看看超时命令的实现机制。<a href="http://redis.io/commands/expire">http://redis.io/commands/expire</a>. 实现上是一个概率算法，
@@ -193,160 +143,115 @@ key操作
 本身并不会执行expire算法，而是等待master节点发出一个DEL并且确认返回(否则非常容易出现状态不一致).
 </p>
 
-<hr/>
+<hr  />
 <p>
 了解数据类型之后, 数据结构操作就显而易见.
 </p>
 
-<hr/>
+<hr  />
 <p>
 Pub/Sub. <a href="http://redis.io/topics/pubsub">http://redis.io/topics/pubsub</a>.
 </p>
+
 <p>
 redis提供了pub/sub机制可以使得应用很方便地做message queue工作。但是这种message queue是种在线方式的message queue.
 如果subscribe在publish之后发起的话那么会丢掉数据。如果希望工作方式是离线的话，可以使用list来模拟message queue.
 我猜想resque(<a href="http://rubygems.org/gems/resque">http://rubygems.org/gems/resque</a>)应该是用离线方式工作的。
-</p><ul>
-<li>PSUBSCRIBE pattern [pattern&hellip;] 订阅某些pattern(匹配channel)的信息
-</li>
-<li>PUNSUBSCRIBE [pattern&hellip;] 取消某些pattern(匹配channel)的订阅
-</li>
-<li>UNSUBSCRIBE channel [channel&hellip;] 取消订阅某些channel.
-</li>
-<li>PUBLISH channel message 向channel发布消息
-</li>
-<li>SUBSCRIBE channel [channel&hellip;] 订阅某些channel.
-</li>
+</p>
+<ul class="org-ul">
+<li>PSUBSCRIBE pattern [pattern&#x2026;] 订阅某些pattern(匹配channel)的信息</li>
+<li>PUNSUBSCRIBE [pattern&#x2026;] 取消某些pattern(匹配channel)的订阅</li>
+<li>UNSUBSCRIBE channel [channel&#x2026;] 取消订阅某些channel.</li>
+<li>PUBLISH channel message 向channel发布消息</li>
+<li>SUBSCRIBE channel [channel&#x2026;] 订阅某些channel.</li>
 </ul>
 
-
-
-<hr/>
+<hr  />
 <p>
 Transaction. <a href="http://redis.io/topics/transactions">http://redis.io/topics/transactions</a>.
 </p>
+
 <p>
 关于transaction主要是为了解决在client端发起多个操作的需求，而redis scripting功能现在也能够满足transaction功能并且实现得更加优雅。
 用户可以通过向redis提交lua script到服务器端进行原子计算(如果是这样推断的话，那么可能redis是单CPU线程程序，通过进程来增加并发).
 感觉redis的transaction设计得恰到好处，在实现简单和功能足够的之间达到了折衷。
-</p><ul>
-<li>DISCARD. 放弃事务。
-</li>
-<li>MULTI. 发起事务。
-</li>
-<li>WATCH key [key..]. 监控键值，通常在发起事务之前执行。WATCH机制的引入主要就是为了提供类似于CAS(check-and-set)语义，这个在文档里面介绍得很清楚。
-</li>
-<li>EXEC. 执行之前发起的事务。
-</li>
-<li>UNWATCH. 删除所有的监控键值。
-</li>
+</p>
+<ul class="org-ul">
+<li>DISCARD. 放弃事务。</li>
+<li>MULTI. 发起事务。</li>
+<li>WATCH key [key..]. 监控键值，通常在发起事务之前执行。WATCH机制的引入主要就是为了提供类似于CAS(check-and-set)语义，这个在文档里面介绍得很清楚。</li>
+<li>EXEC. 执行之前发起的事务。</li>
+<li>UNWATCH. 删除所有的监控键值。</li>
 </ul>
 
-
-
-<hr/>
+<hr  />
 <p>
 Scripting. <a href="http://redis.io/commands/eval">http://redis.io/commands/eval</a>.
 </p>
+
 <p>
 有了scripting可以通过提交lua script到redis server上面然后在服务端进行计算。同时redis保证只有一个lua interpreter在执行lua script所以可以实现事务功能。
 script可以在redis server进行缓存，用户也可以强制server将script全部删除掉。对于cache住的script,用户可以通过这个script的SHA1来访问。
-</p><ul>
-<li>EVAL script numkeys key [key &hellip;] arg [arg &hellip;]. 执行script并且这个script会在server缓存。
-</li>
-<li>EVALSHA sha1 numkeys key [key &hellip;] arg [arg &hellip;]. 这个和EVAL一样，但是可以通过sha1来调用已经缓存住的script.
-</li>
-<li>SCRIPT FLUSH. 移除所有的script cache.
-</li>
-<li>SCRIPT LOAD script. 将script放到server端进行cache但是不执行。
-</li>
-<li>SCRIPT EXISTS scriptc [script&hellip;] 检查多个sha1 script是否存在。
-</li>
-<li>SCRIPT KILL. 终止当前执行的script.
-</li>
+</p>
+<ul class="org-ul">
+<li>EVAL script numkeys key [key &#x2026;] arg [arg &#x2026;]. 执行script并且这个script会在server缓存。</li>
+<li>EVALSHA sha1 numkeys key [key &#x2026;] arg [arg &#x2026;]. 这个和EVAL一样，但是可以通过sha1来调用已经缓存住的script.</li>
+<li>SCRIPT FLUSH. 移除所有的script cache.</li>
+<li>SCRIPT LOAD script. 将script放到server端进行cache但是不执行。</li>
+<li>SCRIPT EXISTS scriptc [script&#x2026;] 检查多个sha1 script是否存在。</li>
+<li>SCRIPT KILL. 终止当前执行的script.</li>
 </ul>
 
-
-
-<hr/>
+<hr  />
 <p>
 connection
-</p><ul>
-<li>AUTH password. 进行身份验证。
-</li>
-<li>PING. 对server进行ping操作。
-</li>
-<li>SELECT index. 其中index为数字，默认为0.使用DB index.
-</li>
-<li>ECHO message. server做echo服务。
-</li>
-<li>QUIT. 断开连接。断开连接之后server会将所有的pending replies都返回给client.
-</li>
+</p>
+<ul class="org-ul">
+<li>AUTH password. 进行身份验证。</li>
+<li>PING. 对server进行ping操作。</li>
+<li>SELECT index. 其中index为数字，默认为0.使用DB index.</li>
+<li>ECHO message. server做echo服务。</li>
+<li>QUIT. 断开连接。断开连接之后server会将所有的pending replies都返回给client.</li>
 </ul>
 
-
-
-<hr/>
+<hr  />
 <p>
 server
-</p><ul>
-<li>BGREWRITEAOF. background重写AOF，这样可以缩小日志部分。关于AOF会在磁盘存储部分说明。
-</li>
-<li>DBSIZE. number of keys.
-</li>
-<li>INFO. information about server.
-</li>
-<li>SLAVEOF host port. 这台redis-server作为host/port的slave.SLAVEOF NO ONE可以让这台机器变成master.
-</li>
-<li>BGSAVE. background进行dump保存为dump.rdb.
-</li>
-<li>DEBUG OBJECT key. #todo:
-</li>
-<li>LASTSAVE. 最后完成SAVE的unix timestamp.
-</li>
-<li>SLOWLOG subcommand [argument]. 关于慢日志的控制和查询。
-</li>
-<li>CONFIG GET parameter. 获取redis参数配置。
-</li>
-<li>DEBUG SEGFAULT. 让redis server主动crash(SIGSEGV).
-</li>
-<li>MONITOR. 监控到所有发送给redis server的command.通常是telnet登陆上去然后执行monitor来进行观察。
-</li>
-<li>SYNC. 触发sync操作让slave和master进行同步。
-</li>
-<li>CONFIG SET parameter value. 对redis进行参数配置。
-</li>
-<li>FLUASHALL. 从所有db中删除所有的key.
-</li>
-<li>SAVE. 前台进行dump保存为dump.rdb.
-</li>
-<li>TIME. 当前server的unix timestamp.
-</li>
-<li>CONFIG RESETSTAT. 重新按照INFO的配置来进行设置。(这里可以猜想INFO配置应该从配置文件来的，而没有包含动态配置修改).
-</li>
-<li>FLUSHDB. 从当前db中删除所有的key.
-</li>
-<li>SHUTDOWN [NOSAVE] [SAVE]. 关闭redis sever，之前可选地会进行SAVE并且flush AOF，同时断开所有的客户端连接。
-</li>
+</p>
+<ul class="org-ul">
+<li>BGREWRITEAOF. background重写AOF，这样可以缩小日志部分。关于AOF会在磁盘存储部分说明。</li>
+<li>DBSIZE. number of keys.</li>
+<li>INFO. information about server.</li>
+<li>SLAVEOF host port. 这台redis-server作为host/port的slave.SLAVEOF NO ONE可以让这台机器变成master.</li>
+<li>BGSAVE. background进行dump保存为dump.rdb.</li>
+<li>DEBUG OBJECT key. #todo:</li>
+<li>LASTSAVE. 最后完成SAVE的unix timestamp.</li>
+<li>SLOWLOG subcommand [argument]. 关于慢日志的控制和查询。</li>
+<li>CONFIG GET parameter. 获取redis参数配置。</li>
+<li>DEBUG SEGFAULT. 让redis server主动crash(SIGSEGV).</li>
+<li>MONITOR. 监控到所有发送给redis server的command.通常是telnet登陆上去然后执行monitor来进行观察。</li>
+<li>SYNC. 触发sync操作让slave和master进行同步。</li>
+<li>CONFIG SET parameter value. 对redis进行参数配置。</li>
+<li>FLUASHALL. 从所有db中删除所有的key.</li>
+<li>SAVE. 前台进行dump保存为dump.rdb.</li>
+<li>TIME. 当前server的unix timestamp.</li>
+<li>CONFIG RESETSTAT. 重新按照INFO的配置来进行设置。(这里可以猜想INFO配置应该从配置文件来的，而没有包含动态配置修改).</li>
+<li>FLUSHDB. 从当前db中删除所有的key.</li>
+<li>SHUTDOWN [NOSAVE] [SAVE]. 关闭redis sever，之前可选地会进行SAVE并且flush AOF，同时断开所有的客户端连接。</li>
 </ul>
-
-
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-4" class="outline-3">
-<h3 id="sec-4"><span class="section-number-3">4</span> 虚拟内存</h3>
-<div class="outline-text-3" id="text-4">
-
-<p>相关资源：
-</p><ul>
-<li>Virtual Memory technical specification. <a href="http://redis.io/topics/internals-vm">http://redis.io/topics/internals-vm</a>
-</li>
-<li>Memory Optimization. <a href="http://redis.io/topics/memory-optimization">http://redis.io/topics/memory-optimization</a>
-</li>
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4"><span class="section-number-2">4</span> 虚拟内存</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+相关资源：
+</p>
+<ul class="org-ul">
+<li>Virtual Memory technical specification. <a href="http://redis.io/topics/internals-vm">http://redis.io/topics/internals-vm</a></li>
+<li>Memory Optimization. <a href="http://redis.io/topics/memory-optimization">http://redis.io/topics/memory-optimization</a></li>
 </ul>
-
 
 <p>
 关于虚拟内存，redis网站的文档讲解得是非常的详细，而且似乎为了这个功能的实现作者应该也下来不少功夫。首先redis是一个kv数据库，
@@ -354,29 +259,27 @@ server
 按照page进行swap.redis-server允许配置page size以及swap page number.对于触发swap条件是在主线程定期会判断当前占用内存大小，
 如果占用内存过多的话，那么会开始将部分redisObject swap到disk上面去直到满足条件。对于这个object会扫描整个keyspace，权重按照下面公式
 </p>
-
+<div class="org-src-container">
 
 <pre class="src src-C++">swappability = age*log(size_in_memory)
 </pre>
-
+</div>
 <p>
-其中age是距离上次访问的时间，size<sub>in</sub><sub>memory是一种快速计算占用内存大小的估值。每个换出的对象都会计算出序列化成为</sub>.rdb格式的大小，
+其中age是距离上次访问的时间，size_in_memory是一种快速计算占用内存大小的估值。每个换出的对象都会计算出序列化成为.rdb格式的大小，
 实现上还是非常有意思的，实际上并没有真实地进行序列化，而是将其序列化到/dev/null文件里面然后ftell看看大小多少。得到object rdb size
 之后就可以计算占用的page number.redis-server找出连续page number的文件空间，然后将这个object swap到这些块上面。至于这个swap block的
 管理是通过bitmap来完成的。
 </p>
+
 <p>
 对于redis来说包含两种VM机制，blocking和threaded vm.其实关系非常简单，threaded vm就是通过增加io thread然后在thread里面执行blocking vm.
 文档里面作者提到了当时考虑解决blocking vm的问题，包含三种方式：
-</p><ul>
-<li>将redis修改成为multi-thread工作方式。
-</li>
-<li>将swap io部分修改成为nonblocking方式，和io thread工作方式一样只不过这个thread是kernel thread.
-</li>
-<li>io thread但是线程是userspace thread.这也是redis采用的方式。
-</li>
+</p>
+<ul class="org-ul">
+<li>将redis修改成为multi-thread工作方式。</li>
+<li>将swap io部分修改成为nonblocking方式，和io thread工作方式一样只不过这个thread是kernel thread.</li>
+<li>io thread但是线程是userspace thread.这也是redis采用的方式。</li>
 </ul>
-
 
 <p>
 threaded vm还有两个需要注意的地方。1)就是redis针对操作必须首先判断这个操作所涉及的所有的keys是否都已经在memory了，如果有一个key
@@ -384,55 +287,52 @@ threaded vm还有两个需要注意的地方。1)就是redis针对操作必须�
 与此同时将这些key swap出去，所以可以先做一个标记/或者是lock方式swap out线程工作。2)一旦swap in之后的话那么通过pipe方式通知CPU线程所有
 的key都已经load into memory.
 </p>
+
 <p>
-There are basically three main ways to turn the blocking VM into a non blocking one. - 1: One way is obvious, and in my opionion, not a good idea at all, that is, turning Redis itself into a theaded server: if every request is served by a different thread automatically other clients don't need to wait for blocked ones. Redis is fast, exports atomic operations, has no locks, and is just 10k lines of code, because it is single threaded, so this was not an option for me. - 2: Using non-blocking I/O against the swap file. After all you can think Redis already event-loop based, why don't just handle disk I/O in a non-blocking fashion? I also discarded this possiblity because of two main reasons. One is that non blocking file operations, unlike sockets, are an incompatibility nightmare. It's not just like calling select, you need to use OS-specific things. The other problem is that the I/O is just one part of the time consumed to handle VM, another big part is the CPU used in order to encode/decode data to/from the swap file. This is I picked option three, that is&hellip; - 3: Using I/O threads, that is, a pool of threads handling the swap I/O operations. This is what the Redis VM is using, so let's detail how this works.
+There are basically three main ways to turn the blocking VM into a non blocking one. - 1: One way is obvious, and in my opionion, not a good idea at all, that is, turning Redis itself into a theaded server: if every request is served by a different thread automatically other clients don't need to wait for blocked ones. Redis is fast, exports atomic operations, has no locks, and is just 10k lines of code, because it is single threaded, so this was not an option for me. - 2: Using non-blocking I/O against the swap file. After all you can think Redis already event-loop based, why don't just handle disk I/O in a non-blocking fashion? I also discarded this possiblity because of two main reasons. One is that non blocking file operations, unlike sockets, are an incompatibility nightmare. It's not just like calling select, you need to use OS-specific things. The other problem is that the I/O is just one part of the time consumed to handle VM, another big part is the CPU used in order to encode/decode data to/from the swap file. This is I picked option three, that is&#x2026; - 3: Using I/O threads, that is, a pool of threads handling the swap I/O operations. This is what the Redis VM is using, so let's detail how this works.
 </p>
+
 <p>
 在进行磁盘存储比如BGSAVE或者是BGREWRITEAOF的时候，child process会得到一个parent process的内存镜像。但是注意这个内存镜像里面的一些
 value可能还在swap file上面，child process需要将这些value swap in.但是如果这个时候parent process的swap out线程依然在工作的话，
 那么相当于出现同时操作swap file.所以在进行BGSAVE或者是BGREWRITEAOF的时候会将parent process的swap out工作停止。
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-5" class="outline-3">
-<h3 id="sec-5"><span class="section-number-3">5</span> 磁盘存储</h3>
-<div class="outline-text-3" id="text-5">
-
-<p>相关资源：
-</p><ul>
-<li>Persistence. <a href="http://redis.io/topics/persistence">http://redis.io/topics/persistence</a>
-</li>
-<li>Redis-RDB-Dump-File-Format. <a href="https://github.com/sripathikrishnan/redis-rdb-tools/wiki/Redis-RDB-Dump-File-Format">https://github.com/sripathikrishnan/redis-rdb-tools/wiki/Redis-RDB-Dump-File-Format</a>
-</li>
-<li>Redis或弃用当前VM机制，采用新的diskstore模型. <a href="http://blog.nosqlfan.com/html/1047.html">http://blog.nosqlfan.com/html/1047.html</a>
-</li>
-<li>Redis新的存储模式diskstore. <a href="http://timyang.net/data/redis-diskstore/">http://timyang.net/data/redis-diskstore/</a>
-</li>
-<li>Redis persistence demystified. <a href="http://antirez.com/post/redis-persistence-demystified.html">http://antirez.com/post/redis-persistence-demystified.html</a>
-</li>
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5"><span class="section-number-2">5</span> 磁盘存储</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+相关资源：
+</p>
+<ul class="org-ul">
+<li>Persistence. <a href="http://redis.io/topics/persistence">http://redis.io/topics/persistence</a></li>
+<li>Redis-RDB-Dump-File-Format. <a href="https://github.com/sripathikrishnan/redis-rdb-tools/wiki/Redis-RDB-Dump-File-Format">https://github.com/sripathikrishnan/redis-rdb-tools/wiki/Redis-RDB-Dump-File-Format</a></li>
+<li>Redis或弃用当前VM机制，采用新的diskstore模型. <a href="http://blog.nosqlfan.com/html/1047.html">http://blog.nosqlfan.com/html/1047.html</a></li>
+<li>Redis新的存储模式diskstore. <a href="http://timyang.net/data/redis-diskstore/">http://timyang.net/data/redis-diskstore/</a></li>
+<li>Redis persistence demystified. <a href="http://antirez.com/post/redis-persistence-demystified.html">http://antirez.com/post/redis-persistence-demystified.html</a></li>
 </ul>
-
 
 <p>
 当前redis磁盘存储方式有两种，一种是RDB(redis db)，一种是AOF(append-only file).可以看到磁盘存储上redis并没有非常方便的查找结构，
 这也和redis的初始定位有关，redis一开始定位就是内存kv数据库。
 </p>
+
 <p>
 RDB相当于redis的一个checkpoint,但是存储格式是二进制。工作方式非常简单，就是当需要BGSAVE/SAVE的时候(如果是BGSAVE的话那么会fork进程出来),
 然后将redis server里面所有的对象都dump成为dump.rdb文件。优势非常明显，二进制文件占用空间很少，并且只有一个文件非常容易恢复，并且磁盘
 操作相对较少只有当需要SAVE时候才有(子进程dump时候父进程不会fork新的进程)，但是劣势也很明显。因为dump是整个server的数据，所以非常耗时，
 那么这段时间数据如果是写内存的话如果server crash的话，那么会有数据丢失。同时fork可能也非常耗时(linux下面实现是COW方式,所以时间相对还好).
 </p>
+
 <p>
 AOF则类似于redo-log的工作方式，所有对于server数据的修改都会作为log记录下来，然后有几个策略来进行刷新. 1)每次写log都会进行fsync.
 2)每秒都会将收集的log进行fsync. 3)不调用fsync让OS操作。不同的策略在crash情况下面会造成不同比率数据的丢失，作者推荐使用2方法。
 AOF都会写到appendonly.aof文件里面，我们可以看看一个aof的example.很显然这是一个human-readable的格式(但是我没有兴趣分析其格式).
 </p>
-
-
-<pre class="example">dirlt@dirlt-virtual-machine:~/utils/redis/bin$ cat appendonly.aof
+<pre class="example">
+dirlt@dirlt-virtual-machine:~/utils/redis/bin$ cat appendonly.aof
 *2
 $6
 SELECT
@@ -446,53 +346,46 @@ c
 $1
 e
 </pre>
-
 <p>
 如果system crash的话，那么我们可以拿这个AOF进行恢复。相比RDB的方式因为使用的是文本表示所以占用空间大很多，同时恢复时间因为是redo所以相对较长。
 </p>
+
 <p>
 另外需要注意的一个问题是就是如果存在删除操作或者是INCR这样的update-inplace的操作的话，AOF很快就会变大。redis提供了压缩AOF的方式(从命令上来看是需要进行手动触发).压缩原理很简单，
 就是保存最后的值但是依然是以AOF格式来保存的。AOF工作原理和RDB非常类似，首先fork子进程出来，然后再child process里面去产生新的AOF文件，成功之后parent process
 将这段时间的AOF全部追加到新的AOF文件里面，然后将原来的AOF文件删除进行切换。
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-6" class="outline-3">
-<h3 id="sec-6"><span class="section-number-3">6</span> 网络服务</h3>
-<div class="outline-text-3" id="text-6">
-
-<p>相关资源：
-</p><ul>
-<li>Event Library. <a href="http://redis.io/topics/internals-eventlib">http://redis.io/topics/internals-eventlib</a> 对于event library的理解不过都是一些基本的问题。
-</li>
-<li>Redis Event Library. <a href="http://redis.io/topics/internals-rediseventlib">http://redis.io/topics/internals-rediseventlib</a> redis的event library的实现。
-</li>
-<li>Pipelining. <a href="http://redis.io/topics/pipelining">http://redis.io/topics/pipelining</a> 通过pipelining的方式隐藏网络带来的延迟。其实就是批量处理方式。
-</li>
-<li>Protocol specification. <a href="http://redis.io/topics/protocol">http://redis.io/topics/protocol</a> protocol规范，可以看得出格式上还是非常human-readable的。
-</li>
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="orgheadline6"><span class="section-number-2">6</span> 网络服务</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+相关资源：
+</p>
+<ul class="org-ul">
+<li>Event Library. <a href="http://redis.io/topics/internals-eventlib">http://redis.io/topics/internals-eventlib</a> 对于event library的理解不过都是一些基本的问题。</li>
+<li>Redis Event Library. <a href="http://redis.io/topics/internals-rediseventlib">http://redis.io/topics/internals-rediseventlib</a> redis的event library的实现。</li>
+<li>Pipelining. <a href="http://redis.io/topics/pipelining">http://redis.io/topics/pipelining</a> 通过pipelining的方式隐藏网络带来的延迟。其实就是批量处理方式。</li>
+<li>Protocol specification. <a href="http://redis.io/topics/protocol">http://redis.io/topics/protocol</a> protocol规范，可以看得出格式上还是非常human-readable的。</li>
 </ul>
-
-<p>关于网络服务不打算详细分析。
+<p>
+关于网络服务不打算详细分析。
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-7" class="outline-3">
-<h3 id="sec-7"><span class="section-number-3">7</span> HA方案</h3>
-<div class="outline-text-3" id="text-7">
-
-<p>相关资源：
-</p><ul>
-<li>Replication. <a href="http://redis.io/topics/replication">http://redis.io/topics/replication</a>
-</li>
-<li>Redis Cluster. <a href="http://redis.io/presentation/Redis_Cluster.pdf">http://redis.io/presentation/Redis_Cluster.pdf</a>
-</li>
+<div id="outline-container-orgheadline7" class="outline-2">
+<h2 id="orgheadline7"><span class="section-number-2">7</span> HA方案</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+相关资源：
+</p>
+<ul class="org-ul">
+<li>Replication. <a href="http://redis.io/topics/replication">http://redis.io/topics/replication</a></li>
+<li>Redis Cluster. <a href="http://redis.io/presentation/Redis_Cluster.pdf">http://redis.io/presentation/Redis_Cluster.pdf</a></li>
 </ul>
-
 
 <p>
 现在redis的replication方式只有master/slave方案(one master and serveral slaves).slave可以进行级联但是不允许作为多个master的slave.
@@ -502,36 +395,29 @@ e
 (可以通过telnet/SYNC来查看传输结果，同时也可以看到master会隔断时间发送PING来做心跳检测).
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-8" class="outline-3">
-<h3 id="sec-8"><span class="section-number-3">8</span> sentinel</h3>
-<div class="outline-text-3" id="text-8">
-
-<p><a href="http://redis.io/topics/sentinel">http://redis.io/topics/sentinel</a>
+<div id="outline-container-orgheadline8" class="outline-2">
+<h2 id="orgheadline8"><span class="section-number-2">8</span> sentinel</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+<a href="http://redis.io/topics/sentinel">http://redis.io/topics/sentinel</a>
 </p>
+
 <p>
 sentinel功能是为了解决redis在分布式使用场景中主从automatic failover的情况， 包括下面这几个功能：
-</p><ul>
-<li>Monitoring. Sentinel constantly check if your master and slave instances are working as expected.（监控redis node是否正常工作）
-</li>
-<li>Notification. Sentinel can notify the system administrator, or another computer program, via an API, that something is wrong with one of the monitored Redis instances.（如果node没有正常工作那么可以通知）
-</li>
-<li>Automatic failover. If a master is not working as expected, Sentinel can start a failover process where a slave is promoted to master, the other additional slaves are reconfigured to use the new master, and the applications using the Redis server informed about the new address to use when connecting.（如果master节点没有正常工作的话，可以选择启动新的slave来作为master，完成故障的自动恢复。自己实现了一个agreement protocol来完成选主）
-</li>
+</p>
+<ul class="org-ul">
+<li>Monitoring. Sentinel constantly check if your master and slave instances are working as expected.（监控redis node是否正常工作）</li>
+<li>Notification. Sentinel can notify the system administrator, or another computer program, via an API, that something is wrong with one of the monitored Redis instances.（如果node没有正常工作那么可以通知）</li>
+<li>Automatic failover. If a master is not working as expected, Sentinel can start a failover process where a slave is promoted to master, the other additional slaves are reconfigured to use the new master, and the applications using the Redis server informed about the new address to use when connecting.（如果master节点没有正常工作的话，可以选择启动新的slave来作为master，完成故障的自动恢复。自己实现了一个agreement protocol来完成选主）</li>
 </ul>
-
 
 <p>
 #todo: 考虑到redis的代码质量比较高，对于redis的automatic failover实现机制可以好好分析并且阅读代码。
-</p></div>
+</p>
 </div>
 </div>
-
-<div id="postamble">
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-
 </div>
 <!-- BA BEGIN --><script>var _hmt = _hmt || [];(function() {  var hm = document.createElement("script");  hm.src = "//hm.baidu.com/hm.js?4f82bfcb8e6f2283f7e7eebae990bc80";  var s = document.getElementsByTagName("script")[0];  s.parentNode.insertBefore(hm, s);})();</script><!-- BA END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'redis.html';var disqus_title = 'redis.html';var disqus_url = 'http://dirlt.com/redis.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

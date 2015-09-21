@@ -1,33 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>OSTEP / Virt-VAX/VMS</title>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="OSTEP / Virt-VAX/VMS"/>
-<meta name="generator" content="Org-mode"/>
-<meta name="author" content="dirtysalt"/>
-<meta name="description" content=""/>
-<meta name="keywords" content=""/>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="dirtysalt" />
 <link rel="shortcut icon" href="../css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="../css/site.css" />
-
-
 </head>
 <body>
-
-<div id="preamble">
-
-</div>
-
 <div id="content">
 <h1 class="title">OSTEP / Virt-VAX/VMS</h1>
-
-<p>[OSTEP](<a href="http://pages.cs.wisc.edu/~remzi/OSTEP/">http://pages.cs.wisc.edu/~remzi/OSTEP/</a>)
+<p>
+[OSTEP](<a href="http://pages.cs.wisc.edu/~remzi/OSTEP/">http://pages.cs.wisc.edu/~remzi/OSTEP/</a>)
 </p>
+
 <p>
 kernel会被映射到用户地址空间?! 对于每个进程来说, 高地址虚拟内存中都是同样的内容(kernel image). kernel使用的物理内存也由VMS来管理, 这样一来: 1. kernel和userspace交换数据更加方便, 都是在同一个虚拟地址空间下进行 2. kernel可以获得VMS带来的各种好处比如可以使用大于物理内存的空间(来管理各种数据结构比如page table)而不要手动swap.
 </p>
+
 <p>
 Perhaps more importantly, the kernel virtual address space (i.e., its
 data structures and code) is a part of each user address space. On a context
@@ -36,6 +29,7 @@ page tables of the soon-to-be-run process; however, it does not
 change the S base and bound registers, and as a result the “same” kernel
 structures are mapped into each user address space
 </p>
+
 <p>
 The kernel is mapped into each address space for a number of reasons.
 This construction makes life easier for the kernel; when, for example, the
@@ -49,6 +43,7 @@ moving data between user applications and the kernel would again be
 complicated and painful. With this construction (now used widely), the
 kernel appears almost as a library to applications, albeit a protected one.
 </p>
+
 <p>
 One last point about this address space relates to protection. Clearly,
 the OS does not want user applications reading or writing OS data or
@@ -60,11 +55,7 @@ level of protection than user data and code; an attempted access to such
 information from user code will generate a trap into the OS, and (you
 guessed it) the likely termination of the offending process
 ```
-</p></div>
-
-<div id="postamble">
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-
+</p>
 </div>
 <!-- BA BEGIN --><script>var _hmt = _hmt || [];(function() {  var hm = document.createElement("script");  hm.src = "//hm.baidu.com/hm.js?4f82bfcb8e6f2283f7e7eebae990bc80";  var s = document.getElementsByTagName("script")[0];  s.parentNode.insertBefore(hm, s);})();</script><!-- BA END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'note/ostep-virt-vax-vms.html';var disqus_title = 'note/ostep-virt-vax-vms.html';var disqus_url = 'http://dirlt.com/note/ostep-virt-vax-vms.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

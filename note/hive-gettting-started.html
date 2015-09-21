@@ -1,169 +1,205 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Hive Getting Started</title>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="Hive Getting Started"/>
-<meta name="generator" content="Org-mode"/>
-<meta name="author" content="dirtysalt"/>
-<meta name="description" content=""/>
-<meta name="keywords" content=""/>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="dirtysalt" />
 <link rel="shortcut icon" href="../css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="../css/site.css" />
-
-
 </head>
 <body>
-
-<div id="preamble">
-
-</div>
-
 <div id="content">
 <h1 class="title">Hive Getting Started</h1>
-
-<p><a href="https://cwiki.apache.org/confluence/display/Hive/GettingStarted">https://cwiki.apache.org/confluence/display/Hive/GettingStarted</a>
-</p>
-<p>
-首先配置好hdfs/mapred(spark), 然后配置hive. hive使用hdfs做文件存储, 使用mapred(spark)做计算引擎
-</p>
-
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="hive-gettting-started.html#sec-1">Configuration</a></li>
-<li><a href="hive-gettting-started.html#sec-2">Local Mode</a></li>
-<li><a href="hive-gettting-started.html#sec-3">Metadata Store</a></li>
-<li><a href="hive-gettting-started.html#sec-4">Example</a></li>
+<li><a href="hive-gettting-started.html#orgheadline1">Configuration</a></li>
+<li><a href="hive-gettting-started.html#orgheadline2">Local Mode</a></li>
+<li><a href="hive-gettting-started.html#orgheadline3">Metadata Store</a></li>
+<li><a href="hive-gettting-started.html#orgheadline4">Example</a></li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-1" class="outline-3">
-<h3 id="sec-1">Configuration</h3>
-<div class="outline-text-3" id="text-1">
-
-<ul>
-<li>默认配置文件是 &lt;install-dir&gt;/conf/hive-default.xml
-</li>
-<li>可以通过配置文件改写 &lt;install-dir&gt;/conf/hive-site.xml
-</li>
-<li>配置文件路径 HIVE_CONF_DIR
-</li>
-<li>日志配置文件 &lt;install-dir&gt;/conf/hive-log4j.properties
-</li>
-<li>启动通过 bin/hive -hiveconf x1=y1 -hiveconf x2=y2 设置参数
-</li>
-<li>运行时候通过 SET mapred.job.tracker=myhost.mycompany.com:50030; 修改参数
-</li>
-</ul>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-2" class="outline-3">
-<h3 id="sec-2">Local Mode</h3>
-<div class="outline-text-3" id="text-2">
-
-<p>这里所谓的local-mode主要是指运行的mapreduce是在local node上面完成的，至于数据源还是和hdfs/hbase本身配置相关。可以通过设置 SET mapred.job.tracker=local; 强制修改mapreduce本地完成。
+<p>
+<a href="https://cwiki.apache.org/confluence/display/Hive/GettingStarted">https://cwiki.apache.org/confluence/display/Hive/GettingStarted</a>
 </p>
+
+<p>
+首先配置好hdfs/mapred(spark), 然后配置hive. hive使用hdfs做文件存储, 使用mapred(spark)做计算引擎
+</p>
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">Configuration</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<ul class="org-ul">
+<li>默认配置文件是 &lt;install-dir&gt;/conf/hive-default.xml</li>
+<li>可以通过配置文件改写 &lt;install-dir&gt;/conf/hive-site.xml</li>
+<li>配置文件路径 HIVE_CONF_DIR</li>
+<li>日志配置文件 &lt;install-dir&gt;/conf/hive-log4j.properties</li>
+<li>启动通过 bin/hive -hiveconf x1=y1 -hiveconf x2=y2 设置参数</li>
+<li>运行时候通过 SET mapred.job.tracker=myhost.mycompany.com:50030; 修改参数</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">Local Mode</h2>
+<div class="outline-text-2" id="text-orgheadline2">
+<p>
+这里所谓的local-mode主要是指运行的mapreduce是在local node上面完成的，至于数据源还是和hdfs/hbase本身配置相关。可以通过设置 SET mapred.job.tracker=local; 强制修改mapreduce本地完成。
+</p>
+
 <p>
 hive0.7以后提供自动切换local-mode功能，设置 hive&gt; SET hive.exec.mode.local.auto=false; 那么对于下面三个情况满足的条件下就会自动切换到local-mode:
-</p><ul>
-<li>The total input size of the job is lower than: hive.exec.mode.local.auto.inputbytes.max (128MB by default)
-</li>
-<li>The total number of map-tasks is less than: hive.exec.mode.local.auto.tasks.max (4 by default)
-</li>
-<li>The total number of reduce tasks required is 1 or 0.
-</li>
-</ul>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-3" class="outline-3">
-<h3 id="sec-3">Metadata Store</h3>
-<div class="outline-text-3" id="text-3">
-
-<p><a href="https://cwiki.apache.org/confluence/display/Hive/AdminManual+MetastoreAdmin">https://cwiki.apache.org/confluence/display/Hive/AdminManual+MetastoreAdmin</a>
 </p>
+<ul class="org-ul">
+<li>The total input size of the job is lower than: hive.exec.mode.local.auto.inputbytes.max (128MB by default)</li>
+<li>The total number of map-tasks is less than: hive.exec.mode.local.auto.tasks.max (4 by default)</li>
+<li>The total number of reduce tasks required is 1 or 0.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3">Metadata Store</h2>
+<div class="outline-text-2" id="text-orgheadline3">
+<p>
+<a href="https://cwiki.apache.org/confluence/display/Hive/AdminManual+MetastoreAdmin">https://cwiki.apache.org/confluence/display/Hive/AdminManual+MetastoreAdmin</a>
+</p>
+
 <p>
 metadata store主要是用来存储数据库的一些元数据信息，有下面相关的配置参数：
-</p><ul>
-<li>javax.jdo.option.ConnectionURL.
-</li>
-<li>javax.jdo.option.ConnectionDriverName.
-</li>
+</p>
+<ul class="org-ul">
+<li>javax.jdo.option.ConnectionURL.</li>
+<li>javax.jdo.option.ConnectionDriverName.</li>
 </ul>
-
 
 <p>
 默认实现是在本地的derby db，默认存储位置是./metastore_db. metastore其他实现需要支持JPO（Java Persistent Object） Metastore can be stored in any database that is supported by JPOX. The database schema is defined in JDO metadata annotations file package.jdo at src/contrib/hive/metastore/src/model.
 </p>
+
 <p>
 当然也可以将这些数据存储在远程数据库上。remote metadata store server和client之间交互是通过thrift完成的，thrift server通过jdbc连接到mysql或者是其他数据库上。
 </p>
+
 <p>
 If you are using MySQL as the datastore for metadata, put MySQL client libraries in HIVE_HOME/lib before starting Hive Client or HiveMetastore Server. 或者如果使用ubuntu的话，可以直接使用 sudo apt-get install libmysql-java 安装，然后jar都在/usr/share/java下面。
 </p>
+
 <p>
 Server Configuration Parameters
-</p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<colgroup><col class="left" /><col class="left" /><col class="left" />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
 </colgroup>
 <thead>
-<tr><th scope="col" class="left">Config Param</th><th scope="col" class="left">Config Value</th><th scope="col" class="left">Comment</th></tr>
+<tr>
+<th scope="col" class="org-left">Config Param</th>
+<th scope="col" class="org-left">Config Value</th>
+<th scope="col" class="org-left">Comment</th>
+</tr>
 </thead>
 <tbody>
-<tr><td class="left">javax.jdo.option.ConnectionURL</td><td class="left">jdbc:mysql://&lt;host name&gt;/&lt;database name&gt;?createDatabaseIfNotExist=true</td><td class="left">metadata is stored in a MySQL server</td></tr>
-<tr><td class="left">javax.jdo.option.ConnectionDriverName</td><td class="left">com.mysql.jdbc.Driver</td><td class="left">MySQL JDBC driver class</td></tr>
-<tr><td class="left">javax.jdo.option.ConnectionUserName</td><td class="left">&lt;user name&gt;</td><td class="left">user name for connecting to mysql server</td></tr>
-<tr><td class="left">javax.jdo.option.ConnectionPassword</td><td class="left">&lt;password&gt;</td><td class="left">password for connecting to mysql server</td></tr>
-<tr><td class="left">hive.metastore.warehouse.dir</td><td class="left">&lt;base hdfs path&gt;</td><td class="left">default location for Hive tables.</td></tr>
+<tr>
+<td class="org-left">javax.jdo.option.ConnectionURL</td>
+<td class="org-left">jdbc:mysql://&lt;host name&gt;/&lt;database name&gt;?createDatabaseIfNotExist=true</td>
+<td class="org-left">metadata is stored in a MySQL server</td>
+</tr>
+
+<tr>
+<td class="org-left">javax.jdo.option.ConnectionDriverName</td>
+<td class="org-left">com.mysql.jdbc.Driver</td>
+<td class="org-left">MySQL JDBC driver class</td>
+</tr>
+
+<tr>
+<td class="org-left">javax.jdo.option.ConnectionUserName</td>
+<td class="org-left">&lt;user name&gt;</td>
+<td class="org-left">user name for connecting to mysql server</td>
+</tr>
+
+<tr>
+<td class="org-left">javax.jdo.option.ConnectionPassword</td>
+<td class="org-left">&lt;password&gt;</td>
+<td class="org-left">password for connecting to mysql server</td>
+</tr>
+
+<tr>
+<td class="org-left">hive.metastore.warehouse.dir</td>
+<td class="org-left">&lt;base hdfs path&gt;</td>
+<td class="org-left">default location for Hive tables.</td>
+</tr>
 </tbody>
 </table>
-
 
 <p>
 Client Configuration Parameters
-</p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<colgroup><col class="left" /><col class="left" /><col class="left" />
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
 </colgroup>
 <thead>
-<tr><th scope="col" class="left">Config Param</th><th scope="col" class="left">Config Value</th><th scope="col" class="left">Comment</th></tr>
+<tr>
+<th scope="col" class="org-left">Config Param</th>
+<th scope="col" class="org-left">Config Value</th>
+<th scope="col" class="org-left">Comment</th>
+</tr>
 </thead>
 <tbody>
-<tr><td class="left">hive.metastore.uris</td><td class="left">thrift://&lt;host_name&gt;:&lt;port&gt;</td><td class="left">host and port for the thrift metastore server</td></tr>
-<tr><td class="left">hive.metastore.local</td><td class="left">false</td><td class="left">this is local store</td></tr>
-<tr><td class="left">hive.metastore.warehouse.dir</td><td class="left">&lt;base hdfs path&gt;</td><td class="left">default location for Hive tables.</td></tr>
+<tr>
+<td class="org-left">hive.metastore.uris</td>
+<td class="org-left">thrift://&lt;host_name&gt;:&lt;port&gt;</td>
+<td class="org-left">host and port for the thrift metastore server</td>
+</tr>
+
+<tr>
+<td class="org-left">hive.metastore.local</td>
+<td class="org-left">false</td>
+<td class="org-left">this is local store</td>
+</tr>
+
+<tr>
+<td class="org-left">hive.metastore.warehouse.dir</td>
+<td class="org-left">&lt;base hdfs path&gt;</td>
+<td class="org-left">default location for Hive tables.</td>
+</tr>
 </tbody>
 </table>
 
-
 <p>
-thrift server 通过 hive &ndash;service metastore 启动，port在9083上面. 端口可以通过-p选项来指定, 或是从环境变量METASTORE_PORT来获得(hive-env.sh里面可以设置).
+thrift server 通过 hive &#x2013;service metastore 启动，port在9083上面. 端口可以通过-p选项来指定, 或是从环境变量METASTORE_PORT来获得(hive-env.sh里面可以设置).
 </p>
-
-
-<pre class="example">13/03/07 18:06:34 INFO metastore.HiveMetaStore: Started the new metaserver on port [9083]...
+<pre class="example">
+13/03/07 18:06:34 INFO metastore.HiveMetaStore: Started the new metaserver on port [9083]...
 13/03/07 18:06:34 INFO metastore.HiveMetaStore: Options.minWorkerThreads = 200
 13/03/07 18:06:34 INFO metastore.HiveMetaStore: Options.maxWorkerThreads = 100000
 13/03/07 18:06:34 INFO metastore.HiveMetaStore: TCP keepalive = true
 </pre>
 
-
 <p>
 配置文件如下
 </p>
-
-
-<pre class="example">&lt;configuration&gt;
+<pre class="example">
+&lt;configuration&gt;
   &lt;property&gt;
     &lt;name&gt;javax.jdo.option.ConnectionURL&lt;/name&gt;
     &lt;value&gt;jdbc:mysql://localhost/hivemeta?createDatabaseIfNotExist=true&lt;/value&gt;
@@ -202,22 +238,18 @@ thrift server 通过 hive &ndash;service metastore 启动，port在9083上面. �
 
 &lt;/configuration&gt;
 </pre>
-
-
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-4" class="outline-3">
-<h3 id="sec-4">Example</h3>
-<div class="outline-text-3" id="text-4">
-
-<p>数据默认是使用ctrl-a来做分割
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4">Example</h2>
+<div class="outline-text-2" id="text-orgheadline4">
+<p>
+数据默认是使用ctrl-a来做分割
 </p>
 
-
-
-<pre class="example">➜  bin  hadoop fs -copyFromLocal ../examples/files/kv1.txt /tmp/
+<pre class="example">
+➜  bin  hadoop fs -copyFromLocal ../examples/files/kv1.txt /tmp/
 13/03/07 14:34:40 INFO security.UserGroupInformation: JAAS Configuration already set up for Hadoop, not re-installing.
 ➜  bin  hive
 Hive history file=/tmp/dirlt/hive_job_log_dirlt_201303071434_1408198373.txt
@@ -249,31 +281,21 @@ OK
 Time taken: 5.787 seconds
 </pre>
 
-
 <p>
 整个流程下来分为四个部分：
-</p><ul>
-<li>copy to hdfs
-</li>
-<li>create table.
-</li>
-<li>load data.
-</li>
-<li>do select （看到这里运行了mr任务）
-</li>
+</p>
+<ul class="org-ul">
+<li>copy to hdfs</li>
+<li>create table.</li>
+<li>load data.</li>
+<li>do select （看到这里运行了mr任务）</li>
 </ul>
-
 
 <p>
 上面例子是使用文本数据. 这里有个 <a href="https://github.com/dirtysalt/tomb/tree/master/misc/hive-avro">例子</a> 如何使用avro数据.
 </p>
 </div>
 </div>
-</div>
-
-<div id="postamble">
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-
 </div>
 <!-- BA BEGIN --><script>var _hmt = _hmt || [];(function() {  var hm = document.createElement("script");  hm.src = "//hm.baidu.com/hm.js?4f82bfcb8e6f2283f7e7eebae990bc80";  var s = document.getElementsByTagName("script")[0];  s.parentNode.insertBefore(hm, s);})();</script><!-- BA END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'note/hive-gettting-started.html';var disqus_title = 'note/hive-gettting-started.html';var disqus_url = 'http://dirlt.com/note/hive-gettting-started.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>

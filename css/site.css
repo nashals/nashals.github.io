@@ -1,214 +1,98 @@
-/* the pre markup was derived from rubyStyle.css, the rest is from previous
-iterations of my website http://repose.cx/. help yourself to bits you like. */
-
-body {
-  font: 14px/1.2 Georgia, "Microsoft Yahei", "WenQuanYi Micro Hei", Bitstream Vera Sans, Tahoma, sans-serif;
-  background: #bbccdd;
-  padding-left: 12%;
-  padding-right: 10%;
-  padding-top: 1em;
-  padding-bottom: 1em;
-  margin: 0;
+html {
+    font-family: Georgia, "Microsoft Yahei", "WenQuanYi Micro Hei";
 }
 
-a {
-  font-weight: bold;
-  text-decoration: none;
-  color: #00008b;
-}
-
-a:hover {
-  background: #00008b;
-  color: #fff;
-}
-
-/*
-h1 {
-  font-family: Bitstream Vera Sans, Tahoma, SimHei, sans-serif;
-  font-size: 32px;
-  color: #666;
-  padding: 2px;
-  margin-left: -40px;
-  margin-bottom: 8px;
-  border-bottom: 5px solid #000;
-}
-*/
-
-h1 {
-  font-family: Bitstream Vera Sans, Tahoma, SimHei, sans-serif;
-  font-size: 24px;
-  color: #0000ff;
-  padding: 2px;
-  margin-left: -30px;
-  margin-top: 5px;
-  border-bottom: 3px solid #222;
-  <lisp>(funcall emacs-wiki-menu-factory)</lisp>
-}
-
-h2 {
-  font-family: Bitstream Vera Sans, Tahoma, SimHei, sans-serif;
-  font-size: 20px;
-  color: #1207ec;
-  padding: 2px;
-  margin-left: -20px;
-  margin-top: 5px;
-  border-bottom: 2px solid #222;
-}
-
-h3 {
-  font-family: Bitstream Vera Sans, Tahoma, SimHei, sans-serif;
-  font-size: 18px;
-  color: #761987;
-  padding: 2px;
-  margin-left: -10px;
-  margin-top: 5px;
-  border-bottom: 1px solid #222;
-}
-
-h4 {
-  font-family: Bitstream Vera Sans, Tahoma, SimHei, sans-serif;
-  font-size: 16px;
-  color: #222;
-  padding: 2px;
-  /*margin-bottom: -5px;*/
-  border-top: 1px dashed #666;
-  border-bottom: 1px dashed #666;
-}
-
-img {
-  background: #bbccdd;
-  float: none;
-  margin-bottom: -5px;
-  border-style: solid;
-  border-width: 2px;
-  border-color: #00008b;
-}
-
-#im {
-  clear: right;
-}
-
-pre {
-  font: 12px/1.2 Courier New, Bitstream Vera Sans Mono, sans-serif;
-  border: #777 1px solid;
-  padding: 0.5em;
-  margin-left: 2em;
-  margin-right: 2em;
-  white-space: pre;
-  background-color: #e6e6e6;
-  color: black;
-}
-
-/* .verse { */
-/*   white-space: pre; */
-/*   margin-left: 1em; */
+/* pre { */
+/*     background-color: #eee; */
+/*     box-shadow: 5px 5px 5px #888; */
+/*     border: none; */
+/*     padding: 5pt; */
+/*     margin-bottom: 14pt; */
+/*     color: black; */
+/*     padding: 12pt; */
+/*     font-family: Consolas; */
+/*     font-size: 95%; */
+/*     overflow: auto; */
 /* } */
-p.verse { margin-left: 3% }
 
-dt {
-  font-weight: bold;
+.title  { text-align: center;
+          margin-bottom: .2em; }
+.subtitle { text-align: center;
+            font-size: medium;
+            font-weight: bold;
+            margin-top:0; }
+.todo   { font-family: monospace; color: red; }
+.done   { font-family: monospace; color: green; }
+.priority { font-family: monospace; color: orange; }
+.tag    { background-color: #eee; font-family: monospace;
+          padding: 2px; font-size: 80%; font-weight: normal; }
+.timestamp { color: #bebebe; }
+.timestamp-kwd { color: #5f9ea0; }
+.org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+.org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+.org-center { margin-left: auto; margin-right: auto; text-align: center; }
+.underline { text-decoration: underline; }
+#postamble p, #preamble p { font-size: 90%; margin: .2em; }
+p.verse { margin-left: 3%; }
+pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
 }
-
-li {
-  margin-bottom: 0.9ex;
+pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
 }
-
-table {
-  margin-top: 1em;
-  margin-bottom: 1em;
-  border: 0;
+pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
 }
+pre.src:hover:before { display: inline;}
+pre.src-sh:before    { content: 'sh'; }
+pre.src-bash:before  { content: 'sh'; }
+pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+pre.src-R:before     { content: 'R'; }
+pre.src-perl:before  { content: 'Perl'; }
+pre.src-java:before  { content: 'Java'; }
+pre.src-sql:before   { content: 'SQL'; }
 
-td {
-  font-size: 14px;
-  border-left: ButtonHighlight 1px solid;
-  border-right: ButtonShadow 1px solid;
-  border-top: ButtonHighlight 1px solid;
-  border-bottom: ButtonShadow 1px solid;
-  padding-left: 3px;
-  padding-right: 2px;
-  overflow: hidden;
-  background: #ddeecc;
+table { border-collapse:collapse; }
+caption.t-above { caption-side: top; }
+caption.t-bottom { caption-side: bottom; }
+td, th { vertical-align:top;  }
+th.org-right  { text-align: center;  }
+th.org-left   { text-align: center;   }
+th.org-center { text-align: center; }
+td.org-right  { text-align: right;  }
+td.org-left   { text-align: left;   }
+td.org-center { text-align: center; }
+dt { font-weight: bold; }
+.footpara { display: inline; }
+.footdef  { margin-bottom: 1em; }
+.figure { padding: 1em; }
+.figure p { text-align: center; }
+.inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
 }
-
-th {
-  font-size: 14px;
-  border-left: ButtonHighlight 1px solid;
-  border-right: ButtonShadow 1px solid;
-  border-top: ButtonHighlight 1px solid;
-  border-bottom: ButtonShadow 1px solid;
-  padding-left: 3px;
-  padding-right: 2px;
-  overflow: hidden;
-  background: #eeeecc;
-}
-
-.navfoot {
-  margin-left: -30px;
-  text-align: center;
-}
-
-/*menu*/
-.menu {
-  <lisp>(funcall emacs-wiki-menu-factory)</lisp>
-  background: #edf2f2;
-  color: white;
-  border-top: 8px solid #e0e9e9;
-  border-bottom: 8px solid #e0e9e9;
-  content: "";
-  display: inline-table;
-  float: right;
-  padding: 0;
-}
-
-.menuitem {
-  font: 14px Bitstream Vera Sans, Tahoma, sans-serif;
-  margin: 0;
-  text-align: right;
-}
-
-.menuitem a:link, .menuitem a:visited {
-  display: block;
-  padding: 2px 10px 2px 10px;
-  border-bottom: 1px solid #ddd;
-  border-top: 1px solid #fff;
-  border-right: 1px solid #ddd;
-  color: #00008b;
-  text-decoration: none;
-}
-
-.menuitem a:hover {
-  color: #00008b;
-  background: #cceeff;
-}
-
-/* Uncomment this if you want characters to appear before a menu
-   entry when hovering the mouse over it.
-
-.menuitem a:hover:before { content:\">> \"}
-*/
-
-.menu:before {
-  /*color: transparent;*/
-  display: block;
-  content: "";
-  border-bottom: 1px solid #ddd;
-  text-align: center;
-}
-
-.menu:after {
-  /*color: transparent;*/
-  display: block;
-  content: "";
-  border-top: 1px solid #fff;
-  text-align: center;
-}
-
-#tooltipbox {
-  float: right;
-  /*visibility: hidden;*/
-}
-
-#tooltip {
-  color: #666;
-}
+#org-div-home-and-up
+{ text-align: right; font-size: 70%; white-space: nowrap; }
+textarea { overflow-x: auto; }
+.linenr { font-size: smaller }
+.code-highlighted { background-color: #ffff00; }
+.org-info-js_info-navigation { border-style: none; }
+#org-info-js_console-label
+{ font-size: 10px; font-weight: bold; white-space: nowrap; }
+.org-info-js_search-highlight
+{ background-color: #ffff00; color: #000000; font-weight: bold; }

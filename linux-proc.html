@@ -1,108 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>/proc</title>
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="/proc"/>
-<meta name="generator" content="Org-mode"/>
-<meta name="author" content="dirtysalt"/>
-<meta name="description" content=""/>
-<meta name="keywords" content=""/>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="dirtysalt" />
 <link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
-
-
 </head>
 <body>
-
-<div id="preamble">
-
-</div>
-
 <div id="content">
 <h1 class="title">/proc</h1>
-
-
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="linux-proc.html#sec-1">1 /proc</a>
+<li><a href="linux-proc.html#orgheadline16">1. /proc</a>
 <ul>
-<li><a href="linux-proc.html#sec-1-1">1.1 /proc/meminfo</a></li>
-<li><a href="linux-proc.html#sec-1-2">1.2 /proc/stat</a></li>
-<li><a href="linux-proc.html#sec-1-3">1.3 /proc/swaps</a></li>
-<li><a href="linux-proc.html#sec-1-4">1.4 /proc/cmdline</a></li>
-<li><a href="linux-proc.html#sec-1-5">1.5 /proc/version</a></li>
-<li><a href="linux-proc.html#sec-1-6">1.6 /proc/mounts</a></li>
-<li><a href="linux-proc.html#sec-1-7">1.7 /proc/modules</a></li>
-<li><a href="linux-proc.html#sec-1-8">1.8 /proc/diskstats</a></li>
-<li><a href="linux-proc.html#sec-1-9">1.9 /proc/cpuinfo</a></li>
-<li><a href="linux-proc.html#sec-1-10">1.10 /proc/crypto</a></li>
-<li><a href="linux-proc.html#sec-1-11">1.11 /proc/loadavg</a></li>
-<li><a href="linux-proc.html#sec-1-12">1.12 /proc/slabinfo</a></li>
-<li><a href="linux-proc.html#sec-1-13">1.13 /proc/vmstat</a></li>
-<li><a href="linux-proc.html#sec-1-14">1.14 /proc/zoneinfo</a></li>
-<li><a href="linux-proc.html#sec-1-15">1.15 /proc/&lt;pid&gt;</a></li>
+<li><a href="linux-proc.html#orgheadline1">1.1. /proc/meminfo</a></li>
+<li><a href="linux-proc.html#orgheadline2">1.2. /proc/stat</a></li>
+<li><a href="linux-proc.html#orgheadline3">1.3. /proc/swaps</a></li>
+<li><a href="linux-proc.html#orgheadline4">1.4. /proc/cmdline</a></li>
+<li><a href="linux-proc.html#orgheadline5">1.5. /proc/version</a></li>
+<li><a href="linux-proc.html#orgheadline6">1.6. /proc/mounts</a></li>
+<li><a href="linux-proc.html#orgheadline7">1.7. /proc/modules</a></li>
+<li><a href="linux-proc.html#orgheadline8">1.8. /proc/diskstats</a></li>
+<li><a href="linux-proc.html#orgheadline9">1.9. /proc/cpuinfo</a></li>
+<li><a href="linux-proc.html#orgheadline10">1.10. /proc/crypto</a></li>
+<li><a href="linux-proc.html#orgheadline11">1.11. /proc/loadavg</a></li>
+<li><a href="linux-proc.html#orgheadline12">1.12. /proc/slabinfo</a></li>
+<li><a href="linux-proc.html#orgheadline13">1.13. /proc/vmstat</a></li>
+<li><a href="linux-proc.html#orgheadline14">1.14. /proc/zoneinfo</a></li>
+<li><a href="linux-proc.html#orgheadline15">1.15. /proc/&lt;pid&gt;</a></li>
 </ul>
 </li>
-<li><a href="linux-proc.html#sec-2">2 /proc/sys</a></li>
-<li><a href="linux-proc.html#sec-3">3 /proc/sys/vm</a>
+<li><a href="linux-proc.html#orgheadline17">2. /proc/sys</a></li>
+<li><a href="linux-proc.html#orgheadline24">3. /proc/sys/vm</a>
 <ul>
-<li><a href="linux-proc.html#sec-3-1">3.1 /proc/sys/vm/overcommit<sub>memory</sub></a></li>
-<li><a href="linux-proc.html#sec-3-2">3.2 /proc/sys/vm/swappiness</a></li>
-<li><a href="linux-proc.html#sec-3-3">3.3 /proc/sys/vm/dirty<sub>*</sub></a></li>
-<li><a href="linux-proc.html#sec-3-4">3.4 /proc/sys/vm/laptop<sub>mode</sub></a></li>
-<li><a href="linux-proc.html#sec-3-5">3.5 /proc/sys/vm/drop<sub>caches</sub></a></li>
-<li><a href="linux-proc.html#sec-3-6">3.6 /proc/sys/vm/panic<sub>on</sub><sub>oom</sub></a></li>
+<li><a href="linux-proc.html#orgheadline18">3.1. /proc/sys/vm/overcommit_memory</a></li>
+<li><a href="linux-proc.html#orgheadline19">3.2. /proc/sys/vm/swappiness</a></li>
+<li><a href="linux-proc.html#orgheadline20">3.3. /proc/sys/vm/dirty_*</a></li>
+<li><a href="linux-proc.html#orgheadline21">3.4. /proc/sys/vm/laptop_mode</a></li>
+<li><a href="linux-proc.html#orgheadline22">3.5. /proc/sys/vm/drop_caches</a></li>
+<li><a href="linux-proc.html#orgheadline23">3.6. /proc/sys/vm/panic_on_oom</a></li>
 </ul>
 </li>
-<li><a href="linux-proc.html#sec-4">4 /proc/sys/net</a>
+<li><a href="linux-proc.html#orgheadline26">4. /proc/sys/net</a>
 <ul>
-<li><a href="linux-proc.html#sec-4-1">4.1 /proc/sys/net/ipv4/ip<sub>local</sub><sub>port</sub><sub>range</sub></a></li>
+<li><a href="linux-proc.html#orgheadline25">4.1. /proc/sys/net/ipv4/ip_local_port_range</a></li>
 </ul>
 </li>
-<li><a href="linux-proc.html#sec-5">5 /proc/sys/fs</a>
+<li><a href="linux-proc.html#orgheadline31">5. /proc/sys/fs</a>
 <ul>
-<li><a href="linux-proc.html#sec-5-1">5.1 /proc/sys/fs/file-max</a></li>
-<li><a href="linux-proc.html#sec-5-2">5.2 /proc/sys/fs/nr<sub>open</sub></a></li>
-<li><a href="linux-proc.html#sec-5-3">5.3 /proc/sys/fs/file-nr</a></li>
-<li><a href="linux-proc.html#sec-5-4">5.4 /proc/sys/fs/epoll/max<sub>user</sub><sub>watches</sub></a></li>
+<li><a href="linux-proc.html#orgheadline27">5.1. /proc/sys/fs/file-max</a></li>
+<li><a href="linux-proc.html#orgheadline28">5.2. /proc/sys/fs/nr_open</a></li>
+<li><a href="linux-proc.html#orgheadline29">5.3. /proc/sys/fs/file-nr</a></li>
+<li><a href="linux-proc.html#orgheadline30">5.4. /proc/sys/fs/epoll/max_user_watches</a></li>
 </ul>
 </li>
-<li><a href="linux-proc.html#sec-6">6 /proc/sys/kernel</a>
+<li><a href="linux-proc.html#orgheadline33">6. /proc/sys/kernel</a>
 <ul>
-<li><a href="linux-proc.html#sec-6-1">6.1 /proc/sys/kernel/hung<sub>task</sub><sub>timeout</sub><sub>secs</sub></a></li>
+<li><a href="linux-proc.html#orgheadline32">6.1. /proc/sys/kernel/hung_task_timeout_secs</a></li>
 </ul>
 </li>
-<li><a href="linux-proc.html#sec-7">7 /proc/net</a>
+<li><a href="linux-proc.html#orgheadline36">7. /proc/net</a>
 <ul>
-<li><a href="linux-proc.html#sec-7-1">7.1 /proc/net/tcp</a></li>
-<li><a href="linux-proc.html#sec-7-2">7.2 /proc/net/dev</a></li>
+<li><a href="linux-proc.html#orgheadline34">7.1. /proc/net/tcp</a></li>
+<li><a href="linux-proc.html#orgheadline35">7.2. /proc/net/dev</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
-
-<div id="outline-container-1" class="outline-3">
-<h3 id="sec-1"><span class="section-number-3">1</span> /proc</h3>
-<div class="outline-text-3" id="text-1">
-
-
-</div>
-
-<div id="outline-container-1-1" class="outline-4">
-<h4 id="sec-1-1"><span class="section-number-4">1.1</span> /proc/meminfo</h4>
-<div class="outline-text-4" id="text-1-1">
-
-<p>内存使用状况
+<div id="outline-container-orgheadline16" class="outline-2">
+<h2 id="orgheadline16"><span class="section-number-2">1</span> /proc</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-orgheadline1" class="outline-3">
+<h3 id="orgheadline1"><span class="section-number-3">1.1</span> /proc/meminfo</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+内存使用状况
 </p>
 
-
-
-<pre class="example">[dirlt@umeng-ubuntu-pc] &gt; cat /proc/meminfo
+<pre class="example">
+[dirlt@umeng-ubuntu-pc] &gt; cat /proc/meminfo
 MemTotal:        3960316 kB
 MemFree:          202908 kB
 Buffers:           53632 kB
@@ -147,13 +130,11 @@ DirectMap4k:       57344 kB
 DirectMap2M:     4052992 kB
 </pre>
 
-
 <p>
 可以使用/usr/bin/time来获取Page size
 </p>
-
-
-<pre class="example">➜  debs git:(devel-yan) ✗ /usr/bin/time -v date
+<pre class="example">
+➜  debs git:(devel-yan) ✗ /usr/bin/time -v date
 Fri Jun 12 11:53:44 CST 2015
 Command being timed: "date"
 User time (seconds): 0.00
@@ -179,22 +160,18 @@ Signals delivered: 0
 Page size (bytes): 4096
 Exit status: 0
 </pre>
-
-
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-1-2" class="outline-4">
-<h4 id="sec-1-2"><span class="section-number-4">1.2</span> /proc/stat</h4>
-<div class="outline-text-4" id="text-1-2">
-
-<p>系统启动以来的多种统计信息
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2"><span class="section-number-3">1.2</span> /proc/stat</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+系统启动以来的多种统计信息
 </p>
 
-
-
-<pre class="example">[dirlt@umeng-ubuntu-pc] &gt; cat /proc/stat
+<pre class="example">
+[dirlt@umeng-ubuntu-pc] &gt; cat /proc/stat
 cpu  25175536 13184 10088010 208990815 1165440 37 29476 0 0 0
 cpu0 7597990 7286 3089511 49810301 706702 37 23258 0 0 0
 cpu1 7914370 3065 2901460 50300065 188223 0 2403 0 0 0
@@ -213,77 +190,61 @@ procs_running 3
 procs_blocked 0
 softirq 304218476 0 151026247 103572 14071723 3554590 0 262575 55846497 864372 78488900
 </pre>
-
-
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-1-3" class="outline-4">
-<h4 id="sec-1-3"><span class="section-number-4">1.3</span> /proc/swaps</h4>
-<div class="outline-text-4" id="text-1-3">
-
-<p>当前系统上的交换分区及其空间利用信息. 优先级数字越低, 被使用到的可能性越大.
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3"><span class="section-number-3">1.3</span> /proc/swaps</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+当前系统上的交换分区及其空间利用信息. 优先级数字越低, 被使用到的可能性越大.
 </p>
 
-
-
-<pre class="example">[dirlt@umeng-ubuntu-pc] &gt; cat /proc/swaps
+<pre class="example">
+[dirlt@umeng-ubuntu-pc] &gt; cat /proc/swaps
 Filename                                Type            Size    Used    Priority
 /dev/sda5                               partition       4103164 1423572 -1
 </pre>
-
-
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-1-4" class="outline-4">
-<h4 id="sec-1-4"><span class="section-number-4">1.4</span> /proc/cmdline</h4>
-<div class="outline-text-4" id="text-1-4">
-
-<p>在启动时传递至内核的相关参数信息. 这些信息通常由lilo或grub等启动管理工具进行传递.
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4"><span class="section-number-3">1.4</span> /proc/cmdline</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+在启动时传递至内核的相关参数信息. 这些信息通常由lilo或grub等启动管理工具进行传递.
 </p>
 
-
-
-<pre class="example">[dirlt@umeng-ubuntu-pc] &gt; cat /proc/cmdline
+<pre class="example">
+[dirlt@umeng-ubuntu-pc] &gt; cat /proc/cmdline
 BOOT_IMAGE=/boot/vmlinuz-3.2.0-27-generic root=UUID=b25db1c7-e694-4eed-8d11-ea33047338cb ro quiet splash vt.handoff=7
 </pre>
-
-
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-1-5" class="outline-4">
-<h4 id="sec-1-5"><span class="section-number-4">1.5</span> /proc/version</h4>
-<div class="outline-text-4" id="text-1-5">
-
-<p>内核版本
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5"><span class="section-number-3">1.5</span> /proc/version</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+内核版本
 </p>
 
-
-
-<pre class="example">[dirlt@umeng-ubuntu-pc] &gt; cat /proc/version
+<pre class="example">
+[dirlt@umeng-ubuntu-pc] &gt; cat /proc/version
 Linux version 3.2.0-27-generic (buildd@allspice) (gcc version 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5) ) #43-Ubuntu SMP Fri Jul 6 14:25:57 UTC 2012
 </pre>
-
-
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-1-6" class="outline-4">
-<h4 id="sec-1-6"><span class="section-number-4">1.6</span> /proc/mounts</h4>
-<div class="outline-text-4" id="text-1-6">
-
-<p>当前挂载的所有文件系统. see man fstab.
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6"><span class="section-number-3">1.6</span> /proc/mounts</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+当前挂载的所有文件系统. see man fstab.
 </p>
 
-
-
-<pre class="example">[dirlt@umeng-ubuntu-pc] &gt; cat /proc/mounts
+<pre class="example">
+[dirlt@umeng-ubuntu-pc] &gt; cat /proc/mounts
 rootfs / rootfs rw 0 0
 sysfs /sys sysfs rw,nosuid,nodev,noexec,relatime 0 0
 proc /proc proc rw,nosuid,nodev,noexec,relatime 0 0
@@ -300,22 +261,18 @@ none /run/shm tmpfs rw,nosuid,nodev,relatime 0 0
 binfmt_misc /proc/sys/fs/binfmt_misc binfmt_misc rw,nosuid,nodev,noexec,relatime 0 0
 gvfs-fuse-daemon /home/dirlt/.gvfs fuse.gvfs-fuse-daemon rw,nosuid,nodev,relatime,user_id=1000,group_id=1000 0 0
 </pre>
-
-
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-1-7" class="outline-4">
-<h4 id="sec-1-7"><span class="section-number-4">1.7</span> /proc/modules</h4>
-<div class="outline-text-4" id="text-1-7">
-
-<p>所有可用模块列表(lsmod): 模块名, 占用内存, 引用技术, 依赖模块, 加载状态
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7"><span class="section-number-3">1.7</span> /proc/modules</h3>
+<div class="outline-text-3" id="text-1-7">
+<p>
+所有可用模块列表(lsmod): 模块名, 占用内存, 引用技术, 依赖模块, 加载状态
 </p>
 
-
-
-<pre class="example">[dirlt@umeng-ubuntu-pc] &gt; cat /proc/modules
+<pre class="example">
+[dirlt@umeng-ubuntu-pc] &gt; cat /proc/modules
 pci_stub 12622 1 - Live 0x0000000000000000
 vboxpci 23200 0 - Live 0x0000000000000000 (O)
 vboxnetadp 13382 0 - Live 0x0000000000000000 (O)
@@ -361,22 +318,18 @@ usbhid 47199 0 - Live 0x0000000000000000
 hid 99559 1 usbhid, Live 0x0000000000000000
 r8169 62099 0 - Live 0x0000000000000000
 </pre>
-
-
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-1-8" class="outline-4">
-<h4 id="sec-1-8"><span class="section-number-4">1.8</span> /proc/diskstats</h4>
-<div class="outline-text-4" id="text-1-8">
-
-<p>磁盘设备I/O信息.  <a href="https://www.kernel.org/doc/Documentation/iostats.txt">https://www.kernel.org/doc/Documentation/iostats.txt</a>
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8"><span class="section-number-3">1.8</span> /proc/diskstats</h3>
+<div class="outline-text-3" id="text-1-8">
+<p>
+磁盘设备I/O信息.  <a href="https://www.kernel.org/doc/Documentation/iostats.txt">https://www.kernel.org/doc/Documentation/iostats.txt</a>
 </p>
 
-
-
-<pre class="example">➜  logzilla git:(devel-yan) ✗ cat /proc/diskstats
+<pre class="example">
+➜  logzilla git:(devel-yan) ✗ cat /proc/diskstats
    1       0 ram0 0 0 0 0 0 0 0 0 0 0 0
    1       1 ram1 0 0 0 0 0 0 0 0 0 0 0
    1       2 ram2 0 0 0 0 0 0 0 0 0 0 0
@@ -410,30 +363,21 @@ r8169 62099 0 - Live 0x0000000000000000
    8      16 sdb 862 1131 6908 3848 1 0 8 32 0 1032 3880
    8      17 sdb1 836 1128 6676 3716 1 0 8 32 0 900 3748
 </pre>
-
-
+</div>
 </div>
 
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9"><span class="section-number-3">1.9</span> /proc/cpuinfo</h3>
 </div>
-
-<div id="outline-container-1-9" class="outline-4">
-<h4 id="sec-1-9"><span class="section-number-4">1.9</span> /proc/cpuinfo</h4>
-<div class="outline-text-4" id="text-1-9">
-
-</div>
-
-</div>
-
-<div id="outline-container-1-10" class="outline-4">
-<h4 id="sec-1-10"><span class="section-number-4">1.10</span> /proc/crypto</h4>
-<div class="outline-text-4" id="text-1-10">
-
-<p>所有可用的加密算法
+<div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="orgheadline10"><span class="section-number-3">1.10</span> /proc/crypto</h3>
+<div class="outline-text-3" id="text-1-10">
+<p>
+所有可用的加密算法
 </p>
 
-
-
-<pre class="example">[dirlt@umeng-ubuntu-pc] &gt; cat /proc/crypto
+<pre class="example">
+[dirlt@umeng-ubuntu-pc] &gt; cat /proc/crypto
 name         : cbc(aes)
 driver       : cbc(aes-generic)
 module       : kernel
@@ -547,49 +491,37 @@ type         : shash
 blocksize    : 1
 digestsize   : 4
 </pre>
-
-
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-1-11" class="outline-4">
-<h4 id="sec-1-11"><span class="section-number-4">1.11</span> /proc/loadavg</h4>
-<div class="outline-text-4" id="text-1-11">
-
-<p><a href="http://ilinuxkernel.com/?p=869">Linux系统中Load Average含义</a>
+<div id="outline-container-orgheadline11" class="outline-3">
+<h3 id="orgheadline11"><span class="section-number-3">1.11</span> /proc/loadavg</h3>
+<div class="outline-text-3" id="text-1-11">
+<p>
+<a href="http://ilinuxkernel.com/?p=869">Linux系统中Load Average含义</a>
 </p>
 
-
-
-<pre class="example">[dirlt@umeng-ubuntu-pc] &gt; cat /proc/loadavg
+<pre class="example">
+[dirlt@umeng-ubuntu-pc] &gt; cat /proc/loadavg
 2.46 2.14 2.16 15/736 11012
 </pre>
-
-<ul>
-<li>前三列表示最近1分钟, 5分钟及15分钟的load average.
-</li>
-<li>第四列分别是处于可调度状态的进程数目和总进程数目.
-</li>
-<li>第五列是最近一个由内核创建的进程的PID.
-</li>
+<ul class="org-ul">
+<li>前三列表示最近1分钟, 5分钟及15分钟的load average.</li>
+<li>第四列分别是处于可调度状态的进程数目和总进程数目.</li>
+<li>第五列是最近一个由内核创建的进程的PID.</li>
 </ul>
-
-
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-1-12" class="outline-4">
-<h4 id="sec-1-12"><span class="section-number-4">1.12</span> /proc/slabinfo</h4>
-<div class="outline-text-4" id="text-1-12">
-
-<p>内核slab分配器信息
+<div id="outline-container-orgheadline12" class="outline-3">
+<h3 id="orgheadline12"><span class="section-number-3">1.12</span> /proc/slabinfo</h3>
+<div class="outline-text-3" id="text-1-12">
+<p>
+内核slab分配器信息
 </p>
 
-
-
-<pre class="example">[dirlt@umeng-ubuntu-pc] &gt; sudo cat /proc/slabinfo
+<pre class="example">
+[dirlt@umeng-ubuntu-pc] &gt; sudo cat /proc/slabinfo
 [sudo] password for dirlt:
 slabinfo - version: 2.1
 # name            &lt;active_objs&gt; &lt;num_objs&gt; &lt;objsize&gt; &lt;objperslab&gt; &lt;pagesperslab&gt; : tunables &lt;limit&gt; &lt;batchcount&gt; &lt;sharedfactor&gt; : sla
@@ -696,22 +628,18 @@ kmalloc-96          4031   4116     96   42    1 : tunables    0    0    0 : sla
 kmem_cache            32     32    256   16    1 : tunables    0    0    0 : slabdata      2      2      0
 kmem_cache_node      128    128     64   64    1 : tunables    0    0    0 : slabdata      2      2      0
 </pre>
-
-
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-1-13" class="outline-4">
-<h4 id="sec-1-13"><span class="section-number-4">1.13</span> /proc/vmstat</h4>
-<div class="outline-text-4" id="text-1-13">
-
-<p>虚拟内存统计信息
+<div id="outline-container-orgheadline13" class="outline-3">
+<h3 id="orgheadline13"><span class="section-number-3">1.13</span> /proc/vmstat</h3>
+<div class="outline-text-3" id="text-1-13">
+<p>
+虚拟内存统计信息
 </p>
 
-
-
-<pre class="example">[dirlt@umeng-ubuntu-pc] &gt; cat /proc/vmstat
+<pre class="example">
+[dirlt@umeng-ubuntu-pc] &gt; cat /proc/vmstat
 nr_free_pages 39606
 nr_inactive_anon 207905
 nr_active_anon 575539
@@ -809,22 +737,18 @@ thp_collapse_alloc 0
 thp_collapse_alloc_failed 0
 thp_split 0
 </pre>
-
-
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-1-14" class="outline-4">
-<h4 id="sec-1-14"><span class="section-number-4">1.14</span> /proc/zoneinfo</h4>
-<div class="outline-text-4" id="text-1-14">
-
-<p>内存区域(zone)信息
+<div id="outline-container-orgheadline14" class="outline-3">
+<h3 id="orgheadline14"><span class="section-number-3">1.14</span> /proc/zoneinfo</h3>
+<div class="outline-text-3" id="text-1-14">
+<p>
+内存区域(zone)信息
 </p>
 
-
-
-<pre class="example">[dirlt@umeng-ubuntu-pc] &gt; cat /proc/zoneinfo
+<pre class="example">
+[dirlt@umeng-ubuntu-pc] &gt; cat /proc/zoneinfo
 Node 0, zone      DMA
   pages free     3977
         min      65
@@ -1024,372 +948,356 @@ Node 0, zone   Normal
   start_pfn:         1048576
   inactive_ratio:    1
 </pre>
-
-
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-1-15" class="outline-4">
-<h4 id="sec-1-15"><span class="section-number-4">1.15</span> /proc/&lt;pid&gt;</h4>
-<div class="outline-text-4" id="text-1-15">
-
+<div id="outline-container-orgheadline15" class="outline-3">
+<h3 id="orgheadline15"><span class="section-number-3">1.15</span> /proc/&lt;pid&gt;</h3>
+<div class="outline-text-3" id="text-1-15">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<colgroup><col class="left" /><col class="left" />
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
 </colgroup>
 <thead>
-<tr><th scope="col" class="left">文件</th><th scope="col" class="left">说明</th></tr>
+<tr>
+<th scope="col" class="org-left">文件</th>
+<th scope="col" class="org-left">说明</th>
+</tr>
 </thead>
 <tbody>
-<tr><td class="left">cmdline</td><td class="left">启动参数</td></tr>
-<tr><td class="left">cwd</td><td class="left">当前目录</td></tr>
-<tr><td class="left">environ</td><td class="left">环境变量</td></tr>
-<tr><td class="left">exe</td><td class="left">可执行文件</td></tr>
-<tr><td class="left">fd*</td><td class="left">所有打开文件</td></tr>
-<tr><td class="left">io</td><td class="left">运行IO信息</td></tr>
-<tr><td class="left">limits</td><td class="left">运行资源限制</td></tr>
-<tr><td class="left">maps</td><td class="left">虚拟内存布局</td></tr>
-<tr><td class="left">mount*</td><td class="left">运行挂载点信息</td></tr>
-<tr><td class="left">net</td><td class="left">运行网络参数信息</td></tr>
-<tr><td class="left">sched</td><td class="left">进程调度信息</td></tr>
-<tr><td class="left">status</td><td class="left">运行状态</td></tr>
-<tr><td class="left">oom*</td><td class="left">OOM权重分值</td></tr>
+<tr>
+<td class="org-left">cmdline</td>
+<td class="org-left">启动参数</td>
+</tr>
+
+<tr>
+<td class="org-left">cwd</td>
+<td class="org-left">当前目录</td>
+</tr>
+
+<tr>
+<td class="org-left">environ</td>
+<td class="org-left">环境变量</td>
+</tr>
+
+<tr>
+<td class="org-left">exe</td>
+<td class="org-left">可执行文件</td>
+</tr>
+
+<tr>
+<td class="org-left">fd*</td>
+<td class="org-left">所有打开文件</td>
+</tr>
+
+<tr>
+<td class="org-left">io</td>
+<td class="org-left">运行IO信息</td>
+</tr>
+
+<tr>
+<td class="org-left">limits</td>
+<td class="org-left">运行资源限制</td>
+</tr>
+
+<tr>
+<td class="org-left">maps</td>
+<td class="org-left">虚拟内存布局</td>
+</tr>
+
+<tr>
+<td class="org-left">mount*</td>
+<td class="org-left">运行挂载点信息</td>
+</tr>
+
+<tr>
+<td class="org-left">net</td>
+<td class="org-left">运行网络参数信息</td>
+</tr>
+
+<tr>
+<td class="org-left">sched</td>
+<td class="org-left">进程调度信息</td>
+</tr>
+
+<tr>
+<td class="org-left">status</td>
+<td class="org-left">运行状态</td>
+</tr>
+
+<tr>
+<td class="org-left">oom*</td>
+<td class="org-left">OOM权重分值</td>
+</tr>
 </tbody>
 </table>
-
-
 </div>
 </div>
-
 </div>
 
-<div id="outline-container-2" class="outline-3">
-<h3 id="sec-2"><span class="section-number-3">2</span> /proc/sys</h3>
-<div class="outline-text-3" id="text-2">
-
-<p>在/proc/sys下面有一些可以动态修改的内核参数. 两种方式可以修改这些参数:
-</p><ul>
-<li>使用sysctl工具来进行修改. 这种方式只能临时修改, 重启之后恢复原有设置. `sudo sysctl vm.swappiness=0`.
-</li>
-<li>修改/etc/sysctl.conf文件. 这样可以使设置永久生效.
-</li>
-</ul>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-3" class="outline-3">
-<h3 id="sec-3"><span class="section-number-3">3</span> /proc/sys/vm</h3>
-<div class="outline-text-3" id="text-3">
-
-<p><a href="https://www.kernel.org/doc/Documentation/sysctl/vm.txt">https://www.kernel.org/doc/Documentation/sysctl/vm.txt</a>
+<div id="outline-container-orgheadline17" class="outline-2">
+<h2 id="orgheadline17"><span class="section-number-2">2</span> /proc/sys</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+在/proc/sys下面有一些可以动态修改的内核参数. 两种方式可以修改这些参数:
 </p>
-
+<ul class="org-ul">
+<li>使用sysctl工具来进行修改. 这种方式只能临时修改, 重启之后恢复原有设置. `sudo sysctl vm.swappiness=0`.</li>
+<li>修改/etc/sysctl.conf文件. 这样可以使设置永久生效.</li>
+</ul>
+</div>
 </div>
 
-<div id="outline-container-3-1" class="outline-4">
-<h4 id="sec-3-1"><span class="section-number-4">3.1</span> /proc/sys/vm/overcommit<sub>memory</sub></h4>
-<div class="outline-text-4" id="text-3-1">
-
-<ul>
-<li>OVERCOMMIT<sub>GUESS</sub>=0
-<ul>
-<li>Heuristic overcommit handling. Obvious overcommits of address space are refused. Used for a typical system. It ensures a seriously wild allocation fails while allowing overcommit to reduce swap usage. root is allowed to allocate slighly more memory in this mode. This is the default.
-</li>
-<li>用户申请内存的时候, 系统会"启发式"地判断是否通过.
-</li>
-</ul>
-
-</li>
-<li>OVERCOMMIT<sub>ALWAYS</sub>=1
-<ul>
-<li>Always overcommit. Appropriate for some scientific applications.
-</li>
-<li>用户申请内存的时候, 系统不进行任何检查, 直接通过.
-</li>
-</ul>
-
-</li>
-<li>OVERCOMMIT<sub>NEVER</sub>=2
-<ul>
-<li>Don't overcommit. The total address space commit for the system is not permitted to exceed swap + a configurable percentage (default is 50) of physical RAM. Depending on the percentage you use, in most situations this means a process will not be killed while accessing pages but will receive errors on memory allocation as appropriate.
-</li>
-<li>用户一次申请内存的大小不允许超过"可用内存"的大小, 计算这个"可用内存"使用overcommit<sub>ratio参数</sub>. (Physical-RAM-Size) * ratio / 100 + (Swap-Size).
-</li>
-</ul>
-
-</li>
-</ul>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-3-2" class="outline-4">
-<h4 id="sec-3-2"><span class="section-number-4">3.2</span> /proc/sys/vm/swappiness</h4>
-<div class="outline-text-4" id="text-3-2">
-
-<p>使用swap分区程度. 设置为0表示, 系统会尽可能地减少page swap in/out操作(但不保证不使用swap分区).
+<div id="outline-container-orgheadline24" class="outline-2">
+<h2 id="orgheadline24"><span class="section-number-2">3</span> /proc/sys/vm</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+<a href="https://www.kernel.org/doc/Documentation/sysctl/vm.txt">https://www.kernel.org/doc/Documentation/sysctl/vm.txt</a>
 </p>
 </div>
 
+<div id="outline-container-orgheadline18" class="outline-3">
+<h3 id="orgheadline18"><span class="section-number-3">3.1</span> /proc/sys/vm/overcommit_memory</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>OVERCOMMIT_GUESS=0
+<ul class="org-ul">
+<li>Heuristic overcommit handling. Obvious overcommits of address space are refused. Used for a typical system. It ensures a seriously wild allocation fails while allowing overcommit to reduce swap usage. root is allowed to allocate slighly more memory in this mode. This is the default.</li>
+<li>用户申请内存的时候, 系统会"启发式"地判断是否通过.</li>
+</ul></li>
+<li>OVERCOMMIT_ALWAYS=1
+<ul class="org-ul">
+<li>Always overcommit. Appropriate for some scientific applications.</li>
+<li>用户申请内存的时候, 系统不进行任何检查, 直接通过.</li>
+</ul></li>
+<li>OVERCOMMIT_NEVER=2
+<ul class="org-ul">
+<li>Don't overcommit. The total address space commit for the system is not permitted to exceed swap + a configurable percentage (default is 50) of physical RAM. Depending on the percentage you use, in most situations this means a process will not be killed while accessing pages but will receive errors on memory allocation as appropriate.</li>
+<li>用户一次申请内存的大小不允许超过"可用内存"的大小, 计算这个"可用内存"使用overcommit_ratio参数. (Physical-RAM-Size) * ratio / 100 + (Swap-Size).</li>
+</ul></li>
+</ul>
+</div>
 </div>
 
-<div id="outline-container-3-3" class="outline-4">
-<h4 id="sec-3-3"><span class="section-number-4">3.3</span> /proc/sys/vm/dirty<sub>*</sub></h4>
-<div class="outline-text-4" id="text-3-3">
-
-<p>控制脏页写回磁盘策略
+<div id="outline-container-orgheadline19" class="outline-3">
+<h3 id="orgheadline19"><span class="section-number-3">3.2</span> /proc/sys/vm/swappiness</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+使用swap分区程度. 设置为0表示, 系统会尽可能地减少page swap in/out操作(但不保证不使用swap分区).
 </p>
+</div>
+</div>
 
-
-<pre class="example">➜  notes git:(master) ✗ ls /proc/sys/vm/dirty_*
+<div id="outline-container-orgheadline20" class="outline-3">
+<h3 id="orgheadline20"><span class="section-number-3">3.3</span> /proc/sys/vm/dirty_*</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+控制脏页写回磁盘策略
+</p>
+<pre class="example">
+➜  notes git:(master) ✗ ls /proc/sys/vm/dirty_*
 /proc/sys/vm/dirty_background_bytes  /proc/sys/vm/dirty_bytes             /proc/sys/vm/dirty_ratio
 /proc/sys/vm/dirty_background_ratio  /proc/sys/vm/dirty_expire_centisecs  /proc/sys/vm/dirty_writeback_centisecs
 </pre>
 
+<p>
+进程写操作时触发: 系统脏页比例超过dirty_ratio, 或者大小超过dirty_bytes.
+</p>
 
 <p>
-进程写操作时触发: 系统脏页比例超过dirty<sub>ratio</sub>, 或者大小超过dirty<sub>bytes</sub>.
+后台pdflush(page dirty)定时检测: 时间周期是dirty_write_centisecs.
 </p>
-<p>
-后台pdflush(page dirty)定时检测: 时间周期是dirty<sub>write</sub><sub>centisecs</sub>.
-</p><ul>
-<li>系统脏页比例超过dirty<sub>background</sub><sub>ratio</sub>, 或是大小超过dirty<sub>background</sub><sub>bytes</sub>
-</li>
-<li>必须将时间超过dirty<sub>expire</sub><sub>centisecs的脏页刷到磁盘</sub>
-</li>
+<ul class="org-ul">
+<li>系统脏页比例超过dirty_background_ratio, 或是大小超过dirty_background_bytes</li>
+<li>必须将时间超过dirty_expire_centisecs的脏页刷到磁盘</li>
 </ul>
-
-
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-3-4" class="outline-4">
-<h4 id="sec-3-4"><span class="section-number-4">3.4</span> /proc/sys/vm/laptop<sub>mode</sub></h4>
-<div class="outline-text-4" id="text-3-4">
-
-<p>膝上型计算机模式.
+<div id="outline-container-orgheadline21" class="outline-3">
+<h3 id="orgheadline21"><span class="section-number-3">3.4</span> /proc/sys/vm/laptop_mode</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+膝上型计算机模式.
 </p>
+
 <p>
 和传统方式唯一差别是, flusher/pdflush会找准磁盘运行时机, 将脏页面和正常IO请求一起写到磁盘上, 避免专门为了写磁盘而主动激活磁盘运行, 达到省电的目的.
 </p>
+
 <p>
 多数Linux发布版会在机器使用电池电源时自动进行该模式, 而插上交流电源后恢复到常规模式.
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-3-5" class="outline-4">
-<h4 id="sec-3-5"><span class="section-number-4">3.5</span> /proc/sys/vm/drop<sub>caches</sub></h4>
-<div class="outline-text-4" id="text-3-5">
-
-<p>用来释放kernel保存的buffers和cached. 其中buffers缓存inode(block cache), cached缓存文件页面(page cache)
-</p><ul>
-<li>0 // 释放cached memory
-</li>
-<li>1 // 释放buffers
-</li>
-<li>2 // 释放两者
-</li>
+<div id="outline-container-orgheadline22" class="outline-3">
+<h3 id="orgheadline22"><span class="section-number-3">3.5</span> /proc/sys/vm/drop_caches</h3>
+<div class="outline-text-3" id="text-3-5">
+<p>
+用来释放kernel保存的buffers和cached. 其中buffers缓存inode(block cache), cached缓存文件页面(page cache)
+</p>
+<ul class="org-ul">
+<li>0 // 释放cached memory</li>
+<li>1 // 释放buffers</li>
+<li>2 // 释放两者</li>
 </ul>
-
-<p>为了防止数据丢失，可以在修改这个文件之前先调用sync强制写盘.
+<p>
+为了防止数据丢失，可以在修改这个文件之前先调用sync强制写盘.
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-3-6" class="outline-4">
-<h4 id="sec-3-6"><span class="section-number-4">3.6</span> /proc/sys/vm/panic<sub>on</sub><sub>oom</sub></h4>
-<div class="outline-text-4" id="text-3-6">
-
-<ul>
-<li>OOM Killer - linux-mm.org Wiki <a href="http://linux-mm.org/OOM_Killer">http://linux-mm.org/OOM_Killer</a>
-</li>
+<div id="outline-container-orgheadline23" class="outline-3">
+<h3 id="orgheadline23"><span class="section-number-3">3.6</span> /proc/sys/vm/panic_on_oom</h3>
+<div class="outline-text-3" id="text-3-6">
+<ul class="org-ul">
+<li>OOM Killer - linux-mm.org Wiki <a href="http://linux-mm.org/OOM_Killer">http://linux-mm.org/OOM_Killer</a></li>
 <li>Taming the OOM killer [LWN.net] <a href="http://lwn.net/Articles/317814/">http://lwn.net/Articles/317814/</a>
-<ul>
-<li>/proc/sys/vm/oom<sub>victim</sub> 通过在这个地方指定名字来优先kill
-</li>
-<li>OOM control group (cgroup) 通过将process划分到某个group为这个group制定权值
-</li>
-<li>mem<sub>notify</sub> 如果出现OOM情况的话可以通知到userspace
-</li>
-<li>cgroup OOM notifier 允许某个task来监控一群tasks，如果出现OOM的话会通知这个task
-</li>
-<li>/dev/mem<sub>notify</sub> 这个设备文件上面包含内存事件，task可以poll这个文件来获取通知
-</li>
+<ul class="org-ul">
+<li>/proc/sys/vm/oom_victim 通过在这个地方指定名字来优先kill</li>
+<li>OOM control group (cgroup) 通过将process划分到某个group为这个group制定权值</li>
+<li>mem_notify 如果出现OOM情况的话可以通知到userspace</li>
+<li>cgroup OOM notifier 允许某个task来监控一群tasks，如果出现OOM的话会通知这个task</li>
+<li>/dev/mem_notify 这个设备文件上面包含内存事件，task可以poll这个文件来获取通知</li>
+</ul></li>
+<li>Linux 的 Out-of-Memory (OOM) Killer - DBA Notes <a href="http://www.dbanotes.net/database/linux_outofmemory_oom_killer.html">http://www.dbanotes.net/database/linux_outofmemory_oom_killer.html</a></li>
+<li>OOM killer "Out of Memory: Killed process" SOLUTIONS / SUMMARY <a href="http://www.redaht.com/archives/redhat-list/2007-August/msg00060.html">http://www.redaht.com/archives/redhat-list/2007-August/msg00060.html</a></li>
+<li>LinuxDevCenter.com: When Linux Runs Out of Memory <a href="http://linuxdevcenter.com/lpt/a/6808">http://linuxdevcenter.com/lpt/a/6808</a></li>
+<li>Respite from the OOM killer [LWN.net] <a href="http://lwn.net/Articles/104179/">http://lwn.net/Articles/104179/</a></li>
 </ul>
-
-</li>
-<li>Linux 的 Out-of-Memory (OOM) Killer - DBA Notes <a href="http://www.dbanotes.net/database/linux_outofmemory_oom_killer.html">http://www.dbanotes.net/database/linux_outofmemory_oom_killer.html</a>
-</li>
-<li>OOM killer "Out of Memory: Killed process" SOLUTIONS / SUMMARY <a href="http://www.redaht.com/archives/redhat-list/2007-August/msg00060.html">http://www.redaht.com/archives/redhat-list/2007-August/msg00060.html</a>
-</li>
-<li>LinuxDevCenter.com: When Linux Runs Out of Memory <a href="http://linuxdevcenter.com/lpt/a/6808">http://linuxdevcenter.com/lpt/a/6808</a>
-</li>
-<li>Respite from the OOM killer [LWN.net] <a href="http://lwn.net/Articles/104179/">http://lwn.net/Articles/104179/</a>
-</li>
-</ul>
-
 
 <p>
 This enables or disables panic on out-of-memory feature.
-</p><ul>
-<li>If this is set to 0, the kernel will kill some rogue process, called oom<sub>killer</sub>.  Usually, oom<sub>killer</sub> can kill rogue processes and system will survive.
-</li>
-<li>If this is set to 1, the kernel panics when out-of-memory happens. However, if a process limits using nodes by mempolicy/cpusets, and those nodes become memory exhaustion status, one process may be killed by oom-killer. No panic occurs in this case. Because other nodes' memory may be free. This means system total status may be not fatal yet.
-</li>
-<li>If this is set to 2, the kernel panics compulsorily even on the above-mentioned.
-</li>
-<li>The default value is 0. 1 and 2 are for failover of clustering. Please select either according to your policy of failover.
-</li>
+</p>
+<ul class="org-ul">
+<li>If this is set to 0, the kernel will kill some rogue process, called oom_killer.  Usually, oom_killer can kill rogue processes and system will survive.</li>
+<li>If this is set to 1, the kernel panics when out-of-memory happens. However, if a process limits using nodes by mempolicy/cpusets, and those nodes become memory exhaustion status, one process may be killed by oom-killer. No panic occurs in this case. Because other nodes' memory may be free. This means system total status may be not fatal yet.</li>
+<li>If this is set to 2, the kernel panics compulsorily even on the above-mentioned.</li>
+<li>The default value is 0. 1 and 2 are for failover of clustering. Please select either according to your policy of failover.</li>
 </ul>
-
-
 </div>
 </div>
-
 </div>
 
-<div id="outline-container-4" class="outline-3">
-<h3 id="sec-4"><span class="section-number-3">4</span> /proc/sys/net</h3>
-<div class="outline-text-3" id="text-4">
+<div id="outline-container-orgheadline26" class="outline-2">
+<h2 id="orgheadline26"><span class="section-number-2">4</span> /proc/sys/net</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+<a href="https://www.kernel.org/doc/Documentation/sysctl/net.txt">https://www.kernel.org/doc/Documentation/sysctl/net.txt</a>
+</p>
+</div>
 
-<p><a href="https://www.kernel.org/doc/Documentation/sysctl/net.txt">https://www.kernel.org/doc/Documentation/sysctl/net.txt</a>
+<div id="outline-container-orgheadline25" class="outline-3">
+<h3 id="orgheadline25"><span class="section-number-3">4.1</span> /proc/sys/net/ipv4/ip_local_port_range</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+本地port分配范围. 本地client如果没有指定连接port的话那么就从这个范围内随机分配
 </p>
 
-</div>
-
-<div id="outline-container-4-1" class="outline-4">
-<h4 id="sec-4-1"><span class="section-number-4">4.1</span> /proc/sys/net/ipv4/ip<sub>local</sub><sub>port</sub><sub>range</sub></h4>
-<div class="outline-text-4" id="text-4-1">
-
-<p>本地port分配范围. 本地client如果没有指定连接port的话那么就从这个范围内随机分配
-</p>
-
-
-
-<pre class="example">➜  notes git:(master) ✗ cat /proc/sys/net/ipv4/ip_local_port_range
-32768   61000
+<pre class="example">
+➜  notes git:(master) ✗ cat /proc/sys/net/ipv4/ip_local_port_range
+32768	61000
 </pre>
-
-
 </div>
 </div>
-
 </div>
 
-<div id="outline-container-5" class="outline-3">
-<h3 id="sec-5"><span class="section-number-3">5</span> /proc/sys/fs</h3>
-<div class="outline-text-3" id="text-5">
-
-<p><a href="https://www.kernel.org/doc/Documentation/sysctl/fs.txt">https://www.kernel.org/doc/Documentation/sysctl/fs.txt</a>
-</p>
-
-</div>
-
-<div id="outline-container-5-1" class="outline-4">
-<h4 id="sec-5-1"><span class="section-number-4">5.1</span> /proc/sys/fs/file-max</h4>
-<div class="outline-text-4" id="text-5-1">
-
-<p>所有进程允许打开文件句柄数上限
+<div id="outline-container-orgheadline31" class="outline-2">
+<h2 id="orgheadline31"><span class="section-number-2">5</span> /proc/sys/fs</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+<a href="https://www.kernel.org/doc/Documentation/sysctl/fs.txt">https://www.kernel.org/doc/Documentation/sysctl/fs.txt</a>
 </p>
 </div>
 
-</div>
-
-<div id="outline-container-5-2" class="outline-4">
-<h4 id="sec-5-2"><span class="section-number-4">5.2</span> /proc/sys/fs/nr<sub>open</sub></h4>
-<div class="outline-text-4" id="text-5-2">
-
-<p>单个进程打开文件句柄数上限
+<div id="outline-container-orgheadline27" class="outline-3">
+<h3 id="orgheadline27"><span class="section-number-3">5.1</span> /proc/sys/fs/file-max</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+所有进程允许打开文件句柄数上限
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-5-3" class="outline-4">
-<h4 id="sec-5-3"><span class="section-number-4">5.3</span> /proc/sys/fs/file-nr</h4>
-<div class="outline-text-4" id="text-5-3">
-
-<p>系统当前打开文件句柄数
+<div id="outline-container-orgheadline28" class="outline-3">
+<h3 id="orgheadline28"><span class="section-number-3">5.2</span> /proc/sys/fs/nr_open</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+单个进程打开文件句柄数上限
 </p>
 </div>
-
 </div>
 
-<div id="outline-container-5-4" class="outline-4">
-<h4 id="sec-5-4"><span class="section-number-4">5.4</span> /proc/sys/fs/epoll/max<sub>user</sub><sub>watches</sub></h4>
-<div class="outline-text-4" id="text-5-4">
+<div id="outline-container-orgheadline29" class="outline-3">
+<h3 id="orgheadline29"><span class="section-number-3">5.3</span> /proc/sys/fs/file-nr</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+系统当前打开文件句柄数
+</p>
+</div>
+</div>
 
-<p>单个用户使用epoll进行监控的文件描述符上限
+<div id="outline-container-orgheadline30" class="outline-3">
+<h3 id="orgheadline30"><span class="section-number-3">5.4</span> /proc/sys/fs/epoll/max_user_watches</h3>
+<div class="outline-text-3" id="text-5-4">
+<p>
+单个用户使用epoll进行监控的文件描述符上限
 </p>
 
 <p class="verse">
-This specifies a limit on the total number of file descriptors that a user can register across all epoll instances<br/>
-on  the system. The limit is per real user ID.  Each registered file descriptor costs roughly 90 bytes on a 32-bit<br/>
-kernel, and roughly 160 bytes on a 64-bit kernel. Currently, the default value for max<sub>user</sub><sub>watches</sub> is  1/25  (4%)<br/>
-of the available low memory, divided by the registration cost in bytes.<br/>
+This specifies a limit on the total number of file descriptors that a user can register across all epoll instances<br  />
+on  the system. The limit is per real user ID.  Each registered file descriptor costs roughly 90 bytes on a 32-bit<br  />
+kernel, and roughly 160 bytes on a 64-bit kernel. Currently, the default value for max_user_watches is  1/25  (4%)<br  />
+of the available low memory, divided by the registration cost in bytes.<br  />
 </p>
 
-
-
-
-
-<pre class="example">➜  notes git:(master) ✗ cat /proc/sys/fs/epoll/max_user_watches
+<pre class="example">
+➜  notes git:(master) ✗ cat /proc/sys/fs/epoll/max_user_watches
 1645137
 </pre>
-
-
 </div>
 </div>
-
 </div>
 
-<div id="outline-container-6" class="outline-3">
-<h3 id="sec-6"><span class="section-number-3">6</span> /proc/sys/kernel</h3>
-<div class="outline-text-3" id="text-6">
-
-<p><a href="https://www.kernel.org/doc/Documentation/sysctl/kernel.txt">https://www.kernel.org/doc/Documentation/sysctl/kernel.txt</a>
+<div id="outline-container-orgheadline33" class="outline-2">
+<h2 id="orgheadline33"><span class="section-number-2">6</span> /proc/sys/kernel</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+<a href="https://www.kernel.org/doc/Documentation/sysctl/kernel.txt">https://www.kernel.org/doc/Documentation/sysctl/kernel.txt</a>
 </p>
-
 </div>
 
-<div id="outline-container-6-1" class="outline-4">
-<h4 id="sec-6-1"><span class="section-number-4">6.1</span> /proc/sys/kernel/hung<sub>task</sub><sub>timeout</sub><sub>secs</sub></h4>
-<div class="outline-text-4" id="text-6-1">
-
-<p>&gt;&gt;&gt; <a href="https://osinternals.wordpress.com/2009/11/24/detecting-hung-tasks-in-linux/">Detecting hung tasks in Linux</a>
+<div id="outline-container-orgheadline32" class="outline-3">
+<h3 id="orgheadline32"><span class="section-number-3">6.1</span> /proc/sys/kernel/hung_task_timeout_secs</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+&gt;&gt;&gt; <a href="https://osinternals.wordpress.com/2009/11/24/detecting-hung-tasks-in-linux/">Detecting hung tasks in Linux</a>
 </p>
 
 <p class="verse">
-Sometimes tasks under Linux are blocked forever (essentially hung). Recent Linux kernels have an infrastructure to detect hung tasks. When this infrastructure is active it will periodically get activated to find out hung tasks and present a stack dump of those hung tasks (and maybe locks held). Additionally we can choose to panic the system when we detect atleast one hung task in the system. I will try to explain how khungtaskd works.<br/>
-<br/>
-The infrastructure is based on a single kernel thread named as “khungtaskd”. So if you do a ps in your system and see that there is entry like [khungtaskd] you know it is there. I have one in my system: "136 root SW [khungtaskd]"<br/>
-<br/>
-The loop of the khungtaskd daemon is a call to the scheduler for waking it up after ever 120 seconds (default value). The core algorithm is like this:<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1. Iterate over all the tasks in the system which are marked as TASK<sub>UNINTERRUPTIBLE</sub> (additionally it does not consider UNINTERRUPTIBLE frozen tasks &amp; UNINTERRUPTIBLE tasks that are newly created and never been scheduled out).<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2. If a task has not been switched out by the scheduler atleast once in the last 120 seconds it is considered as a hung task and its stack dump is displayed. If CONFIG<sub>LOCKDEP</sub> is defined then it will also show all the locks the hung task is holding.<br/>
-<br/>
-One can change the sampling interval of khungtaskd through the sysctl interface /proc/sys/kernel/hung<sub>task</sub><sub>timeout</sub><sub>secs</sub>.<br/>
+Sometimes tasks under Linux are blocked forever (essentially hung). Recent Linux kernels have an infrastructure to detect hung tasks. When this infrastructure is active it will periodically get activated to find out hung tasks and present a stack dump of those hung tasks (and maybe locks held). Additionally we can choose to panic the system when we detect atleast one hung task in the system. I will try to explain how khungtaskd works.<br  />
+<br  />
+The infrastructure is based on a single kernel thread named as “khungtaskd”. So if you do a ps in your system and see that there is entry like [khungtaskd] you know it is there. I have one in my system: "136 root SW [khungtaskd]"<br  />
+<br  />
+The loop of the khungtaskd daemon is a call to the scheduler for waking it up after ever 120 seconds (default value). The core algorithm is like this:<br  />
+&#xa0;&#xa0;&#xa0;1. Iterate over all the tasks in the system which are marked as TASK_UNINTERRUPTIBLE (additionally it does not consider UNINTERRUPTIBLE frozen tasks &amp; UNINTERRUPTIBLE tasks that are newly created and never been scheduled out).<br  />
+&#xa0;&#xa0;&#xa0;2. If a task has not been switched out by the scheduler atleast once in the last 120 seconds it is considered as a hung task and its stack dump is displayed. If CONFIG_LOCKDEP is defined then it will also show all the locks the hung task is holding.<br  />
+<br  />
+One can change the sampling interval of khungtaskd through the sysctl interface /proc/sys/kernel/hung_task_timeout_secs.<br  />
 </p>
 
-
-
-<hr/>
+<hr  />
 
 <p>
 之前在hdfs一个datanode上面出现了磁盘损坏问题，然后在syslog里面发现了下面日志
 </p>
-
-
-<pre class="example">May 14 00:02:50 dp46 kernel: INFO: task jbd2/sde1-8:3411 blocked for more than 120 seconds.
+<pre class="example">
+May 14 00:02:50 dp46 kernel: INFO: task jbd2/sde1-8:3411 blocked for more than 120 seconds.
 May 14 00:02:50 dp46 kernel: "echo 0 &gt; /proc/sys/kernel/hung_task_timeout_secsmahung_task_timeout_secs" disables this message.
 May 14 00:02:50 dp46 kernel: jbd2/sde1-8   D 0000000000000000     0  3411      2 0x00000000
 May 14 00:02:50 dp46 kernel: ffff880817a71a80 0000000000000046 ffff880096d12f00 0000000000000441
@@ -1420,52 +1328,42 @@ May 14 00:02:50 dp46 kernel: [&lt;ffffffff8100c14a&gt;] child_rip+0xa/0x20
 May 14 00:02:50 dp46 kernel: [&lt;ffffffff810907f0&gt;] ? kthread+0x0/0xa0
 May 14 00:02:50 dp46 kernel: [&lt;ffffffff8100c140&gt;] ? child_rip+0x0/0x20
 </pre>
-
 <p>
 The JBD is the <a href="http://kerneltrap.org/node/6741">journaling block device</a> that sits between the file system and the block device driver. The jbd2 version is for ext4.
 </p>
 </div>
 </div>
-
 </div>
 
-<div id="outline-container-7" class="outline-3">
-<h3 id="sec-7"><span class="section-number-3">7</span> /proc/net</h3>
-<div class="outline-text-3" id="text-7">
-
-
-</div>
-
-<div id="outline-container-7-1" class="outline-4">
-<h4 id="sec-7-1"><span class="section-number-4">7.1</span> /proc/net/tcp</h4>
-<div class="outline-text-4" id="text-7-1">
-
-<p>所有tcp连接信息. netstat以及lsof等命令会读取这个文件.
+<div id="outline-container-orgheadline36" class="outline-2">
+<h2 id="orgheadline36"><span class="section-number-2">7</span> /proc/net</h2>
+<div class="outline-text-2" id="text-7">
+</div><div id="outline-container-orgheadline34" class="outline-3">
+<h3 id="orgheadline34"><span class="section-number-3">7.1</span> /proc/net/tcp</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+所有tcp连接信息. netstat以及lsof等命令会读取这个文件.
 </p>
+
 <p>
 之前遇到过netstat/lsof运行速度非常慢的问题. 通过strace发现是在读取这个文件时候非常耗时. 下面两个链接给出了这个问题的一些相关信息
-</p><ul>
-<li>[PATCH] tcp: Fix slowness in read /proc/net/tcp — Linux Network Development : <a href="http://www.spinics.net/lists/netdev/msg132186.html">http://www.spinics.net/lists/netdev/msg132186.html</a>
-</li>
-<li>Linux-Kernel Archive: Awfully slow /proc/net/tcp, netstat, in.i : <a href="http://lkml.indiana.edu/hypermail/linux/kernel/0110.2/0475.html">http://lkml.indiana.edu/hypermail/linux/kernel/0110.2/0475.html</a>
-</li>
+</p>
+<ul class="org-ul">
+<li>[PATCH] tcp: Fix slowness in read /proc/net/tcp — Linux Network Development : <a href="http://www.spinics.net/lists/netdev/msg132186.html">http://www.spinics.net/lists/netdev/msg132186.html</a></li>
+<li>Linux-Kernel Archive: Awfully slow /proc/net/tcp, netstat, in.i : <a href="http://lkml.indiana.edu/hypermail/linux/kernel/0110.2/0475.html">http://lkml.indiana.edu/hypermail/linux/kernel/0110.2/0475.html</a></li>
 </ul>
-
-
+</div>
 </div>
 
-</div>
-
-<div id="outline-container-7-2" class="outline-4">
-<h4 id="sec-7-2"><span class="section-number-4">7.2</span> /proc/net/dev</h4>
-<div class="outline-text-4" id="text-7-2">
-
-<p>网卡设备流量信息
+<div id="outline-container-orgheadline35" class="outline-3">
+<h3 id="orgheadline35"><span class="section-number-3">7.2</span> /proc/net/dev</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+网卡设备流量信息
 </p>
 
-
-
-<pre class="example">➜  logzilla git:(devel-yan) ✗ cat /proc/net/dev
+<pre class="example">
+➜  logzilla git:(devel-yan) ✗ cat /proc/net/dev
 Inter-|   Receive                                                |  Transmit
  face |bytes    packets errs drop fifo frame compressed multicast|bytes    packets errs drop fifo colls carrier compressed
   ppp0: 18559173   21273    0    0    0     0          0         0  2363487   19064    0    0    0     0       0          0
@@ -1473,15 +1371,9 @@ Inter-|   Receive                                                |  Transmit
     lo: 21729683   27959    0    0    0     0          0         0 21729683   27959    0    0    0     0       0          0
 docker0:       0       0    0    0    0     0          0         0        0       0    0    0    0     0       0          0
 </pre>
-
 </div>
 </div>
 </div>
-</div>
-
-<div id="postamble">
-<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
-
 </div>
 <!-- BA BEGIN --><script>var _hmt = _hmt || [];(function() {  var hm = document.createElement("script");  hm.src = "//hm.baidu.com/hm.js?4f82bfcb8e6f2283f7e7eebae990bc80";  var s = document.getElementsByTagName("script")[0];  s.parentNode.insertBefore(hm, s);})();</script><!-- BA END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'linux-proc.html';var disqus_title = 'linux-proc.html';var disqus_url = 'http://dirlt.com/linux-proc.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>
