@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -73,9 +25,9 @@
 
 <p>kylin是baidu in-house的异步编程框架，提供CPU，Network以及Disk异步操作接口，并且内置许多常用编程组件包括定时器和内存池等。
 </p><ul>
-<li>异步编程_百度文库 : <a href="http://wenku.baidu.com/view/6fa262f67c1cfad6195fa74e.html">http://wenku.baidu.com/view/6fa262f67c1cfad6195fa74e.html</a>
+<li>异步编程<sub>百度文库</sub> : <a href="http://wenku.baidu.com/view/6fa262f67c1cfad6195fa74e.html">http://wenku.baidu.com/view/6fa262f67c1cfad6195fa74e.html</a>
 </li>
-<li>三谈火车票系统_新浪轻博客 : <a href="http://qing.blog.sina.com.cn/tj/85c4105033000ab2.html">http://qing.blog.sina.com.cn/tj/85c4105033000ab2.html</a>
+<li>三谈火车票系统<sub>新浪轻博客</sub> : <a href="http://qing.blog.sina.com.cn/tj/85c4105033000ab2.html">http://qing.blog.sina.com.cn/tj/85c4105033000ab2.html</a>
 </li>
 <li>SEDA: An Architecture for Well-Conditioned, Scalable Internet Services <a href="http://www.eecs.harvard.edu/~mdw/papers/seda-sosp01.pdf">http://www.eecs.harvard.edu/~mdw/papers/seda-sosp01.pdf</a>
 </li>
@@ -132,8 +84,8 @@
 <li><a href="kylin.html#sec-2-4-2">2.4.2 SetTranBuf</a></li>
 <li><a href="kylin.html#sec-2-4-3">2.4.3 DoAllocate</a></li>
 <li><a href="kylin.html#sec-2-4-4">2.4.4 DoAllocateCanFail</a></li>
-<li><a href="kylin.html#sec-2-4-5">2.4.5 _DoAddRef</a></li>
-<li><a href="kylin.html#sec-2-4-6">2.4.6 _DoFree</a></li>
+<li><a href="kylin.html#sec-2-4-5">2.4.5 <sub>DoAddRef</sub></a></li>
+<li><a href="kylin.html#sec-2-4-6">2.4.6 <sub>DoFree</sub></a></li>
 <li><a href="kylin.html#sec-2-4-7">2.4.7 AllocateBig</a></li>
 <li><a href="kylin.html#sec-2-4-8">2.4.8 AllocateCanFail</a></li>
 <li><a href="kylin.html#sec-2-4-9">2.4.9 AllocForBuf</a></li>
@@ -552,7 +504,7 @@ static inline int futex_sema_up(struct futex* pf) {
 <h5 id="sec-1-5-2"><span class="section-number-5">1.5.2</span> cond</h5>
 <div class="outline-text-5" id="text-1-5-2">
 
-<p>这里cond和pthread_cond是有差别的，这里的cond没有和任何mutex相关。kylin这里认为count==0的时候，那么condition才被满足。
+<p>这里cond和pthread<sub>cond是有差别的，这里的cond没有和任何mutex相关。kylin这里认为count</sub>==0的时候，那么condition才被满足。
 </p>
 
 
@@ -597,8 +549,8 @@ static inline int futex_cond_signal(struct futex* pf) {
 <h5 id="sec-1-5-3"><span class="section-number-5">1.5.3</span> event</h5>
 <div class="outline-text-5" id="text-1-5-3">
 
-<p>这里的event名字取得也相当的奇怪。这里count实际上有两个状态，&gt;=0以及&lt;0(LARGE_ENOUGH_NEGATIVE).对于count&gt;=0的状态时候，
-可以认为当前是没有signaled的需要wait，如果count为&lt;0(LARGE_ENOUGH_NEGATIVE)的时候是有signal的状态的不需要wait。
+<p>这里的event名字取得也相当的奇怪。这里count实际上有两个状态，&gt;=0以及&lt;0(LARGE<sub>ENOUGH</sub><sub>NEGATIVE</sub>).对于count&gt;=0的状态时候，
+可以认为当前是没有signaled的需要wait，如果count为&lt;0(LARGE<sub>ENOUGH</sub><sub>NEGATIVE</sub>)的时候是有signal的状态的不需要wait。
 </p>
 
 
@@ -748,7 +700,7 @@ public:
 </li>
 <li>发起调用op，传入这个ctx，为了方便理解包装成为Task(op,ctx)放入线程池。可能会设置nAction字段。
 </li>
-<li>线程池取出Task,结合ctx调用op.将op返回值放入APF_ERROR里面。
+<li>线程池取出Task,结合ctx调用op.将op返回值放入APF<sub>ERROR里面。</sub>
 </li>
 <li>然后根据ctx关联的client,调用client的OnCompletion方法。
 </li>
@@ -1074,7 +1026,7 @@ bool CThreadPool::CancelJob(Job* pJob, int nWhich)
 
 <p>
 可以看到TranBuf分配方式是每次分配nAlloc个Block(这个过程在后面叫做AllocOnce).每个Block是BlockSize字节.
-然后至少分配m_nMin*nAlloc(首先调用m_nMin个AllocOnce过程),最多分配m_nMax*nAlloc个Block.每个内存
+然后至少分配m<sub>nMin</sub>*nAlloc(首先调用m<sub>nMin个AllocOnce过程</sub>),最多分配m<sub>nMax</sub>*nAlloc个Block.每个内存
 不够的话都会调用AllocOnce这个过程。
 </p>
 <p>
@@ -1091,7 +1043,7 @@ bool CThreadPool::CancelJob(Job* pJob, int nWhich)
 <h5 id="sec-2-3-2"><span class="section-number-5">2.3.2</span> Create</h5>
 <div class="outline-text-5" id="text-2-3-2">
 
-<p>大部分Create代码都是在设置参数，最后调用m_nMin次AllocOnce来分配初始的内存块。
+<p>大部分Create代码都是在设置参数，最后调用m<sub>nMin次AllocOnce来分配初始的内存块。</sub>
 </p>
 
 
@@ -1131,7 +1083,7 @@ bool CThreadPool::CancelJob(Job* pJob, int nWhich)
 <h5 id="sec-2-3-3"><span class="section-number-5">2.3.3</span> AllocOnce</h5>
 <div class="outline-text-5" id="text-2-3-3">
 
-<p>之前说过AllocOnce是分配一个连续内存块，每个Block大小是m_nBlockSize,而个数是nAlloc.
+<p>之前说过AllocOnce是分配一个连续内存块，每个Block大小是m<sub>nBlockSize</sub>,而个数是nAlloc.
 同时还需要分配nAlloc个Handle.每个Handle管理一个Block.
 </p>
 
@@ -1625,7 +1577,7 @@ BufHandle* DoAllocate(CTranBufPool* pPool, int nRetry) {
 </div>
 
 <div id="outline-container-2-4-5" class="outline-5">
-<h5 id="sec-2-4-5"><span class="section-number-5">2.4.5</span> _DoAddRef</h5>
+<h5 id="sec-2-4-5"><span class="section-number-5">2.4.5</span> <sub>DoAddRef</sub></h5>
 <div class="outline-text-5" id="text-2-4-5">
 
 <p>对于BufHandle的引用技术和TranPool引用计数有点不同，并且平时思考的也不同。BufHandle的引用计数
@@ -1656,7 +1608,7 @@ BufHandle* DoAllocate(CTranBufPool* pPool, int nRetry) {
 </div>
 
 <div id="outline-container-2-4-6" class="outline-5">
-<h5 id="sec-2-4-6"><span class="section-number-5">2.4.6</span> _DoFree</h5>
+<h5 id="sec-2-4-6"><span class="section-number-5">2.4.6</span> <sub>DoFree</sub></h5>
 <div class="outline-text-5" id="text-2-4-6">
 
 <p>只是释放单个BufHandle对象.
@@ -2075,7 +2027,7 @@ APF_ERROR CExecMan::QueueExec(AsyncContext* pCtx, bool bClientReferred)
 </pre>
 
 <p>
-我们这里可以看到m_nCurJobs在QueueExec和Stop之间的配合。然后我们稍微看看Proc这个过程，对于CPU任务直接调用OnCompletion然后调用Release.
+我们这里可以看到m<sub>nCurJobs在QueueExec和Stop之间的配合。然后我们稍微看看Proc这个过程，对于CPU任务直接调用OnCompletion然后调用Release</sub>.
 </p>
 </div>
 
@@ -2086,8 +2038,8 @@ APF_ERROR CExecMan::QueueExec(AsyncContext* pCtx, bool bClientReferred)
 <div class="outline-text-5" id="text-2-6-4">
 
 <p>定时器任务加入是DelayExec,检查触发是RunTimer.如果查看CallGraph的话会发现RunTimer都是在网络部分调用的，我们在网络部分看看触发的时机。
-DelayExec里面的逻辑会根据定时时间来判断如何实现，如果定时时间超过g_nTickPrecision，那么会将超时时间加入一个map里面去，然后让RunTimer去触发。
-否则会加入线程池里面去。对于加入到map里面的fProc有一个特殊的标记(JOB_PROC)2.在CancelExec时候会认识这个特殊标记，将事件从map中删除。
+DelayExec里面的逻辑会根据定时时间来判断如何实现，如果定时时间超过g<sub>nTickPrecision，那么会将超时时间加入一个map里面去，然后让RunTimer去触发。</sub>
+否则会加入线程池里面去。对于加入到map里面的fProc有一个特殊的标记(JOB<sub>PROC</sub>)2.在CancelExec时候会认识这个特殊标记，将事件从map中删除。
 </p>
 
 
@@ -2124,7 +2076,7 @@ DelayExec里面的逻辑会根据定时时间来判断如何实现，如果定�
 <p>
 然后我看看看RunTimer这个部分。这个部分非常简单，就是根据当前时间判断map里面哪些定时器需要进行触发，然后将触发逻辑作为Job丢入CPU线程池。
 我们这里不看RunTimer具体代码，反而倒是对外面的一些小细节比较感兴趣。我们不希望RunTimer被多个实例调用，只要有一个实例调用就OK，使用CToken完成。
-当然可以使用mutex+try_lock来实现但是开销应该会更大。
+当然可以使用mutex+try<sub>lock来实现但是开销应该会更大。</sub>
 </p>
 
 
@@ -2920,7 +2872,7 @@ APF_ERROR CNetworkMan::Deassociate(NetContext* pCtx)
 <h5 id="sec-2-8-5"><span class="section-number-5">2.8.5</span> Connect</h5>
 <div class="outline-text-5" id="text-2-8-5">
 
-<p>发起Connect操作，注意这里还填写了WriteReq,timeout以及nAction=AA_CONNECT.对于pReq的话应该是在connect之后发起的写操作。
+<p>发起Connect操作，注意这里还填写了WriteReq,timeout以及nAction=AA<sub>CONNECT</sub>.对于pReq的话应该是在connect之后发起的写操作。
 </p>
 
 
@@ -3030,23 +2982,23 @@ void CNetworkMan::Write(NetContext* pCtx, NetRequest* pReq)
 <div class="outline-text-5" id="text-2-8-9">
 
 <ul>
-<li>SS_VOID = 0, // 初始状态
+<li>SS<sub>VOID</sub> = 0, // 初始状态
 </li>
-<li>SS_LISTENING_0,  // 发起listen操作
+<li>SS<sub>LISTENING</sub><sub>0</sub>,  // 发起listen操作
 </li>
-<li>SS_LISTENING, // 执行listen之后
+<li>SS<sub>LISTENING</sub>, // 执行listen之后
 </li>
-<li>SS_CONNECTING_0, // 发起connect操作
+<li>SS<sub>CONNECTING</sub><sub>0</sub>, // 发起connect操作
 </li>
-<li>SS_CONNECTING, // 执行connect之后,下一步是SS_CONNECTED,但是下次发起write操作
+<li>SS<sub>CONNECTING</sub>, // 执行connect之后,下一步是SS<sub>CONNECTED</sub>,但是下次发起write操作
 </li>
-<li>SS_CONNECTED_0, // 启动monitor操作,下一步是SS_CONNECTED,但是下次发起read操作
+<li>SS<sub>CONNECTED</sub><sub>0</sub>, // 启动monitor操作,下一步是SS<sub>CONNECTED</sub>,但是下次发起read操作
 </li>
-<li>SS_CONNECTED, // 连接建立成功
+<li>SS<sub>CONNECTED</sub>, // 连接建立成功
 </li>
-<li>SS_ERROR, // socket错误
+<li>SS<sub>ERROR</sub>, // socket错误
 </li>
-<li>SS_SHUTDOWN, // 对端已经关闭
+<li>SS<sub>SHUTDOWN</sub>, // 对端已经关闭
 </li>
 </ul>
 
@@ -4175,15 +4127,15 @@ void CSocketV::Write(void* pBuf, int count, NetRequest* pReq)
 
 <p>个人觉得kylin的网络异步部分就是spaghetti,所有的nAction以及nErrCode都是相互缠绕.我们可以假设我们的场景类似于RPC然后考虑一下应该如何处理。
 </p><ul>
-<li>OnConnected(APF_ERROR nErrCode).如果nErrCode!=APFE_OK的话那么Close,否则认为连接成功.错误交给OnBorken处理
+<li>OnConnected(APF<sub>ERROR</sub> nErrCode).如果nErrCode!=APFE<sub>OK的话那么Close</sub>,否则认为连接成功.错误交给OnBorken处理
 </li>
-<li>OnListened(SOCKET s, SOCKADDR_IN* pSockAddrIn).建立连接即可。
+<li>OnListened(SOCKET s, SOCKADDR<sub>IN</sub>* pSockAddrIn).建立连接即可。
 </li>
-<li>OnWritten(APF_ERROR nErrCode, NetRequest* pReq).如果nErrCode!=APFE_OK的话，那么Close连接。
+<li>OnWritten(APF<sub>ERROR</sub> nErrCode, NetRequest* pReq).如果nErrCode!=APFE<sub>OK的话，那么Close连接。</sub>
 </li>
-<li>OnRead(APF_ERROR nErrCode, NetRequest* pReq).如果nErrCode=APFE_NOTIFY的话那么发起Read,如果=APFE_OK的话那么处理，其他情况下面Close连接。
+<li>OnRead(APF<sub>ERROR</sub> nErrCode, NetRequest* pReq).如果nErrCode=APFE<sub>NOTIFY的话那么发起Read</sub>,如果=APFE<sub>OK的话那么处理，其他情况下面Close连接。</sub>
 </li>
-<li>OnBroken(APF_ERROR nErrCode).直接Close即可，但是可以根据nErrCode来判断原因.可能是客户端正常关闭.通常最后需要Release一下，释放这个连接。
+<li>OnBroken(APF<sub>ERROR</sub> nErrCode).直接Close即可，但是可以根据nErrCode来判断原因.可能是客户端正常关闭.通常最后需要Release一下，释放这个连接。
 </li>
 </ul>
 

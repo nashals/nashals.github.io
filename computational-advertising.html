@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -1325,7 +1277,7 @@ VCG vs. GSP
 为了控制广告的质量和保持一定的出售单价,竞价广告市场往往要设置一个能够赢得某个拍卖位置的最低价格,这一价格我们称之为市场保留价(Market Reserve Price, MRP)。市场保留价有两种设置方法,一是对整个竞价市场采用同样的保留价格;二是根据不同标的物(例如搜索广告里的关键词)的特性设置不同的保留价格。
 </p>
 <p>
-在CPC广告网络中,eCPM可以表示成点击率和出价的乘积。即r = μ · ν。但是在有的情况下,我们有动机对此公式做一些微调,把它变成下面的形式: r = μ^κ ·ν. 其中的κ为一个大于0的实数。我们可以考虑两种极端情况来理解κ的作用:当κ → ∞时,相当于只根据点击率来排序,而不考虑出价的作用;反之,当κ → 0时,则相当于只根据出价来排序。因此,随着κ的增大,相当于我们在挤压出价在整个竞价体系中的作用,因此我们把这个因子叫做价格积压(Squashing)因子。
+在CPC广告网络中,eCPM可以表示成点击率和出价的乘积。即r = μ · ν。但是在有的情况下,我们有动机对此公式做一些微调,把它变成下面的形式: r = μ<sup>κ</sup> ·ν. 其中的κ为一个大于0的实数。我们可以考虑两种极端情况来理解κ的作用:当κ → ∞时,相当于只根据点击率来排序,而不考虑出价的作用;反之,当κ → 0时,则相当于只根据出价来排序。因此,随着κ的增大,相当于我们在挤压出价在整个竞价体系中的作用,因此我们把这个因子叫做价格积压(Squashing)因子。
 </p>
 <p>
 价格积压因子的作用,主要是为了能够根据市场情况,更主动地影响竞价体系向着需要的方向发展。比如说,如果发现市场上存在大量的出价较高但品质不高的广告主,则可以通过调高κ来强调质量和用户反馈的影响;如果发现市场的竞价激烈程度不够,则可以通过降低κ来鼓励竞争;如果存在短期的财务压力,则需要将κ调整到接近于1的范围,往往就可以使得整体营收有所上升。

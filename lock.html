@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -123,7 +75,7 @@ update@201509: 通过xchg/cmpxchg这种原子指令可以很容易实现一个sp
 
 
 <p>
-futex(fast userspace mutex)快速用户态互斥锁，需要用户态和内核态配合来完成。首先用户态判断是否存在contented case（比如判断当前资源是否足够），如果没有的话就没有必要陷入内核态，用户态就可以搞定。如果出现conteted case，那么这个需要等待资源可用，那么调用futex(FUTEX_WAIT)陷入内核态挂起，并且等待唤醒。如果一旦有资源可用的话，首先会判断用户态是否有等待资源的请求，如果没有的话同样没有必要陷入内核态，用户态就可以搞定。如果出现有等待资源并且挂起的请求的话，那么调用futex(FUTEX_WAKE)就可以将请求唤醒。上面那个链接可以有代码参考, 此外还可以阅读glibc/ntpl下面的pthread_mutex的部分。不过大部分时候我们没有必要接触这个东西，pthread_mutex已经做得足够高效并且屏蔽了操作系统的细节了。
+futex(fast userspace mutex)快速用户态互斥锁，需要用户态和内核态配合来完成。首先用户态判断是否存在contented case（比如判断当前资源是否足够），如果没有的话就没有必要陷入内核态，用户态就可以搞定。如果出现conteted case，那么这个需要等待资源可用，那么调用futex(FUTEX<sub>WAIT</sub>)陷入内核态挂起，并且等待唤醒。如果一旦有资源可用的话，首先会判断用户态是否有等待资源的请求，如果没有的话同样没有必要陷入内核态，用户态就可以搞定。如果出现有等待资源并且挂起的请求的话，那么调用futex(FUTEX<sub>WAKE</sub>)就可以将请求唤醒。上面那个链接可以有代码参考, 此外还可以阅读glibc/ntpl下面的pthread<sub>mutex的部分。不过大部分时候我们没有必要接触这个东西，pthread</sub><sub>mutex已经做得足够高效并且屏蔽了操作系统的细节了。</sub>
 </p></div>
 
 <div id="postamble">

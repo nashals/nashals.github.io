@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -290,7 +242,7 @@ Info.(@2012)
 <img src="images/galera-certification.png"  alt="./images/galera-certification.png" /> <img src="images/galera-certification-en.png"  alt="./images/galera-certification-en.png" />
 </p>
 <p>
-在数据库事务提交时，会使用2阶段提交方式，在ha_trans_commit中，首先会针对每一个存储引擎执行一个ht-&gt;prepare函数，而对于Galera，在内部实现也是当作一个内嵌的存储引擎使用的，所以它执行的是wsrep_prepare，这个函数的功能是将在执行过程中产生的binlog通过下面会介绍到的接口append_data传到其它节点上面去（或者没有传过去，只是将这些数据对象存储在本地，等待提交操作），然后再通过下面这个接口pre_commit去与其它节点的Galera通讯检查有没有冲突，这个过程也就是在 <b>介绍Galera的文章中说到的certification阶段</b> 。 <b>note:是在本地先提交吗？</b>
+在数据库事务提交时，会使用2阶段提交方式，在ha<sub>trans</sub><sub>commit中，首先会针对每一个存储引擎执行一个ht</sub>-&gt;prepare函数，而对于Galera，在内部实现也是当作一个内嵌的存储引擎使用的，所以它执行的是wsrep<sub>prepare，这个函数的功能是将在执行过程中产生的binlog通过下面会介绍到的接口append</sub><sub>data传到其它节点上面去（或者没有传过去，只是将这些数据对象存储在本地，等待提交操作），然后再通过下面这个接口pre</sub><sub>commit去与其它节点的Galera通讯检查有没有冲突，这个过程也就是在</sub> <b>介绍Galera的文章中说到的certification阶段</b> 。 <b>note:是在本地先提交吗？</b>
 </p><ul>
 <li>Transactions process independently in each cluster node
 </li>
@@ -346,7 +298,7 @@ Info.(@2012)
 </li>
 <li>Node receives state snapshot. Now it has all cluster data and can start applying the cached writesets. <b>Flow control</b> is turned on to ensure eventual slave queue decrease.
 </li>
-<li>Node completes catching up with the cluster (slave queue is empty). <b>Flow control</b> is turned on to keep slave queue empty. In MySQL wsrep_ready status variable is set to 1 and the node is allowed to process transactions.
+<li>Node completes catching up with the cluster (slave queue is empty). <b>Flow control</b> is turned on to keep slave queue empty. In MySQL wsrep<sub>ready</sub> status variable is set to 1 and the node is allowed to process transactions.
 </li>
 <li>Node receives state transfer request. <b>Flow control</b> is relaxed as for JOINER. The node caches the writesets it can't apply.
 </li>
@@ -368,9 +320,9 @@ For clarity the following transitions were omitted from the graph:
 <p>
 options:
 </p><ul>
-<li>wsrep_new_cluster # setup a new cluster
+<li>wsrep<sub>new</sub><sub>cluster</sub> # setup a new cluster
 </li>
-<li>wsrep_cluster_address=gcomm://192.168.0.1 # Once you have a cluster running and you want to add/reconnect another node to it, you must supply an address of one of the cluster members in the cluster address （只需要指定任意一个地址即可） The new node only needs to connect to one of the existing members. It will automatically retrieve the cluster map and reconnect to the rest of the nodes.
+<li>wsrep<sub>cluster</sub><sub>address</sub>=gcomm://192.168.0.1 # Once you have a cluster running and you want to add/reconnect another node to it, you must supply an address of one of the cluster members in the cluster address （只需要指定任意一个地址即可） The new node only needs to connect to one of the existing members. It will automatically retrieve the cluster map and reconnect to the rest of the nodes.
 </li>
 </ul>
 
@@ -386,17 +338,17 @@ options:
 <p><a href="http://www.codership.com/wiki/doku.php?id=flow_control">http://www.codership.com/wiki/doku.php?id=flow_control</a>
 </p>
 <ul>
-<li>wsrep_flow_control_sent = #times node has begged for flow control
+<li>wsrep<sub>flow</sub><sub>control</sub><sub>sent</sub> = #times node has begged for flow control
 </li>
-<li>wsrep_flow_control_recvd = #times node received flow control stop signal
+<li>wsrep<sub>flow</sub><sub>control</sub><sub>recvd</sub> = #times node received flow control stop signal
 </li>
-<li>wsrep_flow_control_paused = fraction of time the node had to pause for flow control
+<li>wsrep<sub>flow</sub><sub>control</sub><sub>paused</sub> = fraction of time the node had to pause for flow control
 </li>
-<li>wsrep_local_recv_queue = length of slave queue
+<li>wsrep<sub>local</sub><sub>recv</sub><sub>queue</sub> = length of slave queue
 </li>
-<li>Gcs.fc_limit = high water mark for the flow control, FC stop will be sent when this is reached
+<li>Gcs.fc<sub>limit</sub> = high water mark for the flow control, FC stop will be sent when this is reached
 </li>
-<li>Gcs.fc_factor = limit * factor is the low water mark, FC continue will be sent when slave queue returned down to this mark
+<li>Gcs.fc<sub>factor</sub> = limit * factor is the low water mark, FC continue will be sent when slave queue returned down to this mark
 </li>
 </ul>
 
@@ -423,11 +375,11 @@ Writeset caching during state transfer. When a node is receiving a state transfe
 <p>
 To control memory usage for writeset caching, check Galera parameters: <b>note：by flow control</b>
 </p><ul>
-<li>gcs.recv_q_hard_limit,
+<li>gcs.recv<sub>q</sub><sub>hard</sub><sub>limit</sub>,
 </li>
-<li>gcs.recv_q_soft_limit,
+<li>gcs.recv<sub>q</sub><sub>soft</sub><sub>limit</sub>,
 </li>
-<li>gcs.max_throttle.
+<li>gcs.max<sub>throttle</sub>.
 </li>
 </ul>
 
@@ -456,9 +408,9 @@ To control memory usage for writeset caching, check Galera parameters: <b>note�
 
 
 <p>
-三种方式sst,通过wsrep_sst_method变量配置
+三种方式sst,通过wsrep<sub>sst</sub><sub>method变量配置</sub>
 </p><ul>
-<li>mysqldump =&gt; wsrep_sst_mysqldump
+<li>mysqldump =&gt; wsrep<sub>sst</sub><sub>mysqldump</sub>
 <ul>
 <li>Logical backup
 </li>
@@ -466,7 +418,7 @@ To control memory usage for writeset caching, check Galera parameters: <b>note�
 </li>
 <li>Configure authentication
 <ul>
-<li>wsrep_sst_auth=”root:rootpass”
+<li>wsrep<sub>sst</sub><sub>auth</sub>=”root:rootpass”
 </li>
 <li>Super privilege needed
 </li>
@@ -478,7 +430,7 @@ To control memory usage for writeset caching, check Galera parameters: <b>note�
 </ul>
 
 </li>
-<li>rsync =&gt; wsrep_sst_rsync
+<li>rsync =&gt; wsrep<sub>sst</sub><sub>rsync</sub>
 <ul>
 <li>Physical backup
 </li>
@@ -491,7 +443,7 @@ To control memory usage for writeset caching, check Galera parameters: <b>note�
 </ul>
 
 </li>
-<li>xtrabackup =&gt; wsrep_sst_xtrabackup
+<li>xtrabackup =&gt; wsrep<sub>sst</sub><sub>xtrabackup</sub>
 <ul>
 <li>Contributed by Percona
 </li>
@@ -512,9 +464,9 @@ There are two conceptually different ways to transfer a state from one MySQL ser
 </p><ul>
 <li>Using mysqldump. This requires the receiving server to be fully initialized and ready to accept connections <b>before</b> the transfer. This method is by definition blocking, in that it blocks donor server from modifying its own state for the duration of transfer. It is also the slowest of all, and in the loaded cluster that might be an issue in a loaded cluster.（使用mysqldump。要求在transfer之前配置好。会阻塞donor操作，速度比较慢，高负载情况下会有问题）
 </li>
-<li>Copying data files directly. This requires that the receiving server is initialized <b>after</b> the transfer. rsync, xtrabackup and other methods fall into this category. These methods a much faster than mysqldump, but they have certain limitations, like they can be used only on server startup and receiving server must be configured very similarly to the donor (e.g. innodb_file_per_table should be the same and so on). Some of these methods, e.g. xtrabackup, can be potentially made non-blocking on donor.（直接copy文件。要求transfer之后配置好？？速度比较快，但是要求配置源和目的配置相同。使用xtrabackup不会阻塞donor)
+<li>Copying data files directly. This requires that the receiving server is initialized <b>after</b> the transfer. rsync, xtrabackup and other methods fall into this category. These methods a much faster than mysqldump, but they have certain limitations, like they can be used only on server startup and receiving server must be configured very similarly to the donor (e.g. innodb<sub>file</sub><sub>per</sub><sub>table</sub> should be the same and so on). Some of these methods, e.g. xtrabackup, can be potentially made non-blocking on donor.（直接copy文件。要求transfer之后配置好？？速度比较快，但是要求配置源和目的配置相同。使用xtrabackup不会阻塞donor)
 </li>
-<li><b>Xtrabackup and rsync SST cannot be used for a running server.</b> It is not possible to copy datafiles under running InnoDB. Having wsrep_address set to a list of node addresses and starting replication on a running node can lead to node crash. <del>#todo: Xtrabackup需要停机处理吗？</del>  #note: xtrabackup不需要停机处理
+<li><b>Xtrabackup and rsync SST cannot be used for a running server.</b> It is not possible to copy datafiles under running InnoDB. Having wsrep<sub>address</sub> set to a list of node addresses and starting replication on a running node can lead to node crash. <del>#todo: Xtrabackup需要停机处理吗？</del>  #note: xtrabackup不需要停机处理
 </li>
 </ul>
 
@@ -526,7 +478,7 @@ SST Donor
 </li>
 <li>By default donor accepts client connections, although committing will be prohibited for a while
 </li>
-<li>If wsrep_sst_donor_rejects_queries is set, donor gives unknown command error to clients
+<li>If wsrep<sub>sst</sub><sub>donor</sub><sub>rejects</sub><sub>queries</sub> is set, donor gives unknown command error to clients
 </li>
 <li>Best practice is to dedicate a reference node for donor and backup activities（使用单独一台机器来做参照节点，这个机器上面没有负载，可以用作备份以及donor)
 </li>
@@ -562,11 +514,11 @@ IST(Very effective)
 </li>
 <li>Applier threads launched at MySQL startup.
 </li>
-<li>wsrep_slave_threads=n
+<li>wsrep<sub>slave</sub><sub>threads</sub>=n
 </li>
 <li>Optimal applier count depends on work load
 <ul>
-<li>Monitor wsrep_cert_deps_distance
+<li>Monitor wsrep<sub>cert</sub><sub>deps</sub><sub>distance</sub>
 </li>
 <li>Max ~4 * #CPUcores
 </li>
@@ -616,7 +568,7 @@ DDL is non-transactional, and therefore bad for replication. Galera has two meth
 </li>
 </ul>
 
-<p>Use wsrep_osu_method to choose either option. <b>ALTER TABLE to create new autoinc column will cause issues. Every node has different autoinc incrementand offset settings.</b>
+<p>Use wsrep<sub>osu</sub><sub>method</sub> to choose either option. <b>ALTER TABLE to create new autoinc column will cause issues. Every node has different autoinc incrementand offset settings.</b>
 </p>
 <p>
 <b>Total Order Isolation</b> （DDL同步在所有节点上，期间屏蔽操作）
@@ -732,7 +684,7 @@ There is causal dependency between operations on two database connections:
 </li>
 </ul>
 
-<p><b>wsrep_causal_reads=ON</b> Every read (select, show) will wait until slave queue has been fully applied. There is timeout for max causal read wait: <b>replicator.causal_read_keepalive</b>
+<p><b>wsrep<sub>causal</sub><sub>reads</sub>=ON</b> Every read (select, show) will wait until slave queue has been fully applied. There is timeout for max causal read wait: <b>replicator.causal<sub>read</sub><sub>keepalive</sub></b>
 </p>
 </div>
 
@@ -754,20 +706,20 @@ There is causal dependency between operations on two database connections:
 <p>
 Diagnosing Multi-Master Conflicts:
 </p><ul>
-<li>wsrep_log_conflicts will print info of each cluster conflict in mysql error log
+<li>wsrep<sub>log</sub><sub>conflicts</sub> will print info of each cluster conflict in mysql error log
 </li>
-<li>Cert.log_conflicts to print out information of the conflicting transaction
+<li>Cert.log<sub>conflicts</sub> to print out information of the conflicting transaction
 </li>
 <li>Status variables to monitor:
 <ul>
-<li>wsrep_local_bf_aborts
+<li>wsrep<sub>local</sub><sub>bf</sub><sub>aborts</sub>
 </li>
-<li>wsrep_local_cert_failures
+<li>wsrep<sub>local</sub><sub>cert</sub><sub>failures</sub>
 </li>
 </ul>
 
 </li>
-<li>by using wsrep_debug configuration, all conflicts (&hellip;and plenty of other information) will be logged
+<li>by using wsrep<sub>debug</sub> configuration, all conflicts (&hellip;and plenty of other information) will be logged
 </li>
 </ul>
 
@@ -779,7 +731,7 @@ Retry Autocommit:
 </li>
 <li>MySQL will not return deadlock error, but will silently retry the transaction
 </li>
-<li>wsrep_retry_autocommit=n will retry the transaction n times before giving up and returning deadlock error
+<li>wsrep<sub>retry</sub><sub>autocommit</sub>=n will retry the transaction n times before giving up and returning deadlock error
 </li>
 <li>Retrying applies only to autocommit transactions, as retrying is not safe for multi-statement transactions
 </li>
@@ -879,19 +831,19 @@ Retry Autocommit:
 <hr/>
 
 <ul>
-<li>wsrep_provider # a path to Galera library.
+<li>wsrep<sub>provider</sub> # a path to Galera library.
 </li>
-<li>wsrep_cluster_address # cluster connection URL.
+<li>wsrep<sub>cluster</sub><sub>address</sub> # cluster connection URL.
 </li>
-<li>binlog_format=ROW #
+<li>binlog<sub>format</sub>=ROW #
 </li>
-<li>default_storage_engine=InnoDB
+<li>default<sub>storage</sub><sub>engine</sub>=InnoDB
 </li>
-<li>innodb_autoinc_lock_mode=2 #todo: ??
+<li>innodb<sub>autoinc</sub><sub>lock</sub><sub>mode</sub>=2 #todo: ??
 </li>
-<li>innodb_flush_log_at_trx_commit=2 #todo: ??
+<li>innodb<sub>flush</sub><sub>log</sub><sub>at</sub><sub>trx</sub><sub>commit</sub>=2 #todo: ??
 </li>
-<li>innodb_doublewrite=1 #todo: ??
+<li>innodb<sub>doublewrite</sub>=1 #todo: ??
 </li>
 </ul>
 
@@ -930,7 +882,7 @@ Retry Autocommit:
 </li>
 </ul>
 
-<p>wsrep_notify_cmd defines the script to handle notifications.
+<p>wsrep<sub>notify</sub><sub>cmd</sub> defines the script to handle notifications.
 </p>
 </div>
 

@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -634,7 +586,7 @@ C8 基于实例的学习
 好特征的目标是在重要的地方取不同值，而在不重要的地方不变。一个很自然就会想到的问题式，我们能否自动滴把好特征选取出来。这个问题叫做特征选择(feature selection). 人们已经提出了很多方法来解决这个问题，但是在实践中，极简单的想法可能已经可以做得很好。
 </p>
 <p>
-要提升效果，我们基本上有如下选择：1）增加更多的数据[learning_curve]；2）考虑模型复杂度[cross_validation and validation_curve]；3）修改特征空间；4）改变模型。
+要提升效果，我们基本上有如下选择：1）增加更多的数据[learning<sub>curve]；2）考虑模型复杂度[cross</sub><sub>validation</sub> and validation<sub>curve]；3）修改特征空间；4）改变模型。</sub>
 </p>
 
 <hr/>
@@ -679,9 +631,9 @@ C8 基于实例的学习
 </li>
 <li>L1惩罚(L1范数, L1 norm)则是在OLS上增加a * |w|. Lasso法
 </li>
-<li>L2惩罚(L2范数, L2 norm)则是在OLS上则加a * |w|^2. Ridge regressin(岭回归)
+<li>L2惩罚(L2范数, L2 norm)则是在OLS上则加a * |w|<sup>2</sup>. Ridge regressin(岭回归)
 </li>
-<li>L1 + L2则是在OLS上增加a * |w| + b * |w|^2. Elastic Net(弹性网)
+<li>L1 + L2则是在OLS上增加a * |w| + b * |w|<sup>2</sup>. Elastic Net(弹性网)
 </li>
 </ul>
 
@@ -1079,14 +1031,14 @@ As Dr. LeCun explained it, his non-complete connection scheme would force the fe
 <img src="images/dnn-motor-feature.jpg"  alt="./images/dnn-motor-feature.jpg" />
 </p>
 <p>
-<b>初级（浅层）特征表示</b> 既然像素级的特征表示方法没有作用，那怎样的表示才有用呢？1995 年前后，Bruno Olshausen和 David Field 两位学者任职 Cornell University，他们试图同时用生理学和计算机的手段，双管齐下，研究视觉问题。他们收集了很多黑白风景照片，从这些照片中，提取出400个小碎片，每个照片碎片的尺寸均为 16x16 像素，不妨把这400个碎片标记为 S[i], i = 0,.. 399。接下来，再从这些黑白风景照片中，随机提取另一个碎片，尺寸也是 16x16 像素，不妨把这个碎片标记为 T。他们提出的问题是，如何从这400个碎片中，选取一组碎片，S[k], 通过叠加的办法，合成出一个新的碎片，而这个新的碎片，应当与随机选择的目标碎片 T，尽可能相似，同时，S[k] 的数量尽可能少。用数学的语言来描述，就是：Sum_k (a[k] * S[k]) &ndash;&gt; T, 其中 a[k] 是在叠加碎片 S[k] 时的权重系数。为解决这个问题，Bruno Olshausen和 David Field 发明了一个算法，稀疏编码（Sparse Coding）。
+<b>初级（浅层）特征表示</b> 既然像素级的特征表示方法没有作用，那怎样的表示才有用呢？1995 年前后，Bruno Olshausen和 David Field 两位学者任职 Cornell University，他们试图同时用生理学和计算机的手段，双管齐下，研究视觉问题。他们收集了很多黑白风景照片，从这些照片中，提取出400个小碎片，每个照片碎片的尺寸均为 16x16 像素，不妨把这400个碎片标记为 S[i], i = 0,.. 399。接下来，再从这些黑白风景照片中，随机提取另一个碎片，尺寸也是 16x16 像素，不妨把这个碎片标记为 T。他们提出的问题是，如何从这400个碎片中，选取一组碎片，S[k], 通过叠加的办法，合成出一个新的碎片，而这个新的碎片，应当与随机选择的目标碎片 T，尽可能相似，同时，S[k] 的数量尽可能少。用数学的语言来描述，就是：Sum<sub>k</sub> (a[k] * S[k]) &ndash;&gt; T, 其中 a[k] 是在叠加碎片 S[k] 时的权重系数。为解决这个问题，Bruno Olshausen和 David Field 发明了一个算法，稀疏编码（Sparse Coding）。
 </p>
 <p>
 稀疏编码是一个重复迭代的过程，每次迭代分两步：
 </p><ol>
-<li>选择一组 S[k]，然后调整 a[k]，使得Sum_k (a[k] * S[k]) 最接近 T。
+<li>选择一组 S[k]，然后调整 a[k]，使得Sum<sub>k</sub> (a[k] * S[k]) 最接近 T。
 </li>
-<li>固定住 a[k]，在 400 个碎片中，选择其它更合适的碎片S’[k]，替代原先的 S[k]，使得Sum_k (a[k] * S’[k]) 最接近 T。
+<li>固定住 a[k]，在 400 个碎片中，选择其它更合适的碎片S’[k]，替代原先的 S[k]，使得Sum<sub>k</sub> (a[k] * S’[k]) 最接近 T。
 </li>
 </ol>
 

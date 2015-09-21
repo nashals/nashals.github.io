@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -121,7 +73,7 @@ NMSTL和Asio一样都是template-heavy code,大部分都是头文件。NMSTL设�
 </li>
 <li>debug.调试和日志工具。
 </li>
-<li>internal.主要是提供对象的to_string等方法，要求对象本身提供as_string这样的方法。
+<li>internal.主要是提供对象的to<sub>string等方法，要求对象本身提供as</sub><sub>string这样的方法。</sub>
 </li>
 <li>io.提供各种buffer,并且提供IOHandle封装各种读写操作。IOHandle里面有fd并且有对fd引用计数。
 </li>
@@ -133,7 +85,7 @@ NMSTL和Asio一样都是template-heavy code,大部分都是头文件。NMSTL设�
 </li>
 <li>ntime.时间封装。
 </li>
-<li>ptr.多线程安全指针(boost::shared_ptr).内部有引用计数。
+<li>ptr.多线程安全指针(boost::shared<sub>ptr</sub>).内部有引用计数。
 </li>
 <li>rpc.RPC实现，没有仔细阅读。
 </li>
@@ -250,11 +202,11 @@ class SEDAStage : public SEDAStage&lt;In, void&gt; {
 
 <p>首先SEDAStage对于动态线程池有三个指标
 </p><ul>
-<li>min_threads.
+<li>min<sub>threads</sub>.
 </li>
-<li>max_threads.
+<li>max<sub>threads</sub>.
 </li>
-<li>reached_capacity(rc).
+<li>reached<sub>capacity</sub>(rc).
 </li>
 </ul>
 
@@ -303,9 +255,9 @@ void add_threads() {
 
 
 <p>
-然后我们看看异步队列返回false和和waiter_pending的操作是如何的。从上面看到waiter_pending就是
+然后我们看看异步队列返回false和和waiter<sub>pending的操作是如何的。从上面看到waiter</sub><sub>pending就是</sub>
 增加线程的数量，所以这里waiters可以认为是可以使用的线程数目。而waiters&gt;=q.size()表示工作线程数目
-大于task数量，那么这个时候可以认为没有必要增加线程。不过这里我们没有分析extra_capacity这个意思。
+大于task数量，那么这个时候可以认为没有必要增加线程。不过这里我们没有分析extra<sub>capacity这个意思。</sub>
 </p>
 
 
@@ -326,7 +278,7 @@ void waiter_pending() {
 </pre>
 
 <p>
-如果阅读完成回收线程就会发现extra_capacity意思就是当前空余线程数目。
+如果阅读完成回收线程就会发现extra<sub>capacity意思就是当前空余线程数目。</sub>
 </p>
 </div>
 
@@ -396,7 +348,7 @@ bool wait(T&amp; out, bool *pending = 0) {
 </pre>
 
 <p>
-我们什么时候设置waiters_starve的呢？是在starve这个函数里面
+我们什么时候设置waiters<sub>starve的呢？是在starve这个函数里面</sub>
 </p>
 
 
@@ -412,7 +364,7 @@ void starve() {
 
 <p>
 所以可以认为调用一次starve的话那么就会回收一个线程。然后我们看看starve是在什么时候触发的。
-在seda下面存在seda_clock_thread这个类，这个类单独起一个线程然后定时(默认5s)会调用SEDAStage::scan方法。
+在seda下面存在seda<sub>clock</sub><sub>thread这个类，这个类单独起一个线程然后定时</sub>(默认5s)会调用SEDAStage::scan方法。
 </p>
 
 
@@ -429,8 +381,8 @@ void scan() {
 </pre>
 
 <p>
-也就是说线程的删减是定时触发的。如果reached_capacity&gt;5并且当前线程数目大小最小线程数目的话，那么就会一直回收线程。
-而reached_capacity回在clogged这个部分清空。
+也就是说线程的删减是定时触发的。如果reached<sub>capacity&gt</sub>;5并且当前线程数目大小最小线程数目的话，那么就会一直回收线程。
+而reached<sub>capacity回在clogged这个部分清空。</sub>
 </p>
 </div>
 

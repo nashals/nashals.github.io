@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -159,7 +111,7 @@
 <ul>
 <li>sigmoid / logistic function
 </li>
-<li>g(x) = 1 / (1 + e^-x) [0, 1]
+<li>g(x) = 1 / (1 + e<sup>-x</sup>) [0, 1]
 </li>
 <li>interpretation of hypothesis output.
 </li>
@@ -299,7 +251,7 @@
 </li>
 <li>many features -&gt; too many polynomial terms.
 <ul>
-<li>quantic x, then O(n^x).
+<li>quantic x, then O(n<sup>x</sup>).
 </li>
 <li>quadratic : O(n ^ 2)
 </li>
@@ -476,11 +428,11 @@
 </li>
 <li>gaussian kernel function.
 <ul>
-<li>K(x,y,e) = exp ^ (-0.5 / e^2 * |x-y|^2)
+<li>K(x,y,e) = exp ^ (-0.5 / e<sup>2</sup> * |x-y|<sup>2</sup>)
 </li>
-<li>if e^2 is large, high bias and low variance
+<li>if e<sup>2</sup> is large, high bias and low variance
 </li>
-<li>if e^2 is small, low bias and high variance
+<li>if e<sup>2</sup> is small, low bias and high variance
 </li>
 </ul>
 
@@ -555,7 +507,7 @@
 <ul>
 <li>split examples randomly into training set(70%) and test set(30%).
 </li>
-<li>see J_test(theta) is overfitting or not.
+<li>see J<sub>test</sub>(theta) is overfitting or not.
 </li>
 </ul>
 
@@ -573,11 +525,11 @@
 </li>
 <li>high bias vs. variance
 <ul>
-<li>bias =&gt; underfit: J_train(theta) is high, J_cv/test(theta) = J_train(theta)
+<li>bias =&gt; underfit: J<sub>train</sub>(theta) is high, J<sub>cv</sub>/test(theta) = J<sub>train</sub>(theta)
 </li>
-<li>variance =&gt; overfit: J_train(theta) is low, but J_cv/test(theta) &gt; J_train(theta)
+<li>variance =&gt; overfit: J<sub>train</sub>(theta) is low, but J<sub>cv</sub>/test(theta) &gt; J<sub>train</sub>(theta)
 </li>
-<li>learning curves # J_cv/test(theta) and J_train(theta) over training set size
+<li>learning curves # J<sub>cv</sub>/test(theta) and J<sub>train</sub>(theta) over training set size
 </li>
 <li>if suffers from high bias, more training data will not help
 </li>
@@ -607,7 +559,7 @@
 </li>
 <li>skewed classes.
 <ul>
-<li>y = 1 in presence of rare class # 如果y_pred=0的话没有任何预测性但是accuracy准确率超高
+<li>y = 1 in presence of rare class # 如果y<sub>pred</sub>=0的话没有任何预测性但是accuracy准确率超高
 </li>
 <li>precision = true positive / [no. of predicted positive = (true pos + false pos)] # 精确度
 </li>
@@ -714,11 +666,11 @@
 </li>
 <li>[U,S,V] = svd(sigma) # singular value decomposition
 </li>
-<li>U~n*n. use first k columns called U_reduce~(n*k)
+<li>U~n*n. use first k columns called U<sub>reduce</sub>~(n*k)
 </li>
-<li>z = U_reduce' * X(i) ~ (k * n * n * 1) = (k*1)
+<li>z = U<sub>reduce'</sub> * X(i) ~ (k * n * n * 1) = (k*1)
 </li>
-<li>reconstruct: X_approx(i) = U_reduce * z ~ (n * k * k * 1) = (n*1)
+<li>reconstruct: X<sub>approx</sub>(i) = U<sub>reduce</sub> * z ~ (n * k * k * 1) = (n*1)
 </li>
 </ul>
 
@@ -758,9 +710,9 @@
 <ul>
 <li>gaussian distribution # 高斯分布
 <ul>
-<li>X ~ N(u, e^2) # X distributed as N. where mean = u, variance = e^2
+<li>X ~ N(u, e<sup>2</sup>) # X distributed as N. where mean = u, variance = e<sup>2</sup>
 </li>
-<li>p(x, u, e^2) = 1 / ((sqrt(2 * pi) * e)) * exp ^ { - (x-u)^2 / (2 * e^2) } # probability
+<li>p(x, u, e<sup>2</sup>) = 1 / ((sqrt(2 * pi) * e)) * exp ^ { - (x-u)<sup>2</sup> / (2 * e<sup>2</sup>) } # probability
 </li>
 <li>multivariate version # 多变量高斯分布
 <ul>
@@ -768,7 +720,7 @@
 </li>
 <li>u~{n*1}, e~{n*n} (covariance matrix) # intuition. contour not axis aligned.
 </li>
-<li>p(x, u, e) = 1 / ((2 * pi) ^ (n/2) * sqrt(det(e))) * exp ^ {-0.5 * (x-u)' * e^-1 * (x-u)}
+<li>p(x, u, e) = 1 / ((2 * pi) ^ (n/2) * sqrt(det(e))) * exp ^ {-0.5 * (x-u)' * e<sup>-1</sup> * (x-u)}
 </li>
 <li>u = 1/m * sum{x}, e = 1/m * sum{(x-u) * (x-u)'}
 </li>
@@ -790,7 +742,7 @@
 </li>
 <li>features to distinguish normal and anomalous examples.
 </li>
-<li>p(x) = p1(x1, u1, e1^2) * &hellip; pj(xj, uj, ej^2).. # j = # of features.
+<li>p(x) = p1(x1, u1, e1<sup>2</sup>) * &hellip; pj(xj, uj, ej<sup>2</sup>).. # j = # of features.
 </li>
 <li>if xj is not gaussian feature, transform it to fit into gaussian distribution. # 如果数据不满足高斯分布，那么要对数据做变换符合高斯分布
 </li>
@@ -876,7 +828,7 @@
 </li>
 <li>randomly shuffle dataset
 </li>
-<li>repeat for i = 1..m { for j = 0..n  { update theta_j only use ith data } }
+<li>repeat for i = 1..m { for j = 0..n  { update theta<sub>j</sub> only use ith data } }
 </li>
 <li>move to global minimum generally, but not always in one iteration.
 </li>
@@ -1553,7 +1505,7 @@ end
 </li>
 <li>break/continue
 </li>
-<li>function definition resides in function_name.m
+<li>function definition resides in function<sub>name</sub>.m
 <ul>
 <li>function y = &lt;name&gt;(x)
 </li>

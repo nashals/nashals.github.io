@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -219,7 +171,7 @@ Each layer type defines three critical computations: setup, forward, and backwar
 caffe支持的layer完整在 <a href="http://caffe.berkeleyvision.org/tutorial/layers.html">http://caffe.berkeleyvision.org/tutorial/layers.html</a>, 部分data layer还支持 <a href="http://caffe.berkeleyvision.org/tutorial/data.html">预处理</a> 操作
 </p>
 <p>
-#note: 有可能文档上名字和实际代码对不上，如果是这样的话可以阅读src/caffe/layers/*_layer.cpp找到REGISTER_LAYER_CLASS(name). 其中name就是注册的字符串
+#note: 有可能文档上名字和实际代码对不上，如果是这样的话可以阅读src/caffe/layers/*<sub>layer</sub>.cpp找到REGISTER<sub>LAYER</sub><sub>CLASS</sub>(name). 其中name就是注册的字符串
 </p>
 </div>
 
@@ -330,7 +282,7 @@ input_dim: 28
 从字面上来看train.prototxt是用来训练出model的，而deploy.prototxt则是用来进行预测的。下面是使用python进行预测的代码:
 </p>
 <p>
-#note: 我没有使用caffe自身提供的classifier.py, 因为我发现Classifier会对input做一些处理。在进行实验的时候我发现使用Classifier得到的结果比直接使用Net::forward_all接口要差很多。
+#note: 我没有使用caffe自身提供的classifier.py, 因为我发现Classifier会对input做一些处理。在进行实验的时候我发现使用Classifier得到的结果比直接使用Net::forward<sub>all接口要差很多。</sub>
 </p>
 
 
@@ -368,7 +320,7 @@ print_timer(<span class="org-string">"predict"</span>)
 </li>
 <li>Solver::SnapshotSolverState() / Solver::RestoreSolverState() # 保存和恢复运行状态，后缀.solverstate
 </li>
-<li>文件名称是&lt;prefix&gt;_iter_&lt;N&gt;，其中prefix是指定前缀，N表示迭代轮数。
+<li>文件名称是&lt;prefix&gt;<sub>iter</sub><sub>&lt</sub>;N&gt;，其中prefix是指定前缀，N表示迭代轮数。
 </li>
 </ul>
 
@@ -449,7 +401,7 @@ solver_mode: CPU
 "net"表示train和test使用同一个net. 在net.prototxt中可以使用include语法来声明说，某个layer是否需要包含在train/test阶段.
 </p>
 <p>
-如果你在训练时候不想进行test的话，那么可以指定上面的"net"为"train_net". 当然你也可以使用"test_nets"来指定多个test_net.
+如果你在训练时候不想进行test的话，那么可以指定上面的"net"为"train<sub>net</sub>". 当然你也可以使用"test<sub>nets</sub>"来指定多个test<sub>net</sub>.
 </p>
 </div>
 </div>

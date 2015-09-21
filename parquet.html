@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -181,7 +133,7 @@ There are three types of metadata: file metadata, column (chunk) metadata and pa
 <img src="images/parquet-metadata.gif"  alt="./images/parquet-metadata.gif" />
 </p>
 <p>
-#note: 我觉得在DataPageHeader里面还应该存放num_rows，表示这个page里面到底有多少个record. 这样我们才能够提过一些page读取到某个record. 或许这个信息已经存放在IndexPageHeader里面了？这里DictionaryPageHeader是为后面提到的Encoding使用的。
+#note: 我觉得在DataPageHeader里面还应该存放num<sub>rows，表示这个page里面到底有多少个record</sub>. 这样我们才能够提过一些page读取到某个record. 或许这个信息已经存放在IndexPageHeader里面了？这里DictionaryPageHeader是为后面提到的Encoding使用的。
 </p>
 
 <hr/>
@@ -191,23 +143,23 @@ Parquet针对homogeneous columnar data提供了很多种压缩算法 <a href="ht
 </p><ul>
 <li>Plain: (PLAIN = 0) 针对所有类型数据
 </li>
-<li>Dictionary Encoding (PLAIN_DICTIONARY = 2) 针对非byte_array数据包括整数和浮点数
+<li>Dictionary Encoding (PLAIN<sub>DICTIONARY</sub> = 2) 针对非byte<sub>array数据包括整数和浮点数</sub>
 </li>
 <li>Run Length Encoding / Bit-Packing Hybrid (RLE = 3) 针对整数
 </li>
-<li>Bit-packed (Deprecated) (BIT_PACKED = 4) 针对整数
+<li>Bit-packed (Deprecated) (BIT<sub>PACKED</sub> = 4) 针对整数
 </li>
-<li>Delta Encoding (DELTA_BINARY_PACKED = 5) 针对整数
+<li>Delta Encoding (DELTA<sub>BINARY</sub><sub>PACKED</sub> = 5) 针对整数
 </li>
-<li>Delta-length byte array: (DELTA_LENGTH_BYTE_ARRAY = 6) 针对byte_array
+<li>Delta-length byte array: (DELTA<sub>LENGTH</sub><sub>BYTE</sub><sub>ARRAY</sub> = 6) 针对byte<sub>array</sub>
 </li>
-<li>Delta Strings: (DELTA_BYTE_ARRAY = 7) 针对byte_array
+<li>Delta Strings: (DELTA<sub>BYTE</sub><sub>ARRAY</sub> = 7) 针对byte<sub>array</sub>
 </li>
 </ul>
 
 
 <p>
-<b>Dictionary Encoding (PLAIN_DICTIONARY = 2)</b>
+<b>Dictionary Encoding (PLAIN<sub>DICTIONARY</sub> = 2)</b>
 </p>
 <p>
 The dictionary encoding builds a dictionary of values encountered in a given column. The dictionary will be stored in a dictionary page per column chunk. The values are stored as integers using the RLE/Bit-Packing Hybrid encoding described above. If the dictionary grows too big, whether in size or number of distinct values, the encoding will fall back to the plain encoding. The dictionary page is written first, before the data pages of the column chunk.
@@ -216,7 +168,7 @@ The dictionary encoding builds a dictionary of values encountered in a given col
 Dictionary page format: the entries in the dictionary - in dictionary order - using the plain encoding described above. Data page format: the bit width used to encode the entry ids stored as 1 byte (max bit width = 32), followed by the values encoded using RLE/Bit packed described above (with the given bit width).
 </p>
 <p>
-<b>Run Length Encoding / Bit-Packing Hybrid (RLE = 3) &amp; Bit-packed (Deprecated) (BIT_PACKED = 4)</b>
+<b>Run Length Encoding / Bit-Packing Hybrid (RLE = 3) &amp; Bit-packed (Deprecated) (BIT<sub>PACKED</sub> = 4)</b>
 </p>
 <p>
 首先说4这个压缩方法，实际上就是将所有values的bit表示连接在一起，存放顺序是从MSB到LSB.
@@ -271,7 +223,7 @@ repeated-value := value that is repeated, using a fixed-width of round-up-to-nex
 varint-encode() is ULEB-128 encoding, see <a href="http://en.wikipedia.org/wiki/Variable-length_quantity">http://en.wikipedia.org/wiki/Variable-length_quantity</a>
 </p>
 <p>
-<b>Delta Encoding (DELTA_BINARY_PACKED = 5)</b>
+<b>Delta Encoding (DELTA<sub>BINARY</sub><sub>PACKED</sub> = 5)</b>
 </p>
 <p>
 This encoding is adapted from the Binary packing described in "<a href="http://arxiv.org/pdf/1209.2137v5.pdf">Decoding billions of integers per second through vectorization</a>" by D. Lemire and L. Boytsov. 这个方法应该非常适合向量指令。
@@ -320,16 +272,16 @@ Each block contains
 #note: 每个minblocks应该都可以被向量指令处理，min-delta引入是为了处理正数加快速度。而为每个minblocks引入不同的bitwidth可以有效减少存储空间。
 </p>
 <p>
-<b>Delta-length byte array: (DELTA_LENGTH_BYTE_ARRAY = 6)</b>
+<b>Delta-length byte array: (DELTA<sub>LENGTH</sub><sub>BYTE</sub><sub>ARRAY</sub> = 6)</b>
 </p>
 <p>
-将byte_size和byte_data分开，然后将byte_size聚合存放并且使用压缩方法5. For example, if the data was "Hello", "World", "Foobar", "ABCDEF": The encoded data would be DeltaEncoding(5, 5, 6, 6) "HelloWorldFoobarABCDEF"
+将byte<sub>size和byte</sub><sub>data分开，然后将byte</sub><sub>size聚合存放并且使用压缩方法5</sub>. For example, if the data was "Hello", "World", "Foobar", "ABCDEF": The encoded data would be DeltaEncoding(5, 5, 6, 6) "HelloWorldFoobarABCDEF"
 </p>
 <p>
-<b>Delta Strings: (DELTA_BYTE_ARRAY = 7)</b>
+<b>Delta Strings: (DELTA<sub>BYTE</sub><sub>ARRAY</sub> = 7)</b>
 </p>
 <p>
-This is also known as incremental encoding or front compression: for each element in a sequence of strings, store the prefix length of the previous entry plus the suffix. For a longer description, see <a href="http://en.wikipedia.org/wiki/Incremental_encoding">http://en.wikipedia.org/wiki/Incremental_encoding</a>. This is stored as a sequence of delta-encoded prefix lengths (DELTA_BINARY_PACKED), followed by the suffixes encoded as delta length byte arrays (DELTA_LENGTH_BYTE_ARRAY).
+This is also known as incremental encoding or front compression: for each element in a sequence of strings, store the prefix length of the previous entry plus the suffix. For a longer description, see <a href="http://en.wikipedia.org/wiki/Incremental_encoding">http://en.wikipedia.org/wiki/Incremental_encoding</a>. This is stored as a sequence of delta-encoded prefix lengths (DELTA<sub>BINARY</sub><sub>PACKED</sub>), followed by the suffixes encoded as delta length byte arrays (DELTA<sub>LENGTH</sub><sub>BYTE</sub><sub>ARRAY</sub>).
 </p>
 <p>
 举个例子"AB", "ABC", "ABCD", 前缀压缩之后成为&lt;0&gt;"AB", &lt;2&gt;"C", &lt;3&gt;"D". 最终压缩结果是DeltaEncoding(0,2,3) DeltaEncoding(2,1,1) "ABCD".

@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -97,13 +49,13 @@
 </li>
 <li>lzfP.h 配置文件
 </li>
-<li>lzf_c.c 压缩
+<li>lzf<sub>c</sub>.c 压缩
 </li>
-<li>lzf_d.c 解压缩
+<li>lzf<sub>d</sub>.c 解压缩
 </li>
 </ul>
 
-<p>其实主要的就是两个文件lzf_c.c和lzf_d.c
+<p>其实主要的就是两个文件lzf<sub>c</sub>.c和lzf<sub>d</sub>.c
 </p>
 </div>
 
@@ -145,7 +97,7 @@ lzf_compress (const void *const in_data,  unsigned int in_len,
 <ul>
 <li>in &amp; out的内存区间不能重叠
 </li>
-<li>如果out_len不够的话，返回0；否则返回压缩后大小。所以使用上可以out_len = in_len-1. 如果压缩之后空间变大的话那么直接使用原空间
+<li>如果out<sub>len不够的话，返回0；否则返回压缩后大小。所以使用上可以out</sub><sub>len</sub> = in<sub>len</sub>-1. 如果压缩之后空间变大的话那么直接使用原空间
 </li>
 <li>不同版本lzf压缩同一个数据得到的结果不一定相同，取决于寻找repeatable string方法。但是均可以使用同样的解压缩函数解压。
 </li>
@@ -173,20 +125,20 @@ lzf_compress (const void *const in_data,  unsigned int in_len,
 </p><ul>
 <li>HLOG # 用于查找repeatable string的hashtable大小. 1 &lt;&lt; HLOG
 </li>
-<li>VERY_FAST / ULTRA_FAST # 控制查找repeatble string策略
+<li>VERY<sub>FAST</sub> / ULTRA<sub>FAST</sub> # 控制查找repeatble string策略
 </li>
-<li>LZF_USE_OFFSETS # 决定hashtable存储偏移还是存储pointer. 为了方便阅读代码，这里我们假设存储偏移。
+<li>LZF<sub>USE</sub><sub>OFFSETS</sub> # 决定hashtable存储偏移还是存储pointer. 为了方便阅读代码，这里我们假设存储偏移。
 <ul>
-<li>define LZF_HSLOT_BIAS ((const u8 *)in_data)
+<li>define LZF<sub>HSLOT</sub><sub>BIAS</sub> ((const u8 *)in<sub>data</sub>)
 </li>
-<li>typedef unsigned int LZF_HSLOT;
+<li>typedef unsigned int LZF<sub>HSLOT</sub>;
 </li>
-<li>typedef LZF_HSLOT LZF_STATE[1 &lt;&lt; (HLOG)]; # hashtable定义
+<li>typedef LZF<sub>HSLOT</sub> LZF<sub>STATE[1</sub> &lt;&lt; (HLOG)]; # hashtable定义
 </li>
 </ul>
 
 </li>
-<li>STRICT_ALIGN # input数据是否对齐
+<li>STRICT<sub>ALIGN</sub> # input数据是否对齐
 </li>
 </ul>
 
@@ -416,7 +368,7 @@ literal处理比较有趣，大致方式如下
 </li>
 <li>可是有时候lit=0就退出了，这个时候op最后一个字节是废弃的，所以有"op -= !lit".
 </li>
-<li>当lit == MAX_LIT的时候或者是flush时候（假设lit!=0. lit=0的情况上面分析过了). 比如lit = 3
+<li>当lit == MAX<sub>LIT的时候或者是flush时候（假设lit</sub>!=0. lit=0的情况上面分析过了). 比如lit = 3
 <ul>
 <li>"op[-lit-1] = lit-1" 就是 "op[-4] = 2"
 </li>

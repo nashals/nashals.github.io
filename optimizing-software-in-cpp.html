@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -206,7 +158,7 @@
 </p><ul>
 <li>Pointers, references, and stack entries use 64 bits rather than 32 bits. This makes data caching less efficient.
 </li>
-<li>Access to static or global arrays require a few extra instructions for address calculation in 64 bit mode if the image base is not guaranteed to be less than 2^31. This extra cost is seen in 64 bit Windows and Mac programs but rarely in Linux.
+<li>Access to static or global arrays require a few extra instructions for address calculation in 64 bit mode if the image base is not guaranteed to be less than 2<sup>31</sup>. This extra cost is seen in 64 bit Windows and Mac programs but rarely in Linux.
 </li>
 <li>Address calculation is more complicated in a large memory model where the combined size of code and data can exceed 2 Gbytes. This large memory model is hardly ever used, though.
 </li>
@@ -300,7 +252,7 @@ counter in the CPU, which counts at the CPU clock frequency.（通过CPU时钟�
 <p>
 The time stamp counter becomes invalid if a thread jumps between different CPU cores.
 You may have to fix the thread to a specific CPU core during time measurements to avoid
-this. (In Windows, SetThreadAffinityMask, in Linux, sched_setaffinity).（为了避免线程在多个CPU上执行的话需要绑定CPU）
+this. (In Windows, SetThreadAffinityMask, in Linux, sched<sub>setaffinity</sub>).（为了避免线程在多个CPU上执行的话需要绑定CPU）
 </p>
 <p>
 The program should be tested with a realistic set of test data. The test data should contain a
@@ -363,7 +315,7 @@ write the variable at the same time. （volatile变量要求编译器必须每�
 </p>
 <p>
 Most compilers can make thread-local storage of static and global variables by using the
-keyword __thread or __declspec(thread). Such variables have one instance for
+keyword _<sub>thread</sub> or _<sub>declspec</sub>(thread). Such variables have one instance for
 each thread. Thread-local storage is inefficient because it is accessed through a pointer
 stored in a thread environment block. Thread-local storage should be avoided, if possible,
 and replaced by storage on the stack (see above, p. 26). Variables stored on the stack
@@ -708,7 +660,7 @@ difference between 32-bit Linux and 32-bit Windows in this respect.（64位系�
 </li>
 <li>Pointer aliasing
 <ul>
-<li>It is also possible to tell the compiler that a specific pointer does not alias anything by using the keyword __restrict or __restrict__, if supported by the compiler.
+<li>It is also possible to tell the compiler that a specific pointer does not alias anything by using the keyword _<sub>restrict</sub> or _<sub>restrict</sub>__, if supported by the compiler.
 </li>
 <li>We can never be sure that the compiler takes the hint about no pointer aliasing. The only way to make sure that the code is optimized is to do it explicitly.
 </li>
@@ -721,7 +673,7 @@ difference between 32-bit Linux and 32-bit Windows in this respect.（64位系�
 <ul>
 <li>Unfortunately, the compiler cannot know that a function is pure if the function is defined in a different module or a function library.
 </li>
-<li>__attribute_<sub>((const))</sub>
+<li>_<sub>attribute</sub>_<sub>((const))</sub>
 </li>
 </ul>
 
@@ -1189,7 +1141,7 @@ S1 list[size];
 </pre>
 
 <p>
-通过增加UnusedFiller字段来使得结构体大小是2^n. 这样从下标偏移对应到内存偏移计算相对就更快速。
+通过增加UnusedFiller字段来使得结构体大小是2<sup>n</sup>. 这样从下标偏移对应到内存偏移计算相对就更快速。
 </p>
 <p>
 The advise of using powers of 2 does not apply to very big data structures. On the contrary,
@@ -1306,7 +1258,7 @@ conversion to floating point if the conversion to signed integer doesn't cause o
 <div class="outline-text-4" id="text-14-9">
 
 <p>The representation of float, double and long double reflects the floating point value
-written as (+-)2^eee * 1.fffff, where ± is the sign, eee is the exponent, and fffff is the
+written as (+-)2<sup>eee</sup> * 1.fffff, where ± is the sign, eee is the exponent, and fffff is the
 binary decimals of the fraction. The sign is stored as a single bit which is 0 for positive and 1
 for negative numbers. The exponent is stored as a biased binary integer, and the fraction is
 stored as the binary digits. The exponent is always normalized, if possible, so that the value
@@ -1542,7 +1494,7 @@ You can't have public variables in a 64-bit shared object made with option -fpie
 the linker makes an error message when it sees a relative reference to a public variable
 where it expects a GOT entry. You can avoid this error by avoiding any public variables. All
 global variables (i.e. variables defined outside any function) should be hidden by using the
-declaration "static" or "__attribute_<sub>((visibility ("hidden")))</sub>". A more
+declaration "static" or "_<sub>attribute</sub>_<sub>((visibility ("hidden")))</sub>". A more
 complicated solution is to use inline assembly code to give the variable two names, one
 global and one local, and use the local name for local references.（因为-fpie不会使用GOT，所以便
 没有办法解决全局变量问题，所有变量必须只对内可见）
@@ -1634,7 +1586,7 @@ performance:
 </li>
 <li>Try to allocate more RAM than there is, in order to force the swapping of memory to disk.
 </li>
-<li>Provoke cache misses by making the code size or data used in the innermost loop bigger than the cache size. Alternatively, you may actively invalidate the cache. The operating system may have a function for this purpose, or you may use the _mm_clflush intrinsic function. （通过指令强制cache失效）
+<li>Provoke cache misses by making the code size or data used in the innermost loop bigger than the cache size. Alternatively, you may actively invalidate the cache. The operating system may have a function for this purpose, or you may use the <sub>mm</sub><sub>clflush</sub> intrinsic function. （通过指令强制cache失效）
 </li>
 <li>Provoke branch mispredictions by making the data more random than normal.（使用随机数据来触发分支误判）
 </li>

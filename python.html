@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -540,15 +492,15 @@ wrapper
 </p><ul>
 <li>environ 表示环境变量，对于get/post请求数据都会放在这里.下面是常用的环境
 <ul>
-<li>PATH_INFO // 请求path
+<li>PATH<sub>INFO</sub> // 请求path
 </li>
-<li>REQUEST_METHOD // 请求方法 GET/POST
+<li>REQUEST<sub>METHOD</sub> // 请求方法 GET/POST
 </li>
-<li>CONTENT_LENGTH //
+<li>CONTENT<sub>LENGTH</sub> //
 </li>
-<li>QUERY_STRING // path后面接的query，可以使用cgi.parse_qs来进行解析
+<li>QUERY<sub>STRING</sub> // path后面接的query，可以使用cgi.parse<sub>qs来进行解析</sub>
 <ul>
-<li>cgi.parse_qs解析后的结果就是dict
+<li>cgi.parse<sub>qs解析后的结果就是dict</sub>
 </li>
 <li>如果dict同一个key出现多次的话会以数组方式保留
 </li>
@@ -560,7 +512,7 @@ wrapper
 </ul>
 
 </li>
-<li>start_response 表示一个continuation，恢复status code以及header
+<li>start<sub>response</sub> 表示一个continuation，恢复status code以及header
 </li>
 </ul>
 
@@ -603,7 +555,7 @@ wrapper
 <hr/>
 
 <p>
-如果上面WSGI程序修改成为下面的话，那么在访问web页面的时候会出现如下错误 "Error code: ERR_INCOMPLETE_CHUNKED_ENCODING".
+如果上面WSGI程序修改成为下面的话，那么在访问web页面的时候会出现如下错误 "Error code: ERR<sub>INCOMPLETE</sub><sub>CHUNKED</sub><sub>ENCODING</sub>".
 </p>
 
 
@@ -666,7 +618,7 @@ wrapper
 </pre>
 
 <p>
-也就是说对于fantuan.dirlt.com这个请求包含uwsgi_params里面的参数全部转发到127.0.0.1:8001这个端口。
+也就是说对于fantuan.dirlt.com这个请求包含uwsgi<sub>params里面的参数全部转发到127</sub>.0.0.1:8001这个端口。
 </p>
 <p>
 然后在本地启动uwsgi绑定在127.0.0.1:8001这个端口上面。uwsgi支持配置文件：

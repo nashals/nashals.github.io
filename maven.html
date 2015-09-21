@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -339,7 +291,7 @@ drwxrwxr-x 3 dirlt dirlt 4096  6月 24 22:36 xml-apis
 <p>参考资源 <a href="http://juvenshun.iteye.com/blog/359256">http://juvenshun.iteye.com/blog/359256</a>
 </p>
 <p>
-如果本地仓库没有某个工件的话，那么就会尝试从远程仓库下载。在{M2_HOME}/lib/maven-2.0.10-uber.jar能够找到\org\apache\maven\project\pom-4.0.0.xml,它是所有Maven POM的父POM,所有Maven项目继承该配置，你可以在这个POM中发现如下配置：
+如果本地仓库没有某个工件的话，那么就会尝试从远程仓库下载。在{M2<sub>HOME</sub>}/lib/maven-2.0.10-uber.jar能够找到\org\apache\maven\project\pom-4.0.0.xml,它是所有Maven POM的父POM,所有Maven项目继承该配置，你可以在这个POM中发现如下配置：
 </p>
 
 
@@ -734,11 +686,11 @@ maven3和maven2之间有不兼容的地方，不仅是语法还有插件. 之前
 </ul>
 
 </li>
-<li>export M2_HOME=/home/dirlt/utils/apache-maven-2.2.1/
+<li>export M2<sub>HOME</sub>=/home/dirlt/utils/apache-maven-2.2.1/
 </li>
 <li>export PATH=/home/dirlt/utils/apache-maven-2.2.1/bin:$PATH
 </li>
-<li>如果已经存在一个.m2 repository的话，那么可以直接在$M2_HOME下面做一个软链接
+<li>如果已经存在一个.m2 repository的话，那么可以直接在$M2<sub>HOME下面做一个软链接</sub>
 </li>
 </ul>
 

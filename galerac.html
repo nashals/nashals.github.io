@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -81,8 +33,8 @@
 <ul>
 <li><a href="galerac.html#sec-2-1">2.1 overview</a></li>
 <li><a href="galerac.html#sec-2-2">2.2 concept</a></li>
-<li><a href="galerac.html#sec-2-3">2.3 wsrep_init_args</a></li>
-<li><a href="galerac.html#sec-2-4">2.4 wsrep_t</a></li>
+<li><a href="galerac.html#sec-2-3">2.3 wsrep<sub>init</sub><sub>args</sub></a></li>
+<li><a href="galerac.html#sec-2-4">2.4 wsrep<sub>t</sub></a></li>
 </ul>
 </li>
 <li><a href="galerac.html#sec-3">3 gcomm</a></li>
@@ -140,24 +92,24 @@
 
 <p>files:
 </p><ul>
-<li>wsrep_api.h # header
+<li>wsrep<sub>api</sub>.h # header
 </li>
-<li>wsrep_loader # load/unload wsrep_t
+<li>wsrep<sub>loader</sub> # load/unload wsrep<sub>t</sub>
 <ul>
-<li>symbol=wsrep_loader
+<li>symbol=wsrep<sub>loader</sub>
 </li>
-<li>type=int wsrep_loader_fun(wsrep_t*)
+<li>type=int wsrep<sub>loader</sub><sub>fun</sub>(wsrep<sub>t</sub>*)
 </li>
 </ul>
 
 </li>
-<li>wsrep_dummy # example or stub
+<li>wsrep<sub>dummy</sub> # example or stub
 </li>
-<li>wsrep_uuid # uuid helper
+<li>wsrep<sub>uuid</sub> # uuid helper
 </li>
-<li>wsrep_gtid # gtid helper
+<li>wsrep<sub>gtid</sub> # gtid helper
 </li>
-<li>wsrep_listener # event dumper
+<li>wsrep<sub>listener</sub> # event dumper
 </li>
 </ul>
 
@@ -242,25 +194,25 @@ capabilities:
 </li>
 <li>group member（节点成员信息）
 <ul>
-<li>member_status
+<li>member<sub>status</sub>
 </li>
-<li>memver_info
+<li>memver<sub>info</sub>
 </li>
 </ul>
 
 </li>
 <li>group view(视图信息，比如整个集群有多少个节点，每个节点同步进度如何？）
 <ul>
-<li>view_status
+<li>view<sub>status</sub>
 </li>
-<li>view_info
+<li>view<sub>info</sub>
 </li>
 </ul>
 
 </li>
-<li>wsrep_init_args(arguments)
+<li>wsrep<sub>init</sub><sub>args</sub>(arguments)
 </li>
-<li>wsrep_t(interface)
+<li>wsrep<sub>t</sub>(interface)
 </li>
 </ul>
 
@@ -270,43 +222,43 @@ capabilities:
 </div>
 
 <div id="outline-container-2-3" class="outline-4">
-<h4 id="sec-2-3"><span class="section-number-4">2.3</span> wsrep_init_args</h4>
+<h4 id="sec-2-3"><span class="section-number-4">2.3</span> wsrep<sub>init</sub><sub>args</sub></h4>
 <div class="outline-text-4" id="text-2-3">
 
 <p>#note: 这个应该是和上层相关的实现比如MySQL，如何apply, commit等
 </p>
 <ul>
-<li>(D)app_ctx 回调使用的context
+<li>(D)app<sub>ctx</sub> 回调使用的context
 </li>
-<li>(D)node_name 当前节点/实例名称，对应变量wsrep_node_name
+<li>(D)node<sub>name</sub> 当前节点/实例名称，对应变量wsrep<sub>node</sub><sub>name</sub>
 </li>
-<li>(D)node_address 当前节点/实例地址，对应变量wsrep_node_address
+<li>(D)node<sub>address</sub> 当前节点/实例地址，对应变量wsrep<sub>node</sub><sub>address</sub>
 </li>
-<li>(D)node_incoming 对应变量wsrep_incoming_addresses <b>可以接受连接请求的节点</b>
+<li>(D)node<sub>incoming</sub> 对应变量wsrep<sub>incoming</sub><sub>addresses</sub> <b>可以接受连接请求的节点</b>
 </li>
-<li>(D)data_dir 当前数据库的目录，对应变量wsrep_data_home_dir
+<li>(D)data<sub>dir</sub> 当前数据库的目录，对应变量wsrep<sub>data</sub><sub>home</sub><sub>dir</sub>
 </li>
 <li>(D)options 选项
 </li>
-<li>(D)proto_ver 协议版本
+<li>(D)proto<sub>ver</sub> 协议版本
 </li>
-<li>(D)state_id 应用初始状态id
+<li>(D)state<sub>id</sub> 应用初始状态id
 </li>
 <li>(D)state 应用初始状态数据
 </li>
-<li>logger_cb # mysql如何打印galera日志
+<li>logger<sub>cb</sub> # mysql如何打印galera日志
 </li>
-<li>view_handler_cb # 新节点加入会比较本地状态uuid和集群状态uuid. 初始同步，joiner动作
+<li>view<sub>handler</sub><sub>cb</sub> # 新节点加入会比较本地状态uuid和集群状态uuid. 初始同步，joiner动作
 </li>
-<li>apply_cb # mysql如何执行binlog
+<li>apply<sub>cb</sub> # mysql如何执行binlog
 </li>
-<li>commit_cb # mysql如何提交事务
+<li>commit<sub>cb</sub> # mysql如何提交事务
 </li>
-<li>unordered_cb # note：do nothing?
+<li>unordered<sub>cb</sub> # note：do nothing?
 </li>
-<li>sst_donate_cb # 初始同步，donor动作
+<li>sst<sub>donate</sub><sub>cb</sub> # 初始同步，donor动作
 </li>
-<li>synced_cb # mysql启动等待状态一致之后会调用这个函数，修改变量wsrep_ready从OFF到ON
+<li>synced<sub>cb</sub> # mysql启动等待状态一致之后会调用这个函数，修改变量wsrep<sub>ready从OFF到ON</sub>
 </li>
 </ul>
 
@@ -316,7 +268,7 @@ capabilities:
 </div>
 
 <div id="outline-container-2-4" class="outline-4">
-<h4 id="sec-2-4"><span class="section-number-4">2.4</span> wsrep_t</h4>
+<h4 id="sec-2-4"><span class="section-number-4">2.4</span> wsrep<sub>t</sub></h4>
 <div class="outline-text-4" id="text-2-4">
 
 <p>#note: 这个应该是和下层相关的实现比如Galera，它定义了整个replication的逻辑
@@ -324,13 +276,13 @@ capabilities:
 <ul>
 <li>(D)version 版本
 </li>
-<li>init 初始化 wsrep_init_args
+<li>init 初始化 wsrep<sub>init</sub><sub>args</sub>
 </li>
 <li>capabilities 支持功能
 </li>
-<li>options_set 设置选项
+<li>options<sub>set</sub> 设置选项
 </li>
-<li>options_get 获取选项
+<li>options<sub>get</sub> 获取选项
 </li>
 <li>connect 建立和集群的连接
 </li>
@@ -338,43 +290,43 @@ capabilities:
 </li>
 <li>recv 开始接收replication event. 正常情况下这个函数一直运行，期间执行其他操作，如果返回的话那么表明出错或者是退出。
 </li>
-<li>pre_commit 事务提交之前
+<li>pre<sub>commit</sub> 事务提交之前
 </li>
-<li>post_commit 事务提交之后
+<li>post<sub>commit</sub> 事务提交之后
 </li>
-<li>post_rollback 事务回滚之后
+<li>post<sub>rollback</sub> 事务回滚之后
 </li>
-<li>replay_trx 回放事务(slave)
+<li>replay<sub>trx</sub> 回放事务(slave)
 </li>
-<li>abort_pre_commit 在事务提交之前终止
+<li>abort<sub>pre</sub><sub>commit</sub> 在事务提交之前终止
 </li>
-<li>append_key 将key添加到事务ws. 修改行对应的key，可以用来检测冲突。
+<li>append<sub>key</sub> 将key添加到事务ws. 修改行对应的key，可以用来检测冲突。
 </li>
-<li>append_data 将data添加到事务ws. 修改行对应的value。
+<li>append<sub>data</sub> 将data添加到事务ws. 修改行对应的value。
 </li>
-<li>casual_read  发起一致性读
+<li>casual<sub>read</sub>  发起一致性读
 </li>
-<li>free_connection 释放链接
+<li>free<sub>connection</sub> 释放链接
 </li>
-<li>to_execute_start 开始执行total order isolation事务（上锁）
+<li>to<sub>execute</sub><sub>start</sub> 开始执行total order isolation事务（上锁）
 </li>
-<li>to_execute_end 结束执行total order isolation事务（解锁）
+<li>to<sub>execute</sub><sub>end</sub> 结束执行total order isolation事务（解锁）
 </li>
-<li>preordered_collect 将预先排序的event收集到ws
+<li>preordered<sub>collect</sub> 将预先排序的event收集到ws
 </li>
-<li>preordered_commit 将收集的ws commit到集群中
+<li>preordered<sub>commit</sub> 将收集的ws commit到集群中
 </li>
-<li>sst_sent sst sst已经发送完毕
+<li>sst<sub>sent</sub> sst sst已经发送完毕
 </li>
-<li>sst_received sst已经接收完毕
+<li>sst<sub>received</sub> sst已经接收完毕
 </li>
 <li>snapshot 请求产生snapshot
 </li>
-<li>stats_get 获取统计数据
+<li>stats<sub>get</sub> 获取统计数据
 </li>
-<li>stats_free 释放统计数据
+<li>stats<sub>free</sub> 释放统计数据
 </li>
-<li>stats_reset 重置统计数据
+<li>stats<sub>reset</sub> 重置统计数据
 </li>
 <li>pause 停止提交
 </li>
@@ -388,13 +340,13 @@ capabilities:
 </li>
 <li>unlock 释放全局锁
 </li>
-<li>is_locked 检测全局锁
+<li>is<sub>locked</sub> 检测全局锁
 </li>
-<li>(D)provider_name 名称
+<li>(D)provider<sub>name</sub> 名称
 </li>
-<li>(D)provider_version 版本
+<li>(D)provider<sub>version</sub> 版本
 </li>
-<li>(D)provider_vendor 厂商
+<li>(D)provider<sub>vendor</sub> 厂商
 </li>
 <li>free 释放句柄
 </li>
@@ -428,17 +380,17 @@ Delivery Order
 <p>
 在order.hpp里面定义了6种投递顺序
 </p><ul>
-<li>O_DROP 协议内部使用(用来递增消息序列号)
+<li>O<sub>DROP</sub> 协议内部使用(用来递增消息序列号)
 </li>
-<li>O_UNRELIABLE 协议内部使用
+<li>O<sub>UNRELIABLE</sub> 协议内部使用
 </li>
-<li>O_FIFO 对于单个节点有序
+<li>O<sub>FIFO</sub> 对于单个节点有序
 </li>
-<li>O_AGREED 对于整个集群有序
+<li>O<sub>AGREED</sub> 对于整个集群有序
 </li>
-<li>O_SAFE 对于整个集群有序并且确保消息被所有节点都收到
+<li>O<sub>SAFE</sub> 对于整个集群有序并且确保消息被所有节点都收到
 </li>
-<li>O_LOCAL_CAUSAL 只会在本地投递，作用类似barrier: "当应用看到这条消息时可以确保，在这条信息之前投递的消息(可以是从任意节点发起的)都已经传递给了应用层"
+<li>O<sub>LOCAL</sub><sub>CAUSAL</sub> 只会在本地投递，作用类似barrier: "当应用看到这条消息时可以确保，在这条信息之前投递的消息(可以是从任意节点发起的)都已经传递给了应用层"
 </li>
 </ul>
 
@@ -480,24 +432,24 @@ Delivery Order
 </li>
 <li>t # test script of tap.
 </li>
-<li>test_causal # related to trac #688.
+<li>test<sub>causal</sub> # related to trac #688.
 </li>
-<li>test_cppcheck # c/c++ static code analyzer.
+<li>test<sub>cppcheck</sub> # c/c++ static code analyzer.
 </li>
-<li>test_dbt2 # not implemented.
+<li>test<sub>dbt2</sub> # not implemented.
 </li>
-<li>test_dots # not implemented.
+<li>test<sub>dots</sub> # not implemented.
 </li>
-<li>test_drupal # bugs related to drupal.
+<li>test<sub>drupal</sub> # bugs related to drupal.
 </li>
-<li>test_insert #
+<li>test<sub>insert</sub> #
 <ul>
-<li>DMBS_PORT=3305 ./run.sh
+<li>DMBS<sub>PORT</sub>=3305 ./run.sh
 </li>
 </ul>
 
 </li>
-<li>test_memory
+<li>test<sub>memory</sub>
 <ul>
 <li>used memory between wsrep OFF and ON
 </li>
@@ -506,9 +458,9 @@ Delivery Order
 </ul>
 
 </li>
-<li>test_mtr # mysql test run
+<li>test<sub>mtr</sub> # mysql test run
 </li>
-<li>test_overhead
+<li>test<sub>overhead</sub>
 <ul>
 <li>insert/update time between wsrep OFF and ON
 </li>
@@ -517,15 +469,15 @@ Delivery Order
 </ul>
 
 </li>
-<li>test_seesaw # similar to test_stopcont.
+<li>test<sub>seesaw</sub> # similar to test<sub>stopcont</sub>.
 </li>
-<li>test_segmentation # network traffic with segmentation.
+<li>test<sub>segmentation</sub> # network traffic with segmentation.
 </li>
-<li>test_sqlgen # TODO: why tap ? obsolete now!
+<li>test<sub>sqlgen</sub> # TODO: why tap ? obsolete now!
 </li>
-<li>test_startstop # start and stop
+<li>test<sub>startstop</sub> # start and stop
 </li>
-<li>test_stopcont #
+<li>test<sub>stopcont</sub> #
 <ul>
 <li>round robin to stop/cont each node (kill -STOP/CONT)
 </li>
@@ -538,7 +490,7 @@ Delivery Order
 </ul>
 
 </li>
-<li>test_upgrade # rotate and upgrade nodes.
+<li>test<sub>upgrade</sub> # rotate and upgrade nodes.
 </li>
 </ul>
 

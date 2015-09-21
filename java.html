@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -182,7 +134,7 @@
 <h4 id="sec-1-3"><span class="section-number-4">1.3</span> assert</h4>
 <div class="outline-text-4" id="text-1-3">
 
-<p>java关键字assert可以用来进行断言，和C++一样。但是天煞的java虚拟机必须指定标记才会开启assert特性。java -ea断言才会生效。java -ea:package_name…可以指定名字空间下所有类断言打开，java -ea:classname可以指定某个类断言打开。如果不带任何参数的话那么是将所有断言打开。同样使用-da可以禁用某个特定类或者是包的断言。 #note: 其实想想觉得这个还是很不错的，在运行时控制而不是在编译时控制，会让更多的人喜欢使用assertion.但是我觉得默认的话，应该是开启的除非显示关闭。
+<p>java关键字assert可以用来进行断言，和C++一样。但是天煞的java虚拟机必须指定标记才会开启assert特性。java -ea断言才会生效。java -ea:package<sub>name…可以指定名字空间下所有类断言打开，java</sub> -ea:classname可以指定某个类断言打开。如果不带任何参数的话那么是将所有断言打开。同样使用-da可以禁用某个特定类或者是包的断言。 #note: 其实想想觉得这个还是很不错的，在运行时控制而不是在编译时控制，会让更多的人喜欢使用assertion.但是我觉得默认的话，应该是开启的除非显示关闭。
 </p>
 <p>
 java断言可以指定检查表达式以及出错表达式，asser 条件：表达式
@@ -604,9 +556,9 @@ location: class com.dirlt.X
 
 <p>float类型数值常量后面加上F比如3.042F,而double类型数值常量后面加上D比如3.402D.所有浮点数值计算都遵循IEEE 752规范。java提供了三种表示溢出或者计算错误的三种特殊浮点数值：
 </p><ol>
-<li>正无穷大 Double.POSITIVE_INFINITY
+<li>正无穷大 Double.POSITIVE<sub>INFINITY</sub>
 </li>
-<li>负无穷大 Double.NEGATIVE_INFINITY
+<li>负无穷大 Double.NEGATIVE<sub>INFINITY</sub>
 </li>
 <li>NaN(不是数字) Double.NaN. 浮点数/0的话就会得到NaN.判断是否为NaN不应该使用==因为和一个NaN比较始终都是false,而应该使用Double.isNaN(x)
 </li>

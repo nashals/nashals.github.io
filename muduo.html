@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -146,13 +98,13 @@ muduo将hpserver下面的event item和event handler以及handle都在一起，�
 <a href="http://www.cnblogs.com/Solstice/archive/2010/08/21/muduo_thread_lib.html">http://www.cnblogs.com/Solstice/archive/2010/08/21/muduo_thread_lib.html</a>
 包括下面这些文件：
 </p><ul>
-<li>Atomic.h // 原子操作，里面的CAS没有使用汇编而是使用__sync_val_compare_and_swap这个GCC内置函数
+<li>Atomic.h // 原子操作，里面的CAS没有使用汇编而是使用_<sub>sync</sub><sub>val</sub><sub>compare</sub><sub>and</sub><sub>swap这个GCC内置函数</sub>
 </li>
 <li>BlockingQueue.h // 异步队列，底层使用std::deque来实现，没有大小限制
 </li>
 <li>BoundedBlockingQueue.h // 异步队列，但是使用循环数组来实现，有大小限制
 </li>
-<li>Condition.h // pthread_cond封装
+<li>Condition.h // pthread<sub>cond封装</sub>
 </li>
 <li>CountDownLatch.h // 可以用作类似于起跑线机制，值得学习一下
 </li>
@@ -204,7 +156,7 @@ void CountDownLatch::countDown() // &#27599;&#20010;&#32447;&#31243;&#22312;&#24
 <ul>
 <li>Thread.h // 线程封装,内部有一个static变量记录当前创建了多少个线程
 </li>
-<li>ThreadLocal.h // 线程局部变量封装，不用在使用pthread_get/setspecific
+<li>ThreadLocal.h // 线程局部变量封装，不用在使用pthread<sub>get</sub>/setspecific
 </li>
 <li>ThreadLocalSignleton.h // 线程局部单例，不用考虑多个线程同时创建
 </li>
@@ -415,7 +367,7 @@ void ThreadPool::runInThread()
 
 <p>
 在poller目录下面有poll和epoll的对应实现，不过我们这里没有必要仔细阅读。需要注意的是这里的channel处理并没有引入优先级的概念。
-poll操作的timeoutMs就是epoll_wait超时时间，而activeChannels就是活跃channel.返回值就是epoll_wait之后的时间戳。
+poll操作的timeoutMs就是epoll<sub>wait超时时间，而activeChannels就是活跃channel</sub>.返回值就是epoll<sub>wait之后的时间戳。</sub>
 </p>
 </div>
 
@@ -511,7 +463,7 @@ pipe来完成。然后我们还允许向EventLoop里面添加定时器任务，�
 
 <p>
 然后在EventLoop构造函数的时候判断这个是否==0,如果不为=0的话说明在这个线程已经构造过一个EventLoop了。
-直接使用__thread这个关键字，值得学习一下。
+直接使用_<sub>thread这个关键字，值得学习一下。</sub>
 </p>
 </div>
 
@@ -550,7 +502,7 @@ pipe来完成。然后我们还允许向EventLoop里面添加定时器任务，�
 </pre>
 
 <p>
-一旦wakeup完成之后那么wakeUpFd_就是可读的，这样EventLoop就会被通知到并且立刻跳出epoll_wait开始处理。当然我们需要将这个wakeupFd_
+一旦wakeup完成之后那么wakeUpFd<sub>就是可读的，这样EventLoop就会被通知到并且立刻跳出epoll</sub><sub>wait开始处理。当然我们需要将这个wakeupFd</sub>_
 上面数据读出来，不然的话下一次又会被通知到，读取函数就是handleRead
 </p>
 
@@ -922,9 +874,9 @@ TcpConnection::connectEstablished,之后的所有操作都交给TcpConnection了
 </pre>
 
 <p>
-对于服务端来说连接都被唯一化了然后映射称为字符串放在connections_这个容器内部。threadPool_-&gt;getNextLoop()可以轮询地将取出么一个线程然后将
-TcpConnection::connectEstablished轮询地丢到每个线程里面去完成。存放在connections_是有原因了，每个TcpConnection有唯一一个名字，这样Server
-就可以根据TcpConnection来从自己内部移除链接了。在析构函数里面可以遍历connections_内容得到所有建立的连接并且逐一释放。
+对于服务端来说连接都被唯一化了然后映射称为字符串放在connections<sub>这个容器内部。threadPool</sub><sub>-&gt</sub>;getNextLoop()可以轮询地将取出么一个线程然后将
+TcpConnection::connectEstablished轮询地丢到每个线程里面去完成。存放在connections<sub>是有原因了，每个TcpConnection有唯一一个名字，这样Server</sub>
+就可以根据TcpConnection来从自己内部移除链接了。在析构函数里面可以遍历connections<sub>内容得到所有建立的连接并且逐一释放。</sub>
 </p></div>
 </div>
 </div>

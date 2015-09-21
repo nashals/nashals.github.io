@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -94,7 +46,7 @@
 <h3 id="sec-1"><span class="section-number-3">1</span> Layers</h3>
 <div class="outline-text-3" id="text-1">
 
-<p><img src="images/twitter-manhattan-layers.png"  alt="./images/twitter-manhattan-layers.png" />
+<p><img src="http://dirlt.com/images/twitter-manhattan-layers.png"  alt="./images/twitter-manhattan-layers.png" />
 </p>
 </div>
 
@@ -174,7 +126,7 @@
 <h3 id="sec-6"><span class="section-number-3">6</span> Storage Services</h3>
 <div class="outline-text-3" id="text-6">
 
-<p><img src="images/twitter-manhattan-ss.png"  alt="./images/twitter-manhattan-ss.png" />
+<p><img src="http://dirlt.com/images/twitter-manhattan-ss.png"  alt="./images/twitter-manhattan-ss.png" />
 </p>
 <p>
 We have created additional services that sit on top of the core of Manhattan that allow us to enable more robust features that developers might come to expect from traditional databases. Some examples are:
@@ -194,7 +146,7 @@ We have created additional services that sit on top of the core of Manhattan tha
 </li>
 <li>We use a consensus algorithm paired with a replicated log to guarantee in-order events reach all replicas. This enables us to do operations like Check-And-Set (CAS), strong read, and strong write.
 </li>
-<li>We support two modes today called LOCAL_CAS and GLOBAL_CAS. Global CAS enables developers to do strongly consistent operations <b>across a quorum of our datacenters</b>, whereas a Local CAS operation is coordinated only within the datacenter it was issued.
+<li>We support two modes today called LOCAL<sub>CAS</sub> and GLOBAL<sub>CAS</sub>. Global CAS enables developers to do strongly consistent operations <b>across a quorum of our datacenters</b>, whereas a Local CAS operation is coordinated only within the datacenter it was issued.
 </li>
 <li>Both operations have different tradeoffs when it comes to latency and data modeling for the application.
 </li>

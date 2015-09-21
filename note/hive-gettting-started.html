@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="../css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="../css/emacs.css" />
+<link rel="shortcut icon" href="../css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="../css/site.css" />
 
 
 </head>
@@ -81,16 +33,16 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="hive-gettting-started.html#sec-1">1 Configuration</a></li>
-<li><a href="hive-gettting-started.html#sec-2">2 Local Mode</a></li>
-<li><a href="hive-gettting-started.html#sec-3">3 Metadata Store</a></li>
-<li><a href="hive-gettting-started.html#sec-4">4 Example</a></li>
+<li><a href="hive-gettting-started.html#sec-1">Configuration</a></li>
+<li><a href="hive-gettting-started.html#sec-2">Local Mode</a></li>
+<li><a href="hive-gettting-started.html#sec-3">Metadata Store</a></li>
+<li><a href="hive-gettting-started.html#sec-4">Example</a></li>
 </ul>
 </div>
 </div>
 
 <div id="outline-container-1" class="outline-3">
-<h3 id="sec-1"><span class="section-number-3">1</span> Configuration</h3>
+<h3 id="sec-1">Configuration</h3>
 <div class="outline-text-3" id="text-1">
 
 <ul>
@@ -114,7 +66,7 @@
 </div>
 
 <div id="outline-container-2" class="outline-3">
-<h3 id="sec-2"><span class="section-number-3">2</span> Local Mode</h3>
+<h3 id="sec-2">Local Mode</h3>
 <div class="outline-text-3" id="text-2">
 
 <p>这里所谓的local-mode主要是指运行的mapreduce是在local node上面完成的，至于数据源还是和hdfs/hbase本身配置相关。可以通过设置 SET mapred.job.tracker=local; 强制修改mapreduce本地完成。
@@ -136,7 +88,7 @@ hive0.7以后提供自动切换local-mode功能，设置 hive&gt; SET hive.exec.
 </div>
 
 <div id="outline-container-3" class="outline-3">
-<h3 id="sec-3"><span class="section-number-3">3</span> Metadata Store</h3>
+<h3 id="sec-3">Metadata Store</h3>
 <div class="outline-text-3" id="text-3">
 
 <p><a href="https://cwiki.apache.org/confluence/display/Hive/AdminManual+MetastoreAdmin">https://cwiki.apache.org/confluence/display/Hive/AdminManual+MetastoreAdmin</a>
@@ -257,7 +209,7 @@ thrift server 通过 hive &ndash;service metastore 启动，port在9083上面. �
 </div>
 
 <div id="outline-container-4" class="outline-3">
-<h3 id="sec-4"><span class="section-number-3">4</span> Example</h3>
+<h3 id="sec-4">Example</h3>
 <div class="outline-text-3" id="text-4">
 
 <p>数据默认是使用ctrl-a来做分割

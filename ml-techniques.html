@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -173,7 +125,7 @@
 </li>
 <li>Polynomial Kernel. 多项式核函数
 <ul>
-<li>Poly-2. p(x) = scale(sqrt(2*r)在1次多项式，r在2次多项式), 那么K(x,y) = (1 + rxy)^2. 称为K2.
+<li>Poly-2. p(x) = scale(sqrt(2*r)在1次多项式，r在2次多项式), 那么K(x,y) = (1 + rxy)<sup>2</sup>. 称为K2.
 </li>
 <li>Poly-n. Kn = K(x,y) = (b + rxy) ^ n. 其中b控制常数项，n控制多项式项。
 </li>
@@ -453,11 +405,11 @@
 <div class="outline-text-3" id="text-13">
 
 <ul>
-<li>激活函数除了sigmoid之外，还可以是tanh(Hyperbolic Tangent, 双曲正切). tanh(x)=e^x-e^-x / e^x+e^-x. 两者之间还有一些联系tanh(x)=2*sigmoid(2x)-1.
+<li>激活函数除了sigmoid之外，还可以是tanh(Hyperbolic Tangent, 双曲正切). tanh(x)=e<sup>x</sup>-e<sup>-x</sup> / e<sup>x</sup>+e<sup>-x</sup>. 两者之间还有一些联系tanh(x)=2*sigmoid(2x)-1.
 </li>
 <li>NN做梯度下降使用backprop算法，总体可以是GD, SGD, 或者是min-batch GD. 在选择初始权重时，应该多选择几组随机值，并且尽可能地小。如果w非常大的话，tanh/sigmoid变化会非常小，容易陷入局部最优。
 </li>
-<li>NN的dvc = O(VD). 其中V=# of neurons, D=# of weights. 降低dvc有几个办法：1. 使用scaled-L2(weight-elimination) = &sum;(w^2/(1+w^2)). 2. Early Stopping.
+<li>NN的dvc = O(VD). 其中V=# of neurons, D=# of weights. 降低dvc有几个办法：1. 使用scaled-L2(weight-elimination) = &sum;(w<sup>2</sup>/(1+w<sup>2</sup>)). 2. Early Stopping.
 </li>
 </ul>
 
@@ -543,9 +495,9 @@
 </li>
 <li>我们如何选择这些RBF的中心点呢？Full RBF Network就是以每个实例点作为中心的RBF Network.
 </li>
-<li>RBF Network可以很容易演化得到kNN. kNN一种办法是使用平均加权，另外一种办法可以通过根据最小二乘来求解线性系数a=(Z'Z)^-1 * Z * y. 其中Z是映射之后的矩阵，并且是方形对称矩阵。
+<li>RBF Network可以很容易演化得到kNN. kNN一种办法是使用平均加权，另外一种办法可以通过根据最小二乘来求解线性系数a=(Z'Z)<sup>-1</sup> * Z * y. 其中Z是映射之后的矩阵，并且是方形对称矩阵。
 </li>
-<li>如果所有中心点不同的话那么Z还是可逆的，推导一下的话可以得到a=Z^-1 * y. 如果继续化简的话那么g(xi) = yi. Ein(g) = 0. 这种方式成为exact interpolation, 用来做函数逼近(function approximation)。当然这是因为没有增加regularization，如果增加正则化的话那么和ridge regression得到的结果相同。另外一个办法则是选择相对少一些的中心点(也称为prototypes).
+<li>如果所有中心点不同的话那么Z还是可逆的，推导一下的话可以得到a=Z<sup>-1</sup> * y. 如果继续化简的话那么g(xi) = yi. Ein(g) = 0. 这种方式成为exact interpolation, 用来做函数逼近(function approximation)。当然这是因为没有增加regularization，如果增加正则化的话那么和ridge regression得到的结果相同。另外一个办法则是选择相对少一些的中心点(也称为prototypes).
 </li>
 <li>如何找到这些prototypes? 我们可以把它当做一个clustering问题，K-means是解决这个问题一个非常好的办法。K-means算法是通过alternating minimization(不断交替最小化项)来完成的。
 </li>

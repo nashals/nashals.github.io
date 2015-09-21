@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -113,7 +65,7 @@
 <li><a href="mysql.html#sec-7">7 元数据</a>
 <ul>
 <li><a href="mysql.html#sec-7-1">7.1 SHOW</a></li>
-<li><a href="mysql.html#sec-7-2">7.2 information_schema</a></li>
+<li><a href="mysql.html#sec-7-2">7.2 information<sub>schema</sub></a></li>
 <li><a href="mysql.html#sec-7-3">7.3 mysql</a></li>
 </ul>
 </li>
@@ -614,17 +566,17 @@ The default replication type in MySQL is statement-based replication, and this r
 </p><ul>
 <li>SHOW DATABASES;
 </li>
-<li>SHOW CREATE DATABASE db_name;
+<li>SHOW CREATE DATABASE db<sub>name</sub>;
 </li>
-<li>SHOW TABLES [FROM db_name];
+<li>SHOW TABLES [FROM db<sub>name]</sub>;
 </li>
-<li>SHOW CREATE TABLE tbl_name;
+<li>SHOW CREATE TABLE tbl<sub>name</sub>;
 </li>
-<li>SHOW COLUMNS FROM tbl_name;
+<li>SHOW COLUMNS FROM tbl<sub>name</sub>;
 </li>
-<li>SHOW INDEX FROM tbl_name;
+<li>SHOW INDEX FROM tbl<sub>name</sub>;
 </li>
-<li>SHOW TABLE STATUS [FROM db_name];
+<li>SHOW TABLE STATUS [FROM db<sub>name]</sub>;
 </li>
 </ul>
 
@@ -634,10 +586,10 @@ The default replication type in MySQL is statement-based replication, and this r
 </div>
 
 <div id="outline-container-7-2" class="outline-4">
-<h4 id="sec-7-2"><span class="section-number-4">7.2</span> information_schema</h4>
+<h4 id="sec-7-2"><span class="section-number-4">7.2</span> information<sub>schema</sub></h4>
 <div class="outline-text-4" id="text-7-2">
 
-<p>可以将information_schema看作一个虚拟数据库，里面的数据表是不同数据库的元数据所构成的视图。各个存储引擎还会在这里面添加它们专用的数据表。
+<p>可以将information<sub>schema看作一个虚拟数据库，里面的数据表是不同数据库的元数据所构成的视图。各个存储引擎还会在这里面添加它们专用的数据表。</sub>
 </p>
 
 
@@ -816,9 +768,9 @@ The default replication type in MySQL is statement-based replication, and this r
 <ul>
 <li>判断是否为慢查询和下面两个指标相关
 </li>
-<li>long_query_time（单位秒） # 判断多长时间为慢
+<li>long<sub>query</sub><sub>time（单位秒）</sub> # 判断多长时间为慢
 </li>
-<li>min_examined_row_limit # 只有被查询这么多次之后才有资格被记录到日志里面
+<li>min<sub>examined</sub><sub>row</sub><sub>limit</sub> # 只有被查询这么多次之后才有资格被记录到日志里面
 </li>
 </ul>
 
@@ -896,7 +848,7 @@ The default replication type in MySQL is statement-based replication, and this r
 <ul>
 <li>FORCE INDEX, USE INDEX, IGNORE INDEX
 </li>
-<li>STRAIGHT_JOIN # 强制优化器按照特定顺序来做JOIN
+<li>STRAIGHT<sub>JOIN</sub> # 强制优化器按照特定顺序来做JOIN
 </li>
 </ul>
 
@@ -905,7 +857,7 @@ The default replication type in MySQL is statement-based replication, and this r
 </li>
 <li>使带索引的数据列在比较表达式中单独出现
 <ul>
-<li>f(x) &lt; 4, 这样就需要遍历所有x并且作用f然后比较。所以最好是可以x &lt; f^-1(4)
+<li>f(x) &lt; 4, 这样就需要遍历所有x并且作用f然后比较。所以最好是可以x &lt; f<sup>-1</sup>(4)
 </li>
 </ul>
 
@@ -972,15 +924,15 @@ t1开始没有索引，然后我们使用EXAPLAIN来察看效果
 </pre>
 
 <ul>
-<li>select_type 简单选择 #todo: ???
+<li>select<sub>type</sub> 简单选择 #todo: ???
 </li>
 <li>table 数据表
 </li>
 <li>type 优化器可以用来搜索的区间（ALL表示只能全部扫描）
 </li>
-<li>possible_keys 可以用来做搜索的keys
+<li>possible<sub>keys</sub> 可以用来做搜索的keys
 </li>
-<li>key/key_len 最终选择用来做搜索的key和其长度
+<li>key/key<sub>len</sub> 最终选择用来做搜索的key和其长度
 </li>
 <li>ref 是否参考其他数据表字段
 </li>
@@ -1010,9 +962,9 @@ mysql&gt; explain SELECT * from t1 WHERE k &lt; 20 AND k &gt; 10;
 <ul>
 <li>type=range 表明可以有范围查询
 </li>
-<li>possible_keys 可以使用k来做搜索
+<li>possible<sub>keys</sub> 可以使用k来做搜索
 </li>
-<li>key/key_len 最后也是使用k来做搜索，并且长度为4字节
+<li>key/key<sub>len</sub> 最后也是使用k来做搜索，并且长度为4字节
 </li>
 <li>rows 只需要处理8个数据行
 </li>
@@ -1049,22 +1001,22 @@ mysql&gt; explain SELECT * from t1 WHERE k &lt; 20 AND k &gt; 10;
 </p><ul>
 <li>configure阶段 &ndash;without-query-cache 可以构建不带查询缓存的服务器
 </li>
-<li>have_query_cache 是否支持查询缓存
+<li>have<sub>query</sub><sub>cache</sub> 是否支持查询缓存
 </li>
-<li>query_cache_type
+<li>query<sub>cache</sub><sub>type</sub>
 <ul>
 <li>0 不使用查询缓存
 </li>
-<li>1 开启，但是不包括SELECT SQL_NO_CACHE开头的查询
+<li>1 开启，但是不包括SELECT SQL<sub>NO</sub><sub>CACHE开头的查询</sub>
 </li>
-<li>2 开启，但是只包括SELECT SQL_CACHE开头的查询
+<li>2 开启，但是只包括SELECT SQL<sub>CACHE开头的查询</sub>
 </li>
 </ul>
 
 </li>
-<li>query_cache_size 查询缓存大小，字节为单位
+<li>query<sub>cache</sub><sub>size</sub> 查询缓存大小，字节为单位
 </li>
-<li>query_cache_limit 缓存最大结果集合大小，比这个值大的查询结果不能被缓存
+<li>query<sub>cache</sub><sub>limit</sub> 缓存最大结果集合大小，比这个值大的查询结果不能被缓存
 </li>
 </ul>
 
@@ -1132,7 +1084,7 @@ mysql&gt; explain SELECT * from t1 WHERE k &lt; 20 AND k &gt; 10;
 <h4 id="sec-11-3"><span class="section-number-4">11.3</span> 主从同步</h4>
 <div class="outline-text-4" id="text-11-3">
 
-<p>mysql实现上是所有操作都会写到binlog里面，然后slave有一个专门的io线程(IO_THREAD)不断地从master binlog里面取出增量数据，写到本地的relay-log.同时slave本地有一个执行线程(SQL_THREAD)，将这些realy-log执行修改自己的数据库，达到同步的目的。relay-log里面的内容和master binlog内容每条记录都是完全相同的，最后进入slave binlog记录和master binlog对应记录也是一样的。执行id是master id,执行时间是master binlog记录的时间，本地slave是不会进行任何修改的。主从同步要求不仅要求主从服务器在二进制日志的格式方面兼容，还要在功能上兼容（执行对应的语句）
+<p>mysql实现上是所有操作都会写到binlog里面，然后slave有一个专门的io线程(IO<sub>THREAD</sub>)不断地从master binlog里面取出增量数据，写到本地的relay-log.同时slave本地有一个执行线程(SQL<sub>THREAD</sub>)，将这些realy-log执行修改自己的数据库，达到同步的目的。relay-log里面的内容和master binlog内容每条记录都是完全相同的，最后进入slave binlog记录和master binlog对应记录也是一样的。执行id是master id,执行时间是master binlog记录的时间，本地slave是不会进行任何修改的。主从同步要求不仅要求主从服务器在二进制日志的格式方面兼容，还要在功能上兼容（执行对应的语句）
 </p>
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" />
@@ -1142,11 +1094,11 @@ mysql&gt; explain SELECT * from t1 WHERE k &lt; 20 AND k &gt; 10;
 </thead>
 <tbody>
 <tr><td class="left">server-id</td><td class="left">服务器编号</td></tr>
-<tr><td class="left">relay_log_purge</td><td class="left">删除无用的relaylog</td></tr>
+<tr><td class="left">relay<sub>log</sub><sub>purge</sub></td><td class="left">删除无用的relaylog</td></tr>
 <tr><td class="left">log-slave-updates</td><td class="left">binlog里面也会保存relay-log（默认是不保存）</td></tr>
-<tr><td class="left">max_binlog_size</td><td class="left">单个binlog文件最大大小</td></tr>
-<tr><td class="left">max_relay_log_size</td><td class="left">单个relaylog文件最大大小</td></tr>
-<tr><td class="left">expire_logs_days=n</td><td class="left">自动删除超过n天的binlog，并且更新索引文件</td></tr>
+<tr><td class="left">max<sub>binlog</sub><sub>size</sub></td><td class="left">单个binlog文件最大大小</td></tr>
+<tr><td class="left">max<sub>relay</sub><sub>log</sub><sub>size</sub></td><td class="left">单个relaylog文件最大大小</td></tr>
+<tr><td class="left">expire<sub>logs</sub><sub>days</sub>=n</td><td class="left">自动删除超过n天的binlog，并且更新索引文件</td></tr>
 <tr><td class="left">replicate-ignore-db</td><td class="left">slave忽略某些数据库的操作</td></tr>
 <tr><td class="left">binlog-ignore-db</td><td class="left">master将某些数据库操作不写入binlog</td></tr>
 <tr><td class="left">binlog-format</td><td class="left">binlog日志格式</td></tr>
@@ -1183,16 +1135,16 @@ binlog-format有三种选择
 </li>
 <li>start/stop slave # 启动停止复制
 <ul>
-<li>IO_THREAD 只启动停止IO线程
+<li>IO<sub>THREAD</sub> 只启动停止IO线程
 </li>
-<li>SQL_THREAD 只启动停止SQL线程
+<li>SQL<sub>THREAD</sub> 只启动停止SQL线程
 </li>
 </ul>
 
 </li>
 <li>purge master/binary logs to 'log-bin.000012'; # 将log-bin.000012之前的binlog都删除
 </li>
-<li>change master to master_host='', master_user='', master_password='', master_log_file='', master_log_pos='' # 初始化复制坐标
+<li>change master to master<sub>host</sub>='', master<sub>user</sub>='', master<sub>password</sub>='', master<sub>log</sub><sub>file</sub>='', master<sub>log</sub><sub>pos</sub>='' # 初始化复制坐标
 <ul>
 <li>初始复制状态会记录在master.info文件，并且随着镜像工作进展而刷新这个文件
 </li>
@@ -1241,7 +1193,7 @@ GTID(global trx id)(since MySQL 5.6)
 
 <p>需要使用下面参数
 </p><ul>
-<li>gtid_mode=ON
+<li>gtid<sub>mode</sub>=ON
 </li>
 <li>log-bin
 </li>
@@ -1249,7 +1201,7 @@ GTID(global trx id)(since MySQL 5.6)
 </li>
 <li>enforce-gtid-consistency=true
 </li>
-<li>server_id 
+<li>server<sub>id</sub> 
 </li>
 <li>#note: much eaiser to handle master-slave replication and failover situation
 </li>
@@ -1278,11 +1230,11 @@ GTID(global trx id)(since MySQL 5.6)
 </li>
 <li>[mysqld&lt;nnnn&gt;] MySQL服务实例&lt;nnnn&gt;选项组标记，启动多实例时候有用
 </li>
-<li>[mysqld_safe] mysqld_safe程序选项组标记
+<li>[mysqld<sub>safe]</sub> mysqld<sub>safe程序选项组标记</sub>
 </li>
-<li>[mysqld_multi] mysqld_multi程序选项组标记
+<li>[mysqld<sub>multi]</sub> mysqld<sub>multi程序选项组标记</sub>
 </li>
-<li>[mysql_install_db] mysql_install_db程序选项组标记
+<li>[mysql<sub>install</sub><sub>db]</sub> mysql<sub>install</sub><sub>db程序选项组标记</sub>
 </li>
 </ul>
 
@@ -1304,7 +1256,7 @@ GTID(global trx id)(since MySQL 5.6)
 <p>
 系统变量按照其作用范围的大小分为两个级别
 </p><ul>
-<li>全局级 # 全面影响整个服务器的操作，比如key_buffer_size控制MyISAM的索引数据缓冲区大小
+<li>全局级 # 全面影响整个服务器的操作，比如key<sub>buffer</sub><sub>size控制MyISAM的索引数据缓冲区大小</sub>
 </li>
 <li>会话级 # 只印象服务器如何对待一个给定的客户链接，比如autocommit控制是否自动提交事务
 </li>
@@ -1327,11 +1279,11 @@ GTID(global trx id)(since MySQL 5.6)
 
 <p>在SQL语句变量先使用会话级别，然后再使用全局级别，也可以显式指定
 </p><ul>
-<li>@@SESSION.var_name
+<li>@@SESSION.var<sub>name</sub>
 </li>
-<li>@@LOCAL.var_name
+<li>@@LOCAL.var<sub>name</sub>
 </li>
-<li>@@GLOBAL.var_name
+<li>@@GLOBAL.var<sub>name</sub>
 </li>
 </ul>
 
@@ -1400,7 +1352,7 @@ binlog &amp; relaylog
 <tr><th scope="col" class="left">选项</th><th scope="col" class="left">内容</th></tr>
 </thead>
 <tbody>
-<tr><td class="left">sync_binlog=n</td><td class="left">每进行n次事务提交之后使用fsync等磁盘同步指令将binlog_cache中数据强制写入磁盘</td></tr>
+<tr><td class="left">sync<sub>binlog</sub>=n</td><td class="left">每进行n次事务提交之后使用fsync等磁盘同步指令将binlog<sub>cache中数据强制写入磁盘</sub></td></tr>
 </tbody>
 </table>
 
@@ -1425,9 +1377,9 @@ binlog &amp; relaylog
 <tr><td class="left">port</td><td class="left"></td></tr>
 <tr><td class="left">socket</td><td class="left"></td></tr>
 <tr><td class="left">pid-file</td><td class="left"></td></tr>
-<tr><td class="left">max_allowed_packet</td><td class="left">通信使用的缓冲区最大长度</td></tr>
-<tr><td class="left">max_connections</td><td class="left">同时处于打开状态的客户连接的最大个数</td></tr>
-<tr><td class="left">table_cache/table_open_cache</td><td class="left">数据表文件句柄最大数</td></tr>
+<tr><td class="left">max<sub>allowed</sub><sub>packet</sub></td><td class="left">通信使用的缓冲区最大长度</td></tr>
+<tr><td class="left">max<sub>connections</sub></td><td class="left">同时处于打开状态的客户连接的最大个数</td></tr>
+<tr><td class="left">table<sub>cache</sub>/table<sub>open</sub><sub>cache</sub></td><td class="left">数据表文件句柄最大数</td></tr>
 </tbody>
 </table>
 
@@ -1451,22 +1403,22 @@ binlog &amp; relaylog
 <tbody>
 <tr><td class="left">default-storage-engine[=innodb]</td><td class="left">默认存储引擎</td></tr>
 <tr><td class="left">innodb-file-per-table</td><td class="left">为每个数据表创建一个表空间</td></tr>
-<tr><td class="left">innodb_data_home_dir</td><td class="left">数据目录（默认是MySQL数据目录）</td></tr>
-<tr><td class="left">innodb_data_file_path</td><td class="left">数据文件列表</td></tr>
-<tr><td class="left">innodb_autoextend_increment</td><td class="left">扩展表空间时递增量（8MB）</td></tr>
-<tr><td class="left">innodb_buffer_pool_size</td><td class="left">数据和索引缓冲区大小</td></tr>
-<tr><td class="left">innodb_log_buffer_size</td><td class="left">事务日志缓冲区</td></tr>
-<tr><td class="left">innodb_log_group_home_dir</td><td class="left">事务日志文件(ib_)存放目录（默认是数据目录）</td></tr>
-<tr><td class="left">innodb_log_file_size</td><td class="left">单个事务日志文件长度</td></tr>
-<tr><td class="left">innodb_log_files_in_group</td><td class="left">事务日志文件数量（？？？）</td></tr>
-<tr><td class="left">innodb_flush_log_at_trx_commit</td><td class="left">控制事务提交刷日志方式</td></tr>
-<tr><td class="left">innodb_flush_log_at_timeout</td><td class="left">控制刷日志时间间隔</td></tr>
+<tr><td class="left">innodb<sub>data</sub><sub>home</sub><sub>dir</sub></td><td class="left">数据目录（默认是MySQL数据目录）</td></tr>
+<tr><td class="left">innodb<sub>data</sub><sub>file</sub><sub>path</sub></td><td class="left">数据文件列表</td></tr>
+<tr><td class="left">innodb<sub>autoextend</sub><sub>increment</sub></td><td class="left">扩展表空间时递增量（8MB）</td></tr>
+<tr><td class="left">innodb<sub>buffer</sub><sub>pool</sub><sub>size</sub></td><td class="left">数据和索引缓冲区大小</td></tr>
+<tr><td class="left">innodb<sub>log</sub><sub>buffer</sub><sub>size</sub></td><td class="left">事务日志缓冲区</td></tr>
+<tr><td class="left">innodb<sub>log</sub><sub>group</sub><sub>home</sub><sub>dir</sub></td><td class="left">事务日志文件(ib_)存放目录（默认是数据目录）</td></tr>
+<tr><td class="left">innodb<sub>log</sub><sub>file</sub><sub>size</sub></td><td class="left">单个事务日志文件长度</td></tr>
+<tr><td class="left">innodb<sub>log</sub><sub>files</sub><sub>in</sub><sub>group</sub></td><td class="left">事务日志文件数量（？？？）</td></tr>
+<tr><td class="left">innodb<sub>flush</sub><sub>log</sub><sub>at</sub><sub>trx</sub><sub>commit</sub></td><td class="left">控制事务提交刷日志方式</td></tr>
+<tr><td class="left">innodb<sub>flush</sub><sub>log</sub><sub>at</sub><sub>timeout</sub></td><td class="left">控制刷日志时间间隔</td></tr>
 </tbody>
 </table>
 
 
 <p>
-innodb_data_file_path的格式这里需要详细解释，每个文件之间通过;分隔，每个文件规格说明如下
+innodb<sub>data</sub><sub>file</sub><sub>path的格式这里需要详细解释，每个文件之间通过</sub>;分隔，每个文件规格说明如下
 </p><ul>
 <li>path:size # 文件初始大小size字节，并且不可扩展
 </li>
@@ -1490,17 +1442,17 @@ InnoDB可以使用未经过格式化的硬盘分区，有几个理由值得考�
 <p>但是考虑不要使用硬盘分区来构成表空间时，有个很重要的因素： <b>有许多系统备份软件只针对文件系统，不能对硬盘分区进行备份</b> 。这意味着使用硬盘分区来构成表空间将会给系统备份工作增加困难。
 </p>
 <p>
-innodb_flush_log_at_trx_commit 可以用来控制提交事务时写入磁盘的方式
+innodb<sub>flush</sub><sub>log</sub><sub>at</sub><sub>trx</sub><sub>commit</sub> 可以用来控制提交事务时写入磁盘的方式
 </p><ul>
-<li>0. 隔段时间log_buffer会写入log_file并且刷入磁盘
+<li>0. 隔段时间log<sub>buffer会写入log</sub><sub>file并且刷入磁盘</sub>
 </li>
-<li>1（默认值). 每次提交事务都会将log_buffer写入log_file并且刷入磁盘
+<li>1（默认值). 每次提交事务都会将log<sub>buffer写入log</sub><sub>file并且刷入磁盘</sub>
 </li>
-<li>2. 每次提交事务都会将log_buffer写入log_file, 但是隔段时间再刷入磁盘
+<li>2. 每次提交事务都会将log<sub>buffer写入log</sub><sub>file</sub>, 但是隔段时间再刷入磁盘
 </li>
 </ul>
 
-<p>间隔时间由 innodb_flush_log_at_timeout 控制，默认是1s
+<p>间隔时间由 innodb<sub>flush</sub><sub>log</sub><sub>at</sub><sub>timeout</sub> 控制，默认是1s
 </p>
 </div>
 </div>
@@ -1522,21 +1474,21 @@ innodb_flush_log_at_trx_commit 可以用来控制提交事务时写入磁盘的�
 </p>
 <p class="verse">
 Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: The last packet successfully received from the server was 99,184,284 milliseconds ago.  The last packet sent successfully to the server was 99,184,284 milliseconds<br/>
-&nbsp;&nbsp; ago. is longer than the server configured value of 'wait_timeout'. You should consider either expiring and/or testing connection validity before use in your application, increasing the server configured values for client timeouts,<br/>
+&nbsp;&nbsp; ago. is longer than the server configured value of 'wait<sub>timeout'</sub>. You should consider either expiring and/or testing connection validity before use in your application, increasing the server configured values for client timeouts,<br/>
 &nbsp;&nbsp; or using the Connector/J connection property 'autoReconnect=true' to avoid this problem.<br/>
 </p>
 
 
 <p>
-出现这个问题原因是因为，mysql服务对于长时间不活跃的连接会直接关闭掉，这样client的连接下次操作的时候会出现连接错误。按照上面给出的提示，一个方法是修改wait_timeout，另外一个方法是在JDBC uri里面指定autoReconnect=true这个选项支持自动重连。但是autoReconnect只是对MySQL4以及更老的版本适用，对于MySQL5不适用。接下来看看timeout这个参数。MySQL5手册中对两个变量有如下的说明：
+出现这个问题原因是因为，mysql服务对于长时间不活跃的连接会直接关闭掉，这样client的连接下次操作的时候会出现连接错误。按照上面给出的提示，一个方法是修改wait<sub>timeout，另外一个方法是在JDBC</sub> uri里面指定autoReconnect=true这个选项支持自动重连。但是autoReconnect只是对MySQL4以及更老的版本适用，对于MySQL5不适用。接下来看看timeout这个参数。MySQL5手册中对两个变量有如下的说明：
 </p><ul>
-<li>interactive_timeout：服务器关闭交互式连接前等待活动的秒数。交互式客户端定义为在mysql_real_connect()中使用CLIENT_INTERACTIVE选项的客户端。又见wait_timeout
+<li>interactive<sub>timeout：服务器关闭交互式连接前等待活动的秒数。交互式客户端定义为在mysql</sub><sub>real</sub><sub>connect</sub>()中使用CLIENT<sub>INTERACTIVE选项的客户端。又见wait</sub><sub>timeout</sub>
 </li>
-<li>wait_timeout:服务器关闭非交互连接之前等待活动的秒数。在线程启动时，根据全局wait_timeout值或全局interactive_timeout值初始化会话wait_timeout值，取决于客户端类型(由mysql_real_connect()的连接选项CLIENT_INTERACTIVE定义)，又见interactive_timeout
+<li>wait<sub>timeout</sub>:服务器关闭非交互连接之前等待活动的秒数。在线程启动时，根据全局wait<sub>timeout值或全局interactive</sub><sub>timeout值初始化会话wait</sub><sub>timeout值，取决于客户端类型</sub>(由mysql<sub>real</sub><sub>connect</sub>()的连接选项CLIENT<sub>INTERACTIVE定义</sub>)，又见interactive<sub>timeout</sub>
 </li>
 </ul>
 
-<p>可见wait_timeout只要是用于非交互下面的connection超时时间。可以通过增大这个值然后重启服务来缓解这个问题。
+<p>可见wait<sub>timeout只要是用于非交互下面的connection超时时间。可以通过增大这个值然后重启服务来缓解这个问题。</sub>
 </p>
 <p>
 但是很明显这个问题治标不治本，最好设想出一个办法可以自动重连。实现自动重连大致无非三种实现：
@@ -1565,7 +1517,7 @@ Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: The last pac
 
 
 <p>
-mysql最大连接数目可以通过参数max_connections进行配置，默认的连接数目是比较低的，对于需要处理大量请求的web服务来说需要增大。 <b>修改之后需要重启</b>
+mysql最大连接数目可以通过参数max<sub>connections进行配置，默认的连接数目是比较低的，对于需要处理大量请求的web服务来说需要增大。</sub> <b>修改之后需要重启</b>
 </p>
 
 
@@ -1598,13 +1550,13 @@ mysql&gt; show status like '%connect%';
 <p>
 对于status状态来说有下面几个和connection相关的数值
 </p><ul>
-<li>Aborted_connects 尝试已经失败的MySQL服务器的连接的次数。
+<li>Aborted<sub>connects</sub> 尝试已经失败的MySQL服务器的连接的次数。
 </li>
 <li>Connections 试图连接MySQL服务器的次数。
 </li>
-<li>Max_used_connections 同时使用的连接的最大数目。
+<li>Max<sub>used</sub><sub>connections</sub> 同时使用的连接的最大数目。
 </li>
-<li>Threads_connected 当前打开的连接的数量。
+<li>Threads<sub>connected</sub> 当前打开的连接的数量。
 </li>
 </ul>
 
@@ -1672,7 +1624,7 @@ java.sql.SQLException: null,  message from server: "Can't create a new thread (e
 <tr><td class="left">man</td><td class="left">Unix manual pages</td></tr>
 <tr><td class="left">include</td><td class="left">Include (header) files</td></tr>
 <tr><td class="left">lib</td><td class="left">Libraries</td></tr>
-<tr><td class="left">scripts</td><td class="left">mysql_install_db</td></tr>
+<tr><td class="left">scripts</td><td class="left">mysql<sub>install</sub><sub>db</sub></td></tr>
 <tr><td class="left">share</td><td class="left">Miscellaneous support files, including error messages, sample configuration files, SQL for database installation</td></tr>
 <tr><td class="left">sql-bench</td><td class="left">Benchmarks</td></tr>
 <tr><td class="left">mysql-test</td><td class="left">note: test suite</td></tr>
@@ -1682,7 +1634,7 @@ java.sql.SQLException: null,  message from server: "Can't create a new thread (e
 
 
 <ul>
-<li>mysql_install_db # 初始化基本表
+<li>mysql<sub>install</sub><sub>db</sub> # 初始化基本表
 <ul>
 <li>&ndash;user 用户
 </li>
@@ -1703,7 +1655,7 @@ java.sql.SQLException: null,  message from server: "Can't create a new thread (e
 </li>
 <li>mysql # 客户端
 </li>
-<li>mysqld_safe # 启动脚本
+<li>mysqld<sub>safe</sub> # 启动脚本
 <ul>
 <li>&ndash;skip-grant-tables # 忽略权限表 #note: 可以用来重置密码
 </li>
@@ -1716,14 +1668,14 @@ java.sql.SQLException: null,  message from server: "Can't create a new thread (e
 </li>
 <li>mysql.server # 启停脚本
 <ul>
-<li>对mysqld_safe的包装，不接受任何参数
+<li>对mysqld<sub>safe的包装，不接受任何参数</sub>
 </li>
 <li>提供start/stop/restart方法
 </li>
 </ul>
 
 </li>
-<li>mysqld_multi # 启动多个MySQL实例
+<li>mysqld<sub>multi</sub> # 启动多个MySQL实例
 <ul>
 <li>&ndash;defaults-file # Read only this configuration file, do not read the standard system-wide and user-specific files
 </li>
@@ -1784,7 +1736,7 @@ java.sql.SQLException: null,  message from server: "Can't create a new thread (e
 <li>The capability of the kernel and the thread library to run
        many threads that acquire and release a mutex over a short
        critical region frequently without excessive context switches.
-       If the implementation of pthread_mutex_lock() is too anxious
+       If the implementation of pthread<sub>mutex</sub><sub>lock</sub>() is too anxious
        to yield CPU time, this hurts MySQL tremendously. If this
        issue is not taken care of, adding extra CPUs actually makes
        MySQL slower.

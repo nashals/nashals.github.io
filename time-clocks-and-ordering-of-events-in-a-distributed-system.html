@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -103,7 +55,7 @@ Most people would probably say that an event a happened before an event b if a h
 Lamport在本论文里面定义的这种顺序，在论文 <a href="http://www.csie.fju.edu.tw/~yeh/research/papers/os-reading-list/amir-tocs95-totem.pdf">The Totem Single-Ring Ordering and Membership Protocol</a> 里面被称为agreed-order. 在这篇论文里面还有一种safe-order. safe-order相对与agreed-order来说，还必须确保某条消息被所有的进程全部拿到之后，才能够向上传递给应用层处理。agreed-order是不能够保证这点。
 </p>
 <p>
-基于agreed-order实现safe-order并不困难。这里我们定义agreed_seq = min{T[x]}, 那么agreed-order规定就是"如果消息seq &lt;= agreed_seq的话就可以传递给应用层"。我们可以在进程每次发送消息的时候附带上改进程的agreed_seq，而每次接收到消息的时候更新自己的safe_seq=min{agreed_seq}，那么safe-order规定就是"如果消息seq &lt;= safe_seq的话那么就可以传递给应用层". 因为如果seq &lt;= safe_seq的话，那么这个seq必然低于所有节点的agreed_seq, 说明这个seq可以在所有进程里面都传递给应用层，也就说明这个seq必然被所有进程全部拿到。
+基于agreed-order实现safe-order并不困难。这里我们定义agreed<sub>seq</sub> = min{T[x]}, 那么agreed-order规定就是"如果消息seq &lt;= agreed<sub>seq的话就可以传递给应用层</sub>"。我们可以在进程每次发送消息的时候附带上改进程的agreed<sub>seq，而每次接收到消息的时候更新自己的safe</sub><sub>seq</sub>=min{agreed<sub>seq</sub>}，那么safe-order规定就是"如果消息seq &lt;= safe<sub>seq的话那么就可以传递给应用层</sub>". 因为如果seq &lt;= safe<sub>seq的话，那么这个seq必然低于所有节点的agreed</sub><sub>seq</sub>, 说明这个seq可以在所有进程里面都传递给应用层，也就说明这个seq必然被所有进程全部拿到。
 </p></div>
 
 <div id="postamble">

@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -117,7 +69,7 @@
 
 
 <p>
-<img src="images/mr-arch.png"  alt="./images/mr-arch.png" />
+<img src="http://dirlt.com/images/mr-arch.png"  alt="./images/mr-arch.png" />
 </p>
 <p>
 For a while, we have understood that the Apache Hadoop MapReduce framework needed an overhaul. In particular, with regards to the JobTracker, we needed to address several aspects regarding scalability, cluster utilization, ability for customers to control upgrades to the stack i.e. customer agility and equally importantly, supporting workloads other than MapReduce itself. 考虑对于MR framework需要做下面这些改进，尤其是对于JobTracker来说：
@@ -156,7 +108,7 @@ YARN主要做的工作就是在资源利用的改进上面，将资源利用已�
 
 
 <p>
-<img src="images/yarn-arch.png"  alt="./images/yarn-arch.png" />
+<img src="http://dirlt.com/images/yarn-arch.png"  alt="./images/yarn-arch.png" />
 </p>
 </div>
 
@@ -248,7 +200,7 @@ Let’s walk through an application execution sequence (steps are illustrated in
 
 
 <p>
-<img src="images/yarn-flow.png"  alt="./images/yarn-flow.png" />
+<img src="http://dirlt.com/images/yarn-flow.png"  alt="./images/yarn-flow.png" />
 </p>
 </div>
 
@@ -261,7 +213,7 @@ Let’s walk through an application execution sequence (steps are illustrated in
 <p><a href="http://hortonworks.com/blog/apache-hadoop-yarn-nodemanager/">http://hortonworks.com/blog/apache-hadoop-yarn-nodemanager/</a>
 </p>
 <p>
-<img src="images/yarn-nodemanager-arch.png"  alt="./images/yarn-nodemanager-arch.png" />
+<img src="http://dirlt.com/images/yarn-nodemanager-arch.png"  alt="./images/yarn-nodemanager-arch.png" />
 </p>
 <ul>
 <li>NodeStatusUpdater 做一些资源状态汇报，并且接收RM请求停止已经运行的container
@@ -312,7 +264,7 @@ Let’s walk through an application execution sequence (steps are illustrated in
 <p><a href="http://hortonworks.com/blog/apache-hadoop-yarn-resourcemanager/">http://hortonworks.com/blog/apache-hadoop-yarn-resourcemanager/</a>
 </p>
 <p>
-<img src="images/yarn-resourcemanager-arch.png"  alt="./images/yarn-resourcemanager-arch.png" />
+<img src="http://dirlt.com/images/yarn-resourcemanager-arch.png"  alt="./images/yarn-resourcemanager-arch.png" />
 </p>
 <ul>
 <li>Components interfacing RM to the clients:

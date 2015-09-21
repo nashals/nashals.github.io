@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -106,7 +58,7 @@
 </li>
 <li>vc-dimension只和H有关，或者说只和model有关。vc物理意义是：H处理二分类问题有多少自由度。vc越大说明H选择更多，能力越强，也说明越复杂。
 </li>
-<li>model/H进行训练效果满足不等式 P(|u-v| &gt; e) &lt;= 2 * (2N)^vc * exp(-2 * e^2 * N). 其中vc是H的vc-dimension.
+<li>model/H进行训练效果满足不等式 P(|u-v| &gt; e) &lt;= 2 * (2N)<sup>vc</sup> * exp(-2 * e<sup>2</sup> * N). 其中vc是H的vc-dimension.
 </li>
 <li>从上面不等式可以看到，vc和N(数据集合大小)之间存在trade-off. vc越大H选择越多，但是需要更多的数据才能找到更好的假设。
 </li>
@@ -159,7 +111,7 @@
 </li>
 <li>引入regularization非常有启发性：通过限制w'w &lt;= C，使用Lagrange Multiplier(拉格朗日乘子法), 推导出weight-decay regularization也就是ridge regression
 </li>
-<li>如果需要使用多项式变换的话，应该选用Legendre多项式，可以认为这些多项式之间是相互"正交"的。因为如果我们只是用x^n来做多项式的话，那么高次方的x^n值通常很小，因此要求对应项的w很大。而这与regularization相悖，因为正规化项要求w应该尽可能小。
+<li>如果需要使用多项式变换的话，应该选用Legendre多项式，可以认为这些多项式之间是相互"正交"的。因为如果我们只是用x<sup>n来做多项式的话，那么高次方的x</sup><sup>n值通常很小，因此要求对应项的w很大。而这与regularization相悖，因为正规化项要求w应该尽可能小。</sup>
 </li>
 <li>通常使用5~10-Fold来做CV. 训练像是初赛，CV则像是复赛，只有最终测试才是决赛。所以我们要关注应该是测试效果，而不是验证效果。
 </li>

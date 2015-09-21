@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -197,7 +149,7 @@
 <h4 id="sec-1-4"><span class="section-number-4">1.4</span> Project Voldemort</h4>
 <div class="outline-text-4" id="text-1-4">
 
-<p><img src="images/voldemort-pluggabe-architecture.png"  alt="./images/voldemort-pluggabe-architecture.png" />
+<p><img src="http://dirlt.com/images/voldemort-pluggabe-architecture.png"  alt="./images/voldemort-pluggabe-architecture.png" />
 </p>
 </div>
 
@@ -284,7 +236,7 @@ The lack of off-the-shelf solutions, along with the in-efficiencies of the previ
 <h4 id="sec-1-6"><span class="section-number-4">1.6</span> Read-only Extensions</h4>
 <div class="outline-text-4" id="text-1-6">
 
-<p><img src="images/voldemort-read-only-extensions-architecture.png"  alt="./images/voldemort-read-only-extensions-architecture.png" />
+<p><img src="http://dirlt.com/images/voldemort-read-only-extensions-architecture.png"  alt="./images/voldemort-read-only-extensions-architecture.png" />
 </p>
 <ul>
 <li id="sec-1-6-1">Storage Format<br/>
@@ -297,7 +249,7 @@ The lack of off-the-shelf solutions, along with the in-efficiencies of the previ
 </li>
 <li>The number of chunk sets per bucket is decided dur-ing generation on the Hadoop side. The default value is one chunk set per bucket, but can be increased by the store owner for more parallelism. The only lim-itation is that a very large value for this parameter would result in multiple small-sized files—a scenario that HDFS does not handle efficiently.（chunk set对应hadoop里面一次reduce生成的文件，通常来说一个bucket包含一个set，但是可能为了加快构建可能包含多个set。但是也需要控制set文件的大小，不然就会存在许多小文件存储在HDFS上）
 </li>
-<li>As shown in Figure 5, a chunk set includes a data file and an index file. The standard naming convention for all our chunk sets is <b>partition-id_replica-id_chunk-set-id.{data, index}</b> where partition id is the id of the primary partition, replica id is a number between 0 to N −1, and chunk set id is a number between 0 to the predefined number of sets per bucket−1.（从下图里面可以看出文件组织有点类似链式冲突hash表结构，不过在查询index的时候是通过二分来查找的）
+<li>As shown in Figure 5, a chunk set includes a data file and an index file. The standard naming convention for all our chunk sets is <b>partition-id<sub>replica</sub>-id<sub>chunk</sub>-set-id.{data, index}</b> where partition id is the id of the primary partition, replica id is a number between 0 to N −1, and chunk set id is a number between 0 to the predefined number of sets per bucket−1.（从下图里面可以看出文件组织有点类似链式冲突hash表结构，不过在查询index的时候是通过二分来查找的）
 <ul>
 <li>The index file is a compact structure containing the sorted upper 8 bytes of the MD5 of the key followed by the 4 byte offset of the corresponding value in the data file.
 </li>
@@ -312,7 +264,7 @@ The lack of off-the-shelf solutions, along with the in-efficiencies of the previ
 
 
 <p>
-<img src="images/voldemort-storage-format.png"  alt="./images/voldemort-storage-format.png" />
+<img src="http://dirlt.com/images/voldemort-storage-format.png"  alt="./images/voldemort-storage-format.png" />
 </p>
 
 </li>
@@ -443,7 +395,7 @@ The lack of off-the-shelf solutions, along with the in-efficiencies of the previ
 #note: 这篇文章是2009年写的，所以相对上面那篇文章来说很多内容都过时了，比如index文件里面key使用128字节MD5存储。
 </p>
 <p>
-<img src="images/voldemort-linkedin-data-cycle.png"  alt="./images/voldemort-linkedin-data-cycle.png" />   
+<img src="http://dirlt.com/images/voldemort-linkedin-data-cycle.png"  alt="./images/voldemort-linkedin-data-cycle.png" />   
 </p>
 <p>
  The fundamental fact of filesystem access is that you may or may not be accessing the underlying disk depending on whether your request can be served by the OS’s pagecache or not.  A pagecache hit on an mmap’d file takes less than 250 nanoseconds but a page miss is around 5 milliseconds (a mere twenty thousand times slower). Any fancy data structure we build is likely to reside in-memory. Hence it would only help the lookups for things that would be in page cache anyway (since the process of loading them into memory would put them there) and so lookups on these would be fast no matter what. And worse this in-process lookup structure will likely steal memory from the pagecache to store its data, and since this will duplicate things in the pagecache it is extremely inefficient. Thus even if we manage to improve the lookup time for the things in our process memory, it is already quite low; and by doing so we use up memory that moves more requests out of the ns column and into the ms column.（不要自己在搞in-process查询结构）

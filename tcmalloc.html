@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -106,7 +58,7 @@
 <li><a href="tcmalloc.html#sec-4-5-9">4.5.9 GetNextRange</a></li>
 </ul>
 </li>
-<li><a href="tcmalloc.html#sec-4-6">4.6 TCMalloc_PageMap3</a></li>
+<li><a href="tcmalloc.html#sec-4-6">4.6 TCMalloc<sub>PageMap3</sub></a></li>
 <li><a href="tcmalloc.html#sec-4-7">4.7 PackedCache</a></li>
 <li><a href="tcmalloc.html#sec-4-8">4.8 Thread Cache</a>
 <ul>
@@ -227,8 +179,8 @@ tcmalloc代码写得相当得好，虽然很多地方没有看懂(而且我猜�
 <p>tcmalloc.cc
 </p>
 <p>
-tcmallo.cc里面定义了函数入口.对于安排在section(google_malloc)不知道有作用。当然下面有很多相关的函数比如tc_memalign，但是这些并不影响阅读主线。
-我们只需要关心两个函数tc_malloc以及tc_free即可。
+tcmallo.cc里面定义了函数入口.对于安排在section(google<sub>malloc</sub>)不知道有作用。当然下面有很多相关的函数比如tc<sub>memalign，但是这些并不影响阅读主线。</sub>
+我们只需要关心两个函数tc<sub>malloc以及tc</sub><sub>free即可。</sub>
 </p>
 
 
@@ -245,7 +197,7 @@ extern <span class="org-string">"C"</span> {
 
 
 <p>
-然后在libc_override_gcc_and_weak.h和libc_override_glibc.h进行了函数替换
+然后在libc<sub>override</sub><sub>gcc</sub><sub>and</sub><sub>weak</sub>.h和libc<sub>override</sub><sub>glibc</sub>.h进行了函数替换
 </p>
 
 
@@ -262,8 +214,8 @@ extern <span class="org-string">"C"</span> {
 
 
 <p>
-同时在里面还覆盖了malloc_hook和free_hook这两个函数，不允许用户自己进行hook.
-我猜想tcmalloc应该是自己提供了malloc_hook和free_hook的定义.
+同时在里面还覆盖了malloc<sub>hook和free</sub><sub>hook这两个函数，不允许用户自己进行hook</sub>.
+我猜想tcmalloc应该是自己提供了malloc<sub>hook和free</sub><sub>hook的定义</sub>.
 </p>
 
 
@@ -327,7 +279,7 @@ extern void TCMalloc_SystemRelease(void* start, size_t length);
 </li>
 </ul>
 
-<p>SysAllocator需要实现一个接口void* Alloc(size_t size, size_t *actual_size, size_t alignment);因为全局只是需要一个这样的对象，
+<p>SysAllocator需要实现一个接口void* Alloc(size<sub>t</sub> size, size<sub>t</sub> *actual<sub>size</sub>, size<sub>t</sub> alignment);因为全局只是需要一个这样的对象，
 所以这个对象可以静态分配即可.然后定义了一个DefaultSysAllocator允许设置Children.
 </p>
 
@@ -339,7 +291,7 @@ static char default_space[sizeof(DefaultSysAllocator)];
 
 
 <p>
-在初始化InitSystemAllocators的时候将sbrk_space以及mmap_space作为default_space的两个children.
+在初始化InitSystemAllocators的时候将sbrk<sub>space以及mmap</sub><sub>space作为default</sub><sub>space的两个children</sub>.
 </p>
 
 
@@ -382,8 +334,8 @@ if (kDebugMode &amp;&amp; sizeof(void*) &gt; 4) {
 </pre>
 
 <p>
-可以说系统里面所有使用的内存都是从这个地方分配的，包括thread_cache,page_allocator以及管理对象。
-此外还需要注意的是，因为会有多线程调用这个东西，所以在SystemAlloc之前的话会调用自选锁进行锁定。SpinLockHolder lock_holder(&amp;spinlock);
+可以说系统里面所有使用的内存都是从这个地方分配的，包括thread<sub>cache</sub>,page<sub>allocator以及管理对象。</sub>
+此外还需要注意的是，因为会有多线程调用这个东西，所以在SystemAlloc之前的话会调用自选锁进行锁定。SpinLockHolder lock<sub>holder</sub>(&amp;spinlock);
 </p>
 </div>
 
@@ -394,23 +346,23 @@ if (kDebugMode &amp;&amp; sizeof(void*) &gt; 4) {
 <div class="outline-text-3" id="text-4">
 
 <ul>
-<li>tcmalloc_guard.h
+<li>tcmalloc<sub>guard</sub>.h
 </li>
-<li>static_vars.h
+<li>static<sub>vars</sub>.h
 </li>
-<li>page_heap_allocator.h
+<li>page<sub>heap</sub><sub>allocator</sub>.h
 </li>
 <li>common.h
 </li>
-<li>central_freelist.h
+<li>central<sub>freelist</sub>.h
 </li>
-<li>page_heap.h
+<li>page<sub>heap</sub>.h
 </li>
-<li>page_map.h
+<li>page<sub>map</sub>.h
 </li>
 <li>packed-cache-inl.h
 </li>
-<li>thread_cache.h
+<li>thread<sub>cache</sub>.h
 </li>
 </ul>
 
@@ -422,10 +374,10 @@ if (kDebugMode &amp;&amp; sizeof(void*) &gt; 4) {
 <h4 id="sec-4-1"><span class="section-number-4">4.1</span> TCMallocGuard</h4>
 <div class="outline-text-4" id="text-4-1">
 
-<p>tcmalloc_guard.h
+<p>tcmalloc<sub>guard</sub>.h
 </p>
 <p>
-TCMallocGuard主要是为了确保在tc_malloc之前所有静态变量都已经完成了初始化。首先全局存在一个static TCMallocGuard module_enter_exit_hook;
+TCMallocGuard主要是为了确保在tc<sub>malloc之前所有静态变量都已经完成了初始化。首先全局存在一个static</sub> TCMallocGuard module<sub>enter</sub><sub>exit</sub><sub>hook</sub>;
 这个变量来确保静态初始化，但是同时为了防止重复初始化还加了引用计数进行判断
 </p>
 
@@ -473,15 +425,15 @@ TCMallocGuard::TCMallocGuard() {
 <h4 id="sec-4-2"><span class="section-number-4">4.2</span> PageHeapAllocator</h4>
 <div class="outline-text-4" id="text-4-2">
 
-<p>page_heap_allocator.h
+<p>page<sub>heap</sub><sub>allocator</sub>.h
 </p>
 <p>
 如果管理对象预先知道了大小那么可以静态分配使用in-placement new方式完成，但是如果管理对象是动态分配的话，那么如何管理这些对象的分配呢？
-答案非常简单使用sample_alloc.所以sample_alloc就是这个分配器知道了每次分配对象的大小，回收缓存起来挂在free_list上面，分配首先从free_list尝试分配，
-如果free_list为空的话，那么久会调用全局内存分配。
+答案非常简单使用sample<sub>alloc</sub>.所以sample<sub>alloc就是这个分配器知道了每次分配对象的大小，回收缓存起来挂在free</sub><sub>list上面，分配首先从free</sub><sub>list尝试分配，</sub>
+如果free<sub>list为空的话，那么久会调用全局内存分配。</sub>
 </p>
 <p>
-page_heap_allocator.h里面实现了一个sample_alloc叫做PageHeapAllocator.原理来说非常简单，这里就不赘述了。需要注意的是每一个节点肯定都是&gt;sizeof(void*)的，
+page<sub>heap</sub><sub>allocator</sub>.h里面实现了一个sample<sub>alloc叫做PageHeapAllocator</sub>.原理来说非常简单，这里就不赘述了。需要注意的是每一个节点肯定都是&gt;sizeof(void*)的，
 所以每个节点不用分配额外的next指针空间，这个是一个基本上所以写过内存分配器程序员公开的技巧了。另外需要关注的是每次向全局内存空间要的大小是多少
 </p>
 
@@ -607,7 +559,7 @@ SC   7 [       81 ..       96 ] from     8192 ; 16% maxwaste
 <h4 id="sec-4-4"><span class="section-number-4">4.4</span> Central Cache</h4>
 <div class="outline-text-4" id="text-4-4">
 
-<p>central_freelist.h
+<p>central<sub>freelist</sub>.h
 </p>
 
 </div>
@@ -616,8 +568,8 @@ SC   7 [       81 ..       96 ] from     8192 ; 16% maxwaste
 <h5 id="sec-4-4-1"><span class="section-number-5">4.4.1</span> Data Structure</h5>
 <div class="outline-text-5" id="text-4-4-1">
 
-<p>首先在static里面定义的central_cache是一个数组大小为kNumClasses，相当于和每一个thread cache里面的slab对应。
-数组每个元素是CentralFreeListPadded,在central_freelist.h里面定义的。阅读CentralFreeListPadded这个结构，就会发现，
+<p>首先在static里面定义的central<sub>cache是一个数组大小为kNumClasses，相当于和每一个thread</sub> cache里面的slab对应。
+数组每个元素是CentralFreeListPadded,在central<sub>freelist</sub>.h里面定义的。阅读CentralFreeListPadded这个结构，就会发现，
 实际上这个功能是在CentralFreeList里面的，为了能够进行align进行了padded,还是非常巧妙的
 </p>
 
@@ -699,7 +651,7 @@ class CentralFreeListPadded : public CentralFreeListPaddedTo&lt;
 <p>
 CentralFreeList的接口非常少
 </p><ul>
-<li>void Init(size_t cl); // 初始化,cl表示自己是第几个class
+<li>void Init(size<sub>t</sub> cl); // 初始化,cl表示自己是第几个class
 </li>
 <li>void InsertRange(void *start, void *end, int N); // 回收部分objects.
 </li>
@@ -707,7 +659,7 @@ CentralFreeList的接口非常少
 </li>
 <li>length // 在cache里面存在多少个free objects(不包含transfer cache)
 </li>
-<li>tc_length // transfer cache里面包含多少free objects.
+<li>tc<sub>length</sub> // transfer cache里面包含多少free objects.
 </li>
 <li>OverheadBytes // 因为内部碎片造成的额外开销
 </li>
@@ -727,7 +679,7 @@ CentralFreeList的接口非常少
 <h5 id="sec-4-4-2"><span class="section-number-5">4.4.2</span> Init</h5>
 <div class="outline-text-5" id="text-4-4-2">
 
-<p>init主要是计算了tc(transfer cache)的max_cache_size以及cache_size,然后初始化了字段。
+<p>init主要是计算了tc(transfer cache)的max<sub>cache</sub><sub>size以及cache</sub><sub>size</sub>,然后初始化了字段。
 我们这里暂时不关注empty以及nonempty这两个字段的数据结构
 </p>
 
@@ -1004,7 +956,7 @@ CentralFreeList的接口非常少
 <h4 id="sec-4-5"><span class="section-number-4">4.5</span> PageHeap</h4>
 <div class="outline-text-4" id="text-4-5">
 
-<p>page_heap.h
+<p>page<sub>heap</sub>.h
 </p>
 
 </div>
@@ -1013,7 +965,7 @@ CentralFreeList的接口非常少
 <h5 id="sec-4-5-1"><span class="section-number-5">4.5.1</span> Data Structure</h5>
 <div class="outline-text-5" id="text-4-5-1">
 
-<p>PageHeap是在page_heap.h里面定义的，主要是用来分配page的。对于PageHeap结构还是比较复杂的.阅读tcmalloc文档也会发现，
+<p>PageHeap是在page<sub>heap</sub>.h里面定义的，主要是用来分配page的。对于PageHeap结构还是比较复杂的.阅读tcmalloc文档也会发现，
 管理page的方法和cc是一样的，也是按照page大小做成数组。每个数组的结构是这样的
 </p>
 
@@ -1034,8 +986,8 @@ SpanList free_[kMaxPages]; // &#38024;&#23545;&#27599;&#20010;&#39029;&#38754;&#
 </pre>
 
 <p>
-span的状态只有三种，一种是IN_USE表示正在被使用，一种表示ON_NORMAL_FREELIST表示放在了normal freelist上面。
-另外一种是ON_RETURNED_FREELIST表示放在returned freelist上面。这里简单地说明一下normal freelist与returned freelist差别。
+span的状态只有三种，一种是IN<sub>USE表示正在被使用，一种表示ON</sub><sub>NORMAL</sub><sub>FREELIST表示放在了normal</sub> freelist上面。
+另外一种是ON<sub>RETURNED</sub><sub>FREELIST表示放在returned</sub> freelist上面。这里简单地说明一下normal freelist与returned freelist差别。
 normal freelist是普通的回收进行缓存起来，而returned freelist表示已经完全unmmap回到系统内存部分了。不过因为实际并没有交回给系统内存，
 所以这两个仅仅是概念上面的差别.
 </p>
@@ -1084,21 +1036,21 @@ static const int kAddressBits = 8 * sizeof(void*);
 </li>
 <li>void Delete(Span* span); // 删除Span对象管理的内存
 </li>
-<li>void RegisterSizeClass(Span* span, size_t sc); // 注册这个span对象管理的slab大小多少(0表示不是用于分配小内存)
+<li>void RegisterSizeClass(Span* span, size<sub>t</sub> sc); // 注册这个span对象管理的slab大小多少(0表示不是用于分配小内存)
 </li>
 <li>Span* Split(Span* span, Length n); // 将当前的span切分，一个管理n个页面的span,一个是剩余的。
 </li>
 <li>inline Span* GetDescriptor(PageID p) const //根据PageID得到管理这个Page的Span对象
 </li>
-<li>void Dump(TCMalloc_Printer* out); // Dump出PageHeap信息
+<li>void Dump(TCMalloc<sub>Printer</sub>* out); // Dump出PageHeap信息
 </li>
 <li>bool GetNextRange(PageID start, base::MallocRange* r); // 如果page heap管理了&gt;=start的span,那么返回这个信息
 </li>
-<li>Length ReleaseAtLeastNPages(Length num_pages); // 尝试至少释放num_pages个页面
+<li>Length ReleaseAtLeastNPages(Length num<sub>pages</sub>); // 尝试至少释放num<sub>pages个页面</sub>
 </li>
-<li>size_t GetSizeClassIfCached(PageID p) // 在cache中返回这个page id对应的slab class
+<li>size<sub>t</sub> GetSizeClassIfCached(PageID p) // 在cache中返回这个page id对应的slab class
 </li>
-<li>void CacheSizeClass(PageID p, size_t cl) // 在cache中存放page id对应的slab class.
+<li>void CacheSizeClass(PageID p, size<sub>t</sub> cl) // 在cache中存放page id对应的slab class.
 </li>
 </ul>
 
@@ -1115,7 +1067,7 @@ tcmalloc代码里面kMaxPages==1 &lt;&lt; (20- kPageShift) 相同于有256种页
 <div class="outline-text-5" id="text-4-5-2">
 
 <p>New的逻辑非常简单，首先会尝试在free list里面查找，如果没有的话在lage free list里面查找，不行的话尝试要更多的内存，然后重试。
-需要注意的是，因为这个是一个全局的操作，所以前面都会加上自选锁 SpinLockHolder h(Static::pageheap_lock());
+需要注意的是，因为这个是一个全局的操作，所以前面都会加上自选锁 SpinLockHolder h(Static::pageheap<sub>lock</sub>());
 </p>
 
 
@@ -1375,7 +1327,7 @@ bool PageHeap::GrowHeap(Length n) {
 <div class="outline-text-5" id="text-4-5-6">
 
 <p>IncrementalScavenge这个意思就是增量回收，大致内容就是说将一部分的页面交回给系统内存。虽然在tcmalloc里面实现并没有完全交回给系统内存，
-而只是简单地挂在了_returned_free_list上面，但是里面的策略还是值得看看的。这里所谓的scavenge_counter_意思就是如果归还了多少内存之后，
+而只是简单地挂在了<sub>returned</sub><sub>free</sub><sub>list上面，但是里面的策略还是值得看看的。这里所谓的scavenge</sub><sub>counter</sub><sub>意思就是如果归还了多少内存之后，</sub>
 那么我们就会尝试进行一次完全交回给系统内存.
 </p>
 
@@ -1492,7 +1444,7 @@ bool PageHeap::GrowHeap(Length n) {
 <h5 id="sec-4-5-8"><span class="section-number-5">4.5.8</span> Split</h5>
 <div class="outline-text-5" id="text-4-5-8">
 
-<p>Split过程和Carve过程是非常相似的，只不过Split针对的是IN_USE状态的这种span.
+<p>Split过程和Carve过程是非常相似的，只不过Split针对的是IN<sub>USE状态的这种span</sub>.
 代码阅读到这里暂时还不知道这个Split什么时候调用:(.what a shame.
 </p>
 </div>
@@ -1571,10 +1523,10 @@ bool PageHeap::GrowHeap(Length n) {
 </div>
 
 <div id="outline-container-4-6" class="outline-4">
-<h4 id="sec-4-6"><span class="section-number-4">4.6</span> TCMalloc_PageMap3</h4>
+<h4 id="sec-4-6"><span class="section-number-4">4.6</span> TCMalloc<sub>PageMap3</sub></h4>
 <div class="outline-text-4" id="text-4-6">
 
-<p>page_map.h
+<p>page<sub>map</sub>.h
 </p>
 <p>
 之前pageheap里面可以看到有这么一个要求，就是从一个page ID映射到span这么一个过程。在64位下面的话逻辑地址空间有1 &lt;&lt; 64，
@@ -1612,7 +1564,7 @@ static const int LEAF_LENGTH = 1 &lt;&lt; LEAF_BITS;
 <p>
 初次之外，这个pagemap还有两个比较重要的接口
 </p><ul>
-<li>bool Ensure(Number start, size_t n)
+<li>bool Ensure(Number start, size<sub>t</sub> n)
 </li>
 </ul>
 
@@ -1665,7 +1617,7 @@ static const int LEAF_LENGTH = 1 &lt;&lt; LEAF_BITS;
 </p>
 <p>
 PackedCache是一种非常精巧的数据结构。它的作用主要是想知道对于一个pageId所管理的span而言的话，对应的sizeclass是什么。
-在pageheap里面是这样定义的   typedef PackedCache&lt;BITS-kPageShift, uint64_t&gt; CacheType;  我们还是看看这个结构是什么样的
+在pageheap里面是这样定义的   typedef PackedCache&lt;BITS-kPageShift, uint64<sub>t&gt</sub>; CacheType;  我们还是看看这个结构是什么样的
 </p>
 
 
@@ -1687,8 +1639,8 @@ class PackedCache {
 </pre>
 
 <p>
-首先它还是一个KV结构，只不过K+V大小可以放在sizeof(T)字节里面。回顾一下对于64位而言，PageId 52位，而sizeclass只有85中，完全可以存放在sizeof(uint64_t)里面。
-将K放在高字节，而V放在低字节，组成一个&lt;sizeof(uint64_t)大小的值存放在array_里面。此外还需要注意一个问题就是，这个有可能被多线程访问，
+首先它还是一个KV结构，只不过K+V大小可以放在sizeof(T)字节里面。回顾一下对于64位而言，PageId 52位，而sizeclass只有85中，完全可以存放在sizeof(uint64<sub>t</sub>)里面。
+将K放在高字节，而V放在低字节，组成一个&lt;sizeof(uint64<sub>t</sub>)大小的值存放在array<sub>里面。此外还需要注意一个问题就是，这个有可能被多线程访问，</sub>
 但是如果我们将这个内容设置称为volatile的话，那么是不需要加锁就可以完成的。
 </p>
 </div>
@@ -1699,7 +1651,7 @@ class PackedCache {
 <h4 id="sec-4-8"><span class="section-number-4">4.8</span> Thread Cache</h4>
 <div class="outline-text-4" id="text-4-8">
 
-<p>thread_cache.h
+<p>thread<sub>cache</sub>.h
 </p>
 
 </div>
@@ -1712,17 +1664,17 @@ class PackedCache {
 而如果是分配大对象的话，那么会直接从page heap里面进行分配。如果本地小对象不够的话，那么会尝试从central cache里面要。
 Thread Cache比较重要的接口有下面这些：
 </p><ul>
-<li>void Init(pthread_t tid); // 初始化
+<li>void Init(pthread<sub>t</sub> tid); // 初始化
 </li>
 <li>void Cleanup();
 </li>
-<li>void* Allocate(size_t size, size_t cl); // 从class里面分配size大小
+<li>void* Allocate(size<sub>t</sub> size, size<sub>t</sub> cl); // 从class里面分配size大小
 </li>
-<li>void Deallocate(void* ptr, size_t size_class); // 将ptr放回class对应slab里面
+<li>void Deallocate(void* ptr, size<sub>t</sub> size<sub>class</sub>); // 将ptr放回class对应slab里面
 </li>
 <li>void Scavenge(); // 回收内存到central cache.就是文档里面说的GC
 </li>
-<li>bool SampleAllocation(size_t k); // 是否认为这次分配的k字节需要进行采样.
+<li>bool SampleAllocation(size<sub>t</sub> k); // 是否认为这次分配的k字节需要进行采样.
 </li>
 </ul>
 
@@ -1972,8 +1924,8 @@ inline ThreadCache* ThreadCache::GetCacheIfPresent() {
 
 
 <p>
-这里我想到一个问题，就是如果不断地启动线程然后关闭线程，如果tid是不允许复用的话那么会导致thread_cache不断地开辟。
-如果使用gettid的话那么可能会有这个情况，而如果用pthread_self的话可能就不会有了(至少从程序上看可以复用)
+这里我想到一个问题，就是如果不断地启动线程然后关闭线程，如果tid是不允许复用的话那么会导致thread<sub>cache不断地开辟。</sub>
+如果使用gettid的话那么可能会有这个情况，而如果用pthread<sub>self的话可能就不会有了</sub>(至少从程序上看可以复用)
 </p>
 
 
@@ -2045,7 +1997,7 @@ int main() {
 </pre>
 
 <p>
-这里我们有两个问题没有搞懂，一个是slab到底结构是怎么样的，一个就是IncreaseCacheLimitLocked里面是如何计算max_size_的。
+这里我们有两个问题没有搞懂，一个是slab到底结构是怎么样的，一个就是IncreaseCacheLimitLocked里面是如何计算max<sub>size</sub><sub>的。</sub>
 </p>
 </div>
 
@@ -2125,7 +2077,7 @@ int main() {
 </pre>
 
 <p>
-总之tc的max_size分配策略的话就是根据当前所有tc剩余的空间，如果没有空间的话那么尝试从其他的tc里面获取。应该是想限制一开始每个tc的最大大小。
+总之tc的max<sub>size分配策略的话就是根据当前所有tc剩余的空间，如果没有空间的话那么尝试从其他的tc里面获取。应该是想限制一开始每个tc的最大大小。</sub>
 但是需要注意的是，这个tc最大大小并不是一成不变的，可能会随着时间变化而增加。
 </p>
 </div>
@@ -2160,7 +2112,7 @@ int main() {
 </pre>
 
 <p>
-将自己删除之后需要重新计算thread_heaps以及next_memory_steal这两个变量。
+将自己删除之后需要重新计算thread<sub>heaps以及next</sub><sub>memory</sub><sub>steal这两个变量。</sub>
 </p>
 </div>
 
@@ -2355,10 +2307,10 @@ PopRange这个语义非常简单，但是我们稍微看看这个的实现，
 <h5 id="sec-4-8-17"><span class="section-number-5">4.8.17</span> ListTooLong</h5>
 <div class="outline-text-5" id="text-4-8-17">
 
-<p>到这个地方必须思考一个问题，就是什么时候max_length会发生变化以及如何变化的(触发这些变化的意义是什么).
-我们可以看到Allocate里面如果从cc里面取在不断地增加max_length(存在上限).问题是我们不能够让这个部分缓存太多的内容，
-所以我们必须在一段时间内缩小max_length，一旦length&gt;max_length的话就会触发ListTooLong.
-而ListTooLong里面的操作就是将max_length尝试缩小并且将一部分object归还给cc.
+<p>到这个地方必须思考一个问题，就是什么时候max<sub>length会发生变化以及如何变化的</sub>(触发这些变化的意义是什么).
+我们可以看到Allocate里面如果从cc里面取在不断地增加max<sub>length</sub>(存在上限).问题是我们不能够让这个部分缓存太多的内容，
+所以我们必须在一段时间内缩小max<sub>length，一旦length&gt</sub>;max<sub>length的话就会触发ListTooLong</sub>.
+而ListTooLong里面的操作就是将max<sub>length尝试缩小并且将一部分object归还给cc</sub>.
 </p>
 
 
@@ -2460,7 +2412,7 @@ void ThreadCache::Scavenge() {
 <h4 id="sec-5-1"><span class="section-number-4">5.1</span> 函数入口</h4>
 <div class="outline-text-4" id="text-5-1">
 
-<p>我们还是以最初的函数入门进行分析，我们只是关注tc_malloc与tc_free.
+<p>我们还是以最初的函数入门进行分析，我们只是关注tc<sub>malloc与tc</sub><sub>free</sub>.
 </p>
 
 
@@ -2477,8 +2429,8 @@ extern <span class="org-string">"C"</span> PERFTOOLS_DLL_DECL void tc_free(void*
 </pre>
 
 <p>
-可以看到两个函数调用之前都有hook存在。hook是在malloc_hook_inl.h以及malloc_hook.cc里面定义的，通过一个HookList来进行管理。
-调用Invoke时候就是遍历里面的内容，这个后续可以仔细分析。do_malloc_or_cpp_alloc里面可以看到，因为tc_new_mode==0所以实际调用的就是do_malloc这个函数。
+可以看到两个函数调用之前都有hook存在。hook是在malloc<sub>hook</sub><sub>inl</sub>.h以及malloc<sub>hook</sub>.cc里面定义的，通过一个HookList来进行管理。
+调用Invoke时候就是遍历里面的内容，这个后续可以仔细分析。do<sub>malloc</sub><sub>or</sub><sub>cpp</sub><sub>alloc里面可以看到，因为tc</sub><sub>new</sub><sub>mode</sub>==0所以实际调用的就是do<sub>malloc这个函数。</sub>
 我们首先关注malloc的过程，对于malloc过程了解清楚之后，那么free过程就非常直接了。
 </p>
 </div>
@@ -2489,7 +2441,7 @@ extern <span class="org-string">"C"</span> PERFTOOLS_DLL_DECL void tc_free(void*
 <h4 id="sec-5-2"><span class="section-number-4">5.2</span> 分配逻辑</h4>
 <div class="outline-text-4" id="text-5-2">
 
-<p>我们先看看do_malloc这个过程
+<p>我们先看看do<sub>malloc这个过程</sub>
 </p>
 
 
@@ -2520,7 +2472,7 @@ extern <span class="org-string">"C"</span> PERFTOOLS_DLL_DECL void tc_free(void*
 
 
 <p>
-对于小对象分配逻辑已经清楚了，接着看看大对象分配调用do_malloc_pages这个部分
+对于小对象分配逻辑已经清楚了，接着看看大对象分配调用do<sub>malloc</sub><sub>pages这个部分</sub>
 </p>
 
 
@@ -2552,7 +2504,7 @@ extern <span class="org-string">"C"</span> PERFTOOLS_DLL_DECL void tc_free(void*
 
 
 <p>
-然后稍微看看should_report_large是如何判断的以及如何report
+然后稍微看看should<sub>report</sub><sub>large是如何判断的以及如何report</sub>
 </p>
 
 
@@ -2804,26 +2756,26 @@ inline void do_free(void* ptr) {
 <b>Answer</b>
 </p>
 <p>
-看看MmapSysAllocator::Alloc这个函数吧，假设这里的alignment==page_size的情况的话，
+看看MmapSysAllocator::Alloc这个函数吧，假设这里的alignment==page<sub>size的情况的话，</sub>
 </p><ol>
 <li>extra = alignment - pagesize; 所以extra==0
 </li>
-<li>ptr肯定和page_size对齐，因此adjust==0
+<li>ptr肯定和page<sub>size对齐，因此adjust</sub>==0
 </li>
 </ol>
 
 <p>所以你可以看到其实两个分支都没有走到的。
 </p>
 <p>
-其实在实际使用的时候alignment通常也是page_size的倍数。如果alignment==k*page_size的话，你会发现
+其实在实际使用的时候alignment通常也是page<sub>size的倍数。如果alignment</sub>==k*page<sub>size的话，你会发现</sub>
 </p><ol>
-<li>extra也是page_size倍数
+<li>extra也是page<sub>size倍数</sub>
 </li>
-<li>adjust也是page_size倍数
+<li>adjust也是page<sub>size倍数</sub>
 </li>
 </ol>
 
-<p>因此在munmap的时候不会存在跨越page_size边界这样的问题的。
+<p>因此在munmap的时候不会存在跨越page<sub>size边界这样的问题的。</sub>
 </p>
 <p>
 最后你看看tcmalloc是怎么使用MmapSysAllocator对象的。相信你也看得非常仔细，tcmalloc是 DefaultSysAllocator创建两个对象
@@ -2851,7 +2803,7 @@ system-alloc.h:extern void* TCMalloc_SystemAlloc(size_t bytes, size_t *actual_by
 
 
 <p>
-你会看到实际上调用TCMalloc_SystemAlloc时候，alignment都是==kPageSize的。因此实际tcmalloc 使用时候不会出现这个问题。
+你会看到实际上调用TCMalloc<sub>SystemAlloc时候，alignment都是</sub>==kPageSize的。因此实际tcmalloc 使用时候不会出现这个问题。
 </p></div>
 </div>
 </div>

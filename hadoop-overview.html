@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -415,8 +367,8 @@ As JMX port, ZooKeeper will also use another randomly selected port for RMI. In 
 <tr><th scope="col" class="left">Service</th><th scope="col" class="left">Qualifier</th><th scope="col" class="right">Port</th><th scope="col" class="left">Protocol</th><th scope="col" class="left">Access Requirement</th><th scope="col" class="left">Configuration</th><th scope="col" class="left">Comment</th></tr>
 </thead>
 <tbody>
-<tr><td class="left">Oozie Server</td><td class="left"></td><td class="right">11000</td><td class="left">TCP</td><td class="left">External</td><td class="left">OOZIE_HTTP_PORT in oozie-env.sh</td><td class="left">HTTP</td></tr>
-<tr><td class="left">Oozie Server</td><td class="left"></td><td class="right">11001</td><td class="left">TCP</td><td class="left">localhost</td><td class="left">OOZIE_ADMIN_PORT in oozie-env.sh</td><td class="left">Shutdown port</td></tr>
+<tr><td class="left">Oozie Server</td><td class="left"></td><td class="right">11000</td><td class="left">TCP</td><td class="left">External</td><td class="left">OOZIE<sub>HTTP</sub><sub>PORT</sub> in oozie-env.sh</td><td class="left">HTTP</td></tr>
+<tr><td class="left">Oozie Server</td><td class="left"></td><td class="right">11001</td><td class="left">TCP</td><td class="left">localhost</td><td class="left">OOZIE<sub>ADMIN</sub><sub>PORT</sub> in oozie-env.sh</td><td class="left">Shutdown port</td></tr>
 </tbody>
 </table>
 
@@ -445,8 +397,8 @@ As JMX port, ZooKeeper will also use another randomly selected port for RMI. In 
 <tr><th scope="col" class="left">Service</th><th scope="col" class="left">Qualifier</th><th scope="col" class="right">Port</th><th scope="col" class="left">Protocol</th><th scope="col" class="left">Access Requirement</th><th scope="col" class="left">Configuration</th><th scope="col" class="left">Comment</th></tr>
 </thead>
 <tbody>
-<tr><td class="left">KRB5 KDC Server</td><td class="left">Secure</td><td class="right">88</td><td class="left">UDP/TCP</td><td class="left">External</td><td class="left">kdc_ports and kdc_tcp_ports in either the [kdcdefaults] or [realms] sections of kdc.conf</td><td class="left">By default only UDP</td></tr>
-<tr><td class="left">KRB5 Admin Server</td><td class="left">Secure</td><td class="right">749</td><td class="left">TCP</td><td class="left">Internal</td><td class="left">kadmind_port in the [realms] section of kdc.conf</td><td class="left"></td></tr>
+<tr><td class="left">KRB5 KDC Server</td><td class="left">Secure</td><td class="right">88</td><td class="left">UDP/TCP</td><td class="left">External</td><td class="left">kdc<sub>ports</sub> and kdc<sub>tcp</sub><sub>ports</sub> in either the [kdcdefaults] or [realms] sections of kdc.conf</td><td class="left">By default only UDP</td></tr>
+<tr><td class="left">KRB5 Admin Server</td><td class="left">Secure</td><td class="right">749</td><td class="left">TCP</td><td class="left">Internal</td><td class="left">kadmind<sub>port</sub> in the [realms] section of kdc.conf</td><td class="left"></td></tr>
 </tbody>
 </table>
 

@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -230,7 +182,7 @@ g++ wrapper.o -L. -lmain -Xlinker -rpath .
 
 <p>
 第一种是最不推荐的方式，因为这样一来的话，所有在libmain.so里面的符号，在运行时候就会在/home/dirlt/libmain.so里面查找。
-第二种是最常见的方式，但是我们需要export LD_LIBRARY_PATH=.;$LD_LIBRARY_PATH之后运行时才正常，因为大部分情况下面加载目录是不包括当前目录的。
+第二种是最常见的方式，但是我们需要export LD<sub>LIBRARY</sub><sub>PATH</sub>=.;$LD<sub>LIBRARY</sub><sub>PATH之后运行时才正常，因为大部分情况下面加载目录是不包括当前目录的。</sub>
 第三种的话，联编时候就告诉加载器，在加载的时候就需要需要去.目录下面查找，是一种比较好的方式。
 </p>
 <p>
@@ -434,7 +386,7 @@ int echo(){
 
 
 <p>
-以上面一节代码为例，看看echo.cc是如何使用global_variable的：
+以上面一节代码为例，看看echo.cc是如何使用global<sub>variable的：</sub>
 </p>
 
 

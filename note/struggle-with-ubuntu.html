@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="../css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="../css/emacs.css" />
+<link rel="shortcut icon" href="../css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="../css/site.css" />
 
 
 </head>
@@ -78,7 +30,7 @@
 安装ubuntu 11.10一切都非常顺利，unity风格虽然有点不太顺手但是都还是可以忍的，毕竟习惯了就好。将ctrl-///设置成为在工作区切换。apt-get install/remove/purge/autoremove都非常的给力，原来要安装什么库的话都需要自己查找依赖一个个down下来configure;make;make;install.终端不好用就下载了一个terminator,熟悉了一下如何new tab,new window.安装好git从github把自己的配置down下来。没有gtalk,简单，apt-get install pidgin即可。firefox和thunderbird都已经是预装的了，发现firefox时不时崩溃换了一个chrome,从google chromeofficial website上面down一个.deb包，用software-center一下就安装好了。为了让终端有更好的字体还需要从windows把一些现有的fonts放进来，我觉得consolas和微软雅黑很好看。thunderbird迁移数据非常方便，直接从windows机将原来的thunderbird数据copy过来就OK了。输入法也搞定了，用ibus-pinyin，虽然没有像搜狗输入法这样做的这么智能，但是还是可以忍的。基本上最难搞的就是，因为外网机器访问公司内网机器需要一个安全验证，需要浏览器上面java支持，但是apt-get install openjdk-7完全没有这个扩展，在网上一阵乱搜方法都大同小异但是对于自己系统完全不见效。所有还是从java官网上面找到了ubuntu浏览器如何安装java扩展。我终于知道了，对于这种问题，还是官网可靠。基本的功能比如收发邮件，浏览网页，登录开发机进行开发，在本地开发等功能都已经能够满足了，虽然折腾了两天左右，不过感觉还是值得的，毕竟以后就可以在上面工作了。 <b>但是告诉你，这还没完。</b>
 </p>
 <p>
-首先因为公司内部使用baidu hi这个聊天工具进行通信，而这个工具又没有linux客户端只有web hi.web hi非常的烂，容易掉线同时没有办法保存消息，并且致命的缺点就是没有办法像windows客户端一样有notify机制(事实上还是有机制的，那就是声音和里面小tab闪动。对于声音我们必须带上耳机才能够知道，而大部分时候听歌的声音更大。而对于小tab闪动，我们通常都喜欢浏览器全屏，终端全屏，这样只能够放在不同的workspace下面。而放在同步workspace下面是没有办法看到的)，只有我们一遍遍地轮询查看是否有新的消息到来。hi离开了baidu可能就不用了，QQ你躲不了吧。家里人，同学们都在用QQ.web qq比web hi好多了，不容易掉线并且保存记录，而且web qq已经可以说是一个成型的web OS了。但是web qq依然缺乏友好的通知机制。写到这里，同学肯定问我啥算是好的通知机制，好吧，pidgin就算是有非常好的通知机制。好比消息来了的话，可以类似调用notify-send这样的命令的效果。接着就是网银了只能够用IE。如果说web hi和web qq是可以忍受的话，那么 <b>网银</b> 则不是忍不忍的问题，而是有没有的问题。而这一切的一切，只需要我们有一个windows虚拟机即可。在linux下面比较靠谱点的虚拟机就三个vmware,virtualbox和wine.我从同学拿到了vmware7.0的bundle，开始安装，遇到了很多问题，有 <a href="http://hi.baidu.com/xinglianfeng/item/007828172a8087781009b59a">这里</a> ，<a href="http://www.backtrack-linux.org/forums/showthread.php?t=40276">这里</a> ，还有一些没有记录下来，最后在编译VMCI(virtual machine communication interface)时候，因为我的内核版本比较高，在include/linux下面缺少smp_lock.h所以编译失败，后面就没有再高了。安装wine在apt-get帮助下面非常舒服，首先拿QQ试试，安装啥的都没有问题，运行的时候缺少一大堆DLL.接着virtualbox没有安装我就怕了，后面就没有在折腾。失败！！！但是我忍！！！
+首先因为公司内部使用baidu hi这个聊天工具进行通信，而这个工具又没有linux客户端只有web hi.web hi非常的烂，容易掉线同时没有办法保存消息，并且致命的缺点就是没有办法像windows客户端一样有notify机制(事实上还是有机制的，那就是声音和里面小tab闪动。对于声音我们必须带上耳机才能够知道，而大部分时候听歌的声音更大。而对于小tab闪动，我们通常都喜欢浏览器全屏，终端全屏，这样只能够放在不同的workspace下面。而放在同步workspace下面是没有办法看到的)，只有我们一遍遍地轮询查看是否有新的消息到来。hi离开了baidu可能就不用了，QQ你躲不了吧。家里人，同学们都在用QQ.web qq比web hi好多了，不容易掉线并且保存记录，而且web qq已经可以说是一个成型的web OS了。但是web qq依然缺乏友好的通知机制。写到这里，同学肯定问我啥算是好的通知机制，好吧，pidgin就算是有非常好的通知机制。好比消息来了的话，可以类似调用notify-send这样的命令的效果。接着就是网银了只能够用IE。如果说web hi和web qq是可以忍受的话，那么 <b>网银</b> 则不是忍不忍的问题，而是有没有的问题。而这一切的一切，只需要我们有一个windows虚拟机即可。在linux下面比较靠谱点的虚拟机就三个vmware,virtualbox和wine.我从同学拿到了vmware7.0的bundle，开始安装，遇到了很多问题，有 <a href="http://hi.baidu.com/xinglianfeng/item/007828172a8087781009b59a">这里</a> ，<a href="http://www.backtrack-linux.org/forums/showthread.php?t=40276">这里</a> ，还有一些没有记录下来，最后在编译VMCI(virtual machine communication interface)时候，因为我的内核版本比较高，在include/linux下面缺少smp<sub>lock</sub>.h所以编译失败，后面就没有再高了。安装wine在apt-get帮助下面非常舒服，首先拿QQ试试，安装啥的都没有问题，运行的时候缺少一大堆DLL.接着virtualbox没有安装我就怕了，后面就没有在折腾。失败！！！但是我忍！！！
 </p>
 <p>
 还面临的问题就是文件和笔记的同步，以及文件的互传。文件和笔记同步是考虑到家里有机器，单位有机器希望可以进行sync.而文件的互传是因为需要在开发机和自己电脑上传输一些东西。关于文件同步考虑用dropbox,但是dropbox在天朝被墙了而且还必须使用http proxy来进行下载，后面安装也没有成功。然后考虑用ubuntu one,在ubuntu下面工作还是很不错的，但是在windows下面ubuntu one虽然也有beta版本但是似乎不太稳定，在windows下面放了N多文件但是在ubuntu系统下面就是没有任何动静。接着试用了sparkleshare，可以使用github来作为relay server，思想还是很open的而且windows下面也有git客户端。但是因为被之前折腾得太多了所以都没有精力在windows下面尝试了（不过后面看了sparkleshare只有windows vista/7的版本，没有XP的版本）。 <b>文件同步，失败！！！</b> 接着搞笔记同步，我之前使用evernote来写笔记，但是在ubuntu下面没有evernote版本，只有windows/mac/firefox/chrome/safari.对于浏览器，evernote仅仅是一个剪辑插件，基本上用途不大，想访问evernote只能用web的方式，不能够离线本地存储一份。接着同事推荐使用tomboy,我没有先尝试在ubuntu下面安装和尝试，首先在windows下面尝试，需要安装gtk#和mono以及.net framework 4.0.安装好之后，看上去界面不错很清爽，有synchronization这个选项，然后里面死活配置不了同步服务器。也许是因为被折腾够了，所以直接就放弃了，也没有在linux下面尝试。 <b>笔记同步，失败！！！</b> .对于文件的互传我也只是想到了用ftp或者是http,或者是像通过外部relay server来中转比如github,但是没有继续实验下去了。 <b>文件互传，失败！！！</b> 。虽然失败了这么多，但是我忍！！！

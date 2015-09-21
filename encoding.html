@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -206,7 +158,7 @@ Unicode全角和半角转换 uch&gt;=0xFF00 &amp;&amp; uch&lt;=0xFF5E =&gt; (uch
 </li>
 </ul>
 
-<p>因为UCS-2没有定义FFFE,所以FFFE和FEFF就能够来判断是大端还是小端.UTF32对应UCS-4关系,使用4个字节表示一个码点.和UTF16一样也分little endian和big endian,也包含BOM这种方式.UCS-2引入了欧元字符为0x20ac.GBK-&gt;UCS2的转换一定是始终成功的.相反UCS-2向GBK的转换可能存在不对应字符.UTF16在U+0000-U+FFFF之间使用单一的16位编码单元[基本多语言级别],而在+U10000-U+10FFFF之间使用一对16位编码单元.FFFD在UCS-2里面是没有使用的,所以可以来做NO_MAPPING.
+<p>因为UCS-2没有定义FFFE,所以FFFE和FEFF就能够来判断是大端还是小端.UTF32对应UCS-4关系,使用4个字节表示一个码点.和UTF16一样也分little endian和big endian,也包含BOM这种方式.UCS-2引入了欧元字符为0x20ac.GBK-&gt;UCS2的转换一定是始终成功的.相反UCS-2向GBK的转换可能存在不对应字符.UTF16在U+0000-U+FFFF之间使用单一的16位编码单元[基本多语言级别],而在+U10000-U+10FFFF之间使用一对16位编码单元.FFFD在UCS-2里面是没有使用的,所以可以来做NO<sub>MAPPING</sub>.
 </p>
 </div>
 
@@ -232,7 +184,7 @@ U-04000000 - U-7FFFFFFF: 1111110x 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx 10xxxxxx
 <ul>
 <li>使用&amp;0xC0=0x80可以来判断是否为HEADER字节&hellip;:)..这个特性很不错:).0xFE和0xFF在UTF8中从未使用.
 </li>
-<li>根据第一个字节就能够知道长度.可以看到最多31个x所以最多编入2^31个UCS代码.UCS-2(4)和UTF8转换的关系就是把所有的位收集起来然后散布出去.utf8表示未知字符串0xEF0xBB0xBF[BOM].那么直接略过这3个字.
+<li>根据第一个字节就能够知道长度.可以看到最多31个x所以最多编入2<sup>31个UCS代码</sup>.UCS-2(4)和UTF8转换的关系就是把所有的位收集起来然后散布出去.utf8表示未知字符串0xEF0xBB0xBF[BOM].那么直接略过这3个字.
 </li>
 </ul>
 

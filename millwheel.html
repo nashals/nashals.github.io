@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -152,7 +104,7 @@ define an arbitrary, dynamic topology. Records are delivered con-tinuously along
 <p>文中以Google Zeitgeist产品举例，用于实时地发现一些搜索关键词热度变化。热度变化不能仅仅通过观察关键词搜索量的变化来判断，还要考虑关键词本身属性造成的随时间变化产生的波动（比如晚上搜索今晚电视节目预告就会比较多），所以热度变化需要考虑到关键词属性（模型）。
 </p>
 <p>
-<img src="images/millwheel-google-zeitgeist.png"  alt="./images/millwheel-google-zeitgeist.png" />
+<img src="http://dirlt.com/images/millwheel-google-zeitgeist.png"  alt="./images/millwheel-google-zeitgeist.png" />
 </p>
 <p>
 In order to implement the Zeitgeist system, our approach is to bucket records into one-second intervals and to compare the ac-tual traffic for each time bucket to the expected traffic that the model predicts. If these quantities are consistently different over a non-trivial number of buckets, then we have high confidence that a query is spiking or dipping. In parallel, we update the model with the newly received data and store it for future use. # 将记录按照1s进行分组，然后对比实际流量和预期流量。如果持续地在多个分组上差异很大，那么我们就可以相信这个检索量在增高或是降低，同时我们用这些记录来更新模型。
@@ -286,7 +238,7 @@ Low watermark values are seeded by injectors, which send data into MillWheel fro
 By waiting for the low watermark of a computation to advance　past a certain value, the user can determine that they have a com-　plete picture of their data up to that time, as previously illustrated　by Zeitgeist’s dip detection. When assigning timestamps to new or　aggregate records, it is up to the user to pick a timestamp no smaller　than any of the source records. The low watermark reported by the　MillWheel framework measures known work in the system, shownin Figure 6. # 一旦知道LW, 那么就可以认为timestamp &lt; LW的记录全部到达。下图说明LW是如何变化的.
 </p>
 <p>
-<img src="images/millwheel-low-watermark-evolve.png"  alt="./images/millwheel-low-watermark-evolve.png" />
+<img src="http://dirlt.com/images/millwheel-low-watermark-evolve.png"  alt="./images/millwheel-low-watermark-evolve.png" />
 </p>
 </div>
 
@@ -333,7 +285,7 @@ The use of timers is optional – applications that do not have the need for tim
 <h4 id="sec-6-1"><span class="section-number-4">6.1</span> Computation API</h4>
 <div class="outline-text-4" id="text-6-1">
 
-<p><img src="images/millwheel-api-illustraed.png"  alt="./images/millwheel-api-illustraed.png" />
+<p><img src="http://dirlt.com/images/millwheel-api-illustraed.png"  alt="./images/millwheel-api-illustraed.png" />
 </p>
 </div>
 
@@ -397,7 +349,7 @@ computation authors, we relieve them of a significant implementa-tion burden. # 
 As an optimization, the above operations may be coalesced into a single checkpoint for multiple records. Deliveries in MillWheel are retried until they are ACKed in order to meet our at-least-once requirement, which is a prerequisite for exactly-once. We retry be-cause of the possibility of networking issues and machine failures on the receiver side. However, this introduces the case where a re-ceiver may crash before it has a chance to ACK the input record, even if it has persisted the state corresponding to successful pro-cessing of that record. In this case, we must prevent duplicate pro-cessing when the sender retries its delivery. # 为了提高吞吐可以批量完成后面3步，以上步骤可以保证exactly-one-delivery
 </p>
 <p>
-The system assigns unique IDs to all records at production time. We identify duplicate records by including this unique ID for the record in the same atomic write as the state modification. If the same record is later retried, we can compare it to the journaled ID, and discard and ACK the duplicate (lest it continue to retry in-definitely). Since we cannot necessarily store all duplication data in-memory, we maintain a Bloom filter of known record finger-prints, to provide a fast path for records that we have provably never seen before. In the event of a filter miss, we must read the backing store to determine whether a record is a duplicate. Record IDs for past deliveries are garbage collected after MillWheel can guarantee that all internal senders have finished retrying. For injectors that frequently deliver late data, we delay this garbage collection by a corresponding slack value (typically on the order of a few hours). However, exactly-once data can generally be cleaned up within a few minutes of production time. # 所有record都会分配唯一id.(computation_name + monotonic id).是一种实现。但是对于receiver所看到的unique ID并不是单调的，所以必须记录所有处理过的unique ID. 用bloom filter来做优化，然后定时(1分钟左右)可以对unique IDs做GC.
+The system assigns unique IDs to all records at production time. We identify duplicate records by including this unique ID for the record in the same atomic write as the state modification. If the same record is later retried, we can compare it to the journaled ID, and discard and ACK the duplicate (lest it continue to retry in-definitely). Since we cannot necessarily store all duplication data in-memory, we maintain a Bloom filter of known record finger-prints, to provide a fast path for records that we have provably never seen before. In the event of a filter miss, we must read the backing store to determine whether a record is a duplicate. Record IDs for past deliveries are garbage collected after MillWheel can guarantee that all internal senders have finished retrying. For injectors that frequently deliver late data, we delay this garbage collection by a corresponding slack value (typically on the order of a few hours). However, exactly-once data can generally be cleaned up within a few minutes of production time. # 所有record都会分配唯一id.(computation<sub>name</sub> + monotonic id).是一种实现。但是对于receiver所看到的unique ID并不是单调的，所以必须记录所有处理过的unique ID. 用bloom filter来做优化，然后定时(1分钟左右)可以对unique IDs做GC.
 </p>
 </div>
 
@@ -430,7 +382,7 @@ We use a storage system such as Bigtable, which efficiently implements blind wri
 WP是向下游发送时候，在持久化状态和productions之前，乐观地先往下面发送records并且等待ACK. 如果接受ACK的话那么我们没有必要持久化productions. 可是如果整个pipeline非常深的话，如果其中一个computation没有回复ACK的话那么整个pipeline都会stall. 解决办法就是如果发现等待ACK时间太长的话，先在本地做好checkpoint(productions)然后ACK上层。
 </p>
 <p>
-<img src="images/millwheel-weak-production-checkpoint.png"  alt="./images/millwheel-weak-production-checkpoint.png" />
+<img src="http://dirlt.com/images/millwheel-weak-production-checkpoint.png"  alt="./images/millwheel-weak-production-checkpoint.png" />
 </p>
 </div>
 
@@ -537,7 +489,7 @@ In summary, our implementation of low watermarks does not re-quire any sort of s
 for records when running over 200 CPUs. Median record delay is 3.6 milliseconds and 95th-percentile latency is 30 milliseconds, which easily fulfills the requirements for many streaming systems at Google (even 95th percentile is within human reaction time). # 实验的计算过程是单阶段实时排序，扩展到200CPUs. 中位延迟是3.6ms, 95%延迟是在30ms一下. 这个计算过程是idempotent的.
 </p>
 <p>
-<img src="images/millwheel-output-latency.png"  alt="./images/millwheel-output-latency.png" />
+<img src="http://dirlt.com/images/millwheel-output-latency.png"  alt="./images/millwheel-output-latency.png" />
 </p>
 <p>
 This test was performed with strong productions and exactly-once disabled. With both of these features enabled, median latency jumps up to 33.7 milliseconds and 95th-percentile latency to 93.8 milliseconds. This is a succinct demonstration of how idempotent computations can decrease their latency by disabling these two fea-tures. # 因为上面计算是幂等的，所以我们可以关闭SP和exactly-once-delivery语义，然后中位延迟上升到33.7ms, 95%延迟在93.8ms一下。
@@ -546,7 +498,7 @@ This test was performed with strong productions and exactly-once disabled. With 
 To verify that MillWheel’s latency profile scales well with the system’s resource footprint, we ran the single-stage latency exper-iment with setups ranging in size from 20 CPUs to 2000 CPUs, scaling input proportionally. Figure 14 shows that median latency stays roughly constant, regardless of system size. 99th-percentile latency does get significantly worse (though still on the order of 100ms). However, tail latency is expected to degrade with scale –more machines mean that there are more opportunities for things to go wrong. # 下图是验证规模扩展对延迟的影响，测试从20CPUs到2000CPUs. 可以看到中位延迟和95%延迟变化不是特别大，但是99%延迟也就是tail-latency迅速增长。
 </p>
 <p>
-<img src="images/millwheel-latency-scalability.png"  alt="./images/millwheel-latency-scalability.png" />
+<img src="http://dirlt.com/images/millwheel-latency-scalability.png"  alt="./images/millwheel-latency-scalability.png" />
 </p>
 </div>
 
@@ -560,7 +512,7 @@ To verify that MillWheel’s latency profile scales well with the system’s res
 gates. For these computations, the low watermark’s lag behind real time bounds the freshness of these aggregates. Since the low wa-termark propagates from injectors through the computation graph, we expect the lag of a computation’s low watermark to be propor-tional to its maximum pipeline distance from an injector. We ran a simple three-stage MillWheel pipeline on 200 CPUs, and polledeach computation’s low watermark value once per second. In Fig-ure 15, we can see that the first stage’s watermark lagged real time by 1.8 seconds, however, for subsequent stages, the lag increased per stage by less than 200ms. Reducing watermark lag is an active area of development. # 一部分计算依赖于LW触发定时器，所以LW计算延迟也非常关键。这里实验构造了一个简单的3阶段计算过程在200CPUs上运行，然后下图是延迟情况
 </p>
 <p>
-<img src="images/millwheel-low-watermark-lag.png"  alt="./images/millwheel-low-watermark-lag.png" />
+<img src="http://dirlt.com/images/millwheel-low-watermark-lag.png"  alt="./images/millwheel-low-watermark-lag.png" />
 </p>
 <p>
 从injector到第一阶段的LW延迟在1.8s, 之后每个阶段之间段延迟在200ms.
@@ -576,7 +528,7 @@ gates. For these computations, the low watermark’s lag behind real time bounds
 <p>Due to its high rate of checkpointing, MillWheel generates sig-nificant amounts of traffic to the storage layer. When using a stor-age system such as Bigtable, reads incur a higher cost than writes, and MillWheel alleviates this with a framework-level cache. A common use case for MillWheel is to buffer data in storage until the low watermark has passed a window boundary and then to fetch the data for aggregation. This usage pattern is hostile to the LRU caches commonly found in storage systems, as the most recently modified row is the one least likely to be fetched soon. MillWheel knows how this data is likely to be used and can provide a bet-ter cache-eviction policy. In Figure 16 we measure the combined CPU usage of the MillWheel workers and the storage layer, relative to maximum cache size (for corporate-secrecy reasons, CPU usage has been normalized). Increasing available cache linearly improves CPU usage (after 550MB most data is cached, so further increases were not helpful). In this experiment, MillWheel’s cache was able to decrease CPU usage by a factor of two. # 使用框架级别的Cache来缓存之前处理过的数据结果，这样可以减少BigTable等data store的读取压力
 </p>
 <p>
-<img src="images/millwheel-framework-level-cache.png"  alt="./images/millwheel-framework-level-cache.png" />
+<img src="http://dirlt.com/images/millwheel-framework-level-cache.png"  alt="./images/millwheel-framework-level-cache.png" />
 </p>
 </div>
 

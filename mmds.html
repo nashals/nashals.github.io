@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -177,15 +129,15 @@ shingles是将文档进行字符切分：k-shingle(k-gram)指将文档内连续k
 <p>
 最后我们相当于需要为这些vector建立"索引". 这个方法称为 <a href="images/mmds_locality_sensitive_hashing.pdf">LSH(局部敏感哈希)</a>. 顾名思义就是将vector拆分称为多个小部分，针对每个部分进行hash. 如果一个C在某个小部分hash相同的话，那么这个C就可以作为候选(candidates). 最终我们会对这个C全量vector计算相似度。具体地来说，这些小部分称为band(b = # of band), 每个band里面有r个rows. 还有参数k来控制hash的bucket. 假设我们希望能够找出相似度为s的文档的话：
 </p><ul>
-<li>那么C1,C2在一个band上完全相同的概率是 s^b.
+<li>那么C1,C2在一个band上完全相同的概率是 s<sup>b</sup>.
 </li>
-<li>而C1,C2在所有band上都不相同的概率则是 (1-s^b) ^ r.
+<li>而C1,C2在所有band上都不相同的概率则是 (1-s<sup>b</sup>) ^ r.
 </li>
-<li>C1,C2在任意一个band上相同概率是 1 - (1-s^b) ^ r.
+<li>C1,C2在任意一个band上相同概率是 1 - (1-s<sup>b</sup>) ^ r.
 </li>
 </ul>
 
-<p>我们希望的函数形状是：y=1.0 if sim &gt;= s, 0.0 if sim &lt; s. 这是一个阶梯函数。而实际上1-(1-s^b)^r这个函数是一个S形状函数。通过控制b, r参数可以控制函数形状来调整false-pos和false-neg概率。
+<p>我们希望的函数形状是：y=1.0 if sim &gt;= s, 0.0 if sim &lt; s. 这是一个阶梯函数。而实际上1-(1-s<sup>b</sup>)<sup>r这个函数是一个S形状函数。通过控制b</sup>, r参数可以控制函数形状来调整false-pos和false-neg概率。
 </p>
 </div>
 
@@ -264,13 +216,13 @@ AGM模型可以稍作简化成为BIGCLAM. 我们不要为每个community定义p,
 注意到上面R矩阵中越在右下角的值越小，又因为R表示某个隐式变量的强度，所以维度降解就是要忽略右下角的值（设置为0）：忽略的值越多，那么维度下降的越多。同时我们可以证明用这种方法近似是最优的近似(optimal low-rank approximation)。完成忽略操作之后我们就得到了R'矩阵，然后可以使用这个R'矩阵计算A'=(U*R'*V)，然后使用Frobenius norm来计算A和A'之间的差异（对每个元素差值做平方然后求和）。
 </p>
 <p>
-SVD的几何意义就是要将原来数据通过线性模型方式映射到topics所描述的平面上去并且满足距离上的最小二乘，从这点上看和线性回归有点类似，只不过差别是线性回归问题中我们直接使用input属性来描述超平面而SVD中我们要自己找出这个照平面。这个R实际上是这些数据在这些超平面的各个维度上分布的方差：方差越小所蕴含信息也就越少，我们就可以越可以忽略它来完成维度降解。我们可以使用R和R'差异来衡量因为维度降解造成信息损失的程度，使用sum(R'^2) / sum(R^2) 来衡量信息保持的程度，通常要保证在80-90%左右。下图给出了SVD和eigen-decomposition之间的联系
+SVD的几何意义就是要将原来数据通过线性模型方式映射到topics所描述的平面上去并且满足距离上的最小二乘，从这点上看和线性回归有点类似，只不过差别是线性回归问题中我们直接使用input属性来描述超平面而SVD中我们要自己找出这个照平面。这个R实际上是这些数据在这些超平面的各个维度上分布的方差：方差越小所蕴含信息也就越少，我们就可以越可以忽略它来完成维度降解。我们可以使用R和R'差异来衡量因为维度降解造成信息损失的程度，使用sum(R'<sup>2</sup>) / sum(R<sup>2</sup>) 来衡量信息保持的程度，通常要保证在80-90%左右。下图给出了SVD和eigen-decomposition之间的联系
 </p>
 <p>
 <img src="images/mmds-svd-and-eigen-decomp.png"  alt="./images/mmds-svd-and-eigen-decomp.png" />
 </p>
 <p>
-SVD计算复杂度在O(n^2 * m) / O(m^2 * n). 如果输入矩阵是稀疏的话，SVD分解之后得到的三个矩阵却可能是非常稠密的。同时SVD得到的topics维度是非常难以解释的。CUR算法可以解决这些问题，大致思想是分解称为CUR三个矩阵，C是从A矩阵中选择k'个代表列构成的(n*k')，R则是从A矩阵中选择k'个代表行构成的(k'*m)，时间复杂度控制在O(n*m)上。它是一个概率型算法通过控制k'来控制和最优解之间的误差。
+SVD计算复杂度在O(n<sup>2</sup> * m) / O(m<sup>2</sup> * n). 如果输入矩阵是稀疏的话，SVD分解之后得到的三个矩阵却可能是非常稠密的。同时SVD得到的topics维度是非常难以解释的。CUR算法可以解决这些问题，大致思想是分解称为CUR三个矩阵，C是从A矩阵中选择k'个代表列构成的(n*k')，R则是从A矩阵中选择k'个代表行构成的(k'*m)，时间复杂度控制在O(n*m)上。它是一个概率型算法通过控制k'来控制和最优解之间的误差。
 </p>
 <p>
 <img src="images/mmds-cur-approx-to-svd.png"  alt="./images/mmds-cur-approx-to-svd.png" />
@@ -283,7 +235,7 @@ SVD计算复杂度在O(n^2 * m) / O(m^2 * n). 如果输入矩阵是稀疏的话�
 <h3 id="sec-7"><span class="section-number-3">7</span> <a href="images/mmds-latent-factor-model.pdf">Latent-Factor Models</a></h3>
 <div class="outline-text-3" id="text-7">
 
-<p>通常我们使用RMSE(root-mean-square-error, = 1.0/N * sqrt((r'-r)^2). 其中N表示测试集合大小，r'表示预测评分，r表示实际评分)来衡量推荐系统好坏。实际的推荐系统还需要考虑 1. 多样性(diversity) 2. 用户环境(context) 3. 物品推荐顺序等。RMSE只能说这个模型可以很好地拟合当前rating情况，但是并不意味着是我们真正想要的。
+<p>通常我们使用RMSE(root-mean-square-error, = 1.0/N * sqrt((r'-r)<sup>2</sup>). 其中N表示测试集合大小，r'表示预测评分，r表示实际评分)来衡量推荐系统好坏。实际的推荐系统还需要考虑 1. 多样性(diversity) 2. 用户环境(context) 3. 物品推荐顺序等。RMSE只能说这个模型可以很好地拟合当前rating情况，但是并不意味着是我们真正想要的。
 </p>
 <p>
 推荐系统通常在下面几个层面上建模：1. global 2. factorization 3. collaborative filtering(CF). 其中global从全局上考虑这个用户和平均用户的偏差，CF则使用NN(nearest neighbor)方法来预测评分：假设我们想知道u对i的评价，我们可以先找到k个和item i比较接近(kNN, 使用相似度做度量, sij)并且是u已经评价过的items, 然后使用这些ratings使用相似度做加权。如果综合考虑的话就可以给出一个工作得还不错的模型。

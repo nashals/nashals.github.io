@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -161,7 +113,7 @@
 
 
 <p>
-汇编扩展以__asm__开头表示后面部分为汇编,__volatile__严禁将此处的汇编语句和其他语句进行重组优化，就是希望gcc不要修改我们这个部分。
+汇编扩展以_<sub>asm</sub>_<sub>开头表示后面部分为汇编</sub>,_<sub>volatile</sub>_<sub>严禁将此处的汇编语句和其他语句进行重组优化，就是希望gcc不要修改我们这个部分。</sub>
 </p><ul>
 <li>寄存器使用%%开头
 </li>
@@ -395,7 +347,7 @@ __asm__ __volatile__ (<span class="org-string">"cpuid"</span>:<span class="org-s
 <h4 id="sec-4-5"><span class="section-number-4">4.5</span> 指令顺序调整</h4>
 <div class="outline-text-4" id="text-4-5">
 
-<p>即使对于一条__asm__指令的话,可能被调整执行顺序.如果希望不被调整执行顺序的话,那么应该把
+<p>即使对于一条_<sub>asm</sub>_<sub>指令的话</sub>,可能被调整执行顺序.如果希望不被调整执行顺序的话,那么应该把
 这些指令放在一个asm指令内部.
 </p>
 </div>

@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -96,9 +48,9 @@ Log splitting is done by HMaster as the cluster starts or by ServerShutdownHandl
 </li>
 <li>read edits from each log file, put edit entries in buffers, writers write edits to edits files. 读线程来进行拆分，将需要write的内容丢给写线程完成。
 <ul>
-<li>每个线程写入的文件为/hbase/&lt;table_name&gt;/&lt;region_id&gt;/recovered.edits/.temp
+<li>每个线程写入的文件为/hbase/&lt;table<sub>name&gt</sub>;/&lt;region<sub>id&gt</sub>;/recovered.edits/.temp
 </li>
-<li>一旦写成功之后就会重命名为/hbase/&lt;table_name&gt;/&lt;region_id&gt;/recovered.edits/&lt;sequenceid&gt;，其中sequenceid是最后一条写入这个file的log对应的unique operation id.
+<li>一旦写成功之后就会重命名为/hbase/&lt;table<sub>name&gt</sub>;/&lt;region<sub>id&gt</sub>;/recovered.edits/&lt;sequenceid&gt;，其中sequenceid是最后一条写入这个file的log对应的unique operation id.
 </li>
 <li>As a result, when replaying the recovered edits, it is possible to determine if all edits have been written. If the last edit that was written to the HFile is greater than or equal to the edit sequence id included in the file name, it is clear that all writes from the edit file have been completed.（这样一旦在做文件恢复的时候就可以很容易地确定这个恢复文件是否需要读取。如果在HFile里面最大的sequence id比这个文件名显示的seq id大的话，那么可以认为不需要replay这个文件）
 </li>
@@ -140,7 +92,7 @@ Times to complete single threaded log splitting vary, but the process may take s
 </li>
 <li>Checks if there are any unassigned tasks. If so, create an ephemeral rescan node so that each split log worker is notified to re-scan unassigned tasks via the nodeChildrenChanged ZooKeeper event.（如果存在一些unassigned task的话，那么创建一个临时节点来触发worker得到事件，这样worker就会重新扫描看是否存在没有完成的task）
 </li>
-<li>Checks those assigned tasks if they are expired. If so, move the task to TASK_UNASSIGNED state again so that they can be retried. These tasks could be assigned to some slow workers, or could be already finished. It is fine since the split can be retried due to the idempotency of the log splitting task; that is, the same log splitting task can be processed many times without causing any problem.（如果task过期的话，可能是因为分配到slow worker或者是已经计算完毕，那么就会被重新设置TASK_UNASSIGNED.但是这个对于正确性没有影响因为是幂等的）
+<li>Checks those assigned tasks if they are expired. If so, move the task to TASK<sub>UNASSIGNED</sub> state again so that they can be retried. These tasks could be assigned to some slow workers, or could be already finished. It is fine since the split can be retried due to the idempotency of the log splitting task; that is, the same log splitting task can be processed many times without causing any problem.（如果task过期的话，可能是因为分配到slow worker或者是已经计算完毕，那么就会被重新设置TASK<sub>UNASSIGNED</sub>.但是这个对于正确性没有影响因为是幂等的）
 </li>
 </ul>
 

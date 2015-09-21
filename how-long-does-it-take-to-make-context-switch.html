@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -77,7 +29,7 @@
 作者使用多款CPU来做测试，为了方便我们只看下面这款性能数据。因为主频是在2GHz，所以一个cycle是0.5ns
 </p>
 <p class="verse">
-A dual Intel E5-2620 (Sandy Bridge-EP, based on the Sandy Bridge architecture, aka E5, 2Ghz). The E5-2620 is a hexa-core, has HyperThreading, so the machine has a total of 12 cores, or 24 "hardware threads". Kernel: 3.4.24 x86_64.<br/>
+A dual Intel E5-2620 (Sandy Bridge-EP, based on the Sandy Bridge architecture, aka E5, 2Ghz). The E5-2620 is a hexa-core, has HyperThreading, so the machine has a total of 12 cores, or 24 "hardware threads". Kernel: 3.4.24 x86<sub>64</sub>.<br/>
 </p>
 
 
@@ -110,7 +62,7 @@ Also possible is the event where one thread is running on a core, and the next t
 
 
 <p>
-对于linux kernel来说需要调度运行任务都被认为是task, 对于我们来说调度最小单元应该就是线程。只要两个task之间使用的是用一个虚拟内存地址的话那么就不会有TLB flush触发。这点可以查看linux kernel相关代码(switch_mm in mmu_context.h)
+对于linux kernel来说需要调度运行任务都被认为是task, 对于我们来说调度最小单元应该就是线程。只要两个task之间使用的是用一个虚拟内存地址的话那么就不会有TLB flush触发。这点可以查看linux kernel相关代码(switch<sub>mm</sub> in mmu<sub>context</sub>.h)
 </p>
 
 

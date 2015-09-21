@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -144,20 +96,20 @@ Basic Data-Structures
 <p>
 数据结构是这样的:
 </p><ul>
-<li>global_dict: 有序地存储列上面所有可能值并且分配global_id.
+<li>global<sub>dict</sub>: 有序地存储列上面所有可能值并且分配global<sub>id</sub>.
 </li>
 <li>chunk#idx: 按照first field分裂出来的一个数据单元块. 作用是可以有效地减少full-scan所touch的数据量.
 <ul>
-<li>chunk_dict: # chunk_id &lt;-&gt; global_id 映射(global_id有序). 增加这个映射有两个好处:
+<li>chunk<sub>dict</sub>: # chunk<sub>id</sub> &lt;-&gt; global<sub>id</sub> 映射(global<sub>id有序</sub>). 增加这个映射有两个好处:
 <ul>
 <li>能够迅速了解当前chunk所有出现过的values.
 </li>
-<li>将global_id映射成为值范围更小的chunk_id可以提高elements压缩比率.
+<li>将global<sub>id映射成为值范围更小的chunk</sub><sub>id可以提高elements压缩比率</sub>.
 </li>
 </ul>
 
 </li>
-<li>elements:  # 和rows顺序相同. 表明这个row上的field对应的chunk_id.
+<li>elements:  # 和rows顺序相同. 表明这个row上的field对应的chunk<sub>id</sub>.
 </li>
 <li>rows: # 整行的完整数据. 每个chunk应该只有一份. 这个数据应该存储在磁盘上.
 </li>
@@ -179,7 +131,7 @@ Basic Data-Structures
 <h3 id="sec-4"><span class="section-number-3">4</span> Key Optimizations</h3>
 <div class="outline-text-3" id="text-4">
 
-<p>减少memory_footprint, 这样系统可以将更多的chunk_metadata放入内存.
+<p>减少memory<sub>footprint</sub>, 这样系统可以将更多的chunk<sub>metadata放入内存</sub>.
 </p><ul>
 <li>Partitioning the Data into Chunks.
 </li>

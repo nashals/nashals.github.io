@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -244,10 +196,10 @@ svm可以用来做classification, regression以及outliers detection(异常检�
 classification有三种分类器分别是SVC, NuSVC, LinearSVC. 其中LinearSVC相同于我SVC使用'linear'核方法，区别在于SVC底层使用libsvm, 而LinearSVC则使用liblinear. 另外LinearSVC得到的结果最后也不会返回support<sub>(支持向量)</sub>. 对于多分类问题SVC使用one-vs-one来生成分类器，也就是说需要构造C(n,2)个分类器。LinearSVC使用one-vs-rest来生成分类器，也就是构造n个分类器。LinearSVC也有比较复杂的算法只构造一个分类器就可以进行多分类。regression有两种回归器分别是SVR和NuSVR. classifier和regressor都允许直接输出概率值。用于异常检测是OneClassSVM.
 </p>
 <p>
-kernel函数支持 1.linear 2. polynomial 3. rbf 4. sigmoid(tanh). 对于unbalanced的问题，sklearn实现允许指定 1.class_weight 2.sample_weight. 其中class_weight表示每个class对应的权重，这个在构造classifier时候就需要设置。如果不确定的话就设置成为'auto'。sample_weight则表示每个实例对应的权重，这个可以在调用训练方法fit的时候传入。另外一个比较重要的参数是C(惩罚代价), 通常来说设置成为1.0就够了。但是如果数据中太多噪音的话那么最好减小一些。
+kernel函数支持 1.linear 2. polynomial 3. rbf 4. sigmoid(tanh). 对于unbalanced的问题，sklearn实现允许指定 1.class<sub>weight</sub> 2.sample<sub>weight</sub>. 其中class<sub>weight表示每个class对应的权重，这个在构造classifier时候就需要设置。如果不确定的话就设置成为'auto'。sample</sub><sub>weight则表示每个实例对应的权重，这个可以在调用训练方法fit的时候传入。另外一个比较重要的参数是C</sub>(惩罚代价), 通常来说设置成为1.0就够了。但是如果数据中太多噪音的话那么最好减小一些。
 </p>
 <p>
-在计算效率方面，SVM是通过QP来求解的。基于libsvm的实现时间复杂度在O(d * n^2) ~ O(d * n^3)之间，变化取决于如何使用cache. 所以如果我们内存足够的话那么可以调大cache_size来加快计算速度。其中d表示feature大小，如果数据集合比较稀疏的话，那么可以认为d是non-zero的feature平均数量。libsvm处理数据集合大小最好不要超过10k. 相比之下，liblinear的效率则要好得多，可以很容易训练million级别的数据集合。
+在计算效率方面，SVM是通过QP来求解的。基于libsvm的实现时间复杂度在O(d * n<sup>2</sup>) ~ O(d * n<sup>3</sup>)之间，变化取决于如何使用cache. 所以如果我们内存足够的话那么可以调大cache<sub>size来加快计算速度。其中d表示feature大小，如果数据集合比较稀疏的话，那么可以认为d是non</sub>-zero的feature平均数量。libsvm处理数据集合大小最好不要超过10k. 相比之下，liblinear的效率则要好得多，可以很容易训练million级别的数据集合。
 </p>
 
 
@@ -353,7 +305,7 @@ NN可以同时用来做监督和非监督学习。其中非监督学习的NN是�
 在实现上sklearn提供了几种算法来寻找最近点：1. brute-force 2. kd-tree 3. ball-tree 4. auto. 其中auto是根据数量大小自动选择算法的。brute-force是采用暴力搜索算法，kd-tree和ball-tree则建立了内部数据结构来加快检索。假设数据维度是d, 数据集合大小是N的话，那么三个算法时间复杂度分别是O(dN), O(d*logN), O(d*logN). 不过如果d过大的话kd-tree会退化称为O(dN).
 </p>
 <p>
-如果数据量比较小的话那么1比2,3要好，所以在实现上kd-tree/ball-tree发现如果数据集合较小的话就会改用brute-force来做。这个阈值称为leaf_size. leaf_size大小会影响到 1. 构建索引时间(反比) 2. 查询时间(合适的leaf_size可以达到最优) 3. 内存大小(反比). 所以尽可能地增大leaf_size但是确保不会影响查询时间。
+如果数据量比较小的话那么1比2,3要好，所以在实现上kd-tree/ball-tree发现如果数据集合较小的话就会改用brute-force来做。这个阈值称为leaf<sub>size</sub>. leaf<sub>size大小会影响到</sub> 1. 构建索引时间(反比) 2. 查询时间(合适的leaf<sub>size可以达到最优</sub>) 3. 内存大小(反比). 所以尽可能地增大leaf<sub>size但是确保不会影响查询时间。</sub>
 </p>
 <p>
 classifier和regressor基本上就是在这些数据结构上做了一层包装。我们可以指定距离函数以及查找到最近点之后的合成函数. 默认距离函数是minkowski(p=2, 也就欧几里得距离), 合成函数包含uniform和distance(和距离成反比). KNeighborsClassifier是选择附近k个点，而RadiusNeighborsClassifier则是选择附近在radius范围内的所有点。另外还有一个NearestCentroid分类器：假设y有k个classes的话，根据这些class归纳为k类并且计算出中心(centroid), 然后判断离哪个中心近就预测哪个class.
@@ -452,11 +404,11 @@ print(classification_report(y_true, y_pred))
 <p><a href="http://scikit-learn.org/stable/modules/cross_validation.html">http://scikit-learn.org/stable/modules/cross_validation.html</a>
 </p>
 <ul>
-<li>使用train_test_split分开training_set和test_set.
+<li>使用train<sub>test</sub><sub>split分开training</sub><sub>set和test</sub><sub>set</sub>.
 </li>
-<li>使用k-fold等方式从training_set中分出validation_set做cross_validation.
+<li>使用k-fold等方式从training<sub>set中分出validation</sub><sub>set做cross</sub><sub>validation</sub>.
 </li>
-<li>使用cross_val_score来进行cross_validation并且计算cross_validation效果.
+<li>使用cross<sub>val</sub><sub>score来进行cross</sub><sub>validation并且计算cross</sub><sub>validation效果</sub>.
 </li>
 </ul>
 
@@ -505,7 +457,7 @@ print(np.mean(clf.predict(X_test) == y_test))
 参数空间搜索方式大致分为三类： 1.暴力 2.随机 3.adhoc. 其中23和特定算法相关。
 </p>
 <p>
-我们这里以暴力搜索为例。我们只需要以字典方式提供搜索参数的可选列表即可。因为搜索代码内部会使用cross_validation来做验证，所以我们只需提供cross_validatio参数即可。下面代码摘自这个 <a href="http://scikit-learn.org/stable/auto_examples/grid_search_digits.html">例子</a> 。
+我们这里以暴力搜索为例。我们只需要以字典方式提供搜索参数的可选列表即可。因为搜索代码内部会使用cross<sub>validation来做验证，所以我们只需提供cross</sub><sub>validatio参数即可。下面代码摘自这个</sub> <a href="http://scikit-learn.org/stable/auto_examples/grid_search_digits.html">例子</a> 。
 </p>
 
 
@@ -560,7 +512,7 @@ print(classification_report(y_true, y_pred))
 
 
 <p>
-代码最后使用最优模型作用在测试数据上，然后使用classification_report打印评分结果.
+代码最后使用最优模型作用在测试数据上，然后使用classification<sub>report打印评分结果</sub>.
 </p>
 
 
@@ -629,9 +581,9 @@ There are 3 different approaches to evaluate the quality of predictions of a mod
 </p><ol>
 <li>Estimator score method: Estimators have a score method providing a default evaluation criterion for the problem they are designed to solve. # 模型自身内部的评价比如损失函数等
 </li>
-<li>Scoring parameter: Model-evaluation tools using cross-validation (such as cross_validation.cross_val_score and grid_search.GridSearchCV) rely on an internal scoring strategy. # cv的评价，通常是数值表示. 比如'f1'.
+<li>Scoring parameter: Model-evaluation tools using cross-validation (such as cross<sub>validation</sub>.cross<sub>val</sub><sub>score</sub> and grid<sub>search</sub>.GridSearchCV) rely on an internal scoring strategy. # cv的评价，通常是数值表示. 比如'f1'.
 </li>
-<li>Metric functions: The metrics module implements functions assessing prediction errors for specific purposes. # 作用在测试数据的评价，可以是数值表示，也可以是文本图像等表示. 比如'classification_report'.
+<li>Metric functions: The metrics module implements functions assessing prediction errors for specific purposes. # 作用在测试数据的评价，可以是数值表示，也可以是文本图像等表示. 比如'classification<sub>report'</sub>.
 </li>
 </ol>
 
@@ -650,7 +602,7 @@ DummyClassifier implements three such simple strategies for classification:
 </p><ul>
 <li>'stratified' generates randomly predictions by respecting the training set’s class distribution,
 </li>
-<li>'most_frequent' always predicts the most frequent label in the training set,
+<li>'most<sub>frequent'</sub> always predicts the most frequent label in the training set,
 </li>
 <li>'uniform' generates predictions uniformly at random.
 </li>
@@ -698,7 +650,7 @@ DummyRegressor also implements three simple rules of thumb for regression:
 Every estimator has its advantages and drawbacks. Its generalization error can be decomposed in terms of bias, variance and noise. The bias of an estimator is its average error for different training sets. The variance of an estimator indicates how sensitive it is to varying training sets. Noise is a property of the data. # bias是指模型对不同训练数据的偏差，variance则是指模型对不同训练数据的敏感程度，噪音则是数据自身属性。这三个问题造成预测偏差。
 </p>
 <p>
-#note: 这个特性应该是从0.15才有的。之前我用apt-get安装的sklearn-0.14.1没有learning_curve这个模块。
+#note: 这个特性应该是从0.15才有的。之前我用apt-get安装的sklearn-0.14.1没有learning<sub>curve这个模块。</sub>
 </p>
 
 <hr/>
@@ -706,7 +658,7 @@ Every estimator has its advantages and drawbacks. Its generalization error can b
 validation curve
 </p>
 <p>
-观察模型某个参数变化对于training_set和validation_set结果影响，来确定是否underfitting或者overfitting. 参考这个 <a href="http://scikit-learn.org/stable/auto_examples/plot_validation_curve.html">例子</a> 绘图
+观察模型某个参数变化对于training<sub>set和validation</sub><sub>set结果影响，来确定是否underfitting或者overfitting</sub>. 参考这个 <a href="http://scikit-learn.org/stable/auto_examples/plot_validation_curve.html">例子</a> 绘图
 </p>
 <p>
 If the training score and the validation score are both low, the estimator will be underfitting. If the training score is high and the validation score is low, the estimator is overfitting and otherwise it is working very well. A low training score and a high validation score is usually not possible. All three cases can be found in the plot below where we vary the parameter gamma on the digits dataset.

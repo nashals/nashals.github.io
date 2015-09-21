@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -161,7 +113,7 @@
 </li>
 <li>javah -jni Hello 生成 Hello.h
 </li>
-<li>编写 Hello.cc 使用 Hello.h 生成 libHello.so # g++ Hello.cc -fPIC -o libHello.so -shared -I$JAVA_HOME/include
+<li>编写 Hello.cc 使用 Hello.h 生成 libHello.so # g++ Hello.cc -fPIC -o libHello.so -shared -I$JAVA<sub>HOME</sub>/include
 </li>
 <li>将 libHello.so 加入到library path.
 </li>
@@ -280,9 +232,9 @@ JNIEXPORT void JNICALL Java_Hello_run  (JNIEnv * env, jclass cls)
 </ul>
 
 </li>
-<li>The name of the C function is formed by concatenating the “Java_” prefix, the class name, and the method name.
+<li>The name of the C function is formed by concatenating the “Java<sub>”</sub> prefix, the class name, and the method name.
 <ul>
-<li>Java_作为前缀，然后是class name,然后是method_name
+<li>Java<sub>作为前缀，然后是class</sub> name,然后是method<sub>name</sub>
 </li>
 </ul>
 
@@ -291,7 +243,7 @@ JNIEXPORT void JNICALL Java_Hello_run  (JNIEnv * env, jclass cls)
 <ul>
 <li>JNIEnv定义了JNI所有可以访问JVM对象的接口方法
 </li>
-<li>#note: 这个接口在$JAVA_HOME/include/jni.h里面有定义
+<li>#note: 这个接口在$JAVA<sub>HOME</sub>/include/jni.h里面有定义
 </li>
 </ul>
 
@@ -316,7 +268,7 @@ JNIEXPORT void JNICALL Java_Hello_run  (JNIEnv * env, jclass cls)
 </p>
 <p>
 对于类型还说分为primitive和reference两种类型，reference type都是opaque pointer获取数据必须通过JNIEnv接口提供的方法才能够获得。
-至于具体类型是pritmitive还是reference的话，可以通过阅读jni.h和jni_md.h来判断。primitive type只有下面几种 #note: in jni_md.h
+至于具体类型是pritmitive还是reference的话，可以通过阅读jni.h和jni<sub>md</sub>.h来判断。primitive type只有下面几种 #note: in jni<sub>md</sub>.h
 </p>
 
 
@@ -734,9 +686,9 @@ Hello,World
 
 <p>系统加载和卸载native library回调函数：
 </p><ul>
-<li>JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *jvm, void *reserved); // 返回JNI版本比如 JNI_VERSION_1_6
+<li>JNIEXPORT jint JNICALL JNI<sub>OnLoad</sub>(JavaVM *jvm, void *reserved); // 返回JNI版本比如 JNI<sub>VERSION</sub><sub>1</sub><sub>6</sub>
 </li>
-<li>JNIEXPORT void JNICALL JNI_OnUnload(JavaVM *jvm, void *reserved)
+<li>JNIEXPORT void JNICALL JNI<sub>OnUnload</sub>(JavaVM *jvm, void *reserved)
 </li>
 </ul>
 
@@ -746,9 +698,9 @@ load/unload工作流程是这样的：
 </p><ul>
 <li>The virtual machine associates each native library with the class loader L of the class C that issues the System.loadLibrary call. // 每次加载的时候创建ClassLoader,并且记录这个ClassLoader关联了哪些对象。
 </li>
-<li>The virtual machine calls the JNI_OnUnload handler and unloads the native library after it determines that the class loader L is no longer a live object. Because a class loader refers to all the classes it defines, this implies that C can be unloaded as well. // 如果ClassLoader里面没有任何live object的话，那么就会被GC
+<li>The virtual machine calls the JNI<sub>OnUnload</sub> handler and unloads the native library after it determines that the class loader L is no longer a live object. Because a class loader refers to all the classes it defines, this implies that C can be unloaded as well. // 如果ClassLoader里面没有任何live object的话，那么就会被GC
 </li>
-<li>The JNI_OnUnload handler runs in a finalizer, and is either invoked synchro-niously by java.lang.System.runFinalization or invoked asynchro-nously by the virtual machine. // unload可能会被同步调用也可能会被异步调用。
+<li>The JNI<sub>OnUnload</sub> handler runs in a finalizer, and is either invoked synchro-niously by java.lang.System.runFinalization or invoked asynchro-nously by the virtual machine. // unload可能会被同步调用也可能会被异步调用。
 </li>
 <li>#note: 因此如果ClassLoader里面包含在global reference的话，那么这个class loader是不会被卸载的
 </li>
@@ -850,15 +802,15 @@ Linking Native Methods
 </p><ul>
 <li>the native method by concatenating the following components:
 <ul>
-<li>the prefix “Java_”
+<li>the prefix “Java<sub>”</sub>
 </li>
 <li>an encoded fully qualified class name
 </li>
-<li>an underscore (“_”) separator
+<li>an underscore (“<sub>”</sub>) separator
 </li>
 <li>an encoded method name
 </li>
-<li>for overloaded native methods, two underscores (“__”) followed by the encoded argument descriptor
+<li>for overloaded native methods, two underscores (“_<sub>”</sub>) followed by the encoded argument descriptor
 </li>
 </ul>
 

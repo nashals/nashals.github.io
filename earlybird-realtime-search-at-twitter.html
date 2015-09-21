@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -92,7 +44,7 @@
 文章主要介绍单机earlybird实现上两个问题: 1. indexes 2. concurrent reads &amp; writes.
 </p>
 <p>
-index是由多个segments组成的, 任何时候只有一个segment是可写的. 单个segment有tweets数量上限(2^23 ∼ 8.4 million tweets), 当超过这个数量之后会flush到磁盘上形成read-friendly格式文件. 因为按照时间倒序作为相关性, 所以segment上面的inverted index是按照时间逆序的tweets的链表. 通常一个instance上面有~12 segments. 为了提高内存分配效率, 使用slab分配slice, slice可以链表方式串联起来. slab的大小有2^1, 2^4, 2^7和2^11. slices链表方式只用于内存表示, 没有进行压缩. 但是当flush到磁盘时候会使用连续内存块存储并且压缩, 可以省去大约55%的内存.
+index是由多个segments组成的, 任何时候只有一个segment是可写的. 单个segment有tweets数量上限(2<sup>23</sup> ∼ 8.4 million tweets), 当超过这个数量之后会flush到磁盘上形成read-friendly格式文件. 因为按照时间倒序作为相关性, 所以segment上面的inverted index是按照时间逆序的tweets的链表. 通常一个instance上面有~12 segments. 为了提高内存分配效率, 使用slab分配slice, slice可以链表方式串联起来. slab的大小有2<sup>1</sup>, 2<sup>4</sup>, 2<sup>7和2</sup><sup>11</sup>. slices链表方式只用于内存表示, 没有进行压缩. 但是当flush到磁盘时候会使用连续内存块存储并且压缩, 可以省去大约55%的内存.
 </p>
 <p>
 concurrent reads &amp; writes里面最重要的问题是, reader希望以一致方式读取索引. 实现机制类似snapshot version: 引入maxDoc变量, 表示当前index中最大docId是多少. 当reader读取索引时候, 首先读取maxDoc, 之后只访问那些docid &lt; maxDoc的文档. maxDoc没有使用atomic类型, 而是使用volatile然后通过java memory model来保证原子性. (what a trick!) 正好这里顺便了解释一下java memory model.

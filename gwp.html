@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -320,7 +272,7 @@
 <p>This page supplies links that let users refine the query to more specific data. For example, the user can restrict the query to only report samples for a specific executable collected within a desired time period. Additionally, the user can modify or refine any of the parameters to the current query to create a custom profile view.
 </p>
 <p>
-<img src="images/gwp-query-view.png"  alt="./images/gwp-query-view.png" />
+<img src="http://dirlt.com/images/gwp-query-view.png"  alt="./images/gwp-query-view.png" />
 </p>
 </div>
 
@@ -434,7 +386,7 @@
 
 
 <p>
-<img src="images/gwp-platform-affinity.png"  alt="./images/gwp-platform-affinity.png" />
+<img src="http://dirlt.com/images/gwp-platform-affinity.png"  alt="./images/gwp-platform-affinity.png" />
 </p><ul>
 <li>We use a simulated annealing solver that approximates the optimal solution in seconds for workloads of around 100 jobs running on thousands of machines of four different platforms over one month. Although appli- cation developers already mapped major applications to their best platform through manual assignment, we’ve measured 10 to 15 percent potential improvement in most cases where many jobs run on multiple plat- forms. Similarly, users can use GWP data to identify how to colocate multiple applica- tions on a single machine to achieve the best throughput.(本质上这个问题是一个多约束优化问题，使用退火算法计算出了一个近似解决方案，然后通过人工assignment，发现在某些case下面提高10-15%的效率）
 </li>

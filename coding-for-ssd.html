@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -681,7 +633,7 @@ AnandTech有一篇有意思的文章显示出预留空间对SSD寿命和性能�
 <h4 id="sec-8-1"><span class="section-number-4">8.1</span> Partition alignment（分区对齐）</h4>
 <div class="outline-text-4" id="text-8-1">
 
-<p>如3.1节中解释的那样，写入是页对齐的。大小是页大小，并且和页大小是对齐的写入请求，会被直接写入到一个NAND闪存物理页中。大小是页大小，但不对齐的写入请求将会被写入到两个个NAND闪存物理页中，并导致两个读-改-写操作<sup><a class="footref" name="fnr-.1" href="coding-for-ssd.html#fn-.1">1</a></sup>。因此，确保用来写入的SSD分区是和硬盘采用的物理NAND闪存页的大小对齐是很重要的。很多 <a href="http://www.linux-mag.com/id/8397/">教程</a> 和 <a href="http://tytso.livejournal.com/2009/02/20/">指引</a> 都讲了格式化的时候如何将分区对齐SSD的参数
+<p>如3.1节中解释的那样，写入是页对齐的。大小是页大小，并且和页大小是对齐的写入请求，会被直接写入到一个NAND闪存物理页中。大小是页大小，但不对齐的写入请求将会被写入到两个个NAND闪存物理页中，并导致两个读-改-写操作。因此，确保用来写入的SSD分区是和硬盘采用的物理NAND闪存页的大小对齐是很重要的。很多 <a href="http://www.linux-mag.com/id/8397/">教程</a> 和 <a href="http://tytso.livejournal.com/2009/02/20/">指引</a> 都讲了格式化的时候如何将分区对齐SSD的参数
 </p>
 </div>
 
@@ -721,15 +673,7 @@ AnandTech有一篇有意思的文章显示出预留空间对SSD寿命和性能�
 <h4 id="sec-8-5"><span class="section-number-4">8.5</span> Temporary files</h4>
 <div class="outline-text-4" id="text-8-5">
 
-
-<div id="footnotes">
-<h2 class="footnotes">Footnotes: </h2>
-<div id="text-footnotes">
-<p class="footnote"><sup><a class="footnum" name="fn-.1" href="coding-for-ssd.html#fnr-.1">1</a></sup> DEFINITION NOT FOUND: 53
-</p></div>
 </div>
-</div>
-
 </div>
 </div>
 </div>

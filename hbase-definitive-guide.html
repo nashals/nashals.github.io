@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -635,7 +587,7 @@ drwxr-xr-x   - dirlt supergroup          0 2013-05-30 12:32 /home/dirlt/hbase/te
 </li>
 <li>The maximum number of files to include in a minor compaction is set to 10, and configured with <b>hbase.hstore.compaction.max</b>. （但是每次最多多少个文件参与compaction）
 </li>
-<li>The list is further narrowed down by the <b>hbase.hstore.compaction.min.size</b> (set to the configured memstore flush size for the region), and the <b>hbase.hstore.compaction.max.size</b> (defaults to Long.MAX_VALUE) configuration properties.
+<li>The list is further narrowed down by the <b>hbase.hstore.compaction.min.size</b> (set to the configured memstore flush size for the region), and the <b>hbase.hstore.compaction.max.size</b> (defaults to Long.MAX<sub>VALUE</sub>) configuration properties.
 <ul>
 <li>Any file larger than the maximum compaction size is always excluded. （参与compaction文件不能超过多大）
 </li>
@@ -662,7 +614,7 @@ drwxr-xr-x   - dirlt supergroup          0 2013-05-30 12:32 /home/dirlt/hbase/te
 <ul>
 <li>It triggers a check on a regular basis, controlled by <b>hbase.server.thread.wakefrequency</b> (multiplied by <b>hbase.server.thread.wakefrequency.multiplier</b>, set to 1000, to run it less often than the other thread based tasks). （定期去检查是否需要做major compaction）
 </li>
-<li>If you call the major_compact command, or the majorCompact() API call, then you force the major compaction to run.（手动调用的话那么就强制进行major compaction）
+<li>If you call the major<sub>compact</sub> command, or the majorCompact() API call, then you force the major compaction to run.（手动调用的话那么就强制进行major compaction）
 </li>
 <li>Otherwise the server checks first if the major compaction is due, based on <b>hbase.hregion.majorcompaction</b> (set to 24 hours) from the last it ran. The <b>hbase.hregion.majorcompaction.jitter</b> (set to 0.2, in other words 20%) causes this time to be spread out for the stores. Without the jitter all stores would run a major compaction at the same time, every 24 hours.（否则根据两个参数来控制，第一个是检查一下这次major compaction是否到期，另外一个是控制不要让所有的major compaction同时启动）
 </li>

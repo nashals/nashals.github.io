@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -116,7 +68,7 @@
 <li><a href="leveldb.html#sec-10-1-4-6">10.1.4.6 WritableFile</a></li>
 </ul>
 </li>
-<li><a href="leveldb.html#sec-10-1-5">10.1.5 filter_policy.h</a></li>
+<li><a href="leveldb.html#sec-10-1-5">10.1.5 filter<sub>policy</sub>.h</a></li>
 <li><a href="leveldb.html#sec-10-1-6">10.1.6 iterator.h</a></li>
 <li><a href="leveldb.html#sec-10-1-7">10.1.7 options.h</a>
 <ul>
@@ -127,9 +79,9 @@
 </li>
 <li><a href="leveldb.html#sec-10-1-8">10.1.8 slice.h</a></li>
 <li><a href="leveldb.html#sec-10-1-9">10.1.9 status.h</a></li>
-<li><a href="leveldb.html#sec-10-1-10">10.1.10 table_builder.h</a></li>
+<li><a href="leveldb.html#sec-10-1-10">10.1.10 table<sub>builder</sub>.h</a></li>
 <li><a href="leveldb.html#sec-10-1-11">10.1.11 table.h</a></li>
-<li><a href="leveldb.html#sec-10-1-12">10.1.12 write_batch.h</a></li>
+<li><a href="leveldb.html#sec-10-1-12">10.1.12 write<sub>batch</sub>.h</a></li>
 </ul>
 </li>
 <li><a href="leveldb.html#sec-10-2">10.2 Implementation</a></li>
@@ -155,8 +107,8 @@
 <li><a href="leveldb.html#sec-10-3-3-14">10.3.3.14 BackgroundCompaction</a></li>
 <li><a href="leveldb.html#sec-10-3-3-15">10.3.3.15 CompactMemTable</a></li>
 <li><a href="leveldb.html#sec-10-3-3-16">10.3.3.16 CompactRange</a></li>
-<li><a href="leveldb.html#sec-10-3-3-17">10.3.3.17 TEST_CompactMemTable</a></li>
-<li><a href="leveldb.html#sec-10-3-3-18">10.3.3.18 TEST_CompactRange</a></li>
+<li><a href="leveldb.html#sec-10-3-3-17">10.3.3.17 TEST<sub>CompactMemTable</sub></a></li>
+<li><a href="leveldb.html#sec-10-3-3-18">10.3.3.18 TEST<sub>CompactRange</sub></a></li>
 <li><a href="leveldb.html#sec-10-3-3-19">10.3.3.19 DoCompactionWork</a></li>
 <li><a href="leveldb.html#sec-10-3-3-20">10.3.3.20 CleanupCompaction</a></li>
 <li><a href="leveldb.html#sec-10-3-3-21">10.3.3.21 InstallCompactionResults</a></li>
@@ -589,8 +541,8 @@ leveldb还是比较麻烦的.开始阅读的时候(像我)很多策略细节就�
 选择那些文件进行compaction等.阅读的时候需要了解每个类到底是用来做什么的.个人觉得里面最迷惑的东西就是Version/VersionEdit/VersionSet是用来做什么的.
 所谓Version就是做一个compaction时候产生的一个对象.VersionSet是当前DB里面所有的Version.VersionEdit是针对Version的修改.包括添加和删除哪些文件等.
 每次compaction时候会产生version表示这个哪些文件是需要的.在回收文件的时候会查看每一个version持有的文件,这样就可以确定哪些文件是不需要的了.
-每次进行compaction都会产生这么一个version对象.将对version进行的操作称为version_edit.同时会将这个version_edit写入manifest文件里面去.
-这样在恢复DB的时候，首先可以从manifest里面读取到挂掉之前的version是怎么样的.然后通过读取剩余的version_edit得到挂掉之前的version.
+每次进行compaction都会产生这么一个version对象.将对version进行的操作称为version<sub>edit</sub>.同时会将这个version<sub>edit写入manifest文件里面去</sub>.
+这样在恢复DB的时候，首先可以从manifest里面读取到挂掉之前的version是怎么样的.然后通过读取剩余的version<sub>edit得到挂掉之前的version</sub>.
 同时会读取log文件将挂掉之前操作的kv恢复.
 </p>
 <p>
@@ -634,7 +586,7 @@ bloom filter原理非常简单，似乎没有必要详细分析。关于代码�
 至于filter在磁盘上面是如何存储的可以参看下面一节Storage/DiskTable分析。
 </p>
 <p>
-meta block存放了bloom filter信息，这样可以减少磁盘读取。关于Table内部支持bloom filter在table/filter_block.h有实现。
+meta block存放了bloom filter信息，这样可以减少磁盘读取。关于Table内部支持bloom filter在table/filter<sub>block</sub>.h有实现。
 分别是FilterBlockBuilder和FilterBlockReader.
 </p>
 
@@ -702,7 +654,7 @@ lg(base)                              : 1 byte
 </pre>
 
 <p>
-注意这里keys_是一个string.start_记录每个新增key的偏移。AddKey是将这段时间内添加的Key全部缓存下来。
+注意这里keys<sub>是一个string</sub>.start<sub>记录每个新增key的偏移。AddKey是将这段时间内添加的Key全部缓存下来。</sub>
 </p>
 <p>
 然后每次Flush的时候都会产生filter.
@@ -976,9 +928,9 @@ seperator可以设置成为ac.seperator的生成可以参考Comparator.使用尽
 </p>
 <p>
 每个level都有一定的大小限制，并且每个level里面的文件的key都是不会overlap的(L0除外).触发条件很多，文档上描述是某个level超过一定限制。
-但是之前阅读代码发现其实并不是这样的，可以参看函数VersionSet::PickCompaction.可以看到有两个触发条件size_compaction和seek_compaction.
-所谓的size_compaction就是说某个level超过一定大小，而seek_compaction指某个文件被seek次数超过一定次数之后会触发(关于这个值的更新可以查看VersionSet::Builder::Apply,
-在一个文件初始创建的时候就已经设置好了allowed_seeks次数).
+但是之前阅读代码发现其实并不是这样的，可以参看函数VersionSet::PickCompaction.可以看到有两个触发条件size<sub>compaction和seek</sub><sub>compaction</sub>.
+所谓的size<sub>compaction就是说某个level超过一定大小，而seek</sub><sub>compaction指某个文件被seek次数超过一定次数之后会触发</sub>(关于这个值的更新可以查看VersionSet::Builder::Apply,
+在一个文件初始创建的时候就已经设置好了allowed<sub>seeks次数</sub>).
 </p>
 <p>
 前面是触发条件，后面来说说compaction策略.文档上描述非常简单但是事实不是这样。如果需要compact某个level的话，如果level&gt;0的话那么对于这个level
@@ -1005,7 +957,7 @@ in the cache and we will only need to worry about the O(N) complexity in the mer
 </pre>
 
 <p>
-其中第二点感觉非常好就是认为控制写入速度当level0文件过多的时候。在db_impl.cc DBImpl::MakeRoomForWrite这个应该是在memtable缺少空间的时候的函数.
+其中第二点感觉非常好就是认为控制写入速度当level0文件过多的时候。在db<sub>impl</sub>.cc DBImpl::MakeRoomForWrite这个应该是在memtable缺少空间的时候的函数.
 </p>
 
 
@@ -1086,10 +1038,10 @@ sequence number恢复。
 而BlockCache是用来做data block的缓存的(Table::BlockeReader).对于leveldb只有一个cache实现在Code Analysis/Cache里面做了详细分析。
 </p>
 <p>
-我们这里最感兴趣的东西，应该就是每个cache的kv分别是什么。对于TableCahce的k是file_number,v是Table的Iterator
-(Table::NewIterator).对于leveldb来说的话文件的file_number都是自增的所以使用file_number没有任何问题。对于BlockCache
-来说的话k是(cache_id,offset),v是Block的内存。(#todo: 对于这个cache_id现在还不是非常理解，但是个人觉得
-这个cache_id可以==file_number.使用cache_id就是每次Open的时候这个cache_id都会改变)
+我们这里最感兴趣的东西，应该就是每个cache的kv分别是什么。对于TableCahce的k是file<sub>number</sub>,v是Table的Iterator
+(Table::NewIterator).对于leveldb来说的话文件的file<sub>number都是自增的所以使用file</sub><sub>number没有任何问题。对于BlockCache</sub>
+来说的话k是(cache<sub>id</sub>,offset),v是Block的内存。(#todo: 对于这个cache<sub>id现在还不是非常理解，但是个人觉得</sub>
+这个cache<sub>id可以</sub>==file<sub>number</sub>.使用cache<sub>id就是每次Open的时候这个cache</sub><sub>id都会改变</sub>)
 </p>
 <p>
 和BlockCache是针对disk block来进行cache的，另外一种cache方案就是Record Cache.相对Block Cache,Record Cache无疑更能够
@@ -1112,33 +1064,33 @@ Cache主要用来解决读取问题，做写穿透并且让Cache失效即可。l
 </p><ul>
 <li>comparator.用户可以指定比较器
 </li>
-<li>create_if_missing.如果数据库不存在就创建
+<li>create<sub>if</sub><sub>missing</sub>.如果数据库不存在就创建
 </li>
-<li>error_if_exists.如果数据库存在就报错
+<li>error<sub>if</sub><sub>exists</sub>.如果数据库存在就报错
 </li>
-<li>paranoid_checks.尽可能多地进行错误检查
+<li>paranoid<sub>checks</sub>.尽可能多地进行错误检查
 </li>
 <li>env.用户可以模拟db环境
 </li>
-<li>info_log.leveldb本身logger.
+<li>info<sub>log</sub>.leveldb本身logger.
 </li>
-<li>write_buffer_size.memtable大小
+<li>write<sub>buffer</sub><sub>size</sub>.memtable大小
 </li>
-<li>max_open_files.最大打开fd数量
+<li>max<sub>open</sub><sub>files</sub>.最大打开fd数量
 </li>
-<li>block_cache.Table读取data block的cache.
+<li>block<sub>cache</sub>.Table读取data block的cache.
 </li>
-<li>block_size.Table里面Block大小
+<li>block<sub>size</sub>.Table里面Block大小
 </li>
-<li>block_restart_interval.在一个Block里面每隔多少个key创建一个restart point.
+<li>block<sub>restart</sub><sub>interval</sub>.在一个Block里面每隔多少个key创建一个restart point.
 </li>
 <li>compression.DataBlock是否需要压缩
 </li>
-<li>filter_policy.过滤策略默认就是bloom filter.
+<li>filter<sub>policy</sub>.过滤策略默认就是bloom filter.
 </li>
-<li>verify_checksums.读取block时候是否校验checksum
+<li>verify<sub>checksums</sub>.读取block时候是否校验checksum
 </li>
-<li>fill_cache.读取block是否会Cache.通常scan时候不要做cache
+<li>fill<sub>cache</sub>.读取block是否会Cache.通常scan时候不要做cache
 </li>
 <li>sync.leveldb内部发起write的话是否会调用fsync.
 </li>
@@ -1172,7 +1124,7 @@ Cache主要用来解决读取问题，做写穿透并且让Cache失效即可。l
 </li>
 <li>env.h // 和环境相关的接口
 </li>
-<li>filter_policy.h // 过滤策略相关的接口
+<li>filter<sub>policy</sub>.h // 过滤策略相关的接口
 </li>
 <li>iterator.h // 遍历接口
 </li>
@@ -1182,11 +1134,11 @@ Cache主要用来解决读取问题，做写穿透并且让Cache失效即可。l
 </li>
 <li>status.h // db操作返回状态的对象
 </li>
-<li>table_builder.h // 构建table
+<li>table<sub>builder</sub>.h // 构建table
 </li>
 <li>table.h // immutable persistent sortedtable.
 </li>
-<li>write_batch.h // 批量(原子)写入对象
+<li>write<sub>batch</sub>.h // 批量(原子)写入对象
 </li>
 </ul>
 
@@ -1538,7 +1490,7 @@ Status RepairDB(const std::string&amp; dbname, const Options&amp; options);
 
 <p>env.h里面抽象了环境，这样用户可以很方便低进行定制.可以看到leveldb大量的设计依赖于虚函数。
 对于这种存储系统用虚函数带来的开销应该是可以接受的。但是对于压缩或者是传输协议的话那么虚函数开销就不可以忽略了。
-提供提供了默认环境实现在util/env_posix.cc里面。这个会在后面详细分析。所谓环境包括下面几个对象.
+提供提供了默认环境实现在util/env<sub>posix</sub>.cc里面。这个会在后面详细分析。所谓环境包括下面几个对象.
 </p>
 
 </div>
@@ -1896,13 +1848,13 @@ class WritableFile {
 </div>
 
 <div id="outline-container-10-1-5" class="outline-5">
-<h5 id="sec-10-1-5"><span class="section-number-5">10.1.5</span> filter_policy.h</h5>
+<h5 id="sec-10-1-5"><span class="section-number-5">10.1.5</span> filter<sub>policy</sub>.h</h5>
 <div class="outline-text-5" id="text-10-1-5">
 
-<p>通过阅读注释还是可以很容易地了解到filter_policy提供的语义的。另外还可以看到leveldb本身提供了bloomfilter的实现。#todo: 这里对于bits_per_key含义不是很了解。
+<p>通过阅读注释还是可以很容易地了解到filter<sub>policy提供的语义的。另外还可以看到leveldb本身提供了bloomfilter的实现。</sub>#todo: 这里对于bits<sub>per</sub><sub>key含义不是很了解。</sub>
 </p>
 <p>
-#note: 所谓的bits_per_key就是希望为每个key分配多少个bits来进行检测。但是这个并不等于检测bits.在leveldb这个bloomfilter里面的话这个数值叫做probe.
+#note: 所谓的bits<sub>per</sub><sub>key就是希望为每个key分配多少个bits来进行检测。但是这个并不等于检测bits</sub>.在leveldb这个bloomfilter里面的话这个数值叫做probe.
 </p>
 
 
@@ -2429,7 +2381,7 @@ inline void Status::operator=(const Status&amp; s) {
 </div>
 
 <div id="outline-container-10-1-10" class="outline-5">
-<h5 id="sec-10-1-10"><span class="section-number-5">10.1.10</span> table_builder.h</h5>
+<h5 id="sec-10-1-10"><span class="section-number-5">10.1.10</span> table<sub>builder</sub>.h</h5>
 <div class="outline-text-5" id="text-10-1-10">
 
 <p>TableBuilder用来帮助构建Table.而Table本身只是用来进行查询遍历等操作.用户在完成之后需要Finish或者是Abandon.
@@ -2596,7 +2548,7 @@ class Table {
 </div>
 
 <div id="outline-container-10-1-12" class="outline-5">
-<h5 id="sec-10-1-12"><span class="section-number-5">10.1.12</span> write_batch.h</h5>
+<h5 id="sec-10-1-12"><span class="section-number-5">10.1.12</span> write<sub>batch</sub>.h</h5>
 <div class="outline-text-5" id="text-10-1-12">
 
 <p>WriteBatch用来持有批量写入的内容.注意底层实现有Handler是需要具体实现的。关于这个具体实现部分会在后面分析.
@@ -2726,7 +2678,7 @@ class Table {
 </pre>
 
 <p>
-就是将MANIFEST-%(descriptor_number)llu+"\n"写入到.dbtmp下面去然后rename成为CURRENT文件.
+就是将MANIFEST-%(descriptor<sub>number</sub>)llu+"\n"写入到.dbtmp下面去然后rename成为CURRENT文件.
 </p>
 </div>
 
@@ -2781,7 +2733,7 @@ static const int kMaxMemCompactLevel = 2;
 <h5 id="sec-10-3-3"><span class="section-number-5">10.3.3</span> DBImpl</h5>
 <div class="outline-text-5" id="text-10-3-3">
 
-<p>db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然后仔细看看每个字段是什么
+<p>db/db<sub>impl</sub>.cc DBImpl这个结构体挺大的。我们先过一个这个结构然后仔细看看每个字段是什么
 </p>
 
 
@@ -3171,7 +3123,7 @@ static const int kMaxMemCompactLevel = 2;
 <h6 id="sec-10-3-3-5"><span class="section-number-6">10.3.3.5</span> RecoverLogFile</h6>
 <div class="outline-text-6" id="text-10-3-3-5">
 
-<p>从单个log恢复写入的内容.并且根据log里面内容了解到对于version修改以及max_sequence.
+<p>从单个log恢复写入的内容.并且根据log里面内容了解到对于version修改以及max<sub>sequence</sub>.
 </p>
 
 
@@ -3426,7 +3378,7 @@ Status DB::Delete(const WriteOptions&amp; opt, const Slice&amp; key) {
 <h6 id="sec-10-3-3-10"><span class="section-number-6">10.3.3.10</span> LoggingResponsibility</h6>
 <div class="outline-text-6" id="text-10-3-3-10">
 
-<p>对于Log信息的打印的话确保每次只有一个实例在操作.这里logger_cv和mutex_关联起来的.可以看到
+<p>对于Log信息的打印的话确保每次只有一个实例在操作.这里logger<sub>cv和mutex</sub><sub>关联起来的</sub>.可以看到
 在调用AcquireLoggingResponsibility的地方之前都会加锁
 </p>
 
@@ -3785,9 +3737,9 @@ Status DBImpl::MakeRoomForWrite(bool force) {
 </p><ul>
 <li>首先查看和这些range存在overlap的最大level是多少
 </li>
-<li>首先对memtable进行compaction(不管是否存在overlap)(TEST_CompactMemTable)
+<li>首先对memtable进行compaction(不管是否存在overlap)(TEST<sub>CompactMemTable</sub>)
 </li>
-<li>然后遍历这些level,分别对每层进行compact range.(TEST_CompactRange)
+<li>然后遍历这些level,分别对每层进行compact range.(TEST<sub>CompactRange</sub>)
 </li>
 </ul>
 
@@ -3818,7 +3770,7 @@ Status DBImpl::MakeRoomForWrite(bool force) {
 </div>
 
 <div id="outline-container-10-3-3-17" class="outline-6">
-<h6 id="sec-10-3-3-17"><span class="section-number-6">10.3.3.17</span> TEST_CompactMemTable</h6>
+<h6 id="sec-10-3-3-17"><span class="section-number-6">10.3.3.17</span> TEST<sub>CompactMemTable</sub></h6>
 <div class="outline-text-6" id="text-10-3-3-17">
 
 
@@ -3853,7 +3805,7 @@ Status DBImpl::MakeRoomForWrite(bool force) {
 </div>
 
 <div id="outline-container-10-3-3-18" class="outline-6">
-<h6 id="sec-10-3-3-18"><span class="section-number-6">10.3.3.18</span> TEST_CompactRange</h6>
+<h6 id="sec-10-3-3-18"><span class="section-number-6">10.3.3.18</span> TEST<sub>CompactRange</sub></h6>
 <div class="outline-text-6" id="text-10-3-3-18">
 
 <p>针对某个Level来进行range compaction.
@@ -4778,7 +4730,7 @@ Iterator* DBImpl::NewInternalIterator(const ReadOptions&amp; options,
 <h5 id="sec-10-3-4"><span class="section-number-5">10.3.4</span> DBIter</h5>
 <div class="outline-text-5" id="text-10-3-4">
 
-<p>db/db_iter.cc DBIter通过工厂方法创建.然后就DBIter结构以及里面的接口看看.
+<p>db/db<sub>iter</sub>.cc DBIter通过工厂方法创建.然后就DBIter结构以及里面的接口看看.
 关于这个iterator的具体细节的话可以不用了解非常清楚，稍微了解工作原理即可。
 实际上里面FindNextUserEntry和FindPrevUserEntry没有仔细阅读.:(.
 </p>
@@ -4870,7 +4822,7 @@ class DBIter: public Iterator {
 <h6 id="sec-10-3-4-3"><span class="section-number-6">10.3.4.3</span> ClearSavedValue</h6>
 <div class="outline-text-6" id="text-10-3-4-3">
 
-<p>清除saved_value这个字段.好像有点技巧.可以看看代码啥的测试一下.
+<p>清除saved<sub>value这个字段</sub>.好像有点技巧.可以看看代码啥的测试一下.
 </p>
 
 
@@ -5196,7 +5148,7 @@ class DBIter: public Iterator {
 <div class="outline-text-5" id="text-10-3-5">
 
 <p>db/dbformat.h LookupKey是为了方便对不同的结构进行查询的key结构.抽象出来的话会使得操作更加方便.
-我们只需要传入我们的user_key之后的话，那么就可以构造出对应查询结构的key.首先我们看看结构
+我们只需要传入我们的user<sub>key之后的话，那么就可以构造出对应查询结构的key</sub>.首先我们看看结构
 </p>
 
 
@@ -5526,8 +5478,8 @@ inline size_t InternalKeyEncodingLength(const ParsedInternalKey&amp; key) {
 <div class="outline-text-5" id="text-10-3-9">
 
 <p>db/dbformat.cc 我们在MemTable::KeyComparator::operator()里面看到了调用InternalKeyComparator的Compare方法.
-Compare接收两个Slice对象。对象是这样encode的,key_size + key_data + (seq &lt;&lt; 8) | type(8 bytes).
-其中key_size包括了后面附加的8个字节.我们来看看InternalKeyComparator是怎么实现的.底层的Comparator是用来直接比较UserKey的，
+Compare接收两个Slice对象。对象是这样encode的,key<sub>size</sub> + key<sub>data</sub> + (seq &lt;&lt; 8) | type(8 bytes).
+其中key<sub>size包括了后面附加的8个字节</sub>.我们来看看InternalKeyComparator是怎么实现的.底层的Comparator是用来直接比较UserKey的，
 没有考虑sequence number.
 </p>
 
@@ -5659,7 +5611,7 @@ class InternalKeyComparator : public Comparator {
 <h5 id="sec-10-3-10"><span class="section-number-5">10.3.10</span> FileMetaData</h5>
 <div class="outline-text-5" id="text-10-3-10">
 
-<p>db/version_edit.h 对于一个sstable的元信息表示.
+<p>db/version<sub>edit</sub>.h 对于一个sstable的元信息表示.
 </p>
 
 
@@ -5685,7 +5637,7 @@ class InternalKeyComparator : public Comparator {
 <h5 id="sec-10-3-11"><span class="section-number-5">10.3.11</span> Version</h5>
 <div class="outline-text-5" id="text-10-3-11">
 
-<p>db/version_set.h 对于Version可以理解为每个Snapshot对应的内容。因为每个snapshot可能需要持有不同的文件，
+<p>db/version<sub>set</sub>.h 对于Version可以理解为每个Snapshot对应的内容。因为每个snapshot可能需要持有不同的文件，
 这样Version里面可以带上所需要管理的文件。如果释放Snapshot的话并且也可以释放Version的话，那么就可以认为这些文件
 没有被任何Snapshot所引用就可以被回收。首先看看Version结构题里面的字段。
 </p>
@@ -5869,7 +5821,7 @@ key的话采用这个filemetadata里面的最大的key,而value采用filenumber+
 <h6 id="sec-10-3-11-4"><span class="section-number-6">10.3.11.4</span> GetFileIterator</h6>
 <div class="outline-text-6" id="text-10-3-11-4">
 
-<p>根据上面的分析file_value就是file_number + file_size.这里我们可以知道file_number应该是全局唯一的，
+<p>根据上面的分析file<sub>value就是file</sub><sub>number</sub> + file<sub>size</sub>.这里我们可以知道file<sub>number应该是全局唯一的，</sub>
 而不是在level上面唯一的。关于TableCache后面会分析。
 </p>
 
@@ -5898,7 +5850,7 @@ key的话采用这个filemetadata里面的最大的key,而value采用filenumber+
 <h6 id="sec-10-3-11-5"><span class="section-number-6">10.3.11.5</span> FindFile</h6>
 <div class="outline-text-6" id="text-10-3-11-5">
 
-<p>db/version_set.h 语义直接阅读注释即可.注意这里files都是排好序并且是不重叠的。按照二分法搜索largest key即可.
+<p>db/version<sub>set</sub>.h 语义直接阅读注释即可.注意这里files都是排好序并且是不重叠的。按照二分法搜索largest key即可.
 </p>
 
 
@@ -5936,7 +5888,7 @@ int FindFile(const InternalKeyComparator&amp; icmp,
 <h6 id="sec-10-3-11-6"><span class="section-number-6">10.3.11.6</span> SomeFileOverlapsRange</h6>
 <div class="outline-text-6" id="text-10-3-11-6">
 
-<p>db/version_set.h 判断是否有文件和某个范围[smallest,largest]相交.注意这里这里files也是按照key排序的.
+<p>db/version<sub>set</sub>.h 判断是否有文件和某个范围[smallest,largest]相交.注意这里这里files也是按照key排序的.
 </p>
 
 
@@ -6000,7 +5952,7 @@ bool SomeFileOverlapsRange(
 <h6 id="sec-10-3-11-7"><span class="section-number-6">10.3.11.7</span> AfterFile</h6>
 <div class="outline-text-6" id="text-10-3-11-7">
 
-<p>判断user_key是否在这个file之后.
+<p>判断user<sub>key是否在这个file之后</sub>.
 </p>
 
 
@@ -6021,7 +5973,7 @@ bool SomeFileOverlapsRange(
 <h6 id="sec-10-3-11-8"><span class="section-number-6">10.3.11.8</span> BeforeFile</h6>
 <div class="outline-text-6" id="text-10-3-11-8">
 
-<p>判断user_key是否在这个file之前.
+<p>判断user<sub>key是否在这个file之前</sub>.
 </p>
 
 
@@ -6061,7 +6013,7 @@ bool SomeFileOverlapsRange(
 <h6 id="sec-10-3-11-10"><span class="section-number-6">10.3.11.10</span> NewestFirst</h6>
 <div class="outline-text-6" id="text-10-3-11-10">
 
-<p>按照file_number进行排序.逆序.越迟生成的file那么是最新的。
+<p>按照file<sub>number进行排序</sub>.逆序.越迟生成的file那么是最新的。
 </p>
 
 
@@ -6372,22 +6324,22 @@ static const int64_t kMaxGrandParentOverlapBytes = 10 * kTargetFileSize;
 
 
 <p>
-#=BEGIN_SRC C++
+#=BEGIN<sub>SRC</sub> C++
 int Version::PickLevelForMemTableOutput(
-    const Slice&amp; smallest_user_key,
-    const Slice&amp; largest_user_key) {
+    const Slice&amp; smallest<sub>user</sub><sub>key</sub>,
+    const Slice&amp; largest<sub>user</sub><sub>key</sub>) {
   int level = 0;
   // 首先判断和level0是否有overlap.如果有overlapd的话那么选择level0.
-  if (!OverlapInLevel(0, &amp;smallest_user_key, &amp;largest_user_key)) {
+  if (!OverlapInLevel(0, &amp;smallest<sub>user</sub><sub>key</sub>, &amp;largest<sub>user</sub><sub>key</sub>)) {
     // Push to next level if there is no overlap in next level,
     // and the #bytes overlapping in the level after that are limited.
-    InternalKey start(smallest_user_key, kMaxSequenceNumber, kValueTypeForSeek);
-    InternalKey limit(largest_user_key, 0, static_cast&lt;ValueType&gt;(0));
+    InternalKey start(smallest<sub>user</sub><sub>key</sub>, kMaxSequenceNumber, kValueTypeForSeek);
+    InternalKey limit(largest<sub>user</sub><sub>key</sub>, 0, static<sub>cast&lt</sub>;ValueType&gt;(0));
     std::vector&lt;FileMetaData*&gt; overlaps;
     while (level &lt; config::kMaxMemCompactLevel) {
       // 判断和其他level是否有overlap.如果存在overlap的那么也选择.
       // &gt;0的level是不允许overlap的.
-      if (OverlapInLevel(level + 1, &amp;smallest_user_key, &amp;largest_user_key)) {
+      if (OverlapInLevel(level + 1, &amp;smallest<sub>user</sub><sub>key</sub>, &amp;largest<sub>user</sub><sub>key</sub>)) {
         break;
       }
       // 如果没有overlap的话那么判断和grandparent level重叠文件.判断重叠文件大小.
@@ -6399,7 +6351,7 @@ int Version::PickLevelForMemTableOutput(
    // Otherwise, the move could create a parent file that will require
   // a very expensive merge later on.
       GetOverlappingInputs(level + 2, &amp;start, &amp;limit, &amp;overlaps);
-      const int64_t sum = TotalFileSize(overlaps);
+      const int64<sub>t</sub> sum = TotalFileSize(overlaps);
       if (sum &gt; kMaxGrandParentOverlapBytes) {
         break;
       }
@@ -6458,7 +6410,7 @@ int Version::PickLevelForMemTableOutput(
 <h5 id="sec-10-3-12"><span class="section-number-5">10.3.12</span> VersionSet</h5>
 <div class="outline-text-5" id="text-10-3-12">
 
-<p>db/version_set.h VersionSet用来管理不同的Version并且应该维护了一些全局信息.还是首先看看结构
+<p>db/version<sub>set</sub>.h VersionSet用来管理不同的Version并且应该维护了一些全局信息.还是首先看看结构
 </p>
 
 
@@ -6569,8 +6521,8 @@ bool NeedsCompaction() const {
 <h6 id="sec-10-3-12-3"><span class="section-number-6">10.3.12.3</span> AppendVersion</h6>
 <div class="outline-text-6" id="text-10-3-12-3">
 
-<p>添加version.非常简单修改引用计数挂载链表上.将version挂在version_set下面的话可以使得
-version_set了解到哪些文件依然是被正在使用的.
+<p>添加version.非常简单修改引用计数挂载链表上.将version挂在version<sub>set下面的话可以使得</sub>
+version<sub>set了解到哪些文件依然是被正在使用的</sub>.
 </p>
 
 
@@ -6641,7 +6593,7 @@ version_set了解到哪些文件依然是被正在使用的.
 <h6 id="sec-10-3-12-6"><span class="section-number-6">10.3.12.6</span> TotalFileSize</h6>
 <div class="outline-text-6" id="text-10-3-12-6">
 
-<p>根据file meta data得到所有文件大小.非常简单因为里面有file_size.
+<p>根据file meta data得到所有文件大小.非常简单因为里面有file<sub>size</sub>.
 </p>
 
 
@@ -6663,7 +6615,7 @@ version_set了解到哪些文件依然是被正在使用的.
 <h6 id="sec-10-3-12-7"><span class="section-number-6">10.3.12.7</span> MarkFileNumberUsed</h6>
 <div class="outline-text-6" id="text-10-3-12-7">
 
-<p>标记当前使用了file_number进度.number表示已经使用的进度,所以下次分配必须+1.
+<p>标记当前使用了file<sub>number进度</sub>.number表示已经使用的进度,所以下次分配必须+1.
 </p>
 
 
@@ -6885,7 +6837,7 @@ version_set了解到哪些文件依然是被正在使用的.
 <h6 id="sec-10-3-12-13"><span class="section-number-6">10.3.12.13</span> Recover</h6>
 <div class="outline-text-6" id="text-10-3-12-13">
 
-<p>从db_impl.cc里面的DB::Open可以看到,这里的Recover并没有将剩余的version_edit回放完成.
+<p>从db<sub>impl</sub>.cc里面的DB::Open可以看到,这里的Recover并没有将剩余的version<sub>edit回放完成</sub>.
 回放这个部分在LogAndApply里面完成.所以Recover可能只是恢复到以前某个状态.将当前的
 CURRENT里面的manifest文件回放之后就得到最新的内容.然后根据里面的log信息回放后面的内容.
 </p>
@@ -7447,7 +7399,7 @@ void VersionSet::GetRange2(const std::vector&lt;FileMetaData*&gt;&amp; inputs1,
 <h5 id="sec-10-3-13"><span class="section-number-5">10.3.13</span> VersionSetBuilder</h5>
 <div class="outline-text-5" id="text-10-3-13">
 
-<p>db/version_set.cc VersoionSetBuilder存在作用就是为了能够高效地做version edit对象的回放.
+<p>db/version<sub>set</sub>.cc VersoionSetBuilder存在作用就是为了能够高效地做version edit对象的回放.
 沃恩首先看看里面可能涉及到的结构.注意这里面我们没有修改base对应的version对象,只是在SaveTo
 的时候可以将这些log全部作用到base这个对象,写到新的对象上面.
 </p>
@@ -7692,7 +7644,7 @@ void SaveTo(Version* v) {
 <h5 id="sec-10-3-14"><span class="section-number-5">10.3.14</span> Compaction</h5>
 <div class="outline-text-5" id="text-10-3-14">
 
-<p>db/version_set.h Compaction包含的是进行compaction操作的信息.针对compaction对象通常是current version
+<p>db/version<sub>set</sub>.h Compaction包含的是进行compaction操作的信息.针对compaction对象通常是current version
 所对应的文件。我们首先来看看Compaction结构.
 </p>
 
@@ -7736,7 +7688,7 @@ class Compaction {
 <h6 id="sec-10-3-14-1"><span class="section-number-6">10.3.14.1</span> Compaction</h6>
 <div class="outline-text-6" id="text-10-3-14-1">
 
-<p>构造函数过程非常简单.析构函数的话也只是将input_version_修改引用计数。
+<p>构造函数过程非常简单.析构函数的话也只是将input<sub>version</sub><sub>修改引用计数。</sub>
 </p>
 
 
@@ -7837,7 +7789,7 @@ static uint64_t MaxFileSizeForLevel(int level) {
 <div class="outline-text-6" id="text-10-3-14-5">
 
 <p>通知这次操作做了文件的删除.将这些可以删除的文件填写到edit里面.做好compaction之后的话，
-那么inputs_里面的文件基本上就没有用途就可以被删除了。
+那么inputs<sub>里面的文件基本上就没有用途就可以被删除了。</sub>
 </p>
 
 
@@ -7859,7 +7811,7 @@ static uint64_t MaxFileSizeForLevel(int level) {
 <h6 id="sec-10-3-14-6"><span class="section-number-6">10.3.14.6</span> IsBaseLevelForKey</h6>
 <div class="outline-text-6" id="text-10-3-14-6">
 
-<p>在db_impl.cc里面的DoCompactionWork里面调用了.具体策略实现没有太仔细分析.判断某个key在高层是否还存在.
+<p>在db<sub>impl</sub>.cc里面的DoCompactionWork里面调用了.具体策略实现没有太仔细分析.判断某个key在高层是否还存在.
 </p>
 
 
@@ -7894,7 +7846,7 @@ static uint64_t MaxFileSizeForLevel(int level) {
 <h6 id="sec-10-3-14-7"><span class="section-number-6">10.3.14.7</span> ShouldStopBefore</h6>
 <div class="outline-text-6" id="text-10-3-14-7">
 
-<p>在db_impl.cc里面的DoCompactionWork里面调用了.作用是判断这个key的话是否应该停止然后
+<p>在db<sub>impl</sub>.cc里面的DoCompactionWork里面调用了.作用是判断这个key的话是否应该停止然后
 重新开辟一个新的文件用于compaction的输出.这是一个策略,大致应该是希望这个key如果
 和grandparent level重合不要过多.更具体的策略方面不太清楚.
 </p>
@@ -7953,7 +7905,7 @@ static uint64_t MaxFileSizeForLevel(int level) {
 <h5 id="sec-10-3-15"><span class="section-number-5">10.3.15</span> CompactionState</h5>
 <div class="outline-text-5" id="text-10-3-15">
 
-<p>db/db_impl.cc CompactionState里面记录的是在这次Compaction时候保存的状态.Compaction只是
+<p>db/db<sub>impl</sub>.cc CompactionState里面记录的是在这次Compaction时候保存的状态.Compaction只是
 保存了本次compaction操作所需要的信息，但是没有保存过程状态.
 </p>
 
@@ -8001,7 +7953,7 @@ static uint64_t MaxFileSizeForLevel(int level) {
 <h5 id="sec-10-3-16"><span class="section-number-5">10.3.16</span> VersionEdit</h5>
 <div class="outline-text-5" id="text-10-3-16">
 
-<p>db/version_edit.h 阅读完DBImpl::NewDB的话就会发现VersionEdit里面存储的是整个数据库的元信息.
+<p>db/version<sub>edit</sub>.h 阅读完DBImpl::NewDB的话就会发现VersionEdit里面存储的是整个数据库的元信息.
 元信息序列化之后作为log写入到Manifest文件里面去。CURRENT文件里面存放的就是当前Manifest文件.
 我们首先看看VersionEdit的结构以及里面的字段。个人觉得VersionEdit本身是非常简单的，但是需要了解各个字段含义。
 </p>
@@ -8087,7 +8039,7 @@ Version造成了哪些变动，比如增加或者是删除啦哪些文件，下�
 <h6 id="sec-10-3-16-3"><span class="section-number-6">10.3.16.3</span> DeleteFile</h6>
 <div class="outline-text-6" id="text-10-3-16-3">
 
-<p>告诉db系统删除了这个文件.删除并没有操作new_files数组.而是放进了一个set.
+<p>告诉db系统删除了这个文件.删除并没有操作new<sub>files数组</sub>.而是放进了一个set.
 </p>
 
 
@@ -8246,7 +8198,7 @@ class SnapshotList {
 <h5 id="sec-10-4-1"><span class="section-number-5">10.4.1</span> PosixEnv</h5>
 <div class="outline-text-5" id="text-10-4-1">
 
-<p>util/env_posix.cc PosixEnv是Env接口的实现。PosixEnv的大部分实现都相当直接.不过这里还是把代码贴上了，主要是方便在一些细小的地方进行注记。
+<p>util/env<sub>posix</sub>.cc PosixEnv是Env接口的实现。PosixEnv的大部分实现都相当直接.不过这里还是把代码贴上了，主要是方便在一些细小的地方进行注记。
 </p>
 
 
@@ -8586,7 +8538,7 @@ void PosixEnv::BGThread() {
 <h6 id="sec-10-4-1-4"><span class="section-number-6">10.4.1.4</span> Default</h6>
 <div class="outline-text-6" id="text-10-4-1-4">
 
-<p>Default是为了获得Env的一个实例.为了防止多个线程产生多个Env实例.使用pthread_once来产生.
+<p>Default是为了获得Env的一个实例.为了防止多个线程产生多个Env实例.使用pthread<sub>once来产生</sub>.
 </p>
 
 
@@ -8610,7 +8562,7 @@ Env* Env::Default() {
 <h5 id="sec-10-4-2"><span class="section-number-5">10.4.2</span> PosixFileLock</h5>
 <div class="outline-text-5" id="text-10-4-2">
 
-<p>util/env_posix.cc PosixFilLock是FileLock的实现。基本上PosixFileLock没有任何内容，里面只需要维护fd即可。然后在LockOrUnlock里面操作fd即可以加锁解锁
+<p>util/env<sub>posix</sub>.cc PosixFilLock是FileLock的实现。基本上PosixFileLock没有任何内容，里面只需要维护fd即可。然后在LockOrUnlock里面操作fd即可以加锁解锁
 </p>
 
 
@@ -8629,7 +8581,7 @@ Env* Env::Default() {
 <h5 id="sec-10-4-3"><span class="section-number-5">10.4.3</span> PosixLogger</h5>
 <div class="outline-text-5" id="text-10-4-3">
 
-<p>util/posix_logger.h PosixLogger是Logger的实现。我们主要看看logger打印了哪些信息，并且稍微看看如果我们写logger的话大致应该需要考虑什么问题
+<p>util/posix<sub>logger</sub>.h PosixLogger是Logger的实现。我们主要看看logger打印了哪些信息，并且稍微看看如果我们写logger的话大致应该需要考虑什么问题
 PosixLogger持有了FILE*对象以及gettid的函数指针.只有一个方法Logv
 </p>
 
@@ -8712,7 +8664,7 @@ PosixLogger持有了FILE*对象以及gettid的函数指针.只有一个方法Log
 <h5 id="sec-10-4-4"><span class="section-number-5">10.4.4</span> PosixRandomAccessFile</h5>
 <div class="outline-text-5" id="text-10-4-4">
 
-<p>util/env_posix.cc PosixRandomAccessFile是RandomAccessFile的实现。对于随机读取的话使用pread应该就可以了.
+<p>util/env<sub>posix</sub>.cc PosixRandomAccessFile是RandomAccessFile的实现。对于随机读取的话使用pread应该就可以了.
 </p>
 
 
@@ -8738,7 +8690,7 @@ PosixLogger持有了FILE*对象以及gettid的函数指针.只有一个方法Log
 <h5 id="sec-10-4-5"><span class="section-number-5">10.4.5</span> PosixSequentialFile</h5>
 <div class="outline-text-5" id="text-10-4-5">
 
-<p>util/env_posix.cc PosixSequentialFile是SequentialFile的实现。内部实现的持有FILE*指针.猜想对于顺序访问而言的话，缓存还是会非常有效果的
+<p>util/env<sub>posix</sub>.cc PosixSequentialFile是SequentialFile的实现。内部实现的持有FILE*指针.猜想对于顺序访问而言的话，缓存还是会非常有效果的
 </p>
 
 
@@ -8766,7 +8718,7 @@ virtual Status Skip(uint64_t n) {
 </pre>
 
 <p>
-fread_unlocked表示内部不会存在多个线程来读取这个文件.可以在一定程度上提高性能.
+fread<sub>unlocked表示内部不会存在多个线程来读取这个文件</sub>.可以在一定程度上提高性能.
 </p>
 </div>
 
@@ -8776,7 +8728,7 @@ fread_unlocked表示内部不会存在多个线程来读取这个文件.可以�
 <h5 id="sec-10-4-6"><span class="section-number-5">10.4.6</span> PosixMmapFile</h5>
 <div class="outline-text-5" id="text-10-4-6">
 
-<p>util/env_posix.cc PosixMmapFile是为了实现WritableFile的.内部使用mmap来实现的文件追加写和同步方式.还是比较精巧的，值得仔细看看
+<p>util/env<sub>posix</sub>.cc PosixMmapFile是为了实现WritableFile的.内部使用mmap来实现的文件追加写和同步方式.还是比较精巧的，值得仔细看看
 </p>
 
 
@@ -9096,7 +9048,7 @@ class LRUCache {
 </pre>
 
 <p>
-对于LRU_Remove/LRU_Append非常简单.这里稍微着重看看Insert/Loopup/Release/Erase的实现.
+对于LRU<sub>Remove</sub>/LRU<sub>Append非常简单</sub>.这里稍微着重看看Insert/Loopup/Release/Erase的实现.
 </p>
 
 </div>
@@ -9269,7 +9221,7 @@ while (new_length &lt; elems_) {
 </pre>
 
 <p>
-length肯定是2^n.计算slot的方式就是
+length肯定是2<sup>n</sup>.计算slot的方式就是
 </p>
 
 
@@ -9293,8 +9245,8 @@ length肯定是2^n.计算slot的方式就是
 <h5 id="sec-10-6-1"><span class="section-number-5">10.6.1</span> WriteBatch</h5>
 <div class="outline-text-5" id="text-10-6-1">
 
-<p>db/write_batch.cc db/write_batch_internal.h WriteBatch可以认为就是一个小型的数据记录仓库.
-write_batch_internal.h里面是一些write_batch里面可能使用到的静态函数，将选择将声明放在这个头文件里面而不是放在include/leveldb/write_batch.h里面.
+<p>db/write<sub>batch</sub>.cc db/write<sub>batch</sub><sub>internal</sub>.h WriteBatch可以认为就是一个小型的数据记录仓库.
+write<sub>batch</sub><sub>internal</sub>.h里面是一些write<sub>batch里面可能使用到的静态函数，将选择将声明放在这个头文件里面而不是放在include</sub>/leveldb/write<sub>batch</sub>.h里面.
 之前有一段注释表明WriteBatch内部二进制组织方式.
 </p>
 
@@ -9322,7 +9274,7 @@ write_batch_internal.h里面是一些write_batch里面可能使用到的静态�
 </li>
 </ul>
 
-<p>这里rep_的类型是std::stirng.
+<p>这里rep<sub>的类型是std</sub>::stirng.
 </p>
 
 </div>
@@ -9738,7 +9690,7 @@ bool MemTable::Get(const LookupKey&amp; key, std::string* value, Status* s) {
 <h5 id="sec-10-6-3"><span class="section-number-5">10.6.3</span> MemTableInserter</h5>
 <div class="outline-text-5" id="text-10-6-3">
 
-<p>db/write_batch.cc MemTableInserter作为WriteBatch::Handler实现,基本上可以认为是操作MemTable的代理类.
+<p>db/write<sub>batch</sub>.cc MemTableInserter作为WriteBatch::Handler实现,基本上可以认为是操作MemTable的代理类.
 具体代码非常简单，实现部分可能需要看MemTable.这个后面会讲解
 </p>
 
@@ -9816,7 +9768,7 @@ class MemTableIterator: public Iterator {
 <h5 id="sec-10-7-1"><span class="section-number-5">10.7.1</span> LogFormat</h5>
 <div class="outline-text-5" id="text-10-7-1">
 
-<p>db/log_format.h 里面规定的是db log格式上面的一些常量和信息.内容非常少，但是可以给予我们一点启发
+<p>db/log<sub>format</sub>.h 里面规定的是db log格式上面的一些常量和信息.内容非常少，但是可以给予我们一点启发
 </p>
 
 
@@ -9933,7 +9885,7 @@ not necessarily the format.
 <h5 id="sec-10-7-2"><span class="section-number-5">10.7.2</span> LogWriter</h5>
 <div class="outline-text-5" id="text-10-7-2">
 
-<p>db/log_writer.h db log writer.这里我们需要结合前面的LogFormatter一起看看.
+<p>db/log<sub>writer</sub>.h db log writer.这里我们需要结合前面的LogFormatter一起看看.
 </p>
 
 
@@ -10097,7 +10049,7 @@ not necessarily the format.
 <h5 id="sec-10-7-3"><span class="section-number-5">10.7.3</span> LogReader</h5>
 <div class="outline-text-5" id="text-10-7-3">
 
-<p>db/log_reader.h db log reader.这里我们需要结合前面的LogReader以及LogFormatter一起看看.
+<p>db/log<sub>reader</sub>.h db log reader.这里我们需要结合前面的LogReader以及LogFormatter一起看看.
 </p>
 
 
@@ -10193,7 +10145,7 @@ not necessarily the format.
 <h6 id="sec-10-7-3-1"><span class="section-number-6">10.7.3.1</span> Reader</h6>
 <div class="outline-text-6" id="text-10-7-3-1">
 
-<p>构造函数非常简单，注意这里开辟的backing_store_，可以猜想到这个backing_store是读取block内容临时开辟.
+<p>构造函数非常简单，注意这里开辟的backing<sub>store</sub><sub>，可以猜想到这个backing</sub><sub>store是读取block内容临时开辟</sub>.
 对于这些字段的含义可能第一眼看上去不太明白，这个分析代码应该可以看到每个字段的含义。
 </p>
 
@@ -10221,7 +10173,7 @@ not necessarily the format.
 <h6 id="sec-10-7-3-2"><span class="section-number-6">10.7.3.2</span> ReadPhysicalRecord</h6>
 <div class="outline-text-6" id="text-10-7-3-2">
 
-<p>从文件里面读取一个物理块大小出来kBlockSize.并且解析内容存放在bakcing_store_里面，同时返回type.
+<p>从文件里面读取一个物理块大小出来kBlockSize.并且解析内容存放在bakcing<sub>store</sub><sub>里面，同时返回type</sub>.
 这里很多细节都没有仔细看,只是理解大致的意思.
 </p>
 
@@ -10325,7 +10277,7 @@ not necessarily the format.
 <div class="outline-text-6" id="text-10-7-3-3">
 
 <p>ReadRecord读取的是一条逻辑记录.底层调用ReadPhysicalRecord将多条物理记录结合起来.实话说里面具体逻辑没有看懂，
-但是大致意思算是明白了。对于FullType来说的话record里面使用backing_store内存，而对于First/Middle/Last来说的话
+但是大致意思算是明白了。对于FullType来说的话record里面使用backing<sub>store内存，而对于First</sub>/Middle/Last来说的话
 里面使用的是scratch分配的内存.
 </p>
 
@@ -10552,7 +10504,7 @@ not necessarily the format.
 <div class="outline-text-5" id="text-10-8-1">
 
 <p>我们在分析后面的接口之前最好首先看看table文件的组织格式是怎么样的。这些table都是排好序的所以查询特别快。
-对于这些table通常称为sstable(sorted string table).关于table格式在leveldb/doc/table_format.txt里面有说明.
+对于这些table通常称为sstable(sorted string table).关于table格式在leveldb/doc/table<sub>format</sub>.txt里面有说明.
 本质上我们可认为sstable是一个二级索引文件.首先读取footer.得到metaindex block和index block位置.然后读取index block
 或者是metaindex block(上面存在排序k进行二分查找)，然后读取data block(k排序然后进行二分查找).
 </p>
@@ -10717,9 +10669,9 @@ TODO(postrelease): record following stats.
 <h5 id="sec-10-8-3"><span class="section-number-5">10.8.3</span> TableCache</h5>
 <div class="outline-text-5" id="text-10-8-3">
 
-<p>db/table_cache.cc TableCache的工作非常简单，就是针对Table对象以及Table::Iterator对象进行cache.
+<p>db/table<sub>cache</sub>.cc TableCache的工作非常简单，就是针对Table对象以及Table::Iterator对象进行cache.
 这样底层的话可以防止过多的文件打开。了解这个功能之后代码就非常好阅读了。我们首先看看TableCache结构.
-对于Cache的key使用uint64_t file_number来进行标记.
+对于Cache的key使用uint64<sub>t</sub> file<sub>number来进行标记</sub>.
 </p>
 
 
@@ -11095,7 +11047,7 @@ Iterator* TableCache::NewIterator(const ReadOptions&amp; options,
 <h6 id="sec-10-8-4-8"><span class="section-number-6">10.8.4.8</span> BlockReader</h6>
 <div class="outline-text-6" id="text-10-8-4-8">
 
-<p>BlockReader任务就是通过读取index_value给定的位置然后读取对应的Block位置并且返回BlockIterator对象.
+<p>BlockReader任务就是通过读取index<sub>value给定的位置然后读取对应的Block位置并且返回BlockIterator对象</sub>.
 </p>
 
 
@@ -11168,7 +11120,7 @@ Iterator* Table::BlockReader(void* arg,
 <h5 id="sec-10-8-5"><span class="section-number-5">10.8.5</span> TableBuilder</h5>
 <div class="outline-text-5" id="text-10-8-5">
 
-<p>table/table_builde.cc TableBuilder接口在之前include/leveldb/table_builder.h里面已经提供了。
+<p>table/table<sub>builde</sub>.cc TableBuilder接口在之前include/leveldb/table<sub>builder</sub>.h里面已经提供了。
 这里我们具体看看TableBuilder的接口.关于table格式的话可以参考TableFormat这节.注意这里TableBuilder
 只是将kv加入到了block并且写入了磁盘，但是对于index block并没有写入磁盘。
 </p>
@@ -11478,7 +11430,7 @@ void TableBuilder::Abandon() {
 <h5 id="sec-10-8-6"><span class="section-number-5">10.8.6</span> BlockBuilder</h5>
 <div class="outline-text-5" id="text-10-8-6">
 
-<p>table/block_builder.h 从提供的接口来看的话，BlockBuilder功能应该是将多个有序的kv写到一个连续内存块内部。
+<p>table/block<sub>builder</sub>.h 从提供的接口来看的话，BlockBuilder功能应该是将多个有序的kv写到一个连续内存块内部。
 我们首先看看结构然后具体分析里面的方法.提供的Reset接口允许BlockBuilder重复使用.底层针对key的prefix部分进行了压缩.
 </p>
 
@@ -11527,7 +11479,7 @@ void TableBuilder::Abandon() {
 <div class="outline-text-6" id="text-10-8-6-1">
 
 <p>我们首先看看BlockBuilder是如何针对key进行prefix-compressed的.对于每K个key的话会保存一个完整key,然后对于
-剩余的K-1个key采用prefix-compressed的方式压缩。共享的部分长度叫做shared_bytes,非共享的部分叫做unshared_bytes.
+剩余的K-1个key采用prefix-compressed的方式压缩。共享的部分长度叫做shared<sub>bytes</sub>,非共享的部分叫做unshared<sub>bytes</sub>.
 对于保存这些完整的key的点，叫做restarts.这个非常好理解。然后从下面注释可以看到restarts的信息保存在最后.
 </p>
 
@@ -11564,7 +11516,7 @@ void TableBuilder::Abandon() {
 <h6 id="sec-10-8-6-2"><span class="section-number-6">10.8.6.2</span> BlockBuilder</h6>
 <div class="outline-text-6" id="text-10-8-6-2">
 
-<p>构造函数非常简单.这里options-&gt;block_restrat_interval可能就是之前说的参数K
+<p>构造函数非常简单.这里options-&gt;block<sub>restrat</sub><sub>interval可能就是之前说的参数K</sub>
 </p>
 
 
@@ -11632,7 +11584,7 @@ void TableBuilder::Abandon() {
 <h6 id="sec-10-8-6-5"><span class="section-number-6">10.8.6.5</span> Finish</h6>
 <div class="outline-text-6" id="text-10-8-6-5">
 
-<p>Finish的工作就是将restarts的信息全部写入到block buffer的结尾吧.同时将buffer_包装称为Slice返回.
+<p>Finish的工作就是将restarts的信息全部写入到block buffer的结尾吧.同时将buffer<sub>包装称为Slice返回</sub>.
 </p>
 
 
@@ -11656,7 +11608,7 @@ void TableBuilder::Abandon() {
 <h6 id="sec-10-8-6-6"><span class="section-number-6">10.8.6.6</span> Add</h6>
 <div class="outline-text-6" id="text-10-8-6-6">
 
-<p>我们这里仔细看看prefix-compressed是相对哪一个key来进行压缩的.阅读代码会发现是针对last_key来进行的.
+<p>我们这里仔细看看prefix-compressed是相对哪一个key来进行压缩的.阅读代码会发现是针对last<sub>key来进行的</sub>.
 </p>
 
 
@@ -11881,7 +11833,7 @@ Block::~Block() {
 <h6 id="sec-10-8-8-2"><span class="section-number-6">10.8.8.2</span> NextEntryOffset</h6>
 <div class="outline-text-6" id="text-10-8-8-2">
 
-<p>得到下一个entry的偏移.直接使用value_的偏移和大小即可计算出来
+<p>得到下一个entry的偏移.直接使用value<sub>的偏移和大小即可计算出来</sub>
 </p>
 
 
@@ -11919,7 +11871,7 @@ inline uint32_t NextEntryOffset() const {
 <h6 id="sec-10-8-8-4"><span class="section-number-6">10.8.8.4</span> SeekToRestartPoint</h6>
 <div class="outline-text-6" id="text-10-8-8-4">
 
-<p>这个接口的语义是到某个restart point.我们需要调整restart_index_.这里value_为了可以调用NextEntryOffset.
+<p>这个接口的语义是到某个restart point.我们需要调整restart<sub>index</sub>_.这里value<sub>为了可以调用NextEntryOffset</sub>.
 </p>
 
 
@@ -12044,7 +11996,7 @@ inline uint32_t NextEntryOffset() const {
 <h6 id="sec-10-8-8-9"><span class="section-number-6">10.8.8.9</span> DecodeEntry</h6>
 <div class="outline-text-6" id="text-10-8-8-9">
 
-<p>从头部decode出shared,non_shared以及value_length.这里面为了加快判断的话有一个技巧.返回的是下一个要读取的地址.
+<p>从头部decode出shared,non<sub>shared以及value</sub><sub>length</sub>.这里面为了加快判断的话有一个技巧.返回的是下一个要读取的地址.
 </p>
 
 
@@ -12468,7 +12420,7 @@ static const size_t kBlockTrailerSize = 5;
 <h5 id="sec-10-8-12"><span class="section-number-5">10.8.12</span> IteratorWrapper</h5>
 <div class="outline-text-5" id="text-10-8-12">
 
-<p>table/iterator_wrapper.h IteratorWrapper就是Iterator的装饰者。对于Valid,Key进行了缓存.
+<p>table/iterator<sub>wrapper</sub>.h IteratorWrapper就是Iterator的装饰者。对于Valid,Key进行了缓存.
 这个其实还是比较有必要的.因为有些iterator取key和valid代价比较大.不过似乎对于虚函数没有节省开销，
 因为内部存放的还是Iterator对象而不是模板。阅读完了TwoLevelIterator就会发现，这个类存在原因，
 主要是为了管理Iterator对象的管理。比如Set的时候会将原来的Iterator对象释放，析构函数会将持有的Iterator释放。
@@ -12528,7 +12480,7 @@ static const size_t kBlockTrailerSize = 5;
 <h5 id="sec-10-8-14"><span class="section-number-5">10.8.14</span> TwoLevelIterator</h5>
 <div class="outline-text-5" id="text-10-8-14">
 
-<p>table/two_level_iterator.h TwoLevelIterator是一个二级Iterator配合sstable二级索引文件使用的。
+<p>table/two<sub>level</sub><sub>iterator</sub>.h TwoLevelIterator是一个二级Iterator配合sstable二级索引文件使用的。
 通过工厂方法来进行构造所以接口非常简单。主要还是看TwoLevelIterator里面的实现。
 </p>
 
@@ -12767,7 +12719,7 @@ TwoLevelIterator::TwoLevelIterator(
 <h6 id="sec-10-8-14-9"><span class="section-number-6">10.8.14.9</span> SkipEmptyDataBlocksForward</h6>
 <div class="outline-text-6" id="text-10-8-14-9">
 
-<p>对于空的DataBlock的话那么!data_iter_.Valid().对于空的DataBlock可以跳过IndexBlock快速跨越。
+<p>对于空的DataBlock的话那么!data<sub>iter</sub>_.Valid().对于空的DataBlock可以跳过IndexBlock快速跨越。
 </p>
 
 
@@ -13747,7 +13699,7 @@ typename SkipList&lt;Key,Comparator&gt;::Node* SkipList&lt;Key,Comparator&gt;::F
 <p>在看下面的函数之前我们先看看Node的实现.其实非常简单，而且似乎没有必要使用atomic的方式来操作。
 因为这里面我们已经要求写需要外部加锁保证了.(#note: 后来想想还是有必要的,这里我们只是要求用户
 在写的时候使用外部同步机保证，而读的时候没有。那么这样必须强制读取内存才可以保证正确,所以这里
-需要Acquire_Load以及Release_Load).非常简单，就是持有key以及跳表指针.
+需要Acquire<sub>Load以及Release</sub><sub>Load</sub>).非常简单，就是持有key以及跳表指针.
 </p>
 
 
@@ -13890,7 +13842,7 @@ inline void SkipList&lt;Key,Comparator&gt;::Iterator::SeekToLast() {
 <h5 id="sec-10-9-5"><span class="section-number-5">10.9.5</span> AtomicPointer</h5>
 <div class="outline-text-5" id="text-10-9-5">
 
-<p>port/atomic_pointer.h 指针的存取都是原子操作.对于pointer来说，不管是32位还是64位的话都是原子操作的。但是这里必须考虑内存屏障。
+<p>port/atomic<sub>pointer</sub>.h 指针的存取都是原子操作.对于pointer来说，不管是32位还是64位的话都是原子操作的。但是这里必须考虑内存屏障。
 对于leveldb还考虑到c++0x的原子操作库cstdatomic本身所提供的功能。我们都看看这个是如何实现的。
 </p>
 <p>
@@ -14226,7 +14178,7 @@ Iterator* internal_iter =
 
 
 <p>
-注意它这里提供的comparator是一个internal_comparator. 这个comparator不仅仅比较user key, 还比较sequence number. 因为sequence number是顺序分配的，所以新的kv得到更大的sequence number. 代码在这里：
+注意它这里提供的comparator是一个internal<sub>comparator</sub>. 这个comparator不仅仅比较user key, 还比较sequence number. 因为sequence number是顺序分配的，所以新的kv得到更大的sequence number. 代码在这里：
 </p>
 
 

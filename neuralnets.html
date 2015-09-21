@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -299,7 +251,7 @@ BP可以告诉我们dE/dw(error deriviate). 为了得到一个完整的训练神
 <h3 id="sec-4"><span class="section-number-3">4</span> <a href="images/nn-class-lec4.pdf">Lecture4</a> (神经网络输出函数)</h3>
 <div class="outline-text-3" id="text-4">
 
-<p>如果最后一层神经元函数是y = e(z) = sigmod(z)，且代价函数是C=(y-t)^2, 那么dC/dz = 2(y-t) * y * (1-y). 如果我们以此来做梯度下降的话会发现：如果t=1,y=0.000001的话，那么dy/dz是非常小的。这样会导致学习速度非常慢，因此我们需要更好的代价函数。我们试图通过将输出转换成为概率，然后使用交叉熵来作为代价函数C = &sum;{ti * -log(yi)}(t = 0,1). 为了将输出转换成为概率，我们可以使用softmax function作为神经元函数: yi = e^zi / &sum;(e^zj). 这个神经元函数输出不仅仅考虑单个神经突触触发强度，还考虑这层其他神经突触触发强度。使用softmax/cross-entropy之后，dC/dzi = yi - ti. 如果t=1, y = 0.000001的话，那么梯度变化依然会很大。
+<p>如果最后一层神经元函数是y = e(z) = sigmod(z)，且代价函数是C=(y-t)<sup>2</sup>, 那么dC/dz = 2(y-t) * y * (1-y). 如果我们以此来做梯度下降的话会发现：如果t=1,y=0.000001的话，那么dy/dz是非常小的。这样会导致学习速度非常慢，因此我们需要更好的代价函数。我们试图通过将输出转换成为概率，然后使用交叉熵来作为代价函数C = &sum;{ti * -log(yi)}(t = 0,1). 为了将输出转换成为概率，我们可以使用softmax function作为神经元函数: yi = e<sup>zi</sup> / &sum;(e<sup>zj</sup>). 这个神经元函数输出不仅仅考虑单个神经突触触发强度，还考虑这层其他神经突触触发强度。使用softmax/cross-entropy之后，dC/dzi = yi - ti. 如果t=1, y = 0.000001的话，那么梯度变化依然会很大。
 </p>
 <p>
 我们可以使用3-gram(trigram)来做单词预测，通常效果会比较好，但是trigram缺陷是不能够分辨相似的结构。下图是解决这个问题的神经网络模型
@@ -390,7 +342,7 @@ momentum: 假设有个小球在error surface上。梯度下降法是假设小球
 seperate adaptive learning rate for each parameter: 不同layer的gradient以及fan-in都不相同，所以为每一层甚至每一个weight搭配一个自适应的learning rate还是会比较有效的。实现上是假设我们有一个global weight(g), 然后每个参数上有一个local gain(x). dw = -dE/dw * g * x. x选择在[0.1,10/100]是比较合适的，初始可以设置为1. adaptive大致思想是：如果两次gradient是同方向的话，那么就增大x = x + k, 否则x = x * (1-k). 比如k=0.05的话，那么x=x+0.05 or x=x*.95. 这种方法比较其实比较适合full-batch, 也可以用于mini-batch, 但是必须确保mini-batch量足够大这样gradient方向变化和whole dataset是一致的。和momentum不同，adaptive learning rate只能处理axis-aligned effects, 而momentum则能处理diagonal ellipses effect, 所以如果两者结合使用的话效果会更好。
 </p>
 <p>
-rmsprop: 这个方式是rpop的扩展。rpop只能用于full-batch上，并且不考虑gradient magnitude而只考虑gradient sign变化. 这样做的原因是对于那些gradient小的weight可以逃离plateau. learning rate和上面类似但是只涉及乘法：如果两次gradient sign相同，那么x *= k1(1.2), 否则 x *= k2(0.5). 但是最好限制一下上下限[10^-6, 50]. 关于rpop不能用于在mini-batch上，是因为每次mini-batch给出的梯度magnitude可能是不同的：比如我们将full-batch变为10次mini-batch, 前面9次都是相同方向但是梯度magnitude只有0.1, 而第10次变为相反方向但是magnitude有100. stochastic gradient descent主要思想是每次梯度下降都近似于平均值，所以如果直接将rpop作用在mini-batch是不可行的。但是我们可以稍微一些修改，比如我们每次在做mini-batch时候step_size还要除上我们估计的"如果做full-batch对应的梯度magnitude". msq(w,t) = 0.9 * msq(w,t-1) + 0.1 * (dE/dw)^2., mag(w,t) = sqrt(msq(w,t)). 这个公式相当于动态地计算squared gradient的平均值。(#note: 使用方式我觉得是，初始时step_size = 1, last_mag = mag(w,0). 而后step_size *= (k * last_msg) / mag(w,1)).
+rmsprop: 这个方式是rpop的扩展。rpop只能用于full-batch上，并且不考虑gradient magnitude而只考虑gradient sign变化. 这样做的原因是对于那些gradient小的weight可以逃离plateau. learning rate和上面类似但是只涉及乘法：如果两次gradient sign相同，那么x *= k1(1.2), 否则 x *= k2(0.5). 但是最好限制一下上下限[10<sup>-6</sup>, 50]. 关于rpop不能用于在mini-batch上，是因为每次mini-batch给出的梯度magnitude可能是不同的：比如我们将full-batch变为10次mini-batch, 前面9次都是相同方向但是梯度magnitude只有0.1, 而第10次变为相反方向但是magnitude有100. stochastic gradient descent主要思想是每次梯度下降都近似于平均值，所以如果直接将rpop作用在mini-batch是不可行的。但是我们可以稍微一些修改，比如我们每次在做mini-batch时候step<sub>size还要除上我们估计的</sub>"如果做full-batch对应的梯度magnitude". msq(w,t) = 0.9 * msq(w,t-1) + 0.1 * (dE/dw)<sup>2</sup>., mag(w,t) = sqrt(msq(w,t)). 这个公式相当于动态地计算squared gradient的平均值。(#note: 使用方式我觉得是，初始时step<sub>size</sub> = 1, last<sub>mag</sub> = mag(w,0). 而后step<sub>size</sub> *= (k * last<sub>msg</sub>) / mag(w,1)).
 </p>
 <p>
 下面是一张关于神经网络学习方法的总结图：1.什么时候选用full-batch或mini-batch 2. 为什么没有比较简单直接的办法
@@ -458,7 +410,7 @@ RNN实现上可以认为是将其展开成为多层前馈神经网络. 假设我
 </p><ul>
 <li>early-stopping只所以有效是因为，当weight比较小的时候logistic函数近似线性函数，所以整个神经网络近似线性模型。
 </li>
-<li>noise本质上效果就是weight-decay：如果我们在输入上加入N(0,e^2)高斯分布噪音的话，那么经过线性组合之后这个噪音就变为N(0, w^2 * e^2)了，那么在cost-function里面就增加了e^2 * w^2这样的惩罚项。如果噪音方差是e^2的话，那么想当增加L2惩罚项，惩罚系数是e^2. 当然noise还可以出现在weight以及activity上.
+<li>noise本质上效果就是weight-decay：如果我们在输入上加入N(0,e<sup>2</sup>)高斯分布噪音的话，那么经过线性组合之后这个噪音就变为N(0, w<sup>2</sup> * e<sup>2</sup>)了，那么在cost-function里面就增加了e<sup>2</sup> * w<sup>2这样的惩罚项。如果噪音方差是e</sup><sup>2的话，那么想当增加L2惩罚项，惩罚系数是e</sup><sup>2</sup>. 当然noise还可以出现在weight以及activity上.
 </li>
 <li>weight decay可以有两种方式，一种是weight penalty将weight直接作为惩罚项，另外一种是weight constraint是对weight总体进行约束。虽然weight constraint可以通过拉格朗日乘子转换成为weight penalty形式，但是在实践上weight constraint可以有另外的做法：如果layer上weights超过一定限制的话，我们可以进行放缩操作。反之如果weights过小的话，我们也可以合理地进行放缩操作来避免陷入0附近。我们可以合理地选择penaly函数来控制我们想如何控制weight收敛性。
 </li>
@@ -466,7 +418,7 @@ RNN实现上可以认为是将其展开成为多层前馈神经网络. 假设我
 
 
 <p>
-我们可以从假设极大化后验概率出发来推导出weight-decay. 我们假设output和weight先验都服从高斯分布的话，极大化后验概率其实就是最小化残差+L2惩罚项。观察这个公式我们可以得到一个启示是，对于weight的惩罚系数，我们最好选择(Ed/Ew)^2.
+我们可以从假设极大化后验概率出发来推导出weight-decay. 我们假设output和weight先验都服从高斯分布的话，极大化后验概率其实就是最小化残差+L2惩罚项。观察这个公式我们可以得到一个启示是，对于weight的惩罚系数，我们最好选择(Ed/Ew)<sup>2</sup>.
 </p>
 <p>
 <img src="images/nn-class-bayesian-interpretation-of-weight-decay.png"  alt="./images/nn-class-bayesian-interpretation-of-weight-decay.png" />
@@ -494,7 +446,7 @@ full-bayesian learning不仅要求给出极大后验概率的模型，还要给�
 <img src="images/nn-class-sampling-weight-vectors.png"  alt="./images/nn-class-sampling-weight-vectors.png" /> <img src="images/nn-class-property-of-mcmc.png"  alt="./images/nn-class-property-of-mcmc.png" />
 </p>
 <p>
-介绍Dropout之前首先要融合两个模型的办法(所以可以认为Dropout是融合多个模型的一种办法)，假设A预测为[0.3,0.2,0.5], B预测为[0.1,0.8,0.1]的话，第一种是mixture则是求解平均值[0.2,0.5,0.3], 第二种是product(sqrt(a * b)然后归一化平均值是[sqrt(0.3 * 0.1), sqrt(0.2 * 0.8), sqrt(0.5 * 0.1)]的归一化。dropout一点比较神奇的地方是，在训练时候如果每次dropout一半的unit的话，然后在预测时对weight取半(<b>0.5)的话，那么效果相当于是product融合(???, hinton称之为mean-net). Dropout过程是每次训练一个数据的时候将每一层一半的units关闭(做BP的话也不更新对应的weight)，它有非常好的特性体现在：1. 假设有H个units的话，相当于我们从2^H个models里面进行抽样，并且只feed一条训练数据。这是bagging的一种极端情况。 2. 两次训练之间使用的model其实是有weight-sharing的，这就意味着模型同时做了正规化。在实践过程中我们也可以对部分input-unit做dropout, 但是比率应该相对比较低。Hinton谈到关于自己如何想到dropout也挺有意思的：如果我们使用全部的节点来拟合这些数据的话，那么需要依靠所有节点之间非常缜密的配合才能做到。但是依靠所有节点非常缜密的配合这点本身就不可靠，我们更希望部分节点之间就能够比较好地进行工作。 *</b>  Lecture16 
+介绍Dropout之前首先要融合两个模型的办法(所以可以认为Dropout是融合多个模型的一种办法)，假设A预测为[0.3,0.2,0.5], B预测为[0.1,0.8,0.1]的话，第一种是mixture则是求解平均值[0.2,0.5,0.3], 第二种是product(sqrt(a * b)然后归一化平均值是[sqrt(0.3 * 0.1), sqrt(0.2 * 0.8), sqrt(0.5 * 0.1)]的归一化。dropout一点比较神奇的地方是，在训练时候如果每次dropout一半的unit的话，然后在预测时对weight取半(<b>0.5)的话，那么效果相当于是product融合(???, hinton称之为mean-net). Dropout过程是每次训练一个数据的时候将每一层一半的units关闭(做BP的话也不更新对应的weight)，它有非常好的特性体现在：1. 假设有H个units的话，相当于我们从2<sup>H个models里面进行抽样，并且只feed一条训练数据。这是bagging的一种极端情况。</sup> 2. 两次训练之间使用的model其实是有weight-sharing的，这就意味着模型同时做了正规化。在实践过程中我们也可以对部分input-unit做dropout, 但是比率应该相对比较低。Hinton谈到关于自己如何想到dropout也挺有意思的：如果我们使用全部的节点来拟合这些数据的话，那么需要依靠所有节点之间非常缜密的配合才能做到。但是依靠所有节点非常缜密的配合这点本身就不可靠，我们更希望部分节点之间就能够比较好地进行工作。 *</b>  Lecture16 
 the fog of progress. why we can not predict long-term future
 </p>
 <p>

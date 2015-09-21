@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -228,7 +180,7 @@ started.（Linux内核使用INTERLEAVE策略分配，避免在某个node上分�
 <p>
 The active memory allocation policies for all memory segments of a process (and information that
 shows how much memory was actually allocated from which node) can be seen by determining the
-process id and then looking at the contents of /proc/&lt;pid&gt;/numa_maps.
+process id and then looking at the contents of /proc/&lt;pid&gt;/numa<sub>maps</sub>.
 </p>
 
 <hr/>
@@ -299,14 +251,14 @@ performance.（对于小NUMA系统比如2nodes来说偏向使用remote node, 而
 </p>
 <p>
 There is a knob in the kernel that determines how the situation is to be treated in <i>proc/sys</i>
-vm/zone_reclaim. A value of 0 means that no local reclaim should take place. A value of 1 tells the
+vm/zone<sub>reclaim</sub>. A value of 0 means that no local reclaim should take place. A value of 1 tells the
 kernel that a reclaim pass should be run in order to avoid allocations from the other node. On boot-
 up a mode is chosen based on the largest NUMA distance in the system.
 </p>
 <p>
 If zone reclaim is switched on, the kernel still attempts to keep the reclaim pass as lightweight
 as possible. By default, reclaim will be restricted to unmapped page-cache pages. The frequency
-of reclaim passes can be further reduced by setting /proc/sys/vm/min_unmapped_ratio to the
+of reclaim passes can be further reduced by setting /proc/sys/vm/min<sub>unmapped</sub><sub>ratio</sub> to the
 percentage of memory that must contain unmapped pages for the system to run a reclaim pass. The
 default is 1 percent. （zone reclaim打开之后后台也会启动轻量回收线程，只回收那些没有被映射到进程空间的page，并且这种page占用内存比率超过一定数量才会开始回收）
 </p>
@@ -396,7 +348,7 @@ memory.
 <p>
 Linux has the capability to move memory. The virtual address of the memory in the process space
 stays the same. Only the physical location of the data is moved to a different node. The effect can be
-observed by looking at /proc/&lt;pid&gt;/numa_maps before and after a move.（虚拟地址保持不变而物理地址移动到其他node上去）
+observed by looking at /proc/&lt;pid&gt;/numa<sub>maps</sub> before and after a move.（虚拟地址保持不变而物理地址移动到其他node上去）
 </p>
 <p>
 Migrating all of a process’s memory to a node can optimize application performance by avoiding

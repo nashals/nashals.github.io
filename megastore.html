@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -296,7 +248,7 @@
 <p><img src="images/megastore-sample-schema.png"  alt="./images/megastore-sample-schema.png" />
 </p>
 <ul>
-<li>As in an RDBMS, the data model is de-clared in a schema and is strongly typed. Each schema has a set of tables, each containing a set of entities, which in turn contain a set of properties. Properties are named and typed values. The types can be strings, various flavors of numbers, or Google’s Protocol Buffers. They can be re-quired, optional, or repeated (allowing a list of values in a single property). All entities in a table have the same set of allowable properties. A sequence of properties is used to form the primary key of the entity, and the primary keys must be unique within the table. Figure 3 shows an example schema for a simple photo storage application. （datamodel和RDBMS非常类似，schema也是由很多table来组成，每个table包含很多entity，而每个entity包含很多property。对于property有类型包括字符串，整数以及protobuf本身，并且本身可以是required，optional以及repeated的。多个property组成primary key，而primary key的内容也是由这些property value组合起来的。比如上面就是(user_id, photo_id) ）
+<li>As in an RDBMS, the data model is de-clared in a schema and is strongly typed. Each schema has a set of tables, each containing a set of entities, which in turn contain a set of properties. Properties are named and typed values. The types can be strings, various flavors of numbers, or Google’s Protocol Buffers. They can be re-quired, optional, or repeated (allowing a list of values in a single property). All entities in a table have the same set of allowable properties. A sequence of properties is used to form the primary key of the entity, and the primary keys must be unique within the table. Figure 3 shows an example schema for a simple photo storage application. （datamodel和RDBMS非常类似，schema也是由很多table来组成，每个table包含很多entity，而每个entity包含很多property。对于property有类型包括字符串，整数以及protobuf本身，并且本身可以是required，optional以及repeated的。多个property组成primary key，而primary key的内容也是由这些property value组合起来的。比如上面就是(user<sub>id</sub>, photo<sub>id</sub>) ）
 </li>
 <li>Megastore tables are either entity group root tables or child tables. Each child table must declare a single distin-guished foreign key referencing a root table, illustrated by the ENTITY GROUP KEY annotation in Figure 3. Thus each child entity references a particular entity in its root table (called the root entity). An entity group consists of a root entity along with all entities in child tables that reference it. A Megastore instance can have several root tables, resulting in different classes of entity groups.（tables分为root table和child table，root table存在PRIMARY KEY，而child table必须使用一个foreign key来引用root table。这样对于每一个root table entry来说，可能会存在很多child entry来引用它。这里root table entry也叫做root entity)
 </li>

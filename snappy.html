@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -175,7 +127,7 @@ In particular:
 压缩的头部是一个原始串长度，然后使用变长整数方式来编码(google::protobuf也使用)
 </p>
 <p>
-The stream starts with the uncompressed length (up to a maximum of 2^32 - 1),
+The stream starts with the uncompressed length (up to a maximum of 2<sup>32</sup> - 1),
 stored as a little-endian varint. Varints consist of a series of bytes,
 where the lower 7 bits are data and the upper bit is set iff there are
 more bytes to be read. In other words, an uncompressed length of 64 would
@@ -237,7 +189,7 @@ Snappy实现上来说非常简单，首先针对字节流进行分块(比如32KB
 </li>
 <li>如果length在[1,64],而offset在[0,65535],那么表示[(length-1) &lt;&lt; 2 | 0x02 , offset](3个字节)
 </li>
-<li>如果length在[1,64],而offset在[0,2^32-1],那么表示[(length-1) &lt;&lt; 2 | 0x03, offset](5个字节)
+<li>如果length在[1,64],而offset在[0,2<sup>32</sup>-1],那么表示[(length-1) &lt;&lt; 2 | 0x03, offset](5个字节)
 </li>
 </ul>
 
@@ -484,11 +436,11 @@ inline int Bits::FindLSBSetNonZero64(uint64 n) {
 <p>
 为了方便这里给出三个内置函数解释
 </p><ul>
-<li>int __builtin_clz (unsigned int x) // Returns the number of leading 0-bits in x, starting at the most significant bit position. If x is 0, the result is undefined.
+<li>int _<sub>builtin</sub><sub>clz</sub> (unsigned int x) // Returns the number of leading 0-bits in x, starting at the most significant bit position. If x is 0, the result is undefined.
 </li>
-<li>int __builtin_ctz (unsigned int x) // Returns the number of trailing 0-bits in x, starting at the least significant bit position. If x is 0, the result is undefined.
+<li>int _<sub>builtin</sub><sub>ctz</sub> (unsigned int x) // Returns the number of trailing 0-bits in x, starting at the least significant bit position. If x is 0, the result is undefined.
 </li>
-<li>int __builtin_clzll (unsigned long long) // Similar to __builtin_clz, except the argument type is unsigned long long.
+<li>int _<sub>builtin</sub><sub>clzll</sub> (unsigned long long) // Similar to _<sub>builtin</sub><sub>clz</sub>, except the argument type is unsigned long long.
 </li>
 </ul>
 
@@ -667,7 +619,7 @@ uint16* WorkingMemory::GetHashTable(size_t input_size, int* table_size) {
 <h4 id="sec-4-5"><span class="section-number-4">4.5</span> FindMatchLength</h4>
 <div class="outline-text-4" id="text-4-5">
 
-<p>为了快速找到两个串(s1,s2)最大匹配长度多少，其中s2_limit表示s2的结尾返回匹配长度。引用场景下面s1和s2是同一个串，不过(s1&lt;s2)因为我们不需要判断s1溢出。
+<p>为了快速找到两个串(s1,s2)最大匹配长度多少，其中s2<sub>limit表示s2的结尾返回匹配长度。引用场景下面s1和s2是同一个串，不过</sub>(s1&lt;s2)因为我们不需要判断s1溢出。
 </p>
 
 
@@ -869,9 +821,9 @@ static inline void IncrementalCopyFastPath(const char* src, char* op, int len) {
 <h4 id="sec-4-8"><span class="section-number-4">4.8</span> EmitLiteral</h4>
 <div class="outline-text-4" id="text-4-8">
 
-<p>EmitLiteral就是输出literal.虽然从Format很直观地看出literal应该怎么输出，但是还是有技巧的。最技巧的方便就是allow_fast_path.
-allow_fast_path场景是如果op后面有15个空余字节的话，那么就可以使用2个8字节copy完成。这个在CompressFragment代码里面可以看到，
-应用层面上只有在确保了op后面15个空余字节才会让allow_fast_path==true.而其他逻辑的话因为就是正常的copy都走了memcpy这个分支。
+<p>EmitLiteral就是输出literal.虽然从Format很直观地看出literal应该怎么输出，但是还是有技巧的。最技巧的方便就是allow<sub>fast</sub><sub>path</sub>.
+allow<sub>fast</sub><sub>path场景是如果op后面有15个空余字节的话，那么就可以使用2个8字节copy完成。这个在CompressFragment代码里面可以看到，</sub>
+应用层面上只有在确保了op后面15个空余字节才会让allow<sub>fast</sub><sub>path</sub>==true.而其他逻辑的话因为就是正常的copy都走了memcpy这个分支。
 </p>
 
 
@@ -1262,7 +1214,7 @@ static inline char* EmitCopy(char* op, int offset, int len) {
 
 <p>Uncompress最终走到的逻辑是下面这个代码。比较重要的就是SnappyDecompressor以及Write这个接口。不过从代码逻辑上看非常简单，
 首先ReadUncompressedLength，然后writer设置最终解码之后应该多大。然后decompressor开始分析各个tag了。最后decompressor判断是否读完以及
-writer判断自己解码之后长度和uncompressed_len是否相同。
+writer判断自己解码之后长度和uncompressed<sub>len是否相同。</sub>
 </p>
 
 
@@ -1417,7 +1369,7 @@ class SnappyDecompressionValidator {
 </ul>
 
 <p>在看这个代码之前，我们想想如果我们得到scratch之后应该如何从中提取tag信息呢？最好的方式就是打表。
-因为tag的头一个字节反应了这个tag所有信息，所以在snappy里面有char_table这个表以头一个字节内容作为索引
+因为tag的头一个字节反应了这个tag所有信息，所以在snappy里面有char<sub>table这个表以头一个字节内容作为索引</sub>
 </p>
 
 

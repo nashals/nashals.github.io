@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -219,7 +171,7 @@ Scons/Make(Unix/Linux)，Xcode(Mac)或者是Visual Studio(Windows).并且因为c
 </li>
 <li>includes //包含的构建文件
 </li>
-<li>target_defaults //构建目标默认属性
+<li>target<sub>defaults</sub> //构建目标默认属性
 </li>
 <li>targets //构建目标列表
 </li>
@@ -235,7 +187,7 @@ Scons/Make(Unix/Linux)，Xcode(Mac)或者是Visual Studio(Windows).并且因为c
 <h5 id="sec-1-3-1"><span class="section-number-5">1.3.1</span> conditions</h5>
 <div class="outline-text-5" id="text-1-3-1">
 
-<p>conditions分为两种行为。普通的conditions就在load构建文件之后立即计算，另外一种是target_conditions
+<p>conditions分为两种行为。普通的conditions就在load构建文件之后立即计算，另外一种是target<sub>conditions</sub>
 是在计算完成依赖之后然后来进行计算的，两个过程分别就是early and late phases阶段。对于conditions写法非常简单：
 </p>
 
@@ -256,7 +208,7 @@ Scons/Make(Unix/Linux)，Xcode(Mac)或者是Visual Studio(Windows).并且因为c
 <h5 id="sec-1-3-2"><span class="section-number-5">1.3.2</span> targets</h5>
 <div class="outline-text-5" id="text-1-3-2">
 
-<p>target部分的话会对target_defaults里面设定的内容默认进行merge。比如上面例子的话，对于target/test来说，
+<p>target部分的话会对target<sub>defaults里面设定的内容默认进行merge。比如上面例子的话，对于target</sub>/test来说，
 使用的defines就会是-DDEBUG -DFOO。当然对于这种东西是可以进行其他策略选择的，比如如果修改成下面格式，那么就是直接替换：
 </p>
 
@@ -280,7 +232,7 @@ Scons/Make(Unix/Linux)，Xcode(Mac)或者是Visual Studio(Windows).并且因为c
 </p><ul>
 <li>actions(list) //执行命令
 </li>
-<li>all_dependent_settings(dict) //如果依赖这个target的话，需要使用的设置
+<li>all<sub>dependent</sub><sub>settings</sub>(dict) //如果依赖这个target的话，需要使用的设置
 </li>
 <li>configurations(dict) //配置
 </li>
@@ -288,21 +240,21 @@ Scons/Make(Unix/Linux)，Xcode(Mac)或者是Visual Studio(Windows).并且因为c
 </li>
 <li>dependencies(list) //依赖对象。如果是本文件的话那么直接引用，如果是其他文件的话，使用path/xxx.gyp:target.
 </li>
-<li>direct_dependent_settings(dict) //直接依赖这个taregt的话，需要使用的设置
+<li>direct<sub>dependent</sub><sub>settings</sub>(dict) //直接依赖这个taregt的话，需要使用的设置
 </li>
-<li>include_dirs(list) //头文件目录
+<li>include<sub>dirs</sub>(list) //头文件目录
 </li>
 <li>libraries(list) //目标需要链接的库
 </li>
-<li>link_settings(dict) //依赖这个target，需要使用的链接参数
+<li>link<sub>settings</sub>(dict) //依赖这个target，需要使用的链接参数
 </li>
 <li>sources(list) //源文件
 </li>
-<li>target_conditions(list) //和conditions类似，但是是在完全计算之后然后来判断
+<li>target<sub>conditions</sub>(list) //和conditions类似，但是是在完全计算之后然后来判断
 </li>
-<li>target_name(string) //名字
+<li>target<sub>name</sub>(string) //名字
 </li>
-<li>type //目标类型，现在只是支持static_library,shared_library,executable和none
+<li>type //目标类型，现在只是支持static<sub>library</sub>,shared<sub>library</sub>,executable和none
 </li>
 </ul>
 
@@ -356,7 +308,7 @@ sources内容如下:
 <p>
 每个action是一个dict，主要包含4个属性：
 </p><ul>
-<li>action_name(string). //操作名称
+<li>action<sub>name</sub>(string). //操作名称
 </li>
 <li>input(list) //输入文件
 </li>
@@ -411,10 +363,10 @@ sources内容如下:
 </li>
 </ul>
 
-<p>预定义变量比如OS(系统环境),EXECUTABLE_SUFFIX(可执行文件后缀).用户自定义变量就不再赘述。
+<p>预定义变量比如OS(系统环境),EXECUTABLE<sub>SUFFIX</sub>(可执行文件后缀).用户自定义变量就不再赘述。
 </p>
 <p>
-自动变量类似于Makefile里面的$@,$^这样的变量，好比反射。比如在target_conditions部分的话，
+自动变量类似于Makefile里面的$@,$<sup>这样的变量，好比反射。比如在target</sup><sub>conditions部分的话，</sub>
 我们根据不同类型程序来做不同的condition：
 </p>
 
@@ -425,7 +377,7 @@ sources内容如下:
 </pre>
 
 <p>
-这样对于target为static_library都会联编func.cc这个文件了，自动变量是就是属性名称之前加上_构成的。
+这样对于target为static<sub>library都会联编func</sub>.cc这个文件了，自动变量是就是属性名称之前加上<sub>构成的。</sub>
 </p>
 <p>
 存在自动变量非常必要。有时候我们在全局环境中，希望根据不同的条件来定义不同的行为，并且是在计算的同时在来做条件判断的。
@@ -502,7 +454,7 @@ ps:comake2在设计的时候，就没有考虑late phase这个功能。造成没
 </p><ul>
 <li>files.
 </li>
-<li>include_dirs.
+<li>include<sub>dirs</sub>.
 </li>
 <li>inputs.
 </li>
@@ -545,7 +497,7 @@ gyp虽然是构建系统，并且通常来说构建文件倾向于使用描述�
 可以考虑使用其他方式描述性语言来完成。如果可以的话，结合过程语言也未尝不可。
 </p>
 <p>
-在运行时上gyp区分early和late phase两个阶段，同时允许通过target_defaults这样一个section来设定全局属性。
+在运行时上gyp区分early和late phase两个阶段，同时允许通过target<sub>defaults这样一个section来设定全局属性。</sub>
 通过automatic variables这样的机制提供了反射功能，并且允许自定义操作，并且允许从外部shell中读取内容。
 此外gyp允许提供跨模块之间的依赖管理(一个模块有如何这个模块被依赖的话，那么依赖这个模块的模块应该使用哪些属性).
 这些都是一个强大构建系统所必须的。
@@ -723,7 +675,7 @@ scons: done building targets.
 </ul>
 
 <p>在Command这个Builder很完整。同时为了方便还允许用户使用automatic variables，比如$TARGET和$SOURCES这两个变量，
-类似于Makefile里面的$@和$^。关于Command讨论就到这里，接下来看看上面三个主要的Builder。
+类似于Makefile里面的$@和$<sup>。关于Command讨论就到这里，接下来看看上面三个主要的Builder。</sup>
 </p>
 <ul>
 <li id="sec-2-3-1-1">编译参数和自动分析编译依赖<br/>
@@ -1245,7 +1197,7 @@ cmake本身也提供了类似于gyp的功能,将编译依赖输出graphviz的图
 关于CMake有相当多的语法和属性，这里就不一一讲解，只是谈谈相对于其他构件系统比较独特的地方。
 </p>
 <p>
-add_custom_command允许用户进行自定义的命，通过指定output,input,command，同时允许指定这些命令在：
+add<sub>custom</sub><sub>command允许用户进行自定义的命，通过指定output</sub>,input,command，同时允许指定这些命令在：
 </p><ul>
 <li>dependencies构建之前执行
 </li>
@@ -1257,23 +1209,23 @@ add_custom_command允许用户进行自定义的命，通过指定output,input,c
 
 
 <p>
-add_test允许全局环境增加test用例，允许自己使用test的启动命令。
+add<sub>test允许全局环境增加test用例，允许自己使用test的启动命令。</sub>
 </p>
 <p>
-build_command能够获得某个target的构建命令。
+build<sub>command能够获得某个target的构建命令。</sub>
 </p>
 <p>
 file定义了一系列文件操作方法，为多平台的文件操作提供了抽象。
 </p>
 <p>
 find提供了一系列查找文件，库，package，program的方法，简化配置的生成。
-对于find_package内置很多检测库的方法，并且有大量的内置变量可以被使用。
+对于find<sub>package内置很多检测库的方法，并且有大量的内置变量可以被使用。</sub>
 </p>
 <p>
-set_property/get_property设置和获取属性。
+set<sub>property</sub>/get<sub>property设置和获取属性。</sub>
 </p>
 <p>
-include包含另外一个文件进来，语义和Make的include是一样的。而add_subdirectory添加一个子目录，对应的Makefile就是"make -C &hellip;"。
+include包含另外一个文件进来，语义和Make的include是一样的。而add<sub>subdirectory添加一个子目录，对应的Makefile就是</sub>"make -C &hellip;"。
 从效果上说，cmake并没有提供类似于gyp和scons的import功能来方便进行项目的整体构建，还是将一个个目录单独进行构建。
 </p>
 </div>
@@ -1331,7 +1283,7 @@ include包含另外一个文件进来，语义和Make的include是一样的。�
 </li>
 </ul>
 
-<p>可以通过-DCMAKE_BUULD_TYPE=&hellip;在命令行里面指定.使用一个编译类型会配置上一系列的编译选项，用户可以在内部继续修改这些选项。
+<p>可以通过-DCMAKE<sub>BUULD</sub><sub>TYPE</sub>=&hellip;在命令行里面指定.使用一个编译类型会配置上一系列的编译选项，用户可以在内部继续修改这些选项。
 </p>
 <p>
 写到这里，关于选项这种东西，有一些想法。在设计选项方面，我们必须考虑下面这几个功能：
@@ -1362,7 +1314,7 @@ include包含另外一个文件进来，语义和Make的include是一样的。�
 </pre>
 
 <p>
-然后在cmake运行时环境里面存在jpeg_found_value这样变量进行替换，然后生成config.h。
+然后在cmake运行时环境里面存在jpeg<sub>found</sub><sub>value这样变量进行替换，然后生成config</sub>.h。
 非常不错的idea(猜想GNU Build System应该也是这样完成的).
 </p>
 </div>

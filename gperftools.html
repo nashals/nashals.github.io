@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -146,16 +98,16 @@ This is the heap profiler we use at Google, to explore how C++ programs manage m
 <tr><th scope="col" class="left">env</th><th scope="col" class="left">default</th><th scope="col" class="left">comment</th></tr>
 </thead>
 <tbody>
-<tr><td class="left">HEAP_PROFILE_ALLOCATION_INTERVAL</td><td class="left">default: 1073741824 (1 Gb)</td><td class="left">Dump heap profiling information each time the specified number of bytes has been allocated by the program.</td></tr>
-<tr><td class="left">HEAP_PROFILE_INUSE_INTERVAL</td><td class="left">default: 104857600 (100 Mb)</td><td class="left">Dump heap profiling information whenever the high-water memory usage mark increases by the specified number of bytes.</td></tr>
-<tr><td class="left">HEAP_PROFILE_TIME_INTERVAL</td><td class="left">default: 104857600 (100 Mb)</td><td class="left">Dump heap profiling information each time the specified number of seconds has elapsed.</td></tr>
-<tr><td class="left">HEAP_PROFILE_MMAP</td><td class="left">default: false</td><td class="left">Profile mmap, mremap and sbrk calls in addition to malloc, calloc, realloc, and new.</td></tr>
-<tr><td class="left">HEAP_PROFILE_ONLY_MMAP</td><td class="left">default: false</td><td class="left">Only profile mmap, mremap, and sbrk calls; do not profile malloc, calloc, realloc, or new.</td></tr>
-<tr><td class="left">HEAP_PROFILE_MMAP_LOG</td><td class="left">default: false</td><td class="left">Log mmap/munmap calls.</td></tr>
+<tr><td class="left">HEAP<sub>PROFILE</sub><sub>ALLOCATION</sub><sub>INTERVAL</sub></td><td class="left">default: 1073741824 (1 Gb)</td><td class="left">Dump heap profiling information each time the specified number of bytes has been allocated by the program.</td></tr>
+<tr><td class="left">HEAP<sub>PROFILE</sub><sub>INUSE</sub><sub>INTERVAL</sub></td><td class="left">default: 104857600 (100 Mb)</td><td class="left">Dump heap profiling information whenever the high-water memory usage mark increases by the specified number of bytes.</td></tr>
+<tr><td class="left">HEAP<sub>PROFILE</sub><sub>TIME</sub><sub>INTERVAL</sub></td><td class="left">default: 104857600 (100 Mb)</td><td class="left">Dump heap profiling information each time the specified number of seconds has elapsed.</td></tr>
+<tr><td class="left">HEAP<sub>PROFILE</sub><sub>MMAP</sub></td><td class="left">default: false</td><td class="left">Profile mmap, mremap and sbrk calls in addition to malloc, calloc, realloc, and new.</td></tr>
+<tr><td class="left">HEAP<sub>PROFILE</sub><sub>ONLY</sub><sub>MMAP</sub></td><td class="left">default: false</td><td class="left">Only profile mmap, mremap, and sbrk calls; do not profile malloc, calloc, realloc, or new.</td></tr>
+<tr><td class="left">HEAP<sub>PROFILE</sub><sub>MMAP</sub><sub>LOG</sub></td><td class="left">default: false</td><td class="left">Log mmap/munmap calls.</td></tr>
 </tbody>
 </table>
 
-HEAP_PROFILE_MMAP = NOTE: this causes the profiler to profile calls internal to tcmalloc, since tcmalloc and friends use mmap and sbrk internally for allocations. One partial solution is to filter these allocations out when running pprof, with something like pprof &ndash;ignore='DoAllocWithArena|SbrkSysAllocator::Alloc|MmapSysAllocator::Alloc.
+HEAP<sub>PROFILE</sub><sub>MMAP</sub> = NOTE: this causes the profiler to profile calls internal to tcmalloc, since tcmalloc and friends use mmap and sbrk internally for allocations. One partial solution is to filter these allocations out when running pprof, with something like pprof &ndash;ignore='DoAllocWithArena|SbrkSysAllocator::Alloc|MmapSysAllocator::Alloc.
 
 <p>
 输出会有一系列的profile文件比如
@@ -180,9 +132,9 @@ HEAP_PROFILE_MMAP = NOTE: this causes the profiler to profile calls internal to 
 <p>
 A few explanations:
 </p><ul>
-<li>GFS_MasterChunk::AddServer accounts for 255.6 MB of the live memory, which is 25% of the total live memory.
+<li>GFS<sub>MasterChunk</sub>::AddServer accounts for 255.6 MB of the live memory, which is 25% of the total live memory.
 </li>
-<li>GFS_MasterChunkTable::UpdateState is directly accountable for 176.2 MB of the live memory (i.e., it directly allocated 176.2 MB that has not been freed yet). Furthermore, it and its callees are responsible for 729.9 MB. The labels on the outgoing edges give a good indication of the amount allocated by each callee.
+<li>GFS<sub>MasterChunkTable</sub>::UpdateState is directly accountable for 176.2 MB of the live memory (i.e., it directly allocated 176.2 MB that has not been freed yet). Furthermore, it and its callees are responsible for 729.9 MB. The labels on the outgoing edges give a good indication of the amount allocated by each callee.
 </li>
 </ul>
 
@@ -245,7 +197,7 @@ A few explanations:
 </li>
 </ul>
 
-<p>可以通过环境变量 CPUPROFILE_FREQUENCY = x(default = 100) 来控制采样率。默认是100次/s.
+<p>可以通过环境变量 CPUPROFILE<sub>FREQUENCY</sub> = x(default = 100) 来控制采样率。默认是100次/s.
 </p>
 <p>
 最终展现方式有三种：1) text 2) graph 3) callgrind. 下面是文本输出例子
@@ -421,13 +373,13 @@ pprof requires perl5 to be installed to run. It also requires dot to be installe
 <p>
 heap-profiler选项(Heap-Profile Options). 可以显示开辟/使用空间大小，也可以显示开辟/使用对象数量
 </p><ul>
-<li>&ndash;inuse_space # Display the number of in-use megabytes (i.e. space that has been allocated but not freed). This is the default.
+<li>&ndash;inuse<sub>space</sub> # Display the number of in-use megabytes (i.e. space that has been allocated but not freed). This is the default.
 </li>
-<li>&ndash;inuse_objects # Display the number of in-use objects (i.e. number of objects that have been allocated but not freed).
+<li>&ndash;inuse<sub>objects</sub> # Display the number of in-use objects (i.e. number of objects that have been allocated but not freed).
 </li>
-<li>&ndash;alloc_space # Display the number of allocated megabytes. This includes the space that has since been de-allocated. Use this if you want to find the main allocation sites in the program.
+<li>&ndash;alloc<sub>space</sub> # Display the number of allocated megabytes. This includes the space that has since been de-allocated. Use this if you want to find the main allocation sites in the program.
 </li>
-<li>&ndash;alloc_objects # Display the number of allocated objects. This includes the objects that have since been de-allocated. Use this if you want to find the main allocation sites in the program.
+<li>&ndash;alloc<sub>objects</sub> # Display the number of allocated objects. This includes the objects that have since been de-allocated. Use this if you want to find the main allocation sites in the program.
 </li>
 </ul>
 

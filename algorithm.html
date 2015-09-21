@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -321,9 +273,9 @@ simhash算法原理非常简单：
 <p>
 假设S是排好序的个数是N，我们simhash f=64.如果k非常小比如{1,2,3}的话，那么可以枚举和d simhash相差k的所有simhash值，然后再S里面进行检索，时间复杂度在C(64,k)*lgN.但是如果k比较大比如&gt;=10的话，那么我们可以先对S进行分段搜索：
 </p><ol>
-<li>我们对S进行分段，每次取出2^m个元素，我们确保2^m个元素高位有m’相同。因为S排好序所以通常m'很高。
+<li>我们对S进行分段，每次取出2<sup>m个元素，我们确保2</sup><sup>m个元素高位有m’相同。因为S排好序所以通常m'很高。</sup>
 </li>
-<li>我们首先对于m'个位和d simhash高位判断有多少位存在差异，假设x存在差异.这样我们可以在2^m元素判断m-x差异的元素。
+<li>我们首先对于m'个位和d simhash高位判断有多少位存在差异，假设x存在差异.这样我们可以在2<sup>m元素判断m</sup>-x差异的元素。
 </li>
 <li>总体思想来说的话就是希望可以缩小搜索集。似乎在算法复杂度上面没有啥改进，可以在实现上改进。
 </li>
@@ -417,7 +369,7 @@ def estimate_cardinality(values, k):
 </p><ul>
 <li>去掉30%的最大的bucket，只是计算剩余70%的bucket
 </li>
-<li>max_zeroes的计算不是使用geometric mean而是使用harmonic mean
+<li>max<sub>zeroes的计算不是使用geometric</sub> mean而是使用harmonic mean
 </li>
 </ul>
 
@@ -460,7 +412,7 @@ def estimate_cardinality(values, k):
 <p><img src="images/concise-wah.png"  alt="./images/concise-wah.png" />
 </p>
 <p>
-可以看到其实&lt;n&gt;最长为2^30-1（肯定不会为0）.但是实际上大部分到不了这么长。剩余的空间就会存在浪费。
+可以看到其实&lt;n&gt;最长为2<sup>30</sup>-1（肯定不会为0）.但是实际上大部分到不了这么长。剩余的空间就会存在浪费。
 </p>
 <p>
 CONCISE针对这个部分稍微改进了一下
@@ -471,7 +423,7 @@ CONCISE针对这个部分稍微改进了一下
 </li>
 </ul>
 
-<p>可以看到最大的范围是31 + 2^25 * 31 = 1040187423 , 如果从0开始的话，那么就是[0,1040187422]
+<p>可以看到最大的范围是31 + 2<sup>25</sup> * 31 = 1040187423 , 如果从0开始的话，那么就是[0,1040187422]
 </p>
 <p>
 下面是一个例子， Compressed representation of the set {3, 5, 31–93, 1024, 1028, 1 040 187 422}.
@@ -1051,7 +1003,7 @@ a1 a1 a1 a2 a2 a2 &hellip; an an an X
 <hr/>
 
 <p>
-另外一个题目的变形是 <a href="http://oj.leetcode.com/problems/container-with-most-water/">http://oj.leetcode.com/problems/container-with-most-water/</a> 题目的大致要求是找到两个点，这两个点围成的container蓄水最多。似乎没有O(n^2)以下的算法了，但是可以做比较深度的减枝。假设两个点是xi,xj.有两个特性可以用来减枝。
+另外一个题目的变形是 <a href="http://oj.leetcode.com/problems/container-with-most-water/">http://oj.leetcode.com/problems/container-with-most-water/</a> 题目的大致要求是找到两个点，这两个点围成的container蓄水最多。似乎没有O(n<sup>2</sup>)以下的算法了，但是可以做比较深度的减枝。假设两个点是xi,xj.有两个特性可以用来减枝。
 </p><ul>
 <li>如果x(i+1) &lt;= x(i)的话，那么蓄水量肯定要少。
 </li>

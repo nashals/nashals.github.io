@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -314,7 +266,7 @@ C++ Libraries:
 <h4 id="sec-2-1"><span class="section-number-4">2.1</span> 察看ubuntu内部版本</h4>
 <div class="outline-text-4" id="text-2-1">
 
-<p>lsb_release -a
+<p>lsb<sub>release</sub> -a
 </p>
 
 
@@ -387,7 +339,7 @@ Codename:       trusty
 <ul>
 <li>编辑文件/etc/default/grub
 </li>
-<li>GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"修改成GRUB_CMDLINE_LINUX_DEFAULT="quiet splash text"
+<li>GRUB<sub>CMDLINE</sub><sub>LINUX</sub><sub>DEFAULT</sub>="quiet splash"修改成GRUB<sub>CMDLINE</sub><sub>LINUX</sub><sub>DEFAULT</sub>="quiet splash text"
 </li>
 <li>运行sudo update-grub
 </li>
@@ -758,7 +710,7 @@ virtualbox-g 0:off1:off2:on3:on4:on5:on6:off
 </li>
 <li>然后在General里面的Keyboard Shortcuts里面设置Enable or disable设置切换按键
 <ul>
-<li>Release+Shift_L 左边的Shift键
+<li>Release+Shift<sub>L</sub> 左边的Shift键
 </li>
 <li>Constrol+space control和空格键
 </li>
@@ -1007,7 +959,7 @@ virtualbox-g 0:off1:off2:on3:on4:on5:on6:off
 但是我觉得这个自动补全有点不太好的就是，比如我cd ~/.ssh/想自动补全的话，我不仅仅是希望能够补全目录(虽然cd参数只能够是目录),我还希望可以显示文件(比如我想知道这个目录下面是否有Makefile或者是pom.xml)，这样就可以快速判断某个文件是否在目录下面。不然我只能调回命令行开头，切换成为cat,然后跳回去使用两次tab进行自动补全(cat能够显示文件).
 </p>
 <p>
-这个自动补全配置文件在/etc/bash_completion下面。阅读代码发现可能是和file_dir这个函数相关。调用时候使用file_dir -d的话只会显示目录，而file_dir的话就会显示所有。所以最简单的做法就是将file_dir -d全部替换成为file_dir. done!!!
+这个自动补全配置文件在/etc/bash<sub>completion下面。阅读代码发现可能是和file</sub><sub>dir这个函数相关。调用时候使用file</sub><sub>dir</sub> -d的话只会显示目录，而file<sub>dir的话就会显示所有。所以最简单的做法就是将file</sub><sub>dir</sub> -d全部替换成为file<sub>dir</sub>. done!!!
 </p>
 </div>
 
@@ -1017,7 +969,7 @@ virtualbox-g 0:off1:off2:on3:on4:on5:on6:off
 <h4 id="sec-4-2"><span class="section-number-4">4.2</span> 加快ssh登陆</h4>
 <div class="outline-text-4" id="text-4-2">
 
-<p>对于服务器的话可以修改/etc/ssh/sshd_config
+<p>对于服务器的话可以修改/etc/ssh/sshd<sub>config</sub>
 </p>
 
 
@@ -1026,7 +978,7 @@ virtualbox-g 0:off1:off2:on3:on4:on5:on6:off
 </pre>
 
 <p>
-对于客户端的话可以修改/etc/ssh/ssh_config
+对于客户端的话可以修改/etc/ssh/ssh<sub>config</sub>
 </p>
 
 
@@ -1045,9 +997,9 @@ GSSAPIDelegateCredentials no
 
 <p>关于sshd机器之间的信任关系，很多文章都有介绍。大致方法就是：
 </p><ol>
-<li>在自己机器上面ssh-keygen生成~/.ssh/id_rsa{.pub}.其中.pub文件是公钥
+<li>在自己机器上面ssh-keygen生成~/.ssh/id<sub>rsa</sub>{.pub}.其中.pub文件是公钥
 </li>
-<li>然后将id_rsa.pub内容copy到另外机器下面的~/.ssh/authorized_keys里面(注意chmod 600)
+<li>然后将id<sub>rsa</sub>.pub内容copy到另外机器下面的~/.ssh/authorized<sub>keys里面</sub>(注意chmod 600)
 </li>
 <li>接着本地的.pub文件就可以删除
 </li>
@@ -1058,15 +1010,15 @@ GSSAPIDelegateCredentials no
 <p>
 我猜想大致工作过程应该是这样的：
 </p><ol>
-<li>在ssh建立连接的时候，本地ssh-client会读取~/.ssh/id_rsa内容
+<li>在ssh建立连接的时候，本地ssh-client会读取~/.ssh/id<sub>rsa内容</sub>
 </li>
-<li>建立好连接之后会将rsa内容发给对端机器，对端机器针对authorized_keys进行验证
+<li>建立好连接之后会将rsa内容发给对端机器，对端机器针对authorized<sub>keys进行验证</sub>
 </li>
 <li>如果验证OK的话那么就认为是信任对方的。
 </li>
 </ol>
 
-<p>具体这些文件放置位置都是可以配置的，关于如何配置可以看man ssh_config(client) / man sshd_config(server). 之前遇到问题就是，在/etc/sshd_config里面修改了认证文件的位置，不是放在authorized_keys里面而是放在cloud_keys里面!!!
+<p>具体这些文件放置位置都是可以配置的，关于如何配置可以看man ssh<sub>config</sub>(client) / man sshd<sub>config</sub>(server). 之前遇到问题就是，在/etc/sshd<sub>config里面修改了认证文件的位置，不是放在authorized</sub><sub>keys里面而是放在cloud</sub><sub>keys里面</sub>!!!
 </p>
 <p>
 对于这种东西我觉得还是使用默认的比较好，convention over configuration!!!
@@ -1341,7 +1293,7 @@ Generation complete.
 </ul>
 
 </li>
-<li>bzr config [parent_location|push_location|submit_branch]=&lt;URL&gt;
+<li>bzr config [parent<sub>location|push</sub><sub>location|submit</sub><sub>branch]</sub>=&lt;URL&gt;
 </li>
 </ul>
 

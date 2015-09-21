@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -199,7 +151,7 @@ The Page Frame Reclaim Algorithm (PFRA). The PFRA is responsible for freeing mem
 <p>All but the “unreclaimable” pages may be reclaimed by the PFRA. There are two main functions in the PFRA. These include the kswapd kernel thread and the “Low On Memory Reclaiming”(LMR) function. # kswapd和pdflush两个进程协作完成
 </p>
 <p>
-The kswapd daemon is responsible for ensuring that memory stays free. It monitors the pages_high and pages_low watermarks in the kernel. If the amount of free memory is below pages_low, the kswapd process starts a scan to attempt to free 32 pages at a time. It repeats this process until the amount of free memory is above the pages_high watermark. The kswapd thread performs the following actions: # kswapd是一个守护进程，监控两个内核变量pages_high和pages_low. 如果当前可用内存低于pages_low的话，那么会以32pages为单位进行释放直到内存高于pages_high.
+The kswapd daemon is responsible for ensuring that memory stays free. It monitors the pages<sub>high</sub> and pages<sub>low</sub> watermarks in the kernel. If the amount of free memory is below pages<sub>low</sub>, the kswapd process starts a scan to attempt to free 32 pages at a time. It repeats this process until the amount of free memory is above the pages<sub>high</sub> watermark. The kswapd thread performs the following actions: # kswapd是一个守护进程，监控两个内核变量pages<sub>high和pages</sub><sub>low</sub>. 如果当前可用内存低于pages<sub>low的话，那么会以32pages为单位进行释放直到内存高于pages</sub><sub>high</sub>.
 </p><ul>
 <li>If the page is unmodified, it places the page on the free list.
 </li>
@@ -211,7 +163,7 @@ The kswapd daemon is responsible for ensuring that memory stays free. It monitor
 
 
 <p>
-The pdflush daemon is responsible for synchronizing any pages associated with a file on a filesystem back to disk. In other words, when a file is modified in memory, the pdflush daemon writes it back to disk. The pdflush daemon starts synchronizing dirty pages back to the filesystem when 10% of the pages in memory are dirty. This is due to a kernel tuning parameter called vm.dirty_background_ratio. The pdflush daemon works independently of the PFRA under most circumstances. When the kernel invokes the LMR algorithm, the LMR specifically forces pdflush to flush dirty pages in addition to other page freeing routines. # pdflush定期将脏页刷入到文件系统上, 确保脏页比例低于一定阈值. 但是内核也会主动出发pdflush.
+The pdflush daemon is responsible for synchronizing any pages associated with a file on a filesystem back to disk. In other words, when a file is modified in memory, the pdflush daemon writes it back to disk. The pdflush daemon starts synchronizing dirty pages back to the filesystem when 10% of the pages in memory are dirty. This is due to a kernel tuning parameter called vm.dirty<sub>background</sub><sub>ratio</sub>. The pdflush daemon works independently of the PFRA under most circumstances. When the kernel invokes the LMR algorithm, the LMR specifically forces pdflush to flush dirty pages in addition to other page freeing routines. # pdflush定期将脏页刷入到文件系统上, 确保脏页比例低于一定阈值. 但是内核也会主动出发pdflush.
 </p>
 </div>
 

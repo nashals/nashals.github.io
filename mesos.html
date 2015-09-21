@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -181,7 +133,7 @@ Pushing control to the frame-works has two benefits. 交给framework做资源控
 <p>下面是mesos架构图
 </p>
 <p>
-<img src="images/mesos-arch.png"  alt="./images/mesos-arch.png" />
+<img src="http://dirlt.com/images/mesos-arch.png"  alt="./images/mesos-arch.png" />
 </p>
 <ul>
 <li>master 用来记录所有可用资源 (1 instance)
@@ -199,7 +151,7 @@ Pushing control to the frame-works has two benefits. 交给framework做资源控
 下面是一次resource offer的示例
 </p>
 <p>
-<img src="images/mesos-res-offer-example.png"  alt="./images/mesos-res-offer-example.png" />
+<img src="http://dirlt.com/images/mesos-res-offer-example.png"  alt="./images/mesos-res-offer-example.png" />
 </p>
 <p>
 The key aspect of Mesos that lets frameworks achieve placement goals is the fact that they can reject resources. In particular, we have found that a simple policy called delay scheduling, in which frameworks wait for a limited time to acquire preferred nodes, yields nearly op-timal data locality. 能够让framework达到placement效果的关键, 是mesos允许framework拒绝使用resource-offer. 这种调度策略成为延迟调度, 即等待一段时间来确保资源列表里面有preferred nodes, 这样来产生接近最优的数据本地性.
@@ -298,7 +250,7 @@ Second, because a framework may take time to re-spond to an offer, Mesos counts 
 Third, if a framework has not responded to an offer for a sufficiently long time, Mesos rescinds the offer and re-offers the resources to other frameworks. 如果framework长时间不响应的话.
 </p>
 <p>
-<img src="images/mesos-api.png"  alt="./images/mesos-api.png" />
+<img src="http://dirlt.com/images/mesos-api.png"  alt="./images/mesos-api.png" />
 </p>
 </div>
 

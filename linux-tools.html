@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -201,7 +153,7 @@ Linux 2.6.9_5-10-0-1 (tc-cm-et18.tc.baidu.com)  2011年09月20日
 <h4 id="sec-2-2"><span class="section-number-4">2.2</span> taskset</h4>
 <div class="outline-text-4" id="text-2-2">
 
-<p>设置和获取进程的CPU亲和性. 对应的系统调用是sched_set(get)affinity/sched_getaffinity
+<p>设置和获取进程的CPU亲和性. 对应的系统调用是sched<sub>set</sub>(get)affinity/sched<sub>getaffinity</sub>
 </p><ul>
 <li>taskset -c 1,2,3 cmd # 程序只能运行在CPU #1,#2,#3上
 </li>
@@ -255,7 +207,7 @@ Linux 2.6.9_5-10-0-1 (tc-cm-et18.tc.baidu.com)  2011年09月20日
 </li>
 <li>s    is a session leader
 </li>
-<li>l    is multi-threaded (using CLONE_THREAD, like NPTL pthreads do)
+<li>l    is multi-threaded (using CLONE<sub>THREAD</sub>, like NPTL pthreads do)
 </li>
 <li>+    is in the foreground process group.
 </li>
@@ -430,7 +382,7 @@ Total:     9212084    4519868    4692216
 </li>
 <li>mlockall/munlockall 将进程所有内存都lock住而不会切换到swap分区上面
 </li>
-<li>posix_fadvise 告诉系统对文件数据访问模式(有助于系统进行IO优化)
+<li>posix<sub>fadvise</sub> 告诉系统对文件数据访问模式(有助于系统进行IO优化)
 </li>
 </ul>
 
@@ -475,13 +427,13 @@ sda               0.00     0.00    0.00    0.00     0.00     0.00     0.00     0
 </li>
 <li>tps number of transfers per second.对于IO device多个请求可能会合并成为一个transfer.不过似乎没有太大意义。
 </li>
-<li>Blk_read/s(kB_read/s, MB_read/s). 读速度，这里Block相当于一个扇区占据512bytes.
+<li>Blk<sub>read</sub>/s(kB<sub>read</sub>/s, MB<sub>read</sub>/s). 读速度，这里Block相当于一个扇区占据512bytes.
 </li>
-<li>Blk_wrtn/s(kB_wrtn/s, MB_wrtn/s). 写速度。
+<li>Blk<sub>wrtn</sub>/s(kB<sub>wrtn</sub>/s, MB<sub>wrtn</sub>/s). 写速度。
 </li>
-<li>Blk_read(kb_read, MB_read). 读总量
+<li>Blk<sub>read</sub>(kb<sub>read</sub>, MB<sub>read</sub>). 读总量
 </li>
-<li>Blk_wrtn(kB_wrtn, MB_wrtn). 写总量
+<li>Blk<sub>wrtn</sub>(kB<sub>wrtn</sub>, MB<sub>wrtn</sub>). 写总量
 </li>
 <li>rrqm/s 每秒多少个读请求被merge.当系统调用需要读取数据的时候，VFS将请求发到各个FS，如果FS发现不同的读取请求读取的是相同Block的数据，FS会将这个请求合并Merge
 </li>
@@ -501,9 +453,9 @@ sda               0.00     0.00    0.00    0.00     0.00     0.00     0.00     0
 </li>
 <li>await 提交到这个device上面请求处理的平均时间(ms)
 </li>
-<li>r_await 提交到这个device上面读请求处理的平均时间
+<li>r<sub>await</sub> 提交到这个device上面读请求处理的平均时间
 </li>
-<li>w_await 提交到这个device上面写请求处理的平均时间
+<li>w<sub>await</sub> 提交到这个device上面写请求处理的平均时间
 </li>
 <li>svctm #todo: not used any more
 </li>
@@ -596,7 +548,7 @@ lo        Link encap:Local Loopback
 </li>
 <li>HWaddr # 网卡物理地址(MAC)
 </li>
-<li>inet_addr # 绑定IP地址
+<li>inet<sub>addr</sub> # 绑定IP地址
 </li>
 <li>Bcast # IP的广播地址
 </li>
@@ -709,13 +661,13 @@ netem (network emulation) <a href="http://www.linuxfoundation.org/collaborate/wo
 <p>
 specification
 </p><ul>
-<li>delay 100ms 10ms 25%.  延迟分布在[100-10,100+10]. next_delay = random(90,110) * 0.75 + last_delay * 0.25
+<li>delay 100ms 10ms 25%.  延迟分布在[100-10,100+10]. next<sub>delay</sub> = random(90,110) * 0.75 + last<sub>delay</sub> * 0.25
 </li>
 <li>delay 100ms 10ms distribution normal 延迟正态分布[100-10,100+10]
 </li>
 <li>loss 1%       #丢包概率1%
 </li>
-<li>loss 1% 25%   #丢包概率在random(1%) * 0.75 + last_loss * 0.25
+<li>loss 1% 25%   #丢包概率在random(1%) * 0.75 + last<sub>loss</sub> * 0.25
 </li>
 <li>duplicate 1%  #重复概率1%
 </li>

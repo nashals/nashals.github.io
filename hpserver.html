@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -104,7 +56,7 @@ event handler,event item,handle(fd或者是信号编号)分开了，但是阅读
 <ul>
 <li><a href="hpserver.html#sec-1">1 Reactor</a></li>
 <li><a href="hpserver.html#sec-2">2 IReactor</a></li>
-<li><a href="hpserver.html#sec-3">3 DTEV_ITEM</a></li>
+<li><a href="hpserver.html#sec-3">3 DTEV<sub>ITEM</sub></a></li>
 <li><a href="hpserver.html#sec-4">4 EventScheduler</a></li>
 <li><a href="hpserver.html#sec-5">5 DemuxTable</a></li>
 <li><a href="hpserver.html#sec-6">6 SignalSet</a></li>
@@ -170,14 +122,14 @@ event handler,event item,handle(fd或者是信号编号)分开了，但是阅读
 
 <p>
 对于这里面Register和Unregsiter内部实现来说会根据pEvItem以前是否在Poller里面注册了来决定是Add,Mod还是Del.从接口上来说还是比较好用的。
-在include目录下面有一个IReactor_Imp的实现，有select和epoll两个版本实现。对于我们来说没有必要仔细阅读，了解到这个接口就足够了。
+在include目录下面有一个IReactor<sub>Imp的实现，有select和epoll两个版本实现。对于我们来说没有必要仔细阅读，了解到这个接口就足够了。</sub>
 </p>
 </div>
 
 </div>
 
 <div id="outline-container-3" class="outline-3">
-<h3 id="sec-3"><span class="section-number-3">3</span> DTEV_ITEM</h3>
+<h3 id="sec-3"><span class="section-number-3">3</span> DTEV<sub>ITEM</sub></h3>
 <div class="outline-text-3" id="text-3">
 
 
@@ -270,7 +222,7 @@ class CDemuxTable
 </pre>
 
 <p>
-实现上来看是一个二维数组，然后可以动态地进行分配。每一个DTEV_ITEM开辟的数组内容为4096个，所以fd上限在1048576=1M=1024K.不过对于现在
+实现上来看是一个二维数组，然后可以动态地进行分配。每一个DTEV<sub>ITEM开辟的数组内容为4096个，所以fd上限在1048576</sub>=1M=1024K.不过对于现在
 的网络服务来说的话，通常连接数还不会达到这个数量级别，所以完全OK.
 </p>
 </div>
@@ -281,7 +233,7 @@ class CDemuxTable
 <h3 id="sec-6"><span class="section-number-3">6</span> SignalSet</h3>
 <div class="outline-text-3" id="text-6">
 
-<p>对于信号来说，并不是将fd和DTEV_ITEM进行绑定，而是将EventHandler和DTEV_ITEM进行绑定。映射关系就维护在SignalSet里面
+<p>对于信号来说，并不是将fd和DTEV<sub>ITEM进行绑定，而是将EventHandler和DTEV</sub><sub>ITEM进行绑定。映射关系就维护在SignalSet里面</sub>
 </p>
 
 
@@ -307,9 +259,9 @@ class CDemuxTable
 <h3 id="sec-7"><span class="section-number-3">7</span> SignalInfo</h3>
 <div class="outline-text-3" id="text-7">
 
-<p>对于我们关心的信号都往这里面注册即可。我们注册的对象是DTEV_ITEM,但是我们可以根据DTEV_ITEM找到对应的handler,然后
-找到对应的信号量，然后注册我们关注这个信号。然后SignalInfo里面有ProcessSignals能够遍历捕获到的信号，然后feed_event调用
-reactor的active_event函数。SignalInfo应该会自己安装自己的信号处理函数，然后再自己的信号处理函数里进行标记，然后统一交给Reactor处理。
+<p>对于我们关心的信号都往这里面注册即可。我们注册的对象是DTEV<sub>ITEM</sub>,但是我们可以根据DTEV<sub>ITEM找到对应的handler</sub>,然后
+找到对应的信号量，然后注册我们关注这个信号。然后SignalInfo里面有ProcessSignals能够遍历捕获到的信号，然后feed<sub>event调用</sub>
+reactor的active<sub>event函数。SignalInfo应该会自己安装自己的信号处理函数，然后再自己的信号处理函数里进行标记，然后统一交给Reactor处理。</sub>
 </p>
 
 
@@ -332,7 +284,7 @@ reactor的active_event函数。SignalInfo应该会自己安装自己的信号处
 </pre>
 
 <p>
-我们看看sig_handler里面做了什么事情
+我们看看sig<sub>handler里面做了什么事情</sub>
 </p>
 
 
@@ -367,7 +319,7 @@ reactor的active_event函数。SignalInfo应该会自己安装自己的信号处
 <p>我们主要关注Reactor的RunForever.RunForever里面会一遍一遍地调用EventLoopOnce这个过程，每次调用的时候都会检查是否需要退出。
 在EventLoopOnce里面会根据定时器最小堆计算出到下一个定时器触发需要等待多长时间tv,然后调用Poller的Dispatch(tv)方法。
 在Dispatch方法里面会使用epoll等待io并且等待tv时间，然后调用SignalInfo::ProcessSignals处理信号，然后调用Reactor::ExpireTimerEvents来处理超时事件，
-然后调用ActiveEvent将所有可读可写事件加入m_vecActiveList里面来，然后调用scheduler进行调度。对于ScheduleActiveEvent这个函数，
+然后调用ActiveEvent将所有可读可写事件加入m<sub>vecActiveList里面来，然后调用scheduler进行调度。对于ScheduleActiveEvent这个函数，</sub>
 无非就是分析每个event item是否取消，如果没有取消的话那么调用绑定的handler对应的回调函数。整个过程就是这样的。
 </p></div>
 </div>

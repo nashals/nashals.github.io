@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -108,7 +60,7 @@
 
 
 <p>
-libpcl里面的co_exit/co_exit_to/co_resume里面存放了caller和restarget这两个变量，表示调用者和应该恢复到的coroutine.但是一旦使用这种实现的话，那么调用者只能够按照stack的方式来调用coroutine,不然函数调用完成返回之后是会存在问题的，但是这样也就失去了coroutine意义了。而co_call还使用了co_exit这个函数，导致整个libpcl可以说不是很可用。不过里面设计上考虑了多线程环境使用了specific,并且使用了co_runner来做trampoline,这个在实现上面是非常巧妙的。此外文档也说了在处理线程的时候需要调用sigaltstack不然信号处理部分可能会和和你的coroutine的stack重合。其实只需要pth里面这些接口即可，create/delete/switch/exit(这个语义通知另外一个coroutine选择另外一个coroutine执行).pth可以看看但是比较大但是仅仅是覆盖thread部分内容(第三推荐)，而libtask涵盖了线程IO网络各个部分也可以看看(第二推荐)。
+libpcl里面的co<sub>exit</sub>/co<sub>exit</sub><sub>to</sub>/co<sub>resume里面存放了caller和restarget这两个变量，表示调用者和应该恢复到的coroutine</sub>.但是一旦使用这种实现的话，那么调用者只能够按照stack的方式来调用coroutine,不然函数调用完成返回之后是会存在问题的，但是这样也就失去了coroutine意义了。而co<sub>call还使用了co</sub><sub>exit这个函数，导致整个libpcl可以说不是很可用。不过里面设计上考虑了多线程环境使用了specific</sub>,并且使用了co<sub>runner来做trampoline</sub>,这个在实现上面是非常巧妙的。此外文档也说了在处理线程的时候需要调用sigaltstack不然信号处理部分可能会和和你的coroutine的stack重合。其实只需要pth里面这些接口即可，create/delete/switch/exit(这个语义通知另外一个coroutine选择另外一个coroutine执行).pth可以看看但是比较大但是仅仅是覆盖thread部分内容(第三推荐)，而libtask涵盖了线程IO网络各个部分也可以看看(第二推荐)。
 </p>
 
 <hr/>
@@ -127,13 +79,13 @@ coroutine，windows编程里面的纤程（fiber）,绿色线程（green thread�
 <hr/>
 
 <p>
-coroutine框架必须在每个线程可以启动一个调度coroutine.然后create_fiber之后将coroutine丢到随机的一个线程coroutine的等待Q里面。调度coroutine的动作非常简单，检查哪些coroutine ready了然后switch到对应的coroutine上面去。这些工作的coroutine触发出来的时机可能有下面几个：
+coroutine框架必须在每个线程可以启动一个调度coroutine.然后create<sub>fiber之后将coroutine丢到随机的一个线程coroutine的等待Q里面。调度coroutine的动作非常简单，检查哪些coroutine</sub> ready了然后switch到对应的coroutine上面去。这些工作的coroutine触发出来的时机可能有下面几个：
 </p><ul>
 <li>read/write阻塞.对于fd需要判断如果为net的话那么丢入epoll,disk的话丢入nativeio或者是自己的线程池。
 </li>
-<li>futex_wait锁的等待. // 这个可以让系统禁用或者什么的
+<li>futex<sub>wait锁的等待</sub>. // 这个可以让系统禁用或者什么的
 </li>
-<li>定时器 // sleep或者是futex_wait使用的定时器。
+<li>定时器 // sleep或者是futex<sub>wait使用的定时器。</sub>
 </li>
 </ul>
 

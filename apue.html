@@ -10,55 +10,7 @@
 <meta name="author" content="dirtysalt"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
-  html { font-family: Times, serif; font-size: 12pt; }
-  .title  { text-align: center; }
-  .todo   { color: red; }
-  .done   { color: green; }
-  .tag    { background-color: #add8e6; font-weight:normal }
-  .target { }
-  .timestamp { color: #bebebe; }
-  .timestamp-kwd { color: #5f9ea0; }
-  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
-  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
-  .center {margin-left:auto; margin-right:auto; text-align:center;}
-  p.verse { margin-left: 3% }
-  pre {
-	border: 1pt solid #AEBDCC;
-	background-color: #F3F5F7;
-	padding: 5pt;
-	font-family: courier, monospace;
-        font-size: 90%;
-        overflow:auto;
-  }
-  table { border-collapse: collapse; }
-  td, th { vertical-align: top;  }
-  th.right  { text-align:center;  }
-  th.left   { text-align:center;   }
-  th.center { text-align:center; }
-  td.right  { text-align:right;  }
-  td.left   { text-align:left;   }
-  td.center { text-align:center; }
-  dt { font-weight: bold; }
-  div.figure { padding: 0.5em; }
-  div.figure p { text-align: center; }
-  div.inlinetask {
-    padding:10px;
-    border:2px solid gray;
-    margin:10px;
-    background: #ffffcc;
-  }
-  textarea { overflow-x: auto; }
-  .linenr { font-size:smaller }
-  .code-highlighted {background-color:#ffff00;}
-  .org-info-js_info-navigation { border-style:none; }
-  #org-info-js_console-label { font-size:10px; font-weight:bold;
-                               white-space:nowrap; }
-  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
-                                 font-weight:bold; }
-  /*]]>*/-->
-</style><link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
+<link rel="shortcut icon" href="css/favicon.ico" /> <link rel="stylesheet" type="text/css" href="css/site.css" />
 
 
 </head>
@@ -208,7 +160,7 @@
 <ul>
 <li><a href="apue.html#sec-8-1">8.1 进程标识符</a></li>
 <li><a href="apue.html#sec-8-2">8.2 开辟子进程</a></li>
-<li><a href="apue.html#sec-8-3">8.3 _exit函数</a></li>
+<li><a href="apue.html#sec-8-3">8.3 <sub>exit函数</sub></a></li>
 <li><a href="apue.html#sec-8-4">8.4 等待子进程结束</a></li>
 <li><a href="apue.html#sec-8-5">8.5 exec函数</a></li>
 <li><a href="apue.html#sec-8-6">8.6 更改用户ID和组ID</a></li>
@@ -606,12 +558,12 @@ gid和sgid存在的理由。gid就好比用户所属部门的一个编号，而s
 <p>长期以来，Unix系统使用两种不同的时间值。
 </p>
 <p>
-一种是自1970-1-1 0:0:0以来所经过的秒数累计值，使用time_t来表示，可以用于比如保存文件最后一次
+一种是自1970-1-1 0:0:0以来所经过的秒数累计值，使用time<sub>t来表示，可以用于比如保存文件最后一次</sub>
 修改时间等。这是一个绝对时间。
 </p>
 <p>
 一种是CPU时间，用于度量进程使用的中央处理机资源。CPU时间以时钟滴答计算，使用sysconf可以获得每秒
-时钟滴答数。使用clock_t来表示。这是一个相对时间。度量一个进程的执行时间，Unix使用三个时间值：
+时钟滴答数。使用clock<sub>t来表示。这是一个相对时间。度量一个进程的执行时间，Unix使用三个时间值：</sub>
 </p><ul>
 <li>时钟时间(wall clock time).
 </li>
@@ -801,7 +753,7 @@ POSIX标准定义的必选和可选头文件如下：
 <tr><td class="left">&lt;libgen.h&gt;</td><td class="left">模式匹配函数</td></tr>
 <tr><td class="left">&lt;monetary.h&gt;</td><td class="left">货币类型</td></tr>
 <tr><td class="left">&lt;ndbm.h&gt;</td><td class="left">数据库</td></tr>
-<tr><td class="left">&lt;nl_types.h&gt;</td><td class="left">消息类别</td></tr>
+<tr><td class="left">&lt;nl<sub>types</sub>.h&gt;</td><td class="left">消息类别</td></tr>
 <tr><td class="left">&lt;pool.h&gt;</td><td class="left">轮询函数</td></tr>
 <tr><td class="left">&lt;search.h&gt;</td><td class="left">搜索函数</td></tr>
 <tr><td class="left">&lt;strings.h&gt;</td><td class="left">字符串操作</td></tr>
@@ -846,7 +798,7 @@ POSIX标准定义的必选和可选头文件如下：
 <p>Signle Unix Specifcation(单一Unix规范)是POSIX标准的一个超集，定义了一些附加接口，
 相应的系统接口全集被称为X/Open系统接口(XSI,X/Open System Interface).XSI还定义了
 实现必须支持POSIX的哪些可选部分才能够认为是遵循XSI。只有遵循XSI的实现才能够成为
-UNIX系统。_XOPEN_UNIX符号常量表示了XSI扩展的接口。关于XSI提供的附加接口选项，会在
+UNIX系统。<sub>XOPEN</sub><sub>UNIX符号常量表示了XSI扩展的接口。关于XSI提供的附加接口选项，会在</sub>
 Unix系统实现的选项一节介绍。
 </p>
 </div>
@@ -947,24 +899,24 @@ Unix系统实现的选项一节介绍。
 <tr><th scope="col" class="left">参数</th><th scope="col" class="left">说明</th></tr>
 </thead>
 <tbody>
-<tr><td class="left">_SC_ARG_MAX</td><td class="left">exec函数的参数最大长度</td></tr>
-<tr><td class="left">_SC_ATEXIT_MAX</td><td class="left">atexit函数注册函数最大个数</td></tr>
-<tr><td class="left">_SC_CHILD_MAX</td><td class="left">每个实际用户id最大的进程数</td></tr>
-<tr><td class="left">_SC_CLK_TCK</td><td class="left">每秒滴答数</td></tr>
-<tr><td class="left">_SC_COLL_WEIGHTS_MAX</td><td class="left">本地文件赋予LC_COLLATE最大权重</td></tr>
-<tr><td class="left">_SC_HOST_NAMX_MAX</td><td class="left">gethostname返回主机名最大长度</td></tr>
-<tr><td class="left">_SC_IOV_MAX</td><td class="left">矢量io的最大数</td></tr>
-<tr><td class="left">_SC_LINE_MAX</td><td class="left">输入行最大长度</td></tr>
-<tr><td class="left">_SC_LOGIN_NAME_MAX</td><td class="left">登录名最大长度</td></tr>
-<tr><td class="left">_SC_NGROUPS_MAX</td><td class="left">每个进程同时添加的最大进程组数</td></tr>
-<tr><td class="left">_SC_OPEN_MAX</td><td class="left">每个进程打开文件最大数目</td></tr>
-<tr><td class="left">_SC_PAGESIZE</td><td class="left">系统存储页长度</td></tr>
-<tr><td class="left">_SC_PAGE_SIZE</td><td class="left">系统存储页长度</td></tr>
-<tr><td class="left">_SC_RE_DUP_MAX</td><td class="left">正则表达式最大允许重复次数</td></tr>
-<tr><td class="left">_SC_STREAM_MAX</td><td class="left">每个进程的最大标准IO流数</td></tr>
-<tr><td class="left">_SC_SYMLOOP_MAX</td><td class="left">解析路径名期间可遍历的最大符号链接数</td></tr>
-<tr><td class="left">_SC_TTY_NAME_MAX</td><td class="left">终端设备名最大长度</td></tr>
-<tr><td class="left">_SC_TZNAME_MAX</td><td class="left">时区名的最大字节数</td></tr>
+<tr><td class="left"><sub>SC</sub><sub>ARG</sub><sub>MAX</sub></td><td class="left">exec函数的参数最大长度</td></tr>
+<tr><td class="left"><sub>SC</sub><sub>ATEXIT</sub><sub>MAX</sub></td><td class="left">atexit函数注册函数最大个数</td></tr>
+<tr><td class="left"><sub>SC</sub><sub>CHILD</sub><sub>MAX</sub></td><td class="left">每个实际用户id最大的进程数</td></tr>
+<tr><td class="left"><sub>SC</sub><sub>CLK</sub><sub>TCK</sub></td><td class="left">每秒滴答数</td></tr>
+<tr><td class="left"><sub>SC</sub><sub>COLL</sub><sub>WEIGHTS</sub><sub>MAX</sub></td><td class="left">本地文件赋予LC<sub>COLLATE最大权重</sub></td></tr>
+<tr><td class="left"><sub>SC</sub><sub>HOST</sub><sub>NAMX</sub><sub>MAX</sub></td><td class="left">gethostname返回主机名最大长度</td></tr>
+<tr><td class="left"><sub>SC</sub><sub>IOV</sub><sub>MAX</sub></td><td class="left">矢量io的最大数</td></tr>
+<tr><td class="left"><sub>SC</sub><sub>LINE</sub><sub>MAX</sub></td><td class="left">输入行最大长度</td></tr>
+<tr><td class="left"><sub>SC</sub><sub>LOGIN</sub><sub>NAME</sub><sub>MAX</sub></td><td class="left">登录名最大长度</td></tr>
+<tr><td class="left"><sub>SC</sub><sub>NGROUPS</sub><sub>MAX</sub></td><td class="left">每个进程同时添加的最大进程组数</td></tr>
+<tr><td class="left"><sub>SC</sub><sub>OPEN</sub><sub>MAX</sub></td><td class="left">每个进程打开文件最大数目</td></tr>
+<tr><td class="left"><sub>SC</sub><sub>PAGESIZE</sub></td><td class="left">系统存储页长度</td></tr>
+<tr><td class="left"><sub>SC</sub><sub>PAGE</sub><sub>SIZE</sub></td><td class="left">系统存储页长度</td></tr>
+<tr><td class="left"><sub>SC</sub><sub>RE</sub><sub>DUP</sub><sub>MAX</sub></td><td class="left">正则表达式最大允许重复次数</td></tr>
+<tr><td class="left"><sub>SC</sub><sub>STREAM</sub><sub>MAX</sub></td><td class="left">每个进程的最大标准IO流数</td></tr>
+<tr><td class="left"><sub>SC</sub><sub>SYMLOOP</sub><sub>MAX</sub></td><td class="left">解析路径名期间可遍历的最大符号链接数</td></tr>
+<tr><td class="left"><sub>SC</sub><sub>TTY</sub><sub>NAME</sub><sub>MAX</sub></td><td class="left">终端设备名最大长度</td></tr>
+<tr><td class="left"><sub>SC</sub><sub>TZNAME</sub><sub>MAX</sub></td><td class="left">时区名的最大字节数</td></tr>
 </tbody>
 </table>
 
@@ -984,14 +936,14 @@ Unix系统实现的选项一节介绍。
 <tr><th scope="col" class="left">参数</th><th scope="col" class="left">说明</th></tr>
 </thead>
 <tbody>
-<tr><td class="left">_PC_FILESSIZEBITS</td><td class="left">目录表示最大文件所需要的位数</td></tr>
-<tr><td class="left">_PC_LINK_MAX</td><td class="left">文件链接数最大值</td></tr>
-<tr><td class="left">_PC_MAX_CANON</td><td class="left">终端规范输入的最大字节数</td></tr>
-<tr><td class="left">_PC_MAX_INPUT</td><td class="left">终端输入的最大字节数</td></tr>
-<tr><td class="left">_PC_NAME_MAX</td><td class="left">文件名的最大字节数</td></tr>
-<tr><td class="left">_PC_PATH_MAX</td><td class="left">路径名的最大字节数</td></tr>
-<tr><td class="left">_PC_PIPE_BUF</td><td class="left">能够原子地写到管道的最大字节数</td></tr>
-<tr><td class="left">_PC_SYMLINK_MAX</td><td class="left">符号链接文件中最大长度</td></tr>
+<tr><td class="left"><sub>PC</sub><sub>FILESSIZEBITS</sub></td><td class="left">目录表示最大文件所需要的位数</td></tr>
+<tr><td class="left"><sub>PC</sub><sub>LINK</sub><sub>MAX</sub></td><td class="left">文件链接数最大值</td></tr>
+<tr><td class="left"><sub>PC</sub><sub>MAX</sub><sub>CANON</sub></td><td class="left">终端规范输入的最大字节数</td></tr>
+<tr><td class="left"><sub>PC</sub><sub>MAX</sub><sub>INPUT</sub></td><td class="left">终端输入的最大字节数</td></tr>
+<tr><td class="left"><sub>PC</sub><sub>NAME</sub><sub>MAX</sub></td><td class="left">文件名的最大字节数</td></tr>
+<tr><td class="left"><sub>PC</sub><sub>PATH</sub><sub>MAX</sub></td><td class="left">路径名的最大字节数</td></tr>
+<tr><td class="left"><sub>PC</sub><sub>PIPE</sub><sub>BUF</sub></td><td class="left">能够原子地写到管道的最大字节数</td></tr>
+<tr><td class="left"><sub>PC</sub><sub>SYMLINK</sub><sub>MAX</sub></td><td class="left">符号链接文件中最大长度</td></tr>
 </tbody>
 </table>
 
@@ -1024,8 +976,8 @@ Unix系统实现的选项一节介绍。
 <h6 id="sec-2-2-2-1"><span class="section-number-6">2.2.2.1</span> 编译时选项</h6>
 <div class="outline-text-6" id="text-2-2-2-1">
 
-<p>包含unistd.h这个头文件然后使用宏来判断。对于宏和参数对应关系是,X那么宏是_POSIX_&lt;X&gt;,
-而参数是_SC_&lt;X&gt;.如果编译时选项没有指定的话，那么必须通过运行时选项来获取。
+<p>包含unistd.h这个头文件然后使用宏来判断。对于宏和参数对应关系是,X那么宏是<sub>POSIX</sub><sub>&lt</sub>;X&gt;,
+而参数是<sub>SC</sub><sub>&lt</sub>;X&gt;.如果编译时选项没有指定的话，那么必须通过运行时选项来获取。
 </p>
 </div>
 
@@ -1043,59 +995,59 @@ Unix系统实现的选项一节介绍。
 <tr><th scope="col" class="left">代码</th><th scope="col" class="left">符号</th><th scope="col" class="left">说明</th></tr>
 </thead>
 <tbody>
-<tr><td class="left">ADV</td><td class="left">_POSIX_ADVISORY_INFO</td><td class="left">建议性信息</td></tr>
-<tr><td class="left">AIO</td><td class="left">_POSIX_ASYNCHRONOUS_IO</td><td class="left">异步IO</td></tr>
-<tr><td class="left">BAR</td><td class="left">_POSIX_BARRIERRS</td><td class="left">屏障</td></tr>
-<tr><td class="left">CPT</td><td class="left">_POSIX_CPUTIME</td><td class="left">CPU时钟</td></tr>
-<tr><td class="left">CS</td><td class="left">_POSIX_CLOCK_SELECTION</td><td class="left">时钟选择</td></tr>
-<tr><td class="left">FSC</td><td class="left">_POSIX_FSYNC</td><td class="left">文件同步</td></tr>
-<tr><td class="left">IP6</td><td class="left">_POSIX_IPV6</td><td class="left">ipv6接口</td></tr>
-<tr><td class="left">MF</td><td class="left">_POSIX_MAPPED_FILES</td><td class="left">存储映射文件</td></tr>
-<tr><td class="left">ML</td><td class="left">_POSIX_MEMLOCK</td><td class="left">进程存储区加锁</td></tr>
-<tr><td class="left">MLR</td><td class="left">_POSIX_MEMLOCK_RANGE</td><td class="left">存储区加锁</td></tr>
-<tr><td class="left">MON</td><td class="left">_POSIX_MONOTONIC_CLOCCK</td><td class="left">单调时钟</td></tr>
-<tr><td class="left">MPR</td><td class="left">_POSIX_MEMORY_PROTECTION</td><td class="left">存储保护</td></tr>
-<tr><td class="left">MSG</td><td class="left">_POSIX_MESSAGE_PASSING</td><td class="left">消息传送</td></tr>
-<tr><td class="left">PIO</td><td class="left">_POSIX_PRIORITIZED_IO</td><td class="left">优先IO</td></tr>
-<tr><td class="left">PS</td><td class="left">_POSIX_PRIORITIZED_SCHEDULING</td><td class="left">优先进程调度</td></tr>
-<tr><td class="left">RS</td><td class="left">_POSIX_RAW_SOCKET</td><td class="left">原始套接字</td></tr>
-<tr><td class="left">RTS</td><td class="left">_POSIX_REALTIME_SIGNALS</td><td class="left">实时信号</td></tr>
-<tr><td class="left">SEM</td><td class="left">_POSIX_SEMAPHORES</td><td class="left">信号量</td></tr>
-<tr><td class="left">SHM</td><td class="left">_POSIX_SHARED_MEMORY_OBJECTS</td><td class="left">共享存对象</td></tr>
-<tr><td class="left">SIO</td><td class="left">_POSIX_SYNCHRONIZED_IO</td><td class="left">同步IO</td></tr>
-<tr><td class="left">SPI</td><td class="left">_POSIX_SPIN_LOCKS</td><td class="left">自选锁</td></tr>
-<tr><td class="left">SPN</td><td class="left">_POSIX_SPAWN</td><td class="left">产生进程</td></tr>
-<tr><td class="left">SS</td><td class="left">_POSIX_SPORADIC_SERVER</td><td class="left">进程发散性服务器</td></tr>
-<tr><td class="left">TCT</td><td class="left">_POSIX_THREAD_CPUTIME</td><td class="left">线程CPU时钟</td></tr>
-<tr><td class="left">TEF</td><td class="left">_POSIX_TRACE_EVENT_FILTER</td><td class="left">跟踪事件过滤器</td></tr>
-<tr><td class="left">THR</td><td class="left">_POSIX_THREADS</td><td class="left">线程</td></tr>
-<tr><td class="left">TMO</td><td class="left">_POSIX_TIMEOUTS</td><td class="left">超时</td></tr>
-<tr><td class="left">TMR</td><td class="left">_POSIX_TIMERS</td><td class="left">计时器</td></tr>
-<tr><td class="left">TPI</td><td class="left">_POSIX_THREAD_PRIO_INHERIT</td><td class="left">线程优先级继承</td></tr>
-<tr><td class="left">TPP</td><td class="left">_POSIX_THREAD_PRIO_PROTECT</td><td class="left">线程优先级保护</td></tr>
-<tr><td class="left">TPS</td><td class="left">_POSIX_THREAD_PRIORITY_SCHEDULING</td><td class="left">线程执行调度</td></tr>
-<tr><td class="left">TRC</td><td class="left">_POSIX_TRACE</td><td class="left">跟踪</td></tr>
-<tr><td class="left">TRI</td><td class="left">_POSIX_TRACE_INHERIT</td><td class="left">跟踪继承</td></tr>
-<tr><td class="left">TRL</td><td class="left">_POSIX_TRACE_LOG</td><td class="left">跟踪日志</td></tr>
-<tr><td class="left">TSA</td><td class="left">_POSIX_THREAD_ATTR_STACKADDR</td><td class="left">线程栈地址</td></tr>
-<tr><td class="left">TSF</td><td class="left">_POSIX_THREAD_SAFE_FUNCTIONS</td><td class="left">线程安全函数</td></tr>
-<tr><td class="left">TSH</td><td class="left">_POSIX_THREAD_PROCESS_SHARED</td><td class="left">线程进程共享同步</td></tr>
-<tr><td class="left">TSP</td><td class="left">_POSIX_THREAD_SPORADIC_SERVER</td><td class="left">线程发散性服务器</td></tr>
-<tr><td class="left">TSS</td><td class="left">_POSIX_THREAD_ATTR_STACKSZIE</td><td class="left">线程栈大小</td></tr>
-<tr><td class="left">TYM</td><td class="left">_POSIX_TYPED_MEMORY_OBJECTS</td><td class="left">类型化存储对象</td></tr>
-<tr><td class="left">XSI</td><td class="left">_XOPEN_UNIX</td><td class="left">X/Open扩展接口</td></tr>
-<tr><td class="left">XSR</td><td class="left">_XOPEN_STREAMS</td><td class="left">XSI STREAMS</td></tr>
-<tr><td class="left"></td><td class="left">_POSIX_JOB_CONTROL</td><td class="left">作业控制</td></tr>
-<tr><td class="left"></td><td class="left">_POSIX_READER_WRITER_LOCKS</td><td class="left">读写锁</td></tr>
-<tr><td class="left"></td><td class="left">_POSIX_SAVED_IDS</td><td class="left">支持saved的uid和gid</td></tr>
-<tr><td class="left"></td><td class="left">_POSIX_SHELL</td><td class="left">POSIX shell</td></tr>
-<tr><td class="left"></td><td class="left">_POSIX_VERSION</td><td class="left">POSIX version</td></tr>
-<tr><td class="left"></td><td class="left">_XOPEN_CRYPE</td><td class="left">加密</td></tr>
-<tr><td class="left"></td><td class="left">_XOPEN_REALTIME</td><td class="left">实时</td></tr>
-<tr><td class="left"></td><td class="left">_XOPEN_REALTIME_THREADS</td><td class="left">实时线程</td></tr>
-<tr><td class="left"></td><td class="left">_XOPEN_STREAMS</td><td class="left">XSI STREAMS</td></tr>
-<tr><td class="left"></td><td class="left">_XOPEN_LEGACY</td><td class="left">遗留接口</td></tr>
-<tr><td class="left"></td><td class="left">_XOPEN_VERSION</td><td class="left">XSI版本</td></tr>
+<tr><td class="left">ADV</td><td class="left"><sub>POSIX</sub><sub>ADVISORY</sub><sub>INFO</sub></td><td class="left">建议性信息</td></tr>
+<tr><td class="left">AIO</td><td class="left"><sub>POSIX</sub><sub>ASYNCHRONOUS</sub><sub>IO</sub></td><td class="left">异步IO</td></tr>
+<tr><td class="left">BAR</td><td class="left"><sub>POSIX</sub><sub>BARRIERRS</sub></td><td class="left">屏障</td></tr>
+<tr><td class="left">CPT</td><td class="left"><sub>POSIX</sub><sub>CPUTIME</sub></td><td class="left">CPU时钟</td></tr>
+<tr><td class="left">CS</td><td class="left"><sub>POSIX</sub><sub>CLOCK</sub><sub>SELECTION</sub></td><td class="left">时钟选择</td></tr>
+<tr><td class="left">FSC</td><td class="left"><sub>POSIX</sub><sub>FSYNC</sub></td><td class="left">文件同步</td></tr>
+<tr><td class="left">IP6</td><td class="left"><sub>POSIX</sub><sub>IPV6</sub></td><td class="left">ipv6接口</td></tr>
+<tr><td class="left">MF</td><td class="left"><sub>POSIX</sub><sub>MAPPED</sub><sub>FILES</sub></td><td class="left">存储映射文件</td></tr>
+<tr><td class="left">ML</td><td class="left"><sub>POSIX</sub><sub>MEMLOCK</sub></td><td class="left">进程存储区加锁</td></tr>
+<tr><td class="left">MLR</td><td class="left"><sub>POSIX</sub><sub>MEMLOCK</sub><sub>RANGE</sub></td><td class="left">存储区加锁</td></tr>
+<tr><td class="left">MON</td><td class="left"><sub>POSIX</sub><sub>MONOTONIC</sub><sub>CLOCCK</sub></td><td class="left">单调时钟</td></tr>
+<tr><td class="left">MPR</td><td class="left"><sub>POSIX</sub><sub>MEMORY</sub><sub>PROTECTION</sub></td><td class="left">存储保护</td></tr>
+<tr><td class="left">MSG</td><td class="left"><sub>POSIX</sub><sub>MESSAGE</sub><sub>PASSING</sub></td><td class="left">消息传送</td></tr>
+<tr><td class="left">PIO</td><td class="left"><sub>POSIX</sub><sub>PRIORITIZED</sub><sub>IO</sub></td><td class="left">优先IO</td></tr>
+<tr><td class="left">PS</td><td class="left"><sub>POSIX</sub><sub>PRIORITIZED</sub><sub>SCHEDULING</sub></td><td class="left">优先进程调度</td></tr>
+<tr><td class="left">RS</td><td class="left"><sub>POSIX</sub><sub>RAW</sub><sub>SOCKET</sub></td><td class="left">原始套接字</td></tr>
+<tr><td class="left">RTS</td><td class="left"><sub>POSIX</sub><sub>REALTIME</sub><sub>SIGNALS</sub></td><td class="left">实时信号</td></tr>
+<tr><td class="left">SEM</td><td class="left"><sub>POSIX</sub><sub>SEMAPHORES</sub></td><td class="left">信号量</td></tr>
+<tr><td class="left">SHM</td><td class="left"><sub>POSIX</sub><sub>SHARED</sub><sub>MEMORY</sub><sub>OBJECTS</sub></td><td class="left">共享存对象</td></tr>
+<tr><td class="left">SIO</td><td class="left"><sub>POSIX</sub><sub>SYNCHRONIZED</sub><sub>IO</sub></td><td class="left">同步IO</td></tr>
+<tr><td class="left">SPI</td><td class="left"><sub>POSIX</sub><sub>SPIN</sub><sub>LOCKS</sub></td><td class="left">自选锁</td></tr>
+<tr><td class="left">SPN</td><td class="left"><sub>POSIX</sub><sub>SPAWN</sub></td><td class="left">产生进程</td></tr>
+<tr><td class="left">SS</td><td class="left"><sub>POSIX</sub><sub>SPORADIC</sub><sub>SERVER</sub></td><td class="left">进程发散性服务器</td></tr>
+<tr><td class="left">TCT</td><td class="left"><sub>POSIX</sub><sub>THREAD</sub><sub>CPUTIME</sub></td><td class="left">线程CPU时钟</td></tr>
+<tr><td class="left">TEF</td><td class="left"><sub>POSIX</sub><sub>TRACE</sub><sub>EVENT</sub><sub>FILTER</sub></td><td class="left">跟踪事件过滤器</td></tr>
+<tr><td class="left">THR</td><td class="left"><sub>POSIX</sub><sub>THREADS</sub></td><td class="left">线程</td></tr>
+<tr><td class="left">TMO</td><td class="left"><sub>POSIX</sub><sub>TIMEOUTS</sub></td><td class="left">超时</td></tr>
+<tr><td class="left">TMR</td><td class="left"><sub>POSIX</sub><sub>TIMERS</sub></td><td class="left">计时器</td></tr>
+<tr><td class="left">TPI</td><td class="left"><sub>POSIX</sub><sub>THREAD</sub><sub>PRIO</sub><sub>INHERIT</sub></td><td class="left">线程优先级继承</td></tr>
+<tr><td class="left">TPP</td><td class="left"><sub>POSIX</sub><sub>THREAD</sub><sub>PRIO</sub><sub>PROTECT</sub></td><td class="left">线程优先级保护</td></tr>
+<tr><td class="left">TPS</td><td class="left"><sub>POSIX</sub><sub>THREAD</sub><sub>PRIORITY</sub><sub>SCHEDULING</sub></td><td class="left">线程执行调度</td></tr>
+<tr><td class="left">TRC</td><td class="left"><sub>POSIX</sub><sub>TRACE</sub></td><td class="left">跟踪</td></tr>
+<tr><td class="left">TRI</td><td class="left"><sub>POSIX</sub><sub>TRACE</sub><sub>INHERIT</sub></td><td class="left">跟踪继承</td></tr>
+<tr><td class="left">TRL</td><td class="left"><sub>POSIX</sub><sub>TRACE</sub><sub>LOG</sub></td><td class="left">跟踪日志</td></tr>
+<tr><td class="left">TSA</td><td class="left"><sub>POSIX</sub><sub>THREAD</sub><sub>ATTR</sub><sub>STACKADDR</sub></td><td class="left">线程栈地址</td></tr>
+<tr><td class="left">TSF</td><td class="left"><sub>POSIX</sub><sub>THREAD</sub><sub>SAFE</sub><sub>FUNCTIONS</sub></td><td class="left">线程安全函数</td></tr>
+<tr><td class="left">TSH</td><td class="left"><sub>POSIX</sub><sub>THREAD</sub><sub>PROCESS</sub><sub>SHARED</sub></td><td class="left">线程进程共享同步</td></tr>
+<tr><td class="left">TSP</td><td class="left"><sub>POSIX</sub><sub>THREAD</sub><sub>SPORADIC</sub><sub>SERVER</sub></td><td class="left">线程发散性服务器</td></tr>
+<tr><td class="left">TSS</td><td class="left"><sub>POSIX</sub><sub>THREAD</sub><sub>ATTR</sub><sub>STACKSZIE</sub></td><td class="left">线程栈大小</td></tr>
+<tr><td class="left">TYM</td><td class="left"><sub>POSIX</sub><sub>TYPED</sub><sub>MEMORY</sub><sub>OBJECTS</sub></td><td class="left">类型化存储对象</td></tr>
+<tr><td class="left">XSI</td><td class="left"><sub>XOPEN</sub><sub>UNIX</sub></td><td class="left">X/Open扩展接口</td></tr>
+<tr><td class="left">XSR</td><td class="left"><sub>XOPEN</sub><sub>STREAMS</sub></td><td class="left">XSI STREAMS</td></tr>
+<tr><td class="left"></td><td class="left"><sub>POSIX</sub><sub>JOB</sub><sub>CONTROL</sub></td><td class="left">作业控制</td></tr>
+<tr><td class="left"></td><td class="left"><sub>POSIX</sub><sub>READER</sub><sub>WRITER</sub><sub>LOCKS</sub></td><td class="left">读写锁</td></tr>
+<tr><td class="left"></td><td class="left"><sub>POSIX</sub><sub>SAVED</sub><sub>IDS</sub></td><td class="left">支持saved的uid和gid</td></tr>
+<tr><td class="left"></td><td class="left"><sub>POSIX</sub><sub>SHELL</sub></td><td class="left">POSIX shell</td></tr>
+<tr><td class="left"></td><td class="left"><sub>POSIX</sub><sub>VERSION</sub></td><td class="left">POSIX version</td></tr>
+<tr><td class="left"></td><td class="left"><sub>XOPEN</sub><sub>CRYPE</sub></td><td class="left">加密</td></tr>
+<tr><td class="left"></td><td class="left"><sub>XOPEN</sub><sub>REALTIME</sub></td><td class="left">实时</td></tr>
+<tr><td class="left"></td><td class="left"><sub>XOPEN</sub><sub>REALTIME</sub><sub>THREADS</sub></td><td class="left">实时线程</td></tr>
+<tr><td class="left"></td><td class="left"><sub>XOPEN</sub><sub>STREAMS</sub></td><td class="left">XSI STREAMS</td></tr>
+<tr><td class="left"></td><td class="left"><sub>XOPEN</sub><sub>LEGACY</sub></td><td class="left">遗留接口</td></tr>
+<tr><td class="left"></td><td class="left"><sub>XOPEN</sub><sub>VERSION</sub></td><td class="left">XSI版本</td></tr>
 </tbody>
 </table>
 
@@ -1115,12 +1067,12 @@ Unix系统实现的选项一节介绍。
 <tr><th scope="col" class="left">符号</th><th scope="col" class="left">说明</th></tr>
 </thead>
 <tbody>
-<tr><td class="left">_POSIX_CHOWN_RESTRICTED</td><td class="left">chown限制</td></tr>
-<tr><td class="left">_POSIX_NO_TRUNC</td><td class="left">文件名称长于NAME_MAX处理</td></tr>
-<tr><td class="left">_POSIX_VDISABLE</td><td class="left">禁用终端字符</td></tr>
-<tr><td class="left">_POSIX_ASYNC_IO</td><td class="left">是否可以使用异步IO</td></tr>
-<tr><td class="left">_POSIX_PRIO_IO</td><td class="left">是否可以使用优先IO</td></tr>
-<tr><td class="left">_POSIX_SYNC_IO</td><td class="left">是否可以使用同步IO</td></tr>
+<tr><td class="left"><sub>POSIX</sub><sub>CHOWN</sub><sub>RESTRICTED</sub></td><td class="left">chown限制</td></tr>
+<tr><td class="left"><sub>POSIX</sub><sub>NO</sub><sub>TRUNC</sub></td><td class="left">文件名称长于NAME<sub>MAX处理</sub></td></tr>
+<tr><td class="left"><sub>POSIX</sub><sub>VDISABLE</sub></td><td class="left">禁用终端字符</td></tr>
+<tr><td class="left"><sub>POSIX</sub><sub>ASYNC</sub><sub>IO</sub></td><td class="left">是否可以使用异步IO</td></tr>
+<tr><td class="left"><sub>POSIX</sub><sub>PRIO</sub><sub>IO</sub></td><td class="left">是否可以使用优先IO</td></tr>
+<tr><td class="left"><sub>POSIX</sub><sub>SYNC</sub><sub>IO</sub></td><td class="left">是否可以使用同步IO</td></tr>
 </tbody>
 </table>
 
@@ -1137,14 +1089,14 @@ Unix系统实现的选项一节介绍。
 <p>如果使用编译时限制或者是选项的话，有时候各个厂商会有自己的定义。如果想撇开这些
 厂商自己的定义的话而使用标准POSIX或者是XSI定义的话，那么可以使用宏：
 </p><ul>
-<li>-D_POSIX_C_SOURCE //开启POSIX
+<li>-D<sub>POSIX</sub><sub>C</sub><sub>SOURCE</sub> //开启POSIX
 </li>
-<li>-D_XOPEN_SOURCE //开启XSI
+<li>-D<sub>XOPEN</sub><sub>SOURCE</sub> //开启XSI
 </li>
 </ul>
 
-<p>如果需要支持ISO C的话，那么使用__STDC__来判断。如果需要支持C++的话，那么使用
-__cplusplus来判断。
+<p>如果需要支持ISO C的话，那么使用_<sub>STDC</sub>_<sub>来判断。如果需要支持C</sub>++的话，那么使用
+_<sub>cplusplus来判断。</sub>
 </p>
 </div>
 
@@ -1162,27 +1114,27 @@ __cplusplus来判断。
 <tr><th scope="col" class="left">类型</th><th scope="col" class="left">说明</th></tr>
 </thead>
 <tbody>
-<tr><td class="left">caddr_t</td><td class="left">内存地址</td></tr>
-<tr><td class="left">clock_t</td><td class="left">时钟滴答计数器</td></tr>
-<tr><td class="left">comp_t</td><td class="left">压缩的时钟滴答</td></tr>
-<tr><td class="left">dev_t</td><td class="left">设备号</td></tr>
-<tr><td class="left">fd_set</td><td class="left">文件描述符集合</td></tr>
-<tr><td class="left">fpos_t</td><td class="left">文件位置</td></tr>
-<tr><td class="left">gid_t</td><td class="left">组id</td></tr>
-<tr><td class="left">ino_t</td><td class="left">i节点编号</td></tr>
-<tr><td class="left">mode_t</td><td class="left">文件类型</td></tr>
-<tr><td class="left">nlink_t</td><td class="left">链接计数</td></tr>
-<tr><td class="left">off_t</td><td class="left">文件偏移</td></tr>
-<tr><td class="left">pid_t</td><td class="left">进程id和进程组id</td></tr>
-<tr><td class="left">ptrdiff_t</td><td class="left">指针偏移</td></tr>
-<tr><td class="left">rlim_t</td><td class="left">资源限制</td></tr>
-<tr><td class="left">sig_atomic_t</td><td class="left">原子访问数据类型</td></tr>
-<tr><td class="left">sigset_t</td><td class="left">信号集</td></tr>
-<tr><td class="left">size_t</td><td class="left">对象大小</td></tr>
-<tr><td class="left">ssize_t</td><td class="left">字节计数</td></tr>
-<tr><td class="left">time_t</td><td class="left">日历时间</td></tr>
-<tr><td class="left">uid_t</td><td class="left">用户id</td></tr>
-<tr><td class="left">wchar_t</td><td class="left">宽字符</td></tr>
+<tr><td class="left">caddr<sub>t</sub></td><td class="left">内存地址</td></tr>
+<tr><td class="left">clock<sub>t</sub></td><td class="left">时钟滴答计数器</td></tr>
+<tr><td class="left">comp<sub>t</sub></td><td class="left">压缩的时钟滴答</td></tr>
+<tr><td class="left">dev<sub>t</sub></td><td class="left">设备号</td></tr>
+<tr><td class="left">fd<sub>set</sub></td><td class="left">文件描述符集合</td></tr>
+<tr><td class="left">fpos<sub>t</sub></td><td class="left">文件位置</td></tr>
+<tr><td class="left">gid<sub>t</sub></td><td class="left">组id</td></tr>
+<tr><td class="left">ino<sub>t</sub></td><td class="left">i节点编号</td></tr>
+<tr><td class="left">mode<sub>t</sub></td><td class="left">文件类型</td></tr>
+<tr><td class="left">nlink<sub>t</sub></td><td class="left">链接计数</td></tr>
+<tr><td class="left">off<sub>t</sub></td><td class="left">文件偏移</td></tr>
+<tr><td class="left">pid<sub>t</sub></td><td class="left">进程id和进程组id</td></tr>
+<tr><td class="left">ptrdiff<sub>t</sub></td><td class="left">指针偏移</td></tr>
+<tr><td class="left">rlim<sub>t</sub></td><td class="left">资源限制</td></tr>
+<tr><td class="left">sig<sub>atomic</sub><sub>t</sub></td><td class="left">原子访问数据类型</td></tr>
+<tr><td class="left">sigset<sub>t</sub></td><td class="left">信号集</td></tr>
+<tr><td class="left">size<sub>t</sub></td><td class="left">对象大小</td></tr>
+<tr><td class="left">ssize<sub>t</sub></td><td class="left">字节计数</td></tr>
+<tr><td class="left">time<sub>t</sub></td><td class="left">日历时间</td></tr>
+<tr><td class="left">uid<sub>t</sub></td><td class="left">用户id</td></tr>
+<tr><td class="left">wchar<sub>t</sub></td><td class="left">宽字符</td></tr>
 </tbody>
 </table>
 
@@ -1237,34 +1189,34 @@ SUS的组成部分。
 <h4 id="sec-3-1"><span class="section-number-4">3.1</span> open/create</h4>
 <div class="outline-text-4" id="text-3-1">
 
-<p>open打开文件返回文件描述符。允许指定读写方式，是否创建(O_CREAT)，如果文件存在并且创建是否会出错(O_EXCL,exclusive)，
+<p>open打开文件返回文件描述符。允许指定读写方式，是否创建(O<sub>CREAT</sub>)，如果文件存在并且创建是否会出错(O<sub>EXCL</sub>,exclusive)，
 是否追加，是否truncate,是否阻塞，权限等标记，同时还允许指定是否每次write需要等待物理IO操作完成。
 对于open每次一定都是返回最小的未使用的文件描述符。而create可以理解为open的包装:).注意这里
-O_CREAT也非常关键，语义是入如果不存在就创建，这样使得这个操作成为一个原子操作。
+O<sub>CREAT也非常关键，语义是入如果不存在就创建，这样使得这个操作成为一个原子操作。</sub>
 </p>
 <p>
 还有下面常用方式：
 </p><ul>
-<li>O_RDONLY.只读
+<li>O<sub>RDONLY</sub>.只读
 </li>
-<li>O_WRONLY.只写
+<li>O<sub>WRONLY</sub>.只写
 </li>
-<li>O_RDWR.读写
+<li>O<sub>RDWR</sub>.读写
 </li>
-<li>O_APPEND.追加
+<li>O<sub>APPEND</sub>.追加
 </li>
-<li>O_NONBLOCK.非阻塞
+<li>O<sub>NONBLOCK</sub>.非阻塞
 </li>
-<li>O_SYNC.等待内容完全写到底层时候才返回。
+<li>O<sub>SYNC</sub>.等待内容完全写到底层时候才返回。
 </li>
-<li>O_ASYNC.信号驱动IO。
+<li>O<sub>ASYNC</sub>.信号驱动IO。
 </li>
-<li>O_DIRECT.direct io.注意direct io只是在64位下面才有效。
+<li>O<sub>DIRECT</sub>.direct io.注意direct io只是在64位下面才有效。
 </li>
 </ul>
 
-<p>注意如果使用direct io的话，那么要求读写的起始地址，读写大小，以及用户buffer地址都必须是PAGE_SIZE的整数倍。
-虽然在32位机器上可以打开_GNU_SOURCE这个宏来使用O_DIRECT编译但是却不能够运行。
+<p>注意如果使用direct io的话，那么要求读写的起始地址，读写大小，以及用户buffer地址都必须是PAGE<sub>SIZE的整数倍。</sub>
+虽然在32位机器上可以打开<sub>GNU</sub><sub>SOURCE这个宏来使用O</sub><sub>DIRECT编译但是却不能够运行。</sub>
 </p>
 </div>
 
@@ -1318,7 +1270,7 @@ int main(){
 
 <p>
 关于占用多少真实磁盘大小是文件系统所关心的，Linux下面使用20K来保存空洞文件。
-另外需要关心lseek问题就是文件大小的情况，我们可以使用_FILE_OFFSET_BITS来控制偏移量的范围，
+另外需要关心lseek问题就是文件大小的情况，我们可以使用<sub>FILE</sub><sub>OFFSET</sub><sub>BITS来控制偏移量的范围，</sub>
 这样就允许操作更大的文件了。如果
 </p>
 
@@ -1327,7 +1279,7 @@ int main(){
 </pre>
 
 <p>
-的话，那么偏移量就允许在2^64.这种规模的文件是相当大的了。尽管可以支持64位文件偏移，但是是否
+的话，那么偏移量就允许在2<sup>64</sup>.这种规模的文件是相当大的了。尽管可以支持64位文件偏移，但是是否
 允许创建这么大的文件，还是最终取决于文件系统的能力。
 </p>
 </div>
@@ -1363,12 +1315,12 @@ int main(){
 <h4 id="sec-3-6"><span class="section-number-4">3.6</span> write</h4>
 <div class="outline-text-4" id="text-3-6">
 
-<p>write也是从当前偏移开始写数据的，然后修改当前文件偏移。如果设置了O_APPEND选项打开文件的话，
+<p>write也是从当前偏移开始写数据的，然后修改当前文件偏移。如果设置了O<sub>APPEND选项打开文件的话，</sub>
 那么write每次写操作，都会首先移动到文件最末尾然后写数据。这个选项非常重要，可以让文件
-追加写成为原子操作。如果write大小不超过PIPE_BUF的话保证是原子操作。
+追加写成为原子操作。如果write大小不超过PIPE<sub>BUF的话保证是原子操作。</sub>
 </p>
 <p>
-除非使用O_DIRECT否则write通常是先写page cache，然后系统将page cache刷到磁盘上面去。
+除非使用O<sub>DIRECT否则write通常是先写page</sub> cache，然后系统将page cache刷到磁盘上面去。
 系统将page cache写回到磁盘上的时机包括下面几个：
 </p><ul>
 <li>定时回写
@@ -1387,11 +1339,11 @@ int main(){
 <p>
 对于这些脏页的写回策略是：
 </p><ul>
-<li>首先判断脏页比例是否超过dirty_ratio.如果没有的话那么直接退出 
+<li>首先判断脏页比例是否超过dirty<sub>ratio</sub>.如果没有的话那么直接退出 
 </li>
-<li>然后开始将脏页刷到磁盘直到比率小于dirty_ratio.（此时write会阻塞）
+<li>然后开始将脏页刷到磁盘直到比率小于dirty<sub>ratio</sub>.（此时write会阻塞）
 </li>
-<li>判断脏页比例是否超过dirty_background_ratio或者是超过dirty_background_bytes.如果没有那么退出。
+<li>判断脏页比例是否超过dirty<sub>background</sub><sub>ratio或者是超过dirty</sub><sub>background</sub><sub>bytes</sub>.如果没有那么退出。
 </li>
 <li>如果超过的话那么就会启动pdflush daemon后台进程刷新脏页。（此时write不会阻塞）
 </li>
@@ -1399,13 +1351,13 @@ int main(){
 
 
 <p> 
-注意到这里可能启动pdflush daemon在后台刷新脏页。另外系统每隔dirty_writeback_centisecs时间会启动
+注意到这里可能启动pdflush daemon在后台刷新脏页。另外系统每隔dirty<sub>writeback</sub><sub>centisecs时间会启动</sub>
 pdflush daemon将脏页刷到磁盘上面。而pdflush daemon工作方式是这样的，检查脏页是否存在超过
-dirty_expire_centisecs时间的，如果超过的话那么就会在后台刷新这些脏页。
+dirty<sub>expire</sub><sub>centisecs时间的，如果超过的话那么就会在后台刷新这些脏页。</sub>
 </p>
 
 <p class="verse">
-如果写入量巨大，不能期待系统缓存的自动回刷机制，最好采用应用层调用fsync或者sync。如果写入量大，甚至超过了系统缓存自动刷回的速度，就有可能导致系统的脏页率超过/proc/sys/vm/dirty_ratio， 这个时候，系统就会阻塞后续的写操作，这个阻塞有可能有5分钟之久，是我们应用无法承受的。因此，一种建议的方式是在应用层，在合适的时机调用fsync。<br/>
+如果写入量巨大，不能期待系统缓存的自动回刷机制，最好采用应用层调用fsync或者sync。如果写入量大，甚至超过了系统缓存自动刷回的速度，就有可能导致系统的脏页率超过/proc/sys/vm/dirty<sub>ratio，</sub> 这个时候，系统就会阻塞后续的写操作，这个阻塞有可能有5分钟之久，是我们应用无法承受的。因此，一种建议的方式是在应用层，在合适的时机调用fsync。<br/>
 </p>
 
 
@@ -1419,33 +1371,33 @@ dirty_expire_centisecs时间的，如果超过的话那么就会在后台刷新�
 下面是整个write过程
 <img src="images/linux-write-procedure.gif"  alt="./images/linux-write-procedure.gif" />
 </p><ul>
-<li>glibc write是将app_buffer-&gt;libc_buffer-&gt;page_cache
+<li>glibc write是将app<sub>buffer</sub>-&gt;libc<sub>buffer</sub>-&gt;page<sub>cache</sub>
 </li>
-<li>write是将app_buffer-&gt;page_cache
+<li>write是将app<sub>buffer</sub>-&gt;page<sub>cache</sub>
 </li>
-<li>mmap可以直接获取page_cache直写
+<li>mmap可以直接获取page<sub>cache直写</sub>
 </li>
-<li>write+O_DIRECT的话将app_buffer写到io_queue里面
+<li>write+O<sub>DIRECT的话将app</sub><sub>buffer写到io</sub><sub>queue里面</sub>
 <ul>
-<li>io_queue一方面将写邻近扇区的内容进行merge，另外一方面进行排序确保磁头和磁
+<li>io<sub>queue一方面将写邻近扇区的内容进行merge，另外一方面进行排序确保磁头和磁</sub>
        盘旋转最少。
 </li>
-<li>io_queue的工作也需要结合IO调度算法。不过这些仅仅对于physical disk有效。
+<li>io<sub>queue的工作也需要结合IO调度算法。不过这些仅仅对于physical</sub> disk有效。
 </li>
 <li>对于ssd而言的话，因为完全是随机写，基本没有调度算法。
 </li>
 </ul>
 
 </li>
-<li>driver（filesystem module）通过DMA写入disk_cache之后(使用fsync就可以强制刷新)到disk上面了。
+<li>driver（filesystem module）通过DMA写入disk<sub>cache之后</sub>(使用fsync就可以强制刷新)到disk上面了。
 </li>
-<li>直接操作设备（RAW）方式直接写disk_cache.
+<li>直接操作设备（RAW）方式直接写disk<sub>cache</sub>.
 </li>
 </ul>
 
 
 <p>
-O_DIRECT 和 RAW设备最根本的区别是O_DIRECT是基于文件系统的，也就是在应用层来看，其操作对象是文件句柄，内核和文件层来看，其操作是基于inode和数据块，这些概念都是和ext2/3的文件系统相关，写到磁盘上最终是ext3文件。而RAW设备写是没有文件系统概念，操作的是扇区号，操作对象是扇区，写出来的东西不一定是ext3文件（如果按照ext3规则写就是ext3文件）。一般基于O_DIRECT来设计优化自己的文件模块，是不满系统的cache和调度策略，自己在应用层实现这些，来制定自己特有的业务特色文件读写。但是写出来的东西是ext3文件，该磁盘卸下来，mount到其他任何linux系统上，都可以查看。而基于RAW设备的设计系统，一般是不满现有ext3的诸多缺陷，设计自己的文件系统。自己设计文件布局和索引方式。举个极端例子：把整个磁盘做一个文件来写，不要索引。这样没有inode限制，没有文件大小限制，磁盘有多大，文件就能多大。这样的磁盘卸下来，mount到其他linux系统上，是无法识别其数据的。两者都要通过驱动层读写；在系统引导启动，还处于实模式的时候，可以通过bios接口读写raw设备。
+O<sub>DIRECT</sub> 和 RAW设备最根本的区别是O<sub>DIRECT是基于文件系统的，也就是在应用层来看，其操作对象是文件句柄，内核和文件层来看，其操作是基于inode和数据块，这些概念都是和ext2</sub>/3的文件系统相关，写到磁盘上最终是ext3文件。而RAW设备写是没有文件系统概念，操作的是扇区号，操作对象是扇区，写出来的东西不一定是ext3文件（如果按照ext3规则写就是ext3文件）。一般基于O<sub>DIRECT来设计优化自己的文件模块，是不满系统的cache和调度策略，自己在应用层实现这些，来制定自己特有的业务特色文件读写。但是写出来的东西是ext3文件，该磁盘卸下来，mount到其他任何linux系统上，都可以查看。而基于RAW设备的设计系统，一般是不满现有ext3的诸多缺陷，设计自己的文件系统。自己设计文件布局和索引方式。举个极端例子：把整个磁盘做一个文件来写，不要索引。这样没有inode限制，没有文件大小限制，磁盘有多大，文件就能多大。这样的磁盘卸下来，mount到其他linux系统上，是无法识别其数据的。两者都要通过驱动层读写；在系统引导启动，还处于实模式的时候，可以通过bios接口读写raw设备。</sub>
 </p>
 </div>
 
@@ -1494,8 +1446,8 @@ int dup2(int src_fd,int dst_fd);
 </pre>
 
 <p>
-dup2允许指定将src_fd复制给某个dst_fd,而dup是将fd复制给最小未使用的fd.
-dup2相当于一个原子操作，首先关闭dst_fd然后再复制到dst_fd上面。
+dup2允许指定将src<sub>fd复制给某个dst</sub><sub>fd</sub>,而dup是将fd复制给最小未使用的fd.
+dup2相当于一个原子操作，首先关闭dst<sub>fd然后再复制到dst</sub><sub>fd上面。</sub>
 </p>
 </div>
 
@@ -1528,15 +1480,15 @@ dup2相当于一个原子操作，首先关闭dst_fd然后再复制到dst_fd上�
 
 <p>全称是file control,可以改变已经打开文件的性质，共有下面5种功能：
 </p><ul>
-<li>F_DUPFD.复制现有描述符。
+<li>F<sub>DUPFD</sub>.复制现有描述符。
 </li>
-<li>F_GETFD/F_SETFD.获得/设置现有文件描述符标记(现只有FD_CLOEXEC).
+<li>F<sub>GETFD</sub>/F<sub>SETFD</sub>.获得/设置现有文件描述符标记(现只有FD<sub>CLOEXEC</sub>).
 </li>
-<li>F_SETFL/F_GETFL.获得/设置现有文件状态标记。
+<li>F<sub>SETFL</sub>/F<sub>GETFL</sub>.获得/设置现有文件状态标记。
 </li>
-<li>F_GETOWN/F_SETOWN.获得/设置当前接受SIGIO和SIGURG信号的进程ID和进程组ID(设置异步IO所有权).
+<li>F<sub>GETOWN</sub>/F<sub>SETOWN</sub>.获得/设置当前接受SIGIO和SIGURG信号的进程ID和进程组ID(设置异步IO所有权).
 </li>
-<li>F_GETLK/F_SETLK/F_SETLKW.获得/设置记录锁。
+<li>F<sub>GETLK</sub>/F<sub>SETLK</sub>/F<sub>SETLKW</sub>.获得/设置记录锁。
 </li>
 </ul>
 
@@ -1643,7 +1595,7 @@ struct FileDescriptorEntry{
 </pre>
 
 <p>
-在进程复制一个文件描述符并没有增加一个新的表项，而是指向相同的表项。然后vnode_t就是
+在进程复制一个文件描述符并没有增加一个新的表项，而是指向相同的表项。然后vnode<sub>t就是</sub>
 文件系统对应的内容了，包括位置大小属性等等信息。
 </p>
 </div>
@@ -1782,26 +1734,26 @@ lrwxrwxrwx 1 dirlt dirlt 38 05-19 08:15 b2 -&gt; /home/dirlt/cvs/opencode/zyspac
 <h4 id="sec-4-2"><span class="section-number-4">4.2</span> 文件类型</h4>
 <div class="outline-text-4" id="text-4-2">
 
-<p>对应的是st_mode这个字段。文件类型有下面这几类，系统也提供了特殊的宏来判断到底是
+<p>对应的是st<sub>mode这个字段。文件类型有下面这几类，系统也提供了特殊的宏来判断到底是</sub>
 什么样的文件类型：
 </p><ul>
-<li>普通文件(S_ISREG)
+<li>普通文件(S<sub>ISREG</sub>)
 </li>
-<li>目录文件(S_ISDIR)
+<li>目录文件(S<sub>ISDIR</sub>)
 </li>
-<li>字符特殊文件(S_ISCHR)
+<li>字符特殊文件(S<sub>ISCHR</sub>)
 </li>
-<li>块特殊文件(S_ISBLK)
+<li>块特殊文件(S<sub>ISBLK</sub>)
 </li>
-<li>FIFO文件(S_ISFIFO)
+<li>FIFO文件(S<sub>ISFIFO</sub>)
 </li>
-<li>符号链接文件(S_ISLNK)
+<li>符号链接文件(S<sub>ISLNK</sub>)
 </li>
-<li>套接字文件(S_ISSOCK)
+<li>套接字文件(S<sub>ISSOCK</sub>)
 </li>
 </ul>
 
-<p>在Linux上面为了使用S_ISSOCK需要使用_GNU_SOURCE这个选项。然后需要注意的是，系统中
+<p>在Linux上面为了使用S<sub>ISSOCK需要使用</sub><sub>GNU</sub><sub>SOURCE这个选项。然后需要注意的是，系统中</sub>
 所有的设备要么是字符特殊文件，要么是块特殊文件。字符特殊文件针对设备是不带缓冲的
 访问，每次访问长度可变，而块特殊设备对于访问提供缓冲并且以固定长度为单位进行。
 </p>
@@ -1833,7 +1785,7 @@ lrwxrwxrwx 1 dirlt dirlt 38 05-19 08:15 b2 -&gt; /home/dirlt/cvs/opencode/zyspac
 </tbody>
 </table>
 
-关于保存的设置ID判断条件是_POSIX_SAVED_IDS/_SC_SAVED_IDS.
+关于保存的设置ID判断条件是<sub>POSIX</sub><sub>SAVED</sub><sub>IDS</sub>/<sub>SC</sub><sub>SAVED</sub><sub>IDS</sub>.
 
 <p>
 通常来说有效uid和gid等同于实际uid和gid.但是对于一些特殊程序比如需要修改passwd,那么
@@ -1847,7 +1799,7 @@ lrwxrwxrwx 1 dirlt dirlt 38 05-19 08:15 b2 -&gt; /home/dirlt/cvs/opencode/zyspac
 
 <p>
 我们调用passwd修改密码，实际uid和gid是我们自己，而运行uid和gid则是root.为了查看文件
-是否设置了这个功能，我们可以使用S_ISUID和S_ISGID查看st_mode相应位。
+是否设置了这个功能，我们可以使用S<sub>ISUID和S</sub><sub>ISGID查看st</sub><sub>mode相应位。</sub>
 </p>
 
 
@@ -1880,7 +1832,7 @@ owner gid:0
 <h4 id="sec-4-4"><span class="section-number-4">4.4</span> 文件访问权限</h4>
 <div class="outline-text-4" id="text-4-4">
 
-<p>文件访问权限也可以通过访问st_mode来获得，有下面9个权限位：
+<p>文件访问权限也可以通过访问st<sub>mode来获得，有下面9个权限位：</sub>
 </p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
@@ -1888,15 +1840,15 @@ owner gid:0
 <tr><th scope="col" class="left">权限</th><th scope="col" class="left">意义</th></tr>
 </thead>
 <tbody>
-<tr><td class="left">S_IRUSR</td><td class="left">user read</td></tr>
-<tr><td class="left">S_IWUSR</td><td class="left">user write</td></tr>
-<tr><td class="left">S_IXUSR</td><td class="left">user exec</td></tr>
-<tr><td class="left">S_IRGRP</td><td class="left">group read</td></tr>
-<tr><td class="left">S_IWGRP</td><td class="left">group write</td></tr>
-<tr><td class="left">S_IXGRP</td><td class="left">group exec</td></tr>
-<tr><td class="left">S_IROTH</td><td class="left">other read</td></tr>
-<tr><td class="left">S_IWOTH</td><td class="left">other write</td></tr>
-<tr><td class="left">S_IXOTH</td><td class="left">other exec</td></tr>
+<tr><td class="left">S<sub>IRUSR</sub></td><td class="left">user read</td></tr>
+<tr><td class="left">S<sub>IWUSR</sub></td><td class="left">user write</td></tr>
+<tr><td class="left">S<sub>IXUSR</sub></td><td class="left">user exec</td></tr>
+<tr><td class="left">S<sub>IRGRP</sub></td><td class="left">group read</td></tr>
+<tr><td class="left">S<sub>IWGRP</sub></td><td class="left">group write</td></tr>
+<tr><td class="left">S<sub>IXGRP</sub></td><td class="left">group exec</td></tr>
+<tr><td class="left">S<sub>IROTH</sub></td><td class="left">other read</td></tr>
+<tr><td class="left">S<sub>IWOTH</sub></td><td class="left">other write</td></tr>
+<tr><td class="left">S<sub>IXOTH</sub></td><td class="left">other exec</td></tr>
 </tbody>
 </table>
 
@@ -1950,7 +1902,7 @@ owner gid:0
 <div class="outline-text-5" id="text-4-4-2">
 
 <p>传入参数mask是权限位的组合，对于open和mkdir创建文件和目录权限的话，会除去mask中的标记。比如
-mask为S_IRUSR | S_IWUSR的话，那么在创建文件和目录时，那么用户读写权限位就会被屏蔽。需要注意的是mask是进程的属性。
+mask为S<sub>IRUSR</sub> | S<sub>IWUSR的话，那么在创建文件和目录时，那么用户读写权限位就会被屏蔽。需要注意的是mask是进程的属性。</sub>
 </p>
 </div>
 
@@ -1968,12 +1920,12 @@ mask为S_IRUSR | S_IWUSR的话，那么在创建文件和目录时，那么用�
 <tr><th scope="col" class="left">权限位</th><th scope="col" class="left">说明</th></tr>
 </thead>
 <tbody>
-<tr><td class="left">S_ISUID</td><td class="left">开启设置uid</td></tr>
-<tr><td class="left">S_ISGID</td><td class="left">开启设置gid</td></tr>
-<tr><td class="left">S_ISVTX</td><td class="left">保存正文(粘住位)</td></tr>
-<tr><td class="left">S_IRWXU</td><td class="left">user rwx</td></tr>
-<tr><td class="left">S_IRWXG</td><td class="left">group rwx</td></tr>
-<tr><td class="left">S_IRWXO</td><td class="left">other rwx</td></tr>
+<tr><td class="left">S<sub>ISUID</sub></td><td class="left">开启设置uid</td></tr>
+<tr><td class="left">S<sub>ISGID</sub></td><td class="left">开启设置gid</td></tr>
+<tr><td class="left">S<sub>ISVTX</sub></td><td class="left">保存正文(粘住位)</td></tr>
+<tr><td class="left">S<sub>IRWXU</sub></td><td class="left">user rwx</td></tr>
+<tr><td class="left">S<sub>IRWXG</sub></td><td class="left">group rwx</td></tr>
+<tr><td class="left">S<sub>IRWXO</sub></td><td class="left">other rwx</td></tr>
 </tbody>
 </table>
 
@@ -2009,7 +1961,7 @@ mask为S_IRUSR | S_IWUSR的话，那么在创建文件和目录时，那么用�
 <h5 id="sec-4-4-4"><span class="section-number-5">4.4.4</span> chown/fchown/lchown</h5>
 <div class="outline-text-5" id="text-4-4-4">
 
-<p>修改文件的uid和gid.如果值为-1的话表明对应id不变。如果开启了_POSIX_CHOWN_RESTRICTED的话，那么
+<p>修改文件的uid和gid.如果值为-1的话表明对应id不变。如果开启了<sub>POSIX</sub><sub>CHOWN</sub><sub>RESTRICTED的话，那么</sub>
 </p><ul>
 <li>超级用户才允许更改uid.
 </li>
@@ -2028,9 +1980,9 @@ mask为S_IRUSR | S_IWUSR的话，那么在创建文件和目录时，那么用�
 <h4 id="sec-4-5"><span class="section-number-4">4.5</span> 文件长度</h4>
 <div class="outline-text-4" id="text-4-5">
 
-<p>文件长度对应st_size字段，而文件使用的块大小对应st_blksize字段，占用块数对应st_blocks字段。
-大部分情况下面，st_size和st_blksize*st_blocks应该是很接近的，除非一种情况就是文件空洞。
-一般对应于空洞文件来说，st_size可能很大，而实际占用磁盘空间却很少。
+<p>文件长度对应st<sub>size字段，而文件使用的块大小对应st</sub><sub>blksize字段，占用块数对应st</sub><sub>blocks字段。</sub>
+大部分情况下面，st<sub>size和st</sub><sub>blksize</sub>*st<sub>blocks应该是很接近的，除非一种情况就是文件空洞。</sub>
+一般对应于空洞文件来说，st<sub>size可能很大，而实际占用磁盘空间却很少。</sub>
 </p>
 
 
@@ -2117,7 +2069,7 @@ size:1073741824,st_blksize:4096,st_blocks:8
 <p>
 创建一个硬链接效果就是，选择一个文件名然后选择一个已经使用的inode编号存放在目录下面。
 一旦创建硬链接之后，那么被链接的文件的属性里面就会将链接数目+1.链接数目对应于struct stat
-结构里面的st_nlink字段。
+结构里面的st<sub>nlink字段。</sub>
 </p>
 
 
@@ -2193,7 +2145,7 @@ size:1073741824,st_blksize:4096,st_blocks:8
 <p>关于文件删除也可以使用remove函数，效果和unlink一样。不过对于目录来说内部调用rmdir.
 </p>
 <p>
-在删除文件是后需要注意的一个问题是这样的，就是即使st_nlink==0的话，如果系统中
+在删除文件是后需要注意的一个问题是这样的，就是即使st<sub>nlink</sub>==0的话，如果系统中
 还有进程在访问这个文件的话，那么磁盘空间仍然不会释放，知道进程关闭这个文件之后
 才会释放磁盘空间。甚至来说，如果进程持有这个fd的话，这个文件依然是可写的。
 </p>
@@ -2276,15 +2228,15 @@ int main(){
 <tbody>
 <tr><td class="left">chmod/fchmod</td><td class="left"></td><td class="left"></td><td class="left">Y</td><td class="left"></td><td class="left"></td><td class="left"></td></tr>
 <tr><td class="left">chown/fchown</td><td class="left"></td><td class="left"></td><td class="left">Y</td><td class="left"></td><td class="left"></td><td class="left"></td></tr>
-<tr><td class="left">creat(O_CREAT)</td><td class="left">Y</td><td class="left">Y</td><td class="left">Y</td><td class="left"></td><td class="left">Y</td><td class="left">Y</td></tr>
-<tr><td class="left">creat(O_TRUNC)</td><td class="left"></td><td class="left">Y</td><td class="left">Y</td><td class="left"></td><td class="left"></td><td class="left"></td></tr>
+<tr><td class="left">creat(O<sub>CREAT</sub>)</td><td class="left">Y</td><td class="left">Y</td><td class="left">Y</td><td class="left"></td><td class="left">Y</td><td class="left">Y</td></tr>
+<tr><td class="left">creat(O<sub>TRUNC</sub>)</td><td class="left"></td><td class="left">Y</td><td class="left">Y</td><td class="left"></td><td class="left"></td><td class="left"></td></tr>
 <tr><td class="left">exec</td><td class="left">Y</td><td class="left"></td><td class="left"></td><td class="left"></td><td class="left"></td><td class="left"></td></tr>
 <tr><td class="left">lchown</td><td class="left"></td><td class="left"></td><td class="left">Y</td><td class="left"></td><td class="left"></td><td class="left"></td></tr>
 <tr><td class="left">link</td><td class="left"></td><td class="left"></td><td class="left">Y</td><td class="left"></td><td class="left">Y(2nd param)</td><td class="left">Y(2nd param)</td></tr>
 <tr><td class="left">mkdir</td><td class="left">Y</td><td class="left">Y</td><td class="left">Y</td><td class="left"></td><td class="left">Y</td><td class="left">Y</td></tr>
 <tr><td class="left">mkfifo</td><td class="left">Y</td><td class="left">Y</td><td class="left">Y</td><td class="left"></td><td class="left">Y</td><td class="left">Y</td></tr>
-<tr><td class="left">open(O_CREAT)</td><td class="left">Y</td><td class="left">Y</td><td class="left">Y</td><td class="left"></td><td class="left">Y</td><td class="left">Y</td></tr>
-<tr><td class="left">open(O_TRUNC)</td><td class="left"></td><td class="left">Y</td><td class="left">Y</td><td class="left"></td><td class="left"></td><td class="left"></td></tr>
+<tr><td class="left">open(O<sub>CREAT</sub>)</td><td class="left">Y</td><td class="left">Y</td><td class="left">Y</td><td class="left"></td><td class="left">Y</td><td class="left">Y</td></tr>
+<tr><td class="left">open(O<sub>TRUNC</sub>)</td><td class="left"></td><td class="left">Y</td><td class="left">Y</td><td class="left"></td><td class="left"></td><td class="left"></td></tr>
 <tr><td class="left">read</td><td class="left">Y</td><td class="left"></td><td class="left"></td><td class="left"></td><td class="left"></td><td class="left"></td></tr>
 <tr><td class="left">remove(unlink)</td><td class="left"></td><td class="left"></td><td class="left">Y</td><td class="left"></td><td class="left">Y</td><td class="left">Y</td></tr>
 <tr><td class="left">remove(rmdir)</td><td class="left"></td><td class="left"></td><td class="left"></td><td class="left"></td><td class="left">Y</td><td class="left">Y</td></tr>
@@ -2344,7 +2296,7 @@ B执行完成之后，A的工作目录不会发生变化。
 <h4 id="sec-4-11"><span class="section-number-4">4.11</span> 特殊设备文件</h4>
 <div class="outline-text-4" id="text-4-11">
 
-<p>st_dev是设备号，分为主次设备号：
+<p>st<sub>dev是设备号，分为主次设备号：</sub>
 </p>
 
 
@@ -2357,7 +2309,7 @@ minor(buf.st_dev) //&#27425;&#35774;&#22791;&#21495;
 不同的文件系统，设备驱动程序相当，但是次设备号不同。
 </p>
 <p>
-st_rdev只有字符特殊文件和块特殊文件才有这个值，表示实际设备的设备编号。
+st<sub>rdev只有字符特殊文件和块特殊文件才有这个值，表示实际设备的设备编号。</sub>
 </p>
 
 
@@ -2430,20 +2382,20 @@ inotify可以用于监控文件以及目录的变化，下面是inotify提供的
 </p><ul>
 <li>#include &lt;sys/inotify.h&gt;
 </li>
-<li>int inotify_init(void); // inotify_init1(0);
+<li>int inotify<sub>init</sub>(void); // inotify<sub>init1</sub>(0);
 </li>
-<li>int inotify_init1(int flags);
+<li>int inotify<sub>init1</sub>(int flags);
 <ul>
-<li>IN_NONBLOCK // 在访问事件时候使用阻塞读取。
+<li>IN<sub>NONBLOCK</sub> // 在访问事件时候使用阻塞读取。
 </li>
-<li>IN_CLOEXEC // 在exec时候关闭。
+<li>IN<sub>CLOEXEC</sub> // 在exec时候关闭。
 </li>
 <li>return a new file descriptor.
 </li>
 </ul>
 
 </li>
-<li>int inotify_add_watch(int fd, const char *pathname, uint32_t mask);
+<li>int inotify<sub>add</sub><sub>watch</sub>(int fd, const char *pathname, uint32<sub>t</sub> mask);
 <ul>
 <li>pathname // 需要监控的文件或者是目录
 </li>
@@ -2454,7 +2406,7 @@ inotify可以用于监控文件以及目录的变化，下面是inotify提供的
 </ul>
 
 </li>
-<li>int inotify_rm_watch(int fd, int wd);
+<li>int inotify<sub>rm</sub><sub>watch</sub>(int fd, int wd);
 </li>
 </ul>
 
@@ -2476,7 +2428,7 @@ struct inotify_event
 </pre>
 
 <p>
- 对于__flexarr这个字段是一个悬挂指针表示文件名称，文件长度通过len表示，所以读取一个event之后的话，还需要向前移动len个字节才能够读取下一个事件。
+ 对于_<sub>flexarr这个字段是一个悬挂指针表示文件名称，文件长度通过len表示，所以读取一个event之后的话，还需要向前移动len个字节才能够读取下一个事件。</sub>
 </p>
 <p>
 有下面这些事件可以进行监控。下面是代码
@@ -2608,7 +2560,7 @@ man里面对于每个事件有详细说明
 </pre>
 
 <p>
-限制了创建的instance个数已经watch数目，以及event的数目。如果event出现溢出的话，那么会产生IN_Q_OVERFLOW事件。通常如果出现overflow事件的话，
+限制了创建的instance个数已经watch数目，以及event的数目。如果event出现溢出的话，那么会产生IN<sub>Q</sub><sub>OVERFLOW事件。通常如果出现overflow事件的话，</sub>
 以为着监控事件发生丢失，那么应用程序需要主动进行扫描。
 </p>
 </div>
@@ -3036,7 +2988,7 @@ int fsetpos(FILE* fp,const fpos_t* pos);
 </pre>
 
 <p>
-其中ftello/ftell和fseeko/fseek之间的差别，就是类型不同，分别是off_t和long.
+其中ftello/ftell和fseeko/fseek之间的差别，就是类型不同，分别是off<sub>t和long</sub>.
 </p>
 </div>
 
@@ -3058,7 +3010,7 @@ int mkstemp(char* template);
 
 
 <p>
-tmpnam的ptr传入一个L_tmpnam长度的buf,然后会返回一个临时文件的名称，最多调用TMP_MAX次。
+tmpnam的ptr传入一个L<sub>tmpnam长度的buf</sub>,然后会返回一个临时文件的名称，最多调用TMP<sub>MAX次。</sub>
 </p>
 
 
@@ -3117,7 +3069,7 @@ tempnam相对于tmpnam来说功能更强大，但是至于是否好用就不好�
 </li>
 <li>如果directory不为NULL的话，那么使用directory.
 </li>
-<li>&lt;cstdio&gt;定义的P_tmpdir.
+<li>&lt;cstdio&gt;定义的P<sub>tmpdir</sub>.
 </li>
 </ul>
 
@@ -3529,7 +3481,7 @@ hostname:localhost.localdomain
 <h4 id="sec-6-7"><span class="section-number-4">6.7</span> 时间和日期例程</h4>
 <div class="outline-text-4" id="text-6-7">
 
-<p>Unix所提供的时间和日期是存放在一个量值里面的，就是time_t.表示从国际标准时间1970年
+<p>Unix所提供的时间和日期是存放在一个量值里面的，就是time<sub>t</sub>.表示从国际标准时间1970年
 1月1日00:00:00至今的秒数，使用调用time可以获得。当然Unix也提供了一系列的函数来进行转换和本地化操作，
 包括夏时制转换以及转换成为本地时区的时间。当然Unix也提供了更加精确到微妙的调用gettimeofday。
 </p>
@@ -3543,7 +3495,7 @@ hostname:localhost.localdomain
 
 
 <p>
-time_t是一个秒的概念，Unix还提供了下面结构可以表达日期时间概念：
+time<sub>t是一个秒的概念，Unix还提供了下面结构可以表达日期时间概念：</sub>
 </p>
 
 
@@ -3570,10 +3522,10 @@ time_t是一个秒的概念，Unix还提供了下面结构可以表达日期时�
 <tr><th scope="col" class="left">from</th><th scope="col" class="left">to</th><th scope="col" class="left">function</th><th scope="col" class="left">受TZ影响</th></tr>
 </thead>
 <tbody>
-<tr><td class="left">time_t</td><td class="left">struct tm</td><td class="left">gmtime</td><td class="left">否</td></tr>
-<tr><td class="left">time_t</td><td class="left">struct tm</td><td class="left">localtime</td><td class="left">是</td></tr>
-<tr><td class="left">struct tm</td><td class="left">time_t</td><td class="left">mktime</td><td class="left">否</td></tr>
-<tr><td class="left">time_t</td><td class="left">const char*</td><td class="left">ctime</td><td class="left">是</td></tr>
+<tr><td class="left">time<sub>t</sub></td><td class="left">struct tm</td><td class="left">gmtime</td><td class="left">否</td></tr>
+<tr><td class="left">time<sub>t</sub></td><td class="left">struct tm</td><td class="left">localtime</td><td class="left">是</td></tr>
+<tr><td class="left">struct tm</td><td class="left">time<sub>t</sub></td><td class="left">mktime</td><td class="left">否</td></tr>
+<tr><td class="left">time<sub>t</sub></td><td class="left">const char*</td><td class="left">ctime</td><td class="left">是</td></tr>
 <tr><td class="left">struct tm</td><td class="left">const char*</td><td class="left">asctime</td><td class="left">否</td></tr>
 <tr><td class="left">struct tm</td><td class="left">const char*</td><td class="left">strftime</td><td class="left">是</td></tr>
 </tbody>
@@ -3615,11 +3567,11 @@ time_t是一个秒的概念，Unix还提供了下面结构可以表达日期时�
 </li>
 <li>exit.
 </li>
-<li>_exit/_Exit
+<li><sub>exit</sub>/<sub>Exit</sub>
 </li>
 <li>最后一个线程从启动例程返回。
 </li>
-<li>最后一个线程调用pthread_exit.
+<li>最后一个线程调用pthread<sub>exit</sub>.
 </li>
 </ul>
 
@@ -3635,11 +3587,11 @@ time_t是一个秒的概念，Unix还提供了下面结构可以表达日期时�
 
 
 <p>
-exit和_exit/_Exit的差别在于，exit首先执行一段程序然后进入内核，而_exit/_Exit就直接立刻进入内核。
+exit和<sub>exit</sub>/<sub>Exit的差别在于，exit首先执行一段程序然后进入内核，而</sub><sub>exit</sub>/<sub>Exit就直接立刻进入内核。</sub>
 exit所作的事情包括执行atexit注册函数，冲刷标准IO流，关闭标准IO流等事情(但是文件描述符关闭放在内核完成).
 参数是退出状态，然后进入内核之后退出状态结合进程自身结果，组合成为终止状态，返回给外部。关于
-退出状态和终止状态会在下一章说明。_exit/_Exit之间没有差别，只不过_exit是POSIX定义的，而
-_Exit是ISO C所定义的。
+退出状态和终止状态会在下一章说明。<sub>exit</sub>/<sub>Exit之间没有差别，只不过</sub><sub>exit是POSIX定义的，而</sub>
+<sub>Exit是ISO</sub> C所定义的。
 </p>
 <p>
 我们可以使用atexit来注册退出清理函数，个数是有上限的，而且允许重复设置。退出时候执行
@@ -3825,7 +3777,7 @@ void longjmp(jmp_buf env,int val);
 </pre>
 
 <p>
-使用方式是，在一个地方setjmp得到当前jmp_buf内容并且返回0,表示第一次调用。如果使用
+使用方式是，在一个地方setjmp得到当前jmp<sub>buf内容并且返回0</sub>,表示第一次调用。如果使用
 longjmp并且val!=0的话，那么调回这个位置时候，说明是非局部跳转。
 </p>
 
@@ -3941,7 +3893,7 @@ struct rlimit{
 </li>
 </ul>
 
-<p>常量RLIM_INFINITY可以指定无限量限制。
+<p>常量RLIM<sub>INFINITY可以指定无限量限制。</sub>
 </p>
 <p>
 关于resoruce有下面这几个常量：
@@ -3952,27 +3904,27 @@ struct rlimit{
 <tr><th scope="col" class="left">常量</th><th scope="col" class="left">说明</th></tr>
 </thead>
 <tbody>
-<tr><td class="left">RLIMIT_AS</td><td class="left">进程可用存储区最大总长度，影响sbrk和mmap</td></tr>
-<tr><td class="left">RLIMIT_CORE</td><td class="left">core文件最大字节数</td></tr>
-<tr><td class="left">RLIMIT_CPU</td><td class="left">CPU使用的最大值，单位秒</td></tr>
-<tr><td class="left">RLIMIT_DATA</td><td class="left">数据段最大值，包括初始化未初始化数据和堆总和</td></tr>
-<tr><td class="left">RLIMIT_FSIZE</td><td class="left">可以创建文件最大字节数，如果超过限制发送SIGXFSZ信号</td></tr>
-<tr><td class="left">RLIMIT_LOCKS</td><td class="left">进程持有的文件锁最大数</td></tr>
-<tr><td class="left">RLIMIT_MEMLOCK</td><td class="left">使用mlock锁定的最大字节长度</td></tr>
-<tr><td class="left">RLIMIT_MSGQUEUE</td><td class="left">message queue允许分配的最大字节数</td></tr>
-<tr><td class="left">RLIMIT_NICE</td><td class="left">进程允许调整到的最高nice value</td></tr>
-<tr><td class="left">RLIMIT_NOFILE</td><td class="left">进程能够打开文件最大数</td></tr>
-<tr><td class="left">RLIMIT_NPROC</td><td class="left">每个实际用户ID可拥有的最大进程数</td></tr>
-<tr><td class="left">RLIMIT_RSS</td><td class="left">最大驻内存的字节长度(resident set size in bytes,RSS)</td></tr>
-<tr><td class="left">RLIMIT_RTPRIO</td><td class="left">每个进程设置的实施优先级的最大值</td></tr>
-<tr><td class="left">RLIMIT_SIGPENDING</td><td class="left">排队信号的最大值</td></tr>
-<tr><td class="left">RLIMIT_SBSIZE</td><td class="left">用户占用的内核socket bufer最大长度</td></tr>
-<tr><td class="left">RLIMIT_STACK</td><td class="left">栈的最大字节长度</td></tr>
-<tr><td class="left">RLIMIT_VMEM</td><td class="left">和RLIMIT_AS相同</td></tr>
+<tr><td class="left">RLIMIT<sub>AS</sub></td><td class="left">进程可用存储区最大总长度，影响sbrk和mmap</td></tr>
+<tr><td class="left">RLIMIT<sub>CORE</sub></td><td class="left">core文件最大字节数</td></tr>
+<tr><td class="left">RLIMIT<sub>CPU</sub></td><td class="left">CPU使用的最大值，单位秒</td></tr>
+<tr><td class="left">RLIMIT<sub>DATA</sub></td><td class="left">数据段最大值，包括初始化未初始化数据和堆总和</td></tr>
+<tr><td class="left">RLIMIT<sub>FSIZE</sub></td><td class="left">可以创建文件最大字节数，如果超过限制发送SIGXFSZ信号</td></tr>
+<tr><td class="left">RLIMIT<sub>LOCKS</sub></td><td class="left">进程持有的文件锁最大数</td></tr>
+<tr><td class="left">RLIMIT<sub>MEMLOCK</sub></td><td class="left">使用mlock锁定的最大字节长度</td></tr>
+<tr><td class="left">RLIMIT<sub>MSGQUEUE</sub></td><td class="left">message queue允许分配的最大字节数</td></tr>
+<tr><td class="left">RLIMIT<sub>NICE</sub></td><td class="left">进程允许调整到的最高nice value</td></tr>
+<tr><td class="left">RLIMIT<sub>NOFILE</sub></td><td class="left">进程能够打开文件最大数</td></tr>
+<tr><td class="left">RLIMIT<sub>NPROC</sub></td><td class="left">每个实际用户ID可拥有的最大进程数</td></tr>
+<tr><td class="left">RLIMIT<sub>RSS</sub></td><td class="left">最大驻内存的字节长度(resident set size in bytes,RSS)</td></tr>
+<tr><td class="left">RLIMIT<sub>RTPRIO</sub></td><td class="left">每个进程设置的实施优先级的最大值</td></tr>
+<tr><td class="left">RLIMIT<sub>SIGPENDING</sub></td><td class="left">排队信号的最大值</td></tr>
+<tr><td class="left">RLIMIT<sub>SBSIZE</sub></td><td class="left">用户占用的内核socket bufer最大长度</td></tr>
+<tr><td class="left">RLIMIT<sub>STACK</sub></td><td class="left">栈的最大字节长度</td></tr>
+<tr><td class="left">RLIMIT<sub>VMEM</sub></td><td class="left">和RLIMIT<sub>AS相同</sub></td></tr>
 </tbody>
 </table>
 
-对于RLIMIT_CPU来说，超过soft limit每秒发送SIGXCPU信号，如果超过hard limit发送SIGKILL。
+对于RLIMIT<sub>CPU来说，超过soft</sub> limit每秒发送SIGXCPU信号，如果超过hard limit发送SIGKILL。
 
 
 
@@ -4137,7 +4089,7 @@ fork失败的原因通常有下面两种：
 </p><ul>
 <li>系统中已经存在太多的进程。
 </li>
-<li>实际用户ID的进程总数已经超过了系统限制，CHILD_MAX.
+<li>实际用户ID的进程总数已经超过了系统限制，CHILD<sub>MAX</sub>.
 </li>
 </ul>
 
@@ -4251,11 +4203,11 @@ Segmentation fault
 </div>
 
 <div id="outline-container-8-3" class="outline-4">
-<h4 id="sec-8-3"><span class="section-number-4">8.3</span> _exit函数</h4>
+<h4 id="sec-8-3"><span class="section-number-4">8.3</span> <sub>exit函数</sub></h4>
 <div class="outline-text-4" id="text-8-3">
 
-<p>库函数调用exit最终调用_exit函数时候，会关闭所有打开的文件描述符，并且释放它所使用
-的存储器。_exit函数参数是退出状态，然后内核会转换成为终止状态交给父进程来进行处理。
+<p>库函数调用exit最终调用<sub>exit函数时候，会关闭所有打开的文件描述符，并且释放它所使用</sub>
+的存储器。<sub>exit函数参数是退出状态，然后内核会转换成为终止状态交给父进程来进行处理。</sub>
 </p>
 <p>
 如果父进程在子进程之前结束的话，那么内核如何将终止状态传回给父进程呢？这个时候子进程
@@ -4526,7 +4478,7 @@ int setegid(gid_t gid);
 组id和用户id在处理逻辑上面是等价的，所以这里只是说说对于uid的处理。
 </p>
 <p>
-这里有必要说说保存设置用户ID的作用。保存设置用户ID判断是否存在是用过_SC_SAVED_IDS这个
+这里有必要说说保存设置用户ID的作用。保存设置用户ID判断是否存在是用过<sub>SC</sub><sub>SAVED</sub><sub>IDS这个</sub>
 选项来判断的。假设我们编写一个程序aaa,用户是dirlt,然后aaa的owner是root并且设置了设置uid位。
 当我们exec这个aaa程序的话，我们ruid=dirlt,euid=root.因为ruid=dirlt,euid=root，那么如果进行
 下面这样的操作的话seteuid修改有效用户id为dirlt是允许的，因为ruid就是dirlt.
@@ -4537,7 +4489,7 @@ int setegid(gid_t gid);
 <p>
 对于setuid(uid)行为是这样的：
 </p><ul>
-<li>如果是超级用户进程的话，那么ruid=uid,euid=uid,saved_id=uid.
+<li>如果是超级用户进程的话，那么ruid=uid,euid=uid,saved<sub>id</sub>=uid.
 </li>
 <li>如果不是超级用户进程的话，如果uid==实际用户id或者是保存设置id的话，那么euid=uid.
 </li>
@@ -4554,7 +4506,7 @@ int setegid(gid_t gid);
 <tbody>
 <tr><td class="left">ruid</td><td class="left">不变</td><td class="left">不变</td><td class="left">uid</td><td class="left">不变</td></tr>
 <tr><td class="left">euid</td><td class="left">不变</td><td class="left">文件owner uid</td><td class="left">uid</td><td class="left">uid</td></tr>
-<tr><td class="left">saved_id</td><td class="left">euid</td><td class="left">euid</td><td class="left">uid</td><td class="left">不变</td></tr>
+<tr><td class="left">saved<sub>id</sub></td><td class="left">euid</td><td class="left">euid</td><td class="left">uid</td><td class="left">不变</td></tr>
 </tbody>
 </table>
 
@@ -4823,7 +4775,7 @@ clock_t times(struct tms* buf); //&#36820;&#22238;wall clock time.&#20294;&#2615
 </pre>
 
 <p>
-为了转换成为秒数，需要使用sysconf(_SC_CLK_TCK)得到每秒钟多少个滴答数。
+为了转换成为秒数，需要使用sysconf(<sub>SC</sub><sub>CLK</sub><sub>TCK</sub>)得到每秒钟多少个滴答数。
 </p>
 </div>
 </div>
@@ -4876,7 +4828,7 @@ clock_t times(struct tms* buf); //&#36820;&#22238;wall clock time.&#20294;&#2615
 </li>
 </ul>
 
-<p>bash启动之后会读取.bash_profile.这样用户最终的话，通过终端连接到终端设备驱动程序，
+<p>bash启动之后会读取.bash<sub>profile</sub>.这样用户最终的话，通过终端连接到终端设备驱动程序，
 而终端设备的读写被映射成为0,1,2文件描述符被shell使用。用户操作终端的话，会被终端设备驱动程序接收到，
 而对于shell来说，这些操作就是直接从0,1,2读取和写入数据。对于Linux来说，唯一不同的就是，对于
 gettty启动过程参数不是在文件/etc/ttys而是在/etc/inittab里面描述的。
@@ -5631,7 +5583,7 @@ int sigaction(int signo,const struct sigaction* restrict act,struct sigaction* r
 
 
 <p>
-通常来说我们还是使用sa_handler来处理信号。关于sa_flags我们可以看看选项有哪些：
+通常来说我们还是使用sa<sub>handler来处理信号。关于sa</sub><sub>flags我们可以看看选项有哪些：</sub>
 </p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" />
 </colgroup>
@@ -5639,14 +5591,14 @@ int sigaction(int signo,const struct sigaction* restrict act,struct sigaction* r
 <tr><th scope="col" class="left">选项</th><th scope="col" class="left">说明</th></tr>
 </thead>
 <tbody>
-<tr><td class="left">SA_INTERRUPT</td><td class="left">信号中断的系统调用不会自动重启</td></tr>
-<tr><td class="left">SA_NOCLDSTOP</td><td class="left">如果signo=SIGCHLD的话，子进程停止时不产生此信号，但是终止时会产生</td></tr>
-<tr><td class="left">SA_NOCLDWAIIT</td><td class="left">如果signo=SIGCHLD的话，子进程终止时不创建僵死进程。和将SIGCHLD处理设置为忽略效果相同</td></tr>
-<tr><td class="left">SA_NODEFER</td><td class="left">如果捕捉到此信号，在信号处理时候并不屏蔽这个信号</td></tr>
-<tr><td class="left">SA_ONSTACK</td><td class="left">捕捉到信号时，会将信号传递到使用了sigaltstack替换栈上的进程</td></tr>
-<tr><td class="left">SA_RESETHAND</td><td class="left">捕捉到信号调用处理程序之前，会将信号处理复位</td></tr>
-<tr><td class="left">SA_RESTART</td><td class="left">信号中断的系统调用会自动重启</td></tr>
-<tr><td class="left">SA_SIGINFO</td><td class="left">使用sa_action而不是sa_handler来处理</td></tr>
+<tr><td class="left">SA<sub>INTERRUPT</sub></td><td class="left">信号中断的系统调用不会自动重启</td></tr>
+<tr><td class="left">SA<sub>NOCLDSTOP</sub></td><td class="left">如果signo=SIGCHLD的话，子进程停止时不产生此信号，但是终止时会产生</td></tr>
+<tr><td class="left">SA<sub>NOCLDWAIIT</sub></td><td class="left">如果signo=SIGCHLD的话，子进程终止时不创建僵死进程。和将SIGCHLD处理设置为忽略效果相同</td></tr>
+<tr><td class="left">SA<sub>NODEFER</sub></td><td class="left">如果捕捉到此信号，在信号处理时候并不屏蔽这个信号</td></tr>
+<tr><td class="left">SA<sub>ONSTACK</sub></td><td class="left">捕捉到信号时，会将信号传递到使用了sigaltstack替换栈上的进程</td></tr>
+<tr><td class="left">SA<sub>RESETHAND</sub></td><td class="left">捕捉到信号调用处理程序之前，会将信号处理复位</td></tr>
+<tr><td class="left">SA<sub>RESTART</sub></td><td class="left">信号中断的系统调用会自动重启</td></tr>
+<tr><td class="left">SA<sub>SIGINFO</sub></td><td class="left">使用sa<sub>action而不是sa</sub><sub>handler来处理</sub></td></tr>
 </tbody>
 </table>
 
@@ -5791,7 +5743,7 @@ SignFunc signal(int signo,SignFunc func);
 
 <p>
 SignFunc就是信号处理函数，signo就是我们有待关心的信号有哪些。系统提供了几个默认的值，
-SIG_ERR表示调用signal错误，SIG_DFL表示默认处理函数，SIG_IGN表示忽略信号。signal设置完成之后，
+SIG<sub>ERR表示调用signal错误，SIG</sub><sub>DFL表示默认处理函数，SIG</sub><sub>IGN表示忽略信号。signal设置完成之后，</sub>
 就会返回原来的信号处理函数。
 </p>
 
@@ -6183,8 +6135,8 @@ const char* strsignal(int signo);
 </li>
 </ul>
 
-<p>我们使用的是POSIX.1-2001定义的线程接口，pthread or POSIX线程。可以使用_POSIX_THREADS/
-_SC_THREADS来测试是否支持POSIX线程。
+<p>我们使用的是POSIX.1-2001定义的线程接口，pthread or POSIX线程。可以使用<sub>POSIX</sub><sub>THREADS</sub>/
+<sub>SC</sub><sub>THREADS来测试是否支持POSIX线程。</sub>
 </p>
 <p>
 pthread函数在调用失败的时候通常会返回错误码，它们并不像其他的POSIX函数一样设置全局errno。同时每个线程
@@ -6197,7 +6149,7 @@ pthread函数在调用失败的时候通常会返回错误码，它们并不像�
 <h4 id="sec-11-1"><span class="section-number-4">11.1</span> 线程标识</h4>
 <div class="outline-text-4" id="text-11-1">
 
-<p>线程使用线程id来标识自己，thread_t这个数据结构。我们不能够使用一种可移植的方式来打印该数据类型的值。
+<p>线程使用线程id来标识自己，thread<sub>t这个数据结构。我们不能够使用一种可移植的方式来打印该数据类型的值。</sub>
 </p>
 
 
@@ -6207,7 +6159,7 @@ int pthread_equal(pthread_t tid1,pthread_t tid2); //&#27604;&#36739;&#20004;&#20
 
 
 <p>
-但是这个pthread_t仅仅是一个逻辑的标识而不是系统标识，为了获得系统标识的话可以调用gettid这个函数。gettid是一个内核调用。
+但是这个pthread<sub>t仅仅是一个逻辑的标识而不是系统标识，为了获得系统标识的话可以调用gettid这个函数。gettid是一个内核调用。</sub>
 如果我们阅读pthread代码的话可以发现一种不通过系统调用得到tid的方法。
 </p>
 <p>
@@ -6310,7 +6262,7 @@ int pthread_once(pthread_once_t* initflag,void (*initfn)(void));
 </pre>
 
 <p>
-然后再每个线程里面调用pthread_once.下面是一个例子：
+然后再每个线程里面调用pthread<sub>once</sub>.下面是一个例子：
 </p>
 
 
@@ -6348,14 +6300,14 @@ int main(){
 <h4 id="sec-11-3"><span class="section-number-4">11.3</span> 线程终止</h4>
 <div class="outline-text-4" id="text-11-3">
 
-<p>如果进程中任意线程调用了_exit,Exit,exit的话，或者是任意线程接收到了信号而处理动作是终止的话，那么整个进程就会终止。
+<p>如果进程中任意线程调用了<sub>exit</sub>,Exit,exit的话，或者是任意线程接收到了信号而处理动作是终止的话，那么整个进程就会终止。
 对于单个线程只有以下面三种方式退出的话，才可能在不终止整个进程情况下面停止它的控制流：
 </p><ul>
 <li>线程只是从启动例程中返回，返回值是线程的退出码。
 </li>
 <li>线程可以被同一进程中的其他线程取消。
 </li>
-<li>线程调用pthread_exit.
+<li>线程调用pthread<sub>exit</sub>.
 </li>
 </ul>
 
@@ -6369,8 +6321,8 @@ int pthread_detach(pthread_t tid);
 </pre>
 
 <p>
-对于pthread_join来说，直到指定的tid线程返回那么才返回。如果tid是取消的话，那么ret_ptr是PTHREAD_CANCELED.
-pthread_join好比wait调用。如果线程是一个detach状态的话，那么pthread_join马上就会失败返回EINVAL.
+对于pthread<sub>join来说，直到指定的tid线程返回那么才返回。如果tid是取消的话，那么ret</sub><sub>ptr是PTHREAD</sub><sub>CANCELED</sub>.
+pthread<sub>join好比wait调用。如果线程是一个detach状态的话，那么pthread</sub><sub>join马上就会失败返回EINVAL</sub>.
 </p>
 <p>
 和进程使用atexit一样，线程也允许存在这种清理函数：
@@ -6462,7 +6414,7 @@ int pthread_mutex_destroy(pthread_mutex_t* mutex);
 </pre>
 
 <p>
-对于互斥锁来说可以静态初始化为PTHREAD_MUTEX_INITIALIZER,也可以调用init来进行初始化。
+对于互斥锁来说可以静态初始化为PTHREAD<sub>MUTEX</sub><sub>INITIALIZER</sub>,也可以调用init来进行初始化。
 </p>
 <p>
 互斥锁操作上有下面几种，包括加锁，解锁和尝试加锁(非阻塞行为):
@@ -6586,7 +6538,7 @@ int pthread_cond_broadcast(pthread_cond_t* cond);
 </pre>
 
 <p>
-初始化也可以使用PTHREAD_COND_INITIALIZER来完成。
+初始化也可以使用PTHREAD<sub>COND</sub><sub>INITIALIZER来完成。</sub>
 </p>
 </div>
 </div>
@@ -6605,10 +6557,10 @@ int pthread_cond_broadcast(pthread_cond_t* cond);
 <tr><th scope="col" class="left">限制名称</th><th scope="col" class="left">描述</th></tr>
 </thead>
 <tbody>
-<tr><td class="left">PTHREAD_DESTRUCTOR_ITERATIONS</td><td class="left">线程退出操作系统实现试图销毁线程似有数据的最大次数</td></tr>
-<tr><td class="left">PTHREAD_KEYS_MAX</td><td class="left">进程可以创建的键最大个数</td></tr>
-<tr><td class="left">PTHREAD_STACK_MIN</td><td class="left">一个线程可用栈的最小字节数</td></tr>
-<tr><td class="left">PTHREAD_THREADS_MAX</td><td class="left">进程可以创建最大线程数</td></tr>
+<tr><td class="left">PTHREAD<sub>DESTRUCTOR</sub><sub>ITERATIONS</sub></td><td class="left">线程退出操作系统实现试图销毁线程似有数据的最大次数</td></tr>
+<tr><td class="left">PTHREAD<sub>KEYS</sub><sub>MAX</sub></td><td class="left">进程可以创建的键最大个数</td></tr>
+<tr><td class="left">PTHREAD<sub>STACK</sub><sub>MIN</sub></td><td class="left">一个线程可用栈的最小字节数</td></tr>
+<tr><td class="left">PTHREAD<sub>THREADS</sub><sub>MAX</sub></td><td class="left">进程可以创建最大线程数</td></tr>
 </tbody>
 </table>
 
@@ -6631,7 +6583,7 @@ int pthread_attr_destroy(pthread_attr_t* attr);
 </pre>
 
 <p>
-对于我们来说，pthread_attr_t接口并不是透明的。所以我们设置属性的话是通过其他API来完成的。POSIX.1定义的
+对于我们来说，pthread<sub>attr</sub><sub>t接口并不是透明的。所以我们设置属性的话是通过其他API来完成的。POSIX</sub>.1定义的
 线程属性包括下面这些：
 </p><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <colgroup><col class="left" /><col class="left" />
@@ -6656,7 +6608,7 @@ int pthread_attr_destroy(pthread_attr_t* attr);
 <div class="outline-text-5" id="text-11-6-1">
 
 <p>对于detachstate来说，我们可以控制线程启动时候属性是分离的，还是可以join的。如果我们不设置的话，默认
-是joinable的。当然我们也可以使用pthread_detach来将这个线程属性修改成为分离状态。
+是joinable的。当然我们也可以使用pthread<sub>detach来将这个线程属性修改成为分离状态。</sub>
 </p>
 
 
@@ -6665,7 +6617,7 @@ int pthread_attr_setdetachstate(pthread_attr_t* attr,int detachstate);
 </pre>
 
 <p>
-其中detachstate为PTHREAD_CREATE_DETACHED或者是PTHREAD_CREATE_JOINABLE.
+其中detachstate为PTHREAD<sub>CREATE</sub><sub>DETACHED或者是PTHREAD</sub><sub>CREATE</sub><sub>JOINABLE</sub>.
 </p>
 </div>
 
@@ -6838,10 +6790,10 @@ extern int pthread_condattr_setpshared (pthread_condattr_t *__attr,
 <tr><th scope="col" class="left">互斥量类型</th><th scope="col" class="left">说明</th></tr>
 </thead>
 <tbody>
-<tr><td class="left">PTHREAD_MUTEX_NORMAL</td><td class="left">普通锁</td></tr>
-<tr><td class="left">PTHREAD_MUTEX_ERRORCHECK</td><td class="left">错误锁，同一个线程加锁的话会出现错误</td></tr>
-<tr><td class="left">PTHREAD_MUTEX_RECURSIVE</td><td class="left">递归锁，同一个线程加锁的话可以递归加锁</td></tr>
-<tr><td class="left">PTHREAD_MUTEX_DEFAULT</td><td class="left">前面三种默认一种，通常为普通锁</td></tr>
+<tr><td class="left">PTHREAD<sub>MUTEX</sub><sub>NORMAL</sub></td><td class="left">普通锁</td></tr>
+<tr><td class="left">PTHREAD<sub>MUTEX</sub><sub>ERRORCHECK</sub></td><td class="left">错误锁，同一个线程加锁的话会出现错误</td></tr>
+<tr><td class="left">PTHREAD<sub>MUTEX</sub><sub>RECURSIVE</sub></td><td class="left">递归锁，同一个线程加锁的话可以递归加锁</td></tr>
+<tr><td class="left">PTHREAD<sub>MUTEX</sub><sub>DEFAULT</sub></td><td class="left">前面三种默认一种，通常为普通锁</td></tr>
 </tbody>
 </table>
 
@@ -6881,7 +6833,7 @@ void func2(){
 
 <p>
 如果func1调用了func2,并且func1和func2可以并行执行的话，那么func1调用func2的时候就会锁住。
-这样的话，我们不得不提供两个版本func2和func2_locked.虽然func2里面的逻辑可以但是也相当麻烦。
+这样的话，我们不得不提供两个版本func2和func2<sub>locked</sub>.虽然func2里面的逻辑可以但是也相当麻烦。
 但是如果使用递归锁的话，就可以解决这个问题了。另外一个情形相对比较简单，就是如果信号处理
 函数里面也使用同一个锁的话。
 </p>
@@ -6896,8 +6848,8 @@ void func2(){
 
 <p>可重入这个话题在信号处理已经讨论过了，可重入函数一定是线程安全函数，但是线程安全不一定是可重入的。如果
 一个函数可在同一时刻被多个线程安全调用的话，那么这个函数就是线程安全的。对于一些线程不安全函数的，如果
-操作系统需要支持线程安全性的话，那么会定义_POSIX_THREAD_SAFE_FUNCTIONS/_SC_THREAD_SAFE_FUNCTIONS，同时对于
-一些线程不安全函数，提供一个线程安全的版本，通常以_r结尾。
+操作系统需要支持线程安全性的话，那么会定义<sub>POSIX</sub><sub>THREAD</sub><sub>SAFE</sub><sub>FUNCTIONS</sub>/<sub>SC</sub><sub>THREAD</sub><sub>SAFE</sub><sub>FUNCTIONS，同时对于</sub>
+一些线程不安全函数，提供一个线程安全的版本，通常以<sub>r结尾。</sub>
 </p>
 <p>
 标准IO提供了函数来保证操作标准IO是线程安全的：
@@ -6949,12 +6901,12 @@ int pthread_setspecific(pthread_key_t key,const void* value);
 
 <p>
 创建的键存放在keyp指向的内存单元，这个键可以被所有线程使用，但是不同线程将这个键关联到不同的线程私有数据上。
-每个创建的键都设置了一个析构函数，如果为NULL的话那么析构函数不调用。当线程调用pthread_exit或者是线程执行返回的时候，
-析构函数才会调用。key_delete只是释放key这个内存，并不会调用析构函数。
+每个创建的键都设置了一个析构函数，如果为NULL的话那么析构函数不调用。当线程调用pthread<sub>exit或者是线程执行返回的时候，</sub>
+析构函数才会调用。key<sub>delete只是释放key这个内存，并不会调用析构函数。</sub>
 </p>
 <p>
-线程对于创建的键的数量是存在限制的，可以通过PTHREAD_KEYS_MAX来获得。线程退出时会尝试调用一次析构函数，如果所有键
-绑定的值都已经释放为null的话，那么正常，否则还会尝试调用一次析构函数，直到尝试次数为PTHREAD_DESTRUCTOR_ITERATIONS次数。
+线程对于创建的键的数量是存在限制的，可以通过PTHREAD<sub>KEYS</sub><sub>MAX来获得。线程退出时会尝试调用一次析构函数，如果所有键</sub>
+绑定的值都已经释放为null的话，那么正常，否则还会尝试调用一次析构函数，直到尝试次数为PTHREAD<sub>DESTRUCTOR</sub><sub>ITERATIONS次数。</sub>
 </p>
 </div>
 
@@ -6974,12 +6926,12 @@ int pthread_setcancelstate(int state,int* oldstate);
 </pre>
 
 <p>
-默认启动的时候线程是可以取消的。如果线程是不可以取消的话那么pthread_cancel不会杀死线程，只是进行标记。
+默认启动的时候线程是可以取消的。如果线程是不可以取消的话那么pthread<sub>cancel不会杀死线程，只是进行标记。</sub>
 直到线程变成ENABLE状态之后，在下一个取消点才会进行取消。
 </p>
 <p>
 这里有一个术语就是取消点，取消点是线程检查是否被取消并且按照请求进行动作的一个位置。我们没有必要记住
-所有的取消点，因为pthread本身就提供了一个取消点pthread_testcancel.如果线程允许取消的话，调用这个函数
+所有的取消点，因为pthread本身就提供了一个取消点pthread<sub>testcancel</sub>.如果线程允许取消的话，调用这个函数
 会判断是否存在取消标记，如果有取消标记的话，那么就会停止线程。
 </p>
 <p>
@@ -7007,7 +6959,7 @@ int pthread_setcanceltype(int type,int* oldtype);
 POSIX.1的线程模型中，异步信号被发送到进程以后，进程中当前没有阻塞该信号的某个线程来处理该信号。
 </p>
 <p>
-每个线程有自己的信号屏蔽字，如果我们使用sigprocmask的话对于多线程是没有定义的。为此pthread提供了pthread_sigmask
+每个线程有自己的信号屏蔽字，如果我们使用sigprocmask的话对于多线程是没有定义的。为此pthread提供了pthread<sub>sigmask</sub>
 来为每个线程提供线程的信号屏蔽字。此外线程还可以通过调用sigwait来等待一个或者是多个信号发生。语义和sigsuspend一样，
 但是可以获得等待到的信号编号。sigwait会首先清除未决的信号，然后打开需要截获的信号，这也意味这在sigwait之前需要屏蔽
 需要关心的信号，然后调用sigwait.
@@ -7094,7 +7046,7 @@ int pthread_kill(pthread_t thread,int signo);
 <h4 id="sec-11-12"><span class="section-number-4">11.12</span> 线程和fork</h4>
 <div class="outline-text-4" id="text-11-12">
 
-<p>#note: 个人觉得相当无用而且异常繁琐。为了保证锁和条件变量的状态，使用到了pthread_atfork.
+<p>#note: 个人觉得相当无用而且异常繁琐。为了保证锁和条件变量的状态，使用到了pthread<sub>atfork</sub>.
 </p>
 </div>
 
@@ -7118,7 +7070,7 @@ int pthread_kill(pthread_t thread,int signo);
 
 <p>我们只是打算对于pthread的API做一个简单的回顾，这样我们至少可以知道pthread到底可以做什么事情。
 我们打算对于API分为下面这几个部分进行介绍。<a href="https://computing.llnl.gov/tutorials/pthreads/">https://computing.llnl.gov/tutorials/pthreads/</a>
-通读这些API之后，对realtime threads这个部分的很多内容不是很理解，包括clock_id,mutex下面protocol等。
+通读这些API之后，对realtime threads这个部分的很多内容不是很理解，包括clock<sub>id</sub>,mutex下面protocol等。
 </p>
 
 </div>
@@ -7135,9 +7087,9 @@ int pthread_kill(pthread_t thread,int signo);
 <div class="outline-text-6" id="text-11-14-1-1">
 
 <ul>
-<li>pthread_attr_init
+<li>pthread<sub>attr</sub><sub>init</sub>
 </li>
-<li>pthread_attr_destroy
+<li>pthread<sub>attr</sub><sub>destroy</sub>
 </li>
 </ul>
 
@@ -7151,9 +7103,9 @@ int pthread_kill(pthread_t thread,int signo);
 <div class="outline-text-6" id="text-11-14-1-2">
 
 <ul>
-<li>pthread_attr_getdetachstate
+<li>pthread<sub>attr</sub><sub>getdetachstate</sub>
 </li>
-<li>pthread_attr_setdetachstate
+<li>pthread<sub>attr</sub><sub>setdetachstate</sub>
 </li>
 </ul>
 
@@ -7168,9 +7120,9 @@ int pthread_kill(pthread_t thread,int signo);
 <div class="outline-text-6" id="text-11-14-1-3">
 
 <ul>
-<li>pthread_attr_setguardsize
+<li>pthread<sub>attr</sub><sub>setguardsize</sub>
 </li>
-<li>pthread_attr_getguardsize
+<li>pthread<sub>attr</sub><sub>getguardsize</sub>
 </li>
 </ul>
 
@@ -7186,29 +7138,29 @@ int pthread_kill(pthread_t thread,int signo);
 <div class="outline-text-6" id="text-11-14-1-4">
 
 <ul>
-<li>pthread_attr_getinheritsched
+<li>pthread<sub>attr</sub><sub>getinheritsched</sub>
 </li>
-<li>pthread_attr_setinheritsched
+<li>pthread<sub>attr</sub><sub>setinheritsched</sub>
 </li>
-<li>pthread_attr_getschedparam
+<li>pthread<sub>attr</sub><sub>getschedparam</sub>
 </li>
-<li>pthread_attr_setschedparam
+<li>pthread<sub>attr</sub><sub>setschedparam</sub>
 </li>
-<li>pthread_attr_getschedpolicy
+<li>pthread<sub>attr</sub><sub>getschedpolicy</sub>
 </li>
-<li>pthread_attr_setschedpolicy
+<li>pthread<sub>attr</sub><sub>setschedpolicy</sub>
 </li>
 </ul>
 
-<p>inheritsched可以设置如果我们调用pthread_create创建线程的话，调度策略是自己显示设置还是继承于创建线程的线程。
+<p>inheritsched可以设置如果我们调用pthread<sub>create创建线程的话，调度策略是自己显示设置还是继承于创建线程的线程。</sub>
 schedpolicy可以设置调度策略，而schedparam可以设置调度策略所涉及的参数，不过从现在文件里面只有priority这个参数。
 调度策略有下面这些. #todo: 调度策略分别是怎么样的???
 </p><ul>
-<li>SCHED_FIFO
+<li>SCHED<sub>FIFO</sub>
 </li>
-<li>SCHED_RR
+<li>SCHED<sub>RR</sub>
 </li>
-<li>SCHED_SPORADIC
+<li>SCHED<sub>SPORADIC</sub>
 </li>
 </ul>
 
@@ -7232,17 +7184,17 @@ struct sched_param
 <div class="outline-text-6" id="text-11-14-1-5">
 
 <ul>
-<li>pthread_attr_setscope
+<li>pthread<sub>attr</sub><sub>setscope</sub>
 </li>
-<li>pthread_attr_getscope
+<li>pthread<sub>attr</sub><sub>getscope</sub>
 </li>
 </ul>
 
 <p>文档上面来说的话是说contention scope.包括
 </p><ul>
-<li>PTHREAD_SCOPE_SYSTEM // signifying system scheduling contention scope
+<li>PTHREAD<sub>SCOPE</sub><sub>SYSTEM</sub> // signifying system scheduling contention scope
 </li>
-<li>PTHREAD_SCOPE_PROCESS // signifying process scheduling contention scope
+<li>PTHREAD<sub>SCOPE</sub><sub>PROCESS</sub> // signifying process scheduling contention scope
 </li>
 </ul>
 
@@ -7258,17 +7210,17 @@ system contention scope是只线程直接和系统范围内其他线程竞争，
 <div class="outline-text-6" id="text-11-14-1-6">
 
 <ul>
-<li>pthread_attr_getstack
+<li>pthread<sub>attr</sub><sub>getstack</sub>
 </li>
-<li>pthread_attr_setstack
+<li>pthread<sub>attr</sub><sub>setstack</sub>
 </li>
-<li>pthread_attr_getstackaddr
+<li>pthread<sub>attr</sub><sub>getstackaddr</sub>
 </li>
-<li>pthread_attr_setstackaddr
+<li>pthread<sub>attr</sub><sub>setstackaddr</sub>
 </li>
-<li>pthread_attr_getstacksize
+<li>pthread<sub>attr</sub><sub>getstacksize</sub>
 </li>
-<li>pthread_attr_setstacksize
+<li>pthread<sub>attr</sub><sub>setstacksize</sub>
 </li>
 </ul>
 
@@ -7291,61 +7243,61 @@ system contention scope是只线程直接和系统范围内其他线程竞争，
 <div class="outline-text-6" id="text-11-14-2-1">
 
 <ul>
-<li>pthread_mutex_init
+<li>pthread<sub>mutex</sub><sub>init</sub>
 </li>
-<li>pthread_mutex_destroy
+<li>pthread<sub>mutex</sub><sub>destroy</sub>
 </li>
-<li>pthread_mutex_lock
+<li>pthread<sub>mutex</sub><sub>lock</sub>
 </li>
-<li>pthread_mutex_timedlock
+<li>pthread<sub>mutex</sub><sub>timedlock</sub>
 </li>
-<li>pthread_mutex_trylock
+<li>pthread<sub>mutex</sub><sub>trylock</sub>
 </li>
-<li>pthread_mutex_unlock
+<li>pthread<sub>mutex</sub><sub>unlock</sub>
 </li>
-<li>pthread_mutex_getprioceiling // priority ceiling.
+<li>pthread<sub>mutex</sub><sub>getprioceiling</sub> // priority ceiling.
 </li>
-<li>pthread_mutex_setprioceiling
+<li>pthread<sub>mutex</sub><sub>setprioceiling</sub>
 </li>
-<li>pthread_mutexattr_init
+<li>pthread<sub>mutexattr</sub><sub>init</sub>
 </li>
-<li>pthread_mutexattr_destroy
+<li>pthread<sub>mutexattr</sub><sub>destroy</sub>
 </li>
-<li>pthread_mutexattr_getprioceiling
+<li>pthread<sub>mutexattr</sub><sub>getprioceiling</sub>
 </li>
-<li>pthread_mutexattr_setprioceiling
+<li>pthread<sub>mutexattr</sub><sub>setprioceiling</sub>
 </li>
-<li>pthread_mutexattr_getprotocol // protocol.
+<li>pthread<sub>mutexattr</sub><sub>getprotocol</sub> // protocol.
 </li>
-<li>pthread_mutexattr_setprotocol
+<li>pthread<sub>mutexattr</sub><sub>setprotocol</sub>
 </li>
-<li>pthread_mutexattr_getpshared
+<li>pthread<sub>mutexattr</sub><sub>getpshared</sub>
 </li>
-<li>pthread_mutexattr_setpshared
+<li>pthread<sub>mutexattr</sub><sub>setpshared</sub>
 </li>
-<li>pthread_mutexattr_gettype
+<li>pthread<sub>mutexattr</sub><sub>gettype</sub>
 </li>
-<li>pthread_mutexattr_settype
+<li>pthread<sub>mutexattr</sub><sub>settype</sub>
 </li>
 </ul>
 
 <p>shared允许在进程之间共享互斥锁状态，这样进程之间也可以使用互斥锁
 </p><ul>
-<li>PTHREAD_PROCESS_SHARED
+<li>PTHREAD<sub>PROCESS</sub><sub>SHARED</sub>
 </li>
-<li>PTHREAD_PROCESS_PRIVATE // 默认值
+<li>PTHREAD<sub>PROCESS</sub><sub>PRIVATE</sub> // 默认值
 </li>
 </ul>
 
 <p>type是锁的类型包括下面这些
 </p><ul>
-<li>PTHREAD_MUTEX_NORMAL // 我们最常用的
+<li>PTHREAD<sub>MUTEX</sub><sub>NORMAL</sub> // 我们最常用的
 </li>
-<li>PTHREAD_MUTEX_ERRORCHECK // 同一线程尝试锁多次会error,这样情况可能会在信号处理时候出现
+<li>PTHREAD<sub>MUTEX</sub><sub>ERRORCHECK</sub> // 同一线程尝试锁多次会error,这样情况可能会在信号处理时候出现
 </li>
-<li>PTHREAD_MUTEX_RECURSIVE // 递归锁，允许多次加锁，但是也需要同样次数解锁
+<li>PTHREAD<sub>MUTEX</sub><sub>RECURSIVE</sub> // 递归锁，允许多次加锁，但是也需要同样次数解锁
 </li>
-<li>PTHREAD_MUTEX_DEFAULT // ???
+<li>PTHREAD<sub>MUTEX</sub><sub>DEFAULT</sub> // ???
 </li>
 </ul>
 
@@ -7360,29 +7312,29 @@ system contention scope是只线程直接和系统范围内其他线程竞争，
 <div class="outline-text-6" id="text-11-14-2-2">
 
 <ul>
-<li>pthread_cond_init
+<li>pthread<sub>cond</sub><sub>init</sub>
 </li>
-<li>pthread_cond_destroy
+<li>pthread<sub>cond</sub><sub>destroy</sub>
 </li>
-<li>pthread_cond_signal
+<li>pthread<sub>cond</sub><sub>signal</sub>
 </li>
-<li>pthread_cond_broadcast
+<li>pthread<sub>cond</sub><sub>broadcast</sub>
 </li>
-<li>pthread_cond_timedwait
+<li>pthread<sub>cond</sub><sub>timedwait</sub>
 </li>
-<li>pthread_cond_wait
+<li>pthread<sub>cond</sub><sub>wait</sub>
 </li>
-<li>pthread_condattr_init
+<li>pthread<sub>condattr</sub><sub>init</sub>
 </li>
-<li>pthread_condattr_destroy
+<li>pthread<sub>condattr</sub><sub>destroy</sub>
 </li>
-<li>pthread_condattr_getclock // clock_id
+<li>pthread<sub>condattr</sub><sub>getclock</sub> // clock<sub>id</sub>
 </li>
-<li>pthread_condattr_setclock
+<li>pthread<sub>condattr</sub><sub>setclock</sub>
 </li>
-<li>pthread_condattr_getpshared
+<li>pthread<sub>condattr</sub><sub>getpshared</sub>
 </li>
-<li>pthread_condattr_setpshared
+<li>pthread<sub>condattr</sub><sub>setpshared</sub>
 </li>
 </ul>
 
@@ -7396,31 +7348,31 @@ system contention scope是只线程直接和系统范围内其他线程竞争，
 <div class="outline-text-6" id="text-11-14-2-3">
 
 <ul>
-<li>pthread_rwlock_init
+<li>pthread<sub>rwlock</sub><sub>init</sub>
 </li>
-<li>pthread_rwlock_destroy
+<li>pthread<sub>rwlock</sub><sub>destroy</sub>
 </li>
-<li>pthread_rwlock_rdlock
+<li>pthread<sub>rwlock</sub><sub>rdlock</sub>
 </li>
-<li>pthread_rwlock_timedrdlock
+<li>pthread<sub>rwlock</sub><sub>timedrdlock</sub>
 </li>
-<li>pthread_rwlock_tryrdlock
+<li>pthread<sub>rwlock</sub><sub>tryrdlock</sub>
 </li>
-<li>pthread_rwlock_wrlock
+<li>pthread<sub>rwlock</sub><sub>wrlock</sub>
 </li>
-<li>pthread_rwlock_timedwrlock
+<li>pthread<sub>rwlock</sub><sub>timedwrlock</sub>
 </li>
-<li>pthread_rwlock_trywrlock
+<li>pthread<sub>rwlock</sub><sub>trywrlock</sub>
 </li>
-<li>pthread_rwlock_unlock
+<li>pthread<sub>rwlock</sub><sub>unlock</sub>
 </li>
-<li>pthread_rwlockattr_init
+<li>pthread<sub>rwlockattr</sub><sub>init</sub>
 </li>
-<li>pthread_rwlockattr_destroy
+<li>pthread<sub>rwlockattr</sub><sub>destroy</sub>
 </li>
-<li>pthread_rwlockattr_getpshared
+<li>pthread<sub>rwlockattr</sub><sub>getpshared</sub>
 </li>
-<li>pthread_rwlockattr_setpshared
+<li>pthread<sub>rwlockattr</sub><sub>setpshared</sub>
 </li>
 </ul>
 
@@ -7434,15 +7386,15 @@ system contention scope是只线程直接和系统范围内其他线程竞争，
 <div class="outline-text-6" id="text-11-14-2-4">
 
 <ul>
-<li>pthread_spin_init
+<li>pthread<sub>spin</sub><sub>init</sub>
 </li>
-<li>pthread_spin_destroy
+<li>pthread<sub>spin</sub><sub>destroy</sub>
 </li>
-<li>pthread_spin_lock
+<li>pthread<sub>spin</sub><sub>lock</sub>
 </li>
-<li>pthread_spin_trylock
+<li>pthread<sub>spin</sub><sub>trylock</sub>
 </li>
-<li>pthread_spin_unlock
+<li>pthread<sub>spin</sub><sub>unlock</sub>
 </li>
 </ul>
 
@@ -7456,19 +7408,19 @@ system contention scope是只线程直接和系统范围内其他线程竞争，
 <div class="outline-text-6" id="text-11-14-2-5">
 
 <ul>
-<li>pthread_barrier_init // 以count初始化,表明有多少个线程需要同步
+<li>pthread<sub>barrier</sub><sub>init</sub> // 以count初始化,表明有多少个线程需要同步
 </li>
-<li>pthread_barrier_destroy
+<li>pthread<sub>barrier</sub><sub>destroy</sub>
 </li>
-<li>pthread_barrier_wait // 同步点，直到所有线程都到这个位置然后继续
+<li>pthread<sub>barrier</sub><sub>wait</sub> // 同步点，直到所有线程都到这个位置然后继续
 </li>
-<li>pthread_barrierattr_init
+<li>pthread<sub>barrierattr</sub><sub>init</sub>
 </li>
-<li>pthread_barrierattr_destroy
+<li>pthread<sub>barrierattr</sub><sub>destroy</sub>
 </li>
-<li>pthread_barrierattr_getpshared
+<li>pthread<sub>barrierattr</sub><sub>getpshared</sub>
 </li>
-<li>pthread_barrierattr_setpshared
+<li>pthread<sub>barrierattr</sub><sub>setpshared</sub>
 </li>
 </ul>
 
@@ -7491,13 +7443,13 @@ system contention scope是只线程直接和系统范围内其他线程竞争，
 <div class="outline-text-6" id="text-11-14-3-1">
 
 <ul>
-<li>pthread_create
+<li>pthread<sub>create</sub>
 </li>
-<li>pthread_exit
+<li>pthread<sub>exit</sub>
 </li>
-<li>pthread_join
+<li>pthread<sub>join</sub>
 </li>
-<li>pthread_detach
+<li>pthread<sub>detach</sub>
 </li>
 </ul>
 
@@ -7511,38 +7463,38 @@ system contention scope是只线程直接和系统范围内其他线程竞争，
 <div class="outline-text-6" id="text-11-14-3-2">
 
 <ul>
-<li>pthread_cancel
+<li>pthread<sub>cancel</sub>
 </li>
-<li>pthread_testcancel
+<li>pthread<sub>testcancel</sub>
 </li>
-<li>pthread_setcancelstate
+<li>pthread<sub>setcancelstate</sub>
 </li>
-<li>pthread_setcanceltype
+<li>pthread<sub>setcanceltype</sub>
 </li>
-<li>pthread_cleanup_pop
+<li>pthread<sub>cleanup</sub><sub>pop</sub>
 </li>
-<li>pthread_cleanup_push
+<li>pthread<sub>cleanup</sub><sub>push</sub>
 </li>
 </ul>
 
 <p>对于cancelstate有下面两种
 </p><ul>
-<li>PTHREAD_CANCEL_ENABLE // 允许cancel
+<li>PTHREAD<sub>CANCEL</sub><sub>ENABLE</sub> // 允许cancel
 </li>
-<li>PTHREAD_CANCEL_DISABLE // 不允许cancel
+<li>PTHREAD<sub>CANCEL</sub><sub>DISABLE</sub> // 不允许cancel
 </li>
 </ul>
 
 <p>然后type有两种
 </p><ul>
-<li>PTHREAD_CANCEL_DEFERRED // cancel被延迟到下一个cancellation point进行，默认行为
+<li>PTHREAD<sub>CANCEL</sub><sub>DEFERRED</sub> // cancel被延迟到下一个cancellation point进行，默认行为
 </li>
-<li>PTHREAD_CANCEL_ASYNCHRONOUS // cancel立即触发，系统尝试取消线程但是并不保证。
+<li>PTHREAD<sub>CANCEL</sub><sub>ASYNCHRONOUS</sub> // cancel立即触发，系统尝试取消线程但是并不保证。
 </li>
 </ul>
 
-<p>cancellation point有一类函数，如果我们希望在自己构造cancellation point的话，那么我们可以调用pthread_testcancel这个函数，
-如果其他线程已经尝试cancel我们的话，我们就会在这个点退出。pthread_cancel就是去cancel某个线程的，pthread_cancel不会阻塞立即返回。
+<p>cancellation point有一类函数，如果我们希望在自己构造cancellation point的话，那么我们可以调用pthread<sub>testcancel这个函数，</sub>
+如果其他线程已经尝试cancel我们的话，我们就会在这个点退出。pthread<sub>cancel就是去cancel某个线程的，pthread</sub><sub>cancel不会阻塞立即返回。</sub>
 而push和pop就是注册被cancel之后cleanup的回调函数，可能以宏实现然后配合线程局部变量完成。
 </p>
 </div>
@@ -7554,11 +7506,11 @@ system contention scope是只线程直接和系统范围内其他线程竞争，
 <div class="outline-text-6" id="text-11-14-3-3">
 
 <ul>
-<li>pthread_kill
+<li>pthread<sub>kill</sub>
 </li>
-<li>pthread_sigmask
+<li>pthread<sub>sigmask</sub>
 </li>
-<li>pthread_atfork // 设置线程在fork时候触发的回调
+<li>pthread<sub>atfork</sub> // 设置线程在fork时候触发的回调
 </li>
 </ul>
 
@@ -7572,11 +7524,11 @@ system contention scope是只线程直接和系统范围内其他线程竞争，
 <div class="outline-text-6" id="text-11-14-3-4">
 
 <ul>
-<li>pthread_getschedparam
+<li>pthread<sub>getschedparam</sub>
 </li>
-<li>pthread_setschedparam
+<li>pthread<sub>setschedparam</sub>
 </li>
-<li>pthread_setschedprio
+<li>pthread<sub>setschedprio</sub>
 </li>
 </ul>
 
@@ -7591,17 +7543,17 @@ system contention scope是只线程直接和系统范围内其他线程竞争，
 <div class="outline-text-6" id="text-11-14-3-5">
 
 <ul>
-<li>pthread_getcpuclockid
+<li>pthread<sub>getcpuclockid</sub>
 </li>
-<li>pthread_getconcurrency
+<li>pthread<sub>getconcurrency</sub>
 </li>
-<li>pthread_setconcurrency
+<li>pthread<sub>setconcurrency</sub>
 </li>
 </ul>
 
-<p>getcpuclockid可以获得clock_id,每一个线程/进程都会绑定一个CPU-time clock,然后通过clock_id来区分。线程可以通过pthread_getcpuclockid获取，
-而进程可以通过clock_getcpuclockid获取。取得clock_id之后，我们可以clock_getres来获得时钟精度，clock_gettime来获得运行时间。
-还可以timer_create来创建高精度定时器。不过这些内容都是猜测从manpage里面看的，似乎没有任何一本手册提到过这些内容。这些内容都是rt(realtime)范畴的。
+<p>getcpuclockid可以获得clock<sub>id</sub>,每一个线程/进程都会绑定一个CPU-time clock,然后通过clock<sub>id来区分。线程可以通过pthread</sub><sub>getcpuclockid获取，</sub>
+而进程可以通过clock<sub>getcpuclockid获取。取得clock</sub><sub>id之后，我们可以clock</sub><sub>getres来获得时钟精度，clock</sub><sub>gettime来获得运行时间。</sub>
+还可以timer<sub>create来创建高精度定时器。不过这些内容都是猜测从manpage里面看的，似乎没有任何一本手册提到过这些内容。这些内容都是rt</sub>(realtime)范畴的。
 </p>
 
 
@@ -7667,17 +7619,17 @@ pthread_setconcurrency (level)
 <div class="outline-text-6" id="text-11-14-3-6">
 
 <ul>
-<li>pthread_once
+<li>pthread<sub>once</sub>
 </li>
-<li>pthread_self
+<li>pthread<sub>self</sub>
 </li>
-<li>pthread_key_create
+<li>pthread<sub>key</sub><sub>create</sub>
 </li>
-<li>pthread_key_delete
+<li>pthread<sub>key</sub><sub>delete</sub>
 </li>
-<li>pthread_getspecific
+<li>pthread<sub>getspecific</sub>
 </li>
-<li>pthread_setspecific
+<li>pthread<sub>setspecific</sub>
 </li>
 </ul>
 
@@ -7702,7 +7654,7 @@ pthread_setconcurrency (level)
 <p>最近几天看core java,对于多线程部分的话提到了最好不要stop,suspend,resume线程。在外部去干扰线程执行的话，容易造成线程资源占用以及运行状态不合理。
 </p>
 <p>
-下面代码就是最近遇到一个问题的例子。main -&gt; func1 -&gt; func2.然后main等待func1建立完成之后cancel并且join func1.而func1就是join func2.而func2里面尝试持有一个mutex lock.其中mutex lock里面存在字段holder_表示哪个线程持有这个lock.为了确保mutex lock的锁释放正确，会在析构去assert没有任何线程持有这个lock.单独看这个mutex lock实现没有任何问题，但是在这个cancel线程场景下…
+下面代码就是最近遇到一个问题的例子。main -&gt; func1 -&gt; func2.然后main等待func1建立完成之后cancel并且join func1.而func1就是join func2.而func2里面尝试持有一个mutex lock.其中mutex lock里面存在字段holder<sub>表示哪个线程持有这个lock</sub>.为了确保mutex lock的锁释放正确，会在析构去assert没有任何线程持有这个lock.单独看这个mutex lock实现没有任何问题，但是在这个cancel线程场景下…
 </p>
 
 
@@ -7848,7 +7800,7 @@ a.out: main.cc:17: Lock::~Lock(): Assertion `holder_==0′ failed.
 </li>
 <li>将当前工作目录更改为根目录。父进程继承过来的当前目录可能mount在一个文件系统上。如果不切换到根目录，那么这个文件系统不允许unmount.
 </li>
-<li>关闭不需要的文件描述符。可以通过_SC_OPEN_MAX来判断最高文件描述符(不是很必须).
+<li>关闭不需要的文件描述符。可以通过<sub>SC</sub><sub>OPEN</sub><sub>MAX来判断最高文件描述符</sub>(不是很必须).
 </li>
 <li>然后打开/dev/null复制到0,1,2(不是很必须).
 </li>
@@ -7958,11 +7910,11 @@ int setlogmask(int maskpri); //&#23631;&#34109;&#30340;priority
 <tr><th scope="col" class="left">option</th><th scope="col" class="left">说明</th></tr>
 </thead>
 <tbody>
-<tr><td class="left">LOG_CONS</td><td class="left">如果不能够通过unix domain socket传递到syslogd,那么直接输出到控制台</td></tr>
-<tr><td class="left">LOG_NDELAY</td><td class="left">立即打开至syslogd的unix domain socket.通常来说默认是syslog第一条记录之后再建立连接</td></tr>
-<tr><td class="left">LOG_ODELAY</td><td class="left">不立即打开至syslogd的uds</td></tr>
-<tr><td class="left">LOG_PERROR</td><td class="left">日志消息不仅仅发送给syslog,同时写到标准错误上</td></tr>
-<tr><td class="left">LOG_PID</td><td class="left">每个消息都包含pid</td></tr>
+<tr><td class="left">LOG<sub>CONS</sub></td><td class="left">如果不能够通过unix domain socket传递到syslogd,那么直接输出到控制台</td></tr>
+<tr><td class="left">LOG<sub>NDELAY</sub></td><td class="left">立即打开至syslogd的unix domain socket.通常来说默认是syslog第一条记录之后再建立连接</td></tr>
+<tr><td class="left">LOG<sub>ODELAY</sub></td><td class="left">不立即打开至syslogd的uds</td></tr>
+<tr><td class="left">LOG<sub>PERROR</sub></td><td class="left">日志消息不仅仅发送给syslog,同时写到标准错误上</td></tr>
+<tr><td class="left">LOG<sub>PID</sub></td><td class="left">每个消息都包含pid</td></tr>
 </tbody>
 </table>
 
@@ -7974,14 +7926,14 @@ int setlogmask(int maskpri); //&#23631;&#34109;&#30340;priority
 <tr><th scope="col" class="left">level</th><th scope="col" class="left">说明</th></tr>
 </thead>
 <tbody>
-<tr><td class="left">LOG_EMERG</td><td class="left">紧急状态(系统不可使用),最高优先级</td></tr>
-<tr><td class="left">LOG_ALERT</td><td class="left">必须立即修复的状态</td></tr>
-<tr><td class="left">LOG_CRIT</td><td class="left">严重状态</td></tr>
-<tr><td class="left">LOG_ERR</td><td class="left">出错状态</td></tr>
-<tr><td class="left">LOG_WARNING</td><td class="left">警告状态</td></tr>
-<tr><td class="left">LOG_NOTICE</td><td class="left">正常状态</td></tr>
-<tr><td class="left">LOG_INFO</td><td class="left">信息性消息</td></tr>
-<tr><td class="left">LOG_DEBUG</td><td class="left">调试消息</td></tr>
+<tr><td class="left">LOG<sub>EMERG</sub></td><td class="left">紧急状态(系统不可使用),最高优先级</td></tr>
+<tr><td class="left">LOG<sub>ALERT</sub></td><td class="left">必须立即修复的状态</td></tr>
+<tr><td class="left">LOG<sub>CRIT</sub></td><td class="left">严重状态</td></tr>
+<tr><td class="left">LOG<sub>ERR</sub></td><td class="left">出错状态</td></tr>
+<tr><td class="left">LOG<sub>WARNING</sub></td><td class="left">警告状态</td></tr>
+<tr><td class="left">LOG<sub>NOTICE</sub></td><td class="left">正常状态</td></tr>
+<tr><td class="left">LOG<sub>INFO</sub></td><td class="left">信息性消息</td></tr>
+<tr><td class="left">LOG<sub>DEBUG</sub></td><td class="left">调试消息</td></tr>
 </tbody>
 </table>
 
@@ -8052,7 +8004,7 @@ int main(){
 </li>
 <li>守护进程可以使用命令行启动，但是通常是在系统初始化脚本之一存放在/etc/init.d/*下面。
 </li>
-<li>守护进程终止的话我们通常希望重启。而守护进程的父进程通常为init.在/etc/inittab里面为守护进程包含_respawn选项的话，那么守护进程终止的话init会自动重启。
+<li>守护进程终止的话我们通常希望重启。而守护进程的父进程通常为init.在/etc/inittab里面为守护进程包含<sub>respawn选项的话，那么守护进程终止的话init会自动重启。</sub>
 </li>
 <li>因为守护进程和终端不连接，所以永远接收不到SIGHUP信号。我们可以使用SIGHUP信号来通知守护进程重新载入配置文件。守护进程必须支持这个功能。
 </li>
@@ -8096,7 +8048,7 @@ int main(){
 那么不会阻塞而是立即返回一个错误表示EAGAIN.
 </p>
 <p>
-对于一个给定的描述符设置非阻塞IO属性的话，要不可以通过在open时候指定，要不通过fcntl来修改为O_NONBLOCK状态。
+对于一个给定的描述符设置非阻塞IO属性的话，要不可以通过在open时候指定，要不通过fcntl来修改为O<sub>NONBLOCK状态。</sub>
 </p>
 </div>
 
@@ -8163,7 +8115,7 @@ int fcntl(int fd,int cmd,struct flock* lockp);
 我们有把锁，分别是[a,c],[d,b].
 </p>
 <p>
-在这里我们有一个问题需要注意，如果l_len设置为0的话，锁住的大小始终是文件的最末端。如果文件不断
+在这里我们有一个问题需要注意，如果l<sub>len设置为0的话，锁住的大小始终是文件的最末端。如果文件不断</sub>
 追加写的话，那么记录锁的范围是越来越大的。这样在释放的时候，也要释放对应的范围。
 </p>
 </div>
@@ -8267,7 +8219,7 @@ pselect相对于改进的话是首先时间信息使用timespect支持到纳秒�
 fds不会修改，所以最好每次都重新进行设置。对于timeout的话，如果提前返回的话，那么里面存放的是剩余时间。
 </p>
 <p>
-这里我们看到有一个fd集合，原则上和sigset_t接口是一样的，但是更简单一些：
+这里我们看到有一个fd集合，原则上和sigset<sub>t接口是一样的，但是更简单一些：</sub>
 </p>
 
 
@@ -8294,7 +8246,7 @@ typedef struct
 </pre>
 
 <p>
-可以看到对于一个fd_set最多允许1024个文件描述符进行监听。
+可以看到对于一个fd<sub>set最多允许1024个文件描述符进行监听。</sub>
 </p>
 <p>
 这里准备好的情况是这样定义的：
@@ -8405,9 +8357,9 @@ SIGIO是通用异步信号，而SIGURG是用药通知进程在网络连接上有
 </p><ul>
 <li>调用signal为SIGIO建立处理函数
 </li>
-<li>使用F_SETOWN为fd设置进程和进程组。因为一旦fd触发信号的话，系统是要决定信号投递到哪个进程和进程组的。
+<li>使用F<sub>SETOWN为fd设置进程和进程组。因为一旦fd触发信号的话，系统是要决定信号投递到哪个进程和进程组的。</sub>
 </li>
-<li>使用F_SETFL来设置O_ASYNC文件状态标志。对于BSD来说仅仅用于终端或者是网络的描述符。
+<li>使用F<sub>SETFL来设置O</sub><sub>ASYNC文件状态标志。对于BSD来说仅仅用于终端或者是网络的描述符。</sub>
 </li>
 </ul>
 
@@ -8566,10 +8518,10 @@ extern int msync (void *__addr, size_t __len, int __flags);
 <tr><th scope="col" class="left">prot</th><th scope="col" class="left">说明</th></tr>
 </thead>
 <tbody>
-<tr><td class="left">PROT_READ</td><td class="left">映射区可读</td></tr>
-<tr><td class="left">PROT_WRITE</td><td class="left">映射区可写</td></tr>
-<tr><td class="left">PROT_EXEC</td><td class="left">映射区可执行</td></tr>
-<tr><td class="left">PROT_NONE</td><td class="left">映射区不可以访问</td></tr>
+<tr><td class="left">PROT<sub>READ</sub></td><td class="left">映射区可读</td></tr>
+<tr><td class="left">PROT<sub>WRITE</sub></td><td class="left">映射区可写</td></tr>
+<tr><td class="left">PROT<sub>EXEC</sub></td><td class="left">映射区可执行</td></tr>
+<tr><td class="left">PROT<sub>NONE</sub></td><td class="left">映射区不可以访问</td></tr>
 </tbody>
 </table>
 
@@ -8581,14 +8533,14 @@ extern int msync (void *__addr, size_t __len, int __flags);
 <tr><th scope="col" class="left">flag</th><th scope="col" class="left">说明</th></tr>
 </thead>
 <tbody>
-<tr><td class="left">MAP_FIXED</td><td class="left">说明地址必须为addr,这样容易造成不可一致性一般不使用</td></tr>
-<tr><td class="left">MAP_SHARED</td><td class="left">标记如果修改的话那么修改对应磁盘文件</td></tr>
-<tr><td class="left">MAP_PRIVATE</td><td class="left">标记如果修改的话那么只是修改本地的副本，而不会修改到磁盘文件</td></tr>
+<tr><td class="left">MAP<sub>FIXED</sub></td><td class="left">说明地址必须为addr,这样容易造成不可一致性一般不使用</td></tr>
+<tr><td class="left">MAP<sub>SHARED</sub></td><td class="left">标记如果修改的话那么修改对应磁盘文件</td></tr>
+<tr><td class="left">MAP<sub>PRIVATE</sub></td><td class="left">标记如果修改的话那么只是修改本地的副本，而不会修改到磁盘文件</td></tr>
 </tbody>
 </table>
 
-通常来说mmap分配出的内存和大小是按照_SC_PAGE_SIZE来对齐的。与mmap相关的两个信号是这样的SIGSEGV
-和SIGBUS.如果我们映射文件为1K,_SC_PAGE_SIZE=4K的话，那么我们访问对应1K没有任何问题，
+通常来说mmap分配出的内存和大小是按照<sub>SC</sub><sub>PAGE</sub><sub>SIZE来对齐的。与mmap相关的两个信号是这样的SIGSEGV</sub>
+和SIGBUS.如果我们映射文件为1K,<sub>SC</sub><sub>PAGE</sub><sub>SIZE</sub>=4K的话，那么我们访问对应1K没有任何问题，
 如果访问1K以外4K以内，因为内存分配出来了所以访问没有问题，但是没有对应文件那么返回SIGBUS.
 如果访问4K以外的话，因为没有分配内存那么返回SIGSEGV.
 
@@ -8633,16 +8585,16 @@ int main(){
 <p>
 mprotect可以修改内存的访问权限，prot字段和mmap的prot字段含义对应。msync的flags有下面这几个：
 </p><ul>
-<li>MS_SYNC将页面冲洗到被映射的文件同步返回。
+<li>MS<sub>SYNC将页面冲洗到被映射的文件同步返回。</sub>
 </li>
-<li>MS_ASYNC将页面冲洗到被映射的文件中异步返回。
+<li>MS<sub>ASYNC将页面冲洗到被映射的文件中异步返回。</sub>
 </li>
-<li>MS_INVALIDATE通知操作系统丢弃与底层存储器没有永不的任何页。
+<li>MS<sub>INVALIDATE通知操作系统丢弃与底层存储器没有永不的任何页。</sub>
 </li>
 </ul>
 
-<p>munmap不会使得映射区的内容写到磁盘文件上，MAP_SHARED磁盘文件的更新是通过系统自带的虚存算法来进行自动更新的，
-而对于MAP_PRIVATE的存储区域就直接丢弃。
+<p>munmap不会使得映射区的内容写到磁盘文件上，MAP<sub>SHARED磁盘文件的更新是通过系统自带的虚存算法来进行自动更新的，</sub>
+而对于MAP<sub>PRIVATE的存储区域就直接丢弃。</sub>
 </p>
 </div>
 
@@ -8665,15 +8617,15 @@ mprotect可以修改内存的访问权限，prot字段和mmap的prot字段含义
 </p><ul>
 <li>// #include &lt;libaio.h&gt;
 </li>
-<li>io_setup  // create aio context
+<li>io<sub>setup</sub>  // create aio context
 </li>
-<li>io_submit // submit aio task
+<li>io<sub>submit</sub> // submit aio task
 </li>
-<li>io_getevents // poll aio completion
+<li>io<sub>getevents</sub> // poll aio completion
 </li>
-<li>io_destroy // destroy aio context
+<li>io<sub>destroy</sub> // destroy aio context
 </li>
-<li>io_cancel // cancel aio task
+<li>io<sub>cancel</sub> // cancel aio task
 </li>
 </ul>
 
@@ -8696,7 +8648,7 @@ int io_destroy(aio_context_t ctx);
 </pre>
 
 <p>
-可以看到可以提交多个task.具体每个task都是通过struct iocb来指定的。这个结构可以在/usr/include/linux/aio_abi.h里面找到。
+可以看到可以提交多个task.具体每个task都是通过struct iocb来指定的。这个结构可以在/usr/include/linux/aio<sub>abi</sub>.h里面找到。
 </p>
 
 
@@ -8816,7 +8768,7 @@ struct iocb {
 最常用的大概就是pread和pwrite操作。
 </p>
 <p>
-发起之后的话，可以有两种方式得到通知：1）使用我RESFD 2）使用io_getevents。我们主要看第二个方式。看看API
+发起之后的话，可以有两种方式得到通知：1）使用我RESFD 2）使用io<sub>getevents。我们主要看第二个方式。看看API</sub>
 </p>
 
 
@@ -8827,7 +8779,7 @@ int io_cancel(aio_context_t ctx_id, struct iocb *iocb,
 </pre>
 
 <p>
-可以看到非常类似epoll的返回，返回借口是io_event（在上面有说明，各个字段含义也很明确）。
+可以看到非常类似epoll的返回，返回借口是io<sub>event（在上面有说明，各个字段含义也很明确）。</sub>
 </p>
 </div>
 </div>
@@ -8884,12 +8836,12 @@ int pipe(int fd[2]);
 
 <p>
 这样fd(0)可用用来读，fd(1)可以用来写。对于理解管道的话，我们最好理解为fd(0)和fd(1)之间还有一个
-管道缓冲区。因为管道有这样的行为，如果多个同时写的话，如果一次写的字节数小于PIPE_BUF的话，那么
+管道缓冲区。因为管道有这样的行为，如果多个同时写的话，如果一次写的字节数小于PIPE<sub>BUF的话，那么</sub>
 可以保证之间是没有穿插行为的，
 </p>
 <p>
 本质上pipe可以认为是一个匿名的fifo,而实际的fifo则是一个命名的fifo.所以如果使用fstat来测试的话，
-S_ISFIFO是成功的。和套接字一样，如果写端关闭的话那么读端读取返回0，如果读端关闭的话那么写端会产生SIGPIPE信号错误，
+S<sub>ISFIFO是成功的。和套接字一样，如果写端关闭的话那么读端读取返回0，如果读端关闭的话那么写端会产生SIGPIPE信号错误，</sub>
 返回错误为EPIPE.
 </p>
 
@@ -8978,8 +8930,8 @@ int main(){
 <h4 id="sec-14-2"><span class="section-number-4">14.2</span> fifo</h4>
 <div class="outline-text-4" id="text-14-2">
 
-<p>这里的fifo是指命名fifo.和管道特征一样，一次字节小于PIPE_BUF保证不会穿插，并且没有写端读端返回0,没有读端
-写端产生SIGPIPE并且返回EPIPE错误，测试类型为S_ISFIFO.命名fifo依赖于特殊文件，然后通过读写文件来进行数据传递。
+<p>这里的fifo是指命名fifo.和管道特征一样，一次字节小于PIPE<sub>BUF保证不会穿插，并且没有写端读端返回0</sub>,没有读端
+写端产生SIGPIPE并且返回EPIPE错误，测试类型为S<sub>ISFIFO</sub>.命名fifo依赖于特殊文件，然后通过读写文件来进行数据传递。
 </p>
 
 
@@ -8988,8 +8940,8 @@ int mkfifo(const char* pathname,mode_t mode);
 </pre>
 
 <p>
-如果我们只读打开的话，那么会等待直到某个进程为写打开fifo.如果设置O_NONBLOCK打开的话，那么会立刻返回没有错误。
-如果我们只写打开的话，那么会等待直到某个进程为读打开fifo.如果设置O_NNOBLOCK打开的话，那么会立刻返回错误ENXIO.
+如果我们只读打开的话，那么会等待直到某个进程为写打开fifo.如果设置O<sub>NONBLOCK打开的话，那么会立刻返回没有错误。</sub>
+如果我们只写打开的话，那么会等待直到某个进程为读打开fifo.如果设置O<sub>NNOBLOCK打开的话，那么会立刻返回错误ENXIO</sub>.
 </p>
 
 
@@ -9038,8 +8990,8 @@ ipc资源的。但是必须注意的是，这个非负整数并不一定很小�
 IPC资源是全局的，所以在得到这个整数之前可能尝试获取多次了IPC资源。
 </p>
 <p>
-和文件的open对象，我们需要打开某个东西才能够获得这个IPC标识。在文件下面是文件路径，在IPC下面是key_t,
-在&lt;sys/types.h&gt;里面定义，可以认为是一个整数。从key_t到IPC标识这个过程内核来完成，接口如下：
+和文件的open对象，我们需要打开某个东西才能够获得这个IPC标识。在文件下面是文件路径，在IPC下面是key<sub>t</sub>,
+在&lt;sys/types.h&gt;里面定义，可以认为是一个整数。从key<sub>t到IPC标识这个过程内核来完成，接口如下：</sub>
 </p>
 
 
@@ -9047,11 +8999,11 @@ IPC资源是全局的，所以在得到这个整数之前可能尝试获取多�
 </pre>
 
 <p>
-这个key_t如何指定有几种方法：
+这个key<sub>t如何指定有几种方法：</sub>
 </p><ul>
-<li>key_t指定为IPC_PRIVATE的话，那么每次都会创建一个新IPC标识。
+<li>key<sub>t指定为IPC</sub><sub>PRIVATE的话，那么每次都会创建一个新IPC标识。</sub>
 </li>
-<li>通过ftok函数来生成一个key_t
+<li>通过ftok函数来生成一个key<sub>t</sub>
 </li>
 </ul>
 
@@ -9063,8 +9015,8 @@ key_t ftok(const char* path,int id); //id&#22312;[0,255]
 </pre>
 
 <p>
-ftok必须引用一个已经存在的路径。底层实现可能是得到path的st_dev和st_ino两个字段，然后配合id来生成key_t.但是也可能会出现重复。
-对于IPC_PRIVATE来说每次都会创建，而对于ftok来说的话，flag有IPC_CREATE | IPC_EXCL两个参数，和open类似，来获取当前IPC标识或者是创建。
+ftok必须引用一个已经存在的路径。底层实现可能是得到path的st<sub>dev和st</sub><sub>ino两个字段，然后配合id来生成key</sub><sub>t</sub>.但是也可能会出现重复。
+对于IPC<sub>PRIVATE来说每次都会创建，而对于ftok来说的话，flag有IPC</sub><sub>CREATE</sub> | IPC<sub>EXCL两个参数，和open类似，来获取当前IPC标识或者是创建。</sub>
 同时还需要注意的是，flag的低9位是表示权限的，如果我们要允许读写的话那么必须指定0666.
 </p>
 </div>
@@ -9075,7 +9027,7 @@ ftok必须引用一个已经存在的路径。底层实现可能是得到path的
 <h5 id="sec-14-3-2"><span class="section-number-5">14.3.2</span> 权限结构</h5>
 <div class="outline-text-5" id="text-14-3-2">
 
-<p>对于每一个IPC结构都设置了ipc_perm结构，规定了权限和所有者。
+<p>对于每一个IPC结构都设置了ipc<sub>perm结构，规定了权限和所有者。</sub>
 </p>
 
 
@@ -9179,7 +9131,7 @@ for x in msg:
 <h4 id="sec-14-4"><span class="section-number-4">14.4</span> 消息队列</h4>
 <div class="outline-text-4" id="text-14-4">
 
-<p>消息队列由内核来管理，每一个队列通过一个队列ID来识别(queue ID).每一个消息队列都有一个结构msgid_ds与其关联
+<p>消息队列由内核来管理，每一个队列通过一个队列ID来识别(queue ID).每一个消息队列都有一个结构msgid<sub>ds与其关联</sub>
 </p>
 
 
@@ -9260,7 +9212,7 @@ struct msgbuf
 
 
 <p>
-对于msgsnd来说，如果flag指定为IPC_NOWAIT的话，那么如果消息列队已满的话，那么不会阻塞而是理解返回EAGAIN.
+对于msgsnd来说，如果flag指定为IPC<sub>NOWAIT的话，那么如果消息列队已满的话，那么不会阻塞而是理解返回EAGAIN</sub>.
 阻塞情况在下面情况会恢复：
 </p><ul>
 <li>消息队列有数据了。
@@ -9273,7 +9225,7 @@ struct msgbuf
 
 
 <p>
-对于msgrcv来说，如果flag被指定为IPC_NOWAIT的话，和msgsnd效果一样。如果flag指定为MSG_NOERROR的话，如果
+对于msgrcv来说，如果flag被指定为IPC<sub>NOWAIT的话，和msgsnd效果一样。如果flag指定为MSG</sub><sub>NOERROR的话，如果</sub>
 接收到的信息大于nbytes的话，那么信息被截断，如果没有设置的话那么会返回错误E2BIG.对于type参数来说：
 </p><ul>
 <li>type==0.消息队列第一个消息
@@ -9393,7 +9345,7 @@ int semget(key_t key,int nsems,int flag);
 </pre>
 
 <p>
-其中nsems表示想创建的信号量集合个数，而flag含义和消息队列一样允许IPC_CREAT和IPC_EXCL.低9位为权限。
+其中nsems表示想创建的信号量集合个数，而flag含义和消息队列一样允许IPC<sub>CREAT和IPC</sub><sub>EXCL</sub>.低9位为权限。
 </p>
 <p>
 控制这个信号集的话可以使用下面这个接口：
@@ -9412,11 +9364,11 @@ int semctl(int semid,int semnum,int cmd,...(union semun* arg));
 <p>
 semnum用于选定集合中某个特性的信号量，不同cmd情况下面可能不使用这个字段。cmd有下面这些选项：
 </p><ul>
-<li>IPC_STAT 得到semid_ds信息
+<li>IPC<sub>STAT</sub> 得到semid<sub>ds信息</sub>
 </li>
-<li>IPC_SET 设置semid_ds信息
+<li>IPC<sub>SET</sub> 设置semid<sub>ds信息</sub>
 </li>
-<li>IPC_RMID 删除这个信号量集
+<li>IPC<sub>RMID</sub> 删除这个信号量集
 </li>
 <li>GETVAL +semnum,+val得到某个信号量的资源个数
 </li>
@@ -9450,19 +9402,19 @@ int semop(int semid,struct sembuf semoparray[],size_t nops);
 </pre>
 
 <p>
-语义就是进行每个semoparry里面的操作，并且以原子方式操作。sem_num表示我们操作第几个信号量。
-这里需要解释一下sem_op和sem_flag.首先如果sem_flag指定为SEM_UNDO的话，那么可以认为sem_op取了反就是，
-SEM_UNDO的意思就是说撤销刚才的操作。
+语义就是进行每个semoparry里面的操作，并且以原子方式操作。sem<sub>num表示我们操作第几个信号量。</sub>
+这里需要解释一下sem<sub>op和sem</sub><sub>flag</sub>.首先如果sem<sub>flag指定为SEM</sub><sub>UNDO的话，那么可以认为sem</sub><sub>op取了反就是，</sub>
+SEM<sub>UNDO的意思就是说撤销刚才的操作。</sub>
 </p><ul>
-<li>sem_op &gt; 0,那么相当于释放资源
+<li>sem<sub>op</sub> &gt; 0,那么相当于释放资源
 </li>
-<li>sem_op &lt; 0,那么相当于获取资源
+<li>sem<sub>op</sub> &lt; 0,那么相当于获取资源
 <ul>
 <li>如果资源充足的话，那么操作没有问题
 </li>
-<li>如果资源不充足但是设置了IPC_NOWAIT的话，那么立即出错返回EAGAIN.
+<li>如果资源不充足但是设置了IPC<sub>NOWAIT的话，那么立即出错返回EAGAIN</sub>.
 </li>
-<li>如果资源不充足没有设置IPC_NOTWAIT的话，等待资源进程个数+1,立即阻塞直到
+<li>如果资源不充足没有设置IPC<sub>NOTWAIT的话，等待资源进程个数</sub>+1,立即阻塞直到
 <ul>
 <li>资源可用
 </li>
@@ -9476,13 +9428,13 @@ SEM_UNDO的意思就是说撤销刚才的操作。
 </ul>
 
 </li>
-<li>sem_op==0,那么相当于等待信号量值变为0
+<li>sem<sub>op</sub>==0,那么相当于等待信号量值变为0
 <ul>
 <li>如果为0那么立即返回
 </li>
-<li>如果不为0并且设置IPC_NOWAIT的话，那么立即出错返回EAGAIN.
+<li>如果不为0并且设置IPC<sub>NOWAIT的话，那么立即出错返回EAGAIN</sub>.
 </li>
-<li>如果不为0并且没有设置IPC_NOWAIT的话，那么等待资源==0的进程个数+1,立即阻塞直到
+<li>如果不为0并且没有设置IPC<sub>NOWAIT的话，那么等待资源</sub>==0的进程个数+1,立即阻塞直到
 <ul>
 <li>资源个数==0
 </li>
@@ -9604,17 +9556,17 @@ extern int shmdt (__const void *__shmaddr) __THROW;
 </pre>
 
 <p>
-首先我们通过shmget来获得一个共享内存标识符，size这个字段表示共享存储大小内部会和PAGE_SIZE对齐。
-然后调用shmctl来操作这个共享内存包括IPC_STAT,IPC_SET以及IPC_RMID.如果进程需要连接到这个共享内存段的话，
+首先我们通过shmget来获得一个共享内存标识符，size这个字段表示共享存储大小内部会和PAGE<sub>SIZE对齐。</sub>
+然后调用shmctl来操作这个共享内存包括IPC<sub>STAT</sub>,IPC<sub>SET以及IPC</sub><sub>RMID</sub>.如果进程需要连接到这个共享内存段的话，
 可以调用shmat,flag有下面这些选项：
 </p><ul>
-<li>SHM_RND.如果addr不为0的话，那么会将addr向下取地址为SHMLBA的平方
+<li>SHM<sub>RND</sub>.如果addr不为0的话，那么会将addr向下取地址为SHMLBA的平方
 </li>
-<li>SHM_RDONLY.只读的共享内存段
+<li>SHM<sub>RDONLY</sub>.只读的共享内存段
 </li>
 </ul>
 
-<p>如果不想连接这个共享内存段的话，那么可以直接shmdt.这个时候shmid_ds里面的shm_nattch字段会-1.
+<p>如果不想连接这个共享内存段的话，那么可以直接shmdt.这个时候shmid<sub>ds里面的shm</sub><sub>nattch字段会</sub>-1.
 </p>
 <p>
 相对来说，共享内存是最好理解的IPC了，是一种非常自然的概念。
@@ -9665,7 +9617,7 @@ segment size:1024,attach number:2
 
 <p>如果仅仅是父子进程之间的共享内存的话，那么可以有更加简单的方式，都和mmap相关。第一种方式是将
 mmap映射/dev/zero这个文件。因为/dev/zero是一个特殊文件任何写都被忽略，并且一旦映射上的话存储
-区内容都被初始化为0.另外一种方式是简化的方式，Linux系统提供了MAP_ANON选项使用这个选项的话，那么不需要
+区内容都被初始化为0.另外一种方式是简化的方式，Linux系统提供了MAP<sub>ANON选项使用这个选项的话，那么不需要</sub>
 打开/dev/zero就可以创建一个具有进程关系之间的匿名存储映射。
 </p>
 
