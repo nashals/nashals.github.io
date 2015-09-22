@@ -37,29 +37,24 @@
 </li>
 </ul>
 </li>
-<li><a href="cpp.html#orgheadline18">2. runtime</a>
+<li><a href="cpp.html#orgheadline16">2. runtime</a>
 <ul>
 <li><a href="cpp.html#orgheadline12">2.1. local static object</a></li>
-<li><a href="cpp.html#orgheadline15">2.2. hook function</a>
+<li><a href="cpp.html#orgheadline13">2.2. hook function</a></li>
+<li><a href="cpp.html#orgheadline14">2.3. undefined reference to static const class member</a></li>
+<li><a href="cpp.html#orgheadline15">2.4. malloc warmup performance</a></li>
+</ul>
+</li>
+<li><a href="cpp.html#orgheadline22">3. library</a>
 <ul>
-<li><a href="cpp.html#orgheadline13">2.2.1. hook编译时函数</a></li>
-<li><a href="cpp.html#orgheadline14">2.2.2. hook运行时函数</a></li>
+<li><a href="cpp.html#orgheadline17">3.1. boost::bind</a></li>
+<li><a href="cpp.html#orgheadline18">3.2. boost::spirit</a></li>
+<li><a href="cpp.html#orgheadline19">3.3. boost::property_tree</a></li>
+<li><a href="cpp.html#orgheadline20">3.4. boost::python</a></li>
+<li><a href="cpp.html#orgheadline21">3.5. logging</a></li>
 </ul>
 </li>
-<li><a href="cpp.html#orgheadline16">2.3. undefined reference to static const class member</a></li>
-<li><a href="cpp.html#orgheadline17">2.4. malloc warmup performance</a></li>
-</ul>
-</li>
-<li><a href="cpp.html#orgheadline24">3. library</a>
-<ul>
-<li><a href="cpp.html#orgheadline19">3.1. boost::bind</a></li>
-<li><a href="cpp.html#orgheadline20">3.2. boost::spirit</a></li>
-<li><a href="cpp.html#orgheadline21">3.3. boost::property_tree</a></li>
-<li><a href="cpp.html#orgheadline22">3.4. boost::python</a></li>
-<li><a href="cpp.html#orgheadline23">3.5. logging</a></li>
-</ul>
-</li>
-<li><a href="cpp.html#orgheadline25">4. c++11</a></li>
+<li><a href="cpp.html#orgheadline23">4. c++11</a></li>
 </ul>
 </div>
 </div>
@@ -393,8 +388,8 @@ c:0xbfff9a9c c.g:0xbfff9aa0
 </div>
 </div>
 
-<div id="outline-container-orgheadline18" class="outline-2">
-<h2 id="orgheadline18"><span class="section-number-2">2</span> runtime</h2>
+<div id="outline-container-orgheadline16" class="outline-2">
+<h2 id="orgheadline16"><span class="section-number-2">2</span> runtime</h2>
 <div class="outline-text-2" id="text-2">
 </div><div id="outline-container-orgheadline12" class="outline-3">
 <h3 id="orgheadline12"><span class="section-number-3">2.1</span> local static object</h3>
@@ -479,17 +474,17 @@ _Z3foov:
 </div>
 </div>
 
-<div id="outline-container-orgheadline15" class="outline-3">
-<h3 id="orgheadline15"><span class="section-number-3">2.2</span> hook function</h3>
+<div id="outline-container-orgheadline13" class="outline-3">
+<h3 id="orgheadline13"><span class="section-number-3">2.2</span> hook function</h3>
 <div class="outline-text-3" id="text-2-2">
 <p>
 hook函数调用有两种方式，一种是hook我们代码内部的函数，这意味这这个函数是由我们来编译的，当然我们不能够修改需要hook的函数实现否则就没有意义了。另外一种hook函数是动态库里面的函数，静态库里面的函数因为完全进入了可执行程序，所以修改起来比较麻烦一些。我们QA写过这样的程序用libbfd库修改可执行程序本身，在函数调用之间加上跳板，但是相比本文介绍的两种方式更加复杂。（复杂就以为着容易出错，而且这种修改可执行程序应该是不值得提倡的）。
 </p>
-</div>
 
-<div id="outline-container-orgheadline13" class="outline-4">
-<h4 id="orgheadline13"><span class="section-number-4">2.2.1</span> hook编译时函数</h4>
-<div class="outline-text-4" id="text-2-2-1">
+<p>
+<b>编译时hook</b>
+</p>
+
 <p>
 在gcc编译的时候需要加入-finstrument-functions这个选项之后，那么每个函数调用之前和之后都会调用
 </p>
@@ -537,12 +532,11 @@ hook函数调用有两种方式，一种是hook我们代码内部的函数，这
 }
 </pre>
 </div>
-</div>
-</div>
 
-<div id="outline-container-orgheadline14" class="outline-4">
-<h4 id="orgheadline14"><span class="section-number-4">2.2.2</span> hook运行时函数</h4>
-<div class="outline-text-4" id="text-2-2-2">
+<p>
+<b>运行时hook</b>
+</p>
+
 <p>
 可以使用dlopen截获函数入口，然后使用dlsym(RTLD_NEXT)来获得下一个入口.我们以截获malloc为例。
 </p>
@@ -574,10 +568,9 @@ hook函数调用有两种方式，一种是hook我们代码内部的函数，这
 </div>
 </div>
 </div>
-</div>
 
-<div id="outline-container-orgheadline16" class="outline-3">
-<h3 id="orgheadline16"><span class="section-number-3">2.3</span> undefined reference to static const class member</h3>
+<div id="outline-container-orgheadline14" class="outline-3">
+<h3 id="orgheadline14"><span class="section-number-3">2.3</span> undefined reference to static const class member</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
 类型静态常量成员只允许是标量内容,而不允许是字符串数组或者是结构体等。但是下面代码会存在链接问题
@@ -625,8 +618,8 @@ hook函数调用有两种方式，一种是hook我们代码内部的函数，这
 </div>
 </div>
 
-<div id="outline-container-orgheadline17" class="outline-3">
-<h3 id="orgheadline17"><span class="section-number-3">2.4</span> malloc warmup performance</h3>
+<div id="outline-container-orgheadline15" class="outline-3">
+<h3 id="orgheadline15"><span class="section-number-3">2.4</span> malloc warmup performance</h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
 下面是我之前碰到的因为malloc warmup导致的性能差异巨大的问题。
@@ -757,11 +750,11 @@ tomb git:(master) ✗ g++ map_perf_test.cc -O2
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline24" class="outline-2">
-<h2 id="orgheadline24"><span class="section-number-2">3</span> library</h2>
+<div id="outline-container-orgheadline22" class="outline-2">
+<h2 id="orgheadline22"><span class="section-number-2">3</span> library</h2>
 <div class="outline-text-2" id="text-3">
-</div><div id="outline-container-orgheadline19" class="outline-3">
-<h3 id="orgheadline19"><span class="section-number-3">3.1</span> boost::bind</h3>
+</div><div id="outline-container-orgheadline17" class="outline-3">
+<h3 id="orgheadline17"><span class="section-number-3">3.1</span> boost::bind</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 之前看到陈硕同学在<a href="http://blog.csdn.net/solstice/">博客</a> 给出的C++工程实践推荐，使用boost::function和boost::bind代替虚函数。之所以我们需要使用虚函数，无非就是希望统一执行接口。统一接口通过虚函数是一种方法，而使用boost::function和boost::bind也可以达到相同的目的。
@@ -818,8 +811,8 @@ x.push(<span class="org-constant">boost</span>::bind(&amp;<span class="org-const
 </div>
 </div>
 
-<div id="outline-container-orgheadline20" class="outline-3">
-<h3 id="orgheadline20"><span class="section-number-3">3.2</span> boost::spirit</h3>
+<div id="outline-container-orgheadline18" class="outline-3">
+<h3 id="orgheadline18"><span class="section-number-3">3.2</span> boost::spirit</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 今天被Dr. Yang推荐使用boost::spirit，模板编程实现的语法解析器。Dr. Yang推荐我看看hypertable里面实现的hql，里面就是使用spirit实现的hql(hypertable query language)，在src/cc/Hypertable/Lib/HqlParser.h里面。粗看一下功能还是非常强大的，对于很多使用flex/bison完成的工作都可以通过spirit来完成。看上去是LALR解析器，现在不太清楚就是如果出现shift/reduce或者是reduce/reduce冲突的话spirit是怎么解决的。#note:应该是LL(1)解析器
@@ -835,8 +828,8 @@ x.push(<span class="org-constant">boost</span>::bind(&amp;<span class="org-const
 </div>
 </div>
 
-<div id="outline-container-orgheadline21" class="outline-3">
-<h3 id="orgheadline21"><span class="section-number-3">3.3</span> boost::property_tree</h3>
+<div id="outline-container-orgheadline19" class="outline-3">
+<h3 id="orgheadline19"><span class="section-number-3">3.3</span> boost::property_tree</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 <a href="http://www.boost.org/doc/libs/1_58_0/doc/html/property_tree.html">http://www.boost.org/doc/libs/1_58_0/doc/html/property_tree.html</a> 用作配置文件不错. 具体代码可以参考 <a href="https://github.com/dirtysalt/tomb/blob/master/cc/test_ptree.cc">tomb/cc/test_ptree.cc</a>
@@ -844,8 +837,8 @@ x.push(<span class="org-constant">boost</span>::bind(&amp;<span class="org-const
 </div>
 </div>
 
-<div id="outline-container-orgheadline22" class="outline-3">
-<h3 id="orgheadline22"><span class="section-number-3">3.4</span> boost::python</h3>
+<div id="outline-container-orgheadline20" class="outline-3">
+<h3 id="orgheadline20"><span class="section-number-3">3.4</span> boost::python</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 <a href="http://www.boost.org/doc/libs/1_58_0/libs/python/doc/index.html">http://www.boost.org/doc/libs/1_58_0/libs/python/doc/index.html</a> 编写Python Extension. 具体代码可以参考 <a href="https://github.com/dirtysalt/tomb/blob/master/cc/test_pye.cc">tomb/cc/test_pye.cc</a>
@@ -853,8 +846,8 @@ x.push(<span class="org-constant">boost</span>::bind(&amp;<span class="org-const
 </div>
 </div>
 
-<div id="outline-container-orgheadline23" class="outline-3">
-<h3 id="orgheadline23"><span class="section-number-3">3.5</span> logging</h3>
+<div id="outline-container-orgheadline21" class="outline-3">
+<h3 id="orgheadline21"><span class="section-number-3">3.5</span> logging</h3>
 <div class="outline-text-3" id="text-3-5">
 <p>
 @2015-07-26 最近一段时间使用C++编写Python扩展时候，发现原来的日志库(easyloggingpp)封装存在一些问题。修改完成日志库的封装之后，顺便就看了一下C/C++下面有什么可用的日志库。我粗略地看了下面几种，然后总结了一下优缺点以及自己的想法。
@@ -888,8 +881,8 @@ x.push(<span class="org-constant">boost</span>::bind(&amp;<span class="org-const
 </div>
 </div>
 
-<div id="outline-container-orgheadline25" class="outline-2">
-<h2 id="orgheadline25"><span class="section-number-2">4</span> c++11</h2>
+<div id="outline-container-orgheadline23" class="outline-2">
+<h2 id="orgheadline23"><span class="section-number-2">4</span> c++11</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 C++11在C++03上做了许多改进，而且都是非常实用的改进。BS在自己的主页上列出了这些改进的 <a href="http://www.stroustrup.com/C++11FAQ.html">细节</a>, 有位国内开发者把它翻译成了 <a href="http://www.chenlq.net/cpp11-faq-chs">中文</a> (非常感谢).

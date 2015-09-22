@@ -67,25 +67,10 @@
 <li><a href="leveldb.html#orgheadline16">10.1.1. cache.h</a></li>
 <li><a href="leveldb.html#orgheadline17">10.1.2. comparator.h</a></li>
 <li><a href="leveldb.html#orgheadline18">10.1.3. db.h</a></li>
-<li><a href="leveldb.html#orgheadline25">10.1.4. env.h</a>
-<ul>
-<li><a href="leveldb.html#orgheadline19">10.1.4.1. Env</a></li>
-<li><a href="leveldb.html#orgheadline20">10.1.4.2. FileLock</a></li>
-<li><a href="leveldb.html#orgheadline21">10.1.4.3. Logger</a></li>
-<li><a href="leveldb.html#orgheadline22">10.1.4.4. RandomAccessFile</a></li>
-<li><a href="leveldb.html#orgheadline23">10.1.4.5. SequentialFile</a></li>
-<li><a href="leveldb.html#orgheadline24">10.1.4.6. WritableFile</a></li>
-</ul>
-</li>
+<li><a href="leveldb.html#orgheadline25">10.1.4. env.h</a></li>
 <li><a href="leveldb.html#orgheadline26">10.1.5. filter_policy.h</a></li>
 <li><a href="leveldb.html#orgheadline27">10.1.6. iterator.h</a></li>
-<li><a href="leveldb.html#orgheadline31">10.1.7. options.h</a>
-<ul>
-<li><a href="leveldb.html#orgheadline28">10.1.7.1. Options</a></li>
-<li><a href="leveldb.html#orgheadline29">10.1.7.2. ReadOptions</a></li>
-<li><a href="leveldb.html#orgheadline30">10.1.7.3. WriteOptions</a></li>
-</ul>
-</li>
+<li><a href="leveldb.html#orgheadline31">10.1.7. options.h</a></li>
 <li><a href="leveldb.html#orgheadline32">10.1.8. slice.h</a></li>
 <li><a href="leveldb.html#orgheadline33">10.1.9. status.h</a></li>
 <li><a href="leveldb.html#orgheadline34">10.1.10. table_builder.h</a></li>
@@ -98,219 +83,46 @@
 <ul>
 <li><a href="leveldb.html#orgheadline39">10.3.1. FileName</a></li>
 <li><a href="leveldb.html#orgheadline40">10.3.2. Config</a></li>
-<li><a href="leveldb.html#orgheadline74">10.3.3. DBImpl</a>
-<ul>
-<li><a href="leveldb.html#orgheadline41">10.3.3.1. Open</a></li>
-<li><a href="leveldb.html#orgheadline42">10.3.3.2. DBImpl</a></li>
-<li><a href="leveldb.html#orgheadline43">10.3.3.3. NewDB</a></li>
-<li><a href="leveldb.html#orgheadline44">10.3.3.4. Recover</a></li>
-<li><a href="leveldb.html#orgheadline45">10.3.3.5. RecoverLogFile</a></li>
-<li><a href="leveldb.html#orgheadline46">10.3.3.6. MaybeIgnoreError</a></li>
-<li><a href="leveldb.html#orgheadline47">10.3.3.7. WriteLevel0Table</a></li>
-<li><a href="leveldb.html#orgheadline48">10.3.3.8. Put</a></li>
-<li><a href="leveldb.html#orgheadline49">10.3.3.9. Delete</a></li>
-<li><a href="leveldb.html#orgheadline50">10.3.3.10. LoggingResponsibility</a></li>
-<li><a href="leveldb.html#orgheadline51">10.3.3.11. MakeRoomForWrite</a></li>
-<li><a href="leveldb.html#orgheadline52">10.3.3.12. MaybeScheduleCompaction</a></li>
-<li><a href="leveldb.html#orgheadline53">10.3.3.13. BackgroundCall</a></li>
-<li><a href="leveldb.html#orgheadline54">10.3.3.14. BackgroundCompaction</a></li>
-<li><a href="leveldb.html#orgheadline55">10.3.3.15. CompactMemTable</a></li>
-<li><a href="leveldb.html#orgheadline56">10.3.3.16. CompactRange</a></li>
-<li><a href="leveldb.html#orgheadline57">10.3.3.17. TEST_CompactMemTable</a></li>
-<li><a href="leveldb.html#orgheadline58">10.3.3.18. TEST_CompactRange</a></li>
-<li><a href="leveldb.html#orgheadline59">10.3.3.19. DoCompactionWork</a></li>
-<li><a href="leveldb.html#orgheadline60">10.3.3.20. CleanupCompaction</a></li>
-<li><a href="leveldb.html#orgheadline61">10.3.3.21. InstallCompactionResults</a></li>
-<li><a href="leveldb.html#orgheadline62">10.3.3.22. OpenCompactionOutputFile</a></li>
-<li><a href="leveldb.html#orgheadline63">10.3.3.23. FinishCompactionOutputFile</a></li>
-<li><a href="leveldb.html#orgheadline64">10.3.3.24. Write</a></li>
-<li><a href="leveldb.html#orgheadline65">10.3.3.25. SanitizeOptions</a></li>
-<li><a href="leveldb.html#orgheadline66">10.3.3.26. GetProperty</a></li>
-<li><a href="leveldb.html#orgheadline67">10.3.3.27. GetApproximateSizes</a></li>
-<li><a href="leveldb.html#orgheadline68">10.3.3.28. GetSnapshot</a></li>
-<li><a href="leveldb.html#orgheadline69">10.3.3.29. ReleaseSnapshot</a></li>
-<li><a href="leveldb.html#orgheadline70">10.3.3.30. DeleteObsoleteFiles</a></li>
-<li><a href="leveldb.html#orgheadline71">10.3.3.31. Get</a></li>
-<li><a href="leveldb.html#orgheadline72">10.3.3.32. NewInternalIterator</a></li>
-<li><a href="leveldb.html#orgheadline73">10.3.3.33. NewInterator</a></li>
-</ul>
-</li>
-<li><a href="leveldb.html#orgheadline87">10.3.4. DBIter</a>
-<ul>
-<li><a href="leveldb.html#orgheadline75">10.3.4.1. NewDBIterator</a></li>
-<li><a href="leveldb.html#orgheadline76">10.3.4.2. DBIter</a></li>
-<li><a href="leveldb.html#orgheadline77">10.3.4.3. ClearSavedValue</a></li>
-<li><a href="leveldb.html#orgheadline78">10.3.4.4. ParseKey</a></li>
-<li><a href="leveldb.html#orgheadline79">10.3.4.5. SaveKey</a></li>
-<li><a href="leveldb.html#orgheadline80">10.3.4.6. Seek</a></li>
-<li><a href="leveldb.html#orgheadline81">10.3.4.7. Next</a></li>
-<li><a href="leveldb.html#orgheadline82">10.3.4.8. Prev</a></li>
-<li><a href="leveldb.html#orgheadline83">10.3.4.9. FindNextUserEntry</a></li>
-<li><a href="leveldb.html#orgheadline84">10.3.4.10. FindPrevUserEntry</a></li>
-<li><a href="leveldb.html#orgheadline85">10.3.4.11. SeekToFirst</a></li>
-<li><a href="leveldb.html#orgheadline86">10.3.4.12. SeekToLast</a></li>
-</ul>
-</li>
+<li><a href="leveldb.html#orgheadline74">10.3.3. DBImpl</a></li>
+<li><a href="leveldb.html#orgheadline87">10.3.4. DBIter</a></li>
 <li><a href="leveldb.html#orgheadline88">10.3.5. LookupKey</a></li>
 <li><a href="leveldb.html#orgheadline89">10.3.6. ValueType</a></li>
 <li><a href="leveldb.html#orgheadline90">10.3.7. SequenceNumber</a></li>
-<li><a href="leveldb.html#orgheadline98">10.3.8. InternalKey</a>
-<ul>
-<li><a href="leveldb.html#orgheadline91">10.3.8.1. ExtracrUserKey</a></li>
-<li><a href="leveldb.html#orgheadline92">10.3.8.2. ExtractValueType</a></li>
-<li><a href="leveldb.html#orgheadline93">10.3.8.3. ParsedInternalKey</a></li>
-<li><a href="leveldb.html#orgheadline94">10.3.8.4. InternalKeyEncodingLength</a></li>
-<li><a href="leveldb.html#orgheadline95">10.3.8.5. AppendInternalKey</a></li>
-<li><a href="leveldb.html#orgheadline96">10.3.8.6. PackSequenceAndType</a></li>
-<li><a href="leveldb.html#orgheadline97">10.3.8.7. ParseInternalKey</a></li>
-</ul>
-</li>
-<li><a href="leveldb.html#orgheadline102">10.3.9. InternalKeyComparator</a>
-<ul>
-<li><a href="leveldb.html#orgheadline99">10.3.9.1. Compare</a></li>
-<li><a href="leveldb.html#orgheadline100">10.3.9.2. FindShortestSeparator</a></li>
-<li><a href="leveldb.html#orgheadline101">10.3.9.3. FindShortSuccessor</a></li>
-</ul>
-</li>
+<li><a href="leveldb.html#orgheadline98">10.3.8. InternalKey</a></li>
+<li><a href="leveldb.html#orgheadline102">10.3.9. InternalKeyComparator</a></li>
 <li><a href="leveldb.html#orgheadline103">10.3.10. FileMetaData</a></li>
-<li><a href="leveldb.html#orgheadline121">10.3.11. Version</a>
-<ul>
-<li><a href="leveldb.html#orgheadline104">10.3.11.1. AddIterators</a></li>
-<li><a href="leveldb.html#orgheadline105">10.3.11.2. NewConcatenatingIterator</a></li>
-<li><a href="leveldb.html#orgheadline106">10.3.11.3. LevelFileNumIterator</a></li>
-<li><a href="leveldb.html#orgheadline107">10.3.11.4. GetFileIterator</a></li>
-<li><a href="leveldb.html#orgheadline108">10.3.11.5. FindFile</a></li>
-<li><a href="leveldb.html#orgheadline109">10.3.11.6. SomeFileOverlapsRange</a></li>
-<li><a href="leveldb.html#orgheadline110">10.3.11.7. AfterFile</a></li>
-<li><a href="leveldb.html#orgheadline111">10.3.11.8. BeforeFile</a></li>
-<li><a href="leveldb.html#orgheadline112">10.3.11.9. GetStats</a></li>
-<li><a href="leveldb.html#orgheadline113">10.3.11.10. NewestFirst</a></li>
-<li><a href="leveldb.html#orgheadline114">10.3.11.11. Get</a></li>
-<li><a href="leveldb.html#orgheadline115">10.3.11.12. GetValue</a></li>
-<li><a href="leveldb.html#orgheadline116">10.3.11.13. UpdateStats</a></li>
-<li><a href="leveldb.html#orgheadline117">10.3.11.14. GetOverlappingInputs</a></li>
-<li><a href="leveldb.html#orgheadline118">10.3.11.15. OverlapInLevel</a></li>
-<li><a href="leveldb.html#orgheadline119">10.3.11.16. PickLevelForMemTableOutput</a></li>
-<li><a href="leveldb.html#orgheadline120">10.3.11.17. DebugString</a></li>
-</ul>
-</li>
-<li><a href="leveldb.html#orgheadline142">10.3.12. VersionSet</a>
-<ul>
-<li><a href="leveldb.html#orgheadline122">10.3.12.1. VersionSet</a></li>
-<li><a href="leveldb.html#orgheadline123">10.3.12.2. NeedsCompaction</a></li>
-<li><a href="leveldb.html#orgheadline124">10.3.12.3. AppendVersion</a></li>
-<li><a href="leveldb.html#orgheadline125">10.3.12.4. NumLevelFiles</a></li>
-<li><a href="leveldb.html#orgheadline126">10.3.12.5. NumLevelBytes</a></li>
-<li><a href="leveldb.html#orgheadline127">10.3.12.6. TotalFileSize</a></li>
-<li><a href="leveldb.html#orgheadline128">10.3.12.7. MarkFileNumberUsed</a></li>
-<li><a href="leveldb.html#orgheadline129">10.3.12.8. ApproximateOffsetOf</a></li>
-<li><a href="leveldb.html#orgheadline130">10.3.12.9. AddLiveFiles</a></li>
-<li><a href="leveldb.html#orgheadline131">10.3.12.10. LevelSummary</a></li>
-<li><a href="leveldb.html#orgheadline132">10.3.12.11. WriteSnapshot</a></li>
-<li><a href="leveldb.html#orgheadline133">10.3.12.12. Finalize</a></li>
-<li><a href="leveldb.html#orgheadline134">10.3.12.13. Recover</a></li>
-<li><a href="leveldb.html#orgheadline135">10.3.12.14. LogAndApply</a></li>
-<li><a href="leveldb.html#orgheadline136">10.3.12.15. GetRange</a></li>
-<li><a href="leveldb.html#orgheadline137">10.3.12.16. PickCompaction</a></li>
-<li><a href="leveldb.html#orgheadline138">10.3.12.17. CompactRange</a></li>
-<li><a href="leveldb.html#orgheadline139">10.3.12.18. GetRange2</a></li>
-<li><a href="leveldb.html#orgheadline140">10.3.12.19. SetupOtherInputs</a></li>
-<li><a href="leveldb.html#orgheadline141">10.3.12.20. MakeInputIterator</a></li>
-</ul>
-</li>
-<li><a href="leveldb.html#orgheadline147">10.3.13. VersionSetBuilder</a>
-<ul>
-<li><a href="leveldb.html#orgheadline143">10.3.13.1. VersionSetBuilder</a></li>
-<li><a href="leveldb.html#orgheadline144">10.3.13.2. Apply</a></li>
-<li><a href="leveldb.html#orgheadline145">10.3.13.3. MaybeAddFile</a></li>
-<li><a href="leveldb.html#orgheadline146">10.3.13.4. SaveTo</a></li>
-</ul>
-</li>
-<li><a href="leveldb.html#orgheadline156">10.3.14. Compaction</a>
-<ul>
-<li><a href="leveldb.html#orgheadline148">10.3.14.1. Compaction</a></li>
-<li><a href="leveldb.html#orgheadline149">10.3.14.2. MaxFileSizeForLevel</a></li>
-<li><a href="leveldb.html#orgheadline150">10.3.14.3. MaxBytesForLevel</a></li>
-<li><a href="leveldb.html#orgheadline151">10.3.14.4. IsTrivialMove</a></li>
-<li><a href="leveldb.html#orgheadline152">10.3.14.5. AddInputDeletions</a></li>
-<li><a href="leveldb.html#orgheadline153">10.3.14.6. IsBaseLevelForKey</a></li>
-<li><a href="leveldb.html#orgheadline154">10.3.14.7. ShouldStopBefore</a></li>
-<li><a href="leveldb.html#orgheadline155">10.3.14.8. ReleaseInputs</a></li>
-</ul>
-</li>
+<li><a href="leveldb.html#orgheadline121">10.3.11. Version</a></li>
+<li><a href="leveldb.html#orgheadline142">10.3.12. VersionSet</a></li>
+<li><a href="leveldb.html#orgheadline147">10.3.13. VersionSetBuilder</a></li>
+<li><a href="leveldb.html#orgheadline156">10.3.14. Compaction</a></li>
 <li><a href="leveldb.html#orgheadline157">10.3.15. CompactionState</a></li>
-<li><a href="leveldb.html#orgheadline161">10.3.16. VersionEdit</a>
-<ul>
-<li><a href="leveldb.html#orgheadline158">10.3.16.1. SetCompactPoint</a></li>
-<li><a href="leveldb.html#orgheadline159">10.3.16.2. AddFile</a></li>
-<li><a href="leveldb.html#orgheadline160">10.3.16.3. DeleteFile</a></li>
-</ul>
-</li>
+<li><a href="leveldb.html#orgheadline161">10.3.16. VersionEdit</a></li>
 <li><a href="leveldb.html#orgheadline162">10.3.17. ByteWiseComparatorImpl</a></li>
 <li><a href="leveldb.html#orgheadline163">10.3.18. SnapshotImpl</a></li>
 </ul>
 </li>
 <li><a href="leveldb.html#orgheadline179">10.4. Posix</a>
 <ul>
-<li><a href="leveldb.html#orgheadline169">10.4.1. PosixEnv</a>
-<ul>
-<li><a href="leveldb.html#orgheadline165">10.4.1.1. LockOrUnlock</a></li>
-<li><a href="leveldb.html#orgheadline166">10.4.1.2. Schedule</a></li>
-<li><a href="leveldb.html#orgheadline167">10.4.1.3. StartThread</a></li>
-<li><a href="leveldb.html#orgheadline168">10.4.1.4. Default</a></li>
-</ul>
-</li>
+<li><a href="leveldb.html#orgheadline169">10.4.1. PosixEnv</a></li>
 <li><a href="leveldb.html#orgheadline170">10.4.2. PosixFileLock</a></li>
 <li><a href="leveldb.html#orgheadline171">10.4.3. PosixLogger</a></li>
 <li><a href="leveldb.html#orgheadline172">10.4.4. PosixRandomAccessFile</a></li>
 <li><a href="leveldb.html#orgheadline173">10.4.5. PosixSequentialFile</a></li>
-<li><a href="leveldb.html#orgheadline178">10.4.6. PosixMmapFile</a>
-<ul>
-<li><a href="leveldb.html#orgheadline174">10.4.6.1. Roundup</a></li>
-<li><a href="leveldb.html#orgheadline175">10.4.6.2. TruncateToPageBoundar</a></li>
-<li><a href="leveldb.html#orgheadline176">10.4.6.3. UnmapCurrentRegion</a></li>
-<li><a href="leveldb.html#orgheadline177">10.4.6.4. MapNewRegion</a></li>
-</ul>
-</li>
+<li><a href="leveldb.html#orgheadline178">10.4.6. PosixMmapFile</a></li>
 </ul>
 </li>
 <li><a href="leveldb.html#orgheadline188">10.5. Cache</a>
 <ul>
 <li><a href="leveldb.html#orgheadline180">10.5.1. ShardedLRUCache</a></li>
-<li><a href="leveldb.html#orgheadline185">10.5.2. LRUCache</a>
-<ul>
-<li><a href="leveldb.html#orgheadline181">10.5.2.1. Insert</a></li>
-<li><a href="leveldb.html#orgheadline182">10.5.2.2. Lookup</a></li>
-<li><a href="leveldb.html#orgheadline183">10.5.2.3. Release</a></li>
-<li><a href="leveldb.html#orgheadline184">10.5.2.4. Erase</a></li>
-</ul>
-</li>
+<li><a href="leveldb.html#orgheadline185">10.5.2. LRUCache</a></li>
 <li><a href="leveldb.html#orgheadline186">10.5.3. LRUHandle</a></li>
 <li><a href="leveldb.html#orgheadline187">10.5.4. HandleTable</a></li>
 </ul>
 </li>
 <li><a href="leveldb.html#orgheadline205">10.6. Batch</a>
 <ul>
-<li><a href="leveldb.html#orgheadline197">10.6.1. WriteBatch</a>
-<ul>
-<li><a href="leveldb.html#orgheadline189">10.6.1.1. Count</a></li>
-<li><a href="leveldb.html#orgheadline190">10.6.1.2. Sequence</a></li>
-<li><a href="leveldb.html#orgheadline191">10.6.1.3. Contents</a></li>
-<li><a href="leveldb.html#orgheadline192">10.6.1.4. Clear</a></li>
-<li><a href="leveldb.html#orgheadline193">10.6.1.5. Put</a></li>
-<li><a href="leveldb.html#orgheadline194">10.6.1.6. Delete</a></li>
-<li><a href="leveldb.html#orgheadline195">10.6.1.7. InsertInto</a></li>
-<li><a href="leveldb.html#orgheadline196">10.6.1.8. Iterate</a></li>
-</ul>
-</li>
-<li><a href="leveldb.html#orgheadline202">10.6.2. MemTable</a>
-<ul>
-<li><a href="leveldb.html#orgheadline198">10.6.2.1. MemTable</a></li>
-<li><a href="leveldb.html#orgheadline199">10.6.2.2. Compare</a></li>
-<li><a href="leveldb.html#orgheadline200">10.6.2.3. Add</a></li>
-<li><a href="leveldb.html#orgheadline201">10.6.2.4. Get</a></li>
-</ul>
-</li>
+<li><a href="leveldb.html#orgheadline197">10.6.1. WriteBatch</a></li>
+<li><a href="leveldb.html#orgheadline202">10.6.2. MemTable</a></li>
 <li><a href="leveldb.html#orgheadline203">10.6.3. MemTableInserter</a></li>
 <li><a href="leveldb.html#orgheadline204">10.6.4. MemtableIterator</a></li>
 </ul>
@@ -318,136 +130,27 @@
 <li><a href="leveldb.html#orgheadline219">10.7. Log</a>
 <ul>
 <li><a href="leveldb.html#orgheadline206">10.7.1. LogFormat</a></li>
-<li><a href="leveldb.html#orgheadline210">10.7.2. LogWriter</a>
-<ul>
-<li><a href="leveldb.html#orgheadline207">10.7.2.1. Writer</a></li>
-<li><a href="leveldb.html#orgheadline208">10.7.2.2. AddRecord</a></li>
-<li><a href="leveldb.html#orgheadline209">10.7.2.3. EmitPhysicalRecord</a></li>
-</ul>
-</li>
-<li><a href="leveldb.html#orgheadline218">10.7.3. LogReader</a>
-<ul>
-<li><a href="leveldb.html#orgheadline211">10.7.3.1. Reader</a></li>
-<li><a href="leveldb.html#orgheadline212">10.7.3.2. ReadPhysicalRecord</a></li>
-<li><a href="leveldb.html#orgheadline213">10.7.3.3. ReadRecord</a></li>
-<li><a href="leveldb.html#orgheadline214">10.7.3.4. SkipToInitialBlock</a></li>
-<li><a href="leveldb.html#orgheadline215">10.7.3.5. ReportDrop</a></li>
-<li><a href="leveldb.html#orgheadline216">10.7.3.6. ReportCorruption</a></li>
-<li><a href="leveldb.html#orgheadline217">10.7.3.7. LastRecordOffset</a></li>
-</ul>
-</li>
+<li><a href="leveldb.html#orgheadline210">10.7.2. LogWriter</a></li>
+<li><a href="leveldb.html#orgheadline218">10.7.3. LogReader</a></li>
 </ul>
 </li>
 <li><a href="leveldb.html#orgheadline298">10.8. Table</a>
 <ul>
 <li><a href="leveldb.html#orgheadline220">10.8.1. TableFormat</a></li>
 <li><a href="leveldb.html#orgheadline221">10.8.2. BuildTable</a></li>
-<li><a href="leveldb.html#orgheadline225">10.8.3. TableCache</a>
-<ul>
-<li><a href="leveldb.html#orgheadline222">10.8.3.1. TableCache</a></li>
-<li><a href="leveldb.html#orgheadline223">10.8.3.2. Evict</a></li>
-<li><a href="leveldb.html#orgheadline224">10.8.3.3. NewIterator</a></li>
-</ul>
-</li>
-<li><a href="leveldb.html#orgheadline234">10.8.4. Table</a>
-<ul>
-<li><a href="leveldb.html#orgheadline226">10.8.4.1. Rep</a></li>
-<li><a href="leveldb.html#orgheadline227">10.8.4.2. Open</a></li>
-<li><a href="leveldb.html#orgheadline228">10.8.4.3. ApproximateOffsetOf</a></li>
-<li><a href="leveldb.html#orgheadline229">10.8.4.4. NewIterator</a></li>
-<li><a href="leveldb.html#orgheadline230">10.8.4.5. DeleteBlock</a></li>
-<li><a href="leveldb.html#orgheadline231">10.8.4.6. DeleteCachedBlock</a></li>
-<li><a href="leveldb.html#orgheadline232">10.8.4.7. ReleaseBlock</a></li>
-<li><a href="leveldb.html#orgheadline233">10.8.4.8. BlockReader</a></li>
-</ul>
-</li>
-<li><a href="leveldb.html#orgheadline242">10.8.5. TableBuilder</a>
-<ul>
-<li><a href="leveldb.html#orgheadline235">10.8.5.1. Rep</a></li>
-<li><a href="leveldb.html#orgheadline236">10.8.5.2. ChangeOptions</a></li>
-<li><a href="leveldb.html#orgheadline237">10.8.5.3. Add</a></li>
-<li><a href="leveldb.html#orgheadline238">10.8.5.4. Flush</a></li>
-<li><a href="leveldb.html#orgheadline239">10.8.5.5. WriteBlock</a></li>
-<li><a href="leveldb.html#orgheadline240">10.8.5.6. Finish</a></li>
-<li><a href="leveldb.html#orgheadline241">10.8.5.7. Abandon</a></li>
-</ul>
-</li>
-<li><a href="leveldb.html#orgheadline249">10.8.6. BlockBuilder</a>
-<ul>
-<li><a href="leveldb.html#orgheadline243">10.8.6.1. PrefixCompressed</a></li>
-<li><a href="leveldb.html#orgheadline244">10.8.6.2. BlockBuilder</a></li>
-<li><a href="leveldb.html#orgheadline245">10.8.6.3. Reset</a></li>
-<li><a href="leveldb.html#orgheadline246">10.8.6.4. CurrentSizeEstimate</a></li>
-<li><a href="leveldb.html#orgheadline247">10.8.6.5. Finish</a></li>
-<li><a href="leveldb.html#orgheadline248">10.8.6.6. Add</a></li>
-</ul>
-</li>
-<li><a href="leveldb.html#orgheadline253">10.8.7. Block</a>
-<ul>
-<li><a href="leveldb.html#orgheadline250">10.8.7.1. NumRestarts</a></li>
-<li><a href="leveldb.html#orgheadline251">10.8.7.2. Block</a></li>
-<li><a href="leveldb.html#orgheadline252">10.8.7.3. NewIterator</a></li>
-</ul>
-</li>
-<li><a href="leveldb.html#orgheadline265">10.8.8. BlockIterator</a>
-<ul>
-<li><a href="leveldb.html#orgheadline254">10.8.8.1. BlockIterator</a></li>
-<li><a href="leveldb.html#orgheadline255">10.8.8.2. NextEntryOffset</a></li>
-<li><a href="leveldb.html#orgheadline256">10.8.8.3. GetRestartPoint</a></li>
-<li><a href="leveldb.html#orgheadline257">10.8.8.4. SeekToRestartPoint</a></li>
-<li><a href="leveldb.html#orgheadline258">10.8.8.5. Next</a></li>
-<li><a href="leveldb.html#orgheadline259">10.8.8.6. SeekToFirst</a></li>
-<li><a href="leveldb.html#orgheadline260">10.8.8.7. SeekToLast</a></li>
-<li><a href="leveldb.html#orgheadline261">10.8.8.8. ParseNextKey</a></li>
-<li><a href="leveldb.html#orgheadline262">10.8.8.9. DecodeEntry</a></li>
-<li><a href="leveldb.html#orgheadline263">10.8.8.10. Prev</a></li>
-<li><a href="leveldb.html#orgheadline264">10.8.8.11. Seek</a></li>
-</ul>
-</li>
-<li><a href="leveldb.html#orgheadline268">10.8.9. BlockHandle</a>
-<ul>
-<li><a href="leveldb.html#orgheadline266">10.8.9.1. EncodeTo</a></li>
-<li><a href="leveldb.html#orgheadline267">10.8.9.2. DecodeFrom</a></li>
-</ul>
-</li>
-<li><a href="leveldb.html#orgheadline271">10.8.10. Footer</a>
-<ul>
-<li><a href="leveldb.html#orgheadline269">10.8.10.1. EncodeTo</a></li>
-<li><a href="leveldb.html#orgheadline270">10.8.10.2. DecodeFrom</a></li>
-</ul>
-</li>
+<li><a href="leveldb.html#orgheadline225">10.8.3. TableCache</a></li>
+<li><a href="leveldb.html#orgheadline234">10.8.4. Table</a></li>
+<li><a href="leveldb.html#orgheadline242">10.8.5. TableBuilder</a></li>
+<li><a href="leveldb.html#orgheadline249">10.8.6. BlockBuilder</a></li>
+<li><a href="leveldb.html#orgheadline253">10.8.7. Block</a></li>
+<li><a href="leveldb.html#orgheadline265">10.8.8. BlockIterator</a></li>
+<li><a href="leveldb.html#orgheadline268">10.8.9. BlockHandle</a></li>
+<li><a href="leveldb.html#orgheadline271">10.8.10. Footer</a></li>
 <li><a href="leveldb.html#orgheadline272">10.8.11. ReadBlock</a></li>
 <li><a href="leveldb.html#orgheadline273">10.8.12. IteratorWrapper</a></li>
 <li><a href="leveldb.html#orgheadline274">10.8.13. EmptyIterator</a></li>
-<li><a href="leveldb.html#orgheadline285">10.8.14. TwoLevelIterator</a>
-<ul>
-<li><a href="leveldb.html#orgheadline275">10.8.14.1. NewTwoLevelIterator</a></li>
-<li><a href="leveldb.html#orgheadline276">10.8.14.2. Seek</a></li>
-<li><a href="leveldb.html#orgheadline277">10.8.14.3. SeekToFirst</a></li>
-<li><a href="leveldb.html#orgheadline278">10.8.14.4. SeekToLast</a></li>
-<li><a href="leveldb.html#orgheadline279">10.8.14.5. Next</a></li>
-<li><a href="leveldb.html#orgheadline280">10.8.14.6. Prev</a></li>
-<li><a href="leveldb.html#orgheadline281">10.8.14.7. InitDataBlock</a></li>
-<li><a href="leveldb.html#orgheadline282">10.8.14.8. SetDataIterator</a></li>
-<li><a href="leveldb.html#orgheadline283">10.8.14.9. SkipEmptyDataBlocksForward</a></li>
-<li><a href="leveldb.html#orgheadline284">10.8.14.10. SkipEmptyDataBlocksBackward</a></li>
-</ul>
-</li>
-<li><a href="leveldb.html#orgheadline297">10.8.15. MergingIterator</a>
-<ul>
-<li><a href="leveldb.html#orgheadline286">10.8.15.1. NewMergingIterator</a></li>
-<li><a href="leveldb.html#orgheadline287">10.8.15.2. MergingIterator</a></li>
-<li><a href="leveldb.html#orgheadline288">10.8.15.3. Key</a></li>
-<li><a href="leveldb.html#orgheadline289">10.8.15.4. Value</a></li>
-<li><a href="leveldb.html#orgheadline290">10.8.15.5. Seek</a></li>
-<li><a href="leveldb.html#orgheadline291">10.8.15.6. SeekToFirst</a></li>
-<li><a href="leveldb.html#orgheadline292">10.8.15.7. SeekToLast</a></li>
-<li><a href="leveldb.html#orgheadline293">10.8.15.8. Next</a></li>
-<li><a href="leveldb.html#orgheadline294">10.8.15.9. Prev</a></li>
-<li><a href="leveldb.html#orgheadline295">10.8.15.10. FindSmallest</a></li>
-<li><a href="leveldb.html#orgheadline296">10.8.15.11. FindLargest</a></li>
-</ul>
-</li>
+<li><a href="leveldb.html#orgheadline285">10.8.14. TwoLevelIterator</a></li>
+<li><a href="leveldb.html#orgheadline297">10.8.15. MergingIterator</a></li>
 </ul>
 </li>
 <li><a href="leveldb.html#orgheadline317">10.9. Util</a>
@@ -455,20 +158,7 @@
 <li><a href="leveldb.html#orgheadline299">10.9.1. Arena</a></li>
 <li><a href="leveldb.html#orgheadline300">10.9.2. Coding</a></li>
 <li><a href="leveldb.html#orgheadline301">10.9.3. Histogram</a></li>
-<li><a href="leveldb.html#orgheadline312">10.9.4. SkipList</a>
-<ul>
-<li><a href="leveldb.html#orgheadline302">10.9.4.1. RandomHeight</a></li>
-<li><a href="leveldb.html#orgheadline303">10.9.4.2. KeyIsAfterNode</a></li>
-<li><a href="leveldb.html#orgheadline304">10.9.4.3. FindGreaterOrEqual</a></li>
-<li><a href="leveldb.html#orgheadline305">10.9.4.4. Insert</a></li>
-<li><a href="leveldb.html#orgheadline306">10.9.4.5. Contains</a></li>
-<li><a href="leveldb.html#orgheadline307">10.9.4.6. FindLessThan</a></li>
-<li><a href="leveldb.html#orgheadline308">10.9.4.7. FindLast</a></li>
-<li><a href="leveldb.html#orgheadline309">10.9.4.8. Node</a></li>
-<li><a href="leveldb.html#orgheadline310">10.9.4.9. NewNode</a></li>
-<li><a href="leveldb.html#orgheadline311">10.9.4.10. Iterator</a></li>
-</ul>
-</li>
+<li><a href="leveldb.html#orgheadline312">10.9.4. SkipList</a></li>
 <li><a href="leveldb.html#orgheadline313">10.9.5. AtomicPointer</a></li>
 <li><a href="leveldb.html#orgheadline314">10.9.6. CRC32C</a></li>
 <li><a href="leveldb.html#orgheadline315">10.9.7. Hash</a></li>
@@ -1418,9 +1108,7 @@ env.h里面抽象了环境，这样用户可以很方便低进行定制.可以�
 </p>
 </div>
 
-<div id="outline-container-orgheadline19" class="outline-5">
-<h5 id="orgheadline19"><span class="section-number-5">10.1.4.1</span> Env</h5>
-<div class="outline-text-5" id="text-10-1-4-1">
+<ol class="org-ol"><li><a id="orgheadline19"></a>Env<br  /><div class="outline-text-5" id="text-10-1-4-1">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">class</span> <span class="org-type">Env</span> {
@@ -1568,12 +1256,9 @@ env.h里面抽象了环境，这样用户可以很方便低进行定制.可以�
 <p>
 环境还提供了一个EnvWrapper.这个类就是得到一个Env*对象然后重新转发出去。
 </p>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline20" class="outline-5">
-<h5 id="orgheadline20"><span class="section-number-5">10.1.4.2</span> FileLock</h5>
-<div class="outline-text-5" id="text-10-1-4-2">
+<li><a id="orgheadline20"></a>FileLock<br  /><div class="outline-text-5" id="text-10-1-4-2">
 <p>
 FileLock接口非常简单，可以说就没有接口.唯一要做的事情就是和Env里面的LockFile与UnlockFile配合。实现是PosixFileLock.
 </p>
@@ -1591,12 +1276,9 @@ FileLock接口非常简单，可以说就没有接口.唯一要做的事情就�
 };
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline21" class="outline-5">
-<h5 id="orgheadline21"><span class="section-number-5">10.1.4.3</span> Logger</h5>
-<div class="outline-text-5" id="text-10-1-4-3">
+<li><a id="orgheadline21"></a>Logger<br  /><div class="outline-text-5" id="text-10-1-4-3">
 <p>
 Logger接口也非常简单，就是Logv.允许打印变长参数.实现是PosixLogger.
 </p>
@@ -1632,12 +1314,9 @@ Logger接口也非常简单，就是Logv.允许打印变长参数.实现是Posix
     ;
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline22" class="outline-5">
-<h5 id="orgheadline22"><span class="section-number-5">10.1.4.4</span> RandomAccessFile</h5>
-<div class="outline-text-5" id="text-10-1-4-4">
+<li><a id="orgheadline22"></a>RandomAccessFile<br  /><div class="outline-text-5" id="text-10-1-4-4">
 <p>
 RandomAccessFile所提供的语义就是能够随机从offset读取n个字节，存放在scratch里面。
 然后将result里面的内容指向scratch.随机读取并且要求能够多线程安全。实现是PosixRandomAccessFile.
@@ -1665,12 +1344,9 @@ RandomAccessFile所提供的语义就是能够随机从offset读取n个字节，
 };
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline23" class="outline-5">
-<h5 id="orgheadline23"><span class="section-number-5">10.1.4.5</span> SequentialFile</h5>
-<div class="outline-text-5" id="text-10-1-4-5">
+<li><a id="orgheadline23"></a>SequentialFile<br  /><div class="outline-text-5" id="text-10-1-4-5">
 <p>
 SequentialFile提供的语义包括顺序读取以及Skip字节。这些都是外部来保证同步的。实现是PosixSequentialFile.
 </p>
@@ -1703,12 +1379,9 @@ SequentialFile提供的语义包括顺序读取以及Skip字节。这些都是�
 };
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline24" class="outline-5">
-<h5 id="orgheadline24"><span class="section-number-5">10.1.4.6</span> WritableFile</h5>
-<div class="outline-text-5" id="text-10-1-4-6">
+<li><a id="orgheadline24"></a>WritableFile<br  /><div class="outline-text-5" id="text-10-1-4-6">
 <p>
 WritableFile语义就是允许Append,Close,Flush,Sync.这里Flush的语义应该是将内部缓存数据完全写入，
 而Sync表示让磁盘进行同步。因为可能外部会调用小对象的写入，所以这里需要进行缓存。实现是PosixMmapFile.
@@ -1736,8 +1409,7 @@ WritableFile语义就是允许Append,Close,Flush,Sync.这里Flush的语义应该
 };
 </pre>
 </div>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline26" class="outline-4">
@@ -1935,9 +1607,7 @@ WritableFile语义就是允许Append,Close,Flush,Sync.这里Flush的语义应该
 </ul>
 </div>
 
-<div id="outline-container-orgheadline28" class="outline-5">
-<h5 id="orgheadline28"><span class="section-number-5">10.1.7.1</span> Options</h5>
-<div class="outline-text-5" id="text-10-1-7-1">
+<ol class="org-ol"><li><a id="orgheadline28"></a>Options<br  /><div class="outline-text-5" id="text-10-1-7-1">
 <p>
 Options控制DB行为，在DB::Open时候就传入.我们需要针对这些字段仔细看看.
 </p>
@@ -2061,12 +1731,9 @@ Options控制DB行为，在DB::Open时候就传入.我们需要针对这些字�
 };
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline29" class="outline-5">
-<h5 id="orgheadline29"><span class="section-number-5">10.1.7.2</span> ReadOptions</h5>
-<div class="outline-text-5" id="text-10-1-7-2">
+<li><a id="orgheadline29"></a>ReadOptions<br  /><div class="outline-text-5" id="text-10-1-7-2">
 <p>
 和Options一样里面也都是控制字段.
 </p>
@@ -2099,12 +1766,9 @@ Options控制DB行为，在DB::Open时候就传入.我们需要针对这些字�
 };
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline30" class="outline-5">
-<h5 id="orgheadline30"><span class="section-number-5">10.1.7.3</span> WriteOptions</h5>
-<div class="outline-text-5" id="text-10-1-7-3">
+<li><a id="orgheadline30"></a>WriteOptions<br  /><div class="outline-text-5" id="text-10-1-7-3">
 <p>
 和Options一样里面也都是控制字段.
 </p>
@@ -2136,8 +1800,7 @@ Options控制DB行为，在DB::Open时候就传入.我们需要针对这些字�
 };
 </pre>
 </div>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline32" class="outline-4">
@@ -2649,9 +2312,7 @@ db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然
 </div>
 </div>
 
-<div id="outline-container-orgheadline41" class="outline-5">
-<h5 id="orgheadline41"><span class="section-number-5">10.3.3.1</span> Open</h5>
-<div class="outline-text-5" id="text-10-3-3-1">
+<ol class="org-ol"><li><a id="orgheadline41"></a>Open<br  /><div class="outline-text-5" id="text-10-3-3-1">
 <p>
 在Interface部分的db.h里面可以知道构造这个DB对象是通过DB::Open来构造的。
 </p>
@@ -2699,12 +2360,9 @@ db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline42" class="outline-5">
-<h5 id="orgheadline42"><span class="section-number-5">10.3.3.2</span> DBImpl</h5>
-<div class="outline-text-5" id="text-10-3-3-2">
+<li><a id="orgheadline42"></a>DBImpl<br  /><div class="outline-text-5" id="text-10-3-3-2">
 <p>
 先看看构造函数
 </p>
@@ -2788,12 +2446,9 @@ db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline43" class="outline-5">
-<h5 id="orgheadline43"><span class="section-number-5">10.3.3.3</span> NewDB</h5>
-<div class="outline-text-5" id="text-10-3-3-3">
+<li><a id="orgheadline43"></a>NewDB<br  /><div class="outline-text-5" id="text-10-3-3-3">
 <p>
 但从名字上我们不知道里面做了哪些事情，所以还是来看看代码.
 通过代码阅读会发现，完成的事情大致就是建立一个Manifest文件，然后将这个版本的Manifest文件
@@ -2841,12 +2496,9 @@ db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline44" class="outline-5">
-<h5 id="orgheadline44"><span class="section-number-5">10.3.3.4</span> Recover</h5>
-<div class="outline-text-5" id="text-10-3-3-4">
+<li><a id="orgheadline44"></a>Recover<br  /><div class="outline-text-5" id="text-10-3-3-4">
 <p>
 恢复状态并且将恢复对于version日志操作.
 </p>
@@ -2944,12 +2596,9 @@ db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline45" class="outline-5">
-<h5 id="orgheadline45"><span class="section-number-5">10.3.3.5</span> RecoverLogFile</h5>
-<div class="outline-text-5" id="text-10-3-3-5">
+<li><a id="orgheadline45"></a>RecoverLogFile<br  /><div class="outline-text-5" id="text-10-3-3-5">
 <p>
 从单个log恢复写入的内容.并且根据log里面内容了解到对于version修改以及max_sequence.
 </p>
@@ -3062,12 +2711,9 @@ db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline46" class="outline-5">
-<h5 id="orgheadline46"><span class="section-number-5">10.3.3.6</span> MaybeIgnoreError</h5>
-<div class="outline-text-5" id="text-10-3-3-6">
+<li><a id="orgheadline46"></a>MaybeIgnoreError<br  /><div class="outline-text-5" id="text-10-3-3-6">
 <p>
 这个是在日志恢复部分是否进行错误恢复.
 </p>
@@ -3083,12 +2729,9 @@ db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline47" class="outline-5">
-<h5 id="orgheadline47"><span class="section-number-5">10.3.3.7</span> WriteLevel0Table</h5>
-<div class="outline-text-5" id="text-10-3-3-7">
+<li><a id="orgheadline47"></a>WriteLevel0Table<br  /><div class="outline-text-5" id="text-10-3-3-7">
 <p>
 将memtable写到level0.不过现在就实现来看的话不一定是写到level0.对于产生或者是删除的文件等
 对于version的操作都会反映到edit里面
@@ -3149,12 +2792,9 @@ db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline48" class="outline-5">
-<h5 id="orgheadline48"><span class="section-number-5">10.3.3.8</span> Put</h5>
-<div class="outline-text-5" id="text-10-3-3-8">
+<li><a id="orgheadline48"></a>Put<br  /><div class="outline-text-5" id="text-10-3-3-8">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">Status</span> <span class="org-constant">DBImpl</span>::<span class="org-function-name">Put</span>(<span class="org-keyword">const</span> <span class="org-type">WriteOptions</span>&amp; <span class="org-variable-name">o</span>, <span class="org-keyword">const</span> <span class="org-type">Slice</span>&amp; <span class="org-variable-name">key</span>, <span class="org-keyword">const</span> <span class="org-type">Slice</span>&amp; <span class="org-variable-name">val</span>) {
@@ -3167,12 +2807,9 @@ db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline49" class="outline-5">
-<h5 id="orgheadline49"><span class="section-number-5">10.3.3.9</span> Delete</h5>
-<div class="outline-text-5" id="text-10-3-3-9">
+<li><a id="orgheadline49"></a>Delete<br  /><div class="outline-text-5" id="text-10-3-3-9">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">Status</span> <span class="org-constant">DBImpl</span>::<span class="org-function-name">Delete</span>(<span class="org-keyword">const</span> <span class="org-type">WriteOptions</span>&amp; <span class="org-variable-name">options</span>, <span class="org-keyword">const</span> <span class="org-type">Slice</span>&amp; <span class="org-variable-name">key</span>) {
@@ -3185,12 +2822,9 @@ db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline50" class="outline-5">
-<h5 id="orgheadline50"><span class="section-number-5">10.3.3.10</span> LoggingResponsibility</h5>
-<div class="outline-text-5" id="text-10-3-3-10">
+<li><a id="orgheadline50"></a>LoggingResponsibility<br  /><div class="outline-text-5" id="text-10-3-3-10">
 <p>
 对于Log信息的打印的话确保每次只有一个实例在操作.这里logger_cv和mutex_关联起来的.可以看到
 在调用AcquireLoggingResponsibility的地方之前都会加锁
@@ -3221,12 +2855,9 @@ db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline51" class="outline-5">
-<h5 id="orgheadline51"><span class="section-number-5">10.3.3.11</span> MakeRoomForWrite</h5>
-<div class="outline-text-5" id="text-10-3-3-11">
+<li><a id="orgheadline51"></a>MakeRoomForWrite<br  /><div class="outline-text-5" id="text-10-3-3-11">
 <p>
 仅仅从函数名称上面开不出到底是开辟什么空间.看看实现吧.代码里面可以分析出这个部分是存在compaction的.
 我们这里稍微总结一下逻辑
@@ -3319,12 +2950,9 @@ db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline52" class="outline-5">
-<h5 id="orgheadline52"><span class="section-number-5">10.3.3.12</span> MaybeScheduleCompaction</h5>
-<div class="outline-text-5" id="text-10-3-3-12">
+<li><a id="orgheadline52"></a>MaybeScheduleCompaction<br  /><div class="outline-text-5" id="text-10-3-3-12">
 <p>
 发起compaction调度.
 </p>
@@ -3350,12 +2978,9 @@ db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline53" class="outline-5">
-<h5 id="orgheadline53"><span class="section-number-5">10.3.3.13</span> BackgroundCall</h5>
-<div class="outline-text-5" id="text-10-3-3-13">
+<li><a id="orgheadline53"></a>BackgroundCall<br  /><div class="outline-text-5" id="text-10-3-3-13">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-constant">DBImpl</span>::<span class="org-function-name">BackgroundCall</span>() {
@@ -3373,12 +2998,9 @@ db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline54" class="outline-5">
-<h5 id="orgheadline54"><span class="section-number-5">10.3.3.14</span> BackgroundCompaction</h5>
-<div class="outline-text-5" id="text-10-3-3-14">
+<li><a id="orgheadline54"></a>BackgroundCompaction<br  /><div class="outline-text-5" id="text-10-3-3-14">
 <p>
 这个部分是真正进行compaction的部分.我们仔细分析其中的行为.
 </p>
@@ -3471,12 +3093,9 @@ db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline55" class="outline-5">
-<h5 id="orgheadline55"><span class="section-number-5">10.3.3.15</span> CompactMemTable</h5>
-<div class="outline-text-5" id="text-10-3-3-15">
+<li><a id="orgheadline55"></a>CompactMemTable<br  /><div class="outline-text-5" id="text-10-3-3-15">
 <p>
 对memtable进行compaction.注意这里针对的对象是imm_.mem对象是write操作的对象.
 </p>
@@ -3520,12 +3139,9 @@ db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline56" class="outline-5">
-<h5 id="orgheadline56"><span class="section-number-5">10.3.3.16</span> CompactRange</h5>
-<div class="outline-text-5" id="text-10-3-3-16">
+<li><a id="orgheadline56"></a>CompactRange<br  /><div class="outline-text-5" id="text-10-3-3-16">
 <p>
 这个语义应该是针对某个range来进行compaction的.
 </p>
@@ -3554,12 +3170,9 @@ db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline57" class="outline-5">
-<h5 id="orgheadline57"><span class="section-number-5">10.3.3.17</span> TEST_CompactMemTable</h5>
-<div class="outline-text-5" id="text-10-3-3-17">
+<li><a id="orgheadline57"></a>TEST_CompactMemTable<br  /><div class="outline-text-5" id="text-10-3-3-17">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">Status</span> <span class="org-constant">DBImpl</span>::<span class="org-function-name">TEST_CompactMemTable</span>() {
@@ -3585,12 +3198,9 @@ db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline58" class="outline-5">
-<h5 id="orgheadline58"><span class="section-number-5">10.3.3.18</span> TEST_CompactRange</h5>
-<div class="outline-text-5" id="text-10-3-3-18">
+<li><a id="orgheadline58"></a>TEST_CompactRange<br  /><div class="outline-text-5" id="text-10-3-3-18">
 <p>
 针对某个Level来进行range compaction.
 </p>
@@ -3636,12 +3246,9 @@ db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline59" class="outline-5">
-<h5 id="orgheadline59"><span class="section-number-5">10.3.3.19</span> DoCompactionWork</h5>
-<div class="outline-text-5" id="text-10-3-3-19">
+<li><a id="orgheadline59"></a>DoCompactionWork<br  /><div class="outline-text-5" id="text-10-3-3-19">
 <p>
 完成的工作是实质性地Compaction.通过读取提交的CompactionState来完成.过程比较长可以逐段逐段地阅读代码.
 </p>
@@ -3823,12 +3430,9 @@ db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline60" class="outline-5">
-<h5 id="orgheadline60"><span class="section-number-5">10.3.3.20</span> CleanupCompaction</h5>
-<div class="outline-text-5" id="text-10-3-3-20">
+<li><a id="orgheadline60"></a>CleanupCompaction<br  /><div class="outline-text-5" id="text-10-3-3-20">
 <p>
 完成compaction之后的工作.
 </p>
@@ -3858,12 +3462,9 @@ db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline61" class="outline-5">
-<h5 id="orgheadline61"><span class="section-number-5">10.3.3.21</span> InstallCompactionResults</h5>
-<div class="outline-text-5" id="text-10-3-3-21">
+<li><a id="orgheadline61"></a>InstallCompactionResults<br  /><div class="outline-text-5" id="text-10-3-3-21">
 <p>
 这个函数调用过程是在DoCompactionWork里面.大致工作就是将这次compaction工作内容作为日志保存起来.
 </p>
@@ -3906,12 +3507,9 @@ db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline62" class="outline-5">
-<h5 id="orgheadline62"><span class="section-number-5">10.3.3.22</span> OpenCompactionOutputFile</h5>
-<div class="outline-text-5" id="text-10-3-3-22">
+<li><a id="orgheadline62"></a>OpenCompactionOutputFile<br  /><div class="outline-text-5" id="text-10-3-3-22">
 <p>
 打开用于compaction输出的文件.倒不是非常麻烦.
 </p>
@@ -3944,12 +3542,9 @@ db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline63" class="outline-5">
-<h5 id="orgheadline63"><span class="section-number-5">10.3.3.23</span> FinishCompactionOutputFile</h5>
-<div class="outline-text-5" id="text-10-3-3-23">
+<li><a id="orgheadline63"></a>FinishCompactionOutputFile<br  /><div class="outline-text-5" id="text-10-3-3-23">
 <p>
 对于输出了文件之后我们需要finish的操作.倒不是非常麻烦.
 </p>
@@ -4008,12 +3603,9 @@ db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline64" class="outline-5">
-<h5 id="orgheadline64"><span class="section-number-5">10.3.3.24</span> Write</h5>
-<div class="outline-text-5" id="text-10-3-3-24">
+<li><a id="orgheadline64"></a>Write<br  /><div class="outline-text-5" id="text-10-3-3-24">
 <p>
 这个是Put/Delete底层的最终实现.仔细看看吧
 </p>
@@ -4060,12 +3652,9 @@ db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline65" class="outline-5">
-<h5 id="orgheadline65"><span class="section-number-5">10.3.3.25</span> SanitizeOptions</h5>
-<div class="outline-text-5" id="text-10-3-3-25">
+<li><a id="orgheadline65"></a>SanitizeOptions<br  /><div class="outline-text-5" id="text-10-3-3-25">
 <p>
 这个函数应该就是规范一下options这个结构.
 </p>
@@ -4106,12 +3695,9 @@ db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline66" class="outline-5">
-<h5 id="orgheadline66"><span class="section-number-5">10.3.3.26</span> GetProperty</h5>
-<div class="outline-text-5" id="text-10-3-3-26">
+<li><a id="orgheadline66"></a>GetProperty<br  /><div class="outline-text-5" id="text-10-3-3-26">
 <p>
 关于db的属性信息.
 </p>
@@ -4174,12 +3760,9 @@ db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline67" class="outline-5">
-<h5 id="orgheadline67"><span class="section-number-5">10.3.3.27</span> GetApproximateSizes</h5>
-<div class="outline-text-5" id="text-10-3-3-27">
+<li><a id="orgheadline67"></a>GetApproximateSizes<br  /><div class="outline-text-5" id="text-10-3-3-27">
 <p>
 得到某个Range占用的大小.底层依赖于VersionSet
 </p>
@@ -4216,12 +3799,9 @@ db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline68" class="outline-5">
-<h5 id="orgheadline68"><span class="section-number-5">10.3.3.28</span> GetSnapshot</h5>
-<div class="outline-text-5" id="text-10-3-3-28">
+<li><a id="orgheadline68"></a>GetSnapshot<br  /><div class="outline-text-5" id="text-10-3-3-28">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">const</span> <span class="org-type">Snapshot</span>* <span class="org-constant">DBImpl</span>::<span class="org-function-name">GetSnapshot</span>() {
@@ -4232,12 +3812,9 @@ db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline69" class="outline-5">
-<h5 id="orgheadline69"><span class="section-number-5">10.3.3.29</span> ReleaseSnapshot</h5>
-<div class="outline-text-5" id="text-10-3-3-29">
+<li><a id="orgheadline69"></a>ReleaseSnapshot<br  /><div class="outline-text-5" id="text-10-3-3-29">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-constant">DBImpl</span>::<span class="org-function-name">ReleaseSnapshot</span>(<span class="org-keyword">const</span> <span class="org-type">Snapshot</span>* <span class="org-variable-name">s</span>) {
@@ -4247,12 +3824,9 @@ db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline70" class="outline-5">
-<h5 id="orgheadline70"><span class="section-number-5">10.3.3.30</span> DeleteObsoleteFiles</h5>
-<div class="outline-text-5" id="text-10-3-3-30">
+<li><a id="orgheadline70"></a>DeleteObsoleteFiles<br  /><div class="outline-text-5" id="text-10-3-3-30">
 <p>
 根据当前所有version所持有的file来决定哪些文件是不再需要的.version里面会持有file meta信息.
 </p>
@@ -4315,12 +3889,9 @@ db/db_impl.cc DBImpl这个结构体挺大的。我们先过一个这个结构然
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline71" class="outline-5">
-<h5 id="orgheadline71"><span class="section-number-5">10.3.3.31</span> Get</h5>
-<div class="outline-text-5" id="text-10-3-3-31">
+<li><a id="orgheadline71"></a>Get<br  /><div class="outline-text-5" id="text-10-3-3-31">
 <p>
 Get的过程非常简单.因为实际Get的过程已经托管为Version::Get这个方法了.这里面我们只需要
 构造出正确的seuqnce number,和user key拼接成为internal key即可.
@@ -4379,12 +3950,9 @@ Get的过程非常简单.因为实际Get的过程已经托管为Version::Get这�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline72" class="outline-5">
-<h5 id="orgheadline72"><span class="section-number-5">10.3.3.32</span> NewInternalIterator</h5>
-<div class="outline-text-5" id="text-10-3-3-32">
+<li><a id="orgheadline72"></a>NewInternalIterator<br  /><div class="outline-text-5" id="text-10-3-3-32">
 <p>
 开辟内部的迭代器.但是功能上来说基本上以及完成了db::iterator所需要完成的工作.但是需要
 注意这里面merge iterator接口是针对internal key的，所以外部的话还是需要保证user key
@@ -4446,12 +4014,9 @@ Get的过程非常简单.因为实际Get的过程已经托管为Version::Get这�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline73" class="outline-5">
-<h5 id="orgheadline73"><span class="section-number-5">10.3.3.33</span> NewInterator</h5>
-<div class="outline-text-5" id="text-10-3-3-33">
+<li><a id="orgheadline73"></a>NewInterator<br  /><div class="outline-text-5" id="text-10-3-3-33">
 <p>
 实现在DBIter里面.工厂方式进行创建.
 </p>
@@ -4470,8 +4035,7 @@ Get的过程非常简单.因为实际Get的过程已经托管为Version::Get这�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline87" class="outline-4">
@@ -4484,9 +4048,7 @@ db/db_iter.cc DBIter通过工厂方法创建.然后就DBIter结构以及里面�
 </p>
 </div>
 
-<div id="outline-container-orgheadline75" class="outline-5">
-<h5 id="orgheadline75"><span class="section-number-5">10.3.4.1</span> NewDBIterator</h5>
-<div class="outline-text-5" id="text-10-3-4-1">
+<ol class="org-ol"><li><a id="orgheadline75"></a>NewDBIterator<br  /><div class="outline-text-5" id="text-10-3-4-1">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">Iterator</span>* <span class="org-function-name">NewDBIterator</span>(
@@ -4499,12 +4061,9 @@ db/db_iter.cc DBIter通过工厂方法创建.然后就DBIter结构以及里面�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline76" class="outline-5">
-<h5 id="orgheadline76"><span class="section-number-5">10.3.4.2</span> DBIter</h5>
-<div class="outline-text-5" id="text-10-3-4-2">
+<li><a id="orgheadline76"></a>DBIter<br  /><div class="outline-text-5" id="text-10-3-4-2">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-comment-delimiter">// </span><span class="org-comment">Memtables and sstables that make the DB representation contain</span>
@@ -4554,12 +4113,9 @@ db/db_iter.cc DBIter通过工厂方法创建.然后就DBIter结构以及里面�
 };
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline77" class="outline-5">
-<h5 id="orgheadline77"><span class="section-number-5">10.3.4.3</span> ClearSavedValue</h5>
-<div class="outline-text-5" id="text-10-3-4-3">
+<li><a id="orgheadline77"></a>ClearSavedValue<br  /><div class="outline-text-5" id="text-10-3-4-3">
 <p>
 清除saved_value这个字段.好像有点技巧.可以看看代码啥的测试一下.
 </p>
@@ -4575,12 +4131,9 @@ db/db_iter.cc DBIter通过工厂方法创建.然后就DBIter结构以及里面�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline78" class="outline-5">
-<h5 id="orgheadline78"><span class="section-number-5">10.3.4.4</span> ParseKey</h5>
-<div class="outline-text-5" id="text-10-3-4-4">
+<li><a id="orgheadline78"></a>ParseKey<br  /><div class="outline-text-5" id="text-10-3-4-4">
 <p>
 工作非常简单就是从iter得到对应的key.
 </p>
@@ -4596,12 +4149,9 @@ db/db_iter.cc DBIter通过工厂方法创建.然后就DBIter结构以及里面�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline79" class="outline-5">
-<h5 id="orgheadline79"><span class="section-number-5">10.3.4.5</span> SaveKey</h5>
-<div class="outline-text-5" id="text-10-3-4-5">
+<li><a id="orgheadline79"></a>SaveKey<br  /><div class="outline-text-5" id="text-10-3-4-5">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">inline</span> <span class="org-type">void</span> <span class="org-function-name">SaveKey</span>(<span class="org-keyword">const</span> <span class="org-type">Slice</span>&amp; <span class="org-variable-name">k</span>, <span class="org-constant">std</span>::<span class="org-type">string</span>* <span class="org-variable-name">dst</span>) {
@@ -4609,12 +4159,9 @@ db/db_iter.cc DBIter通过工厂方法创建.然后就DBIter结构以及里面�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline80" class="outline-5">
-<h5 id="orgheadline80"><span class="section-number-5">10.3.4.6</span> Seek</h5>
-<div class="outline-text-5" id="text-10-3-4-6">
+<li><a id="orgheadline80"></a>Seek<br  /><div class="outline-text-5" id="text-10-3-4-6">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-constant">DBIter</span>::<span class="org-function-name">Seek</span>(<span class="org-keyword">const</span> <span class="org-type">Slice</span>&amp; <span class="org-variable-name">target</span>) {
@@ -4632,12 +4179,9 @@ db/db_iter.cc DBIter通过工厂方法创建.然后就DBIter结构以及里面�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline81" class="outline-5">
-<h5 id="orgheadline81"><span class="section-number-5">10.3.4.7</span> Next</h5>
-<div class="outline-text-5" id="text-10-3-4-7">
+<li><a id="orgheadline81"></a>Next<br  /><div class="outline-text-5" id="text-10-3-4-7">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-constant">DBIter</span>::<span class="org-function-name">Next</span>() {
@@ -4667,12 +4211,9 @@ db/db_iter.cc DBIter通过工厂方法创建.然后就DBIter结构以及里面�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline82" class="outline-5">
-<h5 id="orgheadline82"><span class="section-number-5">10.3.4.8</span> Prev</h5>
-<div class="outline-text-5" id="text-10-3-4-8">
+<li><a id="orgheadline82"></a>Prev<br  /><div class="outline-text-5" id="text-10-3-4-8">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-constant">DBIter</span>::<span class="org-function-name">Prev</span>() {
@@ -4704,12 +4245,9 @@ db/db_iter.cc DBIter通过工厂方法创建.然后就DBIter结构以及里面�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline83" class="outline-5">
-<h5 id="orgheadline83"><span class="section-number-5">10.3.4.9</span> FindNextUserEntry</h5>
-<div class="outline-text-5" id="text-10-3-4-9">
+<li><a id="orgheadline83"></a>FindNextUserEntry<br  /><div class="outline-text-5" id="text-10-3-4-9">
 <p>
 我们需要考虑到在DBIter里面处理的是mergeiterator.多路的话可能会存在很多.
 </p>
@@ -4759,12 +4297,9 @@ db/db_iter.cc DBIter通过工厂方法创建.然后就DBIter结构以及里面�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline84" class="outline-5">
-<h5 id="orgheadline84"><span class="section-number-5">10.3.4.10</span> FindPrevUserEntry</h5>
-<div class="outline-text-5" id="text-10-3-4-10">
+<li><a id="orgheadline84"></a>FindPrevUserEntry<br  /><div class="outline-text-5" id="text-10-3-4-10">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-constant">DBIter</span>::<span class="org-function-name">FindPrevUserEntry</span>() {
@@ -4810,12 +4345,9 @@ db/db_iter.cc DBIter通过工厂方法创建.然后就DBIter结构以及里面�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline85" class="outline-5">
-<h5 id="orgheadline85"><span class="section-number-5">10.3.4.11</span> SeekToFirst</h5>
-<div class="outline-text-5" id="text-10-3-4-11">
+<li><a id="orgheadline85"></a>SeekToFirst<br  /><div class="outline-text-5" id="text-10-3-4-11">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-constant">DBIter</span>::<span class="org-function-name">SeekToFirst</span>() {
@@ -4830,12 +4362,9 @@ db/db_iter.cc DBIter通过工厂方法创建.然后就DBIter结构以及里面�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline86" class="outline-5">
-<h5 id="orgheadline86"><span class="section-number-5">10.3.4.12</span> SeekToLast</h5>
-<div class="outline-text-5" id="text-10-3-4-12">
+<li><a id="orgheadline86"></a>SeekToLast<br  /><div class="outline-text-5" id="text-10-3-4-12">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-constant">DBIter</span>::<span class="org-function-name">SeekToLast</span>() {
@@ -4846,8 +4375,7 @@ db/db_iter.cc DBIter通过工厂方法创建.然后就DBIter结构以及里面�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline88" class="outline-4">
@@ -5022,9 +4550,7 @@ db/dbformat.h InternalKey的实现一份还存在于MemTable里面.因为从Writ
 </div>
 </div>
 
-<div id="outline-container-orgheadline91" class="outline-5">
-<h5 id="orgheadline91"><span class="section-number-5">10.3.8.1</span> ExtracrUserKey</h5>
-<div class="outline-text-5" id="text-10-3-8-1">
+<ol class="org-ol"><li><a id="orgheadline91"></a>ExtracrUserKey<br  /><div class="outline-text-5" id="text-10-3-8-1">
 <p>
 之前我们知道user key是如何分布的了.后面8个字节有附加信息.
 </p>
@@ -5036,12 +4562,9 @@ db/dbformat.h InternalKey的实现一份还存在于MemTable里面.因为从Writ
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline92" class="outline-5">
-<h5 id="orgheadline92"><span class="section-number-5">10.3.8.2</span> ExtractValueType</h5>
-<div class="outline-text-5" id="text-10-3-8-2">
+<li><a id="orgheadline92"></a>ExtractValueType<br  /><div class="outline-text-5" id="text-10-3-8-2">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">inline</span> <span class="org-type">ValueType</span> <span class="org-function-name">ExtractValueType</span>(<span class="org-keyword">const</span> <span class="org-type">Slice</span>&amp; <span class="org-variable-name">internal_key</span>) {
@@ -5053,12 +4576,9 @@ db/dbformat.h InternalKey的实现一份还存在于MemTable里面.因为从Writ
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline93" class="outline-5">
-<h5 id="orgheadline93"><span class="section-number-5">10.3.8.3</span> ParsedInternalKey</h5>
-<div class="outline-text-5" id="text-10-3-8-3">
+<li><a id="orgheadline93"></a>ParsedInternalKey<br  /><div class="outline-text-5" id="text-10-3-8-3">
 <p>
 ParsedInternalKey是从InternalKey解析之后的表示.非常简单.
 </p>
@@ -5076,12 +4596,9 @@ ParsedInternalKey是从InternalKey解析之后的表示.非常简单.
 };
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline94" class="outline-5">
-<h5 id="orgheadline94"><span class="section-number-5">10.3.8.4</span> InternalKeyEncodingLength</h5>
-<div class="outline-text-5" id="text-10-3-8-4">
+<li><a id="orgheadline94"></a>InternalKeyEncodingLength<br  /><div class="outline-text-5" id="text-10-3-8-4">
 <p>
 如果ParsedInternalKey打包称为InternalKey的长度.
 </p>
@@ -5093,12 +4610,9 @@ ParsedInternalKey是从InternalKey解析之后的表示.非常简单.
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline95" class="outline-5">
-<h5 id="orgheadline95"><span class="section-number-5">10.3.8.5</span> AppendInternalKey</h5>
-<div class="outline-text-5" id="text-10-3-8-5">
+<li><a id="orgheadline95"></a>AppendInternalKey<br  /><div class="outline-text-5" id="text-10-3-8-5">
 <p>
 将ParsedInternalKey直接序列化到二进制格式.
 </p>
@@ -5110,12 +4624,9 @@ ParsedInternalKey是从InternalKey解析之后的表示.非常简单.
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline96" class="outline-5">
-<h5 id="orgheadline96"><span class="section-number-5">10.3.8.6</span> PackSequenceAndType</h5>
-<div class="outline-text-5" id="text-10-3-8-6">
+<li><a id="orgheadline96"></a>PackSequenceAndType<br  /><div class="outline-text-5" id="text-10-3-8-6">
 <p>
 sequence number占据高56bits,type占据低8bits
 </p>
@@ -5128,12 +4639,9 @@ sequence number占据高56bits,type占据低8bits
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline97" class="outline-5">
-<h5 id="orgheadline97"><span class="section-number-5">10.3.8.7</span> ParseInternalKey</h5>
-<div class="outline-text-5" id="text-10-3-8-7">
+<li><a id="orgheadline97"></a>ParseInternalKey<br  /><div class="outline-text-5" id="text-10-3-8-7">
 <p>
 根据InternalKey解析出ParsedInternalKey
 </p>
@@ -5152,8 +4660,7 @@ sequence number占据高56bits,type占据低8bits
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline102" class="outline-4">
@@ -5189,9 +4696,7 @@ Compare接收两个Slice对象。对象是这样encode的,key_size + key_data + 
 </div>
 </div>
 
-<div id="outline-container-orgheadline99" class="outline-5">
-<h5 id="orgheadline99"><span class="section-number-5">10.3.9.1</span> Compare</h5>
-<div class="outline-text-5" id="text-10-3-9-1">
+<ol class="org-ol"><li><a id="orgheadline99"></a>Compare<br  /><div class="outline-text-5" id="text-10-3-9-1">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">int</span> <span class="org-constant">InternalKeyComparator</span>::<span class="org-function-name">Compare</span>(<span class="org-keyword">const</span> <span class="org-type">Slice</span>&amp; <span class="org-variable-name">akey</span>, <span class="org-keyword">const</span> <span class="org-type">Slice</span>&amp; <span class="org-variable-name">bkey</span>) <span class="org-keyword">const</span> {
@@ -5214,12 +4719,9 @@ Compare接收两个Slice对象。对象是这样encode的,key_size + key_data + 
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline100" class="outline-5">
-<h5 id="orgheadline100"><span class="section-number-5">10.3.9.2</span> FindShortestSeparator</h5>
-<div class="outline-text-5" id="text-10-3-9-2">
+<li><a id="orgheadline100"></a>FindShortestSeparator<br  /><div class="outline-text-5" id="text-10-3-9-2">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-constant">InternalKeyComparator</span>::<span class="org-function-name">FindShortestSeparator</span>(
@@ -5247,12 +4749,9 @@ Compare接收两个Slice对象。对象是这样encode的,key_size + key_data + 
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline101" class="outline-5">
-<h5 id="orgheadline101"><span class="section-number-5">10.3.9.3</span> FindShortSuccessor</h5>
-<div class="outline-text-5" id="text-10-3-9-3">
+<li><a id="orgheadline101"></a>FindShortSuccessor<br  /><div class="outline-text-5" id="text-10-3-9-3">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-constant">InternalKeyComparator</span>::<span class="org-function-name">FindShortSuccessor</span>(<span class="org-constant">std</span>::<span class="org-type">string</span>* <span class="org-variable-name">key</span>) <span class="org-keyword">const</span> {
@@ -5272,8 +4771,7 @@ Compare接收两个Slice对象。对象是这样encode的,key_size + key_data + 
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline103" class="outline-4">
@@ -5356,9 +4854,7 @@ db/version_set.h 对于Version可以理解为每个Snapshot对应的内容。因
 </div>
 </div>
 
-<div id="outline-container-orgheadline104" class="outline-5">
-<h5 id="orgheadline104"><span class="section-number-5">10.3.11.1</span> AddIterators</h5>
-<div class="outline-text-5" id="text-10-3-11-1">
+<ol class="org-ol"><li><a id="orgheadline104"></a>AddIterators<br  /><div class="outline-text-5" id="text-10-3-11-1">
 <p>
 将所持有的所有的level文件打开并且返回iterator.从注释上来看的话得到这些iterators的话是为了进行merge.
 </p>
@@ -5386,12 +4882,9 @@ db/version_set.h 对于Version可以理解为每个Snapshot对应的内容。因
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline105" class="outline-5">
-<h5 id="orgheadline105"><span class="section-number-5">10.3.11.2</span> NewConcatenatingIterator</h5>
-<div class="outline-text-5" id="text-10-3-11-2">
+<li><a id="orgheadline105"></a>NewConcatenatingIterator<br  /><div class="outline-text-5" id="text-10-3-11-2">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">Iterator</span>* <span class="org-constant">Version</span>::<span class="org-function-name">NewConcatenatingIterator</span>(<span class="org-keyword">const</span> <span class="org-type">ReadOptions</span>&amp; <span class="org-variable-name">options</span>,
@@ -5405,12 +4898,9 @@ db/version_set.h 对于Version可以理解为每个Snapshot对应的内容。因
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline106" class="outline-5">
-<h5 id="orgheadline106"><span class="section-number-5">10.3.11.3</span> LevelFileNumIterator</h5>
-<div class="outline-text-5" id="text-10-3-11-3">
+<li><a id="orgheadline106"></a>LevelFileNumIterator<br  /><div class="outline-text-5" id="text-10-3-11-3">
 <p>
 结构应该非常简单，我们大致看看即可。主要是关心一下二级映射函数GetFileIterator.对于
 key的话采用这个filemetadata里面的最大的key,而value采用filenumber+filesize表示.
@@ -5471,12 +4961,9 @@ key的话采用这个filemetadata里面的最大的key,而value采用filenumber+
 };
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline107" class="outline-5">
-<h5 id="orgheadline107"><span class="section-number-5">10.3.11.4</span> GetFileIterator</h5>
-<div class="outline-text-5" id="text-10-3-11-4">
+<li><a id="orgheadline107"></a>GetFileIterator<br  /><div class="outline-text-5" id="text-10-3-11-4">
 <p>
 根据上面的分析file_value就是file_number + file_size.这里我们可以知道file_number应该是全局唯一的，
 而不是在level上面唯一的。关于TableCache后面会分析。
@@ -5498,12 +4985,9 @@ key的话采用这个filemetadata里面的最大的key,而value采用filenumber+
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline108" class="outline-5">
-<h5 id="orgheadline108"><span class="section-number-5">10.3.11.5</span> FindFile</h5>
-<div class="outline-text-5" id="text-10-3-11-5">
+<li><a id="orgheadline108"></a>FindFile<br  /><div class="outline-text-5" id="text-10-3-11-5">
 <p>
 db/version_set.h 语义直接阅读注释即可.注意这里files都是排好序并且是不重叠的。按照二分法搜索largest key即可.
 </p>
@@ -5534,12 +5018,9 @@ db/version_set.h 语义直接阅读注释即可.注意这里files都是排好序
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline109" class="outline-5">
-<h5 id="orgheadline109"><span class="section-number-5">10.3.11.6</span> SomeFileOverlapsRange</h5>
-<div class="outline-text-5" id="text-10-3-11-6">
+<li><a id="orgheadline109"></a>SomeFileOverlapsRange<br  /><div class="outline-text-5" id="text-10-3-11-6">
 <p>
 db/version_set.h 判断是否有文件和某个范围[smallest,largest]相交.注意这里这里files也是按照key排序的.
 </p>
@@ -5596,12 +5077,9 @@ db/version_set.h 判断是否有文件和某个范围[smallest,largest]相交.�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline110" class="outline-5">
-<h5 id="orgheadline110"><span class="section-number-5">10.3.11.7</span> AfterFile</h5>
-<div class="outline-text-5" id="text-10-3-11-7">
+<li><a id="orgheadline110"></a>AfterFile<br  /><div class="outline-text-5" id="text-10-3-11-7">
 <p>
 判断user_key是否在这个file之后.
 </p>
@@ -5615,12 +5093,9 @@ db/version_set.h 判断是否有文件和某个范围[smallest,largest]相交.�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline111" class="outline-5">
-<h5 id="orgheadline111"><span class="section-number-5">10.3.11.8</span> BeforeFile</h5>
-<div class="outline-text-5" id="text-10-3-11-8">
+<li><a id="orgheadline111"></a>BeforeFile<br  /><div class="outline-text-5" id="text-10-3-11-8">
 <p>
 判断user_key是否在这个file之前.
 </p>
@@ -5634,12 +5109,9 @@ db/version_set.h 判断是否有文件和某个范围[smallest,largest]相交.�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline112" class="outline-5">
-<h5 id="orgheadline112"><span class="section-number-5">10.3.11.9</span> GetStats</h5>
-<div class="outline-text-5" id="text-10-3-11-9">
+<li><a id="orgheadline112"></a>GetStats<br  /><div class="outline-text-5" id="text-10-3-11-9">
 <p>
 这个结构反应的是查询到的一些附加结果可以用来指导compaction.
 </p>
@@ -5651,12 +5123,9 @@ db/version_set.h 判断是否有文件和某个范围[smallest,largest]相交.�
 };
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline113" class="outline-5">
-<h5 id="orgheadline113"><span class="section-number-5">10.3.11.10</span> NewestFirst</h5>
-<div class="outline-text-5" id="text-10-3-11-10">
+<li><a id="orgheadline113"></a>NewestFirst<br  /><div class="outline-text-5" id="text-10-3-11-10">
 <p>
 按照file_number进行排序.逆序.越迟生成的file那么是最新的。
 </p>
@@ -5667,12 +5136,9 @@ db/version_set.h 判断是否有文件和某个范围[smallest,largest]相交.�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline114" class="outline-5">
-<h5 id="orgheadline114"><span class="section-number-5">10.3.11.11</span> Get</h5>
-<div class="outline-text-5" id="text-10-3-11-11">
+<li><a id="orgheadline114"></a>Get<br  /><div class="outline-text-5" id="text-10-3-11-11">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">Status</span> <span class="org-constant">Version</span>::<span class="org-function-name">Get</span>(<span class="org-keyword">const</span> <span class="org-type">ReadOptions</span>&amp; <span class="org-variable-name">options</span>,
@@ -5775,12 +5241,9 @@ db/version_set.h 判断是否有文件和某个范围[smallest,largest]相交.�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline115" class="outline-5">
-<h5 id="orgheadline115"><span class="section-number-5">10.3.11.12</span> GetValue</h5>
-<div class="outline-text-5" id="text-10-3-11-12">
+<li><a id="orgheadline115"></a>GetValue<br  /><div class="outline-text-5" id="text-10-3-11-12">
 <p>
 GetValue根据某个iter和key判断这个key是否为想查询的key.
 </p>
@@ -5821,12 +5284,9 @@ GetValue根据某个iter和key判断这个key是否为想查询的key.
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline116" class="outline-5">
-<h5 id="orgheadline116"><span class="section-number-5">10.3.11.13</span> UpdateStats</h5>
-<div class="outline-text-5" id="text-10-3-11-13">
+<li><a id="orgheadline116"></a>UpdateStats<br  /><div class="outline-text-5" id="text-10-3-11-13">
 <p>
 根据stats来更新version内部状态.设置将要compaction文件以及对应的level是什么.
 </p>
@@ -5846,12 +5306,9 @@ GetValue根据某个iter和key判断这个key是否为想查询的key.
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline117" class="outline-5">
-<h5 id="orgheadline117"><span class="section-number-5">10.3.11.14</span> GetOverlappingInputs</h5>
-<div class="outline-text-5" id="text-10-3-11-14">
+<li><a id="orgheadline117"></a>GetOverlappingInputs<br  /><div class="outline-text-5" id="text-10-3-11-14">
 <p>
 得到某个level下面所有和[begin,end]有overlap的文件.语义不知道是否理解正确.因为代码里面有个地方没有太看懂.
 </p>
@@ -5901,12 +5358,9 @@ GetValue根据某个iter和key判断这个key是否为想查询的key.
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline118" class="outline-5">
-<h5 id="orgheadline118"><span class="section-number-5">10.3.11.15</span> OverlapInLevel</h5>
-<div class="outline-text-5" id="text-10-3-11-15">
+<li><a id="orgheadline118"></a>OverlapInLevel<br  /><div class="outline-text-5" id="text-10-3-11-15">
 <p>
 判断某个level里面是否有文件和[small,large]这个范围内容的key重叠
 </p>
@@ -5921,12 +5375,9 @@ GetValue根据某个iter和key判断这个key是否为想查询的key.
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline119" class="outline-5">
-<h5 id="orgheadline119"><span class="section-number-5">10.3.11.16</span> PickLevelForMemTableOutput</h5>
-<div class="outline-text-5" id="text-10-3-11-16">
+<li><a id="orgheadline119"></a>PickLevelForMemTableOutput<br  /><div class="outline-text-5" id="text-10-3-11-16">
 <p>
 根据[small,large]这个范畴选择某个level来作为memtable的output.这个range应该就是memtable的range.
 这个策略比较精巧。这个策略在常数部分定义注释里面给出来了。
@@ -5993,12 +5444,9 @@ int Version::PickLevelForMemTableOutput(
 }
 #+END_SRC
 </p>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline120" class="outline-5">
-<h5 id="orgheadline120"><span class="section-number-5">10.3.11.17</span> DebugString</h5>
-<div class="outline-text-5" id="text-10-3-11-17">
+<li><a id="orgheadline120"></a>DebugString<br  /><div class="outline-text-5" id="text-10-3-11-17">
 <p>
 DebugString作为Version的调试信息打印出来.我们可以稍微得到一点启发吧.尤其如果是自己调试的话.
 </p>
@@ -6031,8 +5479,7 @@ DebugString作为Version的调试信息打印出来.我们可以稍微得到一�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline142" class="outline-4">
@@ -6081,9 +5528,7 @@ db/version_set.h VersionSet用来管理不同的Version并且应该维护了一�
 </div>
 </div>
 
-<div id="outline-container-orgheadline122" class="outline-5">
-<h5 id="orgheadline122"><span class="section-number-5">10.3.12.1</span> VersionSet</h5>
-<div class="outline-text-5" id="text-10-3-12-1">
+<ol class="org-ol"><li><a id="orgheadline122"></a>VersionSet<br  /><div class="outline-text-5" id="text-10-3-12-1">
 <p>
 首先看看构造函数和析构函数.
 </p>
@@ -6119,12 +5564,9 @@ db/version_set.h VersionSet用来管理不同的Version并且应该维护了一�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline123" class="outline-5">
-<h5 id="orgheadline123"><span class="section-number-5">10.3.12.2</span> NeedsCompaction</h5>
-<div class="outline-text-5" id="text-10-3-12-2">
+<li><a id="orgheadline123"></a>NeedsCompaction<br  /><div class="outline-text-5" id="text-10-3-12-2">
 <p>
 当前versionset是否需要触发compaction操作.
 </p>
@@ -6137,12 +5579,9 @@ db/version_set.h VersionSet用来管理不同的Version并且应该维护了一�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline124" class="outline-5">
-<h5 id="orgheadline124"><span class="section-number-5">10.3.12.3</span> AppendVersion</h5>
-<div class="outline-text-5" id="text-10-3-12-3">
+<li><a id="orgheadline124"></a>AppendVersion<br  /><div class="outline-text-5" id="text-10-3-12-3">
 <p>
 添加version.非常简单修改引用计数挂载链表上.将version挂在version_set下面的话可以使得
 version_set了解到哪些文件依然是被正在使用的.
@@ -6167,12 +5606,9 @@ version_set了解到哪些文件依然是被正在使用的.
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline125" class="outline-5">
-<h5 id="orgheadline125"><span class="section-number-5">10.3.12.4</span> NumLevelFiles</h5>
-<div class="outline-text-5" id="text-10-3-12-4">
+<li><a id="orgheadline125"></a>NumLevelFiles<br  /><div class="outline-text-5" id="text-10-3-12-4">
 <p>
 得到某个level的文件数目.以current这个Version来计算的
 </p>
@@ -6185,12 +5621,9 @@ version_set了解到哪些文件依然是被正在使用的.
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline126" class="outline-5">
-<h5 id="orgheadline126"><span class="section-number-5">10.3.12.5</span> NumLevelBytes</h5>
-<div class="outline-text-5" id="text-10-3-12-5">
+<li><a id="orgheadline126"></a>NumLevelBytes<br  /><div class="outline-text-5" id="text-10-3-12-5">
 <p>
 某个level的文件大小.以current这个Version来计算的.
 </p>
@@ -6203,12 +5636,9 @@ version_set了解到哪些文件依然是被正在使用的.
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline127" class="outline-5">
-<h5 id="orgheadline127"><span class="section-number-5">10.3.12.6</span> TotalFileSize</h5>
-<div class="outline-text-5" id="text-10-3-12-6">
+<li><a id="orgheadline127"></a>TotalFileSize<br  /><div class="outline-text-5" id="text-10-3-12-6">
 <p>
 根据file meta data得到所有文件大小.非常简单因为里面有file_size.
 </p>
@@ -6223,12 +5653,9 @@ version_set了解到哪些文件依然是被正在使用的.
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline128" class="outline-5">
-<h5 id="orgheadline128"><span class="section-number-5">10.3.12.7</span> MarkFileNumberUsed</h5>
-<div class="outline-text-5" id="text-10-3-12-7">
+<li><a id="orgheadline128"></a>MarkFileNumberUsed<br  /><div class="outline-text-5" id="text-10-3-12-7">
 <p>
 标记当前使用了file_number进度.number表示已经使用的进度,所以下次分配必须+1.
 </p>
@@ -6241,12 +5668,9 @@ version_set了解到哪些文件依然是被正在使用的.
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline129" class="outline-5">
-<h5 id="orgheadline129"><span class="section-number-5">10.3.12.8</span> ApproximateOffsetOf</h5>
-<div class="outline-text-5" id="text-10-3-12-8">
+<li><a id="orgheadline129"></a>ApproximateOffsetOf<br  /><div class="outline-text-5" id="text-10-3-12-8">
 <p>
 判断这个key在数据库内部大致偏移是多少.从这个实现里面我们可以看到.对于level-0的文件并不是排序的
 对于level&gt;0的文件都是按照range进行排序的。并且这个排序是按照smallest来进行排序的。
@@ -6288,12 +5712,9 @@ version_set了解到哪些文件依然是被正在使用的.
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline130" class="outline-5">
-<h5 id="orgheadline130"><span class="section-number-5">10.3.12.9</span> AddLiveFiles</h5>
-<div class="outline-text-5" id="text-10-3-12-9">
+<li><a id="orgheadline130"></a>AddLiveFiles<br  /><div class="outline-text-5" id="text-10-3-12-9">
 <p>
 将version set里面所有version所持有的文件收集起来.非常简单:).
 </p>
@@ -6313,12 +5734,9 @@ version_set了解到哪些文件依然是被正在使用的.
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline131" class="outline-5">
-<h5 id="orgheadline131"><span class="section-number-5">10.3.12.10</span> LevelSummary</h5>
-<div class="outline-text-5" id="text-10-3-12-10">
+<li><a id="orgheadline131"></a>LevelSummary<br  /><div class="outline-text-5" id="text-10-3-12-10">
 <p>
 每层level的文件个数分别是多少.
 </p>
@@ -6340,12 +5758,9 @@ version_set了解到哪些文件依然是被正在使用的.
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline132" class="outline-5">
-<h5 id="orgheadline132"><span class="section-number-5">10.3.12.11</span> WriteSnapshot</h5>
-<div class="outline-text-5" id="text-10-3-12-11">
+<li><a id="orgheadline132"></a>WriteSnapshot<br  /><div class="outline-text-5" id="text-10-3-12-11">
 <p>
 将当前current version写入到磁盘记为log.方式是将内容copy到version edit对象里面去然后持久化.
 过程还是非常简单吧:).
@@ -6383,12 +5798,9 @@ version_set了解到哪些文件依然是被正在使用的.
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline133" class="outline-5">
-<h5 id="orgheadline133"><span class="section-number-5">10.3.12.12</span> Finalize</h5>
-<div class="outline-text-5" id="text-10-3-12-12">
+<li><a id="orgheadline133"></a>Finalize<br  /><div class="outline-text-5" id="text-10-3-12-12">
 <p>
 所谓的Finalize的含义应该是，如果我们不希望修改version这个结构之后我们应该做的事情。可能叫做Finish会更好。
 相当于针对这个version而言的话，最高一级的compaction level是什么，分数是多少.
@@ -6433,12 +5845,9 @@ version_set了解到哪些文件依然是被正在使用的.
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline134" class="outline-5">
-<h5 id="orgheadline134"><span class="section-number-5">10.3.12.13</span> Recover</h5>
-<div class="outline-text-5" id="text-10-3-12-13">
+<li><a id="orgheadline134"></a>Recover<br  /><div class="outline-text-5" id="text-10-3-12-13">
 <p>
 从db_impl.cc里面的DB::Open可以看到,这里的Recover并没有将剩余的version_edit回放完成.
 回放这个部分在LogAndApply里面完成.所以Recover可能只是恢复到以前某个状态.将当前的
@@ -6567,12 +5976,9 @@ CURRENT里面的manifest文件回放之后就得到最新的内容.然后根据�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline135" class="outline-5">
-<h5 id="orgheadline135"><span class="section-number-5">10.3.12.14</span> LogAndApply</h5>
-<div class="outline-text-5" id="text-10-3-12-14">
+<li><a id="orgheadline135"></a>LogAndApply<br  /><div class="outline-text-5" id="text-10-3-12-14">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">Status</span> <span class="org-constant">VersionSet</span>::<span class="org-function-name">LogAndApply</span>(<span class="org-type">VersionEdit</span>* <span class="org-variable-name">edit</span>, <span class="org-constant">port</span>::<span class="org-type">Mutex</span>* <span class="org-variable-name">mu</span>) {
@@ -6668,12 +6074,9 @@ CURRENT里面的manifest文件回放之后就得到最新的内容.然后根据�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline136" class="outline-5">
-<h5 id="orgheadline136"><span class="section-number-5">10.3.12.15</span> GetRange</h5>
-<div class="outline-text-5" id="text-10-3-12-15">
+<li><a id="orgheadline136"></a>GetRange<br  /><div class="outline-text-5" id="text-10-3-12-15">
 <p>
 得到input files里面的最大和最小key.
 </p>
@@ -6705,12 +6108,9 @@ CURRENT里面的manifest文件回放之后就得到最新的内容.然后根据�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline137" class="outline-5">
-<h5 id="orgheadline137"><span class="section-number-5">10.3.12.16</span> PickCompaction</h5>
-<div class="outline-text-5" id="text-10-3-12-16">
+<li><a id="orgheadline137"></a>PickCompaction<br  /><div class="outline-text-5" id="text-10-3-12-16">
 <p>
 选择一个Compaction来进行操作.对于选择Compaction应该比较具有策略性的。然后丢给DB去执行这个Compaction操作.
 PickCompaction和CompactRange都是compaction行为.不过PickCompaction是自动触发的，而CompactRange
@@ -6778,12 +6178,9 @@ PickCompaction和CompactRange都是compaction行为.不过PickCompaction是自�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline138" class="outline-5">
-<h5 id="orgheadline138"><span class="section-number-5">10.3.12.17</span> CompactRange</h5>
-<div class="outline-text-5" id="text-10-3-12-17">
+<li><a id="orgheadline138"></a>CompactRange<br  /><div class="outline-text-5" id="text-10-3-12-17">
 <p>
 DBImpl里面提供CompactRange打包成为一个Manual Compaction的请求提交到后端.然后判断
 如果为Manual Compaction的话那么实际调用的还是VersionSet::CompactRange这个方法产生一个
@@ -6824,12 +6221,9 @@ Compaction对象真正进行执行.
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline139" class="outline-5">
-<h5 id="orgheadline139"><span class="section-number-5">10.3.12.18</span> GetRange2</h5>
-<div class="outline-text-5" id="text-10-3-12-18">
+<li><a id="orgheadline139"></a>GetRange2<br  /><div class="outline-text-5" id="text-10-3-12-18">
 <p>
 得到input1和input2两个文件compaction之后的最小和最大key.
 </p>
@@ -6848,12 +6242,9 @@ Compaction对象真正进行执行.
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline140" class="outline-5">
-<h5 id="orgheadline140"><span class="section-number-5">10.3.12.19</span> SetupOtherInputs</h5>
-<div class="outline-text-5" id="text-10-3-12-19">
+<li><a id="orgheadline140"></a>SetupOtherInputs<br  /><div class="outline-text-5" id="text-10-3-12-19">
 <p>
 将compaction的另外一层内容(input files)补齐.
 </p>
@@ -6928,12 +6319,9 @@ Compaction对象真正进行执行.
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline141" class="outline-5">
-<h5 id="orgheadline141"><span class="section-number-5">10.3.12.20</span> MakeInputIterator</h5>
-<div class="outline-text-5" id="text-10-3-12-20">
+<li><a id="orgheadline141"></a>MakeInputIterator<br  /><div class="outline-text-5" id="text-10-3-12-20">
 <p>
 针对Compaction而言我们可能需要读取多个文件设计的遍历器.底层应该是MergeIterator实现.
 </p>
@@ -6976,8 +6364,7 @@ Compaction对象真正进行执行.
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline147" class="outline-4">
@@ -7024,9 +6411,7 @@ db/version_set.cc VersoionSetBuilder存在作用就是为了能够高效地做ve
 </div>
 </div>
 
-<div id="outline-container-orgheadline143" class="outline-5">
-<h5 id="orgheadline143"><span class="section-number-5">10.3.13.1</span> VersionSetBuilder</h5>
-<div class="outline-text-5" id="text-10-3-13-1">
+<ol class="org-ol"><li><a id="orgheadline143"></a>VersionSetBuilder<br  /><div class="outline-text-5" id="text-10-3-13-1">
 <p>
 首先看看构造和析构函数.不是非常麻烦.对于析构函数的话将所有的add files refs&#x2013;.
 </p>
@@ -7068,12 +6453,9 @@ db/version_set.cc VersoionSetBuilder存在作用就是为了能够高效地做ve
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline144" class="outline-5">
-<h5 id="orgheadline144"><span class="section-number-5">10.3.13.2</span> Apply</h5>
-<div class="outline-text-5" id="text-10-3-13-2">
+<li><a id="orgheadline144"></a>Apply<br  /><div class="outline-text-5" id="text-10-3-13-2">
 <p>
 将edit这个log记录起来.可能会被调用多次.
 </p>
@@ -7127,12 +6509,9 @@ db/version_set.cc VersoionSetBuilder存在作用就是为了能够高效地做ve
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline145" class="outline-5">
-<h5 id="orgheadline145"><span class="section-number-5">10.3.13.3</span> MaybeAddFile</h5>
-<div class="outline-text-5" id="text-10-3-13-3">
+<li><a id="orgheadline145"></a>MaybeAddFile<br  /><div class="outline-text-5" id="text-10-3-13-3">
 <p>
 将f添加到新增加到对应level的文件列表尾部.需要确保没有overlap并且没有存在于标记删除文件集合中.
 </p>
@@ -7154,12 +6533,9 @@ db/version_set.cc VersoionSetBuilder存在作用就是为了能够高效地做ve
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline146" class="outline-5">
-<h5 id="orgheadline146"><span class="section-number-5">10.3.13.4</span> SaveTo</h5>
-<div class="outline-text-5" id="text-10-3-13-4">
+<li><a id="orgheadline146"></a>SaveTo<br  /><div class="outline-text-5" id="text-10-3-13-4">
 <p>
 当前通过edit修改后的状态保存到新的version里面.我们来仔细看看这个过程.将之前edit回放的内容
 保存在v这个version里面来.典型使用方法非常简单.
@@ -7207,8 +6583,7 @@ db/version_set.cc VersoionSetBuilder存在作用就是为了能够高效地做ve
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline156" class="outline-4">
@@ -7253,9 +6628,7 @@ db/version_set.h Compaction包含的是进行compaction操作的信息.针对com
 </div>
 </div>
 
-<div id="outline-container-orgheadline148" class="outline-5">
-<h5 id="orgheadline148"><span class="section-number-5">10.3.14.1</span> Compaction</h5>
-<div class="outline-text-5" id="text-10-3-14-1">
+<ol class="org-ol"><li><a id="orgheadline148"></a>Compaction<br  /><div class="outline-text-5" id="text-10-3-14-1">
 <p>
 构造函数过程非常简单.析构函数的话也只是将input_version_修改引用计数。
 </p>
@@ -7280,12 +6653,9 @@ db/version_set.h Compaction包含的是进行compaction操作的信息.针对com
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline149" class="outline-5">
-<h5 id="orgheadline149"><span class="section-number-5">10.3.14.2</span> MaxFileSizeForLevel</h5>
-<div class="outline-text-5" id="text-10-3-14-2">
+<li><a id="orgheadline149"></a>MaxFileSizeForLevel<br  /><div class="outline-text-5" id="text-10-3-14-2">
 <p>
 每一层单个文件大小最大是多少.现在实现非常简单是一个固定值.
 </p>
@@ -7297,12 +6667,9 @@ db/version_set.h Compaction包含的是进行compaction操作的信息.针对com
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline150" class="outline-5">
-<h5 id="orgheadline150"><span class="section-number-5">10.3.14.3</span> MaxBytesForLevel</h5>
-<div class="outline-text-5" id="text-10-3-14-3">
+<li><a id="orgheadline150"></a>MaxBytesForLevel<br  /><div class="outline-text-5" id="text-10-3-14-3">
 <p>
 每一层文件所占用的字节数上限是多少.level0,1是10MB.以后每上一层*10.
 </p>
@@ -7320,12 +6687,9 @@ db/version_set.h Compaction包含的是进行compaction操作的信息.针对com
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline151" class="outline-5">
-<h5 id="orgheadline151"><span class="section-number-5">10.3.14.4</span> IsTrivialMove</h5>
-<div class="outline-text-5" id="text-10-3-14-4">
+<li><a id="orgheadline151"></a>IsTrivialMove<br  /><div class="outline-text-5" id="text-10-3-14-4">
 <p>
 这个compaction是否为简单的移动.需要满足3个条件
 </p>
@@ -7342,12 +6706,9 @@ db/version_set.h Compaction包含的是进行compaction操作的信息.针对com
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline152" class="outline-5">
-<h5 id="orgheadline152"><span class="section-number-5">10.3.14.5</span> AddInputDeletions</h5>
-<div class="outline-text-5" id="text-10-3-14-5">
+<li><a id="orgheadline152"></a>AddInputDeletions<br  /><div class="outline-text-5" id="text-10-3-14-5">
 <p>
 通知这次操作做了文件的删除.将这些可以删除的文件填写到edit里面.做好compaction之后的话，
 那么inputs_里面的文件基本上就没有用途就可以被删除了。
@@ -7363,12 +6724,9 @@ db/version_set.h Compaction包含的是进行compaction操作的信息.针对com
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline153" class="outline-5">
-<h5 id="orgheadline153"><span class="section-number-5">10.3.14.6</span> IsBaseLevelForKey</h5>
-<div class="outline-text-5" id="text-10-3-14-6">
+<li><a id="orgheadline153"></a>IsBaseLevelForKey<br  /><div class="outline-text-5" id="text-10-3-14-6">
 <p>
 在db_impl.cc里面的DoCompactionWork里面调用了.具体策略实现没有太仔细分析.判断某个key在高层是否还存在.
 </p>
@@ -7396,12 +6754,9 @@ db/version_set.h Compaction包含的是进行compaction操作的信息.针对com
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline154" class="outline-5">
-<h5 id="orgheadline154"><span class="section-number-5">10.3.14.7</span> ShouldStopBefore</h5>
-<div class="outline-text-5" id="text-10-3-14-7">
+<li><a id="orgheadline154"></a>ShouldStopBefore<br  /><div class="outline-text-5" id="text-10-3-14-7">
 <p>
 在db_impl.cc里面的DoCompactionWork里面调用了.作用是判断这个key的话是否应该停止然后
 重新开辟一个新的文件用于compaction的输出.这是一个策略,大致应该是希望这个key如果
@@ -7432,12 +6787,9 @@ db/version_set.h Compaction包含的是进行compaction操作的信息.针对com
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline155" class="outline-5">
-<h5 id="orgheadline155"><span class="section-number-5">10.3.14.8</span> ReleaseInputs</h5>
-<div class="outline-text-5" id="text-10-3-14-8">
+<li><a id="orgheadline155"></a>ReleaseInputs<br  /><div class="outline-text-5" id="text-10-3-14-8">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-constant">Compaction</span>::<span class="org-function-name">ReleaseInputs</span>() {
@@ -7448,8 +6800,7 @@ db/version_set.h Compaction包含的是进行compaction操作的信息.针对com
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline157" class="outline-4">
@@ -7540,9 +6891,7 @@ Version造成了哪些变动，比如增加或者是删除啦哪些文件，下�
 </div>
 </div>
 
-<div id="outline-container-orgheadline158" class="outline-5">
-<h5 id="orgheadline158"><span class="section-number-5">10.3.16.1</span> SetCompactPoint</h5>
-<div class="outline-text-5" id="text-10-3-16-1">
+<ol class="org-ol"><li><a id="orgheadline158"></a>SetCompactPoint<br  /><div class="outline-text-5" id="text-10-3-16-1">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-function-name">SetCompactPointer</span>(<span class="org-type">int</span> <span class="org-variable-name">level</span>, <span class="org-keyword">const</span> <span class="org-type">InternalKey</span>&amp; <span class="org-variable-name">key</span>) {
@@ -7550,12 +6899,9 @@ Version造成了哪些变动，比如增加或者是删除啦哪些文件，下�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline159" class="outline-5">
-<h5 id="orgheadline159"><span class="section-number-5">10.3.16.2</span> AddFile</h5>
-<div class="outline-text-5" id="text-10-3-16-2">
+<li><a id="orgheadline159"></a>AddFile<br  /><div class="outline-text-5" id="text-10-3-16-2">
 <p>
 相当于告诉db系统新增加了这么一个文件以及这个文件里面的信息是什么.这样可以方便db操作.
 </p>
@@ -7574,12 +6920,9 @@ Version造成了哪些变动，比如增加或者是删除啦哪些文件，下�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline160" class="outline-5">
-<h5 id="orgheadline160"><span class="section-number-5">10.3.16.3</span> DeleteFile</h5>
-<div class="outline-text-5" id="text-10-3-16-3">
+<li><a id="orgheadline160"></a>DeleteFile<br  /><div class="outline-text-5" id="text-10-3-16-3">
 <p>
 告诉db系统删除了这个文件.删除并没有操作new_files数组.而是放进了一个set.
 </p>
@@ -7591,8 +6934,7 @@ Version造成了哪些变动，比如增加或者是删除啦哪些文件，下�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline162" class="outline-4">
@@ -7948,9 +7290,7 @@ util/env_posix.cc PosixEnv是Env接口的实现。PosixEnv的大部分实现都�
 </div>
 </div>
 
-<div id="outline-container-orgheadline165" class="outline-5">
-<h5 id="orgheadline165"><span class="section-number-5">10.4.1.1</span> LockOrUnlock</h5>
-<div class="outline-text-5" id="text-10-4-1-1">
+<ol class="org-ol"><li><a id="orgheadline165"></a>LockOrUnlock<br  /><div class="outline-text-5" id="text-10-4-1-1">
 <p>
 将fd设置成写锁.lock表示是加锁还是解锁.这里flock不需要保留空间只是传引用即可,对于内部调用仅仅是修改了fd的一个标记吧.
 </p>
@@ -7968,12 +7308,9 @@ util/env_posix.cc PosixEnv是Env接口的实现。PosixEnv的大部分实现都�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline166" class="outline-5">
-<h5 id="orgheadline166"><span class="section-number-5">10.4.1.2</span> Schedule</h5>
-<div class="outline-text-5" id="text-10-4-1-2">
+<li><a id="orgheadline166"></a>Schedule<br  /><div class="outline-text-5" id="text-10-4-1-2">
 <p>
 Schedule语义就是将一个function+arg丢到background里面运行.background线程是惰性初始化的.
 注意background只有一个执行线程，需要考虑工作是否会阻塞住。
@@ -8035,12 +7372,9 @@ Schedule语义就是将一个function+arg丢到background里面运行.background
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline167" class="outline-5">
-<h5 id="orgheadline167"><span class="section-number-5">10.4.1.3</span> StartThread</h5>
-<div class="outline-text-5" id="text-10-4-1-3">
+<li><a id="orgheadline167"></a>StartThread<br  /><div class="outline-text-5" id="text-10-4-1-3">
 <p>
 启动一个线程.但是似乎有限制没有能力进行join.
 </p>
@@ -8056,12 +7390,9 @@ Schedule语义就是将一个function+arg丢到background里面运行.background
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline168" class="outline-5">
-<h5 id="orgheadline168"><span class="section-number-5">10.4.1.4</span> Default</h5>
-<div class="outline-text-5" id="text-10-4-1-4">
+<li><a id="orgheadline168"></a>Default<br  /><div class="outline-text-5" id="text-10-4-1-4">
 <p>
 Default是为了获得Env的一个实例.为了防止多个线程产生多个Env实例.使用pthread_once来产生.
 </p>
@@ -8077,8 +7408,7 @@ Default是为了获得Env的一个实例.为了防止多个线程产生多个Env
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline170" class="outline-4">
@@ -8348,9 +7678,7 @@ util/env_posix.cc PosixMmapFile是为了实现WritableFile的.内部使用mmap�
 </div>
 </div>
 
-<div id="outline-container-orgheadline174" class="outline-5">
-<h5 id="orgheadline174"><span class="section-number-5">10.4.6.1</span> Roundup</h5>
-<div class="outline-text-5" id="text-10-4-6-1">
+<ol class="org-ol"><li><a id="orgheadline174"></a>Roundup<br  /><div class="outline-text-5" id="text-10-4-6-1">
 <p>
 Roundup非常简单.使用时候就是希望mapsize作为pagesize的整数倍存在.
 </p>
@@ -8362,12 +7690,9 @@ Roundup非常简单.使用时候就是希望mapsize作为pagesize的整数倍存
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline175" class="outline-5">
-<h5 id="orgheadline175"><span class="section-number-5">10.4.6.2</span> TruncateToPageBoundar</h5>
-<div class="outline-text-5" id="text-10-4-6-2">
+<li><a id="orgheadline175"></a>TruncateToPageBoundar<br  /><div class="outline-text-5" id="text-10-4-6-2">
 <p>
 我们需要记住这个函数的语境，是将s的长度截断到pagesize整数倍，这样可以让msync刷新确保正确。
 </p>
@@ -8380,12 +7705,9 @@ Roundup非常简单.使用时候就是希望mapsize作为pagesize的整数倍存
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline176" class="outline-5">
-<h5 id="orgheadline176"><span class="section-number-5">10.4.6.3</span> UnmapCurrentRegion</h5>
-<div class="outline-text-5" id="text-10-4-6-3">
+<li><a id="orgheadline176"></a>UnmapCurrentRegion<br  /><div class="outline-text-5" id="text-10-4-6-3">
 <p>
 解除当前的内存映射。
 </p>
@@ -8417,12 +7739,9 @@ Roundup非常简单.使用时候就是希望mapsize作为pagesize的整数倍存
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline177" class="outline-5">
-<h5 id="orgheadline177"><span class="section-number-5">10.4.6.4</span> MapNewRegion</h5>
-<div class="outline-text-5" id="text-10-4-6-4">
+<li><a id="orgheadline177"></a>MapNewRegion<br  /><div class="outline-text-5" id="text-10-4-6-4">
 <p>
 使用mmap分配一块新的内存然后用于后续的写文件
 </p>
@@ -8447,8 +7766,7 @@ Roundup非常简单.使用时候就是希望mapsize作为pagesize的整数倍存
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li></ol>
 </div>
 </div>
 
@@ -8552,9 +7870,7 @@ util/cache.cc LRUCache实现就是按照LRU来实现的.LRUCache每一个item是
 </p>
 </div>
 
-<div id="outline-container-orgheadline181" class="outline-5">
-<h5 id="orgheadline181"><span class="section-number-5">10.5.2.1</span> Insert</h5>
-<div class="outline-text-5" id="text-10-5-2-1">
+<ol class="org-ol"><li><a id="orgheadline181"></a>Insert<br  /><div class="outline-text-5" id="text-10-5-2-1">
 <p>
 Insert的工作就是创建一个LRUHandle对象加入hashtable以及LRU队列里面.注意这里的引用计数
 </p>
@@ -8594,12 +7910,9 @@ Insert的工作就是创建一个LRUHandle对象加入hashtable以及LRU队列�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline182" class="outline-5">
-<h5 id="orgheadline182"><span class="section-number-5">10.5.2.2</span> Lookup</h5>
-<div class="outline-text-5" id="text-10-5-2-2">
+<li><a id="orgheadline182"></a>Lookup<br  /><div class="outline-text-5" id="text-10-5-2-2">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-constant">Cache</span>::<span class="org-type">Handle</span>* <span class="org-constant">LRUCache</span>::<span class="org-function-name">Lookup</span>(<span class="org-keyword">const</span> <span class="org-type">Slice</span>&amp; <span class="org-variable-name">key</span>, <span class="org-type">uint32_t</span> <span class="org-variable-name">hash</span>) {
@@ -8614,12 +7927,9 @@ Insert的工作就是创建一个LRUHandle对象加入hashtable以及LRU队列�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline183" class="outline-5">
-<h5 id="orgheadline183"><span class="section-number-5">10.5.2.3</span> Release</h5>
-<div class="outline-text-5" id="text-10-5-2-3">
+<li><a id="orgheadline183"></a>Release<br  /><div class="outline-text-5" id="text-10-5-2-3">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-constant">LRUCache</span>::<span class="org-function-name">Release</span>(<span class="org-constant">Cache</span>::<span class="org-type">Handle</span>* <span class="org-variable-name">handle</span>) {
@@ -8628,12 +7938,9 @@ Insert的工作就是创建一个LRUHandle对象加入hashtable以及LRU队列�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline184" class="outline-5">
-<h5 id="orgheadline184"><span class="section-number-5">10.5.2.4</span> Erase</h5>
-<div class="outline-text-5" id="text-10-5-2-4">
+<li><a id="orgheadline184"></a>Erase<br  /><div class="outline-text-5" id="text-10-5-2-4">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-constant">LRUCache</span>::<span class="org-function-name">Erase</span>(<span class="org-keyword">const</span> <span class="org-type">Slice</span>&amp; <span class="org-variable-name">key</span>, <span class="org-type">uint32_t</span> <span class="org-variable-name">hash</span>) {
@@ -8646,8 +7953,7 @@ Insert的工作就是创建一个LRUHandle对象加入hashtable以及LRU队列�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline186" class="outline-4">
@@ -8751,9 +8057,7 @@ write_batch_internal.h里面是一些write_batch里面可能使用到的静态�
 </p>
 </div>
 
-<div id="outline-container-orgheadline189" class="outline-5">
-<h5 id="orgheadline189"><span class="section-number-5">10.6.1.1</span> Count</h5>
-<div class="outline-text-5" id="text-10-6-1-1">
+<ol class="org-ol"><li><a id="orgheadline189"></a>Count<br  /><div class="outline-text-5" id="text-10-6-1-1">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">int</span> <span class="org-constant">WriteBatchInternal</span>::<span class="org-function-name">Count</span>(<span class="org-keyword">const</span> <span class="org-type">WriteBatch</span>* <span class="org-variable-name">b</span>) {
@@ -8765,12 +8069,9 @@ write_batch_internal.h里面是一些write_batch里面可能使用到的静态�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline190" class="outline-5">
-<h5 id="orgheadline190"><span class="section-number-5">10.6.1.2</span> Sequence</h5>
-<div class="outline-text-5" id="text-10-6-1-2">
+<li><a id="orgheadline190"></a>Sequence<br  /><div class="outline-text-5" id="text-10-6-1-2">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">SequenceNumber</span> <span class="org-constant">WriteBatchInternal</span>::<span class="org-function-name">Sequence</span>(<span class="org-keyword">const</span> <span class="org-type">WriteBatch</span>* <span class="org-variable-name">b</span>) {
@@ -8782,12 +8083,9 @@ write_batch_internal.h里面是一些write_batch里面可能使用到的静态�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline191" class="outline-5">
-<h5 id="orgheadline191"><span class="section-number-5">10.6.1.3</span> Contents</h5>
-<div class="outline-text-5" id="text-10-6-1-3">
+<li><a id="orgheadline191"></a>Contents<br  /><div class="outline-text-5" id="text-10-6-1-3">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-comment-delimiter">// </span><span class="org-comment">&#30452;&#25509;&#35774;&#32622;WriteBatch&#20869;&#23481;.&#19981;&#36807;&#25105;&#35273;&#24471;&#24212;&#35813;&#27809;&#26377;&#22826;&#22810;&#29992;&#36884;&#21543;.</span>
@@ -8797,12 +8095,9 @@ write_batch_internal.h里面是一些write_batch里面可能使用到的静态�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline192" class="outline-5">
-<h5 id="orgheadline192"><span class="section-number-5">10.6.1.4</span> Clear</h5>
-<div class="outline-text-5" id="text-10-6-1-4">
+<li><a id="orgheadline192"></a>Clear<br  /><div class="outline-text-5" id="text-10-6-1-4">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-constant">WriteBatch</span>::<span class="org-function-name">Clear</span>() {
@@ -8811,12 +8106,9 @@ write_batch_internal.h里面是一些write_batch里面可能使用到的静态�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline193" class="outline-5">
-<h5 id="orgheadline193"><span class="section-number-5">10.6.1.5</span> Put</h5>
-<div class="outline-text-5" id="text-10-6-1-5">
+<li><a id="orgheadline193"></a>Put<br  /><div class="outline-text-5" id="text-10-6-1-5">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-constant">WriteBatch</span>::<span class="org-function-name">Put</span>(<span class="org-keyword">const</span> <span class="org-type">Slice</span>&amp; <span class="org-variable-name">key</span>, <span class="org-keyword">const</span> <span class="org-type">Slice</span>&amp; <span class="org-variable-name">value</span>) {
@@ -8827,12 +8119,9 @@ write_batch_internal.h里面是一些write_batch里面可能使用到的静态�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline194" class="outline-5">
-<h5 id="orgheadline194"><span class="section-number-5">10.6.1.6</span> Delete</h5>
-<div class="outline-text-5" id="text-10-6-1-6">
+<li><a id="orgheadline194"></a>Delete<br  /><div class="outline-text-5" id="text-10-6-1-6">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-constant">WriteBatch</span>::<span class="org-function-name">Delete</span>(<span class="org-keyword">const</span> <span class="org-type">Slice</span>&amp; <span class="org-variable-name">key</span>) {
@@ -8842,12 +8131,9 @@ write_batch_internal.h里面是一些write_batch里面可能使用到的静态�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline195" class="outline-5">
-<h5 id="orgheadline195"><span class="section-number-5">10.6.1.7</span> InsertInto</h5>
-<div class="outline-text-5" id="text-10-6-1-7">
+<li><a id="orgheadline195"></a>InsertInto<br  /><div class="outline-text-5" id="text-10-6-1-7">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-comment-delimiter">// </span><span class="org-comment">&#23558;WriteBatch&#20869;&#23481;&#20840;&#37096;&#25554;&#20837;&#21040;MemTable&#37324;&#38754;&#21435;.&#35843;&#29992;Iterate&#25509;&#21475;.</span>
@@ -8861,12 +8147,9 @@ write_batch_internal.h里面是一些write_batch里面可能使用到的静态�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline196" class="outline-5">
-<h5 id="orgheadline196"><span class="section-number-5">10.6.1.8</span> Iterate</h5>
-<div class="outline-text-5" id="text-10-6-1-8">
+<li><a id="orgheadline196"></a>Iterate<br  /><div class="outline-text-5" id="text-10-6-1-8">
 <p>
 遍历内容存放到handler对象里面.要求handler有Put和Delete实现.这个实现在后面MemTableInserter有.
 </p>
@@ -8915,8 +8198,7 @@ write_batch_internal.h里面是一些write_batch里面可能使用到的静态�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline202" class="outline-4">
@@ -8932,9 +8214,7 @@ db/memtable.cc MemTable应该算是leveldb里面的table一种.只不过所有�
 </p>
 </div>
 
-<div id="outline-container-orgheadline198" class="outline-5">
-<h5 id="orgheadline198"><span class="section-number-5">10.6.2.1</span> MemTable</h5>
-<div class="outline-text-5" id="text-10-6-2-1">
+<ol class="org-ol"><li><a id="orgheadline198"></a>MemTable<br  /><div class="outline-text-5" id="text-10-6-2-1">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">class</span> <span class="org-type">MemTable</span> {
@@ -9003,12 +8283,9 @@ db/memtable.cc MemTable应该算是leveldb里面的table一种.只不过所有�
 };
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline199" class="outline-5">
-<h5 id="orgheadline199"><span class="section-number-5">10.6.2.2</span> Compare</h5>
-<div class="outline-text-5" id="text-10-6-2-2">
+<li><a id="orgheadline199"></a>Compare<br  /><div class="outline-text-5" id="text-10-6-2-2">
 <p>
 这里KeyComparator的话因为考虑到key是length-prefixed的.底层使用InternalKeyComparator处理的就是
 后面我们会看看InternalKeyComparator的实现.
@@ -9025,12 +8302,9 @@ db/memtable.cc MemTable应该算是leveldb里面的table一种.只不过所有�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline200" class="outline-5">
-<h5 id="orgheadline200"><span class="section-number-5">10.6.2.3</span> Add</h5>
-<div class="outline-text-5" id="text-10-6-2-3">
+<li><a id="orgheadline200"></a>Add<br  /><div class="outline-text-5" id="text-10-6-2-3">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-constant">MemTable</span>::<span class="org-function-name">Add</span>(<span class="org-type">SequenceNumber</span> <span class="org-variable-name">s</span>, <span class="org-type">ValueType</span> <span class="org-variable-name">type</span>,
@@ -9061,12 +8335,9 @@ db/memtable.cc MemTable应该算是leveldb里面的table一种.只不过所有�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline201" class="outline-5">
-<h5 id="orgheadline201"><span class="section-number-5">10.6.2.4</span> Get</h5>
-<div class="outline-text-5" id="text-10-6-2-4">
+<li><a id="orgheadline201"></a>Get<br  /><div class="outline-text-5" id="text-10-6-2-4">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-comment-delimiter">// </span><span class="org-comment">&#36825;&#37324;&#20351;&#29992;&#36845;&#20195;&#22120;&#26597;&#25214;&#23545;&#24212;&#30340;&#20869;&#23481;.&#26684;&#24335;&#30340;&#35805;&#21487;&#20197;&#21442;&#32771;Add&#30340;&#37324;&#38754;&#30340;&#23454;&#29616;</span>
@@ -9110,8 +8381,7 @@ db/memtable.cc MemTable应该算是leveldb里面的table一种.只不过所有�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline203" class="outline-4">
@@ -9331,9 +8601,7 @@ db/log_writer.h db log writer.这里我们需要结合前面的LogFormatter一�
 </div>
 </div>
 
-<div id="outline-container-orgheadline207" class="outline-5">
-<h5 id="orgheadline207"><span class="section-number-5">10.7.2.1</span> Writer</h5>
-<div class="outline-text-5" id="text-10-7-2-1">
+<ol class="org-ol"><li><a id="orgheadline207"></a>Writer<br  /><div class="outline-text-5" id="text-10-7-2-1">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-constant">Writer</span>::<span class="org-function-name">Writer</span>(<span class="org-type">WritableFile</span>* <span class="org-variable-name">dest</span>)
@@ -9346,12 +8614,9 @@ db/log_writer.h db log writer.这里我们需要结合前面的LogFormatter一�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline208" class="outline-5">
-<h5 id="orgheadline208"><span class="section-number-5">10.7.2.2</span> AddRecord</h5>
-<div class="outline-text-5" id="text-10-7-2-2">
+<li><a id="orgheadline208"></a>AddRecord<br  /><div class="outline-text-5" id="text-10-7-2-2">
 <p>
 我们这里看看每条Log到底是怎么写入的.
 </p>
@@ -9408,12 +8673,9 @@ db/log_writer.h db log writer.这里我们需要结合前面的LogFormatter一�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline209" class="outline-5">
-<h5 id="orgheadline209"><span class="section-number-5">10.7.2.3</span> EmitPhysicalRecord</h5>
-<div class="outline-text-5" id="text-10-7-2-3">
+<li><a id="orgheadline209"></a>EmitPhysicalRecord<br  /><div class="outline-text-5" id="text-10-7-2-3">
 <p>
 我们在上面AddRecord里面看到了调用EmitPhysicalRecord.我们这里看看实现.参考在LogFormatter里面的注释.
 </p>
@@ -9448,8 +8710,7 @@ db/log_writer.h db log writer.这里我们需要结合前面的LogFormatter一�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline218" class="outline-4">
@@ -9546,9 +8807,7 @@ db/log_reader.h db log reader.这里我们需要结合前面的LogReader以及Lo
 </div>
 </div>
 
-<div id="outline-container-orgheadline211" class="outline-5">
-<h5 id="orgheadline211"><span class="section-number-5">10.7.3.1</span> Reader</h5>
-<div class="outline-text-5" id="text-10-7-3-1">
+<ol class="org-ol"><li><a id="orgheadline211"></a>Reader<br  /><div class="outline-text-5" id="text-10-7-3-1">
 <p>
 构造函数非常简单，注意这里开辟的backing_store_，可以猜想到这个backing_store是读取block内容临时开辟.
 对于这些字段的含义可能第一眼看上去不太明白，这个分析代码应该可以看到每个字段的含义。
@@ -9569,12 +8828,9 @@ db/log_reader.h db log reader.这里我们需要结合前面的LogReader以及Lo
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline212" class="outline-5">
-<h5 id="orgheadline212"><span class="section-number-5">10.7.3.2</span> ReadPhysicalRecord</h5>
-<div class="outline-text-5" id="text-10-7-3-2">
+<li><a id="orgheadline212"></a>ReadPhysicalRecord<br  /><div class="outline-text-5" id="text-10-7-3-2">
 <p>
 从文件里面读取一个物理块大小出来kBlockSize.并且解析内容存放在bakcing_store_里面，同时返回type.
 这里很多细节都没有仔细看,只是理解大致的意思.
@@ -9670,12 +8926,9 @@ db/log_reader.h db log reader.这里我们需要结合前面的LogReader以及Lo
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline213" class="outline-5">
-<h5 id="orgheadline213"><span class="section-number-5">10.7.3.3</span> ReadRecord</h5>
-<div class="outline-text-5" id="text-10-7-3-3">
+<li><a id="orgheadline213"></a>ReadRecord<br  /><div class="outline-text-5" id="text-10-7-3-3">
 <p>
 ReadRecord读取的是一条逻辑记录.底层调用ReadPhysicalRecord将多条物理记录结合起来.实话说里面具体逻辑没有看懂，
 但是大致意思算是明白了。对于FullType来说的话record里面使用backing_store内存，而对于First/Middle/Last来说的话
@@ -9791,12 +9044,9 @@ ReadRecord读取的是一条逻辑记录.底层调用ReadPhysicalRecord将多条
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline214" class="outline-5">
-<h5 id="orgheadline214"><span class="section-number-5">10.7.3.4</span> SkipToInitialBlock</h5>
-<div class="outline-text-5" id="text-10-7-3-4">
+<li><a id="orgheadline214"></a>SkipToInitialBlock<br  /><div class="outline-text-5" id="text-10-7-3-4">
 <p>
 跳过开头的部分.实际上只是跳过按照kBlockSize整数块部分。这个部分不需要用户主动调用.在ReadRecord里面调用.
 </p>
@@ -9827,12 +9077,9 @@ ReadRecord读取的是一条逻辑记录.底层调用ReadPhysicalRecord将多条
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline215" class="outline-5">
-<h5 id="orgheadline215"><span class="section-number-5">10.7.3.5</span> ReportDrop</h5>
-<div class="outline-text-5" id="text-10-7-3-5">
+<li><a id="orgheadline215"></a>ReportDrop<br  /><div class="outline-text-5" id="text-10-7-3-5">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-constant">Reader</span>::<span class="org-function-name">ReportDrop</span>(<span class="org-type">size_t</span> <span class="org-variable-name">bytes</span>, <span class="org-keyword">const</span> <span class="org-type">Status</span>&amp; <span class="org-variable-name">reason</span>) {
@@ -9844,12 +9091,9 @@ ReadRecord读取的是一条逻辑记录.底层调用ReadPhysicalRecord将多条
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline216" class="outline-5">
-<h5 id="orgheadline216"><span class="section-number-5">10.7.3.6</span> ReportCorruption</h5>
-<div class="outline-text-5" id="text-10-7-3-6">
+<li><a id="orgheadline216"></a>ReportCorruption<br  /><div class="outline-text-5" id="text-10-7-3-6">
 <p>
 这个过程非常简单就是调用ReportDrop.然后使用Status::Corruption封装.
 </p>
@@ -9860,12 +9104,9 @@ ReadRecord读取的是一条逻辑记录.底层调用ReadPhysicalRecord将多条
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline217" class="outline-5">
-<h5 id="orgheadline217"><span class="section-number-5">10.7.3.7</span> LastRecordOffset</h5>
-<div class="outline-text-5" id="text-10-7-3-7">
+<li><a id="orgheadline217"></a>LastRecordOffset<br  /><div class="outline-text-5" id="text-10-7-3-7">
 <p>
 上次调用ReadRecord之后的文件偏移是多少
 </p>
@@ -9876,8 +9117,7 @@ ReadRecord读取的是一条逻辑记录.底层调用ReadPhysicalRecord将多条
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li></ol>
 </div>
 </div>
 
@@ -10084,9 +9324,7 @@ db/table_cache.cc TableCache的工作非常简单，就是针对Table对象以�
 </div>
 </div>
 
-<div id="outline-container-orgheadline222" class="outline-5">
-<h5 id="orgheadline222"><span class="section-number-5">10.8.3.1</span> TableCache</h5>
-<div class="outline-text-5" id="text-10-8-3-1">
+<ol class="org-ol"><li><a id="orgheadline222"></a>TableCache<br  /><div class="outline-text-5" id="text-10-8-3-1">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-constant">TableCache</span>::<span class="org-function-name">TableCache</span>(<span class="org-keyword">const</span> <span class="org-constant">std</span>::<span class="org-type">string</span>&amp; <span class="org-variable-name">dbname</span>,
@@ -10104,12 +9342,9 @@ db/table_cache.cc TableCache的工作非常简单，就是针对Table对象以�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline223" class="outline-5">
-<h5 id="orgheadline223"><span class="section-number-5">10.8.3.2</span> Evict</h5>
-<div class="outline-text-5" id="text-10-8-3-2">
+<li><a id="orgheadline223"></a>Evict<br  /><div class="outline-text-5" id="text-10-8-3-2">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-constant">TableCache</span>::<span class="org-function-name">Evict</span>(<span class="org-type">uint64_t</span> <span class="org-variable-name">file_number</span>) {
@@ -10119,12 +9354,9 @@ db/table_cache.cc TableCache的工作非常简单，就是针对Table对象以�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline224" class="outline-5">
-<h5 id="orgheadline224"><span class="section-number-5">10.8.3.3</span> NewIterator</h5>
-<div class="outline-text-5" id="text-10-8-3-3">
+<li><a id="orgheadline224"></a>NewIterator<br  /><div class="outline-text-5" id="text-10-8-3-3">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">struct</span> <span class="org-type">TableAndFile</span> {
@@ -10192,8 +9424,7 @@ db/table_cache.cc TableCache的工作非常简单，就是针对Table对象以�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline234" class="outline-4">
@@ -10204,9 +9435,7 @@ table/table.cc 这个接口在include/leveldb/table.h里面已经给出了.我�
 </p>
 </div>
 
-<div id="outline-container-orgheadline226" class="outline-5">
-<h5 id="orgheadline226"><span class="section-number-5">10.8.4.1</span> Rep</h5>
-<div class="outline-text-5" id="text-10-8-4-1">
+<ol class="org-ol"><li><a id="orgheadline226"></a>Rep<br  /><div class="outline-text-5" id="text-10-8-4-1">
 <p>
 Rep是Table内部的数据结构.这样实现了之后那么头文件里面可以不包含任何实现了.
 </p>
@@ -10228,12 +9457,9 @@ Rep是Table内部的数据结构.这样实现了之后那么头文件里面可�
 };
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline227" class="outline-5">
-<h5 id="orgheadline227"><span class="section-number-5">10.8.4.2</span> Open</h5>
-<div class="outline-text-5" id="text-10-8-4-2">
+<li><a id="orgheadline227"></a>Open<br  /><div class="outline-text-5" id="text-10-8-4-2">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">Status</span> <span class="org-constant">Table</span>::<span class="org-function-name">Open</span>(<span class="org-keyword">const</span> <span class="org-type">Options</span>&amp; <span class="org-variable-name">options</span>,
@@ -10279,12 +9505,9 @@ Rep是Table内部的数据结构.这样实现了之后那么头文件里面可�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline228" class="outline-5">
-<h5 id="orgheadline228"><span class="section-number-5">10.8.4.3</span> ApproximateOffsetOf</h5>
-<div class="outline-text-5" id="text-10-8-4-3">
+<li><a id="orgheadline228"></a>ApproximateOffsetOf<br  /><div class="outline-text-5" id="text-10-8-4-3">
 <p>
 根据key找到kv在file的偏移.
 </p>
@@ -10320,12 +9543,9 @@ Rep是Table内部的数据结构.这样实现了之后那么头文件里面可�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline229" class="outline-5">
-<h5 id="orgheadline229"><span class="section-number-5">10.8.4.4</span> NewIterator</h5>
-<div class="outline-text-5" id="text-10-8-4-4">
+<li><a id="orgheadline229"></a>NewIterator<br  /><div class="outline-text-5" id="text-10-8-4-4">
 <p>
 NewIterator创建的是TwoLevelIterator.意思非常简单因为需要读取两次才能够读到内容.首先读取index block,
 然后读取具体的data block.关于TwoLevelIterator的实现会在后面分析.建议首先分析TwoLevelIterator
@@ -10340,12 +9560,9 @@ NewIterator创建的是TwoLevelIterator.意思非常简单因为需要读取两�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline230" class="outline-5">
-<h5 id="orgheadline230"><span class="section-number-5">10.8.4.5</span> DeleteBlock</h5>
-<div class="outline-text-5" id="text-10-8-4-5">
+<li><a id="orgheadline230"></a>DeleteBlock<br  /><div class="outline-text-5" id="text-10-8-4-5">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">DeleteBlock</span>(<span class="org-type">void</span>* <span class="org-variable-name">arg</span>, <span class="org-type">void</span>* <span class="org-variable-name">ignored</span>) {
@@ -10353,12 +9570,9 @@ NewIterator创建的是TwoLevelIterator.意思非常简单因为需要读取两�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline231" class="outline-5">
-<h5 id="orgheadline231"><span class="section-number-5">10.8.4.6</span> DeleteCachedBlock</h5>
-<div class="outline-text-5" id="text-10-8-4-6">
+<li><a id="orgheadline231"></a>DeleteCachedBlock<br  /><div class="outline-text-5" id="text-10-8-4-6">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">DeleteCachedBlock</span>(<span class="org-keyword">const</span> <span class="org-type">Slice</span>&amp; <span class="org-variable-name">key</span>, <span class="org-type">void</span>* <span class="org-variable-name">value</span>) {
@@ -10367,12 +9581,9 @@ NewIterator创建的是TwoLevelIterator.意思非常简单因为需要读取两�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline232" class="outline-5">
-<h5 id="orgheadline232"><span class="section-number-5">10.8.4.7</span> ReleaseBlock</h5>
-<div class="outline-text-5" id="text-10-8-4-7">
+<li><a id="orgheadline232"></a>ReleaseBlock<br  /><div class="outline-text-5" id="text-10-8-4-7">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">static</span> <span class="org-type">void</span> <span class="org-function-name">ReleaseBlock</span>(<span class="org-type">void</span>* <span class="org-variable-name">arg</span>, <span class="org-type">void</span>* <span class="org-variable-name">h</span>) {
@@ -10382,12 +9593,9 @@ NewIterator创建的是TwoLevelIterator.意思非常简单因为需要读取两�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline233" class="outline-5">
-<h5 id="orgheadline233"><span class="section-number-5">10.8.4.8</span> BlockReader</h5>
-<div class="outline-text-5" id="text-10-8-4-8">
+<li><a id="orgheadline233"></a>BlockReader<br  /><div class="outline-text-5" id="text-10-8-4-8">
 <p>
 BlockReader任务就是通过读取index_value给定的位置然后读取对应的Block位置并且返回BlockIterator对象.
 </p>
@@ -10452,8 +9660,7 @@ BlockReader任务就是通过读取index_value给定的位置然后读取对应�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline242" class="outline-4">
@@ -10466,9 +9673,7 @@ table/table_builde.cc TableBuilder接口在之前include/leveldb/table_builder.h
 </p>
 </div>
 
-<div id="outline-container-orgheadline235" class="outline-5">
-<h5 id="orgheadline235"><span class="section-number-5">10.8.5.1</span> Rep</h5>
-<div class="outline-text-5" id="text-10-8-5-1">
+<ol class="org-ol"><li><a id="orgheadline235"></a>Rep<br  /><div class="outline-text-5" id="text-10-8-5-1">
 <p>
 Rep是TableBuilder里面具体涉及到的字段.我们来看看这个结构
 </p>
@@ -10516,12 +9721,9 @@ Rep是TableBuilder里面具体涉及到的字段.我们来看看这个结构
 };
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline236" class="outline-5">
-<h5 id="orgheadline236"><span class="section-number-5">10.8.5.2</span> ChangeOptions</h5>
-<div class="outline-text-5" id="text-10-8-5-2">
+<li><a id="orgheadline236"></a>ChangeOptions<br  /><div class="outline-text-5" id="text-10-8-5-2">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">Status</span> <span class="org-constant">TableBuilder</span>::<span class="org-function-name">ChangeOptions</span>(<span class="org-keyword">const</span> <span class="org-type">Options</span>&amp; <span class="org-variable-name">options</span>) {
@@ -10542,12 +9744,9 @@ Rep是TableBuilder里面具体涉及到的字段.我们来看看这个结构
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline237" class="outline-5">
-<h5 id="orgheadline237"><span class="section-number-5">10.8.5.3</span> Add</h5>
-<div class="outline-text-5" id="text-10-8-5-3">
+<li><a id="orgheadline237"></a>Add<br  /><div class="outline-text-5" id="text-10-8-5-3">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-constant">TableBuilder</span>::<span class="org-function-name">Add</span>(<span class="org-keyword">const</span> <span class="org-type">Slice</span>&amp; <span class="org-variable-name">key</span>, <span class="org-keyword">const</span> <span class="org-type">Slice</span>&amp; <span class="org-variable-name">value</span>) {
@@ -10586,12 +9785,9 @@ Rep是TableBuilder里面具体涉及到的字段.我们来看看这个结构
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline238" class="outline-5">
-<h5 id="orgheadline238"><span class="section-number-5">10.8.5.4</span> Flush</h5>
-<div class="outline-text-5" id="text-10-8-5-4">
+<li><a id="orgheadline238"></a>Flush<br  /><div class="outline-text-5" id="text-10-8-5-4">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-constant">TableBuilder</span>::<span class="org-function-name">Flush</span>() {
@@ -10610,12 +9806,9 @@ Rep是TableBuilder里面具体涉及到的字段.我们来看看这个结构
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline239" class="outline-5">
-<h5 id="orgheadline239"><span class="section-number-5">10.8.5.5</span> WriteBlock</h5>
-<div class="outline-text-5" id="text-10-8-5-5">
+<li><a id="orgheadline239"></a>WriteBlock<br  /><div class="outline-text-5" id="text-10-8-5-5">
 <p>
 写入block的内容并且将block所在的位置交给handle.
 </p>
@@ -10674,12 +9867,9 @@ Rep是TableBuilder里面具体涉及到的字段.我们来看看这个结构
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline240" class="outline-5">
-<h5 id="orgheadline240"><span class="section-number-5">10.8.5.6</span> Finish</h5>
-<div class="outline-text-5" id="text-10-8-5-6">
+<li><a id="orgheadline240"></a>Finish<br  /><div class="outline-text-5" id="text-10-8-5-6">
 <p>
 Finish写入的TableFormat表述的最后面的index部分以及footer.
 </p>
@@ -10723,12 +9913,9 @@ Finish写入的TableFormat表述的最后面的index部分以及footer.
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline241" class="outline-5">
-<h5 id="orgheadline241"><span class="section-number-5">10.8.5.7</span> Abandon</h5>
-<div class="outline-text-5" id="text-10-8-5-7">
+<li><a id="orgheadline241"></a>Abandon<br  /><div class="outline-text-5" id="text-10-8-5-7">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-comment-delimiter">// </span><span class="org-comment">&#25805;&#20316;&#38750;&#24120;&#31616;&#21333;&#23601;&#26159;&#25918;&#24323;&#26500;&#24314;.</span>
@@ -10739,8 +9926,7 @@ Finish写入的TableFormat表述的最后面的index部分以及footer.
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline249" class="outline-4">
@@ -10789,9 +9975,7 @@ table/block_builder.h 从提供的接口来看的话，BlockBuilder功能应该�
 </div>
 </div>
 
-<div id="outline-container-orgheadline243" class="outline-5">
-<h5 id="orgheadline243"><span class="section-number-5">10.8.6.1</span> PrefixCompressed</h5>
-<div class="outline-text-5" id="text-10-8-6-1">
+<ol class="org-ol"><li><a id="orgheadline243"></a>PrefixCompressed<br  /><div class="outline-text-5" id="text-10-8-6-1">
 <p>
 我们首先看看BlockBuilder是如何针对key进行prefix-compressed的.对于每K个key的话会保存一个完整key,然后对于
 剩余的K-1个key采用prefix-compressed的方式压缩。共享的部分长度叫做shared_bytes,非共享的部分叫做unshared_bytes.
@@ -10822,12 +10006,9 @@ table/block_builder.h 从提供的接口来看的话，BlockBuilder功能应该�
 <span class="org-comment-delimiter">// </span><span class="org-comment">restarts[i] contains the offset within the block of the ith restart point.</span>
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline244" class="outline-5">
-<h5 id="orgheadline244"><span class="section-number-5">10.8.6.2</span> BlockBuilder</h5>
-<div class="outline-text-5" id="text-10-8-6-2">
+<li><a id="orgheadline244"></a>BlockBuilder<br  /><div class="outline-text-5" id="text-10-8-6-2">
 <p>
 构造函数非常简单.这里options-&gt;block_restrat_interval可能就是之前说的参数K
 </p>
@@ -10846,12 +10027,9 @@ table/block_builder.h 从提供的接口来看的话，BlockBuilder功能应该�
 <p>
 我们这里注意到0就是restarts一个点.
 </p>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline245" class="outline-5">
-<h5 id="orgheadline245"><span class="section-number-5">10.8.6.3</span> Reset</h5>
-<div class="outline-text-5" id="text-10-8-6-3">
+<li><a id="orgheadline245"></a>Reset<br  /><div class="outline-text-5" id="text-10-8-6-3">
 <p>
 Reset和构造函数非常简单.
 </p>
@@ -10867,12 +10045,9 @@ Reset和构造函数非常简单.
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline246" class="outline-5">
-<h5 id="orgheadline246"><span class="section-number-5">10.8.6.4</span> CurrentSizeEstimate</h5>
-<div class="outline-text-5" id="text-10-8-6-4">
+<li><a id="orgheadline246"></a>CurrentSizeEstimate<br  /><div class="outline-text-5" id="text-10-8-6-4">
 <p>
 按照PrefixCompressed里面的注释来看的话，长度应该就是按照下面的代码计算出来的
 </p>
@@ -10885,12 +10060,9 @@ Reset和构造函数非常简单.
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline247" class="outline-5">
-<h5 id="orgheadline247"><span class="section-number-5">10.8.6.5</span> Finish</h5>
-<div class="outline-text-5" id="text-10-8-6-5">
+<li><a id="orgheadline247"></a>Finish<br  /><div class="outline-text-5" id="text-10-8-6-5">
 <p>
 Finish的工作就是将restarts的信息全部写入到block buffer的结尾吧.同时将buffer_包装称为Slice返回.
 </p>
@@ -10907,12 +10079,9 @@ Finish的工作就是将restarts的信息全部写入到block buffer的结尾吧
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline248" class="outline-5">
-<h5 id="orgheadline248"><span class="section-number-5">10.8.6.6</span> Add</h5>
-<div class="outline-text-5" id="text-10-8-6-6">
+<li><a id="orgheadline248"></a>Add<br  /><div class="outline-text-5" id="text-10-8-6-6">
 <p>
 我们这里仔细看看prefix-compressed是相对哪一个key来进行压缩的.阅读代码会发现是针对last_key来进行的.
 </p>
@@ -10960,8 +10129,7 @@ Finish的工作就是将restarts的信息全部写入到block buffer的结尾吧
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline253" class="outline-4">
@@ -10997,9 +10165,7 @@ table/block.h Block可以认为是BlockBuilder的Reader对象，解析BlockBuild
 </div>
 </div>
 
-<div id="outline-container-orgheadline250" class="outline-5">
-<h5 id="orgheadline250"><span class="section-number-5">10.8.7.1</span> NumRestarts</h5>
-<div class="outline-text-5" id="text-10-8-7-1">
+<ol class="org-ol"><li><a id="orgheadline250"></a>NumRestarts<br  /><div class="outline-text-5" id="text-10-8-7-1">
 <p>
 从之前的BloclBuilder知道restart个数在最后面的4字节
 </p>
@@ -11011,12 +10177,9 @@ table/block.h Block可以认为是BlockBuilder的Reader对象，解析BlockBuild
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline251" class="outline-5">
-<h5 id="orgheadline251"><span class="section-number-5">10.8.7.2</span> Block</h5>
-<div class="outline-text-5" id="text-10-8-7-2">
+<li><a id="orgheadline251"></a>Block<br  /><div class="outline-text-5" id="text-10-8-7-2">
 <p>
 注意这里data已经由这个Block来托管了.在析构函数里面会释放data_
 </p>
@@ -11042,12 +10205,9 @@ table/block.h Block可以认为是BlockBuilder的Reader对象，解析BlockBuild
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline252" class="outline-5">
-<h5 id="orgheadline252"><span class="section-number-5">10.8.7.3</span> NewIterator</h5>
-<div class="outline-text-5" id="text-10-8-7-3">
+<li><a id="orgheadline252"></a>NewIterator<br  /><div class="outline-text-5" id="text-10-8-7-3">
 <p>
 创建一个迭代器.采用了工厂方法创建了具体类.关于这个具体类在后面会被称为BlockIterator来进行分析.
 </p>
@@ -11066,8 +10226,7 @@ table/block.h Block可以认为是BlockBuilder的Reader对象，解析BlockBuild
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline265" class="outline-4">
@@ -11096,9 +10255,7 @@ table/block.cc BlockIterator本身完成的功能很简单就是Block的遍历�
 </div>
 </div>
 
-<div id="outline-container-orgheadline254" class="outline-5">
-<h5 id="orgheadline254"><span class="section-number-5">10.8.8.1</span> BlockIterator</h5>
-<div class="outline-text-5" id="text-10-8-8-1">
+<ol class="org-ol"><li><a id="orgheadline254"></a>BlockIterator<br  /><div class="outline-text-5" id="text-10-8-8-1">
 <p>
 构造函数非常简单
 </p>
@@ -11118,12 +10275,9 @@ table/block.cc BlockIterator本身完成的功能很简单就是Block的遍历�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline255" class="outline-5">
-<h5 id="orgheadline255"><span class="section-number-5">10.8.8.2</span> NextEntryOffset</h5>
-<div class="outline-text-5" id="text-10-8-8-2">
+<li><a id="orgheadline255"></a>NextEntryOffset<br  /><div class="outline-text-5" id="text-10-8-8-2">
 <p>
 得到下一个entry的偏移.直接使用value_的偏移和大小即可计算出来
 </p>
@@ -11135,12 +10289,9 @@ table/block.cc BlockIterator本身完成的功能很简单就是Block的遍历�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline256" class="outline-5">
-<h5 id="orgheadline256"><span class="section-number-5">10.8.8.3</span> GetRestartPoint</h5>
-<div class="outline-text-5" id="text-10-8-8-3">
+<li><a id="orgheadline256"></a>GetRestartPoint<br  /><div class="outline-text-5" id="text-10-8-8-3">
 <p>
 得到某个index的restart offset.这个直接访问最后的restart可以得到.
 </p>
@@ -11152,12 +10303,9 @@ table/block.cc BlockIterator本身完成的功能很简单就是Block的遍历�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline257" class="outline-5">
-<h5 id="orgheadline257"><span class="section-number-5">10.8.8.4</span> SeekToRestartPoint</h5>
-<div class="outline-text-5" id="text-10-8-8-4">
+<li><a id="orgheadline257"></a>SeekToRestartPoint<br  /><div class="outline-text-5" id="text-10-8-8-4">
 <p>
 这个接口的语义是到某个restart point.我们需要调整restart_index_.这里value_为了可以调用NextEntryOffset.
 </p>
@@ -11174,12 +10322,9 @@ table/block.cc BlockIterator本身完成的功能很简单就是Block的遍历�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline258" class="outline-5">
-<h5 id="orgheadline258"><span class="section-number-5">10.8.8.5</span> Next</h5>
-<div class="outline-text-5" id="text-10-8-8-5">
+<li><a id="orgheadline258"></a>Next<br  /><div class="outline-text-5" id="text-10-8-8-5">
 <p>
 Next底层调用了ParseNextKey.后面我们会仔细看看ParseNextKey.
 </p>
@@ -11191,12 +10336,9 @@ Next底层调用了ParseNextKey.后面我们会仔细看看ParseNextKey.
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline259" class="outline-5">
-<h5 id="orgheadline259"><span class="section-number-5">10.8.8.6</span> SeekToFirst</h5>
-<div class="outline-text-5" id="text-10-8-8-6">
+<li><a id="orgheadline259"></a>SeekToFirst<br  /><div class="outline-text-5" id="text-10-8-8-6">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">virtual</span> <span class="org-type">void</span> <span class="org-function-name">SeekToFirst</span>() {
@@ -11205,12 +10347,9 @@ Next底层调用了ParseNextKey.后面我们会仔细看看ParseNextKey.
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline260" class="outline-5">
-<h5 id="orgheadline260"><span class="section-number-5">10.8.8.7</span> SeekToLast</h5>
-<div class="outline-text-5" id="text-10-8-8-7">
+<li><a id="orgheadline260"></a>SeekToLast<br  /><div class="outline-text-5" id="text-10-8-8-7">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">virtual</span> <span class="org-type">void</span> <span class="org-function-name">SeekToLast</span>() {
@@ -11221,12 +10360,9 @@ Next底层调用了ParseNextKey.后面我们会仔细看看ParseNextKey.
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline261" class="outline-5">
-<h5 id="orgheadline261"><span class="section-number-5">10.8.8.8</span> ParseNextKey</h5>
-<div class="outline-text-5" id="text-10-8-8-8">
+<li><a id="orgheadline261"></a>ParseNextKey<br  /><div class="outline-text-5" id="text-10-8-8-8">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">bool</span> <span class="org-function-name">ParseNextKey</span>() {
@@ -11261,12 +10397,9 @@ Next底层调用了ParseNextKey.后面我们会仔细看看ParseNextKey.
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline262" class="outline-5">
-<h5 id="orgheadline262"><span class="section-number-5">10.8.8.9</span> DecodeEntry</h5>
-<div class="outline-text-5" id="text-10-8-8-9">
+<li><a id="orgheadline262"></a>DecodeEntry<br  /><div class="outline-text-5" id="text-10-8-8-9">
 <p>
 从头部decode出shared,non_shared以及value_length.这里面为了加快判断的话有一个技巧.返回的是下一个要读取的地址.
 </p>
@@ -11297,12 +10430,9 @@ Next底层调用了ParseNextKey.后面我们会仔细看看ParseNextKey.
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline263" class="outline-5">
-<h5 id="orgheadline263"><span class="section-number-5">10.8.8.10</span> Prev</h5>
-<div class="outline-text-5" id="text-10-8-8-10">
+<li><a id="orgheadline263"></a>Prev<br  /><div class="outline-text-5" id="text-10-8-8-10">
 <p>
 Prev相对于Next有一点低效.首先遍历找到restart point,然后在这个restart range里面遍历.
 </p>
@@ -11330,12 +10460,9 @@ Prev相对于Next有一点低效.首先遍历找到restart point,然后在这个
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline264" class="outline-5">
-<h5 id="orgheadline264"><span class="section-number-5">10.8.8.11</span> Seek</h5>
-<div class="outline-text-5" id="text-10-8-8-11">
+<li><a id="orgheadline264"></a>Seek<br  /><div class="outline-text-5" id="text-10-8-8-11">
 <p>
 Seek非常简单，首先在restart point地方因为里面存放都是有序的完整的key.那么可以restart point
 这些地方进行二分查找.然后在restart range里面通过遍历查找.还算是比较高效吧。注意这里如果没有找到的话，
@@ -11384,8 +10511,7 @@ Seek非常简单，首先在restart point地方因为里面存放都是有序的
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline268" class="outline-4">
@@ -11428,9 +10554,7 @@ table/format.h BlockHandle用于压缩和解压文件信息.包括两个字段of
 </div>
 </div>
 
-<div id="outline-container-orgheadline266" class="outline-5">
-<h5 id="orgheadline266"><span class="section-number-5">10.8.9.1</span> EncodeTo</h5>
-<div class="outline-text-5" id="text-10-8-9-1">
+<ol class="org-ol"><li><a id="orgheadline266"></a>EncodeTo<br  /><div class="outline-text-5" id="text-10-8-9-1">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-constant">BlockHandle</span>::<span class="org-function-name">EncodeTo</span>(<span class="org-constant">std</span>::<span class="org-type">string</span>* <span class="org-variable-name">dst</span>) <span class="org-keyword">const</span> {
@@ -11442,12 +10566,9 @@ table/format.h BlockHandle用于压缩和解压文件信息.包括两个字段of
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline267" class="outline-5">
-<h5 id="orgheadline267"><span class="section-number-5">10.8.9.2</span> DecodeFrom</h5>
-<div class="outline-text-5" id="text-10-8-9-2">
+<li><a id="orgheadline267"></a>DecodeFrom<br  /><div class="outline-text-5" id="text-10-8-9-2">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">Status</span> <span class="org-constant">BlockHandle</span>::<span class="org-function-name">DecodeFrom</span>(<span class="org-type">Slice</span>* <span class="org-variable-name">input</span>) {
@@ -11460,8 +10581,7 @@ table/format.h BlockHandle用于压缩和解压文件信息.包括两个字段of
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline271" class="outline-4">
@@ -11521,9 +10641,7 @@ db/format.h Footer里面打包称为定长信息.从注释上说保存在各个t
 </div>
 </div>
 
-<div id="outline-container-orgheadline269" class="outline-5">
-<h5 id="orgheadline269"><span class="section-number-5">10.8.10.1</span> EncodeTo</h5>
-<div class="outline-text-5" id="text-10-8-10-1">
+<ol class="org-ol"><li><a id="orgheadline269"></a>EncodeTo<br  /><div class="outline-text-5" id="text-10-8-10-1">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-constant">Footer</span>::<span class="org-function-name">EncodeTo</span>(<span class="org-constant">std</span>::<span class="org-type">string</span>* <span class="org-variable-name">dst</span>) <span class="org-keyword">const</span> {
@@ -11539,12 +10657,9 @@ db/format.h Footer里面打包称为定长信息.从注释上说保存在各个t
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline270" class="outline-5">
-<h5 id="orgheadline270"><span class="section-number-5">10.8.10.2</span> DecodeFrom</h5>
-<div class="outline-text-5" id="text-10-8-10-2">
+<li><a id="orgheadline270"></a>DecodeFrom<br  /><div class="outline-text-5" id="text-10-8-10-2">
 <p>
 这里input作为输入，头部是EncodeTo的内容后面可能带有其他数据。解析完成之后将剩余返回给input.
 </p>
@@ -11573,8 +10688,7 @@ db/format.h Footer里面打包称为定长信息.从注释上说保存在各个t
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline272" class="outline-4">
@@ -11747,9 +10861,7 @@ table/two_level_iterator.h TwoLevelIterator是一个二级Iterator配合sstable�
 </div>
 </div>
 
-<div id="outline-container-orgheadline275" class="outline-5">
-<h5 id="orgheadline275"><span class="section-number-5">10.8.14.1</span> NewTwoLevelIterator</h5>
-<div class="outline-text-5" id="text-10-8-14-1">
+<ol class="org-ol"><li><a id="orgheadline275"></a>NewTwoLevelIterator<br  /><div class="outline-text-5" id="text-10-8-14-1">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">Iterator</span>* <span class="org-function-name">NewTwoLevelIterator</span>(
@@ -11797,12 +10909,9 @@ table/two_level_iterator.h TwoLevelIterator是一个二级Iterator配合sstable�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline276" class="outline-5">
-<h5 id="orgheadline276"><span class="section-number-5">10.8.14.2</span> Seek</h5>
-<div class="outline-text-5" id="text-10-8-14-2">
+<li><a id="orgheadline276"></a>Seek<br  /><div class="outline-text-5" id="text-10-8-14-2">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-constant">TwoLevelIterator</span>::<span class="org-function-name">Seek</span>(<span class="org-keyword">const</span> <span class="org-type">Slice</span>&amp; <span class="org-variable-name">target</span>) {
@@ -11814,12 +10923,9 @@ table/two_level_iterator.h TwoLevelIterator是一个二级Iterator配合sstable�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline277" class="outline-5">
-<h5 id="orgheadline277"><span class="section-number-5">10.8.14.3</span> SeekToFirst</h5>
-<div class="outline-text-5" id="text-10-8-14-3">
+<li><a id="orgheadline277"></a>SeekToFirst<br  /><div class="outline-text-5" id="text-10-8-14-3">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-constant">TwoLevelIterator</span>::<span class="org-function-name">SeekToFirst</span>() {
@@ -11830,12 +10936,9 @@ table/two_level_iterator.h TwoLevelIterator是一个二级Iterator配合sstable�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline278" class="outline-5">
-<h5 id="orgheadline278"><span class="section-number-5">10.8.14.4</span> SeekToLast</h5>
-<div class="outline-text-5" id="text-10-8-14-4">
+<li><a id="orgheadline278"></a>SeekToLast<br  /><div class="outline-text-5" id="text-10-8-14-4">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-constant">TwoLevelIterator</span>::<span class="org-function-name">SeekToLast</span>() {
@@ -11846,12 +10949,9 @@ table/two_level_iterator.h TwoLevelIterator是一个二级Iterator配合sstable�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline279" class="outline-5">
-<h5 id="orgheadline279"><span class="section-number-5">10.8.14.5</span> Next</h5>
-<div class="outline-text-5" id="text-10-8-14-5">
+<li><a id="orgheadline279"></a>Next<br  /><div class="outline-text-5" id="text-10-8-14-5">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-constant">TwoLevelIterator</span>::<span class="org-function-name">Next</span>() {
@@ -11861,12 +10961,9 @@ table/two_level_iterator.h TwoLevelIterator是一个二级Iterator配合sstable�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline280" class="outline-5">
-<h5 id="orgheadline280"><span class="section-number-5">10.8.14.6</span> Prev</h5>
-<div class="outline-text-5" id="text-10-8-14-6">
+<li><a id="orgheadline280"></a>Prev<br  /><div class="outline-text-5" id="text-10-8-14-6">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-constant">TwoLevelIterator</span>::<span class="org-function-name">Prev</span>() {
@@ -11876,12 +10973,9 @@ table/two_level_iterator.h TwoLevelIterator是一个二级Iterator配合sstable�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline281" class="outline-5">
-<h5 id="orgheadline281"><span class="section-number-5">10.8.14.7</span> InitDataBlock</h5>
-<div class="outline-text-5" id="text-10-8-14-7">
+<li><a id="orgheadline281"></a>InitDataBlock<br  /><div class="outline-text-5" id="text-10-8-14-7">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-constant">TwoLevelIterator</span>::<span class="org-function-name">InitDataBlock</span>() {
@@ -11904,12 +10998,9 @@ table/two_level_iterator.h TwoLevelIterator是一个二级Iterator配合sstable�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline282" class="outline-5">
-<h5 id="orgheadline282"><span class="section-number-5">10.8.14.8</span> SetDataIterator</h5>
-<div class="outline-text-5" id="text-10-8-14-8">
+<li><a id="orgheadline282"></a>SetDataIterator<br  /><div class="outline-text-5" id="text-10-8-14-8">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-constant">TwoLevelIterator</span>::<span class="org-function-name">SetDataIterator</span>(<span class="org-type">Iterator</span>* <span class="org-variable-name">data_iter</span>) {
@@ -11919,12 +11010,9 @@ table/two_level_iterator.h TwoLevelIterator是一个二级Iterator配合sstable�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline283" class="outline-5">
-<h5 id="orgheadline283"><span class="section-number-5">10.8.14.9</span> SkipEmptyDataBlocksForward</h5>
-<div class="outline-text-5" id="text-10-8-14-9">
+<li><a id="orgheadline283"></a>SkipEmptyDataBlocksForward<br  /><div class="outline-text-5" id="text-10-8-14-9">
 <p>
 对于空的DataBlock的话那么!data_iter_.Valid().对于空的DataBlock可以跳过IndexBlock快速跨越。
 </p>
@@ -11944,12 +11032,9 @@ table/two_level_iterator.h TwoLevelIterator是一个二级Iterator配合sstable�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline284" class="outline-5">
-<h5 id="orgheadline284"><span class="section-number-5">10.8.14.10</span> SkipEmptyDataBlocksBackward</h5>
-<div class="outline-text-5" id="text-10-8-14-10">
+<li><a id="orgheadline284"></a>SkipEmptyDataBlocksBackward<br  /><div class="outline-text-5" id="text-10-8-14-10">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-type">void</span> <span class="org-constant">TwoLevelIterator</span>::<span class="org-function-name">SkipEmptyDataBlocksBackward</span>() {
@@ -11966,8 +11051,7 @@ table/two_level_iterator.h TwoLevelIterator是一个二级Iterator配合sstable�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline297" class="outline-4">
@@ -11993,9 +11077,7 @@ table/merger.cc 可以认为这个是一个Iterator的多路归并实现。但�
 </div>
 </div>
 
-<div id="outline-container-orgheadline286" class="outline-5">
-<h5 id="orgheadline286"><span class="section-number-5">10.8.15.1</span> NewMergingIterator</h5>
-<div class="outline-text-5" id="text-10-8-15-1">
+<ol class="org-ol"><li><a id="orgheadline286"></a>NewMergingIterator<br  /><div class="outline-text-5" id="text-10-8-15-1">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-comment-delimiter">// </span><span class="org-comment">&#27880;&#24847;&#36825;&#37324;&#25105;&#20204;&#38656;&#35201;&#25176;&#31649;list&#37324;&#38754;&#30340;Iterator&#23545;&#35937;.</span>
@@ -12012,12 +11094,9 @@ table/merger.cc 可以认为这个是一个Iterator的多路归并实现。但�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline287" class="outline-5">
-<h5 id="orgheadline287"><span class="section-number-5">10.8.15.2</span> MergingIterator</h5>
-<div class="outline-text-5" id="text-10-8-15-2">
+<li><a id="orgheadline287"></a>MergingIterator<br  /><div class="outline-text-5" id="text-10-8-15-2">
 <p>
 首先看看结构以及构造和析构函数.
 </p>
@@ -12058,12 +11137,9 @@ table/merger.cc 可以认为这个是一个Iterator的多路归并实现。但�
 };
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline288" class="outline-5">
-<h5 id="orgheadline288"><span class="section-number-5">10.8.15.3</span> Key</h5>
-<div class="outline-text-5" id="text-10-8-15-3">
+<li><a id="orgheadline288"></a>Key<br  /><div class="outline-text-5" id="text-10-8-15-3">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">virtual</span> <span class="org-type">Slice</span> <span class="org-function-name">key</span>() <span class="org-keyword">const</span> {
@@ -12072,12 +11148,9 @@ table/merger.cc 可以认为这个是一个Iterator的多路归并实现。但�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline289" class="outline-5">
-<h5 id="orgheadline289"><span class="section-number-5">10.8.15.4</span> Value</h5>
-<div class="outline-text-5" id="text-10-8-15-4">
+<li><a id="orgheadline289"></a>Value<br  /><div class="outline-text-5" id="text-10-8-15-4">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">virtual</span> <span class="org-type">Slice</span> <span class="org-function-name">value</span>() <span class="org-keyword">const</span> {
@@ -12086,12 +11159,9 @@ table/merger.cc 可以认为这个是一个Iterator的多路归并实现。但�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline290" class="outline-5">
-<h5 id="orgheadline290"><span class="section-number-5">10.8.15.5</span> Seek</h5>
-<div class="outline-text-5" id="text-10-8-15-5">
+<li><a id="orgheadline290"></a>Seek<br  /><div class="outline-text-5" id="text-10-8-15-5">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">virtual</span> <span class="org-type">void</span> <span class="org-function-name">Seek</span>(<span class="org-keyword">const</span> <span class="org-type">Slice</span>&amp; <span class="org-variable-name">target</span>) {
@@ -12104,12 +11174,9 @@ table/merger.cc 可以认为这个是一个Iterator的多路归并实现。但�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline291" class="outline-5">
-<h5 id="orgheadline291"><span class="section-number-5">10.8.15.6</span> SeekToFirst</h5>
-<div class="outline-text-5" id="text-10-8-15-6">
+<li><a id="orgheadline291"></a>SeekToFirst<br  /><div class="outline-text-5" id="text-10-8-15-6">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">virtual</span> <span class="org-type">void</span> <span class="org-function-name">SeekToFirst</span>() {
@@ -12121,12 +11188,9 @@ table/merger.cc 可以认为这个是一个Iterator的多路归并实现。但�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline292" class="outline-5">
-<h5 id="orgheadline292"><span class="section-number-5">10.8.15.7</span> SeekToLast</h5>
-<div class="outline-text-5" id="text-10-8-15-7">
+<li><a id="orgheadline292"></a>SeekToLast<br  /><div class="outline-text-5" id="text-10-8-15-7">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">virtual</span> <span class="org-type">void</span> <span class="org-function-name">SeekToLast</span>() {
@@ -12138,12 +11202,9 @@ table/merger.cc 可以认为这个是一个Iterator的多路归并实现。但�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline293" class="outline-5">
-<h5 id="orgheadline293"><span class="section-number-5">10.8.15.8</span> Next</h5>
-<div class="outline-text-5" id="text-10-8-15-8">
+<li><a id="orgheadline293"></a>Next<br  /><div class="outline-text-5" id="text-10-8-15-8">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">virtual</span> <span class="org-type">void</span> <span class="org-function-name">Next</span>() {
@@ -12174,12 +11235,9 @@ table/merger.cc 可以认为这个是一个Iterator的多路归并实现。但�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline294" class="outline-5">
-<h5 id="orgheadline294"><span class="section-number-5">10.8.15.9</span> Prev</h5>
-<div class="outline-text-5" id="text-10-8-15-9">
+<li><a id="orgheadline294"></a>Prev<br  /><div class="outline-text-5" id="text-10-8-15-9">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-keyword">virtual</span> <span class="org-type">void</span> <span class="org-function-name">Prev</span>() {
@@ -12214,12 +11272,9 @@ table/merger.cc 可以认为这个是一个Iterator的多路归并实现。但�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline295" class="outline-5">
-<h5 id="orgheadline295"><span class="section-number-5">10.8.15.10</span> FindSmallest</h5>
-<div class="outline-text-5" id="text-10-8-15-10">
+<li><a id="orgheadline295"></a>FindSmallest<br  /><div class="outline-text-5" id="text-10-8-15-10">
 <p>
 从这些Iterator找到最小的Iterator作为current.算法naive.
 </p>
@@ -12241,12 +11296,9 @@ table/merger.cc 可以认为这个是一个Iterator的多路归并实现。但�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline296" class="outline-5">
-<h5 id="orgheadline296"><span class="section-number-5">10.8.15.11</span> FindLargest</h5>
-<div class="outline-text-5" id="text-10-8-15-11">
+<li><a id="orgheadline296"></a>FindLargest<br  /><div class="outline-text-5" id="text-10-8-15-11">
 <p>
 从这些Iterator里面找到最大的Iterator作为current.算法naive.
 </p>
@@ -12268,8 +11320,7 @@ table/merger.cc 可以认为这个是一个Iterator的多路归并实现。但�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li></ol>
 </div>
 </div>
 
@@ -12585,9 +11636,7 @@ db/skiplist.h SkipList(跳表)之前在课本上看到过，但是当时觉得�
 </div>
 </div>
 
-<div id="outline-container-orgheadline302" class="outline-5">
-<h5 id="orgheadline302"><span class="section-number-5">10.9.4.1</span> RandomHeight</h5>
-<div class="outline-text-5" id="text-10-9-4-1">
+<ol class="org-ol"><li><a id="orgheadline302"></a>RandomHeight<br  /><div class="outline-text-5" id="text-10-9-4-1">
 <p>
 随机产生一个SkipList的高度.从1开始每次以1/4的概率+1.
 </p>
@@ -12615,12 +11664,9 @@ db/skiplist.h SkipList(跳表)之前在课本上看到过，但是当时觉得�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline303" class="outline-5">
-<h5 id="orgheadline303"><span class="section-number-5">10.9.4.2</span> KeyIsAfterNode</h5>
-<div class="outline-text-5" id="text-10-9-4-2">
+<li><a id="orgheadline303"></a>KeyIsAfterNode<br  /><div class="outline-text-5" id="text-10-9-4-2">
 <p>
 可以认为是key的比较函数吧.拿key和当前某一个node进行比较，看看这个key是否应该存在这个node之后.
 </p>
@@ -12633,12 +11679,9 @@ db/skiplist.h SkipList(跳表)之前在课本上看到过，但是当时觉得�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline304" class="outline-5">
-<h5 id="orgheadline304"><span class="section-number-5">10.9.4.3</span> FindGreaterOrEqual</h5>
-<div class="outline-text-5" id="text-10-9-4-3">
+<li><a id="orgheadline304"></a>FindGreaterOrEqual<br  /><div class="outline-text-5" id="text-10-9-4-3">
 <p>
 找到和key相当或者是&gt;key的第一个node.对跳表的原理稍微熟悉一些大概就可以看懂代码了.
 </p>
@@ -12668,12 +11711,9 @@ db/skiplist.h SkipList(跳表)之前在课本上看到过，但是当时觉得�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline305" class="outline-5">
-<h5 id="orgheadline305"><span class="section-number-5">10.9.4.4</span> Insert</h5>
-<div class="outline-text-5" id="text-10-9-4-4">
+<li><a id="orgheadline305"></a>Insert<br  /><div class="outline-text-5" id="text-10-9-4-4">
 <p>
 插入某一个key.恩,逻辑还算是比较简单吧
 </p>
@@ -12717,12 +11757,9 @@ db/skiplist.h SkipList(跳表)之前在课本上看到过，但是当时觉得�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline306" class="outline-5">
-<h5 id="orgheadline306"><span class="section-number-5">10.9.4.5</span> Contains</h5>
-<div class="outline-text-5" id="text-10-9-4-5">
+<li><a id="orgheadline306"></a>Contains<br  /><div class="outline-text-5" id="text-10-9-4-5">
 <p>
 Contains用来判断跳表里面是否包含key
 </p>
@@ -12740,12 +11777,9 @@ Contains用来判断跳表里面是否包含key
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline307" class="outline-5">
-<h5 id="orgheadline307"><span class="section-number-5">10.9.4.6</span> FindLessThan</h5>
-<div class="outline-text-5" id="text-10-9-4-6">
+<li><a id="orgheadline307"></a>FindLessThan<br  /><div class="outline-text-5" id="text-10-9-4-6">
 <p>
 查找最后面一个less than key的这个node.
 </p>
@@ -12774,12 +11808,9 @@ Contains用来判断跳表里面是否包含key
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline308" class="outline-5">
-<h5 id="orgheadline308"><span class="section-number-5">10.9.4.7</span> FindLast</h5>
-<div class="outline-text-5" id="text-10-9-4-7">
+<li><a id="orgheadline308"></a>FindLast<br  /><div class="outline-text-5" id="text-10-9-4-7">
 <p>
 FindLast就是找到元素的最后一个节点.非常简单，首先在最高节点遍历然后不断地降低level遍历.
 </p>
@@ -12806,12 +11837,9 @@ FindLast就是找到元素的最后一个节点.非常简单，首先在最高�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline309" class="outline-5">
-<h5 id="orgheadline309"><span class="section-number-5">10.9.4.8</span> Node</h5>
-<div class="outline-text-5" id="text-10-9-4-8">
+<li><a id="orgheadline309"></a>Node<br  /><div class="outline-text-5" id="text-10-9-4-8">
 <p>
 在看下面的函数之前我们先看看Node的实现.其实非常简单，而且似乎没有必要使用atomic的方式来操作。
 因为这里面我们已经要求写需要外部加锁保证了.(#note: 后来想想还是有必要的,这里我们只是要求用户
@@ -12858,12 +11886,9 @@ FindLast就是找到元素的最后一个节点.非常简单，首先在最高�
 };
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline310" class="outline-5">
-<h5 id="orgheadline310"><span class="section-number-5">10.9.4.9</span> NewNode</h5>
-<div class="outline-text-5" id="text-10-9-4-9">
+<li><a id="orgheadline310"></a>NewNode<br  /><div class="outline-text-5" id="text-10-9-4-9">
 <p>
 前面看完了Node的结构.然后Node分配就非常简单了.这里采用了inplacement new的方式来分配内存
 </p>
@@ -12881,12 +11906,9 @@ FindLast就是找到元素的最后一个节点.非常简单，首先在最高�
 <p>
 注意这里只需要分配height-1的高度即可，因为在Node里面已经存在了1个链表指针.
 </p>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline311" class="outline-5">
-<h5 id="orgheadline311"><span class="section-number-5">10.9.4.10</span> Iterator</h5>
-<div class="outline-text-5" id="text-10-9-4-10">
+<li><a id="orgheadline311"></a>Iterator<br  /><div class="outline-text-5" id="text-10-9-4-10">
 <p>
 了解了跳表的工作原理之后，对于其遍历器理解就非常简单了。代码也非常简单。但是阅读代码就会发现，
 跳表的前向遍历功能不怎么样，因为没有维护prev指针。这里prev的方法是用过调用FindLessThan来实现的。
@@ -12946,8 +11968,7 @@ FindLast就是找到元素的最后一个节点.非常简单，首先在最高�
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline313" class="outline-4">

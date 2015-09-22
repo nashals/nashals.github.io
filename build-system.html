@@ -64,19 +64,8 @@
 <li><a href="build-system.html#orgheadline15">2.2. 构建文件</a></li>
 <li><a href="build-system.html#orgheadline25">2.3. SConstruct文件剖析</a>
 <ul>
-<li><a href="build-system.html#orgheadline19">2.3.1. Builder</a>
-<ul>
-<li><a href="build-system.html#orgheadline16">2.3.1.1. 编译参数和自动分析编译依赖</a></li>
-<li><a href="build-system.html#orgheadline17">2.3.1.2. 源文件使用不同参数编译</a></li>
-<li><a href="build-system.html#orgheadline18">2.3.1.3. 库链接</a></li>
-</ul>
-</li>
-<li><a href="build-system.html#orgheadline22">2.3.2. Dependencies</a>
-<ul>
-<li><a href="build-system.html#orgheadline20">2.3.2.1. 分析依赖</a></li>
-<li><a href="build-system.html#orgheadline21">2.3.2.2. 判断依赖变化</a></li>
-</ul>
-</li>
+<li><a href="build-system.html#orgheadline19">2.3.1. Builder</a></li>
+<li><a href="build-system.html#orgheadline22">2.3.2. Dependencies</a></li>
 <li><a href="build-system.html#orgheadline23">2.3.3. Environment</a></li>
 <li><a href="build-system.html#orgheadline24">2.3.4. Hierarchical Builds</a></li>
 </ul>
@@ -104,7 +93,6 @@
 </ul>
 </div>
 </div>
-
 <div id="outline-container-orgheadline13" class="outline-2">
 <h2 id="orgheadline13"><span class="section-number-2">1</span> GYP</h2>
 <div class="outline-text-2" id="text-1">
@@ -624,9 +612,7 @@ SConstruct主要支持的开发语言有C/C++以及Java。对于Java有专门的
 </p>
 </div>
 
-<div id="outline-container-orgheadline16" class="outline-5">
-<h5 id="orgheadline16"><span class="section-number-5">2.3.1.1</span> 编译参数和自动分析编译依赖</h5>
-<div class="outline-text-5" id="text-2-3-1-1">
+<ol class="org-ol"><li><a id="orgheadline16"></a>编译参数和自动分析编译依赖<br  /><div class="outline-text-5" id="text-2-3-1-1">
 <p>
 默认情况下面如果这样写的话，那么是不能够制定任何编译参数的：
 </p>
@@ -661,12 +647,9 @@ Decider的意义是说按照时间戳更新的方式来检查，这个在检查�
 也是使用g++ -MM -MG这样的方式来分析编译依赖。通常来说耗时会比较长。因为scons允许在调用参数中缓存上次编译依赖，
 强制刷新编译依赖等，这样可以在耗时和功能上达到一个比较好的折衷。
 </p>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline17" class="outline-5">
-<h5 id="orgheadline17"><span class="section-number-5">2.3.1.2</span> 源文件使用不同参数编译</h5>
-<div class="outline-text-5" id="text-2-3-1-2">
+<li><a id="orgheadline17"></a>源文件使用不同参数编译<br  /><div class="outline-text-5" id="text-2-3-1-2">
 <p>
 假设对于
 </p>
@@ -716,12 +699,9 @@ g++ -o release_main.o -c main.cc
 g++ -o release_main release_main.o
 scons: done building targets.
 </pre>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline18" class="outline-5">
-<h5 id="orgheadline18"><span class="section-number-5">2.3.1.3</span> 库链接</h5>
-<div class="outline-text-5" id="text-2-3-1-3">
+<li><a id="orgheadline18"></a>库链接<br  /><div class="outline-text-5" id="text-2-3-1-3">
 <p>
 可执行程序需要进行库链接，使用方式也是非常简单。Program这个Builder下面提供LIBPATH和LIBS这两个keyword arguments，
 可以用来指定所需要链接的库。
@@ -745,8 +725,7 @@ Program('main.cc',LIBS='cm',LIBPATH=['./lib'])
 但是在scons中绕过了这个问题，是因为scons还有两个函数用来显示声明依赖的。对于显示声明依赖，个人看法是这个东西必须做为一个可选项，
 对于小型程序显然用户希望构建系统自己生成依赖，而对于大型程序，显示声明依赖可以减少分析时间提高构建效率。
 </p>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline22" class="outline-4">
@@ -757,20 +736,15 @@ Program('main.cc',LIBS='cm',LIBPATH=['./lib'])
 </p>
 </div>
 
-<div id="outline-container-orgheadline20" class="outline-5">
-<h5 id="orgheadline20"><span class="section-number-5">2.3.2.1</span> 分析依赖</h5>
-<div class="outline-text-5" id="text-2-3-2-1">
+<ol class="org-ol"><li><a id="orgheadline20"></a>分析依赖<br  /><div class="outline-text-5" id="text-2-3-2-1">
 <p>
 关于依赖共有两种类型，一种是普通的依赖就是A-&gt;B，另外一种是顺序依赖。顺序依赖的意思是说，其实A-&gt;B并不是真正构建A依赖于构建B。
 只不过我们希望在构建顺序上，B在A构建之前。如果B发生变化，A不一定发生构建。这两种依赖分别对应于scons里面的Depends和Requires函数，
 当然这个在Makefile里面也有方法表现出来。scons还提供一个函数ParseDepends可以分析g++ -MM -MG产生的.d文件，然后来判断依赖。
 </p>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline21" class="outline-5">
-<h5 id="orgheadline21"><span class="section-number-5">2.3.2.2</span> 判断依赖变化</h5>
-<div class="outline-text-5" id="text-2-3-2-2">
+<li><a id="orgheadline21"></a>判断依赖变化<br  /><div class="outline-text-5" id="text-2-3-2-2">
 <p>
 判断依赖变化上，scons允许自己定义函数来判断文件是否发生变化。内置判断函数有下面几种：
 </p>
@@ -784,8 +758,7 @@ Program('main.cc',LIBS='cm',LIBPATH=['./lib'])
 同样依赖变化还包括构建方式的参数变化，这点是值得学习的。实现起来也不是很难，可以在数据库中记录前一个构建某个
 target的输入文件以及构建参数，如果构建参数发生变化的话，那么重新构建并且在数据库中进行记录。
 </p>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline23" class="outline-4">

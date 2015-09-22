@@ -191,44 +191,20 @@ May 12 12:29:40 dp57 mcelog: Processor 1 below trip temperature. Throttling disa
 <h2 id="orgheadline11"><span class="section-number-2">4</span> 对称多处理器架构</h2>
 <div class="outline-text-2" id="text-4">
 <p>
-对称多处理器(SMP)
+对称多处理器(SMP); 主板架构
 </p>
-
-
-<div class="figure">
-<p><img src="images/smp-arch.jpg" alt="smp-arch.jpg" />
-</p>
-</div>
 
 <p>
-主板架构
+<img src="images/smp-arch.jpg" alt="smp-arch.jpg" /> <img src="images/motherboard-arch.jpg" alt="motherboard-arch.jpg" />
 </p>
-
-
-<div class="figure">
-<p><img src="images/motherboard-arch.jpg" alt="motherboard-arch.jpg" />
-</p>
-</div>
 
 <p>
-cpu总线式结构对高速缓存进行监听(snooping)
+cpu总线式结构对高速缓存进行监听(snooping); 在smp环境下总过锁住总线允许单个cpu对存储器读写操作满足原子性
 </p>
-
-
-<div class="figure">
-<p><img src="images/cpu-bus-snooping.png" alt="cpu-bus-snooping.png" />
-</p>
-</div>
 
 <p>
-在smp环境下总过锁住总线允许单个cpu对存储器读写操作满足原子性
+<img src="images/cpu-bus-snooping.png" alt="cpu-bus-snooping.png" /> <img src="images/smp-bus-race.png" alt="smp-bus-race.png" />
 </p>
-
-
-<div class="figure">
-<p><img src="images/smp-bus-race.png" alt="smp-bus-race.png" />
-</p>
-</div>
 </div>
 </div>
 </div>

@@ -17,16 +17,16 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="writing-clean-code.html#orgheadline1">假想的编译程序</a></li>
-<li><a href="writing-clean-code.html#orgheadline2">自己设计并使用断言</a></li>
-<li><a href="writing-clean-code.html#orgheadline3">为子系统设防</a></li>
-<li><a href="writing-clean-code.html#orgheadline4">对程序进行逐条跟踪</a></li>
-<li><a href="writing-clean-code.html#orgheadline5">糖果机界面</a></li>
-<li><a href="writing-clean-code.html#orgheadline6">风险事业</a></li>
-<li><a href="writing-clean-code.html#orgheadline7">编码中的假象</a></li>
-<li><a href="writing-clean-code.html#orgheadline8">剩下来的就是态度问题</a></li>
-<li><a href="writing-clean-code.html#orgheadline9">编码检查表</a></li>
-<li><a href="writing-clean-code.html#orgheadline10">总结</a></li>
+<li><a href="writing-clean-code.html#orgheadline1">1. 假想的编译程序</a></li>
+<li><a href="writing-clean-code.html#orgheadline2">2. 自己设计并使用断言</a></li>
+<li><a href="writing-clean-code.html#orgheadline3">3. 为子系统设防</a></li>
+<li><a href="writing-clean-code.html#orgheadline4">4. 对程序进行逐条跟踪</a></li>
+<li><a href="writing-clean-code.html#orgheadline5">5. 糖果机界面</a></li>
+<li><a href="writing-clean-code.html#orgheadline6">6. 风险事业</a></li>
+<li><a href="writing-clean-code.html#orgheadline7">7. 编码中的假象</a></li>
+<li><a href="writing-clean-code.html#orgheadline8">8. 剩下来的就是态度问题</a></li>
+<li><a href="writing-clean-code.html#orgheadline9">9. 编码检查表</a></li>
+<li><a href="writing-clean-code.html#orgheadline10">10. 总结</a></li>
 </ul>
 </div>
 </div>
@@ -35,8 +35,8 @@ Microsoft编写优质无错代码的秘诀(Writing Clean Code)
 </p>
 
 <div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1">假想的编译程序</h2>
-<div class="outline-text-2" id="text-orgheadline1">
+<h2 id="orgheadline1"><span class="section-number-2">1</span> 假想的编译程序</h2>
+<div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>不要期待好运气会碰到错误，应该去自己主动发现错误，排除运气对程序测试的影响，主动地抓住错误每个机会</li>
 <li>这章作者假想了一个非常智能的编译器，可以通过修改一些C语言规则，进行函数原形的检查和提供警告消息主动的发现错误，事实上能够利用现成的C编译器实现这些功能</li>
@@ -47,8 +47,8 @@ Microsoft编写优质无错代码的秘诀(Writing Clean Code)
 </div>
 
 <div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2">自己设计并使用断言</h2>
-<div class="outline-text-2" id="text-orgheadline2">
+<h2 id="orgheadline2"><span class="section-number-2">2</span> 自己设计并使用断言</h2>
+<div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>对于每个程序最好都建立一个DEBUG版本，即要维护程序的交付版本，又要维护程序的调试版本</li>
 <li>作者对用断言Assert进行了一些探讨并进行封装，建议利用断言对函数参数进行确认</li>
@@ -62,8 +62,8 @@ Microsoft编写优质无错代码的秘诀(Writing Clean Code)
 </div>
 
 <div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3">为子系统设防</h2>
-<div class="outline-text-2" id="text-orgheadline3">
+<h2 id="orgheadline3"><span class="section-number-2">3</span> 为子系统设防</h2>
+<div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>作者认为在调用子系统时，是使用断言的最好时机，利用断言进行参数检验或是检验假设和不可能的情况</li>
 <li>消除随机特性，使错误可再现(作者利用内存分配的一个例子，在无用的内存中填入特定的字符如0xa3，来消除随机的特性，防止对于无用内存的引用，可以很容易的发现问题</li>
@@ -78,8 +78,8 @@ Microsoft编写优质无错代码的秘诀(Writing Clean Code)
 </div>
 
 <div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="orgheadline4">对程序进行逐条跟踪</h2>
-<div class="outline-text-2" id="text-orgheadline4">
+<h2 id="orgheadline4"><span class="section-number-2">4</span> 对程序进行逐条跟踪</h2>
+<div class="outline-text-2" id="text-4">
 <ul class="org-ul">
 <li>不要等到出现错误在逐语句调试程序，在编写一个子函数就应该逐语句调试，验证正确性</li>
 <li>对每一条代码路径跟踪调试</li>
@@ -90,8 +90,8 @@ Microsoft编写优质无错代码的秘诀(Writing Clean Code)
 </div>
 
 <div id="outline-container-orgheadline5" class="outline-2">
-<h2 id="orgheadline5">糖果机界面</h2>
-<div class="outline-text-2" id="text-orgheadline5">
+<h2 id="orgheadline5"><span class="section-number-2">5</span> 糖果机界面</h2>
+<div class="outline-text-2" id="text-5">
 <p>
 这里作者所谈及的就是怎么编写通过良好的函数界面来编写无错代码
 </p>
@@ -107,8 +107,8 @@ Microsoft编写优质无错代码的秘诀(Writing Clean Code)
 </div>
 
 <div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="orgheadline6">风险事业</h2>
-<div class="outline-text-2" id="text-orgheadline6">
+<h2 id="orgheadline6"><span class="section-number-2">6</span> 风险事业</h2>
+<div class="outline-text-2" id="text-6">
 <p>
 这里作者所谈论的就是对于数据移植，数据范围，和一些含有风险性的语句
 </p>
@@ -126,8 +126,8 @@ Microsoft编写优质无错代码的秘诀(Writing Clean Code)
 </div>
 
 <div id="outline-container-orgheadline7" class="outline-2">
-<h2 id="orgheadline7">编码中的假象</h2>
-<div class="outline-text-2" id="text-orgheadline7">
+<h2 id="orgheadline7"><span class="section-number-2">7</span> 编码中的假象</h2>
+<div class="outline-text-2" id="text-7">
 <ul class="org-ul">
 <li>只引用属于你自己的存储空间</li>
 <li>只有系统才能拥有空闲的存储区，程序员不能拥有</li>
@@ -142,8 +142,8 @@ Microsoft编写优质无错代码的秘诀(Writing Clean Code)
 </div>
 
 <div id="outline-container-orgheadline8" class="outline-2">
-<h2 id="orgheadline8">剩下来的就是态度问题</h2>
-<div class="outline-text-2" id="text-orgheadline8">
+<h2 id="orgheadline8"><span class="section-number-2">8</span> 剩下来的就是态度问题</h2>
+<div class="outline-text-2" id="text-8">
 <ul class="org-ul">
 <li>错误不会消失，错误只会因为环境设置的改变而掩盖，而不会无故消失。错误小时有三个原因：错误报告不对，错误被别的程序员修改，错误没有表现出来</li>
 <li>马上修改错误，不要推迟到最后</li>
@@ -162,8 +162,8 @@ Microsoft编写优质无错代码的秘诀(Writing Clean Code)
 </div>
 
 <div id="outline-container-orgheadline9" class="outline-2">
-<h2 id="orgheadline9">编码检查表</h2>
-<div class="outline-text-2" id="text-orgheadline9">
+<h2 id="orgheadline9"><span class="section-number-2">9</span> 编码检查表</h2>
+<div class="outline-text-2" id="text-9">
 <p>
 <b>一般问题</b>
 </p>
@@ -257,8 +257,8 @@ Microsoft编写优质无错代码的秘诀(Writing Clean Code)
 </div>
 
 <div id="outline-container-orgheadline10" class="outline-2">
-<h2 id="orgheadline10">总结</h2>
-<div class="outline-text-2" id="text-orgheadline10">
+<h2 id="orgheadline10"><span class="section-number-2">10</span> 总结</h2>
+<div class="outline-text-2" id="text-10">
 <p>
 决不允许同样错误出现两次
 </p>

@@ -43,20 +43,8 @@
 </li>
 <li><a href="apue.html#orgheadline27">2.2. Unix系统实现</a>
 <ul>
-<li><a href="apue.html#orgheadline20">2.2.1. 限制</a>
-<ul>
-<li><a href="apue.html#orgheadline17">2.2.1.1. 编译时限制</a></li>
-<li><a href="apue.html#orgheadline18">2.2.1.2. sysconf限制</a></li>
-<li><a href="apue.html#orgheadline19">2.2.1.3. pathconf/fpathconf限制</a></li>
-</ul>
-</li>
-<li><a href="apue.html#orgheadline24">2.2.2. 选项</a>
-<ul>
-<li><a href="apue.html#orgheadline21">2.2.2.1. 编译时选项</a></li>
-<li><a href="apue.html#orgheadline22">2.2.2.2. sysconf选项</a></li>
-<li><a href="apue.html#orgheadline23">2.2.2.3. pathconf/fpathconf选项</a></li>
-</ul>
-</li>
+<li><a href="apue.html#orgheadline20">2.2.1. 限制</a></li>
+<li><a href="apue.html#orgheadline24">2.2.2. 选项</a></li>
 <li><a href="apue.html#orgheadline25">2.2.3. 功能测试宏</a></li>
 <li><a href="apue.html#orgheadline26">2.2.4. 基本系统数据类型</a></li>
 </ul>
@@ -233,35 +221,9 @@
 <li><a href="apue.html#orgheadline146">11.13. 线程和IO</a></li>
 <li><a href="apue.html#orgheadline167">11.14. API</a>
 <ul>
-<li><a href="apue.html#orgheadline153">11.14.1. attr</a>
-<ul>
-<li><a href="apue.html#orgheadline147">11.14.1.1. init</a></li>
-<li><a href="apue.html#orgheadline148">11.14.1.2. detach</a></li>
-<li><a href="apue.html#orgheadline149">11.14.1.3. guard</a></li>
-<li><a href="apue.html#orgheadline150">11.14.1.4. sched</a></li>
-<li><a href="apue.html#orgheadline151">11.14.1.5. scope</a></li>
-<li><a href="apue.html#orgheadline152">11.14.1.6. stack</a></li>
-</ul>
-</li>
-<li><a href="apue.html#orgheadline159">11.14.2. sync</a>
-<ul>
-<li><a href="apue.html#orgheadline154">11.14.2.1. mutex</a></li>
-<li><a href="apue.html#orgheadline155">11.14.2.2. cond</a></li>
-<li><a href="apue.html#orgheadline156">11.14.2.3. rwlock</a></li>
-<li><a href="apue.html#orgheadline157">11.14.2.4. spinlock</a></li>
-<li><a href="apue.html#orgheadline158">11.14.2.5. barrier</a></li>
-</ul>
-</li>
-<li><a href="apue.html#orgheadline166">11.14.3. control</a>
-<ul>
-<li><a href="apue.html#orgheadline160">11.14.3.1. run</a></li>
-<li><a href="apue.html#orgheadline161">11.14.3.2. cancel</a></li>
-<li><a href="apue.html#orgheadline162">11.14.3.3. signal</a></li>
-<li><a href="apue.html#orgheadline163">11.14.3.4. sched</a></li>
-<li><a href="apue.html#orgheadline164">11.14.3.5. resource</a></li>
-<li><a href="apue.html#orgheadline165">11.14.3.6. specific</a></li>
-</ul>
-</li>
+<li><a href="apue.html#orgheadline153">11.14.1. attr</a></li>
+<li><a href="apue.html#orgheadline159">11.14.2. sync</a></li>
+<li><a href="apue.html#orgheadline166">11.14.3. control</a></li>
 </ul>
 </li>
 <li><a href="apue.html#orgheadline169">11.15. 使用注意</a>
@@ -322,7 +284,6 @@
 </ul>
 </div>
 </div>
-
 <div id="outline-container-orgheadline11" class="outline-2">
 <h2 id="orgheadline11"><span class="section-number-2">1</span> Unix基础知识</h2>
 <div class="outline-text-2" id="text-1">
@@ -1146,20 +1107,15 @@ FIPS的作用是要求任何希望向美国政府销售POSIX兼容的计算机�
 </ul>
 </div>
 
-<div id="outline-container-orgheadline17" class="outline-5">
-<h5 id="orgheadline17"><span class="section-number-5">2.2.1.1</span> 编译时限制</h5>
-<div class="outline-text-5" id="text-2-2-1-1">
+<ol class="org-ol"><li><a id="orgheadline17"></a>编译时限制<br  /><div class="outline-text-5" id="text-2-2-1-1">
 <p>
 对于编译时限制，对于编译器相关的限制有必要了解之外，对于操作系统的限制
 完全没有必要了解(了解最小值或者是最大值还是需要的，这样有助于写出可移植性程序).因为基本
 上所能够知道的操作系统的限制都可以通过系统来调整。关于编译器相关的限制在limits.h文件下面。
 </p>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline18" class="outline-5">
-<h5 id="orgheadline18"><span class="section-number-5">2.2.1.2</span> sysconf限制</h5>
-<div class="outline-text-5" id="text-2-2-1-2">
+<li><a id="orgheadline18"></a>sysconf限制<br  /><div class="outline-text-5" id="text-2-2-1-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1266,12 +1222,9 @@ FIPS的作用是要求任何希望向美国政府销售POSIX兼容的计算机�
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline19" class="outline-5">
-<h5 id="orgheadline19"><span class="section-number-5">2.2.1.3</span> pathconf/fpathconf限制</h5>
-<div class="outline-text-5" id="text-2-2-1-3">
+<li><a id="orgheadline19"></a>pathconf/fpathconf限制<br  /><div class="outline-text-5" id="text-2-2-1-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1328,8 +1281,7 @@ FIPS的作用是要求任何希望向美国政府销售POSIX兼容的计算机�
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 
@@ -1346,19 +1298,14 @@ FIPS的作用是要求任何希望向美国政府销售POSIX兼容的计算机�
 </ul>
 </div>
 
-<div id="outline-container-orgheadline21" class="outline-5">
-<h5 id="orgheadline21"><span class="section-number-5">2.2.2.1</span> 编译时选项</h5>
-<div class="outline-text-5" id="text-2-2-2-1">
+<ol class="org-ol"><li><a id="orgheadline21"></a>编译时选项<br  /><div class="outline-text-5" id="text-2-2-2-1">
 <p>
 包含unistd.h这个头文件然后使用宏来判断。对于宏和参数对应关系是,X那么宏是_POSIX_&lt;X&gt;,
 而参数是_SC_&lt;X&gt;.如果编译时选项没有指定的话，那么必须通过运行时选项来获取。
 </p>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline22" class="outline-5">
-<h5 id="orgheadline22"><span class="section-number-5">2.2.2.2</span> sysconf选项</h5>
-<div class="outline-text-5" id="text-2-2-2-2">
+<li><a id="orgheadline22"></a>sysconf选项<br  /><div class="outline-text-5" id="text-2-2-2-2">
 <p>
 关于每个可选接口组提供的接口，可以通过posixoptions获得。
 </p>
@@ -1699,12 +1646,9 @@ FIPS的作用是要求任何希望向美国政府销售POSIX兼容的计算机�
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline23" class="outline-5">
-<h5 id="orgheadline23"><span class="section-number-5">2.2.2.3</span> pathconf/fpathconf选项</h5>
-<div class="outline-text-5" id="text-2-2-2-3">
+<li><a id="orgheadline23"></a>pathconf/fpathconf选项<br  /><div class="outline-text-5" id="text-2-2-2-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
@@ -1751,8 +1695,7 @@ FIPS的作用是要求任何希望向美国政府销售POSIX兼容的计算机�
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline25" class="outline-4">
@@ -8468,19 +8411,14 @@ POSIX.1的线程模型中，异步信号被发送到进程以后，进程中当�
 <div id="outline-container-orgheadline153" class="outline-4">
 <h4 id="orgheadline153"><span class="section-number-4">11.14.1</span> attr</h4>
 <div class="outline-text-4" id="text-11-14-1">
-</div><div id="outline-container-orgheadline147" class="outline-5">
-<h5 id="orgheadline147"><span class="section-number-5">11.14.1.1</span> init</h5>
-<div class="outline-text-5" id="text-11-14-1-1">
+</div><ol class="org-ol"><li><a id="orgheadline147"></a>init<br  /><div class="outline-text-5" id="text-11-14-1-1">
 <ul class="org-ul">
 <li>pthread_attr_init</li>
 <li>pthread_attr_destroy</li>
 </ul>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline148" class="outline-5">
-<h5 id="orgheadline148"><span class="section-number-5">11.14.1.2</span> detach</h5>
-<div class="outline-text-5" id="text-11-14-1-2">
+<li><a id="orgheadline148"></a>detach<br  /><div class="outline-text-5" id="text-11-14-1-2">
 <ul class="org-ul">
 <li>pthread_attr_getdetachstate</li>
 <li>pthread_attr_setdetachstate</li>
@@ -8488,12 +8426,9 @@ POSIX.1的线程模型中，异步信号被发送到进程以后，进程中当�
 <p>
 所谓detach就是指线程在运行完成之后会自己退出而不会被join.我们这里可以控制线程是处于detached状态，还是处于joinable的状态。
 </p>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline149" class="outline-5">
-<h5 id="orgheadline149"><span class="section-number-5">11.14.1.3</span> guard</h5>
-<div class="outline-text-5" id="text-11-14-1-3">
+<li><a id="orgheadline149"></a>guard<br  /><div class="outline-text-5" id="text-11-14-1-3">
 <ul class="org-ul">
 <li>pthread_attr_setguardsize</li>
 <li>pthread_attr_getguardsize</li>
@@ -8502,12 +8437,9 @@ POSIX.1的线程模型中，异步信号被发送到进程以后，进程中当�
 每个线程会存在自己的堆栈，如果访问超过自己的堆栈的话那么可能会修改到其他的线程堆栈的，如果这些堆栈是相连的话。
 如果我们设置了guardsize的话，线程堆栈会多开辟guarszie这么大小，当访问到这块多开辟大小的内存的话，那么就会触发SIGSEGV信号。
 </p>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline150" class="outline-5">
-<h5 id="orgheadline150"><span class="section-number-5">11.14.1.4</span> sched</h5>
-<div class="outline-text-5" id="text-11-14-1-4">
+<li><a id="orgheadline150"></a>sched<br  /><div class="outline-text-5" id="text-11-14-1-4">
 <ul class="org-ul">
 <li>pthread_attr_getinheritsched</li>
 <li>pthread_attr_setinheritsched</li>
@@ -8535,12 +8467,9 @@ schedpolicy可以设置调度策略，而schedparam可以设置调度策略所�
   };
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline151" class="outline-5">
-<h5 id="orgheadline151"><span class="section-number-5">11.14.1.5</span> scope</h5>
-<div class="outline-text-5" id="text-11-14-1-5">
+<li><a id="orgheadline151"></a>scope<br  /><div class="outline-text-5" id="text-11-14-1-5">
 <ul class="org-ul">
 <li>pthread_attr_setscope</li>
 <li>pthread_attr_getscope</li>
@@ -8556,12 +8485,9 @@ schedpolicy可以设置调度策略，而schedparam可以设置调度策略所�
 process contention scope是指各个线程在同一个进程中竞争被调度的CPU时间，但是并不和其他进程中的线程竞争。
 system contention scope是只线程直接和系统范围内其他线程竞争，而不论它们和什么进程关联。
 </p>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline152" class="outline-5">
-<h5 id="orgheadline152"><span class="section-number-5">11.14.1.6</span> stack</h5>
-<div class="outline-text-5" id="text-11-14-1-6">
+<li><a id="orgheadline152"></a>stack<br  /><div class="outline-text-5" id="text-11-14-1-6">
 <ul class="org-ul">
 <li>pthread_attr_getstack</li>
 <li>pthread_attr_setstack</li>
@@ -8573,16 +8499,13 @@ system contention scope是只线程直接和系统范围内其他线程竞争，
 <p>
 可以设置线程在什么地址上面运行(栈),以及栈大小
 </p>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline159" class="outline-4">
 <h4 id="orgheadline159"><span class="section-number-4">11.14.2</span> sync</h4>
 <div class="outline-text-4" id="text-11-14-2">
-</div><div id="outline-container-orgheadline154" class="outline-5">
-<h5 id="orgheadline154"><span class="section-number-5">11.14.2.1</span> mutex</h5>
-<div class="outline-text-5" id="text-11-14-2-1">
+</div><ol class="org-ol"><li><a id="orgheadline154"></a>mutex<br  /><div class="outline-text-5" id="text-11-14-2-1">
 <ul class="org-ul">
 <li>pthread_mutex_init</li>
 <li>pthread_mutex_destroy</li>
@@ -8619,13 +8542,10 @@ type是锁的类型包括下面这些
 <li>PTHREAD_MUTEX_RECURSIVE // 递归锁，允许多次加锁，但是也需要同样次数解锁</li>
 <li>PTHREAD_MUTEX_DEFAULT // ???</li>
 </ul>
-</div>
-</div>
+</div></li>
 
 
-<div id="outline-container-orgheadline155" class="outline-5">
-<h5 id="orgheadline155"><span class="section-number-5">11.14.2.2</span> cond</h5>
-<div class="outline-text-5" id="text-11-14-2-2">
+<li><a id="orgheadline155"></a>cond<br  /><div class="outline-text-5" id="text-11-14-2-2">
 <ul class="org-ul">
 <li>pthread_cond_init</li>
 <li>pthread_cond_destroy</li>
@@ -8640,12 +8560,9 @@ type是锁的类型包括下面这些
 <li>pthread_condattr_getpshared</li>
 <li>pthread_condattr_setpshared</li>
 </ul>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline156" class="outline-5">
-<h5 id="orgheadline156"><span class="section-number-5">11.14.2.3</span> rwlock</h5>
-<div class="outline-text-5" id="text-11-14-2-3">
+<li><a id="orgheadline156"></a>rwlock<br  /><div class="outline-text-5" id="text-11-14-2-3">
 <ul class="org-ul">
 <li>pthread_rwlock_init</li>
 <li>pthread_rwlock_destroy</li>
@@ -8661,12 +8578,9 @@ type是锁的类型包括下面这些
 <li>pthread_rwlockattr_getpshared</li>
 <li>pthread_rwlockattr_setpshared</li>
 </ul>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline157" class="outline-5">
-<h5 id="orgheadline157"><span class="section-number-5">11.14.2.4</span> spinlock</h5>
-<div class="outline-text-5" id="text-11-14-2-4">
+<li><a id="orgheadline157"></a>spinlock<br  /><div class="outline-text-5" id="text-11-14-2-4">
 <ul class="org-ul">
 <li>pthread_spin_init</li>
 <li>pthread_spin_destroy</li>
@@ -8674,12 +8588,9 @@ type是锁的类型包括下面这些
 <li>pthread_spin_trylock</li>
 <li>pthread_spin_unlock</li>
 </ul>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline158" class="outline-5">
-<h5 id="orgheadline158"><span class="section-number-5">11.14.2.5</span> barrier</h5>
-<div class="outline-text-5" id="text-11-14-2-5">
+<li><a id="orgheadline158"></a>barrier<br  /><div class="outline-text-5" id="text-11-14-2-5">
 <ul class="org-ul">
 <li>pthread_barrier_init // 以count初始化,表明有多少个线程需要同步</li>
 <li>pthread_barrier_destroy</li>
@@ -8692,28 +8603,22 @@ type是锁的类型包括下面这些
 <p>
 barrier类似于muduo里面的countdownlatch机制
 </p>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline166" class="outline-4">
 <h4 id="orgheadline166"><span class="section-number-4">11.14.3</span> control</h4>
 <div class="outline-text-4" id="text-11-14-3">
-</div><div id="outline-container-orgheadline160" class="outline-5">
-<h5 id="orgheadline160"><span class="section-number-5">11.14.3.1</span> run</h5>
-<div class="outline-text-5" id="text-11-14-3-1">
+</div><ol class="org-ol"><li><a id="orgheadline160"></a>run<br  /><div class="outline-text-5" id="text-11-14-3-1">
 <ul class="org-ul">
 <li>pthread_create</li>
 <li>pthread_exit</li>
 <li>pthread_join</li>
 <li>pthread_detach</li>
 </ul>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline161" class="outline-5">
-<h5 id="orgheadline161"><span class="section-number-5">11.14.3.2</span> cancel</h5>
-<div class="outline-text-5" id="text-11-14-3-2">
+<li><a id="orgheadline161"></a>cancel<br  /><div class="outline-text-5" id="text-11-14-3-2">
 <ul class="org-ul">
 <li>pthread_cancel</li>
 <li>pthread_testcancel</li>
@@ -8741,23 +8646,17 @@ cancellation point有一类函数，如果我们希望在自己构造cancellatio
 如果其他线程已经尝试cancel我们的话，我们就会在这个点退出。pthread_cancel就是去cancel某个线程的，pthread_cancel不会阻塞立即返回。
 而push和pop就是注册被cancel之后cleanup的回调函数，可能以宏实现然后配合线程局部变量完成。
 </p>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline162" class="outline-5">
-<h5 id="orgheadline162"><span class="section-number-5">11.14.3.3</span> signal</h5>
-<div class="outline-text-5" id="text-11-14-3-3">
+<li><a id="orgheadline162"></a>signal<br  /><div class="outline-text-5" id="text-11-14-3-3">
 <ul class="org-ul">
 <li>pthread_kill</li>
 <li>pthread_sigmask</li>
 <li>pthread_atfork // 设置线程在fork时候触发的回调</li>
 </ul>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline163" class="outline-5">
-<h5 id="orgheadline163"><span class="section-number-5">11.14.3.4</span> sched</h5>
-<div class="outline-text-5" id="text-11-14-3-4">
+<li><a id="orgheadline163"></a>sched<br  /><div class="outline-text-5" id="text-11-14-3-4">
 <ul class="org-ul">
 <li>pthread_getschedparam</li>
 <li>pthread_setschedparam</li>
@@ -8766,12 +8665,9 @@ cancellation point有一类函数，如果我们希望在自己构造cancellatio
 <p>
 这个和attr部分的sched差不多，允许线程动态地修改调度策略，参数以及运行优先级。
 </p>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline164" class="outline-5">
-<h5 id="orgheadline164"><span class="section-number-5">11.14.3.5</span> resource</h5>
-<div class="outline-text-5" id="text-11-14-3-5">
+<li><a id="orgheadline164"></a>resource<br  /><div class="outline-text-5" id="text-11-14-3-5">
 <ul class="org-ul">
 <li>pthread_getcpuclockid</li>
 <li>pthread_getconcurrency</li>
@@ -8835,12 +8731,9 @@ resolution 0.000001 ms
 }
 </pre>
 </div>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline165" class="outline-5">
-<h5 id="orgheadline165"><span class="section-number-5">11.14.3.6</span> specific</h5>
-<div class="outline-text-5" id="text-11-14-3-6">
+<li><a id="orgheadline165"></a>specific<br  /><div class="outline-text-5" id="text-11-14-3-6">
 <ul class="org-ul">
 <li>pthread_once</li>
 <li>pthread_self</li>
@@ -8849,8 +8742,7 @@ resolution 0.000001 ms
 <li>pthread_getspecific</li>
 <li>pthread_setspecific</li>
 </ul>
-</div>
-</div>
+</div></li></ol>
 </div>
 </div>
 

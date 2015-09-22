@@ -93,22 +93,10 @@
 <ul>
 <li><a href="unp.html#orgheadline50">2.10.1. 阻塞IO(blocking IO)</a></li>
 <li><a href="unp.html#orgheadline51">2.10.2. 非阻塞IO(nonblocking IO)</a></li>
-<li><a href="unp.html#orgheadline54">2.10.3. IO复用(IO multiplexing)</a>
-<ul>
-<li><a href="unp.html#orgheadline52">2.10.3.1. select/pselect</a></li>
-<li><a href="unp.html#orgheadline53">2.10.3.2. poll/ppoll</a></li>
-</ul>
-</li>
+<li><a href="unp.html#orgheadline54">2.10.3. IO复用(IO multiplexing)</a></li>
 <li><a href="unp.html#orgheadline55">2.10.4. 信号驱动IO(signal-driven IO)</a></li>
 <li><a href="unp.html#orgheadline56">2.10.5. 异步IO(asynchronous IO)</a></li>
-<li><a href="unp.html#orgheadline61">2.10.6. 高级IO</a>
-<ul>
-<li><a href="unp.html#orgheadline57">2.10.6.1. recv/send</a></li>
-<li><a href="unp.html#orgheadline58">2.10.6.2. readv/writev</a></li>
-<li><a href="unp.html#orgheadline59">2.10.6.3. recvmsg/sendmsg</a></li>
-<li><a href="unp.html#orgheadline60">2.10.6.4. epoll</a></li>
-</ul>
-</li>
+<li><a href="unp.html#orgheadline61">2.10.6. 高级IO</a></li>
 </ul>
 </li>
 <li><a href="unp.html#orgheadline66">2.11. conversion</a>
@@ -187,7 +175,6 @@
 </ul>
 </div>
 </div>
-
 <div id="outline-container-orgheadline10" class="outline-2">
 <h2 id="orgheadline10"><span class="section-number-2">1</span> 简介</h2>
 <div class="outline-text-2" id="text-1">
@@ -1842,9 +1829,7 @@ fcntl(fd,F_SETFL,flags);
 </p>
 </div>
 
-<div id="outline-container-orgheadline52" class="outline-5">
-<h5 id="orgheadline52"><span class="section-number-5">2.10.3.1</span> select/pselect</h5>
-<div class="outline-text-5" id="text-2-10-3-1">
+<ol class="org-ol"><li><a id="orgheadline52"></a>select/pselect<br  /><div class="outline-text-5" id="text-2-10-3-1">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-comment-delimiter">//</span><span class="org-comment">#include &lt;bits/time.h&gt;</span>
@@ -2010,12 +1995,9 @@ select存在限制，那就是FD_SETSIZE这个大小。通常来说这个值是1
 调整这个大小需要重新编译内核。并且存在一个问题，select内部是使用线性算法来扫描集合是否有状态变化的，因此
 就是调整FD_SETSIZE的话，性能也会出现问题。更好的方式就是使用epoll.这个可以在fs/select.c下面看到实现。
 </p>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline53" class="outline-5">
-<h5 id="orgheadline53"><span class="section-number-5">2.10.3.2</span> poll/ppoll</h5>
-<div class="outline-text-5" id="text-2-10-3-2">
+<li><a id="orgheadline53"></a>poll/ppoll<br  /><div class="outline-text-5" id="text-2-10-3-2">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-comment-delimiter">//</span><span class="org-comment">#include &lt;sys/poll.h&gt;</span>
@@ -2155,8 +2137,7 @@ poll的超时时间单位是ms如果为负值的话那么就是永久等待。po
 对于我们来说最常用的就是三个常数，POLLIN,POLLOUT,POLLERR.而可读和可写的定义可以认为和select基本一致。
 所以最终我们可以认为，poll就是select另外接口。
 </p>
-</div>
-</div>
+</div></li></ol>
 </div>
 
 <div id="outline-container-orgheadline55" class="outline-4">
@@ -2195,9 +2176,7 @@ fcntl(fd,F_SETOWN,getpid());
 <div id="outline-container-orgheadline61" class="outline-4">
 <h4 id="orgheadline61"><span class="section-number-4">2.10.6</span> 高级IO</h4>
 <div class="outline-text-4" id="text-2-10-6">
-</div><div id="outline-container-orgheadline57" class="outline-5">
-<h5 id="orgheadline57"><span class="section-number-5">2.10.6.1</span> recv/send</h5>
-<div class="outline-text-5" id="text-2-10-6-1">
+</div><ol class="org-ol"><li><a id="orgheadline57"></a>recv/send<br  /><div class="outline-text-5" id="text-2-10-6-1">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-comment-delimiter">//</span><span class="org-comment">#include &lt;sys/socket.h&gt;</span>
@@ -2269,12 +2248,9 @@ recv/send界面上和write/read非常相似，不过多了一个flags参数。�
 </tr>
 </tbody>
 </table>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline58" class="outline-5">
-<h5 id="orgheadline58"><span class="section-number-5">2.10.6.2</span> readv/writev</h5>
-<div class="outline-text-5" id="text-2-10-6-2">
+<li><a id="orgheadline58"></a>readv/writev<br  /><div class="outline-text-5" id="text-2-10-6-2">
 <div class="org-src-container">
 
 <pre class="src src-C++"><span class="org-comment-delimiter">//</span><span class="org-comment">#include &lt;bits/uio.h&gt;</span>
@@ -2311,12 +2287,9 @@ recv/send界面上和write/read非常相似，不过多了一个flags参数。�
 <p>
 使用readv/writev能够将不连续的内存，调用一次系统完全读出/写入。
 </p>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline59" class="outline-5">
-<h5 id="orgheadline59"><span class="section-number-5">2.10.6.3</span> recvmsg/sendmsg</h5>
-<div class="outline-text-5" id="text-2-10-6-3">
+<li><a id="orgheadline59"></a>recvmsg/sendmsg<br  /><div class="outline-text-5" id="text-2-10-6-3">
 <p>
 这个函数可以说是最通用的IO函数了
 </p>
@@ -2392,17 +2365,13 @@ recv/send界面上和write/read非常相似，不过多了一个flags参数。�
 <li>CMSG_FIRSTHDR(hdr)</li>
 <li>CMSG_NXTHDR(cmsg,hdr).</li>
 </ul>
-</div>
-</div>
+</div></li>
 
-<div id="outline-container-orgheadline60" class="outline-5">
-<h5 id="orgheadline60"><span class="section-number-5">2.10.6.4</span> epoll</h5>
-<div class="outline-text-5" id="text-2-10-6-4">
+<li><a id="orgheadline60"></a>epoll<br  /><div class="outline-text-5" id="text-2-10-6-4">
 <p>
 #todo:
 </p>
-</div>
-</div>
+</div></li></ol>
 </div>
 </div>
 
