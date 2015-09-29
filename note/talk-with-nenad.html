@@ -67,6 +67,54 @@
 <p>
 最后一个问题我是非常想了解的，就是作为一个open sourcer，他是怎么谋生的。从他的linkedin上来看，在做Red之前他在Pairs生活，赚的钱应该也比较多。离职之后他专门从事Red的开发，搞了一段时间之后发现钱不够用了，所以他开始考虑接受捐款，但是实际上上捐款非常少，所以就开始做一些咨询师的活，说白了就是做part-time job. 同时为了缩减开支，搬到了黑山那边生活，据他说那边的生活费用是paris的1/5. 并且期间他的演讲住宿旅行费用都是承办方包了（不过我猜想现在应该也是）。之后因为他忙于做part-time job, 所以很长时间没有开发red。之后有人问他怎么回事，了解情况之后决定每个月支付他10k欧元，让他专门从事Red的开发。之后他问我中国开源开发者是怎么样谋生的，大家只能呵呵了。
 </p>
+
+<hr  />
+<p>
+update @ 201509
+</p>
+
+<p>
+最近看了一篇关于他的访谈 <a href="https://medium.com/this-is-not-a-monad-tutorial/interview-with-nenad-rakocevic-about-red-a-rebol-inspired-programming-language-681133e3fd1c">Interview with Nenad Rakocevic about Red, a Rebol inspired programming language</a>. 里面有许多关于Red/Rebol的看法, 因为对这门语言不太熟悉, 所以也就不说啥了. 对文章最后有一些语言之外的看法有些兴趣
+</p>
+
+<p>
+<b>What are the most important lessons learned from the development of Red?</b>
+</p>
+
+<ul class="org-ul">
+<li>Open-source is a superior way to build quality software (just confirmed that fact with Red project).</li>
+<li>Working “in the open” is not always a good thing, sometimes you need to isolate yourself from the outside “noise” to execute complex tasks (mostly design tasks). Being able to do so is increasingly difficult as the project growths up. 需要察觉到哪些是社区噪音, 并且懂得远离它们.</li>
+<li>Having to deal with a growing community of users consumes a <b>lot</b> of time. Finding people to deal with the community for you is critical. 管理社区是一件非常耗时耗神的事情</li>
+<li>Designing good syntactic rules is <b>way</b> more difficult than designing good semantics. That’s a part overlooked by many language designers, which end up with great semantics but terrible syntaxes. 设计好的语法远比设计好的语义要难.</li>
+<li>Writing a native code compiler for a statically typed language is really not difficult, most programmers with a minimal CS background could do it, they’re just not aware they can.</li>
+<li>Premature optimization can (often) bite you in the back. Knowing when you’re optimizing prematurely is a bit of a black art. 了解什么时候是过早优化是一门黑魔法</li>
+<li>Every big software project should be started by a team of at least 2 highly tuned, equally skilled developers. Working alone on big projects is insane, and not a guarantee of best results. 每个大型项目初始团队必须要两人以上, 并且都要非常有经验. 一个人是搞不定的.</li>
+<li>If you work on an open-source project that is attractive enough and gather enough followers, you can live from user’s donations (I did so for 2 years, covering all my basic life expenses). I never thought that would be possible when I started, nor did I counted on it. I guess I’m just lucky that Red has an amazing community.</li>
+</ul>
+
+<p>
+<b>What reading material do you recommend for implementing your first programming language?</b>
+</p>
+
+<p>
+You can have a good overview of all the required parts in a book like this <a href="https://www.goodreads.com/book/show/112256.Modern_Programming_Languages">Modern Programming Languages</a>: A Practical Introduction. If you want to go in-depth and dive into more abstract concerns, the “Dragon book” is still the reference.
+</p>
+
+<p>
+But the most useful way is to study several small languages implementation, that will give you the best insights about how to achieve it yourself. For example, Red 0.1.0 release is just a 24KB zip archive, but features already a working compiler/linker for Red/System with many features already (including FFI). Get it from here: <a href="https://github.com/red/red/releases/tag/v0.1.0">https://github.com/red/red/releases/tag/v0.1.0</a>
+</p>
+
+<p>
+<b>What other languages or technologies are you keeping an eye?</b>
+</p>
+
+<ul class="org-ul">
+<li>Go: it’s the language with the fastest growth in the last years, understanding why, could be a key to help Red growing faster too. Go’s concurrency model also seems attractive to users, so worth studying.</li>
+<li>Lua: trying to understand where it’s heading and how it grows.</li>
+<li>Python3.x: trying to understand where it’s heading, not sure I understand its strategy though.</li>
+<li>Webassembly: the foundation for the future of web programming.</li>
+<li>MagicLeap: the future of HCI!</li>
+</ul>
 </div>
 <!-- BA BEGIN --><script>var _hmt = _hmt || [];(function() {  var hm = document.createElement("script");  hm.src = "//hm.baidu.com/hm.js?4f82bfcb8e6f2283f7e7eebae990bc80";  var s = document.getElementsByTagName("script")[0];  s.parentNode.insertBefore(hm, s);})();</script><!-- BA END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'note/talk-with-nenad.html';var disqus_title = 'note/talk-with-nenad.html';var disqus_url = 'http://dirlt.com/note/talk-with-nenad.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>
 </html>
