@@ -106,7 +106,8 @@
 <li><a href="zeromq.html">zeromq</a> 开源的消息传输系统。颠覆我们思考和编写网络通信程序的方式。</li>
 <li><a href="ace.html">ACE</a> 开源的网络编程框架。非常重量级，也被人诟病为学术产物而不是适合生产实践。</li>
 <li><a href="netty.html">netty</a> an asynchronous event-driven network application framework in <b>Java</b> based on Java NIO.</li>
-<li><a href="nginx.html">nginx</a> an open source reverse proxy server for HTTP, HTTPS, SMTP, POP3, and IMAP protocols, as well as a load balancer, HTTP cache, and a web server (origin server).</li>
+<li><a href="nginx.html">nginx</a> an open source reverse proxy server for HTTP, HTTPS, SMTP, POP3, and IMAP protocols, as well as a load balancer, HTTP cache, and a web server (origin server). (简直就是webserver里面的要你命3000啊!)</li>
+<li><a href="inside-nginx-how-we-designed-for-performance-scale.html">深入NGINX：我们如何设计它的性能和扩展性</a></li>
 <li><a href="finagle.html">finagle</a> an extensible RPC system for the JVM, used to construct high-concurrency servers.</li>
 <li><a href="haproxy.html">HAProxy</a> 高性能的负载均衡器，可以提供4（TCP），7（HTTP）层反向代理。</li>
 <li><a href="gunicorn.html">gunicorn</a> Python WSGI HTTP Server. green unicorn(Ruby实现)</li>
@@ -151,9 +152,12 @@
 <div id="outline-container-orgheadline4" class="outline-2">
 <h2 id="orgheadline4"><span class="section-number-2">4</span> Distributed System</h2>
 <div class="outline-text-2" id="text-4">
+<p>
+<b>articles</b>
+</p>
+
 <ul class="org-ul">
-<li><a href="distributed-system-reading.html">Distributed System Reading</a> 分布式系统方面的一些文章
-<ul class="org-ul">
+<li><a href="distributed-system-reading.html">Distributed System Reading</a> 分布式系统方面的一些文章</li>
 <li><a href="you-can-not-sacrifice-partition-tolerance.html">You Can’t Sacrifice Partition Tolerance</a></li>
 <li><a href="the-anatomy-of-the-google-architecture.html">The Anatomy Of The Google Architecture</a> @2009 Google架构的深入解析，属于非官方文档，是一个非Google的友人收集各种资料汇集起来的</li>
 <li><a href="building-scalable-highly-concurrent-and-fault-tolerant-systems.html">Building Scalable, Highly Concurrent &amp; Fault-Tolerant Systems: Lessons Learned</a></li>
@@ -200,94 +204,102 @@
 <li><a href="what-it-takes-to-run-stack-overflow.html">What it takes to run Stack Overflow</a> @2013.11</li>
 <li><a href="mesos-omega-borg-a-survey.html">mesos, omega, borg: a survey</a> @2015</li>
 <li><a href="what-does-it-take-to-make-google-work-at-scale.html">What does it take to make Google work at scale?</a> @2015</li>
-</ul></li>
-<li><a href="akka.html">Akka</a> 构建在JVM上的基于Actor模型实现的分布式应用框架</li>
-<li><a href="streambase.html">StreamBase</a> 在实现Baidu in-house的分布式实时流式计算系统之前，调研的商用流式计算系统。没有办法获得源代码只能够从文档中猜测其内部实现以及参考其提供的功能与接口。</li>
-<li><a href="storm.html">Storm</a> Twitter的分布式实时流式处理系统。这个在实现Baidu in-house的分布式实时流式计算系统的时候也做过调研，但是当时不是很深入。</li>
-<li><a href="samza.html">Samza</a> LinkedIn的的分布式流式处理系统，现在是Apache下面的项目。</li>
-<li><a href="kafka.html">Kafka</a> Apache的分布式消息系统。似乎在高可用性方面还有很多事情需要做。</li>
-<li><a href="chubby.html">Chubby</a> Google为松耦合分布式系统开发的锁服务，但是在现实中还可以作为名字服务或是资源定位来使用。</li>
-<li><a href="gfs.html">GFS</a> Google分布式基础架构的分布式文件系统。</li>
-<li><a href="mapreduce.html">MapReduce</a> Google分布式基础架构的分布式计算系统。</li>
-<li><a href="bigtable.html">BigTable</a> Google分布式基础架构的分布式表格系统。</li>
-<li><a href="hadoop.html">Hadoop</a> Apache的分布式系统基础架构总称，下面包含许多子项目。
-<ul class="org-ul">
-<li><a href="hadoop-overview.html">Hadoop Overview</a> @ 2012</li>
-<li><a href="hadoop-benchmark.html">Hadoop Benchmark</a></li>
-<li><a href="hadoop-definitive-guide.html">Hadoop权威指南(笔记)</a></li>
+<li><a href="building-a-terabyte-scale-data-cycle-at-linkedin-with-hadoop-and-project-voldemort.html">Building a terabyte-scale data cycle at LinkedIn with Hadoop and Project Voldemort</a> @ 2009</li>
+<li><a href="project-voldemort-scaling-simple-storage-at-linkedin.html">Project Voldemort: Scaling Simple Storage at LinkedIn</a> @ 2009</li>
+<li><a href="druid-design-doc.html">Druid Design Doc</a> Metamarket的大规模数据上的实时OLAP</li>
+<li><a href="intro-druid-real-time-analytics-at-a-billion-rows-per-second.html">Introducing Druid: Real-Time Analytics at a Billion Rows Per Second</a> @2011</li>
+<li><a href="druid-part-deux-three-principles-for-fast-dist-olap.html">Druid, Part Deux: Three Principles for Fast, Distributed OLAP</a> @2011</li>
+<li><a href="corona.html">Under the Hood: Scheduling MapReduce jobs more efficiently with Corona</a> @ 2012</li>
+<li><a href="yarn-intro.html">Introducing Apache Hadoop YARN</a> @ 2012</li>
+<li><a href="manhattan.html">Manhattan, our real-time, multi-tenant distributed database for Twitter scale</a> @ 2014</li>
 <li><a href="best-practices-for-selecting-apache-hadoop-hardware.html">Best Practices for Selecting Apache Hadoop Hardware</a> @2011</li>
 <li><a href="the-dark-side-of-hadoop.html">The dark side of Hadoop - BackType Technology</a> @2011</li>
 <li><a href="apache-hadoop-goes-realtime-at-facebook.html">Apache Hadoop Goes Realtime at Facebook</a> @2011</li>
 <li><a href="is-hadoop-out-of-date.html">Hadoop即将过时了吗？</a> @2012</li>
-</ul></li>
-<li><a href="hdfs.html">HDFS</a> Apache Hadoop项目的分布式文件系统，<a href="gfs.html">GFS</a> 的开源实现。
-<ul class="org-ul">
-<li><a href="the-hadoop-distributed-file-system.html">The Hadoop Distributed File System</a> @2010</li>
-<li><a href="hdfs-reliability.html">HDFS Reliability</a> @2008</li>
-<li><a href="hdfs-scalability-the-limits-to-growth.html">HDFS scalability: the limits to growth</a> @2010</li>
 <li><a href="hdfs-reliability-with-namenode-and-avatarnode.html">Hadoop Distributed Filesystem reliability with Namenode and Avatarnode</a> @2012</li>
 <li><a href="ha-namenode-for-hdfs-with-hadoop1.html">HA Namenode for HDFS with Hadoop 1.0</a> @2012</li>
 <li><a href="hadoop-io-files.html">Hadoop I/O: Sequence, Map, Set, Array, BloomMap Files</a> @2011</li>
 <li><a href="why-not-raid0-in-hdfs.html">Why not RAID-0? It’s about Time and Snowflakes</a> @2012</li>
-</ul></li>
-<li><a href="hbase.html">HBase</a> Apache Hadoop项目的分布式表格系统，<a href="bigtable.html">BigTable</a> 的开源实现。
-<ul class="org-ul">
-<li><a href="hbase-definitive-guide.html">HBase权威指南(笔记)</a></li>
-<li><a href="hbase-configuration.html">Apache HBase Configuration</a></li>
 <li><a href="hbase-write-path.html">HBase Write Path</a> @ 2012</li>
 <li><a href="hbase-log-splitting.html">HBase Log Splitting</a> @2012</li>
 <li><a href="alibaba-hbase-practice.html">阿里HBase业务设计实践</a> @ 2012</li>
 <li><a href="using-hbase-with-iomemory.html">Using HBase with ioMemory</a> by fusion-io</li>
-</ul></li>
-<li><a href="mapred.html">MapReduce</a> Apache Hadoop项目的分布式计算系统，<a href="mapreduce.html">MapReduce</a> 的开源实现。
-<ul class="org-ul">
-<li><a href="mapreduce-online.html">MapReduce Online</a> @2010</li>
 <li><a href="7-tips-for-improving-mapreduce-performance.html">7 Tips for Improving MapReduce Performance</a> @2009</li>
 <li><a href="mapreduce-patterns-algos-and-use-cases.html">MapReduce Patterns, Algorithms, and Use Cases</a> @2012</li>
-</ul></li>
-<li><a href="zookeeper.html">ZooKeeper</a> Apache Hadoop项目的分布式锁服务，<a href="chubby.html">Chubby</a> 的开源实现。</li>
-<li><a href="oozie.html">Oozie</a> Apache Hadoop项目的工作流系统，可以将多个MapReduce作业组合到一个逻辑单元中。支持作业之间的相互依赖，同时允许时间以及数据来触发作业。</li>
-<li><a href="hive.html">Hive</a> Apache Hadoop项目的数据仓库平台，以HDFS/HBase为数据仓库存储平台，底层执行引擎是MapReduce，上层提供类SQL的HiveQL数据查询语言。</li>
-<li><a href="pig.html">Pig</a> Apache Hadoop项目的计算语言，用于简化MapReduce任务的编写。事实上底层可以很多其他的计算引擎比如Spark等。</li>
-<li><a href="dremel.html">Dremel</a> Google针对大数据查询的交互式系统，传说可以在3秒内搞定PB级别的数据。</li>
-<li><a href="impala.html">Impala</a> Cloudera的大规模数据实时查询系统，可以认为是Google的 <a href="dremel.html">Dremel</a> 的开源实现。
-<ul class="org-ul">
 <li><a href="cloudera-impala-real-time-queries-in-apache-hadoop-for-real.html">Cloudera Impala: Real-Time Queries in Apache Hadoop, For Real</a> @2012</li>
-</ul></li>
-<li><a href="druid.html">Druid</a> MetaMarket的大规模数据实时查询系统，可以认为是Google的 <a href="dremel.html">Dremel</a> 的开源实现。
+<li><a href="streambase.html">A Glance on StreamBase</a> 之前调研过的商用流式处理系统</li>
+</ul>
+
+<p>
+<b>systems</b>
+</p>
 <ul class="org-ul">
-<li><a href="intro-druid-real-time-analytics-at-a-billion-rows-per-second.html">Introducing Druid: Real-Time Analytics at a Billion Rows Per Second</a> @2011</li>
-<li><a href="druid-part-deux-three-principles-for-fast-dist-olap.html">Druid, Part Deux: Three Principles for Fast, Distributed OLAP</a> @2011</li>
+<li><a href="akka-doc.html">Akka Doc</a> Akka文档阅读笔记</li>
+<li><a href="storm.html">Storm</a> Twitter的流式处理系统</li>
+<li><a href="samza.html">Samza</a> LinkedIn的流式处理系统</li>
+<li><a href="hadoop.html">Hadoop</a> Apache的分布式系统基础架构总称
+<ul class="org-ul">
+<li><a href="hadoop-overview.html">Hadoop Overview</a> @ 2012</li>
+<li><a href="hadoop-benchmark.html">Hadoop Benchmark</a></li>
+<li><a href="hadoop-definitive-guide.html">Hadoop权威指南(笔记)</a></li>
 </ul></li>
-<li><a href="power-drill.html">PowerDrill</a> Google有一个数据实时查询系统，针对的数据规模比 <a href="dremel.html">Dremel</a> 要小但是处理速度更快。</li>
-<li><a href="presto.html">Presto</a> Facebook的大规模数据实时查询系统，可以认为是Google的 <a href="dremel.html">Dremel</a> 的开源实现。</li>
-<li><a href="pregel.html">Pregel</a> Google针对大规模图算法设计的分布式编程框架。</li>
-<li><a href="percolator.html">Percolator</a> Google的增量数据处理分布式系统。</li>
-<li><a href="tenzing.html">Tenzing</a> Google的数据仓库平台，和Hive系统非常类似。</li>
-<li><a href="megastore.html">Megastore</a> Google的跨地域级别的分布式存储系统，底层存储系统为 <a href="bigtable.html">BigTable</a></li>
-<li><a href="spanner.html">Spanner</a> Google的全球级别的分布式存储系统。</li>
-<li><a href="f1.html">F1</a> Google的分布式RDMBS，底层存储系统为 <a href="spanner.html">Spanner</a></li>
-<li><a href="dapper.html">Dapper</a> Google大型分布式系统的追踪设施。能够追踪分布式系统中各个组件之间相互调用关系并且记录性能数据进行性能分析。</li>
-<li><a href="gwp.html">GWP</a> Google Wide Profiling. Google数据中心级别的profile系统。</li>
-<li><a href="opentsdb.html">OpenTSDB</a> 在 <a href="hbase.html">HBase</a> 上构建的分布式可扩展的基于时间序列的数据库，最典型的应用场景就是用来存储集群性能以及应用统计数据。</li>
-<li><a href="spark.html">Spark</a> AMPLab的分布式计算系统，现在是Apache下面的项目。</li>
-<li><a href="dynamo.html">Dynamo</a> Amazon的分布式数据库。</li>
-<li><a href="cassandra.html">Cassandra</a> / <a href="riak.html">Riak</a> / <a href="voldemort.html">Voldemort</a> 类Dynamo的开源分布式数据库。</li>
-<li><a href="pnuts.html">PNUTS</a> Yahoo的分布式数据库。</li>
-<li><a href="paxos.html">Paxos</a> / <a href="raft.html">Raft</a> 分布式一致性算法。</li>
-<li><a href="manhattan.html">Manhattan</a> Twitter的分布式数据库。</li>
-<li><a href="azkaban.html">Azkaban</a> Linkedin的工作流系统，和 <a href="oozie.html">Oozie</a> 功能相似但是相比好用很多。UI不错，概念也比较清晰.</li>
-<li><a href="time-clocks-and-ordering-of-events-in-a-distributed-system.html">Time, Clocks, and Ordering of Events in a Distributed System</a> 为分布式系统中事件定义全局顺序.</li>
-<li><a href="yarn.html">YARN</a> Yet Another Resource Negotiator. Apache Hadoop的集群资源调度系统.</li>
-<li><a href="corona.html">Corona</a> Facebook的MapReduce集群资源系统.</li>
-<li><a href="mesos.html">Mesos</a> Twitter的集群资源调度系统.</li>
-<li><a href="omega.html">Omega</a> Google的集群资源调度系统(实验性质).</li>
-<li><a href="borg.html">Borg</a> Google的集群资源调度系统(生产性质).</li>
-<li><a href="ceph.html">Ceph</a> 分布式文件系统. 已经进入 <a href="linux.html">Linux</a> 内核.</li>
-<li><a href="flumejava.html">FlumeJava</a> Google的分布式数据抽象系统. Flume, "水槽, 水道".</li>
-<li><a href="photon.html">Photon</a> Google的分布式流式处理(joining)系统. Photon, "&lt;物&gt;光子，光量子".</li>
-<li><a href="haystack.html">HayStack</a> Facebook的小文件存储系统. HayStack, "干草堆".</li>
-<li><a href="millwheel.html">MillWheel</a> Google的分布式流式处理系统. MillWheel, "磨坊水轮".</li>
+<li><a href="hdfs.html">HDFS</a> Apache Hadoop项目的 <a href="gfs.html">GFS</a> 开源实现</li>
+<li><a href="hbase.html">HBase</a> Apache Hadoop项目的 <a href="bigtable.html">BigTable</a> 开源实现
+<ul class="org-ul">
+<li><a href="hbase-definitive-guide.html">HBase权威指南(笔记)</a></li>
+<li><a href="hbase-configuration.html">Apache HBase Configuration</a></li>
+</ul></li>
+<li><a href="mapred.html">MapReduce</a> Apache Hadoop项目的 <a href="mapreduce.html">MapReduce</a> 开源实现</li>
+<li><a href="azkaban.html">Azkaban</a> Linkedin的工作流系统，比 <a href="oozie.html">Oozie</a> 好用太多.</li>
+<li><a href="opentsdb.html">OpenTSDB</a> 在 <a href="hbase.html">HBase</a> 上构建的时间序列(time series)数据库</li>
+<li><a href="impala.html">Impala</a> Cloudera的 <a href="dremel.html">Dremel</a> 开源实现</li>
+<li><a href="presto.html">Presto</a> Facebook的 <a href="dremel.html">Dremel</a> 开源实现</li>
+<li><a href="spark.html">Spark</a> AMPLab的分布式计算系统</li>
+<li><a href="paxos.html">Paxos</a> / <a href="raft.html">Raft</a> 分布式一致性算法</li>
+</ul>
+
+<p>
+<b>papers</b>
+</p>
+<ul class="org-ul">
+<li><a href="chubby.html">The Chubby lock service for loosely-coupled distributed systems</a> @ 2006</li>
+<li><a href="gfs.html">The Google File System</a> @ 2003</li>
+<li><a href="mapreduce.html">MapReduce: Simplified Data Processing on Large Clusters</a> @ 2004</li>
+<li><a href="bigtable.html">Bigtable: A Distributed Storage System for Structured Data</a> @ 2006</li>
+<li><a href="kafka.html">Kafka: a Distributed Messaging System for Log Processing</a> @ 2012</li>
+<li><a href="the-hadoop-distributed-file-system.html">The Hadoop Distributed File System</a> @2010</li>
+<li><a href="hdfs-reliability.html">HDFS Reliability</a> @2008</li>
+<li><a href="hdfs-scalability-the-limits-to-growth.html">HDFS scalability: the limits to growth</a> @2010</li>
+<li><a href="mapreduce-online.html">MapReduce Online</a> @2010</li>
+<li><a href="zookeeper.html">ZooKeeper: Wait-free coordination for Internet-scale systems</a> @ 2010</li>
+<li><a href="pig.html">Pig Latin: A Not-So-Foreign Language for Data Processing</a> @ 2010</li>
+<li><a href="dremel.html">Dremel: Interactive Analysis of Web-Scale Datasets</a> @ 2010</li>
+<li><a href="power-drill.html">Processing a Trillion Cells per Mouse Click</a> @ 2012</li>
+<li><a href="pregel.html">Pregel: A System for Large-Scale Graph Processing</a> @ 2010</li>
+<li><a href="percolator.html">Large-scale Incremental Processing Using Distributed Transactions and Notifications</a> @ 2010</li>
+<li><a href="tenzing.html">Tenzing A SQL Implementation On The MapReduce Framework</a> @ 2011</li>
+<li><a href="megastore.html">Megastore: Providing Scalable, Highly Available Storage for Interactive Services</a> @ 2011</li>
+<li><a href="spanner.html">Spanner: Google's Globally-Distributed Database</a> @ 2012</li>
+<li><a href="f1-talk.html">F1: The Fault-Tolerant Distributed RDBMS Supporting Google's Ad Business</a> @ 2012</li>
+<li><a href="f1.html">F1: A Distributed SQL Database That Scales</a> @ 2013</li>
+<li><a href="dapper.html">Dapper, a Large-Scale Distributed Systems Tracing Infrastructure</a> @ 2010</li>
+<li><a href="gwp.html">Google-Wide Profiling: A Continuous Profiling Infrastructure for Data Centers</a> @ 2010</li>
+<li><a href="dynamo.html">Dynamo: Amazon’s Highly Available Key-value Store</a> @ 2007</li>
+<li><a href="cassandra.html">Cassandra - A Decentralized Structured Storage System</a> @ 2009</li>
+<li><a href="time-clocks-and-ordering-of-events-in-a-distributed-system.html">Time, Clocks, and Ordering of Events in a Distributed System</a></li>
+<li><a href="omega.html">Omega: flexible, scalable schedulers for large compute clusters</a> @ 2013</li>
+<li><a href="borg.html">Large-scale cluster management at Google with Borg</a> @ 2015</li>
+<li><a href="ceph.html">Ceph: A Scalable, High-Performance Distributed File System</a> @ 2006</li>
+<li><a href="flumejava.html">FlumeJava: Easy, Efficient Data-Parallel Pipelines</a> @ 2010</li>
+<li><a href="photon.html">Photon: Fault-tolerant and Scalable Joining of Continuous Data Streams</a> @ 2013</li>
+<li><a href="haystack.html">Finding a needle in Haystack: Facebook’s photo storage</a> @ 2010</li>
+<li><a href="millwheel.html">MillWheel: Fault-Tolerant Stream Processing at Internet Scale</a> @ 2013</li>
+<li><a href="voldemort.html">Serving Large-scale Batch Computed Data with Project Voldemort</a> @ 2012</li>
+<li><a href="mesos.html">Mesos: A Platform for Fine-Grained Resource Sharing in the Data Center</a> @ 2010</li>
+<li><a href="pnuts.html">PNUTS: Yahoo!’s Hosted Data Serving Platform</a> @ 2008</li>
+<li><a href="spark-paper.html">Spark: Cluster Computing with Working Sets</a> @ 2010</li>
+<li><a href="spark-rdd-paper.html">Resilient Distributed Datasets: A Fault-Tolerant Abstraction for In-Memory Cluster Computing</a> @ 2012</li>
+<li><a href="spark-phd-paper.html">An Architecture for Fast and General Data Processing on Large Clusters</a></li>
 </ul>
 </div>
 </div>
@@ -332,10 +344,8 @@
 <div id="outline-container-orgheadline6" class="outline-2">
 <h2 id="orgheadline6"><span class="section-number-2">6</span> Programming Language</h2>
 <div class="outline-text-2" id="text-6">
-<p>
-<a href="prog-lang.html">meta prog-lang</a>:
-</p>
 <ul class="org-ul">
+<li><a href="prog-lang.html">meta prog-lang</a></li>
 <li><a href="build-system.html">build-system</a> 在实现Baidu in-house的构建工具 <a href="http://wenku.baidu.com/view/19f3d535284ac850ad0242cc.html">Comake2</a> 之前做的构建系统调研总结.</li>
 <li><a href="cpp.html">C/C++</a> # C++ (pronounced "cee plus plus") is a statically typed, free-form, multi-paradigm, compiled, general-purpose programming language. It is regarded as an intermediate-level language, as it comprises a combination of both high-level and low-level language features. <a href="http://en.wikipedia.org/wiki/C++">Wikipedia</a>
 <ul class="org-ul">

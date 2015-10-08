@@ -5,7 +5,7 @@
 <head>
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title>voldemort</title>
+<title>Serving Large-scale Batch Computed Data with Project Voldemort</title>
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="dirtysalt" />
 <link rel="shortcut icon" href="css/favicon.ico" />
@@ -13,63 +13,45 @@
 </head>
 <body>
 <div id="content">
-<h1 class="title">voldemort</h1>
+<h1 class="title">Serving Large-scale Batch Computed Data with Project Voldemort</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="voldemort.html#orgheadline18">1. Serving Large-scale Batch Computed Data with Project Voldemort</a>
+<li><a href="voldemort.html#orgheadline1">1. Abstract</a></li>
+<li><a href="voldemort.html#orgheadline2">2. Introduction</a></li>
+<li><a href="voldemort.html#orgheadline3">3. Related Work</a></li>
+<li><a href="voldemort.html#orgheadline4">4. Project Voldemort</a></li>
+<li><a href="voldemort.html#orgheadline7">5. Alternative Approaches</a>
 <ul>
-<li><a href="voldemort.html#orgheadline1">1.1. Abstract</a></li>
-<li><a href="voldemort.html#orgheadline2">1.2. Introduction</a></li>
-<li><a href="voldemort.html#orgheadline3">1.3. Related Work</a></li>
-<li><a href="voldemort.html#orgheadline4">1.4. Project Voldemort</a></li>
-<li><a href="voldemort.html#orgheadline7">1.5. Alternative Approaches</a>
-<ul>
-<li><a href="voldemort.html#orgheadline5">1.5.1. Shortcomings of Alternative Approaches</a></li>
-<li><a href="voldemort.html#orgheadline6">1.5.2. Requirements</a></li>
+<li><a href="voldemort.html#orgheadline5">5.1. Shortcomings of Alternative Approaches</a></li>
+<li><a href="voldemort.html#orgheadline6">5.2. Requirements</a></li>
 </ul>
 </li>
-<li><a href="voldemort.html#orgheadline15">1.6. Read-only Extensions</a>
+<li><a href="voldemort.html#orgheadline15">6. Read-only Extensions</a>
 <ul>
-<li><a href="voldemort.html#orgheadline8">1.6.1. Storage Format</a></li>
-<li><a href="voldemort.html#orgheadline9">1.6.2. Chunk Set Generation</a></li>
-<li><a href="voldemort.html#orgheadline10">1.6.3. Data Versioning</a></li>
-<li><a href="voldemort.html#orgheadline11">1.6.4. Data Load</a></li>
-<li><a href="voldemort.html#orgheadline12">1.6.5. Retrieval</a></li>
-<li><a href="voldemort.html#orgheadline13">1.6.6. Schema Upgrades</a></li>
-<li><a href="voldemort.html#orgheadline14">1.6.7. Rebalancing</a></li>
+<li><a href="voldemort.html#orgheadline8">6.1. Storage Format</a></li>
+<li><a href="voldemort.html#orgheadline9">6.2. Chunk Set Generation</a></li>
+<li><a href="voldemort.html#orgheadline10">6.3. Data Versioning</a></li>
+<li><a href="voldemort.html#orgheadline11">6.4. Data Load</a></li>
+<li><a href="voldemort.html#orgheadline12">6.5. Retrieval</a></li>
+<li><a href="voldemort.html#orgheadline13">6.6. Schema Upgrades</a></li>
+<li><a href="voldemort.html#orgheadline14">6.7. Rebalancing</a></li>
 </ul>
 </li>
-<li><a href="voldemort.html#orgheadline16">1.7. Evaluation</a></li>
-<li><a href="voldemort.html#orgheadline17">1.8. Conclusion and Future Work</a></li>
-</ul>
-</li>
-<li><a href="voldemort.html#orgheadline19">2. Building a terabyte-scale data cycle at LinkedIn with Hadoop and Project Voldemort</a></li>
-<li><a href="voldemort.html#orgheadline20">3. Project Voldemort: Scaling Simple Storage at LinkedIn</a></li>
+<li><a href="voldemort.html#orgheadline16">7. Evaluation</a></li>
+<li><a href="voldemort.html#orgheadline17">8. Conclusion and Future Work</a></li>
 </ul>
 </div>
 </div>
 <ul class="org-ul">
 <li><a href="http://www.project-voldemort.com/voldemort/">http://www.project-voldemort.com/voldemort/</a> (Homepage)</li>
-<li><a href="http://engineering.linkedin.com/voldemort/serving-large-scale-batch-computed-data-project-voldemort">http://engineering.linkedin.com/voldemort/serving-large-scale-batch-computed-data-project-voldemort</a> (Introduction)</li>
-<li><a href="http://blog.linkedin.com/2009/03/20/project-voldemort-scaling-simple-storage-at-linkedin/">http://blog.linkedin.com/2009/03/20/project-voldemort-scaling-simple-storage-at-linkedin/</a> (Introduction)</li>
-<li><a href="http://data.linkedin.com/blog/2009/06/building-a-terabyte-scale-data-cycle-at-linkedin-with-hadoop-and-project-voldemort">http://data.linkedin.com/blog/2009/06/building-a-terabyte-scale-data-cycle-at-linkedin-with-hadoop-and-project-voldemort</a> (Principle)</li>
-<li><a href="http://data.linkedin.com/blog/2009/06/building-voldemort-read-only-stores-with-hadoop">http://data.linkedin.com/blog/2009/06/building-voldemort-read-only-stores-with-hadoop</a> (Usage)</li>
-<li><a href="http://static.usenix.org/events/fast/tech/full_papers/Sumbaly.pdf">http://static.usenix.org/events/fast/tech/full_papers/Sumbaly.pdf</a></li>
+<li><a href="http://static.usenix.org/events/fast/tech/full_papers/Sumbaly.pdf">http://static.usenix.org/events/fast/tech/full_papers/Sumbaly.pdf</a> @ 2012</li>
 </ul>
 
-<div id="outline-container-orgheadline18" class="outline-2">
-<h2 id="orgheadline18"><span class="section-number-2">1</span> Serving Large-scale Batch Computed Data with Project Voldemort</h2>
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1"><span class="section-number-2">1</span> Abstract</h2>
 <div class="outline-text-2" id="text-1">
-<p>
-#note：FAST2012 <a href="http://static.usenix.org/events/fast/tech/">http://static.usenix.org/events/fast/tech/</a>
-</p>
-</div>
-
-<div id="outline-container-orgheadline1" class="outline-3">
-<h3 id="orgheadline1"><span class="section-number-3">1.1</span> Abstract</h3>
-<div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>Current serving systems lack the ability to bulk load massive immutable data sets without affecting serving performance. The performance degradation is largely due to index creation and modification as CPU and memory resources are shared with request serving.（导入大规模数据主要问题还是这些数据集合的索引创建以及修改会影响到在线服务性能）</li>
 <li>We have ex-tended Project Voldemort, a general-purpose distributed storage and serving system inspired by Amazon’s Dy-namo, to support bulk loading terabytes of read-only data. This extension constructs the index offline, by leveraging the fault tolerance and parallelism of Hadoop. （类似Dynamo的只读分布式数据库系统，通过Hadoop在离线完成index通过）</li>
@@ -78,9 +60,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-3">
-<h3 id="orgheadline2"><span class="section-number-3">1.2</span> Introduction</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2"><span class="section-number-2">2</span> Introduction</h2>
+<div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>Our system leverages a Hadoop elastic batch computing infrastructure to build its index and data files, thereby supporting high throughput for batch refreshes. A custom read-only storage engine plugs into Voldemort’s extensible storage layer. The Voldemort infrastructure then provides excellent live serving perfor-mance for this batch output—even during data refreshes. Our system supports quick rollback, where data can be restored to a clean copy, minimizing the time in error if an algorithm should go awry. This helps support fast, iterative development necessary for new feature improve-ments. The storage data layout also provides the ability to grow horizontally by rebalancing existing data to new nodes without downtime. Our system supports twice the request throughput ver-sus MySQL while serving read requests with a median latency of less than 5 ms.（Hadoop来构建索引和数据文件，只读存储引擎，快速回滚数据，在线扩充存储节点）</li>
 <li>At LinkedIn, this system has been running for over 2 years, with one of our largest clusters loading more than 4 terabytes of new data to the site every day.（运行时间超过2年，每天载入4TB数据）</li>
@@ -94,9 +76,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-3">
-<h3 id="orgheadline3"><span class="section-number-3">1.3</span> Related Work</h3>
-<div class="outline-text-3" id="text-1-3">
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3"><span class="section-number-2">3</span> Related Work</h2>
+<div class="outline-text-2" id="text-3">
 <ul class="org-ul">
 <li>MySQL is a common serving system used in various companies. The two most commonly used MySQL stor-age engines, MyISAM and InnoDB, provide bulk load-ing capabilities into a live system with the LOAD DATA INFILE statement.
 <ul class="org-ul">
@@ -111,9 +93,9 @@
 </div>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-3">
-<h3 id="orgheadline4"><span class="section-number-3">1.4</span> Project Voldemort</h3>
-<div class="outline-text-3" id="text-1-4">
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4"><span class="section-number-2">4</span> Project Voldemort</h2>
+<div class="outline-text-2" id="text-4">
 
 <div class="figure">
 <p><img src="images/voldemort-pluggabe-architecture.png" alt="voldemort-pluggabe-architecture.png" />
@@ -122,17 +104,17 @@
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-3">
-<h3 id="orgheadline7"><span class="section-number-3">1.5</span> Alternative Approaches</h3>
-<div class="outline-text-3" id="text-1-5">
+<div id="outline-container-orgheadline7" class="outline-2">
+<h2 id="orgheadline7"><span class="section-number-2">5</span> Alternative Approaches</h2>
+<div class="outline-text-2" id="text-5">
 <p>
 Before we started building our own custom storage engine, we decided to evaluate the existing read-write storage engines supported in Voldemort, namely, MySQL and Berkeley DB. Our criteria for success was the ability to bulk load massive data sets with minimal disk space overhead, while still serving live traffic.（MySQL和BDB在作为存储引擎上的问题）
 </p>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-4">
-<h4 id="orgheadline5"><span class="section-number-4">1.5.1</span> Shortcomings of Alternative Approaches</h4>
-<div class="outline-text-4" id="text-1-5-1">
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5"><span class="section-number-3">5.1</span> Shortcomings of Alternative Approaches</h3>
+<div class="outline-text-3" id="text-5-1">
 <ul class="org-ul">
 <li>The first approach we tried was to perform multiple put requests. This naive approach is problematic as every request results in an incremental change to the underly-ing index structure (in most cases, a B+ tree), which in turn, results in many disk seeks.（多次操作）</li>
 <li>To solve this problem, MySQL provides a LOAD DATA statement that tries to bulk update the underlying index. （LOAD DATA批量导入数据）
@@ -161,9 +143,9 @@ Before we started building our own custom storage engine, we decided to evaluate
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-4">
-<h4 id="orgheadline6"><span class="section-number-4">1.5.2</span> Requirements</h4>
-<div class="outline-text-4" id="text-1-5-2">
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6"><span class="section-number-3">5.2</span> Requirements</h3>
+<div class="outline-text-3" id="text-5-2">
 <p>
 The lack of off-the-shelf solutions, along with the in-efficiencies of the previous experiments, motivated the building of a new storage engine and deployment pipeline with the following properties.
 </p>
@@ -177,9 +159,9 @@ The lack of off-the-shelf solutions, along with the in-efficiencies of the previ
 </div>
 </div>
 
-<div id="outline-container-orgheadline15" class="outline-3">
-<h3 id="orgheadline15"><span class="section-number-3">1.6</span> Read-only Extensions</h3>
-<div class="outline-text-3" id="text-1-6">
+<div id="outline-container-orgheadline15" class="outline-2">
+<h2 id="orgheadline15"><span class="section-number-2">6</span> Read-only Extensions</h2>
+<div class="outline-text-2" id="text-6">
 
 <div class="figure">
 <p><img src="images/voldemort-read-only-extensions-architecture.png" alt="voldemort-read-only-extensions-architecture.png" />
@@ -187,9 +169,9 @@ The lack of off-the-shelf solutions, along with the in-efficiencies of the previ
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-4">
-<h4 id="orgheadline8"><span class="section-number-4">1.6.1</span> Storage Format</h4>
-<div class="outline-text-4" id="text-1-6-1">
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8"><span class="section-number-3">6.1</span> Storage Format</h3>
+<div class="outline-text-3" id="text-6-1">
 <ul class="org-ul">
 <li>Many storage formats try to build data structures that keep the data memory resident in the process’s address space, ignoring the effects of the operating system’s page cache. The several orders of magnitude latency gap be-tween page cache and disk means that most of the real performance benefit by maintaining our own structure is for elements already in the page cache. In fact, this cus-tom structure may even start taking memory away from the page cache. This potential interference motivated the need for our storage engine to exploit the page cache in-stead of maintaining our own complex heap-based data structure. Because our data is immutable, Voldemort memory maps the entire index into the address space. Ad-ditionally, because Voldemort is written in Java and runs on the JVM, delegating the memory management to the operating system eases garbage collection tuning.（充分利用os page cache一方面可以简化代码而不用自己去维护比较复杂的cache结构，另外一方面因为page cache不是通过JVM来管理的所以可以缓解JVM GC的压力来提高效率） #note: 用JVM编写的存储系统最好不要来自己管理cache，或者由上层来管理cache，或者由JNI来间接管理cache，因为cache对JVM GC的影响会非常大</li>
 <li>To take advantage of the parallelism in Hadoop during generation, we split the input data destined for a particular node into multiple chunk buckets, which in turn are split into multiple chunk sets. Generation of multiple chunk sets can then be done independently and in parallel.（在一个节点上的数据有若干个chunk buckets组成，而每个chunk bucket则由若干个chunk sets组成）</li>
@@ -212,12 +194,12 @@ The lack of off-the-shelf solutions, along with the in-efficiencies of the previ
 </div>
 
 
-<div id="outline-container-orgheadline9" class="outline-4">
-<h4 id="orgheadline9"><span class="section-number-4">1.6.2</span> Chunk Set Generation</h4>
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9"><span class="section-number-3">6.2</span> Chunk Set Generation</h3>
 </div>
-<div id="outline-container-orgheadline10" class="outline-4">
-<h4 id="orgheadline10"><span class="section-number-4">1.6.3</span> Data Versioning</h4>
-<div class="outline-text-4" id="text-1-6-3">
+<div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="orgheadline10"><span class="section-number-3">6.3</span> Data Versioning</h3>
+<div class="outline-text-3" id="text-6-3">
 <ul class="org-ul">
 <li>Every store is represented by a directory, which in turn contains directories corresponding to “versions” of the data. A symbolic link per store is used to point to the current serving version directory. Because the data in all version directories except the serving one is inactive, we are not affecting page cache usage and latency. （通过目录来保存历史版本，软链接指向当前使用的版本。存储历史并不会影响到page cache以及latency）</li>
 <li>Every version directory (named version-no) has a configurable number as-sociated with it, which should monotonically increase with every new fetch. A commonly used example for the version number is the timestamp of push.（版本号应该是单调递增的，比如push时间戳。</li>
@@ -234,18 +216,18 @@ The lack of off-the-shelf solutions, along with the in-efficiencies of the previ
 </div>
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-4">
-<h4 id="orgheadline11"><span class="section-number-4">1.6.4</span> Data Load</h4>
-<div class="outline-text-4" id="text-1-6-4">
+<div id="outline-container-orgheadline11" class="outline-3">
+<h3 id="orgheadline11"><span class="section-number-3">6.4</span> Data Load</h3>
+<div class="outline-text-3" id="text-6-4">
 <p>
 #todo: 原子切换使用2PC来实现?
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgheadline12" class="outline-4">
-<h4 id="orgheadline12"><span class="section-number-4">1.6.5</span> Retrieval</h4>
-<div class="outline-text-4" id="text-1-6-5">
+<div id="outline-container-orgheadline12" class="outline-3">
+<h3 id="orgheadline12"><span class="section-number-3">6.5</span> Retrieval</h3>
+<div class="outline-text-3" id="text-6-5">
 <ul class="org-ul">
 <li>The most time-consuming step is to search the index file. A binary search in an index of 1 million keys can result in around 20 key comparisons; if the index file is not cached, then 20 disk seeks are required to read one value. （检索最耗时的部分还是在查询index file上） #note: 用bloom filter屏蔽key不存在这种最坏情况。</li>
 <li>As a small optimization, while fetching the files from HDFS, Voldemort fetches the index files after all data files to aid in keeping the index files in the page cache. <b>首先传输数据文件，然后传输index文件，来帮助index文件留在page cache里面</b></li>
@@ -254,12 +236,12 @@ The lack of off-the-shelf solutions, along with the in-efficiencies of the previ
 </div>
 </div>
 
-<div id="outline-container-orgheadline13" class="outline-4">
-<h4 id="orgheadline13"><span class="section-number-4">1.6.6</span> Schema Upgrades</h4>
+<div id="outline-container-orgheadline13" class="outline-3">
+<h3 id="orgheadline13"><span class="section-number-3">6.6</span> Schema Upgrades</h3>
 </div>
-<div id="outline-container-orgheadline14" class="outline-4">
-<h4 id="orgheadline14"><span class="section-number-4">1.6.7</span> Rebalancing</h4>
-<div class="outline-text-4" id="text-1-6-7">
+<div id="outline-container-orgheadline14" class="outline-3">
+<h3 id="orgheadline14"><span class="section-number-3">6.7</span> Rebalancing</h3>
+<div class="outline-text-3" id="text-6-7">
 <p>
 #note: 因为Voldemort定位为只读数据库，所以在membership的变化下数据可以保持强一致性。而Dynamo这类读写数据库的话，在membership的变化数据只能够保持最终一致性。
 </p>
@@ -284,72 +266,11 @@ The lack of off-the-shelf solutions, along with the in-efficiencies of the previ
 </div>
 </div>
 
-<div id="outline-container-orgheadline16" class="outline-3">
-<h3 id="orgheadline16"><span class="section-number-3">1.7</span> Evaluation</h3>
+<div id="outline-container-orgheadline16" class="outline-2">
+<h2 id="orgheadline16"><span class="section-number-2">7</span> Evaluation</h2>
 </div>
-<div id="outline-container-orgheadline17" class="outline-3">
-<h3 id="orgheadline17"><span class="section-number-3">1.8</span> Conclusion and Future Work</h3>
-</div>
-</div>
-
-<div id="outline-container-orgheadline19" class="outline-2">
-<h2 id="orgheadline19"><span class="section-number-2">2</span> Building a terabyte-scale data cycle at LinkedIn with Hadoop and Project Voldemort</h2>
-<div class="outline-text-2" id="text-2">
-<p>
-<a href="http://data.linkedin.com/blog/2009/06/building-a-terabyte-scale-data-cycle-at-linkedin-with-hadoop-and-project-voldemort">http://data.linkedin.com/blog/2009/06/building-a-terabyte-scale-data-cycle-at-linkedin-with-hadoop-and-project-voldemort</a>
-</p>
-
-<p>
-#note: 这篇文章是2009年写的，所以相对上面那篇文章来说很多内容都过时了，比如index文件里面key使用128字节MD5存储。
-</p>
-
-
-<div class="figure">
-<p><img src="images/voldemort-linkedin-data-cycle.png" alt="voldemort-linkedin-data-cycle.png" />   
-</p>
-</div>
-
-<p>
-The fundamental fact of filesystem access is that you may or may not be accessing the underlying disk depending on whether your request can be served by the OS’s pagecache or not.  A pagecache hit on an mmap’d file takes less than 250 nanoseconds but a page miss is around 5 milliseconds (a mere twenty thousand times slower). Any fancy data structure we build is likely to reside in-memory. Hence it would only help the lookups for things that would be in page cache anyway (since the process of loading them into memory would put them there) and so lookups on these would be fast no matter what. And worse this in-process lookup structure will likely steal memory from the pagecache to store its data, and since this will duplicate things in the pagecache it is extremely inefficient. Thus even if we manage to improve the lookup time for the things in our process memory, it is already quite low; and by doing so we use up memory that moves more requests out of the ns column and into the ms column.（不要自己在搞in-process查询结构）
-</p>
-
-<p>
-To take advantage of this we have a very simple storage strategy that exploits the fact that our data doesn’t change–all we do is just mmap the entire data set into the process address space and access it there. This provides the lowest overhead caching possible, and makes use of the very efficient lookup structures in the operating system. Since our data is immutable, we don’t need to leave any space for growth and can tightly pack the data and index. Since the OS maintains the memory it can be very aggressive about this cache, and indeed it will attempt to fill all free RAM at all times with recently used pages. In comparison Java is a very inefficient user of memory since it must leave lots of extra space for garbage collection, etc. Plus anyone who has gotten intimate with Java GC tuning will not object to moving things out of the Java heap space.（将部分内存管理放置到JVM堆空间之外）
-</p>
-
-<p>
-The actual method for transferring data is pluggable. The original prototype used rsync in hope of efficiently supporting the transferring of diffs. However, this has two practical problems. The first was that the rsync diff calculation appears to be quite expensive, and half of the expensive calculation is done on the live server. Clearly if we want to do diffs, that too should be done on the batch system (Hadoop) not the live system (Voldemort). In fact due to this heavy calculation rsync was actually slower than just copying the whole file, even when the diff was rather small (though presumably much more network efficient). The more fundamental problem was that using rsync required copying the data out of HDFS to some local unix filesystem–which had better have enough space!–to be able to run rsync. This copying took as long as the data transfer to Voldemort, and meant we were copying the data twice.（使用rsync在计算diff方面开销非常大）
-</p>
-
-<p>
-Future work
-</p>
-<ul class="org-ul">
-<li>Incremental data updates</li>
-<li>Improved key hashing</li>
-<li>Compression</li>
-<li>Better indexing
-<ul class="org-ul">
-<li>The idea of a 204-way page-aligned tree instead of a binary tree was mentioned above. Each set of 204 20-byte index entries would take 4080 bytes which with 16 bytes of padding would then be exactly page aligned for a 4k page. This would mean the first 4k page of the index file would contain the hottest entries, the next 204 entries would contain the next hottest, and so forth. Thus even though the number of comparison necessary to locate an entry would not asymptotically improve the maximum number of page faults necessary to do an index lookup would decrease substantially in practical terms (to 4 or 5 for a large index).（改进index文件结构与page cache对齐）</li>
-<li>This is not the optimal tree structure for an immutable tree such as ours, though. A much better approach to this problem was brought up by Elias who was familiar with the literature on <b>cache-oblivious algorithms</b>, and was aware of a cache-oblivious structure called a <b>van Emde Boas tree</b></li>
-</ul></li>
-</ul>
-</div>
-</div>
-
-<div id="outline-container-orgheadline20" class="outline-2">
-<h2 id="orgheadline20"><span class="section-number-2">3</span> Project Voldemort: Scaling Simple Storage at LinkedIn</h2>
-<div class="outline-text-2" id="text-3">
-<p>
-<a href="http://blog.linkedin.com/2009/03/20/project-voldemort-scaling-simple-storage-at-linkedin/">http://blog.linkedin.com/2009/03/20/project-voldemort-scaling-simple-storage-at-linkedin/</a>
-</p>
-
-<ul class="org-ul">
-<li>We really like Google’s Bigtable , but we didn’t think it made sense to try to build it if you didn’t have access to a low-latency GFS implementation.</li>
-<li>We were inspired by Amazon’s Dynamo paper , which seemed to meet the needs we have as well as being feasible to implement with low-latency queries–much of our design for Project Voldemort comes from that.</li>
-<li>We were able to move applications that needed to handle hundreds of millions of reads and writes per day from over 400ms to under 10ms while simultaneously increasing the amount of data we store.</li>
-</ul>
-</div>
+<div id="outline-container-orgheadline17" class="outline-2">
+<h2 id="orgheadline17"><span class="section-number-2">8</span> Conclusion and Future Work</h2>
 </div>
 </div>
 <!-- BA BEGIN --><script>var _hmt = _hmt || [];(function() {  var hm = document.createElement("script");  hm.src = "//hm.baidu.com/hm.js?4f82bfcb8e6f2283f7e7eebae990bc80";  var s = document.getElementsByTagName("script")[0];  s.parentNode.insertBefore(hm, s);})();</script><!-- BA END --><!-- DISQUS BEGIN --><div id="disqus_thread"></div><script type="text/javascript">/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * *//* required: replace example with your forum shortname  */var disqus_shortname = 'dirlt';var disqus_identifier = 'voldemort.html';var disqus_title = 'voldemort.html';var disqus_url = 'http://dirlt.com/voldemort.html';/* * * DON'T EDIT BELOW THIS LINE * * */(function() {var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><!-- DISQUS END --></body>

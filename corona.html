@@ -19,7 +19,7 @@
 </p>
 
 <p>
-原有MapReduce框架存在的限制是：
+<b>原有MapReduce框架存在的限制是</b>
 </p>
 <ul class="org-ul">
 <li>The job tracker has two primary responsibilities: 1) managing the cluster resources and 2) scheduling all user jobs. As the cluster size and the number of jobs at Facebook grew, the scalability limitations of this design became clear. The job tracker could not handle its dual responsibilities adequately. At peak load, cluster utilization would drop precipitously due to scheduling overhead.（JobTracker同时管理集群资源以及做任务调度，但是这样的做法限制了scalability.jobtracker成为bottleneck除非能够将两个责任完全分开）</li>
@@ -28,9 +28,8 @@
 <li>Finally, the original job tracker design required hard downtime (all running jobs are killed) during a software upgrade, which meant that every software upgrade resulted in significant wasted computation.（软件升级需要重启整个集群）</li>
 </ul>
 
-<hr  />
 <p>
-Facebook’s solution: Corona
+<b>Facebook’s solution: Corona</b>
 </p>
 
 
@@ -56,7 +55,7 @@ Facebook’s solution: Corona
 </ul>
 
 <p>
-Corona在fb部署过程是这样的
+<b>Corona在fb部署过程是这样的</b>
 </p>
 <ul class="org-ul">
 <li>Rollout to 500 nodes. Our first step was to deploy Corona on 500 of the machines in the cluster. This let us get feedback from early adopters. 部署500节点集群做反馈。</li>
@@ -65,9 +64,8 @@ Corona在fb部署过程是这样的
 <li>By mid-2012, we had successfully deployed Corona across all our production systems. The entire process took about three months. 整个过程花费3个月。</li>
 </ul>
 
-<hr  />
 <p>
-为什么fb不使用YARN:
+<b>为什么fb不使用YARN</b>
 </p>
 <ul class="org-ul">
 <li>It’s worth noting that we considered Apache YARN as a possible alternative to Corona. However, after investigating the use of YARN on top of our version of HDFS (a strong requirement due to our many petabytes of archived data) we found numerous incompatibilities that would be time-prohibitive and risky to fix. Also, it is unknown when YARN would be ready to work at Facebook-scale workloads.</li>
