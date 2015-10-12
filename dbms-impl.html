@@ -218,13 +218,7 @@
 
 <div id="outline-container-orgheadline3" class="outline-2">
 <h2 id="orgheadline3"><span class="section-number-2">3</span> 数据元素表示</h2>
-<div class="outline-text-2" id="text-3">
-<p>
-#todo:
-</p>
 </div>
-</div>
-
 <div id="outline-container-orgheadline4" class="outline-2">
 <h2 id="orgheadline4"><span class="section-number-2">4</span> 索引结构</h2>
 <div class="outline-text-2" id="text-4">
@@ -310,8 +304,14 @@
 <div id="outline-container-orgheadline9" class="outline-2">
 <h2 id="orgheadline9"><span class="section-number-2">9</span> 并发控制</h2>
 <div class="outline-text-2" id="text-9">
+<ul class="org-ul">
+<li>串行调度使得所有事务按照某种顺序执行，每个事务都是原子执行的。</li>
+<li>可串行化调度没有将每个事务按照原子执行，但是保证所有事务执行完成后，数据库最终状态和某个串行调度结果一致。</li>
+<li>冲突可串行性是一个用来判断可串行化的方法。这种方法假设性很强。满足冲突可串行性的调度一定是可串行化调度，但是反之却不一定。</li>
+</ul>
+
 <p>
-#todo:
+并发控制实现有两个思路，一种是基于锁的调度，一种是基于时间戳的调度。
 </p>
 </div>
 </div>
