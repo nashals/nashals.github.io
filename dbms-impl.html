@@ -223,7 +223,7 @@
 <h2 id="orgheadline4"><span class="section-number-2">4</span> 索引结构</h2>
 <div class="outline-text-2" id="text-4">
 <p>
-#todo:
+B Tree + Hash.
 </p>
 </div>
 </div>
@@ -232,27 +232,16 @@
 <h2 id="orgheadline5"><span class="section-number-2">5</span> 多维索引</h2>
 <div class="outline-text-2" id="text-5">
 <p>
-在多维上面建立索引需要考虑下面需求：
+适合数据立方体系统的数据通常组织成为一个事实表(fact table)和若干维表.
 </p>
-<ul class="org-ul">
-<li>部分匹配查询</li>
-<li>范围查询(部分)</li>
-</ul>
 
 <p>
-书里面给出了几个多维索引数据结构
+书里面给出了几个多维索引数据结构，可以归为两类：类散列表和类树方法
 </p>
 <ul class="org-ul">
-<li>网格文件。过于抽象.</li>
-<li>分段散列函数.比较难实现，对于范围查询不好。</li>
-<li>多键索引。比较难实现，对于部分匹配查询不好。</li>
-<li>kd树(kd树时间非常简单，采用多叉比较树结构但是相邻的level之间使用不同的dimension)。</li>
-<li>四叉树。书里面介绍过于简单。</li>
-<li>R树。过于抽象，但是觉得可能会比较靠谱。</li>
+<li>网格文件 和 分段散列函数</li>
+<li>多键索引，KD树(二叉树但是每层可以使用不同的属性做划分), 四叉树(类KD但是每层可以使用两个属性做划分), R树(类B树但是每层是高维子空间而非值范围)</li>
 </ul>
-<p>
-猜测现实系统可能基于kd tree或者是R tree来实现多维索引。
-</p>
 </div>
 </div>
 
@@ -320,7 +309,7 @@
 <h2 id="orgheadline10"><span class="section-number-2">10</span> 再论事务管理</h2>
 <div class="outline-text-2" id="text-10">
 <p>
-#todo:
+检测并解决死锁，最简单的方式是利用超时。对事物活跃的时间做出限制，如果事务超过这个时间就将其回滚。
 </p>
 </div>
 </div>
