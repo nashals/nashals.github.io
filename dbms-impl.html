@@ -249,7 +249,16 @@ B Tree + Hash.
 <h2 id="orgheadline6"><span class="section-number-2">6</span> 查询执行</h2>
 <div class="outline-text-2" id="text-6">
 <p>
-#todo:
+查询编译器：
+</p>
+<ol class="org-ol">
+<li>首先分析查询表达式变为AST</li>
+<li>然后对AST进行重写产生更优的逻辑查询计划</li>
+<li>结合数据库状态对逻辑查询计划优化产生物理查询计划</li>
+</ol>
+
+<p>
+产生的物理查询计划交给"查询执行"组件执行。这节主要讨论的是查询实现算法，而下一节则讨论查询优化算法。
 </p>
 </div>
 </div>
