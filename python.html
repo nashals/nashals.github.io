@@ -31,7 +31,7 @@
 <li><a href="python.html#orgheadline9">1.9. decorator(装饰器)</a></li>
 </ul>
 </li>
-<li><a href="python.html#orgheadline18">2. library</a>
+<li><a href="python.html#orgheadline19">2. library</a>
 <ul>
 <li><a href="python.html#orgheadline11">2.1. native WSGI</a></li>
 <li><a href="python.html#orgheadline12">2.2. nginx WSGI</a></li>
@@ -40,6 +40,7 @@
 <li><a href="python.html#orgheadline15">2.5. datetime</a></li>
 <li><a href="python.html#orgheadline16">2.6. pip(python package index)</a></li>
 <li><a href="python.html#orgheadline17">2.7. logging</a></li>
+<li><a href="python.html#orgheadline18">2.8. virtualenv</a></li>
 </ul>
 </li>
 </ul>
@@ -396,8 +397,8 @@ wrapper
 </div>
 </div>
 
-<div id="outline-container-orgheadline18" class="outline-2">
-<h2 id="orgheadline18"><span class="section-number-2">2</span> library</h2>
+<div id="outline-container-orgheadline19" class="outline-2">
+<h2 id="orgheadline19"><span class="section-number-2">2</span> library</h2>
 <div class="outline-text-2" id="text-2">
 </div><div id="outline-container-orgheadline11" class="outline-3">
 <h3 id="orgheadline11"><span class="section-number-3">2.1</span> native WSGI</h3>
@@ -554,9 +555,10 @@ max-requests = 128
 
 <ul class="org-ul">
 <li>xlrd <a href="http://pypi.python.org/pypi/xlrd">http://pypi.python.org/pypi/xlrd</a></li>
-<li>文档 <a href="http://www.lexicon.net/sjmachin/xlrd.htm%EF%BC%88%E7%9C%8B%E8%B5%B7%E6%9D%A5%E5%8F%AF%E8%83%BD%E6%AF%94%E8%BE%83%E8%B4%B9%E5%8A%B2%EF%BC%8C%E4%B8%8B%E9%9D%A2%E7%9A%84py%E6%96%87%E6%A1%A3%E6%9B%B4%E5%8A%A0%E5%8F%AF%E8%AF%BB">http://www.lexicon.net/sjmachin/xlrd.htm%EF%BC%88%E7%9C%8B%E8%B5%B7%E6%9D%A5%E5%8F%AF%E8%83%BD%E6%AF%94%E8%BE%83%E8%B4%B9%E5%8A%B2%EF%BC%8C%E4%B8%8B%E9%9D%A2%E7%9A%84py%E6%96%87%E6%A1%A3%E6%9B%B4%E5%8A%A0%E5%8F%AF%E8%AF%BB</a>）</li>
+<li>文档 <a href="http://www.lexicon.net/sjmachin/xlrd.htm">http://www.lexicon.net/sjmachin/xlrd.htm</a>  看起来可能比较费劲，下面的py文档更加可读</li>
 <li>py文档 packages.python.org/xlrd3（xlrd3是针对python3的，但是和xlrd API是完全兼容的）</li>
 <li>参考链接 <a href="http://www.shello.name/?p=133">http://www.shello.name/?p=133</a></li>
+<li>update@201510: 近期发现 <a href="https://pypi.python.org/pypi/pyExcelerator">pyExcelerator</a> 也挺好用的, 可以同时读写excel.</li>
 </ul>
 
 <p>
@@ -776,6 +778,26 @@ args = ('svr.log',)
 format= [%(asctime)s][%(levelname)s]%(name)s@%(funcName)s: %(msg)s
 class=logging.Formatter
 </pre>
+</div>
+</div>
+
+<div id="outline-container-orgheadline18" class="outline-3">
+<h3 id="orgheadline18"><span class="section-number-3">2.8</span> virtualenv</h3>
+<div class="outline-text-3" id="text-2-8">
+<p>
+<a href="https://virtualenv.pypa.io/en/latest/index.html">https://virtualenv.pypa.io/en/latest/index.html</a>
+</p>
+
+<p>
+用来创建独立的python环境. 原理是将python二进制以及依赖库拷贝(软链接)到独立目录下面. 使用`pip install virtualenv`快速安装. 如果没有特殊要求, 使用也非常简单. 
+</p>
+
+<ul class="org-ul">
+<li>virtualenv &lt;env-path&gt; 创建独立环境的目录</li>
+<li>cd &lt;env-path&gt;; source bin/activate 重写环境变量, 切换到当前独立环境</li>
+<li>之后可以在&lt;env-path&gt;目录下面开发, 安装以及部署等工作</li>
+<li>清理环境使用 deactive.</li>
+</ul>
 </div>
 </div>
 </div>
