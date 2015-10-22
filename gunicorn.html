@@ -5,7 +5,7 @@
 <head>
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
-<title></title>
+<title>gunicorn</title>
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="dirtysalt" />
 <link rel="shortcut icon" href="css/favicon.ico" />
@@ -13,30 +13,23 @@
 </head>
 <body>
 <div id="content">
+<h1 class="title">gunicorn</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="gunicorn.html#orgheadline3">1. gunicorn</a>
-<ul>
-<li><a href="gunicorn.html#orgheadline1">1.1. Design</a></li>
-<li><a href="gunicorn.html#orgheadline2">1.2. Settings</a></li>
-</ul>
-</li>
+<li><a href="gunicorn.html#orgheadline1">1. Design</a></li>
+<li><a href="gunicorn.html#orgheadline2">2. Settings</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3"><span class="section-number-2">1</span> gunicorn</h2>
-<div class="outline-text-2" id="text-1">
 <p>
 <a href="http://docs.gunicorn.org/en/latest/index.html">http://docs.gunicorn.org/en/latest/index.html</a>
 </p>
-</div>
 
-<div id="outline-container-orgheadline1" class="outline-3">
-<h3 id="orgheadline1"><span class="section-number-3">1.1</span> Design</h3>
-<div class="outline-text-3" id="text-1-1">
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1"><span class="section-number-2">1</span> Design</h2>
+<div class="outline-text-2" id="text-1">
 <p>
 设计上gunicorn和 <a href="nginx.html">nginx</a> 很类似，一个master process和多个worker process. master做绑定端口，监控worker的工作，<a href="http://docs.gunicorn.org/en/latest/signals.html">管理配置和热升级</a> 等，worker来接受连接以及处理连接。
 </p>
@@ -61,9 +54,9 @@ thread worker处理请求同时受限于thread number以及max connections, 后�
 </div>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-3">
-<h3 id="orgheadline2"><span class="section-number-3">1.2</span> Settings</h3>
-<div class="outline-text-3" id="text-1-2">
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2"><span class="section-number-2">2</span> Settings</h2>
+<div class="outline-text-2" id="text-2">
 <p>
 设置按照优先级排序分别是：命令行，配置文件(python)，框架本身。大部分 <a href="http://docs.gunicorn.org/en/latest/settings.html">设置</a> 比较常规，下面这些设置有点意思：
 </p>
@@ -79,7 +72,6 @@ thread worker处理请求同时受限于thread number以及max connections, 后�
 <li>statsd_host # 可以向 <a href="https://github.com/etsy/statsd">statsd</a> 汇报服务器性能状况. 具体可以看 <a href="http://docs.gunicorn.org/en/latest/instrumentation.html">这里</a></li>
 <li>Server Hooks # gunicorn定义了一系列hooks允许在各个阶段添加自己代码</li>
 </ul>
-</div>
 </div>
 </div>
 </div>
