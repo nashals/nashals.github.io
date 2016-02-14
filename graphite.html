@@ -57,13 +57,25 @@ graphite几个组件都是python编写的, 所以推荐使用pip/virtualenv来�
 </ul>
 
 <p>
+如果使用virtualenv安装在自定义目录下的话，可以使用下面两个命令安装
+</p>
+<pre class="example">
+pip install carbon --install-option="--prefix=$HOME/utils/graphite/app" --install-option="--install-lib=$HOME/utils/graphite/app/lib/"
+pip install graphite-web --install-option="--prefix=/$HOME/utils/graphite/app" --install-option="--install-lib=$HOME/utils/graphite/app/webapp"
+</pre>
+<p>
+但是安装完成之后还需要修改两个地方(修改路径字符串，默认都是/opt/graphite)，一个是graphite_wsgi.py, 另外一个是local_settings.py里面的GRAPHITE_ROOT.
+</p>
+
+<p>
 可能还需要安装一些dependency.
 </p>
 <ul class="org-ul">
-<li>pip install django</li>
+<li>pip install django==1.8.5 # 高版本Django(1.9.x)似乎不能正常执行migrate</li>
 <li>pip install django-tagging</li>
 <li>pip install MySQL-python</li>
-<li>pip install pycairo</li>
+<li>pip install pycairo cffi cairocffi</li>
+<li>pip install pytz gunicorn zope</li>
 </ul>
 
 <p>
@@ -82,6 +94,7 @@ graphite几个组件都是python编写的, 所以推荐使用pip/virtualenv来�
 <li>content/ # django静态文件</li>
 </ul></li>
 </ul>
+
 
 <p>
 配置carbon可以看 <a href="https://graphite.readthedocs.org/en/latest/config-carbon.html">这里</a>. 主要考虑的问题是数据如何滚动, 每种粒度的数据各保存多久. 比如1min级别数据保存7天, 10min数据保存30天, 其他数据都以小时级别保存的话. 在storage-schemas.conf保存, 不同前缀数据留存时间不同
@@ -155,6 +168,7 @@ gunicorn graphite_wsgi:application -b 0.0.0.0:10001 -w 4
 </pre>
 </div>
 </div>
+
 
 <div id="outline-container-orgheadline3" class="outline-2">
 <h2 id="orgheadline3"><span class="section-number-2">3</span> Feed Data</h2>
