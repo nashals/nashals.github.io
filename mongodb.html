@@ -18,18 +18,19 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="mongodb.html#orgheadline1">1. 简介</a></li>
+<li><a href="mongodb.html#orgheadline1">1. Introduction</a></li>
 <li><a href="mongodb.html#orgheadline2">2. 网络模型</a></li>
 <li><a href="mongodb.html#orgheadline3">3. 单机存储</a></li>
 <li><a href="mongodb.html#orgheadline4">4. 内存占用</a></li>
 <li><a href="mongodb.html#orgheadline5">5. Sharding</a></li>
 <li><a href="mongodb.html#orgheadline6">6. HA方案</a></li>
+<li><a href="mongodb.html#orgheadline7">7. Cheatsheet</a></li>
 </ul>
 </div>
 </div>
 
 <div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1"><span class="section-number-2">1</span> 简介</h2>
+<h2 id="orgheadline1"><span class="section-number-2">1</span> Introduction</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 主页是<a href="http://www.mongodb.org/">http://www.mongodb.org/</a>. mongdb有下面这些特点：
@@ -265,6 +266,20 @@ Within the replica set, members are interconnected with each other to exchange h
 也就是说，replicas之间都会和相互检测对方的心跳，这是一个全连接图。如果节点超过一定数量的话，那么心跳处理的延迟可能会非常长，同时选举的时间也会非常长，
 最终造成如果发生切换的话，切换时间会非常长。
 </p>
+</div>
+</div>
+<div id="outline-container-orgheadline7" class="outline-2">
+<h2 id="orgheadline7"><span class="section-number-2">7</span> Cheatsheet</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+<b>必须使用wiredtiger引擎</b> 相比mmapv1, wiredtiger可以更好地管理内存. `&#x2013;storageEngine wiredTiger &#x2013;wiredTigerCacheSizeGB 1`
+</p>
+
+<ul class="org-ul">
+<li>db.playlist.find({'lang': 'zh-cn'}, projection = {'pid': 1, 'releaseDate': 1, 'title': 1, 'weight': 1}).sort({'weight': 1, 'releaseDate': -1}) # 查询，选择字段，排序</li>
+<li>db.playlist.update({}, {'$unset':{'skip':1}}, {'multi':true}) # 删除多个文档中的字段</li>
+<li>db.playlist.update({}, {'$rename': {'genres': 'itunes_genres'}, '$set': {'skip': 1}}, {'multi': true}) # 更新多个文档中的字段</li>
+</ul>
 </div>
 </div>
 </div>
