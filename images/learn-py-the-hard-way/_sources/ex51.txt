@@ -170,7 +170,7 @@ URL 中该还可以包含多个参数。将本例的 URL 改成这样子：
 等你输入完后点击“提交(Submit)”按钮，它就会输出一个正常的问候页面，不过这一次你的\
 URL 还是 ``http://localhost:8080/hello``\，并没有添加参数进去。
 
-在 ``hello_form.html`` 里面关键的一行是 ``<form action="http://dirlt.com/hello" method="POST">``
+在 ``hello_form.html`` 里面关键的一行是 ``<form action="/hello" method="POST">``
 ，它告诉你的浏览器以下内容：
 
 1. 从表单中的各个栏位收集用户输入的数据。
