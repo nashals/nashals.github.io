@@ -57,7 +57,7 @@ graphite几个组件都是python编写的, 所以推荐使用pip/virtualenv来�
 </ul>
 
 <p>
-如果使用virtualenv安装在自定义目录下的话，可以使用下面两个命令安装
+如果使用virtualenv安装在自定义目录下的话，可以使用下面两个命令安装. 这里安装位置是$HOME/utils/graphite/app.
 </p>
 <pre class="example">
 pip install carbon --install-option="--prefix=$HOME/utils/graphite/app" --install-option="--install-lib=$HOME/utils/graphite/app/lib/"
@@ -139,7 +139,7 @@ retentions = 10s:1d,1m:7d,10m:1y
 </pre>
 </div>
 <p>
-然后执行`python manage.py migrate`创建数据库. 
+然后执行`python manage.py migrate`创建数据库.
 </p>
 
 <p>
@@ -149,7 +149,7 @@ retentions = 10s:1d,1m:7d,10m:1y
 
 <pre class="src src-Python">DATABASES = {
 'default': {
-    ...         
+    ...
     'OPTIONS': {
          "init_command": "SET foreign_key_checks = 0;",
     },
