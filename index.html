@@ -1,174 +1,80 @@
-<!DOCTYPE html>
-<html>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-    <title>Not Found (404)</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400|Open+Sans:300,400" rel="stylesheet" type="text/css">
-    <style>
-        * {
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-        }
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>dirtysalt's homepage</title>
+<meta name="generator" content="Org-mode"/>
+<meta name="author" content="dirtysalt"/>
+<script type='text/javascript'>window.mod_pagespeed_start = Number(new Date());</script><link rel="shortcut icon" href="https://dirtysalt.info/css/favicon.ico"/>
+<link rel="stylesheet" type="text/css" href="http://dirtysalt.info/css/site.css"/>
+<script data-pagespeed-no-defer type="text/javascript">(function(){window.pagespeed=window.pagespeed||{};var f=window.pagespeed;function h(e,a,c,b){this.f=e;this.a=a;this.b=c;this.g=b}f.beaconUrl="";
+function k(e){var a=e.f,c=window.mod_pagespeed_start,b=Number(new Date)-c,a=a+(-1==a.indexOf("?")?"?":"&"),a=a+"ets="+("load"==e.a?"load:":"unload:"),a=a+b;if("beforeunload"!=e.a||!window.mod_pagespeed_loaded){a+="&r"+e.a+"=";if(window.performance){var b=window.performance.timing,d=b.navigationStart,g=b.requestStart,a=a+(b[e.a+"EventStart"]-d),a=a+("&nav="+(b.fetchStart-d)),a=a+("&dns="+(b.domainLookupEnd-b.domainLookupStart)),a=a+("&connect="+(b.connectEnd-b.connectStart)),a=a+("&req_start="+(g-
+d)),a=a+("&ttfb="+(b.responseStart-g)),a=a+("&dwld="+(b.responseEnd-b.responseStart)),a=a+("&dom_c="+(b.domContentLoadedEventStart-d));window.performance.navigation&&(a+="&nt="+window.performance.navigation.type);d=-1;b.msFirstPaint?d=b.msFirstPaint:window.chrome&&window.chrome.loadTimes&&(d=Math.floor(1E3*window.chrome.loadTimes().firstPaintTime));d=d-g;0<=d&&(a+="&fp="+d)}else a+=b;f.getResourceTimingData&&window.parent==window&&(a+=f.getResourceTimingData());a+=window.parent!=window?"&ifr=1":"&ifr=0";
+"load"==e.a&&(window.mod_pagespeed_loaded=!0,(b=window.mod_pagespeed_num_resources_prefetched)&&(a+="&nrp="+b),(b=window.mod_pagespeed_prefetch_start)&&(a+="&htmlAt="+(c-b)));f.panelLoader&&(c=f.panelLoader.getCsiTimingsString(),""!=c&&(a+="&b_csi="+c));f.criticalCss&&(c=f.criticalCss,a+="&ccis="+c.total_critical_inlined_size+"&cces="+c.total_original_external_size+"&ccos="+c.total_overhead_size+"&ccrl="+c.num_replaced_links+"&ccul="+c.num_unreplaced_links);a+="&dpr="+window.devicePixelRatio;""!=
+e.b&&(a+=e.b);document.referrer&&(a+="&ref="+encodeURIComponent(document.referrer));a+="&url="+encodeURIComponent(e.g);f.beaconUrl=a;(new Image).src=a}}f.c=function(e,a,c,b){var d=new h(e,a,c,b);window.addEventListener?window.addEventListener(a,function(){k(d)},!1):window.attachEvent("on"+a,function(){k(d)})};f.addInstrumentationInit=f.c;})();
 
-        html, body {
-            height: 100%;
-            background-color: #f0f0f0;
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        body {
-            color: #a4a4a4;
-            text-align: center;
-            font-family: Lato,"Helvetica Neue",Helvetica,Arial,sans-serif;
-            margin: 0;
-            display: -webkit-box;
-            display: flex;
-            -webkit-align-items: center;
-            align-items: center;
-            -webkit-justify-content: center;
-            justify-content: center;
-            display: -moz-box;
-            -moz-box-align: center;
-            display: -webkit-box;
-            -webkit-box-align: center;
-            display: -ms-flexbox;
-            -ms-flex-align: center;
-            display: -webkit-flex;
-            display: flex;
-        }
-
-        a {
-            color: #65c4df;
-            text-decoration: none;
-        }
-
-        .container {
-            z-index: 1;
-            padding-right: 15px;
-            padding-left: 15px;
-            margin-right: auto;
-            margin-left: auto;
-            margin-top: -60px;
-        }
-        @media (min-width: 768px) {
-            .container {
-                width: 750px;
-            }
-        }
-        @media (min-width: 992px) {
-            .container {
-                width: 970px;
-            }
-
-        }
-        @media (min-width: 1200px) {
-            .container {
-                width: 1170px;
-            }
-
-        }
-
-        .dialog .error-code {
-            font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
-            font-weight: 100;
-            color: #b3b3b3;
-            font-size: 200px;
-        }
-
-        .dialog .error-msg {
-            font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
-            font-weight: 400;
-            font-size: 24px;
-            color: #a4a4a4;
-        }
-
-        .actions p {
-            display: block;
-            margin-top: 8px;
-            font-size: 12px;
-            color: #9f9f9f;
-        }
-
-        .actions p a {
-            color: #65c4df;
-            text-decoration: underline;
-        }
-
-        .footer {
-            z-index: 1;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-        }
-
-
-        .footer img {
-            margin: 20px;
-            max-width: 100%;
-            vertical-align: middle;
-        }
-
-        .footer p {
-            display: inline-block;
-            vertical-align: middle;
-            font-weight: 300;
-            color: #003a4b;
-        }
-
-        .footer p a {
-            font-weight: 400;
-        }
-        .footer p a:active, .footer p a:hover,
-        .footer p a:focus, .footer p a:visited {
-            color: #003a4b;
-        }
-
-        @media (max-width: 767px) {
-            .footer img {
-                width: 50px;
-            }
-            .footer p {
-                font-size: 11px;
-                line-height: 18px;
-            }
-        }
-
-        .particles-js-canvas-el {
-            position: absolute;
-            left: 0;
-            top: 0;
-            z-index: 0;
-        }
-    </style>
-
-    <script src="http://dirtysalt.info/_kloudsec/async/particles.min.js"></script>
-    <script>
-        (function() {
-            particlesJS.load('body', '/_kloudsec/async/particles.json', function() {});
-        })();
-    </script>
-</head>
-<body id="body">
-
-<div class="container">
-    <div class="dialog">
-        <span class="error-code">404</span>
-        <span class="error-msg">page not found</span>
-        <p>Site owner? <a href="https://kloudsec.freshdesk.com/support/solutions/articles/9000042541-help-i-get-a-404-page-after-changing-my-dns-records-" target="_blank">Check here</a> or <a href="mailto:support@kloudsec.com" target="_blank">contact support</a> for assistance.</p>
-    </div>
+pagespeed.addInstrumentationInit('/_kloudsec_plugin/mod_cache/pagespeed_kloudsec', 'beforeunload', '', 'http://dirtysalt.info/');</script></head>
+<body><noscript><meta HTTP-EQUIV="refresh" content="0; URL=http://dirtysalt.info/'http://dirtysalt.info/?PageSpeed=noscript'" /><style><!--table,div,span,font,p{display:none} --></style><div style="display:block">Please click <a href="http://dirtysalt.info/?PageSpeed=noscript">here</a> if you are not redirected within a few seconds.</div></noscript>
+<div id="content">
+<h1 class="title">dirtysalt's homepage</h1>
+<p>
+main index:
+</p>
+<ul class="org-ul">
+<li><a href="http://dirtysalt.info/os.html">Operating System</a></li>
+<li><a href="http://dirtysalt.info/network.html">Network Programming</a></li>
+<li><a href="http://dirtysalt.info/storage.html">Storage System</a></li>
+<li><a href="http://dirtysalt.info/dist-sys.html">Distributed System</a></li>
+<li><a href="http://dirtysalt.info/algorithm.html">About Algorithm</a></li>
+<li><a href="http://dirtysalt.info/prog-lang.html">Programming Language</a></li>
+<li><a href="http://dirtysalt.info/sw-design.html">Software Design</a></li>
+<li><a href="http://dirtysalt.info/links.html">Valuable Links</a></li>
+<li><a href="http://dirtysalt.info/blog.html">Casual Readings</a></li>
+<li><a href="http://dirtysalt.info/about-me.html">About Me</a></li>
+</ul>
+<hr/>
+<p>
+fast index:
+</p>
+<p>
+<b>TL;DR</b>
+</p>
+<ul class="org-ul">
+<li><a href="http://dirtysalt.info/jobs.html">期待你的加入</a> We're Hiring!</li>
+<li><a href="http://dirtysalt.info/apue.html">APUE</a> Unix环境高级编程(Advanced Programming Unix Environment)</li>
+<li><a href="http://dirtysalt.info/unp.html">UNP</a> Unix网络编程(Unix Network Programming)</li>
+<li><a href="http://dirtysalt.info/linux.html">linux</a> 将原来<a href="http://dirtysalt.info/apue.html">APUE</a> 和 <a href="http://dirtysalt.info/unp.html">UNP</a> 中的一部分内容放在这里面来了，这样可以保持这两篇内容比较稳定。</li>
+<li><a href="http://dirtysalt.info/tcmalloc.html">tcmalloc</a> Google的开源线程缓存内存分配器，解决多线程下面内存分配效率问题。</li>
+<li><a href="http://dirtysalt.info/gperftools.html">gperftools</a> Google的应用级别性能分析工具，包含 <a href="http://dirtysalt.info/tcmalloc.html">tcmalloc</a>.</li>
+<li><a href="http://dirtysalt.info/ubuntu.html">ubuntu</a> 如何更好地使用Ubuntu. <a href="http://dirtysalt.info/note/struggle-with-ubuntu.html">之前有过痛苦的经历</a> . 主要记录自己使用出现的问题.</li>
+<li><a href="http://dirtysalt.info/mac.html">macosx</a> 如何更好地使用Mac. 以前使用Windows，后来转向Ubuntu，再后来买了个MBA.</li>
+<li><a href="http://dirtysalt.info/docker.html">docker</a> 基于lxc(linux container)的分发应用工具和平台.</li>
+<li><a href="http://dirtysalt.info/libev.html">libev</a> 开源的事件触发器。被认为是更高效的libevent.</li>
+<li><a href="http://dirtysalt.info/muduo.html">muduo</a> 开源的网络编程框架。作者理想中的网络编程框架实现，里面有很多mina/netty的影子。</li>
+<li><a href="http://dirtysalt.info/kylin.html">kylin</a> Baidu in-house的异步编程框架，是<a href="http://weibo.com/linshiding">linsd(百度首席架构师林仕鼎)</a>的神作.</li>
+<li><a href="http://dirtysalt.info/zeromq.html">zeromq</a> 开源的消息传输系统。颠覆我们思考和编写网络通信程序的方式。</li>
+<li><a href="http://dirtysalt.info/netty.html">netty</a> an asynchronous event-driven network application framework in <b>Java</b> based on Java NIO.</li>
+<li><a href="http://dirtysalt.info/finagle.html">finagle</a> an extensible RPC system for the JVM, used to construct high-concurrency servers.</li>
+<li><a href="http://dirtysalt.info/gunicorn.html">gunicorn</a> Python WSGI HTTP Server. green unicorn(Ruby实现)</li>
+<li><a href="http://dirtysalt.info/leveldb.html">leveldb</a> Google的开源kv存储系统。支持billion级别的数据量，适合于 <del>写少读多</del> 写多读少的情况。</li>
+<li><a href="http://dirtysalt.info/mongodb.html">mongodb</a> 面向文档的分布式存储系统，但是却可以针对文档字段索引来加快查询。功能上比通常我们认为的NoSQL强但是弱于RDBMS.</li>
+<li><a href="http://dirtysalt.info/redis.html">redis</a> 内存存储系统，支持丰富的数据类型以及相应的计</li>
+<li><a href="http://dirtysalt.info/mysql.html">mysql</a> 开源关系型数据库。The world's most popular open source database.</li>
+<li><a href="http://dirtysalt.info/rcfile.html">rcfile</a> / <a href="http://dirtysalt.info/orcfile.html">orcfile</a> / <a href="http://dirtysalt.info/parquet.html">parquet</a> 几种列式存储(columnar storage)实现</li>
+<li><a href="http://dirtysalt.info/cracking-the-coding-interview.html">Cracking The Coding Interview</a> 据说算法分为三种：面试算法，ACM算法，算法=D</li>
+<li><a href="http://dirtysalt.info/bitcoin.html">Bitcoin: A Peer-to-Peer Electronic Cash System</a> 比特币论文</li>
+<li><a href="http://dirtysalt.info/snappy.html">snappy</a> Google的开源压缩解压库。在满足一定压缩比率的条件下着重提升压缩和解压速度。</li>
+<li><a href="http://dirtysalt.info/lzf.html">lzf</a> <a href="http://dirtysalt.info/redis.html">redis</a> 使用的开源压缩解压库。轻量(两个文件)可以很容易地独立纳入项目。</li>
+<li><a href="http://dirtysalt.info/sklearn.html">sklearn</a> python scikit learn. 机器学习包.</li>
+<li><a href="http://dirtysalt.info/caffe.html">caffe</a> C++实现的深度学习框架，有python和matlab的扩展接口</li>
+<li><a href="http://dirtysalt.info/ml-foundations.html">机器学习基石 on Coursera</a></li>
+<li><a href="http://dirtysalt.info/ml-techniques.html">机器学习技法 on Coursera</a></li>
+<li><a href="http://dirtysalt.info/images/the-django-book/index.html">The Django Book</a> 不错的Django入门材料</li>
+</ul>
 </div>
-
-<div class="footer">
-    <a href="https://kloudsec.com">
-        <img title="Kloudsec" alt="Kloudsec" id="robot" src="http://dirtysalt.info/_kloudsec/async/logo.png" />
-    </a>
-    <p>
-        Website maintenance made easy<br>
-        with <a href="https://kloudsec.com">Kloudsec</a>
-    </p>
-</div>
-</body>
+<div id="disqus_thread"></div><script data-pagespeed-orig-type="text/javascript" type="text/psajs" orig_index="0">var disqus_shortname='dirlt';var disqus_identifier='index.html';var disqus_title='index.html';var disqus_url='https://dirtysalt.info/index.html';(function(){var dsq=document.createElement('script');dsq.type='text/javascript';dsq.async=true;dsq.src='//'+disqus_shortname+'.disqus.com/embed.js';(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(dsq);})();</script><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a><script data-pagespeed-no-defer type="text/javascript">
+pagespeed.addInstrumentationInit('/_kloudsec_plugin/mod_cache/pagespeed_kloudsec', 'load', '', 'http://dirtysalt.info/');</script><script type="text/javascript" src="http://dirtysalt.info/_kloudsec_plugin/mod_cache/pagespeed_static/js_defer.-GkJcpjJ0Z.js"></script></body>
 </html>
