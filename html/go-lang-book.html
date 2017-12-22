@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>Go语言编程</title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="dirtysalt" />
+<link rel="shortcut icon" href="https://dirtysalt.github.io/css/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="css/site.css" />
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Go语言编程</h1>
+<p>
+顺序编程
+</p>
+<ul class="org-ul">
+<li>有限的类型推导
+<ul class="org-ul">
+<li><code>var k = "hello"= or =k :</code> "hello"=</li>
+<li>不会对函数返回值类型进行推导</li>
+</ul></li>
+<li>不定参数 <code>args ...int</code> 可以认为是数组切片类型 <code>args []int</code></li>
+<li>=range=用来遍历数组, 切片, 以及字典.</li>
+<li>取消=while=, 只保留=for=.
+<ul class="org-ul">
+<li>for &lt;init&gt;; &lt;loop&gt;; &lt;pred&gt; { \n &#x2026; }</li>
+<li>for &lt;loop&gt; { \n &#x2026; }</li>
+<li>for { \n &#x2026; }</li>
+</ul></li>
+<li>多重赋值, 多值返回, 匿名函数与闭包</li>
+<li>错误处理. error接口</li>
+<li>RAII解决方案. defer</li>
+<li>异常传播. panic + recover
+<ul class="org-ul">
+<li>panic(value). 触发异常并携带value</li>
+<li>if r := recover() ; r != nil 捕获可能的异常并处理.</li>
+</ul></li>
+</ul>
+
+<p>
+类型系统
+</p>
+<ul class="org-ul">
+<li>值语义 vs. 引用语义
+<ul class="org-ul">
+<li>大部分cases都是值语义</li>
+<li>看起来像引用语义的有
+<ol class="org-ol">
+<li>数组切片</li>
+<li>map</li>
+<li>channel</li>
+<li>interface</li>
+</ol></li>
+<li>这些"引用语义"类型内部实现都是维护指针</li>
+</ul></li>
+<li>初始化. new(A), A{a:1, b:2}, A{1,2}</li>
+<li>匿名组合. 类型和接口都可以通过匿名组合来实现继承</li>
+<li>非侵入式接口.
+<ul class="org-ul">
+<li>对象实例可以赋值给接口</li>
+<li>一个接口可以赋值给另外一个接口</li>
+<li>func (a A)&#x2026;自动会实现func (a *A)&#x2026;</li>
+</ul></li>
+<li>类型/接口查询. 值是否实现某个接口 <code>v.(IReader)</code> 或是什么类型 <code>v.(type)</code></li>
+</ul>
+
+<p>
+并发编程
+</p>
+<ul class="org-ul">
+<li>goroutine go协程 see <code>libtask</code>
+<ul class="org-ul">
+<li>使用CPU数量 runtime.GOMAXPROCS()</li>
+<li>主动yield runtime.GoSched()</li>
+</ul></li>
+<li>并发通信
+<ul class="org-ul">
+<li>基于消息传递 channel <code>chan type</code>
+<ul class="org-ul">
+<li>单向写入channel <code>chan&lt;- type</code></li>
+<li>单向读出channel <code>&lt;-chan type</code></li>
+<li>通过make(chan type [,bufsize])来创建</li>
+</ul></li>
+<li>基于内存共享 sync.* 同步机制</li>
+</ul></li>
+<li>select 有效轮询各个channels状态
+<ul class="org-ul">
+<li>select本身没有提供timeout机制</li>
+<li>workaround办法是启动另外一个检测超时的goroutine</li>
+</ul></li>
+</ul>
+
+<p>
+工程管理
+</p>
+<ul class="org-ul">
+<li>目录组织. src/pkg/bin</li>
+<li>集成工具. just <code>go</code></li>
+<li>代码风格. see <code>go fmt</code></li>
+<li>远程import支持. see <code>go get</code></li>
+<li>内置单元测试和性能测试</li>
+<li>camelCase style. 只暴露首字母大写的变量.</li>
+</ul>
+</div>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script>/***  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/var disqus_config = function () {this.page.url = 'https://dirtysalt.github.io/html/go-lang-book.html';this.page.identifier = 'go-lang-book.html';};(function() {var d = document, s = d.createElement('script');s.src = 'https://dirlt.disqus.com/embed.js';s.setAttribute('data-timestamp', +new Date());(d.head || d.body).appendChild(s);})();</script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><!-- DISQUS END --></body>
+</html>

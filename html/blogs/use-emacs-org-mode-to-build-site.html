@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>用Emacs Org-Mode来建站</title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="dirtysalt" />
+<link rel="shortcut icon" href="https://dirtysalt.github.io/css/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="../css/site.css" />
+</head>
+<body>
+<div id="content">
+<h1 class="title">用Emacs Org-Mode来建站</h1>
+<p>
+很多朋友问到我这个站点是怎么搭建出来的。不过我的感觉是，他们可能更多地是对我积累了这么多文章感到好奇，而不仅仅是这个站点的搭建感兴趣。因为其实只要有个简单的Wordpress或者是Github Pages也能做到这样，唯一的差别还是是否愿意长期往这个站点里面添加文章和内容。说来惭愧，我的这个站点里面大部分的内容都不是原创的，东抄一点西抄一点，抄别人的文章，翻译别人的文章和论文等等。
+</p>
+
+<p>
+既然问的同学多了，我就简单地说说我这个站点是怎么搞的。代码仓库在 <a href="https://github.com/dirtysalt/dirtysalt.github.io">这里</a>
+</p>
+<ul class="org-ul">
+<li><code>src</code> 和 <code>src/blogs</code> 下面是org源文件，生成的html文件放在上层</li>
+<li><code>src/images</code> 下面是图片和PDF文件等一些静态资源. 在上层有一个软连接</li>
+<li><code>src/css</code> 下面是CSS文件. 同样在上层有一个软链接</li>
+<li><code>src/publish</code> 和 <code>src/publish.el</code> 是发布命令，将org files生成html files</li>
+<li><code>src/pp-html</code> 会对生成的html files做后期处理（集成GA/Disqus）</li>
+</ul>
+
+<p>
+下图是一个目录结构概要
+</p>
+<pre class="example">
+- html files
+- images -&gt; src/images
+- css -&gt; src/css
+- src
+   - org files
+   - images
+   - css
+   - publish/publish.el/pp-html
+</pre>
+
+<p>
+publish.el非常简单，里面只调用了 `org-publish-project` 函数
+</p>
+<div class="org-src-container">
+
+<pre class="src src-Elisp">;;; we need environment at first
+(load "~/.emacs")
+;;; then we do action
+(require 'ox-publish)
+(org-publish-project "site")
+</pre>
+</div>
+
+<p>
+这个函数涉及到的一些配置在我的.emacs文件里面
+</p>
+<div class="org-src-container">
+
+<pre class="src src-Elisp">;; http://orgmode.org/manual/Publishing-options.html
+(setq org-export-with-sub-superscripts nil)
+(setq org-export-with-timestamps nil)
+(setq org-export-author nil)
+(setq org-export-with-creator nil)
+(setq org-export-with-date nil)
+(setq org-export-with-email nil)
+(setq org-export-with-toc 't)
+(setq org-export-with-section-numbers 't)
+(setq org-html-preamble nil)
+(setq org-html-postamble nil)
+(setq org-html-head
+      (concat
+       "&lt;style type=\"text/css\"&gt;"
+       (get-string-from-file "~/repo/dirtysalt.github.io/src/css/site.css")
+       "&lt;/style&gt;"))
+;; see org-html-style-default
+(setq org-html-head-include-default-style nil)
+
+;; see org-html-scripts
+(setq org-html-head-include-scripts nil)
+(setq org-html-htmlize-output-type 'css)
+
+;; http://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html
+(setq org-publish-project-alist
+      '(("pages"
+         :base-directory "~/repo/dirtysalt.github.io/src/"
+         :publishing-directory "~/repo/dirtysalt.github.io/"
+         :recursive nil
+         :html-head-include-default-style nil
+         :html-head "&lt;link rel=\"shortcut icon\" href=\"http://dirtysalt.info/css/favicon.ico\" /&gt;
+&lt;link rel=\"stylesheet\" type=\"text/css\" href=\"./css/site.css\" /&gt;"
+         :publishing-function org-html-publish-to-html
+         ;; :auto-sitemap 't
+         ;; :sitemap-filename "sitemap.org"
+         ;; :sitemap-title "Sitemap"
+         :with-toc 't)
+        ("blog"
+         :base-directory "~/repo/dirtysalt.github.io/src/blogs/"
+         :publishing-directory "~/repo/dirtysalt.github.io/blogs/"
+         :recursive nil
+         :html-head-include-default-style nil
+         :html-head "&lt;link rel=\"shortcut icon\" href=\"http://dirtysalt.info/css/favicon.ico\" /&gt;
+&lt;link rel=\"stylesheet\" type=\"text/css\" href=\"../css/site.css\" /&gt;"
+         :publishing-function org-html-publish-to-html
+         :section-numbers 't
+         :with-toc 't)
+        ("site" :components ("pages" "blog"))))
+</pre>
+</div>
+</div>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script>/***  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/var disqus_config = function () {this.page.url = 'https://dirtysalt.github.io/html/blogs/use-emacs-org-mode-to-build-site.html';this.page.identifier = 'blogs/use-emacs-org-mode-to-build-site.html';};(function() {var d = document, s = d.createElement('script');s.src = 'https://dirlt.disqus.com/embed.js';s.setAttribute('data-timestamp', +new Date());(d.head || d.body).appendChild(s);})();</script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><!-- DISQUS END --></body>
+</html>

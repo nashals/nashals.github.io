@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>统计思维-程序员数学之概率统计</title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="dirtysalt" />
+<link rel="shortcut icon" href="https://dirtysalt.github.io/css/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="css/site.css" />
+</head>
+<body>
+<div id="content">
+<h1 class="title">统计思维-程序员数学之概率统计</h1>
+<p>
+经验之谈无法提供有说服力的证据和可靠的结论：
+</p>
+<ul class="org-ul">
+<li>样本数量太少</li>
+<li>样本选择偏差</li>
+<li>确认偏差。相信的人会提供支持示例，而怀疑的人会提供反例。</li>
+<li>描述不准确</li>
+</ul>
+
+<p>
+为了解决经验之谈的种种不足，运用下面的统计学手段：
+</p>
+<ul class="org-ul">
+<li>收集数据</li>
+<li>描述性统计。计算能总结数据的统计量，并且评测各种数据可视化的方法。</li>
+<li>探索性数据分析。寻找模式，差异和其他能解答我们问题的特征。</li>
+<li>假设检验</li>
+<li>估计。用样本数据推断全部人口的特征。</li>
+</ul>
+
+<p>
+横断面研究（cross-sectional study）：研究的是在同一时间内的样本数据
+纵贯研究（longitudinal study）：在一段时间内反复观察圈定的样本
+被调查者（respondent），一组被调查者被称为队列（cohort）
+</p>
+
+<p>
+连续模型也是一种数据压缩。如果模型能很好地拟合数据集合，那么少量参数就可以描述大量数据。
+</p>
+
+<p>
+频率论在哲学上是没有错误的，但是它却限制了概率的使用范围，只限于随机的物理系统（例如原子衰变）或因无法预测而被视做随机的系统（例如意外死亡）。任何涉及人为因素的情况都不使用。还有一种观点是贝叶斯认识论（bayesianism），这种观点将概率定义为时间发生的可信度。根据这个定义，概率几乎能用于所有情况。贝叶斯概率的一个问题是它会受个体认知的影响。
+统计学家在各种体育运用中测试了这些假设，但所有的结果都是一致的：不存在诸如连胜，连败这一类的东西。假设每次比赛都是独立事件，看到多次连胜或者连败的情况也很正常。这并不能说明这次获胜和下次获胜之间有什么联系。另一个类似现象是聚类错觉（clustering illusion），指看上去好像有某种特点的聚类实际上是随机的。
+</p>
+
+<p>
+计算模型的确定系数（Coefficient of Determination）也就是常说的R2，来评价模型的预测能力。
+R2 = 1 - Var(e) / Var(y). 其中Var(e)是y_true和y_pred的MSE，Var(y)是y_true_avg和y_pred的MSE.
+</p>
+
+<p>
+统计显著检验：
+</p>
+<ul class="org-ul">
+<li>原假设（Null Hypothesis）：在这种假设下面，我们认为观测到的效应是偶然因素造成的。</li>
+<li>P值（p-value）：在原假设下出现该效应的概率</li>
+<li>解释（Interpretation）：基于P值大小，推断观测到的效应是否具有统计显著性。</li>
+</ul>
+<p>
+整个思路可以这么理解：为了说明某个统计效应是显著的，先假设这个效应不存在。然后在这个假设下计算出，出现该效应的概率p值，如果这个p值很小的话，那么就认为具有统计显著性。
+</p>
+</div>
+<!-- DISQUS BEGIN --><div id="disqus_thread"></div><script>/***  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/var disqus_config = function () {this.page.url = 'https://dirtysalt.github.io/html/think-stats.html';this.page.identifier = 'think-stats.html';};(function() {var d = document, s = d.createElement('script');s.src = 'https://dirlt.disqus.com/embed.js';s.setAttribute('data-timestamp', +new Date());(d.head || d.body).appendChild(s);})();</script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><!-- DISQUS END --></body>
+</html>
