@@ -137,6 +137,10 @@ BN在每层有两个超参数，并且最终训练完成之后也有两个参数
 <li>a = [0.001, 1]，那么可以使用 10 ** rand(-3, 0)</li>
 <li>a = [0.9, 0.9999], 那么 1-a = [0.0001, 0.1], 可以使用 1 - 10 ** rand(-4, -1)</li>
 </ul>
+
+<p>
+在做超参优化的时候，有两个方向可以选择：Pandas(熊猫) vs. Caviar(鱼子酱). Pandas是着重优化单个模型，而Caviar着重尝试很多模型期望得到一个好的模型。两个方向的选择，很大程度上取决于可以获得的计算资源。
+</p>
 </div>
 </div>
 
@@ -144,10 +148,33 @@ BN在每层有两个超参数，并且最终训练完成之后也有两个参数
 <h2 id="orgheadline5"><span class="section-number-2">5</span> Optimization</h2>
 <div class="outline-text-2" id="text-5">
 <p>
-TODO: ewa, momentum, rmsprop, adam.
+DL优化，并不是要解决local optima，因为cost function是一个非常高纬度的函数，不太可能在所有dimension上都是最低点，更多的是sadle point(鞍点，在某些dimension是最低点，但是另外一些dimension上并不是）。DL优化其实解决的是plateau, 在plateau上没有办法再继续优化/尝试了（或者是迭代很缓慢）。
+</p>
+
+<p>
+在这个假设上，有一系列的优化方法。momentum, rmsprop, adam(momentum + rmsprop)算法都基于ewa(exponentially weighted averages). 据说rmsprop其实是hinton首先在 <a href="neuralnets.html">coursera的课程</a> 上提到的，并没有发在论文里面，但是之后被学术界和业界大量关注和使用。
+</p>
+
+<p>
+ewa的算法非常简单 `v(t) = beta * v(t-1)  + (1 - beta) * x(t)`. ewa有个性质，基本上可以认为，它取了最近1/(1-beta)个值，所以beta越大，那么整个曲线就越光滑。可以证明beta ** (1/(1-beta)) ~= 1/e ~= 0.3.
+</p>
+
+<p>
+momentum在更新weight时候，不是直接更新-a * dW, 而是更新这些dW的ewa. 这样好处是，在某个方向上的更新可以变得更加平滑。
+</p>
+
+<p>
+计算ewa的时候，在初期可能会存在偏差，偏差纠正的办法，可以看下图
+</p>
+
+
+<div class="figure">
+<p><img src="images/improve-dnn-ewa-bias-correction.png" alt="improve-dnn-ewa-bias-correction.png" />
 </p>
 </div>
 </div>
+</div>
+
 
 <div id="outline-container-orgheadline6" class="outline-2">
 <h2 id="orgheadline6"><span class="section-number-2">6</span> Gradient Check</h2>
