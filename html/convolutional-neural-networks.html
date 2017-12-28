@@ -23,9 +23,9 @@
 <li><a href="convolutional-neural-networks.html#orgheadline3">3. Residual Network</a></li>
 <li><a href="convolutional-neural-networks.html#orgheadline4">4. Inception Network</a></li>
 <li><a href="convolutional-neural-networks.html#orgheadline5">5. Practical Advices</a></li>
-<li><a href="convolutional-neural-networks.html#orgheadline6">6. 物体检测</a></li>
-<li><a href="convolutional-neural-networks.html#orgheadline7">7. 脸部识别</a></li>
-<li><a href="convolutional-neural-networks.html#orgheadline8">8. 风格迁移</a></li>
+<li><a href="convolutional-neural-networks.html#orgheadline6">6. 物体检测(Object Detection)</a></li>
+<li><a href="convolutional-neural-networks.html#orgheadline7">7. 脸部识别(Face Recognition)</a></li>
+<li><a href="convolutional-neural-networks.html#orgheadline8">8. 风格迁移(Neural Style Transfer)</a></li>
 </ul>
 </div>
 </div>
@@ -249,28 +249,101 @@ Data Augmentation在图像上可以适度使用，包括下面几种方法：
 </div>
 
 <div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="orgheadline6"><span class="section-number-2">6</span> 物体检测</h2>
+<h2 id="orgheadline6"><span class="section-number-2">6</span> 物体检测(Object Detection)</h2>
 <div class="outline-text-2" id="text-6">
 <p>
-TODO:
+物体检测一个naive/simple的办法，可以是将图像配合不同尺寸的sliding window, 然后对每个sliding window下面的图像输入到CNN，判断这个小图片里面是否有某个物体。姑且称这种方式是sliding window吧。
 </p>
+
+<p>
+这种方式有个缺点，是没有办法动态地调整sliding window size，要不就预先定义好。此外这种方法的naive实现计算量比较大，有种办法可以减少计算量。就是把convolution和sliding window结合起来。下图大概说明了这个办法：FC其实可以使用convolutional layer来表示，这样整个network下面都是conv. 然后在Output里面，其实可以对应到每个sliding window的计算结果。
+</p>
+
+<p>
+<img src="images/cnn-fc-to-conv.png" alt="cnn-fc-to-conv.png" /> <img src="images/cnn-conv-impl-of-sliding-windows.png" alt="cnn-conv-impl-of-sliding-windows.png" />
+</p>
+
+<p>
+物体检测上state-of-art技术应该是YOLO(you only look once). 实现上分为下面几步：（先假设我们只detect一种object)
+</p>
+<ol class="org-ol">
+<li>将输入图片分为9x9或者是19x19个grids.</li>
+<li>每个grid上单独进行预测，输出包括(P, bx, by, bh, bw). 每个五元组为一个box, 可以有很多boxes
+<ul class="org-ul">
+<li>P 表示检测到物体的概率</li>
+<li>其中bx, by是这个物体的middle point, bh, bw则是长宽</li>
+<li>数值上都是grid的比例，比如bx, by = 0.5, 0.5, 表示middle point在grid的中心</li>
+<li>bh, bw可以超过1， 也就是说占据多个grids</li>
+</ul></li>
+<li>针对这些boxes, 运行non-max suppression. 算法很简单
+<ol class="org-ol">
+<li>将boxes中P低于某个值(0.4)去掉，这些box是object概率很小</li>
+<li>从boxes中选择P最大的box(A)，认为A里面有Object</li>
+<li>然后剩余boxes中，如果和A的重合比例超过某个值(0.5)的话，那么丢弃</li>
+<li>重复2，直到没有boxes为止</li>
+</ol></li>
+</ol>
+<p>
+重合比例计算可以用IOU(intersect over union), 也就是重合面积 / （A + B - 重合面积)。IOU很高的话，认为其实两个box重复。
+</p>
+
+<p>
+如果需要检测多个物体的话，那么在一个grid里面可能会检测到多个objects，那么需要anchor box来帮助。anchor box实际上是帮助定位是哪一类objects的。比如下图：
+</p>
+<ol class="org-ol">
+<li>在最下面的grid里面会检测到两个objects.</li>
+<li>美女更加匹配anchor box1, 而汽车更加匹配anchor box2.</li>
+<li>y里面包含两个anchor对应的向量</li>
+</ol>
+
+
+<div class="figure">
+<p><img src="images/cnn-object-detection-anchor-boxes.png" alt="cnn-object-detection-anchor-boxes.png" />
+</p>
+</div>
 </div>
 </div>
 
 <div id="outline-container-orgheadline7" class="outline-2">
-<h2 id="orgheadline7"><span class="section-number-2">7</span> 脸部识别</h2>
+<h2 id="orgheadline7"><span class="section-number-2">7</span> 脸部识别(Face Recognition)</h2>
 <div class="outline-text-2" id="text-7">
 <p>
-TODO:
+Face Recognition其实可以通过另外一个问题解决，就是FV/Face Verification. Face Verification会比较两个图片的相似度，而FR则可以使用这个相似度来选择和谁最匹配。
 </p>
+
+<p>
+假设现在我们已经有了比如VGG-16这种可以识别图片的网络（DeepFace, FaceNet），取最后一层FC，这层FC的值可以认为是图像指纹(fingerprint). 通过比较这两个指纹的距离，就可以得到两张图片的相似度。
+</p>
+
+<p>
+如何对这个网络做训练呢？<a href="https://stackoverflow.com/questions/33330779/whats-the-triplet-loss-back-propagation-gradient-formula">triplet loss</a>. 大致意思就是，有一个基准图片(anchor), 正样例(positive), 负样例(negative). 尽可能地使dist(anchor, positive)小，而使dist(anchor, negative)大。
+</p>
+
+
+<div class="figure">
+<p><img src="images/cnn-triplet-loss-formula.png" alt="cnn-triplet-loss-formula.png" />
+</p>
+</div>
 </div>
 </div>
 
 <div id="outline-container-orgheadline8" class="outline-2">
-<h2 id="orgheadline8"><span class="section-number-2">8</span> 风格迁移</h2>
+<h2 id="orgheadline8"><span class="section-number-2">8</span> 风格迁移(Neural Style Transfer)</h2>
 <div class="outline-text-2" id="text-8">
 <p>
-TODO:
+风格迁移的难点在于定义cost function，假设内容图像是C(content), 风格图像是S(style), 生成图像是G(generated), 那么J(C, S, G) = J(C, G) + J(S, G).
+</p>
+
+<p>
+J(C, G)表示内容图像和生成图像的偏差，假设我们有VGG-16的话，那么只需要抽取C, G在vgg-16的某个比较高的layer(conv4-2)输出，然后计算距离即可。
+</p>
+
+<p>
+J(S, G)表示风格图像和生成图像的偏差，风格可以认为是，每个像素值在各个channel上的关联。具体地，需要计算每层的风格差异然后叠加。
+</p>
+
+<p>
+<img src="images/cnn-style-of-image.png" alt="cnn-style-of-image.png" /> <img src="images/cnn-style-matrix.png" alt="cnn-style-matrix.png" />
 </p>
 </div>
 </div>
